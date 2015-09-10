@@ -1,0 +1,24 @@
+[[gravitee-introduction]]
+= Overview of Gravitee.io
+
+[partintro]
+--
+A popular trend in enterprise software development these days is to design applications to be very decoupled and use API’s to connect them. This approach provides an excellent way to reuse functionality across various applications and business units. Another great benefit of API usage in enterprises is the ability to create those API’s using a variety of disparate technologies.
+
+However, this approach also introduces its own pitfalls and disadvantages. Some of those disadvantages include things like:
+
+* Difficulty discovering or sharing existing API’s
+* Difficulty sharing common functionality across API implementations
+* Tracking of API usage/consumption
+API Management is a technology that addresses these and other issues by providing an API Manager to track APIs and configure governance policies, as well as an API Gateway that sits between the API and the client. This API Gateway is responsible for applying the policies configured during management.
+
+Therefore an API management system tends to provide the following features:
+
+* Centralized governance policy configuration
+* Tracking of API’s and consumers of those API’s
+* Easy sharing and discovery of API’s
+* Leveraging common policy configuration across different API’s
+--
+
+[[why-gravitee-io]]
+== Why Gravitee.io ?
