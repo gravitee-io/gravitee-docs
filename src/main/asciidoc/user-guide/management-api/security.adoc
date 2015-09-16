@@ -86,7 +86,7 @@ security:
   authentication-manager: # required authentication-providers parent attribute
     authentication-providers: # required authentication-provider parent attribute
       size : 1 # number of authentication-provider to use (in this sample one)
-      authentication-provider-1 : the authentication provider id must be <= size property
+      authentication-provider-1 : # the authentication provider id must be <= size property
       type: ldap # authentication provider type (possible values : memory, ldap, gravitee)
 			embedded: true # embedded mode (true to use the embedded ldap server, usefull for test/demo, possible values : true or false)
 			# if embedded is false set the following values 
