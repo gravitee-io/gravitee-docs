@@ -22,7 +22,50 @@ Therefore an API management system tends to provide the following features:
 
 [[why-gravitee-io]]
 == Why Gravitee.io ?
+At the beginning, we were searching for an open-source solution to do API Management. Unfortunately, we've never found
+the tool which fit exactly our needs and by choosing one of them we know that we have to pull other components and, for some of them,
+a dedicated support (and so, money, money and money...).
 
-== The fundamentals
+That's the main reason why we launch Gravitee.io : our goal is to provide you with an highly integrable solution which
+is able to fit perfectly with your infrastructure and our business needs.
+
+Also, Gravitee.io has been developed and designed to be fully extensible using its internal plugin system. You must be
+able to do whatever you want : defining your own policy, developing your own reporting system, and so on...
+
+Finally, all components provided by Gravitee.io (including gateway and the management-api) are really lightweight. We
+took an aggressive approach to memory management. This makes things really easier for you in terms of high-availability
+and our components can be started in a "blazing-fast" mode (generally speaking, it takes less than 3 seconds for the gateway
+to be accessible to consumers).
+
+You see no constraint using Gravitee.io at all ? Sounds good ! So let's go further with Gravitee.io right now !
+
+== Fundamentals
 Before going further with Gravitee.io, you have to read this section to get a better understanding of the concepts you need
-to know to go ahead wuickly.
+to know to go ahead quickly.
+
+=== API
+An API is the main entity used by Gravitee.io. You can see it as a starting point to expose an API through the gateway.
+
+=== Policy
+Policy is an other important entity to apply some rules in requests / responses emitted by a consumer and the gateway.
+Policies can be chained using a logical order.
+
+Good examples for a policy are:
+
+* Authorization using an API key (see the api-key policy)
+* Applying CORS filters
+* Applying rate limiting or quota to avoid API flooding.
+
+=== Reporter
+
+== Components
+Gravitee.io is not only a product, you can see on it a global solution for API Management. By this, the community provides
+components linked between each other and run well together.
+
+=== Gateway
+The gateway is the core component of Gravitee.io.
+
+=== Management API
+=== Repository
+=== Policies
+=== Reporters
