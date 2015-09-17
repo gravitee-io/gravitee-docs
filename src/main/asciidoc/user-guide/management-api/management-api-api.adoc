@@ -1,0 +1,81 @@
+[[gravitee-management-api-api]]
+= Gravitee.io Management API Guide
+
+== Unleash your APIs
+
+This guide walks you through the process of configuring, access, manage, monitor your APIs. 
+
+=== You said API ?
+
+The API describes a web resource that is exposed by the Gravitee.io gateway. In order to play with your APIs some information must be specified :
+
+[source]
+----
+# ===================================================================
+#	API PROPERTIES
+#
+# Minimum required properties to declare an api
+# ===================================================================
+{
+  "name" : "api name",
+  "version": "api version",
+  "description" : "api description",
+  "publicURI": "api public URI -> Proxy URL",
+  "targetURI": "your backend URI",
+  "privateApi": "Share your api ? (true/false)"
+}
+----
+
+=== Manage your apis
+
+NOTE: The Management API is secured, all requests must contain the `Authorization` header with a specific authentication type (Basic/OAuth 2). See the <<management-api-security.adoc#,Management API : Security Guide>> to get more information
+
+==== Create your apis
+
+[source]
+----
+Create API :
+
+=============== =================================================
+Request         POST /rest/todos
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+Request Body    ::
+                  {
+                    "name" : "api name",
+                    "version": "api version",
+                    "description" : "api description",
+                    "publicURI": "api public URI -> Proxy URL",
+                    "targetURI": "your backend URI",
+                    "privateApi": "Share your api ? (true/false)"
+                  }
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                400 Bad Request
+Response Body   ::
+                  {
+                    "name" : "api name",
+                    "version": "api version",
+                    "description" : "api description",
+                    "publicURI": "api public URI -> Proxy URL",
+                    "targetURI": "your backend URI",
+                    "privateApi": "Share your api ? (true/false)",
+                    "createdAt": "api creation date",
+                    "updatedAt": "api update date",
+                    "owner": "api owner",
+                    "creator": "api creator"
+                  }
+
+=============== =================================================
+----
+
+==== Update yout apis
+
+==== Delete your apis
+
+=== Extend your apis 
+
+==== Policies
