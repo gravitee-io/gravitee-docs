@@ -37,7 +37,7 @@ NOTE: The Management API is secured, all requests must contain the `Authorizatio
 Create API :
 
 =============== =================================================
-Request         POST /rest/todos
+Request         POST /apis
 Request Header  Authorization   Basic <Base64.encode(username:password)>
                 or
                 Authorization   Bearer <your-access-token>
