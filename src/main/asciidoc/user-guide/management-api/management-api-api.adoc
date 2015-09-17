@@ -43,7 +43,7 @@ Request Header  Authorization   Basic <Base64.encode(username:password)>
                 Authorization   Bearer <your-access-token>
 Request Body    ::
                   {
-                    "name" : "api name",
+                    "name" : "api name (id)",
                     "version": "api version",
                     "description" : "api description",
                     "publicURI": "api public URI -> Proxy URL",
@@ -54,6 +54,51 @@ Request Body    ::
 =============== =================================================
 Response Codes  200 OK
                 401 Unauthorized
+                403 forbidden
+                400 Bad Request
+Response Body   ::
+                  {
+                    "name" : "api name (id)",
+                    "version": "api version",
+                    "description" : "api description",
+                    "publicURI": "api public URI -> Proxy URL",
+                    "targetURI": "your backend URI",
+                    "privateApi": "Share your api ? (true/false)",
+                    "createdAt": "api creation date",
+                    "updatedAt": "api update date",
+                    "owner": "api owner",
+                    "creator": "api creator"
+                  }
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role
+
+==== Update your apis
+
+[source]
+----
+Update API :
+
+=============== =================================================
+Request         PUT /apis/<apiName>
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+Request Body    ::
+                  {
+                    "version": "api version",
+                    "description" : "api description",
+                    "publicURI": "api public URI -> Proxy URL",
+                    "targetURI": "your backend URI",
+                    "privateApi": "Share your api ? (true/false)"
+                  }
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
                 400 Bad Request
 Response Body   ::
                   {
@@ -72,9 +117,144 @@ Response Body   ::
 =============== =================================================
 ----
 
-==== Update yout apis
+NOTE: TODO talk about Role
 
 ==== Delete your apis
+
+[source]
+----
+Delete API :
+
+=============== =================================================
+Request         DELETE /apis/<apiName>
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role
+
+==== Start/Stop your apis
+
+TODO talk about Lifecycle functionality
+
+[source]
+----
+Start/Stop an API :
+
+=============== =================================================
+Request         POST /apis/<apiName>?action=START|STOP
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role
+
+==== List apis
+
+[source]
+----
+List APIs :
+
+=============== =================================================
+Request         GET /apis
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+Response Body   ::
+                  [
+                    {
+                      "name" : "api name",
+                      "version": "api version",
+                      "description" : "api description",
+                      "publicURI": "api public URI -> Proxy URL",
+                      "targetURI": "your backend URI",
+                      "privateApi": "Share your api ? (true/false)",
+                      "createdAt": "api creation date",
+                      "updatedAt": "api update date",
+                      "owner": "api owner",
+                      "creator": "api creator"
+                    },
+
+                    {
+                      "name" : "api 2 name",
+                      "version": "api 2 version",
+                      "description" : "api 2 description",
+                      "publicURI": "api 2 public URI -> Proxy URL",
+                      "targetURI": "your backend URI",
+                      "privateApi": "Share your api ? (true/false)",
+                      "createdAt": "api 2 creation date",
+                      "updatedAt": "api 2 update date",
+                      "owner": "api 2 owner",
+                      "creator": "api 2 creator"
+                    },
+
+                    ...
+                  ] 
+
+=============== =================================================
+----
+
+NOTE: Public APIs and your APIs will be retrieve. TODO talk about Role
+
+==== Retrieve api
+
+[source]
+----
+Get an API :
+
+=============== =================================================
+Request         GET /apis/<apiName>
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+Response Body   ::
+                  {
+                    "name" : "api name",
+                    "version": "api version",
+                    "description" : "api description",
+                    "publicURI": "api public URI -> Proxy URL",
+                    "targetURI": "your backend URI",
+                    "privateApi": "Share your api ? (true/false)",
+                    "createdAt": "api creation date",
+                    "updatedAt": "api update date",
+                    "owner": "api owner",
+                    "creator": "api creator"
+                  }
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role
 
 === Extend your apis 
 
