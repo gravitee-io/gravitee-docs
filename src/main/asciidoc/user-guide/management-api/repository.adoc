@@ -1,0 +1,144 @@
+[[gravitee-management-api-repository]]
+= Gravite.io Management API Repository Guide
+
+== Working with Gravite.io Manager API Repositories
+
+This guide walks you through the process of configuring the data sources of Gravitee.io Management API.
+
+=== Respository configuration
+
+Gravitee.IO allows you to externalize your configuration via the `gravitee.yml` file. Various properties can be specified inside your configuration file. This section provides the list of repository properties used by the Gravitee.io Management API.
+
+NOTE: The parent attribute of `gravitee.yml` for the repository part is `repository`.
+
+=== Persistence Stores
+
+Gravitee.IO Management API supports both NoSQL and SQL persistence stores. The repository-type can be defined using the following property :
+
+[source]
+----
+repository:
+  type: # repository type (possible values : 'mongodb', 'jpa')
+----
+
+=== Mongo Respository
+
+NoSQL store implementation based on MongoDB technology, let's see the configuration options :
+
+[source]
+----
+# ===================================================================
+# MINIMUM MONGO REPOSITORY PROPERTIES
+#
+# This is a minimal sample file declared connection to MongoDB
+# ===================================================================
+repository:
+  type: mongodb # repository type
+  mongodb: # mongodb repository
+    dbname: # mongodb name (default gravitee)
+    host: # mongodb host (default localhost)
+    port: # mongodb port (default 27017)
+----
+
+NOTE: This is the minimum sample file to start with a mongo server, number of other properties control the behavior of mongo database, let's jump into it
+
+[source]
+----
+# ===================================================================
+# MONGO REPOSITORY PROPERTIES
+#
+# This is a sample file declared all properties for MongoDB Repository
+# ===================================================================
+repository:
+  type: mongodb # repository type
+  mongodb: # mongodb repository
+    dbname: # mongodb name (default gravitee)
+    host: # mongodb host (default localhost)
+    port: # mongodb port (default 27017)
+    username: # mongodb username (default null)
+    password: # mongodb password (default null)
+    connectionPerHost: # mongodb connection per host (default 10)
+    connectTimeOut: # mongodb connection time out (default 0 -> never)
+    maxWaitTime: # mongodb max wait time (default 120000)
+    socketTimeout: # mongodb socket time out (default 0 -> never)
+    socketKeepAlive: # mongodb socket keep alive (default false)
+    maxConnectionLifeTime: # mongodb max connection life time (default null) 
+    maxConnectionIdleTime: # mongodb max connection idle time (default null)
+    minHeartbeatFrequency: # mongodb min heartbeat frequency (default null)
+    description: # mongodb description (default null)
+    heartbeatConnectTimeout: # mongodb heartbeat connection time out (default null)
+    heartbeatFrequency: # mongodb heartbeat frequency (default null)
+    heartbeatsocketTimeout: # mongodb heartbeat socket time out (default null)
+    localThreshold: # mongodb local threshold (default null)
+    minConnectionsPerHost: # mongodb min connections per host (default null)
+    sslEnabled: # mongodb ssl mode (default false)
+    threadsAllowedToBlockForConnectionMultiplier: # mongodb threads allowed to block for connection multiplier (default null)
+    cursorFinalizerEnabled: # mongodb cursor finalizer enabled (default false)
+----
+
+NOTE: All theses properties allow you to fine tuned your MongoDB connection
+
+==== JPA Repository
+
+SQL Store implementation based on Java Persistence API (JPA). SQL DataSource configuration is controlled by the following configuration properties.
+
+[source]
+----
+# ===================================================================
+# JPA REPOSITORY PROPERTIES
+# ===================================================================
+repository:
+  type: jpa # repository type
+  jpa: # jpa repository
+    hibernateDialect: org.hibernate.dialect.PostgreSQL9Dialect # hibernate dialect
+    driverClassName: org.postgresql.Driver # database driver
+    url: jdbc:postgresql://localhost/gravitee # database url
+    hbm2ddlAuto: validate | update | create | create-drop # hibernate.hbm2ddl.auto property
+    username: user # database username
+    password: password # database password
+    showSql: false # show sql mode (default to false)
+----
+
+NOTE: We've just declared a connection to a PostgresSQL Database server.
+
+=== Appendix A. Repository application properties
+
+NOTE: This sample file is meant as a guide only. Do not copy/paste the entire content; rather pick only the properties that you need.
+
+[source]
+----
+repository:
+  type: mongodb / jpa # repository type
+    mongodb: # mongodb repository
+    dbname: # mongodb name (default gravitee)
+    host: # mongodb host (default localhost)
+    port: # mongodb port (default 27017)
+    username: # mongodb username (default null)
+    password: # mongodb password (default null)
+    connectionPerHost: # mongodb connection per host (default 10)
+    connectTimeOut: # mongodb connection time out (default 0 -> never)
+    maxWaitTime: # mongodb max wait time (default 120000)
+    socketTimeout: # mongodb socket time out (default 0 -> never)
+    socketKeepAlive: # mongodb socket keep alive (default false)
+    maxConnectionLifeTime: # mongodb max connection life time (default null) 
+    maxConnectionIdleTime: # mongodb max connection idle time (default null)
+    minHeartbeatFrequency: # mongodb min heartbeat frequency (default null)
+    description: # mongodb description (default null)
+    heartbeatConnectTimeout: # mongodb heartbeat connection time out (default null)
+    heartbeatFrequency: # mongodb heartbeat frequency (default null)
+    heartbeatsocketTimeout: # mongodb heartbeat socket time out (default null)
+    localThreshold: # mongodb local threshold (default null)
+    minConnectionsPerHost: # mongodb min connections per host (default null)
+    sslEnabled: # mongodb ssl mode (default false)
+    threadsAllowedToBlockForConnectionMultiplier: # mongodb threads allowed to block for connection multiplier (default null)
+    cursorFinalizerEnabled: # mongodb cursor finalizer enabled (default false)
+  
+  jpa: # jpa repository
+    hibernateDialect: # hibernate dialect
+    driverClassName: # database driver
+    url: # database url
+    hbm2ddlAuto: # hibernate.hbm2ddl.auto property
+    username: # database username
+    password: # database password
+    showSql: # show sql mode (default to false)
+----
