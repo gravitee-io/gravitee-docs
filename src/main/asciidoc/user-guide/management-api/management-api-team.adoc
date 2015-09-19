@@ -1,0 +1,456 @@
+[[gravitee-management-api-team]]
+= Gravitee.io Management API team Guide
+
+== Got a team ?
+
+This guide walks you through the process of configuring, access, manage your Management API teams. 
+
+=== Manage your teams
+
+==== Create teams
+
+[source]
+----
+Create team :
+
+=============== =================================================
+Request         POST /teams
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+Request Body    ::
+                  {
+                    "name": "team name",
+                    "description": "team description",
+                    "email": "team email"
+                  }
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+Response Body   ::
+                  {
+                    "name": "team name",
+                    "description": "team description",
+                    "email": "team email",
+                    "isPrivate": "team state (public/private) boolean value",
+                    "owner": "team owner",
+                    "created_at": "team creation date",
+                    "updated_at": "team update date"
+                  }
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role/Permission
+
+==== Update teams
+
+[source]
+----
+Update team :
+
+=============== =================================================
+Request         POST /teams/<teamname>
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+Request Body    ::
+                  {
+                    "description": "team description",
+                    "email": "team email",
+                    "isPrivate": "team state (public/private) boolean value"
+                  }
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+Response Body   ::
+                  {
+                    "name": "team name",
+                    "description": "team description",
+                    "email": "team email",
+                    "isPrivate": "team state (public/private) boolean value",
+                    "owner": "team owner",
+                    "created_at": "team creation date",
+                    "updated_at": "team update date"
+                  }
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role/Permission
+
+==== Delete teams
+
+[source]
+----
+Delete team :
+
+=============== =================================================
+Request         DELETE /teams/<teamname>
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role/Permission
+
+==== Get specified team
+
+[source]
+----
+Get specified team :
+
+=============== =================================================
+Request         GET /teams/<teamname>
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+Response Body   ::
+                  {
+                    "name": "team name",
+                    "description": "team description",
+                    "email": "team email",
+                    "isPrivate": "team state (public/private) boolean value",
+                    "owner": "team owner",
+                    "created_at": "team creation date",
+                    "updated_at": "team update date"
+                  }
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role/Permission
+
+==== List public teams
+
+[source]
+----
+Get public teams :
+
+=============== =================================================
+Request         GET /teams
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+Response Body   ::
+                  [
+                    {
+                      "name": "team name",
+                      "description": "team description",
+                      "email": "team email",
+                      "isPrivate": "team state (public/private) boolean value",
+                      "owner": "team owner",
+                      "created_at": "team creation date",
+                      "updated_at": "team update date"
+                    },
+                    {
+                      "name": "team 2 name",
+                      "description": "team 2 description",
+                      "email": "team 2 email",
+                      "isPrivate": "team 2 state (public/private) boolean value",
+                      "owner": "team 2 owner",
+                      "created_at": "team 2 creation date",
+                      "updated_at": "team 2 update date"
+                    },
+                    ...
+                  ]             
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role/Permission
+
+==== Teams memberships
+
+Team ready ? Want to share your data with colleagues ? Let's see how to group them in teams.
+
+===== Add user to a team
+
+[source]
+----
+Add user to a team :
+
+=============== =================================================
+Request         POST /teams/<teamname>/members/<username>?role=<teamRole:MEMBER(default)|ADMIN>
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role/Permission
+
+===== Remove user from a team
+
+[source]
+----
+Remove user from a team :
+
+=============== =================================================
+Request         DELETE /teams/<teamname>/members/<username>
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role/Permission
+
+===== List your team members
+
+NOTE: You can filter your members by role
+
+[source]
+----
+List your team members :
+
+=============== =================================================
+Request         GET /teams/<teamname>/members?role=<teamRole:MEMBER(default)|ADMIN>
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+Response Body   ::
+                  [
+                    {
+                      "member": "member user name",
+                      "role": "member role description",
+                      "since": "member since"
+                    },
+                    {
+                      "member": "member 2 user name",
+                      "role": "member 2 role description",
+                      "since": "member 2 since"
+                    },
+                    ...
+                  ]  
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role/Permission
+
+==== Teams apis
+
+===== List APIs for the team
+
+[source]
+----
+List APIs for the team :
+
+=============== =================================================
+Request         GET /teams/<teamname>/apis
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+Response Body   ::
+                  [
+                    {
+                      "name": "api name",
+                      "description": "api description",
+                      "public" : "api public URI",
+                      "target": "api target URI",
+                      "isPrivate: "api state (public/private)",
+                      "owner": "api owner",
+                      "state": "api lifecycle state (start/stop)",
+                      "created_at": "api creation date",
+                      "updated_at": "api update date"
+                    },
+
+                    {
+                      "name": "api 2 name",
+                      "description": "api 2 description",
+                      "public" : "api 2 public URI",
+                      "target": "api 2 target URI",
+                      "isPrivate: "api 2 state (public/private)",
+                      "owner": "api 2 owner",
+                      "state": "api 2 lifecycle state (start/stop)",
+                      "created_at": "api 2 creation date",
+                      "updated_at": "api 2 update date"
+                    },
+                    ...
+                  ] 
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role/Permission
+
+===== Create a new API for the team
+
+[source]
+----
+Create a new API for the team :
+
+=============== =================================================
+Request         POST /teams/<teamname>/apis
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+Request Body    ::
+                  {
+                    "name": "api name",
+                    "version": "api version",
+                    "description": "api description",
+                    "public": "api public uri",
+                    "target": "api target uri"
+                  }
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+Response Body   ::
+                  {
+                    "name": "api name",
+                    "description": "api description",
+                    "public" : "api public URI",
+                    "target": "api target URI",
+                    "isPrivate: "api state (public/private)",
+                    "owner": "api owner",
+                    "state": "api lifecycle state (start/stop)",
+                    "created_at": "api creation date",
+                    "updated_at": "api update date"
+                  }
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role/Permission
+
+==== Teams applications
+
+===== List applications for the team
+
+[source]
+----
+List applications for the team:
+
+=============== =================================================
+Request         GET /teams/<teamname>/apis
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+Response Body   ::
+                  [
+                    {
+                      "name": "application name",
+                      "description": "application description",
+                      "type" : "application type",
+                      "owner": "application owner",
+                      "created_at": "application creation date",
+                      "updated_at": "application update date"
+                    },
+
+                    {
+                      "name": "application 2 name",
+                      "description": "application 2 description",
+                      "type" : "application 2 type",
+                      "owner": "application 2 owner",
+                      "created_at": "application 2 creation date",
+                      "updated_at": "application 2 update date"
+                    },
+
+                    ...
+                  ] 
+
+=============== =================================================
+----
+
+NOTE: TODO talk about Role/Permission
+
+=====  Create a new application for the team
+
+NOTE: TODO talk about Role/Permission
+
+[source]
+----
+Create a new application for the team :
+
+=============== =================================================
+Request         POST /teams/<teamname>/applications
+Request Header  Authorization   Basic <Base64.encode(username:password)>
+                or
+                Authorization   Bearer <your-access-token>
+Request Body    ::
+                  {
+                    "name": "application name",
+                    "description": "application description",
+                    "type" : "application type"
+                  }
+
+=============== =================================================
+Response Codes  200 OK
+                401 Unauthorized
+                403 forbidden
+                400 Bad Request
+Response Body   ::
+                  {
+                    "name": "application name",
+                    "description": "application description",
+                    "type" : "application type",
+                    "owner": "application owner",
+                    "created_at": "application creation date",
+                    "updated_at": "application update date"
+                  }
+=============== =================================================
+----
+
