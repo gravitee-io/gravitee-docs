@@ -39,13 +39,6 @@
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
                 <version>1.5.2</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.jruby</groupId>
-                        <artifactId>jruby-complete</artifactId>
-                        <version>9.0.0.0.pre2</version>
-                    </dependency>
-                </dependencies>
                 <executions>
                     <execution>
                         <id>output-single-html</id>
