@@ -1,9 +1,9 @@
 [[gravitee-dev-guide-polices]]
 == Policies
 
-Policies are steps in the Request/Response Gateway proxy chain. A Policy acts as a _proxy controller_ by guaranteeing if a given business rule is fulfilled during the Request/Response processing.
+Policies are steps in the Request/Response _gateway_ proxy chain. A _policy_ acts as a _proxy controller_ by guaranteeing if a given business rule is fulfilled during the Request/Response processing.
 
-Let's go deeper by take an example of how develop a Policy.
+Let's go deeper by take an example of how develop a _policy_.
 
 === Getting started
 
@@ -11,7 +11,7 @@ Before to go, don't forget to activate the http://central.sonatype.org/pages/oss
 
 === Policy skeleton generation
 
-Suppose you want to create a Policy that control if request contains the `X-Foo` header. Let's name it the _Foo header check policy_. Then you could generate your Policy like this:
+Suppose you want to create a _policy_ that control if request contains the `X-Foo` header. Let's name it the _Foo header check policy_. Then you could generate your _policy_ like this:
 
 [source,bash]
 ----
@@ -27,9 +27,9 @@ mvn archetype:generate\
 
 [NOTE]
 ==========================
-When generating a Policy, choose a short but clearly name for your Policy, *without precise the Policy suffix*. The `gravitee-policy-maven-archetype` will add it automatically.
+When generating a _policy_, choose a short but clearly name for your _policy_, *without precise the _policy_ suffix*. The `gravitee-policy-maven-archetype` will add it automatically.
 
-For example, *do not* fill the `policyName` of your Policy like this:
+For example, *do not* fill the `policyName` of your _policy_ like this:
 
 [source]
 ----
@@ -79,35 +79,35 @@ Hereafter a description about the different generated files:
 |File |Description
 
 | <<bookmark-pom>> |The main Maven POM file
-| <<bookmark-readme>> |The main entry point for documentation of the Policy
+| <<bookmark-readme>> |The main entry point for documentation of the _policy_
 | <<bookmark-policy-assembly>> |The common Maven assembly descriptor for any Policies
-| <<bookmark-configuration-class>> |The Policy configuration class
-| <<bookmark-policy-class>> |The Policy class, from which the business behavior is implemented
-| <<bookmark-descriptor>> |The Policy descriptor file
-| <<bookmark-test>> |The Policy unit test Java class
+| <<bookmark-configuration-class>> |The _policy_ configuration class
+| <<bookmark-policy-class>> |The _policy_ class, from which the business behavior is implemented
+| <<bookmark-descriptor>> |The _policy_ descriptor file
+| <<bookmark-test>> |The _policy_ unit test Java class
 |===
 
 [discrete]
 [[bookmark-pom]]
 === pom.xml
 
-Each Policy (and more generally any Gravitee projects) is https://maven.apache.org/[Maven] managed. Thus, a Policy project is described by using the Maven https://maven.apache.org/pom.html[Project Object Model] file.
+Each _policy_ (and more generally any Gravitee projects) is https://maven.apache.org/[Maven] managed. Thus, a _policy_ project is described by using the Maven https://maven.apache.org/pom.html[Project Object Model] file.
 
 [discrete]
 [[bookmark-readme]]
 === README.md
 
-Each Policy should have a dedicated `README.md` file to document it. The `README.md` file should contain everything related to the use of your Policy: _What is its functionality? How can use it? How can configure it?_
+Each _policy_ should have a dedicated `README.md` file to document it. The `README.md` file should contain everything related to the use of your _policy_: _What is its functionality? How can use it? How can configure it?_
 
 [discrete]
 [[bookmark-policy-assembly]]
 === policy-assembly.xml
 
-A Policy is just a kind of Gravitee Plugin.
+A _policy_ is just a kind of Gravitee _plugin_.
 
-It can be plugged to the <<gateway, Gravitee Gateway>> by using the distribution file built from the `policy-assembly.xml` file.
+It can be plugged to the <<gateway, Gravitee _gateway_>> by using the distribution file built from the `policy-assembly.xml` file.
 
-Based on our _FooHeaderCheck_ Policy, the distribution file structure is the following:
+Based on our _FooHeaderCheck_ _policy_, the distribution file structure is the following:
 
 [source]
 ----
@@ -123,7 +123,7 @@ Hereafter a description about the different generated files:
 |===
 |File |Description
 
-|`foo-header-check-policy-1.0.0-SNAPSHOT.jar` |The main Policy jar file
+|`foo-header-check-policy-1.0.0-SNAPSHOT.jar` |The main _policy_ jar file
 |`lib/` |Where the external dependencies are stored (from the https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html[Maven POM file dependencies]
 |`schemas/` |Where the JSON configuration schemas are stored
 |===
@@ -132,9 +132,9 @@ Hereafter a description about the different generated files:
 [[bookmark-configuration-schema]]
 === JSON Configuration schemas
 
-Policy configuration is described inside one or several http://docs.oracle.com/javase/tutorial/javabeans/[Java Bean] classes (see the <<bookmark-configuration-class>> example).
+_policy_ configuration is described inside one or several http://docs.oracle.com/javase/tutorial/javabeans/[Java Bean] classes (see the <<bookmark-configuration-class>> example).
 
-During the packaging phase, each Policy configuration classes are processed to generate one or several http://json-schema.org/[JSON schema(s)] that will be read by the Gateway when the Policy will be plugged in.
+During the packaging phase, each _policy_ configuration classes are processed to generate one or several http://json-schema.org/[JSON schema(s)] that will be read by the _gateway_ when the _policy_ will be plugged in.
 
 JSON schema generation is done thanks to the Gravitee's https://github.com/gravitee-io/json-schema-generator-maven-plugin[json-schema-generator-maven-plugin] Maven plugin.
 
@@ -142,30 +142,30 @@ JSON schema generation is done thanks to the Gravitee's https://github.com/gravi
 [[bookmark-configuration-class]]
 === FooHeaderCheckPolicyConfiguration.java
 
-The Policy configuration class.
+The _policy_ configuration class.
 
-Policy configuration is described into one or several http://docs.oracle.com/javase/tutorial/javabeans/[Java Bean] class(es) where each attribute is a configuration parameter.
+_policy_ configuration is described into one or several http://docs.oracle.com/javase/tutorial/javabeans/[Java Bean] class(es) where each attribute is a configuration parameter.
 
-During the package phase, Policy configuration is compiled into link:#schemas[JSON Configuration schemas]. These schemas are used to parse https://github.com/gravitee-io/gravitee-gateway[API definitions].
+During the package phase, _policy_ configuration is compiled into link:#schemas[JSON Configuration schemas]. These schemas are used to parse https://github.com/gravitee-io/gravitee-gateway[API definitions].
 
-Policy configuration is finally injected to the Policy class instance at runtime and then can be used during implementation.
+_policy_ configuration is finally injected to the _policy_ class instance at runtime and then can be used during implementation.
 
 [discrete]
 [[bookmark-policy-class]]
 === FooHeaderCheckPolicy.java
 
-The main Policy class. Contains business code that implements the Policy.
+The main _policy_ class. Contains business code that implements the _policy_.
 
-A Policy can be applied on several parts of the proxy chain:
+A _policy_ can be applied on several parts of the proxy chain:
 
 * The Request phase
 * The Response phase
 * Both of them
 
 [discrete]
-=== Apply Policy on the Request phase
+=== Apply _policy_ on the Request phase
 
-A Policy can be applied to the proxy Request phase by just implementing a method dealing with the `io.gravitee.gateway.api.policy.annotations.OnRequest` annotation. For instance:
+A _policy_ can be applied to the proxy Request phase by just implementing a method dealing with the `io.gravitee.gateway.api.policy.annotations.OnRequest` annotation. For instance:
 
 [source,java]
 ----
@@ -182,9 +182,9 @@ public void onRequest(Request request, Response response, PolicyChain policyChai
 NOTE: The `PolicyChain` *must always be called to end an _on Request_ processing*. Be ware to make a call to the `PolicyChain#doNext()` or `PolicyChain#failWith()` to correctly end the _on Request_ processing.
 
 [discrete]
-=== Apply Policy on the Response phase
+=== Apply _policy_ on the Response phase
 
-A Policy can be applied to the proxy Response phase by just implementing a method dealing with the `io.gravitee.gateway.api.policy.annotations.OnResponse` annotation. For instance:
+A _policy_ can be applied to the proxy Response phase by just implementing a method dealing with the `io.gravitee.gateway.api.policy.annotations.OnResponse` annotation. For instance:
 
 [source,java]
 ----
@@ -227,14 +227,14 @@ private static boolean isASuccessfulResponse(Response response) {
 NOTE: The `PolicyChain` *must always be called to end an _on Response_ processing*. Be ware to make a call to the `PolicyChain#doNext()` or `PolicyChain#failWith()` to correctly end the _on Response_ processing.
 
 [discrete]
-=== Apply Policy on both of Request and Response phases
+=== Apply _policy_ on both of Request and Response phases
 
-A Policy is not restricted to only one Gateway proxy phase. It can be applied on both the Request and Response phases by just using both annotations in the same class.
+A _policy_ is not restricted to only one _gateway_ proxy phase. It can be applied on both the Request and Response phases by just using both annotations in the same class.
 
 [discrete]
 === Provided parameters
 
-The annotated methods can declare several parameters (but not necessary all of them) which will be automatically provided by the Gateway at runtime.
+The annotated methods can declare several parameters (but not necessary all of them) which will be automatically provided by the _gateway_ at runtime.
 Available provided parameters are:
 
 |===
@@ -242,33 +242,33 @@ Available provided parameters are:
 
 |`io.gravitee.gateway.api.Request` |No |Wrapper to the Request object containing all information about the processed request (URI, parameters, headers, input stream, …)
 |`io.gravitee.gateway.api.Response` |No |Wrapper to the Response object containing all information about the processed response (status, headers, output stream, …)
-|`io.gravitee.gateway.api.policy.PolicyChain` |Yes |The current Policy chain that gives control to the Policy to continue (`doNext`) or reject (`failWith`) the current chain.
-|`io.gravitee.gateway.api.policy.PolicyContext` |No |The Policy context that can be used to get contextualized objects (API store, …).
+|`io.gravitee.gateway.api.policy.PolicyChain` |Yes |The current _policy_ chain that gives control to the _policy_ to continue (`doNext`) or reject (`failWith`) the current chain.
+|`io.gravitee.gateway.api.policy.PolicyContext` |No |The _policy_ context that can be used to get contextualized objects (API store, …).
 |===
 
 [discrete]
 [[bookmark-descriptor]]
 === plugin.properties
 
-As said, a Policy is a kind of Gravitee Plugin.
+As said, a _policy_ is a kind of Gravitee _plugin_.
 
-Each Plugin is described by the _plugin.properties_ descriptor which declare the following parameters:
+Each _plugin_ is described by the _plugin.properties_ descriptor which declare the following parameters:
 
 |===
 |Parameter |Description |Default value
 
-|`id` |The Policy identifier |Policy artifact id
-|`name` |The Policy name |N/A (mandatory parameter)
-|`version` |The Policy version |N/A (mandatory parameter)
-|`description` |The Policy description |"Description of the _Policy name_ Gravitee Policy"
-|`class` |The main Policy class |Path to the generated class file
-|`type` |The type of Gravitee Plugin |`policy`
+|`id` |The _policy_ identifier |_policy_ artifact id
+|`name` |The _policy_ name |N/A (mandatory parameter)
+|`version` |The _policy_ version |N/A (mandatory parameter)
+|`description` |The _policy_ description |"Description of the _Policy name_ Gravitee Policy"
+|`class` |The main _policy_ class |Path to the generated class file
+|`type` |The type of Gravitee _plugin_ |`policy`
 |===
 
-NOTE: A Policy is enabled when declared into the API definition. To do so, the Policy identifier is used to, as its name indicate, identify the Policy. Thus, *be ware to correctly choose the Policy identifier* from the beginning. It could be hard to rename it later if there are many of API definitions linked to it.
+NOTE: A _policy_ is enabled when declared into the API definition. To do so, the _policy_ identifier is used to, as its name indicate, identify the _policy_. Thus, *be ware to correctly choose the _policy_ identifier* from the beginning. It could be hard to rename it later if there are many of API definitions linked to it.
 
 [discrete]
 [[bookmark-test]]
 === FooHeaderCheckPolicyTest.java
 
-The http://junit.org/[JUnit] unit test class for this Policy.
+The http://junit.org/[JUnit] unit test class for this _policy_.
