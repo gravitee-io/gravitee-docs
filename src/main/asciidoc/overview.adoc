@@ -67,6 +67,10 @@ Good examples for a policy are:
 Gravitee.io is not only a product, you can see on it a global solution for API Management. By this, the community provides
 components linked between each other and run well together.
 
+=== Architecture Overview
+
+image::architecture_overview.png[]
+
 === Gateway
 The Gateway is the core component of the Gravitee.io solution. You can just compare it to an HTTP proxy to understand
 its goal. But in comparison to these proxies, our gateway is applying rules (ie. <<gravitee-policies, policies>>) to
