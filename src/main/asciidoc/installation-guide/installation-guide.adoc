@@ -1,10 +1,10 @@
 [[gravitee-installation-guide-overview]]
 = Installation Guide
 
-[cols="a,a"]
+[grid="none", frame="topbot", cols="2*^", width="40"]
 |===
-| image::docker.svg[] | <<gravitee-installation-guide-docker, Install using Docker>>
-| image::redhat.svg[] | <<gravitee-installation-guide-docker, Install for RHEL>>
+a| image::docker.svg[] | <<gravitee-installation-guide-docker, Install using Docker>>
+a| image::redhat.svg[] | <<gravitee-installation-guide-docker, Install for RHEL>>
 |===
 
 include::docker.adoc[]
