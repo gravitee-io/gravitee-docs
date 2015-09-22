@@ -84,27 +84,27 @@ You can find more information by having a look to the <<gravitee-management-api-
 === Repository
 
 === Plugins
-The Gateway is developed as a core component around which a set of Plugins.
+The Gateway is developed as a core component around which a set of _plugins_.
 
-Plugins are additional components that can be _plugged into_ the Gateway. Hence, Plugins can specialized the Gateway
+_plugins_ are additional components that can be _plugged into_ the Gateway. Hence, _plugins_ can specialized the _gateway_
 behavior to exactly fit as your needs.
-Plugins follow a given directory structure convention. Look at the <<gravitee-dev-guide-overview, Developer Guide>>
+_plugins_ follow a given directory structure convention. Look at the <<gravitee-dev-guide-overview, Developer Guide>>
 to have more information about it.
 
-Currently, there are two kind of Plugins which are:
+Currently, there are two kind of _plugins_ which are:
 
 * <<gravitee-policies, Policies>>
 * <<gravitee-reporters, Reporters>>
 
-Hereafter an overview about these two kind of Plugins:
+Hereafter an overview about these two kind of _plugins_:
 
 [[gravitee-policies]]
 ==== Policies
-As said, a Policy is a kind of Gravitee Plugin acting as a step in the Request/Response Gateway Proxy chain. Then, a
-Policy can be treated as a _proxy controller_ by guaranteeing if a given business rule is fulfilled during the
+As said, a Policy is a kind of Gravitee _plugin_ acting as a step in the Request/Response _gateway_ proxy chain. Then, a
+_policy_ can be treated as a _proxy controller_ by guaranteeing if a given business rule is fulfilled during the
 Request/Response processing.
 
-Want to know how create, use, and deploy a Policy? Check out the  <<gravitee-dev-guide-overview, Developer Guide>>!
+Want to know how create, use, and deploy a _policy_? Check out the  <<gravitee-dev-guide-overview, Developer Guide>>!
 
 [[gravitee-reporters]]
 ==== Reporters
