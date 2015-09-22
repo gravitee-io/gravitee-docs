@@ -63,9 +63,26 @@ Gravitee.io is not only a product, you can see on it a global solution for API M
 components linked between each other and run well together.
 
 === Gateway
-The gateway is the core component of Gravitee.io.
+The Gateway is the core component of Gravitee.io.
 
 === Management API
 === Repository
-=== Policies
-=== Reporters
+
+=== Plugins
+The Gateway is developed as a core component around which a set of Plugins.
+
+Plugins are additional components that can be _plugged into_ the Gateway. Hence, Plugins can specialized the Gateway behavior to exactly fit as your needs.
+Plugins follow a given directory structure convention. Look at the Developer Guide *TODO: Create the link* to have more information about it.
+
+Currently, there are two kind of Plugins which are:
+* Policies
+* Reporters
+
+Hereafter an overview about these two kind of Plugins:
+
+==== Policies
+As said, a Policy is a kind of Gravitee Plugin acting as a step in the Request/Response Gateway Proxy chain. Then, a Policy can be treated as a _proxy controller_ by guaranteeing if a given business rule is fulfilled during the Request/Response processing.
+
+Want to know how create, use, and deploy a Policy? Check out the Developer Guide! *TODO: Create the link*
+
+==== Reporters
