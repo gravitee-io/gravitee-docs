@@ -3,14 +3,19 @@
 
 [partintro]
 --
-A popular trend in enterprise software development these days is to design applications to be very decoupled and use API’s to connect them. This approach provides an excellent way to reuse functionality across various applications and business units. Another great benefit of API usage in enterprises is the ability to create those API’s using a variety of disparate technologies.
+A popular trend in enterprise software development these days is to design applications to be very decoupled and use
+API’s to connect them. This approach provides an excellent way to reuse functionality across various applications and
+business units. Another great benefit of API usage in enterprises is the ability to create those API’s using a variety
+of disparate technologies.
 
 However, this approach also introduces its own pitfalls and disadvantages. Some of those disadvantages include things like:
 
 * Difficulty discovering or sharing existing API’s
 * Difficulty sharing common functionality across API implementations
 * Tracking of API usage/consumption
-API Management is a technology that addresses these and other issues by providing an API Manager to track APIs and configure governance policies, as well as an API Gateway that sits between the API and the client. This API Gateway is responsible for applying the policies configured during management.
+API Management is a technology that addresses these and other issues by providing an API Manager to track APIs and
+configure governance policies, as well as an API Gateway that sits between the API and the client. This API Gateway is
+responsible for applying the policies configured during management.
 
 Therefore an API management system tends to provide the following features:
 
@@ -23,8 +28,8 @@ Therefore an API management system tends to provide the following features:
 [[why-gravitee-io]]
 == Why Gravitee.io ?
 At the beginning, we were searching for an open-source solution to do API Management. Unfortunately, we've never found
-the tool which fit exactly our needs and by choosing one of them we know that we have to pull other components and, for some of them,
-a dedicated support (and so, money, money and money...).
+the tool which fit exactly our needs and by choosing one of them we know that we have to pull other components and,
+for some of them, a dedicated support (and so, money, money and money...).
 
 That's the main reason why we launch Gravitee.io : our goal is to provide you with an highly integrable solution which
 is able to fit perfectly with your infrastructure and our business needs.
@@ -32,7 +37,7 @@ is able to fit perfectly with your infrastructure and our business needs.
 Also, Gravitee.io has been developed and designed to be fully extensible using its internal plugin system. You must be
 able to do whatever you want : defining your own policy, developing your own reporting system, and so on...
 
-Finally, all components provided by Gravitee.io (including gateway and the management-api) are really lightweight. We
+Finally, all components provided by Gravitee.io (including gateway and management-api) are really lightweight. We
 took an aggressive approach to memory management. This makes things really easier for you in terms of high-availability
 and our components can be started in a "blazing-fast" mode (generally speaking, it takes less than 3 seconds for the gateway
 to be accessible to consumers).
@@ -58,21 +63,29 @@ Good examples for a policy are:
 
 === Reporter
 
-== Components
+== Gravitee.io Components
 Gravitee.io is not only a product, you can see on it a global solution for API Management. By this, the community provides
 components linked between each other and run well together.
 
 === Gateway
-The Gateway is the core component of Gravitee.io.
+The Gateway is the core component of the Gravitee.io solution. You can just compare it to an HTTP proxy to understand
+its goal. But in comparison to these proxies, our gateway is applying rules (ie. <<gravitee-policies, policies>>) to
+both HTTP requests and responses according to your needs.
 
 === Management API
+The Management API is an API which is providing a bunch of services to manage the platform globally. All exposed
+services are constraint by authentication and authorization rules.
+You can find more information by having a look to the <<gravitee-management-api-overview, Management API>> section.
+
 === Repository
 
 === Plugins
 The Gateway is developed as a core component around which a set of Plugins.
 
-Plugins are additional components that can be _plugged into_ the Gateway. Hence, Plugins can specialized the Gateway behavior to exactly fit as your needs.
-Plugins follow a given directory structure convention. Look at the Developer Guide *TODO: Create the link* to have more information about it.
+Plugins are additional components that can be _plugged into_ the Gateway. Hence, Plugins can specialized the Gateway
+behavior to exactly fit as your needs.
+Plugins follow a given directory structure convention. Look at the <<gravitee-dev-guide-overview, Developer Guide>>
+to have more information about it.
 
 Currently, there are two kind of Plugins which are:
 * Policies
@@ -80,9 +93,12 @@ Currently, there are two kind of Plugins which are:
 
 Hereafter an overview about these two kind of Plugins:
 
+[[gravitee-policies]]
 ==== Policies
-As said, a Policy is a kind of Gravitee Plugin acting as a step in the Request/Response Gateway Proxy chain. Then, a Policy can be treated as a _proxy controller_ by guaranteeing if a given business rule is fulfilled during the Request/Response processing.
+As said, a Policy is a kind of Gravitee Plugin acting as a step in the Request/Response Gateway Proxy chain. Then, a
+Policy can be treated as a _proxy controller_ by guaranteeing if a given business rule is fulfilled during the
+Request/Response processing.
 
-Want to know how create, use, and deploy a Policy? Check out the Developer Guide! *TODO: Create the link*
+Want to know how create, use, and deploy a Policy? Check out the  <<gravitee-dev-guide-overview, Developer Guide>>!
 
 ==== Reporters

@@ -1,13 +1,11 @@
 [[gravitee-management-api-team]]
-= Gravitee.io Management API team Guide
-
-== Got a team ?
+=== Got a team ?
 
 This guide walks you through the process of configuring, access, manage your Management API teams. 
 
-=== Manage your teams
+==== Manage your teams
 
-==== Create teams
+===== Create teams
 
 [source]
 ----
@@ -46,7 +44,7 @@ Response Body   ::
 
 NOTE: TODO talk about Role/Permission
 
-==== Update teams
+===== Update teams
 
 [source]
 ----
@@ -85,7 +83,7 @@ Response Body   ::
 
 NOTE: TODO talk about Role/Permission
 
-==== Delete teams
+===== Delete teams
 
 [source]
 ----
@@ -108,7 +106,7 @@ Response Codes  200 OK
 
 NOTE: TODO talk about Role/Permission
 
-==== Get specified team
+===== Get specified team
 
 [source]
 ----
@@ -141,7 +139,7 @@ Response Body   ::
 
 NOTE: TODO talk about Role/Permission
 
-==== List public teams
+===== List public teams
 
 [source]
 ----
@@ -186,11 +184,11 @@ Response Body   ::
 
 NOTE: TODO talk about Role/Permission
 
-==== Teams memberships
+===== Teams memberships
 
 Team ready ? Want to share your data with colleagues ? Let's see how to group them in teams.
 
-===== Add user to a team
+====== Add user to a team
 
 [source]
 ----
@@ -213,7 +211,7 @@ Response Codes  200 OK
 
 NOTE: TODO talk about Role/Permission
 
-===== Remove user from a team
+====== Remove user from a team
 
 [source]
 ----
@@ -236,7 +234,7 @@ Response Codes  200 OK
 
 NOTE: TODO talk about Role/Permission
 
-===== List your team members
+====== List your team members
 
 NOTE: You can filter your members by role
 
@@ -275,9 +273,9 @@ Response Body   ::
 
 NOTE: TODO talk about Role/Permission
 
-==== Teams apis
+===== Teams apis
 
-===== List APIs for the team
+====== List APIs for the team
 
 [source]
 ----
@@ -327,7 +325,7 @@ Response Body   ::
 
 NOTE: TODO talk about Role/Permission
 
-===== Create a new API for the team
+====== Create a new API for the team
 
 [source]
 ----
@@ -370,9 +368,9 @@ Response Body   ::
 
 NOTE: TODO talk about Role/Permission
 
-==== Teams applications
+===== Teams applications
 
-===== List applications for the team
+====== List applications for the team
 
 [source]
 ----
@@ -417,7 +415,7 @@ Response Body   ::
 
 NOTE: TODO talk about Role/Permission
 
-=====  Create a new application for the team
+======  Create a new application for the team
 
 [source]
 ----

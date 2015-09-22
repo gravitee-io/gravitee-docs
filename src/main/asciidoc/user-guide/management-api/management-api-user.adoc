@@ -1,21 +1,22 @@
 [[gravitee-management-api-user]]
-= Gravitee.io Management API User Guide
-
-== It's time to get the job done, bring your guys
+=== It's time to get the job done, bring your guys
 
 This guide walks you through the process of configuring, access, manage your Management API users. 
 
-=== Gravitee.io user <==> business user
+==== Gravitee.io user <=> business user
 
-NOTE: A hook has been set up during the very first login process. Business user (i.e fetch from your company users datasource (LDAP, Database ...)) will be map to Gravitee.io user repository.
+NOTE: A hook has been set up during the very first login process. Business user (i.e fetch from your company users
+datasource (LDAP, Database ...)) will be map to Gravitee.io user repository.
 
-NOTE: Your identity providers can be plugged to the Gravitee.io Management API via the security configuration. See the <<management-api-security.adoc#,Management API : Security Guide>> to get more information
+NOTE: Your identity providers can be plugged to the Gravitee.io Management API via the security configuration. See
+the <<management-api-security.adoc#,Management API : Security Guide>> to get more information
 
-=== Manage your users
+==== Manage your users
 
-NOTE: The Management API is secured, all requests must contain the `Authorization` header with a specific authentication type (Basic/OAuth 2). See the <<management-api-security.adoc#,Management API : Security Guide>> to get more information
+NOTE: The Management API is secured, all requests must contain the `Authorization` header with a specific authentication
+type (Basic/OAuth 2). See the <<management-api-security.adoc#,Management API : Security Guide>> to get more information
 
-==== Create users
+===== Create users
 
 [source]
 ----
@@ -58,7 +59,7 @@ Response Body   ::
 
 NOTE: TODO talk about Role/Permission
 
-==== Update users
+===== Update users
 
 [source]
 ----
@@ -100,7 +101,7 @@ Response Body   ::
 
 NOTE: TODO talk about Role/Permission
 
-==== Delete users
+===== Delete users
 
 [source]
 ----
@@ -123,7 +124,7 @@ Response Codes  200 OK
 
 NOTE: TODO talk about Role/Permission
 
-==== Get current user
+===== Get current user
 
 [source]
 ----
@@ -155,7 +156,7 @@ Response Body   ::
 =============== =================================================
 ----
 
-==== Get specified user
+===== Get specified user
 
 [source]
 ----
@@ -189,7 +190,7 @@ Response Body   ::
 
 NOTE: TODO talk about Role/Permission
 
-==== List public teams for the specified user
+===== List public teams for the specified user
 
 [source]
 ----
@@ -233,7 +234,7 @@ Response Body   ::
 
 NOTE: TODO talk about Role/Permission
 
-==== List public APIs for the specified user
+===== List public APIs for the specified user
 
 [source]
 ----

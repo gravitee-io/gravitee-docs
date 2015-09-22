@@ -1,11 +1,9 @@
 [[gravitee-management-api-api]]
-= Gravitee.io Management API Guide
-
-== Unleash your APIs
+=== Unleash your APIs
 
 This guide walks you through the process of configuring, access, manage, monitor your APIs. 
 
-=== You said API ?
+==== You said API ?
 
 The API describes a web resource that is exposed by the 	Gravitee.io gateway. In order to play with your APIs some information must be specified :
 
@@ -26,11 +24,11 @@ The API describes a web resource that is exposed by the 	Gravitee.io gateway. In
 }
 ----
 
-=== Manage your apis
+==== Manage your apis
 
 NOTE: The Management API is secured, all requests must contain the `Authorization` header with a specific authentication type (Basic/OAuth 2). See the <<management-api-security.adoc#,Management API : Security Guide>> to get more information
 
-==== Create your apis
+===== Create your apis
 
 [source]
 ----
@@ -73,7 +71,7 @@ Response Body   ::
 =============== =================================================
 ----
 
-==== Update your apis
+===== Update your apis
 
 [source]
 ----
@@ -117,7 +115,7 @@ Response Body   ::
 
 NOTE: TODO talk about Role
 
-==== Delete your apis
+===== Delete your apis
 
 [source]
 ----
@@ -140,7 +138,7 @@ Response Codes  200 OK
 
 NOTE: TODO talk about Role
 
-==== Start/Stop your apis
+===== Start/Stop your apis
 
 TODO talk about Lifecycle functionality
 
@@ -165,7 +163,7 @@ Response Codes  200 OK
 
 NOTE: TODO talk about Role
 
-==== List apis
+===== List apis
 
 [source]
 ----
@@ -218,7 +216,7 @@ Response Body   ::
 
 NOTE: Public APIs and your APIs will be retrieve. TODO talk about Role
 
-==== Retrieve api
+===== Retrieve api
 
 [source]
 ----
@@ -254,19 +252,19 @@ Response Body   ::
 
 NOTE: TODO talk about Role
 
-=== Extend your apis 
+==== Extend your apis
 
-==== Policies
+===== Policies
 
 NOTE: See <<management-api-policy.adoc#,Policy Guide>> to apply Policies to your API.
 
-==== Documentation
+===== Documentation
 
 Gravitee.io Management API lets you to describe your API to provide an interactive documentation to your users. You can provide documentation like Swagger/Raml interactive specification or more general information via Markdown documentation.
 
 NOTE: Generate Swagger/RAML/Markdown files are available through the Gravitee Management API Web UI.
 
-===== Create your documentation pages
+====== Create your documentation pages
 
 [source]
 ----
@@ -309,7 +307,7 @@ Response Body   ::
 
 NOTE: TODO talk about Role
 
-===== Update your documentation pages
+====== Update your documentation pages
 
 [source]
 ----
@@ -349,7 +347,7 @@ Response Body   ::
 
 NOTE: TODO talk about Role
 
-===== Delete your documentation pages
+====== Delete your documentation pages
 
 [source]
 ----
@@ -372,9 +370,9 @@ Response Codes  200 OK
 
 NOTE: TODO talk about Role
 
-===== List API documentations pages
+====== List API documentations pages
 
-===== Delete your documentation pages
+====== Delete your documentation pages
 
 [source]
 ----
@@ -426,7 +424,7 @@ Response Body   ::
 
 NOTE: TODO talk about Role
 
-===== Get API documentation content
+====== Get API documentation content
 
 [source]
 ----

@@ -1,4 +1,6 @@
-# Docker
+[[gravitee-installation-guide-docker]]
+
+## Docker
 :docker-image-src: https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/images
 :github-repo: https://github.com/gravitee-io/gravitee-docker
 :docker-hub: https://hub.docker.com/r/graviteeio
@@ -11,7 +13,7 @@ To run our official images, you must start by installing https://docs.docker.com
 
 '''
 
-## Images
+### Images
 We provide a complete set of images, based on the official https://hub.docker.com/_/centos/[Centos 6 image].
 
 |===
@@ -62,9 +64,9 @@ Collect datas from the https://github.com/gravitee-io/gravitee-reporter-es[Elast
 |===
 
 
-## Details
+### Details
 
-### graviteeio/httpd
+#### graviteeio/httpd
 
 .Dockerfile
 ....
@@ -74,7 +76,7 @@ include::{docker-image-src}/base/httpd/Dockerfile [lines=13..-1]
 A CentOS 6 with HTTPd and some tools. 
 This is a base image for all apps requiring an HTTP server.
 
-### graviteeio/java
+#### graviteeio/java
 
 .Dockerfile
 ....
@@ -84,7 +86,7 @@ include::{docker-image-src}/base/java/Dockerfile [lines=13..-1]
 A CentOS 6 with a Java Runtime 8u45 and some tools.
 This is a base image for all Java apps.
 
-### graviteeio/kibana3
+#### graviteeio/kibana3
 
 .Dockerfile
 ....
@@ -102,7 +104,7 @@ If you set it to true, Kibana3 container will test if the host named `elasticsea
 And only after that, the httpd server will start.
 On startup, the container will post his dashboard into elasticsearh.
 
-### graviteeio/elasticsearch
+#### graviteeio/elasticsearch
 
 .Dockerfile
 ....
@@ -111,7 +113,7 @@ include::{docker-image-src}/elasticsearch/Dockerfile [lines=13..-1]
 
 Elasticsearch image work with our https://github.com/gravitee-io/gravitee-reporter-es[Elasticsearch Reporter] and render his data via our Kibana3 image.
 
-### graviteeio/gateway
+#### graviteeio/gateway
 
 .Dockerfile
 ....
@@ -120,21 +122,21 @@ include::{docker-image-src}/gateway/Dockerfile [lines=13..-1]
 
 
 
-### graviteeio/management-api
+#### graviteeio/management-api
 
 .Dockerfile
 ....
 include::{docker-image-src}/management-api/Dockerfile [lines=13..-1]
 ....
 
-### graviteeio/management-ui
+#### graviteeio/management-ui
 
 .Dockerfile
 ....
 include::{docker-image-src}/management-ui/Dockerfile [lines=13..-1]
 ....
 
-### graviteeio/mongodb
+#### graviteeio/mongodb
 
 .Dockerfile
 ....

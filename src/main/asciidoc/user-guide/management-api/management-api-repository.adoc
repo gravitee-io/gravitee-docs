@@ -1,17 +1,15 @@
 [[gravitee-management-api-repository]]
-= Gravitee.io Management API Repository Guide
-
-== Working with Gravitee.io Manager API Repositories
+=== Working with Gravitee.io Manager API Repositories
 
 This guide walks you through the process of configuring the data sources of Gravitee.io Management API.
 
-=== Respository configuration
+==== Repository configuration
 
 Gravitee.IO allows you to externalize your configuration via the `gravitee.yml` file. Various properties can be specified inside your configuration file. This section provides the list of repository properties used by the Gravitee.io Management API.
 
 NOTE: The parent attribute of `gravitee.yml` for the repository part is `repository`.
 
-=== Persistence Stores
+==== Persistence Stores
 
 Gravitee.IO Management API supports both NoSQL and SQL persistence stores. The repository-type can be defined using the following property :
 
@@ -21,7 +19,7 @@ repository:
   type: # repository type (possible values : 'mongodb', 'jpa')
 ----
 
-=== Mongo Respository
+==== MongoDB Repository
 
 NoSQL store implementation based on MongoDB technology, let's see the configuration options :
 
@@ -78,7 +76,7 @@ repository:
 
 NOTE: All theses properties allow you to fine tuned your MongoDB connection
 
-=== JPA Repository
+==== JPA Repository
 
 SQL Store implementation based on Java Persistence API (JPA). SQL DataSource configuration is controlled by the following configuration properties.
 
@@ -100,7 +98,8 @@ repository:
 
 NOTE: We've just declared a connection to a PostgresSQL Database server.
 
-=== Appendix A. Repository application properties
+[appendix]
+==== Repository application properties
 
 NOTE: This sample file is meant as a guide only. Do not copy/paste the entire content; rather pick only the properties that you need.
 
