@@ -93,7 +93,6 @@ repository:
     hibernateDialect: org.hibernate.dialect.PostgreSQL9Dialect # hibernate dialect
     driverClassName: org.postgresql.Driver # database driver
     url: jdbc:postgresql://localhost/gravitee # database url
-    hbm2ddlAuto: validate | update | create | create-drop # hibernate.hbm2ddl.auto property
     username: user # database username
     password: password # database password
     showSql: false # show sql mode (default to false)
@@ -137,7 +136,6 @@ repository:
     hibernateDialect: # hibernate dialect
     driverClassName: # database driver
     url: # database url
-    hbm2ddlAuto: # hibernate.hbm2ddl.auto property
     username: # database username
     password: # database password
     showSql: # show sql mode (default to false)
