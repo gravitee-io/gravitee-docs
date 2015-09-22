@@ -27,15 +27,14 @@ Each Plugin follows the following common structure:
 
 Hereafter a description about the different key files:
 
-[options="header]
-|==================
+|===
 | File                                                               | Description
 
 | <<gravitee-dev-guide-plugins-pom, `pom.xml`>>                      | The main Maven POM file
 | <<gravitee-dev-guide-plugins-readme, `README.md`>>                 | The main entry point for the Plugin documentation
 | <<gravitee-dev-guide-plugins-assembly, `<plugin>-assembly.xml`>>   | The common Maven assembly descriptor
 | <<gravitee-dev-guide-plugins-descriptor, `plugin.properties`>>     | The Plugin descriptor file
-|==================
+|===
 
 [discrete]
 [[gravitee-dev-guide-plugins-pom]]
@@ -66,13 +65,12 @@ Commonly, a Plugin distribution file is organized as follow:
 
 Hereafter a description about the different files:
 
-[options="header]
-|==================
+|===
 | File                 | Description
 
 | <main Jar File>.jar  | The Plugin's main Jar file
 | lib/                 | A directory containing external libraries to correctly execute the <main Jar File>.jar
-|==================
+|===
 
 [discrete]
 ===== <main Jar File>.jar
@@ -92,8 +90,7 @@ The plugin.properties file is the descriptor of the Plugin. It acts as the _ID C
 
 Hereafter parameters included into the descriptor:
 
-[options="header]
-|==================
+|===
 | Parameter	    | Description
 
 | id	        | The Plugin identifier
@@ -102,7 +99,7 @@ Hereafter parameters included into the descriptor:
 | description	| The Plugin description
 | class	        | The main Plugin class
 | type	        | The type of Plugin (Policy, Reporter)
-|==================
+|===
 
 NOTE: Naturally, the Plugin identifier has to be unique to be correctly loaded by the Gravitee Gateway.
 
