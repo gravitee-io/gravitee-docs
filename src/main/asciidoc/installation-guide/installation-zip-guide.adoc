@@ -11,7 +11,7 @@ First, you will need to download both the gateway and the management-api.
 
 [source,bash]
 [subs="attributes"]
-curl -L {download_gateway_standalone_zip} -o gravitee-gateway-standalone-distribution-{graviteeio-version}.zip
+$ curl -L {download_gateway_standalone_zip} -o gravitee-gateway-standalone-distribution-{graviteeio-version}.zip
 
 * Gravitee Standalone Management API:
 [subs="attributes"]
@@ -19,15 +19,15 @@ curl -L {download_gateway_standalone_zip} -o gravitee-gateway-standalone-distrib
 
 [source,bash]
 [subs="attributes"]
-curl -L {download_management_standalone_zip} -o gravitee-management-api-standalone-distribution-{graviteeio-version}.zip
+$ curl -L {download_management_standalone_zip} -o gravitee-management-api-standalone-distribution-{graviteeio-version}.zip
 
 === Unpack...
 Once files have been downloaded, you just have to unpack them in the right place.
 
 [source,bash]
 [subs="attributes"]
-unzip gravitee-gateway-standalone-distribution-{graviteeio-version}.zip
-unzip gravitee-management-api-standalone-distribution-{graviteeio-version}.zip
+$ unzip gravitee-gateway-standalone-distribution-{graviteeio-version}.zip
+$ unzip gravitee-management-api-standalone-distribution-{graviteeio-version}.zip
 
 === ... and Run !
 
@@ -36,8 +36,8 @@ You can simply start up the gateway as follow:
 
 [source,bash]
 [subs="attributes"]
-cd gravitee-standalone-{graviteeio-version}
-./bin/gravitee
+$ cd gravitee-standalone-{graviteeio-version}
+$ ./bin/gravitee
 
 If everything goes well, you should this this kind of logs:
 
@@ -51,8 +51,8 @@ In the same way as previously with the gateway, you can simply start up the gate
 
 [source,bash]
 [subs="attributes"]
-cd gravitee-management-standalone-{graviteeio-version}
-./bin/gravitee
+$ cd gravitee-management-standalone-{graviteeio-version}
+$ ./bin/gravitee
 
 If everything goes well, you should this this kind of logs:
 
