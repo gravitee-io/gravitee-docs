@@ -1,11 +1,20 @@
 [[gravitee-installation-guide-overview]]
 = Installation Guide
 
+As per what was described previously in <<gravitee-components, Components>> section, Gravitee.io is splitted into
+components. The following is a detailed guide about what to do to prepare environment and be ready to use Gravitee.io.
+
+NOTE: Installation guide provides information about how to install Gravitee.io components. For external parties like
+ MongoDB, Elasticsearch and others, please have a look to their respective documentation.
+
 [grid="none", frame="topbot", cols="2*^", width="40"]
 |===
+a|  | <<gravitee-installation-guide-zip, Install from zip>>
 a| image::docker.svg[] | <<gravitee-installation-guide-docker, Install using Docker>>
 a| image::redhat.svg[] | <<gravitee-installation-guide-docker, Install for RHEL>>
 |===
+
+include::installation-zip-guide.adoc[]
 
 include::docker.adoc[]
 

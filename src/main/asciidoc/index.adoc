@@ -1,9 +1,12 @@
 
+:download_gateway_standalone_zip: https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=io.gravitee.standalone&a=gravitee-standalone-distribution-zip&v=1.0.0-SNAPSHOT&e=zip
+:download_management_standalone_zip: https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=io.gravitee.management.standalone&a=gravitee-management-api-standalone-distribution-zip&v=1.0.0-SNAPSHOT&e=zip
+
 :toc-title: Gravitee.io - Definitive Guide
 :imagesdir: images
 :sectnums:
 
-= Gravitee.io Reference Documentation
+= Gravitee.io - Reference Documentation
 
 include::overview.adoc[]
 include::user-guide/user-guide.adoc[]
