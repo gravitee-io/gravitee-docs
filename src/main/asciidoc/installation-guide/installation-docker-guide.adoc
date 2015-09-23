@@ -1,0 +1,212 @@
+[[gravitee-installation-guide-docker]]
+
+## Docker
+:docker-image-src: https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/images
+:github-repo: https://github.com/gravitee-io/gravitee-docker
+:docker-hub: https://hub.docker.com/r/graviteeio
+
+Official registry: https://hub.docker.com/u/graviteeio/[] +
+Source repository: https://github.com/gravitee-io/gravitee-docker/[]
+
+IMPORTANT: We assume that you are familiar with Docker terms. +
+To run our official images, you must start by installing https://docs.docker.com/installation/[Docker]
+
+'''
+
+### Images
+We provide a complete set of images, based on the official https://hub.docker.com/_/centos/[Centos 6 image].
+
+|===
+|Image name |Source |Version |Description
+
+|{docker-hub}/httpd/[graviteeio/httpd]
+|{github-repo}/tree/master/images/base/httpd[images/base/httpd]
+|latest
+|Base image with Apache httpd
+
+|{docker-hub}/java/[graviteeio/java]
+|{github-repo}/tree/master/images/base/java[images/base/java]
+|8u45
+|Base image with Oracle Java 8u45
+
+|{docker-hub}/kibana3/[graviteeio/kibana3]
+|{github-repo}/tree/master/images/kibana3[images/kibana3]
+|latest
+|https://www.elastic.co/products/kibana[Kibana3] image.
+Provide a complete dashboard in addition with https://www.elastic.co/products/elasticsearch[Elasticsearch]
+
+|{docker-hub}/elasticsearch/[graviteeio/elasticsearch]
+|{github-repo}/tree/master/images/elasticsearch[images/elasticsearch]
+|latest
+|https://www.elastic.co/products/elasticsearch[Elasticsearch] image.
+Collect datas from the https://github.com/gravitee-io/gravitee-reporter-es[Elasticsearch Reporter].
+
+|{docker-hub}/gateway/[graviteeio/gateway]
+|{github-repo}/tree/master/images/gateway[images/gateway]
+|latest
+|https://github.com/gravitee-io/gravitee-gateway[Gateway] image.
+
+|{docker-hub}/management-api/[graviteeio/management-api]
+|{github-repo}/tree/master/images/management-api[images/management-api]
+|latest
+|https://github.com/gravitee-io/gravitee-management-rest-api[Management API] image.
+
+|{docker-hub}/management-ui/[graviteeio/management-ui]
+|{github-repo}/tree/master/images/management-ui[images/management-ui]
+|latest
+|https://github.com/gravitee-io/gravitee-management-ui[Management UI] image.
+
+|{docker-hub}/mongodb/[graviteeio/mongodb]
+|{github-repo}/tree/master/images/mongodb[images/mongodb]
+|latest
+|https://www.mongodb.org/[mongoDB] image.
+
+|===
+
+
+### Details
+
+
+
+
+#### graviteeio/httpd
+{docker-hub}/httpd/[Docker Hub], 
+{github-repo}/tree/master/images/base/httpd[Github]
+
+##### Description
+
+A CentOS 6 with HTTPd and some tools. 
+This is a base image for all apps requiring an HTTP server. 
+It's not an image ran 'as is'.
+
+
+
+
+#### graviteeio/java
+{docker-hub}/java/[Docker Hub], 
+{github-repo}/tree/master/images/base/java[Github]
+
+##### Description
+
+A CentOS 6 with a Java Runtime 8u45 and some tools.
+This is a base image for all Java apps. 
+It's not an image ran 'as is'.
+
+
+
+
+#### graviteeio/kibana3
+{docker-hub}/kibana3/[Docker Hub],
+{github-repo}/tree/master/images/kibana3[Github]
+
+##### Description
+
+Kibana3 image provide a complete dashboard over gravitee usage.
+It needs Elacticsearch at runtime so you have 2 environment variables : `ES_HOST` and `ES_PORT` to set.
+
+Because this image is used in our demo, another variable is provided : `check_links`.
+If you set it to true, the container will wait until elasticsearch is reachable inside the container.
+And only after that, the httpd server will start.
+
+On startup, the container will post his dashboard to elasticsearh.
+
+##### Example
+[source, shell]
+....
+$ docker run --rm -e ES_HOST=1.2.3.4 -e ES_PORT=1234 graviteeio/kibana3
+....
+
+
+
+
+#### graviteeio/elasticsearch
+{docker-hub}/elasticsearch/[Docker Hub],
+{github-repo}/tree/master/images/elasticsearch[Github]
+
+##### Description
+
+Elasticsearch image works with our https://github.com/gravitee-io/gravitee-reporter-es[Elasticsearch Reporter] and render his datas via our Kibana3 image.
+
+##### Example
+[source, shell]
+....
+$ docker run -p 9200:9200 -p 9300:93000 -v /es_datas:/var/lib/elasticsearch graviteeio/elasticsearch
+....
+
+
+
+
+#### graviteeio/gateway
+{docker-hub}/gateway/[Docker Hub],
+{github-repo}/tree/master/images/gateway[Github]
+
+##### Description
+
+The gateway image provides a set of environment variables which could be used to tune your container. Because mongoDB is our default repository, you could replace default mongoDB address (`MONGO_DEFAULT_HOST:MONGO_DEFAULT_PORT`) by the one you provide (`MONGO_HOST:MONGO_PORT`).
+The gateway image also use the elasticsearch reporter. You could replace default ES address (`ES_DEFAULT_HOST`) by the one you provide (`ES_HOST`).
+
+Because this image is used in our demo, another variable is provided : `check_links`.
+If you set it to true, the container will wait until mongoDB and elasticsearch is reachable inside the container.
+And only after that, the gateway will start.
+
+If you set `load_samples` to true, you inject samples api in the gateway. This is used in our demo.
+
+##### Example
+[source, shell]
+....
+$ docker run -p 80:8082 -e MONGO_HOST=1.2.3.4 -e MONGO_PORT=27017 -e ES_HOST=2.3.4.5 graviteeio/gateway
+....
+
+
+
+
+#### graviteeio/management-api
+{docker-hub}/management-api/[Docker Hub],
+{github-repo}/tree/master/images/management-api[Github]
+
+##### Description
+
+The management-api image provides a set of environment variables which could be used to tune your container. Because mongoDB is our default repository, you could replace default mongoDB address (`MONGO_DEFAULT_HOST:MONGO_DEFAULT_PORT`) by the one you provide (`MONGO_HOST:MONGO_PORT`).
+
+Because this image is used in our demo, another variable is provided : `check_links`.
+If you set it to true, the container will wait until mongoDB is reachable inside the container.
+And only after that, the management-api will start.
+
+##### Example
+[source, shell]
+....
+$ docker run -p 80:8082 -e MONGO_HOST=1.2.3.4 -e MONGO_PORT=27017 graviteeio/management-api
+....
+
+
+
+#### graviteeio/management-ui
+{docker-hub}/management-ui/[Docker Hub],
+{github-repo}/tree/master/images/management-ui[Github]
+
+##### Description
+
+The management-ui image provides a set of environment variables which could be used to tune your container. The UI need to know where the management-api is. So you have to override `MGMT_API_HOST` and `MGMT_API_PORT` to specify where the management-api is running.
+
+##### Example
+[source, shell]
+....
+$ docker run -p 80:8082 -e MGMT_API_HOST=1.2.3.4 -e MGMT_API_PORT=80 graviteeio/management-ui
+....
+
+
+
+
+#### graviteeio/mongodb
+{docker-hub}/mongodb/[Docker Hub],
+{github-repo}/tree/master/images/mongodb[Github]
+
+##### Description
+
+mongoDB is the default https://github.com/gravitee-io/gravitee-repository-mongodb[repository] we used in gravitee.
+
+##### Example
+[source, shell]
+....
+$ docker run -p 27017:27017 -v /mongo_datas:/var/lib/mongo graviteeio/mongodb
+....

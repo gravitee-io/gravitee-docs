@@ -1,4 +1,5 @@
 [[gravitee-installation-guide-overview]]
+:imagesdir: images
 = Installation Guide
 
 As per what was described previously in <<gravitee-components, Components>> section, Gravitee.io is splitted into
@@ -16,7 +17,7 @@ a| image::redhat.svg[] | <<gravitee-installation-guide-docker, Install for RHEL>
 
 include::installation-zip-guide.adoc[]
 
-include::docker.adoc[]
+include::installation-docker-guide.adoc[]
 
 include::redhat.adoc[]
 
