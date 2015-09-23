@@ -3,36 +3,31 @@
 
 [partintro]
 --
-A popular trend in enterprise software development these days is to design applications to be very decoupled and use
-API’s to connect them. This approach provides an excellent way to reuse functionality across various applications and
-business units. Another great benefit of API usage in enterprises is the ability to create those API’s using a variety
-of disparate technologies.
+A popular trend in enterprise software development these days is to design very decoupled applications connected via APIs. 
+This approach provides an excellent way to reuse functionality across various applications and business units no matter what the implementation technology is.
 
-However, this approach also introduces its own pitfalls and disadvantages. Some of those disadvantages include things like:
+However, this approach also introduces its own pitfalls and disadvantages including :
 
-* Difficulty discovering or sharing existing API’s
+* Difficulty discovering or sharing existing APIs
 * Difficulty sharing common functionality across API implementations
-* Tracking of API usage/consumption
-API Management is a technology that addresses these and other issues by providing an API Manager to track APIs and
-configure governance policies, as well as an API Gateway that sits between the API and the client. This API Gateway is
-responsible for applying the policies configured during management.
+* Tracking API usage/consumption
 
-Therefore an API management system tends to provide the following features:
+API Management enables you to create, manage, secure, track and sharing your APIs by providing tools like API Manager, as well as an API Gateway to direct API traffic by applying policies and API's configurations. API management system tends to provide the following features :
 
 * Centralized governance policy configuration
-* Tracking of API’s and consumers of those API’s
-* Easy sharing and discovery of API’s
-* Leveraging common policy configuration across different API’s
+* Tracking APIs and API consumers
+* Easy sharing and discovery APIs
+* Leveraging common policy configuration across different APIs
 --
 
 [[why-gravitee-io]]
 == Why Gravitee.io ?
 At the beginning, we were searching for an open-source solution to do API Management. Unfortunately, we've never found
 the tool which fit exactly our needs and by choosing one of them we know that we have to pull other components and,
-for some of them, a dedicated support (and so, money, money and money...).
+for some of them use a dedicated support.
 
-That's the main reason why we launch Gravitee.io : our goal is to provide you with an highly integrable solution which
-is able to fit perfectly with your infrastructure and your business needs.
+That's the main reason why we launch Gravitee.io : our goal is to provide you an highly integrable solution which
+is able to fit perfectly your infrastructure and your business needs.
 
 Also, Gravitee.io has been developed and designed to be fully extensible using its internal plugin system. You must be
 able to do whatever you want : defining your own policy, developing your own reporting system, and so on...
@@ -83,6 +78,8 @@ services are constraint by authentication and authorization rules.
 You can find more information by having a look to the <<gravitee-management-api-overview, Management API>> section.
 
 === Repository
+Data storage component for APIs' configurations, Policies configurations, Users/Teams configurations and so on.
+You can find more information by having a look to the <<gravitee-management-api-repository, Management API : Repository>> section.
 
 === Plugins
 The Gateway is developed as a core component around which a set of _plugins_.
