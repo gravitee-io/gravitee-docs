@@ -78,8 +78,11 @@ NOTE: For Repository configuration, please refer to the <<gravitee-repository-mo
 
 *TODO*
 
+[[gravitee-repositories-configuration]]
+=== Repositories
+
 [[gravitee-repository-mongodb-configuration]]
-=== Repository: MongoDB
+==== MongoDB
 
 NoSQL store implementation is based on https://www.mongodb.org/[MongoDB], let's see the configuration options:
 
@@ -137,7 +140,7 @@ repository:
 NOTE: All theses properties allow you to fine tuned your MongoDB connection
 
 [[gravitee-repository-jdbc-configuration]]
-=== Repository: JDBC
+==== JDBC
 
 SQL Store implementation based on Java Persistence API (JPA). SQL DataSource configuration is controlled by the following configuration properties.
 
@@ -158,3 +161,16 @@ repository:
 ----
 
 NOTE: We've just declared a connection to a PostgresSQL Database server.
+
+[[gravitee-reporters-configuration]]
+=== Reporters
+
+[[gravitee-reporter-elasticsearch-configuration]]
+==== Elasticsearch
+
+*TODO*
+
+[[gravitee-reporter-file-configuration]]
+==== File (accesslog)
+
+*TODO*

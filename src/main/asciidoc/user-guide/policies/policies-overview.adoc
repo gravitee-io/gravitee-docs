@@ -1,0 +1,12 @@
+[[gravitee-policies]]
+== Policies
+
+Gravitee.io is coming by default with common _policies_ to let you go ahead with Gravitee.io usage.
+
+* <<gravitee-policy-apikey,API Key authorization>>
+* <<gravitee-policy-cors,CORS Headers manipulation>>
+* <<gravitee-policy-ratelimiting,Rate limiting>>
+
+include::policy-apikey.adoc[]
+include::policy-cors.adoc[]
+include::policy-ratelimiting.adoc[]
