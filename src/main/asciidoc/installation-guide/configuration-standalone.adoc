@@ -1,6 +1,36 @@
-[[gravitee-installation-guide-overview]]
-:imagesdir: images
-= Installation Guide
+[[gravitee-standalone-configuration]]
+== Configuration
+
+=== Standalone Gateway
+
+[source,yaml]
+----
+node:
+  home: ${gravitee.home}         // <1>
+
+plugins:
+  registry:
+    path: ${node.home}/plugins   // <2>
+
+repository:
+  type: mongodb                  // <3>
+  mongodb:                       // <4>
+    dbname: gravitee
+    host: localhost
+    port: 27017
+
+sync:
+  enabled: true                  // <5>
+  cron: '*/5 * * * * *'
+----
+
+[grid="none", frame="topbot", cols="2*^", width="60"]
+|===
+| Property Path | Description
+a| <1> node.home | Home directory of the gateway
+a| <2> plugins.registry.path | Directory where are stored _plugins_
+a| <3> repository.type | The type of repository used by the gateway (when sync is enabled)
+|===
 
 As per what was described previously in <<gravitee-components, Components>> section, Gravitee.io is splitted into
 components. The following is a detailed guide about what to do to prepare environment and be ready to use Gravitee.io.
@@ -17,9 +47,7 @@ a| image::redhat.svg[] | <<gravitee-installation-guide-docker, Install for RHEL>
 
 include::installation-zip-guide.adoc[]
 
-include::installation-docker-guide.adoc[]
+include::docker.adoc[]
 
 include::redhat.adoc[]
-
-include::configuration-standalone.adoc[]
 
