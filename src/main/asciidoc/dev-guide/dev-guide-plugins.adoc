@@ -105,9 +105,7 @@ NOTE: Naturally, the _plugin_ identifier has to be unique to be correctly loaded
 
 === Deployment
 
-Each _plugin_ can be loaded by the _gateway_ by using the two types of _plugin_ distribution file which are:
+Deploying a _plugin_ is as easy as leave the plugin archive (zip) into the dedicated directory. By default, you have to
+deploy those archive into ${GRAVITEE_HOME/plugins}. Please refer to the configuration <<gravitee-standalone-gateway-configuration,documentation>>.
 
-- a directory
-- a ZIP file (containing the directory)
-
-In order to be loaded, distribution file has to be put inside the associated `plugins` directory that comes from the Gravitee binary file.
+IMPORTANT: Gravitee.io nodes must be restarted to take care about new or updated plugins !

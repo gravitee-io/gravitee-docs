@@ -12,14 +12,14 @@ NOTE: Installation guide provides information about how to install Gravitee.io c
 |===
 a|  | <<gravitee-installation-guide-zip, Install from zip>>
 a| image::docker.svg[] | <<gravitee-installation-guide-docker, Install using Docker>>
-a| image::redhat.svg[] | <<gravitee-installation-guide-docker, Install for RHEL>>
+a| image::redhat.svg[] | <<gravitee-installation-guide-rpm, Install for RHEL>>
 |===
 
-include::installation-zip-guide.adoc[]
+include::installation-guide-zip.adoc[]
 
-include::installation-docker-guide.adoc[]
+include::installation-guide-docker.adoc[]
 
-include::redhat.adoc[]
+include::installation-guide-rpm.adoc[]
 
-include::configuration-standalone.adoc[]
+include::installation-guide-configuration-standalone.adoc[]
 
