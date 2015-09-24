@@ -5,7 +5,7 @@ This guide walks you through the process of configuring, access, manage, monitor
 
 ==== You said API ?
 
-The API describes a web resource that is exposed by the 	Gravitee.io gateway. In order to play with your APIs some information must be specified :
+The API describes a web resource that is exposed by the Gravitee.io gateway. In order to play with your APIs some information must be specified :
 
 [source]
 ----
@@ -26,7 +26,7 @@ The API describes a web resource that is exposed by the 	Gravitee.io gateway. In
 
 ==== Manage your apis
 
-NOTE: The Management API is secured, all requests must contain the `Authorization` header with a specific authentication type (Basic/OAuth 2). See the <<management-api-security.adoc#,Management API : Security Guide>> to get more information
+NOTE: The Management API is secured, all requests must contain the `Authorization` header with a specific authentication type (Basic/OAuth 2). See the <<gravitee-standalone-management-security-configuration,Management API : Security Guide>> to get more information
 
 ===== Create your apis
 
