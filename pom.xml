@@ -73,6 +73,8 @@
                         <revnumber>${project.version}</revnumber>
                         <docinfo></docinfo>
                         <toc>left</toc>
+                        <sourceHighlighter>prettify</sourceHighlighter>
+                        <toclevels>3</toclevels>
                     </attributes>
                 </configuration>
             </plugin>
