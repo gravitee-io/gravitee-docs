@@ -37,20 +37,14 @@ We provide a complete set of images, based on the official https://hub.docker.co
 The gateway image provides a set of environment variables which could be used to tune your container. Because mongoDB is our default repository, you could replace default mongoDB address (`MONGO_DEFAULT_HOST:MONGO_DEFAULT_PORT`) by the one you provide (`MONGO_HOST:MONGO_PORT`).
 The gateway image also use the elasticsearch reporter. You could replace default ES address (`ES_DEFAULT_HOST`) by the one you provide (`ES_HOST`).
 
-Because this image is used in our demo, another variable is provided : `check_links`.
-If you set it to true, the container will wait until mongoDB and elasticsearch is reachable inside the container.
-And only after that, the gateway will start.
-
-If you set `load_samples` to true, you inject samples api in the gateway. This is used in our demo.
-
 ###### Run the image
 [source, shell]
 ....
 $ docker run  \
         --publish 80:8082  \
-        --env MONGO_HOST=1.2.3.4  \
+        --env MONGO_HOST=127.0.0.1  \
         --env MONGO_PORT=27017  \
-        --env ES_HOST=2.3.4.5  \
+        --env ES_HOST=127.0.0.1  \
         --name gateway
         graviteeio/gateway:latest
 ....
@@ -62,16 +56,12 @@ $ docker run  \
 
 The management-api image provides a set of environment variables which could be used to tune your container. Because mongoDB is our default repository, you could replace default mongoDB address (`MONGO_DEFAULT_HOST:MONGO_DEFAULT_PORT`) by the one you provide (`MONGO_HOST:MONGO_PORT`).
 
-Because this image is used in our demo, another variable is provided : `check_links`.
-If you set it to true, the container will wait until mongoDB is reachable inside the container.
-And only after that, the management-api will start.
-
 ###### Run the image
 [source, shell]
 ....
 $ docker run \
         --publish 80:8082 \
-        --env MONGO_HOST=1.2.3.4 \
+        --env MONGO_HOST=127.0.0.1 \
         --env MONGO_PORT=27017 \
         --name management-api \
         graviteeio/management-api
@@ -88,7 +78,7 @@ The management-ui image provides a set of environment variables which could be u
 ....
 $ docker run \
         --publish 80:8082 \
-        --env MGMT_API_HOST=1.2.3.4 \
+        --env MGMT_API_HOST=127.0.0.1 \
         --env MGMT_API_PORT=80 \
         --name management-ui
         graviteeio/management-ui
@@ -119,18 +109,14 @@ $ docker run \
 Kibana3 image provide a complete dashboard over gravitee usage.
 It needs Elacticsearch at runtime so you have 2 environment variables : `ES_HOST` and `ES_PORT` to set.
 
-Because this image is used in our demo, another variable is provided : `check_links`.
-If you set it to true, the container will wait until elasticsearch is reachable inside the container.
-And only after that, the httpd server will start.
-
 On startup, the container will post his dashboard to elasticsearh.
 
 ###### Run the image
 [source, shell]
 ....
 $ docker run \
-        --env ES_HOST=1.2.3.4 \
-        --env ES_PORT=1234 \
+        --env ES_HOST=127.0.0.1 \
+        --env ES_PORT=9200 \
         --name kibana3
         graviteeio/kibana3
 ....
@@ -148,7 +134,7 @@ Elasticsearch image works with our https://github.com/gravitee-io/gravitee-repor
 $ docker run \
         --publish 9200:9200 \
         --publish 9300:9300 \
-        --volume /es_datas:/var/lib/elasticsearch \
+        --volume /var/opt/elasticsearch:/var/lib/elasticsearch \
         --name elasticsearch \
         graviteeio/elasticsearch
 ....
@@ -165,7 +151,7 @@ mongoDB is the default https://github.com/gravitee-io/gravitee-repository-mongod
 ....
 $ docker run \
         --publish 27017:27017 \
-        --volume /my/path/to/mongo:/var/lib/mongo \
+        --volume /var/opt/mongo:/var/lib/mongo \
         --name mongodb \
         graviteeio/mongodb
 ....
@@ -189,20 +175,8 @@ $ docker run \
 
 A CentOS 6 with HTTPd and some tools. 
 This is a base image for all apps requiring an HTTP server. 
-It's not an image ran 'as is'.
 
 ##### graviteeio/java
 
 A CentOS 6 with a Java Runtime 8u45 and some tools.
 This is a base image for all Java apps. 
-It's not an image ran 'as is'.
-
-
-
-
-
-
-
-
-
-
