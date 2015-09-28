@@ -8,9 +8,9 @@ FileUtils.cp_r('images','build')
 guard 'shell' do
   watch(/^.*\.adoc$/) {|m|
   	if m[0] != "index.adoc"
-  	Asciidoctor.render_file(m[0], :to_dir => "build", :safe => Asciidoctor::SafeMode::UNSAFE, :attributes=> {'idprefix' => '', 'idseparator' => '-', 'copycss' => '', 'icons' => 'font', 'source-highlighter' => 'prettify', 'sectanchors' => '', 'doctype' => 'book', 'toc' => 'left', 'toclevels' => '3', 'graviteeio-version' => '1.0.0-SNAPSHOT', 'revnumber' => '1.0.0-SNAPSHOT' })
+  	Asciidoctor.render_file(m[0], :to_dir => "build", :safe => Asciidoctor::SafeMode::UNSAFE, :attributes=> {'idprefix' => '', 'idseparator' => '-', 'copycss' => '', 'icons' => 'font', 'source-highlighter' => 'prettify', 'sectanchors' => '', 'doctype' => 'book', 'toc' => 'left', 'toclevels' => '3', 'graviteeio-version' => '0.1.0-SNAPSHOT', 'revnumber' => '0.1.0-SNAPSHOT' })
   	end
-    Asciidoctor.render_file("index.adoc", :to_dir => "build", :safe => Asciidoctor::SafeMode::UNSAFE, :attributes=> {'idprefix' => '', 'idseparator' => '-', 'copycss' => '', 'icons' => 'font', 'source-highlighter' => 'prettify', 'sectanchors' => '', 'doctype' => 'book', 'toc' => 'left', 'toclevels' => '3', 'graviteeio-version' => '1.0.0-SNAPSHOT', 'revnumber' => '1.0.0-SNAPSHOT' })
+    Asciidoctor.render_file("index.adoc", :to_dir => "build", :safe => Asciidoctor::SafeMode::UNSAFE, :attributes=> {'idprefix' => '', 'idseparator' => '-', 'copycss' => '', 'icons' => 'font', 'source-highlighter' => 'prettify', 'sectanchors' => '', 'doctype' => 'book', 'toc' => 'left', 'toclevels' => '3', 'graviteeio-version' => '0.1.0-SNAPSHOT', 'revnumber' => '0.1.0-SNAPSHOT' })
   }
 end
 
