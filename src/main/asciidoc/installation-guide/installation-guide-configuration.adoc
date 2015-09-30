@@ -39,7 +39,7 @@ plugins:
   registry:
     path: ${node.home}/plugins
 
-repository:
+management:
   type: mongodb
   mongodb:
     ...
@@ -56,7 +56,7 @@ local:
 NOTE: For Jetty configuration, please refer to its http://www.eclipse.org/jetty/[documentation]. +
 Default configuration should be sufficient to start with Gravitee.io
 
-NOTE: For Repository configuration, please refer to the <<gravitee-repository-mongodb-configuration, dedicated section>>.
+NOTE: For Management Repository configuration, please refer to the <<gravitee-repository-mongodb-configuration, dedicated section>>.
 
 [grid="none", frame="topbot", cols="25,50,35,*<"]
 |===
@@ -100,7 +100,7 @@ plugins:
   registry:
     path: ${node.home}/plugins
 
-repository:
+management:
   type: mongodb
   mongodb:
     ...
@@ -412,7 +412,7 @@ NoSQL store implementation is based on https://www.mongodb.org/[MongoDB], let's 
 #
 # This is a minimal sample file declared connection to MongoDB
 # ===================================================================
-repository:
+management:
   type: mongodb # repository type
   mongodb: # mongodb repository
     dbname: # mongodb name (default gravitee)
@@ -429,7 +429,7 @@ NOTE: This is the minimum sample file to start with a mongo server, number of ot
 #
 # This is a sample file declared all properties for MongoDB Repository
 # ===================================================================
-repository:
+management:
   type: mongodb # repository type
   mongodb: # mongodb repository
     dbname: # mongodb name (default gravitee)
@@ -468,7 +468,7 @@ SQL Store implementation based on Java Persistence API (JPA). SQL DataSource con
 # ===================================================================
 # JPA REPOSITORY PROPERTIES
 # ===================================================================
-repository:
+management:
   type: jpa # repository type
   jpa: # jpa repository
     hibernateDialect: org.hibernate.dialect.PostgreSQL9Dialect # hibernate dialect
