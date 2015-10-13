@@ -58,6 +58,11 @@ Good examples for a policy are:
 
 === Reporter
 
+Gravitee modules which report GraviteeIO Gateway Request/Response events to supported storage solutions. "Out of the box" reporters are :
+
+* ElasticSearch Engine Reporter
+* File Reporter
+
 [[gravitee-components]]
 == Gravitee.io Components
 Gravitee.io is not only a product, you can see on it a global solution for API Management. By this, the community provides
@@ -104,3 +109,5 @@ Want to know how create, use, and deploy a _policy_? Check out the  <<gravitee-d
 
 [[gravitee-reporters]]
 ==== Reporters
+
+Gravitee _plugin_ reporting Request/Response _gateway_ events. Like others Gravitee plugins you can create, use, and deploy a _reporter_ thanks to the <<gravitee-dev-guide-overview, Developer Guide>>!!

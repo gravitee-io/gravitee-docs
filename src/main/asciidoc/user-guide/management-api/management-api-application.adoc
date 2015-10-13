@@ -44,8 +44,6 @@ Response Body   ::
 =============== =================================================
 ----
 
-NOTE: TODO talk about Role/Permission
-
 ===== Update applications
 
 [source]
@@ -80,8 +78,6 @@ Response Body   ::
 =============== =================================================
 ----
 
-NOTE: TODO talk about Role/Permission
-
 ===== Delete applications
 
 [source]
@@ -102,8 +98,6 @@ Response Codes  200 OK
 
 =============== =================================================
 ----
-
-NOTE: TODO talk about Role/Permission
 
 ===== Retrieve application
 
@@ -134,8 +128,6 @@ Response Body   ::
 
 =============== =================================================
 ----
-
-NOTE: TODO talk about Role/Permission
 
 ===== Manage your application API keys
 
@@ -169,8 +161,6 @@ Response Body   ::
 =============== =================================================
 ----
 
-NOTE: TODO talk about Role/Permission
-
 ====== Get current application API key
 
 NOTE: Current Api Key is the key with the latest createdAt value and which is not revoked
@@ -200,8 +190,6 @@ Response Body   ::
 
 =============== =================================================
 ----
-
-NOTE: TODO talk about Role/Permission
 
 ====== Get application API keys
 
@@ -241,8 +229,6 @@ Response Body   ::
 =============== =================================================
 ----
 
-NOTE: TODO talk about Role/Permission
-
 ===== Delete application api keys
 
 [source]
@@ -263,5 +249,3 @@ Response Codes  200 OK
 
 =============== =================================================
 ----
-
-NOTE: TODO talk about Role/Permission
