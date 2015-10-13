@@ -154,7 +154,7 @@ Response Body   ::
                   {
                     "key": "api key",
                     "expire_one": "api key expiration date",
-                    "revoked: "api key revocation (true/false)",
+                    "revoked": "api key revocation (true/false)",
                     "created_at": "api key creation date"
                   }
 
@@ -184,7 +184,7 @@ Response Body   ::
                   {
                     "key": "api key",
                     "expire_one": "api key expiration date",
-                    "revoked: "api key revocation (true/false)",
+                    "revoked": "api key revocation (true/false)",
                     "created_at": "api key creation date"
                   }
 
@@ -213,13 +213,13 @@ Response Body   ::
                     {
                       "key": "api key",
                       "expire_one": "api key expiration date",
-                      "revoked: "api key revocation (true/false)",
+                      "revoked": "api key revocation (true/false)",
                       "created_at": "api key creation date"
                     },
                     {
                       "key": "api key 2",
                       "expire_one": "api key 2 expiration date",
-                      "revoked: "api key 2 revocation (true/false)",
+                      "revoked": "api key 2 revocation (true/false)",
                       "created_at": "api key 2 creation date"
                     },
                     ...
