@@ -3,7 +3,7 @@
 
 This guide walks you through the process of configuring, access, manage your Management API users. 
 
-==== Gravitee.io user <=> business user
+==== Gravitee.io user <==> business user
 
 NOTE: A hook has been set up during the very first login process. Business user (i.e fetch from your company users
 datasource (LDAP, Database ...)) will be map to Gravitee.io user repository.
