@@ -150,14 +150,13 @@ Response Body   ::
 Apply Policies configuration to the API :
 
 =============== =================================================
-Request         GET /policies/<policyName>/<apiName>
+Request         POST /policies/<policyName>/<apiName>
 Request Header  Authorization   Basic <Base64.encode(username:password)>
                 or
                 Authorization   Bearer <your-access-token>
 Request Body    ::
                   {
-                    "policy": "policy name",
-                    "configuration": "policy configuration",
+                    "configuration": "policy configuration"
                   }
 =============== =================================================
 Response Codes  200 OK
@@ -166,6 +165,7 @@ Response Codes  200 OK
                 400 Bad Request
 Response Body   ::
                   {
+                    "api": "api name",
                     "policy": "policy name",
                     "configuration": "policy configuration",
                     "created_at": "policy configuration creation date",
