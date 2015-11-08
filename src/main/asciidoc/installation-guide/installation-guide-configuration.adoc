@@ -22,18 +22,20 @@ properties that you need.
 node:
   home: ${gravitee.home}
 
-jetty:
+http:
   port: 8082
-  idleTimeout: 30000
-  acceptors: -1
-  selectors: -1
-  jmx: false
-  statistics: false
-  pool:
-    minThreads: 10
-    maxThreads: 200
-    idleTimeout: 60000
-    queueSize: 6000
+  secured: false
+  compression_supported: false
+  idle_timeout: 0
+  tcp_keep_alive: true
+  ssl:
+    client_auth: false
+    keystore:
+      path: null
+      password: null
+    trustore:
+      path: null
+      password: null
 
 plugins:
   registry:
@@ -83,18 +85,20 @@ You can refer to the above <<gravitee-standalone-gateway-configuration,section>>
 node:
   home: ${gravitee.home}
 
-jetty:
+http:
   port: 8082
-  idleTimeout: 30000
-  acceptors: -1
-  selectors: -1
-  jmx: false
-  statistics: false
-  pool:
-    minThreads: 10
-    maxThreads: 200
-    idleTimeout: 60000
-    queueSize: 6000
+  secured: false
+  compression_supported: false
+  idle_timeout: 0
+  tcp_keep_alive: true
+  ssl:
+    client_auth: false
+    keystore:
+      path: null
+      password: null
+    trustore:
+      path: null
+      password: null
 
 plugins:
   registry:
@@ -107,7 +111,6 @@ management:
 
 security:
   type: basic-auth
-  authentication-manager:
     ...
 ----
 
@@ -127,7 +130,7 @@ Gravitee.IO Management API supports both Basic Authentication and OAuth2 Authent
 [source,yaml]
 ----
 security:
-  type: # authentication type (default to 'basic-auth', possible values : 'basic-auth', 'oauth2-auth')
+  type: # authentication type (default to 'basic', possible values : 'basic', 'oauth2')
 ----
 
 NOTE: Based on the authentication type you choose, many properties kick in, especially for the Basic Authentication configuration.
@@ -139,10 +142,8 @@ The Gravitee.io management API module supports by default some standard ways to 
 [source,yaml]
 ----
 security:
-  type: basic-auth # authentication type
-  authentication-manager: # required authentication-providers parent property
-    authentication-providers: # required authentication-provider parent property
-      size : # number of authentication-provider to use
+  type: basic                   # authentication type
+  providers:                    # required authentication providers
 ----
 
 NOTE: This is the minimum sample file to declare at least one authentication provider
@@ -159,22 +160,18 @@ Basic in-memory implementation, a simple and convenient way to declare "technica
 # This sample file declared one in memory authentication provider with two users
 # ===================================================================
 security:
-  type: basic-auth # authentication type
-  authentication-manager: # required authentication-providers parent attribute
-    authentication-providers: # required authentication-provider parent attribute
-      size : 1 # number of authentication-provider to use (in this sample one)
-      authentication-provider-1 : # the authentication provider id must be <= size property
-      type: memory # authentication provider type (possible values : memory, ldap, gravitee)
-        users:
-          size: 2 # number of users to create
-          user-1: # id user must be <= to users size property
-            username: user
-            password: password
-            roles: USER # you can declare multiple roles with comma separator (USER, OWNER, ADMIN ...)
-          user-2: # id user must be <= to users size property
-            username: admin
-            password: admin
-            roles: ADMIN # you can declare multiple roles with comma separator (USER, OWNER, ADMIN ...)
+  type: basic                       # authentication type
+  providers:                        # required authentication providers
+    - type: memory                  # authentication provider type (possible values : memory, ldap, gravitee)
+      users:
+        - user:
+          username: user
+          password: password
+          roles: USER               # you can declare multiple roles with comma separator (USER, OWNER, ADMIN ...)
+        - user:
+          username: admin
+          password: admin
+          roles: ADMIN              # you can declare multiple roles with comma separator (USER, OWNER, ADMIN ...)
 ----
 
 NOTE: We've just declared two users, `user` with `ROLE_USER` role and `admin` with `ROLE_ADMIN`
@@ -191,26 +188,23 @@ An AuthenticationProvider implementation that authenticates against an LDAP serv
 # This sample file declared one ldap authentication provider
 # ===================================================================
 security:
-  type: basic-auth # authentication type
-  authentication-manager: # required authentication-providers parent attribute
-    authentication-providers: # required authentication-provider parent attribute
-      size : 1 # number of authentication-provider to use (in this sample one)
-      authentication-provider-1 : # the authentication provider id must be <= size property
-      type: ldap # authentication provider type (possible values : memory, ldap, gravitee)
-			embedded: true # embedded mode (true to use the embedded ldap server, usefull for test/demo, possible values : true or false)
-			# if embedded is false set the following values
-      context-source-username: # context username to connect to your ldap server
-      context-source-password: # context password to connect to your ldap server
-      context-source-url: # your ldap server url
-      role-mapping: true # role mapping mode for ldap user (possible values : true or false)
+  type: basic                               # authentication type
+  providers:                                # required authentication providers
+    - type: ldap
+      embedded: true                        # embedded mode (true to use the embedded ldap server, usefull for test/demo, possible values : true or false)
+      # if embedded is false set the following values
+      context-source-username: test
+      context-source-password: test
+      context-source-url: ldap://localhost:389/dc=gravitee,dc=io
+      role-mapping: true                    # role mapping mode for ldap user (possible values : true or false)
       # if role-mapping is true set the following role mapper LDAP values (syntax { "user_ldap_role" : "user_new_added_ldap_role"})
       role-mapper: {
-                ROLE_DEVELOPERS: ROLE_USER,
-                ROLE_MEMBERS: ROLE_USER,
-                ROLE_OWNERS: ROLE_ADMIN
-               }
-      user-dn-patterns: uid={0},ou=people # user dn patterns (default 'uid={0},ou=people')
-      group-search-base: ou=groups # groupe search base (default 'ou=groups')
+        ROLE_DEVELOPERS: ROLE_USER,
+        ROLE_MEMBERS: ROLE_USER,
+        ROLE_OWNERS: ROLE_ADMIN
+      }
+      user-dn-patterns: uid={0},ou=people   # user dn patterns (default 'uid={0},ou=people')
+      group-search-base: ou=groups          # groupe search base (default 'ou=groups')
       context-source-base: dc=gravitee,dc=io # the context source base
 ----
 
@@ -226,13 +220,10 @@ An AuthenticationProvider implementation that authenticates against Gravitee dat
 # This sample file declared gravitee authentication provider
 # ===================================================================
 security:
-  type: basic-auth # authentication type
-  authentication-manager: # required authentication-providers parent attribute
-    authentication-providers: # required authentication-provider parent attribute
-      size : 1 # number of authentication-provider to use (in this sample one)
-      authentication-provider-1: # the authentication provider id must be <= size property
-      type: gravitee # authentication provider type (possible values : memory, ldap, gravitee)
-			password-encoding: # enable password encoding (possible values : true or false)
+  type: basic                       # authentication type
+  providers:                        # required authentication providers
+    - type: gravitee                # authentication provider type (possible values : memory, ldap, gravitee)
+      password-encoding: true       # enable password encoding (possible values : true or false)
 ----
 
 NOTE: If password encoding system is enable the password encoder uses the BCrypt strong hashing function.
@@ -249,48 +240,42 @@ You can specify as many providers as you want. They will be checked in same orde
 # This sample file declared gravitee authentication provider
 # ===================================================================
 security:
-  type: basic-auth # authentication type
-  authentication-manager: # required authentication-providers parent attribute
-    authentication-providers: # required authentication-provider parent attribute
-      size : 3 # number of authentication-provider to use (in this sample three)
+  type: basic
+  providers:
 
-      # First authentication provider
-      authentication-provider-1: #the authentication provider id must be <= size property
-        type: ldap # authentication provider type (possible values : memory, ldap, gravitee)
-			  embedded: true # embedded mode (true to use the embedded ldap server, usefull for test/demo, possible values : true or false)
-			  # if embedded is false set the following values
-        context-source-username: # context username to connect to your ldap server
-        context-source-password: # context password to connect to your ldap server
-        context-source-url: # your ldap server url
-        role-mapping: true # role mapping mode for ldap user (possible values : true or false)
-        # if role-mapping is true set the following role mapper LDAP values (syntax { "user_ldap_role" : "user_new_added_ldap_role"})
-        role-mapper: {
-                ROLE_DEVELOPERS: ROLE_USER,
-                ROLE_MEMBERS: ROLE_USER,
-                ROLE_OWNERS: ROLE_ADMIN
-               }
-        user-dn-patterns: uid={0},ou=people # user dn patterns (default 'uid={0},ou=people')
-        group-search-base: ou=groups # groupe search base (default 'ou=groups')
-        context-source-base: dc=gravitee,dc=io # the context source base
+    # First authentication provider
+    - type: ldap
+      embedded: true
+      role-mapping: true
+      # if role-mapping is true set the following role mapper LDAP values
+      role-mapper: {
+        ROLE_DEVELOPERS: ROLE_USER,
+        ROLE_MEMBERS: ROLE_USER,
+        ROLE_OWNERS: ROLE_ADMIN
+      }
+      user-dn-patterns: uid={0},ou=people
+      group-search-base: ou=groups
+      context-source-base: dc=gravitee,dc=io
+      # if embedded is false set the following values
+      # context-source-username: test
+      # context-source-password: test
+      # context-source-url: ldap://localhost:389/dc=gravitee,dc=io
 
-      # Second authentication provider
-      authentication-provider-2: the authentication provider id must be <= size property
-        type: memory # authentication provider type (possible values : memory, ldap, gravitee)
-        users:
-          size: 2 # number of users to create
-          user-1: # id user must be <= to users size property
-            username: user
-            password: password
-            roles: USER # you can declare multiple roles with comma separator (USER, OWNER, ADMIN ...)
-          user-2: # id user must be <= to users size property
-            username: admin
-            password: admin
-            roles: ADMIN # you can declare multiple roles with comma separator (USER, OWNER, ADMIN ...)
+    # Second authentication provider
+    - type: memory
+      users:
+        - user:
+          username: user
+          password: password
+          roles: USER
+        - user:
+          username: admin
+          password: admin
+          roles: ADMIN
 
-      # Third authentication provider
-      authentication-provider-3: the authentication provider id must be <= size property
-        type: gravitee # authentication provider type (possible values : memory, ldap, gravitee)
-			  password-encoding: # enable password encoding (possible values : true or false)
+    # Third authentication provider
+    - type: gravitee
+      password-encoding: true
 ----
 
 NOTE: The authentication process will loop through the three providers to attempt user authentication
@@ -336,7 +321,7 @@ The Gravitee.io Management supports OAuth2 Authentication via the following conf
 # This sample file declared oauth2 security configuration
 # ===================================================================
 security:
-  type: oauth2-auth # authentication type
+  type: oauth2 # authentication type
   oauth.endpoint.check_token: # OAuth2 token validation endpoint url
   oauth.client.id: # OAuth2 resource server client id
   oauth.client.secret: # OAut2 resource server client secret
@@ -352,48 +337,42 @@ NOTE: This sample file is meant as a guide only. Do not copy/paste the entire co
 [source,yaml]
 ----
 security:
-  type: basic-auth # authentication type
-  authentication-manager: # required authentication-providers parent attribute
-    authentication-providers: # required authentication-provider parent attribute
-      size : 3 # number of authentication-provider to use (in this sample three)
+  type: basic
+  providers:
 
-      # First authentication provider
-      authentication-provider-1: # the authentication provider id must be <= size property
-        type: ldap # authentication provider type (possible values : memory, ldap, gravitee)
-			  embedded: true # embedded mode (true to use the embedded ldap server, usefull for test/demo, possible values : true or false)
-			  # if embedded is false set the following values
-        context-source-username: # context username to connect to your ldap server
-        context-source-password: # context password to connect to your ldap server
-        context-source-url: # your ldap server url
-        role-mapping: true # role mapping mode for ldap user (possible values : true or false)
-        # if role-mapping is true set the following role mapper LDAP values (syntax { "user_ldap_role" : "user_new_added_ldap_role"})
-        role-mapper: {
-                ROLE_DEVELOPERS: ROLE_USER,
-                ROLE_MEMBERS: ROLE_USER,
-                ROLE_OWNERS: ROLE_ADMIN
-               }
-        user-dn-patterns: uid={0},ou=people # user dn patterns (default 'uid={0},ou=people')
-        group-search-base: ou=groups # groupe search base (default 'ou=groups')
-        context-source-base: dc=gravitee,dc=io # the context source base
+    # First authentication provider
+    - type: ldap
+      embedded: true
+      role-mapping: true
+      # if role-mapping is true set the following role mapper LDAP values
+      role-mapper: {
+        ROLE_DEVELOPERS: ROLE_USER,
+        ROLE_MEMBERS: ROLE_USER,
+        ROLE_OWNERS: ROLE_ADMIN
+      }
+      user-dn-patterns: uid={0},ou=people
+      group-search-base: ou=groups
+      context-source-base: dc=gravitee,dc=io
+      # if embedded is false set the following values
+      # context-source-username: test
+      # context-source-password: test
+      # context-source-url: ldap://localhost:389/dc=gravitee,dc=io
 
-      # Second authentication provider
-      authentication-provider-2: the authentication provider id must be <= size property
-        type: memory # authentication provider type (possible values : memory, ldap, gravitee)
-        users:
-          size: 2 # number of users to create
-          user-1: # id user must be <= to users size property
-            username: user
-            password: password
-            roles: USER # you can declare multiple roles with comma separator (USER, OWNER, ADMIN ...)
-          user-2: # id user must be <= to users size property
-            username: admin
-            password: admin
-            roles: ADMIN # you can declare multiple roles with comma separator (USER, OWNER, ADMIN ...)
+    # Second authentication provider
+    - type: memory
+      users:
+        - user:
+          username: user
+          password: password
+          roles: USER
+        - user:
+          username: admin
+          password: admin
+          roles: ADMIN
 
-      # Third authentication provider
-      authentication-provider-3: the authentication provider id must be <= size property
-        type: gravitee # authentication provider type (possible values : memory, ldap, gravitee)
-        password-encoding: # enable password encoding (possible values : true or false)
+    # Third authentication provider
+    - type: gravitee
+      password-encoding: true
 ----
 
 
