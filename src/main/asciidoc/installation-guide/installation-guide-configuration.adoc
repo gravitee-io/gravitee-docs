@@ -379,6 +379,37 @@ security:
 [[gravitee-repositories-configuration]]
 === Repositories
 
+[[gravitee-repositories-types]]
+==== Repository types
+
+* management: All the data the manage the Gravitee.io platform, including API definitions, users, teams, ..
+* rate limit: Rate limiting data
+* analytics: Analytics data
+
+**Compatibility Matrix: **
+|===
+|Scope|MongoDB |JDBC |Redis |Elasticsearch
+
+|Management
+|X
+|X
+|-
+|-
+
+|Rate Limit
+|X
+|-
+|X
+|-
+
+|Analytics
+|-
+|-
+|-
+|X
+
+|===
+
 [[gravitee-repository-mongodb-configuration]]
 ==== MongoDB
 
