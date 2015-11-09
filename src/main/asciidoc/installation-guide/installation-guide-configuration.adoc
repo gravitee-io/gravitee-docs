@@ -485,7 +485,7 @@ management:
     jdbcUrl: jdbc:postgresql://localhost/gravitee # database url
     user: user                  # database username
     password: password          # database password
-    autoCommit: false           # aut-commit mode (default to true)
+    autoCommit: false           # auto-commit mode (default to true)
     properties:
       specificProperty: property_value
     pool:                       # Pooling configuration
