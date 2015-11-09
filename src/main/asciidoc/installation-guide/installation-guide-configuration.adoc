@@ -423,11 +423,11 @@ NoSQL store implementation is based on https://www.mongodb.org/[MongoDB], let's 
 # This is a minimal sample file declared connection to MongoDB
 # ===================================================================
 management:
-  type: mongodb # repository type
-  mongodb: # mongodb repository
-    dbname: # mongodb name (default gravitee)
-    host: # mongodb host (default localhost)
-    port: # mongodb port (default 27017)
+  type: mongodb             # repository type
+  mongodb:                  # mongodb repository
+    dbname:                 # mongodb name (default gravitee)
+    host:                   # mongodb host (default localhost)
+    port:                   # mongodb port (default 27017)
 ----
 
 NOTE: This is the minimum sample file to start with a mongo server, number of other properties control the behavior of mongo database, let's jump into it
@@ -440,30 +440,30 @@ NOTE: This is the minimum sample file to start with a mongo server, number of ot
 # This is a sample file declared all properties for MongoDB Repository
 # ===================================================================
 management:
-  type: mongodb # repository type
-  mongodb: # mongodb repository
-    dbname: # mongodb name (default gravitee)
-    host: # mongodb host (default localhost)
-    port: # mongodb port (default 27017)
-    username: # mongodb username (default null)
-    password: # mongodb password (default null)
-    connectionPerHost: # mongodb connection per host (default 10)
-    connectTimeOut: # mongodb connection time out (default 0 -> never)
-    maxWaitTime: # mongodb max wait time (default 120000)
-    socketTimeout: # mongodb socket time out (default 0 -> never)
-    socketKeepAlive: # mongodb socket keep alive (default false)
-    maxConnectionLifeTime: # mongodb max connection life time (default null)
-    maxConnectionIdleTime: # mongodb max connection idle time (default null)
-    minHeartbeatFrequency: # mongodb min heartbeat frequency (default null)
-    description: # mongodb description (default null)
-    heartbeatConnectTimeout: # mongodb heartbeat connection time out (default null)
-    heartbeatFrequency: # mongodb heartbeat frequency (default null)
-    heartbeatsocketTimeout: # mongodb heartbeat socket time out (default null)
-    localThreshold: # mongodb local threshold (default null)
-    minConnectionsPerHost: # mongodb min connections per host (default null)
-    sslEnabled: # mongodb ssl mode (default false)
+  type: mongodb                 # repository type
+  mongodb:                      # mongodb repository
+    dbname:                     # mongodb name (default gravitee)
+    host:                       # mongodb host (default localhost)
+    port:                       # mongodb port (default 27017)
+    username:                   # mongodb username (default null)
+    password:                   # mongodb password (default null)
+    connectionPerHost:          # mongodb connection per host (default 10)
+    connectTimeOut:             # mongodb connection time out (default 0 -> never)
+    maxWaitTime:                # mongodb max wait time (default 120000)
+    socketTimeout:              # mongodb socket time out (default 0 -> never)
+    socketKeepAlive:            # mongodb socket keep alive (default false)
+    maxConnectionLifeTime:      # mongodb max connection life time (default null)
+    maxConnectionIdleTime:      # mongodb max connection idle time (default null)
+    minHeartbeatFrequency:      # mongodb min heartbeat frequency (default null)
+    description:                # mongodb description (default null)
+    heartbeatConnectTimeout:    # mongodb heartbeat connection time out (default null)
+    heartbeatFrequency:         # mongodb heartbeat frequency (default null)
+    heartbeatsocketTimeout:     # mongodb heartbeat socket time out (default null)
+    localThreshold:             # mongodb local threshold (default null)
+    minConnectionsPerHost:      # mongodb min connections per host (default null)
+    sslEnabled:                 # mongodb ssl mode (default false)
     threadsAllowedToBlockForConnectionMultiplier: # mongodb threads allowed to block for connection multiplier (default null)
-    cursorFinalizerEnabled: # mongodb cursor finalizer enabled (default false)
+    cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
 ----
 
 NOTE: All theses properties allow you to fine tuned your MongoDB connection
@@ -476,17 +476,23 @@ SQL Store implementation based on Java Persistence API (JPA). SQL DataSource con
 [source,yaml]
 ----
 # ===================================================================
-# JPA REPOSITORY PROPERTIES
+# JDBC REPOSITORY PROPERTIES
 # ===================================================================
 management:
-  type: jpa # repository type
-  jpa: # jpa repository
-    hibernateDialect: org.hibernate.dialect.PostgreSQL9Dialect # hibernate dialect
-    driverClassName: org.postgresql.Driver # database driver
-    url: jdbc:postgresql://localhost/gravitee # database url
-    username: user # database username
-    password: password # database password
-    showSql: false # show sql mode (default to false)
+  type: jdbc                    # repository type
+  jdbc:                         # jpa repository
+    dataSourceClassName:        # JDBC Datasource class name
+    jdbcUrl: jdbc:postgresql://localhost/gravitee # database url
+    user: user                  # database username
+    password: password          # database password
+    autoCommit: false           # aut-commit mode (default to true)
+    properties:
+      specificProperty: property_value
+    pool:                       # Pooling configuration
+      maxPoolSize: 10
+      minIdle: 0
+      idleTimeout: 600000       # Idle Timeout in ms (default to 10 minutes)
+      connectionTimeout: 30000  # Connection Timeout in ms (default to 30 seconds)
 ----
 
 NOTE: We've just declared a connection to a PostgresSQL Database server.
