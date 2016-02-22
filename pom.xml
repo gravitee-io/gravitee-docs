@@ -29,21 +29,30 @@
 
     <groupId>io.gravitee.docs</groupId>
     <artifactId>gravitee-docs</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.8.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Gravitee IO - Documentations</name>
-
+    <properties>
+        <asciidoctor.maven.plugin.version>1.5.3</asciidoctor.maven.plugin.version>
+        <asciidoctorj.version>1.5.4</asciidoctorj.version>
+        <jruby.version>9.0.0.0</jruby.version>
+    </properties>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>1.5.3</version>
+                <version>${asciidoctor.maven.plugin.version}</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.jruby</groupId>
                         <artifactId>jruby-complete</artifactId>
-                        <version>9.0.0.0</version>
+                        <version>${jruby.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctorj</artifactId>
+                        <version>${asciidoctorj.version}</version>
                     </dependency>
                 </dependencies>
                 <executions>
@@ -58,7 +67,6 @@
                             <doctype>book</doctype>
                             <outputDirectory>${project.build.directory}/generated-docs/${project.version}/reference/htmlsingle/</outputDirectory>
                             <attributes>
-                                <env-gravitee-doc/>
                             </attributes>
                         </configuration>
                     </execution>
@@ -79,13 +87,14 @@
                     <headerFooter>true</headerFooter>
                     <sourceHighlighter>prettify</sourceHighlighter>
                     <attributes>
-                        <graviteeio-version>0.2.0</graviteeio-version>
+                        <graviteeio-version>${project.version}</graviteeio-version>
                         <revnumber>${project.version}</revnumber>
-                        <docinfo></docinfo>
+                        <env-gravitee-doc/>
+                        <docinfo>true</docinfo>
                         <toc>left</toc>
                         <allow-uri-read>true</allow-uri-read>
                         <sourceHighlighter>prettify</sourceHighlighter>
-                        <toclevels>3</toclevels>
+                        <toclevels>2</toclevels>
                         <icons>font</icons>
                         <sectanchors>true</sectanchors>
                     </attributes>

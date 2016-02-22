@@ -13,7 +13,7 @@ You could find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles o
 
 We provide a complete set of images, based on the official https://hub.docker.com/_/centos/[Centos 6 image]. You could run them individually or follow our <<quickstart-docker-demo, quickstart>> to quickly discover a full Gravitee environment.
 
-#### Core images
+### Core images
 |===
 |Image name |Source |Version
 
@@ -32,12 +32,12 @@ We provide a complete set of images, based on the official https://hub.docker.co
 |===
 
 
-##### graviteeio/gateway
+#### graviteeio/gateway
 
 The gateway image provides a set of environment variables which could be used to tune your container. Because mongoDB is our default repository, you could replace default mongoDB address (`MONGO_DEFAULT_HOST:MONGO_DEFAULT_PORT`) by the one you provide (`MONGO_HOST:MONGO_PORT`).
 The gateway image also use the elasticsearch reporter. You could replace default ES address (`ES_DEFAULT_HOST`) by the one you provide (`ES_HOST`).
 
-###### Run the image
+##### Run the image
 [source, shell]
 ....
 $ docker run  \
@@ -52,11 +52,11 @@ $ docker run  \
 
 
 
-##### graviteeio/management-api
+#### graviteeio/management-api
 
 The management-api image provides a set of environment variables which could be used to tune your container. Because mongoDB is our default repository, you could replace default mongoDB address (`MONGO_DEFAULT_HOST:MONGO_DEFAULT_PORT`) by the one you provide (`MONGO_HOST:MONGO_PORT`).
 
-###### Run the image
+##### Run the image
 [source, shell]
 ....
 $ docker run \
@@ -69,11 +69,11 @@ $ docker run \
 
 
 
-##### graviteeio/management-ui
+#### graviteeio/management-ui
 
 The management-ui image provides a set of environment variables which could be used to tune your container. The UI need to know where the management-api is. So you have to override `MGMT_API_HOST` and `MGMT_API_PORT` to specify where the management-api is running.
 
-###### Run the image
+##### Run the image
 [source, shell]
 ....
 $ docker run \
@@ -86,7 +86,7 @@ $ docker run \
 
 '''
 
-#### Extra images
+### Extra images
 |===
 |Image name |Source |Version
 
@@ -104,7 +104,7 @@ $ docker run \
 
 |===
 
-##### graviteeio/kibana3
+#### graviteeio/kibana3
 
 Kibana3 image provide a complete dashboard over gravitee usage.
 It needs Elacticsearch at runtime so you have 2 environment variables : `ES_HOST` and `ES_PORT` to set.
@@ -124,11 +124,11 @@ $ docker run \
 
 
 
-##### graviteeio/elasticsearch
+#### graviteeio/elasticsearch
 
 Elasticsearch image works with our https://github.com/gravitee-io/gravitee-reporter-es[Elasticsearch Reporter] and render his datas via our Kibana3 image.
 
-###### Run the image
+##### Run the image
 [source, shell]
 ....
 $ docker run \
@@ -142,11 +142,11 @@ $ docker run \
 
 
 
-##### graviteeio/mongodb
+#### graviteeio/mongodb
 
 mongoDB is the default https://github.com/gravitee-io/gravitee-repository-mongodb[repository] we used in gravitee.
 
-###### Run the image
+##### Run the image
 [source, shell]
 ....
 $ docker run \
@@ -157,7 +157,7 @@ $ docker run \
 ....
 
 
-#### Base images
+### Base images
 |===
 |Image name |Source |Version
 
@@ -171,12 +171,12 @@ $ docker run \
 
 |===
 
-##### graviteeio/httpd
+#### graviteeio/httpd
 
 A CentOS 6 with HTTPd and some tools. 
 This is a base image for all apps requiring an HTTP server. 
 
-##### graviteeio/java
+#### graviteeio/java
 
 A CentOS 6 with a Java Runtime 8u45 and some tools.
 This is a base image for all Java apps. 
