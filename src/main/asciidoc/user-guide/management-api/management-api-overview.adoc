@@ -1,25 +1,2 @@
 [[gravitee-management-api-overview]]
-== Management API
-
-Gravitee.io Management API is a Rest API which make it easy to manage, monitor and overview your Apis.
-
-You can use Management API to :
-
-* Manage, Enhance, Document your APIs
-* Create and Manage your users
-* Create and Manage your business teams
-
-Let's get starting out with Management API, try one of our guides :
-
-* <<gravitee-management-api-api,Management API : API Guide>>
-* <<gravitee-management-api-application,Management API : Application Guide>>
-* <<gravitee-management-api-policy,Management API : Policy Guide>>
-* <<gravitee-management-api-user,Management API : User Guide>>
-* <<gravitee-management-api-team,Management API : Team Guide>>
-
-include::management-api-api.adoc[]
-include::management-api-application.adoc[]
-include::management-api-policy.adoc[]
-include::management-api-user.adoc[]
-include::management-api-team.adoc[]
-
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/master/src/doc/management-api-overview.adoc[leveloffset=+1]
