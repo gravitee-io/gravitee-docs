@@ -1,127 +1,455 @@
 [[gravitee-installation-guide-configuration]]
 == Configuration
 
-This guide walks you through the process of configuring both Gravitee.io Standalone Gateway and Management API.
+Gravitee.io allows you to externalize your configuration via the `gravitee.yml` file that can be found under `GRAVITEE_HOME/config` folder.
 
-Gravitee.io allows you to externalize your configuration via the `gravitee.yml` file. Various properties can be specified
-inside your configuration file.
-
-* How to configure <<gravitee-standalone-gateway-configuration, Standalone Gateway>>
-* How to configure <<gravitee-standalone-management-configuration, Standalone Management API>>
-* How to configure <<gravitee-repository-mongodb-configuration, MongoDB Repository>>
-* How to configure <<gravitee-repository-jdbc-configuration, JDBC Repository>>
-
-NOTE: Below configurations are meant as a guide only. Do not copy/paste the entire content; rather pick only the
-properties that you need.
+* How to configure <<gravitee-standalone-gateway-configuration, Gravitee.io Gateway>>
+* How to configure <<gravitee-standalone-management-configuration, Gravitee.io Management API>>
+* How to configure <<gravitee-repository-mongodb-configuration, Gravitee.io Repositories>>
 
 [[gravitee-standalone-gateway-configuration]]
-=== Standalone Gateway
+=== Gateway Settings
+
+==== HTTP Server
+
+Embedded Gravitee.io Gateway HTTP server configuration.
 
 [source,yaml]
 ----
-node:
-  home: ${gravitee.home}
-
 http:
   port: 8082
+  idleTimeout: 0
+  tcpKeepAlive: true
+  compressionSupported: false
+  pool:
+    workers: 100
   secured: false
-  compression_supported: false
-  idle_timeout: 0
-  tcp_keep_alive: true
   ssl:
-    client_auth: false
+    clientAuth: false
     keystore:
-      path: null
-      password: null
-    trustore:
-      path: null
-      password: null
+      path:
+      password:
+    truststore:
+      path:
+      password:
+----
 
+==== Plugins repository
+
+Gravitee.io Gateway <<gravitee-plugins,plugins>> directory configuration.
+
+[source,yaml]
+----
 plugins:
-  registry:
-    path: ${node.home}/plugins
+  path: ${gravitee.home}/plugins
+----
 
+==== Management repository
+
+Management repository is used to store global configuration such as APIs, applications, apikeys, ...
+This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:
+
+http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html
+
+[source,yaml]
+----
 management:
   type: mongodb
   mongodb:
-    ...
+    dbname: ${ds.mongodb.dbname}
+    host: ${ds.mongodb.host}
+    port: ${ds.mongodb.port}
+#    username:
+#    password:
+#    connectionsPerHost: 0
+#    connectTimeout: 500
+#    maxWaitTime: 120000
+#    socketTimeout: 500
+#    socketKeepAlive: false
+#    maxConnectionLifeTime: 0
+#    maxConnectionIdleTime: 0
+#    serverSelectionTimeout: 0
+#    description: gravitee.io
+#    heartbeatFrequency: 10000
+#    minHeartbeatFrequency: 500
+#    heartbeatConnectTimeout: 1000
+#    heartbeatSocketTimeout: 20000
+#    localThreshold: 15
+#    minConnectionsPerHost: 0
+#    sslEnabled: false
+#    threadsAllowedToBlockForConnectionMultiplier: 5
+#    cursorFinalizerEnabled: true
 
-sync:
-  enabled: true
-  cron: '*/5 * * * * *'
+# Management repository: single MongoDB using URI
+# For more information about MongoDB configuration using URI, please have a look to:
+# - http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html
+#management:
+#  type: mongodb
+#  mongodb:
+#    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
 
-local:
-  enabled: false
-  path: ${node.home}/apis
+# Management repository: clustered MongoDB
+#management:
+#  type: mongodb
+#  mongodb:
+#    servers:
+#      - host: mongo1
+#        port: 27017
+#      - host: mongo2
+#        port: 27017
+#    dbname: ${ds.mongodb.dbname}
+#    connectTimeout: 500
+#    socketTimeout: 250
 ----
 
-NOTE: For Jetty configuration, please refer to its http://www.eclipse.org/jetty/[documentation]. +
-Default configuration should be sufficient to start with Gravitee.io
+==== Rate Limit repository
 
-NOTE: For Management Repository configuration, please refer to the <<gravitee-repository-mongodb-configuration, dedicated section>>.
+When defining <<policy-ratelimit, rate-limiting policy>>, the gateway has to store data to share with other gateway instances.
 
-[grid="none", frame="topbot", cols="25,50,35,*<"]
-|===
-| Property Path | Description | Default
+In this example, we are using MongoDB to store counters.
 
-| *_node.home_* | Home directory of the gateway | ${gravitee.home}
-| *_plugins.registry.path_* | Directory where are stored _plugins_ | ${node.home}/plugins
-| *_repository.type_* | The type of repository used by the gateway (when sync is enabled) | -
-| *_sync.enable_* | Allows the gateway to retrieve API Definitions from the repository | true
-| *_sync.cron_* | Cron expression to schedule synchronisation | */5 * * * * * - (each 5 seconds)
-| *_local.enabled_* | Flag to load API definitions locally (without repository) | false
-| *_local.path_* | Directory where the gateway is looking for API definitions | ${node.home}/apis
-|===
+[source,yaml]
+----
+ratelimit:
+  type: mongodb
+  mongodb:
+    uri: mongodb://${ds.mongodb.host}/${ds.mongodb.dbname}
+----
+
+==== Reporters
+
+Reporters configuration (used to store reporting monitoring data, request metrics, healthchecks and others...)
+All reporters are enabled by default. To stop one of them, you have to add the property 'enabled: false'
+
+[source,yaml]
+----
+reporters:
+  # Elasticsearch reporter
+  elastic:
+    host: ${ds.elastic.host}
+    port: ${ds.elastic.port}
+    # Reporters are async by nature so the gateway is keeping an internal in-memory structure to stack data before
+    # pushing them into a final storage (Elasticsearch in this example)
+    queue:
+      # Number of elements to store in the queue (extra-elements will be loosed)
+      size: 10240
+      # Reporter thread is looking for data every x milliseconds (each second in this example)
+      pollingTimeout: 1000
+----
+
+==== Services
+
+Gravitee.io Gateway services configuration. Provided values are default values. All services are enabled by default. To stop one of them, you have to add the property 'enabled: false' (See the 'local' service for an example).
+
+[source,yaml]
+----
+services:
+  # Synchronization daemon used to keep the gateway state in sync with the configuration from the management repository
+  # Be aware that, by disabling it, the gateway will not be sync with the configuration done through management API and management UI
+  sync:
+    # Synchronization is done each 5 seconds
+    cron: '*/5 * * * * *'
+
+  # Service used to store and cache api-keys from the management repository to avoid direct repository communication
+  # while serving requests.
+  apikeyscache:
+    delay: 10000
+    unit: MILLISECONDS
+    threads: 3 # Threads core size used to retrieve api-keys from repository.
+
+  # Local registry service.
+  # This registry is used to load API Definition with json format from the file system. By doing so, you do not need
+  # to configure your API using the web console or the rest API (but you need to know and understand the json descriptor
+  # format to make it work....)
+  local:
+    enabled: false
+    path: ${gravitee.home}/apis # The path to API descriptors
+
+  # Gateway monitoring service.
+  # This service retrieves metrics like os / process / jvm metrics and send them to an underlying reporting service.
+  monitoring:
+    delay: 5000
+    unit: MILLISECONDS
+
+  # Endpoint healthcheck service.
+  healthcheck:
+    threads: 3 # Threads core size used to check endpoint availability
+----
+
+==== Common Gravitee.io Gateway properties
+
+Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.yml` file. This section provides the general configuration of Gravitee.IO Gateway.
+
+[source,yaml]
+----
+############################################################################################################
+#################################### Gravitee.io Gateway - Configuration ###################################
+############################################################################################################
+
+############################################################################################################
+# This file is the general configuration of Gravitee.IO Gateway:
+# - Properties (and respective default values) in comment are provided for information.
+# - You can reference other property by using ${property.name} syntax
+# - gravitee.home property is automatically set-up by launcher and refers to the installation path. Do not override it !
+#
+############################################################################################################
+
+# Gateway HTTP server
+#http:
+#  port: 8082
+#  idleTimeout: 0
+#  tcpKeepAlive: true
+#  compressionSupported: false
+#  pool:
+#    workers: 100
+#  secured: false
+#  ssl:
+#    clientAuth: false
+#    keystore:
+#      path:
+#      password:
+#    truststore:
+#      path:
+#      password:
+
+# Plugins repository
+plugins:
+  path: ${gravitee.home}/plugins
+
+# Management repository is used to store global configuration such as APIs, applications, apikeys, ...
+# This is the default configuration using MongoDB (single server)
+# For more information about MongoDB configuration, please have a look to:
+# - http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html
+management:
+  type: mongodb
+  mongodb:
+    dbname: ${ds.mongodb.dbname}
+    host: ${ds.mongodb.host}
+    port: ${ds.mongodb.port}
+#    username:
+#    password:
+#    connectionsPerHost: 0
+#    connectTimeout: 500
+#    maxWaitTime: 120000
+#    socketTimeout: 500
+#    socketKeepAlive: false
+#    maxConnectionLifeTime: 0
+#    maxConnectionIdleTime: 0
+#    serverSelectionTimeout: 0
+#    description: gravitee.io
+#    heartbeatFrequency: 10000
+#    minHeartbeatFrequency: 500
+#    heartbeatConnectTimeout: 1000
+#    heartbeatSocketTimeout: 20000
+#    localThreshold: 15
+#    minConnectionsPerHost: 0
+#    sslEnabled: false
+#    threadsAllowedToBlockForConnectionMultiplier: 5
+#    cursorFinalizerEnabled: true
+
+# Management repository: single MongoDB using URI
+# For more information about MongoDB configuration using URI, please have a look to:
+# - http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html
+#management:
+#  type: mongodb
+#  mongodb:
+#    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+
+# Management repository: clustered MongoDB
+#management:
+#  type: mongodb
+#  mongodb:
+#    servers:
+#      - host: mongo1
+#        port: 27017
+#      - host: mongo2
+#        port: 27017
+#    dbname: ${ds.mongodb.dbname}
+#    connectTimeout: 500
+#    socketTimeout: 250
+
+# When defining rate-limiting policy, the gateway has to store data to share with other gateway instances.
+# In this example, we are using MongoDB to store counters.
+ratelimit:
+  type: mongodb
+  mongodb:
+    uri: mongodb://${ds.mongodb.host}/${ds.mongodb.dbname}
+
+# Reporters configuration (used to store reporting monitoring data, request metrics, healthchecks and others...
+# All reporters are enabled by default. To stop one of them, you have to add the property 'enabled: false'
+reporters:
+  # Elasticsearch reporter
+  elastic:
+    host: ${ds.elastic.host}
+    port: ${ds.elastic.port}
+    # Reporters are async by nature so the gateway is keeping an internal in-memory structure to stack data before
+    # pushing them into a final storage (Elasticsearch in this example)
+    queue:
+      # Number of elements to store in the queue (extra-elements will be loosed)
+      size: 10240
+      # Reporter thread is looking for data every x milliseconds (each second in this example)
+      pollingTimeout: 1000
+
+# Gateway service configurations. Provided values are default values.
+# All services are enabled by default. To stop one of them, you have to add the property 'enabled: false' (See the
+# 'local' service for an example).
+services:
+  # Synchronization daemon used to keep the gateway state in sync with the configuration from the management repository
+  # Be aware that, by disabling it, the gateway will not be sync with the configuration done through management API
+  # and management UI
+  sync:
+    # Synchronization is done each 5 seconds
+    cron: '*/5 * * * * *'
+
+  # Service used to store and cache api-keys from the management repository to avoid direct repository communication
+  # while serving requests.
+  apikeyscache:
+    delay: 10000
+    unit: MILLISECONDS
+    threads: 3 # Threads core size used to retrieve api-keys from repository.
+
+  # Local registry service.
+  # This registry is used to load API Definition with json format from the file system. By doing so, you do not need
+  # to configure your API using the web console or the rest API (but you need to know and understand the json descriptor
+  # format to make it work....)
+  local:
+    enabled: false
+    path: ${gravitee.home}/apis # The path to API descriptors
+
+  # Gateway monitoring service.
+  # This service retrieves metrics like os / process / jvm metrics and send them to an underlying reporting service.
+  monitoring:
+    delay: 5000
+    unit: MILLISECONDS
+
+  # Endpoint healthcheck service.
+  healthcheck:
+    threads: 3 # Threads core size used to check endpoint availability
+
+# Referenced properties
+ds:
+  mongodb:
+    dbname: gravitee
+    host: localhost
+    port: 27017
+  elastic:
+    host: localhost
+    port: 9300
+----
 
 [[gravitee-standalone-management-configuration]]
-=== Standalone Management API
-Configuration of the Management API is fairly similar to the Standalone Gateway.
-You can refer to the above <<gravitee-standalone-gateway-configuration,section>> for more information.
+=== Management API Settings
 
+==== HTTP Server
 
-==== Global configuration
+Jetty Gravitee.io Management API HTTP server configuration.
+
 [source,yaml]
 ----
-node:
-  home: ${gravitee.home}
+jetty:
+  port: 8083
+  idleTimeout: 30000
+  acceptors: -1
+  selectors: -1
+  pool:
+    minThreads: 10
+    maxThreads: 200
+    idleTimeout: 60000
+    queueSize: 6000
+  jmx: false
+  statistics: false
+  accesslog:
+    enabled: true
+    path: ${gravitee.home}/logs/gravitee_accesslog_yyyy_mm_dd.log
+----
 
-http:
-  port: 8082
-  secured: false
-  compression_supported: false
-  idle_timeout: 0
-  tcp_keep_alive: true
-  ssl:
-    client_auth: false
-    keystore:
-      path: null
-      password: null
-    trustore:
-      path: null
-      password: null
+==== Plugins repository
 
+Gravitee.io Management API <<gravitee-plugins,plugins>> directory configuration.
+
+[source,yaml]
+----
 plugins:
-  registry:
-    path: ${node.home}/plugins
+  path: ${gravitee.home}/plugins
+----
 
+==== Management repository
+
+Management repository is used to store global configuration such as APIs, applications, apikeys, ...
+This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:
+
+http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html
+
+[source,yaml]
+----
 management:
   type: mongodb
   mongodb:
-    ...
+    dbname: ${ds.mongodb.dbname}
+    host: ${ds.mongodb.host}
+    port: ${ds.mongodb.port}
+#    username:
+#    password:
+#    connectionsPerHost: 0
+#    connectTimeout: 500
+#    maxWaitTime: 120000
+#    socketTimeout: 500
+#    socketKeepAlive: false
+#    maxConnectionLifeTime: 0
+#    maxConnectionIdleTime: 0
+#    serverSelectionTimeout: 0
+#    description: gravitee.io
+#    heartbeatFrequency: 10000
+#    minHeartbeatFrequency: 500
+#    heartbeatConnectTimeout: 1000
+#    heartbeatSocketTimeout: 20000
+#    localThreshold: 15
+#    minConnectionsPerHost: 0
+#    sslEnabled: false
+#    threadsAllowedToBlockForConnectionMultiplier: 5
+#    cursorFinalizerEnabled: true
 
-security:
-  type: basic-auth
-    ...
+# Management repository: single MongoDB using URI
+# For more information about MongoDB configuration using URI, please have a look to:
+# - http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html
+#management:
+#  type: mongodb
+#  mongodb:
+#    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+
+# Management repository: clustered MongoDB
+#management:
+#  type: mongodb
+#  mongodb:
+#    servers:
+#      - host: mongo1
+#        port: 27017
+#      - host: mongo2
+#        port: 27017
+#    dbname: ${ds.mongodb.dbname}
+#    connectTimeout: 500
+#    socketTimeout: 250
 ----
 
-Finally, the only part which is only relative to the Management API is the security configuration.
+==== Analytics
+
+Analytics repository is used to store all reporting, metrics, healthchecks stored by gateway instances.
+
+This is the default configuration using https://www.elastic.co/products/elasticsearch[Elasticsearch].
+
+[source,yaml]
+----
+analytics:
+  type: elasticsearch
+  elasticsearch:
+    host: ${ds.elastic.host}
+    port: ${ds.elastic.port}
+----
 
 [[gravitee-standalone-management-security-configuration]]
 ==== Security configuration
 
-This guide walks you through the process of configuring the security of the Management API.
-
-NOTE: The parent attribute of `gravitee.yml` for the security part is `security`.
+Security configuration providing Authentication, Identity and access-control mechanism for the Gravitee.io Management API.
 
 ===== Authentication Type
 
@@ -130,25 +458,16 @@ Gravitee.IO Management API supports both Basic Authentication and OAuth2 Authent
 [source,yaml]
 ----
 security:
-  type: # authentication type (default to 'basic', possible values : 'basic', 'oauth2')
+  type: basic # authentication type (default to 'basic', possible values : 'basic', 'oauth2')
 ----
 
-NOTE: Based on the authentication type you choose, many properties kick in, especially for the Basic Authentication configuration.
+====== Basic Authentication configuration
 
-===== Authentication Provider
+Authentication Provider::
 
-The Gravitee.io management API module supports by default some standard ways to retrieve user information for authentication from Memory, LDAP and Gravitee.io repository (based on the repository type you have chosen). Let's see how to configure it.
+The Gravitee.io management API supports by default some standard ways to retrieve user information for authentication from InMemory to LDAP or Gravitee.io <<gravitee-repositories, repository>>. Let's see how to configure it.
 
-[source,yaml]
-----
-security:
-  type: basic                   # authentication type
-  providers:                    # required authentication providers
-----
-
-NOTE: This is the minimum sample file to declare at least one authentication provider
-
-====== InMemory Provider
+InMemory Provider::
 
 Basic in-memory implementation, a simple and convenient way to declare "technical" users such as the administrator users. An example configuration is shown below:
 
@@ -176,7 +495,7 @@ security:
 
 NOTE: We've just declared two users, `user` with `ROLE_USER` role and `admin` with `ROLE_ADMIN`
 
-====== LDAP Provider
+LDAP Provider::
 
 An AuthenticationProvider implementation that authenticates against an LDAP server. There are many ways in which the LDAP authentication provider can be configure. You should be familiar with LDAP before trying to use it.
 
@@ -208,9 +527,9 @@ security:
       context-source-base: dc=gravitee,dc=io # the context source base
 ----
 
-====== Gravitee Repository Provider
+Gravitee.io Repository Provider::
 
-An AuthenticationProvider implementation that authenticates against Gravitee data source repository. Users are defined via the Gravitee.io management API.
+An AuthenticationProvider implementation that authenticates against Gravitee.io data source repository. Users are defined via the Gravitee.io management API.
 
 [source,yaml]
 ----
@@ -228,9 +547,9 @@ security:
 
 NOTE: If password encoding system is enable the password encoder uses the BCrypt strong hashing function.
 
-====== Combine the providers
+Combine the providers::
 
-You can specify as many providers as you want. They will be checked in same order you declared them inside the authentication-manager attribute. Once a successfull authentication is made, the Gravitee Management API will stop polling the providers.
+You can specify as many providers as you want. They will be checked in same order you declared them inside the providers attribute. Once a successfull authentication is made, the Gravitee.io Management API will stop polling the providers.
 
 [source,yaml]
 ----
@@ -311,7 +630,7 @@ Respoce Body    ::
                 }
 ----
 
-The Gravitee.io Management supports OAuth2 Authentication via the following configuration :
+The Gravitee.io Management API supports OAuth2 Authentication via the following configuration :
 
 [source,yaml]
 ----
@@ -329,62 +648,206 @@ security:
 
 NOTE: With OAuth2 Authentication type, all requests to Gravitee Management API must contain the following header : Authorization Bearer <your-access-token>
 
-[appendix]
-===== Security application properties
+==== Sending emails
 
-NOTE: This sample file is meant as a guide only. Do not copy/paste the entire content; rather pick only the properties that you need.
+===== SMTP
+
+SMTP configuration used to send mails.
 
 [source,yaml]
 ----
+email:
+  host: smtp.my.domain
+  port: 465
+  from: noreply@my.domain
+  username: user@my.domain
+  password: password
+----
+
+===== Mail templates
+
+Mail templates configuration. Gravitee.io Management API use https://velocity.apache.org/[Velocity template engine] to parse and create the mail templates.
+
+[source,yaml]
+----
+templates:
+  path: ${gravitee.home}/templates
+----
+
+Currently, there are three kind of mail templates :
+
+[width="100%",cols="20%,80%",frame="topbot",options="header"]
+|======================
+|Mail Template            |Description
+|apiKeyRevoked.html       |API Key revoked notification.
+|apiMember.html           |New API member notification.
+|applicationMember.html   |New application member notification.
+|======================
+
+==== Common Gravitee.io Management API properties
+
+Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.yml` file. This section provides the general configuration of Gravitee.IO Management API.
+
+[source,yaml]
+----
+############################################################################################################
+################################ Gravitee.IO Management API - Configuration ################################
+############################################################################################################
+
+############################################################################################################
+# This file is the general configuration of Gravitee.IO Management API:
+# - Properties (and respective default values) in comment are provided for information.
+# - You can reference other property by using ${property.name} syntax
+# - gravitee.home property is automatically set-up by launcher and refers to the installation path. Do not override it !
+#
+# Please have a look to http://docs.gravitee.io/ for more options and fine-grained granularity
+############################################################################################################
+
+# HTTP Server
+#jetty:
+#  port: 8083
+#  idleTimeout: 30000
+#  acceptors: -1
+#  selectors: -1
+#  pool:
+#    minThreads: 10
+#    maxThreads: 200
+#    idleTimeout: 60000
+#    queueSize: 6000
+#  jmx: false
+#  statistics: false
+#  accesslog:
+#    enabled: true
+#    path: ${gravitee.home}/logs/gravitee_accesslog_yyyy_mm_dd.log
+
+# Path to plugins repository
+#plugins:
+#  path: ${gravitee.home}/plugins
+
+# Management repository is used to store global configuration such as APIs, applications, apikeys, ...
+# This is the default configuration using MongoDB (single server)
+# For more information about MongoDB configuration, please have a look to:
+# - http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html
+management:
+  type: mongodb
+  mongodb:
+    dbname: ${ds.mongodb.dbname}
+    host: ${ds.mongodb.host}
+    port: ${ds.mongodb.port}
+#    username:
+#    password:
+#    connectionsPerHost: 0
+#    connectTimeout: 500
+#    maxWaitTime: 120000
+#    socketTimeout: 500
+#    socketKeepAlive: false
+#    maxConnectionLifeTime: 0
+#    maxConnectionIdleTime: 0
+#    serverSelectionTimeout: 0
+#    description: gravitee.io
+#    heartbeatFrequency: 10000
+#    minHeartbeatFrequency: 500
+#    heartbeatConnectTimeout: 1000
+#    heartbeatSocketTimeout: 20000
+#    localThreshold: 15
+#    minConnectionsPerHost: 0
+#    sslEnabled: false
+#    threadsAllowedToBlockForConnectionMultiplier: 5
+#    cursorFinalizerEnabled: true
+
+# Management repository: single MongoDB using URI
+# For more information about MongoDB configuration using URI, please have a look to:
+# - http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html
+#management:
+#  type: mongodb
+#  mongodb:
+#    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+
+# Management repository: clustered MongoDB
+#management:
+#  type: mongodb
+#  mongodb:
+#    servers:
+#      - host: mongo1
+#        port: 27017
+#      - host: mongo2
+#        port: 27017
+#    dbname: ${ds.mongodb.dbname}
+#    connectTimeout: 500
+#    socketTimeout: 250
+
+# Analytics repository is used to store all reporting, metrics, healthchecks stored by gateway instances
+# This is the default configuration using Elasticearch
+analytics:
+  type: elasticsearch
+  elasticsearch:
+    host: ${ds.elastic.host}
+    port: ${ds.elastic.port}
+
 security:
-  type: basic
-  providers:
-
-    # First authentication provider
-    - type: ldap
-      embedded: true
-      role-mapping: true
-      # if role-mapping is true set the following role mapper LDAP values
-      role-mapper: {
-        ROLE_DEVELOPERS: ROLE_USER,
-        ROLE_MEMBERS: ROLE_USER,
-        ROLE_OWNERS: ROLE_ADMIN
-      }
-      user-dn-patterns: uid={0},ou=people
-      group-search-base: ou=groups
-      context-source-base: dc=gravitee,dc=io
-      # if embedded is false set the following values
-      # context-source-username: test
-      # context-source-password: test
-      # context-source-url: ldap://localhost:389/dc=gravitee,dc=io
-
-    # Second authentication provider
+  type: basic # authentication type (default to 'basic', possible values : 'basic', 'oauth2')
+  providers:  # authentication providers
     - type: memory
       users:
         - user:
           username: user
           password: password
-          roles: USER
+          roles: USER # you can declare multiple roles with comma separator (USER, OWNER, ADMIN ...)
         - user:
           username: admin
           password: admin
           roles: ADMIN
-
-    # Third authentication provider
     - type: gravitee
       password-encoding: true
+#    - type: ldap
+#      embedded: true                        # embedded mode (true to use the embedded ldap server, usefull for test/demo, possible values : true or false)
+      # if embedded is false set the following values
+#      context-source-username: test
+#      context-source-password: test
+#      context-source-url: ldap://localhost:389/dc=gravitee,dc=io
+#      role-mapping: true                    # role mapping mode for ldap user (possible values : true or false)
+      # if role-mapping is true set the following role mapper LDAP values (syntax { "user_ldap_role" : "user_new_added_ldap_role"})
+#      role-mapper: {
+#        ROLE_DEVELOPERS: ROLE_USER,
+#        ROLE_MEMBERS: ROLE_USER,
+#        ROLE_OWNERS: ROLE_ADMIN
+#      }
+#      user-dn-patterns: uid={0},ou=people   # user dn patterns (default 'uid={0},ou=people')
+#      group-search-base: ou=groups          # groupe search base (default 'ou=groups')
+#      context-source-base: dc=gravitee,dc=io # the context source base
+
+# SMTP configuration used to send mails
+email:
+  host: smtp.my.domain
+#  port: 465
+  from: noreply@my.domain
+  username: user@my.domain
+  password: password
+
+# Mail templates
+#templates:
+#  path: ${gravitee.home}/templates
+
+# Referenced properties
+ds:
+  mongodb:
+    dbname: gravitee
+    host: localhost
+    port: 27017
+  elastic:
+    host: localhost
+    port: 9300
 ----
 
-
 [[gravitee-repositories-configuration]]
-=== Repositories
+=== Advanced Repositories Settings
 
 [[gravitee-repositories-types]]
 ==== Repository types
 
-* management: All the data the manage the Gravitee.io platform, including API definitions, users, teams, ..
-* rate limit: Rate limiting data
-* analytics: Analytics data
+* Management: All the data to manage the Gravitee.io platform, including API definitions, users, teams, ..
+* Rate Limit: Rate limiting data
+* Analytics: Analytics data
 
 **Compatibility Matrix: **
 |===

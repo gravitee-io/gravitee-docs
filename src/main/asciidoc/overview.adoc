@@ -1,5 +1,5 @@
 [[gravitee-introduction]]
-= Overview
+= Getting Started
 
 [partintro]
 --
@@ -20,6 +20,82 @@ API Management enables you to create, manage, secure, track and sharing your API
 * Leveraging common policy configuration across different APIs
 --
 
+[[gravitee-components]]
+== Gravitee.io
+Gravitee.io is a flexible, lightweight and blazing-fast open source API Management solution that helps you and your organizations to control finely who, when and how users access your APIs. Gravitee.io is not only a product, it acts as a global solution for API Management.
+
+=== Architecture Overview
+
+image::architecture_overview.png[]
+
+=== Gateway
+The core component of the Gravitee.io solution. You can just compare it to an HTTP proxy to understand
+its goal. But in comparison to these proxies, our gateway is applying rules (ie. <<gravitee-policies, policies>>) to
+both HTTP requests and responses according to your needs.
+
+=== Management API
+RESTful API providing a bunch of services to manage the platform globally. All exposed
+services are constraint by authentication and authorization rules.
+You can find more information by having a look to the <<gravitee-management-api-overview, Management API>> section.
+
+=== Management UI
+This is the Web UI client of Gravitee.io Management API. The Management UI offers the same features as the Management API such as API management, application management, user management, analytics dashboard.
+
+[[gravitee-plugins]]
+=== Plugins
+_Plugins_ are additional components that can be _plugged into_ the Gateway. _Plugins_ can specialized the _gateway_
+behavior to exactly fit your needs.
+_Plugins_ follow a given directory structure convention. Look at the <<gravitee-dev-guide-overview, Developer Guide>>
+to have more information about it.
+
+Currently, there are three kind of _plugins_ which are:
+
+* <<gravitee-policies, Policies>>
+* <<gravitee-reporters, Reporters>>
+* <<gravitee-repositories, Repositories>>
+
+[[gravitee-policies]]
+==== Policies
+Gravitee _plugin_ acting as a step in the Request/Response _gateway_ proxy chain. 
+_Policy_ can be treated as a _proxy controller_ by guaranteeing if a given business rule is fulfilled during the
+Request/Response processing.
+
+Want to know how create, use, and deploy a _policy_? Check out the  <<gravitee-dev-guide-overview, Developer Guide>>!
+
+[[gravitee-reporters]]
+==== Reporters
+
+Gravitee _plugin_ reporting Request/Response _gateway_ events. Like others Gravitee plugins you can create, use, and deploy a _reporter_ thanks to the <<gravitee-dev-guide-overview, Developer Guide>>!
+
+[[gravitee-repositories]]
+==== Repositories
+Pluggable storage component for APIs' configurations, Policies configurations, Users/Teams configurations and so on.
+You can find more information by having a look to the <<gravitee-management-api-repository, Management API : Repository>> section.
+
+== Basic Concepts
+Before going further with Gravitee.io, you have to read this section to get a better understanding of the concepts you need
+to know to go ahead quickly.
+
+=== API
+An API is the main entity used by Gravitee.io. You can see it as a starting point to expose an API through the gateway.
+
+=== Policy
+Policy is an other important entity to apply some rules in requests / responses emitted by a consumer and the gateway.
+Policies can be chained using a logical order.
+
+Good examples for a policy are:
+
+* Authorization using an API key (see the <<policy-apikey ,api-key policy>>)
+* Applying CORS filters
+* Applying rate limiting or quota to avoid API flooding.
+
+=== Reporter
+
+Gravitee modules which report GraviteeIO Gateway Request/Response events to supported storage solutions. "Out of the box" reporters are :
+
+* ElasticSearch Engine Reporter
+* File Reporter
+
 [[why-gravitee-io]]
 == Why Gravitee.io ?
 At the beginning, we were searching for an open-source solution to do API Management. Unfortunately, we've never found
@@ -38,76 +114,3 @@ and our components can be started in a "blazing-fast" mode (generally speaking, 
 to be accessible to consumers).
 
 You see no constraint using Gravitee.io at all ? Sounds good ! So let's go further with Gravitee.io right now !
-
-== Fundamentals
-Before going further with Gravitee.io, you have to read this section to get a better understanding of the concepts you need
-to know to go ahead quickly.
-
-=== API
-An API is the main entity used by Gravitee.io. You can see it as a starting point to expose an API through the gateway.
-
-=== Policy
-Policy is an other important entity to apply some rules in requests / responses emitted by a consumer and the gateway.
-Policies can be chained using a logical order.
-
-Good examples for a policy are:
-
-* Authorization using an API key (see the api-key policy)
-* Applying CORS filters
-* Applying rate limiting or quota to avoid API flooding.
-
-=== Reporter
-
-Gravitee modules which report GraviteeIO Gateway Request/Response events to supported storage solutions. "Out of the box" reporters are :
-
-* ElasticSearch Engine Reporter
-* File Reporter
-
-[[gravitee-components]]
-== Gravitee.io Components
-Gravitee.io is not only a product, you can see on it a global solution for API Management. By this, the community provides
-components linked between each other and run well together.
-
-=== Architecture Overview
-
-image::architecture_overview.png[]
-
-=== Gateway
-The Gateway is the core component of the Gravitee.io solution. You can just compare it to an HTTP proxy to understand
-its goal. But in comparison to these proxies, our gateway is applying rules (ie. <<gravitee-policies, policies>>) to
-both HTTP requests and responses according to your needs.
-
-=== Management API
-The Management API is an API which is providing a bunch of services to manage the platform globally. All exposed
-services are constraint by authentication and authorization rules.
-You can find more information by having a look to the <<gravitee-management-api-overview, Management API>> section.
-
-=== Repository
-Data storage component for APIs' configurations, Policies configurations, Users/Teams configurations and so on.
-You can find more information by having a look to the <<gravitee-management-api-repository, Management API : Repository>> section.
-
-=== Plugins
-_Plugins_ are additional components that can be _plugged into_ the Gateway. _Plugins_ can specialized the _gateway_
-behavior to exactly fit your needs.
-_Plugins_ follow a given directory structure convention. Look at the <<gravitee-dev-guide-overview, Developer Guide>>
-to have more information about it.
-
-Currently, there are two kind of _plugins_ which are:
-
-* <<gravitee-policies, Policies>>
-* <<gravitee-reporters, Reporters>>
-
-Hereafter an overview about these two kind of _plugins_:
-
-[[gravitee-policies]]
-==== Policies
-Policy is a kind of Gravitee _plugin_ acting as a step in the Request/Response _gateway_ proxy chain. 
-_Policy_ can be treated as a _proxy controller_ by guaranteeing if a given business rule is fulfilled during the
-Request/Response processing.
-
-Want to know how create, use, and deploy a _policy_? Check out the  <<gravitee-dev-guide-overview, Developer Guide>>!
-
-[[gravitee-reporters]]
-==== Reporters
-
-Gravitee _plugin_ reporting Request/Response _gateway_ events. Like others Gravitee plugins you can create, use, and deploy a _reporter_ thanks to the <<gravitee-dev-guide-overview, Developer Guide>>!
