@@ -1,8 +1,4 @@
-
-:download_gateway_standalone_zip: http://repo1.maven.org/maven2/io/gravitee/gateway/standalone/gravitee-gateway-standalone-distribution-zip/0.2.0/gravitee-gateway-standalone-distribution-zip-0.2.0.zip
-:download_management_standalone_zip: http://repo1.maven.org/maven2/io/gravitee/management/standalone/gravitee-management-api-standalone-distribution-zip/0.2.0/gravitee-management-api-standalone-distribution-zip-0.2.0.zip
-
-:toc-title: Definitive Guide
+:toc-title: Reference Guide
 :imagesdir: images
 :sectnums:
 :docinfo2:
@@ -11,6 +7,6 @@
 
 Version {revnumber} - Last build {localdate}
 include::overview.adoc[]
-include::user-guide/user-guide.adoc[]
 include::installation-guide/installation-guide.adoc[]
+include::user-guide/user-guide.adoc[]
 include::dev-guide/dev-guide.adoc[]
