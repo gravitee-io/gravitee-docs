@@ -65,7 +65,7 @@
                         <configuration>
                             <backend>html5</backend>
                             <doctype>book</doctype>
-                            <outputDirectory>${project.build.directory}/generated-docs/${project.version}/reference/htmlsingle/</outputDirectory>
+                            <outputDirectory>${project.build.directory}/generated-docs/htmlsingle/</outputDirectory>
                             <attributes>
                             </attributes>
                         </configuration>
