@@ -30,7 +30,7 @@
 
 	<fileSets>
 		<fileSet>
-			<directory>${project.build.directory}/generated-docs/${project.version}/reference/htmlsingle</directory>
+			<directory>${project.build.directory}/generated-docs/htmlsingle</directory>
 			<outputDirectory>/graviteeio-docs-${project.version}</outputDirectory>
 			<includes>
 				<include>**/*</include>
