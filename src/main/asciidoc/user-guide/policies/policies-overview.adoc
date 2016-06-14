@@ -6,6 +6,7 @@ Gravitee.io is coming by default with common _policies_ to let you go ahead with
 * <<policy-apikey,API Key authorization>>
 * <<policy-authentication,Authentication>>
 * <<policy-cors,CORS Headers manipulation>>
+* <<policy-groovy,Groovy>>
 * <<policy-ipfiltering,IP Filtering>>
 * <<policy-mock,Mock>>
 * <<policy-ratelimit,Rate limiting>>
@@ -19,6 +20,8 @@ include::policy-apikey.adoc[leveloffset=+2]
 include::policy-authentication.adoc[leveloffset=+2]
 
 include::policy-cors.adoc[leveloffset=+2]
+
+include::policy-groovy.adoc[leveloffset=+2]
 
 include::policy-ipfiltering.adoc[leveloffset=+2]
 
