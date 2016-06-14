@@ -24,9 +24,33 @@ API Management enables you to create, manage, secure, track and sharing your API
 == Gravitee.io
 Gravitee.io is a flexible, lightweight and blazing-fast open source API Management solution that helps you and your organizations to control finely who, when and how users access your APIs. Gravitee.io is not only a product, it acts as a global solution for API Management.
 
+[[why-gravitee-io]]
+=== Why Gravitee.io ?
+At the very beginning, we were searching for an open-source solution to do API Management. Unfortunately, we've never found
+the tool which fit exactly our needs and by choosing one of them we know that we have to pull other components and,
+for some of them use a dedicated support.
+
+That's the main reason why we launch Gravitee.io : our goal is to provide you an highly integrable solution which
+is able to fit perfectly your infrastructure and your business needs.
+
+Also, Gravitee.io has been developed and designed to be fully extensible using its internal plugin system. You must be
+able to do whatever you want : defining your own policy, developing your own reporting system, and so on...
+
+Finally, all components provided by Gravitee.io (including gateway and management-api) are really lightweight. We
+took an aggressive approach to CPU and memory management. This makes things really easier for you in terms of high-availability
+and our components can be started in a "blazing-fast" mode (generally speaking, it takes less than 5 seconds for the gateway
+to be accessible to consumers, depending on the number of APIs to deploy).
+
+You see no constraint using Gravitee.io at all ? Sounds good ! So let's go further with Gravitee.io right now !
+
 === Architecture Overview
+Before going further with Gravitee.io, you have to read this section to get a better understanding of the concepts you need
+to know to go ahead quickly.
 
 image::architecture_overview.png[]
+
+=== API
+An API is the main entity defined and used by Gravitee.io. You can see it as a starting point to expose services through the gateway. One (or more) endpoint is defined into the gateway section of the API to point on the backend which will be consumed by the gateway.
 
 === Gateway
 The core component of the Gravitee.io solution. You can just compare it to an HTTP proxy to understand
@@ -43,45 +67,28 @@ This is the Web UI client of Gravitee.io Management API. The Management UI offer
 
 [[gravitee-plugins]]
 === Plugins
-_Plugins_ are additional components that can be _plugged into_ the Gateway. _Plugins_ can specialized the _gateway_
-behavior to exactly fit your needs.
-_Plugins_ follow a given directory structure convention. Look at the <<gravitee-dev-guide-overview, Developer Guide>>
+_Plugins_ are additional components that can be _plugged into_ the Gateway and / or the Management API.
+_Plugins_ can specialized these component's behavior to exactly fit your needs and your technical constraints.
+They follow a given directory structure convention, look at the <<gravitee-dev-guide-overview, Developer Guide>>
 to have more information about it.
 
-Currently, there are three kind of _plugins_ which are:
+During your Gravitee.io usage, you must encounter several types of _plugins_ which are:
 
-* <<gravitee-policies, Policies>>
-* <<gravitee-reporters, Reporters>>
-* <<gravitee-repositories, Repositories>>
+[width="100%",cols="^3,^3,^10",options="header"]
+|===
+|Type|Components|Examples
+| <<gravitee-repositories, Identity Provider>>|Management API|LDAP, Oauth2, InMemory, ...
+| <<gravitee-policies, Policies>>|Management API / Gateway|API Key, Rate-limiting, Cache, ...
+| <<gravitee-reporters, Reporters>>|Gateway|Elasticsearch, Accesslog, ...
+| <<gravitee-repositories, Repositories>>|Management API / Gateway|MongoDB, Redis, Elasticsearch, ...
+| <<gravitee-resources, Resources>>|Management API / Gateway|Oauth2, Cache, LDAP, ...
+| <<gravitee-repositories, Services>>|Gateway|Sync, local registry, healthcheck, monitor, ...
+|===
 
 [[gravitee-policies]]
 ==== Policies
-Gravitee _plugin_ acting as a step in the Request/Response _gateway_ proxy chain. 
-_Policy_ can be treated as a _proxy controller_ by guaranteeing if a given business rule is fulfilled during the
-Request/Response processing.
-
-Want to know how create, use, and deploy a _policy_? Check out the  <<gravitee-dev-guide-overview, Developer Guide>>!
-
-[[gravitee-reporters]]
-==== Reporters
-
-Gravitee _plugin_ reporting Request/Response _gateway_ events. Like others Gravitee plugins you can create, use, and deploy a _reporter_ thanks to the <<gravitee-dev-guide-overview, Developer Guide>>!
-
-[[gravitee-repositories]]
-==== Repositories
-Pluggable storage component for APIs' configurations, Policies configurations, Users/Teams configurations and so on.
-You can find more information by having a look to the <<gravitee-management-api-repository, Management API : Repository>> section.
-
-== Basic Concepts
-Before going further with Gravitee.io, you have to read this section to get a better understanding of the concepts you need
-to know to go ahead quickly.
-
-=== API
-An API is the main entity used by Gravitee.io. You can see it as a starting point to expose an API through the gateway.
-
-=== Policy
-Policy is an other important entity to apply some rules in requests / responses emitted by a consumer and the gateway.
-Policies can be chained using a logical order.
+A *policy* is acting as a behavior to apply to the request and / or response handled by the _gateway_ and can be chained by a request policy chain or a response policy chain using a logical order.
+Policy can be treated like a _proxy controller_ by guaranteeing if a given business rule is fulfilled during request / response processing.
 
 Good examples for a policy are:
 
@@ -89,28 +96,24 @@ Good examples for a policy are:
 * Applying CORS filters
 * Applying rate limiting or quota to avoid API flooding.
 
-=== Reporter
+Want to know how to create, use, and deploy a custom policy? Check out the  <<gravitee-dev-guide-overview, Developer Guide>>!
 
-Gravitee modules which report GraviteeIO Gateway Request/Response events to supported storage solutions. "Out of the box" reporters are :
+[[gravitee-reporters]]
+==== Reporters
+
+A *reporter* is used by gateway instance to report many types of event:
+
+* Requests/responses metrics : response-time, content-length, api-key, ...
+* Monitoring metrics: CPU, Heap usage, ...
+
+"Out of the box" reporters are :
 
 * ElasticSearch Engine Reporter
 * File Reporter
 
-[[why-gravitee-io]]
-== Why Gravitee.io ?
-At the beginning, we were searching for an open-source solution to do API Management. Unfortunately, we've never found
-the tool which fit exactly our needs and by choosing one of them we know that we have to pull other components and,
-for some of them use a dedicated support.
+Like any other plugin you can create, use, and deploy a custom reporter thanks to the <<gravitee-dev-guide-overview, Developer Guide>>!
 
-That's the main reason why we launch Gravitee.io : our goal is to provide you an highly integrable solution which
-is able to fit perfectly your infrastructure and your business needs.
-
-Also, Gravitee.io has been developed and designed to be fully extensible using its internal plugin system. You must be
-able to do whatever you want : defining your own policy, developing your own reporting system, and so on...
-
-Finally, all components provided by Gravitee.io (including gateway and management-api) are really lightweight. We
-took an aggressive approach to memory management. This makes things really easier for you in terms of high-availability
-and our components can be started in a "blazing-fast" mode (generally speaking, it takes less than 3 seconds for the gateway
-to be accessible to consumers).
-
-You see no constraint using Gravitee.io at all ? Sounds good ! So let's go further with Gravitee.io right now !
+[[gravitee-repositories]]
+==== Repositories
+Pluggable storage component for APIs' configurations, policies configurations, analytics and so on.
+You can find more information by having a look to the <<gravitee-management-api-repository, Management API : Repository>> section.

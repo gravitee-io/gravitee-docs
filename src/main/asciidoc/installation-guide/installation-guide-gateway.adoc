@@ -18,20 +18,21 @@ NOTE: You can download the latest JDK from the http://www.oracle.com/technetwork
 
 ==== Database
 
-Default Gravitee.io Gateway distribution requires MongoDB to store mandatory data and ElasticSearch to store reporting data.
+Default Gravitee.io Gateway distribution requires MongoDB 3.x to store mandatory data and ElasticSearch 2.x to store
+reporting data.
 
-NOTE: You can download MongoDB from the https://www.mongodb.org/downloads#production[MongoDB Download Site] 
-and download Elasticsearch from the https://www.elastic.co/downloads/elasticsearch[Elasctic Download Site]
+NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#production[MongoDB Download Site]
+and download Elasticsearch 2.x from the https://www.elastic.co/downloads/elasticsearch[Elasctic Download Site]
 
 === Installing from the ZIP archive
 
-The binaries are available from http://gravitee.io/#downloads or via https://dl.bintray.com/gravitee-io/release/{graviteeio-version}/graviteeio-full-{graviteeio-version}.zip[bintray].
+Binaries are available from https://gravitee.io/downloads/full-stack/latest/[Downloads page] or via https://dl.bintray.com/gravitee-io/release/{graviteeio-version}/graviteeio-full-{graviteeio-version}.zip[Bintray].
 
 [source,bash]
 [subs="attributes"]
-$ curl -L https://dl.bintray.com/gravitee-io/release/{graviteeio-version}/graviteeio-full-{graviteeio-version} -o gravitee-standalone-distribution-{graviteeio-version}.zip
+$ curl -L https://dl.bintray.com/gravitee-io/release/{graviteeio-version}/:graviteeio-full-{graviteeio-version}.zip -o gravitee-standalone-distribution-{graviteeio-version}.zip
 
-Once file has been downloaded, you just have to unpack it in the right place
+Once file has been downloaded, you just have to unpack it in the right place.
 
 [source,bash]
 [subs="attributes"]
@@ -54,11 +55,11 @@ If everything goes well, you should see this kind of logs:
 20:55:42.167 [gravitee] INFO  i.g.g.standalone.node.GatewayNode - Gravitee.io - Gateway [id: 9c31b9cc-f779-4f2d-b1b9-ccf779df2df5 - version: {graviteeio-gateway-version} (build: XXXX) revision#XXXX] started in 3871 ms.
 ...
 
-Default Gravitee.io Gateway listens on port *8082* and can be accessed using the following URL :
+by default, the gateway is listening on port *8082* and can be accessed using the following URL :
 
 http://SERVER_DOMAIN:8082.
 
-This port is <<gravitee-standalone-gateway-configuration, configurable>> if necessary.
+HTTP port can be <<gravitee-standalone-gateway-configuration, configured>> if necessary.
 
 === Directory structure
 
@@ -67,10 +68,10 @@ After successfully installed Gravitee.io Gateway, the `graviteeio-gateway` direc
 [width="100%",cols="20%,80%",frame="topbot",options="header"]
 |======================
 |Folder    |Description
-|bin       |Gravitee.io Gateway startup/shutdown scripts.
-|config    |Gravitee.io Gateway <<gravitee-standalone-gateway-configuration, configuration>> folder (application, logs and cache configuration).
-|lib       |Gravitee.io Gateway libraries (Gravitee.io Gateway and third party libraries).
-|logs      |Gravitee.io Gateway log files.
-|plugins   |Gravitee.io Gateway pluggable <<gravitee-plugins, plugins>>.
+|bin       |Startup/shutdown scripts
+|config    |<<gravitee-standalone-gateway-configuration, Configuration>> folder (application, logs and cache configuration)
+|lib       |Libraries (gravitee.io libraries and third parties library)
+|logs      |Gateway log files
+|plugins   |Gateway <<gravitee-plugins, plugins>>
 |======================
 
