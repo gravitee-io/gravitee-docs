@@ -4,6 +4,7 @@
 Gravitee.io is coming by default with common _policies_ to let you go ahead with Gravitee.io usage.
 
 * <<policy-apikey,API Key authorization>>
+* <<policy-cache,Cache>>
 * <<policy-cors,CORS Headers manipulation>>
 * <<policy-groovy,Groovy>>
 * <<policy-ipfiltering,IP Filtering>>
@@ -11,12 +12,12 @@ Gravitee.io is coming by default with common _policies_ to let you go ahead with
 * <<policy-ratelimit,Rate limiting>>
 * <<policy-request-content-limit,Request Content Limiting>>
 * <<policy-rest-to-soap,REST to SOAP>>
-* <<policy-transform-headers,Transform Header>>
-* <<policy-transform-queryparameters,Transform Query Parametersr>>
+* <<policy-transform-headers,Transform Headers>>
+* <<policy-transform-queryparameters,Transform Query Parameters>>
 
 include::policy-apikey.adoc[leveloffset=+2]
 
-include::policy-authentication.adoc[leveloffset=+2]
+include::policy-cache.adoc[leveloffset=+2]
 
 include::policy-cors.adoc[leveloffset=+2]
 
