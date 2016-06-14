@@ -14,6 +14,7 @@ Gravitee.io is coming by default with common _policies_ to let you go ahead with
 * <<policy-rest-to-soap,REST to SOAP>>
 * <<policy-transform-headers,Transform Headers>>
 * <<policy-transform-queryparameters,Transform Query Parameters>>
+* <<policy-xslt,XSL Transformation>>
 
 include::policy-apikey.adoc[leveloffset=+2]
 
@@ -36,3 +37,5 @@ include::policy-rest-to-soap.adoc[leveloffset=+2]
 include::policy-transform-headers.adoc[leveloffset=+2]
 
 include::policy-transform-queryparameters.adoc[leveloffset=+2]
+
+include::policy-xslt.adoc[leveloffset=+2]
