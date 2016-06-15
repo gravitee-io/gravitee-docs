@@ -16,6 +16,6 @@ node() {
 
     stage "Docker Build & Push"
 
-    sh "docker build -t graviteeio/docs:latest --pull=true ."
-    sh "docker push graviteeio/docs:latest"
+    sh "docker build -t graviteeio/docs:nightly --pull=true ."
+    sh "docker push graviteeio/docs:nightly"
 }
