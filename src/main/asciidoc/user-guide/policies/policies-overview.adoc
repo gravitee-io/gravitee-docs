@@ -7,6 +7,7 @@ Gravitee.io is coming by default with common _policies_ to let you go ahead with
 * <<policy-cache,Cache>>
 * <<policy-cors,CORS>>
 * <<policy-groovy,Groovy>>
+* <<policy-jwt,JWT>>
 * <<policy-ipfiltering,IP Filtering>>
 * <<policy-mock,Mock>>
 * <<policy-ratelimit,Rate limiting>>
@@ -23,6 +24,8 @@ include::policy-cache.adoc[leveloffset=+2]
 include::policy-cors.adoc[leveloffset=+2]
 
 include::policy-groovy.adoc[leveloffset=+2]
+
+include::policy-jwt.adoc[leveloffset=+2]
 
 include::policy-ipfiltering.adoc[leveloffset=+2]
 
