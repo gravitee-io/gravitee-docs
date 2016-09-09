@@ -6,7 +6,7 @@ Gravitee.io is coming by default with common _policies_ to let you go ahead with
 * <<policy-apikey,API Key>>
 * <<policy-cache,Cache>>
 * <<policy-cors,CORS>>
-* <<policy-dynamic-routing,Dynamic Routing>>
+// * <<policy-dynamic-routing,Dynamic Routing>>
 * <<policy-groovy,Groovy>>
 * <<policy-html-json,HTML to JSON>>
 * <<policy-ipfiltering,IP Filtering>>
@@ -27,7 +27,7 @@ include::policy-cache.adoc[leveloffset=+2]
 
 include::policy-cors.adoc[leveloffset=+2]
 
-include::policy-dynamic-routing.adoc[leveloffset=+2]
+// include::policy-dynamic-routing.adoc[leveloffset=+2]
 
 include::policy-groovy.adoc[leveloffset=+2]
 
