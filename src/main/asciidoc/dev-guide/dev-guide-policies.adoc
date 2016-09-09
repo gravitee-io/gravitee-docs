@@ -18,7 +18,7 @@ Suppose you want to create a _policy_ that control if request contains the `X-Fo
 $ mvn archetype:generate\
     -DarchetypeGroupId=io.gravitee.maven.archetypes\
     -DarchetypeArtifactId=gravitee-policy-maven-archetype\
-    -DarchetypeVersion=1.0.0-SNAPSHOT\
+    -DarchetypeVersion=1.1.0-SNAPSHOT\
     -DartifactId=foo-header-check-policy\
     -DgroupId=my.gravitee.extension.policy\
     -Dversion=1.0.0-SNAPSHOT\

@@ -43,19 +43,34 @@ to be accessible to consumers, depending on the number of APIs to deploy).
 
 You see no constraint using Gravitee.io at all ? Sounds good ! So let's go further with Gravitee.io right now !
 
-=== Architecture Overview
+[[gravitee-architecture-overview]]
+=== Architecture
 Before going further with Gravitee.io, you have to read this section to get a better understanding of the concepts you need
-to know to go ahead quickly.
+to know to go forward very (and really) quickly.
 
-image::architecture_overview.png[]
+
+.Gravitee.io - Global Architecture
+image::architecture/graviteeio-global-architecture.png[Gravitee.io - Global Architecture, 873, 530, align=center, title-align=center]
+
+.Gravitee.io - Platform Architecture
+image::architecture/graviteeio-platform-architecture.png[Gravitee.io - Platform Architecture, 710, 654, align=center, title-align=center]
 
 === API
-An API is the main entity defined and used by Gravitee.io. You can see it as a starting point to expose services through the gateway. One (or more) endpoint is defined into the gateway section of the API to point on the backend which will be consumed by the gateway.
+An API is the main element defined and used by Gravitee.io. You can see it as a starting point to expose services through the gateway.
+One (or more) endpoint is defined into the gateway section of the API to point on the backend which will be consumed by the gateway.
 
 === Gateway
-The core component of the Gravitee.io solution. You can just compare it to an HTTP proxy to understand
-its goal. But in comparison to these proxies, our gateway is applying rules (ie. <<gravitee-policies, policies>>) to
-both HTTP requests and responses according to your needs.
+The gateway is the core component of the Gravitee.io platform. You can compare it to a "smart" proxy to understand its goal.
+
+Unlike traditional HTTP proxy, the gateway is able to apply <<gravitee-policies, policies>> (ie. rules) to
+both HTTP requests and responses according to your needs, meaning that you can enhance requests and responses processing
+by adding transformation, security, and so many other things...
+
+.Gravitee.io - Gateway Internal
+image::architecture/graviteeio-gateway-internal.png[Gravitee.io - Gateway Internal, 904, 538, align=center, title-align=center]
+
+.Gravitee.io - Gateway Architecture
+image::architecture/graviteeio-gateway-architecture.png[Gravitee.io - Gateway Architecture, 642, 683, align=center, title-align=center]
 
 === Management API
 RESTful API providing a bunch of services to manage the platform globally. All exposed
@@ -77,12 +92,12 @@ During your Gravitee.io usage, you must encounter several types of _plugins_ whi
 [width="100%",cols="^3,^3,^10",options="header"]
 |===
 |Type|Components|Examples
-| <<gravitee-repositories, Identity Provider>>|Management API|LDAP, Oauth2, InMemory, ...
+| <<gravitee-idp, Identity Provider>>|Management API|LDAP, Oauth2, InMemory, ...
 | <<gravitee-policies, Policies>>|Management API / Gateway|API Key, Rate-limiting, Cache, ...
 | <<gravitee-reporters, Reporters>>|Gateway|Elasticsearch, Accesslog, ...
 | <<gravitee-repositories, Repositories>>|Management API / Gateway|MongoDB, Redis, Elasticsearch, ...
 | <<gravitee-resources, Resources>>|Management API / Gateway|Oauth2, Cache, LDAP, ...
-| <<gravitee-repositories, Services>>|Gateway|Sync, local registry, healthcheck, monitor, ...
+| <<gravitee-services, Services>>|Gateway|Sync, local registry, healthcheck, monitor, ...
 |===
 
 [[gravitee-policies]]
@@ -108,7 +123,7 @@ A *reporter* is used by gateway instance to report many types of event:
 
 "Out of the box" reporters are :
 
-* ElasticSearch Engine Reporter
+* ElasticSearch Reporter
 * File Reporter
 
 Like any other plugin you can create, use, and deploy a custom reporter thanks to the <<gravitee-dev-guide-overview, Developer Guide>>!

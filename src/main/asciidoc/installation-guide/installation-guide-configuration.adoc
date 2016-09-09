@@ -476,12 +476,12 @@ Basic in-memory implementation, a simple and convenient way to declare "technica
 # ===================================================================
 # IN MEMORY SECURITY PROPERTIES
 #
-# This sample file declared one in memory authentication provider with two users
+# This sample file declared one in memory authentication source with two users
 # ===================================================================
 security:
   type: basic                       # authentication type
   providers:                        # required authentication providers
-    - type: memory                  # authentication provider type (possible values : memory, ldap, gravitee)
+    - type: memory                  # authentication source type (possible values : memory, ldap, gravitee)
       users:
         - user:
           username: user
@@ -497,14 +497,14 @@ NOTE: We've just declared two users, `user` with `ROLE_USER` role and `admin` wi
 
 LDAP Provider::
 
-An AuthenticationProvider implementation that authenticates against an LDAP server. There are many ways in which the LDAP authentication provider can be configure. You should be familiar with LDAP before trying to use it.
+An AuthenticationProvider implementation that authenticates against an LDAP server. There are many ways in which the LDAP authentication source can be configure. You should be familiar with LDAP before trying to use it.
 
 [source,yaml]
 ----
 # ===================================================================
 # LDAP SECURITY PROPERTIES
 #
-# This sample file declared one ldap authentication provider
+# This sample file declared one ldap authentication source
 # ===================================================================
 security:
   type: basic                               # authentication type
@@ -536,12 +536,12 @@ An AuthenticationProvider implementation that authenticates against Gravitee.io 
 # ===================================================================
 # GRAVITEE SECURITY PROPERTIES
 #
-# This sample file declared gravitee authentication provider
+# This sample file declared gravitee authentication source
 # ===================================================================
 security:
   type: basic                       # authentication type
   providers:                        # required authentication providers
-    - type: gravitee                # authentication provider type (possible values : memory, ldap, gravitee)
+    - type: gravitee                # authentication source type (possible values : memory, ldap, gravitee)
       password-encoding: true       # enable password encoding (possible values : true or false)
 ----
 
@@ -556,13 +556,13 @@ You can specify as many providers as you want. They will be checked in same orde
 # ===================================================================
 # MULTIPLE PROVIDER SECURITY PROPERTIES
 #
-# This sample file declared gravitee authentication provider
+# This sample file declared gravitee authentication source
 # ===================================================================
 security:
   type: basic
   providers:
 
-    # First authentication provider
+    # First authentication source
     - type: ldap
       embedded: true
       role-mapping: true
@@ -580,7 +580,7 @@ security:
       # context-source-password: test
       # context-source-url: ldap://localhost:389/dc=gravitee,dc=io
 
-    # Second authentication provider
+    # Second authentication source
     - type: memory
       users:
         - user:
@@ -592,7 +592,7 @@ security:
           password: admin
           roles: ADMIN
 
-    # Third authentication provider
+    # Third authentication source
     - type: gravitee
       password-encoding: true
 ----

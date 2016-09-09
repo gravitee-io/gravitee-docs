@@ -1,7 +1,7 @@
 [[gravitee-quickstart]]
 == Quick Start
 
-=== Declare and use your first API
+=== Publish your first API
 
 This guide walks you through the process of creating your first API by using the Gravitee.io Management UI (requests details using cURL command are describe in this tutorial).
 
@@ -11,21 +11,23 @@ http://MANAGEMENT_UI_SERVER_DOMAIN (see <<gravitee-installation-guide-management
 
 NOTE: *SWAPI API* : In this tutorial we will use the https://swapi.co/[SWAPI API] to set up our first proxy API. The SWAPI API returns JSON-formatted data via the following URL : http://swapi.co/api
 
-==== Step 1 - Create your API Definition proxy for the SWAPI API
+==== Step 1 - Create an API proxy for the SWAPI API
 
 1) Login to http://MANAGEMENT_UI_SERVER_DOMAIN. (Default Administrator account is admin/admin, see <<gravitee-standalone-management-security-configuration, security section>> for more information)
 
-2) Click `Create your First API`
-
-image::graviteeio-create-first-api.png[]
+2) Click `Create a new API`
 
 3) Give your API a name, a version, a description and a context path
 
-4) Make sure that `Endpoint` is set to `http://swapi.co/api`
+image::graviteeio-create-first-api-1.png[align=center, title-align=center]
+
+4) Make sure that `Backend` is set to `http://swapi.co/api`
+
+image::graviteeio-create-first-api-2.png[align=center, title-align=center]
 
 5) Click the `CREATE` button and your API is created
 
-image::graviteeio-first-api.png[]
+image::graviteeio-first-api.png[My First API, 1412, 764]
 
 Create API request::
 
@@ -39,6 +41,8 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
 ----
 
 6) Deploy your API to the Gravitee.io Gateway instances by clicking on `deploy your API`
+
+image::graviteeio-create-first-api-3.png[align=center, title-align=center]
 
 Deploy API request::
 
@@ -106,7 +110,7 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
 
 image::graviteeio-app-keys.png[]
 
-==== Step 3 - Use the API Key and Test your API
+==== Step 3 - Test your API
 
 Now that you have created your application and get your API Key, we can go back to our API and start using it.
 
