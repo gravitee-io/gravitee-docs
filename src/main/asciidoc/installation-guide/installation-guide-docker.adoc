@@ -13,7 +13,7 @@ You could find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles o
 
 We provide a complete set of images, based on the official https://hub.docker.com/_/centos/[Centos 6 image]. You could run them individually or follow our <<quickstart-docker-demo, quickstart>> to quickly discover a full Gravitee environment.
 
-### Core images
+### Gravitee.io images
 |===
 |Image name |Source |Version
 
@@ -82,78 +82,6 @@ $ docker run \
         --env MGMT_API_PORT=80 \
         --name management-ui
         graviteeio/management-ui
-....
-
-'''
-
-### Extra images
-|===
-|Image name |Source |Version
-
-|{docker-hub}/kibana3/[graviteeio/kibana3]
-|{github-repo}/tree/master/images/kibana3[images/kibana3]
-|latest
-
-|{docker-hub}/elasticsearch/[graviteeio/elasticsearch]
-|{github-repo}/tree/master/images/elasticsearch[images/elasticsearch]
-|latest
-
-|{docker-hub}/mongodb/[graviteeio/mongodb]
-|{github-repo}/tree/master/images/mongodb[images/mongodb]
-|latest
-
-|===
-
-#### graviteeio/kibana3
-
-Kibana3 image provide a complete dashboard over gravitee usage.
-It needs Elacticsearch at runtime so you have 2 environment variables : `ES_HOST` and `ES_PORT` to set.
-
-On startup, the container will post his dashboard to elasticsearh.
-
-###### Run the image
-[source, shell]
-....
-$ docker run \
-        --env ES_HOST=127.0.0.1 \
-        --env ES_PORT=9200 \
-        --name kibana3
-        graviteeio/kibana3
-....
-
-
-
-
-#### graviteeio/elasticsearch
-
-Elasticsearch image works with our https://github.com/gravitee-io/gravitee-reporter-es[Elasticsearch Reporter] and render his datas via our Kibana3 image.
-
-##### Run the image
-[source, shell]
-....
-$ docker run \
-        --publish 9200:9200 \
-        --publish 9300:9300 \
-        --volume /var/opt/elasticsearch:/var/lib/elasticsearch \
-        --name elasticsearch \
-        graviteeio/elasticsearch
-....
-
-
-
-
-#### graviteeio/mongodb
-
-mongoDB is the default https://github.com/gravitee-io/gravitee-repository-mongodb[repository] we used in gravitee.
-
-##### Run the image
-[source, shell]
-....
-$ docker run \
-        --publish 27017:27017 \
-        --volume /var/opt/mongo:/var/lib/mongo \
-        --name mongodb \
-        graviteeio/mongodb
 ....
 
 
