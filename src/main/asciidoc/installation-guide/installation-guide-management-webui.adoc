@@ -43,21 +43,3 @@ With Node::
 $ npm install http-server -g
 $ cd graviteeio-management-ui-{graviteeio-management-ui-version}
 $ http-server
-
-==== Configuration
-
-The Management UI provides a UI to the Gravitee.io Management API to manage the platform globally. The only one thing to configure is the Gravitee.io Management API URL :
-
-[source,bash]
-[subs="attributes"]
-$ cd graviteeio-management-ui-{graviteeio-management-ui-version}
-$ vi constants.js
-
-[source,javascript]
-[subs="attributes"]
-'use strict';
-angular.module('gvConstants', []).constant('Constants', {
-  // if the management REST API is on a different domain, put something like: http://[api-rest-domain]/management/
-  "baseURL": '/management/',
-  "version": "0.8.2"
-});
