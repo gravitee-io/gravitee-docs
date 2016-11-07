@@ -3,12 +3,12 @@
 
 Gravitee.io allows you to externalize your configuration via the `gravitee.yml` file that can be found under `GRAVITEE_HOME/config` folder.
 
-* How to configure <<gravitee-standalone-gateway-configuration, Gravitee.io Gateway>>
-* How to configure <<gravitee-standalone-management-configuration, Gravitee.io Management API>>
-* How to configure <<gravitee-repository-mongodb-configuration, Gravitee.io Repositories>>
+* How to configure <<gravitee-gateway-configuration, Gateway>>
+* How to configure <<gravitee-management-api-configuration, Management API>>
+* How to configure <<gravitee-repositories-configuration, Repositories>>
 
-[[gravitee-standalone-gateway-configuration]]
-=== Gateway Settings
+[[gravitee-gateway-configuration]]
+=== Gateway
 
 ==== HTTP Server
 
@@ -176,7 +176,7 @@ services:
     threads: 3 # Threads core size used to check endpoint availability
 ----
 
-==== Common Gravitee.io Gateway properties
+==== General Gateway properties
 
 Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.yml` file. This section provides the general configuration of Gravitee.IO Gateway.
 
@@ -337,12 +337,12 @@ ds:
     port: 9300
 ----
 
-[[gravitee-standalone-management-configuration]]
+[[gravitee-management-api-configuration]]
 === Management API Settings
 
 ==== HTTP Server
 
-Jetty Gravitee.io Management API HTTP server configuration.
+Management API HTTP server configuration.
 
 [source,yaml]
 ----
@@ -851,25 +851,28 @@ ds:
 
 **Compatibility Matrix: **
 |===
-|Scope|MongoDB |JDBC |Redis |Elasticsearch
+|Scope|MongoDB |JDBC |Redis |Elasticsearch| Cassandra
 
 |Management
 |X
 |X
 |-
 |-
+|X
 
 |Rate Limit
 |X
 |-
 |X
 |-
+|X
 
 |Analytics
 |-
 |-
 |-
 |X
+|-
 
 |===
 

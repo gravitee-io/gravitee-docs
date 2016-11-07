@@ -1,0 +1,26 @@
+[[gravitee-developer-portal]]
+== I'm a developer / consumer
+
+=== Portal
+
+Portal can be accessed even if you're not connected (anonymous user). But if you want to play with an API, a user account
+is required to subscribe to plans.
+
+Default view in portal shows all the API accessible to the authenticated user (or only _public_ API for anonymous user).
+
+What are the rules for API accessibility:
+
+* Public API
+* Private API: if user is a member of the API (user, owner, primary_owner)
+
+=== Create an account
+
+=== Subscribe to an API
+
+=== Manage applications
+
+==== Manage members
+
+==== Manage subscriptions
+
+==== Analytics

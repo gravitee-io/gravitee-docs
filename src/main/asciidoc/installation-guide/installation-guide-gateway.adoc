@@ -1,6 +1,6 @@
 [[gravitee-installation-guide-gateway]]
 
-== Gateway installation
+== Gateway
 
 === System Requirements
 
@@ -16,13 +16,13 @@ echo $JAVA_HOME
 
 NOTE: You can download the latest JDK from the http://www.oracle.com/technetwork/java/javase/downloads/index.html[Oracle Java SE Download Site].
 
-==== Database
+==== Datastore
 
-Default Gravitee.io Gateway distribution requires MongoDB 3.x to store mandatory data and Elasticsearch 2.x to store
-reporting data.
+Default Gravitee.io Gateway distribution requires MongoDB 3.x to store management and configuration data and Elasticsearch 2.x to store
+reporting / analytics.
 
 NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#production[MongoDB Download Site]
-and download Elasticsearch 2.x from the https://www.elastic.co/downloads/elasticsearch[Elastic Download Site]
+and Elasticsearch 2.x from the https://www.elastic.co/downloads/elasticsearch[Elastic Download Site]
 
 === Installing from the ZIP archive
 

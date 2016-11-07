@@ -1,6 +1,6 @@
 [[gravitee-installation-guide-management-rest-api]]
 
-== Management API installation
+== Management API
 
 === System Requirements
 
@@ -16,9 +16,9 @@ echo $JAVA_HOME
 
 NOTE: You can download the latest JDK from the http://www.oracle.com/technetwork/java/javase/downloads/index.html[Oracle Java SE Download Site].
 
-==== Database
+==== Datastore
 
-Default Gravitee.io Management API  distribution requires MongoDB to store mandatory data and ElasticSearch to store reporting data.
+Default Gravitee.io Management API distribution requires MongoDB to store mandatory data and ElasticSearch to store reporting data.
 
 NOTE: You can download MongoDB from the https://www.mongodb.org/downloads#production[MongoDB Download Site] 
 and download Elasticsearch from the https://www.elastic.co/downloads/elasticsearch[Elasctic Download Site]
