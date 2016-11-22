@@ -25,23 +25,23 @@ and download Elasticsearch from the https://www.elastic.co/downloads/elasticsear
 
 === Installing from the ZIP archive
 
-The binaries are available from http://gravitee.io/#downloads or via https://dl.bintray.com/gravitee-io/release/{graviteeio-version}/graviteeio-full-{graviteeio-version}.zip[bintray].
+The binaries are available from http://gravitee.io/#downloads or via https://dl.bintray.com/gravitee-io/release/GRAVITEEIO-VERSION/graviteeio-full-GRAVITEEIO-VERSION.zip[bintray].
 
 [source,bash]
 [subs="attributes"]
-$ curl -L https://dl.bintray.com/gravitee-io/release/{graviteeio-version}/graviteeio-full-{graviteeio-version} -o gravitee-standalone-distribution-{graviteeio-version}.zip
+$ curl -L https://dl.bintray.com/gravitee-io/release/GRAVITEEIO-VERSION/graviteeio-full-GRAVITEEIO-VERSION -o gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
 
 Once file has been downloaded, you just have to unpack it in the right place
 
 [source,bash]
 [subs="attributes"]
-$ unzip gravitee-standalone-distribution-{graviteeio-version}.zip
+$ unzip gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
 
 And you can simply start up the Management API as follow:
 
 [source,bash]
 [subs="attributes"]
-$ cd graviteeio-management-api-{graviteeio-management-api-version}
+$ cd graviteeio-management-api-GRAVITEEIO-VERSION
 $ ./bin/gravitee
 
 If everything goes well, you should see this kind of logs:
@@ -51,7 +51,7 @@ If everything goes well, you should see this kind of logs:
 ...
 20:57:29.931 [gravitee] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@366c43c7{HTTP/1.1,[http/1.1]}{0.0.0.0:8083}
 20:57:29.937 [gravitee] INFO  org.eclipse.jetty.server.Server - Started @6287ms
-20:57:29.939 [gravitee] INFO  i.g.m.standalone.node.ManagementNode - Gravitee.io - Management API [id: eea72388-9518-4737-a723-889518373708 - version: {graviteeio-management-api-version} (build: XXXX) revision#XXXX] started in 2135 ms.
+20:57:29.939 [gravitee] INFO  i.g.m.standalone.node.ManagementNode - Gravitee.io - Management API [id: eea72388-9518-4737-a723-889518373708 - version: GRAVITEEIO-VERSION (build: XXXX) revision#XXXX] started in 2135 ms.
 ...
 
 Default Gravitee.io Management API listens on port *8083* and can be accessed using the following URL :

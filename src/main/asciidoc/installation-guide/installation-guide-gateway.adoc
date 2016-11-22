@@ -26,23 +26,23 @@ and Elasticsearch 2.x from the https://www.elastic.co/downloads/elasticsearch[El
 
 === Installing from the ZIP archive
 
-Binaries are available from https://gravitee.io/downloads/full-stack/latest/[Downloads page] or via https://dl.bintray.com/gravitee-io/release/{graviteeio-version}/graviteeio-full-{graviteeio-version}.zip[Bintray].
+Binaries are available from https://gravitee.io/downloads/full-stack/latest/[Downloads page] or via https://dl.bintray.com/gravitee-io/release/GRAVITEEIO-VERSION/graviteeio-full-GRAVITEEIO-VERSION.zip[Bintray].
 
 [source,bash]
 [subs="attributes"]
-$ curl -L https://dl.bintray.com/gravitee-io/release/{graviteeio-version}/:graviteeio-full-{graviteeio-version}.zip -o gravitee-standalone-distribution-{graviteeio-version}.zip
+$ curl -L https://dl.bintray.com/gravitee-io/release/GRAVITEEIO-VERSION/:graviteeio-full-GRAVITEEIO-VERSION.zip -o gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
 
 Once file has been downloaded, you just have to unpack it in the right place.
 
 [source,bash]
 [subs="attributes"]
-$ unzip gravitee-standalone-distribution-{graviteeio-version}.zip
+$ unzip gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
 
 And you can simply start up the gateway as follow:
 
 [source,bash]
 [subs="attributes"]
-$ cd graviteeio-gateway-{graviteeio-gateway-version}
+$ cd graviteeio-gateway-GRAVITEEIO-VERSION
 $ ./bin/gravitee
 
 If everything goes well, you should see this kind of logs:
@@ -52,7 +52,7 @@ If everything goes well, you should see this kind of logs:
 ...
 20:55:42.097 [gravitee] INFO  i.g.g.s.vertx.VertxEmbeddedContainer - Starting Vertx container and deploy Gravitee Verticles
 20:55:42.108 [gravitee] INFO  i.g.g.s.v.GraviteeVerticleFactory - Creating a new instance of Gravitee Verticle
-20:55:42.167 [gravitee] INFO  i.g.g.standalone.node.GatewayNode - Gravitee.io - Gateway [id: 9c31b9cc-f779-4f2d-b1b9-ccf779df2df5 - version: {graviteeio-gateway-version} (build: XXXX) revision#XXXX] started in 3871 ms.
+20:55:42.167 [gravitee] INFO  i.g.g.standalone.node.GatewayNode - Gravitee.io - Gateway [id: 9c31b9cc-f779-4f2d-b1b9-ccf779df2df5 - version: GRAVITEEIO-VERSION (build: XXXX) revision#XXXX] started in 3871 ms.
 ...
 
 by default, the gateway is listening on port *8082* and can be accessed using the following URL :
