@@ -17,4 +17,10 @@ node() {
         sh "docker build -t graviteeio/docs:latest --pull=true ."
         sh "docker push graviteeio/docs:latest"
     }
+
+    stage("Restart docs container") {
+        sh "docker stop docs"
+        sh "docker rm docs"
+        sh "docker run -d --name docs graviteeio/docs:latest"
+    }
 }
