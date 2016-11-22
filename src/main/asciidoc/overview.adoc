@@ -1,33 +1,36 @@
 [[gravitee-introduction]]
 = Introduction
 
-[partintro]
+[[partintro]]
 --
-A popular trend in enterprise software development these days is to design very decoupled applications connected via APIs. 
-This approach provides an excellent way to reuse functionality across various applications and business units no matter what the implementation technology is.
+Nowadays, API Management helps organizations to publish their APIs to external developers,
+partners and internal developers in order to unlock the potential of their data and services
+and to move into an OpenAPI and an OpenData dynamic. By doing so, companies are able to extend their
+operations as a digital platform, by creating new "communication" channels and finding new customers.
 
-However, this approach also introduces its own pitfalls and disadvantages including :
+By providing such facilities, companies are seeing a growing number of consumers and partners
+and must face new challenges:
+* How to reduce time to enroll new consumers / partners
+* How to identify partners and manage their API consumption
+* How to measure consumption from a consumer and/or from a producer point of view
+* How to share existing APIs and how to discover them
+* How to manage API lifecycle, versioning, documentation, ...
 
-* Difficulty discovering or sharing existing APIs
-* Difficulty sharing common functionality across API implementations
-* Tracking API usage/consumption
+It is then a question about how to address these problems in a uniform way for all your APIs using a central tool.
 
-API Management enables you to create, manage, secure, track and sharing your APIs by providing tools like API Manager, as well as an API Gateway to direct API traffic by applying policies and API's configurations. API management system tends to provide the following features :
-
-* Centralized governance policy configuration
-* Tracking APIs and API consumers
-* Easy sharing and discovery APIs
-* Leveraging common policy configuration across different APIs
+All of these questions are addressed in Gravitee.io API Management
 --
 
 [[gravitee-components]]
 == Gravitee.io API Management
+
 Gravitee.io API Management is a flexible, lightweight and blazing-fast open source API Management solution that helps you and your organizations to control finely who, when and how users access your APIs. Gravitee.io API Management is not only a simple product, it acts as a global solution for API Management.
 
 NOTE: In the rest of the document, we use the short name *Gravitee.io* or *Gravitee.io APIM* to talk about *Gravitee.io API Management*.
 
 [[why-gravitee-io]]
 === Why Gravitee.io ?
+
 At the very beginning, we were looking for an open-source solution to do API Management. Unfortunately, we've never found
 the tool which fit exactly our needs and by choosing one of them we know that we have to pull other components and,
 for some of them use a dedicated support.
