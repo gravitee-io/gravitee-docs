@@ -8,44 +8,51 @@
 IMPORTANT: We assume that you are familiar with Docker terms. +
 To run our official images, you must start by installing https://docs.docker.com/installation/[Docker]
 
-Gravitee docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
+Gravitee.io docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
 You could find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles on GitHub].
 
-We provide a complete set of images, based on the official https://hub.docker.com/_/centos/[Centos 6 image]. You could run them individually or follow our <<quickstart-docker-demo, quickstart>> to quickly discover a full Gravitee environment.
+We provide a complete set of images.
 
 ### Gravitee.io images
 |===
-|Image name |Source |Version
+|Image name |Source |Version |Base
 
 |{docker-hub}/gateway/[graviteeio/gateway]
 |{github-repo}/tree/master/images/gateway[images/gateway]
 |latest
+|https://hub.docker.com/_/alpine/[alpine:3.3]
 
 |{docker-hub}/management-api/[graviteeio/management-api]
 |{github-repo}/tree/master/images/management-api[images/management-api]
 |latest
+|https://hub.docker.com/_/alpine/[alpine:3.3]
 
 |{docker-hub}/management-ui/[graviteeio/management-ui]
 |{github-repo}/tree/master/images/management-ui[images/management-ui]
 |latest
+|https://hub.docker.com/_/alpine/[nginx:1.10.2-alpine]
 
 |===
 
 
 #### graviteeio/gateway
 
-The gateway image provides a set of environment variables which could be used to tune your container. Because mongoDB is our default repository, you could replace default mongoDB address (`MONGO_DEFAULT_HOST:MONGO_DEFAULT_PORT`) by the one you provide (`MONGO_HOST:MONGO_PORT`).
-The gateway image also use the elasticsearch reporter. You could replace default ES address (`ES_DEFAULT_HOST`) by the one you provide (`ES_HOST`).
+The gateway image provides a set of environment variables which could be used to tune your container. 
+Because mongoDB is our default repository, you can replace default mongoDB address (`localhost:27017`) by the one you provide (`GRAVITEEIO_MONGODB_HOST:GRAVITEEIO_MONGODB_PORT`).
+The gateway image also use the elasticsearch reporter.
+You can replace default ES address (`localhost:9300`) by the one you provide (`GRAVITEEIO_ELASTIC_HOST:GRAVITEEIO_ELASTIC_PORT`).
 
 ##### Run the image
 [source, shell]
 ....
 $ docker run  \
-        --publish 80:8082  \
-        --env MONGO_HOST=127.0.0.1  \
-        --env MONGO_PORT=27017  \
-        --env ES_HOST=127.0.0.1  \
-        --name gateway
+        --publish 82:8082  \
+        --env GRAVITEEIO_MONGODB_HOST=172.17.0.1  \
+        --env GRAVITEEIO_MONGODB_PORT=27017  \
+        --env GRAVITEEIO_ELASTIC_HOST=172.17.0.1  \
+        --env GRAVITEEIO_ELASTIC_PORT=9300  \
+        --name gateway  \
+        --detach  \
         graviteeio/gateway:latest
 ....
 
@@ -54,57 +61,68 @@ $ docker run  \
 
 #### graviteeio/management-api
 
-The management-api image provides a set of environment variables which could be used to tune your container. Because mongoDB is our default repository, you could replace default mongoDB address (`MONGO_DEFAULT_HOST:MONGO_DEFAULT_PORT`) by the one you provide (`MONGO_HOST:MONGO_PORT`).
+The management-api image provides a set of environment variables which could be used to tune your container. 
+Because mongoDB is our default repository, you can replace default mongoDB address (`localhost:27017`) by the one you provide (`GRAVITEEIO_MONGODB_HOST:GRAVITEEIO_MONGODB_PORT`).
+The management-api image also use the elasticsearch reporter.
+You can replace default ES address (`localhost:9300`) by the one you provide (`GRAVITEEIO_ELASTIC_HOST:GRAVITEEIO_ELASTIC_PORT`).
 
 ##### Run the image
 [source, shell]
 ....
 $ docker run \
-        --publish 80:8082 \
-        --env MONGO_HOST=127.0.0.1 \
-        --env MONGO_PORT=27017 \
-        --name management-api \
-        graviteeio/management-api
+          --publish 81:8083 \
+          --env GRAVITEEIO_MONGODB_HOST=172.17.0.1  \
+          --env GRAVITEEIO_MONGODB_PORT=27017  \
+          --env GRAVITEEIO_ELASTIC_HOST=172.17.0.1  \
+          --env GRAVITEEIO_ELASTIC_PORT=9300  \
+          --name management-api \
+          --detach  \
+          graviteeio/management-api:latest
 ....
 
 
 
 #### graviteeio/management-ui
 
-The management-ui image provides a set of environment variables which could be used to tune your container. The UI need to know where the management-api is. So you have to override `MGMT_API_HOST` and `MGMT_API_PORT` to specify where the management-api is running.
+The management-ui image provides a set of environment variables which could be used to tune your container. 
+The UI need to know where the management-api is. 
+So you have to override `MGMT_API_URL` to specify where the management-api is running.
 
 ##### Run the image
 [source, shell]
 ....
 $ docker run \
-        --publish 80:8082 \
-        --env MGMT_API_HOST=127.0.0.1 \
-        --env MGMT_API_PORT=80 \
-        --name management-ui
-        graviteeio/management-ui
+        --publish 80:80 \
+        --env MGMT_API_URL=http://localhost:81/management/ \
+        --name management-ui \
+        --detach  \
+        graviteeio/management-ui:latest
 ....
 
+### docker-compose
 
-### Base images
+You can launch a complete demo environment with our docker-compose file. It includes Gravitee.io APIM + MongoDB + Elasticsearch.
 |===
-|Image name |Source |Version
+|Image |Address
 
-|{docker-hub}/httpd/[graviteeio/httpd]
-|{github-repo}/tree/master/images/base/httpd[images/base/httpd]
-|latest
+|{docker-hub}/gateway/[graviteeio/gateway]
+|http://localhost:8000
 
-|{docker-hub}/java/[graviteeio/java]
-|{github-repo}/tree/master/images/base/java[images/base/java]
-|8u45
+|{docker-hub}/management-api/[graviteeio/management-api]
+|http://localhost:8005/management/
+
+|{docker-hub}/management-ui/[graviteeio/management-ui]
+|http://localhost:8002
 
 |===
 
-#### graviteeio/httpd
+##### Run
+[source, shell]
+....
+#download compose files
+$ curl -L https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/environments/demo/common.yml -o "common.yml"
+$ curl -L https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/environments/demo/docker-compose-local.yml -o "docker-compose-local.yml"
 
-A CentOS 6 with HTTPd and some tools. 
-This is a base image for all apps requiring an HTTP server. 
-
-#### graviteeio/java
-
-A CentOS 6 with a Java Runtime 8u45 and some tools.
-This is a base image for all Java apps. 
+# run demo
+$ docker-compose -f docker-compose-local.yml up
+....
