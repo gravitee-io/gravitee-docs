@@ -13,7 +13,7 @@ You could find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles o
 
 We provide a complete set of images.
 
-### Gravitee.io images
+### Images
 |===
 |Image name |Source |Version |Base
 
@@ -99,9 +99,21 @@ $ docker run \
         graviteeio/management-ui:latest
 ....
 
-### docker-compose
+### Docker Compose
 
-You can launch a complete demo environment with our docker-compose file. It includes Gravitee.io APIM + MongoDB + Elasticsearch.
+You can launch a complete demo environment using our ready-to-use docker-compose file. It includes Gravitee.io API Management + MongoDB + Elasticsearch.
+
+[source, shell]
+....
+# Download compose files
+$ curl -L https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/environments/demo/common.yml -o "common.yml"
+$ curl -L https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/environments/demo/docker-compose-local.yml -o "docker-compose-local.yml"
+
+# And run demo
+$ docker-compose -f docker-compose-local.yml up
+....
+
+When all components are started, you can do a quick test to see if everything is ok by checking these urls:
 |===
 |Image |Address
 
@@ -116,13 +128,4 @@ You can launch a complete demo environment with our docker-compose file. It incl
 
 |===
 
-##### Run
-[source, shell]
-....
-#download compose files
-$ curl -L https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/environments/demo/common.yml -o "common.yml"
-$ curl -L https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/environments/demo/docker-compose-local.yml -o "docker-compose-local.yml"
-
-# run demo
-$ docker-compose -f docker-compose-local.yml up
-....
+Once done, you're now ready to play with Gravitee.io API Management, so let's take a look to the <<gravitee-quickstart, Quickstart guide>>.
