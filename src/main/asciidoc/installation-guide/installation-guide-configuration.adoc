@@ -337,6 +337,18 @@ ds:
     port: 9300
 ----
 
+==== Sharding tags
+
+You can apply sharding on Gateway's instances either with system properties or with a configuration as below.
+System properties overrides the yaml configuration.
+
+In this example, you are asking deployment only for APIs tagged 'product' or 'store' and among it, you exclude the APIs tagged 'international'.
+
+[source,yaml]
+----
+tags: product,store,!international
+----
+
 [[gravitee-management-api-configuration]]
 === Management API Settings
 
