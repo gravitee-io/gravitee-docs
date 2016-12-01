@@ -109,7 +109,10 @@ You can launch a complete demo environment using our ready-to-use docker-compose
 $ curl -L https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/environments/demo/common.yml -o "common.yml"
 $ curl -L https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/environments/demo/docker-compose-local.yml -o "docker-compose-local.yml"
 
-# And run demo
+# (Optional step: pull to ensure that you are running latest images)
+$ docker-compose -f docker-compose-local.yml pull
+
+# And run...
 $ docker-compose -f docker-compose-local.yml up
 ....
 
