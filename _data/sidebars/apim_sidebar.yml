@@ -1,0 +1,172 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  product: API Management
+  folders:
+
+  - title: Overview
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /apim_overview_introduction.html
+      type: homepage
+    - title: Why Gravitee.io ?
+      output: web
+      url: /apim_overview_why.html
+    - title: Architecture
+      output: web
+      url: /apim_overview_architecture.html
+    - title: Concepts
+      output: web
+      url: /apim_overview_concepts.html
+    - title: Components
+      output: web
+      url: /apim_overview_components.html
+    - title: Plugins
+      output: web
+      url: /apim_overview_plugins.html
+
+  - title: QuickStart
+    output: web
+    folderitems:
+    - title: Publish your first API
+      output: web
+      url: /apim_quickstart_publish.html
+    - title: Consuming an API
+      output: web
+      url: /apim_quickstart_consume.html
+
+  - title: Api Consumer Guide
+    output: web
+    folderitems:
+    - title: Portal
+      output: web
+      url: /apim_consumerguide_portal.html
+    - title: Create an account
+      output: web
+      url: /apim_consumerguide_create_account.html
+    - title: Subscribe to an API
+      output: web
+      url: /apim_consumerguide_subscribe.html
+    - title: Manage applications
+      output: web
+      url: /apim_consumerguide_manage_applications.html
+
+  - title: Api Publisher Guide
+    output: web
+    folderitems:
+    - title: Manage APIs
+      output: web
+      url: /apim_publisherguide_manage_apis.html
+    - title: Plans and Subscriptions
+      output: web
+      url: /apim_publisherguide_plans_subscriptions.html
+    - title: Manage members
+      output: web
+      url: /apim_publisherguide_manage_members.html
+    - title: Publish documentation
+      output: web
+      url: /apim_publisherguide_publish_documentation.html
+
+      subfolders:
+      - title: Policies
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /apim_policies_overview.html
+        - title: Api Key
+          output: web
+          url: /apim_policies_apikey.html
+        - title: Cache
+          output: web
+          url: /apim_policies_cache.html
+        - title: CORS
+          output: web
+          url: /apim_policies_cors.html
+        - title: Dynamic Routing
+          output: web
+          url: /apim_policies_dynamic_routing.html
+        - title: Groovy
+          output: web
+          url: /apim_policies_groovy.html
+        - title: HTML to JSON
+          output: web
+          url: /apim_policies_html2json.html
+        - title: IP Filtering
+          output: web
+          url: /apim_policies_ip_filtering.html
+        - title: JSON to JSON
+          output: web
+          url: /apim_policies_json2json.html
+        - title: JWT
+          output: web
+          url: /apim_policies_jwt.html
+        - title: Mock
+          output: web
+          url: /apim_policies_mock.html
+        - title: OAuth2
+          output: web
+          url: /apim_policies_oauth2.html
+        - title: Rate Limiting
+          output: web
+          url: /apim_policies_rate_limiting.html
+        - title: Request Content Limit
+          output: web
+          url: /apim_policies_request_content_limit.html
+        - title: Resource Filtering
+          output: web
+          url: /apim_policies_resource_filtering.html
+        - title: Rest to Soap
+          output: web
+          url: /apim_policies_rest2soap.html
+        - title: Transform Headers
+          output: web
+          url: /apim_policies_transform_headers.html
+        - title: Transform Query Parameters
+          output: web
+          url: /apim_policies_transform_query_params.html
+        - title: XML to JSON
+          output: web
+          url: /apim_policies_xml2json.html
+        - title: XSLT
+          output: web
+          url: /apim_policies_xslt.html
+
+  - title: Installation Guide
+    output: web
+    folderitems:
+    - title: Gateway
+      output: web
+      url: /apim_installguide_gateway.html
+    - title: Management API
+      output: web
+      url: /apim_installguide_management_api.html
+    - title: Portal
+      output: web
+      url: /apim_installguide_portal.html
+    - title: Docker
+      output: web
+      url: /apim_installguide_docker.html
+    - title: Configuration
+      output: web
+      url: /apim_installguide_configuration.html
+
+  - title: Developer guide
+    output: web
+    folderitems:
+    - title: Plugins
+      output: web
+      url: /apim_devguide_plugins.html
+    - title: Policies
+      output: web
+      url: /apim_devguide_policies.html
+
+  - title: Changelog
+    output: web
+    folderitems:
+    - title: Changelog
+      output: web
+      url: /apim_changelog.html

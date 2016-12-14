@@ -1,0 +1,19 @@
+<footer>
+    <div class="row">
+        <div class="col-lg-12 footer">
+            &copy;{{ site.time | date: "%Y"  }} {{site.company_name}}. All rights reserved. <br />
+            Gravitee.io APIM is distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License V2</a><br />
+            {% if page.last_updated %}<span>Page last updated:</span> {{page.last_updated}}<br/>{% endif %} Site last generated: {{ site.time | date: "%b %-d, %Y"  }}
+        </div>
+    </div>
+</footer>
+
+<!-- Algolia search -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+  apiKey: 'b1c2f572a3911c288af513bd3e7d87f4',
+  indexName: 'gravitee',
+  inputSelector: '#search-input',
+  debug: false // Set debug to true if you want to inspect the dropdown
+});
+</script>

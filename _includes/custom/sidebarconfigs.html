@@ -1,0 +1,11 @@
+
+{% if page.sidebar == "apim_sidebar" %}
+{% assign sidebar = site.data.sidebars.apim_sidebar.entries %}
+
+{% elsif page.sidebar == "product2_sidebar" %}
+{% assign sidebar = site.data.sidebars.product2_sidebar.entries %}
+
+{% elsif page.sidebar == "mydoc_sidebar" %}
+{% assign sidebar = site.data.sidebars.mydoc_sidebar.entries %}
+
+{% endif %}
