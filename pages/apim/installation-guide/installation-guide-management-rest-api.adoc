@@ -1,0 +1,77 @@
+= Management API
+:page-sidebar: apim_sidebar
+:page-permalink: apim_installguide_management_api.html
+:page-folder: apim/installation-guide
+
+== System Requirements
+
+=== JDK
+
+Gravitee.io Management API requires at least Java 8. Before you install Gravitee.io Management API, please check your Java version :
+
+[source,bash]
+----
+java -version
+echo $JAVA_HOME
+----
+
+NOTE: You can download the latest JDK from the http://www.oracle.com/technetwork/java/javase/downloads/index.html[Oracle Java SE Download Site].
+
+=== Datastore
+
+Default Gravitee.io Management API distribution requires MongoDB to store mandatory data and ElasticSearch to store reporting data.
+
+NOTE: You can download MongoDB from the https://www.mongodb.org/downloads#production[MongoDB Download Site] 
+and download Elasticsearch from the https://www.elastic.co/downloads/elasticsearch[Elasctic Download Site]
+
+== Installing from the ZIP archive
+
+The binaries are available from http://gravitee.io/#downloads or via https://dl.bintray.com/gravitee-io/release/GRAVITEEIO-VERSION/graviteeio-full-GRAVITEEIO-VERSION.zip[bintray].
+
+[source,bash]
+[subs="attributes"]
+$ curl -L https://dl.bintray.com/gravitee-io/release/GRAVITEEIO-VERSION/graviteeio-full-GRAVITEEIO-VERSION -o gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
+
+Once file has been downloaded, you just have to unpack it in the right place
+
+[source,bash]
+[subs="attributes"]
+$ unzip gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
+
+And you can simply start up the Management API as follow:
+
+[source,bash]
+[subs="attributes"]
+$ cd graviteeio-management-api-GRAVITEEIO-VERSION
+$ ./bin/gravitee
+
+If everything goes well, you should see this kind of logs:
+
+[source,bash]
+[subs="attributes"]
+...
+20:57:29.931 [gravitee] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@366c43c7{HTTP/1.1,[http/1.1]}{0.0.0.0:8083}
+20:57:29.937 [gravitee] INFO  org.eclipse.jetty.server.Server - Started @6287ms
+20:57:29.939 [gravitee] INFO  i.g.m.standalone.node.ManagementNode - Gravitee.io - Management API [id: eea72388-9518-4737-a723-889518373708 - version: GRAVITEEIO-VERSION (build: XXXX) revision#XXXX] started in 2135 ms.
+...
+
+Default Gravitee.io Management API listens on port *8083* and can be accessed using the following URL :
+
+http://SERVER_DOMAIN:8083/management.
+
+This port is <<apim_installguide_configuration.adoc#http_server_2, configurable>> if necessary.
+
+== Directory structure
+
+After successfully installed Gravitee.io Management API, the `graviteeio-management-api` directory looks like this:
+
+[width="100%",cols="20%,80%",frame="topbot",options="header"]
+|======================
+|Folder    |Description
+|bin       |Gravitee.io Management API startup/shutdown scripts.
+|config    |Gravitee.io Management API <<apim_installguide_configuration.adoc#gravitee-management-api-configuration, configuration>> folder (application, logs and cache configuration).
+|lib       |Gravitee.io Management API libraries (Gravitee.io Management API and third party libraries).
+|logs      |Gravitee.io Management API log files.
+|plugins   |Gravitee.io Management API pluggable <<apim_installguide_configuration.adoc#plugins_repository_2, plugins>>.
+|======================
+

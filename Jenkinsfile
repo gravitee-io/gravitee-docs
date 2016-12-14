@@ -1,16 +1,14 @@
 node() {
+    sh "rm -rf *"
+    sh "rm -rf .*"
 
     stage("Checkout") {
         checkout scm
     }
 
-    stage("Build") {
-        def mvnHome = tool 'MVN33'
-        def javaHome = tool 'JDK 8'
-        withEnv(["PATH+MAVEN=${mvnHome}/bin",
-                 "JAVA_HOME=${javaHome}"]) {
-            sh "mvn clean package"
-        }
+    stage("Jekyll Build") {
+        sh "docker build --no-cache -t gravitee.io/jekyll -f Dockerfile-build ."
+        sh "docker run --rm -v '${env.WORKSPACE}:/src' gravitee.io/jekyll build"
     }
 
     stage("Docker Build & Push") {
