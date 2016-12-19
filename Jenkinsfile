@@ -1,6 +1,5 @@
 node() {
     sh "rm -rf *"
-    sh "rm -rf .*"
 
     stage("Checkout") {
         checkout scm
