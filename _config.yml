@@ -1,4 +1,13 @@
 
+gems:
+  - jekyll-seo-tag
+
+title: Welcome to the Docs
+description: Home page for Gravitee.io's documentation
+keywords: Gravitee.io, documentation, manual, guide, reference, api
+twitter:
+  username: graviteeio
+
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
@@ -51,6 +60,9 @@ highlighter: rouge
 # hard_wrap: false
 # syntax_highlighter: rouge
 
+google_analytics: UA-67690250-1
+
+
 # filter used to process markdown. note that kramdown differs from github-flavored markdown in some subtle ways
 
 collections:
@@ -92,10 +104,6 @@ defaults:
 
 sidebars:
 - apim_sidebar
-- mydoc_sidebar
-- product1_sidebar
-- product2_sidebar
-- other
 
 description: "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features."
 # the description is used in the feed.xml file
@@ -114,5 +122,6 @@ asciidoctor:
     - allow-uri-read=true
     - imagesdir=/images
     - source-highlighter=pygments
+    - pygments-css=class
     - stylesdir=css
 

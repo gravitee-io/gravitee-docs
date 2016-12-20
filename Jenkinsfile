@@ -7,8 +7,8 @@ node() {
         }
 
         stage("Jekyll Build") {
-            sh "docker build --no-cache -t gravitee.io/jekyll -f Dockerfile-build ."
-            sh "docker run --rm -v '${env.WORKSPACE}:/src' gravitee.io/jekyll build"
+            sh "docker build -t gravitee.io/jekyll -f Dockerfile-build ."
+            sh "docker run --rm -u admin -v '${env.WORKSPACE}:/src' gravitee.io/jekyll build"
         }
 
         stage("Docker Build & Push") {

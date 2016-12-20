@@ -9,4 +9,5 @@ group :jekyll_plugins do
    gem 'github-pages', '~> 106'
    gem 'jekyll-asciidoc', '~> 2.0.1'
    gem 'pygments.rb', '~> 1.0.0'
+   gem 'jekyll-seo-tag'
 end
