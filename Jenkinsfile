@@ -8,7 +8,7 @@ node() {
 
         stage("Jekyll Build") {
             sh "docker build -t gravitee.io/jekyll -f Dockerfile-build ."
-            sh "docker run --rm -u admin -v '${env.WORKSPACE}:/src' gravitee.io/jekyll build"
+            sh "docker run --rm -v '${env.WORKSPACE}:/src' gravitee.io/jekyll build"
         }
 
         stage("Docker Build & Push") {
@@ -20,6 +20,10 @@ node() {
             sh "docker stop docs"
             sh "docker rm docs"
             sh "docker run -d --name docs graviteeio/docs:latest"
+        }
+
+        stage("Clean") {
+            sh "docker run --rm -v '${env.WORKSPACE}:/src' gravitee.io/jekyll clean"
         }
     } catch (e) {
         currentBuild.result = "FAILED"
