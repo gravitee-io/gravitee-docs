@@ -17,9 +17,9 @@ echo $JAVA_HOME
 
 NOTE: You can download the latest JDK from the http://www.oracle.com/technetwork/java/javase/downloads/index.html[Oracle Java SE Download Site].
 
-=== Datastore
+=== Repository
 
-Default Gravitee.io Gateway distribution requires MongoDB 3.x to store management and configuration data and Elasticsearch 2.x to store
+Default Gravitee.io Gateway distribution requires MongoDB 3.x to store management's configuration data and Elasticsearch 2.x for
 reporting / analytics.
 
 NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#production[MongoDB Download Site]
