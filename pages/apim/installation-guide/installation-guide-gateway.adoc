@@ -58,11 +58,10 @@ If everything goes well, you should see this kind of logs:
 20:55:42.167 [gravitee] INFO  i.g.g.standalone.node.GatewayNode - Gravitee.io - Gateway [id: 9c31b9cc-f779-4f2d-b1b9-ccf779df2df5 - version: GRAVITEEIO-VERSION (build: XXXX) revision#XXXX] started in 3871 ms.
 ...
 
-by default, the gateway is listening on port *8082* and can be accessed using the following URL :
+By default, the gateway is listening on port *8082* and can be accessed from: _http://localhost:8082_
 
-http://SERVER_DOMAIN:8082.
 
-HTTP port can be <<gravitee-standalone-gateway-configuration, configured>> if necessary.
+HTTP port can be <<apim_installguide_configuration.adoc#http_server, configured>> if necessary.
 
 == Directory structure
 
@@ -72,9 +71,9 @@ After successfully installed Gravitee.io Gateway, the `graviteeio-gateway` direc
 |======================
 |Folder    |Description
 |bin       |Startup/shutdown scripts
-|config    |<<gravitee-standalone-gateway-configuration, Configuration>> folder (application, logs and cache configuration)
+|config    |<<apim_installguide_configuration.adoc#gravitee-gateway-configuration, Configuration>> folder (application, logs and cache configuration)
 |lib       |Libraries (gravitee.io libraries and third parties library)
 |logs      |Gateway log files
-|plugins   |Gateway <<gravitee-plugins, plugins>>
+|plugins   |Gateway <<apim_overview_plugins.adoc, plugins>>
 |======================
 

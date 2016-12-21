@@ -178,6 +178,18 @@ services:
     threads: 3 # Threads core size used to check endpoint availability
 ----
 
+=== Sharding tags
+
+You can apply sharding on Gateway's instances either with system properties or with a configuration as below.
+System properties overrides the yaml configuration.
+
+In this example, you are asking deployment only for APIs tagged 'product' or 'store' and among it, you exclude the APIs tagged 'international'.
+
+[source,yaml]
+----
+tags: product,store,!international
+----
+
 === General Gateway properties
 
 Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.yml` file. This section provides the general configuration of Gravitee.IO Gateway.
@@ -355,18 +367,6 @@ ds:
 # Sharding tags configuration
 # Allows to define inclusion/exclusion sharding tags to only deploy a part of APIs. To exclude just prefix the tag with '!'.
 #tags: products,stocks,!international
-----
-
-=== Sharding tags
-
-You can apply sharding on Gateway's instances either with system properties or with a configuration as below.
-System properties overrides the yaml configuration.
-
-In this example, you are asking deployment only for APIs tagged 'product' or 'store' and among it, you exclude the APIs tagged 'international'.
-
-[source,yaml]
-----
-tags: product,store,!international
 ----
 
 [[gravitee-management-api-configuration]]
