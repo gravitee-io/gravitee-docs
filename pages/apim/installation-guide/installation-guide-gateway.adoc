@@ -25,6 +25,8 @@ reporting / analytics.
 NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#production[MongoDB Download Site]
 and Elasticsearch 2.x from the https://www.elastic.co/downloads/elasticsearch[Elastic Download Site]
 
+WARNING: Gravitee.io is not yet compatible with Elasticsearch 5.x. See https://github.com/gravitee-io/issues/issues/387[ES 5.x support issue].
+
 == Installing from the ZIP archive
 
 Binaries are available from https://gravitee.io/downloads/full-stack/latest/[Downloads page] or via https://dl.bintray.com/gravitee-io/release/GRAVITEEIO-VERSION/graviteeio-full-GRAVITEEIO-VERSION.zip[Bintray].
