@@ -438,6 +438,11 @@ ul#mysidebar {
 .navbar-brand {
     padding: 0;
 }
+
+.navbar-brand img {
+    vertical-align: -20px;
+}
+
 span.projectTitle {
     font-family: Helvetica;
     font-weight: bold;

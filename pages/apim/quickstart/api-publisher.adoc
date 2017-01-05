@@ -3,31 +3,34 @@
 :page-permalink: apim_quickstart_publish.html
 :page-folder: apim/quickstart
 
-This guide walks you through the process of creating your first API by using the Web UI (Portal).
-
+This guide walks you through the process of creating your first API by using the Web UI Portal.
 Gravitee.io Management UI can be accessed using the following URL:
 
-http://MANAGEMENT_UI_SERVER_DOMAIN (see <<apim_installguide_portal.adoc, Gravitee.io Management UI installation>> for more information)
+http://MANAGEMENT_UI_SERVER_DOMAIN (see link:/apim_installguide_portal.html[Gravitee.io Management UI installation] for more information)
 
-NOTE: *SWAPI API* : In this tutorial we will use the https://swapi.co/[SWAPI API] to set up our first proxy API. The SWAPI API returns JSON-formatted data via the following URL : http://swapi.co/api
+NOTE: *Gravitee.io Echo API* : In this tutorial we will use the https://api.gravitee.io/echo[Gravitee.io Echo API] to set up our first proxy API. The Gravitee.io Echo API returns JSON-formatted data via the following URL : https://api.gravitee.io/echo
 
-== Step 1 - Create an API proxy for the SWAPI API
+== Create your API
 
-1) Login to http://MANAGEMENT_UI_SERVER_DOMAIN. (Default Administrator account is admin/admin, see <<apim_installguide_configuration.adoc#gravitee-standalone-management-security-configuration, security section>> for more information)
+. Login to http://MANAGEMENT_UI_SERVER_DOMAIN. (Default Administrator account is admin/admin, see link:/apim_installguide_configuration.html#gravitee-standalone-management-security-configuration[security section] for more information)
 
-2) Click `Create a new API`
+. Click `Create a new API`
 
-3) Give your API a name, a version, a description and a context path
+image::graviteeio-create-api.png[align=center, title-align=center]
+
+.. Give your API a name, a version, a description and a context path
 
 image::graviteeio-create-first-api-1.png[align=center, title-align=center]
 
-4) Make sure that `Backend` is set to `http://swapi.co/api`
+[start=2]
+.. Make sure that `Backend` is set to `https://api.gravitee.io/echo`
 
 image::graviteeio-create-first-api-2.png[align=center, title-align=center]
 
-5) Click the `CREATE` button and your API is created
+[start=3]
+.. Click `CREATE` button and your API is created
 
-image::graviteeio-first-api.png[My First API, 1412, 764]
+image::graviteeio-first-api.png[align=center, title-align=center]
 
 Create API request::
 
@@ -36,11 +39,58 @@ Create API request::
 curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
      -H "Content-Type:application/json;charset=UTF-8" \
      -X POST \
-     -d '{"name":"My First API","version":"1","description":"SWAPI API Proxy","proxy":{"context_path":"/myfirstapi","endpoint":"http://swapi.co/api"}}' \
+     -d '{"name":"My First API","version":"1","description":"Gravitee.io Echo API Proxy","proxy":{"context_path":"/myfirstapi","endpoint":"https://api.gravitee.io/echo"}}' \
      http://MANAGEMENT_API_SERVER_DOMAIN/management/apis
 ----
 
-6) Deploy your API to the Gravitee.io Gateway instances by clicking on `deploy your API`
+== Create your API Plan
+
+NOTE: To subscribe to an API, you must publish one or more Plans. A Plan will allow you to gain access of the API operations.
+
+To create your API plan, first click on `Plans` menu item and follow these instructions :
+
+. Give your Plan a name, a description, a security type and trigger the `auto-validation` switch.
+
+image::graviteeio-create-plan.png[align=center, title-align=center]
+
+NOTE: Make sure to choose link:/apim_policies_apikey.html[API Key security type]. To go further into the Plan configuration, you can take a look at the link:/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions Guide]
+
+[start=2]
+. Click `SAVE` button and your Plan is created
+
+image::graviteeio-create-plan-2.png[align=center, title-align=center]
+
+Create Plan request::
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"name":"My Plan","description":"Unlimited access plan","validation":"auto","characteristics":[],"paths":{"/":[]},"security":"api_key"}' \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|/plans
+----
+
+[start=3]
+. Publish your Plan
+
+Your plan is in stagging state, in order to make it visible for everyone, you must publish it.
+
+image::graviteeio-create-plan-3.png[align=center, title-align=center]
+
+Publish Plan request::
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|/plans/|plan-id|/_publish
+----
+
+== Deploy your API
+
+Deploy your API to the Gravitee.io Gateway instances by clicking on `deploy your API`
 
 image::graviteeio-create-first-api-3.png[align=center, title-align=center]
 
@@ -50,10 +100,12 @@ Deploy API request::
 ----
 curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
      -X POST \
-     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/my-first-api/deploy
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|/deploy
 ----
 
-7) Finally start your API by switching on the `Started` button
+== Start your API
+
+Start your API by switching on the `Started` button
 
 Start API request::
 
@@ -61,68 +113,9 @@ Start API request::
 ----
 curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
      -X POST \
-     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/my-first-api?action=START
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|?action=START
 ----
 
-== Step 2 - Create an application and generate an API Key
+Your API is now ready to be use by your consumers. Let's see how to do this : link:/apim_quickstart_consume.html[Use your first API]
 
-All incoming request to the Gravitee.io Gateway must have an API Key. Only trusted application can access the API data by requesting an API Key. Let's see how to create an application and generate an API Key.
-
-1) Go to `Applications` menu
-
-2) Click `CREATE APPLICATIONS`
-
-image::graviteeio-create-first-app.png[]
-
-3) Give your Application a name, a type and a description
-
-4) Click the `CREATE` button and your Application is created
-
-image::graviteeio-first-app.png[]
-
-Create Application request::
-
-[source]
-----
-curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
-     -H "Content-Type:application/json;charset=UTF-8" \
-     -X POST \
-     -d '{"name":"My First Application","type":"Web","description":"Web client for the SWAPI API"}' \
-     http://MANAGEMENT_API_SERVER_DOMAIN/management/applications
-----
-
-6) Go to `Api Keys` section and click `(+)` button
-
-7) Search your first API and click `SUBSCRIBE`
-
-image::graviteeio-subscribe-api.png[]
-
-Subscribe API request :
-
-[source]
-----
-curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
-     -X POST \
-     http://MANAGEMENT_API_SERVER_DOMAIN/management/applications/my-first-application/keys?api=my-first-api
-----
-
-8) Get your API Key and you are ready to use your API
-
-image::graviteeio-app-keys.png[]
-
-== Step 3 - Test your API
-
-Now that you have created your application and get your API Key, we can go back to our API and start using it.
-
-NOTE: You can use your API Key by setting the HTTP Header `X-Gravitee-Api-Key` or using the request query parameter `api-key`.
-
-[source]
-----
-curl -H "X-Gravitee-Api-Key: <your-api-key>" \
-     http://GATEWAY_SERVER_DOMAIN/myfirstapi
-----
-
-You can see that the SWAPI API data has been served successfully. You can test different requests specified in the https://swapi.co/[SWAPI API documentation].
-
-This quick start was just an overview to create your first API. To go further into API management detail you can take a look at the <<apim_publisherguide_manage_apis.adoc, User Guide>>.
-
+This quick start was just an overview to create your first API. To go further into API management detail you can take a look at the link:/apim_publisherguide_manage_apis.html[User Guide]
