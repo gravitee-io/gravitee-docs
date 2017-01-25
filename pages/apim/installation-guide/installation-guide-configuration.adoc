@@ -187,7 +187,7 @@ In this example, you are asking deployment only for APIs tagged 'product' or 'st
 
 [source,yaml]
 ----
-tags: product,store,!international
+tags: 'product,store,!international'
 ----
 
 === General Gateway properties
