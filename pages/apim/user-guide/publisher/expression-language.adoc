@@ -143,11 +143,11 @@ documentation of the policies you are using to be aware of them.
 
 * Get the value of the `user-id` attribute for an incoming HTTP request:
 
-`{#context['user-id']}`
+`{#context.attributes['user-id']}`
 
 * Get the value of the `plan` attribute for an incoming HTTP request:
 
-`{#context['plan']}`
+`{#context.attributes['plan']}`
 
 
 == Policies
