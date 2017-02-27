@@ -29,11 +29,11 @@ WARNING: Gravitee.io is not yet compatible with Elasticsearch 5.x. See https://g
 
 == Installing from the ZIP archive
 
-Binaries are available from https://gravitee.io/downloads/full-stack/latest/[Downloads page] or via https://dl.bintray.com/gravitee-io/release/GRAVITEEIO-VERSION/graviteeio-full-GRAVITEEIO-VERSION.zip[Bintray].
+Binaries are available from https://gravitee.io/downloads/full-stack/latest/[Downloads page] or via https://dist.gravitee.io/GRAVITEEIO-VERSION/dist/graviteeio-full-GRAVITEEIO-VERSION.zip[Download].
 
 [source,bash]
 [subs="attributes"]
-$ curl -L https://dl.bintray.com/gravitee-io/release/GRAVITEEIO-VERSION/:graviteeio-full-GRAVITEEIO-VERSION.zip -o gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
+$ curl -L https://dist.gravitee.io/GRAVITEEIO-VERSION/dist/graviteeio-full-GRAVITEEIO-VERSION.zip -o gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
 
 Once file has been downloaded, you just have to unpack it in the right place.
 

@@ -26,11 +26,11 @@ and download Elasticsearch from the https://www.elastic.co/downloads/elasticsear
 
 == Installing from the ZIP archive
 
-The binaries are available from http://gravitee.io/#downloads or via https://dl.bintray.com/gravitee-io/release/GRAVITEEIO-VERSION/graviteeio-full-GRAVITEEIO-VERSION.zip[bintray].
+The binaries are available from http://gravitee.io/#downloads or via https://dist.gravitee.io/GRAVITEEIO-VERSION/dist/graviteeio-full-GRAVITEEIO-VERSION.zip[Download].
 
 [source,bash]
 [subs="attributes"]
-$ curl -L https://dl.bintray.com/gravitee-io/release/GRAVITEEIO-VERSION/graviteeio-full-GRAVITEEIO-VERSION -o gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
+$ curl -L https://dist.gravitee.io/GRAVITEEIO-VERSION/dist/graviteeio-full-GRAVITEEIO-VERSION -o gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
 
 Once file has been downloaded, you just have to unpack it in the right place
 
