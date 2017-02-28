@@ -134,6 +134,15 @@ entries:
         - title: XSLT
           output: web
           url: /apim_policies_xslt.html
+      - title: Resources
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /apim_resources_overview.html
+        - title: Cache
+          output: web
+          url: /apim_resources_cache.html
 
     - title: Expression Language
       output: web
