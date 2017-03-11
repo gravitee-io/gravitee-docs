@@ -945,7 +945,8 @@ Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.y
 [[gravitee-repositories-types]]
 === Repository types
 
-* Management: All the data to manage the Gravitee.io platform, including API definitions, users, teams, ..
+* Management: All the data to manage the Gravitee.io API Management platform, including API definitions, users,
+applications, plans, ...
 * Rate Limit: Rate limiting data
 * Analytics: Analytics data
 
@@ -956,7 +957,7 @@ Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.y
 |Management
 |X
 |X
-|-
+|X
 |-
 |X
 
@@ -979,7 +980,7 @@ Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.y
 [[gravitee-repository-mongodb-configuration]]
 === MongoDB
 
-NoSQL store implementation is based on https://www.mongodb.org/[MongoDB], let's see the configuration options:
+Default implementation is based on https://www.mongodb.org/[MongoDB], let's see the configuration options:
 
 [source,yaml]
 ----
@@ -996,7 +997,7 @@ management:
     port:                   # mongodb port (default 27017)
 ----
 
-NOTE: This is the minimum sample file to start with a mongo server, number of other properties control the behavior of mongo database, let's jump into it
+NOTE: This is the minimum sample file to start with a mongo server, number of other properties control the behavior of mongo database, let's jump into it.
 
 [source,yaml]
 ----
@@ -1033,6 +1034,25 @@ management:
 ----
 
 NOTE: All theses properties allow you to fine tuned your MongoDB connection
+
+[[gravitee-repository-redis-configuration]]
+=== Redis
+
+[source,yaml]
+----
+# ===================================================================
+# MINIMUM REDIS REPOSITORY PROPERTIES
+#
+# This is a minimal sample file declared connection to Redis
+# ===================================================================
+management:
+  type: redis               # repository type
+  redis:                    # redis repository
+    host:                   # redis host (default localhost)
+    port:                   # redis port (default 6379)
+    password:               # redis password (default null)
+    timeout:                # redis timeout (default -1)
+----
 
 [[gravitee-repository-jdbc-configuration]]
 === JDBC
