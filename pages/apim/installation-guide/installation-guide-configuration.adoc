@@ -952,28 +952,16 @@ applications, plans, ...
 
 **Compatibility Matrix: **
 |===
-|Scope|MongoDB |JDBC |Redis |Elasticsearch| Cassandra
+|Scope|MongoDB |Redis |Elasticsearch| Cassandra| AWS DynamoDB
 
 |Management
-|X
-|X
-|X
-|-
-|X
+|X |X |- |X |X
 
 |Rate Limit
-|X
-|-
-|X
-|-
-|X
+|X |X |- |X |-
 
 |Analytics
-|-
-|-
-|-
-|X
-|-
+|- |- |X |- |-
 
 |===
 
@@ -1054,34 +1042,24 @@ management:
     timeout:                # redis timeout (default -1)
 ----
 
-[[gravitee-repository-jdbc-configuration]]
-=== JDBC
-
-SQL Store implementation based on Java Persistence API (JPA). SQL DataSource configuration is controlled by the following configuration properties.
+[[gravitee-repository-dynamodb-configuration]]
+=== AWS DynamoDB
 
 [source,yaml]
 ----
 # ===================================================================
-# JDBC REPOSITORY PROPERTIES
+#
+# AWS DYNAMODB REPOSITORY PROPERTIES
+#
 # ===================================================================
 management:
-  type: jdbc                    # repository type
-  jdbc:                         # jpa repository
-    dataSourceClassName:        # JDBC Datasource class name
-    jdbcUrl: jdbc:postgresql://localhost/gravitee # database url
-    user: user                  # database username
-    password: password          # database password
-    autoCommit: false           # auto-commit mode (default to true)
-    properties:
-      specificProperty: property_value
-    pool:                       # Pooling configuration
-      maxPoolSize: 10
-      minIdle: 0
-      idleTimeout: 600000       # Idle Timeout in ms (default to 10 minutes)
-      connectionTimeout: 30000  # Connection Timeout in ms (default to 30 seconds)
+  type: dynamodb               # repository type
+  dynamodb:                    # dynamodb repository
+    awsRegion:                 # AWS Region (default: the one configure in your aws config file)
+    awsAccessKeyId:            # AWS Access Key Id (default: the one configure in your aws credential file)
+    awsSecretKey:              # AWS Secret Access Key (default: the one configure in your aws credential file)
+    awsEndpoint:               # your local dynamodb, for test purpose (default: amazon)
 ----
-
-NOTE: We've just declared a connection to a PostgresSQL Database server.
 
 [[gravitee-reporters-configuration]]
 == Reporters
