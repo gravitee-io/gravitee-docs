@@ -11,3 +11,4 @@ At this date, Gravitee.io is supporting three types of document:
 * Markdown (MD)
 
 
+You can access to your api data on your api's documentation by doing so: ${api.name} or ${api.metadata['foo-bar']}
