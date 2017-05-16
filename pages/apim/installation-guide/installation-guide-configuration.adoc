@@ -716,6 +716,9 @@ Currently, there are three kind of mail templates :
 |applicationMember.html   |New application member notification.
 |======================
 
+You can access to your api data on your api's templates by doing so: ${api.name} or ${api.metadata['foo-bar']}
+
+
 === Common Gravitee.io Management API properties
 
 Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.yml` file. This section provides the general configuration of Gravitee.IO Management API.
