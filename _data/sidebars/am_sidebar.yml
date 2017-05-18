@@ -1,0 +1,19 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  product: Access Management
+  folders:
+
+  - title: Installation Guide
+    output: web
+    folderitems:
+    - title: Gateway
+      output: web
+      url: /am_installguide_gateway.html
+    - title: Admin
+      output: web
+      url: /am_installguide_portal.html
+    - title: Configuration
+      output: web
+      url: /am_installguide_configuration.html

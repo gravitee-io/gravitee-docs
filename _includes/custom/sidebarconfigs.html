@@ -1,5 +1,8 @@
 
-{% if page.sidebar == "apim_sidebar" %}
+{% if page.sidebar == "am_sidebar" %}
+{% assign sidebar = site.data.sidebars.am_sidebar.entries %}
+
+{% elsif page.sidebar == "apim_sidebar" %}
 {% assign sidebar = site.data.sidebars.apim_sidebar.entries %}
 
 {% elsif page.sidebar == "product2_sidebar" %}
