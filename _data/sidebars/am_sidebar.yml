@@ -13,6 +13,13 @@ entries:
       url: /am_overview_introduction.html
       type: homepage
 
+  - title: User Guide
+    output: web
+    folderitems:
+    - title: Authentication
+      output: web
+      url: /am_userguide_authentication.html
+
   - title: Installation Guide
     output: web
     folderitems:
