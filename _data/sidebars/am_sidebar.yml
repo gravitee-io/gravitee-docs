@@ -5,13 +5,24 @@ entries:
   product: Access Management
   folders:
 
+  - title: Overview
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /am_overview_introduction.html
+      type: homepage
+
   - title: Installation Guide
     output: web
     folderitems:
+    - title: Introduction
+      output: web
+      url: /am_installguide_introduction.html
     - title: Gateway
       output: web
       url: /am_installguide_gateway.html
-    - title: Admin
+    - title: Administration UI
       output: web
       url: /am_installguide_portal.html
     - title: Configuration
