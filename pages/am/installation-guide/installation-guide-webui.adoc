@@ -82,8 +82,15 @@ $ vi constants.json
 [source,json]
 [subs="attributes"]
 {
-  "portalTitle": "Gravitee.io Access Management",
   "baseURL": "http://${GRAVITEEIO-AM-GATEWAY-HOST}/management",
+  "portalTitle": "Gravitee.io Portal",
+  "managementTitle": "Gravitee.io Management",
+  "devMode": false,
+  "userCreationEnabled": true,
+  "portal": {
+      "entrypoint": "https://api.company.com",
+      "apikeyHeader": "X-Gravitee-Api-Key"
+  },
   "authentication": {
     "oauth2": {
       "authorize": "http://${GRAVITEEIO-AM-GATEWAY-HOST}/admin/oauth/authorize",
@@ -92,5 +99,11 @@ $ vi constants.json
       "redirectUri": "http://${GRAVITEEIO-AM-UI-HOST}/oauth/callback",
       "logoutUri": "http://${GRAVITEEIO-AM-GATEWAY-HOST}/admin/logout?target_url=http://${GRAVITEEIO-AM-UI-HOST}/logout/callback"
     }
+  },
+  "theme": {
+      "name": "default",
+      "logo": "themes/assets/GRAVITEE_LOGO1-01.png",
+      "loader": "assets/gravitee_logo_anim.gif"
   }
 }
+
