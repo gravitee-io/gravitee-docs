@@ -52,14 +52,53 @@ The Management UI provides a UI to the Gravitee.io Management API to manage the 
 [source,bash]
 [subs="attributes"]
 $ cd graviteeio-management-ui-GRAVITEEIO-VERSION
-$ vi constants.js
+$ vi constants.json
 
 [source,javascript]
 [subs="attributes"]
 {
-	"baseURL": "http://localhost:8083/management/",
-	"portalTitle": "Gravitee.io Portal",
-	...
+  "baseURL": "/management/",
+  "portalTitle": "Gravitee.io Portal",
+  "managementTitle": "Gravitee.io Management",
+  "devMode": false,
+  "userCreationEnabled": true,
+
+  // Portal entrypoint and the API key HTTP header
+  "portal": {
+    "entrypoint": "https://api.company.com",
+    "apikeyHeader": "X-Gravitee-Api-Key"
+  },
+
+  // Portal theme customisation
+  "theme": {
+    "name": "default",
+    "logo": "themes/assets/GRAVITEE_LOGO1-01.png",
+    "loader": "assets/gravitee_logo_anim.gif"
+  },
+
+  "authentication": {
+    /* Enable social authentication with Google. clientId is required to enable it */
+    "google": {
+      "clientId": "googleplus_clientid"
+    },
+    /* Enable social authentication with GitHub. clientId is required to enable it */
+    "github": {
+      "clientId": "github_clientId"
+    },
+    /*
+      Enable authentication with a standard OAuth2 / OpenID Connect server.
+      This authentication provider supports only authorization code grant flow.
+    */
+    "oauth2": {
+      "clientId": "oauth2_clientId",
+      "name": "My OAuth2 server",
+      "color": "#0076b4",
+      // Authorization endpoint to ask for an authorization_code
+      "authorizationEndpoint": "https://oauth2_authorization_server/authorize",
+      // Required scope
+      "scope": ["profile", "openid"]
+    }
+  }
 }
 
 Please note that baseURL has to point to the running instance of Management API and follow format of `http://[api-management-domain:port]/management/`
