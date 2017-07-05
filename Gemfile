@@ -10,4 +10,5 @@ group :jekyll_plugins do
    gem 'jekyll-asciidoc', '~> 2.0.1'
    gem 'pygments.rb', '~> 1.0.0'
    gem 'jekyll-seo-tag'
+   gem 'jekyll-sitemap'
 end
