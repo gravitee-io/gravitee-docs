@@ -157,21 +157,57 @@ entries:
   - title: Installation Guide
     output: web
     folderitems:
-    - title: Gateway
+    - title: Introduction
       output: web
-      url: /apim_installguide_gateway.html
-    - title: Management API
-      output: web
-      url: /apim_installguide_management_api.html
-    - title: Portal
-      output: web
-      url: /apim_installguide_portal.html
+      url: /apim_installguide.html
+
+      subfolders:
+      - title: API Gateway
+        output: web
+        subfolderitems:
+          - title: Overview
+            output: web
+            url: /apim_installguide_gateway.html
+          - title: Configuration
+            output: web
+            url: /apim_installguide_gateway_configuration.html
+      - title: Management API
+        output: web
+        subfolderitems:
+          - title: Overview
+            output: web
+            url: /apim_installguide_management_api.html
+          - title: Configuration
+            output: web
+            url: /apim_installguide_management_api_configuration.html
+      - title: Portal
+        output: web
+        subfolderitems:
+          - title: Overview
+            output: web
+            url: /apim_installguide_portal.html
+          - title: Configuration
+            output: web
+            url: /apim_installguide_portal_configuration.html
+      - title: Repositories
+        output: web
+        subfolderitems:
+          - title: Overview
+            output: web
+            url: /apim_installguide_repositories.html
+          - title: MongoDB
+            output: web
+            url: /apim_installguide_repositories_mongodb.html
+          - title: Redis
+            output: web
+            url: /apim_installguide_repositories_redis.html
+          - title: DynamoDB
+            output: web
+            url: /apim_installguide_repositories_dynamodb.html
+
     - title: Docker
       output: web
       url: /apim_installguide_docker.html
-    - title: Configuration
-      output: web
-      url: /apim_installguide_configuration.html
     - title: Migration guide
       output: web
       url: /apim_installguide_migration.html

@@ -1,0 +1,26 @@
+---
+sidebar: apim_sidebar
+permalink: apim_installguide_repositories_dynamodb.html
+folder: apim/installation-guide/repositories
+description: Gravitee.io API Management - Repositories - DynamoDB
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+---
+
+[[gravitee-installation-repositories-dynamodb]]
+= DynamoDB
+
+[source,yaml]
+----
+# ===================================================================
+#
+# AWS DYNAMODB REPOSITORY PROPERTIES
+#
+# ===================================================================
+management:
+  type: dynamodb               # repository type
+  dynamodb:                    # dynamodb repository
+    awsRegion:                 # AWS Region (default: the one configure in your aws config file)
+    awsAccessKeyId:            # AWS Access Key Id (default: the one configure in your aws credential file)
+    awsSecretKey:              # AWS Secret Access Key (default: the one configure in your aws credential file)
+    awsEndpoint:               # your local dynamodb, for test purpose (default: amazon)
+----

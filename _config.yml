@@ -3,19 +3,21 @@ gems:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-title: Welcome to the Docs
-description: Home page for Gravitee.io's documentation
-keywords: Gravitee.io, documentation, manual, guide, reference, api
+title: Gravitee.io API Platform Documentation
+description: Home page for Gravitee.io API Platform documentation
+summary: Gravitee.io API Platform documentation
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
 twitter:
   username: graviteeio
 
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: Gravitee.io
+topnav_title: Gravitee.io API Platform
 # this appears on the top navigation bar next to the home button
 
-site_title: Gravitee.io documentation
+site_title: Gravitee.io API Platform Documentation
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
 company_name: GraviteeSource

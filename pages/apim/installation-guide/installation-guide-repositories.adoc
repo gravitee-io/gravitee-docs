@@ -1,0 +1,32 @@
+---
+sidebar: apim_sidebar
+permalink: apim_installguide_repositories.html
+folder: apim/installation-guide/repositories
+description: Gravitee.io API Management - Repositories
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+---
+
+[[gravitee-installation-repositories]]
+= Repositories
+
+== Supported storage
+
+* Management: All the data to manage the Gravitee.io API Management platform, including API definitions, users,
+applications, plans, ...
+* Rate Limit: Rate limiting data
+* Analytics: Analytics data
+
+**Compatibility Matrix: **
+|===
+|Scope|MongoDB |Redis |Elasticsearch| Cassandra| AWS DynamoDB
+
+|Management
+|X |X |- |X |X
+
+|Rate Limit
+|X |X |- |X |-
+
+|Analytics
+|- |- |X |- |-
+
+|===
