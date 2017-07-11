@@ -28,10 +28,8 @@ NOTE: You can download the latest JDK from the http://www.oracle.com/technetwork
 Default Gravitee.io Gateway distribution requires MongoDB 3.x to store management's configuration data and Elasticsearch 2.x for
 reporting / analytics.
 
-NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#production[MongoDB Download Site]
-and Elasticsearch 2.x from the https://www.elastic.co/downloads/elasticsearch[Elastic Download Site]
-
-WARNING: Gravitee.io is not yet compatible with Elasticsearch 5.x. See https://github.com/gravitee-io/issues/issues/387[ES 5.x support issue].
+NOTE: You can download MongoDB 3.x from https://www.mongodb.org/downloads#production[MongoDB Download Site]
+and Elasticsearch 2.x or 5.x from https://www.elastic.co/downloads/elasticsearch[Elastic Download Site]
 
 == Download and install the +.zip+ package
 
