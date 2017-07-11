@@ -30,28 +30,36 @@ Default Gravitee.io Management API distribution requires MongoDB to store mandat
 NOTE: You can download MongoDB from https://www.mongodb.org/downloads#production[MongoDB Download Site]
 and download Elasticsearch 2.x or 5.x from https://www.elastic.co/downloads/elasticsearch[Elastic Download Site]
 
-== Installing from the ZIP archive
+== Download and install the +.zip+ package
 
 The binaries are available from http://gravitee.io/#downloads[Downloads page] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-GRAVITEEIO-VERSION.zip[Download].
 
 [source,bash]
-[subs="attributes"]
+----
 $ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-GRAVITEEIO-VERSION -o gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
+----
 
 Once file has been downloaded, you just have to unpack it in the right place
 
 [source,bash]
-[subs="attributes"]
+----
 $ unzip gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
+----
 
-And you can simply start up the Management API as follow:
+== Running Management API from the command line
+
+Management API can be started from the command line as follows:
 
 [source,bash]
-[subs="attributes"]
+----
 $ cd graviteeio-management-api-GRAVITEEIO-VERSION
 $ ./bin/gravitee
+----
 
-If everything goes well, you should see this kind of logs:
+By default, Management API runs in the foreground, prints its logs to the standard output (stdout), and can be stopped
+by pressing Ctrl-C.
+
+If everything goes well, you should see this log:
 
 [source,bash]
 [subs="attributes"]
@@ -59,23 +67,52 @@ If everything goes well, you should see this kind of logs:
 11:01:53.162 [gravitee] INFO  i.g.m.standalone.node.ManagementNode - Gravitee.io - Management API id[2e05c0fa-8e48-4ddc-85c0-fa8e48bddc11] version[1.6.0] pid[24930] build[175] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 15837 ms.
 ...
 
-Default Gravitee.io Management API listens on port *8083* and can be accessed using the following URL :
+== Checking that Management API is running
 
-http://SERVER_DOMAIN:8083/management.
+You can test that your Management API node is running by sending an HTTP request to port `8083` on `localhost`:
 
-This port is <<apim_installguide_configuration.adoc#http_server_2, configurable>> if necessary.
+[source,bash]
+----
+$ curl -X GET http://localhost:8083/
+----
 
-== Directory structure
+which should give you a response something like this:
 
-After successfully installed Gravitee.io Management API, the `graviteeio-management-api` directory looks like this:
+[source,json]
+----
+[]
+----
+
+== Running as a daemon
+
+To run Management API as a daemon, specify -d on the command line, and record the process ID in a file using the -p option:
+
+[source,bash]
+----
+$ ./bin/gravitee -d -p=/var/run/gio.pid
+----
+
+Log messages can be found in the `$GRAVITEE_HOME/logs/` directory.
+
+To shut down Management API, kill the process ID recorded in the pid file:
+
+[source,bash]
+----
+$ kill `cat /var/run/gio.pid`
+----
+
+== Directory layout of .zip archive
+
+The .zip and .tar.gz packages are entirely self-contained. All files and directories are, by default, contained within
+$GRAVITEE_HOME — the directory created when unpacking the archive.
 
 [width="100%",cols="20%,80%",frame="topbot",options="header"]
 |======================
-|Folder    |Description
-|bin       |Gravitee.io Management API startup/shutdown scripts.
-|config    |Gravitee.io Management API <<apim_installguide_configuration.adoc#gravitee-management-api-configuration, configuration>> folder (application, logs and cache configuration).
-|lib       |Gravitee.io Management API libraries (Gravitee.io Management API and third party libraries).
-|logs      |Gravitee.io Management API log files.
-|plugins   |Gravitee.io Management API pluggable <<apim_installguide_configuration.adoc#plugins_repository_2, plugins>>.
+|Location    |Description
+|bin       |Binary scripts including `gravitee` to start a node
+|config    |Configuration files including `gravitee.yml`
+|lib       |Libraries (gravitee.io libraries and third parties library)
+|logs      |Log files location.
+|plugins   |Plugin files location.
 |======================
 

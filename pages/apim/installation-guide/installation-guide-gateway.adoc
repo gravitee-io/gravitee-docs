@@ -13,19 +13,19 @@ keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid
 
 === JDK
 
-Gravitee.io Gateway requires at least Java 8. Before you install Gravitee.io Gateway, please check your Java version :
+API Gateway requires at least Java 8. Before you install it, please check your Java version :
 
 [source,bash]
 ----
-java -version
-echo $JAVA_HOME
+$ java -version
+$ echo $JAVA_HOME
 ----
 
 NOTE: You can download the latest JDK from the http://www.oracle.com/technetwork/java/javase/downloads/index.html[Oracle Java SE Download Site].
 
 === Repository
 
-Default Gravitee.io Gateway distribution requires MongoDB 3.x to store management's configuration data and Elasticsearch 2.x for
+Default API Gateway distribution requires MongoDB 3.x to poll environment configuration and Elasticsearch 2.x for
 reporting / analytics.
 
 NOTE: You can download MongoDB 3.x from https://www.mongodb.org/downloads#production[MongoDB Download Site]
@@ -36,23 +36,31 @@ and Elasticsearch 2.x or 5.x from https://www.elastic.co/downloads/elasticsearch
 Binaries are available from http://gravitee.io/#downloads[Downloads page] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-GRAVITEEIO-VERSION.zip[Download].
 
 [source,bash]
-[subs="attributes"]
+----
 $ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-GRAVITEEIO-VERSION.zip -o gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
+----
 
 Once file has been downloaded, you just have to unpack it in the right place.
 
 [source,bash]
-[subs="attributes"]
+----
 $ unzip gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
+----
 
-And you can simply start up the gateway as follow:
+== Running API Gateway from the command line
+
+API Gateway can be started from the command line as follows:
 
 [source,bash]
-[subs="attributes"]
+----
 $ cd graviteeio-gateway-GRAVITEEIO-VERSION
 $ ./bin/gravitee
+----
 
-If everything goes well, you should see this kind of logs:
+By default, API Gateway runs in the foreground, prints its logs to the standard output (stdout), and can be stopped
+by pressing Ctrl-C.
+
+If everything goes well, you should see this log:
 
 [source,bash]
 [subs="attributes"]
@@ -60,22 +68,52 @@ If everything goes well, you should see this kind of logs:
 11:01:53.162 [gravitee] [] INFO  i.g.g.standalone.node.GatewayNode - Gravitee.io - Gateway id[2e05c0fa-8e48-4ddc-85c0-fa8e48bddc11] version[1.6.0] pid[24930] build[175] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 15837 ms.
 ...
 
-By default, the gateway is listening on port *8082* and can be accessed from: _http://localhost:8082_
+== Checking that API Gateway is running
 
+You can test that your API Gateway node is running by sending an HTTP request to port `8082` on `localhost`:
 
-HTTP port can be <<apim_installguide_gateway_configuration.adoc#api-gateway-http-server, configured>> if necessary.
+[source,bash]
+----
+$ curl -X GET http://localhost:8082/
+----
 
-== Directory structure
+which should give you a response something like this:
 
-After successfully installed Gravitee.io Gateway, the `graviteeio-gateway` directory looks like this:
+[source,bash]
+----
+No context-path matches the request URI.
+----
+
+== Running as a daemon
+
+To run API Gateway as a daemon, specify -d on the command line, and record the process ID in a file using the -p option:
+
+[source,bash]
+----
+$ ./bin/gravitee -d -p=/var/run/gio.pid
+----
+
+Log messages can be found in the `$GRAVITEE_HOME/logs/` directory.
+
+To shut down API Gateway, kill the process ID recorded in the pid file:
+
+[source,bash]
+----
+$ kill `cat /var/run/gio.pid`
+----
+
+== Directory layout of .zip archive
+
+The .zip and .tar.gz packages are entirely self-contained. All files and directories are, by default, contained within
+$GRAVITEE_HOME — the directory created when unpacking the archive.
 
 [width="100%",cols="20%,80%",frame="topbot",options="header"]
 |======================
-|Folder    |Description
-|bin       |Startup/shutdown scripts
-|config    |<<apim_installguide_configuration.adoc#gravitee-gateway-configuration, Configuration>> folder (application, logs and cache configuration)
+|Location    |Description
+|bin       |Binary scripts including `gravitee` to start a node
+|config    |Configuration files including `gravitee.yml`
 |lib       |Libraries (gravitee.io libraries and third parties library)
-|logs      |Gateway log files
-|plugins   |Gateway <<apim_overview_plugins.adoc#, plugins>>
+|logs      |Log files location.
+|plugins   |Plugin files location.
 |======================
 
