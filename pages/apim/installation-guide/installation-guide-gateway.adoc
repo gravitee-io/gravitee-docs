@@ -57,9 +57,7 @@ If everything goes well, you should see this kind of logs:
 [source,bash]
 [subs="attributes"]
 ...
-20:55:42.097 [gravitee] INFO  i.g.g.s.vertx.VertxEmbeddedContainer - Starting Vertx container and deploy Gravitee Verticles
-20:55:42.108 [gravitee] INFO  i.g.g.s.v.GraviteeVerticleFactory - Creating a new instance of Gravitee Verticle
-20:55:42.167 [gravitee] INFO  i.g.g.standalone.node.GatewayNode - Gravitee.io - Gateway [id: 9c31b9cc-f779-4f2d-b1b9-ccf779df2df5 - version: GRAVITEEIO-VERSION (build: XXXX) revision#XXXX] started in 3871 ms.
+11:01:53.162 [gravitee] [] INFO  i.g.g.standalone.node.GatewayNode - Gravitee.io - Gateway id[2e05c0fa-8e48-4ddc-85c0-fa8e48bddc11] version[1.6.0] pid[24930] build[175] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 15837 ms.
 ...
 
 By default, the gateway is listening on port *8082* and can be accessed from: _http://localhost:8082_
