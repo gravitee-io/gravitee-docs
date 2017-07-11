@@ -17,11 +17,11 @@ Management UI Portal has been tested with the latest versions of Google Chrome, 
 
 == Installing from the ZIP archive
 
-The binaries are available from http://gravitee.io/#downloads or via https://dist.gravitee.io/GRAVITEEIO-VERSION/dist/graviteeio-full-GRAVITEEIO-VERSION.zip[Download].
+The binaries are available from http://gravitee.io/#downloads[Downloads page] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-GRAVITEEIO-VERSION.zip[Download].
 
 [source,bash]
 [subs="attributes"]
-$ curl -L https://dist.gravitee.io/GRAVITEEIO-VERSION/dist/graviteeio-full-GRAVITEEIO-VERSION -o gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
+$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-GRAVITEEIO-VERSION -o gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
 
 Once file has been downloaded, you just have to unpack it in the right place
 
