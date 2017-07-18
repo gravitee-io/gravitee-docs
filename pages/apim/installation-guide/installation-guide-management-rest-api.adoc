@@ -73,7 +73,7 @@ You can test that your Management API node is running by sending an HTTP request
 
 [source,bash]
 ----
-$ curl -X GET http://localhost:8083/
+$ curl -X GET http://localhost:8083/management/apis/
 ----
 
 which should give you a response something like this:
