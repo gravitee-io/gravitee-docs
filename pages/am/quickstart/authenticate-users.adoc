@@ -3,7 +3,7 @@
 :page-permalink: am_quickstart_authenticate_users.html
 :page-folder: am/quickstart
 
-After successfully created your first client (see link:/am_quickstart_register_app.html[Register a new client]) you will see how to define an identity provider used to authenticate users of that client.
+After successfully created your first client (see link:/am_quickstart_register_app.html[Register a new client^]) you will see how to define an identity provider used to authenticate users of that client.
 
 == Create an identity provider
 
@@ -48,12 +48,12 @@ Now you can test users connection.
 == Test your identity provider with OAuth2
 
 OAuth 2 is an authorization framework that let applications acting on behalf the end user to obtain limited access to HTTP services.
-link:https://tools.ietf.org/html/rfc6749[OAuth 2 RFC] defines two endpoints :
+link:https://tools.ietf.org/html/rfc6749[OAuth 2 RFC^] defines two endpoints :
 
 - The *authorization endpoint* used to interact with the resource owner and obtain an authorization grant via user-agent redirection.
 - The *token endpoint* used by the client to obtain an access token by presenting its authorization grant.
 
-NOTE: For further information about OAuth2, please visit the link:https://tools.ietf.org/html/rfc6749[RFC page].
+NOTE: For further information about OAuth2, please visit the link:https://tools.ietf.org/html/rfc6749[RFC page^].
 
 In order to validate the identity provider configuration, we will request for an access token.
 

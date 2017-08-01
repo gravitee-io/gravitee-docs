@@ -6,7 +6,7 @@
 This guide walks you through the process of creating your first client by using the Gravitee.io AM Management UI.
 
 NOTE: Gravitee.io Access Management UI can be accessed using the following URL :
-http://GRAVITEEIO-AM-UI-HOST (see link:/am_installguide_portal.html[Gravitee.io AM Management UI installation] for more information)
+http://GRAVITEEIO-AM-UI-HOST (see link:/am_installguide_portal.html[Gravitee.io AM Management UI installation^] for more information)
 
 == Create a security domain
 
@@ -57,12 +57,12 @@ image::graviteeio-am-oauth-client.png[align=center, title-align=center]
 == Test your application with OAuth2
 
 OAuth 2 is an authorization framework that let applications acting on behalf the end user to obtain limited access to HTTP services.
-link:https://tools.ietf.org/html/rfc6749[OAuth 2 RFC] defines two endpoints :
+link:https://tools.ietf.org/html/rfc6749[OAuth 2 RFC^] defines two endpoints :
 
 - The *authorization endpoint* used to interact with the resource owner and obtain an authorization grant via user-agent redirection.
 - The *token endpoint* used by the client to obtain an access token by presenting its authorization grant.
 
-NOTE: For further information about OAuth2, please visit the link:https://tools.ietf.org/html/rfc6749[RFC page].
+NOTE: For further information about OAuth2, please visit the link:https://tools.ietf.org/html/rfc6749[RFC page^].
 
 In order to validate the application configuration, we will request for an access token.
 
