@@ -32,9 +32,82 @@ entries:
   - title: User Guide
     output: web
     folderitems:
-    - title: Authentication
+    - title: Overview
       output: web
-      url: /am_userguide_authentication.html
+      url: /am_userguide_overview.html
+
+      subfolders:
+      - title: Getting Started
+        output: web
+        subfolderitems:
+        - title: Sign in to the Administration UI
+          output: web
+          url: /am_userguide_authentication.html
+        - title: Concepts
+          output: web
+          url: /am_userguide_concepts.html
+      - title: Security domains
+        output: webx
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am_userguide_security_domains.html
+        - title: Admin security domain
+          output: web
+          url: /am_userguide_admin_domain.html
+        - title: Create security domain
+          output: web
+          url: /am_userguide_create_domain.html
+      - title: Identity providers
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am_userguide_identity_providers.html
+        - title: Create identity provider
+          output: web
+          url: /am_userguide_create_identity_provider.html
+        - title: User and Roles mapping
+          output: web
+          url: /am_userguide_identity_provider_mapping.html
+      - title: Clients
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am_userguide_clients.html
+        - title: Create client
+          output: web
+          url: /am_userguide_create_client.html
+      - title: Login Page
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am_userguide_login_page.html
+        - title: Custom login page
+          output: web
+          url: /am_userguide_custom_login_page.html
+      - title: Certificates
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am_userguide_certificates.html
+        - title: Create certificate
+          output: web
+          url: /am_userguide_create_certificate.html
+      - title: Roles
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am_userguide_roles.html
+        - title: Create role
+          output: web
+          url: /am_userguide_create_role.html
+
+
 
   - title: Installation Guide
     output: web
