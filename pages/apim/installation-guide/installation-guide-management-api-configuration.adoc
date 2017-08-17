@@ -333,6 +333,27 @@ email:
   password: password
 ----
 
+==== Configure the Gmail SMTP server
+
+Here is the Gmail SMTP configuration.
+
+[source,yaml]
+----
+email:
+  enabled: true
+  host: smtp.gmail.com
+  port: 587
+  from: user@gmail.com
+  username: user@gmail.com
+  password: xxxxxxxx
+  properties:
+    auth: true
+    starttls.enable: true
+    ssl.trust: smtp.gmail.com
+----
+
+If you're using the 2-Factor Authentication (if not, you should), you have to generate an application password : https://security.google.com/settings/security/apppasswords .
+
 === Mail templates
 
 Mail templates configuration. Gravitee.io Management API use https://velocity.apache.org/[Velocity template engine] to parse and create the mail templates.
