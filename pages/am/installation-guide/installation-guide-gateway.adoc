@@ -1,7 +1,13 @@
+---
+sidebar: am_sidebar
+permalink: am_installguide_gateway.html
+folder: am/installation-guide
+description: Gravitee.io API Management - AM Gateway - Installation guide
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+---
+
+[[gravitee-am-installation-guide-gateway]]
 = Gateway
-:page-sidebar: am_sidebar
-:page-permalink: am_installguide_gateway.html
-:page-folder: am/installation-guide
 
 == System Requirements
 
@@ -19,7 +25,7 @@ NOTE: You can download the latest JDK from the http://www.oracle.com/technetwork
 
 === Repository
 
-Default Gravitee.io AM Gateway distribution requires MongoDB 3.x to store management's configuration data.
+Default AM Gateway distribution requires MongoDB 3.x to store data.
 
 NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#production[MongoDB Download Site].
 
@@ -37,14 +43,20 @@ Once file has been downloaded, you just have to unpack it in the right place.
 [subs="attributes"]
 $ unzip gravitee-am-gateway-standalone-GRAVITEEIO-AM-VERSION.zip
 
-And you can simply start up the gateway as follow:
+== Running AM Gateway from the command line
+
+AM Gateway can be started from the command line as follows:
 
 [source,bash]
-[subs="attributes"]
-$ cd gravitee-am-gateway-standalone-GRAVITEEIO-AM-VERSION
+----
+$ cd gravitee-am-gateway-standalone-GRAVITEEIO-VERSION
 $ ./bin/gravitee
+----
 
-If everything goes well, you should see this kind of logs:
+By default, AM Gateway runs in the foreground, prints its logs to the standard output (stdout), and can be stopped
+by pressing Ctrl-C.
+
+If everything goes well, you should see this log:
 
 [source,bash]
 [subs="attributes"]
@@ -54,11 +66,36 @@ If everything goes well, you should see this kind of logs:
 16:21:01.996 [gravitee] [] INFO  i.g.am.gateway.jetty.JettyHttpServer - HTTP Server is now started and listening on port 8092
 ...
 
-By default, the gateway is listening on port *8092* and can be accessed from: _http://localhost:8092_.
+== Checking that AM Gateway is running
+
+You can test that your AM Gateway node is running by sending an HTTP request to port `8092` on `localhost`:
+
+[source,bash]
+----
+$ curl -X GET http://localhost:8092/management/apis/
+----
+
+== Running as a daemon
+
+To run AM Gateway as a daemon, specify -d on the command line, and record the process ID in a file using the -p option:
+
+[source,bash]
+----
+$ ./bin/gravitee -d -p=/var/run/gio.pid
+----
+
+Log messages can be found in the `$GRAVITEE_HOME/logs/` directory.
+
+To shut down AM Gateway, kill the process ID recorded in the pid file:
+
+[source,bash]
+----
+$ kill `cat /var/run/gio.pid`
+----
 
 == Directory structure
 
-After successfully installed Gravitee.io AM Gateway, the `graviteeio-am-gateway` directory looks like this:
+After successfully installed AM Gateway, the `graviteeio-am-gateway` directory looks like this:
 
 [width="100%",cols="20%,80%",frame="topbot",options="header"]
 |======================
