@@ -387,15 +387,15 @@ Available attributes:
 
 [width="100%",cols="20%,20%,20%,20%,20%",frame="topbot",options="header"]
 |======================
-|Api        |Application|Group    |Plan       |Owner
-|name       |name       |name     |name       |username
-|description|description|-        |description|firstname
-|version    |type       |-        |order      |lastname
-|role       |status     |-        |publishedAt|email
-|metadata   |role       |-        |closedAt   |-
-|deployedAt |role       |-        |closedAt   |-
-|createdAt  |createdAt  |createdAt|createdAt  |-
-|updatedAt  |updatedAt  |updatedAt|updatedAt  |-
+|Api                |Application        |Group              |Plan               |Owner
+|name               |name               |name               |name               |username
+|description        |description        |-                  |description        |firstname
+|version            |type               |-                  |order              |lastname
+|role               |status             |-                  |publishedAt (Date) |email
+|metadata (Map)     |role               |-                  |closedAt (Date)    |-
+|deployedAt (Date)  |-                  |-                  |-                  |-
+|createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |-
+|updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |-
 |======================
 
 Here's an example of template:
