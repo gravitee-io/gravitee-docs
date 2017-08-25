@@ -364,14 +364,21 @@ templates:
   path: ${gravitee.home}/templates
 ----
 
-Currently, there are three kind of mail templates :
+Here's the list of mail templates :
 
-[width="100%",cols="20%,80%",frame="topbot",options="header"]
+[width="100%",cols="20%,60%,20%",frame="topbot",options="header"]
 |======================
-|Mail Template            |Description
-|apiKeyRevoked.html       |API Key revoked notification.
-|apiMember.html           |New API member notification.
-|applicationMember.html   |New application member notification.
+|Mail Template                  |Description                                    |Variables
+|apiGroupMember.html            |New API group member notification.             |username, group
+|apiKeyExpired.html             |API Key expired notification.                  |owner, apiKey
+|apiKeyRevoked.html             |API Key revoked notification.                  |owner, apiKey
+|apiMember.html                 |New API member notification.                   |username, api
+|applicationGroupMember.html    |New application group member notification.     |username, group
+|applicationMember.html         |New application member notification.           |username, application
+|subscriptionApproved.html      |API subscription approved notification.        |owner, api, plan
+|subscriptionReceived.html      |API subscription received notification.        |owner, api, plan, application
+|subscriptionRejected.html      |API subscription rejected notification.        |owner, api, plan
+|userRegistration.html          |User registration notification.                |username, registrationUrl
 |======================
 
 You can access to your api data on your api's templates by doing so: ${api.name} or ${api.metadata['foo-bar']}
