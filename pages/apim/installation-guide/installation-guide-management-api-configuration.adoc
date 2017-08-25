@@ -369,20 +369,51 @@ Here's the list of mail templates :
 [width="100%",cols="20%,60%,20%",frame="topbot",options="header"]
 |======================
 |Mail Template                  |Description                                    |Variables
-|apiGroupMember.html            |New API group member notification.             |username, group
-|apiKeyExpired.html             |API Key expired notification.                  |owner, apiKey
-|apiKeyRevoked.html             |API Key revoked notification.                  |owner, apiKey
-|apiMember.html                 |New API member notification.                   |username, api
-|applicationGroupMember.html    |New application group member notification.     |username, group
-|applicationMember.html         |New application member notification.           |username, application
-|subscriptionApproved.html      |API subscription approved notification.        |owner, api, plan
-|subscriptionReceived.html      |API subscription received notification.        |owner, api, plan, application
-|subscriptionRejected.html      |API subscription rejected notification.        |owner, api, plan
+|apiGroupMember.html            |New API group member notification.             |username, *group*
+|apiKeyExpired.html             |API Key expired notification.                  |*owner*, apiKey
+|apiKeyRevoked.html             |API Key revoked notification.                  |*owner*, apiKey
+|apiMember.html                 |New API member notification.                   |username, *api*
+|applicationGroupMember.html    |New application group member notification.     |username, *group*
+|applicationMember.html         |New application member notification.           |username, *application*
+|subscriptionApproved.html      |API subscription approved notification.        |*owner*, *api*, *plan*
+|subscriptionReceived.html      |API subscription received notification.        |*owner*, *api*, *plan*, *application*
+|subscriptionRejected.html      |API subscription rejected notification.        |*owner*, *api*, *plan*
 |userRegistration.html          |User registration notification.                |username, registrationUrl
 |======================
 
 You can access to your api data on your api's templates by doing so: ${api.name} or ${api.metadata['foo-bar']}
 
+Available attributes:
+
+[width="100%",cols="20%,20%,20%,20%,20%",frame="topbot",options="header"]
+|======================
+|Api        |Application|Group    |Plan       |Owner
+|name       |name       |name     |name       |username
+|description|description|-        |description|firstname
+|version    |type       |-        |order      |lastname
+|role       |status     |-        |publishedAt|email
+|metadata   |role       |-        |closedAt   |-
+|deployedAt |role       |-        |closedAt   |-
+|createdAt  |createdAt  |createdAt|createdAt  |-
+|updatedAt  |updatedAt  |updatedAt|updatedAt  |-
+|======================
+
+Here's an example of template:
+[source,html]
+----
+<html>
+	<body style="text-align: center;">
+		<header>
+			<#include "header.html" />
+		</header>
+		<div style="margin-top: 50px; color: #424e5a;">
+			<h3>Hi ${owner.username},</h3>
+			<p>The API Key <code>${apiKey}</code> has been expired.
+		</p>
+	</body>
+</html>
+
+----
 
 == Default configuration
 
