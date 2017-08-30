@@ -79,6 +79,10 @@ For that, edit constants.json and change the value of logo with "themes/assets/y
   "managementTitle": "Gravitee.io Management",
   "devMode": false,
   "userCreationEnabled": true,
+  
+  "documentation": {
+    "url": "https://docs.gravitee.io"
+  },
 
   "portal": {
     "entrypoint": "https://api.company.com",
