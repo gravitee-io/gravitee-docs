@@ -356,7 +356,7 @@ If you're using the 2-Factor Authentication (if not, you should), you have to ge
 
 === Mail templates
 
-Mail templates configuration. Gravitee.io Management API use https://velocity.apache.org/[Velocity template engine] to parse and create the mail templates.
+Mail templates configuration. Gravitee.io Management API use http://freemarker.org[Freemarker template engine] to parse and create the mail templates.
 
 [source,yaml]
 ----
