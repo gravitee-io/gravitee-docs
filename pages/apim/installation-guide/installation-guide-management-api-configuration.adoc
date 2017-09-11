@@ -376,7 +376,7 @@ Here's the list of mail templates :
 |applicationGroupMember.html    |New application group member notification.     |username, *group*
 |applicationMember.html         |New application member notification.           |username, *application*
 |subscriptionApproved.html      |API subscription approved notification.        |*owner*, *api*, *plan*
-|subscriptionReceived.html      |API subscription received notification.        |*owner*, *api*, *plan*, *application*
+|subscriptionReceived.html      |API subscription received notification.        |*owner*, *api*, *plan*, *application*, subscriptionUrl
 |subscriptionRejected.html      |API subscription rejected notification.        |*owner*, *api*, *plan*
 |userRegistration.html          |User registration notification.                |username, registrationUrl
 |======================
