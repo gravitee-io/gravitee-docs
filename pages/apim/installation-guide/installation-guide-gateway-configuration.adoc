@@ -31,6 +31,54 @@ http:
       password:
 ----
 
+=== How to enable HTTPS support
+First, you need to provide a keystore. If you don't have one, you can generate it :
+----
+keytool -genkey \
+  -alias test \
+  -keyalg RSA \
+  -keystore server-keystore.jks \
+  -keysize 2048 \
+  -validity 360 \
+  -dname CN=localhost \
+  -keypass secret \
+  -storepass secret
+----
+
+After that, you have to enable secure mode in your `gravitee.yml` :
+----
+http:
+  alpn: false
+  port: 8082
+  idleTimeout: 0
+  tcpKeepAlive: true
+  compressionSupported: false
+  instances: 0
+  secured: true
+  ssl:
+    clientAuth: false
+    keystore:
+      path: /path/to/keystore.jks
+      password: adminadmin
+    truststore:
+      path:
+      password:
+----
+
+=== How to enable HTTP/2 support
+
+You first need to enable HTTPS support. Then, you just have to enable alpn in the `gravitee.yml` :
+----
+http:
+  alpn: true
+  ...
+----
+
+Now the gateway support both HTTP 1 and HTTP/2 protocol. You can consume your api like that :
+----
+curl -k -v --http2 https://localhost:8082/my_api
+----
+
 == Plugins repository
 
 Gravitee.io Gateway <<gravitee-plugins,plugins>> directory configuration.
