@@ -369,16 +369,15 @@ Here's the list of mail templates :
 [width="100%",cols="20%,60%,20%",frame="topbot",options="header"]
 |======================
 |Mail Template                  |Description                                    |Variables
-|apiGroupMember.html            |New API group member notification.             |username, *group*
+|groupMember.html               |New API group member notification.             |_username_, *group*, user
 |apiKeyExpired.html             |API Key expired notification.                  |*owner*, apiKey
 |apiKeyRevoked.html             |API Key revoked notification.                  |*owner*, apiKey
-|apiMember.html                 |New API member notification.                   |username, *api*
-|applicationGroupMember.html    |New application group member notification.     |username, *group*
-|applicationMember.html         |New application member notification.           |username, *application*
+|apiMember.html                 |New API member notification.                   |_username_, *api*, user
+|applicationMember.html         |New application member notification.           |_username_, *application*, user
 |subscriptionApproved.html      |API subscription approved notification.        |*owner*, *api*, *plan*
 |subscriptionReceived.html      |API subscription received notification.        |*owner*, *api*, *plan*, *application*, subscriptionUrl
 |subscriptionRejected.html      |API subscription rejected notification.        |*owner*, *api*, *plan*
-|userRegistration.html          |User registration notification.                |username, registrationUrl
+|userRegistration.html          |User registration notification.                |_username_, registrationUrl, user
 |======================
 
 You can access to your api data on your api's templates by doing so: ${api.name} or ${api.metadata['foo-bar']}
@@ -387,7 +386,7 @@ Available attributes:
 
 [width="100%",cols="20%,20%,20%,20%,20%",frame="topbot",options="header"]
 |======================
-|Api                |Application        |Group              |Plan               |Owner
+|Api                |Application        |Group              |Plan               |Owner/User
 |name               |name               |name               |name               |username
 |description        |description        |-                  |description        |firstname
 |version            |type               |-                  |order              |lastname
