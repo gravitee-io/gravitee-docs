@@ -354,9 +354,9 @@ email:
 
 If you're using the 2-Factor Authentication (if not, you should), you have to generate an application password : https://security.google.com/settings/security/apppasswords .
 
-=== Mail templates
+=== Email templates
 
-Mail templates configuration. Gravitee.io Management API use http://freemarker.org[Freemarker template engine] to parse and create the mail templates.
+Email templates configuration. Gravitee.io Management API use http://freemarker.org[Freemarker template engine] to parse and create the email templates.
 
 [source,yaml]
 ----
@@ -364,13 +364,13 @@ templates:
   path: ${gravitee.home}/templates
 ----
 
-Here's the list of mail templates :
+Here's the list of email templates :
 
 [width="100%",cols="20%,60%,20%",frame="topbot",options="header"]
 |======================
-|Mail Template                  |Description                                    |Variables
+|Email Template                 |Description                                    |Variables
 |groupMember.html               |New API group member notification.             |_username_, *group*, user
-|apiKeyExpired.html             |API Key expired notification.                  |*owner*, apiKey
+|apiKeyExpired.html             |API Key expired notification.                  |*owner*, *api*, *plan*, *application*, apiKey, expirationDate
 |apiKeyRevoked.html             |API Key revoked notification.                  |*owner*, apiKey
 |apiMember.html                 |New API member notification.                   |_username_, *api*, user
 |applicationMember.html         |New application member notification.           |_username_, *application*, user
