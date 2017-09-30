@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    {% include head.html %}
+</head>
+<body>
+{% include topnav.html %}
+
+<!-- API Content -->
+<div class="container" style="width: 100%; max-width: 100%; margin: 0; padding: 0">
+    {{content}}
+    <script src="https://rebilly.github.io/ReDoc/releases/latest/redoc.min.js"> </script>
+</div>
+<!-- /.container -->
+
+</body>
+{% if site.google_analytics %}
+{% include google_analytics.html %}
+{% endif %}
+</html>
+
+
+
