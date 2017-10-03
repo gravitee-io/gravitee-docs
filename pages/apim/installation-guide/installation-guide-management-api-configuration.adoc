@@ -369,15 +369,16 @@ Here's the list of email templates :
 [width="100%",cols="20%,60%,20%",frame="topbot",options="header"]
 |======================
 |Email Template                 |Description                                    |Variables
-|groupMember.html               |New API group member notification.             |_username_, *group*, user
+|groupMember.html               |New API group member notification.             |_username_, *group*, *user*
 |apiKeyExpired.html             |API Key expired notification.                  |*owner*, *api*, *plan*, *application*, apiKey, expirationDate
 |apiKeyRevoked.html             |API Key revoked notification.                  |*owner*, apiKey
-|apiMember.html                 |New API member notification.                   |_username_, *api*, user
-|applicationMember.html         |New application member notification.           |_username_, *application*, user
+|apiMember.html                 |New API member notification.                   |_username_, *api*, *user*
+|applicationMember.html         |New application member notification.           |_username_, *application*, *user*
 |subscriptionApproved.html      |API subscription approved notification.        |*owner*, *api*, *plan*
 |subscriptionReceived.html      |API subscription received notification.        |*owner*, *api*, *plan*, *application*, subscriptionUrl
 |subscriptionRejected.html      |API subscription rejected notification.        |*owner*, *api*, *plan*
-|userRegistration.html          |User registration notification.                |_username_, registrationUrl, user
+|userRegistration.html          |User registration notification.                |_username_, registrationUrl, *user*
+|supportTicket.html             |Support ticket creation.                       |*api*, *application*, *user*, content
 |======================
 
 You can access to your api data on your api's templates by doing so: ${api.name} or ${api.metadata['foo-bar']}
@@ -659,4 +660,8 @@ user:
 
 # The portal URL used in emails
 #portalURL: http://portal-url.net
+
+# Allows to create support ticket (default value: false)
+#support:
+  #enabled: true
 ----
