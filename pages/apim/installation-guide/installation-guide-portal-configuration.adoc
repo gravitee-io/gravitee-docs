@@ -123,6 +123,10 @@ For that, edit constants.json and change the value of logo with "themes/assets/y
       // Required scope
       "scope": ["profile", "openid"]
     }
+  },
+  // Enable the creation of support tickets
+  "support": {
+    "enabled": false
   }
 }
 ----
