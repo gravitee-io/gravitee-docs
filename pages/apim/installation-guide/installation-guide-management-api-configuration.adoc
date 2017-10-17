@@ -513,6 +513,21 @@ management:
 #    connectTimeout: 500
 #    socketTimeout: 250
 
+services:
+  core:
+    http:
+      enabled: true
+      port: 18083
+      host: localhost
+      authentication:
+        # authentication type to be used for the core services
+        # - none : to disable authentication
+        # - basic : to use basic authentication
+        # default is "basic"
+        type: basic
+        users:
+          admin: adminadmin
+
 # Analytics repository is used to store all reporting, metrics, healthchecks stored by gateway instances
 # This is the default configuration using Elasticearch
 analytics:
@@ -532,6 +547,11 @@ analytics:
 security:
   providers:  # authentication providers
     - type: memory
+      # password encoding/hashing algorithm. One of:
+      # - bcrypt : passwords are hashed with bcrypt
+      # - none : passwords are not hashed/encrypted
+      # default value is bcrypt
+      password-encoding-algo: bcrypt
       users:
         - user:
           username: user
@@ -549,7 +569,7 @@ security:
           # Password value: api1
           password: $2a$10$iXdXO4wAYdhx2LOwijsp7.PsoAZQ05zEdHxbriIYCbtyo.y32LTji
           # You can declare multiple roles using comma separator
-          roles: MANAGEMENT:API_PUBLISHER, PORTAL:API_PUBLISHER MANAGEMENT:USER, PORTAL:USER
+          roles: MANAGEMENT:API_PUBLISHER, PORTAL:API_PUBLISHER
         - user:
           username: application1
           # Password value: application1
@@ -601,11 +621,21 @@ security:
 #        lastname: family_name
 #        firstname: given_name
 #        picture: picture
+      #   by default created user will have default role for MANAGEMENT and PORTAL
+      #   you can override this by assigning user to groups, on user creation, if its user info content match expression
+#     groups:
+#       - mapping:
+#           condition: "{#jsonPath(#profile, '$.identity_provider_id') == 'idp_5' && #jsonPath(#profile, '$.job_id') != 'API_BREAKER'}"
+#           values: [Example group,soft user]
+#       - mapping:
+#           condition: "{#jsonPath(#profile, '$.job_id') != 'API_BREAKER'}"
+#           values: ["Api consumer"]
 
 # SMTP configuration used to send mails
 email:
   enabled: false
   host: smtp.my.domain
+  subject: "[Gravitee.io] %s"
 #  port: 465
   from: noreply@my.domain
   username: user@my.domain

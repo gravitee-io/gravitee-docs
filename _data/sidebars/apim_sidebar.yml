@@ -104,12 +104,18 @@ entries:
         - title: JWT
           output: web
           url: /apim_policies_jwt.html
+        - title: Latency
+          output: web
+          url: /apim_policies_latency.html
         - title: Mock
           output: web
           url: /apim_policies_mock.html
         - title: OAuth2
           output: web
           url: /apim_policies_oauth2.html
+        - title: OpenID Connect - UserInfo
+          output: web
+          url: /apim_policies_openid_connect_userinfo.html
         - title: Override HTTP method
           output: web
           url: /apim_policies_override_http_method.html

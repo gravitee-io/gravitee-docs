@@ -255,19 +255,21 @@ Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.y
 # Gateway HTTP server
 #http:
 #  port: 8082
+#  host: 0.0.0.0
 #  idleTimeout: 0
 #  tcpKeepAlive: true
 #  compressionSupported: false
 #  instances: 0
 #  secured: false
+#  alpn: false
 #  ssl:
 #    clientAuth: false
 #    keystore:
-#      path:
-#      password:
+#      path: ${gravitee.home}/security/keystore.jks
+#      password: secret
 #    truststore:
-#      path:
-#      password:
+#      path: ${gravitee.home}/security/truststore.jks
+#      password: secret
 
 # Plugins repository
 #plugins:
@@ -366,9 +368,13 @@ services:
   core:
     http:
       enabled: true
-      port: 8092
+      port: 18082
       host: localhost
       authentication:
+        # authentication type to be used for the core services
+        # - none : to disable authentication
+        # - basic : to use basic authentication
+        # default is "basic"
         type: basic
         users:
           admin: adminadmin
