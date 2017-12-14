@@ -11,26 +11,41 @@ keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid
 
 == Configuration
 
+=== Management API configuration
+[source,yaml]
+----
+analytics:
+  type: elasticsearch
+  elasticsearch:
+    endpoints:
+      - http://localhost:9200
+#    index: gravitee
+#    security:
+#       username:
+#       password:
+----
+
+=== API Gateway configuration
 [source,yaml]
 ----
 reporters:
-  # Elasticsearch reporter
   elasticsearch:
-    hosts:
-      - localhost:9300
+    endpoints:
+      - http://localhost:9200
 #    index: gravitee
-#    cluster: elasticsearch
 #    bulk:
-#      actions: 1000           # Number of requests action before flush
-#      flush_interval: 5       # Flush interval in seconds
-#      concurrent_requests: 5  # Concurrent requests
+#       actions: 500           # Number of requests action before flush
+#       flush_interval: 1      # Flush interval in seconds
+#    security:
+#       username:
+#       password:
 ----
 
-== Moving to Elasticsearch 5.x
+== Moving to native Elasticsearch 5.x
 
-By default, Gravitee.io API Management components are based on Elasticsearch 2.x.
+By default, Gravitee.io API Management components are based on Elasticsearch HTTP connector.
 
-Here you may find procedure to move from Elasticsearch 2.x to 5.x.
+Here you may find procedure to move from Elasticsearch HTTP to 5.x native.
 
 === API Gateway
 
@@ -41,7 +56,7 @@ Here you may find procedure to move from Elasticsearch 2.x to 5.x.
 ----
 $ curl -L https://download.gravitee.io/graviteeio-apim/plugins/reporters/gravitee-reporter-elasticsearch/gravitee-reporter-elasticsearch-5x-REPORTER_VERSION.zip -o gravitee-reporter-elasticsearch-5x-REPORTER_VERSION.zip
 $ mv gravitee-reporter-elasticsearch-5x-REPORTER_VERSION.zip ${GRAVITEE_HOME}/plugins
-$ rm -f ${GRAVITEE_HOME}/plugins/gravitee-reporter-elasticsearch-2x-REPORTER_VERSION.zip
+$ rm -f ${GRAVITEE_HOME}/plugins/gravitee-reporter-elasticsearch-http-REPORTER_VERSION.zip
 ----
 
 And restart the API Gateway...
@@ -49,13 +64,13 @@ And restart the API Gateway...
 === Management API
 
 * Download latest Elasticsearch 5.x repository from https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-elasticsearch/[Download]
-* Replace current Elasticsearch 2.x repository with the new repository
+* Replace current Elasticsearch HTTP repository with the new repository
 
 [source,bash]
 ----
 $ curl -L https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-elasticsearch/gravitee-repository-elasticsearch-5x-REPOSITORY_VERSION.zip -o gravitee-repository-elasticsearch-5x-REPOSITORY_VERSION.zip
 $ mv gravitee-repository-elasticsearch-5x-REPOSITORY_VERSION.zip ${GRAVITEE_HOME}/plugins
-$ rm -f ${GRAVITEE_HOME}/plugins/gravitee-repository-elasticsearch-2x-REPOSITORY_VERSION.zip
+$ rm -f ${GRAVITEE_HOME}/plugins/gravitee-repository-elasticsearch-http-REPOSITORY_VERSION.zip
 ----
 
 And restart the Management API...

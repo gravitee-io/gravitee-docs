@@ -102,17 +102,20 @@ management:
 
 == Analytics
 
-Analytics repository is used to store all reporting, metrics, healthchecks stored by gateway instances.
+Analytics repository is used to store all reporting, metrics, health-checks stored by gateway instances.
 
 This is the default configuration using https://www.elastic.co/products/elasticsearch[Elasticsearch].
 
 [source,yaml]
 ----
-analytics:
   type: elasticsearch
   elasticsearch:
-    host: ${ds.elastic.host}
-    port: ${ds.elastic.port}
+    endpoints:
+      - http://localhost:9200
+#    index: gravitee
+#    security:
+#       username:
+#       password:
 ----
 
 [[gravitee-standalone-management-security-configuration]]
@@ -533,10 +536,12 @@ services:
 analytics:
   type: elasticsearch
   elasticsearch:
-    hosts:
-      - ${ds.elastic.host}:${ds.elastic.port}
+    endpoints:
+      - http://${ds.elastic.host}:${ds.elastic.port}
 #    index: gravitee
-#    cluster: elasticsearch
+#    security:
+#       username:
+#       password:
 
 # Authentication and identity sources
 # Users can have following roles (authorities):

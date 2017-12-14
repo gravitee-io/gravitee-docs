@@ -169,17 +169,16 @@ All reporters are enabled by default. To stop one of them, you have to add the p
 [source,yaml]
 ----
 reporters:
-  # Elasticsearch reporter
-  elastic:
-    host: ${ds.elastic.host}
-    port: ${ds.elastic.port}
-    # Reporters are async by nature so the gateway is keeping an internal in-memory structure to stack data before
-    # pushing them into a final storage (Elasticsearch in this example)
-    queue:
-      # Number of elements to store in the queue (extra-elements will be loosed)
-      size: 10240
-      # Reporter thread is looking for data every x milliseconds (each second in this example)
-      pollingTimeout: 1000
+  elasticsearch:
+    endpoints:
+      - http://localhost:9200
+#    index: gravitee
+#    bulk:
+#       actions: 500           # Number of requests action before flush
+#       flush_interval: 1      # Flush interval in seconds
+#    security:
+#       username:
+#       password:
 ----
 
 == Services
@@ -349,17 +348,16 @@ reporters:
   system:
     buffersize: 4096 # Must be a power of 2
 
-  # Elasticsearch reporter
   elasticsearch:
-    enabled: true # Is the reporter enabled or not (default to true)
-    hosts:
-      - ${ds.elastic.host}:${ds.elastic.port}
+    endpoints:
+      - http://${ds.elastic.host}:${ds.elastic.port}
 #    index: gravitee
-#    cluster: elasticsearch
 #    bulk:
-#      actions: 1000           # Number of requests action before flush
-#      flush_interval: 5       # Flush interval in seconds
-#      concurrent_requests: 5  # Concurrent requests
+#       actions: 500           # Number of requests action before flush
+#       flush_interval: 1      # Flush interval in seconds
+#    security:
+#       username:
+#       password:
 
 # Gateway service configurations. Provided values are default values.
 # All services are enabled by default. To stop one of them, you have to add the property 'enabled: false' (See the
@@ -424,7 +422,7 @@ ds:
     port: ${GRAVITEEIO_MONGODB_PORT:27017}
   elastic:
     host: ${GRAVITEEIO_ELASTIC_HOST:localhost}
-    port: ${GRAVITEEIO_ELASTIC_PORT:9300}
+    port: ${GRAVITEEIO_ELASTIC_PORT:9200}
 
 # Sharding tags configuration
 # Allows to define inclusion/exclusion sharding tags to only deploy a part of APIs. To exclude just prefix the tag with '!'.
