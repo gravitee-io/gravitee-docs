@@ -39,7 +39,7 @@ Create API request::
 curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
      -H "Content-Type:application/json;charset=UTF-8" \
      -X POST \
-     -d '{"name":"My First API","version":"1","description":"Gravitee.io Echo API Proxy","proxy":{"context_path":"/myfirstapi","endpoint":"https://api.gravitee.io/echo"}}' \
+     -d '{"name":"My First API","version":"1","description":"Gravitee.io Echo API Proxy","contextPath":"/myfirstapi","endpoint":"https://api.gravitee.io/echo"}' \
      http://MANAGEMENT_API_SERVER_DOMAIN/management/apis
 ----
 
