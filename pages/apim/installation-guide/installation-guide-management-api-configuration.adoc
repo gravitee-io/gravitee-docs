@@ -625,8 +625,8 @@ security:
 #        email: email
 #        lastname: family_name
 #        firstname: given_name
-#        picture: picture
-      #   by default created user will have default role for MANAGEMENT and PORTAL
+#        picture: profile.picture  //You can use JSON-path to select the corresponding field,see [JsonPath doc](https://github.com/json-path/JsonPath)
+      #   by default created user will have default role for MANAGEMENT and PORTAL
       #   you can override this by assigning user to groups, on user creation, if its user info content match expression
 #     groups:
 #       - mapping:
