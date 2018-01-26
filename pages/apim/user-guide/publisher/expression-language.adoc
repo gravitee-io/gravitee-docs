@@ -122,7 +122,7 @@ automatically created. These attributes are:
 .^|user-id
 |The user identifier of incoming HTTP request:
 
-* Api-key value for api-key based plan
+* The subscription id for api-key based plan
 
 * Remote IP for keyless based plan
 
@@ -133,6 +133,11 @@ automatically created. These attributes are:
 |Plan used to manage incoming HTTP request
 ^.^|string
 ^.^|-
+
+.^|api-key
+|the api-key used (in case of an api-key based plan)
+^.^|string
+^.^|X (for no api-key plan)
 |===
 
 Also, some policies (like the <<apim_policies_oauth2.adoc#attributes, OAuth2 policy>>)
