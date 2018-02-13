@@ -73,4 +73,64 @@ $ mv gravitee-repository-elasticsearch-5x-REPOSITORY_VERSION.zip ${GRAVITEE_HOME
 $ rm -f ${GRAVITEE_HOME}/plugins/gravitee-repository-elasticsearch-http-REPOSITORY_VERSION.zip
 ----
 
-And restart the Management API...
+== Index management with ES Curator
+
+Es Curator is a great tool for ES administration.  
+For optimizing data footprint and ES performance you can define a retention window and periodically merge shards into only one segment
+
+----
+/usr/bin/curator --config /opt/curator/curator.yml /opt/curator/action-curator.yml
+----
+
+curator.yml :
+----
+client:
+  hosts:
+    - node1
+    - node2	
+  port: 9200
+
+logging:
+  loglevel: INFO
+  logfile:
+  logformat: default
+  blacklist: ['elasticsearch', 'urllib3']
+```
+action-curator.yml :
+
+```yaml
+actions:
+  1:
+    action: forcemerge
+    description: "Perform a forceMerge on selected indices to 'max_num_segments' per shard. Merge Days - 1 index for optimize disk space footprint on Elasticsearch TS"
+    options:
+      max_num_segments: 1
+      continue_if_exception: True
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: '^(gravitee-).*$'
+      exclude: False
+    - filtertype: age
+      source: name
+      direction: older
+      unit: days
+      unit_count: 1
+      timestring: '%Y.%m.%d'
+  2:
+    action: delete_indices
+    description: "Delete selected indices older than 15d days"
+    options:
+      continue_if_exception: True
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: '^(gravitee-).*$'
+      exclude: False
+    - filtertype: age
+      source: name
+      direction: older
+      unit: days
+      unit_count: 15d
+      timestring: '%Y.%m.%d'
+```
