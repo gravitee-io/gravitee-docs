@@ -1,0 +1,55 @@
+---
+sidebar: apim_sidebar
+permalink: apim_installguide_repositories_jdbc.html
+folder: apim/installation-guide/repositories
+description: Gravitee.io API Management - Repositories - JDBC
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, jdbc
+---
+
+[[gravitee-installation-repositories-jdbc]]
+= JDBC
+
+This repository plugin implementation allows to connect to JDBCs repositories as PostgreSQL or MySQL databases with Gravitee.io API Management.
+
+NOTE: put your java driver under the `lib/ext/` folder in both the management-api and the gateway home directory.
+
+Let's see the configuration options:
+
+[source,yaml]
+----
+# ===================================================================
+# MINIMUM JDBC REPOSITORY PROPERTIES
+#
+# This is a minimal sample file declared connection to JDBC
+# ===================================================================
+management:
+  type: jdbc             # repository type
+  jdbc:                  # jdbc repository
+    url:                 # jdbc url
+----
+
+NOTE: This is the minimum sample file to start with a JDBC database, number of other properties control the behavior of JDBC database, let's jump into it.
+
+[source,yaml]
+----
+# ===================================================================
+# JDBC REPOSITORY PROPERTIES
+#
+# This is a sample file declared all properties for JDBC Repository
+# ===================================================================
+management:
+  type: jdbc                    # repository type
+  jdbc:                         # jdbc repository
+    url:                        # jdbc url
+    username:                   # jdbc username
+    password:                   # jdbc password
+    pool:
+        autoCommit:             # jdbc auto commit (default true)
+        connectionTimeout:      # jdbc connection timeout (default 10000)
+        idleTimeout:            # jdbc idle timeout (default 600000)
+        maxLifetime:            # jdbc max lifetime (default 1800000)
+        minIdle:                # jdbc min idle (default 10)
+        maxPoolSize:            # jdbc max pool size (default 10)
+----
+
+NOTE: All theses properties allow you to fine tuned your JDBC connection
