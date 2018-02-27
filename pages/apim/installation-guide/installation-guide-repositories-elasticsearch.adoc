@@ -83,6 +83,7 @@ For optimizing data footprint and ES performance you can define a retention wind
 ----
 
 curator.yml :
+[source,yaml]
 ----
 client:
   hosts:
@@ -95,10 +96,11 @@ logging:
   logfile:
   logformat: default
   blacklist: ['elasticsearch', 'urllib3']
-```
-action-curator.yml :
+----
 
-```yaml
+action-curator.yml :
+[source,yaml]
+----
 actions:
   1:
     action: forcemerge
@@ -131,6 +133,6 @@ actions:
       source: name
       direction: older
       unit: days
-      unit_count: 15d
+      unit_count: 15
       timestring: '%Y.%m.%d'
-```
+----
