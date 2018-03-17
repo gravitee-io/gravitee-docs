@@ -9,6 +9,13 @@ keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid
 [[gravitee-installation-repositories-elasticsearch]]
 = Elasticsearch
 
+WARNING: Elasticsearch > v5 are not currently supported.
+The Elasticsearch 2.4 is no longer supported by elastic (https://www.elastic.co/support/eol).
+
+NOTE: Since Gravitee v1.12.x the default connector is the HTTP one, compliant with ES 2.x and 5.x.
+Before release v1.12.x, Gravitee.io APIM is bundled by default with the native client for ES 2.X.
+
+
 == Configuration
 
 === Management API configuration
