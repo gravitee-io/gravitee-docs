@@ -11,7 +11,7 @@ keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid
 
 This repository plugin implementation allows to connect to JDBCs repositories as PostgreSQL or MySQL databases with Gravitee.io API Management.
 
-NOTE: put your java driver under the `plugin/ext/repository-jdbc` folder in both the management-api and the gateway home directory.
+NOTE: put your java driver under the `plugins/ext/repository-jdbc` folder in both the management-api and the gateway home directory.
 
 Let's see the configuration options:
 
