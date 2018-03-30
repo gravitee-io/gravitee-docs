@@ -377,9 +377,9 @@ Here's the list of email templates :
 |apiKeyRevoked.html             |API Key revoked notification.                  |*owner*, apiKey
 |apiMember.html                 |New API member notification.                   |_username_, *api*, *user*
 |applicationMember.html         |New application member notification.           |_username_, *application*, *user*
-|subscriptionApproved.html      |API subscription approved notification.        |*owner*, *api*, *plan*
-|subscriptionReceived.html      |API subscription received notification.        |*owner*, *api*, *plan*, *application*, subscriptionUrl
-|subscriptionRejected.html      |API subscription rejected notification.        |*owner*, *api*, *plan*
+|subscriptionApproved.html      |API subscription approved notification.        |*owner*, *api*, *plan*, *subscription*
+|subscriptionReceived.html      |API subscription received notification.        |*owner*, *api*, *plan*, *application*, *subscription*, subscriptionUrl
+|subscriptionRejected.html      |API subscription rejected notification.        |*owner*, *api*, *plan*, *subscription*
 |userRegistration.html          |User registration notification.                |_username_, registrationUrl, *user*
 |supportTicket.html             |Support ticket creation.                       |*api*, *application*, *user*, content
 |======================
@@ -390,15 +390,15 @@ Available attributes:
 
 [width="100%",cols="20%,20%,20%,20%,20%",frame="topbot",options="header"]
 |======================
-|Api                |Application        |Group              |Plan               |Owner/User
-|name               |name               |name               |name               |username
-|description        |description        |-                  |description        |firstname
-|version            |type               |-                  |order              |lastname
-|role               |status             |-                  |publishedAt (Date) |displayName
-|metadata (Map)     |role               |-                  |closedAt (Date)    |email
-|deployedAt (Date)  |-                  |-                  |-                  |-
-|createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |-
-|updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |-
+|Api                |Application        |Group              |Plan               |Owner/User    |Subscription
+|name               |name               |name               |name               |username      |status
+|description        |description        |-                  |description        |firstname     |request
+|version            |type               |-                  |order              |lastname      |reason
+|role               |status             |-                  |publishedAt (Date) |displayName   |processedAt
+|metadata (Map)     |role               |-                  |closedAt (Date)    |email         |startingAt
+|deployedAt (Date)  |-                  |-                  |-                  |-             |endingAt
+|createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |-             |closedAt
+|updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |-             |subscribedAt
 |======================
 
 Here's an example of template:
