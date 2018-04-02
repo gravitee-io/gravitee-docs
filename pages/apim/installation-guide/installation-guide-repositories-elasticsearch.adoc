@@ -9,11 +9,13 @@ keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid
 [[gravitee-installation-repositories-elasticsearch]]
 = Elasticsearch
 
-WARNING: Elasticsearch > v5 are not currently supported.
-The Elasticsearch 2.4 is no longer supported by elastic (https://www.elastic.co/support/eol).
+The Elasticsearch connector is based on the HTTP API exposed by ES instances.
+This connector supports all versions of ES, from 2.x to 6.x. Please take care that Elasticsearch 2.4 is no longer
+supported by elastic (https://www.elastic.co/support/eol).
 
-NOTE: Since Gravitee v1.12.x the default connector is the HTTP one, compliant with ES 2.x and 5.x.
-Before release v1.12.x, Gravitee.io APIM is bundled by default with the native client for ES 2.X.
+WARNING: Gravitee.io no longer supports native ES client and previous connector provided by us will not be supported anymore.
+
+NOTE: Since Gravitee v1.12.x the default connector is the HTTP one, compliant with ES 2.x, 5.x and 6.x
 
 
 == Configuration
@@ -37,52 +39,26 @@ analytics:
 ----
 reporters:
   elasticsearch:
+    enabled: true # Is the reporter enabled or not (default to true)
     endpoints:
-      - http://localhost:9200
+      - http://${ds.elastic.host}:${ds.elastic.port}
 #    index: gravitee
+#    cluster: elasticsearch
 #    bulk:
-#       actions: 500           # Number of requests action before flush
-#       flush_interval: 1      # Flush interval in seconds
-#    security:
-#       username:
-#       password:
-----
-
-== Moving to native Elasticsearch 5.x
-
-By default, Gravitee.io API Management components are based on Elasticsearch HTTP connector.
-
-Here you may find procedure to move from Elasticsearch HTTP to 5.x native.
-
-=== API Gateway
-
-* Download latest Elasticsearch 5.x reporter from https://download.gravitee.io/graviteeio-apim/plugins/reporters/gravitee-reporter-elasticsearch/[Download]
-* Replace current Elasticsearch 2.x reporter with the new reporter
-
-[source,bash]
-----
-$ curl -L https://download.gravitee.io/graviteeio-apim/plugins/reporters/gravitee-reporter-elasticsearch/gravitee-reporter-elasticsearch-5x-REPORTER_VERSION.zip -o gravitee-reporter-elasticsearch-5x-REPORTER_VERSION.zip
-$ mv gravitee-reporter-elasticsearch-5x-REPORTER_VERSION.zip ${GRAVITEE_HOME}/plugins
-$ rm -f ${GRAVITEE_HOME}/plugins/gravitee-reporter-elasticsearch-http-REPORTER_VERSION.zip
-----
-
-And restart the API Gateway...
-
-=== Management API
-
-* Download latest Elasticsearch 5.x repository from https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-elasticsearch/[Download]
-* Replace current Elasticsearch HTTP repository with the new repository
-
-[source,bash]
-----
-$ curl -L https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-elasticsearch/gravitee-repository-elasticsearch-5x-REPOSITORY_VERSION.zip -o gravitee-repository-elasticsearch-5x-REPOSITORY_VERSION.zip
-$ mv gravitee-repository-elasticsearch-5x-REPOSITORY_VERSION.zip ${GRAVITEE_HOME}/plugins
-$ rm -f ${GRAVITEE_HOME}/plugins/gravitee-repository-elasticsearch-http-REPOSITORY_VERSION.zip
+#      actions: 1000           # Number of requests action before flush
+#      flush_interval: 5       # Flush interval in seconds
+#      concurrent_requests: 5  # Concurrent requests
+#    settings:
+#      number_of_shards: 5
+#      number_of_replicas: 1
+#   pipeline:
+#     plugins:
+#       ingest: geoip
 ----
 
 == Index management with ES Curator
 
-Es Curator is a great tool for ES administration.  
+ES Curator is a great tool for ES administration.
 For optimizing data footprint and ES performance you can define a retention window and periodically merge shards into only one segment
 
 ----
