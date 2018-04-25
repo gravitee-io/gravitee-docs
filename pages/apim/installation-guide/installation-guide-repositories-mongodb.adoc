@@ -9,6 +9,7 @@ keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid
 [[gravitee-installation-repositories-mongodb]]
 = MongoDB
 
+== Configuration
 https://www.mongodb.org/[MongoDB] is the default repository implementation used by Gravitee.io API Management.
 
 Let's see the configuration options:
@@ -65,3 +66,21 @@ management:
 ----
 
 NOTE: All theses properties allow you to fine tuned your MongoDB connection
+
+== Security
+
+Sometimes, you may want to apply specific security constraints and rules to users allowed to access the database.
+
+Thanks to the following table, you will be able to define these fine-grained constraints per collection.
+
+
+|===
+|Component|Read-only |Read-write
+
+|API Gateway
+|apis - keys - subscriptions - plans | events - ratelimit
+
+|Management API
+|- | all collections except ratelimit
+
+|===
