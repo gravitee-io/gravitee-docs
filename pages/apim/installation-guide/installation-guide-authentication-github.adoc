@@ -1,0 +1,78 @@
+---
+sidebar: apim_sidebar
+permalink: apim_installguide_authentication_github.html
+folder: apim/installation-guide/portal/authentication
+description: Gravitee.io API Management - Portal - Authentication - GitHub
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+---
+
+[[gravitee-installation-authentication-github]]
+= GitHub
+
+Here you will find how to configure Gravitee.io to allow users to connect using their https://github.com/[GitHub] account.
+
+WARNING: GitHub authentication requires that users have a public email to be able to connect to the portal.
+
+== Create a GitHub OAuth Apps
+
+Before being able to connect to the Gravitee.io portal using a GitHub account, you need to associate a GitHub application.
+
+You can access the `GitHub OAuth Apps` from https://github.com/settings/developers
+
+=== Register a new application
+
+.Register a new app
+image::installation/authentication/github_register_new_app.png[Register a new GitHub OAuth apps, 873, 530, align=center, title-align=center]
+
+=== Create the application
+
+.Fill the form
+image::installation/authentication/github_fill_app_form.png[Fill the form, 873, 530, align=center, title-align=center]
+
+
+WARNING: Be careful, the `Authorization callback URL` must match exactly to the domain which is hosting the portal.
+
+[[gravitee-installation-authentication-github-credentials]]
+=== Get application's OAuth2 credentials
+.Retrieve Oauth2 credentials
+image::installation/authentication/github_oauth_credentials.png[Get Oauth2 credentials, 873, 530, align=center, title-align=center]
+
+== Configure Gravitee.io
+=== Portal
+
+Open the `constants.json` file and add an `authentication` property as follow:
+
+[source,javascript]
+----
+"authentication": {
+    "github": {
+        "clientId": "bee5031350454b5af6dd"
+    }
+}
+----
+
+The `clientId` value is the client ID as provided by GitHub (see <<gravitee-installation-authentication-github-credentials, get application credentials>>).
+
+=== Management API
+
+Open the `gravitee.yml` file and add a new security provider as follow:
+
+[source,yaml]
+----
+security:
+  providers:
+    - type: github
+      clientId: bee5031350454b5af6dd
+      clientSecret: b7a19ea9c413e3fef180b04bd08b745361fad9fd
+----
+
+== It's time to play
+
+.Login Form
+image::installation/authentication/github_login_form.png[Login Form, 873, 530, align=center, title-align=center]
+
+.Allow access to user account
+image::installation/authentication/github_access_account.png[Login Form, 873, 530, align=center, title-align=center]
+
+.Login Success
+image::installation/authentication/github_login_success.png[Here we are !, 873, 530, align=center, title-align=center]

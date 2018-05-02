@@ -225,6 +225,21 @@ entries:
           - title: DynamoDB
             output: web
             url: /apim_installguide_repositories_dynamodb.html
+      - title: Authentication
+        output: web
+        subfolderitems:
+          - title: Overview
+            output: web
+            url: /apim_installguide_authentication.html
+          - title: Connect with GitHub
+            output: web
+            url: /apim_installguide_authentication_github.html
+          - title: Connect with Google
+            output: web
+            url: /apim_installguide_authentication_google.html
+          - title: Configure Keycloak
+            output: web
+            url: /apim_installguide_authentication_keycloak.html
 
     - title: Docker
       output: web

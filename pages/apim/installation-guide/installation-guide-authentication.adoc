@@ -1,0 +1,23 @@
+---
+sidebar: apim_sidebar
+permalink: apim_installguide_authentication.html
+folder: apim/installation-guide/portal/authentication
+description: Gravitee.io API Management - Portal - Authentication
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+---
+
+[[gravitee-installation-authentication]]
+= Authentication
+
+Gravitee.io supports natively multiple type of authentication to the portal:
+
+* Using authentication providers (inmemory, LDAP, databases, ...)
+* Using Social providers (GitHub, Google, ...)
+* Using a custom OAuth2 / OpenID authorization server
+
+{empty} +
+
+You can find documentations these authentication types:
+
+* link:/apim_installguide_authentication_github.html[Configure for GitHub]
+* link:/apim_installguide_authentication_google.html[Configure for Google]
