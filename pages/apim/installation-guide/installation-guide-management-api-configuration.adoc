@@ -32,6 +32,34 @@ jetty:
     path: ${gravitee.home}/logs/gravitee_accesslog_yyyy_mm_dd.log
 ----
 
+=== How to enable HTTPS support
+First, you need to provide a keystore. If you don't have one, you can generate it :
+----
+keytool -genkey \
+  -alias test \
+  -keyalg RSA \
+  -keystore server-keystore.jks \
+  -keysize 2048 \
+  -validity 360 \
+  -dname CN=localhost \
+  -keypass secret \
+  -storepass secret
+----
+
+After that, you have to enable secure mode in your `gravitee.yml` :
+----
+jetty:
+  ...
+  secured: true
+  ssl:
+    keystore:
+      path: ${gravitee.home}/security/keystore.jks
+      password: secret
+    truststore:
+      path: ${gravitee.home}/security/truststore.jks
+      password: secret
+----
+
 == Plugins repository
 
 Gravitee.io Management API <<gravitee-plugins,plugins>> directory configuration.
