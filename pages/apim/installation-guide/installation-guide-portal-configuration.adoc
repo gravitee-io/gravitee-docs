@@ -41,6 +41,7 @@ __You have to provide a full json in case of update. Otherwise, this will store 
 [source,json]
 ----
 {
+  "baseURL": "gravitee_management_api_url",
   "company" : {
     "name" : "Gravitee.io"
   },
