@@ -10,3 +10,5 @@
 9. What degree of security does Gravitee have ? **Gravitee integrates Jetty web server which provides for protection against attacks like deny of services.**
 10. Does Gravitee support Web Sockets ? **Could be as Jetty implements Web Sockets Protocol**
 11. Does Gravitee have a cache system ? **Yes, the cache system is per user and per backend service and is powered by Ehcache.**
+
+Warning : This FAQ is community made and there is no warranty it is error free.
