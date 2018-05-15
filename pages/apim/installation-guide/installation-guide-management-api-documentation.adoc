@@ -1,0 +1,19 @@
+---
+sidebar: apim_sidebar
+permalink: apim_installguide_management_api_documentation.html
+folder: apim/installation-guide/management-api
+description: Gravitee.io API Management - Management API - Documentation
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+---
+
+[[gravitee-installation-management-api-documentation]]
+= Management API - Documentation
+
+The Management API exposes a complete Restful API accessible to anyone who wants to script some part of the administration.
+
+You can access API console or the OpenAPI descriptor (formerly Swagger) by version:
+
+* 1.9 - link:/apim/api/1.9/[API Console] - link:/apim/api/1.9/swagger.json[OpenAPI spec]
+* 1.10 - link:/apim/api/1.10/[API Console] - link:/apim/api/1.10/swagger.json[OpenAPI spec]
+* 1.14 - link:/apim/api/1.14/[API Console] - link:/apim/api/1.14/swagger.json[OpenAPI spec]
+* 1.16 - link:/apim/api/1.16/[API Console] - link:/apim/api/1.16/swagger.json[OpenAPI spec]
