@@ -53,8 +53,20 @@ $ docker run  \
         graviteeio/gateway:latest
 ....
 
+==== Configure the container
+If you want to override the default configuration for MongoDB, Elasticsearch and all other properties included in the `gravitee.yml` file,
+you have to use environment variables. Please have a look to the API Gateway <<apim_installguide_gateway_configuration.adoc#environment_variables, configuration>> section.
 
-
+Here is an example to set the mongodb connection:
+[source, shell]
+....
+$ docker run  \
+        --publish 82:8082  \
+        --name gateway  \
+        --env GRAVITEE_MANAGEMENT_MONGODB_URI=mongodb://username:password@mongohost:27017/dbname
+        --detach  \
+        graviteeio/gateway:latest
+....
 
 === graviteeio/management-api
 
@@ -73,7 +85,20 @@ $ docker run \
           graviteeio/management-api:latest
 ....
 
+==== Configure the container
+If you want to override the default configuration for MongoDB, Elasticsearch and all other properties included in the `gravitee.yml` file,
+you have to use environment variables. Please have a look to the Management API <<apim_installguide_management_api_configuration.adoc#environment_variables, configuration>> section.
 
+Here is an example to set the mongodb connection:
+[source, shell]
+....
+$ docker run \
+          --publish 81:8083 \
+          --name management-api \
+          --env GRAVITEE_MANAGEMENT_MONGODB_URI=mongodb://username:password@mongohost:27017/dbname
+          --detach  \
+          graviteeio/management-api:latest
+....
 
 === graviteeio/management-ui
 
