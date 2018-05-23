@@ -1,0 +1,58 @@
+= How to configure Gravitee.io APIM
+
+There is 3 ways to configure Gravitee.io APIM Gateway and Management API :
+
+ - using the gravitee.yml file,
+ - using system properties,
+ - using environment variables.
+
+Environment variables overrides System properties which overrides the yaml files.
+
+== The YAML way
+
+This is the default way to configure Gravitee.io
+
+WARNING: yaml is very sensitive to the indentation. Please use spaces instead of tabs.
+
+
+== The System Properties way
+
+You are allowed to configure Gravitee.io with system properties.
+
+If you want to configure this yaml option :
+
+[source,yaml]
+----
+management:
+  mongodb:
+    dbname: myDatabase
+----
+
+use this notation :
+
+----
+-Dmanagement.mongodb.dbname=myDatabase
+----
+
+
+== The Environment Variables way
+
+You are allowed to configure Gravitee.io with environment variables.
+
+If you want to configure this yaml option :
+
+[source,yaml]
+----
+management:
+  mongodb:
+    dbname: myDatabase
+----
+
+use one of the following syntax :
+
+----
+GRAVITEE_MANAGEMENT_MONGODB_DATABASE=myDatabase
+GRAVITEE.MANAGEMENT.MONGODB.DATABASE=myDatabase
+gravitee_management_mongodb_database=myDatabase
+gravitee.management.mongodb.database=myDatabase
+----
