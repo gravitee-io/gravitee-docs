@@ -21,12 +21,12 @@ We provide a complete set of images.
 |{docker-hub}/gateway/[graviteeio/gateway]
 |{github-repo}/tree/master/images/gateway[images/gateway]
 |latest
-|https://hub.docker.com/_/alpine/[alpine:3.3]
+|https://hub.docker.com/_/alpine/[alpine:3.7]
 
 |{docker-hub}/management-api/[graviteeio/management-api]
 |{github-repo}/tree/master/images/management-api[images/management-api]
 |latest
-|https://hub.docker.com/_/alpine/[alpine:3.3]
+|https://hub.docker.com/_/alpine/[alpine:3.7]
 
 |{docker-hub}/management-ui/[graviteeio/management-ui]
 |{github-repo}/tree/master/images/management-ui[images/management-ui]
@@ -48,10 +48,6 @@ You can replace default ES address (`localhost:9300`) by the one you provide (`G
 ....
 $ docker run  \
         --publish 82:8082  \
-        --env GRAVITEEIO_MONGODB_HOST=172.17.0.1  \
-        --env GRAVITEEIO_MONGODB_PORT=27017  \
-        --env GRAVITEEIO_ELASTIC_HOST=172.17.0.1  \
-        --env GRAVITEEIO_ELASTIC_PORT=9300  \
         --name gateway  \
         --detach  \
         graviteeio/gateway:latest
@@ -72,10 +68,6 @@ You can replace default ES address (`localhost:9300`) by the one you provide (`G
 ....
 $ docker run \
           --publish 81:8083 \
-          --env GRAVITEEIO_MONGODB_HOST=172.17.0.1  \
-          --env GRAVITEEIO_MONGODB_PORT=27017  \
-          --env GRAVITEEIO_ELASTIC_HOST=172.17.0.1  \
-          --env GRAVITEEIO_ELASTIC_PORT=9300  \
           --name management-api \
           --detach  \
           graviteeio/management-api:latest
