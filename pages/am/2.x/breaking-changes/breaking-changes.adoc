@@ -1,0 +1,12 @@
+= Breaking changes
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_breaking_changes.html
+:page-folder: am/installation-guide
+
+This section outline the changes that you need to be aware of when migrating your application from one version of Gravitee.io Access Management to another.
+
+== Design differences in 2.x
+
+The main changes with the 1.x version is that the Gateway (Authorization Server) and the Management Server have been split into two separate pieces.
+
+The Gateway server has been re-written from scratch and has changed from a IO blocking Servlet model to a non blocking reactive model with the link:https://vertx.io/[Vert.x] tool-kit.

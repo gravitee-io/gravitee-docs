@@ -1,0 +1,22 @@
+= Create a security domain
+:page-sidebar: am_1_x_sidebar
+:page-permalink: am/1.x/am_userguide_create_domain.html
+:page-folder: am/user-guide
+
+To create a security domain, follow these steps:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, click `(+)` button
+. Give your security domain a *name*, a *description* and press `SAVE`
+. You will be redirected to the new created security domain homepage
+
+You can also create a security domain via the Gravitee.io AM API
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"name":"My First Security Domain","description":"My First Security Domain description"}' \
+     http://GRAVITEEIO-AM-GATEWAY-HOST/management/domains
+----

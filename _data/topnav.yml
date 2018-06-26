@@ -5,13 +5,17 @@ topnav:
   items:
     - title: API Management
       url: /apim_overview_introduction.html
-    - title: Access Management
-      url: /am_overview_introduction.html
 
 #Topnav dropdowns
 topnav_dropdowns:
 - title: Topnav dropdowns
   folders:
+    - title: Access Management
+      folderitems:
+        - title: 2.x (current)
+          url: /am/2.x/am_overview_introduction.html
+        - title: 1.x
+          url: /am/1.x/am_overview_introduction.html
 #    - title: Jekyll Resources
 #      folderitems:
 #        - title: Github Repo
