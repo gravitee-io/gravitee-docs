@@ -1,0 +1,17 @@
+= Create role
+:page-sidebar: am_1_x_sidebar
+:page-permalink: am/1.x/am_userguide_create_role.html
+:page-folder: am/user-guide
+
+Roles are created for each security domain, to create a role, follow these steps:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page, go to `Roles` section
+. From the security domain's roles page, click `(+)` button
+. Give your role a *name* and a *description* and press `SAVE`
+. You will be redirected to the created role's page
+. Add some permissions (permissions are represented by chips input, press enter to add a new permission) and press `SAVE`
+
+== Use roles
+
+You can use roles for enhance access token's claims to limit operations scope of your protected services and APIs. See link:/am/1.x/am_quickstart_profile_information.html#custom_claims[Custom claims] tutorial for more information.
