@@ -1,0 +1,58 @@
+---
+sidebar: apim_sidebar
+permalink: apim_installguide_metrics_prometheus.html
+folder: apim/installation-guide/metrics
+description: Gravitee.io API Management - Metrics - Prometheus
+keywords: Gravitee.io, API Platform, API Management, API Gateway, metrics, prometheus, oauth2, openid, documentation, manual, guide, reference, api
+---
+
+[[gravitee-installation-metrics-prometheus]]
+= Prometheus
+
+In this part we explain you how to configure Gravitee.io API Gateway to expose metrics to Prometheus.
+
+
+== API Gateway Configuration
+
+Configure the `gravitee.yml` file to enable metrics service.
+By default, Prometheus support is activated and exposed from the API Gateway technical API.
+
+[source,yaml]
+----
+services:
+  metrics:
+    enabled: true
+    prometheus:
+      enabled: true
+----
+
+== Prometheus Configuration
+
+Here is an example to ask Prometheus to scrape the API Gateway technical API where from formatted metrics are available.
+
+[source,yaml]
+----
+scrape_configs:
+  - job_name: 'gio-gw'
+    basic_auth:
+      username: admin
+      password: adminadmin
+    metrics_path: /_node/metrics/prometheus
+    static_configs:
+      - targets: ['localhost:18082']
+----
+
+== Prometheus UI
+
+Now we have everything correctly configured, we can have a look to Prometheus and explore metrics.
+By default, and when running Prometheus, the UI is exposed at http://localhost:9090/graph
+
+.Show `http_client_connections` metrics
+image::installation/metrics/prometheus/metrics_prometheus_graph.png[Show `http_client_connections` metrics, 873, 530, align=center, title-align=center]
+
+
+If you want to take a look to the memory consumed by the gateway:
+
+.Show `jvm_memory_used_bytes` metrics
+image::installation/metrics/prometheus/metrics_prometheus_graph_memory.png[Show `jvm_memory_used_bytes` metrics, 873, 530, align=center, title-align=center]
+
