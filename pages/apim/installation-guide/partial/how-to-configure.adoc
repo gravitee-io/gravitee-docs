@@ -52,8 +52,8 @@ management:
 You have to define one of the following variables:
 
 ----
-GRAVITEE_MANAGEMENT_MONGODB_DATABASE=myDatabase
-GRAVITEE.MANAGEMENT.MONGODB.DATABASE=myDatabase
-gravitee_management_mongodb_database=myDatabase
-gravitee.management.mongodb.database=myDatabase
+GRAVITEE_MANAGEMENT_MONGODB_DBNAME=myDatabase
+GRAVITEE.MANAGEMENT.MONGODB.DBNAME=myDatabase
+gravitee_management_mongodb_dbname=myDatabase
+gravitee.management.mongodb.dbname=myDatabase
 ----
