@@ -83,6 +83,9 @@ entries:
         - title: Api Key
           output: web
           url: /apim_policies_apikey.html
+        - title: Assign content
+          output: web
+          url: /apim_policies_assign_content.html
         - title: Cache
           output: web
           url: /apim_policies_cache.html
@@ -104,6 +107,12 @@ entries:
         - title: JSON to JSON
           output: web
           url: /apim_policies_json2json.html
+        - title: JSON Validation
+          output: web
+          url: /apim_policies_json_validation.html
+        - title: JWS
+          output: web
+          url: /apim_policies_jws.html
         - title: JWT
           output: web
           url: /apim_policies_jwt.html
@@ -143,6 +152,9 @@ entries:
         - title: Transform Query Parameters
           output: web
           url: /apim_policies_transform_query_params.html
+        - title: URL rewriting
+          output: web
+          url: /apim_policies_url_rewriting.html
         - title: XML to JSON
           output: web
           url: /apim_policies_xml2json.html
