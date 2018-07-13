@@ -38,6 +38,94 @@ entries:
       output: web
       url: /apim_quickstart_consume.html
 
+  - title: Installation Guide
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /apim_installguide.html
+
+      subfolders:
+      - title: API Gateway
+        output: web
+        subfolderitems:
+          - title: Installation
+            output: web
+            url: /apim_installguide_gateway.html
+          - title: Configuration
+            output: web
+            url: /apim_installguide_gateway_configuration.html
+      - title: Management API
+        output: web
+        subfolderitems:
+          - title: Installation
+            output: web
+            url: /apim_installguide_management_api.html
+          - title: Configuration
+            output: web
+            url: /apim_installguide_management_api_configuration.html
+          - title: Documentation
+            output: web
+            url: /apim_installguide_management_api_documentation.html
+      - title: Portal
+        output: web
+        subfolderitems:
+          - title: Overview
+            output: web
+            url: /apim_installguide_portal.html
+          - title: Configuration
+            output: web
+            url: /apim_installguide_portal_configuration.html
+      - title: Repositories
+        output: web
+        subfolderitems:
+          - title: Overview
+            output: web
+            url: /apim_installguide_repositories.html
+          - title: Elasticsearch
+            output: web
+            url: /apim_installguide_repositories_elasticsearch.html
+          - title: MongoDB
+            output: web
+            url: /apim_installguide_repositories_mongodb.html
+          - title: JDBC
+            output: web
+            url: /apim_installguide_repositories_jdbc.html
+          - title: Redis
+            output: web
+            url: /apim_installguide_repositories_redis.html
+          - title: DynamoDB
+            output: web
+            url: /apim_installguide_repositories_dynamodb.html
+      - title: Authentication
+        output: web
+        subfolderitems:
+          - title: Overview
+            output: web
+            url: /apim_installguide_authentication.html
+          - title: Connect with GitHub
+            output: web
+            url: /apim_installguide_authentication_github.html
+          - title: Connect with Google
+            output: web
+            url: /apim_installguide_authentication_google.html
+          - title: Configure Keycloak
+            output: web
+            url: /apim_installguide_authentication_keycloak.html
+      - title: Metrics
+        output: web
+        subfolderitems:
+          - title: Prometheus
+            output: web
+            url: /apim_installguide_metrics_prometheus.html
+
+    - title: Docker
+      output: web
+      url: /apim_installguide_docker.html
+    - title: Migration guide
+      output: web
+      url: /apim_installguide_migration.html
+
   - title: Api Consumer Guide
     output: web
     folderitems:
@@ -181,93 +269,13 @@ entries:
       output: web
       url: /apim_publisherguide_expression_language.html
 
-  - title: Installation Guide
+  - title: Administration Guide
     output: web
     folderitems:
     - title: Introduction
       output: web
-      url: /apim_installguide.html
-
-      subfolders:
-      - title: API Gateway
-        output: web
-        subfolderitems:
-          - title: Installation
-            output: web
-            url: /apim_installguide_gateway.html
-          - title: Configuration
-            output: web
-            url: /apim_installguide_gateway_configuration.html
-      - title: Management API
-        output: web
-        subfolderitems:
-          - title: Installation
-            output: web
-            url: /apim_installguide_management_api.html
-          - title: Configuration
-            output: web
-            url: /apim_installguide_management_api_configuration.html
-          - title: Documentation
-            output: web
-            url: /apim_installguide_management_api_documentation.html
-      - title: Portal
-        output: web
-        subfolderitems:
-          - title: Overview
-            output: web
-            url: /apim_installguide_portal.html
-          - title: Configuration
-            output: web
-            url: /apim_installguide_portal_configuration.html
-      - title: Repositories
-        output: web
-        subfolderitems:
-          - title: Overview
-            output: web
-            url: /apim_installguide_repositories.html
-          - title: Elasticsearch
-            output: web
-            url: /apim_installguide_repositories_elasticsearch.html
-          - title: MongoDB
-            output: web
-            url: /apim_installguide_repositories_mongodb.html
-          - title: JDBC
-            output: web
-            url: /apim_installguide_repositories_jdbc.html
-          - title: Redis
-            output: web
-            url: /apim_installguide_repositories_redis.html
-          - title: DynamoDB
-            output: web
-            url: /apim_installguide_repositories_dynamodb.html
-      - title: Authentication
-        output: web
-        subfolderitems:
-          - title: Overview
-            output: web
-            url: /apim_installguide_authentication.html
-          - title: Connect with GitHub
-            output: web
-            url: /apim_installguide_authentication_github.html
-          - title: Connect with Google
-            output: web
-            url: /apim_installguide_authentication_google.html
-          - title: Configure Keycloak
-            output: web
-            url: /apim_installguide_authentication_keycloak.html
-      - title: Metrics
-        output: web
-        subfolderitems:
-          - title: Prometheus
-            output: web
-            url: /apim_installguide_metrics_prometheus.html
-
-    - title: Docker
-      output: web
-      url: /apim_installguide_docker.html
-    - title: Migration guide
-      output: web
-      url: /apim_installguide_migration.html
+      url: /apim_adminguide.html
+      type: homepage
 
   - title: Developer Guide
     output: web
