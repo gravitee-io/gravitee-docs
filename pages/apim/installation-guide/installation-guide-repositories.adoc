@@ -18,15 +18,12 @@ applications, plans, ...
 
 **Compatibility Matrix: **
 |===
-|Scope|MongoDB |Redis |Elasticsearch| JDBC| AWS DynamoDB
+|Scope      |MongoDB |Redis |Elasticsearch |JDBC
 
-|Management
-|X |X |- |X |X
+|Management |X |X |- |X
 
-|Rate Limit
-|X |X |- |X |-
+|Rate Limit |X |X |- |X
 
-|Analytics
-|- |- |X |- |-
+|Analytics  |- |- |X |-
 
 |===
