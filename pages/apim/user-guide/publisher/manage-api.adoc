@@ -13,7 +13,7 @@ As we've seen in the <<apim_quickstart_publish.adoc, quick start>> section, you 
 By clicking the (+) button at the bottom of the portal page, you may see that there are some other ways to create an API:
 
 .Create API Options
-image::graviteeio-create-api-options.png[Create API Options, 754, 278, align=center, title-align=center]
+image::graviteeio-create-api-options.png[Create API Options]
 
 == Create an empty API
 This option lets you to create an API from scratch, meaning that you have to configure your API correctly (name, version,
@@ -30,16 +30,16 @@ you do not have to complete all the fields required when you're creating a new A
 Finally, the only thing you have to do is to specify a context-path to expose the API.
 
 .Step1: Import a Swagger descriptor
-image::graviteeio-create-api-swagger-1.png[Import Swagger 1, 807, 460]
+image::graviteeio-create-api-swagger-1.png[Import Swagger 1]
 
 .Step2: Change values from the Swagger descriptor if required
-image::graviteeio-create-api-swagger-2.png[Import Swagger 2, 1236, 366]
+image::graviteeio-create-api-swagger-2.png[Import Swagger 2]
 
 .Step3: Set the context-path
-image::graviteeio-create-api-swagger-3.png[Import Swagger 3, 1235, 363]
+image::graviteeio-create-api-swagger-3.png[Import Swagger 3]
 
 Now you can navigate to the policies management view, and you will see that all route declared in the Swagger descriptor
  are automatically created in Gravitee.io
 
 .Step3: Good job guy !
-image::graviteeio-create-api-swagger-4.png[Import Swagger 4, 1413, 780]
+image::graviteeio-create-api-swagger-4.png[Import Swagger 4]

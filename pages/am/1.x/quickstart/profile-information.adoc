@@ -122,7 +122,7 @@ Identity provider serves default claims such as the user's `username`, `given_na
 . Select your Identity Provider and click on `User Mappers` tab
 . Map new custom claims with user attributes contained in your user data store
 
-image::am/1.x/graviteeio-am-quickstart-profile-user-mappers.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-quickstart-profile-user-mappers.png[]
 
 [start=4]
 . Custom user attributes will be available in the UserInfo Endpoint response.
@@ -133,7 +133,7 @@ image::am/1.x/graviteeio-am-quickstart-profile-user-mappers.png[align=center, ti
 . Select your Client and click on `OpenID Connect` tab
 . Add new custom claims available in the user attributes (created previously inside `User Mappers` tab) and press `SAVE`
 
-image::am/1.x/graviteeio-am-quickstart-profile-custom-claims.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-quickstart-profile-custom-claims.png[]
 
 [start=4]
 . These new claims will be available in the ID Tokens' payload.

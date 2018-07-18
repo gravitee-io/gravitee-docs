@@ -18,12 +18,12 @@ NOTE: For the convenience of this quick start, we will create an In-memory ident
 . From the security domain's providers page, click `(+)` button
 . Choose the Inline Identity Provider and press `NEXT`
 
-image::am/1.x/graviteeio-am-quickstart-idp-type.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-quickstart-idp-type.png[]
 
 [start=6]
 . Give your identity provider a *name* and create a user by filling out the user form and press `CREATE`
 
-image::am/1.x/graviteeio-am-quickstart-create-idp.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-quickstart-create-idp.png[]
 
 [source]
 ----
@@ -41,7 +41,7 @@ curl -H "Authorization: Bearer :accessToken" \
 [start=7]
 . Go to the `client` 's settings page you want to use, and select the previously created identity provider and press `SAVE`
 
-image::am/1.x/graviteeio-am-quickstart-client-idp.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-quickstart-client-idp.png[]
 
 Now you can test users connection.
 

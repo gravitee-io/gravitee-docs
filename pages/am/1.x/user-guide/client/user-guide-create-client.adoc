@@ -27,7 +27,7 @@ curl -H "Authorization: Bearer :accessToken" \
 
 === Settings
 
-image::am/1.x/graviteeio-am-userguide-client-settings.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-userguide-client-settings.png[]
 
 After you have created the new client, you will be redirected to this client's settings page that contains the following information :
 
@@ -48,7 +48,7 @@ After you have created the new client, you will be redirected to this client's s
 Client can request for an access token to access protected resources. It can also request for an link:/am_userguide_concepts.html#id_token[ID Token] that contains profile information of the current authenticated user.
 ID Token contains claims which are statements about the user, these claims can be overridden to include specific users attributes defined in the related identity provider.
 
-image::am/1.x/graviteeio-am-userguide-client-oidc.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-userguide-client-oidc.png[]
 
 == Testing client
 

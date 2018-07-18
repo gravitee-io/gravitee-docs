@@ -16,7 +16,7 @@ In memory user directory, useful for testing purpose or setting default accounts
 
 . Give your identity provider a *name* and create a identity provider by filling out the configuration form and press `CREATE`
 
-image::am/1.x/graviteeio-am-quickstart-create-idp.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-quickstart-create-idp.png[]
 
 You can also create a security domain via the Gravitee.io AM API
 
@@ -39,7 +39,7 @@ LDAP and Active Directory user/groups directory mainly used inside organizations
 
 . Give your identity provider a *name* and create a identity provider by filling out the configuration form and press `CREATE`
 
-image::am/1.x/graviteeio-am-userguide-ldap-idp.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-userguide-ldap-idp.png[]
 
 You can also create a security domain via the Gravitee.io AM API
 
@@ -58,7 +58,7 @@ curl -H "Authorization: Bearer :accessToken" \
 
 == Custom identity provider
 
-image::am/1.x/graviteeio-am-userguide-custom-idp.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-userguide-custom-idp.png[]
 
 Gravitee.io Access Management is a flexible and extensible solution based on pluggable modules architecture.
 You can develop your own identity provider and provide an authenticate method to register your users to use them with Gravitee.io AM.
