@@ -350,6 +350,38 @@ security:
 
 NOTE: With OAuth2 Authentication type, all requests to Gravitee Management API must contain the following header : Authorization Bearer <your-access-token>
 
+=== SSL support
+
+When using custom Public Key Infrastructure (PKI) for your OAuth2 authentication provider, you may have to specify the certificate authority chain of your provider on the API management.
+
+---
+export JAVA_OPTS="
+  -Djavax.net.ssl.trustStore=/opt/graviteeio-management-api/security/truststore.jks 
+  -Djavax.net.ssl.trustStorePassword=<MYPWD>"
+---
+
+For docker environment
+
+---
+ local_managementapi:
+    extends:
+      file: common.yml
+      service: managementapi
+    ports:
+      - "8005:8083"
+    volumes:
+      - ./conf/ssl/truststore.jks:/opt/graviteeio-management-api/security/truststore.jks:ro
+      - ./logs/management-api:/home/gravitee/logs
+    links:
+      - "local_mongodb:demo-mongodb"
+      - "local_elasticsearch:demo-elasticsearch"
+    environment:
+      - JAVA_OPTS=-Djavax.net.ssl.trustStore=/opt/graviteeio-management-api/security/truststore.jks -Djavax.net.ssl.trustStorePassword=<MYPWD>
+      - gravitee_management_mongodb_uri=mongodb://demo-mongodb:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000
+      - gravitee_analytics_elasticsearch_endpoints_0=http://demo-elasticsearch:9200
+---
+
+
 == Sending emails
 
 === SMTP
