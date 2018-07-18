@@ -13,14 +13,14 @@ NOTE: Gravitee.io offers differents ways to access/secure an API (link:/apim_pub
 
 . Click `CREATE APPLICATIONS` (i.e (+) button)
 
-image::graviteeio-create-first-app.png[align=center, title-align=center]
+image::graviteeio-create-first-app.png[]
 
 [start=3]
 . Give your Application a name, a type and a description
 
 . Click the `CREATE` button and your Application is created
 
-image::graviteeio-first-app.png[align=center, title-align=center]
+image::graviteeio-first-app.png[]
 
 Create Application request::
 
@@ -43,7 +43,7 @@ NOTE: You can also use your default application.
 
 .. And select your application
 
-image::graviteeio-subscribe-api.png[align=center, title-align=center]
+image::graviteeio-subscribe-api.png[]
 
 Subscribe API request :
 
@@ -56,7 +56,7 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
 
 You have just subscribed to an API and you are ready to use it by grabbing your API Key.
 
-image::graviteeio-application-subscriptions.png[align=center, title-align=center]
+image::graviteeio-application-subscriptions.png[]
 
 == Test an API
 

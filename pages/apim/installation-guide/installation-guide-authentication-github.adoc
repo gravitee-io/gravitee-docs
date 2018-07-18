@@ -22,12 +22,12 @@ You can access the `GitHub OAuth Apps` from https://github.com/settings/develope
 === Register a new application
 
 .Register a new app
-image::installation/authentication/github_register_new_app.png[Register a new GitHub OAuth apps, 873, 530, align=center, title-align=center]
+image::installation/authentication/github_register_new_app.png[Register a new GitHub OAuth apps]
 
 === Create the application
 
 .Fill the form
-image::installation/authentication/github_fill_app_form.png[Fill the form, 873, 530, align=center, title-align=center]
+image::installation/authentication/github_fill_app_form.png[Fill the form]
 
 
 WARNING: Be careful, the `Authorization callback URL` must match exactly to the domain which is hosting the portal.
@@ -35,7 +35,7 @@ WARNING: Be careful, the `Authorization callback URL` must match exactly to the 
 [[gravitee-installation-authentication-github-credentials]]
 === Get application's OAuth2 credentials
 .Retrieve Oauth2 credentials
-image::installation/authentication/github_oauth_credentials.png[Get Oauth2 credentials, 873, 530, align=center, title-align=center]
+image::installation/authentication/github_oauth_credentials.png[Get Oauth2 credentials]
 
 == Configure Gravitee.io
 === Portal
@@ -69,10 +69,10 @@ security:
 == It's time to play
 
 .Login Form
-image::installation/authentication/github_login_form.png[Login Form, 873, 530, align=center, title-align=center]
+image::installation/authentication/github_login_form.png[Login Form]
 
 .Allow access to user account
-image::installation/authentication/github_access_account.png[Login Form, 873, 530, align=center, title-align=center]
+image::installation/authentication/github_access_account.png[Login Form]
 
 .Login Success
-image::installation/authentication/github_login_success.png[Here we are !, 873, 530, align=center, title-align=center]
+image::installation/authentication/github_login_success.png[Here we are !]

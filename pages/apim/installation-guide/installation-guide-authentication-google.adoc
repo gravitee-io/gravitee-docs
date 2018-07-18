@@ -22,24 +22,24 @@ You can access the Google APIs developers console from https://console.developer
 Before going further, please check that your current project has access to the Google+ API.
 
 .Check Google+ API
-image::installation/authentication/google_enable_google+_api.png[Check Google+ API access, 873, 530, align=center, title-align=center]
+image::installation/authentication/google_enable_google+_api.png[Check Google+ API access]
 
 === Create a new client
 
 .Create a new client
-image::installation/authentication/google_create_client.png[Create a new OAuth client, 873, 530, align=center, title-align=center]
+image::installation/authentication/google_create_client.png[Create a new OAuth client]
 
 === Configure the client
 
 .Configure the client
-image::installation/authentication/google_fill_client_form.png[Fill the form, 873, 530, align=center, title-align=center]
+image::installation/authentication/google_fill_client_form.png[Fill the form]
 
 WARNING: Be careful, the `Authorized redirect URIs` must match exactly to the domain which is hosting the portal.
 
 [[gravitee-installation-authentication-google-credentials]]
 === Get client's credentials
 .Retrieve Client credentials
-image::installation/authentication/google_client_credentials.png[Get Client credentials, 873, 530, align=center, title-align=center]
+image::installation/authentication/google_client_credentials.png[Get Client credentials]
 
 == Configure Gravitee.io
 === Portal
@@ -73,10 +73,10 @@ security:
 == It's time to play
 
 .Login Form
-image::installation/authentication/google_login_form.png[Login Form, 873, 530, align=center, title-align=center]
+image::installation/authentication/google_login_form.png[Login Form]
 
 .Choose account
-image::installation/authentication/google_choose_google_account.png[Login Form, 873, 530, align=center, title-align=center]
+image::installation/authentication/google_choose_google_account.png[Login Form]
 
 .Login Success
-image::installation/authentication/google_login_success.png[Here we are !, 873, 530, align=center, title-align=center]
+image::installation/authentication/google_login_success.png[Here we are !]

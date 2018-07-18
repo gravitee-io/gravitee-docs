@@ -208,7 +208,7 @@ Let say that we want to create a writer role which allow a user to create docume
 To do that, click on the (+) icon in the table header and fill a the name and the description of the new role
 
 .Create
-image::adminguide/newrole-create.png[Gravitee.io - Create a New Role, 873, 530, align=center, title-align=center]
+image::adminguide/newrole-create.png[Gravitee.io - Create a New Role]
 
 === Configure the `WRITER` role
 You must give `READ` permission on the `DEFINITION` and `GATEWAY_DEFINITION`.
@@ -216,10 +216,10 @@ This allow the user to see the API in the api list.
 Next, you have to give `CRUD` permission on the DOCUMENTATION.
 
 .Configure
-image::adminguide/newrole-configure.png[Gravitee.io - Configure a New Role, 873, 530, align=center, title-align=center]
+image::adminguide/newrole-configure.png[Gravitee.io - Configure a New Role]
 
 === Result
 As expected, the user with this role can now only see the documentation menu.
 
 .Menu
-image::adminguide/newrole-menu.png[Gravitee.io - Menu, 873, 530, align=center, title-align=center]
+image::adminguide/newrole-menu.png[Gravitee.io - Menu, 200]
