@@ -3,12 +3,40 @@
 :page-permalink: apim_publisherguide_publish_documentation.html
 :page-folder: apim/user-guide/publisher
 
-Documentation is the key for a successful API.
+Gravitee.io provide a way to expose documentation for your portal but also for your APIs.
+
+The portal documentation allows to communicate with your developer community on a single platform. For example this is useful to provide your best practices or simply configure your own homepage.
+
+*Documentation is the key for a successful API.* This is the better way to promote, and provide to the developers all the information necessary to consume your webservices.
+
 At this date, Gravitee.io is supporting three types of document:
 
 * Markdown
 * Swagger (OpenAPI)
-* RAML
+* RAML (deprecated)
+
+The base URL of your Swagger descriptor is overridable in the configuration panel and we provide more configuration capabilities for the Swagger documentation pages:
+
+image::graviteeio-page-documentation-swagger-configuration.png[]
+
+
+= Visibility
+
+Once your documentation page is created, this is not published on the portal for all the users, but only you. You will see this message:
+
+image::graviteeio-page-documentation-draft.png[]
+
+= External documentation
+
+Gravitee.io provides a way to fetch your documentation from an external source.
+
+There is 3 types of fetchers:
+
+* GitLab: fetch your documentation from a gitlab repository
+* Git: fetch your documentation from a git repository
+* WWW: fetch your documentation from the web
+
+__The documentation is fetched and stored locally in the Gravitee.io platform__
 
 = Templating
 
@@ -20,7 +48,7 @@ You can access to your api data on your api's documentation by doing so: ${api.n
 
 == Available API's properties
 
-[width="100%",cols="20%,20%,60%",frame="topbot",options="header"]
+[width="100%",cols="20%,10%,70%",frame="topbot",options="header"]
 |======================
 |Field name                 |Field type |Example
 |id                         |String     |70e72a24-59ac-4bad-a72a-2459acbbad39
