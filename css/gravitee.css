@@ -14,3 +14,12 @@
 table {
     width: 90%;
 }
+
+.affix {
+    overflow-y: scroll;
+    height: 90%;
+}
+
+.affix::-webkit-scrollbar {
+    display: none;
+}
