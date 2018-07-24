@@ -48,11 +48,11 @@ Now we have everything correctly configured, we can have a look to Prometheus an
 By default, and when running Prometheus, the UI is exposed at http://localhost:9090/graph
 
 .Show `http_client_connections` metrics
-image::installation/metrics/prometheus/metrics_prometheus_graph.png[Show `http_client_connections` metrics, 873, 530, align=center, title-align=center]
+image::installation/metrics/prometheus/metrics_prometheus_graph.png[Show `http_client_connections` metrics]
 
 
 If you want to take a look to the memory consumed by the gateway:
 
 .Show `jvm_memory_used_bytes` metrics
-image::installation/metrics/prometheus/metrics_prometheus_graph_memory.png[Show `jvm_memory_used_bytes` metrics, 873, 530, align=center, title-align=center]
+image::installation/metrics/prometheus/metrics_prometheus_graph_memory.png[Show `jvm_memory_used_bytes` metrics]
 

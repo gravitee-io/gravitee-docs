@@ -3,7 +3,7 @@
 :page-permalink: am/1.x/am_quickstart_secure_apis.html
 :page-folder: am/quickstart
 
-image::am/1.x/graviteeio-am-quickstart-secure-apis-overview.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-quickstart-secure-apis-overview.png[]
 
 NOTE: In this quick start we will use the link:https://gravitee.io[Gravitee.io API Management solution^] to protect our APIs.
 We assume that you have completed the installation of link:apim_installguide.html[Gravitee.io API Management^] and have a fully operational environment capable of interacting with your APIs (see link:/apim_quickstart_publish.html[Publish your first API^])
@@ -24,13 +24,13 @@ NOTE: In this quickstart we are using the Gravitee.io API Management 1.8.x versi
 .. Choose and record the *resource's name* and select *Gravitee.io AM Authorization Server Resource* resource's type
 .. Under _Configuration_ specify the *Gravitee.io AM Server URL*, your *Security domain*, your *Client ID* and your *Client Secret* and press `SAVE`
 
-image::am/1.x/graviteeio-am-quickstart-secure-apis-resource.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-quickstart-secure-apis-resource.png[]
 
 [start=5]
 . Go to `Policies` section and drag and drop the `OAuth2` policy to the selected API's path
 . Specify the resource's name you created for your API and press `SAVE`
 
-image::am/1.x/graviteeio-am-quickstart-quickstart-secure-apis-policy.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-quickstart-quickstart-secure-apis-policy.png[]
 
 [start=7]
 . Finally deploy your API

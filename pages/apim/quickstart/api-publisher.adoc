@@ -16,21 +16,21 @@ NOTE: *Gravitee.io Echo API* : In this tutorial we will use the https://api.grav
 
 . Click `Create a new API`
 
-image::graviteeio-create-api.png[align=center, title-align=center]
+image::graviteeio-create-api.png[]
 
 .. Give your API a name, a version, a description and a context path
 
-image::graviteeio-create-first-api-1.png[align=center, title-align=center]
+image::graviteeio-create-first-api-1.png[]
 
 [start=2]
 .. Make sure that `Backend` is set to `https://api.gravitee.io/echo`
 
-image::graviteeio-create-first-api-2.png[align=center, title-align=center]
+image::graviteeio-create-first-api-2.png[]
 
 [start=3]
 .. Click `CREATE` button and your API is created
 
-image::graviteeio-first-api.png[align=center, title-align=center]
+image::graviteeio-first-api.png[]
 
 Create API request::
 
@@ -51,14 +51,14 @@ To create your API plan, first click on `Plans` menu item and follow these instr
 
 . Give your Plan a name, a description, a security type and trigger the `auto-validation` switch.
 
-image::graviteeio-create-plan.png[align=center, title-align=center]
+image::graviteeio-create-plan.png[]
 
 NOTE: Make sure to choose link:/apim_policies_apikey.html[API Key security type]. To go further into the Plan configuration, you can take a look at the link:/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions Guide]
 
 [start=2]
 . Click `SAVE` button and your Plan is created
 
-image::graviteeio-create-plan-2.png[align=center, title-align=center]
+image::graviteeio-create-plan-2.png[]
 
 Create Plan request::
 
@@ -76,7 +76,7 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
 
 Your plan is in staging state, in order to make it visible for everyone, you must publish it.
 
-image::graviteeio-create-plan-3.png[align=center, title-align=center]
+image::graviteeio-create-plan-3.png[]
 
 Publish Plan request::
 
@@ -92,7 +92,7 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
 
 Deploy your API to the Gravitee.io Gateway instances by clicking on `deploy your API`
 
-image::graviteeio-create-first-api-3.png[align=center, title-align=center]
+image::graviteeio-create-first-api-3.png[]
 
 Deploy API request::
 

@@ -6,8 +6,7 @@ There are three different ways to configure this component:
  - System Properties
  - Environment variables
 
-In terms of prevalence, `environment variables` override `System properties which are themselves overriding
-`gravitee.yml` file.
+In terms of prevalence, environment variables override system properties which are themselves overriding `gravitee.yml` file.
 
 == gravitee.yml
 
@@ -38,7 +37,7 @@ You have to add this property to the JVM:
 
 == Environment Variables
 
-You can override the default configuration (`gravitee.yml`) to configure Gravitee.io by defining environment variables.
+You can override the default configuration (`gravitee.yml`) and system properties by defining environment variables.
 
 If you want to override this property:
 
@@ -56,4 +55,33 @@ GRAVITEE_MANAGEMENT_MONGODB_DBNAME=myDatabase
 GRAVITEE.MANAGEMENT.MONGODB.DBNAME=myDatabase
 gravitee_management_mongodb_dbname=myDatabase
 gravitee.management.mongodb.dbname=myDatabase
+----
+
+=== How to manage arrays ?
+
+Some properties are arrays. For example:
+[source,yaml]
+----
+analytics:
+  elasticsearch:
+    endpoints:
+      - https://my.first.endpoint.com
+      - https://my.second.endpoint.com
+
+security:
+  providers:
+    - type: ldap
+      context-source-username: "cn=Directory Manager"
+      context-source-password: "password"
+----
+
+Here is the way to write your environment variables:
+
+----
+gravitee_analytics_elasticsearch_endpoints_0=https://my.first.endpoint.com
+gravitee_analytics_elasticsearch_endpoints_1=https://my.second.endpoint.com
+
+gravitee_security_providers_0_type=ldap
+gravitee_security_providers_0_context-source-username=cn=Directory Manager
+gravitee_security_providers_0_context-source-password=password
 ----

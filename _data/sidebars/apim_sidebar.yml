@@ -176,9 +176,6 @@ entries:
         - title: Cache
           output: web
           url: /apim_policies_cache.html
-        - title: CORS
-          output: web
-          url: /apim_policies_cors.html
         - title: Dynamic Routing
           output: web
           url: /apim_policies_dynamic_routing.html
@@ -271,13 +268,13 @@ entries:
   - title: Administration Guide
     output: web
     folderitems:
-    - title: Introduction
-      output: web
-      url: /apim_adminguide.html
-      type: homepage
     - title: Roles and Permissions
       output: web
       url: /apim_adminguide_roles_and_permissions.html
+      type: homepage
+    - title: Users and Groups
+      output: web
+      url: /apim_adminguide_users_and_groups.html
 
   - title: Developer Guide
     output: web

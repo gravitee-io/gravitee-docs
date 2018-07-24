@@ -1,0 +1,25 @@
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1800px;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .col-md-9 img {
+        max-width: 900px;
+        max-height: 900px;
+    }
+}
+
+table {
+    width: 90%;
+}
+
+.affix {
+    overflow-y: scroll;
+    height: 90%;
+}
+
+.affix::-webkit-scrollbar {
+    display: none;
+}

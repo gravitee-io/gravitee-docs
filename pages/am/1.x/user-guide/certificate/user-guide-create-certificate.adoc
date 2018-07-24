@@ -29,7 +29,7 @@ $ keytool -genkeypair
 
 . Give your certificate a *name* and create a certificate by filling out the configuration form and press `CREATE`
 
-image::am/1.x/graviteeio-am-userguide-create-certificate.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-userguide-create-certificate.png[]
 
 You can also create a certificate via the Gravitee.io AM API
 
@@ -53,13 +53,13 @@ Public keys will allow you to verify the token's payload integrity. To get publi
 . From `Certificates` list page, click image:am/1.x/graviteeio-am-quickstart-profile-public-key.png[] button.
 . You can copy/paste the public to use them with third party library to verify your tokens
 
-image::am/1.x/graviteeio-am-userguide-public-key.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-userguide-public-key.png[]
 
 NOTE: link:https://gravitee.io[Gravitee.io API Management] comes with a JWT Policy use to verify and decode tokens that can be used for your APIs.
 
 == Custom certificate
 
-image::am/1.x/graviteeio-am-userguide-custom-certificate.png[align=center, title-align=center]
+image::am/1.x/graviteeio-am-userguide-custom-certificate.png[]
 
 Gravitee.io Access Management is a flexible and extensible solution based on pluggable modules architecture.
 You can develop your own certificate and provide a sign method for tokens.

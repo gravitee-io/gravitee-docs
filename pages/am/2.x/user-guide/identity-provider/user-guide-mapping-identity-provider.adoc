@@ -15,7 +15,7 @@ Let's say you want the `telephoneNumber` of your authenticated LDAP user, you ca
 . From the security domain's providers page, select your LDAP identity provider and go to `User mappers` tab
 . Map your LDAP (raw) attribute to the user attribute
 
-image::am/2.x/graviteeio-am-userguide-idp-user-mappers.png[align=center, title-align=center]
+image::am/2.x/graviteeio-am-userguide-idp-user-mappers.png[]
 
 [start=5]
 . Get the user profile information via the UserInfo Endpoint and you will see that the new user attribute is present
@@ -60,7 +60,7 @@ You can do it by configuring your LDAP identity provider :
 . From the security domain's providers page, select your LDAP identity provider and go to `Role mappers` tab
 . Set the user's roles configuration
 
-image::am/2.x/graviteeio-am-userguide-idp-role-mappers.png[align=center, title-align=center]
+image::am/2.x/graviteeio-am-userguide-idp-role-mappers.png[]
 
 [start=7]
 . If you request for an access token, you will see that the scopes will be set with the user roles' permissions values (make sure you set the `Enhance scopes` option for your client).

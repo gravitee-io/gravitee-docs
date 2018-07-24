@@ -18,18 +18,18 @@ Before being able to connect to the Gravitee.io portal using Keycloak, you need 
 === Create a new client
 
 .Create a new client
-image::installation/authentication/keycloak_create_client.png[Create a new client, 873, 530, align=center, title-align=center]
+image::installation/authentication/keycloak_create_client.png[Create a new client]
 
 === Configure the client
 
 .Configure the client
-image::installation/authentication/keycloak_configure_client.png[Fill the form, 873, 530, align=center, title-align=center]
+image::installation/authentication/keycloak_configure_client.png[Fill the form]
 
 WARNING: Be careful, the `Valid Redirect URIs` must match exactly to the domain which is hosting the portal.
 
 === Get client's credentials
 .Retrieve Client credentials
-image::installation/authentication/keycloak_client_credentials.png[Get Client credentials, 873, 530, align=center, title-align=center]
+image::installation/authentication/keycloak_client_credentials.png[Get Client credentials]
 
 == Configure Gravitee.io
 === Portal
@@ -76,20 +76,20 @@ Open the `gravitee.yml` file and add a new security provider as follow:
 
 === Create a user in Keycloak
 .Create a user
-image::installation/authentication/keycloak_users.png[Create a user, 873, 530, align=center, title-align=center]
+image::installation/authentication/keycloak_users.png[Create a user]
 
 .Fill the user form
-image::installation/authentication/keycloak_create_user.png[Fill the user form, 873, 530, align=center, title-align=center]
+image::installation/authentication/keycloak_create_user.png[Fill the user form]
 
 .Define user credentials
-image::installation/authentication/keycloak_create_user_credentials.png[Define user credentials, 873, 530, align=center, title-align=center]
+image::installation/authentication/keycloak_create_user_credentials.png[Define user credentials]
 
 === Login into the portal
 .Login Form
-image::installation/authentication/keycloak_login_form.png[Login Form, 873, 530, align=center, title-align=center]
+image::installation/authentication/keycloak_login_form.png[Login Form]
 
 .Keycloak Login Form
-image::installation/authentication/keycloak_login_form2.png[Keycloak Login Form, 873, 530, align=center, title-align=center]
+image::installation/authentication/keycloak_login_form2.png[Keycloak Login Form]
 
 .Login Success
-image::installation/authentication/keycloak_login_success.png[Here we are !, 873, 530, align=center, title-align=center]
+image::installation/authentication/keycloak_login_success.png[Here we are !]
