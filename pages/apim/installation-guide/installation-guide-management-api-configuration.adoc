@@ -354,6 +354,7 @@ NOTE: With OAuth2 Authentication type, all requests to Gravitee Management API m
 
 When using custom Public Key Infrastructure (PKI) for your OAuth2 authentication provider, you may have to specify the certificate authority chain of your provider on the API management.
 
+[source]
 ---
 export JAVA_OPTS="
   -Djavax.net.ssl.trustStore=/opt/graviteeio-management-api/security/truststore.jks 
@@ -362,6 +363,7 @@ export JAVA_OPTS="
 
 For docker environment
 
+[source,yaml]
 ---
  local_managementapi:
     extends:
