@@ -37,7 +37,7 @@ Policy can be treated like a _proxy controller_ by guaranteeing if a given busin
 Good examples for a policy are:
 
 * Authorization using an API key (see the <<apim_policies_apikey, api-key policy>>)
-* Applying CORS filters
+* Applying header/query params transformations
 * Applying rate limiting or quota to avoid API flooding.
 
 NOTE: Want to know how to create, use, and deploy a custom policy? Check out the <<apim_devguide_policies.adoc, Developer Guide>>!
