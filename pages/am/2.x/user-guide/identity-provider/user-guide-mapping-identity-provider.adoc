@@ -22,7 +22,7 @@ image::am/2.x/graviteeio-am-userguide-idp-user-mappers.png[]
 
 [source,bash,subs="verbatim"]
 ----
-curl -X GET http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/userinfo -H 'Authorization: Bearer :accesToken'
+curl -X GET http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/oidc/userinfo -H 'Authorization: Bearer :accesToken'
 ----
 
 If everything goes well, you should see the following response :
