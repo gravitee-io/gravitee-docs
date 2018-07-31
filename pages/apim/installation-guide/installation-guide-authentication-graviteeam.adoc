@@ -69,7 +69,7 @@ Open the `gravitee.yml` file and add a new security provider as follow:
 
 Please refer to link:/am/2.x/am_quickstart_register_app.html[Authenticate users with Identity Provider, window="_blank"] quickstart to set up your identity provider and create your first users.
 
-NOTE: Gravitee.io API Management require a profile `email` information to enable the portal authentication. If you create an `Inline identity provide`, please set an email for the `username` field.
+NOTE: Gravitee.io API Management requires a profile `email` information to enable the portal authentication. If you create an `Inline identity provider`, please set an email for the `username` field.
 
 .Create a user
 image::installation/authentication/graviteeam_create_user.png[Fill the user form]
