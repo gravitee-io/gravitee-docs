@@ -21,17 +21,17 @@ We provide a complete set of images.
 |{docker-hub}/am-gateway/[graviteeio/am-gateway]
 |{github-repo}/gateway/[images/am-gateway]
 |latest
-|https://hub.docker.com/_/alpine/[alpine:3.3]
+|https://hub.docker.com/_/alpine/[alpine:3.8]
 
 |{docker-hub}/am-management-api/[graviteeio/am-management-api]
 |{github-repo}/management-api/[images/am-management-api]
 |latest
-|https://hub.docker.com/_/alpine/[alpine:3.3]
+|https://hub.docker.com/_/alpine/[alpine:3.8]
 
-|{docker-hub}/am-webui/[graviteeio/am-webui]
-|{github-repo}/webui/[images/am-webui]
+|{docker-hub}/am-management-ui/[graviteeio/am-management-ui]
+|{github-repo}/management-ui/[images/am-webui]
 |latest
-|https://hub.docker.com/_/alpine/[nginx:1.12.1-alpine]
+|https://hub.docker.com/_/alpine/[nginx:1.15-alpine]
 
 |===
 
@@ -67,7 +67,7 @@ When all components are started, you can do a quick test to see if everything is
 |{docker-hub}/am-management-api/[graviteeio/am-management-api]
 |http://localhost/am/management
 
-|{docker-hub}/am-webui/[graviteeio/am-webui]
+|{docker-hub}/am-webui/[graviteeio/am-management-ui]
 |http://localhost/am/ui/
 
 |===
