@@ -21,7 +21,7 @@ Specifies the method or methods allowed when accessing the resource. This is use
 === Access-Control-Allow-Headers
 
 Here you specify the headers allowed to be used by your requests.
-Typically, on your request headers you will have a header `Access-Control-Request-Headers` which request CORS to be configured to allow the its values.
+Typically, on your request headers you will have a header `Access-Control-Request-Headers` which request CORS to be configured to allow its values.
 
 Let's see a simple use case:
 

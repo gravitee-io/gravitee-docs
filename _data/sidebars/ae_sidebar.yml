@@ -1,0 +1,40 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  product: Alert Engine
+  folders:
+
+  - title: Overview
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /ae_overview_introduction.html
+      type: homepage
+    - title: Architecture
+      output: web
+      url: /ae_overview_architecture.html
+    - title: Concepts
+      output: web
+      url: /ae_overview_concepts.html
+
+  - title: QuickStart
+    output: web
+    folderitems:
+    - title: Configure your first trigger
+      output: web
+      url: /ae_quickstart_trigger.html
+    - title: Send your first event
+      output: web
+      url: /ae_quickstart_event.html
+
+  - title: Installation Guide
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /ae_installguide_introduction.html
+    - title: Configuration
+      output: web
+      url: /ae_installguide_configuration.html

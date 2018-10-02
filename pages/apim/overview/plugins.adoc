@@ -21,6 +21,8 @@ When using Gravitee.io, you must be face to multiple types of _plugins_, in part
 | <<gravitee-plugins-repositories, Repositories>>|Management API / Gateway|MongoDB, Redis, Elasticsearch, ...
 | <<gravitee-plugins-resources, Resources>>|Management API / Gateway|Oauth2, Cache, LDAP, ...
 | <<gravitee-plugins-services, Services>>|Management API / Gateway|Sync, local-registry, health-check, monitor, ...
+| <<gravitee-plugins-notifiers, Notifiers>>|Alert Engine|Email, ...
+| <<gravitee-plugins-alerts, Alerts>>|Management API / Gateway|Vertx, ...
 |===
 
 [[gravitee-plugins-idp]]
@@ -69,3 +71,15 @@ You can find more information by having a look to the <<gravitee-management-api-
 
 [[gravitee-plugins-services]]
 == Services
+
+[[gravitee-plugins-notifiers]]
+== Notifiers
+
+A *notifier* is used to send notifications.
+For now the only one available is the *email notifier*, but others like *slack* or *portal* are planned soon.
+
+[[gravitee-plugins-alerts]]
+== Alerts
+
+An *alert* allows to send trigger or event to the Alert Engine which will be processed to send a notification with the configured plugin notifier.
+The configuration of the notifier is the responsibility of the trigger.

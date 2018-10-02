@@ -1,0 +1,100 @@
+= Concepts
+:page-sidebar: ae_sidebar
+:page-permalink: ae_overview_concepts.html
+:page-folder: ae/overview
+
+== Trigger
+
+A *Trigger* is the configuration element of the events you want to track and it's composed of:
+
+- a unique id
+- a name which describe the purpose of trigger
+- an event type
+- a context
+- an array of scope properties
+- a https://stedolan.github.io/jq/[JQ] condition which will trigger the alert
+- an array of notifications with the configuration (smtp config for email*)
+- an array of links
+- a boolean used to enable/disable a previous registered trigger with its id
+- a boolean to define if it should triggered once the first time or for each event
+
+_*Email notifications allow to define a template which is processed by https://freemarker.apache.org[freemarker template engine]_
+
+== Event
+
+An *Event* typically represents a KV object with:
+
+- a unique id
+- a timestamp
+- a type
+- a map of context
+- a map of properties
+
+== Example
+
+For example if i want to be alerted with an email when i receive an event of type `HC` for the API `123`. I will have the below trigger:
+
+```json
+{
+    "id": "hc-123",
+    "name": "API health-check status changed",
+    "eventType": "HC",
+    "context": {
+        "API": "1459ff51-dc0b-44e2-99ff-51dc0b04e240"
+    },
+    "scopeProperties": [
+        "APPLICATION"
+    ],
+    "condition": "$[?(@.type == 'HC' && @.props.API == '123')]",
+    "notifications": [
+        {
+            "type": "email",
+            "destination": "to@email.com",
+            "configuration": "{\n  \"subject\" : \"[Gravitee.io] HealthCheck status changed for API ${event.api}\",\n  \"from\" : \"from@email.com\",\n  \"host\" : \"smtp.email.com\",\n  \"port\" : \"587\",\n  \"username\" : \"username\",\n  \"password\" : \"password\",\n  \"startTLSEnabled\" : false,\n  \"sslTrustAll\" : false,\n  \"sslKeyStore\" : null,\n  \"sslKeyStorePassword\" : null\n}",
+        }
+    ],
+     "links": [
+         {
+             "rel": "View details",
+             "href": "http://portal_url/#!/management/apis/1459ff51-dc0b-44e2-99ff-51dc0b04e240/healthcheck/"
+         }
+     ],
+     "notifyOnce": false
+}
+```
+
+Considering i receive two events:
+
+Event1:
+```json
+{
+    "id": "123",
+    "timestamp": 1538473393,
+    "context": {
+        "Hostname": "localhost",
+        "Port": "8082"
+    }
+    "type": "HC",
+    "props": {
+        "API": "123"
+    }
+}
+```
+
+Event2:
+```json
+{
+    "id": "1234",
+    "timestamp": 1538476243,
+    "context": {
+        "Hostname": "localhost",
+        "Port": "8082"
+    }
+    "type": "HC",
+    "props": {
+        "API": "999"
+    }
+}
+```
+
+*An email will be sent when the Alert Engine will receive the Event1, but nothing for the Event2.*

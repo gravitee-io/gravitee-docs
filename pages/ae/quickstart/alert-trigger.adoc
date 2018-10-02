@@ -1,0 +1,83 @@
+---
+sidebar: ae_sidebar
+permalink: ae_quickstart_trigger.html
+folder: ae/quickstart
+description: Gravitee Alert Engine - Trigger
+toc: false
+keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+---
+
+= Trigger
+
+The first thing to do is to configure a trigger with the following information:
+
+|===
+|Field Name |Field Description
+
+|id
+|A unique identifier for your trigger
+
+|name
+|A name for your trigger
+
+|eventType
+|The event type (must match the type of event)
+
+|context
+|A map of context to give information about trigger
+
+|scopeProperties
+|A map of scope properties to scope by event properties when notifyOnce is enabled
+
+|condition
+|The condition to trigger or not
+
+|notifications
+|Array of notifications to execute
+
+|___type
+|The type of notification
+
+|___configuration
+|The specific configuration of the notification
+
+|notifyOnce
+|True to notify once, default false
+
+|enabled
+|True to enable a trigger, default true
+|===
+
+
+```json
+{
+    "id": "unique-id",
+    "name": "API health-check status changed",
+    "eventType": "HC",
+    "context": {
+        "API": "1459ff51-dc0b-44e2-99ff-51dc0b04e240"
+    },
+    "scopeProperties": [
+        "APPLICATION"
+    ],
+    "condition": "$[?(@.type == 'HC' && @.props.API == 'XXX.XXX.XXX')]",
+    "notifications": [
+        {
+            "type": "email",
+            "destination": "to@email.com",
+            "configuration": "{\n  \"subject\" : \"[Gravitee.io] HealthCheck status changed for API ${event.api}\",\n  \"from\" : \"from@email.com\",\n  \"host\" : \"smtp.email.com\",\n  \"port\" : \"587\",\n  \"username\" : \"username\",\n  \"password\" : \"password\",\n  \"startTLSEnabled\" : false,\n  \"sslTrustAll\" : false,\n  \"sslKeyStore\" : null,\n  \"sslKeyStorePassword\" : null\n}",
+        },
+        {
+            "type": "slack",
+            "configuration": "{\n  \"workspace\" : \"workspace\",\n  \"channel\" : \"channel\"...\n}",
+        }
+    ],
+    "links": [
+        {
+            "rel": "View details",
+            "href": "http://portal_url/#!/management/apis/1459ff51-dc0b-44e2-99ff-51dc0b04e240/healthcheck/"
+        }
+    ],
+    "notifyOnce": false
+}
+```
