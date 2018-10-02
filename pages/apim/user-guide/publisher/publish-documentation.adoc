@@ -76,7 +76,7 @@ Here an example of a possible template for your API documentation.
 ```
 <img src="${api.picture}" style="float: right"></img>
 
-#Welcome to the API ${api.name}(${api.version})!
+# Welcome to the API ${api.name}(${api.version})!
 
 The API is <span style="text-transform: lowercase;color: <#if api.state=='STARTED'>green<#else>red</#if>">${api.state}</span>.
 
@@ -98,21 +98,21 @@ This API is not publicly exposed.
 Sharding tags: ${api.tags?join(", ")}
 </#if>
 
-##Description
+## Description
 
 ${api.description}
 
-##How to access
+## How to access
 
 The API can be accessed through https://api.company.com${api.proxy.contextPath}:
 
 curl https://api.company.com${api.proxy.contextPath}
 
-##Rating
+## Rating
 
 You can rate and put a comment for this API <a href='/#!/apis/${api.id}/ratings'>here</a>.
 
-##Contact
+## Contact
 
 The support contact is <a href="mailto:${api.metadata['email-support']}">${api.metadata['email-support']}</a>.
 

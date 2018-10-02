@@ -6,7 +6,7 @@ gems:
 title: Gravitee.io API Platform Documentation
 description: Home page for Gravitee.io API Platform documentation
 summary: Gravitee.io API Platform documentation
-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, alert, alerting, engine
 
 twitter:
   username: graviteeio
@@ -108,6 +108,7 @@ defaults:
 sidebars:
 - apim_sidebar
 - am_sidebar
+- ae_sidebar
 
 description: "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features."
 # the description is used in the feed.xml file
