@@ -119,3 +119,6 @@ actions:
       unit_count: 15
       timestring: '%Y.%m.%d'
 ----
+
+NOTE: If you deploy it on every ES data node do not forget to set `master_only: True` into the curator config file.
+It will allow to run only once curator on the elected current master.
