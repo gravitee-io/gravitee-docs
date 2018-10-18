@@ -45,15 +45,15 @@ You can launch a complete environment using our ready-to-use docker-compose file
 ....
 # Download required Docker Compose files
 $ mkdir -p config
-$ curl -L https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/docker-compose.yml -o "docker-compose.yml"
-$ cd config && { curl -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/config/constants.json ; cd -; }
+$ curl -L -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/docker-compose.yml
+$ cd config && { curl -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/config/.env ; cd -; }
 $ cd config && { curl -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/config/nginx.conf ; cd -; }
 
 # (Optional step: pull to ensure that you are running latest images)
-$ docker-compose -f docker-compose.yml pull
+$ docker-compose pull
 
 # And run...
-$ docker-compose -f docker-compose.yml up
+$ docker-compose up
 ....
 
 When all components are started, you can do a quick test to see if everything is ok by checking these urls:
@@ -71,6 +71,14 @@ When all components are started, you can do a quick test to see if everything is
 |http://localhost/am/ui/
 
 |===
+
+If you want to run Gravitee.io AM with a different version or if you want to want to change the default port, you can run
+`docker-compose`as follow:
+
+[source, shell]
+....
+$ GIO_AM_VERSION=2 NGINX_PORT=18000 docker-compose up
+....
 
 Once done, you're now ready to play with Gravitee.io Access Management, so let's take a look to the <<gravitee-quickstart, Quickstart guide>>.
 
