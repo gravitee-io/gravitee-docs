@@ -46,7 +46,7 @@ You can launch a complete environment using our ready-to-use docker-compose file
 # Download required Docker Compose files
 $ mkdir -p config
 $ curl -L -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/docker-compose.yml
-$ cd config && { curl -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/config/.env ; cd -; }
+$ curl -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/.env
 $ cd config && { curl -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/config/nginx.conf ; cd -; }
 
 # (Optional step: pull to ensure that you are running latest images)
