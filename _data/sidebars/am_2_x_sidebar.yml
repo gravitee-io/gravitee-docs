@@ -146,3 +146,16 @@ entries:
       - title: Overview
         output: web
         url: /am/2.x/am_management_api_documentation.html
+
+  - title: Protocols
+    output: web
+    folderitems:
+      - title: Overview
+        output: web
+        url: /am/2.x/am_protocols_overview.html
+      - title: OAuth 2.0
+        output: web
+        url: /am/2.x/am_protocols_oauth2_overview.html
+      - title: OpenID Connect
+        output: web
+        url: /am/2.x/am_protocols_oidc_overview.html
