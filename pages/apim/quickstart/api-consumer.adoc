@@ -62,7 +62,7 @@ image::graviteeio-application-subscriptions.png[]
 
 Now that you have created your application and get your API Key, we can go back to the API and start using it.
 
-NOTE: You can use your API Key by setting the HTTP Header `X-Gravitee-Api-Key` or using the request query parameter `api-key`.
+NOTE: You can use your API Key by setting the HTTP Header `x-api-key` or using the request query parameter `api-key`.
 
 [source]
 ----
