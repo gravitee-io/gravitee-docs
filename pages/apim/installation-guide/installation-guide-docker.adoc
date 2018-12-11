@@ -121,6 +121,8 @@ $ docker run \
 
 You can launch a complete demo environment using our ready-to-use docker-compose file. It includes Gravitee.io API Management + MongoDB + Elasticsearch.
 
+Before running the commands below, make sure you have the minimum vm.max_map_count property set in order to run Elasticsearch. https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html[Click here] to see how to check the current value and update if necessary.
+
 [source, shell]
 ....
 # Download compose files
