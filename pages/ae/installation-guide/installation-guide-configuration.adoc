@@ -40,12 +40,9 @@ services:
     prometheus:
       enabled: true
 
-alerts:
-  plugin:
-    enabled: true
-    hazelcast:
-      config:
-        path: ${gravitee.home}/config/hazelcast.xml
+hazelcast:
+  config:
+    path: ${gravitee.home}/config/hazelcast.xml
 
 notifiers:
   email:
