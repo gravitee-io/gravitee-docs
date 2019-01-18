@@ -1,0 +1,97 @@
+= Dynamic Client Registration
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_userguide_dynamic_client_registration.html
+:page-folder: am/user-guide
+
+Another way to create clients is to use the Openid Connect Dynamic Client Registration endpoint. +
+This specification enable Relying Party (clients) to register application into the Openid Provider (OP).
+
+== Enable Dynamic Client Registration.
+
+By default this feature is disabled, you can enable it through the domain settings:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page, go to `Openid` section then `Client Registration`
+. Enable the Dynamic Client Registration.
+
+
+IMPORTANT: There is a second parameter called "open dynamic client registration", this parameter is used to allow any non authenticated request to register new clients through the registration endpoint. It is part of the openid specification, but for some obvious security reasons, it is disabled by default.
+
+image::am/2.x/graviteeio-am-userguide-domain-enable-dcr.png[]
+
+You can also enable this feature via the Gravitee.io AM API
+
+[source]
+----
+# enable Dynamic Client Registration
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "isDynamicClientRegistrationEnabled": true,
+            "isOpenDynamicClientRegistrationEnabled": false
+      }}}' \
+  http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId
+----
+
+== Register new client
+
+=== Obtain an access token
+
+Unless you enabled the open dynamic registration, you will need to obtain an access token via the client_credentials flow, with as scope "dcr_admin".
+
+CAUTION: This "dcr_admin" scope grant CRUD access to any clients of your domain.
+You will need to allow this scope only for a trusted RP (client).
+
+[source]
+----
+#Request a token
+curl -X POST \
+  'http://GRAVITEEIO-AM-GATEWAY-HOST/:domain/oauth/token?grant_type=client_credentials&scope=dcr_admin&client_id=:clientId&client_secret=:clientSecret'
+----
+
+=== Register new RP (Client)
+
+Once you obtain the access token, you can call the gateway through the registration endpoint.
+You can specify many client information such as client_name, but only the redirect_uris property is mandatory.
+Please see the link:https://openid.net/specs/openid-connect-registration-1_0.html[Openid Connect Dynamic Client Registration] specification for more details.
+
+The endpoint used to register an application is available into the link:http://GRAVITEEIO-AM-GATEWAY-HOST/:domain/oidc/.well-known/openid-configuration[openid discovery endpoint] under the "registration_endpoint" property.
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "redirect_uris": ["https://myDomain/callback"], \
+        "client_name": "myApp", \
+        "grant_types": [ "authorization_code","client_credentials"], \
+        "scope":"openid" \
+      }' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register
+----
+
+The response will contains some additional fields such as the expected client_id and client_secret information.
+
+TIP: In the response, you will aslo find the registration_access_endpoint and the registration_client_uri used to read/update/delete those informations.
+
+=== Read/Update/Delete client information
+
+The register endpoint also allow GET/PATCH/DELETE actions on a client_id that has been registered through the registration endpoint. +
+To do so, you need the access token generated during the client registration process, provided into the response under the registration_access_token field.
+
+NOTE: This access token contains a "dcr" scope which can not be obtain even if you enable the client_credentials flow.
+Plus, even if the endpoint used to be the openid registration endpoint combinated with the client_id, the DCR specifications imply you to not compute this endpoint but use the registration_client_uri given in the register response.
+
+[source]
+----
+# Update a registered Relying Party (client)
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "client_name": "myNewApplicationName"}' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register/:client_id
+----

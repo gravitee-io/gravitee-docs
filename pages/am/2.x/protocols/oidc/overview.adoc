@@ -64,3 +64,8 @@ ID Tokens are digitally signed to create secure exchanges between two parties.
 
 NOTE: In order to get an ID Token, Client must use Authorization Code Flow or link:/am/2.x/am_protocols_oauth2_overview.html#implicit[Implicit Grant] with scope `openid` or use Implicit/Hybrid Flow.
 
+== Dynamic Client Registration
+
+In order for an OpenID Connect Relying Party (client) to use openid services, it need first to register and be known by the OpenID Provider.
+Dynamic Client Registration enable to self register RP by providing informations and obtain as a result the required informations (client_id) to use it.
+Gravitee Access Management follow the link:https://openid.net/specs/openid-connect-registration-1_0.html[Openid Connect Dynamic Client Registration] specifications.
