@@ -10,9 +10,9 @@ Gravitee allows you to externalize your configuration via the `gravitee.yml` fil
 
 The default plugin can be downloaded from https://download.graviteesource.com with credentials.
 
-Copy link:/apim_overview_plugins.html[plugins] (alerts/notifiers) in the `GRAVITEE_HOME/plugins` folder for both gateway / rest-api and override the following configuration if necessary.
+Copy alert link:/apim_overview_plugins.html[plugin] in the `GRAVITEE_HOME/plugins` folder for both gateway / rest-api and override the following configuration if necessary.
 
-Default configuration:
+Default configuration of Alert Engine:
 ```yaml
 # Alert engine (default: [2 * number of cores on the machine] - 1)
 verticles:
@@ -40,9 +40,13 @@ services:
     prometheus:
       enabled: true
 
-hazelcast:
-  config:
-    path: ${gravitee.home}/config/hazelcast.xml
+cluster:
+  # must be reachable by other nodes
+  host: localhost
+  port: 0
+  hazelcast:
+    config:
+      path: ${gravitee.home}/config/hazelcast.xml
 
 notifiers:
   email:
