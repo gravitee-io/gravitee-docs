@@ -1,7 +1,11 @@
-= Create role
+= Roles
 :page-sidebar: am_2_x_sidebar
-:page-permalink: am/2.x/am_userguide_create_role.html
+:page-permalink: am/2.x/am_userguide_user_management_roles.html
 :page-folder: am/user-guide
+
+Roles are used to specify system access to authorized users. Each role provides a set of permissions representing operations that user can do on specific services.
+
+== Create role
 
 Roles are created for each security domain, to create a role, follow these steps:
 

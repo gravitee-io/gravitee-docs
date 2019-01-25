@@ -36,7 +36,7 @@ http:
       password:
 ----
 
-=== Enable HTTPS repository
+=== Enable HTTPS
 
 First, you need to provide a keystore. If you don’t have one, you can generate it :
 
@@ -72,6 +72,28 @@ http:
     truststore:
       path:
       password:
+----
+
+=== Email configuration
+
+----
+# SMTP configuration used to send mails
+email:
+  enabled: false
+  host: smtp.my.domain
+  subject: "[Gravitee.io] %s"
+  port: 587
+  from: noreply@my.domain
+  username: user@my.domain
+  password: password
+#  properties:
+#    auth: true
+#    starttls.enable: true
+#    ssl.trust: smtp.gmail.com
+
+# Mail templates
+#templates:
+#  path: ${gravitee.home}/templates
 ----
 
 === Plugins repository
@@ -170,7 +192,7 @@ jetty:
       password:
 ----
 
-=== Enable HTTPS repository
+=== Enable HTTPS
 
 First, you need to provide a keystore. If you don’t have one, you can generate it :
 
@@ -207,6 +229,28 @@ jetty:
     truststore:
       path:
       password:
+----
+
+=== Email configuration
+
+----
+# SMTP configuration used to send mails
+email:
+  enabled: false
+  host: smtp.my.domain
+  subject: "[Gravitee.io] %s"
+  port: 587
+  from: noreply@my.domain
+  username: user@my.domain
+  password: password
+#  properties:
+#    auth: true
+#    starttls.enable: true
+#    ssl.trust: smtp.gmail.com
+
+# Mail templates
+#templates:
+#  path: ${gravitee.home}/templates
 ----
 
 === Plugins repository
