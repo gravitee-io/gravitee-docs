@@ -100,15 +100,31 @@ entries:
         - title: Create certificate
           output: web
           url: /am/2.x/am_userguide_create_certificate.html
-      - title: Roles
+      - title: User Management
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /am/2.x/am_userguide_roles.html
-        - title: Create role
+          url: /am/2.x/am_userguide_user_management.html
+        - title: Users
           output: web
-          url: /am/2.x/am_userguide_create_role.html
+          url: /am/2.x/am_userguide_user_management_users.html
+        - title: Groups
+          output: web
+          url: /am/2.x/am_userguide_user_management_groups.html
+        - title: Roles
+          output: web
+          url: /am/2.x/am_userguide_user_management_roles.html
+        - title: User Registration
+          output: web
+          url: /am/2.x/am_userguide_user_management_registration.html
+        - title: Custom Forms
+          output: web
+          url: /am/2.x/am_userguide_user_management_forms.html
+        - title: SCIM 2.0
+          output: web
+          url: /am/2.x/am_userguide_user_management_scim.html
+
 
   - title: Installation Guide
     output: web
@@ -162,3 +178,6 @@ entries:
       - title: OpenID Connect
         output: web
         url: /am/2.x/am_protocols_oidc_overview.html
+      - title: SCIM 2.0
+        output: web
+        url: /am/2.x/am_protocols_scim_overview.html

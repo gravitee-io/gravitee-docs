@@ -50,7 +50,7 @@ curl -H "Authorization: Bearer :accessToken" \
 
 Public keys will allow you to verify the token's payload integrity. To get public key of your certificate, follow these steps :
 
-. From `Certificates` list page, click image:am/graviteeio-am-quickstart-profile-public-key.png[] button.
+. From `Certificates` list page, click image:am/2.x/graviteeio-am-quickstart-profile-public-key.png[] button.
 . You can copy/paste the public to use them with third party library to verify your tokens
 
 image::am/2.x/graviteeio-am-userguide-public-key.png[]
