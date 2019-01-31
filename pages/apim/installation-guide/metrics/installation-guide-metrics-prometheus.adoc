@@ -26,6 +26,13 @@ services:
       enabled: true
 ----
 
+WARNING: By default, the technical API is bind to `localhost` only, so it must not be invoked outside `localhost`. If you need
+to expose the API wider, you may have to set the `services.core.http.host property to the correct network interface
+or `0.0.0.0`in the `gravitee.yml` configuration file of the Gateway API. If you're running the API Gateway within a
+docker container, set the IP to the IP address of the API Gateway container. if the change to the host parameter is
+done post- the deployment of the Gateway API, the gravitee service needs to be restarted (in case of a Gateway docker
+container, one can restart the container as well) for the changes to take effect.
+
 == Prometheus Configuration
 
 Here is an example to ask Prometheus to scrape the API Gateway technical API where from formatted metrics are available.
