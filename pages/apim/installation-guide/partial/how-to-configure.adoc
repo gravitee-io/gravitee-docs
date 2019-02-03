@@ -57,6 +57,10 @@ gravitee_management_mongodb_dbname=myDatabase
 gravitee.management.mongodb.dbname=myDatabase
 ----
 
+WARNING: Some properties are case-sensitive and can not be defined upper-case (for example:
+`gravitee_security_providers_0_tokenIntrospectionEndpoint`. We advise you to define environment variables in lower-case
+and use the correct syntax for each property.
+
 === How to manage arrays ?
 
 Some properties are arrays. For example:
