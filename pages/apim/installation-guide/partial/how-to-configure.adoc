@@ -61,6 +61,8 @@ WARNING: Some properties are case-sensitive and can not be defined upper-case (f
 `gravitee_security_providers_0_tokenIntrospectionEndpoint`. We advise you to define environment variables in lower-case
 and use the correct syntax for each property.
 
+TIP: In some systems, hyphens are forbidden in the variable name. You can remove them like `gravitee_policy_apikey_header` instead of `gravitee_policy_api-key_header`
+
 === How to manage arrays ?
 
 Some properties are arrays. For example:
