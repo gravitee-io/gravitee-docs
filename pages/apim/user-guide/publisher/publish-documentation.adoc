@@ -9,11 +9,11 @@ The portal documentation allows to communicate with your developer community on 
 
 *Documentation is the key for a successful API.* This is the better way to promote, and provide to the developers all the information necessary to consume your webservices.
 
-At this date, Gravitee.io is supporting three types of document:
+At this date, Gravitee.io is supporting two types of document:
 
 * Markdown
 * Swagger (OpenAPI)
-* RAML (deprecated)
+
 
 The base URL of your Swagger descriptor is overridable in the configuration panel and we provide more configuration capabilities for the Swagger documentation pages:
 
@@ -30,11 +30,13 @@ image::graviteeio-page-documentation-draft.png[]
 
 Gravitee.io provides a way to fetch your documentation from an external source.
 
-There is 3 types of fetchers:
+There are 5 types of fetchers:
 
+* Github: fetch your documentation from a github repository
 * GitLab: fetch your documentation from a gitlab repository
 * Git: fetch your documentation from a git repository
 * WWW: fetch your documentation from the web
+* Bitbucket: fetch your documentation from a bitbucket repository
 
 __The documentation is fetched and stored locally in the Gravitee.io platform__
 
