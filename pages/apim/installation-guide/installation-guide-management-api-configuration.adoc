@@ -201,6 +201,47 @@ LDAP Provider::
 
 An AuthenticationProvider implementation that authenticates against an LDAP server. There are many ways in which the LDAP authentication source can be configure. You should be familiar with LDAP before trying to use it.
 
+WARNING: since release 1.24, the way we configure the LDAP provider has changed.
+
+.configuration for release >= 1.24
+[source, yaml]
+----
+# ===================================================================
+# LDAP SECURITY PROPERTIES
+#
+# This sample file declared one ldap authentication source
+# ===================================================================
+security:
+  type: basic
+  providers:
+    - type: ldap
+      context:
+        username: "uid=admin,ou=system"
+        password: "secret"
+        url: "ldap://localhost:389/dc=gravitee,dc=io"
+        base: "c=io,o=gravitee"
+      authentication:
+        user:
+          base: "ou=people"
+          filter: "uid={0}"
+        group:
+          base: "o=authorization groups"
+          filter: "member={0}"
+          role:
+            attribute: "cn"
+            mapper: {
+              GRAVITEE-CONSUMERS: API_CONSUMER,
+              GRAVITEE-PUBLISHERS: API_PUBLISHER,
+              GRAVITEE-ADMINS: ADMIN,
+              GRAVITEE-USERS: USER
+            }
+      lookup:
+        user:
+          base: "ou=people"
+          filter: "(&(objectClass=myObjectClass)(|(cn=*{0}*)(uid={0})))"
+----
+
+.configuration for release < 1.24
 [source,yaml]
 ----
 # ===================================================================
