@@ -1,0 +1,120 @@
+Each Gravitee.io component provides its own technical API, allows you to get informations from the component.
+
+= Configuration
+The technical API is configured using the `gravitee.yml` file. It's a service you have to enable.
+
+
+.gravitee.yml
+[source, yaml]
+----
+services:
+  core:
+    http:
+      enabled: true
+      port: 18082
+      host: localhost
+      authentication:
+        type: basic
+        users:
+          admin: adminadmin
+----
+enabled:: Enable or not the service (default `true`).
+port:: The port the service listen to.
+host:: The host (default `localhost`)
+authentication.type:: Authenticate mode for requests: `none` if no authentication is required or `basic` (default `basic`)
+authentication.users:: A list of couple `user: password`. Only required if the authentication type is `basic`.
+
+= Api
+
+|===
+|Operation |Description |Example
+
+|`GET /_node`
+|Get generic node informations
+a|
+[source, json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+    "id": "a70b9fd9-9deb-4ccd-8b9f-d99deb6ccd32",
+    "metadata": {},
+    "name": "Gravitee.io - Management API",
+    "version": {
+        "BUILD_ID": "309",
+        "BUILD_NUMBER": "309",
+        "MAJOR_VERSION": "1.20.14",
+        "REVISION": "132e719ef314b40f352e6399034d68a9a95e95ef"
+    }
+}
+----
+
+|`GET /_node/health`
+|Get the health status of the component. If the return status is 200, then everything's ok, if 500, there's at least one probe in error.
+This endpoint could be used by your loadbalancer to know if a component instance could be out of the pool.
+a|
+[source, json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "management-api": {
+        "healthy": true
+    },
+    "management-repository": {
+        "healthy": true
+    },
+    "repository-analytics": {
+        "healthy": true
+    }
+}
+----
+
+|`GET /_node/configuration`
+|Get the node configuration, coming from the `gravitee.yml` file and/or the environments variables.
+a|
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "analytics.elasticsearch.endpoints[0]": "http://${ds.elastic.host}:${ds.elastic.port}",
+    "analytics.type": "elasticsearch",
+    "ds.elastic.host": "localhost",
+    "ds.elastic.port": 9200,
+    ...
+}
+----
+
+|`GET /_node/monitor`
+|Get monitoring informations from the jvm and the system.
+a|
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "jvm": {
+        "gc": {
+            "collectors": [
+                {
+                    "collectionCount": 7,
+                    "collectionTime": 98,
+                    "name": "young"
+                },
+                {
+                    "collectionCount": 3,
+                    "collectionTime": 189,
+                    "name": "old"
+                }
+            ]
+        },
+        "mem": {
+    ...
+}
+----
+
+|===

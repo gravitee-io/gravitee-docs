@@ -10,7 +10,7 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 #-------------------------------------------------------------------------------
-FROM ruby:latest
+FROM graviteeio/ruby:latest
 MAINTAINER Gravitee Team <http://gravitee.io>
 
 RUN apt-get clean \
