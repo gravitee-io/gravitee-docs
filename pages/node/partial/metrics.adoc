@@ -1,0 +1,55 @@
+[[gravitee-installation-metrics-prometheus]]
+= Prometheus
+
+In this part we explain you how to expose metrics to Prometheus.
+
+
+== Configuration
+
+Configure the `gravitee.yml` file to enable metrics service.
+By default, Prometheus support is activated and exposed from the technical API.
+
+[source,yaml]
+----
+services:
+  metrics:
+    enabled: true
+    prometheus:
+      enabled: true
+----
+
+WARNING: By default, the technical API is bind to `localhost` only, so it must not be invoked outside `localhost`.
+If you need to expose the API wider, you may have to set the `services.core.http.host` property to the correct network interface.
+If you're running within a docker container, set the IP to the IP address of the container.
+Each change requires a restart.
+
+== Prometheus Configuration
+
+Here is an example to ask Prometheus to scrape the API Gateway technical API where from formatted metrics are available.
+
+[source,yaml]
+----
+scrape_configs:
+  - job_name: 'gio-gw'
+    basic_auth:
+      username: admin
+      password: adminadmin
+    metrics_path: /_node/metrics/prometheus
+    static_configs:
+      - targets: ['localhost:18082']
+----
+
+== Prometheus UI
+
+Now we have everything correctly configured, we can have a look to Prometheus and explore metrics.
+By default, and when running Prometheus, the UI is exposed at http://localhost:9090/graph
+
+.Show `http_client_connections` metrics
+image::installation/metrics/prometheus/metrics_prometheus_graph.png[Show `http_client_connections` metrics]
+
+
+If you want to take a look to the memory consumed by the gateway:
+
+.Show `jvm_memory_used_bytes` metrics
+image::installation/metrics/prometheus/metrics_prometheus_graph_memory.png[Show `jvm_memory_used_bytes` metrics]
+
