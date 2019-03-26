@@ -125,7 +125,6 @@ entries:
           output: web
           url: /am/2.x/am_userguide_user_management_scim.html
 
-
   - title: Installation Guide
     output: web
     folderitems:
@@ -172,7 +171,7 @@ entries:
         output: web
         url: /am/2.x/am_management_api_documentation.html
 
-  - title: Protocols
+  - title: APIs
     output: web
     folderitems:
       - title: Overview
@@ -187,3 +186,7 @@ entries:
       - title: SCIM 2.0
         output: web
         url: /am/2.x/am_protocols_scim_overview.html
+      - title: Users
+        output: web
+        url: /am/2.x/am_protocols_users_overview.html
+
