@@ -1,4 +1,4 @@
-= Protocols
+= APIs
 :page-sidebar: am_2_x_sidebar
 :page-permalink: am/2.x/am_protocols_overview.html
 :page-folder: am/protocols
@@ -21,3 +21,7 @@ as well as to obtain basic profile information about the End-User in an interope
 
 The System for Cross-domain Identity Management (SCIM) specification is designed to make managing user identities in cloud-based applications and services easier.
 Its intent is to reduce the cost and complexity of user management operations by providing a common user schema and extension model.
+
+== link:/am/2.x/am_protocols_users_overview.html[Users API]
+
+The Gravitee.io AM Users API provides operations to manage users in your organization such as user consent management.
