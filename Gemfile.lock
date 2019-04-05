@@ -7,7 +7,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.4.0)
+    addressable (2.5.2)
     asciidoctor (1.5.5)
     coffee-script (2.4.1)
       coffee-script-source
@@ -124,7 +124,7 @@ GEM
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
     posix-spawn (0.3.13)
-    public_suffix (1.5.3)
+    public_suffix (3.0.3)
     pygments.rb (1.0.0)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.2)
