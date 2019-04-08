@@ -86,6 +86,8 @@ To do so, you need the access token generated during the client registration pro
 NOTE: This access token contains a "dcr" scope which can not be obtain even if you enable the client_credentials flow.
 Plus, even if the endpoint used to be the openid registration endpoint combinated with the client_id, the DCR specifications imply you to not compute this endpoint but use the registration_client_uri given in the register response.
 
+CAUTION: A new registration access token is generated each time the client is updated through the Dynamic Client Registration URI endpoint. Which result in revoking the previous value.
+
 [source]
 ----
 # Update a registered Relying Party (client)
