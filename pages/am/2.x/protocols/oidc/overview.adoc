@@ -72,4 +72,7 @@ In order for an OpenID Connect Relying Party (client) to use OpenID services, it
 Dynamic Client Registration enable to self register RP by providing information and obtain as a result the required information (client_id) to use it.
 Gravitee.io Access Management follow the link:https://openid.net/specs/openid-connect-registration-1_0.html[Openid Connect Dynamic Client Registration] specifications.
 
-NOTE: Register URL : https://am-gateway/{domain}/oidc/register
+NOTE: Register URL is available through the registration_endpoint attribute, under the openid connect discovery endpoint, and, used to be: POST https://am-gateway/{domain}/oidc/register +
+READ/UPDATE/DELETE can be performed with respectively GET/(PUT or PATCH)/DELETE on the registration_client_uri attribut retrieved from the register payload result.
+
+IMPORTANT: Unlike PATCH, PUT require you to fill all the client metadata, omitted fields WILL be treated as null or empty values.
