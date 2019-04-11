@@ -24,43 +24,45 @@ Once your client created, you will be able to get its credentials.
 image::installation/authentication/graviteeam_client_credentials.png[Get Client credentials]
 
 == Configure Gravitee.io
-=== Portal
 
-Open the `constants.json` file and add an `authentication` property as follow:
+include::./partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
 
-[source,javascript]
-----
-"authentication": {
-    "oauth2": {
-        "clientId": "THE-CLIENT-ID",
-        "name": "Gravitee.io AM",
-        "color": "#0076b4",
-        "authorizationEndpoint": "https://AM_GW_HOST:AM_GW_PORT/:securityDomainPath/oauth/authorize",
-        "userLogoutEndpoint": "https://AM_GW_HOST:AM_GW_PORT/:securityDomainPath/logout?target_url=https://APIM_UI_HOST:APIM_UI_PORT",
-        "scope": ["openid"]
-    }
-}
-----
+=== Via the Portal
 
-=== Management API
+Got to Settings > Authentication > New provider (the `+` button) > select Gravitee.io AM
 
-Open the `gravitee.yml` file and add a new security provider as follow:
+image::apim/management-api-configuration-idp/new-am.png[Gravitee.io - New Gravitee.io AM IDP]
 
+=== Via the `gravitee.yml`
 [source,yaml]
 ----
-    - type: oauth2
-      clientId: THE-CLIENT-ID
-      clientSecret: bfc8497d-7f0a-4fcc-8849-7d7f0acfcccd
-      tokenEndpoint: https://AM_GW_HOST:AM_GW_PORT/:securityDomain/oauth/token
-      tokenIntrospectionEndpoint: https://AM_GW_HOST:AM_GW_PORT/:securityDomain/oauth/introspect
-      userInfoEndpoint: https://AM_GW_HOST:AM_GW_PORT/:securityDomain/oidc/userinfo
-      accessTokenProperty: access_token
-      authorizationHeader: "Bearer %s"
-      mapping:
+security:
+  providers:
+    - type: graviteeio_am
+      clientId: xxxx-xxx-xxx-xxx
+      clientSecret: xxxx-xxx-xxx-xxx
+      serverURL: https://gravitee.io/am
+      domain: gravitee
+      color: "#3C3C3C"
+      scopes:
+        - openid
+        - email
+      userMapping:
         id: sub
-        email: sub # if the sub claim is the user's email
+        email: email
         lastname: family_name
         firstname: given_name
+        picture: picture
+      groupMapping:
+        - condition: "{#jsonPath(#profile, '$.identity_provider_id') == 'PARTNERS' && #jsonPath(#profile, '$.job_id') != 'API_MANAGER'}"
+          groups:
+            - Group 1
+            - Group 2
+      roleMapping:
+        - condition: "{#jsonPath(#profile, '$.job_id') != 'API_MANAGER'}"
+          roles:
+            - "PORTAL:PARTNER"
+            - "MANAGEMENT:API_CONSUMER"
 ----
 
 == It's time to play

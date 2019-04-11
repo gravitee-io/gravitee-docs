@@ -42,32 +42,23 @@ WARNING: Be careful, the `Authorized redirect URIs` must match exactly to the do
 image::installation/authentication/google_client_credentials.png[Get Client credentials]
 
 == Configure Gravitee.io
-=== Portal
 
-Open the `constants.json` file and add an `authentication` property as follow:
+include::./partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
 
-[source,javascript]
-----
-"authentication": {
-    "google": {
-        "clientId": "22723929995-hv5r5q7mgqsg5lf430lv5gqos4oaku5e.apps.googleusercontent.com"
-    }
-}
-----
+=== Via the Portal
 
-The `clientId` value is the client ID as provided by Google (see <<gravitee-installation-authentication-google-credentials, get client credentials>>).
+Got to Settings > Authentication > New provider (the `+` button) > select Google
 
-=== Management API
+image::apim/management-api-configuration-idp/new-google.png[Gravitee.io - New Google IDP]
 
-Open the `gravitee.yml` file and add a new security provider as follow:
-
+=== Via the `gravitee.yml`
 [source,yaml]
 ----
 security:
   providers:
     - type: google
-      clientId: 22723929995-hv5r5q7mgqsg5lf430lv5gqos4oaku5e.apps.googleusercontent.com
-      clientSecret: z6AON-ZzwLM3zvrztiAEoMsA
+      clientId: xxxx-xxx-xxx-xxx
+      clientSecret: xxxx-xxx-xxx-xxx
 ----
 
 == It's time to play

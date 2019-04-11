@@ -38,32 +38,23 @@ WARNING: Be careful, the `Authorization callback URL` must match exactly to the 
 image::installation/authentication/github_oauth_credentials.png[Get Oauth2 credentials]
 
 == Configure Gravitee.io
-=== Portal
 
-Open the `constants.json` file and add an `authentication` property as follow:
+include::./partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
 
-[source,javascript]
-----
-"authentication": {
-    "github": {
-        "clientId": "bee5031350454b5af6dd"
-    }
-}
-----
+=== Via the Portal
 
-The `clientId` value is the client ID as provided by GitHub (see <<gravitee-installation-authentication-github-credentials, get application credentials>>).
+Got to Settings > Authentication > New provider (the `+` button) > select Github
 
-=== Management API
+image::apim/management-api-configuration-idp/new-github.png[Gravitee.io - New Github IDP]
 
-Open the `gravitee.yml` file and add a new security provider as follow:
-
+=== Via the `gravitee.yml`
 [source,yaml]
 ----
 security:
   providers:
     - type: github
-      clientId: bee5031350454b5af6dd
-      clientSecret: b7a19ea9c413e3fef180b04bd08b745361fad9fd
+      clientId: xxxx-xxx-xxx-xxx
+      clientSecret: xxxx-xxx-xxx-xxx
 ----
 
 == It's time to play

@@ -32,44 +32,82 @@ WARNING: Be careful, the `Valid Redirect URIs` must match exactly to the domain 
 image::installation/authentication/keycloak_client_credentials.png[Get Client credentials]
 
 == Configure Gravitee.io
-=== Portal
 
-Open the `constants.json` file and add an `authentication` property as follow:
+=== SSL support
 
-[source,javascript]
+When using custom Public Key Infrastructure (PKI) for your OAuth2 authentication provider, you may have to specify the certificate authority chain of your provider on the API management.
+
+[source]
 ----
-"authentication": {
-    "oauth2": {
-        "clientId": "gravitee",
-        "name": "Keycloak",
-        "color": "#0076b4",
-        "authorizationEndpoint": "http://localhost:8080/auth/realms/master/protocol/openid-connect/auth",
-        "userLogoutEndpoint": "http://localhost:8080/auth/realms/master/protocol/openid-connect/logout",
-        "scope": ["profile", "openid"]
-    }
-}
+export JAVA_OPTS="
+  -Djavax.net.ssl.trustStore=/opt/graviteeio-management-api/security/truststore.jks
+  -Djavax.net.ssl.trustStorePassword=<MYPWD>"
 ----
 
-=== Management API
-
-Open the `gravitee.yml` file and add a new security provider as follow:
+For docker environment
 
 [source,yaml]
 ----
-    - type: oauth2
+ local_managementapi:
+    extends:
+      file: common.yml
+      service: managementapi
+    ports:
+      - "8005:8083"
+    volumes:
+      - ./conf/ssl/truststore.jks:/opt/graviteeio-management-api/security/truststore.jks:ro
+      - ./logs/management-api:/home/gravitee/logs
+    links:
+      - "local_mongodb:demo-mongodb"
+      - "local_elasticsearch:demo-elasticsearch"
+    environment:
+      - JAVA_OPTS=-Djavax.net.ssl.trustStore=/opt/graviteeio-management-api/security/truststore.jks -Djavax.net.ssl.trustStorePassword=<MYPWD>
+      - gravitee_management_mongodb_uri=mongodb://demo-mongodb:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000
+      - gravitee_analytics_elasticsearch_endpoints_0=http://demo-elasticsearch:9200
+----
+
+include::./partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
+
+=== Via the Portal
+
+Got to Settings > Authentication > New provider (the `+` button) > select OpenID Connect
+
+image::apim/management-api-configuration-idp/new-oidc.png[Gravitee.io - New OIDC IDP]
+
+=== Via the `gravitee.yml`
+[source,yaml]
+----
+security:
+  providers:
+    - type: oidc
+      id: keycloak # not required if not present, the type is used
       clientId: gravitee
       clientSecret: 3aea136c-f056-49a8-80f4-a6ea521b0c94
-#     Endpoints have been retrieved from JWKS endpoint (http://localhost:8080/auth/realms/master/.well-known/openid-configuration)
-      tokenEndpoint: http://localhost:8080/auth/realms/master/protocol/openid-connect/token
       tokenIntrospectionEndpoint: http://localhost:8080/auth/realms/master/protocol/openid-connect/token/introspect
+      tokenEndpoint: http://localhost:8080/auth/realms/master/protocol/openid-connect/token
+      authorizeEndpoint: http://localhost:8080/auth/realms/master/protocol/openid-connect/auth
       userInfoEndpoint: http://localhost:8080/auth/realms/master/protocol/openid-connect/userinfo
-      accessTokenProperty: access_token
-      authorizationHeader: "Bearer %s"
-      mapping:
+      userLogoutEndpoint: http://localhost:8080/auth/realms/master/protocol/openid-connect/logout
+      color: "#0076b4"
+      scopes:
+        - openid
+        - profile
+      userMapping:
         id: sub
         email: email
         lastname: family_name
         firstname: given_name
+        picture: picture
+      groupMapping:
+        - condition: "{#jsonPath(#profile, '$.identity_provider_id') == 'PARTNERS' && #jsonPath(#profile, '$.job_id') != 'API_MANAGER'}"
+          groups:
+            - Group 1
+            - Group 2
+      roleMapping:
+        - condition: "{#jsonPath(#profile, '$.job_id') != 'API_MANAGER'}"
+          roles:
+            - "PORTAL:PARTNER"
+            - "MANAGEMENT:API_CONSUMER"
 ----
 
 == It's time to play
