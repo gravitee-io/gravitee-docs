@@ -27,6 +27,8 @@ $ keytool -genkeypair
           -storepass letmein
 ----
 
+TIP: Default key are RS256 (SHA256withRSA), for RS512 key add those following options: -sigalg SHA512withRSA -keysize 4096
+
 . Give your certificate a *name* and create a certificate by filling out the configuration form and press `CREATE`
 
 image::am/2.x/graviteeio-am-userguide-create-certificate.png[]
