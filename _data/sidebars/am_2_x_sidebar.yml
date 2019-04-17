@@ -124,6 +124,18 @@ entries:
         - title: SCIM 2.0
           output: web
           url: /am/2.x/am_userguide_user_management_scim.html
+        - title: User consent
+          output: web
+          url: /am/2.x/am_userguide_user_management_consent.html
+      - title: Audit Log
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/2.x/am_userguide_logs.html
+        - title: Audit Trail
+          output: web
+          url: /am/2.x/am_userguide_audit_log.html
 
   - title: Installation Guide
     output: web
@@ -163,6 +175,9 @@ entries:
       - title: Breaking changes in 2.0
         output: web
         url: /am/2.x/am_breaking_changes_2.0.html
+      - title: Breaking changes in 2.5
+        output: web
+        url: /am/2.x/am_breaking_changes_2.5.html
 
   - title: Management API
     output: web
