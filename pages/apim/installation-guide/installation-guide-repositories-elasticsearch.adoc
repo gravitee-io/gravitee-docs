@@ -91,6 +91,7 @@ actions:
     options:
       max_num_segments: 1
       continue_if_exception: True
+      ignore_empty_list: True
     filters:
     - filtertype: pattern
       kind: prefix
@@ -107,6 +108,7 @@ actions:
     description: "Delete selected indices older than 15d days"
     options:
       continue_if_exception: True
+      ignore_empty_list: True
     filters:
     - filtertype: pattern
       kind: prefix
