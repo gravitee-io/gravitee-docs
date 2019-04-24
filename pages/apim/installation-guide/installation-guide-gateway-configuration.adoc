@@ -18,20 +18,24 @@ include::partial/how-to-configure.adoc[leveloffset=+1]
 ----
 http:
   port: 8082
+  host: 0.0.0.0
   idleTimeout: 0
   tcpKeepAlive: true
   compressionSupported: false
-  pool:
-    workers: 100
+  maxHeaderSize: 8192
+  maxChunkSize: 8192
+  instances: 0
+  requestTimeout: 30000
   secured: false
+  alpn: false
   ssl:
     clientAuth: false
     keystore:
-      path:
-      password:
+      path: ${gravitee.home}/security/keystore.jks
+      password: secret
     truststore:
-      path:
-      password:
+      path: ${gravitee.home}/security/truststore.jks
+      password: secret
 ----
 
 === How to enable HTTPS support
@@ -51,12 +55,16 @@ keytool -genkey \
 After that, you have to enable secure mode in your `gravitee.yml` :
 ----
 http:
-  alpn: false
   port: 8082
+  host: 0.0.0.0
   idleTimeout: 0
   tcpKeepAlive: true
   compressionSupported: false
+  maxHeaderSize: 8192
+  maxChunkSize: 8192
   instances: 0
+  requestTimeout: 30000
+  alpn: false
   secured: true
   ssl:
     clientAuth: false
