@@ -165,6 +165,7 @@ email:
   host: smtp.my.domain
   port: 465
   from: noreply@my.domain
+  subject: "[Gravitee.io] %s"
   username: user@my.domain
   password: password
 ----
@@ -180,6 +181,7 @@ email:
   host: smtp.gmail.com
   port: 587
   from: user@gmail.com
+  subject: "[Gravitee.io] %s"
   username: user@gmail.com
   password: xxxxxxxx
   properties:
