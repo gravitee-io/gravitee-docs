@@ -13,7 +13,7 @@ keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid
 
 === JDK
 
-API Gateway requires at least Java 8. Before you install it, please check your Java version :
+API Gateway is supporting from Java 8 to latest Java 11. Before you install it, please check your Java version :
 
 [source,bash]
 ----
@@ -21,7 +21,7 @@ $ java -version
 $ echo $JAVA_HOME
 ----
 
-NOTE: You can download the latest JDK from the http://www.oracle.com/technetwork/java/javase/downloads/index.html[Oracle Java SE Download Site].
+NOTE: You can download the latest OpenJDK from https://jdk.java.net/archive/[OpenJDK Download Site].
 
 === Repository
 
