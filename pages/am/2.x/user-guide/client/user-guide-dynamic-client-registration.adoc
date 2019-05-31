@@ -59,6 +59,23 @@ Please see the link:https://openid.net/specs/openid-connect-registration-1_0.htm
 
 The endpoint used to register an application is available into the link:http://GRAVITEEIO-AM-GATEWAY-HOST/:domain/oidc/.well-known/openid-configuration[openid discovery endpoint] under the "registration_endpoint" property.
 
+The response will contains some additional fields such as the expected client_id and client_secret information.
+
+TIP: In the response, you will aslo find the registration_access_endpoint and the registration_client_uri used to read/update/delete those informations.
+
+CAUTION: According to the link:https://tools.ietf.org/html/rfc6749#section-10.6[specification]: Authorization Server MUST require public clients and SHOULD require confidential clients to register their redirection URIs. +
+Confidential clients are clients that can keep their credentials secrets, ex: +
+ - web application (using a web server to save their credentials) : authorization_code +
+ - server application (considering credentials saved on a server as safe) : client_credentials +
+By opposition to confidential, public clients are clients than can not keep their credentials as secret, ex: +
+ - Single Page Application : implicit +
+ - Native mobile application : authorization_code +
+**Because mobile and web application use the same grant, we force redirect_uri only for implicit grant.**
+
+==== Register Web application example
+
+Here is an example of how to create a web application (access_token being kept on a backend server).
+
 [source]
 ----
 # Register a new Relying Party (client)
@@ -67,21 +84,86 @@ curl -X POST \
   -H 'Content-Type: application/json' \
   -d '{ \
         "redirect_uris": ["https://myDomain/callback"], \
-        "client_name": "myApp", \
-        "grant_types": [ "authorization_code","client_credentials"], \
+        "client_name": "my web application", \
+        "grant_types": [ "authorization_code","refresh_token"], \
         "scope":"openid" \
       }' \
   http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register
 ----
+NOTE: "response_types" metadata is not required here as the default value (code) corresponds to the authorization_code grant type.
 
-The response will contains some additional fields such as the expected client_id and client_secret information.
+==== Register Single Page Application (SPA) example
 
-TIP: In the response, you will aslo find the registration_access_endpoint and the registration_client_uri used to read/update/delete those informations.
+As a SPA does not use a backend, we do recommend to use implicit flow as below:
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "redirect_uris": ["https://myDomain/callback"], \
+        "client_name": "my single page application", \
+        "grant_types": [ "implicit" ], \
+        "response_types": [ "token" ], \
+        "scope":"openid" \
+      }' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register
+----
+CAUTION: "response_types" metadata MUST be set to token in order to override the default value.
+
+==== Register Server to Server application example
+
+Sometimes you may have a bot/software that need to be authenticated as an application and not as an user. +
+In this case you should use client_credentials flow as below:
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "redirect_uris": [], \
+        "application_type": "server", \
+        "client_name": "my server application", \
+        "grant_types": [ "client_credentials" ], \
+        "response_types": [ ] \
+      }' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register
+----
+CAUTION: "response_types" metadata MUST be set as an empty array in order to override the default value. +
+There's no need of redirect_uris, but this metadata is REQUIRED in the link:https://openid.net/specs/openid-connect-registration-1_0.html[specification], so it must be set as an empty array. +
+**We strongly discourage to use this flow in addition to a real user authentication flow, you would better create multiple clients instead.**
+
+==== Register mobile application example
+
+For mobile app, the authorization_code grant is recommended, in addition to link:https://tools.ietf.org/html/rfc7636[Proof Key for Code Exchange]:
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "redirect_uris": ["com.mycompany.app://callback"], \
+        "application_type": "native", \
+        "client_name": "my mobile application", \
+        "grant_types": [ "authorization_code","refresh_token" ], \
+        "response_types": [ "code" ] \
+      }' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register
+----
+
 
 === Read/Update/Delete client information
 
-The register endpoint also allow GET/PATCH/DELETE actions on a client_id that has been registered through the registration endpoint. +
+The register endpoint also allow GET/UPDATE/PATCH/DELETE actions on a client_id that has been registered through the registration endpoint. +
 To do so, you need the access token generated during the client registration process, provided into the response under the registration_access_token field.
+
+TIP: UPDATE http verb will act as an full overwrite while PATCH http verb will act as a partial update.
 
 NOTE: This access token contains a "dcr" scope which can not be obtain even if you enable the client_credentials flow.
 Plus, even if the endpoint used to be the openid registration endpoint combinated with the client_id, the DCR specifications imply you to not compute this endpoint but use the registration_client_uri given in the register response.
