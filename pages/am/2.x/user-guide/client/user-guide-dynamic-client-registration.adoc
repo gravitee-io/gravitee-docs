@@ -179,3 +179,19 @@ curl -X PATCH \
   -d '{ "client_name": "myNewApplicationName"}' \
   http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register/:client_id
 ----
+
+=== Renew client secret
+
+It is possible to renew the client_secret, to do so, you need to concatenate '/renew_secret' to the registration endpoint and use POST http verb.
+
+NOTE: This endpoint do not need a body.
+
+CAUTION: As for client updates, a new registration access token is generated each time you renew the client secret.
+
+[source]
+----
+# Renew the client secret of a registered Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register/:client_id/renew_secret
+----
