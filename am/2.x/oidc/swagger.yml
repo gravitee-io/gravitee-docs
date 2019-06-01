@@ -229,6 +229,36 @@ paths:
           description: Client deleted
           schema:
             $ref: '#/definitions/ClientRegistrationResponse'
+  /register/{client_id}/renew_secret:
+    post:
+      tags:
+        - OpenID Connect
+      summary: Renew the client secret of a registred client.
+      description: Renew the client secret of a registred client.
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer token obtained on the register process through the registration_access_token property giving access only to one client matching the client_id path parameter. An admin token can be also obtained through the client crendentials flow with as mandatory scope "dcr_admin".
+          type: string
+          required: true
+        - in: path
+          name: client_id
+          type: string
+          required: true
+          description: ID of the client
+      responses:
+        '400':
+          description: Invalid Request
+        '401':
+          description: Invalid Token
+        '403':
+          description: Access forbidden
+        '200':
+          description: Claims about the updated client.
+          schema:
+            $ref: '#/definitions/ClientRegistrationResponse'
 securityDefinitions:
   client_auth:
     type: basic
