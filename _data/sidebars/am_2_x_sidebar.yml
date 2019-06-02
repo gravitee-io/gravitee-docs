@@ -28,6 +28,9 @@ entries:
     - title: Secure your APIs
       output: web
       url: /am/2.x/am_quickstart_secure_apis.html
+    - title: Use your first Extension Point
+      output: web
+      url: /am/2.x/am_quickstart_use_policies.html
 
   - title: User Guide
     output: web
@@ -136,6 +139,15 @@ entries:
         - title: Audit Trail
           output: web
           url: /am/2.x/am_userguide_audit_log.html
+      - title: Extension Points
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/2.x/am_userguide_policies.html
+        - title: Extension points
+          output: web
+          url: /am/2.x/am_userguide_policies_extension_points.html
 
   - title: Installation Guide
     output: web
