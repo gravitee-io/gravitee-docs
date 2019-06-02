@@ -61,7 +61,7 @@ The endpoint used to register an application is available into the link:http://G
 
 The response will contains some additional fields such as the expected client_id and client_secret information.
 
-TIP: In the response, you will aslo find the registration_access_endpoint and the registration_client_uri used to read/update/delete those informations.
+TIP: In the response, you will also find the registration_access_endpoint and the registration_client_uri used to read/update/delete those informations.
 
 CAUTION: According to the link:https://tools.ietf.org/html/rfc6749#section-10.6[specification]: Authorization Server MUST require public clients and SHOULD require confidential clients to register their redirection URIs. +
 Confidential clients are clients that can keep their credentials secrets, ex: +
