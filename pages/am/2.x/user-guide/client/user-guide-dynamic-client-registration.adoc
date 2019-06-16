@@ -184,7 +184,9 @@ curl -X PATCH \
 
 It is possible to renew the client_secret, to do so, you need to concatenate '/renew_secret' to the registration endpoint and use POST http verb.
 
-NOTE: This endpoint do not need a body.
+
+TIP: The renew secret endpoint can also be retrieved through the link:http://GRAVITEEIO-AM-GATEWAY-HOST/:domain/oidc/.well-known/openid-configuration[openid discovery endpoint] under the "registration_renew_secret_endpoint" property. You will then require to replace :client_id by yours. +
+This renew secret endpoint does not need a body.
 
 CAUTION: As for client updates, a new registration access token is generated each time you renew the client secret.
 
@@ -194,4 +196,74 @@ CAUTION: As for client updates, a new registration access token is generated eac
 curl -X POST \
   -H 'Authorization: Bearer :acccessToken' \
   http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register/:client_id/renew_secret
+----
+
+=== Scope Management
+
+Gravitee Access Management allow you to whit list which scopes can be requested, define some default scopes to apply or even force a specific set of scope.
+
+==== Allowed scopes (scope list restriction)
+
+By default, no scope restriction are applied while registering a new application. +
+But it is possible to define a list of allowed scopes through the "Allowed scopes" tab. +
+To do so, you need to enable the feature and then select the allowed scopes...
+
+You can also enable this feature via the Gravitee.io AM API
+
+[source]
+----
+# Enable Allowed Scopes feature.
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "allowedScopes": true,
+            "isAllowedScopesEnabled": ['your','scope','list','...']
+      }}}' \
+  http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId
+----
+
+==== Default scopes
+
+The link:https://tools.ietf.org/html/rfc7591#section-2[specification] state that if scopes are omitted while registering an application, the authorization server may set a default list of scopes. +
+To enable this feature, you only need to select which scopes you wish to be automatically set.
+
+You can also enable this feature via the Gravitee.io AM API
+
+[source]
+----
+# Enable Default Scopes feature
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "defaultScopes": ['your','scope','list','...']
+      }}}' \
+  http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId
+----
+
+==== Force same set of scopes to all client registration
+
+If you want to force all client to have the same set of scopes, you can do it by enabling the allowed scopes feature with an empty list and then select some default scopes.
+
+NOTE: Enabling the allowed scopes feature with an empty list will result in removing all requested scopes from the client registration request. +
+Then as there is no more requested scope into the request, the default scopes will be applied.
+
+You can also enable this feature via the Gravitee.io AM API
+
+[source]
+----
+# Force set of scopes on each client registration
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "allowedScopes": true,
+            "isAllowedScopesEnabled": [],
+            "defaultScopes": ['your','scope','list','...']
+      }}}' \
+  http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId
 ----
