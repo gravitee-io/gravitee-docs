@@ -64,7 +64,7 @@ be retrieved using EL by using the following syntax:
 
 .^|path
 |Request path
-^.^| string
+^.^|string
 ^.^|X
 
 .^|paths
@@ -74,9 +74,11 @@ be retrieved using EL by using the following syntax:
 
 .^|content
 |Request body content
-^.^|array of string
+^.^|string
 ^.^|-
 |===
+
+WARNING: `{#request.content}` is only available when the policy is bind to a `on-request-content` phase.
 
 === Example
 
