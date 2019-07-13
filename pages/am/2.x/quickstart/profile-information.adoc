@@ -114,7 +114,7 @@ Pragma: no-cache
 
 == Custom claims
 
-Identity provider serves default claims such as the user's `username`, `given_name`, `family_name`. You can add custom claims by overriding identity provider's configuration.
+Identity provider serves default claims such as the user's `username`, `given_name`, `family_name`, ... . You can add custom claims by overriding identity provider's configuration.
 
 === Add new user information
 
@@ -126,14 +126,3 @@ image::am/2.x/graviteeio-am-quickstart-profile-user-mappers.png[]
 
 [start=4]
 . Custom user attributes will be available in the UserInfo Endpoint response.
-
-=== Override ID Token claims
-
-. To override ID token's claims, go to `Clients` section of your security domain
-. Select your Client and click on `OpenID Connect` tab
-. Add new custom claims available in the user attributes (created previously inside `User Mappers` tab) and press `SAVE`
-
-image::am/2.x/graviteeio-am-quickstart-profile-custom-claims.png[]
-
-[start=4]
-. These new claims will be available in the ID Tokens' payload.
