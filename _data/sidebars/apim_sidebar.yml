@@ -296,6 +296,18 @@ entries:
         - title: OAuth2 - Generic Authorization Server
           output: web
           url: /apim_resources_oauth2_generic.html
+      - title: Service Discovery
+        output: web
+        subfolderitems:
+          - title: Overview
+            output: web
+            url: /apim_service_discovery_overview.html
+          - title: Eureka
+            output: web
+            url: /apim_service_discovery_eureka.html
+          - title: Consul.io
+            output: web
+            url: /apim_service_discovery_consul.html
 
     - title: Expression Language
       output: web
