@@ -81,7 +81,7 @@ security:
       context-source-password: "password"
 ----
 
-Here is the way to write your environment variables:
+Here is some ways to write your environment variables. In case of errors, you really should try both of them.
 
 ----
 gravitee_analytics_elasticsearch_endpoints_0=https://my.first.endpoint.com
@@ -90,4 +90,16 @@ gravitee_analytics_elasticsearch_endpoints_1=https://my.second.endpoint.com
 gravitee_security_providers_0_type=ldap
 gravitee_security_providers_0_context-source-username=cn=Directory Manager
 gravitee_security_providers_0_context-source-password=password
+----
+
+or
+
+----
+gravitee.analytics.elasticsearch.endpoints[0]=https://my.first.endpoint.com
+gravitee.analytics.elasticsearch.endpoints[1]=https://my.second.endpoint.com
+
+gravitee.security.providers[0]type=ldap
+gravitee.security.providers[0]context-source-username=cn=Directory Manager
+gravitee.security.providers[0]context-source-password=password
+gravitee.security.providers[0].users[1].password=password
 ----
