@@ -267,3 +267,74 @@ curl -X PATCH \
       }}}' \
   http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId
 ----
+
+== Register new client using templates
+
+Gravitee.io Access Management allow you to create a client and define it as a template.
+Registering a new application using a template allow you to specify which Identity Providers to use, apply templates Forms (login, password management, error...) or emails (registration confirmation, reset password...)
+
+=== Enable Dynamic Client Registration templates
+
+In the Dynamic Client Registration settings tab, enable the template feature:
+
+image::am/2.x/graviteeio-am-userguide-domain-enable-dcr-templates.png[]
+
+You can also enable this feature via the Gravitee.io AM API
+
+[source]
+----
+# enable Dynamic Client Registration
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "isDynamicClientRegistrationEnabled": true,
+            "isClientTemplateEnabled": true
+      }}}' \
+  http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId
+----
+
+=== Define which client must be used as a template
+
+In the Dynamic Client Registration "Client templates" tab, enable this feature mode on the client to be used as a template:
+
+image::am/2.x/graviteeio-am-userguide-domain-define-dcr-templates[]
+
+You can also enable this feature via the Gravitee.io AM API
+
+[source]
+----
+# enable Dynamic Client Registration
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{"template":true}' \
+  http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId/clients/:clientId
+----
+
+IMPORTANT: Once a client is set as a template, it will not longer be able to be used for authentication purpose.
+
+image::am/2.x/graviteeio-am-userguide-domain-dcr-templates.png[]
+
+=== Register call with template example
+
+NOTE: You need to retrieve the software_id of the template, which is available under the registration_templates_endpoint provided by the openid discovery service https://am_gateway/:domainId/oidc/.well-known/openid-configuration
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "software_id": "{{templateSoftwareId}}", \
+        "redirect_uris": ["https://myDomain/callback"], \
+        "client_name": "my single page application from a template" \
+      }' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register
+----
+
+TIP: You can override some properties of the template by filling some metadatas such as "client_name" in the above example.
+
+IMPORTANT: Some critical information are not copied from the template (ex: client_secret, redirect_uris...). That is why in the above example, we need to provide a valid redirect_uris metadata, as in our example, the template we are using is a Single Page Application.
