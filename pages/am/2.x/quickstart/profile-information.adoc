@@ -72,7 +72,7 @@ ID token must contain at least the following link:http://openid.net/specs/openid
 |==========================
 |Claim      |
 |iss        |Issuer Identifier, must be the `oidc.iss` configuration value (default http://gravitee.am)
-|sub        |Subject Identifier represented by the unique user's `username`
+|sub        |Subject Identifier represented by the unique user's `_id`
 |aud        |Audience(s) that this ID Token is intended for. It MUST contain your OAuth 2.0 `client_id`.
 |exp        |Expiration time on or after which the ID Token MUST NOT be accepted for processing.
 |iat        |Time at which the JWT was issued.
