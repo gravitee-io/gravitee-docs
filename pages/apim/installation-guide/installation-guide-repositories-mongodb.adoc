@@ -61,6 +61,9 @@ management:
     localThreshold:             # mongodb local threshold (default null)
     minConnectionsPerHost:      # mongodb min connections per host (default null)
     sslEnabled:                 # mongodb ssl mode (default false)
+    keystore:                   # path to KeyStore (when sslEnabled is true)
+    keystorePassword:           # KeyStore password
+    keyPassword:                # password for recovering keys in the KeyStore
     threadsAllowedToBlockForConnectionMultiplier: # mongodb threads allowed to block for connection multiplier (default null)
     cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
 ----
