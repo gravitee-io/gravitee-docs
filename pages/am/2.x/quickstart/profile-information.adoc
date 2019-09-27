@@ -31,7 +31,7 @@ You can retrieve an ID Token by requesting for an access token with the specific
 |client_secret   |*REQUIRED.* Client's secret.
 |username        |*REQUIRED.* User's name.
 |password        |*REQUIRED.* User's password.
-|scope           |*OPTIONAL.* Set the value to `openid`.
+|scope           |*REQUIRED.* Set the value to `openid`.
 |==========================
 
 Request a token::
