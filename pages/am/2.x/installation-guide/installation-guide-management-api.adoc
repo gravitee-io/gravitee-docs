@@ -101,3 +101,35 @@ After successfully installed AM Management API, the `graviteeio-am-management-ap
 |plugins   |Management API plugins
 |======================
 
+== Load Balancing
+
+If you're a planning to use multiple instances, you need to implement sticky sessions in your load balancer, until https://github.com/gravitee-io/issues/issues/2523[this issue] is closed.
+
+=== Apache
+
+Example using three instances of AM Management API. We add an aditional cookie named ROUTEID.
+TLS termination is configured in Apache, so we just use http.
+
+----
+<Proxy balancer://amm_hcluster>
+        BalancerMember http://GRAVITEEIO-AM-MGT-API-HOST1:8093 route=apim1-test
+        BalancerMember http://GRAVITEEIO-AM-MGT-API-HOST2:8093 route=apim2-test
+        BalancerMember http://GRAVITEEIO-AM-MGT-API-HOST3:8093 route=apim3-test
+        ProxySet stickysession=ROUTEID
+        ProxySet lbmethod=byrequests
+        Header add Set-Cookie "ROUTEID=.%{BALANCER_WORKER_ROUTE}e;" env=BALANCER_ROUTE_CHANGED
+        Header append Via %{BALANCER_WORKER_ROUTE}e
+</Proxy>
+----
+
+Then in your VirtualHost configuration we declare the paths we want to proxy:
+
+----
+# Management Realm
+ProxyPass /admin balancer://amm_hcluster/admin
+ProxyPassReverse /admin balancer://amm_hcluster/admin
+
+# Management
+ProxyPass /management balancer://amm_hcluster/management
+ProxyPassReverse /management balancer://amm_hcluster/management 
+----
