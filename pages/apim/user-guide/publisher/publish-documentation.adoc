@@ -76,7 +76,9 @@ You can access to your api data on your api's documentation by doing so: ${api.n
 Here an example of a possible template for your API documentation.
 
 ```
-<img src="${api.picture}" style="float: right"></img>
+<#if api.picture??>
+<img src="${api.picture}" style="float: right;max-width: 60px;"></img>
+</#if>
 
 # Welcome to the API ${api.name}(${api.version})!
 
