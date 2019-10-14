@@ -10,13 +10,10 @@ keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid
 = Elasticsearch
 
 The Elasticsearch connector is based on the HTTP API exposed by ES instances.
-This connector supports all versions of ES, from 2.x to 7.x. Please take care that Elasticsearch 2.4 is no longer
-supported by elastic (https://www.elastic.co/support/eol).
+This connector supports all versions of ES, from 5.x to 7.x. 
+For more detail about Elastic supported version, please refer to this link https://www.elastic.co/support/eol.
 
 WARNING: Gravitee.io no longer supports native ES client and previous connector provided by us will not be supported anymore.
-
-NOTE: Since Gravitee v1.12.x the default connector is the HTTP one, compliant with ES 2.x, 5.x , 6.x and 7.x
-
 
 == Configuration
 
