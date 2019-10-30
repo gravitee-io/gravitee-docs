@@ -85,9 +85,21 @@ http:
   ...
 ----
 
-Now the gateway support both HTTP 1 and HTTP/2 protocol. You can consume your api like that :
+Now the gateway supports both HTTP 1 and HTTP/2 protocol. You can consume your api like that :
 ----
 curl -k -v --http2 https://localhost:8082/my_api
+----
+
+=== How to enable WebSocket support
+----
+http:
+  websocket:
+    enabled: true
+----
+
+Now the gateway supports both WS and WSS protocols. You can consume your api like that :
+----
+curl ws://localhost:8082/my_websocket
 ----
 
 == Plugins repository
