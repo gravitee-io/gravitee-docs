@@ -165,7 +165,7 @@ To do so, you need the access token generated during the client registration pro
 
 TIP: UPDATE http verb will act as an full overwrite while PATCH http verb will act as a partial update.
 
-NOTE: This access token contains a "dcr" scope which can not be obtain even if you enable the client_credentials flow.
+NOTE: This access token contains a "dcr" scope which can not be obtained even if you enable the client_credentials flow.
 Plus, even if the endpoint used to be the openid registration endpoint combinated with the client_id, the DCR specifications imply you to not compute this endpoint but use the registration_client_uri given in the register response.
 
 CAUTION: A new registration access token is generated each time the client is updated through the Dynamic Client Registration URI endpoint. Which result in revoking the previous value.
@@ -182,7 +182,7 @@ curl -X PATCH \
 
 === Renew client secret
 
-It is possible to renew the client_secret, to do so, you need to concatenate '/renew_secret' to the registration endpoint and use POST http verb.
+It is possible to renew the client_secret, to do so, you need to concatenate :client_id and '/renew_secret' to the registration endpoint and use POST http verb.
 
 
 TIP: The renew secret endpoint can also be retrieved through the link:http://GRAVITEEIO-AM-GATEWAY-HOST/:domain/oidc/.well-known/openid-configuration[openid discovery endpoint] under the "registration_renew_secret_endpoint" property. You will then require to replace :client_id by yours. +
