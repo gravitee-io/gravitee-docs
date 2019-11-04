@@ -25,11 +25,11 @@ NOTE: You can download the latest OpenJDK from https://jdk.java.net/archive/[Ope
 
 === Repository
 
-Default API Gateway distribution requires MongoDB 3.x to poll environment configuration and Elasticsearch 2.x for
-reporting / analytics.
+Default API Gateway distribution requires link:/apim_installguide_repositories_mongodb.html[MongoDB] to poll environment configuration and link:/apim_installguide_repositories_elasticsearch.html[Elasticsearch] for
+reporting / analytics. Please refer to the respective documentation page for supported versions.
 
-NOTE: You can download MongoDB 3.x from https://www.mongodb.org/downloads#production[MongoDB Download Site]
-and Elasticsearch 2.x or 5.x from https://www.elastic.co/downloads/elasticsearch[Elastic Download Site]
+NOTE: You can download MongoDB from https://www.mongodb.org/downloads#production[MongoDB Download Site]
+and Elasticsearch from https://www.elastic.co/downloads/elasticsearch[Elastic Download Site]
 
 == Download and install the +.zip+ package
 
