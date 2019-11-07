@@ -59,15 +59,15 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "management-api": {
-        "healthy": true
-    },
-    "management-repository": {
-        "healthy": true
-    },
-    "repository-analytics": {
-        "healthy": true
-    }
+  "ratelimit-repository" : {
+    "healthy" : true
+  },
+  "management-repository" : {
+    "healthy" : true
+  },
+  "http-server" : {
+    "healthy" : true
+  }
 }
 ----
 
