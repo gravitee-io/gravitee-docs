@@ -133,6 +133,12 @@ entries:
         - title: User consent
           output: web
           url: /am/2.x/am_userguide_user_management_consent.html
+      - title: User Session Management
+        output: web
+        subfolderitems:
+        - title: Logout
+          output: web
+          url: /am/2.x/am_userguide_user_session_management_logout.html
       - title: Audit Log
         output: web
         subfolderitems:
@@ -222,4 +228,7 @@ entries:
       - title: Users
         output: web
         url: /am/2.x/am_protocols_users_overview.html
+      - title: User Session
+        output: web
+        url: /am/2.x/am_protocols_session_overview.html
 
