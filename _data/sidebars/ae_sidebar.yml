@@ -10,37 +10,34 @@ entries:
     folderitems:
     - title: Introduction
       output: web
-      url: /ae_overview_introduction.html
+      url: /ae/overview_introduction.html
       type: homepage
-    - title: Architecture
+    - title: How it works
       output: web
-      url: /ae_overview_architecture.html
-    - title: Concepts
-      output: web
-      url: /ae_overview_concepts.html
-
-  - title: QuickStart
-    output: web
-    folderitems:
-    - title: Configure your first trigger
-      output: web
-      url: /ae_quickstart_trigger.html
-    - title: Send your first event
-      output: web
-      url: /ae_quickstart_event.html
+      url: /ae/overview_howitworks.html
 
   - title: Installation Guide
     output: web
     folderitems:
     - title: Introduction
       output: web
-      url: /ae_installguide_introduction.html
+      url: /ae/installguide_introduction.html
+    - title: Installation
+      output: web
+      url: /ae/installguide_engine.html
+    - title: Integration
+      output: web
+      url: /ae/installguide_integration.html
+    - title: Docker
+
+      output: web
+      url: /ae/installguide_docker.html
     - title: Configuration
       output: web
-      url: /ae_installguide_configuration.html
+      url: /ae/installguide_configuration.html
     - title: Technical API
       output: web
-      url: /ae_installguide_technical_api.html
+      url: /ae/installguide_technical_api.html
     - title: Metrics
       output: web
-      url: /ae_installguide_metrics.html
+      url: /ae/installguide_metrics.html

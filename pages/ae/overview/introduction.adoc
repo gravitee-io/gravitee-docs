@@ -1,36 +1,38 @@
----
-sidebar: ae_sidebar
-permalink: ae_overview_introduction.html
-folder: ae/overview
-description: Gravitee Alert Engine - Introduction
-toc: false
-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, notifier
----
+:page-sidebar: ae_sidebar
+:page-permalink: ae/overview_introduction.html
+:page-folder: ae/overview
+:page-toc: false
+:page-description: Gravitee Alert Engine - Introduction
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+IMPORTANT: Gravitee.io Alert Engine is part of Gravitee.io Enterprise. Please ask us for a trial
+license (contact (at) graviteesource.com)
 
 = Introduction
 
-The Gravitee.io platform is a turnkey solution to manage (APIM) and secure (AM) its APIs.
-It provides a lot of features including the ability to monitor its backends APIs through the use of Health Check.
-To be complete, this feature needed to be coupled with an alerting component.
+The Gravitee.io API Platform is a turnkey solution to manage (APIM) and secure (AM) APIs.
+It provides a lot of features including the ability to monitor several aspects of your APIs: health-check, availability, response-time and so on...
+To be even more complete, this feature needed to be coupled with an alerting component.
 
 And here we are with the Alert Engine (AE) component!
 
-In the APIM context, this component allows to:
+From the Gravitee.io API Management side, this component allows to:
 
-- inform API Publisher that the health-check service was able/not able to check an endpoint.
+- Notify API Publisher that the health-check service was able/not able to check an endpoint.
 
-- inform consumer or publisher that he is reaching a percentage of the configured quota.
+- Notify consumers or publishers that they reach a given threshold percentage of the quota.
 
-- inform administrator that one of the gateway instance is consuming more than XX% of heap or XX% of CPU.
+- Notify administrator(s) that one of the gateway instance is consuming more than XX% of heap or XX% of CPU, a new one is available, or one node is down.
 
-- ...and many others uses cases...
+- ... and many others uses cases...
 
 
-== Gravitee Alert Engine
+== Gravitee.io Alert Engine
 
-The Alert Engine solution will allow our customers to receive alerts / notifications through different channels (emails, slack ...)
-to help monitor the health of their APIs in particular.
+Alert Engine allows users to configure alerts and receive notifications through different channels (emails, slack, ...)
+to help them to monitor efficiently their API platform.
+
+
 The solution does not require any external component as it does not store anything (no database).
 AE receives events and is responsible for sending notifications under certain conditions (which have been configured upstream with triggers).
-
-NOTE: It's a part of the support offering for the Gravitee.io Platform, but is completely agnostic and it can be used / consumed by other applications.
