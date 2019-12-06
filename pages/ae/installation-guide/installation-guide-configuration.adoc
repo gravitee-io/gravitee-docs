@@ -1,23 +1,68 @@
 = Configuration
 :page-sidebar: ae_sidebar
-:page-permalink: ae_installguide_configuration.html
+:page-permalink: ae/installguide_configuration.html
 :page-folder: ae/installation-guide
 :page-description: Gravitee Alert Engine - Configuration
 :page-toc: false
 :page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
 
-Gravitee allows you to externalize your configuration via the `gravitee.yml` file that can be found under `GRAVITEE_HOME/config` folder.
+= How to configure
 
-The default plugin can be downloaded from https://download.graviteesource.com with credentials.
+There are three different ways to configure this component:
 
-Copy alert link:/apim_overview_plugins.html[plugin] in the `GRAVITEE_HOME/plugins` folder for both gateway / rest-api and override the following configuration if necessary.
+ - `gravitee.yml`
+ - System Properties
+ - Environment variables
 
-Default configuration of Alert Engine:
+In terms of prevalence, environment variables override system properties which are themselves overriding `gravitee.yml` file.
+
+== gravitee.yml
+
+This is the default way to configure Gravitee.io
+
+WARNING: Yaml (yml) format is very sensitive with indentation. Be careful, and use spaces instead of tabs.
+
 ```yaml
-# Alert engine (default: [2 * number of cores on the machine] - 1)
-verticles:
-  event:
-    instances: 1
+############################################################################################################
+#################################### Gravitee.io Alert Engine - Configuration ###################################
+############################################################################################################
+
+############################################################################################################
+# This file is the general configuration of Gravitee.io Alert Engine:
+# - Properties (and respective default values) in comment are provided for information.
+# - You can reference other property by using ${property.name} syntax
+# - gravitee.home property is automatically set-up by launcher and refers to the installation path. Do not override it !
+#
+############################################################################################################
+
+# Alert Engine HTTP server
+http:
+#  port: 8072
+#  host: 0.0.0.0
+#  idleTimeout: 0
+#  tcpKeepAlive: true
+#  compressionSupported: false
+#  maxHeaderSize: 8192
+#  maxChunkSize: 8192
+#  requestTimeout: 0
+#  secured: false
+#  alpn: false
+#  ssl:
+#    clientAuth: false
+#    keystore:
+#      path: ${gravitee.home}/security/keystore.jks
+#      password: secret
+#    truststore:
+#      path: ${gravitee.home}/security/truststore.jks
+#      password: secret
+  authentication:
+    # authentication type to be used for HTTP authentication
+    # - none : to disable authentication
+    # - basic (default): to use basic authentication
+    type: basic
+    users:
+      admin: adminadmin
 
 # Alert service configurations. Provided values are default values.
 # All services are enabled by default. To stop one of them, you have to add the property 'enabled: false'.
@@ -25,7 +70,7 @@ services:
   core:
     http:
       enabled: true
-      port: 18084
+      port: 18072
       host: localhost
       authentication:
         # authentication type to be used for the core services
@@ -36,21 +81,60 @@ services:
         users:
           admin: adminadmin
   metrics:
-    enabled: true
+    enabled: false
     prometheus:
       enabled: true
 
 cluster:
-  # must be reachable by other nodes
-  host: localhost
-  port: 0
   hazelcast:
     config:
       path: ${gravitee.home}/config/hazelcast.xml
-
-notifiers:
-  email:
-    enabled: true
-    templates:
-      path: ${gravitee.home}/templates
 ```
+
+== System Properties
+
+You can override the default configuration (`gravitee.yml`) to configure Gravitee.io by defining system properties.
+
+If you want to override this property:
+
+[source,yaml]
+----
+management:
+  mongodb:
+    dbname: myDatabase
+----
+
+You have to add this property to the JVM:
+
+----
+-Dmanagement.mongodb.dbname=myDatabase
+----
+
+
+== Environment Variables
+
+You can override the default configuration (`gravitee.yml`) and system properties by defining environment variables.
+
+If you want to override this property:
+
+[source,yaml]
+----
+management:
+  mongodb:
+    dbname: myDatabase
+----
+
+You have to define one of the following variables:
+
+----
+GRAVITEE_MANAGEMENT_MONGODB_DBNAME=myDatabase
+GRAVITEE.MANAGEMENT.MONGODB.DBNAME=myDatabase
+gravitee_management_mongodb_dbname=myDatabase
+gravitee.management.mongodb.dbname=myDatabase
+----
+
+WARNING: Some properties are case-sensitive and can not be defined upper-case (for example:
+`gravitee_security_providers_0_tokenIntrospectionEndpoint`. We advise you to define environment variables in lower-case
+and use the correct syntax for each property.
+
+TIP: In some systems, hyphens are forbidden in the variable name. You can remove them like `gravitee_policy_apikey_header` instead of `gravitee_policy_api-key_header`
