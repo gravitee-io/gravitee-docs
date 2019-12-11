@@ -4,6 +4,7 @@ permalink: apim_installguide_management_api_configuration.html
 folder: apim/installation-guide/management-api
 description: Gravitee.io API Management - Management API - Installation
 keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+layout: apim
 ---
 
 [[gravitee-installation-management-api-configuration]]
@@ -268,5 +269,5 @@ Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.y
 
 [source,yaml]
 ----
-include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/master/gravitee-management-api-standalone/gravitee-management-api-standalone-distribution/src/main/resources/config/gravitee.yml[]
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/1.30.x/gravitee-management-api-standalone/gravitee-management-api-standalone-distribution/src/main/resources/config/gravitee.yml[]
 ----

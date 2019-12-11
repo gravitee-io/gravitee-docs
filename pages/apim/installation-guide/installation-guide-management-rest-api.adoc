@@ -1,10 +1,10 @@
----
-sidebar: apim_sidebar
-permalink: apim_installguide_management_api.html
-folder: apim/installation-guide/management-api
-description: Gravitee.io API Management - Management API - Overview
-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
----
+:page-sidebar: apim_sidebar
+:page-permalink: apim_installguide_management_api.html
+:page-folder: apim/installation-guide/management-api
+:page-liquid:
+:page-description: Gravitee.io API Management - Management API - Overview
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim
 
 [[gravitee-installation-management-api]]
 = Management API - Overview
@@ -32,18 +32,18 @@ and download Elasticsearch from https://www.elastic.co/downloads/elasticsearch[E
 
 == Download and install the +.zip+ package
 
-The binaries are available from http://gravitee.io/#downloads[Downloads page] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-GRAVITEEIO-VERSION.zip[Download].
+The binaries are available from http://gravitee.io/#downloads[Downloads page] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim.version }}.zip[Download].
 
 [source,bash]
 ----
-$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-GRAVITEEIO-VERSION -o gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
+$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim.version }} -o gravitee-standalone-distribution-{{ site.products.apim.version }}.zip
 ----
 
 Once file has been downloaded, you just have to unpack it in the right place
 
 [source,bash]
 ----
-$ unzip gravitee-standalone-distribution-GRAVITEEIO-VERSION.zip
+$ unzip gravitee-standalone-distribution-{{ site.products.apim.version }}.zip
 ----
 
 == Running Management API from the command line
@@ -52,7 +52,7 @@ Management API can be started from the command line as follows:
 
 [source,bash]
 ----
-$ cd graviteeio-management-api-GRAVITEEIO-VERSION
+$ cd graviteeio-management-api-{{ site.products.apim.version }}
 $ ./bin/gravitee
 ----
 
@@ -64,7 +64,7 @@ If everything goes well, you should see this log:
 [source,bash]
 [subs="attributes"]
 ...
-11:01:53.162 [gravitee] INFO  i.g.m.standalone.node.ManagementNode - Gravitee.io - Management API id[2e05c0fa-8e48-4ddc-85c0-fa8e48bddc11] version[1.6.0] pid[24930] build[175] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 15837 ms.
+11:01:53.162 [gravitee] INFO  i.g.m.standalone.node.ManagementNode - Gravitee.io - Management API id[2e05c0fa-8e48-4ddc-85c0-fa8e48bddc11] version[{{ site.products.apim.version }}] pid[24930] build[175] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 15837 ms.
 ...
 
 == Checking that Management API is running

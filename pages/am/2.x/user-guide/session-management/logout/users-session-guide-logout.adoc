@@ -2,6 +2,7 @@
 :page-sidebar: am_2_x_sidebar
 :page-permalink: am/2.x/am_userguide_user_session_management_logout.html
 :page-folder: am/user-guide
+:page-layout: am
 
 Any authenticated users who want to invalidate their session can call the following URL : `https://AM_GATEWAY_HOST/{domain}/logout`
 

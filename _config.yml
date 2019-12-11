@@ -2,6 +2,7 @@
 gems:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-asciidoc
 
 title: Gravitee.io API Platform Documentation
 description: Home page for Gravitee.io API Platform documentation
@@ -109,12 +110,18 @@ sidebars:
 - apim_sidebar
 - am_sidebar
 - ae_sidebar
-
-description: "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features."
-# the description is used in the feed.xml file
+- cli_sidebar
 
 # needed for sitemap.xml file only
 url: https://docs.gravitee.io
+
+products:
+  apim:
+    version: 1.30.0
+  am:
+    version: 2.10.4
+  cli:
+    version: 0.0.1-beta
 
 asciidoc: {}
 asciidoctor:
