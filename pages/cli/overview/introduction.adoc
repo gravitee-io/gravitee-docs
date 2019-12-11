@@ -1,0 +1,12 @@
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_introduction.html
+:page-folder: cli
+:page-toc: false
+:page-liquid:
+:page-layout: cli
+:github-repo: https://raw.githubusercontent.com/gravitee-io/graviteeio-cli/master/
+
+NOTE: Gravitee.io CLI is still under heavy development. Current version is {{ site.products.cli.version }}.
+If you're encountering bugs, please fill an issue on link:https://github.com/gravitee-io/issues/issues/new[GitHub]
+
+include::{github-repo}README.adoc[]

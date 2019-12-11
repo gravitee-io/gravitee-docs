@@ -1,7 +1,10 @@
-= Management API
 :page-sidebar: am_2_x_sidebar
 :page-permalink: am/2.x/am_installguide_mgt_api.html
 :page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+
+= Management API
 
 == System Requirements
 
@@ -25,17 +28,17 @@ NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#pr
 
 == Installing from the ZIP archive
 
-Binaries are available from https://download.gravitee.io/graviteeio-am/components/gravitee-am-management-api/gravitee-am-management-api-standalone-GRAVITEEIO-AM-VERSION.zip.
+Binaries are available from https://download.gravitee.io/graviteeio-am/components/gravitee-am-management-api/gravitee-am-management-api-standalone-{{ site.products.am.version }}.zip.
 
 [source,bash]
 [subs="attributes"]
-$ curl -L https://download.gravitee.io/graviteeio-am/components/gravitee-am-management-api/gravitee-am-management-api-standalone-GRAVITEEIO-AM-VERSION.zip -o gravitee-am-management-api-standalone-GRAVITEEIO-AM-VERSION.zip
+$ curl -L https://download.gravitee.io/graviteeio-am/components/gravitee-am-management-api/gravitee-am-management-api-standalone-{{ site.products.am.version }}.zip -o gravitee-am-management-api-standalone-{{ site.products.am.version }}.zip
 
 Once file has been downloaded, you just have to unpack it in the right place.
 
 [source,bash]
 [subs="attributes"]
-$ unzip gravitee-am-management-api-standalone-GRAVITEEIO-AM-VERSION.zip
+$ unzip gravitee-am-management-api-standalone-{{ site.products.am.version }}.zip
 
 == Running AM Management API from the command line
 
@@ -43,7 +46,7 @@ AM Gateway can be started from the command line as follows:
 
 [source,bash]
 ----
-$ cd gravitee-am-management-api-standalone-GRAVITEEIO-VERSION
+$ cd gravitee-am-management-api-standalone-{{ site.products.am.version }}
 $ ./bin/gravitee
 ----
 

@@ -6,9 +6,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     color: #263238;
 }
 .summary {
+    text-align: right;
+    padding-right: 10px;
     color: #808080;
-    border-left: 5px solid #E50E51;
-    font-size:16px;
+    border-right: 5px solid #E50E51;
+    font-size: 16px;
 }
 
 

@@ -1,7 +1,10 @@
-= Gateway
 :page-sidebar: am_2_x_sidebar
 :page-permalink: am/2.x/am_installguide_gateway.html
 :page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+
+= Gateway
 
 == System Requirements
 
@@ -25,17 +28,17 @@ NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#pr
 
 == Installing from the ZIP archive
 
-Binaries are available from https://download.gravitee.io/graviteeio-am/components/gravitee-am-gateway/gravitee-am-gateway-standalone-GRAVITEEIO-AM-VERSION.zip.
+Binaries are available from https://download.gravitee.io/graviteeio-am/components/gravitee-am-gateway/gravitee-am-gateway-standalone-{{ site.products.am.version }}.zip.
 
 [source,bash]
 [subs="attributes"]
-$ curl -L https://download.gravitee.io/graviteeio-am/components/gravitee-am-gateway/gravitee-am-gateway-standalone-GRAVITEEIO-AM-VERSION.zip -o gravitee-am-gateway-standalone-GRAVITEEIO-AM-VERSION.zip
+$ curl -L https://download.gravitee.io/graviteeio-am/components/gravitee-am-gateway/gravitee-am-gateway-standalone-{{ site.products.am.version }}.zip -o gravitee-am-gateway-standalone-{{ site.products.am.version }}.zip
 
 Once file has been downloaded, you just have to unpack it in the right place.
 
 [source,bash]
 [subs="attributes"]
-$ unzip gravitee-am-gateway-standalone-GRAVITEEIO-AM-VERSION.zip
+$ unzip gravitee-am-gateway-standalone-{{ site.products.am.version }}.zip
 
 == Running AM Gateway from the command line
 
@@ -43,7 +46,7 @@ AM Gateway can be started from the command line as follows:
 
 [source,bash]
 ----
-$ cd gravitee-am-gateway-standalone-GRAVITEEIO-VERSION
+$ cd gravitee-am-gateway-standalone-{{ site.products.am.version }}
 $ ./bin/gravitee
 ----
 
@@ -55,7 +58,7 @@ If everything goes well, you should see this log:
 [source,bash]
 [subs="attributes"]
 ...
-11:23:06.835 [main] [] INFO  i.g.am.gateway.node.GatewayNode - Gravitee.io - Access Management - Gateway id[92c03b26-5f21-4460-803b-265f211460be] version[1.7.0-SNAPSHOT] pid[4528] build[${env.BUILD_NUMBER}#${env.GIT_COMMIT}] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 1860 ms.
+11:23:06.835 [main] [] INFO  i.g.am.gateway.node.GatewayNode - Gravitee.io - Access Management - Gateway id[92c03b26-5f21-4460-803b-265f211460be] version[{{ site.products.am.version }}] pid[4528] build[${env.BUILD_NUMBER}#${env.GIT_COMMIT}] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 1860 ms.
 ...
 
 == Checking that AM Gateway is running

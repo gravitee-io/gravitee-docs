@@ -1,0 +1,37 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  product: CLI
+  folders:
+
+  - title: Reference
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /cli/cli_introduction.html
+      type: homepage
+
+      subfolders:
+      - title: API Management
+        output: web
+        url: /cli/reference/apim/cli_apim_overview.html
+        subfolderitems:
+          - title: Overview
+            output: web
+            url: /cli/reference/apim/cli_apim_overview.html
+          - title: gio config
+            output: web
+            url: /cli/reference/apim/cli_apim_config.html
+          - title: gio config get
+            output: web
+            url: /cli/reference/apim/cli_apim_config_get.html
+          - title: gio config set
+            output: web
+            url: /cli/reference/apim/cli_apim_config_set.html
+          - title: gio config load
+            output: web
+            url: /cli/reference/apim/cli_apim_config_load.html
+
+
