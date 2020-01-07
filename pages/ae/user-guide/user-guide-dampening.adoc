@@ -1,0 +1,35 @@
+= User Guide
+:page-sidebar: ae_sidebar
+:page-permalink: ae/userguide_dampening.html
+:page-folder: ae/user-guide
+:page-description: Gravitee Alert Engine - User Guide - Dampening
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+== Dampening
+
+When a condition is validated many times in a very short period of times, the user would probably be disturb by all
+the notifications he is receiving.
+
+To limit the number of notifications, the alert engine has defined the concept of `dampening`.
+
+When defining a condition for a given rule, it is mandatory to associate a dampening algorithm.
+
+== Modes (algorithms)
+
+=== Strict count
+
+This mode is used to represent "X consecutive true evaluations".
+
+=== Relaxed count
+
+This mode is used to represent "X true evaluations of Y total evaluations".
+
+=== Relaxed time
+
+This mode is used to represent "X true evaluations in T time".
+
+=== Strict time
+
+This mode is used to represent "Only true evaluations in T time".

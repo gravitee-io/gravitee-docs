@@ -1,0 +1,29 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  product: Enterprise
+  folders:
+
+  - title: Overview
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /ee/ee_introduction.html
+    - title: License
+      output: web
+      url: /ee/ee_license.html
+    - title: Versionning
+      output: web
+      url: /ee/ee_version.html
+
+  - title: Installation Guide
+    output: web
+    folderitems:
+      - title: Introduction
+        output: web
+        url: /ee/installguide_introduction.html
+      - title: Docker
+        output: web
+        url: /ee/installguide_docker.html

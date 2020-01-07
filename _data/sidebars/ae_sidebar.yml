@@ -25,11 +25,7 @@ entries:
     - title: Installation
       output: web
       url: /ae/installguide_engine.html
-    - title: Integration
-      output: web
-      url: /ae/installguide_integration.html
     - title: Docker
-
       output: web
       url: /ae/installguide_docker.html
     - title: Configuration
@@ -41,3 +37,49 @@ entries:
     - title: Metrics
       output: web
       url: /ae/installguide_metrics.html
+
+  - title: User Guide
+    output: web
+    folderitems:
+      - title: Definition
+        output: web
+        url: /ae/userguide_definition.html
+      - title: Conditions
+        output: web
+        url: /ae/userguide_conditions.html
+      - title: Dampening
+        output: web
+        url: /ae/userguide_dampening.html
+      - title: Notifiers
+        output: web
+        url: /ae/userguide_notifiers.html
+
+  - title: API Management
+    output: web
+    folderitems:
+      - title: Installation
+        output: web
+        url: /ae/apim_installation.html
+      - title: Configuration
+        output: web
+        url: /ae/apim_configuration.html
+      - title: Platform
+        output: web
+        url: /ae/apim_platform.html
+      - title: API
+        output: web
+        url: /ae/apim_api.html
+
+  - title: Access Management
+    output: web
+    folderitems:
+      - title: Installation
+        output: web
+        url: /ae/am_installation.html
+
+  - title: Third Parties
+    output: web
+    folderitems:
+      - title: Installation
+        output: web
+        url: /ae/3rdparties_installation.html

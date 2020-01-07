@@ -111,15 +111,20 @@ sidebars:
 - am_sidebar
 - ae_sidebar
 - cli_sidebar
+- ee_sidebar
 
 # needed for sitemap.xml file only
 url: https://docs.gravitee.io
 
 products:
   apim:
-    version: 1.30.0
+    version: 1.30.1
+    ee:
+      version: 1.30.1
   am:
     version: 2.10.4
+    ee:
+      version: 2.10.4
   ae:
     version: 1.0.0-SNAPSHOT
     name: Gravitee.io Alert Engine (AE)

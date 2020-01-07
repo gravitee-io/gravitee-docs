@@ -1,0 +1,51 @@
+= User Guide
+:page-sidebar: ae_sidebar
+:page-permalink: ae/userguide_definition.html
+:page-folder: ae/user-guide
+:page-description: Gravitee Alert Engine - User Guide - Definition
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+== Definition
+
+An alert is defined in a `JSON` format and is composed by:
+
+* Name
+* Description
+* Source (event's source)
+* Severity (info, warning, critical)
+* List of <</ae/userguide_conditions.adoc#, conditions>>
+* List of filters
+* <</ae/userguide_dampening.adoc#, Dampening>>
+* <</ae/userguide_notifiers.adoc#, Notifications>>
+
+== Example
+
+```json
+{
+  "name" : "Response time Threshold",
+  "source" : "REQUEST",
+  "enabled" : true,
+  "conditions" : [ {
+    "property" : "response.response_time",
+    "operator" : "lt",
+    "threshold" : 1500.0,
+    "type" : "threshold"
+  } ],
+  "filters" : [ ],
+  "dampening" : {
+    "mode" : "strict_count",
+    "trueEvaluations" : 2
+  },
+  "notifications" : [ {
+    "type" : "slack-notifier",
+    "configuration" : {
+      "url" : "https://hooks.slack.com/services/T07XXXXX/BNXXXXXX/xxxxxxxxxxx",
+      "useSystemProxy" : false,
+      "message" : "${alert.name} has been evaluated to true"
+    }
+  }]
+}
+```
+

@@ -8,13 +8,12 @@
 :docker-image-src: https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/images
 :docker-hub: https://hub.docker.com/r/graviteeio
 :page-layout: ae
+:page-liquid:
 
 IMPORTANT: We assume that you are familiar with Docker terms. +
 To run our official images, you must start by installing https://docs.docker.com/installation/[Docker]
 
 Gravitee.io Alert Engine Docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
-
-We provide a complete set of images.
 
 == Images
 |===
@@ -37,7 +36,7 @@ $ docker run  \
         --publish 72:8072  \
         --name alert-engine  \
         --detach  \
-        graviteeio/ae-engine:latest
+        graviteeio/ae-engine:{{site.products.ae.version}}
 ....
 
 ==== Configure the container
@@ -52,5 +51,5 @@ $ docker run  \
         --name alert-engine  \
         --env GRAVITEE_CLUSTER_HAZELCAST_CONFIG_PATH=/path/to/hazelcast.xml
         --detach  \
-        graviteeio/ae-engine:latest
+        graviteeio/ae-engine:{{site.products.ae.version}}
 ....

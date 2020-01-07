@@ -25,7 +25,7 @@ WARNING: Yaml (yml) format is very sensitive with indentation. Be careful, and u
 
 ```yaml
 ############################################################################################################
-#################################### Gravitee.io Alert Engine - Configuration ###################################
+################################## Gravitee.io Alert Engine - Configuration ################################
 ############################################################################################################
 
 ############################################################################################################
@@ -36,33 +36,26 @@ WARNING: Yaml (yml) format is very sensitive with indentation. Be careful, and u
 #
 ############################################################################################################
 
-# Alert Engine HTTP server
-http:
-#  port: 8072
-#  host: 0.0.0.0
-#  idleTimeout: 0
-#  tcpKeepAlive: true
-#  compressionSupported: false
-#  maxHeaderSize: 8192
-#  maxChunkSize: 8192
-#  requestTimeout: 0
-#  secured: false
-#  alpn: false
-#  ssl:
-#    clientAuth: false
-#    keystore:
-#      path: ${gravitee.home}/security/keystore.jks
-#      password: secret
-#    truststore:
-#      path: ${gravitee.home}/security/truststore.jks
-#      password: secret
-  authentication:
-    # authentication type to be used for HTTP authentication
-    # - none : to disable authentication
-    # - basic (default): to use basic authentication
-    type: basic
-    users:
-      admin: adminadmin
+# Ingesters
+ingesters:
+  ws:
+#    instances: 0
+#    port: 8072
+#    host: 0.0.0.0
+#    secured: false
+#    alpn: false
+#    ssl:
+#      clientAuth: false
+#      keystore:
+#        path: ${gravitee.home}/security/keystore.jks
+#        password: secret
+#      truststore:
+#        path: ${gravitee.home}/security/truststore.jks
+#        password: secret
+    authentication: # authentication type to be used for HTTP authentication
+      type: basic # none to disable authentication / basic for basic authentication
+      users:
+        admin: adminadmin
 
 # Alert service configurations. Provided values are default values.
 # All services are enabled by default. To stop one of them, you have to add the property 'enabled: false'.
