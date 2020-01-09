@@ -22,7 +22,7 @@ be an link:/ee/ee_introduction.html[Enterprise version].
 
 [source,bash]
 [subs="attributes"]
-$ curl -L https://ci.gravitee.io/view/All%20Jobs/job/gravitee-io/job/gravitee-alert-engine/job/master/lastSuccessfulBuild/artifact/gravitee-ae-connectors/gravitee-ae-connectors-ws/target/gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip -o gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip
+$ curl -L https://download.gravitee.io/graviteeio-ae/plugins/connectors/gravitee-ae-connectors-ws/gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip -o gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip
 
 === Install connector
 
