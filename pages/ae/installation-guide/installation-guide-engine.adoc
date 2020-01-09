@@ -24,11 +24,11 @@ NOTE: You can download the latest OpenJDK from https://jdk.java.net/archive/[Ope
 
 == Installing from the ZIP archive
 
-Binaries are available from https://download.gravitee.io/graviteeio-ae/components/gravitee-ae-engine/gravitee-ae-standalone-{{site.products.ae.version}}.zip.
+Binaries are available from https://download.gravitee.io/graviteeio-ae/components/gravitee-ae-engine-{{site.products.ae.version}}.zip.
 
 [source,bash]
 [subs="attributes"]
-$ curl -L https://download.gravitee.io/graviteeio-ae/components/gravitee-ae-engine/gravitee-ae-standalone-{{site.products.ae.version}}.zip -o gravitee-ae-standalone-{{site.products.ae.version}}.zip
+$ curl -L https://download.gravitee.io/graviteeio-ae/components/gravitee-ae-engine/gravitee-ae-engine-{{site.products.ae.version}}.zip -o gravitee-ae-standalone-{{site.products.ae.version}}.zip
 
 Once file has been downloaded, you just have to unpack it in the right place.
 
