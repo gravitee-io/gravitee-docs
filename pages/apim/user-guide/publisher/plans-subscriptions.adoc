@@ -111,7 +111,13 @@ https://tools.ietf.org/html/rfc7519[JSON Web Tokens] are an open method for repr
 JWT are digitally-signed using HMAC shared keys or RSA public/private key pairs. JWT plan allows you to verify the signature of the JWT and check if the JWT is still valid according to its expiry date.
 
 NOTE: JWT defines some https://tools.ietf.org/html/rfc7519#section-4.1[registered claim names] including subject, issuer, audience, expiration time, and not-before time. In addition to these claims, the inbound JWT payload
-MUST contains the `client_id` claim to make the connection between the JWT and the Gravitee.io application's subscription.
+MUST contains the `client_id` claim* to make the connection between the JWT and the Gravitee.io application's subscription.
+
+*The policy is looking for a client ID on the payload as follow:
+
+* First on the azp claim
+* Then on the aud claim
+* Finally on the client_id claim
 
 To create an JWT plan, go to `Portal/Plans` section of your API and create a new plan.
 
