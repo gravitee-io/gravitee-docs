@@ -30,7 +30,7 @@ http:
   secured: false
   alpn: false
   ssl:
-    clientAuth: false
+    clientAuth: none # Supports none, request, requires
     keystore:
       path: ${gravitee.home}/security/keystore.jks
       password: secret
@@ -68,7 +68,7 @@ http:
   alpn: false
   secured: true
   ssl:
-    clientAuth: false
+    clientAuth: none # Supports none, request, requires
     keystore:
       path: /path/to/keystore.jks
       password: adminadmin
@@ -102,6 +102,23 @@ Now the gateway supports both WS and WSS protocols. You can consume your api lik
 ----
 curl ws://localhost:8082/my_websocket
 ----
+
+
+=== How to enable certificate-based client authentication
+----
+http:
+  ssl:
+    clientAuth: none # Supports none, request, requires
+    truststore:
+      path: /path/to/truststore.jks
+      password: adminadmin
+----
+
+Available mode for `clientAuth` are:
+
+* none: Client authentication is disabled (replacement of the `false` value)
+* request: Client authentication is not required but can be if using <<apim_policies_ssl_enforcement.html, SSL enforcement policy>>
+* requires: Client authentication is required (replacement of `true` value)
 
 == Plugins repository
 
@@ -173,7 +190,7 @@ management:
 
 == Rate Limit repository
 
-When defining <<policy-ratelimit, rate-limiting policy>>, the gateway has to store data to share with other gateway instances.
+When defining <</apim_policies_rate_limiting.html, rate-limiting policy>>, the gateway has to store data to share with other gateway instances.
 
 In this example, we are using MongoDB to store counters.
 
