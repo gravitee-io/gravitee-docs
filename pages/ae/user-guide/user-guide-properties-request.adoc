@@ -1,0 +1,128 @@
+= Notification properties for REQUEST's event
+:page-sidebar: ae_sidebar
+:page-permalink: ae/userguide_properties_request.html
+:page-folder: ae/user-guide
+:page-description: Gravitee Alert Engine - User Guide - Notifier - Message Properties REQUEST
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+Here is the list of properties available in every alerts triggered by a REQUEST event.
+
+[cols="1,3"]
+|===
+|Key |Description
+
+|`node.hostname`
+|The node hostname which has thrown the Alert.
+
+|`node.application`
+|The node application (`gio-apim-gateway`, `gio-apim-management`, `gio-am-gateway`, `gio-am-management`) which has thrown the Alert.
+
+|`node.id`
+|The uuid of the node which has thrown the Alert.
+
+|`gateway.port`
+|The port of the gateway.
+
+|`tenant`
+|The tenant (if exists) of the node.
+
+|`request.id`
+|The request ID.
+
+|`request.content_length`
+|The request content length in bytes
+
+|`request.ip`
+|The request IP.
+
+|`request.ip.country_iso_code`
+|The country ISO code associated with the IP.
+
+|`request.ip.country_name`
+|The country name associated with the IP.
+
+|`request.ip.continent_name`
+|The continent name associated with the IP.
+
+|`request.ip.region_name`
+|The region name associated with the IP.
+
+|`request.ip.city_name`
+|The city name associated with the IP.
+
+|`request.ip.timezone`
+|The timezone associated with the IP.
+
+|`request.ip.lat`
+|The latitude associated with the IP.
+
+|`request.ip.lon`
+|The longitude associated with the IP.
+
+|`request.user_agent`
+|The request User Agent.
+
+|`request.user_agent.device_class`
+|The device's class of the User Agent.
+
+|`request.user_agent.device_brand`
+|The device's brand of the User Agent.
+
+|`request.user_agent.device_name`
+|The device's name of the User Agent.
+
+|`request.user_agent.os_class`
+|The OS's class of the User Agent.
+
+|`request.user_agent.os_name`
+|The OS's name of the User Agent.
+
+|`request.user_agent.os_version`
+|The OS's version of the User Agent.
+
+|`request.user_agent.browser_name`
+|The browser's name of the User Agent.
+
+|`request.user_agent.browser_version`
+|The browser's version of the User Agent.
+
+|`user`
+|The request user.
+
+|`api`
+|The request API.
+
+|`application`
+|The request application.
+
+|`plan`
+|The request plan.
+
+|`response.status`
+|The response status.
+
+|`response.latency`
+|The response latency.
+
+|`response.response_time`
+|The response time.
+
+|`response.content_length`
+|The response content length.
+
+|`response.upstream_response_time`
+|The upstream response time, the time between the gateway and the backend.
+
+|`quota.counter`
+|The quota counter state.
+
+|`quota.limit`
+|The quota limit.
+
+|`error.key`
+|A key that allows you to identify the root cause of error.
+
+|===
+
