@@ -50,9 +50,43 @@ entries:
       - title: Dampening
         output: web
         url: /ae/userguide_dampening.html
-      - title: Notifiers
-        output: web
-        url: /ae/userguide_notifiers.html
+        subfolders:
+        - title: Notification
+          output: web
+          subfolderitems:
+            - title: What is a Notifier ?
+              output: web
+              url: /ae/userguide_notifiers.html
+            - title: Notifier Email
+              output: web
+              url: /ae/userguide_notifier_email.html
+            - title: Notifier System Email
+              output: web
+              url: /ae/userguide_notifier_system_email.html
+            - title: Notifier Slack
+              output: web
+              url: /ae/userguide_notifier_slack.html
+            - title: Notifier Webhook
+              output: web
+              url: /ae/userguide_notifier_webhook.html
+            - title: Create a custom message
+              output: web
+              url: /ae/userguide_notifier_message.html
+            - title: Message properties from node lifecycle Event
+              output: web
+              url: /ae/userguide_properties_node_lifecycle.html
+            - title: Message properties from node heartbeat Event
+              output: web
+              url: /ae/userguide_properties_node_heartbeat.html
+            - title: Message properties from node health-check Event
+              output: web
+              url: /ae/userguide_properties_node_healthcheck.html
+            - title: Message properties from request Event
+              output: web
+              url: /ae/userguide_properties_request.html
+            - title: Message properties from endpoint heealth-check Event
+              output: web
+              url: /ae/userguide_properties_endpoint_healthcheck.html
 
   - title: API Management
     output: web
