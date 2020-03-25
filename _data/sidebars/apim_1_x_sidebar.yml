@@ -139,9 +139,20 @@ entries:
     - title: Hybrid deployment
       output: web
       url: /apim/1.x/apim_installguide_hybrid_deployment.html
-    - title: Docker
-      output: web
-      url: /apim/1.x/apim_installguide_docker.html
+
+      subfolders:
+      - title: Docker
+        output: web
+        subfolderitems:
+        - title: Images
+          output: web
+          url: /apim/1.x/apim_installguide_docker_images.html
+        - title: Compose
+          output: web
+          url: /apim/1.x/apim_installguide_docker_compose.html
+        - title: Customize
+          output: web
+          url: /apim/1.x/apim_installguide_docker_customize.html
     - title: Kubernetes
       output: web
       url: /apim/1.x/apim_installguide_kubernetes.html

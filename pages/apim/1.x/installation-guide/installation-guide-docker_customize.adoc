@@ -1,0 +1,53 @@
+= Docker customization
+:page-toc: false
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_docker_customize.html
+:page-folder: apim/installation-guide/docker
+:page-layout: apim
+:docker-image-src: https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/images
+:github-repo: https://github.com/gravitee-io/gravitee-docker
+:docker-hub: https://hub.docker.com/r/graviteeio
+
+IMPORTANT: We assume that you are familiar with Docker. +
+To run our official images, you must start by installing https://docs.docker.com/installation/[Docker]
+
+Gravitee.io docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
+You could find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles on GitHub].
+
+== Install a plugin
+
+Gravitee.io images are containing the default plugins (you can get the full list from https://github.com/gravitee-io/release/blob/1.30.x/release.json).
+
+Sometimes, you may need to override the default setup by providing a custom plugin or simply change the MongoDB connector with the Redis based connector.
+
+Here is a short example on how you can achieve this:
+
+[source, shell]
+....
+$ docker run  \
+        --publish 8082:8082  \
+        --name gateway  \
+        --volume ./plugins:/opt/graviteeio-gateway/plugins-ext \
+        --env GRAVITEE_PLUGINS_PATH_0=$${gravitee.home}/plugins \
+        --env GRAVITEE_PLUGINS_PATH_1=$${gravitee.home}/plugins-ext \
+        --detach  \
+        graviteeio/gateway:latest
+....
+
+This will mount a new volume containing additional plugins and declare them as part of the configuration (`--env GRAVITEE_PLUGINS_PATH_1=$${gravitee.home}/plugins-ext`)
+
+Here is an other example explaining how to use Redis to store rate-limit and quota counters (we are assuming redis connector is available from `./plugins` from the HOST)
+
+....
+$ docker run  \
+        --publish 8082:8082  \
+        --name gateway  \
+        --volume ./plugins:/opt/graviteeio-gateway/plugins-ext \
+        --env GRAVITEE_PLUGINS_PATH_0=$${gravitee.home}/plugins \
+        --env GRAVITEE_PLUGINS_PATH_1=$${gravitee.home}/plugins-ext \
+        --env GRAVITEE_RATELIMIT_TYPE=redis \
+        --env GRAVITEE_RATELIMIT_REDIS_HOST=localhost \
+        --env GRAVITEE_RATELIMIT_REDIS_PORT=6379 \
+        --detach  \
+        graviteeio/gateway:latest
+....
