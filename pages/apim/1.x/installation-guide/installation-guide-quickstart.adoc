@@ -1,0 +1,124 @@
+[[gravitee-installation-quickstart]]
+== Quick Start
+
+=== Declare and use your first API
+
+This guide walks you through the process of creating your first API by using the Gravitee.io Management UI (requests details using cURL command are describe in this tutorial).
+
+Gravitee.io Management UI can be accessed using the following URL:
+
+http://MANAGEMENT_UI_SERVER_DOMAIN (see <<gravitee-installation-guide-management-webui, Gravitee.io Management UI installation>> for more information)
+
+NOTE: *SWAPI API* : In this tutorial we will use the https://swapi.co/[SWAPI API] to set up our first proxy API. The SWAPI API returns JSON-formatted data via the following URL : http://swapi.co/api
+
+==== Step 1 - Create your API Definition proxy for the SWAPI API
+
+1) Login to http://MANAGEMENT_UI_SERVER_DOMAIN. (Default Administrator account is admin/admin, see <<gravitee-standalone-management-security-configuration, security section>> for more information)
+
+2) Click "Create your First API"
+
+image::apim/1.x/graviteeio-create-first-api.png[]
+
+3) Give your API a name, a version, a description and a context path
+
+4) Make sure that "Endpoint" is set to "http://swapi.co/api"
+
+5) Click the "CREATE" button and your API is created
+
+image::apim/1.x/graviteeio-first-api.png[]
+
+Create API request::
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"name":"My First API","version":"1","description":"SWAPI API Proxy", "contextPath":"/myfirstapi","endpoint":"http://swapi.co/api"}' \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis
+----
+
+6) Deploy your API to the Gravitee.io Gateway instances by clicking on "deploy your API"
+
+Deploy API request::
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -X POST \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/my-first-api/deploy
+----
+
+7) Finally start your API by switching on the "Started" button
+
+Start API request::
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -X POST \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/my-first-api?action=START
+----
+
+==== Step 2 - Create an application and generate an API Key
+
+All incoming request to the Gravitee.io Gateway must have an API Key. Only trusted application can access the API data by requesting an API Key. Let's see how to create an application and generate an API Key.
+
+1) Go to "Applications" menu
+
+2) Click "CREATE APPLICATIONS"
+
+image::apim/1.x/graviteeio-create-first-app.png[]
+
+3) Give your Application a name, a type and a description
+
+4) Click the "CREATE" button and your Application is created
+
+image::apim/1.x/graviteeio-first-app.png[]
+
+Create Application request::
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"name":"My First Application","type":"Web","description":"Web client for the SWAPI API"}' \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/applications
+----
+
+6) Go to "Api Keys" section and click "+" button
+
+7) Search your first API and click "SUBSCRIBE"
+
+image::apim/1.x/graviteeio-subscribe-api.png[]
+
+Subscribe API request :
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -X POST \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/applications/my-first-application/keys?api=my-first-api
+----
+
+8) Get your API Key and you are ready to use your API
+
+image::apim/1.x/graviteeio-app-keys.png[]
+
+==== Step 3 - Use the API Key and Test your API
+
+Now that you have created your application and get your API Key, we can go back to our API and start using it.
+
+NOTE: You can use your API Key by setting the HTTP Header 'X-Gravitee-Api-Key' or using the request query parameter 'api-key'.
+
+[source]
+----
+curl -H "X-Gravitee-Api-Key: <your-api-key>" \
+     http://GATEWAY_SERVER_DOMAIN/myfirstapi
+----
+
+You can see that the SWAPI API data has been served successfully. You can test different requests specified in the https://swapi.co/[SWAPI API documentation].
+
+This quick start was just an overview to create your first API. To go further into API management detail you can take a look at the <<gravitee-user-guide-overview, User Guide>>.
+

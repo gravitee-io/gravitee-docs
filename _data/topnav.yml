@@ -3,8 +3,6 @@
 topnav:
 - title: Topnav
   items:
-    - title: API Management
-      url: /apim_overview_introduction.html
     - title: Alert Engine
       url: /ae/overview_introduction.html
     - title: CLI
@@ -16,6 +14,10 @@ topnav:
 topnav_dropdowns:
 - title: Topnav dropdowns
   folders:
+    - title: API Management
+      folderitems:
+        - title: 1.x
+          url: /apim/1.x/apim_overview_introduction.html
     - title: Access Management
       folderitems:
         - title: 2.x (current)
