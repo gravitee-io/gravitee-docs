@@ -61,6 +61,9 @@ jetty:
       password: secret
 ----
 
+WARNING: Truststore and keystore defined within `jetty` section are only used to secure access to the Management API. These are not
+used by any HTTP client calls for other purposes (Fetch, DCR, ...)
+
 == Plugins repository
 
 Gravitee.io Management API <<gravitee-plugins,plugins>> directory configuration.
