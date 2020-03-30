@@ -1,0 +1,105 @@
+= How to configure
+
+There are three different ways to configure this component:
+
+ - `gravitee.yml`
+ - System Properties
+ - Environment variables
+
+In terms of prevalence, environment variables override system properties which are themselves overriding `gravitee.yml` file.
+
+== gravitee.yml
+
+This is the default way to configure Gravitee.io
+
+WARNING: Yaml (yml) format is very sensitive with indentation. Be careful, and use spaces instead of tabs.
+
+
+== System Properties
+
+You can override the default configuration (`gravitee.yml`) to configure Gravitee.io by defining system properties.
+
+If you want to override this property:
+
+[source,yaml]
+----
+management:
+  mongodb:
+    dbname: myDatabase
+----
+
+You have to add this property to the JVM:
+
+----
+-Dmanagement.mongodb.dbname=myDatabase
+----
+
+
+== Environment Variables
+
+You can override the default configuration (`gravitee.yml`) and system properties by defining environment variables.
+
+If you want to override this property:
+
+[source,yaml]
+----
+management:
+  mongodb:
+    dbname: myDatabase
+----
+
+You have to define one of the following variables:
+
+----
+GRAVITEE_MANAGEMENT_MONGODB_DBNAME=myDatabase
+GRAVITEE.MANAGEMENT.MONGODB.DBNAME=myDatabase
+gravitee_management_mongodb_dbname=myDatabase
+gravitee.management.mongodb.dbname=myDatabase
+----
+
+WARNING: Some properties are case-sensitive and can not be defined upper-case (for example:
+`gravitee_security_providers_0_tokenIntrospectionEndpoint`. We advise you to define environment variables in lower-case
+and use the correct syntax for each property.
+
+TIP: In some systems, hyphens are forbidden in the variable name. You can remove them like `gravitee_policy_apikey_header` instead of `gravitee_policy_api-key_header`
+
+=== How to manage arrays ?
+
+Some properties are arrays. For example:
+[source,yaml]
+----
+analytics:
+  elasticsearch:
+    endpoints:
+      - https://my.first.endpoint.com
+      - https://my.second.endpoint.com
+
+security:
+  providers:
+    - type: ldap
+      context-source-username: "cn=Directory Manager"
+      context-source-password: "password"
+----
+
+Here is some ways to write your environment variables. In case of errors, you really should try both of them.
+
+----
+gravitee_analytics_elasticsearch_endpoints_0=https://my.first.endpoint.com
+gravitee_analytics_elasticsearch_endpoints_1=https://my.second.endpoint.com
+
+gravitee_security_providers_0_type=ldap
+gravitee_security_providers_0_context-source-username=cn=Directory Manager
+gravitee_security_providers_0_context-source-password=password
+----
+
+or
+
+----
+gravitee.analytics.elasticsearch.endpoints[0]=https://my.first.endpoint.com
+gravitee.analytics.elasticsearch.endpoints[1]=https://my.second.endpoint.com
+
+gravitee.security.providers[0]type=ldap
+gravitee.security.providers[0]context-source-username=cn=Directory Manager
+gravitee.security.providers[0]context-source-password=password
+gravitee.security.providers[0].users[1].password=password
+----

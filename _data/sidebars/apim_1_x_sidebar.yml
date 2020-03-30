@@ -49,9 +49,12 @@ entries:
       - title: API Gateway
         output: web
         subfolderitems:
-          - title: Installation
+          - title: Install with .zip
             output: web
-            url: /apim/1.x/apim_installguide_gateway.html
+            url: /apim/1.x/apim_installguide_gateway_install_zip.html
+          - title: Install with RPM
+            output: web
+            url: /apim/1.x/apim_installguide_gateway_install_rpm.html
           - title: Configuration
             output: web
             url: /apim/1.x/apim_installguide_gateway_configuration.html
@@ -64,9 +67,12 @@ entries:
       - title: Management API
         output: web
         subfolderitems:
-          - title: Installation
+          - title: Install with .zip
             output: web
-            url: /apim/1.x/apim_installguide_management_api.html
+            url: /apim/1.x/apim_installguide_management_api_install_zip.html
+          - title: Install with RPM
+            output: web
+            url: /apim/1.x/apim_installguide_management_api_install_rpm.html
           - title: Configuration
             output: web
             url: /apim/1.x/apim_installguide_management_api_configuration.html
@@ -85,9 +91,12 @@ entries:
       - title: Portal
         output: web
         subfolderitems:
-          - title: Overview
+          - title: Install with .zip
             output: web
-            url: /apim/1.x/apim_installguide_portal.html
+            url: /apim/1.x/apim_installguide_portal_install_zip.html
+          - title: Install with RPM
+            output: web
+            url: /apim/1.x/apim_installguide_portal_install_rpm.html
           - title: Configuration
             output: web
             url: /apim/1.x/apim_installguide_portal_configuration.html

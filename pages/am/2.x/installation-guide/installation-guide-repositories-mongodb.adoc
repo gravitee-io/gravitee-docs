@@ -1,16 +1,15 @@
 = MongoDB
-:page-sidebar: apim_1_x_sidebar
-:page-permalink: apim/1.x/apim_installguide_repositories_mongodb.html
-:page-folder: apim/installation-guide/repositories
-:page-description: Gravitee.io API Management - Repositories - MongoDB
-:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
-:page-layout: apim
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_installguide_repositories_mongodb.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Repositories - MongoDB
+:page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+Default implementation is based on https://www.mongodb.org/[MongoDB], let's see the configuration options:
 
 == Configuration
-https://www.mongodb.org/[MongoDB] is the default repository implementation used by Gravitee.io API Management.
-
-Let's see the configuration options:
-
 [source,yaml]
 ----
 # ===================================================================
@@ -58,29 +57,8 @@ management:
     localThreshold:             # mongodb local threshold (default null)
     minConnectionsPerHost:      # mongodb min connections per host (default null)
     sslEnabled:                 # mongodb ssl mode (default false)
-    keystore:                   # path to KeyStore (when sslEnabled is true)
-    keystorePassword:           # KeyStore password
-    keyPassword:                # password for recovering keys in the KeyStore
     threadsAllowedToBlockForConnectionMultiplier: # mongodb threads allowed to block for connection multiplier (default null)
     cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
 ----
 
 NOTE: All theses properties allow you to fine tuned your MongoDB connection
-
-== Security
-
-Sometimes, you may want to apply specific security constraints and rules to users allowed to access the database.
-
-Thanks to the following table, you will be able to define these fine-grained constraints per collection.
-
-
-|===
-|Component|Read-only |Read-write
-
-|API Gateway
-|apis - keys - subscriptions - plans | events - ratelimit - commands
-
-|Management API
-|- | all collections except ratelimit
-
-|===
