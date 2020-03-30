@@ -1,0 +1,87 @@
+= Install Portal with RPM
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_portal_install_rpm.html
+:page-folder: apim/installation-guide/portal
+:page-liquid:
+:page-layout: apim
+:page-description: Gravitee.io API Management - Portal - Installation with RPM
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+The RPM for Gravitee.io Portal can be downloaded from our link:#installing_from_the_rpm_repository[RPM repository].
+It can be used to install Gravitee.io Portal on any RPM-based system such as OpenSuSE, SLES, CentOS, Red Hat, and Oracle Enterprise.
+
+NOTE: RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Please see link:/apim/1.x/apim_installguide_portal_install_zip.html[Install Gravitee.io Portal with .zip] instead.
+
+== Installing from the RPM repository
+Create a file called graviteeio.repo in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:
+
+[source,bash]
+----
+[graviteeio]
+name=graviteeio
+baseurl=https://packagecloud.io/graviteeio/rpms/el/7/$basearch
+gpgcheck=1
+enabled=1
+gpgkey=https://packagecloud.io/graviteeio/rpms/gpgkey
+autorefresh=1
+----
+
+And your repository is ready for use. You can now install Gravitee.io Portal with one of the following commands:
+
+[source,bash]
+----
+sudo yum install graviteeio-apim-management-ui
+sudo dnf install graviteeio-apim-management-ui
+sudo zypper install graviteeio-apim-management-ui
+----
+
+== Download and install the RPM manually
+
+[source,bash]
+----
+wget --content-disposition https://packagecloud.io/graviteeio/rpms/packages/el/7/graviteeio-apim-management-ui-{{ site.products.apim.version }}-0.noarch.rpm/download.rpm
+sudo rpm --install graviteeio-apim-management-ui-{{ site.products.apim.version }}-0.noarch.rpm
+----
+
+== Running Gravitee.io Portal with `systemd`
+
+NOTE: Gravitee.io Portal is based on Nginx
+
+To configure Gravitee.io Portal to start automatically when the system boots up, run the following commands:
+
+[source,shell]
+----
+sudo systemctl daemon-reload
+sudo systemctl enable nginx
+----
+
+Nginx can be started and stopped as follows:
+
+[source,shell]
+----
+sudo systemctl start nginx
+sudo systemctl stop nginx
+----
+
+When `systemd` logging is enabled, the logging information are available using the `journalctl` commands:
+
+To tail the journal:
+
+[source,shell]
+----
+sudo journalctl -f
+----
+
+To list journal entries for the Nginx service:
+
+[source,shell]
+----
+sudo journalctl --unit nginx
+----
+
+To list journal entries for the Nginx service starting from a given time:
+
+[source,shell]
+----
+sudo journalctl --unit nginx --since  "2020-01-30 12:13:14"
+----

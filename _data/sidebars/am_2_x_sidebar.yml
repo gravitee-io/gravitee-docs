@@ -164,18 +164,49 @@ entries:
     - title: Introduction
       output: web
       url: /am/2.x/am_installguide_introduction.html
-    - title: Gateway
-      output: web
-      url: /am/2.x/am_installguide_gateway.html
-    - title: Management API
-      output: web
-      url: /am/2.x/am_installguide_mgt_api.html
-    - title: Management UI
-      output: web
-      url: /am/2.x/am_installguide_portal.html
-    - title: Configuration
-      output: web
-      url: /am/2.x/am_installguide_configuration.html
+      subfolders:
+        - title: Access Gateway
+          output: web
+          subfolderitems:
+            - title: Install with .zip
+              output: web
+              url: /am/2.x/am_installguide_gateway_install_zip.html
+            - title: Install with RPM
+              output: web
+              url: /am/2.x/am_installguide_gateway_install_rpm.html
+            - title: Configuration
+              output: web
+              url: /am/2.x/am_installguide_gateway_configuration.html
+        - title: Management API
+          output: web
+          subfolderitems:
+            - title: Install with .zip
+              output: web
+              url: /am/2.x/am_installguide_management_api_install_zip.html
+            - title: Install with RPM
+              output: web
+              url: /am/2.x/am_installguide_management_api_install_rpm.html
+            - title: Configuration
+              output: web
+              url: /am/2.x/am_installguide_management_api_configuration.html
+        - title: Management UI
+          output: web
+          subfolderitems:
+            - title: Install with .zip
+              output: web
+              url: /am/2.x/am_installguide_management_ui_install_zip.html
+            - title: Install with RPM
+              output: web
+              url: /am/2.x/am_installguide_management_ui_install_rpm.html
+        - title: Repositories
+          output: web
+          subfolderitems:
+            - title: Overview
+              output: web
+              url: /am/2.x/am_installguide_repositories.html
+            - title: MongoDB
+              output: web
+              url: /am/2.x/am_installguide_repositories_mongodb.html
     - title: Docker
       output: web
       url: /am/2.x/am_installguide_docker.html
