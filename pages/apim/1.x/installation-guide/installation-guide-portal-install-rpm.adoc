@@ -20,7 +20,7 @@ Create a file called graviteeio.repo in the `/etc/yum.repos.d/` directory for Re
 [graviteeio]
 name=graviteeio
 baseurl=https://packagecloud.io/graviteeio/rpms/el/7/$basearch
-gpgcheck=1
+gpgcheck=0
 enabled=1
 gpgkey=https://packagecloud.io/graviteeio/rpms/gpgkey
 autorefresh=1
