@@ -1,4 +1,4 @@
-= Docker customization
+= Docker
 :page-toc: false
 :page-sidebar: apim_1_x_sidebar
 :page-permalink: apim/1.x/apim_installguide_docker_customize.html
@@ -14,13 +14,13 @@ To run our official images, you must start by installing https://docs.docker.com
 Gravitee.io docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
 You could find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles on GitHub].
 
-== Install a additional plugin
+== Install an additional plugin
 
 Gravitee.io images are containing the default plugins (you can get the full list from https://github.com/gravitee-io/release/blob/1.30.x/release.json).
 
 Sometimes, you may need to override the default setup by providing a custom plugin.
 
-Here is a short example on how you can achieve this:
+Here is a short example on how you can achieve this for the Gravitee.io API Gateway:
 
 [source, shell]
 ....
@@ -38,7 +38,7 @@ This will mount a new volume containing additional plugins and declare them as p
 
 == Use Redis as datastore for rate-limit counters
 
-If you want to switch from MongoDB (default connector) to Redis for rate-limit, you can do it that way (we are assuming redis connector is available from `./plugins` from the HOST):
+If you want to switch from MongoDB (default connector) to Redis for rate-limit, you can do it that way (we are assuming redis connector is available from `./plugins` from the Docker Host):
 
 ....
 $ docker run  \
@@ -58,7 +58,7 @@ $ docker run  \
 
 This example is providing a solution to switch from MongoDB (default connector) to a JDBC-based connector.
 
-In this example, we are assuming JDBC connector is available from `./plugins` from the HOST.
+In this example, we are assuming JDBC connector is available from `./plugins` from the Docker Host.
 
 NOTE: You have to ensure that the version of the JDBC connector is the one corresponding to your Gravitee.io API Management version.
 
