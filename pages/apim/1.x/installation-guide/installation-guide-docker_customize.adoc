@@ -74,8 +74,8 @@ $ docker run  \
         --volume ./plugins:/opt/graviteeio-gateway/plugins-ext \
         --env GRAVITEE_PLUGINS_PATH_0=$${gravitee.home}/plugins \
         --env GRAVITEE_PLUGINS_PATH_1=$${gravitee.home}/plugins-ext \
-        --env GRAVITEE_RATELIMIT_TYPE=jdbc \
-        --env GRAVITEE_RATELIMIT_JDBC_URL=jdbc:mysql://localhost:3306/gravitee?useSSL=false&user=mysql_users&password=mysql_password \
+        --env GRAVITEE_MANAGEMENT_TYPE=jdbc \
+        --env GRAVITEE_MANAGEMENT_JDBC_URL=jdbc:mysql://localhost:3306/gravitee?useSSL=false&user=mysql_users&password=mysql_password \
         --detach  \
         graviteeio/gateway:latest
 ....
