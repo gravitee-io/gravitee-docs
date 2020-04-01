@@ -58,26 +58,44 @@ entries:
           - title: Portal
             output: web
             url: /apim/1.x/apim_installguide_portal_install_zip.html
-      - title: Install with RPM
+      - title: Install on Red Hat
         output: web
         subfolderitems:
-          - title: Configure RPM repository
+          - title: Introduction
             output: web
-            url: /apim/1.x/apim_installguide_rpm_repository.html
+            url: /apim/1.x/apim_installguide_redhat_introduction.html
           - title: Install API Management
             output: web
-            url: /apim/1.x/apim_installguide_stack_install_rpm.html
+            url: /apim/1.x/apim_installguide_redhat_stack.html
           - title: Install API Gateway component
             output: web
-            url: /apim/1.x/apim_installguide_gateway_install_rpm.html
+            url: /apim/1.x/apim_installguide_redhat_gateway.html
           - title: Install Management API component
             output: web
-            url: /apim/1.x/apim_installguide_management_api_install_rpm.html
+            url: /apim/1.x/apim_installguide_redhat_management_api.html
           - title: Install Portal component
             output: web
-            url: /apim/1.x/apim_installguide_portal_install_rpm.html
+            url: /apim/1.x/apim_installguide_redhat_portal.html
+      - title: Install on Amazon
+        output: web
+        subfolderitems:
+          - title: Introduction
+            output: web
+            url: /apim/1.x/apim_installguide_amazon_introduction.html
+          - title: Install API Management
+            output: web
+            url: /apim/1.x/apim_installguide_amazon_stack.html
+          - title: Install API Gateway component
+            output: web
+            url: /apim/1.x/apim_installguide_amazon_gateway.html
+          - title: Install Management API component
+            output: web
+            url: /apim/1.x/apim_installguide_amazon_management_api.html
+          - title: Install Portal component
+            output: web
+            url: /apim/1.x/apim_installguide_amazon_portal.html
 
-      - title: Docker
+      - title: Run on Docker
         output: web
         subfolderitems:
           - title: Images
