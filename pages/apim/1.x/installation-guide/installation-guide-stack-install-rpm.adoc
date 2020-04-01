@@ -1,0 +1,102 @@
+= Install API Management with RPM
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_stack_install_rpm.html
+:page-folder: apim/installation-guide/rpm/gateway
+:page-liquid:
+:page-layout: apim
+:page-description: Gravitee.io API Management - API Management - Installation with RPM
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+
+This section describes how-to install the full API Management stack, including all the components (API Gateway, Management API, Portal)
+and, optionally, install dependencies (MongoDB, Elasticsearch).
+
+If you are looking to install Gravitee.io API Management individually, please move to their respective documentation:
+
+* link:/apim/1.x/apim_installguide_gateway_install_rpm[Install API Gateway]
+* link:/apim/1.x/apim_installguide_management_api_install_rpm[Install Management API]
+* link:/apim/1.x/apim_installguide_portal_install_rpm[Install Portal]
+
+== Installing from the RPM repository
+
+IMPORTANT: We assume that you have configured your RPM repository by following link:/apim/1.x/apim_installguide_rpm_repository.html[this documentation].
+
+If you are looking to install all the Gravitee.io API Management components, you can do it with one of the following commands (depending on your system):
+
+[source,bash]
+----
+sudo yum install graviteeio-apim
+sudo dnf install graviteeio-apim
+sudo zypper install graviteeio-apim
+----
+
+== Download and install the RPM manually
+
+[source,bash]
+----
+wget --content-disposition https://packagecloud.io/graviteeio/rpms/packages/el/7/graviteeio-apim-{{ site.products.apim.version }}-0.noarch.rpm/download.rpm
+sudo rpm --install graviteeio-apim-{{ site.products.apim.version }}-0.noarch.rpm
+----
+
+== Installing with dependencies
+
+In a very similar way you did in first step, you can install the complete Gravitee.io API Management with dependencies
+thanks to a single command.
+
+=== Configure dependency repositories
+
+Before this, you may potentially have to add third-party repositories:
+
+==== MongoDB
+
+NOTE: Please have a look to the link:https://docs.mongodb.com/v3.6/administration/install-on-linux/[MongoDB Installation documentation] to get the right repository reference.
+
+[source,bash]
+----
+echo "[mongodb-org-3.6]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc" | sudo tee /etc/yum.repos.d/mongodb-org-3.6.repo > /dev/null
+
+sudo yum install -y mongodb-org
+sudo systemctl start mongod
+----
+
+==== Elasticsearch 7.x
+
+NOTE: Look at the link:https://www.elastic.co/guide/en/elasticsearch/reference/7.6/rpm.html#rpm-repo[Elasticsearch Installation documentation].
+
+[source,bash]
+----
+echo "[elasticsearch-7.x]
+name=Elasticsearch repository for 7.x packages
+baseurl=https://artifacts.elastic.co/packages/7s.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md" | sudo tee /etc/yum.repos.d/elasticsearch.repo > /dev/null
+sudo yum install -y elasticsearch
+sudo systemctl start elasticsearch
+----
+
+=== Install all components
+
+[source,bash]
+----
+sudo yum install graviteeio-apim-with-dependencies
+sudo dnf install graviteeio-apim-with-dependencies
+sudo zypper install graviteeio-apim-with-dependencies
+----
+
+== Running Gravitee.io API Management with `systemd`
+
+To run all Gravitee.io API Management components, run the following:
+
+[source,bash]
+----
+sudo systemctl daemon-reload
+sudo systemctl start graviteeio-apim-gateway graviteeio-apim-management-api graviteeio-apim-management-ui
+----

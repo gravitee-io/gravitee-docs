@@ -46,15 +46,53 @@ entries:
       url: /apim/1.x/apim_installguide.html
 
       subfolders:
+      - title: Install with .zip
+        output: web
+        subfolderitems:
+          - title: API Gateway
+            output: web
+            url: /apim/1.x/apim_installguide_gateway_install_zip.html
+          - title: Management API
+            output: web
+            url: /apim/1.x/apim_installguide_management_api_install_zip.html
+          - title: Portal
+            output: web
+            url: /apim/1.x/apim_installguide_portal_install_zip.html
+      - title: Install with RPM
+        output: web
+        subfolderitems:
+          - title: Configure RPM repository
+            output: web
+            url: /apim/1.x/apim_installguide_rpm_repository.html
+          - title: Install API Management
+            output: web
+            url: /apim/1.x/apim_installguide_stack_install_rpm.html
+          - title: Install API Gateway component
+            output: web
+            url: /apim/1.x/apim_installguide_gateway_install_rpm.html
+          - title: Install Management API component
+            output: web
+            url: /apim/1.x/apim_installguide_management_api_install_rpm.html
+          - title: Install Portal component
+            output: web
+            url: /apim/1.x/apim_installguide_portal_install_rpm.html
+
+      - title: Docker
+        output: web
+        subfolderitems:
+          - title: Images
+            output: web
+            url: /apim/1.x/apim_installguide_docker_images.html
+          - title: Compose
+            output: web
+            url: /apim/1.x/apim_installguide_docker_compose.html
+          - title: Customize
+            output: web
+            url: /apim/1.x/apim_installguide_docker_customize.html
+
       - title: API Gateway
         output: web
         subfolderitems:
-          - title: Install with .zip
-            output: web
-            url: /apim/1.x/apim_installguide_gateway_install_zip.html
-          - title: Install with RPM
-            output: web
-            url: /apim/1.x/apim_installguide_gateway_install_rpm.html
           - title: Configuration
             output: web
             url: /apim/1.x/apim_installguide_gateway_configuration.html
@@ -67,12 +105,6 @@ entries:
       - title: Management API
         output: web
         subfolderitems:
-          - title: Install with .zip
-            output: web
-            url: /apim/1.x/apim_installguide_management_api_install_zip.html
-          - title: Install with RPM
-            output: web
-            url: /apim/1.x/apim_installguide_management_api_install_rpm.html
           - title: Configuration
             output: web
             url: /apim/1.x/apim_installguide_management_api_configuration.html
@@ -91,12 +123,6 @@ entries:
       - title: Portal
         output: web
         subfolderitems:
-          - title: Install with .zip
-            output: web
-            url: /apim/1.x/apim_installguide_portal_install_zip.html
-          - title: Install with RPM
-            output: web
-            url: /apim/1.x/apim_installguide_portal_install_rpm.html
           - title: Configuration
             output: web
             url: /apim/1.x/apim_installguide_portal_configuration.html
@@ -148,20 +174,6 @@ entries:
     - title: Hybrid deployment
       output: web
       url: /apim/1.x/apim_installguide_hybrid_deployment.html
-
-      subfolders:
-      - title: Docker
-        output: web
-        subfolderitems:
-        - title: Images
-          output: web
-          url: /apim/1.x/apim_installguide_docker_images.html
-        - title: Compose
-          output: web
-          url: /apim/1.x/apim_installguide_docker_compose.html
-        - title: Customize
-          output: web
-          url: /apim/1.x/apim_installguide_docker_customize.html
     - title: Kubernetes
       output: web
       url: /apim/1.x/apim_installguide_kubernetes.html

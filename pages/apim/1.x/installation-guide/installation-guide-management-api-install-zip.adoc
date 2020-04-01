@@ -34,7 +34,7 @@ The binaries are available from http://gravitee.io/#downloads[Downloads page] or
 
 [source,bash]
 ----
-$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim.version }} -o gravitee-standalone-distribution-{{ site.products.apim.version }}.zip
+$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim.version }}.zip -o gravitee-standalone-distribution-{{ site.products.apim.version }}.zip
 ----
 
 Once file has been downloaded, you just have to unpack it in the right place
