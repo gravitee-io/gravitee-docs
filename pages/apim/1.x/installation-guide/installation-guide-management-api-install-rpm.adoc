@@ -1,32 +1,17 @@
 = Install Management API with RPM
 :page-sidebar: apim_1_x_sidebar
 :page-permalink: apim/1.x/apim_installguide_management_api_install_rpm.html
-:page-folder: apim/installation-guide/management-api
+:page-folder: apim/installation-guide/rpm/management-api
 :page-liquid:
 :page-layout: apim
 :page-description: Gravitee.io API Management - Management API - Installation with RPM
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-The RPM for Gravitee.io Management API can be downloaded from our link:#installing_from_the_rpm_repository[RPM repository].
-It can be used to install Gravitee.io Management API on any RPM-based system such as OpenSuSE, SLES, CentOS, Red Hat, and Oracle Enterprise.
-
-NOTE: RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Please see link:/apim/1.x/apim_installguide_management_api_install_zip.html[Install Gravitee.io Management API with .zip] instead.
-
 == Installing from the RPM repository
-Create a file called graviteeio.repo in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:
 
-[source,bash]
-----
-[graviteeio]
-name=graviteeio
-baseurl=https://packagecloud.io/graviteeio/rpms/el/7/$basearch
-gpgcheck=0
-enabled=1
-gpgkey=https://packagecloud.io/graviteeio/rpms/gpgkey
-autorefresh=1
-----
+IMPORTANT: We assume that you have configured your RPM repository by following link:/apim/1.x/apim_installguide_rpm_repository.html[this documentation].
 
-And your repository is ready for use. You can now install Gravitee.io Management API with one of the following commands:
+You can install Gravitee.io Management API with one of the following commands (depending on your system):
 
 [source,bash]
 ----
