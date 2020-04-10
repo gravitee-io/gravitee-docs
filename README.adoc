@@ -7,20 +7,17 @@ endif::[]
 
 == How to write documentation for GraviteeIO
 
+Our doc website is generated from AsciiDoc files. +
+You'll find these pages under the `/pages` directory.
+
 === Live Preview
 
-http://asciidoctor.org/docs/editing-asciidoc-with-live-preview/
-
-=== Mac OS Users
-
+We suggest you to use a live preview utility like the one available with jekyll.
 ```
-> gem install guard guard-shell guard
-> gem install guard-livereload
-> gem install asciidoctor
-
-> cd src/main/asciidoc
-
-> guard start
+> bundle exec jekyll serve
 ```
 
-Now you just have to add the [livereload extension](http://livereload.com/extensions/) for your preferred browser.
+Then, open http://127.0.0.1:4000/ to see your modifications.
+
+For contributions guidelines, please refer to CONTRIBUTING.adoc
+
