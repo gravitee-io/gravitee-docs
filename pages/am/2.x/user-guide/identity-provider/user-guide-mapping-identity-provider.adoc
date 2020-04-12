@@ -1,32 +1,55 @@
-= Role and user mapping
+= User and Role mapping
 :page-sidebar: am_2_x_sidebar
 :page-permalink: am/2.x/am_userguide_identity_provider_mapping.html
 :page-folder: am/user-guide
 :page-layout: am
 
-Attributes mapping let you bind Gravitee.io AM user profile attributes with your identity provider attributes.
-This allows you to get all necessary user information available to Gravitee.io AM clients.
+Attribute mapping lets you bind some Identity Provider attributes to a *Gravitee.io AM* _User Profile_.
 
-== User mappers
+That way, *Gravitee AM* Clients gets additional attributes, picked from your IdP (Identity Provider).
 
-Let's say you want the `telephoneNumber` of your authenticated LDAP user, you can do it by configuring your LDAP identity provider :
+These _User Profile_ attributes can then be retrieved either by calling the _UserInfo_ endpoint or, if you specified the `openid` scope, by parsing the claims in the `id_token`.
+
+
+== User mapper
+
+In this tab, one can add mappings between user attributes, returned by the IdP, with custom attributes that will be stored within the _User Profile_.
+
+By default, with he LDAP IdP, if you don't define any mapping then the following attributes are fetched:
+
+[width="50%",cols="6,4"]
+|===
+|LDAP attribute |OIDC attribute 
+
+|displayname |name
+|givenname|given_name
+|sn|family_name
+|mail|email
+|the username typed in the login form|preferred_username
+|===
+
+That last one is also the attribute used to lookup the user in the LDAP, as defined per the default pattern: `uid={0}`
+
+WARNING: As opposite, as soon as you start using the *User Mapper* feature, the default claims listed above won't appear in the _User Profile_. Instead, only declared mappings will occur.
+
+As an example, let's say a Client application wants to retrieve the `telephoneNumber` attribute present in the LDAP IdP, you can do it by configuring the IdP like so:
 
 . Go to http://GRAVITEEIO-AM-UI-HOST
 . From the homepage, go to your security domain's settings page, go to `Providers` section
 . From the security domain's providers page, select your LDAP identity provider and go to `User mappers` tab
-. Map your LDAP (raw) attribute to the user attribute
+. Map your LDAP (raw) attribute `telephoneNumber` to a new user attribute named `telephone_number`:
 
 image::am/2.x/graviteeio-am-userguide-idp-user-mappers.png[]
 
 [start=5]
-. Get the user profile information via the UserInfo Endpoint and you will see that the new user attribute is present
+. Get the _User Profile_ information via the UserInfo Endpoint and you will see that the new user attribute is present
 
 [source,bash,subs="verbatim"]
 ----
-curl -X GET http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/oidc/userinfo -H 'Authorization: Bearer :accesToken'
+curl -X GET http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/oidc/userinfo -H 'Authorization: Bearer :accessToken'
 ----
 
-If everything goes well, you should see the following response :
+If everything goes well, you should see the something like:
 
 [source]
 ----
@@ -42,28 +65,48 @@ Pragma: no-cache
 }
 ----
 
-The same principle applies for any identity providers.
+The same principle applies for any Identity Provider.
 
-== Role mappers and dynamic OAuth2 scopes
 
-Gravitee.io AM allows you to create roles and permissions for your users. You can map these roles with your identity provider users.
-We can imagine that you have a set of users that they belong to department organization groups inside your company.
-For example some developers of your organization belong to the LDAP `IT_DEVELOPERS_TEAM` group and you want to give them the `administrator` role for your applications.
 
-You can do it by configuring your LDAP identity provider :
+=== A few words about OIDC scopes and claims
+
+According to the https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims[OpenID Connect core specification^], using scopes such as `profile`, `phone`, `email` or `address` will retrieve sets of specific claims. +
+For example, using the `profile` scope with bring back those claims, if available: `name`, `family_name`, `given_name`, `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, `zoneinfo`, `locale`, and `updated_at`. +
+See their https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims[definitions here^].
+
+
+== Role mapper and dynamic OAuth2 scopes
+
+*Gravitee.io AM* allows you to create roles and permissions for your users. You can map these roles with your IdP's user attributes or groups. +
+
+Defining roles in *Gravitee AM* helps you to centralize Access Management for every Client part of a given _domain_.
+
+Also, when it comes to fine grained authorization management, it's a good practice to take advantage of OAuth _scopes_.
+
+The goal is to dynamically add scopes to `access_token`, depending on the role that were attributed to the user while authenticating.
+
+In the following example, let's imagine you want to map a role named `administrator` to people part of the `IT_DEVELOPERS_TEAM` LDAP group. +
+Once done, you want to dynamically add the `admin` scope to the `access_token`. Then, you can imagine that the Client will provide that scope when accessing an API via an API Manager. That latter will check for this scope before granting access to the upstream API. 
+
+And here we are, you've just configured fine grained authorization!
+
+Let's do that together: +
 
 . Go to http://GRAVITEEIO-AM-UI-HOST
-. From the homepage, go to your security domain's settings page, go to `Scopes` section
-. Click `(+)` button and create `admin` scope
-. Go to `Roles` section
-. Click (+) button and create `administrator` role and pick up the `admin` scope permission
-. Go to `Providers` section
-. From the security domain's providers page, select your LDAP identity provider and go to `Role mappers` tab
-. Set the user's roles configuration
+. From the homepage, go to your security domain's settings page, go to the `Scopes` section
+. Click the `(+)` button and create an `admin` scope
+. Go to the `Roles` section
+. Click the `(+)` button and create an `administrator` role. Select the `admin` scope permission
+. Go to the `Providers` section
+. From the security domain's providers page, select your LDAP Identity Provider and go to the `Role mappers` tab
+. Set the user's roles configuration:
 
 image::am/2.x/graviteeio-am-userguide-idp-role-mappers.png[]
 
 [start=7]
-. If you request for an access token, you will see that the scopes will be set with the user roles' permissions values (make sure you set the `Enhance scopes` option for your client).
+. When the Client requests the _Token_ endpoint, it will benefit of that new scope representing the user roles permissions values. Just make sure you enabled the _"Enhance scopes"_ option for your Client (OAuth tab).
 
-The same principle applies for any identity providers.
+image::am/2.x/graviteeio-am-user-guide-mapping-idp-enhance-scopes.png[]
+
+The same principle applies for any Identity Provider.
