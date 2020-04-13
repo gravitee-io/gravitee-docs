@@ -32,7 +32,8 @@ By default, with he LDAP IdP, if you don't define any mapping then the following
 
 That last one is also the attribute used to lookup the user in the LDAP, as defined per the default pattern: `uid={0}`
 
-WARNING: As opposite, as soon as you start using the *User Mapper* feature, the default claims listed above won't appear in the _User Profile_. Instead, only declared mappings will occur.
+WARNING: As opposite, as soon as you start using the *User Mapper* feature, the default claims listed above won't appear in the _User Profile_. Instead, only declared mappings will occur. +
+Same rule as soon as the Client start using scopes other than the single `openid`.
 
 As an example, let's say a Client application wants to retrieve the `telephoneNumber` attribute present in the LDAP IdP, you can do it by configuring the IdP like so:
 
