@@ -20,3 +20,8 @@ image::am/2.x/graviteeio-am-quickstart-tokens-custom-claims.png[]
 NOTE: The mapping here is using link:/apim_publisherguide_expression_language.html[Gravitee's Expression Language] to dynamically add custom data. You can also use raw values to add more static information.
 
 image::am/2.x/graviteeio-am-quickstart-tokens-custom-claims-info.png[]
+
+When you want to retrieve claims from the link:/am/2.x/am_quickstart_profile_information.html[User Profile^], use that form of Expression Language: +
+`{#context.attributes['user']['claims']['preferred_username']}`
+
+
