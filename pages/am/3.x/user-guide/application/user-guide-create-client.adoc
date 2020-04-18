@@ -1,0 +1,34 @@
+= Create an application
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_create_client.html
+:page-folder: am/user-guide
+:page-layout: am
+
+Applications are created for each security domain, to create an application, follow these steps:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's homepage and go to `Applications` section
+. Click `(+)` button and select your type of application and press `Next`
+. Fill out the form and press `Create`
+
+You can also create an application via the Gravitee.io AM API
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"name":"My App", "type": "SERVICE"}' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId/applications
+----
+
+== Application information
+
+image::am/current/graviteeio-am-userguide-client-settings.png[]
+
+After you have created the new application, you will be redirected to the application's `Overview` page that contains some documentation and code samples to help you start with the application configuration.
+
+== Test the application
+
+The fastest way to test your fresh created client is to request for an OAuth2 access token by following the link:/am_quickstart_register_app.html[Register your first application] tutorial.
+If you succeed to get an access token, your client is all set.

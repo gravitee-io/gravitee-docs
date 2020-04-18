@@ -1,0 +1,67 @@
+= Plugins
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_overview_plugins.html
+:page-folder: am/overview
+:page-toc: false
+:page-layout: am
+
+_Plugins_ are additional components that can be _plugged into_ the Gateway and / or the Management API.
+_Plugins_ can specialized component's behavior to exactly fit your needs and your technical constraints.
+
+When using Gravitee.io AM, you must be face to multiple types of _plugins_, in particular:
+
+[width="100%",cols="^3,^3,^10",options="header"]
+|===
+|Type|Components|Examples
+| <<gravitee-plugins-idp, Identity Providers>>|Management API/ Gateway|LDAP, Database, Social, ...
+| <<gravitee-plugins-policies, Policies>>|Management API / Gateway|Callout
+| <<gravitee-plugins-reporters, Reporters>>|Management API / Gateway|MongoDB
+| <<gravitee-plugins-repositories, Repositories>>|Management API / Gateway|MongoDB
+| <<gravitee-plugins-alerts, Alerts>>|Management API / Gateway|Vertx, ...
+|===
+
+[[gravitee-plugins-idp]]
+== Identity Providers
+Broker trust with external users providers, to authenticate and get information for your end-users.
+
+"Out of the box" identity providers are :
+
+* MongoDB
+* LDAP / Active Directory
+* OpenID Connect IdP (Azure AD, Google)
+* SAML 2.0 IdP
+
+[[gravitee-plugins-policies]]
+== Policies
+A *policy* is acting as a behavior to apply to the request and / or response handled by the _gateway_ and can be chained by a request policy chain or a response policy chain using a logical order.
+Policies are used by the extension points to guarantee a given business rule to be fulfilled during request processing.
+
+Good example for a policy is:
+
+* Call external web services during Login Flow (Policy HTTP Callout)
+
+[[gravitee-plugins-reporters]]
+== Reporters
+
+A *reporter* is used by gateway and management API instances to report many types of event:
+
+* Administration metrics : administrative tasks (CRUD on resources)
+* Authentication / Authorization metrics: (Sign-in activity, Sign-up activity)
+
+"Out of the box" reporters are :
+
+* MongoDB Reporter
+
+[[gravitee-plugins-repositories]]
+== Repositories
+Storage component for the platform configuration.
+
+"Out of the box" repositories are :
+
+* MongoDB Repository
+
+[[gravitee-plugins-alerts]]
+== Alerts
+
+An *alert* allows to send trigger or event to the Alert Engine which will be processed to send a notification with the configured plugin notifier.
+The configuration of the notifier is the responsibility of the trigger.

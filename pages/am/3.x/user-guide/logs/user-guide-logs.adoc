@@ -1,0 +1,9 @@
+= Logging
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_logs.html
+:page-folder: am/user-guide
+:page-layout: am
+
+Gravitee.io Access Management provides an Audit Trail feature to record a set of events which occur when users interact with Gravitee.io AM.
+
+Sign-in/Sign-off, User Management and all admin actions are stored in database or on remote systems (via plugins) and can be reviewed from the Portal UI or the Management API of Gravitee.io AM.

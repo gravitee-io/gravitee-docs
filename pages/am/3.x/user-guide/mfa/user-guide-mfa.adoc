@@ -1,0 +1,21 @@
+= Multi-factor Authentication
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_mfa.html
+:page-folder: am/user-guide
+:page-layout: am
+
+Multi-factor Authentication (MFA) provides a method to add an additional step during the login flow in order to enforce access control.
+This ensures that only valid users can access their accounts even if they credentials may have been compromised.
+
+To enable MFA, go to your `Security Domain > Multifactor Auth` and create a new MFA Factor (OTP for example).
+
+image::am/current/graviteeio-am-userguide-mfa-new-factor.png[]
+
+Next, go to your application and enable MFA by selecting an available factor.
+
+image::am/current/graviteeio-am-userguide-mfa-application-factor.png[]
+
+See the following sections for more details:
+
+* link:/am/current/am_userguide_mfa_factors.html[Multi-factor Authentication Factors]
+* link:/am/current/am_userguide_mfa_user_factors.html[Reset User's MFA]

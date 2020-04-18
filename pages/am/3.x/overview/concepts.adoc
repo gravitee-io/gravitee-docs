@@ -1,0 +1,41 @@
+= Concepts
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_overview_concepts.html
+:page-folder: am/overview
+:page-toc: false
+:page-layout: am
+
+[[gravitee-am-concepts-security-domain]]
+== Security Domain
+* Give you access to all the Gravitee.io AM resources such as applications, users, identity providers, etc ...
+* Expose authentication and authorization URLs
+* Gather analytics and reporting
+
+[[gravitee-am-concepts-application]]
+== Application
+* Can be any type of application such as :
+** Web Application (PHP, Java, Node, …)
+** Single App (Javascript)
+** Native App (iOS, Android)
+** Backend App (Job, CLI, …)
+* Applications use Gravitee.io AM to sign in and make requests to the Gateway Authorization Server
+* Applications can be used by end-users (B2C) or acts by itself (B2B)
+
+[[gravitee-am-concepts-idp]]
+== Identity Provider
+* Broker trust with external users providers such as :
+** LDAP / Active Directory
+** Database
+** Web services
+** Social providers
+** OpenID Connect providers
+** SAML v2 IDP
+** Custom …
+* Identity providers are used during Sign-in process to verify user credentials and retrieve profile information
+
+[[gravitee-am-concepts-extension-point]]
+== Extension Point
+* Extension Points allow you to extend the behavior of the Access Management Server by executing Policy on selected stages.
+* Extension Points are used to customize the authentication and authorization Flow
+** Add extra action after login form process
+** Add extra action before and after user consent process

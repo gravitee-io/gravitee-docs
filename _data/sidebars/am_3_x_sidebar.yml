@@ -1,0 +1,314 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  product: Access Management 3.x
+  folders:
+
+  - title: Overview
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /am/current/am_overview_introduction.html
+      type: homepage
+    - title: Why Gravitee.io ?
+      output: web
+      url: /am/current/am_overview_why.html
+    - title: Architecture
+      output: web
+      url: /am/current/am_overview_architecture.html
+    - title: Components
+      output: web
+      url: /am/current/am_overview_components.html
+    - title: Concepts
+      output: web
+      url: /am/current/am_overview_concepts.html
+    - title: Plugins
+      output: web
+      url: /am/current/am_overview_plugins.html
+
+  - title: QuickStart
+    output: web
+    folderitems:
+    - title: Register a new application
+      output: web
+      url: /am/current/am_quickstart_register_app.html
+    - title: Authenticate users with Identity Provider
+      output: web
+      url: /am/current/am_quickstart_authenticate_users.html
+    - title: Get user profile information
+      output: web
+      url: /am/current/am_quickstart_profile_information.html
+    - title: Secure your APIs
+      output: web
+      url: /am/current/am_quickstart_secure_apis.html
+    - title: Use your first Extension Point
+      output: web
+      url: /am/current/am_quickstart_use_policies.html
+    - title: Add Custom Claims to Tokens
+      output: web
+      url: /am/current/am_quickstart_tokens_custom_claims.html
+
+  - title: User Guide
+    output: web
+    folderitems:
+    - title: Overview
+      output: web
+      url: /am/current/am_userguide_overview.html
+      subfolders:
+      - title: Getting Started
+        output: web
+        subfolderitems:
+        - title: Sign in to the Management UI
+          output: web
+          url: /am/current/am_userguide_authentication.html
+      - title: Security domains
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_security_domains.html
+        - title: Create security domain
+          output: web
+          url: /am/current/am_userguide_create_domain.html
+      - title: Identity providers
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_identity_providers.html
+        - title: Create identity provider
+          output: web
+          url: /am/current/am_userguide_create_identity_provider.html
+        - title: User and Roles mapping
+          output: web
+          url: /am/current/am_userguide_identity_provider_mapping.html
+      - title: Applications
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_clients.html
+        - title: Create application
+          output: web
+          url: /am/current/am_userguide_create_client.html
+        - title: Dynamic Client Registration
+          output: web
+          url: /am/current/am_userguide_dynamic_client_registration.html
+      - title: Login Page
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_login_page.html
+        - title: Custom login page
+          output: web
+          url: /am/current/am_userguide_custom_login_page.html
+      - title: Multi-factor Authentication
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_mfa.html
+        - title: Factors
+          output: web
+          url: /am/current/am_userguide_mfa_factors.html
+        - title: Reset User's MFA
+          output: web
+          url: /am/current/am_userguide_mfa_user_factors.html
+      - title: Certificates
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_certificates.html
+        - title: Create certificate
+          output: web
+          url: /am/current/am_userguide_create_certificate.html
+      - title: User Management
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_user_management.html
+        - title: Users
+          output: web
+          url: /am/current/am_userguide_user_management_users.html
+        - title: Groups
+          output: web
+          url: /am/current/am_userguide_user_management_groups.html
+        - title: Roles
+          output: web
+          url: /am/current/am_userguide_user_management_roles.html
+        - title: User Registration
+          output: web
+          url: /am/current/am_userguide_user_management_registration.html
+        - title: Custom Forms
+          output: web
+          url: /am/current/am_userguide_user_management_forms.html
+        - title: SCIM 2.0
+          output: web
+          url: /am/current/am_userguide_user_management_scim.html
+        - title: User consent
+          output: web
+          url: /am/current/am_userguide_user_management_consent.html
+      - title: User Session Management
+        output: web
+        subfolderitems:
+        - title: Logout
+          output: web
+          url: /am/current/am_userguide_user_session_management_logout.html
+      - title: Audit Log
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_logs.html
+        - title: Audit Trail
+          output: web
+          url: /am/current/am_userguide_audit_log.html
+      - title: Extension Points
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_policies.html
+        - title: Extension points
+          output: web
+          url: /am/current/am_userguide_policies_extension_points.html
+
+  - title: Administration Guide
+    output: web
+    folderitems:
+    - title: Roles and Permissions
+      output: web
+      url: /am/current/am_adminguide_roles_and_permissions.html
+      type: homepage
+    - title: Users and Groups
+      output: web
+      url: /am/current/am_adminguide_users_and_groups.html
+
+  - title: Installation Guide
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /am/current/am_installguide_introduction.html
+      subfolders:
+        - title: Install with .zip
+          output: web
+          subfolderitems:
+            - title: Auth Gateway
+              output: web
+              url: /am/current/am_installguide_gateway_install_zip.html
+            - title: Management API
+              output: web
+              url: /am/current/am_installguide_management_api_install_zip.html
+            - title: Portal
+              output: web
+              url: /am/current/am_installguide_management_ui_install_zip.html
+        - title: Run on Docker
+          output: web
+          subfolderitems:
+            - title: Images
+              output: web
+              url: /am/current/am_installguide_docker_images.html
+            - title: Compose
+              output: web
+              url: /am/current/am_installguide_docker_compose.html
+        - title: Auth Gateway
+          output: web
+          subfolderitems:
+            - title: Configuration
+              output: web
+              url: /am/current/am_installguide_gateway_configuration.html
+            - title: Technical API
+              output: web
+              url: /am/current/am_installguide_gateway_technical_api.html
+            - title: Metrics
+              output: web
+              url: /am/current/am_installguide_gateway_metrics.html
+        - title: Management API
+          output: web
+          subfolderitems:
+            - title: Configuration
+              output: web
+              url: /am/current/am_installguide_management_api_configuration.html
+            - title: Technical API
+              output: web
+              url: /am/current/am_installguide_management_api_technical_api.html
+            - title: Metrics
+              output: web
+              url: /am/current/am_installguide_management_api_metrics.html
+        - title: Portal
+          output: web
+          subfolderitems:
+            - title: Configuration
+              output: web
+              url: /am/current/am_installguide_management_ui_configuration.html
+        - title: Repositories
+          output: web
+          subfolderitems:
+            - title: Overview
+              output: web
+              url: /am/current/am_installguide_repositories.html
+            - title: MongoDB
+              output: web
+              url: /am/current/am_installguide_repositories_mongodb.html
+    - title: Migration guide
+      output: web
+      url: /am/current/am_installguide_migration.html
+
+  - title: Breaking changes
+    output: web
+    folderitems:
+      - title: Overview
+        output: web
+        url: /am/current/am_breaking_changes.html
+        type: homepage
+      - title: Breaking changes in 3.0
+        output: web
+        url: /am/current/am_breaking_changes_3.0.html
+      - title: Breaking changes in 2.10
+        output: web
+        url: /am/current/am_breaking_changes_2.10.html
+      - title: Breaking changes in 2.8
+        output: web
+        url: /am/current/am_breaking_changes_2.8.html
+      - title: Breaking changes in 2.5
+        output: web
+        url: /am/current/am_breaking_changes_2.5.html
+      - title: Breaking changes in 2.0
+        output: web
+        url: /am/current/am_breaking_changes_2.0.html
+
+  - title: Management API
+    output: web
+    folderitems:
+      - title: Overview
+        output: web
+        url: /am/current/am_management_api_documentation.html
+
+  - title: APIs
+    output: web
+    folderitems:
+      - title: Overview
+        output: web
+        url: /am/current/am_protocols_overview.html
+      - title: OAuth 2.0
+        output: web
+        url: /am/current/am_protocols_oauth2_overview.html
+      - title: OpenID Connect
+        output: web
+        url: /am/current/am_protocols_oidc_overview.html
+      - title: SCIM 2.0
+        output: web
+        url: /am/current/am_protocols_scim_overview.html
+      - title: Users
+        output: web
+        url: /am/current/am_protocols_users_overview.html
+      - title: User Session
+        output: web
+        url: /am/current/am_protocols_session_overview.html
+
