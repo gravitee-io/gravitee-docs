@@ -1,0 +1,117 @@
+= Breaking changes in 3.0
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_3.0.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+NOTE: For all these breaking changes the Migration Guide can be found link:/am/current/am_installguide_migration.html[here].
+
+== Default Organization and default Environment
+
+Starting from version 3.0.0, new concepts such as `Organization` and `Environment` have been introduced.
+These concepts are part of our new "Multi-env (Cockipt)" feature which will be launched later this year.
+You will be able to :
+
+- Manage your environments from a single console
+- Associate a Portal to each of your environment
+- Be able to promote your security domains from an environment to an other
+- and so on ...
+
+Environments may be :
+
+- Technical: qual, pre-prod, prod
+- Target-oriented: private portal, partners portal, public portal
+- Business-oriented: marketing portal, financial portal, commercial portal
+
+To prepare this new feature, a `DEFAULT` organization and an `DEFAULT` environment have been created and bring some changes to the AM Management API base URL.
+In order to call the AM Management API, you should now use those URLs:
+
+----
+AM Management API 2.x
+
+  - http(s)://AM_MANAGEMENT_API/management/domains/**
+
+AM Management API 3.x
+
+  - http(s)://AM_MANAGEMENT_API/management/organizations/DEFAULT/environments/DEFAULT/domains/**
+----
+
+NOTE: If you are using the AM Management API directly (not via the Portal) please update your configuration.
+
+== Admin domain has been removed
+
+Gravitee.io Access Management 2.x came with a default link:/am/2.x/am_userguide_admin_domain.html[Admin security domain] to perform all the Gravitee.io AM management tasks.
+This domain has been removed and replaced by the new concept of `Organization` described above.
+
+If you were using the management api to administrate the `admin` domain you should now use this URL:
+
+----
+AM Management API 2.x
+
+  - http(s)://AM_MANAGEMENT_API/management/domains/admin/**
+
+AM Management API 3.x
+
+  - http(s)://AM_MANAGEMENT_API/management/organizations/DEFAULT/environments/DEFAULT/**
+----
+
+== Clients are deprecated
+
+Starting from v3.0.0 `Clients` concept has been replaced by `Applications` concept for several reasons :
+
+- Improve user experience and comprehension
+- Require less knowledge about security protocol (OAuth 2.0 / OIDC)
+- Simplify client management within Access Management
+- Align the “application” vision between API Management & Access Management
+- Apply best security options according to the type of application
+- Seamless integration with Dynamic Client Registration
+
+NOTE: All `/domains/:domainId/clients/**` routes have been deprecated and will be removed in a next version.
+See the new link:/am/current/management-api/index.html[AM v3 OpenAPI descriptor] for more information.
+
+----
+AM Management API 2.x
+
+  - http(s)://AM_MANAGEMENT_API/management/domains/:domainId/clients/**
+
+AM Management API 3.x
+
+  - http(s)://AM_MANAGEMENT_API/management/organization/DEFAULT/environment/DEFAULT/domains/:domainId/applications/**
+----
+
+== Portal ACLs and permissions
+
+Since the first version of Gravitee.io Access Management each administrative users of the portal could do everything with no restriction.
+Gravitee.io AM v3 allows you to manage what we call `Administrative roles` that can be used to grant access to specific areas of resources such as the platform, a security domain or an application.
+
+NOTE: To ensure a seamlessly migration to the v3 each current administrative users will have the `ORGANIZATION_OWNER` role.
+
+NOTE: Read more about roles and permissions thanks to our link:/am/current/am_adminguide_roles_and_permissions.html[Administration Guide].
+
+== Enforce Security
+
+=== CSRF
+
+NOTE: Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they’re currently authenticated.
+For more information please visit link:https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html[CSRF Prevention Cheat Sheet].
+
+In previous version only the main web forms (Login, Register, Reset password) were protected from CSRF attack.
+Starting from v3 all the remaining HTML pages have built-in CSRF protection.
+
+Note that the management portal is now protected against CSRF attacks too.
+
+WARNING: If you are using link:/am/current/am_userguide_user_management_forms.html[Custom forms], please make sure to add this HTML element `<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>` to your form content.
+
+=== Password policy
+
+Default password policy has been updated to fulfill OWASP recommendations.
+
+Starting from v3 user's password must follow these requirements :
+
+* 8 to 32 characters
+* no more than 2 consecutive equal characters
+* at least 1 special characters (@ & # ...)
+* at least 1 upper case character
+
+NOTE: You still have the possibility to define your own password policy to match your security needs.
+Have a look at the user.password.policy.pattern configuration property.

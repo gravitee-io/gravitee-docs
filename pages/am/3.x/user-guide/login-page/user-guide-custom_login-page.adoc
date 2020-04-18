@@ -1,0 +1,54 @@
+= Custom Login Page
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_custom_login_page.html
+:page-folder: am/user-guide
+:page-layout: am
+
+Login page is shared by all the applications and will be applied to all the users who want to log in to the security domain.
+To override the login page, you can do it at security domain level or for each application. To do so at application level, follow these steps :
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, select your application and go to the `Design` tab.
+. Select `Login` template
+. Write your own login html code and press `SAVE`
+
+image::am/current/graviteeio-am-userguide-custom-login-page.png[]
+
+NOTE: To go back to the default login, switch off the `Enable custom login form` press `SAVE`
+
+== Minimal login form
+
+To perform the login, your custom html code must contains some required elements
+
+[source,html]
+----
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Login custom</title>
+  </head>
+  <body>
+    <form th:action="@{login}" method="post">
+      <input type="text" name="username" required/>
+      <input type="password" name="password" required/>
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+      <input type="hidden" th:name="client_id" th:value="${param.client_id}"/>
+      <p th:if="${param.error}" class="error">
+        <span>Wrong user or password</span>
+      </p>
+      <button type="submit">login</button>
+      <a th:if="${allowForgotPassword}" th:href="@{forgotPassword(client_id=${param.client_id})}">Forgot Password ?</a>
+      <a th:if="${allowRegister}" th:href="@{register(client_id=${param.client_id})}">Register</a>
+    </form>
+  </body>
+</html>
+----
+
+[width="100%",cols="2,8",frame="topbot",options="header,footer"]
+|==========================
+|Parameters |Description
+|*action*   |Login action, must be set to `@{login}`
+|*username* |Username input field
+|*password* |Password input field
+|*CSRF*     |link:https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)[CSRF] token to prevent unauthorized commands
+|==========================

@@ -1,0 +1,45 @@
+= Users and Groups
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_adminguide_users_and_groups.html
+:page-folder: am/admin-guide
+:page-layout: am
+
+== Users
+
+When users authenticate to the portal they are listed in the `Users` section of the `Global Settings` menu.
+
+image::am/current/graviteeio-am-adminguide-users.png[]
+
+If you select a user, you have access to a detailed information about its account and will be able to manage its permissions and groups via the `Administrative roles` and `Groups` section.
+
+== Groups
+
+Groups represent users groups where you put members of the same team/partner and set their roles for an APPLICATION (see link:/am/current/am_adminguide_roles_and_permissions.html[Roles and Permissions] for details).
+Once a group is created, you can associate it to an application and members of this group will have access to this Application.
+
+Let use groups to create a `FOO Team` group where you can put all members of your FOO team.
+
+=== How to manage groups
+==== Create the `FOO Team` group
+
+. Go to the `Global Settings -> Groups` section
+. Click `(+)` button, fill out the form and press `CREATE`
+
+image::am/current/graviteeio-am-adminguide-new-group.png[]
+
+==== Configure members
+
+. Select the `FOO Team` group
+. Go to `Members` tab and add a user by clicking on the `+ Add members` button.
+
+image::am/current/graviteeio-am-adminguide-new-group-members.png[]
+
+==== Add the group to an application
+
+Go to the Application you want to modify and select the `Administrative roles` section.
+
+image::am/current/graviteeio-am-adminguide-application-group-members.png[]
+
+Now the members of the group section will have access to the Application with the group role permissions.
+
+NOTE: Direct user member permissions and group permissions are merged if it concerns the same user.

@@ -1,0 +1,17 @@
+= Installation Guide
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_introduction.html
+:page-folder: amm/installation-guide
+:page-layout: am
+
+As described before in the link:/am/current/am_overview_architecture.html[Gravitee.io AM architecture overview] page, Gravitee.io
+Access Management is splitted into three main components :
+
+* link:/am/current/am_installguide_gateway_install_zip.html[Auth Gateway]
+* link:/am/current/am_installguide_management_api_install_zip.html[Management API]
+* link:/am/current/am_installguide_management_ui_install_zip.html[Portal]
+
+The following section will guide you to prepare the environment and be ready to use Gravitee.io Access Management.
+
+NOTE: Installation guide provides information about how to install Gravitee.io components. For external parties like
+MongoDB and others, please have a look to their respective documentation.

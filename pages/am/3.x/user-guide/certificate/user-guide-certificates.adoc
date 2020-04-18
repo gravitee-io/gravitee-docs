@@ -1,0 +1,8 @@
+= Certificates
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_certificates.html
+:page-folder: am/user-guide
+:page-layout: am
+
+Cryptographic algorithms such as KeyStore (private/public key) used to sign using JSON-based data structures (JWT) tokens.
+Certificates are used as part of the OAuth 2.0 and OpenID Connect protocol to sign access, refresh and ID tokens and ensure the integrity of the tokens' payload.

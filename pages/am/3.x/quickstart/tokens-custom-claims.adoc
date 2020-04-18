@@ -1,0 +1,28 @@
+= Add Custom Claims to Tokens
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_quickstart_tokens_custom_claims.html
+:page-folder: am/quickstart
+:page-layout: am
+
+You can add custom claims to your Access Tokens or ID Tokens using the token custom claims configuration.
+
+. Go to http://GRAVITEEIO-AM-UI-HOST. (Default Administrator account is `admin/adminadmin`)
+. Select an application and go to `Settings` then `OAuth 2.0 / OIDC` section
+. At the bottom of the page, start configuring the custom claims and press `SAVE`
+
+image::am/current/graviteeio-am-quickstart-tokens-custom-claims.png[]
+
+[start=4]
+. You can now ask for your tokens to retrieve your custom claims
+
+NOTE: The mapping here is using the link:/apim_publisherguide_expression_language.html[Gravitee's Expression Language] to dynamically add custom data. You can also use raw values to add more static information.
+
+image::am/current/graviteeio-am-quickstart-tokens-custom-claims-info.png[]
+
+When you want to retrieve claims from the link:/am/current/am_quickstart_profile_information.html[User Profile^], use the following forms of the link:/apim_publisherguide_expression_language.html[Gravitee's Expression Language]: +
+`{#context.attributes['user']['claims']['preferred_username']}` for attributes under the "additionalInformation" dict +
+- or - +
+`{#context.attributes['user']['roles']}` for the roles attribute (array) +
+- or - +
+`{#context.attributes['user']['username']}` for the username attribute.
+

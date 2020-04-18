@@ -1,0 +1,27 @@
+= Breaking changes in 2.10
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_2.10.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+== JAR Manifest file has changed
+
+Starting from version 2.10.10, the Main-Class of the entry point of the runnable management and gateway application has changed due to typo error.
+
+----
+AM Management API
+
+  - <mainClass>io.gravitee.am.management.standalone.boostrap.Bootstrap</mainClass>
+  + <mainClass>io.gravitee.am.management.standalone.bootstrap.Bootstrap</mainClass>
+
+AM Gateway
+
+  - <mainClass>io.gravitee.am.gateway.boostrap.Bootstrap</mainClass>
+  + <mainClass>io.gravitee.am.gateway.bootstrap.Bootstrap</mainClass>
+----
+
+It could have an impact if you are using your own custom build/launch script with command like `java -jar gravitee-am-*-bootstrap.jar`.
+Be sure to test this scenario before going further in your production environment.
+
+NOTE: There is no impact if you rely on the built-in gravitee(.bat) script.
+

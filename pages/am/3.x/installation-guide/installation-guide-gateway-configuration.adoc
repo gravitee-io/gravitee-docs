@@ -1,0 +1,162 @@
+= Access Gateway - Configuration
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_gateway_configuration.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Configuration - Gateway
+:page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+include::partial/how-to-configure.adoc[leveloffset=+1]
+
+== HTTP Server
+
+HTTP server configuration.
+
+[source,yaml]
+----
+http:
+  port: 8092
+  idleTimeout: 0
+  tcpKeepAlive: true
+  compressionSupported: false
+  pool:
+    workers: 100
+  secured: false
+  ssl:
+    clientAuth: false
+    keystore:
+      path:
+      password:
+    truststore:
+      path:
+      password:
+----
+
+== Enable HTTPS
+
+First, you need to provide a keystore. If you don’t have one, you can generate it :
+
+[source,yaml]
+----
+keytool -genkey \
+  -alias test \
+  -keyalg RSA \
+  -keystore server-keystore.jks \
+  -keysize 2048 \
+  -validity 360 \
+  -dname CN=localhost \
+  -keypass secret \
+  -storepass secret
+----
+
+After that, you have to enable secure mode in your gravitee.yml :
+
+[source,yaml]
+----
+http:
+  port: 8092
+  idleTimeout: 0
+  tcpKeepAlive: true
+  compressionSupported: false
+  instances: 0
+  secured: true
+  ssl:
+    clientAuth: false
+    keystore:
+      path: /path/to/keystore.jks
+      password: secret
+    truststore:
+      path:
+      password:
+----
+
+== Email configuration
+
+----
+# SMTP configuration used to send mails
+email:
+  enabled: false
+  host: smtp.my.domain
+  subject: "[Gravitee.io] %s"
+  port: 587
+  from: noreply@my.domain
+  username: user@my.domain
+  password: password
+#  properties:
+#    auth: true
+#    starttls.enable: true
+#    ssl.trust: smtp.gmail.com
+
+# Mail templates
+#templates:
+#  path: ${gravitee.home}/templates
+----
+
+== Plugins repository
+
+Gravitee.io Access Gateway <<gravitee-plugins,plugins>> directory configuration.
+
+[source,yaml]
+----
+plugins:
+  path: ${gravitee.home}/plugins
+----
+
+== Management repository
+
+Management repository is used to store global configuration such as security domains, clients, tokens, users, ...
+This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:
+
+https://api.mongodb.com/java/3.0/?com/mongodb/MongoClientOptions.html
+
+[source,yaml]
+----
+management:
+  type: mongodb
+  mongodb:
+    dbname: ${ds.mongodb.dbname}
+    host: ${ds.mongodb.host}
+    port: ${ds.mongodb.port}
+#    username:
+#    password:
+#    connectionsPerHost: 0
+#    connectTimeout: 500
+#    maxWaitTime: 120000
+#    socketTimeout: 500
+#    socketKeepAlive: false
+#    maxConnectionLifeTime: 0
+#    maxConnectionIdleTime: 0
+#    serverSelectionTimeout: 0
+#    description: gravitee.io
+#    heartbeatFrequency: 10000
+#    minHeartbeatFrequency: 500
+#    heartbeatConnectTimeout: 1000
+#    heartbeatSocketTimeout: 20000
+#    localThreshold: 15
+#    minConnectionsPerHost: 0
+#    sslEnabled: false
+#    threadsAllowedToBlockForConnectionMultiplier: 5
+#    cursorFinalizerEnabled: true
+
+# Management repository: single MongoDB using URI
+# For more information about MongoDB configuration using URI, please have a look to:
+# - http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html
+#management:
+#  type: mongodb
+#  mongodb:
+#    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+
+# Management repository: clustered MongoDB
+#management:
+#  type: mongodb
+#  mongodb:
+#    servers:
+#      - host: mongo1
+#        port: 27017
+#      - host: mongo2
+#        port: 27017
+#    dbname: ${ds.mongodb.dbname}
+#    connectTimeout: 500
+#    socketTimeout: 250
+----

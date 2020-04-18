@@ -1,0 +1,23 @@
+= Roles
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_user_management_roles.html
+:page-folder: am/user-guide
+:page-layout: am
+
+Roles are used to specify system access to authorized users. Each role provides a set of permissions representing operations that user can do on specific services.
+
+== Create role
+
+Roles are created for each security domain, to create a role, follow these steps:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page, go to `Scopes` section
+. Click `(+)` button and create `admin` scope
+. Go to `Roles` section and click `(+)` button
+. Give your role a *name* and a *description* and press `SAVE`
+. You will be redirected to the created role's page
+. Pick up the `admin` scope permission and press `SAVE`
+
+== Use roles
+
+You can use roles for enhance access token's claims to limit operations scope of your protected services and APIs. See link:/am/current/am_quickstart_profile_information.html#custom_claims[Custom claims] tutorial for more information.

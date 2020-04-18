@@ -1,0 +1,72 @@
+= Install Portal with `.zip`
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_management_ui_install_zip.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Management UI - Installation with .zip
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+== System Requirements
+
+=== Browsers
+
+Access Management UI has been tested with the latest versions of Google Chrome, Firefox and Internet Explorer >= 10
+
+== Installing from the ZIP archive
+
+The binaries are available from https://download.gravitee.io/graviteeio-am/components/gravitee-am-webui/gravitee-am-webui-{{ site.products.am.version }}.zip.
+
+[source,bash]
+[subs="attributes"]
+$ curl -L https://download.gravitee.io/graviteeio-am/components/gravitee-am-webui/gravitee-am-webui-{{ site.products.am.version }}.zip -o gravitee-am-webui-{{ site.products.am.version }}.zip
+
+Once file has been downloaded, you just have to unpack it in the right place
+
+[source,bash]
+[subs="attributes"]
+$ unzip gravitee-am-webui-{{ site.products.am.version }}.zip
+
+=== Deploy
+
+The AM Management UI is a client-side Angular application and can be deployed on any HTTP server like https://httpd.apache.org/[Apache] or http://nginx.org/[Nginx].
+
+NOTE: The AM UI use HTML5 mode and requires server side rewrites to make it works. Here are examples with Apache and Nginx
+
+==== Apache
+
+----
+<VirtualHost *:80>
+    ServerName my-app
+
+    DocumentRoot /path/to/app
+
+    <Directory /path/to/app>
+        RewriteEngine on
+
+        # Don't rewrite files or directories
+        RewriteCond %{REQUEST_FILENAME} -f [OR]
+        RewriteCond %{REQUEST_FILENAME} -d
+        RewriteRule ^.*$ - [L]
+
+        # Rewrite everything else to index.html to allow html5 state links
+        RewriteRule ^ index.html [L]
+    </Directory>
+</VirtualHost>
+----
+
+==== Nginx
+
+----
+server {
+    server_name my-app;
+
+    index index.html;
+
+    root /path/to/app;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+----

@@ -1,0 +1,15 @@
+= Breaking changes in 2.5
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_2.5.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+== User consents
+
+Starting from version 2.5, User Consent Management has been developed to capture and manage consent.
+
+User Consent (known also as Scope Approval from Gravitee.io AM point of view) internal structure has changed to fulfill consent management requirements.
+
+It means that User Consent from 1.x/current version are now incompatible with the 2.5 version.
+
+NOTE: If you switch from 2.x to 2.5 with active user consents, your client applications should probably need to re-ask for consents from the end-user.
