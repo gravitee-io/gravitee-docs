@@ -33,12 +33,8 @@ analytics:
 #        type: jks               # required. also valid values are "pem", "pfx"
 #        path: path/to/jks         # only for only for jks / pkcs12
 #        password: <keystore pass> # only for only for jks / pkcs12
-#        certs:                  # only for pems
-#          - /path/to/cert1
-#          - /path/to/cert2
-#        keys:                   # only for pems
-#          - /path/to/key
-#          - /path/to/key2
+#        certs: 'path/to/cert'      # only for pems
+#        keys: 'path/to/key'        # only for pems
 ----
 
 === API Gateway configuration
@@ -58,20 +54,16 @@ reporters:
 #    settings:
 #      number_of_shards: 5
 #      number_of_replicas: 1
-#   pipeline:
-#     plugins:
-#       ingest: geoip
-#   ssl:                        # for https es connection
-#     keystore:
-#       type: jks               # required. also valid values are "pem", "pfx"
-#       path: path/to/jks         # only for only for jks / pkcs12
-#       password: <keystore pass> # only for only for jks / pkcs12
-#       certs:                  # only for pems
-#         - /path/to/cert1
-#         - /path/to/cert2
-#       keys:                   # only for pems
-#         - /path/to/key
-#         - /path/to/key2
+#    pipeline:
+#      plugins:
+#        ingest: geoip
+#    ssl:                        # for https es connection
+#      keystore:
+#        type: jks               # required. also valid values are "pem", "pfx"
+#        path: path/to/jks         # only for only for jks / pkcs12
+#        password: <keystore pass> # only for only for jks / pkcs12
+#        certs: 'path/to/cert'      # only for pems
+#        keys: 'path/to/key'        # only for pems
 ----
 
 == Index management with ES Curator
