@@ -1,8 +1,8 @@
 body{
-    font-family: "Fira Sans", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: "Fira Sans", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     color: #263238;
 }
 .summary {
@@ -19,24 +19,25 @@ h4 {color: #808080; }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     background-color: #248ec2;
-    color: white;
+    color: #1c1d1f;
 }
 
 .nav > li.active > a {
-    background-color: #455a64;
+    background-color: #86c3d0;
+    color: #1c1d1f;
 }
 
 .nav > li > a:hover {
-    background-color: #455a64;
+    background-color: #86c3d0;
 }
 
 div.navbar-collapse .dropdown-menu > li > a:hover {
-    background-color: #455a64;
+    background-color: #86c3d0;
 }
 
 .nav li.thirdlevel > a {
     background-color: #FAFAFA !important;
-    color: #455a64;
+    color: #86c3d0;
     font-weight: bold;
 }
 
@@ -47,12 +48,21 @@ a[data-toggle="tooltip"] {
 }
 
 .navbar-inverse {
-    background-color: #455a64 !important;
-    border-color: #37474f !important;
+    background-color: #fff !important;
+    border-color: #fff !important;
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-    color: #37474f;
+    color: #1c1d1f;
+}
+
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #1c1d1f;
+}
+
+.navbar-inverse .navbar-nav > .active {
+    border-bottom: 1px solid #1c1d1f;
+    border-radius: unset;
 }
 
 .navbar-inverse .navbar-nav > .active > a,
@@ -61,13 +71,19 @@ a[data-toggle="tooltip"] {
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: #37474f;
-    color: #ffffff;
+    background-color: #fff;
+    color: #1c1d1f;
+}
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus{
+    color: #1c1d1f;
 }
 
 /* not sure if using this ...*/
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    border-color: #455a64 !important;
+    border-color: #fff !important;
 }
 
 .btn-primary {
@@ -113,7 +129,6 @@ li.sidebarTitle {
 }
 
 #search-input {
-    background-color: #546e7a;
+    background-color: #eee;
     border: 0;
-    color: #cfd8dc;
 }
