@@ -1,0 +1,25 @@
+= Concepts
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_overview_concepts.html
+:page-folder: apim/overview
+:page-layout: apim3x
+
+[[gravitee-concepts-api]]
+== API
+*API* is the root concept defined and used by Gravitee.io. You can see it as a starting point to expose services through
+the gateway.
+
+[[gravitee-concepts-publisher]]
+== Publisher
+A *publisher* (also called *API publisher*) is one of the two concretes role defined into the platform.
+This role is used to represent someone able to declare an API and manage it.
+
+[[gravitee-concepts-consumer]]
+== Consumer
+A *consumer* (also called *API consumer*) is the role defined to consume an API.
+Consuming an API can only be done after subscribing to this API.
+
+[[gravitee-concepts-application]]
+== Application
+An *application* is an intermediate level between a <<gravitee-concepts-consumer, consumer>> and an
+<<gravitee-concepts-api, API>> and is used by the consumer to subscribe to that API before being able to consume it.

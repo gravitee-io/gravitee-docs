@@ -118,9 +118,12 @@ url: https://docs.gravitee.io
 
 products:
   apim:
-    version: 1.30.7
+    1x:
+      version: 1.30.10
+    3x:
+      version: 3.0.0
     ee:
-      version: 1.30.7
+      version: 1.30.10
   am:
     version: 2.10.12
     ee:

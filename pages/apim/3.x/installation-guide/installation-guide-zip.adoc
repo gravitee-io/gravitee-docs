@@ -1,0 +1,62 @@
+[[gravitee-installation-guide-zip]]
+
+== Zip archive
+
+=== Download
+First, you will need to download both the gateway and the management-api.
+
+* Gravitee Standalone Gateway:
+[subs="attributes"]
+{download_gateway_standalone_zip}[download]
+
+[source,bash]
+[subs="attributes"]
+$ curl -L {download_gateway_standalone_zip} -o gravitee-gateway-standalone-distribution-GRAVITEEIO-VERSION.zip
+
+* Gravitee Standalone Management API:
+[subs="attributes"]
+{download_management_standalone_zip}[download]
+
+[source,bash]
+[subs="attributes"]
+$ curl -L {download_management_standalone_zip} -o gravitee-management-api-standalone-distribution-GRAVITEEIO-VERSION.zip
+
+=== Unpack...
+Once files have been downloaded, you just have to unpack them in the right place.
+
+[source,bash]
+[subs="attributes"]
+$ unzip gravitee-gateway-standalone-distribution-GRAVITEEIO-VERSION.zip
+$ unzip gravitee-management-api-standalone-distribution-GRAVITEEIO-VERSION.zip
+
+=== ... and Run !
+
+==== Standalone Gateway
+You can simply start up the gateway as follow:
+
+[source,bash]
+[subs="attributes"]
+$ cd gravitee-standalone-GRAVITEEIO-VERSION
+$ ./bin/gravitee
+
+If everything goes well, you should this this kind of logs:
+
+[source,bash]
+09:53:05.233 [gravitee] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@5339bbad{HTTP/1.1,[http/1.1]}{0.0.0.0:8082}
+09:53:05.233 [gravitee] INFO  org.eclipse.jetty.server.Server - Started @1727ms
+09:53:05.234 [gravitee] INFO  i.g.g.standalone.node.DefaultNode - Gateway [MBP-de-David - Gravitee Standalone Gateway 1.0.0-SNAPSHOT revision#${buildNumber}] started in 71 ms.
+
+==== Standalone Management API
+In the same way as previously with the gateway, you can simply start up the gateway as follow:
+
+[source,bash]
+[subs="attributes"]
+$ cd gravitee-management-standalone-GRAVITEEIO-VERSION
+$ ./bin/gravitee
+
+If everything goes well, you should this this kind of logs:
+
+[source,bash]
+09:52:02.034 [gravitee] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@175f859e{HTTP/1.1}{0.0.0.0:8083}
+09:52:02.035 [gravitee] INFO  org.eclipse.jetty.server.Server - Started @4208ms
+09:52:02.035 [gravitee] INFO  i.g.m.standalone.node.ManagementNode - Gravitee Management [MBP-de-David - Gravitee Standalone Management 1.0.0-SNAPSHOT revision#${buildNumber}] started in 2313 ms.

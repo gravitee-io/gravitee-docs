@@ -3,7 +3,7 @@
 :page-permalink: apim/1.x/apim_installguide_amazon_introduction.html
 :page-folder: apim/installation-guide/amazon
 :page-liquid:
-:page-layout: apim
+:page-layout: apim1x
 :page-description: Gravitee.io API Management - Installation Guide - Amazon - Introduction
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
@@ -13,7 +13,7 @@ Use this tutorial to install Gravitee.io API Management on Amazon Linux using th
 
 === Gravitee.io API Management Version
 
-This tutorial installs Gravitee.io API Management {{ site.products.apim.version }}. To install a different version of
+This tutorial installs Gravitee.io API Management {{ site.products.apim.1x.version }}. To install a different version of
 Gravitee.io API Management, just replace the version with the one expected.
 
 == Install Gravitee.io API Management
