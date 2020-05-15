@@ -8,6 +8,9 @@
 {% elsif page.sidebar == "apim_1_x_sidebar" %}
 {% assign sidebar = site.data.sidebars.apim_1_x_sidebar.entries %}
 
+{% elsif page.sidebar == "apim_3_x_sidebar" %}
+{% assign sidebar = site.data.sidebars.apim_3_x_sidebar.entries %}
+
 {% elsif page.sidebar == "ae_sidebar" %}
 {% assign sidebar = site.data.sidebars.ae_sidebar.entries %}
 
@@ -16,11 +19,5 @@
 
 {% elsif page.sidebar == "ee_sidebar" %}
 {% assign sidebar = site.data.sidebars.ee_sidebar.entries %}
-
-{% elsif page.sidebar == "product2_sidebar" %}
-{% assign sidebar = site.data.sidebars.product2_sidebar.entries %}
-
-{% elsif page.sidebar == "mydoc_sidebar" %}
-{% assign sidebar = site.data.sidebars.mydoc_sidebar.entries %}
 
 {% endif %}

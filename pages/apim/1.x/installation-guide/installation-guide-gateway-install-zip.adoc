@@ -3,7 +3,7 @@
 :page-permalink: apim/1.x/apim_installguide_gateway_install_zip.html
 :page-folder: apim/installation-guide/gateway
 :page-liquid:
-:page-layout: apim
+:page-layout: apim1x
 :page-description: Gravitee.io API Management - Gateway - Installation with .zip
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
@@ -31,18 +31,18 @@ and Elasticsearch from https://www.elastic.co/downloads/elasticsearch[Elastic Do
 
 == Download and install the +.zip+ package
 
-Binaries are available from http://gravitee.io/#downloads[Downloads page] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim.version }}.zip[Download].
+Binaries are available from http://gravitee.io/#downloads[Downloads page] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim.1x.version }}.zip[Download].
 
 [source,bash]
 ----
-$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim.version }}.zip -o gravitee-standalone-distribution-{{ site.products.apim.version }}.zip
+$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim.1x.version }}.zip -o gravitee-standalone-distribution-{{ site.products.apim.1x.version }}.zip
 ----
 
 Once file has been downloaded, you just have to unpack it in the right place.
 
 [source,bash]
 ----
-$ unzip gravitee-standalone-distribution-{{ site.products.apim.version }}.zip
+$ unzip gravitee-standalone-distribution-{{ site.products.apim.1x.version }}.zip
 ----
 
 == Running API Gateway from the command line
@@ -51,7 +51,7 @@ API Gateway can be started from the command line as follows:
 
 [source,bash]
 ----
-$ cd graviteeio-gateway-{{ site.products.apim.version }}
+$ cd graviteeio-gateway-{{ site.products.apim.1x.version }}
 $ ./bin/gravitee
 ----
 
@@ -63,7 +63,7 @@ If everything goes well, you should see this log:
 [source,bash]
 [subs="attributes"]
 ...
-11:01:53.162 [gravitee] [] INFO  i.g.g.standalone.node.GatewayNode - Gravitee.io - Gateway id[2e05c0fa-8e48-4ddc-85c0-fa8e48bddc11] version[{{ site.products.apim.version }}] pid[24930] build[175] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 15837 ms.
+11:01:53.162 [gravitee] [] INFO  i.g.g.standalone.node.GatewayNode - Gravitee.io - Gateway id[2e05c0fa-8e48-4ddc-85c0-fa8e48bddc11] version[{{ site.products.apim.1x.version }}] pid[24930] build[175] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 15837 ms.
 ...
 
 == Checking that API Gateway is running

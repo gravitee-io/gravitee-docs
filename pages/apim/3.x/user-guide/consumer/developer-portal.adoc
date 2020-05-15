@@ -1,0 +1,15 @@
+= Portal
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_consumerguide_portal.html
+:page-folder: apim/user-guide/consumer
+:page-layout: apim3x
+
+Portal can be accessed even if you're not connected (anonymous user). But if you want to play with an API, a user account
+is required to subscribe to plans.
+
+Default view in portal shows all the API accessible to the authenticated user (or only _public_ API for anonymous user).
+
+What are the rules for API accessibility:
+
+* Public API
+* Private API: if user is a member of the API (user, owner, primary_owner)
