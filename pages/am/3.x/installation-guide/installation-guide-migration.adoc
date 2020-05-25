@@ -4,7 +4,7 @@
 :page-folder: am/installation-guide
 :page-layout: am
 
-NOTE: Files specified in this guide can be found at https://github.com/gravitee-io/graviteeio-access-management/tree/master/docs/scripts
+NOTE: Files specified in this guide can be found at https://github.com/gravitee-io/graviteeio-access-management/tree/master/docs/upgrades
 
 WARNING: If you plan to skip versions when you upgrade, ensure that you read the version-specific upgrade notes for each intermediate version. You may be required to perform manual actions as part of the upgrade.
 
@@ -13,6 +13,8 @@ WARNING: Be sure to run scripts on the correct database since `gravitee-am` is n
 == Upgrade to 3.0.0
 
 NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.0.html[Breaking changes in 3.0]
+
+WARNING: We highly recommend that you run the MongoDB database script before starting the Management API.
 
 === Repository
 
