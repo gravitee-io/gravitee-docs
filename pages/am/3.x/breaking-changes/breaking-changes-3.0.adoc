@@ -55,6 +55,8 @@ AM Management API 3.x
   - http(s)://AM_MANAGEMENT_API/management/organizations/DEFAULT/environments/DEFAULT/**
 ----
 
+NOTE: If you used to get a security token via the following URL `http(s)://AM_MANAGEMENT_API/admin/token` you now must call this endpoint `http(s)://AM_MANAGEMENT_API/management/auth/token`.
+
 == Clients are deprecated
 
 Starting from v3.0.0 `Clients` concept has been replaced by `Applications` concept for several reasons :

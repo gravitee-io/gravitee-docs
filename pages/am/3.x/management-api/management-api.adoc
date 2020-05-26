@@ -24,10 +24,10 @@ The token endpoint is used to obtain `AM Management API's token` by presenting u
 The following example, exchange default admin account credentials (admin/adminadmin) for a token.
 
 ```
-POST /admin/token HTTP/1.1
+POST http(s)://AM_MANAGEMENT_API/management/auth/token HTTP/1.1
 
 curl -X POST \
-  http://GRAVITEE_AM_MGT_API_HOST/admin/token \
+  http(s)://AM_MANAGEMENT_API/management/auth/token \
   -H 'authorization: Basic base64(admin:adminadmin)' \
 
 
@@ -49,15 +49,15 @@ The authorization endpoint is used to interact with the end-user to obtain `AM M
 The user will be redirect to the login page of the AM Access Management and process authentication to get token via an HTTP cookie.
 
 ```
-GET /admin/authorize?redirect_uri=http://callback-app HTTP/1.1
+GET http(s)://AM_MANAGEMENT_API/management/auth/authorize?redirect_uri=http://callback-app HTTP/1.1
 
-curl http://GRAVITEE_AM_MGT_API_HOST/admin/authorize?redirect_uri=http://callback-app
+curl http(s)://AM_MANAGEMENT_API/management/auth/authorize?redirect_uri=http://callback-app
 
   HTTP/1.1 302 Found
-  Location: http://GRAVITEE_AM_MGT_API_HOST/admin/login
+  Location: http(s)://AM_MANAGEMENT_API/management/auth/login
 
 
-POST /admin/login
+POST http(s)://AM_MANAGEMENT_API/management/auth/login
 
   Set-Cookie: Authorization="Bearer token"
   HTTP/1.1 302 Found
