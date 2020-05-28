@@ -71,7 +71,7 @@ You can test that your AM Gateway node is running by sending an HTTP request to 
 $ curl -X GET http://localhost:8092/
 ----
 
-which should give you an empty 404 response (no context-path found)
+which should give you an empty 404 response (No security domain matches the request URI.)
 
 == Running as a daemon
 
