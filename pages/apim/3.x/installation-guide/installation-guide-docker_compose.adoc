@@ -46,7 +46,7 @@ When all components are started, you can do a quick test to see if everything is
 |Must return 404 status code, with a `No context-path matches the request URI` payload.
 
 |Management API
-|http://localhost:8083/management/apis/
+|http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/apis
 |Must return a 200 status code, with a `[]` payload.
 
 |Management UI
