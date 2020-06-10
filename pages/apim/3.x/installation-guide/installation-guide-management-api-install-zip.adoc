@@ -50,7 +50,7 @@ Management API can be started from the command line as follows:
 
 [source,bash]
 ----
-$ cd graviteeio-management-api-{{ site.products.apim.3x.version }}
+$ cd graviteeio-rest-api-{{ site.products.apim.3x.version }}
 $ ./bin/gravitee
 ----
 
