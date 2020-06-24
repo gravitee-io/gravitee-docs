@@ -213,7 +213,7 @@ Here's the list of email templates :
 |apiMember.html                 |New API member notification.                   |_username_, *api*, *user*
 |applicationMember.html         |New application member notification.           |_username_, *application*, *user*
 |subscriptionApproved.html      |API subscription approved notification.        |*owner*, *api*, *plan*, *subscription*
-|subscriptionReceived.html      |API subscription received notification.        |*owner*, *api*, *plan*, *application*, *subscription*, subscriptionUrl
+|subscriptionReceived.html      |API subscription received notification.        |*owner*, *api*, *plan*, *application*, *subscription*, subscriptionsUrl
 |subscriptionRejected.html      |API subscription rejected notification.        |*owner*, *api*, *plan*, *subscription*
 |userRegistration.html          |User registration notification.                |_username_, registrationUrl, *user*
 |supportTicket.html             |Support ticket creation.                       |*api*, *application*, *user*, content
