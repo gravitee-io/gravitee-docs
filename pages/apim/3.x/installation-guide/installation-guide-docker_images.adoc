@@ -129,7 +129,7 @@ So you have to override `PORTAL_API_URL` to specify where the management-api is 
 ....
 $ docker run \
         --publish 80:80 \
-        --env MGMT_API_URL=http://localhost:81/management/ \
+        --env PORTAL_API_URL=http://localhost:81/portal/environments/DEFAULT \
         --name portal-ui \
         --detach  \
         graviteeio/apim-portal-ui:latest
