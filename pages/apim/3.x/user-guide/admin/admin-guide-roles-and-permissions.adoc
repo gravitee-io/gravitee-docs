@@ -1,3 +1,5 @@
+[[gravitee-admin-guide-roles-and-permissions]]
+= Roles and Permissions
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_adminguide_roles_and_permissions.html
 :page-folder: apim/user-guide/admin
@@ -5,24 +7,24 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
-[[gravitee-admin-guide]]
-= Roles and Permissions
-
 Gravitee.io APIM allows you to create custom user roles to fit your needs.
-A role is a group of permissions and it has a scope.
-Roles defines what you can do with the UI and also with the REST API.
+A role is a group of permissions and has a scope.
+Roles define what you can do with the UI and also with the REST API.
 
-Let begin with some vocabulary.
+Before defining some key concepts, please have a look at the new link:/apim/3.x/apim_adminguide_organizations_and_environments.html[*Gravitee.io Platform* design].
 
 == Glossary
 === Scope
-When you log in Gravitee.io APIM, you are redirecting to the portal part of the webui.
-What you can do on those screens are driven by your role for the scope `PORTAL`.
+As described in the [Organizations and Environments] page, an environment is barely equivalent to what you can find in Gravitee.io Portal.
+To be more precise,the *Environment* scope gathers all actions that can be done related to this concept, from the APIM Portal as well as the APIM Console.
+For instance:
+ * APIs management is possible in APIM Console for API Publishers
+ * Applications management is possible in both APIM Console and APIM Portal.
+ * APIs ratings is possible in APIM Portal for API Consumers.
 
-If you select an element on your user menu, you are redirected to the management part of the webui.
-What you can do on those screens are driven by your role for the scope `MANAGEMENT`.
+The *Organization* scope concerns (obviously) all that is related to the organization: i.e. users, roles, ... Theses action are only available in APIM Console.
 
-*A user can only have one `MANAGEMENT` role and one `PORTAL` role.*
+*A user can more than one `ORGANIZATION` role and more than one `ENVIRONMENT` role per environment.*
 
 Scopes `API` and `APPLICATION` are slightly different.
 
@@ -40,13 +42,13 @@ Some roles are specials. The are tagged as `System` or `Default`.
 
 ==== System Role
 A System Role is a read-only role (i.e. you cannot change permissions) needs by Gravitee.io.
-It's the `ADMIN` role scoped `PORTAL` and `MANAGEMENT`, and the `PRIMARY_OWNER` role scoped `API` and `APPLICATION`.
+It's the `ADMIN` role scoped `ENVIRONMENT` and `ORGANIZATION`, and the `PRIMARY_OWNER` role scoped `API` and `APPLICATION`.
 They give user all permissions.
 
 ==== Default Role
 A Default Role is a role used by Gravitee.io when a role is not specified.
-For example, the default `PORTAL` and `MANAGEMENT` role is set to a new registered user.
-This why is a role with the lower permissions.
+For example, the default `ENVIRONMENT` and `ORGANIZATION` roles are set to a new registered user.
+This is a role with the lower permissions.
 
 You can change the default on each scope.
 
@@ -56,29 +58,7 @@ A permission a list of actions allowed on a resource. The actions are `Create`, 
 Here is the list of permissions by scope
 
 
-.Permissions scoped `PORTAL`
-[cols="1,3"]
-|===
-|Name |Description
-
-| METADATA
-| Manage portal metadatas.
-
-| DOCUMENTATION
-| Manage portal configuration.
-
-| VIEW
-| Manage views.
-
-| TOP_APIS
-| Manage the top apis.
-
-| SETTINGS
-| Manage the portal settings.
-
-|===
-
-.Permissions scoped `MANAGEMENT`
+.Permissions scoped `ENVIRONMENT`
 [cols="1,3"]
 |===
 |Name |Description
@@ -99,9 +79,6 @@ Here is the list of permissions by scope
 | Manage APIs in general. This means that the `CREATE` action is used to know if you're allowed to create an API or not,
 and the `READ` permission to allow you to requests policies list and resources list.
 
-| ROLE
-| Manage Roles.
-
 | APPLICATION
 | Manage Applications in general. `CREATE` to allow a user to create an application, `READ` to allow a user to list applications.
 
@@ -114,8 +91,66 @@ and the `READ` permission to allow you to requests policies list and resources l
 | NOTIFICATION
 | Manage the global notifications.
 
+| MESSAGE
+| Manage messaging.
+
+| DICTIONARY
+| Manage environment dictionaries.
+
+| ALERT
+| Manage environment alerting.
+
+| ENTRYPOINT
+| Manage environment entrypoint configuration.
+
+| SETTINGS
+| Manage the environment settings.
+
+| DASHBOARD
+| Manage environment dashboards.
+
+| QUALITY_RULE
+| Manage environment quality rules.
+
+| METADATA
+| Manage portal metadatas.
+
+| DOCUMENTATION
+| Manage portal documentation.
+
+| CATEGORY
+| Manage categories.
+
+| TOP_APIS
+| Manage the top apis.
+
+| API_HEADERS
+| Manage environment api headers.
+
+| IDENTITY_PROVIDER
+| Manage Identity Providers for authentication.
+
+| CLIENT_REGISTRATION_PROVIDER
+| Manage environment client registration configuration.
+
+| THEME
+| Manage portal theme
+
+|===
+
+.Permissions scoped `ORGANIZATION`
+[cols="1,3"]
+|===
+|Name |Description
+
 | USER
 | Manage Users.
+
+| ENVIRONMENT
+| Manage Environments.
+
+| ROLE
+| Manage Roles.
 
 |===
 
@@ -160,17 +195,36 @@ and the `READ` permission to allow you to requests policies list and resources l
  paths,
  ...
 
-| AUDIT
-| Manage API audit. Currently, only the `READ` permission is used.
-
 | RATING
 | Manage API rating.
 
 | RATING_ANSWERS
 | Manage API rating answers.
 
+| AUDIT
+| Manage API audit. Currently, only the `READ` permission is used.
+
+| DISCOVERY
+| Manage services discovery.
+
 | NOTIFICATION
 | Manage the API notifications.
+
+| MESSAGE
+| Manage messaging.
+
+| ALERT
+| Manage API alerting.
+
+| RESPONSE_TEMPLATES
+| Manage API response templates.
+
+| REVIEWS
+| Manage API reviews.
+
+| QUALITY_RULE
+| Manage API quality rules.
+
 
 |===
 
@@ -197,6 +251,9 @@ and the `READ` permission to allow you to requests policies list and resources l
 | NOTIFICATION
 | Manage the Application notifications.
 
+| ALERT
+| Manage Application alerting.
+
 |===
 
 
@@ -204,7 +261,7 @@ and the `READ` permission to allow you to requests policies list and resources l
 Let say that we want to create a writer role which allow a user to create documentation on APIs.
 
 === Create the `WRITER` role
-To do that, click on the (+) icon in the table header and fill a the name and the description of the new role
+To do that, click `ADD A NEW ROLE` button in the `Settings > Roles` menu
 
 .Create
 image::apim/3.x/adminguide/newrole-create.png[Gravitee.io - Create a New Role]

@@ -148,7 +148,7 @@ automatically created. These attributes are:
 ^.^|X (for no api-key plan)
 |===
 
-Also, some policies (like the <<apim_policies_oauth2.adoc#attributes, OAuth2 policy>>)
+Also, some policies (like the link:/apim/3.x/apim_policies_oauth2.html#attributes[OAuth2 policy])
 are registering some other attributes in the context. Please check the
 documentation of the policies you are using to be aware of them.
 

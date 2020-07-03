@@ -36,7 +36,7 @@ We provide a complete set of images.
 === Running AM manually
 You can launch a complete environment using our ready-to-use docker-compose file. It includes Gravitee.io Access Management + MongoDB.
 
-[source, shell]
+[source,shell]
 ....
 # Download required Docker Compose files
 $ mkdir -p config
@@ -70,14 +70,14 @@ Once done, you're now ready to play with Gravitee.io Access Management, so let's
 
 If you are impatient to play with Gravitee.io Access Management (something we can understand!), you can also run the following command line:
 
-[source, shell]
+[source,shell]
 ....
 $ curl -L http://bit.ly/graviteeio-am | bash
 ....
 
 NOTE: You can change default http port (80), by passing -s <port> argument to the curl command.
 
-[source, shell]
+[source,shell]
 ....
 $ curl -L http://bit.ly/graviteeio-am | bash -s 8080
 ....

@@ -8,7 +8,7 @@ node() {
 
         stage("Jekyll Build") {
             sh "docker build -t gravitee.io/jekyll -f Dockerfile-build ."
-            sh "docker run --rm -v '${env.WORKSPACE}:/src' gravitee.io/jekyll build"
+            sh "docker run --rm -v '${env.WORKSPACE}:/src' -e RUBYOPT=-KU gravitee.io/jekyll build"
         }
 
         stage("Docker Build & Push") {

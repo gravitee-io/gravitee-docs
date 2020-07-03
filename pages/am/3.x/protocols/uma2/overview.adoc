@@ -321,7 +321,7 @@ NOTE: The `ticket` property in the response is the permission ticket, which will
 
 ==== Get the Requesting Party Token (RPT)
 
-1. Log in the requesting party
+. Log in the requesting party
 
 In order to get a Requesting Party Token, the requesting party must be authenticated.
 
@@ -351,7 +351,7 @@ NOTE: `Client-Client-ID` and `Client-Client-Secret` can be found in your client 
 NOTE: The `id_token` will be use to prove the requesting party identity and authentication state (known as claim token).
 
 [start=2]
-2. Request for a Requesting Party Token (RPT)
+. Request for a Requesting Party Token (RPT)
 
 The requesting party makes a request using the permission ticket and the claim token (the id_token) previously acquired, to get a Requesting Party Token (RPT).
 

@@ -7,7 +7,7 @@
 _Plugins_ are additional components that can be _plugged into_ the Gateway and / or the Management API.
 _Plugins_ can specialized component's behavior to exactly fit your needs and your technical constraints.
 
-They follow a given directory structure convention, look at the <<apim_devguide_plugins.adoc, Developer Guide>>
+They follow a given directory structure convention, look at the link:/apim/3.x/apim_devguide_plugins.html[Plugins Developer Guide]
 to have more information about it.
 
 When using Gravitee.io, you must be face to multiple types of _plugins_, in particular:
@@ -39,11 +39,11 @@ Policy can be treated like a _proxy controller_ by guaranteeing if a given busin
 
 Good examples for a policy are:
 
-* Authorization using an API key (see the <<apim_policies_apikey, api-key policy>>)
+* Authorization using an API key (see the link:/apim/3.x/apim_policies_apikey.html[api-key policy])
 * Applying header/query params transformations
 * Applying rate limiting or quota to avoid API flooding.
 
-NOTE: Want to know how to create, use, and deploy a custom policy? Check out the <<apim_devguide_policies.adoc, Developer Guide>>!
+NOTE: Want to know how to create, use, and deploy a custom policy? Check out the link:/apim/3.x/apim_devguide_policies.html[Policies Developer Guide]!
 
 [[gravitee-plugins-reporters]]
 == Reporters
@@ -60,12 +60,12 @@ A *reporter* is used by gateway instance to report many types of event:
 * File Reporter
 
 NOTE: Like any other plugin you can create, use, and deploy a custom reporter thanks to the
-<<apim_devguide_plugins.adoc, Developer Guide>>!
+link:/apim/3.x/apim_devguide_plugins.html[Plugins Developer Guide]!
 
 [[gravitee-plugins-repositories]]
 == Repositories
 Pluggable storage component for APIs' configurations, policies configurations, analytics and so on.
-You can find more information by having a look to the <<gravitee-management-api-repository, Management API : Repository>> section.
+You can find more information by having a look to the link:/apim/3.x/apim_installguide_repositories.html[Management API : Repository] page.
 
 [[gravitee-plugins-resources]]
 == Resources

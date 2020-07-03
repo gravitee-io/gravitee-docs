@@ -1,0 +1,34 @@
+[[gravitee-installation-portal-configuration]]
+= Portal UI configuration
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installguide_portal_ui_configuration.html
+:page-folder: apim/installation-guide/portal-ui
+:page-description: Gravitee.io API Management - Configuration - Portal
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim3x
+
+== Requirements
+The only mandatory value in the `config.json` file is:
+
+[source,json]
+----
+{
+  "baseURL": "gravitee_portal_api_url"
+}
+----
+
+It describes where the portal API is, to be able to request it.
+
+== Default configuration
+
+[source,json]
+----
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-portal-webui/master/src/assets/config.json[]
+----
+
+== Theme
+
+You have the possibility to change the default theme of Gravitee with your own custom theme.
+For that, you can manage the theme from the Management UI (Settings > Theme)
+
+image::apim/3.x/installation/portal-ui/graviteeio-portal-configuration-theme.png[]

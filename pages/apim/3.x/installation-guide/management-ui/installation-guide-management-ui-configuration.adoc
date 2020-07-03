@@ -1,0 +1,135 @@
+[[gravitee-installation-management-ui-configuration]]
+= Management UI configuration
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installguide_management_ui_configuration.html
+:page-folder: apim/installation-guide/management-ui
+:page-description: Gravitee.io API Management - Configuration - Management UI
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim3x
+
+== Configuration
+There are 2 ways to configure your web UI :
+
+ - with a file named `constants.json`
+ - with the values stored in the management repository
+
+Those two ways can work together.
+The config file override the repository configuration.
+For example, you can centralize all your configuration with the repository and override the `portal.entrypoint` with the `constants.json` file to adapt values to different datacenters.
+
+
+The only mandatory values in the `constants.json` file is`:
+[source,json]
+----
+{
+  "baseURL": "gravitee_management_api_url"
+}
+----
+
+It describes where the management API is, to be able to request it.
+
+== Default configuration
+
+[source,json]
+----
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-webui/master/constants.json[]
+----
+
+== Endpoint
+
+To retrieve the management UI configuration stored in repository:
+`GET /management/organizations/DEFAULT/environments/DEFAULT/portal`
+
+To update this configuration : `POST /management/organizations/DEFAULT/environments/DEFAULT/portal`
+
+__You have to provide a full json in case of update. Otherwise, this will store default values.__
+
+== JSON format
+
+[source,json]
+----
+{
+  "baseURL": "gravitee_management_api_url",
+  "company" : {
+    "name" : "Gravitee.io"
+  },
+  "management" : {
+    "title" : "Gravitee.io Management"
+  },
+  "portal" : {
+    "title" : "Gravitee.io Portal",
+    "entrypoint" : "https://api.company.com",
+    "apikeyHeader" : "X-Gravitee-Api-Key",
+    "support" : {
+      "enabled" : true
+    },
+    "rating" : {
+      "enabled" : false
+    },
+    "userCreation" : {
+      "enabled" : true
+    },
+    "apis" : {
+      "tilesMode" : {
+        "enabled" : true
+      }
+    },
+    "analytics" : {
+      "enabled" : true,
+      "trackingId" : "GA_TRACKING_ID"
+    },
+    "dashboard" : {
+      "widgets": [ "geo_country", "geo_city" ]
+    }
+  },
+  "authentication" : {
+    "forceLogin" : {
+      "enabled" : false
+    },
+    "localLogin" : {
+      "enabled" : true
+    },
+    "google" : {
+      "clientId" : "googleplus_clientid"
+    },
+    "github" : {
+      "clientId" : "github_clientId"
+    },
+    "oauth2" : {
+      "clientId" : "oauth2_clientId",
+      "name" : "My OAuth2 server",
+      "color" : "#0076b4",
+      "authorizationEndpoint" : "https://oauth2_authorization_server/authorize",
+      "userLogoutEndpoint" : "https://oauth2_authorization_server/logout",
+      "scope" : [ "profile", "admin" ]
+    }
+  },
+  "scheduler" : {
+    "tasks" : 10,
+    "notifications" : 10
+  },
+  "documentation" : {
+    "url" : "https://docs.gravitee.io"
+  },
+  "theme" : {
+    "logo" : "themes/assets/GRAVITEE_LOGO1-01.png",
+    "loader" : "assets/gravitee_logo_anim.gif"
+  }
+}
+----
+
+== Logo & Loader
+
+You can also change the logo and the loader.
+For that, edit constants.json and change the value of :
+
+. `theme.logo` to "themes/assets/your_logo.png".
+. `theme.loader` to "assets/your_loader.gif".
+
+[NOTE]
+====
+These parameters can be modified in the APIM Console Settings > Management > Theme
+
+image::apim/3.x/installation/management-ui/graviteeio-installation-management-ui-settings.png[]
+
+====

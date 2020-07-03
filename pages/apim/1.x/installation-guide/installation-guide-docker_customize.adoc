@@ -22,7 +22,7 @@ Sometimes, you may need to override the default setup by providing a custom plug
 
 Here is a short example on how you can achieve this for the Gravitee.io API Gateway:
 
-[source, shell]
+[source,shell]
 ....
 $ docker run  \
         --publish 8082:8082  \

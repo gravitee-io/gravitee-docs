@@ -22,7 +22,7 @@ This latest is including Gravitee.io API Management + MongoDB + Elasticsearch.
 
 WARNING: Before running the commands below, make sure you have the minimum vm.max_map_count property set in order to run Elasticsearch properly. https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html[Click here] to see how to check the current value and update if necessary.
 
-[source, shell]
+[source,shell]
 ....
 # Download docker-compose file
 $ curl -L https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/1.x/docker-compose.yml -o "docker-compose.yml"

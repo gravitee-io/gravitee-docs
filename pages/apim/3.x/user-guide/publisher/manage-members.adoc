@@ -26,3 +26,35 @@ By default, Gravitee.io is defining three roles for membership:
 .^| A user is a person who can access the API and subscribe to it through a plan.
 
 |===
+
+**To manage members : **
+
+NOTE: Only users with correct role permission can manage application's members, see link:/apim/3.x/apim_adminguide_roles_and_permissions.html[roles and permissions]
+
+. Login to the Gravitee.io APIM Console
+. Click `APIs` in the left menu
+. From the `APIs` screen, select your API and click `Portal > Members` section
+
+image::apim/3.x/api-publisher-guide/members/manage-members.png[Gravitee.io - manage members]
+
+== Add and remove users
+To add new users:
+
+. Click (+) button in the bottom right
+. Search user with the form and select them.
+
+image::apim/3.x/api-publisher-guide/members/manage-members-add.png[Gravitee.io - add member,300]
+
+You can remove user by clicking on the trash icon.
+
+image::apim/3.x/api-publisher-guide/members/manage-members-remove.png[Gravitee.io - remove member]
+
+
+== Transfer ownership
+You can also transfer ownership to another user, that can be useful when the current primary owner leave the project.
+
+. Click `Portal > Transfer ownership`
+. Choose the new Primary Owner
+. Choose the future role of the current Primary Owner
+
+image::apim/3.x/api-publisher-guide/members/manage-members-transfer-ownership.png[Gravitee.io - transfer ownership]

@@ -147,8 +147,8 @@ NOTE: Revocation endpoint URL : https://am-gateway/{domain}/oauth/revoke
 
 Let's imagine that a user want to access his personal data via a web application. The personal data are exposed through an API secured by OAuth 2.0 protocol.
 
-1. The user must be logged in to access his data. He asks the web application to sign in
-2. The web application sends an Authorization Request (resource owner ask to grant access to his data) to the Authorization Server
+. The user must be logged in to access his data. He asks the web application to sign in
+. The web application sends an Authorization Request (resource owner ask to grant access to his data) to the Authorization Server
 
 [source]
 ----
@@ -156,7 +156,7 @@ GET  https://am-gateway/{domain}/oauth/authorize?response=code&client_id=web-app
 ----
 
 [start=3]
-3. The authorization server authenticates the resource owner and obtains authorization
+. The authorization server authenticates the resource owner and obtains authorization
 
 [source]
 ----
@@ -183,7 +183,7 @@ Come back to the web application
 ----
 
 [start=4]
-4. The resource owner is authenticated and approved webapp acting on his behalf. The web app can ask for an access token
+. The resource owner is authenticated and approved webapp acting on his behalf. The web app can ask for an access token
 
 [source]
 ----
@@ -209,7 +209,7 @@ Pragma: no-cache
 ----
 
 [start=5]
-5. The web application just got an access token, it can use it to get user personal data
+. The web application just got an access token, it can use it to get user personal data
 
 [source]
 ----
@@ -218,7 +218,7 @@ Authorization: Bearer b02063f8-2698-4141-a063-f82698e1419c
 ----
 
 [start=6]
-6. The Users API must check the incoming token to determine the active state of the access token and decide to accept or deny the request
+. The Users API must check the incoming token to determine the active state of the access token and decide to accept or deny the request
 
 [source]
 ----
@@ -266,9 +266,9 @@ Users API response
 ----
 
 [start=7]
-7. The access is valid and the web application can display to the resource owner his personal data
+. The access is valid and the web application can display to the resource owner his personal data
 
-8. If the resource owner decides to log out, the web application can ask Authorization Server to revoke active access token
+. If the resource owner decides to log out, the web application can ask Authorization Server to revoke active access token
 
 [source]
 ----

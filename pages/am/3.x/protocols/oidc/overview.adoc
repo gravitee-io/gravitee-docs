@@ -21,11 +21,11 @@ You can find OpenID Connect endpoints exposed by Gravitee.io Access Management :
 
 The OpenID Connect protocol, in abstract, follows the following steps.
 
-1. The RP (Client) sends a request to the OpenID Provider (OP).
-2. The OP authenticates the End-User and obtains authorization.
-3. The OP responds with an ID Token and usually an Access Token.
-4. The RP can send a request with the Access Token to the UserInfo Endpoint.
-5. The UserInfo Endpoint returns Claims about the End-User.
+. The RP (Client) sends a request to the OpenID Provider (OP).
+. The OP authenticates the End-User and obtains authorization.
+. The OP responds with an ID Token and usually an Access Token.
+. The RP can send a request with the Access Token to the UserInfo Endpoint.
+. The UserInfo Endpoint returns Claims about the End-User.
 
 NOTE: A scope parameter MUST always be passed using the OAuth 2.0 request syntax containing the `openid` scope value to indicate to the underlying OAuth 2.0 logic that this is an OpenID Connect request.
 

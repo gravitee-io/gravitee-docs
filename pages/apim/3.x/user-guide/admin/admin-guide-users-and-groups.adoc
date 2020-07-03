@@ -1,3 +1,5 @@
+[[gravitee-admin-guide-users-and-groups]]
+= Users and Groups
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_adminguide_users_and_groups.html
 :page-folder: apim/user-guide/admin
@@ -5,12 +7,9 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
-[[gravitee-admin-guide]]
-= Users and Groups
-
 == Users
 
-In the installation guide, you have learnt how to configure different identity providers (see link:/apim/3.x/apim_installguide_management_api_configuration.html#authentication_type[how to configure authentication]).
+In the installation guide, you have learnt how to configure different identity providers (see link:/apim/3.x/apim_installguide_authentication.html[how to configure authentication]).
 
 Users are listed in the `Users` section of the `Settings` menu.
 
@@ -32,28 +31,49 @@ Once a group is created, you can associate it to an API and/or an application an
 
 Let use groups to create a `FOO Team` group where you can put all members of your FOO team.
 
-=== How to manage groups
-==== Create the `FOO Team` group
+=== Create the `FOO Team` group
 
 image::apim/3.x/adminguide/usersgroups-newgroup.png[Gravitee.io - New Group]
 
-You can see that in addition to the group name, you have two other input :
+You can see that in addition to the group name, you have two other section :
 
+==== Roles & members
+Max members::
+Define the maximum number of members in this group (default is no limit).
+
+Allows invitation via user search::
+
+Allows email invitation::
+
+Allows the group admin to change the API role::
+
+Allows the group admin to change the Application role::
+
+[]
+==== Associations
 Associate to every new API::
 Every time an API is created, this group will be added to it.
 
 Associate to every new Application::
 Every time an Application is created, this group will be added to it.
 
-Those checkbox can be useful if the group is transverse (an helpdesk group for example).
+_Those checkbox can be useful if the group is transverse (an helpdesk group for example)._
 
-==== Configure users
+=== Configure users
 
-Select the new group and clic on the (+) button to add users
+After the group creation, you should be redirected to the group detail page.
 
-image::apim/3.x/adminguide/usersgroups-groupmembers.png[Gravitee.io - Group member]
+image::apim/3.x/adminguide/usersgroups-editgroup.png[Gravitee.io - Edit Group]
 
-==== Add the group to an API or an application
+Click on the (+) button to add users
+
+image::apim/3.x/adminguide/usersgroups-addgroupmembers-1.png[Gravitee.io - Add Group members]
+
+Select users and choose their roles (group default roles are automatically selected)
+
+image::apim/3.x/adminguide/usersgroups-addgroupmembers-2.png[Gravitee.io - Group members]
+
+=== Add the group to an API or an application
 
 Go to the API/Application you want to modify and select the `groups` section.
 

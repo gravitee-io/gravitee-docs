@@ -14,19 +14,25 @@ both HTTP requests and responses according to your needs, meaning that you can e
 by adding transformation, security, and many other crazy features!
 
 .Gravitee.io - Gateway Internal
-image::apim/3.x/architecture/graviteeio-gateway-internal.png[Gravitee.io - Gateway Internal]
+image::apim/3.x/overview/components/graviteeio-gateway-internal.png[Gravitee.io - Gateway Internal]
 
 .Gravitee.io - Gateway Architecture
-image::apim/3.x/architecture/graviteeio-gateway-architecture.png[Gravitee.io - Gateway Architecture]
+image::apim/3.x/overview/components/graviteeio-gateway-architecture.png[Gravitee.io - Gateway Architecture]
 
-== Management API
-A restful API providing a bunch of services to manage and configure the global platform. All exposed
-services are constraint by authentication and authorization rules.
-You can find more information by having a look to the link:apim/3.x/apim_installguide_management_api_documentation.html[Management API > Documentation] section.
+[[gravitee-components-rest-api]]
+== Rest APIs (Management & Portal)
+Two restful APIs providing a bunch of services to manage and configure the <<gravitee-components-mgmt-ui, Gravitee.io Management UI>> and the <<gravitee-components-portal-ui, Gravitee.io Portal UI>>.
+All exposed services are constraint by authentication and authorization rules.
+You can find more information by having a look at the link:/apim/3.x/apim_installguide_rest_apis_documentation.html[Rest APIs > Documentation] section.
 
-== Management UI
-This is the Web UI for <<gravitee-components-mgmt-api, Gravitee.io Management API>>. This UI acts as a management tool
-for API Publishers.
+[[gravitee-components-mgmt-ui]]
+== APIM Console (Management UI)
+This is the Web UI for <<gravitee-components-rest-api, Gravitee.io Management API>>.
+This UI acts as a management tool for API Publishers.
+Administrators can also configure global platorm settings and specific portal settings.
 
-== Portal
-The Web UI for the API Consumers, from where they can search, look, try and subscribe to an API.
+[[gravitee-components-portal-ui]]
+== APIM Portal (Portal UI)
+This is the Web UI for <<gravitee-components-rest-api, Gravitee.io Portal API>>.
+This UI acts as a management tool for API Consumers, from where they can search, look, try and subscribe to an API.
+They can also manage their Applications.
