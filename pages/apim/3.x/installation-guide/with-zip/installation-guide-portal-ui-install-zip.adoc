@@ -1,0 +1,43 @@
+= Install Portal with `.zip`
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installguide_portal_ui_install_zip.html
+:page-folder: apim/installation-guide/with-zip
+:page-liquid:
+:page-description: Gravitee.io API Management - Portal - Installation with .zip
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim3x
+
+== System Requirements
+
+=== Browsers
+
+Portal has been tested with the latest versions of Google Chrome, Firefox and Internet Explorer >= 10
+
+== Installing from the ZIP archive
+
+The binaries are available from https://gravitee.io/downloads/api-management[Downloads page] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip[Download].
+
+[source,bash]
+[subs="attributes"]
+$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip -o gravitee-standalone-distribution-{{ site.products.apim._3x.version }}.zip
+
+Once file has been downloaded, you just have to unpack it in the right place
+
+[source,bash]
+[subs="attributes"]
+$ unzip gravitee-standalone-distribution-{{ site.products.apim._3x.version }}.zip
+
+=== Deploy
+
+The portal is a client-side only Angular application and can be deployed on any HTTP server like https://httpd.apache.org/[Apache] or http://nginx.org/[Nginx].
+
+=== or Run it
+
+With Node::
+
+[source,bash]
+[subs="attributes"]
+$ npm install angular-http-server -g
+$ cd graviteeio-portal-ui-{{ site.products.apim._3x.version }}
+$ angular-http-server
+$ Listening on 8080

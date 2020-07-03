@@ -9,6 +9,9 @@ The CORS (Cross-Origin Resource Sharing) is a mechanism that allows resources on
 To understand well how to deal with CORS, you should first take a look at the https://www.w3.org/TR/cors[specification].
 
 == Configuration
+You can configure CORS for an API by clicking `Proxy > CORS` in the API submenu of the APIM Console.
+
+image::apim/3.x/api-publisher-guide/cors/graviteeio-configuring-cors-configuration-1.png[]
 
 === Access-Control-Allow-Origin
 
@@ -46,4 +49,4 @@ This header indicates how long the results of a preflight request can be cached 
 This header lets a server whitelist headers that browsers are allowed to access.
 
 
-image::apim/3.x/graviteeio-configuring-cors-configuration.png[]
+image::apim/3.x/api-publisher-guide/cors/graviteeio-configuring-cors-configuration-2.png[]

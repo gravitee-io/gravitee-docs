@@ -1,0 +1,51 @@
+[[gravitee-installation-authentication-ldap]]
+= LDAP / Active Directory
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installguide_authentication_ldap.html
+:page-folder: apim/installation-guide/portal/authentication
+:page-description: Gravitee.io API Management - Portal - Authentication - LDAP
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim3x
+
+Here you will find how to configure Gravitee.io to allow users to connect using their LDAP/AD accounts.
+
+There are many ways in which the LDAP authentication source can be configured.
+You should be familiar with LDAP before trying to use it.
+
+.LDAP configuration
+[source,yaml]
+----
+# ===================================================================
+# LDAP SECURITY PROPERTIES
+#
+# This sample file declared one ldap authentication source
+# ===================================================================
+security:
+  type: basic
+  providers:
+    - type: ldap
+      context:
+        username: "uid=admin,ou=system"
+        password: "secret"
+        url: "ldap://localhost:389/dc=gravitee,dc=io"
+        base: "c=io,o=gravitee"
+      authentication:
+        user:
+          base: "ou=people"
+          filter: "uid={0}"
+        group:
+          base: "o=authorization groups"
+          filter: "member={0}"
+          role:
+            attribute: "cn"
+            mapper: {
+              GRAVITEE-CONSUMERS: API_CONSUMER,
+              GRAVITEE-PUBLISHERS: API_PUBLISHER,
+              GRAVITEE-ADMINS: ADMIN,
+              GRAVITEE-USERS: USER
+            }
+      lookup:
+        user:
+          base: "ou=people"
+          filter: "(&(objectClass=myObjectClass)(|(cn=*{0}*)(uid={0})))"
+----

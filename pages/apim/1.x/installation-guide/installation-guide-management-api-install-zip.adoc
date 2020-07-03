@@ -30,18 +30,18 @@ and download Elasticsearch from https://www.elastic.co/downloads/elasticsearch[E
 
 == Download and install the +.zip+ package
 
-The binaries are available from http://gravitee.io/#downloads[Downloads page] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim.1x.version }}.zip[Download].
+The binaries are available from https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._1x.version }}.zip[Download].
 
 [source,bash]
 ----
-$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim.1x.version }}.zip -o gravitee-standalone-distribution-{{ site.products.apim.1x.version }}.zip
+$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._1x.version }}.zip -o gravitee-standalone-distribution-{{ site.products.apim._1x.version }}.zip
 ----
 
 Once file has been downloaded, you just have to unpack it in the right place
 
 [source,bash]
 ----
-$ unzip gravitee-standalone-distribution-{{ site.products.apim.1x.version }}.zip
+$ unzip gravitee-standalone-distribution-{{ site.products.apim._1x.version }}.zip
 ----
 
 == Running Management API from the command line
@@ -50,7 +50,7 @@ Management API can be started from the command line as follows:
 
 [source,bash]
 ----
-$ cd graviteeio-management-api-{{ site.products.apim.1x.version }}
+$ cd graviteeio-management-api-{{ site.products.apim._1x.version }}
 $ ./bin/gravitee
 ----
 
@@ -62,7 +62,7 @@ If everything goes well, you should see this log:
 [source,bash]
 [subs="attributes"]
 ...
-11:01:53.162 [gravitee] INFO  i.g.m.standalone.node.ManagementNode - Gravitee.io - Management API id[2e05c0fa-8e48-4ddc-85c0-fa8e48bddc11] version[{{ site.products.apim.1x.version }}] pid[24930] build[175] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 15837 ms.
+11:01:53.162 [gravitee] INFO  i.g.m.standalone.node.ManagementNode - Gravitee.io - Management API id[2e05c0fa-8e48-4ddc-85c0-fa8e48bddc11] version[{{ site.products.apim._1x.version }}] pid[24930] build[175] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 15837 ms.
 ...
 
 == Checking that Management API is running

@@ -9,38 +9,161 @@ working with technical configuration (endpoint, load-balancing, health-check) an
 to developers.
 
 
-As we've seen in the <<apim_quickstart_publish.adoc, quick start>> section, you can easily create a new API from scratch.
+As we've seen in the link:/apim/3.x/apim_quickstart_publish.html[quick start] section, you can easily create a new API from scratch.
 
-By clicking the (+) button at the bottom of the portal page, you may see that there are some other ways to create an API:
+By clicking the (+) button at the bottom of the apis page, you may see that there are some other ways to create an API:
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-create-api-options-1.png[Create API]
 
 .Create API Options
-image::apim/3.x/graviteeio-create-api-options.png[Create API Options]
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-create-api-options-2.png[Create API Options, 300]
 
 == Create an empty API
-This option lets you to create an API from scratch, meaning that you have to configure your API correctly (name, version,
+This option lets you to create an API from scratch, meaning you have to configure your API correctly (name, version,
 context-path, backend endpoints, ...) before publishing it to developers.
 
-To understand how to create an API from scratch, please follow the <<apim_quickstart_publish.adoc, quick start guide>>.
+To understand how to create an API from scratch, please follow the link:/apim/3.x/apim_quickstart_publish.html[quick start guide].
 
 == Import an existing API definition
-NOTE: To complete
+Gravitee.io APIM Console allows you to export and import yours APIs to a Gravitee format (see example below).
+To import an API from an API definition:
 
-== Import a Swagger descriptor
-One of the amazing feature of Gravitee.io is the ability to import a Swagger descriptor to create an API. By doing so,
+* If the definition is a file, select `IMPORT FILE` and browse your file-system to select it
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-definition-file.png[Import from definition file, 300]
+
+* If the definition is a link, select `IMPORT FROM LINK`, choose `API Definition` and enter the definition URL
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-definition-link.png[Import from definition link, 300]
+
+Extract of a Gravitee API Definition::
+[source,json]
+----
+{
+  "name": "My first API",
+  "version": "1",
+  "description": "Gravitee.io Echo API Proxy",
+  "visibility": "private",
+  "paths": {
+    "/": []
+  },
+  "resources": [],
+  "members": [
+    {
+      "source": "memory",
+      "sourceId": "admin",
+      "roles": [
+        "2eb2dc44-5cc9-48fa-b2dc-445cc978fa66"
+      ]
+    }
+  ],
+  ...
+}
+----
+
+== Import a OpenAPI descriptor
+One of the amazing feature of Gravitee.io is the ability to import an OpenAPI descriptor to create an API. By doing so,
 you do not have to complete all the fields required when you're creating a new API from scratch.
 Finally, the only thing you have to do is to specify a context-path to expose the API.
 
-.Step1: Import a Swagger descriptor
-image::apim/3.x/graviteeio-create-api-swagger-1.png[Import Swagger 1]
+To import an API from an OpenAPI:
 
-.Step2: Change values from the Swagger descriptor if required
-image::apim/3.x/graviteeio-create-api-swagger-2.png[Import Swagger 2]
+* If the OpenAPI is a file, select `IMPORT FILE` and browse your file-system to select it
 
-.Step3: Set the context-path
-image::apim/3.x/graviteeio-create-api-swagger-3.png[Import Swagger 3]
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-file.png[Import from definition file, 300]
 
-Now you can navigate to the policies management view, and you will see that all route declared in the Swagger descriptor
- are automatically created in Gravitee.io
+* If the OpenAPI is a link, select `IMPORT FROM LINK`, choose `Swagger / OpenAPI` and enter the definition URL
 
-.Step3: Good job guy !
-image::apim/3.x/graviteeio-create-api-swagger-4.png[Import Swagger 4]
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-link.png[Import from definition link, 300]
+
+.How the context-path is determined
+|===
+|Descriptor version |Definition |Example |Context-path
+
+.2+|Swagger (V2)
+|`basePath` field, if exists.
+a|
+[source,json]
+----
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "...",
+    "version": "1.0.5",
+    "title": "Swagger Petstore"
+  },
+  "host": "petstore.swagger.io",
+  "basePath": "/v2",
+  ...
+}
+----
+| /v2
+
+|Lowercase trimmed `info.title` otherwise.
+a|
+[source,json]
+----
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "...",
+    "version": "1.0.5",
+    "title": "Swagger Petstore"
+  },
+  "host": "petstore.swagger.io",
+
+  ...
+}
+----
+| /swaggerpetstore
+
+.2+|OpenAPI (V3)
+|path of the first `servers.url`, if exists and not "/". +
+a|
+[source,yaml]
+----
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+  license:
+    name: MIT
+servers:
+  - url: http://petstore.swagger.io/v1
+paths:
+...
+----
+| /v1
+
+|Lowercase trimmed `info.title` otherwise.
+a|
+[source,yaml]
+----
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+  license:
+    name: MIT
+servers:
+  - url: http://petstore.swagger.io/
+paths:
+  ...
+----
+| /swaggerpetstore
+
+|===
+
+
+Extract of the "Swagger petstore" OpenAPI::
+
+
+[NOTE]
+====
+If you have selected the option `'Create policies on path'` in import form, then all route declared in the Swagger descriptor
+are automatically created in Gravitee.io.
+You can navigate to the policies management view to check.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-policies-path.png[Policies view - all routes imported]
+
+====

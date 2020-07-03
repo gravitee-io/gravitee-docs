@@ -16,7 +16,7 @@ You should be familiar with LDAP before trying to use it.
 WARNING: since release 1.24, the way we configure the LDAP provider has changed.
 
 .configuration for release >= 1.24
-[source, yaml]
+[source,yaml]
 ----
 # ===================================================================
 # LDAP SECURITY PROPERTIES

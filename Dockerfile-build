@@ -21,17 +21,18 @@ RUN apt-get update
 
 RUN apt-get install -y \
     nodejs \
-    python-pygments \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/
 
 WORKDIR /tmp
 ADD Gemfile /tmp/
 ADD Gemfile.lock /tmp/
+RUN gem install bundler
+RUN gem install jekyll -v 3.8.7
 RUN bundle install
 
 VOLUME /src
 EXPOSE 4000
 
 WORKDIR /src
-ENTRYPOINT ["jekyll"]
+ENTRYPOINT ["bundle", "exec", "jekyll"]

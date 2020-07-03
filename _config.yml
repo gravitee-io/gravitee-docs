@@ -1,5 +1,5 @@
 
-gems:
+plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-asciidoc
@@ -53,9 +53,6 @@ feedback_disable: true
 # if you uncomment the previous line, it changes the Feedback text
 # feedback_link: "http://helpy.io/"
 # if you uncomment the previous line, it changes where the feedback link points to
-
-highlighter: rouge
-# library used for syntax highlighting
 
 #markdown: kramdown
 #kramdown:
@@ -118,9 +115,9 @@ url: https://docs.gravitee.io
 
 products:
   apim:
-    1x:
+    _1x:
       version: 1.30.15
-    3x:
+    _3x:
       version: 3.0.4
     ee:
       version: 1.30.15
@@ -143,8 +140,7 @@ asciidoctor:
     - idseparator=_
     - icons=font
     - allow-uri-read=true
-    - imagesdir=/images
-    - source-highlighter=pygments
-    - pygments-css=class
+    - imagesdir=/images/
+    - source-highlighter=rouge
+    - rouge-css=class
     - stylesdir=css
-

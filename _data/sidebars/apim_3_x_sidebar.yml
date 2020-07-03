@@ -34,7 +34,7 @@ entries:
           - title: Publish your first API
             output: web
             url: /apim/3.x/apim_quickstart_publish.html
-          - title: Consuming an API
+          - title: Consume an API
             output: web
             url: /apim/3.x/apim_quickstart_consume.html
 
@@ -52,15 +52,15 @@ entries:
                   - title: API Gateway
                     output: web
                     url: /apim/3.x/apim_installguide_gateway_install_zip.html
-                  - title: Management API
+                  - title: Rest APIs
                     output: web
-                    url: /apim/3.x/apim_installguide_management_api_install_zip.html
+                    url: /apim/3.x/apim_installguide_rest_apis_install_zip.html
                   - title: Management UI
                     output: web
                     url: /apim/3.x/apim_installguide_management_ui_install_zip.html
-                  - title: Portal
+                  - title: Portal UI
                     output: web
-                    url: /apim/3.x/apim_installguide_portal_install_zip.html
+                    url: /apim/3.x/apim_installguide_portal_ui_install_zip.html
               - title: Install on Red Hat
                 output: web
                 subfolderitems:
@@ -123,36 +123,36 @@ entries:
                   - title: Metrics
                     output: web
                     url: /apim/3.x/apim_installguide_gateway_metrics.html
-              - title: Management API
+              - title: Rest APIs
                 output: web
                 subfolderitems:
                   - title: Configuration
                     output: web
-                    url: /apim/3.x/apim_installguide_management_api_configuration.html
+                    url: /apim/3.x/apim_installguide_rest_apis_configuration.html
                   - title: Documentation
                     output: web
-                    url: /apim/3.x/apim_installguide_management_api_documentation.html
+                    url: /apim/3.x/apim_installguide_rest_apis_documentation.html
                   - title: Technical API
                     output: web
-                    url: /apim/3.x/apim_installguide_management_api_technical_api.html
+                    url: /apim/3.x/apim_installguide_rest_apis_technical_api.html
                   - title: Metrics
                     output: web
-                    url: /apim/3.x/apim_installguide_management_api_metrics.html
+                    url: /apim/3.x/apim_installguide_rest_apis_metrics.html
                   - title: Security
                     output: web
-                    url: /apim/3.x/apim_installguide_management_api_security.html
+                    url: /apim/3.x/apim_installguide_rest_apis_security.html
               - title: Management UI
                 output: web
                 subfolderitems:
                   - title: Configuration
                     output: web
                     url: /apim/3.x/apim_installguide_management_ui_configuration.html
-              - title: Portal
+              - title: Portal UI
                 output: web
                 subfolderitems:
                   - title: Configuration
                     output: web
-                    url: /apim/3.x/apim_installguide_portal_configuration.html
+                    url: /apim/3.x/apim_installguide_portal_ui_configuration.html
               - title: Repositories
                 output: web
                 subfolderitems:
@@ -217,12 +217,12 @@ entries:
           - title: Create an account
             output: web
             url: /apim/3.x/apim_consumerguide_create_account.html
-          - title: Subscribe to an API
-            output: web
-            url: /apim/3.x/apim_consumerguide_subscribe.html
           - title: Manage applications
             output: web
             url: /apim/3.x/apim_consumerguide_manage_applications.html
+          - title: Subscribe to an API
+            output: web
+            url: /apim/3.x/apim_consumerguide_subscribe.html
 
       - title: Api Publisher Guide
         output: web
@@ -239,9 +239,6 @@ entries:
           - title: Manage members
             output: web
             url: /apim/3.x/apim_publisherguide_manage_members.html
-          - title: Publish documentation
-            output: web
-            url: /apim/3.x/apim_publisherguide_publish_documentation.html
           - title: API rating
             output: web
             url: /apim/3.x/apim_publisherguide_api_rating.html
@@ -250,6 +247,18 @@ entries:
             url: /apim/3.x/apim_publisherguide_top_apis.html
 
             subfolders:
+              - title: Documentation
+                output: web
+                subfolderitems:
+                  - title: Publish documentation
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_publish_documentation.html
+                  - title: OpenAPI/Swagger
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_publish_documentation_openapi.html
+                  - title: System folders, links and portal customization
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_publish_documentation_system_folders.html
               - title: Policies
                 output: web
                 subfolderitems:
@@ -393,10 +402,13 @@ entries:
       - title: Administration Guide
         output: web
         folderitems:
+          - title: Organizations and Environments
+            output: web
+            url: /apim/3.x/apim_adminguide_organizations_and_environments.html
+            type: homepage
           - title: Roles and Permissions
             output: web
             url: /apim/3.x/apim_adminguide_roles_and_permissions.html
-            type: homepage
           - title: Users and Groups
             output: web
             url: /apim/3.x/apim_adminguide_users_and_groups.html

@@ -62,17 +62,17 @@ You have to remove some of the existing plugins available by default in the API 
 all the cache services, the policies and the resources.
 
 For example, in Gravitee.io APIM 1.18.0, the `plugins` directory contains the following files :
-```
-gravitee-gateway-services-localregistry-1.18.0.zip
-gravitee-gateway-services-ratelimit-1.2.0.zip
-gravitee-gateway-services-monitoring-1.18.0.zip
-gravitee-gateway-services-node-healthcheck-1.18.0.zip
-gravitee-reporter-elasticsearch-1.18.0.zip
-gravitee-reporter-file-1.3.0.zip
-gravitee-repository-ehcache-1.0.0.zip
-gravitee-repository-gateway-bridge-http-server-1.0.0.zip
-gravitee-repository-mongodb-1.18.0.zip
-```
+
+ gravitee-gateway-services-localregistry-1.18.0.zip
+ gravitee-gateway-services-ratelimit-1.2.0.zip
+ gravitee-gateway-services-monitoring-1.18.0.zip
+ gravitee-gateway-services-node-healthcheck-1.18.0.zip
+ gravitee-reporter-elasticsearch-1.18.0.zip
+ gravitee-reporter-file-1.3.0.zip
+ gravitee-repository-ehcache-1.0.0.zip
+ gravitee-repository-gateway-bridge-http-server-1.0.0.zip
+ gravitee-repository-mongodb-1.18.0.zip
+
 ====
 
 ==== Configuration

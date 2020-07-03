@@ -42,7 +42,7 @@ The AM gateway image provides a set of environment variables which could be used
 Because mongoDB is our default repository, you can replace default mongoDB address (`localhost:27017`) by the one you provide (`GRAVITEE_MONGODB_HOST:GRAVITEE_MONGODB_PORT`).
 
 ==== Run the image
-[source, shell]
+[source,shell]
 ....
 $ docker run  \
         --publish 8092:8092  \
@@ -56,7 +56,7 @@ If you want to override the default configuration for MongoDB and all other prop
 you have to use environment variables. Please have a look to the API Gateway <<am_installguide_gateway_configuration.adoc#environment_variables, configuration>> section.
 
 Here is an example to set the mongodb connection:
-[source, shell]
+[source,shell]
 ....
 $ docker run  \
         --publish 8092:8092  \
@@ -72,7 +72,7 @@ The AM management-api image provides a set of environment variables which could 
 Because mongoDB is our default repository, you can replace default mongoDB address (`localhost:27017`) by the one you provide (`GRAVITEE_MONGODB_HOST:GRAVITEE_MONGODB_PORT`).
 
 ==== Run the image
-[source, shell]
+[source,shell]
 ....
 $ docker run \
           --publish 8093:8093 \
@@ -86,7 +86,7 @@ If you want to override the default configuration for MongoDB and all other prop
 you have to use environment variables. Please have a look to the Management API <<am_installguide_management_api_configuration.adoc#environment_variables, configuration>> section.
 
 Here is an example to set the mongodb connection:
-[source, shell]
+[source,shell]
 ....
 $ docker run \
           --publish 8093:8093 \
@@ -103,7 +103,7 @@ The UI need to know where the AM management-api is.
 So you have to override `MGMT_API_URL` to specify where the management-api is running.
 
 ==== Run the image
-[source, shell]
+[source,shell]
 ....
 $ docker run \
         --publish 80:80 \

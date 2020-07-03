@@ -36,7 +36,7 @@ NOTE: Work in progress...
 When running an enterprise node, a license file must be supplied to bootstrap the node. When running the node within Docker
 the license file must be pass thanks to a volume:
 
-[source, shell]
+[source,shell]
 ....
 $ docker run  \
         -v license.key:/opt/graviteeio-gateway/license \

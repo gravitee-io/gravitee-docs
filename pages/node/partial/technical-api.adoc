@@ -1,17 +1,18 @@
+= Technical API
 Each Gravitee.io component provides its own technical API, allows you to get informations from the component.
 
-= Configuration
+== Configuration
 The technical API is configured using the `gravitee.yml` file. It's a service you have to enable.
 
-
 .gravitee.yml
-[source, yaml]
+[source,yaml]
+[subs="attributes"]
 ----
 services:
   core:
     http:
       enabled: true
-      port: 18082
+      port: {node_port}
       host: localhost
       authentication:
         type: basic
@@ -19,12 +20,12 @@ services:
           admin: adminadmin
 ----
 enabled:: Enable or not the service (default `true`).
-port:: The port the service listen to.
+port:: The port the service listen to (default `{node_port}`).
 host:: The host (default `localhost`)
 authentication.type:: Authenticate mode for requests: `none` if no authentication is required or `basic` (default `basic`)
 authentication.users:: A list of couple `user: password`. Only required if the authentication type is `basic`.
 
-= Api
+== Api
 
 |===
 |Operation |Description |Example
@@ -32,7 +33,7 @@ authentication.users:: A list of couple `user: password`. Only required if the a
 |`GET /_node`
 |Get generic node informations
 a|
-[source, json]
+[source,json]
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -53,7 +54,7 @@ Content-Type: application/json
 |Get the health status of the component. If the return status is 200, then everything's ok, if 500, there's at least one probe in error.
 This endpoint could be used by your loadbalancer to know if a component instance could be out of the pool.
 a|
-[source, json]
+[source,json]
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json

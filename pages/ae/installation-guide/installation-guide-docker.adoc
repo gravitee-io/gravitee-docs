@@ -30,7 +30,7 @@ Gravitee.io Alert Engine Docker images are https://hub.docker.com/u/graviteeio/[
 The engine image provides a set of environment variables which could be used to tune your container.
 
 ==== Run the image
-[source, shell]
+[source,shell]
 ....
 $ docker run  \
         --publish 72:8072  \
@@ -44,7 +44,7 @@ If you want to override the default configuration and override properties includ
 you have to use environment variables. Please have a look to the Alert Engine <<ae_installguide_configuration.adoc#environment_variables, configuration>> section.
 
 Here is an example to modify the Hazelcast config file:
-[source, shell]
+[source,shell]
 ....
 $ docker run  \
         --publish 72:8072  \

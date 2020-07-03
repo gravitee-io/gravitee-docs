@@ -4,57 +4,96 @@
 :page-folder: apim/user-guide/consumer
 :page-layout: apim3x
 
-Gravitee.io allows user to register from the portal.
+Gravitee.io allows user to register from the portal and the console.
 
 == Prerequisites
 
 In order to work correctly:
 
-- the https://docs.gravitee.io/apim_installguide_management_api_configuration.html#sending_emails[email SMTP configuration] must be done
+* the link:/apim/3.x/apim_installguide_rest_apis_configuration.html#sending_emails[email SMTP configuration] must be done
 
-- and the option enabled from the settings part:
+* the option enabled from the settings part:
 
-image::apim/3.x/graviteeio-developer-create-account-activate-settings.png[]
+image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-activate-settings.png[]
+
+* the password validation regex must have been configured in the gravitee.yml (default based on link:https://owasp.org/www-community/OWASP_Validation_Regex_Repository[OWASP recommendations])
+
+[source,yaml]
+----
+  # Password complexity validation policy
+  # Applications should enforce password complexity rules to discourage easy to guess passwords.
+  # Passwords should require a minimum level of complexity that makes sense for the application and its user population.
+  password:
+    policy:
+      # Regex pattern for password validation (default to OWASP recommendations).
+      # 8 to 32 characters, no more than 2 consecutive equal characters, min 1 special characters (@ & # ...), min 1 upper case character.
+      pattern: ^(?:(?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))(?!.*(.)\1{2,})[A-Za-z0-9!~<>,;:_\-=?*+#."'&§`£€%°()\\\|\[\]\-\$\^\@\/]{8,32}$
+              # Example : ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$
+              # ^                # start-of-string
+              #(?=.*[0-9])       # a digit must occur at least once
+              #(?=.*[a-z])       # a lower case letter must occur at least once
+              #(?=.*[A-Z])       # an upper case letter must occur at least once
+              #(?=.*[@#$%^&+=])  # a special character must occur at least once
+              #(?=\S+$)          # no whitespace allowed in the entire string
+              #.{8,}             # anything, at least eight places though
+              #$                 # end-of-string
+----
 
 == User registration workflow
 
-=== Login form
+. Click `Sign In` in the top menu. You access to the login form:
 
-First of all, the user access to the login form:
+image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-login-form.png[]
 
-image::apim/3.x/graviteeio-developer-create-account-login-form.png[]
+[start=2]
+. Click `Sign Up` link at the bottom of the form. You will be redirected to a registration form:
+. Fill the form and click `SIGN UP` button
 
-=== Sign in
+image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-signin-form.png[]
 
-Where he will find a link to sign in, and will be redirected to a registration form:
+[start=4]
+. An email is sent. This email contains a link to validate the registration.
 
-image::apim/3.x/graviteeio-developer-create-account-signin-form.png[]
+image:apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-email-registration-1.png[Confirmation, 300]
+image:apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-email-registration-2.png[Email, 300]
 
-Then, after filling his first/last names and email, he will be able to sign in.
-
-=== Email validation
-
-But, the process is not finished as there is still a step used mainly to validate the email.
-
-So the user will receive an email with a link to validate registration as below:
-
-image::apim/3.x/graviteeio-developer-create-account-email-registration.png[]
-
+[NOTE]
+====
 By default, the link will be available for 24h (86400s), but this can be changed in the gravitee.yml
 
-```yaml
+[source,yaml]
+----
 user:
-   creation:
-      token:
-         expire-after: 86400
-```
+  creation:
+    token:
+      expire-after: 86400
+----
 
-If the link expire, the user will see this message:
+====
 
-image::apim/3.x/graviteeio-developer-create-account-link-expire.png[]
+[start=5]
+. Click the link in the email.
+. Confirm registration by defining your password and click `CONFIRM` button.
 
-=== Confirm registration
+image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-confirm-registration.png[]
 
-Finally, you just have to confirm registration by defining your password, and.... that's it your registration is fully completed!
+TIP: You can click on the `eye` icon to display the password
 
-image::apim/3.x/graviteeio-developer-create-account-confirm-registration.png[]
+[start=7]
+. That's it your registration is fully completed!
+
+image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-confirm-registration-validated.png[Registration successful, 300]
+
+== Warning
+=== Link expiration
+If the link expire, you will see this message:
+
+image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-link-expire.png[Expiration message, 300]
+
+Go back to registration page and send a new registration request.
+
+=== Password validation
+If the password does not respect some security rules (see link:/apim/3.x/apim_consumerguide_create_account.html#prerequisites[Prerequisites]), you will see this message:
+
+image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-unsecure-password.png[]
+

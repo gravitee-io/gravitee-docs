@@ -1,4 +1,4 @@
-= Publish documentation
+== Publish documentation
 :page-sidebar: apim_1_x_sidebar
 :page-permalink: apim/1.x/apim_publisherguide_publish_documentation.html
 :page-folder: apim/user-guide/publisher
@@ -21,13 +21,13 @@ The base URL of your Swagger descriptor is overridable in the configuration pane
 image::apim/1.x/graviteeio-page-documentation-swagger-configuration.png[]
 
 
-= Visibility
+== Visibility
 
 Once your documentation page is created, this is not published on the portal for all the users, but only you. You will see this message:
 
 image::apim/1.x/graviteeio-page-documentation-draft.png[]
 
-= External documentation
+== External documentation
 
 Gravitee.io provides a way to fetch your documentation from an external source.
 
@@ -41,15 +41,15 @@ There are 5 types of fetchers:
 
 __The documentation is fetched and stored locally in the Gravitee.io platform__
 
-= Templating
+== Templating
 
 We will see how to create templates of documentation based on https://freemarker.apache.org[freemarker template engine].
 
-== Syntax
+=== Syntax
 
 You can access to your api data on your api's documentation by doing so: ${api.name} or ${api.metadata['foo-bar']}
 
-== Available API's properties
+=== Available API's properties
 
 [width="100%",cols="20%,10%,70%",frame="topbot",options="header"]
 |======================
@@ -72,7 +72,7 @@ You can access to your api data on your api's documentation by doing so: ${api.n
 |======================
 
 
-== Concrete example
+=== Concrete example
 
 Here an example of a possible template for your API documentation.
 

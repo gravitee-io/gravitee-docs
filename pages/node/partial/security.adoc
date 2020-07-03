@@ -1,15 +1,17 @@
-= Brute Force attack
+= Security
+
+== Brute Force attack
 
 It consists of submitting lots authentication requests based on many passwords expecting one guessing right.
 More details on : https://en.wikipedia.org/wiki/Brute-force_attack.
 Even with oauth2 activated you can leave login form for in-memory or local users. Some tools can help you to prevent malicious actions by banning IP.
 
-= Fail2Ban
+== Fail2Ban
 
 In this part we explain you how to secure APIM UI and REST API against brute force attack.
 To install fail2ban follow Official fail2ban website : https://www.fail2ban.org
 
-== Configuration
+=== Configuration
 
 Gravitee.io API REST trace all authentication failure into gravitee log file.
 Firstly you have to configure fail2ban filter to extract Gravitee authentication failure event.
