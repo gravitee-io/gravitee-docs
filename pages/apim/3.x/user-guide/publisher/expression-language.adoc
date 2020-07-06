@@ -162,6 +162,9 @@ documentation of the policies you are using to be aware of them.
 
 `{#context.attributes['plan']}`
 
+* Check that the path starts with a given value:
+
+`{#request.path.startsWith('/my/api')}`
 
 == Policies
 Expression language can be used to configure some part of policies configuration.
