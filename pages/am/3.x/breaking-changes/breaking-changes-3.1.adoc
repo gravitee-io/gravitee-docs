@@ -1,0 +1,15 @@
+= Breaking changes in 3.1
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_3.1.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+NOTE: For all these breaking changes the Migration Guide can be found link:/am/current/am_installguide_migration.html[here].
+
+== Email service has been rewritten
+
+Email technical service (mainly the connection to the SMTP server) was duplicated between the Management API and the Gateway of Gravitee.io Access Management.
+
+This service has been merged in the 3.1 version.
+
+NOTE: If you are using custom email templates do not forget to run the link:/am/current/am_installguide_migration.html#upgrade_to_3_1_0[3.1 upgrade guide].
