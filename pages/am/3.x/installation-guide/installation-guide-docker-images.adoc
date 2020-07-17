@@ -22,17 +22,17 @@ We provide a complete set of images.
 |{docker-hub}/am-gateway/[graviteeio/am-gateway]
 |{github-repo}/gateway/[images/am-gateway]
 |latest
-|https://hub.docker.com/_/alpine/[alpine:3.8]
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[openjdk11:jre-11.0.7_10-alpine]
 
 |{docker-hub}/am-management-api/[graviteeio/am-management-api]
 |{github-repo}/management-api/[images/am-management-api]
 |latest
-|https://hub.docker.com/_/alpine/[alpine:3.8]
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[openjdk11:jre-11.0.7_10-alpine]
 
 |{docker-hub}/am-management-ui/[graviteeio/am-management-ui]
 |{github-repo}/management-ui/[images/am-webui]
 |latest
-|https://hub.docker.com/_/alpine/[nginx:1.15-alpine]
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[nginx:1.18-alpine]
 
 |===
 

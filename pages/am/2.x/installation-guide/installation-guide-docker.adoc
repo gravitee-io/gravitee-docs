@@ -11,7 +11,7 @@ IMPORTANT: We assume that you are familiar with Docker terms. +
 To run our official images, you must start by installing https://docs.docker.com/installation/[Docker]
 
 Gravitee.io Access Management Docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
-You could find all https://github.com/gravitee-io/graviteeio-access-management/tree/master/docker/[Dockerfiles on GitHub].
+You could find all https://github.com/gravitee-io/graviteeio-access-management/tree/2.x/docker/[Dockerfiles on GitHub].
 
 We provide a complete set of images.
 
@@ -32,7 +32,7 @@ We provide a complete set of images.
 |{docker-hub}/am-management-ui/[graviteeio/am-management-ui]
 |{github-repo}/management-ui/[images/am-webui]
 |latest
-|https://hub.docker.com/_/alpine/[nginx:1.15-alpine]
+|https://hub.docker.com/_/alpine/[nginx:1.16-alpine]
 
 |===
 
@@ -46,9 +46,9 @@ You can launch a complete environment using our ready-to-use docker-compose file
 ....
 # Download required Docker Compose files
 $ mkdir -p config
-$ curl -L -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/docker-compose.yml
-$ curl -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/.env
-$ cd config && { curl -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/config/nginx.conf ; cd -; }
+$ curl -L -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/2.x/docker/compose/docker-compose.yml
+$ curl -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/2.x/docker/compose/.env
+$ cd config && { curl -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/2.x/docker/compose/config/nginx.conf ; cd -; }
 
 # (Optional step: pull to ensure that you are running latest images)
 $ docker-compose pull
@@ -81,11 +81,11 @@ If you want to run Gravitee.io AM with a different version or if you want to wan
 $ GIO_AM_VERSION=2 NGINX_PORT=18000 docker-compose up
 ....
 
-Once done, you're now ready to play with Gravitee.io Access Management, so let's take a look to the <<gravitee-quickstart, Quickstart guide>>.
+Once done, you're now ready to play with Gravitee.io Access Management 2.x, so let's take a look to the <<gravitee-quickstart, Quickstart guide>>.
 
 === Running AM in a single line
 
-If you are impatient to play with Gravitee.io Access Management (something we can understand!), you can also run the following command line:
+If you are impatient to play with Gravitee.io Access Management 2.x (something we can understand!), you can also run the following command line:
 
 [source,shell]
 ....
