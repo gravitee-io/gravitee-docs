@@ -208,6 +208,42 @@ entries:
             - title: Portal
               output: web
               url: /am/current/am_installguide_management_ui_install_zip.html
+        - title: Install on Red Hat
+          output: web
+          subfolderitems:
+            - title: Introduction
+              output: web
+              url: /am/current/am_installguide_redhat_introduction.html
+            - title: Install Access Management
+              output: web
+              url: /am/current/am_installguide_redhat_stack.html
+            - title: Install Access Gateway component
+              output: web
+              url: /am/current/am_installguide_redhat_gateway.html
+            - title: Install Management API component
+              output: web
+              url: /am/current/am_installguide_redhat_management_api.html
+            - title: Install Management UI component
+              output: web
+              url: /am/current/am_installguide_redhat_management_ui.html
+        - title: Install on Amazon
+          output: web
+          subfolderitems:
+            - title: Introduction
+              output: web
+              url: /am/current/am_installguide_amazon_introduction.html
+            - title: Install Access Management
+              output: web
+              url: /am/current/am_installguide_amazon_stack.html
+            - title: Install Access Gateway component
+              output: web
+              url: /am/current/am_installguide_amazon_gateway.html
+            - title: Install Management API component
+              output: web
+              url: /am/current/am_installguide_amazon_management_api.html
+            - title: Install Management UI component
+              output: web
+              url: /am/current/am_installguide_amazon_management_ui.html
         - title: Run on Docker
           output: web
           subfolderitems:

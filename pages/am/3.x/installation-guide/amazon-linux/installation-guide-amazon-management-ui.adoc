@@ -1,19 +1,19 @@
-= Install Portal on Amazon Linux
-:page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_installguide_amazon_portal.html
-:page-folder: apim/installation-guide/amazon
+= Install Management UI on Amazon Linux
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_amazon_management_ui.html
+:page-folder: am/installation-guide/amazon
 :page-liquid:
-:page-layout: apim3x
-:page-description: Gravitee.io API Management - Installation Guide - Amazon - Portal
-:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: am
+:page-description: Gravitee.io Access Management - Installation Guide - Amazon - Management UI
+:page-keywords: Gravitee.io, API Platform, Access Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-:gravitee-component-name: Portal
-:gravitee-package-name: graviteeio-apim-portal-ui-3x
-:gravitee-service-name: graviteeio-apim-portal-ui
+:gravitee-component-name: Management UI
+:gravitee-package-name: graviteeio-am-management-ui-3x
+:gravitee-service-name: graviteeio-am-management-ui
 
 == Installing Gravitee.io {gravitee-component-name} package
 
-IMPORTANT: We assume that you have configured your package management system by following link:/apim/3.x/apim_installguide_amazon_introduction.html[this documentation].
+IMPORTANT: We assume that you have configured your package management system by following link:/am/current/am_installguide_amazon_introduction.html[this documentation].
 
 Nginx must be installed prior to Gravitee.io {gravitee-component-name}:
 

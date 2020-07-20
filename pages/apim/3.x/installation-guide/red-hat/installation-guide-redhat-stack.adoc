@@ -7,7 +7,7 @@
 :page-description: Gravitee.io API Management - Installation Guide - Red Hat or CentOS - API Management
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-:gravitee-package-name: graviteeio-apim
+:gravitee-package-name: graviteeio-apim-3x
 
 This section describes how-to install the full API Management stack, including all the components (API Gateway, Management API, Portal)
 and, optionally, install dependencies (MongoDB, Elasticsearch).
@@ -16,6 +16,7 @@ If you are looking to install Gravitee.io API Management individually, please go
 
 * link:/apim/3.x/apim_installguide_redhat_gateway.html[Install API Gateway]
 * link:/apim/3.x/apim_installguide_redhat_management_api.html[Install Management API]
+* link:/apim/3.x/apim_installguide_redhat_management_ui.html[Install Management UI]
 * link:/apim/3.x/apim_installguide_redhat_portal.html[Install Portal]
 
 == Install Nginx

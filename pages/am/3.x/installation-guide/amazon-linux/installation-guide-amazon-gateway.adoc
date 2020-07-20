@@ -1,19 +1,19 @@
-= Install API Gateway on Red Hat or CentOS
-:page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_installguide_redhat_gateway.html
-:page-folder: apim/installation-guide/redhat
+= Install Access Gateway on Amazon Linux
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_amazon_gateway.html
+:page-folder: am/installation-guide/amazon
 :page-liquid:
-:page-layout: apim3x
-:page-description: Gravitee.io API Management - Installation Guide - Red Hat or CentOS - API Gateway
-:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: am
+:page-description: Gravitee.io Access Management - Installation Guide - Amazon - Access Gateway
+:page-keywords: Gravitee.io, API Platform, Access Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-:gravitee-component-name: API Gateway
-:gravitee-package-name: graviteeio-apim-gateway-3x
-:gravitee-service-name: graviteeio-apim-gateway
+:gravitee-component-name: Access Gateway
+:gravitee-package-name: graviteeio-am-gateway-3x
+:gravitee-service-name: graviteeio-am-gateway
 
 == Installing Gravitee.io {gravitee-component-name} package
 
-IMPORTANT: We assume that you have configured your package management system by following link:/apim/3.x/apim_installguide_redhat_introduction.html[this documentation].
+IMPORTANT: We assume that you have configured your package management system by following link:/am/current/am_installguide_amazon_introduction.html[this documentation].
 
 To install the latest stable version of Gravitee.io {gravitee-component-name}, issue the following command:
 
@@ -43,7 +43,7 @@ sudo systemctl stop {gravitee-service-name}
 ----
 
 These commands provide no feedback as to whether Gravitee.io {gravitee-component-name} was started successfully or not.
-Instead, this information will be written in the log files located in `/opt/graviteeio/apim/gateway/logs/`.
+Instead, this information will be written in the log files located in `/opt/graviteeio/am/gateway/logs/`.
 
 When `systemd` logging is enabled, the logging information are available using the `journalctl` commands:
 

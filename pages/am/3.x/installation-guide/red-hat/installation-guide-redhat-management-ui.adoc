@@ -1,32 +1,33 @@
-= Install Portal on Amazon Linux
-:page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_installguide_amazon_portal.html
-:page-folder: apim/installation-guide/amazon
+= Install Management UI on Red Hat or CentOS
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_redhat_management_ui.html
+:page-folder: am/installation-guide/redhat
 :page-liquid:
-:page-layout: apim3x
-:page-description: Gravitee.io API Management - Installation Guide - Amazon - Portal
-:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: am
+:page-description: Gravitee.io Access Management - Installation Guide - Red Hat or CentOS - Management UI
+:page-keywords: Gravitee.io, API Platform, Access Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-:gravitee-component-name: Portal
-:gravitee-package-name: graviteeio-apim-portal-ui-3x
-:gravitee-service-name: graviteeio-apim-portal-ui
+:gravitee-component-name: Management UI
+:gravitee-package-name: graviteeio-am-management-ui-3x
+:gravitee-service-name: graviteeio-am-management-ui
 
 == Installing Gravitee.io {gravitee-component-name} package
 
-IMPORTANT: We assume that you have configured your package management system by following link:/apim/3.x/apim_installguide_amazon_introduction.html[this documentation].
+IMPORTANT: We assume that you have configured your package management system by following link:/am/current/am_installguide_redhat_introduction.html[this documentation].
 
 Nginx must be installed prior to Gravitee.io {gravitee-component-name}:
 
 [source,bash,subs="attributes"]
 ----
-sudo amazon-linux-extras install nginx1.12
+sudo yum install epel-release
+sudo yum install nginx
 ----
 
 Then, to install the latest stable version of Gravitee.io {gravitee-component-name}, issue the following command:
 
 [source,bash,subs="attributes"]
 ----
-sudo yum install -y {gravitee-service-name}
+sudo yum install -y {gravitee-package-name}
 ----
 
 == Running Gravitee.io {gravitee-component-name}

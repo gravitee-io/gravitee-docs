@@ -8,7 +8,8 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
 :gravitee-component-name: Portal
-:gravitee-service-name: graviteeio-apim-management-ui
+:gravitee-package-name: graviteeio-apim-portal-ui-3x
+:gravitee-service-name: graviteeio-apim-portal-ui
 
 == Installing Gravitee.io {gravitee-component-name} package
 
@@ -26,7 +27,7 @@ Then, to install the latest stable version of Gravitee.io {gravitee-component-na
 
 [source,bash,subs="attributes"]
 ----
-sudo yum install -y {gravitee-service-name}
+sudo yum install -y {gravitee-package-name}
 ----
 
 == Running Gravitee.io {gravitee-component-name}
