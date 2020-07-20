@@ -262,6 +262,16 @@ user.creation.token.expire-after:: number (default: 86400) - Number of seconds b
 user.reference.secret:: 32 characters (default: s3cR3t4grAv1t33.1Ous3D4R3f3r3nc3) - CHANGE IT! secret used to generate a unique anonymous reference to a user.
 user.anonymize-on-delete:enabled:: boolean (default: false) - If true, the users firstname, lastname and email are anonymized when a user is deleted.
 
+== Gateway
+
+The field `unknown-expire-after` specifies the duration of visibility (in seconds) of a gateway with the state unknown (default value: 7 days).
+
+[source,yaml]
+----
+gateway:
+  unknown-expire-after: 604800
+----
+
 == Default configuration
 
 Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.yml` file. This section provides the general configuration of Gravitee.IO Management API.
