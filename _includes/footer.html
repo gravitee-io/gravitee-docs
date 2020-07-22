@@ -1,9 +1,36 @@
-<footer>
-    <div class="row">
-        <div class="col-lg-12 footer">
-            &copy;{{ site.time | date: "%Y"  }} {{site.company_name}}. All rights reserved. <br />
-            Gravitee.io APIM is distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License V2</a><br />
-            {% if page.last_updated %}<span>Page last updated:</span> {{page.last_updated}}<br/>{% endif %} Site last generated: {{ site.time | date: "%b %-d, %Y"  }}
+<footer class="footer">
+    <div class="newsletter-box">
+        <div class="newsletter-title">Join the community</div>
+        <p>Subscribe to get product updates in your inbox</p>
+        <form id="newsletter-form" class="newsletter-form">
+            <input required name="email" type="email" class="gv-input" placeholder="Email Address">
+            <button type="submit" class="gv-button">Subscribe</button>
+        </form>
+        <span class="message">We won’t send you spam, unsubscribe at any time</span>
+
+        <span class="newsletter-error">
+            <i class="fa fa-exclamation"></i>
+            <span></span>
+        </span>
+        <span class="newsletter-success">
+            <i class="fa fa-check"></i>
+            <span></span>
+        </span>
+    </div>
+    <div class="footer-information">
+        <div class="footer-links">
+            <a title="Github" href="https://github.com/gravitee-io" target="_blank"><i
+                    class="fa fa-github fa-3x"></i></a>
+            <a title="Twitter" href="https://twitter.com/graviteeio" target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
+            <a title="Linkedin" href="https://www.linkedin.com/company/gravitee-io" target="_blank"><i
+                    class="fa fa-linkedin fa-3x"></i></a>
+        </div>
+        <div>
+            &copy;{{ site.time | date: "%Y" }} {{site.company_name}}. All rights reserved. <br/>
+            Gravitee.io APIM is distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache
+            License V2</a><br/>
+            {% if page.last_updated %}<span>Page last updated:</span> {{page.last_updated}}<br/>{% endif %} Site last
+            generated: {{ site.time | date: "%b %-d, %Y" }}
         </div>
     </div>
 </footer>
@@ -16,4 +43,46 @@
   inputSelector: '#search-input',
   debug: false // Set debug to true if you want to inspect the dropdown
 });
+
+$(document).ready(function () {
+  $('#newsletter-form').on('submit', function (event) {
+    var formData = $(this).serializeArray();
+    $.ajax({
+      type: 'POST',
+      url: '{{ site.newsletter_api }}',
+      dataType: 'json',
+      data: JSON.stringify({ email: formData[0].value }),
+      contentType: 'application/json; charset=utf-8',
+      cache: false,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      statusCode: {
+        201: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'Your subscription has been sent.';
+          $('.newsletter-success').show();
+        },
+        400: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'You have already subscribe to the newsletter.';
+          $('.newsletter-success').show();
+        },
+        500: function () {
+          $('.newsletter-error span')[0].innerText = 'Sorry, an error occurred. Please try again later.';
+          $('.newsletter-success').hide();
+          $('.newsletter-error').show();
+        }
+      },
+      complete: function () {
+        $('.message').hide();
+      }
+    });
+    event.preventDefault();
+    event.stopPropagation();
+  });
+});
+
 </script>
+
