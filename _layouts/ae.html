@@ -14,7 +14,7 @@ layout: default
     });
 </script>
 
-{% include custom/{{page.map_name}}.html %}
+{% include_cached custom/{{page.map_name}}.html %}
 
 {% elsif page.complex_map == true %}
 
@@ -24,7 +24,7 @@ layout: default
     });
 </script>
 
-{% include custom/{{page.map_name}}.html %}
+{% include_cached custom/{{page.map_name}}.html %}
 
 {% endif %}
 
@@ -33,7 +33,7 @@ layout: default
     <div class="summary">{{site.products.ae.version}}</div>
 
     {% unless page.toc == false %}
-    {% include toc.html %}
+    {% include_cached toc.html %}
     {% endunless %}
 
 
@@ -58,11 +58,11 @@ layout: default
     </div>
 
     {% if site.disqus %}
-    {% include disqus.html %}
+    {% include_cached disqus.html %}
     {% endif %}
 
 </div>
 
 {{site.data.alerts.hr_shaded}}
 
-{% include footer.html %}
+{% include_cached footer.html %}

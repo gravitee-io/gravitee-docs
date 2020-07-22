@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    {% include head.html %}
+    {% include_cached head.html %}
     <script>
         $(document).ready(function() {
             // Initialize navgoco with default options
@@ -54,7 +54,7 @@
 
 </head>
 <body>
-{% include topnav.html %}
+{% include_cached topnav.html %}
 <!-- Page Content -->
 <div class="container">
     <div class="col-lg-12">&nbsp;</div>
@@ -63,7 +63,7 @@
         <!-- Sidebar Column -->
         <div class="col-md-3">
 
-          {% include sidebar.html %}
+          {% include_cached sidebar.html %}
     <!-- Content Column -->
     <div class="col-md-9">
         {{content}}
@@ -75,6 +75,6 @@
 
 </body>
 {% if site.google_analytics %}
-{% include google_analytics.html %}
+{% include_cached google_analytics.html %}
 {% endif %}
 </html>

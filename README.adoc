@@ -14,10 +14,16 @@ You'll find these pages under the `/pages` directory.
 
 We suggest you to use a live preview utility like the one available with jekyll.
 ```
-> bundle exec jekyll serve
+> bundle exec jekyll serve --livereload
 ```
 
 Then, open http://127.0.0.1:4000/ to see your modifications.
 
-For contributions guidelines, please refer to CONTRIBUTING.adoc
+For reduce build time, we use `jekyll-include-cache`.
+If you need to clear the Jekyll cache at any time, use the following command.
 
+```
+> bundle exec jekyll clean
+```
+
+For contributions guidelines, please refer to CONTRIBUTING.adoc
