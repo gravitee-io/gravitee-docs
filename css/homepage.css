@@ -1,0 +1,81 @@
+body {
+    background-color: #fafafa;
+}
+
+.homepage ul {
+    list-style-type: none;
+    margin: 0 1rem;
+    padding: 1rem;
+}
+
+.homepage li {
+    padding: 0.5rem;
+}
+
+.homepage li p, .homepage li p a  {
+    margin: 0;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #262626;
+    outline: 0;
+}
+
+.homepage li p a:hover {
+    transition: all 250ms ease-in-out;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+}
+
+.homepage {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem 0;
+}
+
+.homepage .sect1 {
+    border: 1px solid white;
+    border-radius: 4px;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: white;
+    box-shadow: 0 0 0 1px  #F5F5F5, 0 1px 3px #BFBFBF;
+    transition: all;
+}
+
+.homepage .sect1:hover {
+    box-shadow: 0 10px 20px -10px var(--gv-theme-neutral-color-dark, #BFBFBF);
+}
+
+.homepage h2 {
+    display: flex;
+    font-size: 16px;
+    padding: 2rem;
+    margin: 0;
+    border-bottom: 2px solid #86c3d0;
+    text-transform: none;
+}
+
+.homepage h2 *:first-child {
+    flex: 1;
+    text-decoration: none;
+    font-size: 28px;
+    color: #86c3d0;
+    font-weight: bold;
+}
+
+.homepage h2 a {
+    color: #262626;
+    text-decoration: underline;
+}
+
+.homepage h2 .anchorjs-link {
+    display: none;
+}
+
+.footer {
+    margin: 4rem 4rem 0 4rem;
+}
