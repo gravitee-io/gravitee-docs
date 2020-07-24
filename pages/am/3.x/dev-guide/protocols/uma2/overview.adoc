@@ -1,0 +1,425 @@
+= UMA 2.0
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_devguide_protocols_uma2_overview.html
+:page-folder: am/dev-guide/protocols/uma2
+:page-layout: am
+
+== Overview
+
+User-Managed Access (UMA) is an OAuth-based protocol designed to give to an individual a unified control point for authorizing who and what can get access to their digital data, content, and services, no matter where all those things live.
+
+The authorization server and resource server interact with the client and requesting party in a way that is asynchronous with respect to resource owner interactions.
+
+This lets a resource owner configure an authorization server with authorization grant rules (policy conditions) at will, rather than authorizing access token issuance synchronously just after authenticating.
+
+For example, bank customer (resource owner) Alice with a bank account service (resource server) can use a sharing management service (authorization server) hosted by the bank to manage access to her various protected resources by spouse Bob, accounting professional Charline, and financial information aggregation company Decide Account, all using different client applications.
+Each of her bank accounts is a protected resource, and two different scopes of access she can control on them are viewing account data and accessing payment functions.
+
+NOTE: link:https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-08.html#claim-redirect[The User-Managed Access (UMA) 2.0 Grant for OAuth 2.0 Authorization specification] discusses the use of the authorization server's claims interaction endpoint for one or more interactive claims-gathering processes as the authorization server requires. Gravitee.io AM does not support interactive claims gathering. Claims gathering is accomplished by having the requesting party acquire an OpenID Connect (OIDC) ID token.
+
+== Using UMA 2.0
+
+Gravitee.io AM exposes an endpoint for discovering information about the UMA provider configuration.
+
+NOTE: Discovery endpoint URL : https://am-gateway/{domain}/uma/.well-known/uma2-configuration
+
+You can also find UMA 2.0 protocol endpoints exposed by Gravitee.io Access Management :
+
+* link:/am/current/uma2/index.html[UMA 2.0 API Console, window="_blank"] - link:/am/current/uma2/swagger.yml[Swagger spec, window="_blank"]
+
+== Roles
+
+The UMA grant enhances the OAuth definitions of entities in order to accommodate the requesting party role.
+
+resource owner:: An entity capable of granting access to a protected resource, the "user" in User-Managed Access.
+The resource owner MAY be an end-user (natural person) or MAY be a non-human entity treated as a person for limited legal purposes (legal person), such as a corporation.
+requesting party:: A natural or legal person that uses a client to seek access to a protected resource. The requesting party may or may not be the same party as the resource owner.
+client:: An application that is capable of making requests for protected resources with the resource owner's authorization and on the requesting party's behalf.
+resource server:: A server that hosts resources on a resource owner's behalf and is capable of accepting and responding to requests for protected resources.
+authorization server:: A server that protects, on a resource owner's behalf, resources hosted at a resource server.
+
+== Protocol flow
+
+The UMA 2.0 flow enhances the standard OAuth 2.0 grant by defining formal communications between the UMA-enabled authorization server and resource server as they act on behalf of the resource owner
+
+----
+                                             +------------------+
+                                             |     resource     |
+       +------------manage (out of scope)----|       owner      |
+       |                                     +------------------+
+       |                                               |
+       |                protection                     |
+       |                API access                  control
+       |                token (PAT)              (out of scope)
+       |                                               |
+       v                                               v
++------------+                    +----------+------------------+
+|            |                    |protection|                  |
+|  resource  |                    |   API    |   authorization  |
+|   server   |<-----protect-------| (needs   |      server      |
+|            |                    |   PAT)   |                  |
++------------+                    +----------+------------------+
+| protected  |                               |        UMA       |
+| resource   |                               |       grant      |
+|(needs RPT) |          requesting           |  (PCT optional)  |
++------------+          party token          +------------------+
+       ^                  (RPT)               ^  persisted   ^
+       |                                      |   claims     |
+       |                                    push   token     |
+       |                                   claim   (PCT)     |
+       |                                   tokens         interact
+       |                                      +--------+    for
+       +------------access--------------------| client |   claims
+                                              +--------+  gathering
+                                                +---------------+
+                                                |  requesting   |
+                                                |     party     |
+                                                +---------------+
+----
+
+== Endpoints
+
+=== Resource Registration Endpoint
+
+link:https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-federated-authz-2.0.html#resource-registration-endpoint[The resource registration endpoint]  enables the resource server to put resources under the protection of an authorization server on behalf of the resource owner and manage them over time.
+The authorization server MUST first verify the identity of the resource owner.
+
+NOTE: Resource registration endpoint URL : https://am-gateway/{domain}/uma/protection/resource_set
+
+=== Access Policies Endpoint
+
+link:https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-federated-authz-2.0.html#reg-api[Access policies endpoint] allows the resource server to redirect an end-user resource owner to a specific user interface within the authorization server where the resource owner can immediately set or modify access policies subsequent to the resource registration action just completed.
+
+NOTE: Access policies endpoint URL : https://am-gateway/{domain}/uma/protection/resource_set/:resourceId/policies
+
+NOTE: Only the resource owner can create a policy to protect a resource. Administrator users, cannot create policies on behalf of a resource owner.
+
+The policies can be written with the Groovy language thanks to the link:/apim/3.x/apim_policies_groovy.html[Groovy Policy].
+
+When the authorization server handles an incoming UMA 2 grant request, some attributes are automatically created.
+
+* {#request} : Current HTTP Request with parameters, headers, path, ...
+* {#context.attributes['client']} : OAuth 2.0 Client with clientId, clientName, ...
+* {#context.attributes['user']} : Requesting party user with username, firstName, lastName, email, roles, ...
+* {#context.attributes['permissionRequest']} : requested permission for the given resource with resourceId and resourceScopes
+
+Here after you can see an example to give **read** access to a resource only for the requesting party **Bob**.
+
+----
+import io.gravitee.policy.groovy.PolicyResult.State
+
+user = context.attributes['user']
+permissionRequest = context.attributes['permissionRequest']
+
+if (user.username == 'bob' && permissionRequest.resourceScopes.contains('read')) {
+  result.state = State.SUCCESS;
+} else {
+  result.state = State.FAILURE;
+}
+----
+
+=== Permission Endpoint
+
+link:https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-federated-authz-2.0.html#permission-endpoint[The permission endpoint] defines a means for the resource server to request one or more permissions (resource identifiers and corresponding scopes) with the authorization server on the client's behalf, and to receive a permission ticket in return (example, request party want to access Alice documents (GET /alice/documents/**)).
+
+NOTE: Authorization endpoint URL : https://am-gateway/{domain}/uma/protection/permission
+
+=== Introspection Endpoint
+
+link:https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-federated-authz-2.0.html#introspection-endpoint[The introspection endpoint] is an OAuth 2.0 endpoint that takes a parameter representing an OAuth 2.0 token and returns a JSON [RFC7159] document representing the meta information surrounding the token, including whether this token is currently active.
+The resource server uses this endpoint to determine whether the access token (RPT) is active and, if so, its associated permissions.
+
+NOTE: Introspection endpoint URL : https://am-gateway/{domain}/oauth/introspect
+
+== Concrete example
+
+Let's imagine that a user, Alice (the resource owner) wants to share read access to her bank account to her accountant Bob (the requesting party).
+The personal bank account data are exposed through an API (the resource server) secured by OAuth 2.0 protocol.
+
+1. Alice must log in to the bank application and configure access to personal data resources.
+2. Bob will log in and use the bank application and the bank API to access Alice personal data.
+
+=== Configure your security domain
+
+To use the UMA 2.0 protocol you must enable it at your security domain level.
+
+1. Log in to the Gravitee.io AM portal as an administrator of your security domain
+2. Go to Settings -> UMA (at the bottom of the page)
+3. On the UMA page, enable `User-Managed Access (UMA) 2.0 support` and press `SAVE`
+
+==== Create the client application
+
+1. Log in to the Gravitee.io AM portal as an administrator of your security domain
+2. Go to Applications section and press `(+)`
+3. Select `Web` application type, press `NEXT`, fill out the form and press `CREATE`
+4. On the Application, go to Identity Providers tabs and select your identity provider for your requesting party users (Bob)
+5. Then go to Settings -> OAuth 2.0 / OIDC
+6. Add scopes `openid` and `read` and press `SAVE`
+
+==== Create the resource server application
+
+1. Log in to the Gravitee.io AM portal as an administrator of your security domain
+2. Go to Applications section and press `(+)`
+3. Select `Resource Server` application type, press `NEXT`, fill out the form and press `CREATE`
+4. On the Application, go to Identity Providers tabs and select your identity provider for your resource owners (Alice)
+
+==== Create a resource owner
+
+1. Log in to the Gravitee.io AM portal as an administrator of your security domain
+2. Go to Settings -> Users section and press `(+)`
+3. Fill out the form to create the resource owner (Alice) and press `CREATE`
+
+NOTE: Make sure that the resource server application is using the the resource owner's identity provider.
+
+==== Create a requesting party
+
+1. Log in to the Gravitee.io AM portal as an administrator of your security domain
+2. Go to Settings -> Users section and press `(+)`
+3. Fill out the form to create the requesting party (Bob) and press `CREATE`
+
+NOTE: Make sure that the client application is using the the requesting party's identity provider.
+
+=== Protect the resource owner resources
+
+==== Get a Protection API Token (PAT)
+
+The resource owner must acquire a protection API access token (PAT) to register a resource and create authorization grant rules.
+To obtain this PAT the resource owner must log in to its application, by using any link:/am/current/am_devguide_protocols_oauth2_overview.html#authorization_grant[OAuth 2.0 Flow].
+
+For this guide we are using the link:/am/current/am_devguide_protocols_oauth2_overview.html#resource_owner_password_credentials[Resource Owner Password flow] :
+
+----
+$ curl \
+--request POST \
+--data 'grant_type=password' \
+--data 'username=alice' \
+--data 'password=password' \
+--data 'client_id=:Resource-Server-Client-ID' \
+--data 'client_secret=:Resource-Server-Client-Secret' \
+https://am-gateway/{domain}/oauth/token
+
+{
+  "access_token": "eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....",
+  "token_type": "bearer",
+  "scope": "uma_protection"
+  "expires_in": 7199
+}
+----
+
+NOTE: `Resource-Server-Client-ID` and `Resource-Server-Client-Secret` can be found in your resource server application settings page.
+
+NOTE: The `access_token` is the Protection API Token (PAT) that you can use to register the resources to protect.
+
+==== Register resources
+
+With the Protection API Token (PAT) previously acquired , the resource owner can now register a resource.
+
+----
+$ curl -X POST \
+--header 'authorization: Bearer eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....' \
+--header 'cache-control: no-cache' \
+--header 'content-type: application/json' \
+--data '{
+   "resource_scopes":[
+      "read"
+   ],
+   "description":"Account read access",
+   "icon_uri":"http://www.example.com/icons/picture.png",
+   "name":"Account access",
+   "type":"http://www.example.com/resource/account"
+}' \
+https://am-gateway/{domain}/uma/protection/resource_set
+
+{
+  "_id": "62dcf5d7-baa6-4e01-9cf5-d7baa61e01ac",
+  "resource_scopes": [
+    "phone"
+  ],
+  "description": "Account read access",
+  "iconUri": "http://www.example.com/icons/picture.png",
+  "name": "Account access",
+  "type": "http://www.example.com/resource/account",
+  "user_access_policy_uri": "https://am-gateway/{domain}/uma/protection/resource_set/62dcf5d7-baa6-4e01-9cf5-d7baa61e01ac/policies"
+  "created_at": 1593006070414,
+  "updated_at": 1593006070414
+}
+----
+
+NOTE: The PAT Bearer Token is used via the Authorization HTTP header.
+
+NOTE: The `user_access_policy_uri` field give you the URL to assign access policies to this resource.
+
+==== Assign access policies
+
+Now that your resource is created, you can protect and share access to it by defining some access policies.
+
+----
+$ curl -X POST \
+--header 'authorization: Bearer eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....' \
+--header 'cache-control: no-cache' \
+--header 'content-type: application/json' \
+--data '{
+	"name": "policy-name",
+	"enabled": true,
+	"description": "policy-description",
+	"type": "groovy",
+	"condition": {
+		"onRequestScript": "import io.gravitee.policy.groovy.PolicyResult.State\\nuser = context.attributes['user']\\nif(user.username == 'bob') { result.state = State.SUCCESS; } else { result.state = State.FAILURE;}"
+	}
+}' \
+https://am-gateway/{domain}/uma/protection/resource_set/62dcf5d7-baa6-4e01-9cf5-d7baa61e01ac/policies
+
+{
+  "id": "f05eef05-adb3-4e66-9eef-05adb3be6683",
+  "type": "GROOVY",
+  "enabled": true,
+  "name": "policy-name",
+  "description": "policy-description",
+  "order": 0,
+  "condition": "{\"onRequestScript\":\"import io.gravitee.policy.groovy.PolicyResult.State\\nuser = context.attributes['user']\\nif(user.username == 'bob') { result.state = State.SUCCESS; } else { result.state = State.FAILURE;}\"}",
+  "domain": "uma2_postman",
+  "resource": "62dcf5d7-baa6-4e01-9cf5-d7baa61e01ac",
+  "createdAt": 1593006804494,
+  "updatedAt": 1593006859663
+}
+----
+
+NOTE: The PAT Bearer Token is used via the Authorization HTTP header.
+
+NOTE: In this example we want to share access with our requesting party Bob. Please see link:/am/current/am_devguide_protocols_uma2_overview.html#access_policies_endpoint[Access Policies Endpoint] for more information.
+
+=== Request access to the resource owner resources
+
+==== Get a Permission Ticket (PT)
+
+When the resource server receives a request for access to a resource, it has to request for a permission ticket.
+This permission ticket will be bound for a particular resource and corresponding scopes.
+
+----
+$ curl -X POST \
+--header 'authorization: Bearer eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....' \
+--header 'cache-control: no-cache' \
+--header 'content-type: application/json' \
+--data '[
+	{
+		"resource_id":"62dcf5d7-baa6-4e01-9cf5-d7baa61e01ac",
+		"resource_scopes":[
+			"read"
+		]
+	}
+]' \
+https://am-gateway/{domain}/uma/protection/permission
+
+{
+  "ticket": "fe594f7c-5284-4172-994f-7c5284617215"
+}
+----
+
+NOTE: The PAT Bearer Token which is used via the Authorization HTTP header must be obtained by the resource server via the link:/am/current/am_devguide_protocols_oauth2_overview.html#client_credentials[OAuth 2.0 Client Credentials Flow].
+
+NOTE: The `ticket` property in the response is the permission ticket, which will be used to obtain the Requesting Party Token.
+
+==== Get the Requesting Party Token (RPT)
+
+. Log in the requesting party
+
+In order to get a Requesting Party Token, the requesting party must be authenticated.
+
+For this guide we are using the link:/am/current/am_devguide_protocols_oauth2_overview.html#resource_owner_password_credentials[Resource Owner Password flow] :
+
+----
+$ curl \
+--request POST \
+--data 'grant_type=password' \
+--data 'username=bob' \
+--data 'password=password' \
+--data 'client_id=:Client-Client-ID' \
+--data 'client_secret=:Client-Client-Secret' \
+https://am-gateway/{domain}/oauth/access_token
+
+{
+  "access_token": "eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....",
+  "id_token": "eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....",
+  "token_type": "bearer",
+  "scope": "openid read"
+  "expires_in": 7199
+}
+----
+
+NOTE: `Client-Client-ID` and `Client-Client-Secret` can be found in your client application settings page.
+
+NOTE: The `id_token` will be use to prove the requesting party identity and authentication state (known as claim token).
+
+[start=2]
+. Request for a Requesting Party Token (RPT)
+
+The requesting party makes a request using the permission ticket and the claim token (the id_token) previously acquired, to get a Requesting Party Token (RPT).
+
+----
+$ curl -X POST \
+--header 'Authorization: Basic (Client-Client-ID:Client-Client-Secret)' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data 'grant_type=urn:ietf:params:oauth:grant-type:uma-ticket' \
+--data 'ticket=fe594f7c-5284-4172-994f-7c5284617215' \
+--data 'claim_token=eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi...' \
+--data 'claim_token_format=urn:ietf:params:oauth:token-type:id_token'
+https://am-gateway/{domain}/oauth/token
+
+{
+  "access_token": "eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....",
+  "token_type": "bearer",
+  "expires_in": 7199
+}
+----
+
+NOTE: To make the request you must use the permission `ticket` and the `claim_token` (id_token) acquired earlier.
+
+NOTE: The `access_token` property is the Requesting Party Token (RPT).
+
+==== Get the resource owner data
+
+The client application just got a Requesting Party Token, it can use it to get the resource owner personal data.
+
+[source]
+----
+GET  https://api.company.com/bank/users/alice/documents
+Authorization: Bearer eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....
+----
+
+NOTE: The RPT Bearer Token is used via the Authorization HTTP header.
+
+The Bank API must check the incoming token to determine the active state of the access token and decide to accept or deny the request.
+
+You can use the link:/am/current/am_devguide_protocols_oauth2_overview.html#introspection_endpoint[Introspect Endpoint] to inspect the properties of the RPT.
+
+[source]
+----
+POST https://am-gateway/{domain}/oauth/introspect HTTP/1.1
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
+token=b02063f8-2698-4141-a063-f82698e1419c
+
+{
+  "sub": "241322ab-1d10-4f5a-9322-ab1d105f5ac8",
+  "permissions": [
+    {
+      "resourceId": "62dcf5d7-baa6-4e01-9cf5-d7baa61e01ac",
+      "resourceScopes": [
+        "read"
+      ]
+    }
+  ],
+  "domain": "uma2_postman",
+  "iss": "https://am-gateway/{domain}/oidc",
+  "active": true,
+  "exp": 1593020894,
+  "token_type": "bearer",
+  "iat": 1593013694,
+  "client_id": "Client-Client-ID",
+  "jti": "SZtDy09nZVChtFVNW-_UxqE8iImfNspar2eE20mZxSU",
+  "username": "bob"
+}
+----
+
+In this example the RPT is valid and the resource server application can check if the requesting party can access the resource thanks to the `permissions` property.

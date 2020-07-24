@@ -1,0 +1,36 @@
+= APIs
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_devguide_protocols_overview.html
+:page-folder: am/dev-guide/protocols
+:page-layout: am
+
+Gravitee.io Access Management relies on different authorization/authentication/identity protocols to define how applications can interact with the Gravitee.io AM to authenticate, retrieve user information and make authorization decisions to access protected resources.
+
+== link:/am/current/am_devguide_protocols_oauth2_overview.html[OAuth 2.0]
+
+The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service,
+either on behalf of a resource owner by orchestrating an approval interaction between the resource owner and the HTTP service,
+or by allowing the third-party application to obtain access on its own behalf.
+
+== link:/am/current/am_devguide_protocols_oidc_overview.html[OpenID Connect]
+
+OpenID Connect 1.0 is a simple identity layer on top of the OAuth 2.0 protocol.
+It enables Clients to verify the identity of the End-User based on the authentication performed by an Authorization Server,
+as well as to obtain basic profile information about the End-User in an interoperable and REST-like manner.
+
+== link:/am/current/am_devguide_protocols_uma2_overview.html[UMA 2.0]
+
+User-Managed Access (UMA) is an OAuth-based protocol designed to give to an individual a unified control point for authorizing who and what can get access to their digital data, content, and services, no matter where all those things live.
+
+== link:/am/current/am_devguide_protocols_scim_overview.html[SCIM 2.0]
+
+The System for Cross-domain Identity Management (SCIM) specification is designed to make managing user identities in cloud-based applications and services easier.
+Its intent is to reduce the cost and complexity of user management operations by providing a common user schema and extension model.
+
+== link:/am/current/am_devguide_protocols_users_overview.html[Users API]
+
+The Gravitee.io AM Users API provides operations to manage users in your organization such as user consent management.
+
+== link:/am/current/am_devguide_protocols_session_overview.html[User Session API]
+
+The Gravitee.io AM User Session API provides operations to manage users sessions in your organization.
