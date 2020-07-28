@@ -11,3 +11,10 @@
 Configure your slack channel and the token to use to send your message
 
 image::ae/notifiers/cfg-slack.png[Configure your Slack notification]
+
+== Example
+
+[source,text]
+----
+The alert "${alert.name}" has been thrown with the following message: \n>${notification.message}
+----

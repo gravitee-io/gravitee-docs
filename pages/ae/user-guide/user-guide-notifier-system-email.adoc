@@ -12,3 +12,13 @@
 Use the SMTP server already configured in your platform and the message to send.
 
 image::ae/notifiers/cfg-system-email.png[Configure your Email notification]
+
+== Example
+
+[source,html]
+----
+The alert [<b>${alert.name}</b>] has been thrown with the following message:
+<p>
+${notification.message}
+</p>
+----

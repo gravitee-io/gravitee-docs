@@ -11,3 +11,15 @@
 You define an URL, HTTP Headers and a body to send a POST request.
 
 image::ae/notifiers/cfg-webhook.png[Configure your Webhook notification]
+
+== Example
+
+[source,json]
+----
+{
+  "alert": "${alert.name}",
+  "severity": "${alert.severity}",
+  "message": "${notification.message}",
+  "request_id": "${notification.properties['request.id']}"
+}
+----
