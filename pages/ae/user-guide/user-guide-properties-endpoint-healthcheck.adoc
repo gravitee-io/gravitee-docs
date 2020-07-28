@@ -9,6 +9,8 @@
 
 Here is the list of properties available in every alerts triggered by a ENDPOINT_HEALTHCHECK event.
 
+NOTE: To access one of those property, you have to use the following syntax: `${notification.properties['property_name']}`.
+
 [cols="1,3"]
 |===
 |Key |Description

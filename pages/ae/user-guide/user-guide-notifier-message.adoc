@@ -41,11 +41,10 @@ Those properties are available regardless the type of Alert.
 
 == Specific properties
 
-Depending on the kind of rules you have configured, yuo will have access to more properties.
-Those properties are provided by the type of event that being processed by the Alert Engine.
+Depending on the kind of rules you have configured, you will have access to more properties.
+Those properties are depending on the type of event that being processed by the Alert Engine.
 
-The list below show you, grouped by
-Here is the list.
+To access one of those property, you have to use the following syntax: `${notification.properties['property_name\']}`.
 
 [cols="1,1,5"]
 |===
