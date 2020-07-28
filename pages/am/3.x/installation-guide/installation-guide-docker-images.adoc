@@ -106,7 +106,7 @@ So you have to override `MGMT_API_URL` to specify where the management-api is ru
 [source,shell]
 ....
 $ docker run \
-        --publish 80:80 \
+        --publish 80:8080 \
         --env MGMT_API_URL=http://localhost:8093/management/ \
         --name am-management-ui \
         --detach  \

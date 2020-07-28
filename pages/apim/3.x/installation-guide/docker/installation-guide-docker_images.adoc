@@ -111,7 +111,7 @@ So you have to override `MGMT_API_URL` to specify where the management-api is ru
 [source,shell]
 ....
 $ docker run \
-        --publish 80:80 \
+        --publish 80:8080 \
         --env MGMT_API_URL=http://localhost:81/management/organizations/DEFAULT/environments/DEFAULT \
         --name management-ui \
         --detach  \
@@ -128,7 +128,7 @@ So you have to override `PORTAL_API_URL` to specify where the management-api is 
 [source,shell]
 ....
 $ docker run \
-        --publish 80:80 \
+        --publish 80:8080 \
         --env PORTAL_API_URL=http://localhost:81/portal/environments/DEFAULT \
         --name portal-ui \
         --detach  \
