@@ -20,7 +20,7 @@ services:
           admin: adminadmin
 ----
 enabled:: Enable or not the service (default `true`).
-port:: The port the service listen to (default `{node_port}`).
+port:: The port the service listen to (default `{node_port}`). Be mindful not to use a port already used by another Gravitee component.
 host:: The host (default `localhost`)
 authentication.type:: Authenticate mode for requests: `none` if no authentication is required or `basic` (default `basic`)
 authentication.users:: A list of couple `user: password`. Only required if the authentication type is `basic`.
