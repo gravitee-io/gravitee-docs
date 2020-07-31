@@ -50,7 +50,22 @@ There are 5 types of fetchers:
 
 __The documentation is fetched and stored locally in the Gravitee.io platform__
 
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-external-source.png[]
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-external-source-auto-fetch.png[]
+
+==== Auto Fetch ====
+
+__This feature is available since v3.2__
+
+To fetch periodically your documentation from external source, you can enable the 'Auto Fetch' option and specify the fetch frequency.
+
+This frequency definition uses a __cron expression__ that is a string consisting of six fields that describe the schedule representing second, minute, hour, day, month and weekday. 
+
+For example :
+
+* Fetch every hour: `* * */1 * * *` 
+* At 00:00 on Saturday : `0 0 0 * * SAT`
+
+_Note:_ If the APIM administrator configured a maximum fetch frequency, the value configured by the APIM administrator will override the frequency you specify.
 
 === Translations
 
