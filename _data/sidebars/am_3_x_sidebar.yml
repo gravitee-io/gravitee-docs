@@ -126,6 +126,15 @@ entries:
         - title: Create certificate
           output: web
           url: /am/current/am_userguide_create_certificate.html
+      - title: Extension Grants
+        output: web
+        subfolderitems:
+          - title: Overview
+            output: web
+            url: /am/current/am_userguide_extension_grants.html
+          - title: JWT Bearer
+            output: web
+            url: /am/current/am_userguide_extension_grants_jwt_bearer.html
       - title: User Management
         output: web
         subfolderitems:
