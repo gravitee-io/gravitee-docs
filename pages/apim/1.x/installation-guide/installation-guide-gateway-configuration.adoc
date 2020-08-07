@@ -218,6 +218,18 @@ reporters:
 #       password:
 ----
 
+
+
+If you need to add custom regexes, you will need to add this configuration on the gravitee.yml:
+
+```yml
+reporters.elasticsearch.user_agent.regex_file=regexes_custom.yml
+```
+
+In addition to this configuration, you will have to add the regexes_custom.yml file to the config/ingest-user-agent directory of your ES installation.
+(This must contain all the regex present in the default file as this is an overload and it must be present when restarting the instance to be loaded)
+Finally, after the restart of ES and your gateway, the custom regexes will be successfully used.
+
 == Services
 
 Gravitee.io Gateway services configuration. Provided values are default values. All services are enabled by default. To stop one of them, you have to add the property 'enabled: false' (See the 'local' service for an example).
