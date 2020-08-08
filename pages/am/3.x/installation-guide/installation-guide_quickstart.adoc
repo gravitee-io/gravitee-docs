@@ -35,5 +35,5 @@ Check the link:/am/current/am_installguide_docker_compose.html[documentation]
 $ helm repo add graviteeio https://helm.gravitee.io
 
 # And install
-$ helm install --name graviteeio-am graviteeio/am3
+$ helm install --name graviteeio-am graviteeio/am
 ....
