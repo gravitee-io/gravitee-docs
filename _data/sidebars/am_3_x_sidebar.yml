@@ -207,6 +207,7 @@ entries:
     - title: Quickstart
       output: web
       url: /am/current/am_installguide_quickstart.html
+
       subfolders:
         - title: Install with .zip
           output: web
@@ -265,6 +266,11 @@ entries:
             - title: Compose
               output: web
               url: /am/current/am_installguide_docker_compose.html
+    - title: Kubernetes
+      output: web
+      url: /am/current/am_installguide_kubernetes.html
+
+      subfolders:
         - title: Auth Gateway
           output: web
           subfolderitems:
