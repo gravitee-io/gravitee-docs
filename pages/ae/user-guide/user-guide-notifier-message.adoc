@@ -37,6 +37,12 @@ Those properties are available regardless the type of Alert.
 |`notification.message`
 |A human readable message in relation to the Alert condition.
 
+|`notification.result.value`
+|When defining an aggregation-based condition (rate, aggregation, ...), you can retrieve the computed value using this property.
+
+|`notification.result.threshold`
+|When defining an aggregation-based condition (rate, aggregation, ...), you can retrieve the defined threshold value using this property.
+
 |===
 
 == Specific properties
