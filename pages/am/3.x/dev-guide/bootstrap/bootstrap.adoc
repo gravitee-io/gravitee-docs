@@ -1,0 +1,84 @@
+= Bootstrap your dev environment
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_devguide_bootstrap.html
+:page-folder: am/dev-guide/bootstrap
+:page-toc: false
+:page-liquid:
+
+You want to setup your environment to be able to start contributing to Gravitee, here is what you need to do
+
+== Prerequisites
+
+You will need the following tools on your computer:
+
+* Java (JDK >= 11)
+* Maven
+* Docker
+* NPM (preferably NVM)
+
+== Download Gravitee image
+
+Download the latest gravitee full distribution available: https://download.gravitee.io/graviteeio-am/distributions/graviteeio-am-full-{{ site.products.am.version }}.zip
+Unzip it into the directory of your choice. We will need them later on to copy plugins into our local repository.
+
+== Projects to clone
+
+Clone the following repositories in your workspace
+
+* https://github.com/gravitee-io/graviteeio-access-management
+
+If you are using IntelliJ, create a new project from existing sources and select your `graviteeio-access-management` folder.
+
+== Prepare for launch
+
+We will run the gateway as standalone thanks to a Run configuration in IntelliJ.
+
+To be able to do so, we need to copy all the plugins available in the current distribution we downloaded earlier in the resources directory of the standalone project.
+
+For instance if your download is in `Downloads` folder, and your project in `~/dev/gravitee-am-gateway`, run
+```
+cp ~/Downloads/graviteeio-am-full-{{ site.products.am.version }}/graviteeio-am-gateway-{{ site.products.am.version }}/plugins/* ~/dev/gravitee-am-gateway/gravitee-am-gateway-standalone/gravitee-am-gateway-standalone-distribution/src/main/resources/plugins
+```
+
+Do the same for gravitee-am-management-rest-api
+```
+cp ~/Downloads/graviteeio-am-full-{{ site.products.am.version }}/graviteeio-am-management-api-{{ site.products.am.version }}/plugins/* ~/dev/gravitee-am-management-api/gravitee-am-management-api-standalone/gravitee-am-management-api-standalone-distribution/src/main/resources/plugins
+```
+
+=== Run prerequisites
+
+Before starting the gateway, you will need to start mongo
+
+* Mongo
+
+```
+docker run -p 27017:27017 --name local-mongo -d mongo:3
+```
+
+=== Run configuration
+
+==== Gateway
+
+Create a new Run configuration in IntelliJ: click on Run -> Edit configurations -> + -> Application
+
+Give it the name you want.
+
+Choose "Use classpath of module": `gravitee-am-gateway-standalone-container`.
+
+Then select "Main class": `io.gravitee.am.gateway.container.GatewayContainer`.
+
+In the VM options, add the following (change the path to point to your project)
+```
+-Dgravitee.home=/home/user/dev/gravitee-am-gateway/gravitee-am-gateway-standalone/gravitee-am-gateway-standalone-distribution/src/main/resources
+```
+
+
+==== Management Rest API
+
+Do the same for gravitee-management-rest-api.
+
+==== Management Web UI
+
+Run `npm install` from 'gravitee-am-ui' directory.
+
+Then run 'npm run start' to start the UI.
