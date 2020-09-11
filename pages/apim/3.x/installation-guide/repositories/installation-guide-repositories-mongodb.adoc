@@ -67,6 +67,12 @@ management:
 
 NOTE: All theses properties allow you to fine tuned your MongoDB connection
 
+== Index
+
+A https://github.com/gravitee-io/gravitee-repository-mongodb/blob/master/src/main/resources/scripts/create-index.js[script] is available from our MongoDB GitHub Repository.
+Please use the correct version of this script depending on the version of Gravitee.io API Management you are running.
+
+
 == Security
 
 Sometimes, you may want to apply specific security constraints and rules to users allowed to access the database.
