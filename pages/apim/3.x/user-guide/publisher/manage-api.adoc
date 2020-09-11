@@ -185,4 +185,25 @@ If you have selected the option `'Apply Rest to SOAP Transformer policy'` in add
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-wsdl-rest-to-soap-policy.png[WSDL REST to SOAP policy]
 
 
+== Organize your APIs with CATEGORIES
+You can create `Categories` to group APIs. The only purpose of categories is to sort APIs so consumers can easily find the APIs they need in the Portal.
 
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-1.png[]
+
+To describe a category, you can add:
+
+- a name
+- a description
+- a picture
+- a markdown page as documentation
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-2.png[]
+
+Once you're done, you just have to select all the APIs you want.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-3.png[]
+
+You can also decide to highlight one API. This API will be located at the top of the category page.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-4.png[]
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-4.png[]
