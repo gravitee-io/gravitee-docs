@@ -13,16 +13,58 @@ In the installation guide, you have learnt how to configure different identity p
 
 Users are listed in the `Users` section of the `Settings` menu.
 
-image::apim/3.x/adminguide/usersgroups-users.png[Gravitee.io - List users]
-
 Here you can :
 
+ * create a new user account
  * remove a user account (only if the user is not a primary owner of an api or an application),
- * reset its password (only for users created with the Gravitee form)
 
-If you select a user, you have access to a detailed information about its account and permissions and the ability to manage its groups.
+image::apim/3.x/adminguide/usersgroups-users.png[Gravitee.io - List users]
+
+If you select a user, you can:
+
+ * access to detailed information about its account and permissions
+ * manage its groups.
+ * reset its password (only for users created with the Gravitee form)
+ * manage user registration requests
 
 image::apim/3.x/adminguide/usersgroups-user.png[Gravitee.io - User]
+
+
+=== Create a user
+
+==== as an admin
+You can pre-register a user by clicking the `Add button` in the bottom right of the page.
+An email will be sent to this user asking him/her to finalize the registration.
+
+image::apim/3.x/adminguide/usersgroups-pre-register-user.png[Gravitee.io - Pre-Register User, 300]
+
+[WARNING]
+====
+Check your portal UI and management UI URLs in the settings, so the links in registration emails are corrects.
+
+image::apim/3.x/adminguide/usersgroups-management-url-parameter.png[]
+
+image::apim/3.x/adminguide/usersgroups-portal-url-parameter.png[]
+
+====
+
+==== with the registration form
+Users can register themselves using `Registration form`. +
+See more link:/apim/3.x/apim_consumerguide_create_account.html[here]
+
+
+=== Manage registration requests
+By default, if the `Allow User Registration` option is enabled then all registration requests will be automatically validated.
+
+image::apim/3.x/adminguide/usersgroups-auto-validation-parameters.png[Gravitee.io - Automatic registration validation option]
+
+If you decide to disable this validation, then you will be able to reject or to accept user registration request in the user detail page.
+
+image::apim/3.x/adminguide/usersgroups-manual-validation-1.png[Gravitee.io - Users status pour registration validation]
+
+image::apim/3.x/adminguide/usersgroups-manual-validation-2.png[Gravitee.io - Manual registration validation]
+
+NOTE: If a self-registered user has finalized his/her registration but this registration has not been accepted by an admin, then the user won't be able to sign in.
 
 == User Fields
 
