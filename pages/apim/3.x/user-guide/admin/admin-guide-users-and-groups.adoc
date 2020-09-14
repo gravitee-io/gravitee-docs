@@ -24,6 +24,40 @@ If you select a user, you have access to a detailed information about its accoun
 
 image::apim/3.x/adminguide/usersgroups-user.png[Gravitee.io - User]
 
+== User Fields
+
+If you allow a new user to signing up, you have the capability to request additional fields during the registration process.
+
+To configure the list custom fields, go to the "User Fields" menu and Click on the (+) button.
+
+image::apim/3.x/adminguide/custom-user-fields-list.png[Gravitee.io - User Fields]
+
+The dialog box will ask you some inputs:
+
+	* The field key: this is the field identifier, it is used to translate the label in the portal UI
+	* The default label: this label is used to display the value in the web UI if the i18n translation isn't available
+	* A checkbox to make the field mandatory during the registration process
+	* A list of values you want to restrict for this field
+
+image::apim/3.x/adminguide/custom-user-fields-create.png[Gravitee.io - Create User Field]
+
+_Note:_ Gravitee provides a list of predefined keys. There are visible by clicking on the key field. 
+
+Once the user fields are defined, they will be displayed in the registration form of the console and the portal.
+
+image::apim/3.x/adminguide/custom-user-fields-registration.png[Gravitee.io - Registration With User Field]
+
+If you select a user, you have access to a detailed information about its account (including the custom fields) and permissions and the ability to manage its groups.
+
+image::apim/3.x/adminguide/custom-user-fields-user-details.png[Gravitee.io - User With Custom Fields]
+
+A user may visualize and update these information through the account page.
+
+image::apim/3.x/adminguide/custom-user-fields-account.png[Gravitee.io - User Account]
+
+TIP: 	Translations of the label for the custom fields is based on the field key. To add translation for your own fields, please declare them in the translation files (https://github.com/gravitee-io/gravitee-portal-webui/blob/master/src/assets/i18n/en.json[en.json], https://github.com/gravitee-io/gravitee-portal-webui/blob/master/src/assets/i18n/fr.json[fr.json]...) under the element `register.field`. If no translation is available the default label will be used. 
+
+
 == Groups
 
 Groups represent users groups where you put members of the same team/partner and set their role for the `API` scope and/or `APPLICATION` scope (see link:/apim/3.x/apim_adminguide_roles_and_permissions.html[Roles and Permissions] for details).
