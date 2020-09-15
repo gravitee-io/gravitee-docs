@@ -167,3 +167,22 @@ You can navigate to the policies management view to check.
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-policies-path.png[Policies view - all routes imported]
 
 ====
+
+== Import a WSDL
+
+Gravitee.io is able to import a WSDL descriptor to create an API. By doing so,
+you do not have to declare all the route and policies to interact with your service.
+
+To import an API from a WSDL:
+
+* If the WSDL is a file, select `IMPORT FILE` and browse your file-system to select it
+* If the WSDL is a link, select `IMPORT FROM LINK`, choose `WSDL` and enter the definition URL
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-wsdl-rest-to-soap-options.png[Import from WSDL link]
+
+If you have selected the option `'Apply Rest to SOAP Transformer policy'` in addition of the option `'Create policies on path'` in the import form, a REST-To-SOAP policy will be generated for each path. These policies will provide a SOAP envelop for each method with sample data that you can change using expression language. An XML-to-JSON policy will also be generated in order to convert the entire SOAP response to JSON format.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-wsdl-rest-to-soap-policy.png[WSDL REST to SOAP policy]
+
+
+

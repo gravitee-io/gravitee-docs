@@ -134,6 +134,22 @@ NOTE: After plan creation, the plan is in staging mode, don't forget to publish 
 
 Your API is now JWT secured and the consumers must call the API with the `Authorization Bearer :JWT Token:` HTTP header in order to access the API’s resources.
 
+== General conditions of use
+
+Gravitee.io allows you to provide general conditions for a given plan. These conditions must be accepted by the user to finalize the subscription process.
+
+To attach general conditions to a plan, you have to select the markdown page that describes these conditions.
+
+image::apim/3.x/api-publisher-guide/plans-subscriptions/add-general-conditions.png[Gravitee.io - add  general conditions, 873, 530, align=center, title-align=center]
+
+Plans with general conditions are identified by the `With general conditions` label.
+
+NOTE: To publish a plan with general conditions, the page containing the general conditions has to be published first.
+
+image::apim/3.x/api-publisher-guide/plans-subscriptions/general-conditions-plans.png[Gravitee.io - Plan with general conditions, 873, 530, align=center, title-align=center]
+
+NOTE: A plan with general conditions can only be subscribed through the Portal.
+
 == Advanced settings, what can I use plans for ?
 
 Plans provide and secure access to the API thanks to their Authorization type, let's see what you can do more with Plans.
