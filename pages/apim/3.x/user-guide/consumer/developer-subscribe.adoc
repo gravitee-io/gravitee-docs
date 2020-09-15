@@ -56,6 +56,14 @@ NOTE: Remember, if you choose an OAuth 2.0 plan you must have a `client_id` set 
 .Confirmation of the request before sending it
 image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-confirmation-before-validation.png[Gravitee.io - confirmation before validation]
 
+[NOTE]
+====
+If there are general conditions for the selected plan, you have to accept them before validating the subscription.
+
+.Waiting for the validation
+image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-general-conditions-acceptance.png[Gravitee.io - General Conditions]
+====
+
 [start=10]
 . If validation is automatic, you will get this message:
 
@@ -84,7 +92,6 @@ If the API's publisher choose to manually validate application subscriptions, yo
 
 .Waiting for the validation
 image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-wait-for-validation.png[Gravitee.io - Wait for validation]
-
 ====
 
 == Manage subscriptions
