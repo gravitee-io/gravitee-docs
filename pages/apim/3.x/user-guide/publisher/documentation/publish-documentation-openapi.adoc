@@ -17,9 +17,13 @@ image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-
 == Configuration
 
 === Viewer
-You can choose the renderer for your OpenAPI File. *Default is Swagger-UI*.
+You can choose the renderer for your OpenAPI File.
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-swagger-configuration-viewer.png[,300]
+
+You can also edit this configuration globally in the settings to change your default renderer, or even disable one renderer.
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-openapi-configuration-viewer.png[]
 
 === Swagger-UI configuration
 

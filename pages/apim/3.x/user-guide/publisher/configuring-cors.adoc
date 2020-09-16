@@ -50,3 +50,9 @@ This header lets a server whitelist headers that browsers are allowed to access.
 
 
 image::apim/3.x/api-publisher-guide/cors/graviteeio-configuring-cors-configuration-2.png[]
+
+== Troubleshooting CORS
+
+All requests rejected because of CORS issues will generate some logs that can be viewed in your API logs in the Analytics section.
+
+image::apim/3.x/api-publisher-guide/cors/graviteeio-troubleshooting-cors.png[]
