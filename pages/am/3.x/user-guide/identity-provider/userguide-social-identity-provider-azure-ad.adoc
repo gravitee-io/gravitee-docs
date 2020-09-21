@@ -1,0 +1,81 @@
+= Azure AD
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_social_identity_provider_azure_ad.html
+:page-folder: am/user-guide
+:page-layout: am
+
+NOTE: New in Gravitee.io AM 3.2.x
+
+NOTE: Before you begin, sign up for a link:https://azure.microsoft.com/en-us/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio[Azure account] and link:https://azure.microsoft.com/en-us/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio[Set up a tenant].
+
+== Steps
+
+To connect your application to Azure AD, you will:
+
+- Register a new application in Azure AD
+- Create a Azure AD identity provider in Gravitee.io AM
+- Set up the connection in Azure AD
+- Test connection
+
+== Register a new application in Azure AD
+
+link:https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app[Register an application with the Microsoft identity platform].
+
+. Sign in to the link:https://portal.azure.com/[Azure portal]
+. If you have access to multiple tenants, use the Directory + subscription filter in the top menu to select the tenant in which you want to register an application.
+. Search for and select Azure Active Directory
+. Under `Manage`, select `App registrations`, then `New registration`
+. Enter a Name for your application
+. Specify who can use the application
+. Don't enter anything for Redirect URI (optional), you'll configure one in the next section.
+. Press `Register` to complete the initial app registration.
+
+NOTE: Azure will generate an Application ID, we need to create a new client secret.
+
+[start=9]
+. Select your application in App registrations in the Azure portal.
+. Select `Certificates & secrets > New client secret`
+. Add a description for your client secret
+. Select a duration
+. Select Add
+
+NOTE: Record the secret's value for later use, it's never displayed again after you leave this page.
+
+== Create a Azure AD identity provider
+
+Identity providers are created for each security domain, to create an identity provider, follow these steps:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's `Settings` page, go to `Providers` section
+. From the security domain's providers page, click `(+)` button
+. Choose the Azure AD identity provider and press `NEXT`
+
+NOTE: Make sure to grab the generated Client ID and Client Secret from Azure AD application.
+
+[start=5]
+. Give your identity provider a name
+. Set your Azure Tenant ID of your application
+. Copy/paste your Azure application Application ID and Client Secret
+. Press `Create`
+
+image::am/current/graviteeio-am-userguide-social-idp-azure-ad.png[]
+
+NOTE: On the right side of the screen, under `1. Configure the Redirect URI` copy the value of the URL, it will be used to update your Azure AD application settings.
+
+== Set up the connection
+
+Go to your Azure AD application settings and `Add a Redirect URI` from the Overview page of your application. Enter the value of the Redirect URI created in the previous step and press `Save`.
+
+== Test connection
+
+You can test Azure AD connection via your web applications created in Gravitee.io AM.
+
+In the Portal UI, navigate to your `Application > Identity Providers` section and select your social identity provider.
+
+image::am/current/graviteeio-am-userguide-social-idp-list.png[]
+
+To properly test, you should call the Login Page (i.e `/oauth/authorize` endpoint) and should see the `Sign in with ...` button.
+
+image::am/current/graviteeio-am-userguide-social-idp-login.png[]
+
+NOTE: If the social button is not here, it means that something is invalid with the identity provider settings. Check the Gravitee.io AM gateway log for more information.

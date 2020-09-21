@@ -84,6 +84,22 @@ entries:
         - title: User and Roles mapping
           output: web
           url: /am/current/am_userguide_identity_provider_mapping.html
+          subfolders:
+          - title: Social Identity Providers
+            output: web
+            subfolderitems:
+            - title: Overview
+              output: web
+              url: /am/current/am_userguide_social_identity_providers.html
+            - title: Azure AD
+              output: web
+              url: /am/current/am_userguide_social_identity_provider_azure_ad.html
+            - title: Facebook
+              output: web
+              url: /am/current/am_userguide_social_identity_provider_facebook.html
+            - title: GitHub
+              output: web
+              url: /am/current/am_userguide_social_identity_provider_github.html
       - title: Applications
         output: web
         subfolderitems:
@@ -117,6 +133,12 @@ entries:
         - title: Reset User's MFA
           output: web
           url: /am/current/am_userguide_mfa_user_factors.html
+      - title: Passwordless (W3C WebAuthn)
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_passwordless.html
       - title: Certificates
         output: web
         subfolderitems:
