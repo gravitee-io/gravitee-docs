@@ -12,7 +12,7 @@ body {
     padding: 0.5rem;
 }
 
-.homepage li p, .homepage li p a  {
+.homepage li p, .homepage li p a {
     margin: 0;
     display: flex;
     flex: 1;
@@ -33,7 +33,7 @@ body {
     display: grid;
     grid-gap: 1em;
     grid-template-columns: repeat(2, 1fr);
-    padding: 2rem 0;
+    padding: 4rem 0 2rem 0;
 }
 
 .homepage .sect1 {
@@ -42,7 +42,7 @@ body {
     font-size: 14px;
     text-transform: uppercase;
     background-color: white;
-    box-shadow: 0 0 0 1px  #F5F5F5, 0 1px 3px #BFBFBF;
+    box-shadow: 0 0 0 1px #F5F5F5, 0 1px 3px #BFBFBF;
     transition: all;
 }
 
@@ -79,3 +79,18 @@ body {
 .footer {
     margin: 4rem 4rem 0 4rem;
 }
+
+@media only screen and (max-width: 768px) {
+
+    .homepage {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1240px) {
+    .homepage {
+        padding-top: 10rem;
+    }
+}
+

@@ -505,6 +505,28 @@ span.projectTitle {
     grid-gap: 0.5rem;
 }
 
+@media only screen and (max-width: 768px) {
+
+    .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer .footer-links {
+        justify-content: center;
+    }
+
+    .footer .footer-information {
+        text-align: center;
+    }
+
+    .newsletter-form {
+        grid-template-columns: 220px 100px;
+    }
+
+}
+
 .gv-input {
     border: var(--gv-input--bdw, 1px) var(--gv-input--bds, solid) var(--gv-input--bdc, var(--gv-theme-neutral-color-dark, #D9D9D9));
     box-sizing: border-box;
