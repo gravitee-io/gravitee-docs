@@ -54,7 +54,7 @@ entries:
         output: web
         url: /ae/userguide_dampening.html
         subfolders:
-        - title: Notification
+        - title: Notifications
           output: web
           subfolderitems:
             - title: What is a Notifier ?
@@ -75,21 +75,15 @@ entries:
             - title: Create a custom message
               output: web
               url: /ae/userguide_notifier_message.html
-            - title: Message properties from node lifecycle Event
+            - title: Node lifecycle notification
               output: web
               url: /ae/userguide_properties_node_lifecycle.html
-            - title: Message properties from node heartbeat Event
+            - title: Node hearbeat notification
               output: web
               url: /ae/userguide_properties_node_heartbeat.html
-            - title: Message properties from node health-check Event
+            - title: Node health-check notification
               output: web
               url: /ae/userguide_properties_node_healthcheck.html
-            - title: Message properties from request Event
-              output: web
-              url: /ae/userguide_properties_request.html
-            - title: Message properties from endpoint heealth-check Event
-              output: web
-              url: /ae/userguide_properties_endpoint_healthcheck.html
 
   - title: API Management
     output: web
@@ -106,6 +100,16 @@ entries:
       - title: API
         output: web
         url: /ae/apim_api.html
+        subfolders:
+          - title: Notifications
+            output: web
+            subfolderitems:
+              - title: Request notification
+                output: web
+                url: /ae/apim_notification_request.html
+              - title: Health-check notification
+                output: web
+                url: /ae/apim_notification_endpoint_healthcheck.html
 
   - title: Access Management
     output: web
