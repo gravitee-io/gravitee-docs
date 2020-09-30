@@ -255,6 +255,10 @@ For the `api`, you can access the following data:
 |The API's views
 |${api.views}
 
+|`metadata`
+|The API's metadata
+|${api.metadata['metadata_name']}
+
 |===
 
 === Application
