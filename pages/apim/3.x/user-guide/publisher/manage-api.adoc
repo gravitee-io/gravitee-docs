@@ -24,7 +24,10 @@ context-path, backend endpoints, ...) before publishing it to developers.
 
 To understand how to create an API from scratch, please follow the link:/apim/3.x/apim_quickstart_publish.html[quick start guide].
 
-== Import an existing API definition
+== Import an API
+In Gravitee.io APIM Console, you can create an API from scratch or you can import your APIs.
+
+=== Import an existing API definition
 Gravitee.io APIM Console allows you to export and import yours APIs to a Gravitee format (see example below).
 To import an API from an API definition:
 
@@ -61,10 +64,9 @@ Extract of a Gravitee API Definition::
 }
 ----
 
-== Import a OpenAPI descriptor
-One of the amazing feature of Gravitee.io is the ability to import an OpenAPI descriptor to create an API. By doing so,
+=== Import a Swagger or an OpenAPI descriptor
+One of the amazing feature of Gravitee.io is the ability to import a Swagger or an OpenAPI descriptor to create an API. By doing so,
 you do not have to complete all the fields required when you're creating a new API from scratch.
-Finally, the only thing you have to do is to specify a context-path to expose the API.
 
 To import an API from an OpenAPI:
 
@@ -151,24 +153,49 @@ paths:
   ...
 ----
 | /swaggerpetstore
-
 |===
 
-
-Extract of the "Swagger petstore" OpenAPI::
-
-
-[NOTE]
-====
-If you have selected the option `'Create policies on path'` in import form, then all route declared in the Swagger descriptor
-are automatically created in Gravitee.io.
+Policies on path::
+When importing a Swagger or an OpenAPI definition, you can select the option `'Create policies on path'` in import form.
+Then all route declared in the Swagger descriptor are automatically created in Gravitee.io.
 You can navigate to the policies management view to check.
 
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-policies-path.png[Policies view - all routes imported]
 
-====
+You can also choose to activate some policies that will be configured using the Swagger/OpenAPI descriptor.
 
-== Import a WSDL
+==== Validation Request
+For each operation, `NOT__ __NULL` rules are created with query parameters and headers. +
+REQUEST only +
+More info link:/apim/3.x/apim_policies_request_validation.html[here]
+
+==== Mock
+For each operation, a mock policy is configured, based on `example` field if it exists, or generating random value regarding the type of the attribute to mock. +
+REQUEST only +
+More info link:/apim/3.x/apim_policies_mock.html[here]
+
+==== XML Validation
+For each operation, if a `application/xml` request body exists, then a XSD schema is computed from this body to configure an XML Validation policy. +
+REQUEST only +
+More info link:/apim/3.x/apim_policies_xml_validation.html[here]
+
+==== JSON Validation
+For each operation, if a `application/json` request body exists, then a Json schema is computed from this body to configure an JSON Validation policy. +
+REQUEST only +
+More info link:/apim/3.x/apim_policies_json_validation.html[here]
+
+==== Rest to SOAP transformer
+For each operation, if the definition contains some specific vendor extensions, the Rest to SOAP policy can be configured. +
+These extensions are :
+
+- x-graviteeio-soap-envelope: contains the SOAP Envelope
+- x-graviteeio-soap-action: contains the SOAP action
+
+REQUEST only +
+More info link:/apim/3.x/apim_policies_rest2soap.html[here]
+
+
+=== Import a WSDL
 
 Gravitee.io is able to import a WSDL descriptor to create an API. By doing so,
 you do not have to declare all the route and policies to interact with your service.
