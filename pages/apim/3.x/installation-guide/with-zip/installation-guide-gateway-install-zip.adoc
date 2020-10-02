@@ -1,4 +1,4 @@
-= Install API Gateway with `.zip`
+= Install API Gateway from a `.zip` archive
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_gateway_install_zip.html
 :page-folder: apim/installation-guide/with-zip
@@ -7,13 +7,13 @@
 :page-description: Gravitee.io API Management - Gateway - Installation with .zip
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-This page explains how to install API Gateway from a `.zip` archive downloaded from the Gravitee download site. You can find details of the archive directory structure at the bottom of the page.
-
 == System requirements
+
+Your environment must meet the requirements listed below before you install API Gateway.
 
 === JDK
 
-API Gateway requires at least Java 11. Before you install it, check your Java version as follows:
+API Gateway requires at least Java 11. You can check your Java version as follows:
 
 [source,bash]
 ----
@@ -33,14 +33,17 @@ and Elasticsearch from https://www.elastic.co/downloads/elasticsearch[Elastic Do
 
 == Download and extract the `.zip` archive
 
-You can download the binaries https://gravitee.io/downloads/api-management[here, window=\"_blank\"] or from the https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip[Gravitee Downloads page, window=\"_blank\"].
+Note that the archive includes the binaries for all the APIM components, so if you previously downloaded it to install another component, you do not need to download it again.
+
+. Download the binaries https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip[here, window=\"_blank\"] or from the https://gravitee.io/downloads/api-management[Gravitee downloads page, window=\"_blank\"].
 
 [source,bash]
 ----
 $ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip -o gravitee-standalone-distribution-{{ site.products.apim._3x.version }}.zip
 ----
 
-Once you have downloaded the archive, extract the `graviteeio-gateway-xxx` directory and place it in the required location.
+[start=2]
+. Extract the `graviteeio-gateway-xxx` directory from the archive and place it in the required location.
 
 [source,bash]
 ----
@@ -50,6 +53,9 @@ $ unzip gravitee-standalone-distribution-{{ site.products.apim._3x.version }}.zi
 == Check the installation
 === Run API Gateway from the command line
 
+By default, API Gateway runs in the foreground, prints its logs to standard output (stdout), and can be stopped
+by pressing **Ctrl-C**.
+
 API Gateway can be started from the command line as follows:
 
 [source,bash]
@@ -58,10 +64,7 @@ $ cd graviteeio-gateway-{{ site.products.apim._3x.version }}
 $ ./bin/gravitee
 ----
 
-By default, API Gateway runs in the foreground, prints its logs to standard output (stdout), and can be stopped
-by pressing **Ctrl-C**.
-
-If all goes well, you will see this log:
+Once API Gateway is running, you will see this log:
 
 [source,bash]
 [subs="attributes"]
@@ -78,7 +81,7 @@ You can test that your API Gateway node is running by sending an HTTP request to
 $ curl -X GET http://localhost:8082/
 ----
 
-which will give you a response something like this:
+You will receive a response something like this:
 
 [source,bash]
 ----
