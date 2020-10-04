@@ -1,0 +1,48 @@
+= Active Directory / LDAP
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_enterprise_identity_provider_ldap.html
+:page-folder: am/user-guide
+:page-layout: am
+
+You can authenticate and manage users in AM using entreprise Active Director or LDAP server.
+
+== Create an Active Directory / LDAP identity provider
+
+You create one identify provider for each security domain.
+
+To create an identity provider:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST.
+. Click *Settings > Providers*.
+. Click the *+* button.
+. Select *HTTP* as your identity provider type and click *NEXT*.
+. Give your identity provider a name.
+. Configure the settings as requested.
+. Click *Create*.
+
+You can also create the identity provider with link:/am/current/management-api/index.html[AM API].s
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{
+           "type": "ldap-am-idp",
+           "name": "LDAP IdP",
+           "configuration": "{\"contextSourceUrl\":\"ldap://myserver.example.com:389\",\"contextSourceBase\":\"baseDN\",\"contextSourceUsername\":\"username\",\"contextSourcePassword\":\"password\",\"userSearchFilter\":\"uid={0}\",\"userSearchBase\":\"ou=users\",\"groupSearchBase\":\"ou=applications\",\"groupSearchFilter\":\"(uniqueMember={0})\",\"groupRoleAttribute\":\"cn\"}"
+         }' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId/identities
+----
+
+== Test connection
+
+You can test your Active Directory/LDAP connection via your web applications created in AM.
+
+In AM Portal, navigate to your *Application > Identity Providers* section and select your Active Directory/LDAP identity provider.
+
+image::am/current/graviteeio-am-userguide-social-idp-list.png[]
+
+To complete your tests, call the Login page (i.e `/oauth/authorize` endpoint) and try to sign in with the username/password form.
+
+NOTE: If you are unable to authenticate your users, there may be a problem with the identity provider settings. Check the AM Gateway log and audit logs for more information.
