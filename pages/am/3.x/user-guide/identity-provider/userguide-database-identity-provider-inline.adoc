@@ -1,0 +1,52 @@
+= Inline
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_database_identity_provider_inline.html
+:page-folder: am/user-guide
+:page-layout: am
+
+== Overview
+
+Inline identity providers are based on in-memory user directories. They are useful for testing purposes or setting default accounts.
+
+== Create an inline identity provider
+
+You create one identify provider for each security domain.
+
+To create an identity provider:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST.
+. Click *Settings > Providers*.
+. Click the *+* button.
+. Select *Inline* as your identity provider type and click *NEXT*.
+. Give your identity provider a name.
+. Configure the settings as requested.
+. Click *Create*.
+
+NOTE: If you want to register multiple users, click the *Add user* button before clicking on the *Create* button.
+
+You can also create the identity provider with link:/am/current/management-api/index.html[AM API].
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{
+           "type": "inline-am-idp",
+           "name": "Inline IdP",
+           "configuration": "{\"users\":[{\"firstname\":\"johndoe\",\"lastname\":\"John\",\"username\":\"Doe\",\"password\":\"johndoepassword\"}]}"
+         }' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId/identities
+----
+
+== Test connection
+
+You can test your database connection via your web applications created in AM.
+
+In AM Portal, navigate to your *Application > Identity Providers* section and select your inline identity provider.
+
+image::am/current/graviteeio-am-userguide-social-idp-list.png[]
+
+To complete your tests, call the Login page (i.e `/oauth/authorize` endpoint) and try to sign in with the username/password form.
+
+NOTE: If you are unable to authenticate your users, there may be a problem with the identity provider settings. Check the AM Gateway log and audit logs for more information.
