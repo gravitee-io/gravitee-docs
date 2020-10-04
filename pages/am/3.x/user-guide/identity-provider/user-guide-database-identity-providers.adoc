@@ -1,0 +1,11 @@
+= Database identity providers
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_database_identity_providers.html
+:page-folder: am/user-guide
+:page-layout: am
+
+AM includes the most common database servers to authenticate your users, such as MongoDB, PostgreSQL, MySQL, SQL Server and MariaDB.
+
+- link:/am/current/am_userguide_database_identity_provider_jdbc.html[Connect your application with a SQL database (JDBC)]
+- link:/am/current/am_userguide_database_identity_provider_mongodb.html[Connect your application with MongoDB]
+- link:/am/current/am_userguide_database_identity_provider_inline.html[Connect your application with Inline]
