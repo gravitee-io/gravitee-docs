@@ -1,0 +1,34 @@
+= MongoDB
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_database_identity_provider_mongodb.html
+:page-folder: am/user-guide
+:page-layout: am
+
+You can authenticate users in AM using your own MongoDB database.
+
+== Create a MongoDB identity provider
+
+You create one identify provider for each security domain.
+
+To create an identity provider:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST.
+. Click *Settings > Providers*.
+. Click the *+* button.
+. Select *MongoDB* as your identity provider type and click *NEXT*.
+. Give your identity provider a name.
+. Configure the settings as requested.
+. Click *Create*.
+
+== Test connection
+
+You can test your database connection via your web applications created in AM.
+
+In AM Portal, navigate to your *Application > Identity Providers* section and select your MongoDB identity provider.
+
+image::am/current/graviteeio-am-userguide-social-idp-list.png[]
+
+To complete your tests, call the Login page (i.e `/oauth/authorize` endpoint) and try to sign in with the username/password form.
+
+NOTE: If you are unable to authenticate your users, there may be a problem with the identity provider settings. Check the AM Gateway log and audit logs for more information.
+

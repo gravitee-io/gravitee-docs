@@ -85,6 +85,18 @@ entries:
           output: web
           url: /am/current/am_userguide_identity_provider_mapping.html
           subfolders:
+          - title: Enteprise Identity Providers
+            output: web
+            subfolderitems:
+            - title: Overview
+              output: web
+              url: /am/current/am_userguide_enterprise_identity_providers.html
+            - title: Active Directory / LDAP
+              output: web
+              url: /am/current/am_userguide_enterprise_identity_provider_ldap.html
+            - title: HTTP (web service)
+              output: web
+              url: /am/current/am_userguide_enterprise_identity_provider_http.html
           - title: Social Identity Providers
             output: web
             subfolderitems:
@@ -100,6 +112,21 @@ entries:
             - title: GitHub
               output: web
               url: /am/current/am_userguide_social_identity_provider_github.html
+          - title: Database
+            output: web
+            subfolderitems:
+            - title: Overview
+              output: web
+              url: /am/current/am_userguide_database_identity_providers.html
+            - title: JDBC
+              output: web
+              url: /am/current/am_userguide_database_identity_provider_jdbc.html
+            - title: MongoDB
+              output: web
+              url: /am/current/am_userguide_database_identity_provider_mongodb.html
+            - title: Inline
+              output: web
+              url: /am/current/am_userguide_database_identity_provider_inline.html
       - title: Applications
         output: web
         subfolderitems:
