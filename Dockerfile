@@ -10,8 +10,30 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 #-------------------------------------------------------------------------------
-FROM graviteeio/httpd:latest
-MAINTAINER Gravitee Team <http://gravitee.io>
+FROM ruby:2.7 as builder
 
-COPY _site /var/www/html/
-CMD ["/usr/sbin/httpd", "-DFOREGROUND"]
+LABEL maintainer="Gravitee Team <http://gravitee.io>"
+ENV RUBYOPT=-KU
+
+RUN apt-get clean
+RUN mv /var/lib/apt/lists /var/lib/apt/lists.broke
+RUN mkdir -p /var/lib/apt/lists/partial
+RUN apt-get update
+RUN apt-get install -y  nodejs
+
+WORKDIR /src
+
+ADD Gemfile /src/
+ADD Gemfile.lock /src/
+RUN gem install bundler
+RUN gem install jekyll -v 3.8.7
+RUN bundle install
+
+ADD . /src
+RUN bundle exec jekyll build
+
+FROM nginx:stable
+LABEL maintainer="Gravitee Team <http://gravitee.io>"
+WORKDIR /usr/share/nginx/html 
+COPY --from=builder /src/_site .
+
