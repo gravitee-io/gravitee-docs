@@ -51,7 +51,7 @@ Before this, you may potentially have to add third-party repositories:
 
 ==== MongoDB
 
-NOTE: Please have a look to the link:https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-red-hat/[MongoDB Installation documentation]
+NOTE: Please have a look to the link:https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-red-hat/[MongoDB Installation documentation, window=\"_blank\"]
 
 [source,bash]
 ----
@@ -68,7 +68,7 @@ sudo systemctl start mongod
 
 ==== Elasticsearch 7.x
 
-NOTE: Please have a look to the link:https://www.elastic.co/guide/en/elasticsearch/reference/7.6/rpm.html#rpm-repo[Elasticsearch Installation documentation].
+NOTE: Please have a look to the link:https://www.elastic.co/guide/en/elasticsearch/reference/7.6/rpm.html#rpm-repo[Elasticsearch Installation documentation, window=\"_blank\"].
 
 [source,bash]
 ----

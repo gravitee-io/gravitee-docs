@@ -12,11 +12,11 @@
 |Version tested | Gravitee.io Plugin
 
 |3.6 / 4.0 / 4.2
-|https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-mongodb/[Download the same version as your APIM platform]
+|https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-mongodb/[Download the same version as your APIM platform, window=\"_blank\"]
 |===
 
 == Configuration
-https://www.mongodb.org/[MongoDB] is the default repository implementation used by Gravitee.io API Management.
+https://www.mongodb.org/[MongoDB, window=\"_blank\"] is the default repository implementation used by Gravitee.io API Management.
 
 Let's see the configuration options:
 
@@ -78,7 +78,7 @@ NOTE: All theses properties allow you to fine tuned your MongoDB connection
 
 == Index
 
-A https://github.com/gravitee-io/gravitee-repository-mongodb/blob/master/src/main/resources/scripts/create-index.js[script] is available from our MongoDB GitHub Repository.
+A https://github.com/gravitee-io/gravitee-repository-mongodb/blob/master/src/main/resources/scripts/create-index.js[script, window=\"_blank\"] is available from our MongoDB GitHub Repository.
 Please use the correct version of this script depending on the version of Gravitee.io API Management you are running.
 
 

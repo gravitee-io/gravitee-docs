@@ -31,12 +31,32 @@ entries:
       - title: QuickStart
         output: web
         folderitems:
-          - title: Publish your first API
+          - title: Overview
             output: web
-            url: /apim/3.x/apim_quickstart_publish.html
-          - title: Consume an API
-            output: web
-            url: /apim/3.x/apim_quickstart_consume.html
+            url: /apim/3.x/apim_quickstart_overview.html
+
+            subfolders:
+              - title: Publish your first API
+                output: web
+                subfolderitems:
+                  - title: Using Management UI
+                    output: web
+                    url: /apim/3.x/apim_quickstart_publish_ui.html
+                  - title: Using Management API
+                    output: web
+                    url: /apim/3.x/apim_quickstart_publish_api.html
+              - title: Consume an API
+                output: web
+                subfolderitems:
+                  - title: Using Portal UI
+                    output: web
+                    url: /apim/3.x/apim_quickstart_consume_ui.html
+                  - title: Using Management API
+                    output: web
+                    url: /apim/3.x/apim_quickstart_consume_api.html
+                  - title: Test your API
+                    output: web
+                    url: /apim/3.x/apim_quickstart_consume_test.html
 
       - title: Installation Guide
         output: web

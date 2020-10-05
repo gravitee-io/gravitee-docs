@@ -1,0 +1,40 @@
+= Consuming an API with Management API
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_quickstart_consume_api.html
+:page-folder: apim/quickstart
+:page-layout: apim3x
+
+NOTE: See the link:/apim/3.x/apim_quickstart_publish_api.html[API publisher QuickStart guide] to set up your first API
+
+This guide walks you through the process of creating your first application and subscribing your first API by using the Portal UI.
+Gravitee.io Portal UI can be accessed using the following URL:
+
+http://MANAGEMENT_API_SERVER_DOMAIN (see link:/apim/3.x/apim_installguide_rest_apis_install_zip.html[Gravitee.io Management API installation] for more information)
+
+
+NOTE: Gravitee.io offers differents ways to access/secure an API (link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[Gravitee.io Plans]).
+In this quick start, we will access an API via an link:/apim/3.x/apim_policies_apikey.html[API Key].
+Only trusted application can access the API data by requesting an API Key.
+Let's see how to create an application and generate an API Key.
+
+== Create your application with Portal API
+
+Create Application request::
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"name":"My first Application","type":"Web","description":"Web client for Gravitee.io Echo API"}' \
+     http://MANAGEMENT_API_SERVER_DOMAIN/portal/environments/DEFAULT/applications
+----
+
+Subscribe API request::
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -X POST \
+     http://MANAGEMENT_API_SERVER_DOMAIN/portal/environments/DEFAULT/applications/|application-id|/subscriptions/?plan=|plan-id|
+----
+
+For more information, you can find the full link:/apim/3.x/apim_installguide_rest_apis_documentation.html[Rest APIs Documentation].

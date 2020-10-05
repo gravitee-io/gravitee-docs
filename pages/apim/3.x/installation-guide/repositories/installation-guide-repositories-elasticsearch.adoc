@@ -17,7 +17,7 @@ WARNING: Gravitee.io no longer supports native ES client and previous connector 
 
 === Management API configuration
 
-WARNING: The ElasticSearch client does not support URL schemes in the form of `http://$USERNAME:$PASSWORD@server.org`. You MUST provide the username and password via the `analytics.elasticsearch.security.username` and `analytics.elasticsearch.security.password` properties.
+WARNING: The ElasticSearch client does not support URL schemes in the form of `http://USERNAME:PASSWORD@server.org`. You MUST provide the username and password via the `analytics.elasticsearch.security.username` and `analytics.elasticsearch.security.password` properties.
 
 [source,yaml]
 ----

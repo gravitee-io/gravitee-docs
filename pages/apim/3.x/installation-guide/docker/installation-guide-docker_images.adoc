@@ -8,9 +8,9 @@
 :docker-hub: https://hub.docker.com/r/graviteeio
 
 IMPORTANT: We assume that you are familiar with Docker. +
-To run our official images, you must start by installing https://docs.docker.com/installation/[Docker]
+To run our official images, you must start by installing https://docs.docker.com/installation/[Docker, window=\"_blank\"]
 
-Gravitee.io docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
+Gravitee.io docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub, window=\"_blank\"].
 
 We provide a complete set of images.
 
@@ -20,19 +20,19 @@ We provide a complete set of images.
 
 |{docker-hub}/apim-gateway/[graviteeio/apim-gateway]
 |latest
-|https://hub.docker.com/r/adoptopenjdk/openjdk11[openjdk11:jre-11.0.7_10-alpine]
+|https://hub.docker.com/r/adoptopenjdk/openjdk11[openjdk11:jre-11.0.7_10-alpine, window=\"_blank\"]
 
 |{docker-hub}/apim-management-api/[graviteeio/apim-management-api]
 |latest
-|https://hub.docker.com/r/adoptopenjdk/openjdk11[openjdk11:jre-11.0.7_10-alpine]
+|https://hub.docker.com/r/adoptopenjdk/openjdk11[openjdk11:jre-11.0.7_10-alpine, window=\"_blank\"]
 
 |{docker-hub}/apim-management-ui/[graviteeio/apim-management-ui]
 |latest
-|https://hub.docker.com/_/nginx/[nginx:1.18-alpine]
+|https://hub.docker.com/_/nginx/[nginx:1.18-alpine, window=\"_blank\"]
 
 |{docker-hub}/apim-portal-ui/[graviteeio/apim-portal-ui]
 |latest
-|https://hub.docker.com/_/nginx/[nginx:1.18-alpine]
+|https://hub.docker.com/_/nginx/[nginx:1.18-alpine, window=\"_blank\"]
 
 |===
 

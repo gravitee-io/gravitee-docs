@@ -19,19 +19,19 @@ $ java -version
 $ echo $JAVA_HOME
 ----
 
-NOTE: You can download the latest OpenJDK from https://jdk.java.net/archive/[OpenJDK Download Site].
+NOTE: You can download the latest OpenJDK from https://jdk.java.net/archive/[OpenJDK Download Site, window=\"_blank\"].
 
 === Repository
 
-Default API Gateway distribution requires link:/apim/3.x/apim_installguide_repositories_mongodb.html[MongoDB] to poll environment configuration and link:/apim/3.x/apim_installguide_repositories_elasticsearch.html[Elasticsearch] for
+Default API Gateway distribution requires link:/apim/3.x/apim_installguide_repositories_mongodb.html[MongoDB, window=\"_blank\"] to poll environment configuration and link:/apim/3.x/apim_installguide_repositories_elasticsearch.html[Elasticsearch, window=\"_blank\"] for
 reporting / analytics. Please refer to the respective documentation page for supported versions.
 
-NOTE: You can download MongoDB from https://www.mongodb.org/downloads#production[MongoDB Download Site]
-and Elasticsearch from https://www.elastic.co/downloads/elasticsearch[Elastic Download Site]
+NOTE: You can download MongoDB from https://www.mongodb.org/downloads#production[MongoDB Download Site, window=\"_blank\"]
+and Elasticsearch from https://www.elastic.co/downloads/elasticsearch[Elastic Download Site, window=\"_blank\"]
 
 == Download and install the +.zip+ package
 
-Binaries are available from https://gravitee.io/downloads/api-management[Downloads page] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip[Download].
+Binaries are available from https://gravitee.io/downloads/api-management[Downloads page, window=\"_blank\"] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip[Download, window=\"_blank\"].
 
 [source,bash]
 ----
