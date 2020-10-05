@@ -8,11 +8,11 @@
 :github-repo: https://github.com/gravitee-io/gravitee-docker
 :docker-hub: https://hub.docker.com/r/graviteeio
 
-IMPORTANT: We assume that you are familiar with Docker. +
+IMPORTANT: This guide assumes that you are familiar with Docker. +
 To run our official images, you must start by installing https://docs.docker.com/installation/[Docker, window=\"_blank\"]
 
 Gravitee.io docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub, window=\"_blank\"].
-You could find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles on GitHub, window=\"_blank\"].
+You can find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles on GitHub, window=\"_blank\"].
 
 == Run Gravitee.io API Management
 
@@ -20,7 +20,7 @@ You can launch a complete Gravitee.io API Management stack using our ready-to-us
 
 This latest is including Gravitee.io API Management + MongoDB + Elasticsearch.
 
-[WARNING] 
+[WARNING]
 .Elasticsearch configuration
 ====
 Before running the commands below:
