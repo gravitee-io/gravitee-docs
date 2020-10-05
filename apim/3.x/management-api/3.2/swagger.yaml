@@ -72,83 +72,12 @@ tags:
   - name: Messages
   - name: Portal entrypoints
 paths:
-  /notifiers:
-    get:
-      tags:
-        - Plugins
-      summary: List notifier plugins
-      description: 'User must have the MANAGEMENT_API[READ] permission to use this service'
-      operationId: listNotifiers
-      produces:
-        - application/json
-      parameters:
-        - name: expand
-          in: query
-          required: false
-          type: array
-          items:
-            type: string
-          collectionFormat: multi
-      responses:
-        '200':
-          description: List of notifiers
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/NotifierListItem'
-        '500':
-          description: Internal server error
-      security:
-        - gravitee-auth: []
-  '/notifiers/{notifier}/schema':
-    get:
-      tags:
-        - Plugins
-      summary: Get a notifier's schema
-      description: 'User must have the MANAGEMENT_API[READ] permission to use this service'
-      operationId: getNotifierSchema
-      produces:
-        - application/json
-      parameters:
-        - name: notifier
-          in: path
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Notifier's schema
-        '404':
-          description: Notifier not found
-        '500':
-          description: Internal server error
-      security:
-        - gravitee-auth: []
-  '/notifiers/{notifier}':
-    get:
-      tags:
-        - Plugins
-      summary: Get a notifier
-      description: 'User must have the MANAGEMENT_API[READ] permission to use this service'
-      operationId: getNotifier
-      produces:
-        - application/json
-      parameters:
-        - name: notifier
-          in: path
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Notifier plugin
-          schema:
-            $ref: '#/definitions/NotifierEntity'
-        '404':
-          description: Notifier not found
-        '500':
-          description: Internal server error
-      security:
-        - gravitee-auth: []
   '/organizations/{orgId}/users':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Users
@@ -214,6 +143,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/users/{id}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Users
@@ -224,11 +162,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: A user
@@ -250,11 +183,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: User successfully deleted
@@ -265,6 +193,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/users/{id}/avatar':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Users
@@ -275,11 +212,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: User's avatar
@@ -290,6 +222,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/users/{id}/memberships':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Users
@@ -301,10 +242,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
         - name: type
           in: query
           required: false
@@ -319,6 +256,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/users/{id}/_process':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Users
@@ -330,10 +276,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -349,6 +291,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/users/{id}/resetPassword':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Users
@@ -359,11 +310,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: User's password reset
@@ -376,6 +322,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/users/{id}/roles':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - Users
@@ -385,10 +340,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -402,6 +353,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/users/{id}/groups':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Users
@@ -412,11 +372,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: List of user groups
@@ -427,6 +382,11 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/users/registration':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - User Registration
@@ -454,6 +414,11 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/users/registration/finalize':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - User Registration
@@ -481,6 +446,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/configuration/rolescopes/{scope}/roles/{role}/users':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: role
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Roles
@@ -501,10 +475,6 @@ paths:
             - ENVIRONMENT
             - ORGANIZATION
             - PLATFORM
-        - name: role
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -540,10 +510,6 @@ paths:
           enum:
             - ORGANIZATION
             - ENVIRONMENT
-        - name: role
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -557,6 +523,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/configuration/rolescopes/{scope}/roles/{role}/users/{userId}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: role
+        in: path
+        type: string
+        required: true
+      - name: userId
+        in: path
+        type: string
+        required: true
     delete:
       tags:
         - Roles
@@ -577,14 +556,6 @@ paths:
             - ENVIRONMENT
             - ORGANIZATION
             - PLATFORM
-        - name: role
-          in: path
-          required: true
-          type: string
-        - name: userId
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Role successfully removed
@@ -593,6 +564,11 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - Organization
@@ -604,10 +580,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: organizationId
-          in: path
-          required: true
-          type: string
         - in: body
           name: organizationEntity
           required: true
@@ -628,11 +600,6 @@ paths:
       operationId: deleteOrganization
       consumes:
         - application/json
-      parameters:
-        - name: organizationId
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Organization successfully deleted
@@ -641,6 +608,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/verify':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - APIs
@@ -663,6 +639,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/_search':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - APIs
@@ -688,6 +673,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - APIs
@@ -696,11 +694,6 @@ paths:
       operationId: get
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: API definition
@@ -724,10 +717,6 @@ paths:
           enum:
             - START
             - STOP
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: API's picture
@@ -751,10 +740,6 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/UpdateApiEntity'
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: API successfully updated
@@ -770,11 +755,6 @@ paths:
       summary: Delete the API
       description: User must have the DELETE permission to use this service
       operationId: delete_1
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: API successfully deleted
@@ -783,6 +763,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/messages':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - APIs
@@ -794,10 +787,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -809,17 +798,25 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/background':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - APIs
       summary: Get the API's background
       description: User must have the READ permission to use this service
       operationId: background
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: API's background
@@ -828,6 +825,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/deploy':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - APIs
@@ -836,11 +846,6 @@ paths:
       operationId: deployAPI
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: API successfully deployed
@@ -851,6 +856,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/state':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - APIs
@@ -859,11 +877,6 @@ paths:
       operationId: isAPISynchronized
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: API's state
@@ -874,6 +887,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/import':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - APIs
@@ -883,10 +909,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: definition
           required: true
@@ -902,6 +924,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/import/swagger':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - APIs
@@ -913,10 +948,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: swagger
           required: true
@@ -932,6 +963,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/export':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - APIs
@@ -941,10 +985,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: version
           in: query
           required: false
@@ -964,6 +1004,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/notifiers':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - APIs
@@ -972,11 +1025,6 @@ paths:
       operationId: getNotifiers
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -987,6 +1035,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/quality':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - APIs
@@ -995,11 +1056,6 @@ paths:
       operationId: getQualityMetrics
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -1008,6 +1064,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/reviews':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - APIs
@@ -1021,10 +1090,6 @@ paths:
           type: string
           enum:
             - ASK
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: review
           required: false
@@ -1038,6 +1103,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/duplicate':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - APIs
@@ -1047,10 +1125,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: api
           required: true
@@ -1066,6 +1140,25 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/keys/{key}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        description: The API id
+        type: string
+        required: true
+      - name: key
+        in: path
+        description: The API key
+        type: string
+        required: true
     put:
       tags:
         - API Keys
@@ -1078,16 +1171,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          description: The API id
-          required: true
-          type: string
-        - name: key
-          in: path
-          description: The API key
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -1113,23 +1196,25 @@ paths:
       operationId: revokeApiKey
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          description: The API id
-          required: true
-          type: string
-        - name: key
-          in: path
-          description: The API key
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/members/permissions':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Memberships
@@ -1139,11 +1224,6 @@ paths:
       operationId: getPermissions
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: API member's permissions
@@ -1156,6 +1236,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/members':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Memberships
@@ -1165,11 +1258,6 @@ paths:
       operationId: listApiMembers
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: List of API's members
@@ -1189,10 +1277,6 @@ paths:
       description: User must have the MANAGE_MEMBERS permission to use this service
       operationId: addOrUpdateApiMember
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -1215,10 +1299,6 @@ paths:
       description: User must have the MANAGE_MEMBERS permission to use this service
       operationId: deleteApiMember
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: user
           in: query
           required: true
@@ -1233,6 +1313,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/members/transfer_ownership':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - API Memberships
@@ -1241,10 +1334,6 @@ paths:
       description: User must have the TRANSFER_OWNERSHIP permission to use this service
       operationId: transferOwnership
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -1258,6 +1347,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/analytics':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Analytics
@@ -1268,10 +1370,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: from
           in: query
           description: Timestamp used to define the start date of the time window to query
@@ -1337,6 +1435,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/logs':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Logs
@@ -1347,10 +1458,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: from
           in: query
           description: Timestamp used to define the start date of the time window to query
@@ -1399,6 +1506,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/logs/export':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Logs
@@ -1409,10 +1529,6 @@ paths:
       produces:
         - text/plain
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: from
           in: query
           description: Timestamp used to define the start date of the time window to query
@@ -1461,6 +1577,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/logs/{log}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: log
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Logs
@@ -1471,14 +1604,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: log
-          in: path
-          required: true
-          type: string
         - name: timestamp
           in: query
           required: false
@@ -1492,6 +1617,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/health':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Health
@@ -1502,10 +1640,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: type
           in: query
           required: false
@@ -1522,6 +1656,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/health/average':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Health
@@ -1532,10 +1679,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: from
           in: query
           required: false
@@ -1568,6 +1711,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/health/logs':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Health
@@ -1578,10 +1734,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: from
           in: query
           required: false
@@ -1622,6 +1774,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/health/logs/{log}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: log
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Health
@@ -1631,15 +1800,6 @@ paths:
       operationId: healthcheckLog
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: log
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Single health-check log
@@ -1648,6 +1808,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/pages':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Pages
@@ -1661,10 +1834,6 @@ paths:
         - name: Accept-Language
           in: header
           required: false
-          type: string
-        - name: api
-          in: path
-          required: true
           type: string
         - name: homepage
           in: query
@@ -1721,10 +1890,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: page
           required: true
@@ -1740,6 +1905,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/pages/_fetch':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - API Pages
@@ -1749,11 +1927,6 @@ paths:
       operationId: fetchAllPages
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '201':
           description: Pages successfully refreshed
@@ -1764,6 +1937,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/pages/{page}/content':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: page
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Pages
@@ -1771,15 +1961,6 @@ paths:
       summary: Get the page's content
       description: User must have the READ permission to use this service
       operationId: getPageContent
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: page
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Page's content
@@ -1788,6 +1969,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/pages/{page}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: page
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Pages
@@ -1801,14 +1999,6 @@ paths:
         - name: Accept-Language
           in: header
           required: false
-          type: string
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: page
-          in: path
-          required: true
           type: string
         - name: portal
           in: query
@@ -1837,14 +2027,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: page
-          in: path
-          required: true
-          type: string
         - in: body
           name: page
           required: true
@@ -1870,15 +2052,6 @@ paths:
       summary: Delete a page
       description: User must have the MANAGE_PAGES permission to use this service
       operationId: deletePage
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: page
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Page successfully deleted
@@ -1898,14 +2071,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: page
-          in: path
-          required: true
-          type: string
         - in: body
           name: page
           required: false
@@ -1925,6 +2090,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/pages/{page}/media':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: page
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Media
@@ -1935,15 +2117,6 @@ paths:
       operationId: getMedia
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: page
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
@@ -1962,14 +2135,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: page
-          in: path
-          required: true
-          type: string
         - name: file
           in: formData
           required: false
@@ -1988,6 +2153,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/pages/{page}/_fetch':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: page
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - API Pages
@@ -1997,15 +2179,6 @@ paths:
       operationId: fetchPage
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: page
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -2020,6 +2193,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/pages/_import':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - API Pages
@@ -2032,10 +2218,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: page
           required: true
@@ -2068,10 +2250,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: page
           required: true
@@ -2093,6 +2271,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/events':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Events
@@ -2103,10 +2294,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: type
           in: query
           required: false
@@ -2120,6 +2307,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/plans':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Plans
@@ -2130,10 +2330,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: status
           in: query
           required: false
@@ -2167,10 +2363,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: plan
           required: true
@@ -2186,6 +2378,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/plans/{plan}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: plan
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Plans
@@ -2195,15 +2404,6 @@ paths:
       operationId: getPlan
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: plan
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Plan information
@@ -2225,14 +2425,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: plan
-          in: path
-          required: true
-          type: string
         - in: body
           name: plan
           required: true
@@ -2258,15 +2450,6 @@ paths:
       operationId: deletePlan
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: plan
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Plan successfully deleted
@@ -2275,6 +2458,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/plans/{plan}/_close':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: plan
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - API Plans
@@ -2284,15 +2484,6 @@ paths:
       operationId: closePlan
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: plan
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Plan successfully closed
@@ -2303,6 +2494,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/plans/{plan}/_publish':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: plan
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - API Plans
@@ -2312,15 +2520,6 @@ paths:
       operationId: publishPlan
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: plan
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Plan successfully published
@@ -2331,6 +2530,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/plans/{plan}/_depreciate':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: plan
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - API Plans
@@ -2340,15 +2556,6 @@ paths:
       operationId: depreciatePlan
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: plan
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Plan successfully depreciated
@@ -2359,6 +2566,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/subscriptions':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Subscriptions
@@ -2369,10 +2589,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: plan
           in: query
           description: plan
@@ -2436,10 +2652,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: application
           in: query
           required: true
@@ -2458,6 +2670,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/subscriptions/export':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Subscriptions
@@ -2468,10 +2693,6 @@ paths:
       produces:
         - text/plain
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: plan
           in: query
           description: plan
@@ -2514,6 +2735,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/subscriptions/{subscription}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: subscription
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Subscriptions
@@ -2523,15 +2761,6 @@ paths:
       operationId: getApiSubscription
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Get a subscription
@@ -2552,15 +2781,6 @@ paths:
       operationId: renewApiKey
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
       responses:
         '201':
           description: A new API Key
@@ -2582,14 +2802,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
         - in: body
           name: subscription
           required: true
@@ -2607,6 +2819,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/subscriptions/{subscription}/_process':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: subscription
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - API Subscriptions
@@ -2617,14 +2846,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
         - in: body
           name: subscription
           required: true
@@ -2642,6 +2863,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/subscriptions/{subscription}/status':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: subscription
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - API Subscriptions
@@ -2652,14 +2890,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
         - name: status
           in: query
           required: true
@@ -2682,6 +2912,27 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/subscriptions/{subscription}/keys/{key}/_reactivate':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: subscription
+        in: path
+        type: string
+        required: true
+      - name: key
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - API Subscriptions
@@ -2691,19 +2942,6 @@ paths:
       operationId: reactivateApiKey
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
-        - name: key
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: API key successfully reactivated
@@ -2714,6 +2952,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/subscriptions/{subscription}/_transfer':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: subscription
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - API Subscriptions
@@ -2724,14 +2979,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
         - in: body
           name: subscription
           required: true
@@ -2749,6 +2996,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/subscriptions/{subscription}/keys':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: subscription
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Subscriptions
@@ -2758,15 +3022,6 @@ paths:
       operationId: listApiKeysForSubscription
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: List of API Keys for a subscription
@@ -2779,6 +3034,27 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/subscriptions/{subscription}/keys/{key}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: subscription
+        in: path
+        type: string
+        required: true
+      - name: key
+        in: path
+        type: string
+        required: true
     delete:
       tags:
         - API Subscriptions
@@ -2788,19 +3064,6 @@ paths:
       operationId: revokeApiKey_1
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
-        - name: key
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: API key successfully revoked
@@ -2811,6 +3074,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/subscribers':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Subscriptions
@@ -2820,11 +3096,6 @@ paths:
       operationId: listApiSubscribers
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Paged result of API subscribers
@@ -2837,6 +3108,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/metadata/{metadata}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: metadata
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Metadata
@@ -2846,15 +3134,6 @@ paths:
       operationId: getApiMetadata
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: metadata
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: A metadata
@@ -2878,14 +3157,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: metadata
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -2907,15 +3178,6 @@ paths:
       summary: Delete a metadata
       description: 'User must have the API_METADATA[DELETE] permission to use this service'
       operationId: delete_2
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: metadata
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Metadata successfully deleted
@@ -2924,6 +3186,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/metadata':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Metadata
@@ -2933,11 +3208,6 @@ paths:
       operationId: listApiMetadatas
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: List of metadata
@@ -2961,10 +3231,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -2980,6 +3246,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/ratings/{rating}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: rating
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - API Ratings
@@ -2992,14 +3275,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: rating
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -3021,17 +3296,25 @@ paths:
       operationId: delete_4
       consumes:
         - application/json
-      parameters:
-        - name: rating
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/ratings':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Ratings
@@ -3042,10 +3325,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: pageNumber
           in: query
           required: false
@@ -3076,10 +3355,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -3093,6 +3368,27 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/ratings/{rating}/answers/{answer}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: rating
+        in: path
+        type: string
+        required: true
+      - name: answer
+        in: path
+        type: string
+        required: true
     delete:
       tags:
         - API Ratings
@@ -3102,21 +3398,25 @@ paths:
       operationId: delete_3
       consumes:
         - application/json
-      parameters:
-        - name: rating
-          in: path
-          required: true
-          type: string
-        - name: answer
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/ratings/current':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Ratings
@@ -3126,11 +3426,6 @@ paths:
       operationId: getByApiAndUser
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -3139,6 +3434,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/ratings/summary':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Ratings
@@ -3148,11 +3456,6 @@ paths:
       operationId: getSummaryByApi
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -3161,6 +3464,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/ratings/{rating}/answers':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: rating
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - API Ratings
@@ -3173,14 +3493,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: rating
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -3194,6 +3506,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/audit':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Audits
@@ -3206,10 +3531,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: mgmt
           in: query
           description: 'true if you only want logs from the management, false if you also want api and application audit logs'
@@ -3262,6 +3583,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/audit/events':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Audits
@@ -3271,17 +3605,25 @@ paths:
       operationId: getEvents
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/notificationsettings':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Notifications
@@ -3291,11 +3633,6 @@ paths:
       operationId: get_1
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -3317,10 +3654,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -3345,10 +3678,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -3362,6 +3691,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/notificationsettings/{notificationId}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: notificationId
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - API Notifications
@@ -3374,14 +3720,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: notificationId
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -3405,21 +3743,29 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: notificationId
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/alerts/{alert}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: alert
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - API Alerts
@@ -3432,14 +3778,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: alert
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -3463,15 +3801,6 @@ paths:
       operationId: delete_6
       consumes:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: alert
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Alert successfully deleted
@@ -3482,6 +3811,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/alerts':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Alerts
@@ -3491,11 +3833,6 @@ paths:
       operationId: list_2
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: List of alerts
@@ -3519,10 +3856,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -3538,6 +3871,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/alerts/status':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Alerts
@@ -3547,11 +3893,6 @@ paths:
       operationId: status
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Alerting status
@@ -3562,6 +3903,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/alerts/{alert}/events':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: alert
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Alerts
@@ -3572,14 +3930,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: alert
-          in: path
-          required: true
-          type: string
         - name: from
           in: query
           required: false
@@ -3612,6 +3962,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/quality-rules/{qualityRule}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: qualityRule
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - API Quality
@@ -3624,14 +3991,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: qualityRule
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -3645,6 +4004,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/quality-rules':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Quality
@@ -3654,11 +4026,6 @@ paths:
       operationId: list_3
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -3680,10 +4047,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -3697,6 +4060,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/headers':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - APIs
@@ -3705,11 +4081,6 @@ paths:
       operationId: getHeaders
       produces:
         - application/json
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -3720,6 +4091,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/rollback':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - APIs
@@ -3731,10 +4115,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - in: body
           name: api
           required: true
@@ -3750,6 +4130,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/import-path-mappings':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - APIs
@@ -3759,10 +4152,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: page
           in: query
           required: true
@@ -3777,17 +4166,25 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/picture':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - APIs
       summary: Get the API's picture
       description: User must have the READ permission to use this service
       operationId: picture
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: API's picture
@@ -3796,6 +4193,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - APIs
@@ -3894,6 +4300,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/import':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - APIs
@@ -3916,6 +4331,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/import/swagger':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - APIs
@@ -3940,6 +4364,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/media/upload':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - API Media
@@ -3952,10 +4389,6 @@ paths:
       produces:
         - text/plain
       parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
         - name: file
           in: formData
           required: false
@@ -3970,6 +4403,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/{api}/media/{hash}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: api
+        in: path
+        type: string
+        required: true
+      - name: hash
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - API Media
@@ -3977,21 +4427,21 @@ paths:
       summary: Retrieve a media for an API
       description: ''
       operationId: getImage
-      parameters:
-        - name: api
-          in: path
-          required: true
-          type: string
-        - name: hash
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/apis/hooks':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - APIs
@@ -4011,6 +4461,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Applications
@@ -4065,17 +4524,25 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/background':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Applications
       summary: Get the application's background
       description: User must have the READ permission to use this service
       operationId: background_1
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Application's background
@@ -4084,6 +4551,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Applications
@@ -4092,11 +4572,6 @@ paths:
       operationId: getApplication
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Application
@@ -4117,10 +4592,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -4141,11 +4612,6 @@ paths:
       summary: Delete an application
       description: User must have the DELETE permission to use this service
       operationId: deleteApplication
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Application successfully deleted
@@ -4154,6 +4620,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/members/permissions':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Memberships
@@ -4163,11 +4642,6 @@ paths:
       operationId: getPermissions_1
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Application member's permissions
@@ -4180,6 +4654,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/members':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Memberships
@@ -4189,11 +4676,6 @@ paths:
       operationId: listApplicationMembers
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Application successfully deleted
@@ -4213,10 +4695,6 @@ paths:
       description: User must have the MANAGE_MEMBERS permission to use this service
       operationId: addOrUpdateApplicationMember
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -4239,10 +4717,6 @@ paths:
       description: User must have the MANAGE_MEMBERS permission to use this service
       operationId: deleteApplicationMember
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
         - name: user
           in: query
           required: true
@@ -4257,6 +4731,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/members/transfer_ownership':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Application Memberships
@@ -4265,10 +4752,6 @@ paths:
       description: User must have the TRANSFER_OWNERSHIP permission to use this service
       operationId: transferOwnership_1
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -4282,6 +4765,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/subscriptions':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Subscriptions
@@ -4292,10 +4788,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
         - name: plan
           in: query
           description: plan
@@ -4359,10 +4851,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
         - name: plan
           in: query
           required: true
@@ -4382,6 +4870,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/subscriptions/{subscription}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
+      - name: subscription
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Subscriptions
@@ -4391,15 +4896,6 @@ paths:
       operationId: getSubscription
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Subscription information
@@ -4418,15 +4914,6 @@ paths:
       operationId: renewApiKey_1
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
       responses:
         '201':
           description: A new API Key
@@ -4445,15 +4932,6 @@ paths:
       operationId: closeSubscription
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Subscription has been closed successfully
@@ -4464,6 +4942,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/subscriptions/{subscription}/keys':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
+      - name: subscription
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Subscriptions
@@ -4473,15 +4968,6 @@ paths:
       operationId: listApiKeysForSubscription_1
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: List of API Keys for a subscription
@@ -4495,6 +4981,27 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/subscriptions/{subscription}/keys/{key}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
+      - name: subscription
+        in: path
+        type: string
+        required: true
+      - name: key
+        in: path
+        type: string
+        required: true
     delete:
       tags:
         - Application Subscriptions
@@ -4504,19 +5011,6 @@ paths:
       operationId: revokeApiKey_2
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
-        - name: subscription
-          in: path
-          required: true
-          type: string
-        - name: key
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: API key successfully revoked
@@ -4527,6 +5021,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/subscribed':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Subscriptions
@@ -4536,11 +5043,6 @@ paths:
       operationId: listApiSubscribed
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Paged result of subscribed APIs
@@ -4553,6 +5055,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/analytics':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Analytics
@@ -4563,10 +5078,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
         - name: from
           in: query
           description: Timestamp used to define the start date of the time window to query
@@ -4632,6 +5143,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/logs':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Logs
@@ -4642,10 +5166,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
         - name: from
           in: query
           description: Timestamp used to define the start date of the time window to query
@@ -4694,6 +5214,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/logs/export':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Logs
@@ -4704,10 +5237,6 @@ paths:
       produces:
         - text/plain
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
         - name: from
           in: query
           description: Timestamp used to define the start date of the time window to query
@@ -4756,6 +5285,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/logs/{log}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
+      - name: log
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Logs
@@ -4766,14 +5312,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
-        - name: log
-          in: path
-          required: true
-          type: string
         - name: timestamp
           in: query
           required: false
@@ -4787,6 +5325,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/alerts/{alert}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
+      - name: alert
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - Application Alerts
@@ -4799,14 +5354,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
-        - name: alert
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -4830,15 +5377,6 @@ paths:
       operationId: delete_7
       consumes:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
-        - name: alert
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Alert successfully deleted
@@ -4849,6 +5387,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/alerts':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Alerts
@@ -4858,11 +5409,6 @@ paths:
       operationId: list_4
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: List of alerts
@@ -4886,10 +5432,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -4905,6 +5447,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/alerts/status':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Alerts
@@ -4914,11 +5469,6 @@ paths:
       operationId: status_1
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Alerting status
@@ -4929,6 +5479,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/metadata/{metadata}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
+      - name: metadata
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Metadata
@@ -4938,15 +5505,6 @@ paths:
       operationId: getApplicationMetadata
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
-        - name: metadata
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: A metadata
@@ -4970,14 +5528,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
-        - name: metadata
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -4999,15 +5549,6 @@ paths:
       summary: Delete a metadata
       description: 'User must have the APPLICATION_METADATA[DELETE] permission to use this service'
       operationId: delete_8
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
-        - name: metadata
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Metadata successfully deleted
@@ -5016,6 +5557,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/metadata':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Metadata
@@ -5025,11 +5579,6 @@ paths:
       operationId: listApplicationMetadatas
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: List of metadata for an application
@@ -5053,10 +5602,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -5072,6 +5617,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/notifiers':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Applications
@@ -5080,11 +5638,6 @@ paths:
       operationId: getNotifiers_1
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: LList of notifiers
@@ -5097,6 +5650,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/notificationsettings':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Application Notifications
@@ -5106,11 +5672,6 @@ paths:
       operationId: get_2
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -5132,10 +5693,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -5160,10 +5717,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -5177,6 +5730,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/notificationsettings/{notificationId}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
+      - name: notificationId
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - Application Notifications
@@ -5189,14 +5759,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
-        - name: notificationId
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -5220,32 +5782,31 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
-        - name: notificationId
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/picture':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Applications
       summary: Get the application's picture
       description: User must have the READ permission to use this service
       operationId: picture_1
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Application's picture
@@ -5254,6 +5815,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/configuration':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Applications
@@ -5262,11 +5836,6 @@ paths:
       operationId: getApplicationType
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: ApplicationType
@@ -5283,6 +5852,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/{application}/renew_secret':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: application
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Applications
@@ -5291,11 +5873,6 @@ paths:
       operationId: renewClientSecret
       produces:
         - application/json
-      parameters:
-        - name: application
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Updated application
@@ -5306,6 +5883,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/applications/hooks':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Applications
@@ -5323,6 +5909,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/dashboards/{dashboardId}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: dashboardId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Dashboards
@@ -5332,11 +5931,6 @@ paths:
       operationId: get_3
       produces:
         - application/json
-      parameters:
-        - name: dashboardId
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Platform dashboard
@@ -5358,10 +5952,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: dashboardId
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -5385,11 +5975,6 @@ paths:
       operationId: delete_10
       consumes:
         - application/json
-      parameters:
-        - name: dashboardId
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Dashboard successfully deleted
@@ -5398,6 +5983,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/dashboards':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Dashboards
@@ -5458,6 +6052,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/categories':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Categories
@@ -5530,6 +6133,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/categories/{id}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Categories
@@ -5539,11 +6155,6 @@ paths:
       operationId: get_4
       produces:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Category's definition
@@ -5565,10 +6176,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -5590,11 +6197,6 @@ paths:
       summary: Delete the category
       description: 'User must have the PORTAL_CATEGORY[DELETE] permission to use this service'
       operationId: delete_11
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Category successfully deleted
@@ -5603,6 +6205,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/categories/{id}/background':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Categories
@@ -5610,11 +6225,6 @@ paths:
       summary: Get the Category's background
       description: User must have the READ permission to use this service
       operationId: background_2
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Category's background
@@ -5623,6 +6233,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/categories/{id}/picture':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Categories
@@ -5630,11 +6253,6 @@ paths:
       summary: Get the category's picture
       description: 'User must have the PORTAL_CATEGORY[READ] permission to use this service'
       operationId: picture_2
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Category's picture
@@ -5643,6 +6261,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/notifiers':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Configuration
@@ -5664,6 +6291,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/notificationsettings':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Portal Notifications
@@ -5732,6 +6368,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/notificationsettings/{notificationId}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: notificationId
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - Portal Notifications
@@ -5744,10 +6393,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: notificationId
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -5771,17 +6416,21 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: notificationId
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/groups':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Groups
@@ -5828,6 +6477,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/groups/{group}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: group
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Groups
@@ -5837,11 +6499,6 @@ paths:
       operationId: get_6
       produces:
         - application/json
-      parameters:
-        - name: group
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Group definition
@@ -5863,10 +6520,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: group
-          in: path
-          required: true
-          type: string
         - in: body
           name: group
           required: true
@@ -5888,11 +6541,6 @@ paths:
       summary: Delete an existing group
       description: ''
       operationId: delete_13
-      parameters:
-        - name: group
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Group successfully deleted
@@ -5901,6 +6549,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/groups/{group}/memberships':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: group
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Groups
@@ -5911,10 +6572,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: group
-          in: path
-          required: true
-          type: string
         - name: type
           in: query
           required: false
@@ -5934,10 +6591,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: group
-          in: path
-          required: true
-          type: string
         - name: type
           in: query
           required: false
@@ -5952,6 +6605,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/groups/{group}/members':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: group
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Group Memberships
@@ -5962,11 +6628,6 @@ paths:
       operationId: getMembers
       produces:
         - application/json
-      parameters:
-        - name: group
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: List of group's members
@@ -5991,10 +6652,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: group
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -6014,6 +6671,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/groups/{group}/members/{member}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: group
+        in: path
+        type: string
+        required: true
+      - name: member
+        in: path
+        type: string
+        required: true
     delete:
       tags:
         - Group Memberships
@@ -6022,15 +6696,6 @@ paths:
       summary: Remove a group member
       description: ''
       operationId: deleteMember
-      parameters:
-        - name: group
-          in: path
-          required: true
-          type: string
-        - name: member
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Member has been removed successfully
@@ -6041,6 +6706,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/groups/{group}/invitations/{invitation}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: group
+        in: path
+        type: string
+        required: true
+      - name: invitation
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - Group Invitations
@@ -6054,14 +6736,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: group
-          in: path
-          required: true
-          type: string
-        - name: invitation
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -6084,21 +6758,25 @@ paths:
       operationId: delete_14
       consumes:
         - application/json
-      parameters:
-        - name: group
-          in: path
-          required: true
-          type: string
-        - name: invitation
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/groups/{group}/invitations':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: group
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Group Invitations
@@ -6109,11 +6787,6 @@ paths:
       operationId: list_7
       produces:
         - application/json
-      parameters:
-        - name: group
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -6136,10 +6809,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: group
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -6153,6 +6822,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/tags/{tag}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: tag
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Sharding Tags
@@ -6162,11 +6844,6 @@ paths:
       operationId: getTag
       produces:
         - application/json
-      parameters:
-        - name: tag
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Tag
@@ -6188,10 +6865,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: tag
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -6215,11 +6888,6 @@ paths:
       operationId: delete_15
       consumes:
         - application/json
-      parameters:
-        - name: tag
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Sharding tag successfully deleted
@@ -6228,6 +6896,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/tags':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Sharding Tags
@@ -6280,6 +6957,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/tenants':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Tenants
@@ -6362,6 +7048,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/tenants/{tenant}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: tenant
+        in: path
+        type: string
+        required: true
     delete:
       tags:
         - Tenants
@@ -6371,11 +7070,6 @@ paths:
       operationId: delete_16
       consumes:
         - application/json
-      parameters:
-        - name: tenant
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: List of tenants
@@ -6388,6 +7082,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/metadata':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Metadata
@@ -6466,6 +7169,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/metadata/{metadata}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: metadata
+        in: path
+        type: string
+        required: true
     delete:
       tags:
         - Metadata
@@ -6475,11 +7191,6 @@ paths:
       operationId: delete_17
       consumes:
         - application/json
-      parameters:
-        - name: metadata
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Metadata successfully deleted
@@ -6488,6 +7199,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/rolescopes':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Roles
@@ -6506,6 +7226,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/rolescopes/{scope}/roles':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Roles
@@ -6576,6 +7305,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/rolescopes/{scope}/roles/{role}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: role
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Roles
@@ -6599,10 +7341,6 @@ paths:
             - ENVIRONMENT
             - ORGANIZATION
             - PLATFORM
-        - name: role
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: A role
@@ -6637,10 +7375,6 @@ paths:
             - ENVIRONMENT
             - ORGANIZATION
             - PLATFORM
-        - name: role
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -6678,10 +7412,6 @@ paths:
             - ENVIRONMENT
             - ORGANIZATION
             - PLATFORM
-        - name: role
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Role successfully deleted
@@ -6694,6 +7424,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/rolescopes/{scope}/roles/{role}/users':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: role
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Roles
@@ -6715,10 +7458,6 @@ paths:
             - ENVIRONMENT
             - ORGANIZATION
             - PLATFORM
-        - name: role
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -6755,10 +7494,6 @@ paths:
           enum:
             - ORGANIZATION
             - ENVIRONMENT
-        - name: role
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -6772,6 +7507,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/rolescopes/{scope}/roles/{role}/users/{userId}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: role
+        in: path
+        type: string
+        required: true
+      - name: userId
+        in: path
+        type: string
+        required: true
     delete:
       tags:
         - Roles
@@ -6793,14 +7545,6 @@ paths:
             - ENVIRONMENT
             - ORGANIZATION
             - PLATFORM
-        - name: role
-          in: path
-          required: true
-          type: string
-        - name: userId
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Role successfully removed
@@ -6809,6 +7553,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/top-apis':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Top APIs
@@ -6889,6 +7642,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/top-apis/{topAPI}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: topAPI
+        in: path
+        type: string
+        required: true
     delete:
       tags:
         - Top APIs
@@ -6898,11 +7664,6 @@ paths:
       operationId: delete_20
       consumes:
         - application/json
-      parameters:
-        - name: topAPI
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Top API successfully deleted
@@ -6911,6 +7672,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/plans':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plans
@@ -6931,6 +7701,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/dictionaries':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Configuration
@@ -6979,6 +7758,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/dictionaries/{dictionary}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: dictionary
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Configuration
@@ -6988,11 +7780,6 @@ paths:
       operationId: getDictionary
       produces:
         - application/json
-      parameters:
-        - name: dictionary
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: A dictionary
@@ -7015,10 +7802,6 @@ paths:
           enum:
             - START
             - STOP
-        - name: dictionary
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Dictionary state updated
@@ -7038,10 +7821,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: dictionary
-          in: path
-          required: true
-          type: string
         - in: body
           name: dictionary
           required: true
@@ -7063,11 +7842,6 @@ paths:
       summary: Delete a dictionary
       description: 'User must have the DICTIONARY[DELETE] permission to use this service'
       operationId: deleteDictionary
-      parameters:
-        - name: dictionary
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Dictionary successfully deleted
@@ -7076,6 +7850,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/dictionaries/{dictionary}/_deploy':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: dictionary
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Configuration
@@ -7085,11 +7872,6 @@ paths:
       operationId: deployDictionary
       produces:
         - application/json
-      parameters:
-        - name: dictionary
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Dictionary successfully deployed
@@ -7100,6 +7882,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/dictionaries/{dictionary}/_undeploy':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: dictionary
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Configuration
@@ -7109,11 +7904,6 @@ paths:
       operationId: undeployDictionary
       produces:
         - application/json
-      parameters:
-        - name: dictionary
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Dictionary successfully undeployed
@@ -7124,6 +7914,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/apiheaders':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Configuration
@@ -7170,6 +7969,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/apiheaders/{id}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - Configuration
@@ -7181,10 +7993,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -7209,11 +8017,6 @@ paths:
       operationId: delete_21
       consumes:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: API header successfully deleted
@@ -7224,6 +8027,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/identities':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Configuration
@@ -7274,6 +8086,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/identities/{identityProvider}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: identityProvider
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Configuration
@@ -7285,11 +8110,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: identityProvider
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: An identity provider
@@ -7309,10 +8129,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: identityProvider
-          in: path
-          required: true
-          type: string
         - in: body
           name: dictionary
           required: true
@@ -7338,11 +8154,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: identityProvider
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Identity provider successfully deleted
@@ -7351,6 +8162,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/applications/registration/providers':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Client Registration Providers
@@ -7401,6 +8221,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/applications/registration/providers/{clientRegistrationProvider}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: clientRegistrationProvider
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Client Registration Providers
@@ -7412,11 +8245,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: clientRegistrationProvider
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: A client registration provider
@@ -7436,10 +8264,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: clientRegistrationProvider
-          in: path
-          required: true
-          type: string
         - in: body
           name: clientRegistrationProvider
           required: true
@@ -7465,11 +8289,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: clientRegistrationProvider
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Client registration provider successfully deleted
@@ -7478,6 +8297,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/entrypoints/{entrypoint}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: entrypoint
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Entrypoints
@@ -7487,11 +8319,6 @@ paths:
       operationId: get_9
       produces:
         - application/json
-      parameters:
-        - name: entrypoint
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: A platform entrypoint
@@ -7512,11 +8339,6 @@ paths:
       operationId: delete_22
       consumes:
         - application/json
-      parameters:
-        - name: entrypoint
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Entrrypoint successfully deleted
@@ -7525,6 +8347,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/entrypoints':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Entrypoints
@@ -7603,6 +8434,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/quality-rules':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Configuration
@@ -7649,6 +8489,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/quality-rules/{id}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Configuration
@@ -7657,11 +8510,6 @@ paths:
       operationId: get_11
       produces:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Quality rule
@@ -7684,10 +8532,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -7712,11 +8556,6 @@ paths:
       operationId: delete_23
       consumes:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '201':
           description: Quality rule successfully deleted
@@ -7727,6 +8566,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/themes':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Themes
@@ -7751,6 +8599,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/themes/{themeId}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: themeId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Themes
@@ -7758,11 +8619,6 @@ paths:
       operationId: get_12
       produces:
         - application/json
-      parameters:
-        - name: themeId
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -7781,10 +8637,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: themeId
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -7805,17 +8657,25 @@ paths:
       operationId: delete_24
       consumes:
         - application/json
-      parameters:
-        - name: themeId
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/themes/{themeId}/reset':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: themeId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Themes
@@ -7823,11 +8683,6 @@ paths:
       operationId: reset
       produces:
         - application/json
-      parameters:
-        - name: themeId
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -7837,54 +8692,91 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/themes/{themeId}/optionalLogo':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: themeId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Themes
         - Configuration
       operationId: getLogoLight
-      parameters:
-        - name: themeId
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/themes/{themeId}/logo':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: themeId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Themes
         - Configuration
       operationId: getLogo
-      parameters:
-        - name: themeId
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/themes/{themeId}/backgroundImage':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: themeId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Themes
         - Configuration
       operationId: getBackground
-      parameters:
-        - name: themeId
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/custom-user-fields/{key}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: key
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - Custom User Fields
@@ -7897,10 +8789,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: key
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -7926,11 +8814,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: key
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Custom User Field deleted
@@ -7939,6 +8822,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/custom-user-fields':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Custom User Fields
@@ -7989,6 +8881,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/hooks':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Configuration
@@ -8008,6 +8909,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/configuration/applications/types':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Configuration
@@ -8023,6 +8933,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/subscriptions':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Subscription
@@ -8053,6 +8972,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/users':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Users
@@ -8118,6 +9046,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/users/{id}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Users
@@ -8128,11 +9069,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: A user
@@ -8154,11 +9090,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: User successfully deleted
@@ -8169,6 +9100,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/users/{id}/avatar':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Users
@@ -8179,11 +9123,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: User's avatar
@@ -8194,6 +9133,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/users/{id}/memberships':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Users
@@ -8205,10 +9157,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
         - name: type
           in: query
           required: false
@@ -8223,6 +9171,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/users/{id}/_process':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Users
@@ -8234,10 +9195,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -8253,6 +9210,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/users/{id}/resetPassword':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Users
@@ -8263,11 +9233,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: User's password reset
@@ -8280,6 +9245,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/users/{id}/roles':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     put:
       tags:
         - Users
@@ -8289,10 +9267,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -8306,6 +9280,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/users/{id}/groups':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Users
@@ -8316,11 +9303,6 @@ paths:
         - application/json
       produces:
         - application/json
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: List of user groups
@@ -8331,6 +9313,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/users/registration':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - User Registration
@@ -8358,6 +9349,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/users/registration/finalize':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - User Registration
@@ -8385,6 +9385,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/tickets':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Platform Tickets
@@ -8407,6 +9416,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/auth/oauth2/{identity}/exchange':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: identity
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Authentication
@@ -8414,10 +9436,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: identity
-          in: path
-          required: true
-          type: string
         - name: token
           in: query
           required: false
@@ -8428,6 +9446,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/auth/oauth2/{identity}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: identity
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Authentication
@@ -8435,10 +9466,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: identity
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -8450,6 +9477,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Environment
@@ -8461,10 +9497,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: environmentId
-          in: path
-          required: true
-          type: string
         - in: body
           name: environmentEntity
           required: true
@@ -8485,11 +9517,6 @@ paths:
       operationId: deleteEnvironment
       consumes:
         - application/json
-      parameters:
-        - name: environmentId
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Environment successfully deleted
@@ -8498,6 +9525,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/alerts/metrics':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Alerts
@@ -8517,6 +9553,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/user/login':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Current User
@@ -8532,6 +9577,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/user':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Current User
@@ -8594,6 +9648,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/user/notifications':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - User Notifications
@@ -8631,6 +9694,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/user/notifications/{notification}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: notification
+        in: path
+        type: string
+        required: true
     delete:
       tags:
         - User Notifications
@@ -8638,11 +9714,6 @@ paths:
       summary: Delete a single user's notification
       description: ''
       operationId: delete_25
-      parameters:
-        - name: notification
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Notification successfully deleted
@@ -8653,6 +9724,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/user/subscribeNewsletter':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Current User
@@ -8679,6 +9759,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/user/avatar':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Current User
@@ -8696,6 +9785,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/user/tasks':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Current User
@@ -8715,6 +9813,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/user/tags':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Current User
@@ -8734,6 +9841,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/user/tokens':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - User Tokens
@@ -8803,6 +9919,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/user/tokens/{token}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: token
+        in: path
+        type: string
+        required: true
     delete:
       tags:
         - User Tokens
@@ -8812,11 +9941,6 @@ paths:
       operationId: revoke
       consumes:
         - application/json
-      parameters:
-        - name: token
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: User's personal token revoked
@@ -8827,6 +9951,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/user/logout':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Current User
@@ -8840,6 +9973,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/audit':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       summary: Retrieve audit logs for the platform
       description: 'User must have the MANAGEMENT_AUDIT[READ] permission to use this service'
@@ -8901,6 +10043,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/audit/events':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       summary: List available audit event type for platform
       description: 'User must have the MANAGEMENT_AUDIT[READ] permission to use this service'
@@ -8920,6 +10071,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/portal':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Portal
@@ -8964,6 +10124,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/portal/pages':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Portal Pages
@@ -9052,6 +10221,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/portal/pages/_fetch':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Portal Pages
@@ -9072,6 +10250,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/portal/pages/_import':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Portal Pages
@@ -9137,6 +10324,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/portal/pages/{page}/content':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: page
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Portal Pages
@@ -9144,11 +10344,6 @@ paths:
       summary: Get the page's content
       description: Every users can use this service
       operationId: getPageContent_1
-      parameters:
-        - name: page
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Page's content
@@ -9157,6 +10352,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/portal/pages/{page}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: page
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Portal Pages
@@ -9170,10 +10378,6 @@ paths:
         - name: Accept-Language
           in: header
           required: false
-          type: string
-        - name: page
-          in: path
-          required: true
           type: string
         - name: portal
           in: query
@@ -9202,10 +10406,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: page
-          in: path
-          required: true
-          type: string
         - in: body
           name: page
           required: true
@@ -9231,11 +10431,6 @@ paths:
       summary: Delete a page
       description: 'User must have the ENVIRONMENT_DOCUMENTATION[DELETE] permission to use this service'
       operationId: deletePage_1
-      parameters:
-        - name: page
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Page successfully deleted
@@ -9255,10 +10450,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: page
-          in: path
-          required: true
-          type: string
         - in: body
           name: page
           required: true
@@ -9278,6 +10469,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/portal/pages/{page}/media':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: page
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Portal Media
@@ -9288,11 +10492,6 @@ paths:
       operationId: getMedia_1
       produces:
         - application/json
-      parameters:
-        - name: page
-          in: path
-          required: true
-          type: string
       responses:
         default:
           description: successful operation
@@ -9311,10 +10510,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: page
-          in: path
-          required: true
-          type: string
         - name: file
           in: formData
           required: false
@@ -9333,6 +10528,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/portal/pages/{page}/_fetch':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: page
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Portal Pages
@@ -9342,11 +10550,6 @@ paths:
       operationId: fetchPage_1
       produces:
         - application/json
-      parameters:
-        - name: page
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -9361,6 +10564,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/portal/apis/_search':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Portal APIs
@@ -9387,6 +10599,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/portal/media/upload':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Portal Media
@@ -9411,6 +10632,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/portal/media/{hash}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: hash
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Portal Media
@@ -9418,11 +10652,6 @@ paths:
       summary: Retrieve a media
       description: ''
       operationId: getImage_1
-      parameters:
-        - name: hash
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: A media
@@ -9431,6 +10660,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/portal/identities':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Portal
@@ -9456,6 +10694,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/search/users':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Users
@@ -9485,6 +10732,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/fetchers':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -9517,6 +10773,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/fetchers/{fetcher}/schema':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: fetcher
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -9525,11 +10794,6 @@ paths:
       operationId: getFetcherSchema
       produces:
         - application/json
-      parameters:
-        - name: fetcher
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Fetcher's schema
@@ -9540,6 +10804,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/fetchers/{fetcher}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: fetcher
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -9548,11 +10825,6 @@ paths:
       operationId: getFetcher
       produces:
         - application/json
-      parameters:
-        - name: fetcher
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Fetcher
@@ -9565,6 +10837,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/policies':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -9591,6 +10872,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/policies/{policy}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: policy
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -9599,11 +10893,6 @@ paths:
       operationId: getPolicy
       produces:
         - application/json
-      parameters:
-        - name: policy
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -9612,6 +10901,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/policies/{policy}/schema':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: policy
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -9620,11 +10922,6 @@ paths:
       operationId: getPolicySchema
       produces:
         - application/json
-      parameters:
-        - name: policy
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -9633,6 +10930,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/policies/swagger':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -9652,6 +10958,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/resources':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -9680,6 +10995,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/resources/{resource}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: resource
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -9688,11 +11016,6 @@ paths:
       operationId: getResource
       produces:
         - application/json
-      parameters:
-        - name: resource
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Resource plugin
@@ -9705,6 +11028,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/resources/{resource}/schema':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: resource
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -9713,11 +11049,6 @@ paths:
       operationId: getResourceSchema
       produces:
         - application/json
-      parameters:
-        - name: resource
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -9726,6 +11057,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/services-discovery/{plugin}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: plugin
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -9734,11 +11078,6 @@ paths:
       operationId: getServiceDiscovery
       produces:
         - application/json
-      parameters:
-        - name: plugin
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Service discovery plugin
@@ -9751,6 +11090,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/services-discovery/{plugin}/schema':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: plugin
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -9759,11 +11111,6 @@ paths:
       operationId: getServiceDiscoverySchema
       produces:
         - application/json
-      parameters:
-        - name: plugin
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Service discovery plugin's schema
@@ -9774,6 +11121,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/services-discovery':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -9802,6 +11158,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/instances':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Gateway
@@ -9848,6 +11213,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/instances/{instance}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: instance
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Gateway
@@ -9856,11 +11234,6 @@ paths:
       operationId: getInstance
       produces:
         - application/json
-      parameters:
-        - name: instance
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -9869,6 +11242,23 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/instances/{instance}/monitoring/{gatewayId}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: instance
+        in: path
+        type: string
+        required: true
+      - name: gatewayId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Gateway
@@ -9877,15 +11267,6 @@ paths:
       operationId: instanceMonitoring
       produces:
         - application/json
-      parameters:
-        - name: gatewayId
-          in: path
-          required: true
-          type: string
-        - name: instance
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: successful operation
@@ -9894,6 +11275,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/platform/analytics':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Platform Analytics
@@ -9969,6 +11359,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/platform/logs':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Platform Logs
@@ -10029,6 +11428,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/platform/logs/export':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Platform Logs
@@ -10087,6 +11495,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/platform/logs/{log}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: log
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Platform Logs
@@ -10097,10 +11518,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: log
-          in: path
-          required: true
-          type: string
         - name: timestamp
           in: query
           required: false
@@ -10116,6 +11533,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/platform/events':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Platform Events
@@ -10167,6 +11593,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/platform/tickets':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Platform Tickets
@@ -10190,6 +11625,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/platform/alerts/{alert}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: alert
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Platform Alerts
@@ -10198,10 +11646,6 @@ paths:
       description: 'User must have the MANAGEMENT_ALERT[UPDATE] permission to use this service'
       operationId: associate_1
       parameters:
-        - name: alert
-          in: path
-          required: true
-          type: string
         - name: type
           in: query
           required: false
@@ -10225,10 +11669,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: alert
-          in: path
-          required: true
-          type: string
         - in: body
           name: body
           required: false
@@ -10252,11 +11692,6 @@ paths:
       operationId: delete_26
       consumes:
         - application/json
-      parameters:
-        - name: alert
-          in: path
-          required: true
-          type: string
       responses:
         '204':
           description: Alert successfully deleted
@@ -10267,6 +11702,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/platform/alerts':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Platform Alerts
@@ -10315,6 +11759,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/platform/alerts/status':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Platform Alerts
@@ -10335,6 +11788,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/platform/alerts/{alert}/events':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: alert
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Platform Alerts
@@ -10345,10 +11811,6 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: alert
-          in: path
-          required: true
-          type: string
         - name: from
           in: query
           required: false
@@ -10381,6 +11843,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/messages':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     post:
       tags:
         - Messages
@@ -10407,6 +11878,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/entrypoints':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Portal entrypoints
@@ -10425,6 +11905,15 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/notifiers':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -10453,6 +11942,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/notifiers/{notifier}/schema':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: notifier
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -10461,11 +11963,6 @@ paths:
       operationId: getNotifierSchema_1
       produces:
         - application/json
-      parameters:
-        - name: notifier
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Notifier's schema
@@ -10476,6 +11973,19 @@ paths:
       security:
         - gravitee-auth: []
   '/organizations/{orgId}/environments/{envId}/notifiers/{notifier}':
+    parameters:
+      - name: orgId
+        in: path
+        type: string
+        required: true
+      - name: envId
+        in: path
+        type: string
+        required: true
+      - name: notifier
+        in: path
+        type: string
+        required: true
     get:
       tags:
         - Plugins
@@ -10484,11 +11994,6 @@ paths:
       operationId: getNotifier_1
       produces:
         - application/json
-      parameters:
-        - name: notifier
-          in: path
-          required: true
-          type: string
       responses:
         '200':
           description: Notifier plugin
