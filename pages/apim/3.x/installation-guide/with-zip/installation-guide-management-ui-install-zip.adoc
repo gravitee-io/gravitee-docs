@@ -15,7 +15,7 @@ Management UI has been tested with the latest versions of Google Chrome, Firefox
 
 == Installing from the ZIP archive
 
-The binaries are available from https://gravitee.io/downloads/api-management[Downloads page] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip[Download].
+The binaries are available from https://gravitee.io/downloads/api-management[Downloads page, window=\"_blank\"] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip[Download, window=\"_blank\"].
 
 [source,bash]
 [subs="attributes"]
@@ -29,7 +29,7 @@ $ unzip gravitee-standalone-distribution-{{ site.products.apim._3x.version }}.zi
 
 === Deploy
 
-The Management UI is a client-side only AngularJS application and can be deployed on any HTTP server like https://httpd.apache.org/[Apache] or http://nginx.org/[Nginx].
+The Management UI is a client-side only AngularJS application and can be deployed on any HTTP server like https://httpd.apache.org/[Apache, window=\"_blank\"] or http://nginx.org/[Nginx, window=\"_blank\"].
 
 === or Run it
 

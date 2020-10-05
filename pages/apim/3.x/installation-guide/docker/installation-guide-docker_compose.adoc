@@ -9,10 +9,10 @@
 :docker-hub: https://hub.docker.com/r/graviteeio
 
 IMPORTANT: We assume that you are familiar with Docker. +
-To run our official images, you must start by installing https://docs.docker.com/installation/[Docker]
+To run our official images, you must start by installing https://docs.docker.com/installation/[Docker, window=\"_blank\"]
 
-Gravitee.io docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
-You could find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles on GitHub].
+Gravitee.io docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub, window=\"_blank\"].
+You could find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles on GitHub, window=\"_blank\"].
 
 == Run Gravitee.io API Management
 
@@ -25,8 +25,8 @@ This latest is including Gravitee.io API Management + MongoDB + Elasticsearch.
 ====
 Before running the commands below:
 
-. Make sure you have the minimum vm.max_map_count property set in order to run Elasticsearch properly. https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html[Click here] to see how to check the current value and update if necessary.
-. Make sure the folder (e.g. `elasticsearch`) defined as the ES volume, within the docker-compose file, is https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_configuration_files_must_be_readable_by_the_elasticsearch_user[readable by elasticsearch user]: `sudo chmod g+rwx elasticsearch/ && sudo chgrp 0 elasticsearch/`
+. Make sure you have the minimum vm.max_map_count property set in order to run Elasticsearch properly. https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html[Click here, window=\"_blank\"] to see how to check the current value and update if necessary.
+. Make sure the folder (e.g. `elasticsearch`) defined as the ES volume, within the docker-compose file, is https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_configuration_files_must_be_readable_by_the_elasticsearch_user[readable by elasticsearch user, window=\"_blank\"]: `sudo chmod g+rwx elasticsearch/ && sudo chgrp 0 elasticsearch/`
 ====
 
 [source,shell]

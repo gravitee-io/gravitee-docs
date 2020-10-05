@@ -18,10 +18,10 @@ Here is the matrix between scopes and implementations.
 |===
 
 |Scope
-|link:/apim/3.x/apim_installguide_repositories_mongodb.html[MongoDB]
-|link:/apim/3.x/apim_installguide_repositories_redis.html[Redis]
-|link:/apim/3.x/apim_installguide_repositories_elasticsearch.html[Elasticsearch]
-|link:/apim/3.x/apim_installguide_repositories_jdbc.html[JDBC]
+|MongoDB
+|Redis
+|Elasticsearch
+|JDBC
 
 |Management
 |X
@@ -48,3 +48,9 @@ applications, plans, ...
 Rate Limit:: Rate limiting data
 Analytics:: Analytics data
 
+== More informations:
+
+* link:/apim/3.x/apim_installguide_repositories_mongodb.html[MongoDB]
+* link:/apim/3.x/apim_installguide_repositories_redis.html[Redis]
+* link:/apim/3.x/apim_installguide_repositories_elasticsearch.html[Elasticsearch]
+* link:/apim/3.x/apim_installguide_repositories_jdbc.html[JDBC]

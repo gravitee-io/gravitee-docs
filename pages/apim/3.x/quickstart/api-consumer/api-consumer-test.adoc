@@ -1,0 +1,32 @@
+= Test your API
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_quickstart_consume_test.html
+:page-folder: apim/quickstart
+:page-layout: apim3x
+
+Now that you have created your application, you need to get your API Key
+
+. Click `Applications` in the top menu
+. Click `My subscriptions` in the sub-menu
+. Select your application in the left list
+. Select the API in the right list
+. Copy thr curl command
+
+image::apim/3.x/quickstart/consume/graviteeio-create-first-app-9.png[]
+
+[IMPORTANT]
+====
+By default, the host in the command is `https://api.company.com`. It has to be configured in the Management UI Settings.
+
+image::apim/3.x/quickstart/consume/graviteeio-settings-sharding-tags.png[]
+====
+
+NOTE: You can use your API Key by setting the HTTP Header `X-Gravitee-Api-Key` or using the request query parameter `api-key`.
+
+[source]
+----
+curl http://GATEWAY_SERVER_DOMAIN/myfirstapi \
+     -H "X-Gravitee-Api-Key:<your-api-key>"
+----
+
+You can see that the Gravitee.io Echo API data has been served successfully. You can test different requests specified in the https://github.com/gravitee-io/gravitee-sample-apis/blob/master/gravitee-echo-api/README.md[Gravitee.io Echo API documentation].

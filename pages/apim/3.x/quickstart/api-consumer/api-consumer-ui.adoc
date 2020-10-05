@@ -1,10 +1,10 @@
-= Consuming an API
+= Consuming an API with Portal UI
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_quickstart_consume.html
+:page-permalink: apim/3.x/apim_quickstart_consume_ui.html
 :page-folder: apim/quickstart
 :page-layout: apim3x
 
-NOTE: See the link:/apim/3.x/apim_quickstart_publish.html[API publisher QuickStart guide] to set up your first API
+NOTE: See the link:/apim/3.x/apim_quickstart_publish_ui.html[API publisher QuickStart guide] to set up your first API
 
 This guide walks you through the process of creating your first application and subscribing your first API by using the Portal UI.
 Gravitee.io Portal UI can be accessed using the following URL:
@@ -17,8 +17,7 @@ In this quick start, we will access an API via an link:/apim/3.x/apim_policies_a
 Only trusted application can access the API data by requesting an API Key.
 Let's see how to create an application and generate an API Key.
 
-== Create your application...
-=== ...with Portal UI
+== Create your application with Portal UI
 
 . Login to http://PORTAL_UI_SERVER_DOMAIN. (Default Administrator account is admin/admin, see link:/apim/3.x/apim_installguide_authentication.html[security section] for more information)
 . Click `Applications` in the top menu
@@ -64,54 +63,3 @@ image::apim/3.x/quickstart/consume/graviteeio-create-first-app-7.png[]
 . Congratulations ! Your brand-new Application and a subscription to the Echo API have been created.
 
 image::apim/3.x/quickstart/consume/graviteeio-create-first-app-8.png[]
-
-
-
-=== ...with Portal API
-
-Create Application request::
-[source]
-----
-curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
-     -H "Content-Type:application/json;charset=UTF-8" \
-     -X POST \
-     -d '{"name":"My first Application","type":"Web","description":"Web client for Gravitee.io Echo API"}' \
-     http://MANAGEMENT_API_SERVER_DOMAIN/portal/environments/DEFAULT/applications
-----
-
-Subscribe API request::
-[source]
-----
-curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
-     -X POST \
-     http://MANAGEMENT_API_SERVER_DOMAIN/portal/environments/DEFAULT/applications/|application-id|/subscriptions/?plan=|plan-id|
-----
-
-== Test your API !
-
-Now that you have created your application, you need to get your API Key
-
-. Click `Applications` in the top menu
-. Click `My subscriptions` in the sub-menu
-. Select your application in the left list
-. Select the API in the right list
-. Copy thr curl command
-
-image::apim/3.x/quickstart/consume/graviteeio-create-first-app-9.png[]
-
-[IMPORTANT]
-====
-By default, the host in the command is `https://api.company.com`. It has to be configured in the Management UI Settings.
-
-image::apim/3.x/quickstart/consume/graviteeio-settings-sharding-tags.png[]
-====
-
-NOTE: You can use your API Key by setting the HTTP Header `X-Gravitee-Api-Key` or using the request query parameter `api-key`.
-
-[source]
-----
-curl http://GATEWAY_SERVER_DOMAIN/myfirstapi \
-     -H "X-Gravitee-Api-Key:<your-api-key>"
-----
-
-You can see that the Gravitee.io Echo API data has been served successfully. You can test different requests specified in the https://github.com/gravitee-io/gravitee-sample-apis/blob/master/gravitee-echo-api/README.md[Gravitee.io Echo API documentation].

@@ -9,13 +9,13 @@
 :docker-hub: https://hub.docker.com/r/graviteeio
 
 IMPORTANT: We assume that you are familiar with Docker. +
-To run our official images, you must start by installing https://docs.docker.com/installation/[Docker]
+To run our official images, you must start by installing https://docs.docker.com/installation/[Docker, window=\"_blank\"]
 
-Gravitee.io docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
+Gravitee.io docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub, window=\"_blank\"].
 
 == Install an additional plugin
 
-Gravitee.io images are containing the default plugins (you can get the full list from https://github.com/gravitee-io/release/blob/3.0.x/release.json).
+Gravitee.io images are containing the default plugins (you can get the full list from https://github.com/gravitee-io/release/blob/3.0.x/release.json[window=\"_blank\"]).
 
 Sometimes, you may need to override the default setup by providing a custom plugin.
 
