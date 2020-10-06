@@ -155,7 +155,68 @@ paths:
 | /swaggerpetstore
 |===
 
-Policies on path::
+==== Vendor extensions
+In Swagger and OpenAPI descriptor, you can add more information about your API by using a specific extension.
+For this, you have to add the `x-graviteeio-definition` field  at the root of the swagger.
+The value of this field is an Object that follow this link:https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/gravitee-rest-api-service/src/main/resources/schema/xGraviteeIODefinition.json[JSON Schema, window="_blank"]
+
+[NOTE]
+====
+* `categories` must contain either a key, or an id. Only existing categories are imported.
+* Import will fail if virtualHosts are already used by *others* API
+* If set, virtualHosts will override contextPath
+* `groups` must contain group names. Only existing groups are imported.
+* `metadata.format` is case-sensitive. Possible values are:
+** STRING
+** NUMERIC
+** BOOLEAN
+** DATE
+** MAIL
+** URL
+* `picture` only accept Data-URI format (see example below).
+====
+
+Here's an example
+```yaml
+openapi: "3.0.0"
+info:
+  version: 1.2.3
+  title: Gravitee.io Echo API
+  license:
+    name: MIT
+servers:
+  - url: https://demo.gravitee.io/gateway/echo
+x-graviteeio-definition:
+  categories:
+    - supplier
+    - product
+  virtualHosts:
+    - host: api.gravitee.io
+      path: /echo
+      overrideEntrypoint: true
+  groups:
+    - myGroupName
+  labels:
+    - echo
+    - api
+  metadata:
+    - name: relatedLink
+      value: http://external.link
+      format: URL
+  picture: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
+  properties:
+    - key: customHttpHeader
+      value: X-MYCOMPANY-ID
+  tags:
+    - DMZ
+    - partner
+    - internal
+  visibility: PRIVATE
+paths:
+...
+```
+
+==== Policies on path
 When importing a Swagger or an OpenAPI definition, you can select the option `'Create policies on path'` in import form.
 Then all route declared in the Swagger descriptor are automatically created in Gravitee.io.
 You can navigate to the policies management view to check.
@@ -164,36 +225,35 @@ image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-polici
 
 You can also choose to activate some policies that will be configured using the Swagger/OpenAPI descriptor.
 
-==== Validation Request
-For each operation, `NOT__ __NULL` rules are created with query parameters and headers. +
-REQUEST only +
-More info link:/apim/3.x/apim_policies_request_validation.html[here]
-
-==== Mock
-For each operation, a mock policy is configured, based on `example` field if it exists, or generating random value regarding the type of the attribute to mock. +
-REQUEST only +
-More info link:/apim/3.x/apim_policies_mock.html[here]
-
-==== XML Validation
-For each operation, if a `application/xml` request body exists, then a XSD schema is computed from this body to configure an XML Validation policy. +
-REQUEST only +
-More info link:/apim/3.x/apim_policies_xml_validation.html[here]
-
-==== JSON Validation
+JSON Validation::
 For each operation, if a `application/json` request body exists, then a Json schema is computed from this body to configure an JSON Validation policy. +
 REQUEST only +
 More info link:/apim/3.x/apim_policies_json_validation.html[here]
 
-==== Rest to SOAP transformer
+Rest to SOAP transformer::
 For each operation, if the definition contains some specific vendor extensions, the Rest to SOAP policy can be configured. +
-These extensions are :
-
+These extensions are:
 - x-graviteeio-soap-envelope: contains the SOAP Envelope
 - x-graviteeio-soap-action: contains the SOAP action
 
 REQUEST only +
 More info link:/apim/3.x/apim_policies_rest2soap.html[here]
 
+
+Mock::
+For each operation, a mock policy is configured, based on `example` field if it exists, or generating random value regarding the type of the attribute to mock. +
+REQUEST only +
+More info link:/apim/3.x/apim_policies_mock.html[here]
+
+Validation Request::
+For each operation, `NOT__ __NULL` rules are created with query parameters and headers. +
+REQUEST only +
+More info link:/apim/3.x/apim_policies_request_validation.html[here]
+
+XML Validation::
+For each operation, if a `application/xml` request body exists, then a XSD schema is computed from this body to configure an XML Validation policy. +
+REQUEST only +
+More info link:/apim/3.x/apim_policies_xml_validation.html[here]
 
 === Import a WSDL
 
