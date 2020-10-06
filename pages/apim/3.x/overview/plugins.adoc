@@ -4,12 +4,12 @@
 :page-folder: apim/overview
 :page-layout: apim3x
 
-_Plugins_ are additional components that can be _plugged into_ the <<apim_overview_components.adoc#gravitee-components-gateway, API Gateway>> and / or the <<apim_overview_components.adoc#gravitee-components-rest-api, Management API>>.
+Plugins are additional components that can be _plugged into_ the <<apim_overview_components.adoc#gravitee-components-gateway, API Gateway>> or the <<apim_overview_components.adoc#gravitee-components-rest-api, Management API>>.
 Plugins can customize a component's behavior to exactly fit your needs and technical constraints.
 
 Plugins follow a specific directory structure. For more information, see the link:/apim/3.x/apim_devguide_plugins.html[Plugins Developer Guide].
 
-When you use APIM, you will work with multiple types of plugins. The table below lists the different types of plugin with the component(s) they can be plugged into and some examples:
+When you use APIM, you will work with multiple types of plugins. The table below lists the different types of plugin with the component(s) they can be plugged into and some examples.
 
 [width="100%",cols="^3,^3,^10",options="header"]
 |===
@@ -33,16 +33,16 @@ When you use APIM, you will work with multiple types of plugins. The table below
 
 [[gravitee-plugins-policies]]
 == Policies
-A *policy* modifies the behavior of the request and / or response handled by the API Gateway. It can be chained by a request policy chain or a response policy chain using a logical order.
-Policies can be treated like a _proxy controller_, by guaranteeing that a given business rule is fulfilled during request / response processing.
+A *policy* modifies the behavior of the request or response handled by the API Gateway. It can be chained by a request policy chain or a response policy chain using a logical order.
+Policies can be considered like a _proxy controller_, guaranteeing that a given business rule is fulfilled during request/response processing.
 
 Examples of a policy are:
 
 * Authorization using an API key (see the link:/apim/3.x/apim_policies_apikey.html[api-key policy])
-* Applying header/query parameter transformations
+* Applying header or query parameter transformations
 * Applying rate limiting or quotas to avoid API flooding
 
-NOTE: Want to know how to create, use and deploy a custom policy? Check out the link:/apim/3.x/apim_devguide_policies.html[Policies Developer Guide]!
+NOTE: Want to know how to create, use and deploy a custom policy? Check out the link:/apim/3.x/apim_devguide_policies.html[Policies Developer Guide].
 
 [[gravitee-plugins-reporters]]
 == Reporters
@@ -63,7 +63,7 @@ link:/apim/3.x/apim_devguide_plugins.html[Plugins Developer Guide].
 
 [[gravitee-plugins-repositories]]
 == Repositories
-Pluggable storage component for API configurations, policy configurations, analytics and so on.
+A *repository* is a pluggable storage component for API configuration, policy configuration, analytics and so on.
 You can find more information in the link:/apim/3.x/apim_installguide_repositories.html[Installation Guide Repositories] page.
 
 [[gravitee-plugins-resources]]
@@ -76,10 +76,10 @@ You can find more information in the link:/apim/3.x/apim_installguide_repositori
 == Notifiers
 
 A *notifier* is used to send notifications.
-At the moment, the only notifier available is the *email notifier*, but others included *slack* or *portal* are planned soon.
+Currently, the only notifier available is the *email notifier*, but others including *slack* and *portal* are planned soon.
 
 [[gravitee-plugins-alerts]]
 == Alerts
 
-An *alert* is used to send triggers or events to the Alert Engine which can be processed to send a notification with the configured plugin notifier.
+An *alert* is used to send triggers or events to the Alert Engine which can be processed to send a notification using the configured plugin notifier.
 Configuring the notifier is the responsibility of the trigger.

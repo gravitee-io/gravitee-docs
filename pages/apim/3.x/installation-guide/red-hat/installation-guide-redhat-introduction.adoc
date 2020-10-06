@@ -1,4 +1,4 @@
-= Install Gravitee.io API Management on Red Hat or CentOS
+= Introduction
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_redhat_introduction.html
 :page-folder: apim/installation-guide/redhat
@@ -9,21 +9,14 @@
 
 == Overview
 
-Use this tutorial to install Gravitee.io API Management on Red Hat Enterprise Linux, CentOS Linux, or Oracle Linux
-using the yum package manager.
+This section explains how to install APIM on Red Hat Enterprise Linux, CentOS Linux, or Oracle Linux
+using the `yum` package manager.
 
 NOTE: RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Please see link:/apim/3.x/apim_installguide_gateway_install_zip.html[Install Gravitee.io API Management with .zip] instead.
 
-=== Gravitee.io API Management Version
-
-This tutorial installs Gravitee.io API Management {{ site.products.apim._3x.version }}. To install a different version of
-Gravitee.io API Management, just replace the version with the one expected.
-
-== Install Gravitee.io API Management
-
-=== Configure the package management system (yum)
-Create a file called `graviteeio.repo` in the `/etc/yum.repos.d/` so that you can install Gravitee.io API Management directly using yum:
-
+== Configure the package management system (`yum`)
+. Create a file called `graviteeio.repo` in location `/etc/yum.repos.d/` so that you can install APIM directly using `yum`:
++
 [source,properties]
 ----
 [graviteeio]
@@ -37,27 +30,27 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ----
 
-Then, some packages are required to handle GPG signatures of our RPM packages:
-
+. Enable GPG signature handling, which is required by some of our RPM packages:
++
 [source,bash]
 ----
 sudo yum install pygpgme yum-utils
 ----
 
-Before going ahead, you may to refresh your local cache.
-
+. Before continuing, you may need to refresh your local cache:
++
 [source,bash]
 ----
 sudo yum -q makecache -y --disablerepo='*' --enablerepo='graviteeio'
 ----
 
-Your repository is ready to use, now it's time to install Gravitee.io API Management.
+Your repository is now ready to use.
 
-=== Install the Gravitee.io components on Red Hat or CentOS
+== Install the APIM components
 
-You can choose to install the complete Gravitee.io API Management stack or install components one by one:
+You can choose to install the full APIM stack or install the components one by one:
 
-* link:/apim/3.x/apim_installguide_redhat_stack.html[Install API Management] (includes all components below)
+* link:/apim/3.x/apim_installguide_redhat_stack.html[Install the full APIM stack] (includes all components below)
 * link:/apim/3.x/apim_installguide_redhat_gateway.html[Install API Gateway]
 * link:/apim/3.x/apim_installguide_redhat_management_api.html[Install Management API]
 * link:/apim/3.x/apim_installguide_redhat_portal.html[Install Portal]

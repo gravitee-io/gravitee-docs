@@ -12,13 +12,11 @@ This page describes the concepts you need to understand when using APIM.
 
 [[gravitee-concepts-publisher]]
 == Publisher
-A *publisher* (also called *API publisher*) is one of the two concrete roles defined in the platform (the other being <<gravitee-concepts-consumer, consumer>>).
-This role is used to represent someone who can declare an API and manage it.
+A *publisher* (also called *API publisher*) is the role defined in the platform for declaring an API and managing it. See also *Consumer*.
 
 [[gravitee-concepts-consumer]]
 == Consumer
-A *consumer* (also called *API consumer*) is the role defined to consume an API.
-Consuming an API can only be done after subscribing to this API.
+A *consumer* (also called *API consumer*) is the role defined in the platform for consuming an API. A consumer can only consume an API after subscribing to it. See also *Publisher*.
 
 [[gravitee-concepts-application]]
 == Application
