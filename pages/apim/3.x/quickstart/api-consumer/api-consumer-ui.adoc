@@ -4,58 +4,48 @@
 :page-folder: apim/quickstart
 :page-layout: apim3x
 
-NOTE: See the link:/apim/3.x/apim_quickstart_publish.html[API publisher Quick Start Guide] to set up your first API.
+== Overview
 
-This guide walks you through the process of creating your first application and subscribing to your first API with APIM Portal.
-APIM Portal can be accessed using the following URL:
+This guide walks you through creating your first application and subscribing to your first API with Portal UI. For a brief overview of how to set up your first API, see the *Publish your first API* section of the Quick Start Guide.
 
-http://PORTAL_UI_SERVER_DOMAIN (see link:/apim/3.x/apim_installguide_portal_ui_install_zip.html[Gravitee.io Portal UI installation] for more information)
-
-
-NOTE: APIM includes differents ways to access/secure an API (link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[Gravitee.io Plans]).
-In this procedure, we will access an API via an link:/apim/3.x/apim_policies_apikey.html[API Key].
+NOTE: APIM includes several ways to access and secure an API, as described in (link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[API Publisher Plans and subscriptions]).
+In this example, we will access an API using an link:/apim/3.x/apim_policies_apikey.html[API Key].
 Only trusted applications can access the API data by requesting an API Key.
 Let's see how to create an application and generate an API Key.
 
 == Create your application with APIM Portal
 
-. Log in to http://PORTAL_UI_SERVER_DOMAIN. Note that the default Administrator account is **admin/admin**; you can find more information in the link:/apim/3.x/apim_installguide_authentication.html[Authentication section of the Installation Guide].
+. Log in to http://PORTAL_UI_SERVER_DOMAIN. Note that the default Administrator account is **admin/admin** -- you can find more information in the link:/apim/3.x/apim_installguide_authentication.html[Authentication section of the Installation Guide].
 . Click **Applications** in the top menu.
 . Click **CREATE AN APP**  in the sub-menu.
-
++
 image::apim/3.x/quickstart/consume/graviteeio-create-first-app-1.png[]
 
-[start=3]
 . Give your application a name and a description. Click **NEXT**.
-
++
 image::apim/3.x/quickstart/consume/graviteeio-create-first-app-2.png[]
 
-[start=4]
-
 . Specify the type of application. Click **NEXT**.
++
 NOTE: You don't have to give a Client ID since you're about to subscribe to an 'API Key' plan.
-
++
 image::apim/3.x/quickstart/consume/graviteeio-create-first-app-3.png[]
 
-[start=5]
-. Search for your API and select it.
-
+. Search your API and select it.
++
 image::apim/3.x/quickstart/consume/graviteeio-create-first-app-4.png[]
 
-[start=6]
 . The API plan is displayed.
-
++
 image::apim/3.x/quickstart/consume/graviteeio-create-first-app-5.png[]
 
-[start=7]
 . Click **SUBSCRIBE**.
-
++
 image::apim/3.x/quickstart/consume/graviteeio-create-first-app-6.png[]
 
-[start=8]
 . Click **NEXT**.
 . You can check your application information in this summary. When you are ready, click **CREATE THE APP**.
-
++
 image::apim/3.x/quickstart/consume/graviteeio-create-first-app-7.png[]
 
 Congratulations! Your brand new application and a subscription to the Echo API have been created.

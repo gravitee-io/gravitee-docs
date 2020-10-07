@@ -4,6 +4,7 @@
 :page-folder: apim/overview
 :page-layout: apim3x
 
+== Overview
 This page describes the main components included in APIM.
 
 [[gravitee-components-gateway]]
@@ -21,10 +22,10 @@ image::apim/3.x/overview/components/graviteeio-gateway-internal.png[Gravitee.io 
 image::apim/3.x/overview/components/graviteeio-gateway-architecture.png[Gravitee.io -- Gateway architecture]
 
 [[gravitee-components-rest-api]]
-== Rest APIs (Management API & Portal API)
-These two RESTful APIs provide a set of services to manage and configure the <<gravitee-components-mgmt-ui, Management UI>> and the <<gravitee-components-portal-ui, Portal UI>>.
+== REST APIs
+These RESTful APIs expose services to manage and configure the <<gravitee-components-mgmt-ui, Management UI>> and the <<gravitee-components-portal-ui, Portal UI>>.
 All exposed services are restricted by authentication and authorization rules.
-You can find more information by having a look at the link:/apim/3.x/apim_installguide_rest_apis_documentation.html[Rest APIs > Documentation] section.
+You can find more information in the link:/apim/3.x/apim_installguide_rest_apis_documentation.html[Rest APIs > Documentation] section.
 
 [[gravitee-components-mgmt-ui]]
 == APIM Console (Management UI)
