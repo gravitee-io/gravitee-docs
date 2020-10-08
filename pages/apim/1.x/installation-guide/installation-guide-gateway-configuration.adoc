@@ -113,7 +113,7 @@ http:
 Available mode for `clientAuth` are:
 
 * none: Client authentication is disabled (replacement of the `false` value)
-* request: Client authentication is not required but can be if using link:apim/1.x/apim_policies_ssl_enforcement.html[SSL enforcement policy]
+* request: Client authentication is not required but can be if using link:apim_policies_ssl_enforcement.html[SSL enforcement policy]
 * requires: Client authentication is required (replacement of `true` value)
 
 == Plugins repository
