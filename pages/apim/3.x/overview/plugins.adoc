@@ -4,36 +4,50 @@
 :page-folder: apim/overview
 :page-layout: apim3x
 
-Plugins are additional components that can be _plugged into_ the <<apim_overview_components.adoc#gravitee-components-gateway, API Gateway>> or the <<apim_overview_components.adoc#gravitee-components-rest-api, Management API>>.
-Plugins can customize a component's behavior to exactly fit your needs and technical constraints.
+== Overview
 
-Plugins follow a specific directory structure. For more information, see the link:/apim/3.x/apim_devguide_plugins.html[Plugins Developer Guide].
+Plugins are additional components that can be _plugged into_ <<apim_overview_components.adoc#gravitee-components-gateway, API Gateway>> or <<apim_overview_components.adoc#gravitee-components-rest-api, APIM API>>.
+They can customize the component's behavior to exactly fit your needs and technical constraints.
 
-When you use APIM, you will work with multiple types of plugins. The table below lists the different types of plugin with the component(s) they can be plugged into and some examples.
+For more information about plugins, including how to deploy them and details of their directory structure, see the link:/apim/3.x/apim_devguide_plugins.html[Plugins Developer Guide].
 
-[width="100%",cols="^3,^3,^10",options="header"]
+== Types of plugins
+
+The table below lists the different types of plugins you can use with APIM, with the component(s) they can be plugged into and some examples. For more details of what each plugin type does, see the sections below.
+
+[width="100%",cols="20,20,50",options="header"]
 |===
 |Type|Component|Examples
-| <<gravitee-plugins-idp, Identity Providers>>|Management API|LDAP, Oauth2, InMemory
-| <<gravitee-plugins-fetchers, Fetchers>>|Management API|HTTP, GIT
-| <<gravitee-plugins-policies, Policies>>|Management API / Gateway|API Key, Rate-limiting, Cache
-| <<gravitee-plugins-reporters, Reporters>>|Gateway|Elasticsearch, Accesslog
-| <<gravitee-plugins-repositories, Repositories>>|Management API / Gateway|MongoDB, Redis, Elasticsearch
-| <<gravitee-plugins-resources, Resources>>|Management API / Gateway|Oauth2, Cache, LDAP
-| <<gravitee-plugins-services, Services>>|Management API / Gateway|Sync, local-registry, health-check, monitor
+| <<gravitee-plugins-idp, Identity Providers>>|APIM API|LDAP, Oauth2, InMemory
+| <<gravitee-plugins-fetchers, Fetchers>>|APIM API|HTTP, GIT
+| <<gravitee-plugins-policies, Policies>>|APIM API +
+APIM Gateway
+                                         |API Key, Rate-limiting, Cache
+| <<gravitee-plugins-reporters, Reporters>>|APIM Gateway|Elasticsearch, Accesslog
+| <<gravitee-plugins-repositories, Repositories>>|APIM API +
+APIM Gateway
+                                                 |MongoDB, Redis, Elasticsearch
+| <<gravitee-plugins-resources, Resources>>|APIM API +
+APIM Gateway
+                                           |Oauth2, Cache, LDAP
+| <<gravitee-plugins-services, Services>>|APIM API +
+APIM Gateway
+                                         |Sync, local-registry, health-check, monitor
 | <<gravitee-plugins-notifiers, Notifiers>>|Alert Engine|Email
-| <<gravitee-plugins-alerts, Alerts>>|Management API / Gateway|Vertx
+| <<gravitee-plugins-alerts, Alerts>>|APIM API +
+APIM Gateway
+                                     |Vertx
 |===
 
 [[gravitee-plugins-idp]]
-== Identity Providers
+=== Identity Providers
 
 [[gravitee-plugins-fetchers]]
-== Fetchers
+=== Fetchers
 
 [[gravitee-plugins-policies]]
-== Policies
-A *policy* modifies the behavior of the request or response handled by the API Gateway. It can be chained by a request policy chain or a response policy chain using a logical order.
+=== Policies
+A *policy* modifies the behavior of the request or response handled by APIM Gateway. It can be chained by a request policy chain or a response policy chain using a logical order.
 Policies can be considered like a _proxy controller_, guaranteeing that a given business rule is fulfilled during request/response processing.
 
 Examples of a policy are:
@@ -45,9 +59,9 @@ Examples of a policy are:
 NOTE: Want to know how to create, use and deploy a custom policy? Check out the link:/apim/3.x/apim_devguide_policies.html[Policies Developer Guide].
 
 [[gravitee-plugins-reporters]]
-== Reporters
+=== Reporters
 
-A *reporter* is used by a Gateway instance to report many types of event:
+A *reporter* is used by an APIM Gateway instance to report many types of event:
 
 * Request/response metrics -- for example, response-time, content-length, api-key
 * Monitoring metrics -- for example, CPU, Heap usage
@@ -62,24 +76,24 @@ NOTE: As with all plugins, you can create, use and deploy custom reporters as de
 link:/apim/3.x/apim_devguide_plugins.html[Plugins Developer Guide].
 
 [[gravitee-plugins-repositories]]
-== Repositories
+=== Repositories
 A *repository* is a pluggable storage component for API configuration, policy configuration, analytics and so on.
-You can find more information in the link:/apim/3.x/apim_installguide_repositories.html[Installation Guide Repositories] page.
+You can find more information in the link:/apim/3.x/apim_installguide_repositories.html[Installation Guide Repositories] section.
 
 [[gravitee-plugins-resources]]
-== Resources
+=== Resources
 
 [[gravitee-plugins-services]]
-== Services
+=== Services
 
 [[gravitee-plugins-notifiers]]
-== Notifiers
+=== Notifiers
 
 A *notifier* is used to send notifications.
 Currently, the only notifier available is the *email notifier*, but others including *slack* and *portal* are planned soon.
 
 [[gravitee-plugins-alerts]]
-== Alerts
+=== Alerts
 
 An *alert* is used to send triggers or events to the Alert Engine which can be processed to send a notification using the configured plugin notifier.
 Configuring the notifier is the responsibility of the trigger.

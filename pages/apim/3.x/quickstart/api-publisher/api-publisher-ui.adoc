@@ -6,11 +6,9 @@
 
 == Overview
 
-This section walks you through creating and publishing your first API with Management UI. link:/apim/3.x/apim_publisherguide_manage_api.html[API Publisher Guide].
+This section walks you through creating and publishing your first API with APIM Management. link:/apim/3.x/apim_publisherguide_manage_api.html[API Publisher Guide].
 
 == Create your API with APIM Management
-
-NOTE: You can access the APIM Management with the following URL: `http://MANAGEMENT_UI_SERVER_DOMAIN` (see link:/apim/3.x/apim_installguide_management_ui_install_zip.html[Gravitee.io Management UI installation] for more information).
 
 . Log in to `http://MANAGEMENT_UI_SERVER_DOMAIN`. Note that the default Administrator account is **admin/admin** -- for more information, see the link:/apim/3.x/apim_installguide_authentication.html[Authentication section of the Installation Guide].
 . Click **Start creating an API**.
@@ -45,10 +43,10 @@ image::apim/3.x/quickstart/publish/graviteeio-create-first-api-4.png[]
 +
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-5.png[]
 
-Congratulations! You have created your brand new Echo API, published a plan and, if a gateway instance is running, deployed your API.
+Congratulations! You have created your brand new Echo API, published a plan and, if an APIM Gateway instance is running, deployed your API.
 
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-6.png[]
 
-You need to complete one more step before your API is ready to be used by your consumers: click **PUBLISH THE API** so this API can be displayed in APIM Portal.
+You need to complete one more step before your API is ready to be used by your consumers: Click **PUBLISH THE API** to display the API in APIM Portal.
 
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-7.png[]

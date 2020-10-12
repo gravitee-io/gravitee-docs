@@ -20,5 +20,4 @@ A *consumer* (also called *API consumer*) is the role defined in the platform fo
 
 [[gravitee-concepts-application]]
 == Application
-An *application* is an intermediate level between a <<gravitee-concepts-consumer, consumer>> and an
-<<gravitee-concepts-api, API>>. It is used by the consumer to subscribe to that API before being able to consume it.
+An *application* is an intermediate level between a *consumer* and an API. It is used by the consumer to subscribe to that API before being able to consume it.

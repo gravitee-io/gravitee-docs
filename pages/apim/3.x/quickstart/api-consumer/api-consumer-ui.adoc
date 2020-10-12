@@ -1,4 +1,4 @@
-= Consume an API
+= Consume an API with APIM Portal
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_quickstart_consume_ui.html
 :page-folder: apim/quickstart
@@ -6,7 +6,7 @@
 
 == Overview
 
-This guide walks you through creating your first application and subscribing to your first API with Portal UI. For a brief overview of how to set up your first API, see the *Publish your first API* section of the Quick Start Guide.
+This guide walks you through creating your first application and subscribing to your first API with APIM Portal. For a brief overview of how to set up your first API, see the *Publish your first API* section of the Quick Start Guide.
 
 NOTE: APIM includes several ways to access and secure an API, as described in (link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[API Publisher Plans and subscriptions]).
 In this example, we will access an API using an link:/apim/3.x/apim_policies_apikey.html[API Key].
@@ -27,15 +27,15 @@ image::apim/3.x/quickstart/consume/graviteeio-create-first-app-2.png[]
 
 . Specify the type of application. Click **NEXT**.
 +
-NOTE: You don't have to give a Client ID since you're about to subscribe to an 'API Key' plan.
+NOTE: Because you are subscribing to an *API Key* plan, you do not need to specify a Client ID.
 +
 image::apim/3.x/quickstart/consume/graviteeio-create-first-app-3.png[]
 
-. Search your API and select it.
+. Search for your API and select it.
 +
 image::apim/3.x/quickstart/consume/graviteeio-create-first-app-4.png[]
-
-. The API plan is displayed.
++
+The API plan is displayed.
 +
 image::apim/3.x/quickstart/consume/graviteeio-create-first-app-5.png[]
 
@@ -47,7 +47,7 @@ image::apim/3.x/quickstart/consume/graviteeio-create-first-app-6.png[]
 . You can check your application information in this summary. When you are ready, click **CREATE THE APP**.
 +
 image::apim/3.x/quickstart/consume/graviteeio-create-first-app-7.png[]
-
-Congratulations! Your brand new application and a subscription to the Echo API have been created.
-
++
+Congratulations! Your new application and subscription to the Echo API have been created.
++
 image::apim/3.x/quickstart/consume/graviteeio-create-first-app-8.png[]
