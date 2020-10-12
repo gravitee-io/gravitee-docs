@@ -112,6 +112,7 @@ __You have to provide a full json in case of update. Otherwise, this will store 
     "url" : "https://docs.gravitee.io"
   },
   "theme" : {
+    "name" : "default",
     "logo" : "themes/assets/GRAVITEE_LOGO1-01.png",
     "loader" : "assets/gravitee_logo_anim.gif"
   }
@@ -123,6 +124,7 @@ __You have to provide a full json in case of update. Otherwise, this will store 
 You can also change the logo and the loader.
 For that, edit constants.json and change the value of :
 
+. `theme.name` to your custom name.
 . `theme.logo` to "themes/assets/your_logo.png".
 . `theme.loader` to "assets/your_loader.gif".
 
