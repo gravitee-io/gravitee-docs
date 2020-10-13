@@ -10,8 +10,10 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 #-------------------------------------------------------------------------------
-FROM graviteeio/ruby:latest
-MAINTAINER Gravitee Team <http://gravitee.io>
+FROM ruby:2.7
+
+LABEL maintainer="Gravitee Team <http://gravitee.io>"
+ENV RUBYOPT=-KU
 
 RUN apt-get clean \
   && mv /var/lib/apt/lists /var/lib/apt/lists.broke \
