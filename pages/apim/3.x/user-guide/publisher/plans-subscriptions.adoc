@@ -62,6 +62,30 @@ This plan ensures that API keys are valid, have not been revoked or expired, and
 NOTE: The API key plan represents the simplest security mechanism and acts more as a unique identifier than a security token since the API key can be easily found in app code.
 For stronger security please see OAuth 2.0 and JWT plans.
 
+=== Use a custom API key
+
+You can specify a custom API key for an API key plan. This is particularly useful when you want to silently migrate to APIM and have a pre-defined API key.
+
+NOTE: The custom API key feature can be enabled in the global settings of APIM.
+
+The custom API key must have more than 8 characters, less than 64 characters and be URL compliant (^ # % @ \ / ; = ? | ~ , (space) are invalid characters)
+
+When prompted, you can choose to provide your custom API key or let APIM generate one for you by leaving the field empty.
+
+You can provide a custom API key when:
+
+* creating a subscription:
+
+image::apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-1.png[Gravitee.io - Create subscription with custom API key, 873, 530, align=center, title-align=center]
+
+* accepting a subscription:
+
+image::apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-2.png[Gravitee.io - Accept subscription with custom API key, 873, 530, align=center, title-align=center]
+
+* renewing a subscription:
+
+image::apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-3.png[Gravitee.io - Renew custom API key, 873, 530, align=center, title-align=center]
+
 == OAuth 2.0 plan
 
 OAuth 2.0 plan ensures that access tokens provided by 3rd party OAuth 2.0 Authorization Server are valid. Letting only apps with approved OAuth 2.0 access token access your APIs.
