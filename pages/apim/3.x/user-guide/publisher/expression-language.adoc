@@ -46,41 +46,33 @@ be retrieved using EL by using the following syntax:
 == Request
 === Properties
 |===
-|Property |Description |Type |Always present
+.^|Property      |Description            ^.^|Type            |Example
 
-.^|id
-|Request identifier
-^.^|string
-^.^|X
-
-.^|headers
-|Request headers
-^.^|key / value
-^.^|X
-
-.^|params
-|Request query parameters
-^.^|key / value
-^.^|X
-
-.^|path
-|Request path
-^.^|string
-^.^|X
-
-.^|paths
-|Request path parts
-^.^|array of string
-^.^|X
-
-.^|content
-|Request body content
-^.^|string
-^.^|-
+.^|id            |Identifier             ^.^|string          |12345678-90ab-cdef-1234-567890ab
+.^|transactionId |Transaction identifier ^.^|string          |cd123456-7890-abcd-ef12-34567890
+.^|uri           |URI                    ^.^|string          |/v2/store/MyStore?order=100
+.^|path          |Path                   ^.^|string          |/v2/store/MyStore
+.^|paths         |Path parts             ^.^|array of string |[,v2,store,MyStore]
+.^|pathInfo      |Path info              ^.^|string          |/store/MyStore
+.^|pathInfos     |Path info parts        ^.^|array of string |[,store,MyStore]
+.^|contextPath   |Context path           ^.^|string          |/v2/
+.^|params        |Query parameters       ^.^|key / value     |order -> 100
+.^|pathParams    |Path parameters        ^.^|key / value     |storeId -> MyStore (__see Warning for details__)
+.^|headers       |Headers                ^.^|key / value     |X-Custom -> myvalue
+.^|method        |HTTP method            ^.^|string          |GET
+.^|scheme        |HTTP scheme            ^.^|string          |http
+.^|version       |HTTP version           ^.^|string          |HTTP_1_1
+.^|timestamp     |Timestamp              ^.^|long            |1602781000267
+.^|remoteAddress |Remote address         ^.^|string          |0:0:0:0:0:0:0:1
+.^|localAddress  |Local address          ^.^|string          |0:0:0:0:0:0:0:1
+.^|content       |Body content           ^.^|string          |-
 |===
 
-WARNING: `{#request.content}` is only available when the policy is bind to a `on-request-content` phase.
-
+[WARNING]
+====
+* `{#request.content}` is only available when the policy is bound to an `on-request-content` phase.
+* `{#request.pathParams}` keys  are based on the path defined in policies configuration. For the example above, the defined path is `/store/:storeId`
+====
 === Example
 
 * Get the value of the `Content-Type` header for an incoming HTTP request:
