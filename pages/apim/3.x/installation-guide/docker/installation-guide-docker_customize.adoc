@@ -10,15 +10,13 @@
 
 == Overview
 
-This section explains how to customize your Docker installation. It is for users who are already familiar with Docker.
+This section explains how to customize your Docker installation. These procedures are intended for users who are already familiar with Docker.
 
 == Install an additional plugin
 
-APIM Docker images contain the default plugins (for a full list, see https://github.com/gravitee-io/release/blob/3.0.x/release.json[window=\"_blank\"]).
+APIM Docker images contain the default plugins (for a full list, see https://github.com/gravitee-io/release/blob/3.0.x/release.json[window=\"_blank\"]). Listed below are some examples showing how to install custom plugins.
 
-The following examples show how to install custom plugins.
-
-The example below shows how to install a custom plugin in API Gateway:
+To install additional plugins in APIM Gateway, run a command such as the following:
 
 [source,shell]
 ....
@@ -34,9 +32,9 @@ $ docker run  \
 
 This mounts a new volume containing additional plugins and declares them as part of the configuration (`--env GRAVITEE_PLUGINS_PATH_1=$${gravitee.home}/plugins-ext`)
 
-== Use Redis as the datastore for rate-limit counters
+=== Use Redis as the datastore for rate-limit counters
 
-The example below shows how to switch from MongoDB (default connector) to Redis for rate-limit (the example assumes the Redis connector is available from `./plugins` on the Docker Host):
+This example shows how to switch from MongoDB (default connector) to Redis for rate-limit (the example assumes the Redis connector is available from `./plugins` on the Docker host):
 
 [source,shell]
 ....
@@ -53,9 +51,9 @@ $ docker run  \
         graviteeio/apim-gateway:latest
 ....
 
-== Use JDBC as the datastore for management
+=== Use JDBC as the datastore for management
 
-The example below shows how to switch from MongoDB (the default connector) to a JDBC-based connector (the example assumes the JDBC connector is available from `./plugins` on the Docker Host).
+This example shows how to switch from MongoDB (the default connector) to a JDBC-based connector (the example assumes the JDBC connector is available from `./plugins` on the Docker Host).
 
 NOTE: You must ensure that the JDBC connector version corresponds to the API Management version and that you have the correct JDBC driver for your RDBMS.
 

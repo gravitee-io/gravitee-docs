@@ -9,10 +9,10 @@
 
 == Overview
 
-This section explains how to install APIM on Red Hat Enterprise Linux, CentOS Linux, or Oracle Linux
+This section explains how to install APIM on Red Hat Enterprise Linux, CentOS Linux or Oracle Linux
 using the `yum` package manager.
 
-NOTE: RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Please see link:/apim/3.x/apim_installguide_gateway_install_zip.html[Install Gravitee.io API Management with .zip] instead.
+NOTE: RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5 -- in this case, you need to link:/apim/3.x/apim_installguide_gateway_install_zip.html[install API Management with .zip] instead.
 
 == Configure the package management system (`yum`)
 . Create a file called `graviteeio.repo` in location `/etc/yum.repos.d/` so that you can install APIM directly using `yum`:
@@ -51,6 +51,7 @@ Your repository is now ready to use.
 You can choose to install the full APIM stack or install the components one by one:
 
 * link:/apim/3.x/apim_installguide_redhat_stack.html[Install the full APIM stack] (includes all components below)
-* link:/apim/3.x/apim_installguide_redhat_gateway.html[Install API Gateway]
-* link:/apim/3.x/apim_installguide_redhat_management_api.html[Install Management API]
-* link:/apim/3.x/apim_installguide_redhat_portal.html[Install Portal]
+* link:/apim/3.x/apim_installguide_redhat_gateway.html[Install APIM Gateway]
+* link:/apim/3.x/apim_installguide_redhat_management_api.html[Install APIM API]
+* link:/apim/3.x/apim_installguide_redhat_management_ui.html[Install APIM Management]
+* link:/apim/3.x/apim_installguide_redhat_portal.html[Install APIM Portal]

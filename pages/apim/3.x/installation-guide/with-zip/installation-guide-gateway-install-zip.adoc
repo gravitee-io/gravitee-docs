@@ -1,4 +1,4 @@
-= Install API Gateway
+= Install APIM Gateway
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_gateway_install_zip.html
 :page-folder: apim/installation-guide/with-zip
@@ -9,11 +9,11 @@
 
 == Prerequisites
 
-Your environment must meet the requirements listed below before you install API Gateway.
+Your environment must meet the requirements listed below before you install APIM Gateway.
 
 === JDK
 
-API Gateway requires at least Java 11. You can check your Java version as follows:
+APIM Gateway requires at least Java 11. You can check your Java version as follows:
 
 [source,bash]
 ----
@@ -25,8 +25,8 @@ NOTE: You can download the latest OpenJDK from the https://jdk.java.net/archive/
 
 === MongoDB and Elasticsearch
 
-Default API Gateway distribution requires link:/apim/3.x/apim_installguide_repositories_mongodb.html[MongoDB, window=\"_blank\"] to poll environment configuration and link:/apim/3.x/apim_installguide_repositories_elasticsearch.html[Elasticsearch, window=\"_blank\"] for
-reporting / analytics. Refer to the respective documentation page for supported versions.
+The default APIM Gateway distribution requires link:/apim/3.x/apim_installguide_repositories_mongodb.html[MongoDB, window=\"_blank\"] to poll environment configuration and link:/apim/3.x/apim_installguide_repositories_elasticsearch.html[Elasticsearch, window=\"_blank\"] for
+reporting and analytics. See the vendor documentation for supported versions.
 
 NOTE: You can download MongoDB from https://www.mongodb.org/downloads#production[MongoDB Download Site, window=\"_blank\"]
 and Elasticsearch from https://www.elastic.co/downloads/elasticsearch[Elastic Download Site, window=\"_blank\"]
@@ -51,12 +51,12 @@ $ unzip gravitee-standalone-distribution-{{ site.products.apim._3x.version }}.zi
 ----
 
 == Check the installation
-=== Run API Gateway from the command line
+=== Run APIM Gateway from the command line
 
-By default, API Gateway runs in the foreground, prints its logs to standard output (stdout), and can be stopped
+By default, APIM Gateway runs in the foreground, prints its logs to standard output (stdout), and can be stopped
 by pressing **Ctrl-C**.
 
-API Gateway can be started from the command line as follows:
+Run APIM Gateway from the command line as follows:
 
 [source,bash]
 ----
@@ -64,7 +64,7 @@ $ cd graviteeio-gateway-{{ site.products.apim._3x.version }}
 $ ./bin/gravitee
 ----
 
-Once API Gateway is running, you will see this log:
+Once APIM Gateway is running, you will see this log:
 
 [source,bash]
 [subs="attributes"]
@@ -72,9 +72,9 @@ Once API Gateway is running, you will see this log:
 11:01:53.162 [gravitee] [] INFO  i.g.g.standalone.node.GatewayNode - Gravitee.io - Gateway id[2e05c0fa-8e48-4ddc-85c0-fa8e48bddc11] version[{{ site.products.apim._3x.version }}] pid[24930] build[175] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 15837 ms.
 ...
 
-=== Check API Gateway is running
+=== Check APIM Gateway is running
 
-You can test that your API Gateway node is running by sending an HTTP request to port `8082` on `localhost`:
+You can test that APIM Gateway is running by sending an HTTP request to port `8082` on `localhost`:
 
 [source,bash]
 ----
@@ -88,9 +88,9 @@ You will receive a response something like this:
 No context-path matches the request URI.
 ----
 
-== Run API Gateway as a daemon
+== Run APIM Gateway as a daemon
 
-To run API Gateway as a daemon, specify `-d` on the command line and record the process ID in a file using option `-p`:
+To run APIM Gateway as a daemon, specify `-d` on the command line and record the process ID in a file using option `-p`:
 
 [source,bash]
 ----
@@ -99,14 +99,14 @@ $ ./bin/gravitee -d -p=/var/run/gio.pid
 
 You can find log messages in the `$GRAVITEE_HOME/logs/` directory.
 
-To shut down API Gateway, kill the process ID recorded in the `pid` file:
+To shut down APIM Gateway, kill the process ID recorded in the `pid` file:
 
 [source,bash]
 ----
 $ kill `cat /var/run/gio.pid`
 ----
 
-== API Gateway directory structure
+== APIM Gateway directory structure
 
 The `.zip` (and `.tar.gz`) package is entirely self-contained. All files and directories are, by default, contained within
 `$GRAVITEE_HOME`, the directory created when extracting the archive.

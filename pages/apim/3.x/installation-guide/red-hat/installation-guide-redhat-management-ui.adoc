@@ -1,4 +1,4 @@
-= Install Management UI
+= Install APIM Management
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_redhat_management_ui.html
 :page-folder: apim/installation-guide/redhat
@@ -7,11 +7,13 @@
 :page-description: Gravitee.io API Management - Installation Guide - Red Hat or CentOS - Management UI
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-:gravitee-component-name: Management UI
+:gravitee-component-name: APIM Management
 :gravitee-package-name: graviteeio-apim-management-ui-3x
 :gravitee-service-name: graviteeio-apim-management-ui
 
 == Prerequisites
+
+Before you install {gravitee-component-name}, you must complete the following configuration. You must also ensure APIM API is installed and running.
 
 === Install Nginx
 

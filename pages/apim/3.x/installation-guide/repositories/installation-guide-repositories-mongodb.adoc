@@ -9,16 +9,16 @@
 == Supported version
 
 |===
-|Version tested | Gravitee.io Plugin
+|Version tested | APIM plugin
 
 |3.6 / 4.0 / 4.2
 |https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-mongodb/[Download the same version as your APIM platform, window=\"_blank\"]
 |===
 
 == Configuration
-https://www.mongodb.org/[MongoDB, window=\"_blank\"] is the default repository implementation used by Gravitee.io API Management.
+https://www.mongodb.org/[MongoDB, window=\"_blank\"] is the default repository implementation used by APIM.
 
-Let's see the configuration options:
+The configuration options are as follows:
 
 [source,yaml]
 ----
@@ -35,7 +35,7 @@ management:
     port:                   # mongodb port (default 27017)
 ----
 
-NOTE: This is the minimum sample file to start with a mongo server, number of other properties control the behavior of mongo database, let's jump into it.
+NOTE: This is the minimum sample file to start with a MongoDB server. A number of other properties control the behavior of a MongoDB database, as described below.
 
 [source,yaml]
 ----
@@ -74,19 +74,19 @@ management:
     cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
 ----
 
-NOTE: All theses properties allow you to fine tuned your MongoDB connection
+NOTE: All theses properties allow you to fine tune your MongoDB connection.
 
 == Index
 
-A https://github.com/gravitee-io/gravitee-repository-mongodb/blob/master/src/main/resources/scripts/create-index.js[script, window=\"_blank\"] is available from our MongoDB GitHub Repository.
-Please use the correct version of this script depending on the version of Gravitee.io API Management you are running.
+A https://github.com/gravitee-io/gravitee-repository-mongodb/blob/master/src/main/resources/scripts/create-index.js[script, window=\"_blank\"] is available from our MongoDB GitHub repository.
+You must use the correct version of this script for the version of APIM you are running.
 
 
 == Security
 
 Sometimes, you may want to apply specific security constraints and rules to users allowed to access the database.
 
-Thanks to the following table, you will be able to define these fine-grained constraints per collection.
+The following table summarizes how to define these fine-grained constraints per collection.
 
 
 |===

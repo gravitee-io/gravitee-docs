@@ -1,4 +1,4 @@
-= Install APIM Management with `.zip`
+= Install APIM Management
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_management_ui_install_zip.html
 :page-folder: apim/installation-guide/with-zip
@@ -9,13 +9,13 @@
 
 == Prerequisites
 
-You must install and start up the Management REST API before you can run Management UI.
+Your environment must meet the requirements listed below before you install APIM Management.
 
-Your environment must meet the requirements listed below before you install API Gateway.
+NOTE: Before you begin, ensure APIM API is installed and running.
 
 === Browsers
 
-APIM Management has been tested with the latest versions of Google Chrome, Firefox and Internet Explorer version 10 and above.
+APIM Management has been tested with the latest versions of Google Chrome and Firefox and with Internet Explorer from version 10.
 
 == Download and extract the `.zip` archive
 

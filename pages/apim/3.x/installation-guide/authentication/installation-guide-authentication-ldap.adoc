@@ -1,5 +1,5 @@
 [[gravitee-installation-authentication-ldap]]
-= LDAP / Active Directory
+= Configure LDAP / Active Directory authentication
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_authentication_ldap.html
 :page-folder: apim/installation-guide/portal/authentication
@@ -7,12 +7,15 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
-Here you will find how to configure Gravitee.io to allow users to connect using their LDAP/AD accounts.
+== Overview
 
-There are many ways in which the LDAP authentication source can be configured.
-You should be familiar with LDAP before trying to use it.
+This page describes how to configure APIM to allow users to connect using LDAP/AD accounts.
 
-.LDAP configuration
+There are many ways in which the LDAP authentication sources can be configured.
+
+NOTE: You need to be familiar with LDAP before trying to use it.
+
+== LDAP configuration
 [source,yaml]
 ----
 # ===================================================================
