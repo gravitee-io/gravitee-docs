@@ -4,13 +4,15 @@
 :page-folder: apim/user-guide/publisher
 :page-layout: apim3x
 
-Once an API is registered, and made public, you can manage subscriptions to it through the platform.
-Managing subscriptions and plans is a key feature in Gravitee.io and allows the publisher to provide and regulate access to the API.
+== Overview
 
-== What is a plan ?
+Once an API is registered and made public, you can manage subscriptions to it through the platform.
+Managing subscriptions and plans is a key feature of APIM for publishers to provide and regulate access to APIs.
 
-A plan provides a service and access layer on your API for the consumer link:/apim/3.x/apim_overview_concepts.html#gravitee-concepts-application[applications].
-A plan specifies access limits, subscription validation mode and other configurations to meet the specific applications needs.
+== What is a plan?
+
+A plan provides a service and access layer on top of your API for the consumer link:/apim/3.x/apim_overview_concepts.html#gravitee-concepts-application[applications].
+A plan specifies access limits, subscription validation modes and other configuration to meet the needs of a specific application.
 
 image::apim/3.x/api-publisher-guide/plans-subscriptions/plan-diagram.png[Gravitee.io - Plan diagram, 873, 530, align=center, title-align=center]
 
@@ -213,4 +215,3 @@ Every subscriptions can be revoked to invalidate access to the APIs. Go to `Port
 
 .Revoke subscription
 image::apim/3.x/api-publisher-guide/plans-subscriptions/revoke-subscription.png[Gravitee.io - revoke subscription , 873, 530, align=center, title-align=center]
-
