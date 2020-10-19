@@ -159,7 +159,7 @@ paths:
 ==== Vendor extensions
 You can add more information to OpenAPI specifications about your API by using a specific extension.
 To do this, you need to add the `x-graviteeio-definition` field in the root of the specification.
-The value of this field is an Object that follows this link:https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/gravitee-rest-api-service/src/main/resources/schema/xGraviteeIODefinition.json[JSON Schema, window="_blank"]
+The value of this field is an Object that follows this link:https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/master/gravitee-rest-api-service/src/main/resources/schema/xGraviteeIODefinition.json[JSON Schema, window="_blank"]
 
 [NOTE]
 ====
