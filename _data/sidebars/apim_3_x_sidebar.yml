@@ -12,7 +12,7 @@ entries:
             output: web
             url: /apim/3.x/apim_overview_introduction.html
             type: homepage
-          - title: Why Gravitee.io ?
+          - title: Why Gravitee.io API Management?
             output: web
             url: /apim/3.x/apim_overview_why.html
           - title: Architecture
@@ -28,10 +28,10 @@ entries:
             output: web
             url: /apim/3.x/apim_overview_plugins.html
 
-      - title: QuickStart
+      - title: Quick Start Guide
         output: web
         folderitems:
-          - title: Overview
+          - title: Introduction
             output: web
             url: /apim/3.x/apim_quickstart_overview.html
 
@@ -39,19 +39,19 @@ entries:
               - title: Publish your first API
                 output: web
                 subfolderitems:
-                  - title: Using Management UI
+                  - title: Using APIM Management
                     output: web
                     url: /apim/3.x/apim_quickstart_publish_ui.html
-                  - title: Using Management API
+                  - title: Using APIM API
                     output: web
                     url: /apim/3.x/apim_quickstart_publish_api.html
               - title: Consume an API
                 output: web
                 subfolderitems:
-                  - title: Using Portal UI
+                  - title: Using APIM Portal
                     output: web
                     url: /apim/3.x/apim_quickstart_consume_ui.html
-                  - title: Using Management API
+                  - title: Using APIM API
                     output: web
                     url: /apim/3.x/apim_quickstart_consume_api.html
                   - title: Test your API
@@ -64,45 +64,44 @@ entries:
           - title: Introduction
             output: web
             url: /apim/3.x/apim_installguide.html
-          - title: Quickstart
+          - title: Quick installation
             output: web
             url: /apim/3.x/apim_installguide_quickstart.html
-
             subfolders:
               - title: Install with .zip
                 output: web
                 subfolderitems:
-                  - title: API Gateway
+                  - title: Install APIM Gateway
                     output: web
                     url: /apim/3.x/apim_installguide_gateway_install_zip.html
-                  - title: Rest APIs
+                  - title: Install APIM API
                     output: web
                     url: /apim/3.x/apim_installguide_rest_apis_install_zip.html
-                  - title: Management UI
+                  - title: Install APIM Management
                     output: web
                     url: /apim/3.x/apim_installguide_management_ui_install_zip.html
-                  - title: Portal UI
+                  - title: Install APIM Portal
                     output: web
                     url: /apim/3.x/apim_installguide_portal_ui_install_zip.html
-              - title: Install on Red Hat
+              - title: Install on Red Hat and CentOS
                 output: web
                 subfolderitems:
                   - title: Introduction
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_introduction.html
-                  - title: Install API Management
+                  - title: Install the full APIM stack
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_stack.html
-                  - title: Install API Gateway component
+                  - title: Install APIM Gateway
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_gateway.html
-                  - title: Install Management API component
+                  - title: Install APIM API
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_management_api.html
-                  - title: Install Management UI component
+                  - title: Install APIM Management
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_management_ui.html
-                  - title: Install Portal component
+                  - title: Install APIM Portal
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_portal.html
               - title: Install on Amazon
@@ -111,22 +110,21 @@ entries:
                   - title: Introduction
                     output: web
                     url: /apim/3.x/apim_installguide_amazon_introduction.html
-                  - title: Install API Management
+                  - title: Install the full APIM stack
                     output: web
                     url: /apim/3.x/apim_installguide_amazon_stack.html
-                  - title: Install API Gateway component
+                  - title: Install APIM Gateway
                     output: web
                     url: /apim/3.x/apim_installguide_amazon_gateway.html
-                  - title: Install Management API component
+                  - title: Install APIM API
                     output: web
                     url: /apim/3.x/apim_installguide_amazon_management_api.html
-                  - title: Install Management UI component
+                  - title: Install APIM Management
                     output: web
                     url: /apim/3.x/apim_installguide_amazon_management_ui.html
-                  - title: Install Portal component
+                  - title: Install APIM Portal
                     output: web
                     url: /apim/3.x/apim_installguide_amazon_portal.html
-
               - title: Run on Docker
                 output: web
                 subfolderitems:
@@ -139,108 +137,112 @@ entries:
                   - title: Customize
                     output: web
                     url: /apim/3.x/apim_installguide_docker_customize.html
-
-              - title: API Gateway
+              - title: Deploy in Kubernetes
                 output: web
                 subfolderitems:
-                  - title: Configuration
-                    output: web
-                    url: /apim/3.x/apim_installguide_gateway_configuration.html
-                  - title: Technical API
-                    output: web
-                    url: /apim/3.x/apim_installguide_gateway_technical_api.html
-                  - title: Metrics
-                    output: web
-                    url: /apim/3.x/apim_installguide_gateway_metrics.html
-              - title: Rest APIs
-                output: web
-                subfolderitems:
-                  - title: Configuration
-                    output: web
-                    url: /apim/3.x/apim_installguide_rest_apis_configuration.html
-                  - title: Documentation
-                    output: web
-                    url: /apim/3.x/apim_installguide_rest_apis_documentation.html
-                  - title: Technical API
-                    output: web
-                    url: /apim/3.x/apim_installguide_rest_apis_technical_api.html
-                  - title: Metrics
-                    output: web
-                    url: /apim/3.x/apim_installguide_rest_apis_metrics.html
-                  - title: Security
-                    output: web
-                    url: /apim/3.x/apim_installguide_rest_apis_security.html
-              - title: Management UI
-                output: web
-                subfolderitems:
-                  - title: Configuration
-                    output: web
-                    url: /apim/3.x/apim_installguide_management_ui_configuration.html
-              - title: Portal UI
-                output: web
-                subfolderitems:
-                  - title: Configuration
-                    output: web
-                    url: /apim/3.x/apim_installguide_portal_ui_configuration.html
-              - title: Repositories
-                output: web
-                subfolderitems:
-                  - title: Overview
-                    output: web
-                    url: /apim/3.x/apim_installguide_repositories.html
-                  - title: Elasticsearch
-                    output: web
-                    url: /apim/3.x/apim_installguide_repositories_elasticsearch.html
-                  - title: MongoDB
-                    output: web
-                    url: /apim/3.x/apim_installguide_repositories_mongodb.html
-                  - title: JDBC
-                    output: web
-                    url: /apim/3.x/apim_installguide_repositories_jdbc.html
-                  - title: Redis
-                    output: web
-                    url: /apim/3.x/apim_installguide_repositories_redis.html
-              - title: Authentication
-                output: web
-                subfolderitems:
-                  - title: Overview
-                    output: web
-                    url: /apim/3.x/apim_installguide_authentication.html
-                  - title: Connect with In-Memory users
-                    output: web
-                    url: /apim/3.x/apim_installguide_authentication_inmemory.html
-                  - title: Connect with LDAP / Active Directory
-                    output: web
-                    url: /apim/3.x/apim_installguide_authentication_ldap.html
-                  - title: Connect with Gravitee.io APIM Repository
-                    output: web
-                    url: /apim/3.x/apim_installguide_authentication_apim.html
-                  - title: Connect with Gravitee.io AM
-                    output: web
-                    url: /apim/3.x/apim_installguide_authentication_graviteeam.html
-                  - title: Connect with GitHub
-                    output: web
-                    url: /apim/3.x/apim_installguide_authentication_github.html
-                  - title: Connect with Google
-                    output: web
-                    url: /apim/3.x/apim_installguide_authentication_google.html
-                  - title: Configure Keycloak
-                    output: web
-                    url: /apim/3.x/apim_installguide_authentication_keycloak.html
+                 - title: Introduction
+                   output: web
+                   url: /apim/3.x/apim_installguide_kubernetes.html
           - title: Hybrid deployment
             output: web
             url: /apim/3.x/apim_installguide_hybrid_deployment.html
-          - title: Kubernetes
-            output: web
-            url: /apim/3.x/apim_installguide_kubernetes.html
-          - title: Migration guide
+          - title: Upgrade Guide
             output: web
             url: /apim/3.x/apim_installguide_migration.html
 
-      - title: Api Consumer Guide
+      - title: Configuration Guide
         output: web
         folderitems:
-          - title: Portal
+         - title: Introduction
+           output: web
+           url: /apim/3.x/apim_configurationguide.html
+           subfolders:
+            - title: Configure APIM Gateway
+              output: web
+              subfolderitems:
+               - title: General configuration
+                 output: web
+                 url: /apim/3.x/apim_installguide_gateway_configuration.html
+               - title: Internal API
+                 output: web
+                 url: /apim/3.x/apim_installguide_gateway_technical_api.html
+               - title: Metrics
+                 output: web
+                 url: /apim/3.x/apim_installguide_gateway_metrics.html
+            - title: Configure APIM API
+              output: web
+              subfolderitems:
+               - title: General configuration
+                 output: web
+                 url: /apim/3.x/apim_installguide_rest_apis_configuration.html
+               - title: Internal API
+                 output: web
+                 url: /apim/3.x/apim_installguide_rest_apis_technical_api.html
+               - title: Metrics
+                 output: web
+                 url: /apim/3.x/apim_installguide_rest_apis_metrics.html
+               - title: Security
+                 output: web
+                 url: /apim/3.x/apim_installguide_rest_apis_security.html
+            - title: Configure APIM Management
+              output: web
+              subfolderitems:
+               - title: General Configuration
+                 output: web
+                 url: /apim/3.x/apim_installguide_management_ui_configuration.html
+               - title: Configure APIM Portal
+                 output: web
+                 url: /apim/3.x/apim_installguide_portal_ui_configuration.html
+            - title: Configure Repositories
+              output: web
+              subfolderitems:
+               - title: Introduction
+                 output: web
+                 url: /apim/3.x/apim_installguide_repositories.html
+               - title: Elasticsearch
+                 output: web
+                 url: /apim/3.x/apim_installguide_repositories_elasticsearch.html
+               - title: MongoDB
+                 output: web
+                 url: /apim/3.x/apim_installguide_repositories_mongodb.html
+               - title: JDBC
+                 output: web
+                 url: /apim/3.x/apim_installguide_repositories_jdbc.html
+               - title: Redis
+                 output: web
+                 url: /apim/3.x/apim_installguide_repositories_redis.html
+            - title: Configure authentication
+              output: web
+              subfolderitems:
+               - title: Introduction
+                 output: web
+                 url: /apim/3.x/apim_installguide_authentication.html
+               - title: Connect with In-Memory users
+                 output: web
+                 url: /apim/3.x/apim_installguide_authentication_inmemory.html
+               - title: Connect with LDAP / Active Directory
+                 output: web
+                 url: /apim/3.x/apim_installguide_authentication_ldap.html
+               - title: Connect with Gravitee.io APIM Repository
+                 output: web
+                 url: /apim/3.x/apim_installguide_authentication_apim.html
+               - title: Connect with Gravitee.io AM
+                 output: web
+                 url: /apim/3.x/apim_installguide_authentication_graviteeam.html
+               - title: Connect with GitHub
+                 output: web
+                 url: /apim/3.x/apim_installguide_authentication_github.html
+               - title: Connect with Google
+                 output: web
+                 url: /apim/3.x/apim_installguide_authentication_google.html
+               - title: Configure Keycloak
+                 output: web
+                 url: /apim/3.x/apim_installguide_authentication_keycloak.html
+
+      - title: API Consumer Guide
+        output: web
+        folderitems:
+          - title: Introduction
             output: web
             url: /apim/3.x/apim_consumerguide_portal.html
           - title: Create an account
@@ -253,7 +255,7 @@ entries:
             output: web
             url: /apim/3.x/apim_consumerguide_subscribe.html
 
-      - title: Api Publisher Guide
+      - title: API Publisher Guide
         output: web
         folderitems:
           - title: Manage APIs
@@ -262,7 +264,7 @@ entries:
           - title: Configuring CORS
             output: web
             url: /apim/3.x/apim_publisherguide_configuring_cors.html
-          - title: Plans and Subscriptions
+          - title: Plans and subscriptions
             output: web
             url: /apim/3.x/apim_publisherguide_plans_subscriptions.html
           - title: Manage members
@@ -460,7 +462,9 @@ entries:
           - title: Policies
             output: web
             url: /apim/3.x/apim_devguide_policies.html
-
+          - title: APIM API documentation
+            output: web
+            url: /apim/3.x/apim_installguide_rest_apis_documentation.html
       - title: Changelog
         output: web
         folderitems:
