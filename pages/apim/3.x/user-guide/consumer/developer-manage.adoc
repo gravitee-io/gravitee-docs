@@ -4,75 +4,66 @@
 :page-folder: apim/user-guide/consumer
 :page-layout: apim3x
 
-Gravitee.io allows user to manage his or her applications from the portal and the console.
-
 == What is an application ?
 
-Consumers who want to use APIs need to register an application that will let API publishers to control and regulate access to their APIs.
-Typically application can be a web application, a native application, bash/job applications and so on which want to access data.
+Consumers who want to use APIs need to register an application that will allow API publishers to control and regulate access to their APIs.
+An application can be any application needing to access data, such as a web application, native application or a bash/job application.
+
+You can manage applications in both APIM Management and APIM Portal.
 
 == Prerequisites
 
-In order to create simple applications, this option has to be enabled in *Settings > Client Registration*:
+To create applications, you need to enable the correct options in the *Settings > Client registration* page.
+
+To create a simple application, enable the *Simple* option in the *Allowed application types* section:
 
 image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-application-settings-1.png[]
 
-In order to create Browser, Web, Native or Backend-to-backend applications:
+To create browser, web, native or backend-to-backend applications:
 
-* At least one Client Registration provider must be defined
-* these options have to be enabled in *Settings > Client Registration*:
-
+* define at least one client registration provider
+* enable the following options:
++
 image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-application-settings-2.png[]
-
 
 == Create an application
 
-NOTE: Only users with correct role permission can create an application, see link:/apim/3.x/apim_adminguide_roles_and_permissions.html[roles and permissions]
+NOTE: Only users with the required permissions can create an application. For more details, see the link:/apim/3.x/apim_adminguide_roles_and_permissions.html[Roles and permissions] section of the Administration Guide.
 
-. Login to the Gravitee.io APIM portal
-. Click `Dashboard` in the top menu
-. Click `CREATE AN APPLICATION` button
-
+. Log in to APIM Portal.
+. Click *Dashboard* in the top menu.
+. Click the *CREATE AN APPLICATION* button.
++
 image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-1.png[]
 
-[start=4]
-. Enter application's name and description.
-. `OPTIONAL`, upload an image
-. Click `NEXT`
-
+. Enter the application name and description, and upload an image, if required. Click *NEXT*.
++
 image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-2.png[]
 
-[start=7]
-. `OPTIONAL` You want to subscribe to an API's OAuth 2.0/JWT plan and you have an OAuth 2.0 client ? Grab your `client_id` and complete the security part
-. Select the type of application you want and fill the form.
-. Click `NEXT`
-
+. (Optional) If you want to subscribe to an API's OAuth 2.0/JWT plan and you have an OAuth 2.0 client, make a note of your *client_id* and complete the security part.
+. Select the type of application and complete the details. Click *NEXT*.
++
 image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-3.png[]
 
-[start=10]
-. `OPTIONAL` You can search for an API and ask for a subscription (see link:/apim/3.x/apim_quickstart_consume.html[QuickStart > Consume an API])
-. Click `NEXT`
-. You can check your Application information in this summary. When you are ready, click `CREATE THE APP`
-
+. (Optional) Search for an API and request a subscription (see link:/apim/3.x/apim_quickstart_consume.html[Quick Start > Consume an API]). Click *NEXT*.
+. Check your application information in the summary, then click *CREATE THE APP*.
++
 image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-4.png[]
-
++
 NOTE:  If the selected plan requires the acceptance of general conditions, these will be displayed on the right.
-
++
 image::apim/3.x/api-consumer-guide/developer-manage/app-subscribe-general-conditions.png[]
-
-[start=13]
-. Congratulations ! Your new Application has been created.
-
++
+Congratulations! Your new application has been created.
++
 image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-5.png[]
-
 
 == Manage members
 
-When an application is registered only the application's creator (PRIMARY OWNER) can see and manage the application.
+When a new application is created, only the application's creator (PRIMARY OWNER) can see and manage the application.
+Most of the time an application is shared through a developer application and will retrieve information such as API keys and API analytics.
 
-Most of the time an application will be share across the developers' application and they will ask access for an application to get information such as API keys and API analytics.
-
-By default, Gravitee.io is defining three roles for membership:
+By default, APIM includes three membership roles:
 
 [cols="2*", options="header"]
 |===
@@ -90,67 +81,64 @@ By default, Gravitee.io is defining three roles for membership:
 
 |===
 
-**To manage members : **
+NOTE: Only users with the required permissions can manage application members. For more details, see the link:/apim/3.x/apim_adminguide_roles_and_permissions.html[Roles and permissions] section of the Administration Guide.
 
-NOTE: Only users with correct role permission can manage application's members, see link:/apim/3.x/apim_adminguide_roles_and_permissions.html[roles and permissions]
+To manage members:
 
-. Login to the Gravitee.io APIM Portal
-. Click `Applications` in the top menu
-. From the `Applications` screen, select your application and go to `Members` section
-
-.Manage members
-image::apim/3.x/api-consumer-guide/developer-manage/manage-members.png[Gravitee.io - manage members]
+. Log in to APIM Portal.
+. Click *Applications* in the top menu.
+. In the *Applications* screen, select your application and go to the *Members* page.
++
+image::apim/3.x/api-consumer-guide/developer-manage/manage-members.png[]
 
 === Add and remove users
-You can add new users by searching them with this form.
+You can add new users by searching for them:
 
-image::apim/3.x/api-consumer-guide/developer-manage/manage-members-add.png[Gravitee.io - add member]
+image::apim/3.x/api-consumer-guide/developer-manage/manage-members-add.png[]
 
-You can remove user by clicking on the trash icon.
+You can remove users by clicking the trash icon:
 
-image::apim/3.x/api-consumer-guide/developer-manage/manage-members-remove.png[Gravitee.io - remove member]
-
+image::apim/3.x/api-consumer-guide/developer-manage/manage-members-remove.png[]
 
 === Transfer ownership
-You can also transfer ownership to another user, that can be useful when the current primary owner leave the project.
+You can transfer ownership to another user, when the current primary owner leaves the project, for example.
 
-image::apim/3.x/api-consumer-guide/developer-manage/manage-members-transfer-ownership.png[Gravitee.io - transfer ownership]
+image::apim/3.x/api-consumer-guide/developer-manage/manage-members-transfer-ownership.png[]
 
 == Manage subscriptions
 
-Subscription represents the plans the application has subscribed to. Subscriptions page will let application's members seeing if their access to the APIs are still valid, not revoked or under API publisher approval process.
+Subscriptions represent the plans the application has subscribed to. In the Subscriptions page, application members can see if their access to the APIs is still valid, has not been revoked or is in the API publisher approval process.
 
-.Application subscriptions
-image::apim/3.x/api-consumer-guide/developer-manage/app-subscriptions.png[Gravitee.io - application subscriptions]
+image::apim/3.x/api-consumer-guide/developer-manage/app-subscriptions.png[]
 
 == Analytics
 
-For each APIs you have subscribed, Gravitee.io APIM provides some analytics to let you know how your application use the APIs.
+For each API you have subscribed to, APIM provides some analytics to show API usage in your application.
 
-See below the list of the current analytics
+The table below lists the analytics available.
 
 |===
 |Analytics|Description
 
 |Top API
-|Top APIs sort by the number of API calls
+|Top APIs sorted by the number of API calls
 
 |Status
-|HTTP status repartition summary
+|HTTP status distribution summary
 
 |Top paths
-|Hits repartition by path
+|Hits by path
 
 |Top mapped paths
-|Hits repartition by mapped path
+|Hits by mapped path
 
 |Response status
-|Hits repartition by status
+|Hits by status
 
 |Response times
 |Average response time
 
 |Hits by API
-|Hits repartition by API
+|Hits by API
 
 |===

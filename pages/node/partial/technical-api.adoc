@@ -1,10 +1,9 @@
-= Technical API
-Each Gravitee.io component provides its own technical API, allows you to get informations from the component.
+= Overview
+The {gravitee-component-name} component comes with its own internal API, for monitoring and retrieving technical information about the component.
 
 == Configuration
-The technical API is configured using the `gravitee.yml` file. It's a service you have to enable.
+You need to enable the API as a service in the `gravitee.yml` file and update any other required configuration.
 
-.gravitee.yml
 [source,yaml]
 [subs="attributes"]
 ----
@@ -19,19 +18,19 @@ services:
         users:
           admin: adminadmin
 ----
-enabled:: Enable or not the service (default `true`).
-port:: The port the service listen to (default `{node_port}`). Be mindful not to use a port already used by another Gravitee component.
-host:: The host (default `localhost`)
-authentication.type:: Authenticate mode for requests: `none` if no authentication is required or `basic` (default `basic`)
-authentication.users:: A list of couple `user: password`. Only required if the authentication type is `basic`.
+enabled:: Whether the service is enabled (default `true`).
+port:: The port the service listens on (default `{node_port}`). You must ensure you use a port which is not already in use by another APIM component.
+host:: The host (default `localhost`).
+authentication.type:: Authentication type for requests: `none` if no authentication is required or `basic` (default `basic`).
+authentication.users:: A list of `user: password` combinations. Only required if authentication type is `basic`.
 
-== Api
+== Endpoints
 
 |===
 |Operation |Description |Example
 
 |`GET /_node`
-|Get generic node informations
+|Gets generic node information
 a|
 [source,json]
 ----
@@ -51,8 +50,8 @@ Content-Type: application/json
 ----
 
 |`GET /_node/health`
-|Get the health status of the component. If the return status is 200, then everything's ok, if 500, there's at least one probe in error.
-This endpoint could be used by your loadbalancer to know if a component instance could be out of the pool.
+|Gets the health status of the component. If the return status is 200 then everything is ok, if 500, there is at least one error.
+This endpoint can be used by a load balancer, to determine if a component instance is not in the pool, for example.
 a|
 [source,json]
 ----
@@ -73,7 +72,7 @@ Content-Type: application/json
 ----
 
 |`GET /_node/configuration`
-|Get the node configuration, coming from the `gravitee.yml` file and/or the environments variables.
+|Gets the node configuration from the `gravitee.yml` file and/or environment variables.
 a|
 [source,json]
 ----
@@ -90,7 +89,7 @@ Content-Type: application/json
 ----
 
 |`GET /_node/monitor`
-|Get monitoring informations from the jvm and the system.
+|Gets monitoring information from the JVM and the server.
 a|
 [source,json]
 ----

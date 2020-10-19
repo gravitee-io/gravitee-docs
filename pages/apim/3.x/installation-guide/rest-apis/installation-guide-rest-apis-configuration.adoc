@@ -1,4 +1,4 @@
-= Rest APIs - Configuration
+= Configure APIM API
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_rest_apis_configuration.html
 :page-folder: apim/installation-guide/rest-apis
@@ -8,9 +8,11 @@
 
 include::../partial/how-to-configure.adoc[leveloffset=+1]
 
-== HTTP Server
+== `gravitee.yml` configuration
 
-Management API HTTP server configuration.
+=== Configure HTTP Server
+
+You configure the HTTP Server configuration in the following section of the `gravitee.yml` file:
 
 [source,yaml]
 ----
@@ -31,8 +33,8 @@ jetty:
     path: ${gravitee.home}/logs/gravitee_accesslog_yyyy_mm_dd.log
 ----
 
-=== How to enable HTTPS support
-First, you need to provide a keystore. If you don't have one, you can generate it :
+==== Enable HTTPS support
+First, you need to provide a keystore. If you do not have one, you can generate it :
 [source,bash]
 ----
 keytool -genkey \
@@ -46,7 +48,7 @@ keytool -genkey \
   -storepass secret
 ----
 
-After that, you have to enable secure mode in your `gravitee.yml` :
+You then need to enable secure mode in `gravitee.yml` :
 [source,yaml]
 ----
 jetty:
@@ -61,12 +63,11 @@ jetty:
       password: secret
 ----
 
-WARNING: Truststore and keystore defined within `jetty` section are only used to secure access to the Management API. These are not
-used by any HTTP client calls for other purposes (Fetch, DCR, ...)
+WARNING: Truststore and keystore defined within the `jetty` section are only used to secure access to APIM API. These are not
+used by HTTP client calls for any other purpose (such as Fetch and DCR).
 
-== Management & Portal APIs
-This block allow to select which API should be started. By default, both Management and Portal are started. +
-You can also configure the endpoint of each API. By default `/management` and `/portal`.
+== Configure the Management and Portal APIs
+You can configure APIM API to start only the Management or Portal API. You can also change the API endpoints from their default values of `/management` and `/portal`.
 
 [source,yaml]
 ----
@@ -83,9 +84,9 @@ http:
 #      entrypoint: ${http.api.entrypoint}portal
 ----
 
-== Plugins repository
+=== Configure the Plugins repository
 
-Gravitee.io Rest APIs <<gravitee-plugins,plugins>> directory configuration.
+You can configure the APIM Gateway <<gravitee-plugins,plugins>> directory.
 
 [source,yaml]
 ----
@@ -93,10 +94,10 @@ plugins:
   path: ${gravitee.home}/plugins
 ----
 
-== Management repository
+=== Configure the Management repository
 
-Management repository is used to store global configuration such as APIs, applications, apikeys, ...
-This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:
+The Management repository is used to store global configuration such as APIs, applications and apikeys.
+The default configuration uses MongoDB (single server). For more information about MongoDB configuration, see:
 
 http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html
 
@@ -151,11 +152,10 @@ management:
 #    socketTimeout: 250
 ----
 
-== Analytics
+=== Configure the Analytics repository
 
-Analytics repository is used to store all reporting, metrics, health-checks stored by gateway instances.
-
-This is the default configuration using https://www.elastic.co/products/elasticsearch[Elasticsearch].
+The Analytics repository is used to store all reporting, metrics and health-checks stored by APIM Gateway instances.
+The default configuration uses https://www.elastic.co/products/elasticsearch[Elasticsearch].
 
 [source,yaml]
 ----
@@ -170,15 +170,15 @@ This is the default configuration using https://www.elastic.co/products/elastics
 ----
 
 [[gravitee-standalone-management-authentication-configuration]]
-== Authentication
+=== Configure authentication
 
 See the link:/apim/3.x/apim_installguide_authentication.html[dedicated] section.
 
-== Sending emails
+=== Configure email
 
-=== SMTP
+==== SMTP
 
-SMTP configuration used to send mails.
+The section below shows the SMTP configuration used for sending email.
 
 [source,yaml]
 ----
@@ -191,9 +191,7 @@ email:
   password: password
 ----
 
-==== Configure the Gmail SMTP server
-
-Here is the Gmail SMTP configuration.
+===== Configure the Gmail SMTP server
 
 [source,yaml]
 ----
@@ -211,11 +209,11 @@ email:
     ssl.trust: smtp.gmail.com
 ----
 
-If you're using the 2-Factor Authentication (if not, you should), you have to generate an application password : https://security.google.com/settings/security/apppasswords .
+If you are using 2-Factor Authentication (which is recommended), you need to generate an application password: https://security.google.com/settings/security/apppasswords .
 
-=== Email templates
+==== Configure email templates
 
-Email templates configuration. Gravitee.io Management API use http://freemarker.org[Freemarker template engine] to parse and create the email templates.
+APIM API uses the http://freemarker.org[FreeMarker template engine] to parse and create email templates.
 
 [source,yaml]
 ----
@@ -223,7 +221,7 @@ templates:
   path: ${gravitee.home}/templates
 ----
 
-Here's the list of email templates :
+The list of email templates is as follows:
 
 [width="100%",cols="20%,60%,20%",frame="topbot",options="header"]
 |======================
@@ -240,7 +238,7 @@ Here's the list of email templates :
 |supportTicket.html             |Support ticket creation.                       |*api*, *application*, *user*, content
 |======================
 
-You can access to your api data on your api's templates by doing so: ${api.name} or ${api.metadata['foo-bar']}
+You can access your API data on your API templates with: ${api.name} or ${api.metadata['foo-bar']}
 
 Available attributes:
 
@@ -257,7 +255,7 @@ Available attributes:
 |updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |-             |subscribedAt
 |======================
 
-Here's an example of template:
+This is an example template:
 [source,html]
 ----
 <html>
@@ -274,18 +272,18 @@ Here's an example of template:
 
 ----
 
-== User options
+=== Configure user options
 
-You have different options to customize :
+You can customize various user options:
 
 user.login.defaultApplication:: boolean (default: true) - Create a new application for every new users.
 user.creation.token.expire-after:: number (default: 86400) - Number of seconds before the user registration token expired.
 user.reference.secret:: 32 characters (default: s3cR3t4grAv1t33.1Ous3D4R3f3r3nc3) - CHANGE IT! secret used to generate a unique anonymous reference to a user.
 user.anonymize-on-delete:enabled:: boolean (default: false) - If true, the users firstname, lastname and email are anonymized when a user is deleted.
 
-== Default configuration
+=== Default configuration
 
-Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.yml` file. This section provides the general configuration of Gravitee.IO Management API.
+You can configure various default properties of APIM API in your `gravitee.yml` file.
 
 [source,yaml]
 ----

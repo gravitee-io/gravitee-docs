@@ -1,4 +1,4 @@
-= Install Portal on Red Hat or CentOS
+= Install APIM Portal
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_redhat_portal.html
 :page-folder: apim/installation-guide/redhat
@@ -7,15 +7,16 @@
 :page-description: Gravitee.io API Management - Installation Guide - Red Hat or CentOS - Portal
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-:gravitee-component-name: Portal
+:gravitee-component-name: APIM Portal
 :gravitee-package-name: graviteeio-apim-portal-ui-3x
 :gravitee-service-name: graviteeio-apim-portal-ui
 
-== Installing Gravitee.io {gravitee-component-name} package
+== Prerequisites
+Before you install {gravitee-component-name}, you must complete the following configuration. You must also ensure APIM API is installed and running.
 
-IMPORTANT: We assume that you have configured your package management system by following link:/apim/3.x/apim_installguide_redhat_introduction.html[this documentation].
+=== Install Nginx
 
-Nginx must be installed prior to Gravitee.io {gravitee-component-name}:
+To install Nginx, run the following command:
 
 [source,bash,subs="attributes"]
 ----
@@ -23,18 +24,24 @@ sudo yum install epel-release
 sudo yum install nginx
 ----
 
-Then, to install the latest stable version of Gravitee.io {gravitee-component-name}, issue the following command:
+=== Configure your package management system
+
+Ensure you have configured your package management system, as described in <<apim_installguide_redhat_introduction.adoc#configure-the-package-management-system-yum, Configure the package management system (yum)>>.
+
+== Install the {gravitee-component-name} package
+
+To install the last stable version of {gravitee-component-name}, run the following command:
 
 [source,bash,subs="attributes"]
 ----
 sudo yum install -y {gravitee-package-name}
 ----
 
-== Running Gravitee.io {gravitee-component-name}
+== Run {gravitee-component-name}
 
-NOTE: Gravitee.io {gravitee-component-name} is based on Nginx
+NOTE: {gravitee-component-name} is based on Nginx.
 
-To configure Gravitee.io {gravitee-component-name} to start automatically when the system boots up, run the following commands:
+To configure {gravitee-component-name} to start automatically when the system boots up, run the following commands:
 
 [source,bash,subs="attributes"]
 ----
@@ -42,7 +49,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable nginx
 ----
 
-Nginx can be started and stopped as follows:
+To start and stop Nginx, run the following commands:
 
 [source,bash,subs="attributes"]
 ----
@@ -50,23 +57,25 @@ sudo systemctl start nginx
 sudo systemctl stop nginx
 ----
 
-When `systemd` logging is enabled, the logging information are available using the `journalctl` commands:
+== View the logs
 
-To tail the journal:
+When `systemd` logging is enabled, the logging information is available using the `journalctl` commands.
+
+To tail the journal, run the following command:
 
 [source,shell]
 ----
 sudo journalctl -f
 ----
 
-To list journal entries for the Nginx service:
+To list journal entries for the Nginx service, run the following command:
 
 [source,shell]
 ----
 sudo journalctl --unit nginx
 ----
 
-To list journal entries for the Nginx service starting from a given time:
+To list journal entries for the Nginx service starting from a given time, run the following command:
 
 [source,shell]
 ----

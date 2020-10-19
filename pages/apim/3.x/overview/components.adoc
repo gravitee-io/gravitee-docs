@@ -4,35 +4,37 @@
 :page-folder: apim/overview
 :page-layout: apim3x
 
-Next sections are describing top components which are part of Gravitee.io.
+== Overview
+This page describes the main components included in APIM.
 
-== API Gateway
-The API Gateway is the core component of the Gravitee.io platform. You can compare it to a "smart" proxy to understand its goal.
+[[gravitee-components-gateway]]
+== APIM Gateway
+APIM Gateway is the core component of the APIM platform. You can think of it like a _smart_ proxy.
 
-Unlike traditional HTTP proxy, the gateway is able to apply <<apim_overview_plugins.adoc#gravitee-plugins-policies, policies>> (ie. rules) to
-both HTTP requests and responses according to your needs, meaning that you can enhance requests and responses processing
-by adding transformation, security, and many other crazy features!
+Unlike a traditional HTTP proxy, APIM Gateway has the capability to apply <<apim_overview_plugins.adoc#gravitee-plugins-policies, policies>> (i.e. rules) to
+both HTTP requests and responses according to your needs, meaning that you can enhance request and response processing
+by adding transformations, security and many other exciting features!
 
 .Gravitee.io - Gateway Internal
-image::apim/3.x/overview/components/graviteeio-gateway-internal.png[Gravitee.io - Gateway Internal]
+image::apim/3.x/overview/components/graviteeio-gateway-internal.png[Gravitee.io -- Gateway internals]
 
 .Gravitee.io - Gateway Architecture
-image::apim/3.x/overview/components/graviteeio-gateway-architecture.png[Gravitee.io - Gateway Architecture]
+image::apim/3.x/overview/components/graviteeio-gateway-architecture.png[Gravitee.io -- Gateway architecture]
 
 [[gravitee-components-rest-api]]
-== Rest APIs (Management & Portal)
-Two restful APIs providing a bunch of services to manage and configure the <<gravitee-components-mgmt-ui, Gravitee.io Management UI>> and the <<gravitee-components-portal-ui, Gravitee.io Portal UI>>.
-All exposed services are constraint by authentication and authorization rules.
-You can find more information by having a look at the link:/apim/3.x/apim_installguide_rest_apis_documentation.html[Rest APIs > Documentation] section.
+== APIM API
+This RESTful API exposes services to manage and configure the <<gravitee-components-mgmt-ui, APIM Management>> and <<gravitee-components-portal-ui, APIM Portal>> web UIs.
+All exposed services are restricted by authentication and authorization rules.
+You can find more information in the link:/apim/3.x/apim_installguide_rest_apis_documentation.html[Rest APIs > Documentation] section.
 
 [[gravitee-components-mgmt-ui]]
-== APIM Console (Management UI)
-This is the Web UI for <<gravitee-components-rest-api, Gravitee.io Management API>>.
-This UI acts as a management tool for API Publishers.
-Administrators can also configure global platorm settings and specific portal settings.
+== APIM Management
+This web UI gives easy access to some key <<gravitee-components-rest-api, APIM API>>.
+<<apim_overview_concepts.adoc#gravitee-concepts-publisher, API Publishers>> can use it to publish APIs.
+Administrators can also configure global platform settings and specific portal settings.
 
 [[gravitee-components-portal-ui]]
-== APIM Portal (Portal UI)
-This is the Web UI for <<gravitee-components-rest-api, Gravitee.io Portal API>>.
-This UI acts as a management tool for API Consumers, from where they can search, look, try and subscribe to an API.
-They can also manage their Applications.
+== APIM Portal
+This web UI gives easy access to some key <<gravitee-components-rest-api, APIM API>>.
+<<apim_overview_concepts.adoc#gravitee-concepts-consumer, API Consumers>> can use it to search for, view, try out and subscribe to a published API.
+They can also use it to manage their <<apim_overview_concepts.adoc#gravitee-concepts-application, applications>>.

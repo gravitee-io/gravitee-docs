@@ -1,68 +1,52 @@
-= Publish your first API with Management UI
+= Publish your first API with APIM Management
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_quickstart_publish_ui.html
 :page-folder: apim/quickstart/api-publisher
 :page-layout: apim3x
 
-This guide walks you through the process of creating and publishing your first API by using the Management UI.
-Gravitee.io Management UI can be accessed using the following URL:
+== Overview
 
-http://MANAGEMENT_UI_SERVER_DOMAIN (see link:/apim/3.x/apim_installguide_management_ui_install_zip.html[Gravitee.io Management UI installation] for more information)
+This section walks you through creating and publishing your first API with APIM Management. link:/apim/3.x/apim_publisherguide_manage_api.html[API Publisher Guide].
 
+== Create your API with APIM Management
 
-NOTE: *Gravitee.io Echo API* : In this tutorial we will use the https://api.gravitee.io/echo[Gravitee.io Echo API] to set up our first proxy API.
-The Gravitee.io Echo API returns JSON-formatted data via the following URL : https://api.gravitee.io/echo
-
-== Create your API in the Management UI
-
-. Login to http://MANAGEMENT_UI_SERVER_DOMAIN. (Default Administrator account is admin/admin, see link:/apim/3.x/apim_installguide_authentication.html[security section] for more information)
-. Click `Create a new API`
-
+. Log in to `http://MANAGEMENT_UI_SERVER_DOMAIN`. Note that the default Administrator account is **admin/admin** -- for more information, see the link:/apim/3.x/apim_installguide_authentication.html[Authentication section of the Installation Guide].
+. Click **Start creating an API**.
++
 image::apim/3.x/quickstart/publish/graviteeio-create-api-1.png[]
 
-[start=3]
-. Click `Create an API from scratch...`
-
+. Click **Create an API from scratch**
++
 image::apim/3.x/quickstart/publish/graviteeio-create-api-2.png[]
 
-[start=4]
-. Give your API a name, a version, a description and a context path. Click `NEXT`
-
+. Give your API a name, a version, a description and a context path. **Click NEXT**.
++
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-1.png[]
 
-[start=5]
-. Make sure that `Backend` is set to `https://api.gravitee.io/echo`. Click `NEXT`
-
+. Set **Backend** to the URL of the API, in this example `https://api.gravitee.io/echo`. Click **NEXT**.
++
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-2.png[]
++
+NOTE: To subscribe to an API, you must publish one or more _plans_, as described in the following step. A plan allows access to the API operations.
 
-NOTE: To subscribe to an API, you must publish one or more Plans. A Plan will allow you to gain access of the API operations.
-[start=6]
-. Create a Plan by giving it a name, a description, a security type. Don't forget to trigger the `auto-validation` switch.
-
+. Create a plan by giving it a name, a description and a security type. Switch on the **Auto validate subscription** option. Click **NEXT**.
++
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-3.png[]
++
+NOTE: Ensure you set the link:/apim/3.x/apim_policies_apikey.html[API Key] **security type**. For more information about plan configuration, see the link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[API Publisher Plans and subscriptions Guide].
 
-NOTE: Make sure to choose link:/apim/3.x/apim_policies_apikey.html[API Key security type]. To go further into the Plan configuration, you can take a look at the link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions Guide]
-
-[start=7]
-. For this quickstart, you can skip the `Doc` step. Click `SKIP`.
-
+. In the **Doc** step, you can add some Markdown and OpenAPI files. You can skip this step for now. Click **SKIP**.
++
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-4.png[]
 
-NOTE: In this step, you can add some Markdown and OpenApi files.
-
-[start=8]
-. You can check your API information before deploying it. When you are ready, click `CREATE AND START THE API`.
-
+. Check your API information before deploying it. When you are ready, click **CREATE AND START THE API**.
++
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-5.png[]
 
-Congratulations ! Your brand new Echo API has been created, a plan has also been published and if a gateway instance is running, your API has been deployed.
+Congratulations! You have created your brand new Echo API, published a plan and, if an APIM Gateway instance is running, deployed your API.
 
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-6.png[]
 
-One more step before your API is ready to be used by your consumers: Click `PUBLISH THE API` so this API can be displayed in the Portal.
+You need to complete one more step before your API is ready to be used by your consumers: Click **PUBLISH THE API** to display the API in APIM Portal.
 
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-7.png[]
-
-Now let's see how to consume your API: link:/apim/3.x/apim_quickstart_consume.html[Use your first API]
-
-NOTE: This quick start was just an overview to create your first API. To go further into API management detail, you can take a look at the link:/apim/3.x/apim_publisherguide_manage_apis.html[User Guide]
