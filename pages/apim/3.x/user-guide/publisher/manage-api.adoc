@@ -294,3 +294,19 @@ You can also decide to highlight one API. This API will be located at the top of
 
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-4.png[]
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-4.png[]
+
+== Organize your APIs with labels
+You can use `Labels` to add tags to your APIs. The only purpose of labels is to sort APIs so publishers can easily find the APIs they need in APIM Management.
+
+You can register a list of predefined labels in the settings.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-labels-1.png[]
+
+The next time you enter labels for an API, APIM Management makes suggestions based on your registered labels.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-labels-2.png[]
+
+You can search for APIs by label.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-labels-3.png[]
+
