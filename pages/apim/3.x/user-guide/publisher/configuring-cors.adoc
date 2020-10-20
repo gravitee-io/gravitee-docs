@@ -1,58 +1,57 @@
-= Configuring CORS
+= CORS
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_publisherguide_configuring_cors.html
 :page-folder: apim/user-guide/publisher
 :page-layout: apim3x
 
-The CORS (Cross-Origin Resource Sharing) is a mechanism that allows resources on a *web page* to be requested from another domain.
+CORS (Cross-Origin Resource Sharing) is a mechanism that allows resources on a web page to be requested from another domain.
 
-To understand well how to deal with CORS, you should first take a look at the https://www.w3.org/TR/cors[specification].
+For more information on CORS, first take a look at the https://www.w3.org/TR/cors[CORS specification].
 
 == Configuration
-You can configure CORS for an API by clicking `Proxy > CORS` in the API submenu of the APIM Console.
+You can configure CORS for an API in *Proxy > CORS* in the *APIs* menu of APIM Management. The sections below detail the values you can specify.
 
 image::apim/3.x/api-publisher-guide/cors/graviteeio-configuring-cors-configuration-1.png[]
 
 === Access-Control-Allow-Origin
 
-Allow to specify one or multiples origin(s) that may access the resource.
-If you want to allow all origins, you can put `*` but it's not safe for production.
+One or multiple origins that can access the resource.
+If you want to allow all origins, you can enter `*`. Note that this is not safe for production environments.
 
 === Access-Control-Allow-Methods
 
-Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request.
+The method or methods allowed to access the resource. This is used in response to a preflight request.
 
 === Access-Control-Allow-Headers
 
-Here you specify the headers allowed to be used by your requests.
-Typically, on your request headers you will have a header `Access-Control-Request-Headers` which request CORS to be configured to allow its values.
+The headers allowed in your requests.
+Typically, your request header will include `Access-Control-Request-Headers`, which relies on CORS configuration to allow its values.
 
-Let's see a simple use case:
+A simple use case is as follows:
 
-A user make a call with a header `Access-Control-Request-Headers: my-header`.
+A user makes a call with a header `Access-Control-Request-Headers: my-header`.
 
-- if the CORS `Access-Control-Allow-Headers` is not configured with the header `my-header`, the request will get a 400 HTTP status.
-- if the CORS `Access-Control-Allow-Headers` is configured with the header `my-header` at least, the request will get a 200 HTTP status.
+- If CORS `Access-Control-Allow-Headers` is not configured with the header `my-header`, the request will receive a 400 HTTP status response.
+- If CORS `Access-Control-Allow-Headers` includes the header `my-header`, the request will receive a 200 HTTP status response.
 
-**The wildcard (`*`) is not allowed here.**
+NOTE: Wildcard (`*`) is not allowed.
 
 === Access-Control-Allow-Credentials
 
-Indicates whether or not the response to the request can be exposed when the credentials flag is true.
+Indicates whether or not the response to the request can be exposed when the credentials flag is `true`.
 
 === Access-Control-Allow-Max-Age
 
-This header indicates how long the results of a preflight request can be cached (-1 if disabled).
+indicates how long the results of a preflight request can be cached (`-1` if disabled).
 
 === Access-Control-Expose-Headers
 
-This header lets a server whitelist headers that browsers are allowed to access.
-
+Provides a server whitelist headers that browsers are allowed to access.
 
 image::apim/3.x/api-publisher-guide/cors/graviteeio-configuring-cors-configuration-2.png[]
 
 == Troubleshooting CORS
 
-All requests rejected because of CORS issues will generate some logs that can be viewed in your API logs in the Analytics section.
+All requests rejected because of CORS issues will generate some logs that you can view in the `Analytics` section of your API logs.
 
 image::apim/3.x/api-publisher-guide/cors/graviteeio-troubleshooting-cors.png[]
