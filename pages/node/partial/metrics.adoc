@@ -6,7 +6,7 @@ This section explains how to expose metrics to Prometheus.
 == Enable the metrics service
 
 You enable the metrics service in the `gravitee.yml` configuration file.
-Prometheus support is activated and exposed using the <<apim_installguide_gateway_technical_api.adoc#gravitee-installation-management-api-technical-api, APIM Gateway internal API>>.
+Prometheus support is activated and exposed using the component's internal API.
 
 [source,yaml]
 ----

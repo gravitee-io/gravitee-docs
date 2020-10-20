@@ -34,7 +34,6 @@ entries:
           - title: Introduction
             output: web
             url: /apim/3.x/apim_quickstart_overview.html
-
             subfolders:
               - title: Publish your first API
                 output: web
@@ -54,7 +53,7 @@ entries:
                   - title: Using APIM API
                     output: web
                     url: /apim/3.x/apim_quickstart_consume_api.html
-                  - title: Test your API
+                  - title: Test the API
                     output: web
                     url: /apim/3.x/apim_quickstart_consume_test.html
 
@@ -187,13 +186,16 @@ entries:
             - title: Configure APIM Management
               output: web
               subfolderitems:
-               - title: General Configuration
+               - title: General configuration
                  output: web
                  url: /apim/3.x/apim_installguide_management_ui_configuration.html
-               - title: Configure APIM Portal
+            - title: Configure APIM Portal
+              output: web
+              subfolderitems:
+               - title: General configuration
                  output: web
                  url: /apim/3.x/apim_installguide_portal_ui_configuration.html
-            - title: Configure Repositories
+            - title: Configure repositories
               output: web
               subfolderitems:
                - title: Introduction
@@ -217,16 +219,16 @@ entries:
                - title: Introduction
                  output: web
                  url: /apim/3.x/apim_installguide_authentication.html
-               - title: Connect with In-Memory users
+               - title: Connect with in-memory users
                  output: web
                  url: /apim/3.x/apim_installguide_authentication_inmemory.html
-               - title: Connect with LDAP / Active Directory
+               - title: Connect with LDAP/Active Directory
                  output: web
                  url: /apim/3.x/apim_installguide_authentication_ldap.html
-               - title: Connect with Gravitee.io APIM Repository
+               - title: Connect with APIM repository
                  output: web
                  url: /apim/3.x/apim_installguide_authentication_apim.html
-               - title: Connect with Gravitee.io AM
+               - title: Connect with Gravitee.io Access Management
                  output: web
                  url: /apim/3.x/apim_installguide_authentication_graviteeam.html
                - title: Connect with GitHub
@@ -239,26 +241,10 @@ entries:
                  output: web
                  url: /apim/3.x/apim_installguide_authentication_keycloak.html
 
-      - title: API Consumer Guide
-        output: web
-        folderitems:
-          - title: Introduction
-            output: web
-            url: /apim/3.x/apim_consumerguide_portal.html
-          - title: Create an account
-            output: web
-            url: /apim/3.x/apim_consumerguide_create_account.html
-          - title: Manage applications
-            output: web
-            url: /apim/3.x/apim_consumerguide_manage_applications.html
-          - title: Subscribe to an API
-            output: web
-            url: /apim/3.x/apim_consumerguide_subscribe.html
-
       - title: API Publisher Guide
         output: web
         folderitems:
-          - title: Manage APIs
+          - title: Introduction
             output: web
             url: /apim/3.x/apim_publisherguide_manage_apis.html
           - title: Configuring CORS
@@ -435,6 +421,22 @@ entries:
           - title: Expression Language
             output: web
             url: /apim/3.x/apim_publisherguide_expression_language.html
+
+      - title: API Consumer Guide
+        output: web
+        folderitems:
+         - title: Introduction
+           output: web
+           url: /apim/3.x/apim_consumerguide_portal.html
+         - title: Create an account
+           output: web
+           url: /apim/3.x/apim_consumerguide_create_account.html
+         - title: Manage applications
+           output: web
+           url: /apim/3.x/apim_consumerguide_manage_applications.html
+         - title: Subscribe to an API
+           output: web
+           url: /apim/3.x/apim_consumerguide_subscribe.html
 
       - title: Administration Guide
         output: web
