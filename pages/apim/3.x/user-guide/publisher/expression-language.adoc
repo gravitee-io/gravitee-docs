@@ -4,19 +4,18 @@
 :page-folder: apim/user-guide/publisher
 :page-layout: apim3x
 
-The Gravitee.io Expression Language (EL for short) is one of the key feature
-that can be used by API publisher to configure several points / services of an API.
+The APIM Expression Language (EL for short) is one of the key features
+that can be used by API publishers to configure various aspects and services of an API.
 
-This expression language is a powerful language that support querying and
-manipulating an object graph and is based on the great http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html[SpEL] (Spring Expression Language).
-This also mean that you can do exactly all the things described in the previous
-link.
+This expression language is a powerful language that supports querying and
+manipulating an object graph and is based on the http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html[SpEL] (Spring Expression Language).
+This means that you can do everything described in the link.
 
-Gravitee.io is extending SpEL capabilities by providing useful objects and properties
+In addition, APIM extends the standard SpEL capabilities by providing extra objects and properties
 inside the expression language context.
 
 == Syntax
-The Expression Language syntax is as follow:
+The expression language syntax is as follows:
 
 `{#request.id}`
 
@@ -32,8 +31,8 @@ automatically _injected_ into the expression language context to be used later.
 `{#properties['my-property']}`
 
 === Endpoints
-When defining endpoints for your API, you must have to give them a _name_ which
-must be a unique identifier across all the endpoints of this API.
+When defining endpoints for your API, you need to give them a _name_ which
+must be a unique identifier across all the endpoints of the API.
 
 Once done, this identifier can be used to get an endpoint reference (ie. uri).
 
@@ -79,7 +78,7 @@ be retrieved using EL by using the following syntax:
 ^.^|-
 |===
 
-WARNING: `{#request.content}` is only available when the policy is bind to a `on-request-content` phase.
+WARNING: `{#request.content}` is only available when the policy is bound to an `on-request-content` phase.
 
 === Example
 
@@ -101,7 +100,7 @@ WARNING: `{#request.content}` is only available when the policy is bind to a `on
 |===
 
 === Attributes
-When the gateway handles an incoming HTTP request, some attributes are
+When APIM Gateway handles an incoming HTTP request, some attributes are
 automatically created. These attributes are:
 
 |===
@@ -148,9 +147,8 @@ automatically created. These attributes are:
 ^.^|X (for no api-key plan)
 |===
 
-Also, some policies (like the link:/apim/3.x/apim_policies_oauth2.html#attributes[OAuth2 policy])
-are registering some other attributes in the context. Please check the
-documentation of the policies you are using to be aware of them.
+Additionally, some policies (like the link:/apim/3.x/apim_policies_oauth2.html#attributes[OAuth2 policy])
+register other attributes in the context. See the documentation for the policies you are using for more information.
 
 === Example
 
@@ -167,16 +165,16 @@ documentation of the policies you are using to be aware of them.
 `{#request.path.startsWith('/my/api')}`
 
 == Policies
-Expression language can be used to configure some part of policies configuration.
-It's up to the policy to specify if its supports EL or not.
+Expression language can be used to configure some aspects of policy configuration.
+The policy needs to specify if it supports EL or not.
 
 == Mixin
 
-In previous examples, we show several examples to manipulate objects available
-in the EL context. One amazing thing you can also achieve is to mix property
-usage to provide a more and more dynamic configuration.
+In previous examples, we showed various ways to manipulate objects available
+in the EL context. You can also mix property
+usage to provide an increasingly dynamic configuration.
 
-As an example, we would like to retrieve the value of an HTTP header where the name
+For example, we can retrieve the value of an HTTP header where the name
 is based on an API property named `my-property`:
 
 `{#request.headers[#properties['my-property']]}`

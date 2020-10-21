@@ -1,5 +1,5 @@
 [[gravitee-admin-guide-users-and-groups]]
-= Users and Groups
+= Users and groups
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_adminguide_users_and_groups.html
 :page-folder: apim/user-guide/admin
@@ -9,38 +9,37 @@
 
 == Users
 
-In the installation guide, you have learnt how to configure different identity providers (see link:/apim/3.x/apim_installguide_authentication.html[how to configure authentication]).
+The Installation Guide explained how to configure different identity providers (see link:/apim/3.x/apim_installguide_authentication.html[Configure authentication]).
 
-Users are listed in the `Users` section of the `Settings` menu.
+Users are listed in the *Users* section of the *Settings* menu.
 
-Here you can :
+You can:
 
- * create a new user account
- * remove a user account (only if the user is not a primary owner of an api or an application),
+ * Create a new user account
+ * Remove a user account (only if the user is not a primary owner of an API or an application)
 
 image::apim/3.x/adminguide/usersgroups-users.png[Gravitee.io - List users]
 
-If you select a user, you can:
+When you select a user, you can:
 
- * access to detailed information about its account and permissions
- * manage its groups.
- * reset its password (only for users created with the Gravitee form)
- * manage user registration requests
+ * access detailed information about the user's account and permissions
+ * manage the user's groups
+ * reset the user's password (only for users created with the registration form)
+ * manage the user's registration requests
 
 image::apim/3.x/adminguide/usersgroups-user.png[Gravitee.io - User]
 
-
 === Create a user
 
-==== as an admin
-You can pre-register a user by clicking the `Add button` in the bottom right of the page.
-An email will be sent to this user asking him/her to finalize the registration.
+==== As an administrator
+You can pre-register a user by clicking the *Add* button at the bottom right of the page.
+An email will be sent to the user requesting them to finalize the registration.
 
 image::apim/3.x/adminguide/usersgroups-pre-register-user.png[Gravitee.io - Pre-Register User, 300]
 
 [WARNING]
 ====
-Check your portal UI and management UI URLs in the settings, so the links in registration emails are corrects.
+You need to check your APIM Portal and Management URLs in the settings to ensure the links in registration emails are correct.
 
 image::apim/3.x/adminguide/usersgroups-management-url-parameter.png[]
 
@@ -48,42 +47,41 @@ image::apim/3.x/adminguide/usersgroups-portal-url-parameter.png[]
 
 ====
 
-==== with the registration form
-Users can register themselves using `Registration form`. +
-See more link:/apim/3.x/apim_consumerguide_create_account.html[here]
-
+==== With the registration form
+Ordinary users can register using the `Registration form`. +
+For more information, see more link:/apim/3.x/apim_consumerguide_create_account.html[Create a user account].
 
 === Manage registration requests
 By default, if the `Allow User Registration` option is enabled then all registration requests will be automatically validated.
 
 image::apim/3.x/adminguide/usersgroups-auto-validation-parameters.png[Gravitee.io - Automatic registration validation option]
 
-If you decide to disable this validation, then you will be able to reject or to accept user registration request in the user detail page.
+If you disable this option, then you will be able to reject or accept user registration requests in the Users page.
 
 image::apim/3.x/adminguide/usersgroups-manual-validation-1.png[Gravitee.io - Users status pour registration validation]
 
 image::apim/3.x/adminguide/usersgroups-manual-validation-2.png[Gravitee.io - Manual registration validation]
 
-NOTE: If a self-registered user has finalized his/her registration but this registration has not been accepted by an admin, then the user won't be able to sign in.
+NOTE: If a self-registered user has finalized their registration but the registration has not been accepted by an administrator, the user will not be able to sign in.
 
-== User Fields
+== User fields
 
-If you allow a new user to signing up, you have the capability to request additional fields during the registration process.
+If you allow new users to register, you can request additional fields during the registration process.
 
-To configure the list custom fields, go to the "User Fields" menu and Click on the (+) button.
+To configure the list of custom fields, go to the *User Fields* menu and click the (+) button.
 
 image::apim/3.x/adminguide/custom-user-fields-list.png[Gravitee.io - User Fields]
 
-The dialog box will ask you some inputs:
+You will be prompted for the following information:
 
-	* The field key: this is the field identifier, it is used to translate the label in the portal UI
-	* The default label: this label is used to display the value in the web UI if the i18n translation isn't available
+	* The field key: this is the field identifier, used to translate the label in APIM Portal
+	* The default label: this label is used to display the value in APIM Portal if a translation is not available
 	* A checkbox to make the field mandatory during the registration process
 	* A list of values you want to restrict for this field
 
 image::apim/3.x/adminguide/custom-user-fields-create.png[Gravitee.io - Create User Field]
 
-_Note:_ Gravitee provides a list of predefined keys. There are visible by clicking on the key field. 
+NOTE: APIM provides a list of predefined keys. There are visible by clicking on the key field.
 
 Once the user fields are defined, they will be displayed in the registration form of the console and the portal.
 
@@ -93,25 +91,25 @@ If you select a user, you have access to a detailed information about its accoun
 
 image::apim/3.x/adminguide/custom-user-fields-user-details.png[Gravitee.io - User With Custom Fields]
 
-A user may visualize and update these information through the account page.
+Users can view and update this information on their account page.
 
 image::apim/3.x/adminguide/custom-user-fields-account.png[Gravitee.io - User Account]
 
-TIP: 	Translations of the label for the custom fields is based on the field key. To add translation for your own fields, please declare them in the translation files (https://github.com/gravitee-io/gravitee-portal-webui/blob/master/src/assets/i18n/en.json[en.json], https://github.com/gravitee-io/gravitee-portal-webui/blob/master/src/assets/i18n/fr.json[fr.json]...) under the element `register.field`. If no translation is available the default label will be used. 
+TIP: Translations of the label for custom fields are based on the field key. To add translations for your own fields, you need to declare them in the translation files (https://github.com/gravitee-io/gravitee-portal-webui/blob/master/src/assets/i18n/en.json[en.json], https://github.com/gravitee-io/gravitee-portal-webui/blob/master/src/assets/i18n/fr.json[fr.json]...) under the element `register.field`. If no translation is available, the default label will be used.
 
 
 == Groups
 
-Groups represent users groups where you put members of the same team/partner and set their role for the `API` scope and/or `APPLICATION` scope (see link:/apim/3.x/apim_adminguide_roles_and_permissions.html[Roles and Permissions] for details).
-Once a group is created, you can associate it to an API and/or an application and users with role on this scope become members of the API/Application.
+Groups represent user groups to which you add members of the same team/partner and set their role for the `API` scope and/or `APPLICATION` scope (see link:/apim/3.x/apim_adminguide_roles_and_permissions.html[Roles and permissions] for details).
+Once a group is created, you can associate it with an API and/or an application. Users with roles for this scope become members of the API/application.
 
-Let use groups to create a `FOO Team` group where you can put all members of your FOO team.
+In this example will create a `FOO Team` group to which you can add all members of your FOO team.
 
 === Create the `FOO Team` group
 
 image::apim/3.x/adminguide/usersgroups-newgroup.png[Gravitee.io - New Group]
 
-You can see that in addition to the group name, you have two other section :
+You can see that in addition to the group name, you have two other sections:
 
 ==== Roles & members
 Max members::
@@ -123,36 +121,36 @@ Allows email invitation::
 
 Allows the group admin to change the API role::
 
-Allows the group admin to change the Application role::
+Allows the group admin to change the application role::
 
 []
 ==== Associations
 Associate to every new API::
 Every time an API is created, this group will be added to it.
 
-Associate to every new Application::
-Every time an Application is created, this group will be added to it.
+Associate to every new application::
+Every time an application is created, this group will be added to it.
 
-_Those checkbox can be useful if the group is transverse (an helpdesk group for example)._
+_These checkboxes can be useful if the group crosses teams (a helpdesk group for example)._
 
 === Configure users
 
-After the group creation, you should be redirected to the group detail page.
+After group creation, you are redirected to the group detail page.
 
 image::apim/3.x/adminguide/usersgroups-editgroup.png[Gravitee.io - Edit Group]
 
-Click on the (+) button to add users
+Click the *+* button to add users:
 
 image::apim/3.x/adminguide/usersgroups-addgroupmembers-1.png[Gravitee.io - Add Group members]
 
-Select users and choose their roles (group default roles are automatically selected)
+Select users and choose their roles (group default roles are automatically selected):
 
 image::apim/3.x/adminguide/usersgroups-addgroupmembers-2.png[Gravitee.io - Group members]
 
-=== Add the group to an API or an application
+=== Add the group to an API or application
 
-Go to the API/Application you want to modify and select the `groups` section.
+Go to the API/application you want to modify and select the *Groups* section:
 
 image::apim/3.x/adminguide/usersgroups-apigroups.png[Gravitee.io - Api Group]
 
-Now you can go to the `memberships` section to find that members of the `FOO Team` are members of the API with the role you have set globally.
+In the *Memberships* section, you will see that members of the `FOO Team` are members of the API with the role you set globally.
