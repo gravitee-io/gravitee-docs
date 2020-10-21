@@ -11,6 +11,7 @@
 APIM allows you to create custom user roles to fit your needs.
 
 A role:
+
 - Is associated with a group of permissions
 - Has a scope
 - Defines what you can do with the APIM UI components and APIM API
@@ -25,9 +26,10 @@ Roles are defined in terms of _scopes_. As described in the link:/apim/3.x/apim_
 To be more precise, an environment's scope is all of the actions that can be performed in the specific context, in APIM Portal and APIM Management.
 
 For example:
- * APIs can be managed by API publishers in APIM Management
- * Applications can be managed in both APIM Management and APIM Portal.
- * API rating can be managed by API consumers in APIM Portal
+
+ - APIs can be managed by API publishers in APIM Management
+ - Applications can be managed in both APIM Management and APIM Portal
+ - API rating can be managed by API consumers in APIM Portal
 
 As the name suggests, the scope of an _organization_ is all aspects of an organization: users, roles, and so on. These actions are only available in APIM Management.
 
@@ -267,19 +269,19 @@ In this example, we will create a writer role which allows a user to create API 
 
 === Create the `WRITER` role
 Click *ADD A NEW ROLE* in the APIM Management *Settings > Roles* menu.
-+
+
 image::apim/3.x/adminguide/newrole-create.png[Gravitee.io - Create a New Role]
 
 === Configure the `WRITER` role
 You must give `READ` permissions on `DEFINITION` and `GATEWAY_DEFINITION`.
 This allows the user to see the API in the API list.
 Next, you need to give `CRUD` permissions on `DOCUMENTATION`.
-+
+
 image::apim/3.x/adminguide/newrole-configure.png[Gravitee.io - Configure a New Role]
 
 === Result
 The user with this role can now only see the documentation menu.
-+
+
 image::apim/3.x/adminguide/newrole-menu.png[Gravitee.io - Menu, 200]
 
 NOTE: Granting a `GROUP` permission to the `MANAGEMENT` role also requires the `READ` operation for the `ROLE` permission in order to see which roles are provided by a group.
