@@ -1,5 +1,5 @@
 [[gravitee-admin-guide-orgs-and-envs]]
-= Organizations & environments
+= Organizations and environments
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_adminguide_organizations_and_environments.html
 :page-folder: apim/user-guide/admin
@@ -7,28 +7,28 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
-In order to prepare the future (see link:https://www.gravitee.io/products/roadmap[Roadmap > Cockpit]), we have introduced two concepts:
+== Overview
+In preparation for the upcoming Cockpit product offering (see link:https://www.gravitee.io/products/roadmap[Roadmap > Cockpit]), we have introduced two concepts:
 
 == Environment
-An *Environment* is roughly equivalent to what you can find in *Gravitee.io Portal*. In an environment, a user can manage his or her APIs, applications and subscriptions. +
+An _environment_ is roughly equivalent to what you can find in APIM Portal. In an environment, users can manage their APIs, applications and subscriptions. +
 An environment handles its own categories, groups, documentation pages and quality rules. +
-You can define for instance:
 
-* technical environments: DEV / TEST / PRODUCTION / ...
-* functional environments: PRIVATE APIS / PUBLIC APIS / PARTNERSHIP / ...
-* ... any other kind of environment
+Some examples of environments you can define are:
+
+* technical environments, such as DEV / TEST / PRODUCTION
+* functional environments, such as PRIVATE APIS / PUBLIC APIS / PARTNERSHIP
 
 An environment belongs to one organization.
 
 == Organization
-An *Organization* allows a user to adapt Gravitee to its own internal organization. It can handle multiple *Environments* by sharing configurations like:
+An _organization_ allows users to customize APIM to their own internal organization. It can manage multiple environments by sharing configurations like:
 
 * Users
 * Roles
-* ...
 
-It will also allow operations across managed environments (like APIs import/export)
+It also allows operations across managed environments (like API import/export).
 
-WARNING: The descriptions above may change slightly in future versions. Stay informed by subscribing to our link:https://gravitee.io/[newsletter]
+WARNING: The descriptions above may change slightly in future versions. Stay informed by subscribing to our link:https://gravitee.io/[newsletter].
 
-NOTE: By default, the OSS version of the platform comes with a 'DEFAULT' organization and a 'DEFAULT' environment. Multi-environments is part of link:/ee/ee_introduction.html[Enterprise Edition]
+NOTE: By default, the OSS version of APIM comes with a default organization and a default environment. For a multi-environment setup, you need APIM link:/ee/ee_introduction.html[Enterprise Edition].

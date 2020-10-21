@@ -267,22 +267,22 @@ entries:
               - title: Documentation
                 output: web
                 subfolderitems:
-                  - title: Publish documentation
+                  - title: Publish documentation in APIM Portal
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation.html
-                  - title: Markdown
+                  - title: Markdown documentation
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation_markdown.html
-                  - title: OpenAPI/Swagger
+                  - title: OpenAPI documentation
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation_openapi.html
-                  - title: System folders, links and portal customization
+                  - title: System folders, links and APIM Portal customization
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation_system_folders.html
               - title: Policies
                 output: web
                 subfolderitems:
-                  - title: Overview
+                  - title: Introduction
                     output: web
                     url: /apim/3.x/apim_policies_overview.html
                   - title: Api Key
@@ -393,7 +393,7 @@ entries:
               - title: Resources
                 output: web
                 subfolderitems:
-                  - title: Overview
+                  - title: Introduction
                     output: web
                     url: /apim/3.x/apim_resources_overview.html
                   - title: Cache
@@ -408,7 +408,7 @@ entries:
               - title: Service Discovery
                 output: web
                 subfolderitems:
-                  - title: Overview
+                  - title: Introduction
                     output: web
                     url: /apim/3.x/apim_service_discovery_overview.html
                   - title: Eureka
@@ -441,14 +441,14 @@ entries:
       - title: Administration Guide
         output: web
         folderitems:
-          - title: Organizations and Environments
+          - title: Organizations and environments
             output: web
             url: /apim/3.x/apim_adminguide_organizations_and_environments.html
             type: homepage
-          - title: Roles and Permissions
+          - title: Roles and permissions
             output: web
             url: /apim/3.x/apim_adminguide_roles_and_permissions.html
-          - title: Users and Groups
+          - title: Users and groups
             output: web
             url: /apim/3.x/apim_adminguide_users_and_groups.html
 

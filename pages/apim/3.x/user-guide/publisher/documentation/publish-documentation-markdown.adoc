@@ -1,41 +1,44 @@
-= Specific configuration for Markdown documentation
+= Markdown documentation
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_publisherguide_publish_documentation_markdown.html
 :page-folder: apim/user-guide/publisher
 :page-layout: apim3x
 
-Markdown pages can be translated, come from an external source and their access can be restricted. +
-See link:/apim/3.x/apim_publisherguide_publish_documentation.html#manage_pages[Publish documentation > Manage pages].
+== Overview
 
-Here, you can find specific configurations for a markdown page.
+Markdown pages can be translated, come from an external source and their access can be restricted. +
+See link:/apim/3.x/apim_publisherguide_publish_documentation.html#manage_pages[Manage pages] for more information.
+
+The sections below describe specific configuration for Markdown pages.
 
 == Page
-The page editor for a Markdown page allows to edit its content and to have a live preview.
+
+You can use the *PAGE* editor edit a Markdown page's content and preview it.
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-editor.png[]
 
-== Add link to documentation page
-You can add a direct link to an existing Swagger or Markdown page. Only *published* pages can be linked. +
-To link a page, click on `Insert page link` button in the toolbar, select a page and click `ADD` button.
+== Add links to a documentation page
+You can add a direct link to an existing OpenAPI or Markdown page. Only _published_ pages can be linked. +
+To link a page, click *Insert page link* in the toolbar, select a page and click *ADD*.
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-add-page-link-1.png[]
 
 A new link is added in the editor. +
-The text of the link can be customize but the _path_ must not be changed.
+The text of the link can be customized but the _path_ must not be changed.
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-add-page-link-2.png[]
 
 == Attached resources
-The `ATTACHED RESOURCES` tab is only available for Markdown pages. In this tab, you can import files and attached them to the page. +
-Imported files size must not exceed the size define in the settings
+The *ATTACHED RESOURCES* tab is only available for Markdown pages. In this tab, you can import files and attach them to the page. +
+Imported files size must not exceed the size defined in the settings.
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-attached-resources-1.png[]
 
-You can add files by clicking the `ADD A NEW RESOURCE` button and remove them by clicking the trash icon
+You can add files by clicking the *ADD A NEW RESOURCE* button, and remove them by clicking the trash icon.
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-attached-resources-2.png[]
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-attached-resources-3.png[,300]
 
-Then, in the Portal, these attached files will be displayed at the bottom on the page as download links.
+In APIM Portal attached files are displayed at the bottom on the page as download links.
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-attached-resources-4.png[]
