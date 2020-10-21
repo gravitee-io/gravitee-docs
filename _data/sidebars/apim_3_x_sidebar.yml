@@ -33,7 +33,7 @@ entries:
         folderitems:
           - title: Introduction
             output: web
-            url: /apim/3.x/apim_quickstart_overview.html
+            url: /apim/3.x/apim_quickstart_publish.html
             subfolders:
               - title: Publish your first API
                 output: web
@@ -139,7 +139,7 @@ entries:
               - title: Deploy in Kubernetes
                 output: web
                 subfolderitems:
-                 - title: Introduction
+                 - title: Helm
                    output: web
                    url: /apim/3.x/apim_installguide_kubernetes.html
           - title: Hybrid deployment

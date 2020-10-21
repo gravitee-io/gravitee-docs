@@ -4,78 +4,78 @@
 :page-folder: apim/user-guide/publisher
 :page-layout: apim3x
 
-Gravitee.io provides a way to expose documentation for your portal but also for your APIs.
+== Overview
 
-The portal documentation allows to communicate with your developer community on a single platform. For example this is useful to provide your best practices or simply configure your own homepage.
+APIM includes a feature for publishing documentation both in your APIM Portal and for your APIs.
 
-*Documentation is the key for a successful API.* This is the better way to promote, and provide to the developers all the information necessary to consume your webservices.
+The APIM Portal documentation creates a direct line of communication with your developer community through a single channel. For example, you can use it to communicate your best practices or even to configure your own homepage.
+
+*Documentation is the key to a successful API.* It is the best way to promote your web services and give developers all the information necessary to consume them.
 
 == Structure
-The documentation of the portal and APIs is composed of 2 main parts:
+The APIM Portal and API documentation are composed of 2 main parts:
 
 * System folders
-* Effective documentation.
+* Documentation set
 
 === System folders
-System folders allows you to customize the portal menu in header and footer, by adding custom links. +
-See link:/apim/3.x/apim_publisherguide_publish_documentation_system_folders.html[System folders, links and portal customization].
+You use system folders to customize the APIM Portal menu header and footer, by adding custom links. +
+For more information, see link:/apim/3.x/apim_publisherguide_publish_documentation_system_folders.html[System folders, links and portal customization].
 
-=== Effective documentation::
-To add some documentation you can either create new pages or import them from Github or Gitlab.
-Gravitee.io is supporting two types of document:
+=== Documentation set
+To add some documentation, you can either create new pages or import them from GitHub or GitLab.
+APIM supports two types of documents:
 
-* Markdown (See more link:/apim/3.x/apim_publisherguide_publish_documentation_markdown.html[here])
-* OpenAPI (Swagger) (See more link:/apim/3.x/apim_publisherguide_publish_documentation_openapi.html[here])
+* Markdown (for more information, see link:/apim/3.x/apim_publisherguide_publish_documentation_markdown.html[Markdown documentation])
+* OpenAPI (Swagger) (for more information, see link:/apim/3.x/apim_publisherguide_publish_documentation_openapi.html[OpenAPI documentation])
 
 You can also create folders to organize your documentation.
 
-== Manage Pages
+== Manage documentation pages and folders
 
 === Create a new page
-To create a new page or a new folder, click `(+)` , and select the type of document you want or a folder.
+To create a new page or a new folder, click *+* , and select the type of document you want or a folder.
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-creation.png[]
 
 === External documentation
 
-Gravitee.io provides a way to fetch your documentation from an external source.
+You can also fetch your documentation from external sources.
 
-There are 5 types of fetchers:
+APIM includes 5 types of fetchers:
 
-* Github: fetch your documentation from a github repository
-* GitLab: fetch your documentation from a gitlab repository
+* GitHub: fetch your documentation from a GitHub repository
+* GitLab: fetch your documentation from a GitLab repository
 * Git: fetch your documentation from a git repository
 * WWW: fetch your documentation from the web
-* Bitbucket: fetch your documentation from a bitbucket repository
+* Bitbucket: fetch your documentation from a Bitbucket repository
 
-__The documentation is fetched and stored locally in the Gravitee.io platform__
+The documentation is fetched and stored locally in APIM.
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-external-source-auto-fetch.png[]
 
 ==== Auto Fetch ====
 
-__This feature is available since v3.2__
+To periodically fetch your documentation from external sources, you can enable the *Auto Fetch* option and specify the fetch frequency.
 
-To fetch periodically your documentation from external source, you can enable the 'Auto Fetch' option and specify the fetch frequency.
+This frequency definition uses a `cron` expression, which is a string consisting of six fields that describe the schedule, representing seconds, minutes, hours, days, months and weekdays.
 
-This frequency definition uses a __cron expression__ that is a string consisting of six fields that describe the schedule representing second, minute, hour, day, month and weekday. 
+For example:
 
-For example :
-
-* Fetch every hour: `* * */1 * * *` 
+* Fetch every hour: `* * */1 * * *`
 * At 00:00 on Saturday : `0 0 0 * * SAT`
 
-_Note:_ If the APIM administrator configured a maximum fetch frequency, the value configured by the APIM administrator will override the frequency you specify.
+NOTE: If the APIM administrator configured a maximum fetch frequency, the value configured by the APIM administrator will override the frequency you specify.
 
 === Translations
 
-You can add translation for your pages. In the `TRANSLATIONS` tab:
+You can add translations for your pages. In the *TRANSLATIONS* tab:
 
-. Click `ADD A TRANSLATION`
-. Enter a language (FR for french, CZ for czech, IT for italian...)
-. Enter the translated title
-. `OPTIONAL`, you can edit the content to add a translated content by clicking on the switch
-. Click `SAVE TRANSLATION` at the bottom of the page
+. Click *ADD A TRANSLATION*.
+. Enter your 2 character language code (FR for french, CZ for czech, IT for italian, and so on).
+. Enter the translated title.
+. (Optional) You can edit the content to add translated content by toggling on the switch.
+. Click *SAVE TRANSLATION* at the bottom of the page.
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-translations-1.png[]
 
@@ -83,42 +83,43 @@ image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-
 
 === Visibility
 
-Once your documentation page is created, this is not published on the portal for all the users, but only you. You will see this message:
+Once your documentation page is created, you can view it before publishing it in APIM Portal. APIM displays the following message:
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-draft.png[]
 
-To publish a page, you can:
+You can publish a page in one of the following ways:
 
-* Check the `Publish this page` box in `CONFIGURATION` tab
+* Check the *Publish this page* option in the *CONFIGURATION* tab:
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-publish-1.png[]
 
-* Click on the cloud icon in the documentation list
+* Click the cloud icon in the documentation list:
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-publish-2.png[]
 
 === Access control
-In the `ACCESS CONTROL` tab, you can attach user groups to a page. +
-By doing this, none of the members of these groups would be able to access the documentation page.
+
+You can restrict which groups can access the documentation page.
+In the *ACCESS CONTROL* tab, you can exclude members of specific user groups from viewing a page. +
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-access-control.png[]
 
 === Templating
 
-We will see how to create templates of documentation based on https://freemarker.apache.org[freemarker template engine, window=\"_blank\"].
+This example shows how to create documentation templates based on the Apache https://freemarker.apache.org[FreeMarker template engine, window=\"_blank\"].
 
 ==== Syntax
 
-You can access to your api data on your api's documentation by doing so: ${api.name} or ${api.metadata['foo-bar']}
+You can access to your API data in your API documentation with the following format: `${api.name} or ${api.metadata['foo-bar']}`
 
-==== Available API's properties
+==== Available API properties
 
-[width="100%",cols="20%,10%,70%",frame="topbot",options="header"]
+[width="100%",cols="20%,10%,70%",options="header"]
 |======================
 |Field name                 |Field type |Example
 |id                         |String     |70e72a24-59ac-4bad-a72a-2459acbbad39
 |name                       |String     |Stores
-|description                |String     |The Stores API blabla...
+|description                |String     |The Stores API ...
 |version                    |String     |v1
 |metadata                   |Map        |{"email-support": "support.contact@company.com"}
 |createdAt                  |Date       |12 juil. 2018 14:44:00
@@ -134,9 +135,9 @@ You can access to your api data on your api's documentation by doing so: ${api.n
 |======================
 
 
-==== Concrete example
+==== Example
 
-Here an example of a possible template for your API documentation.
+This is an example of a possible template for your API documentation.
 
 [source,markdown]
 ----

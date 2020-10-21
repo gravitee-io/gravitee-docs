@@ -4,18 +4,22 @@
 :page-folder: apim/user-guide/publisher
 :page-layout: apim3x
 
-Gravitee.io allows you to put your APIs forward on the portal homepage.
+== Overview
 
-In order to do so, just add your top APIs in the settings part as bellow:
+APIM includes a feature for displaying your most important APIs on the APIM Portal homepage.
+
+== Configure your top APIs
+
+You configure your top APIs in the APIM Management *Settings*:
 
 image::apim/3.x/api-publisher-guide/top-apis/graviteeio-top-apis-settings.png[]
 
-Then the configured will be displayed on the portal homepage:
+The configured APIs are displayed on the APIM Portal homepage:
 
 image::apim/3.x/api-publisher-guide/top-apis/graviteeio-top-apis-homepage.png[]
 
-And in the `Catalog > Featured` page:
+They are also displayed on the *Catalog > Featured* page:
 
 image::apim/3.x/api-publisher-guide/top-apis/graviteeio-top-apis-featured.png[]
 
-This is quite simple! You can obviously configure more top APIs, there is no limit!
+You can configure as many top APIs as you like.
