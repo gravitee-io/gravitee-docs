@@ -37,7 +37,7 @@ entries:
               - title: Publish your first API
                 output: web
                 subfolderitems:
-                  - title: Using APIM Management
+                  - title: Using APIM Console
                     output: web
                     url: /apim/3.x/apim_quickstart_publish_ui.html
                   - title: Using APIM API
@@ -75,7 +75,7 @@ entries:
                   - title: Install APIM API
                     output: web
                     url: /apim/3.x/apim_installguide_rest_apis_install_zip.html
-                  - title: Install APIM Management
+                  - title: Install APIM Console
                     output: web
                     url: /apim/3.x/apim_installguide_management_ui_install_zip.html
                   - title: Install APIM Portal
@@ -96,7 +96,7 @@ entries:
                   - title: Install APIM API
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_management_api.html
-                  - title: Install APIM Management
+                  - title: Install APIM Console
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_management_ui.html
                   - title: Install APIM Portal
@@ -117,7 +117,7 @@ entries:
                   - title: Install APIM API
                     output: web
                     url: /apim/3.x/apim_installguide_amazon_management_api.html
-                  - title: Install APIM Management
+                  - title: Install APIM Console
                     output: web
                     url: /apim/3.x/apim_installguide_amazon_management_ui.html
                   - title: Install APIM Portal
@@ -182,7 +182,7 @@ entries:
                - title: Security
                  output: web
                  url: /apim/3.x/apim_installguide_rest_apis_security.html
-            - title: Configure APIM Management
+            - title: Configure APIM Console
               output: web
               subfolderitems:
                - title: General configuration
@@ -284,7 +284,7 @@ entries:
                   - title: Introduction
                     output: web
                     url: /apim/3.x/apim_policies_overview.html
-                  - title: Api Key
+                  - title: API Key
                     output: web
                     url: /apim/3.x/apim_policies_apikey.html
                   - title: Assign attributes
@@ -299,7 +299,7 @@ entries:
                   - title: Callout HTTP
                     output: web
                     url: /apim/3.x/apim_policies_callout_http.html
-                  - title: Dynamic Routing
+                  - title: Dynamic routing
                     output: web
                     url: /apim/3.x/apim_policies_dynamic_routing.html
                   - title: Generate JWT
@@ -311,16 +311,16 @@ entries:
                   - title: HTML to JSON
                     output: web
                     url: /apim/3.x/apim_policies_html2json.html
-                  - title: IP Filtering
+                  - title: IP filtering
                     output: web
                     url: /apim/3.x/apim_policies_ip_filtering.html
-                  - title: JSON Threat Protection
+                  - title: JSON threat protection
                     output: web
                     url: /apim/3.x/apim_policies_json_threat_protection.html
                   - title: JSON to JSON
                     output: web
                     url: /apim/3.x/apim_policies_json2json.html
-                  - title: JSON Validation
+                  - title: JSON validation
                     output: web
                     url: /apim/3.x/apim_policies_json_validation.html
                   - title: JWS
@@ -344,34 +344,34 @@ entries:
                   - title: Override HTTP method
                     output: web
                     url: /apim/3.x/apim_policies_override_http_method.html
-                  - title: Rate Limiting
+                  - title: Rate limiting
                     output: web
                     url: /apim/3.x/apim_policies_rate_limiting.html
-                  - title: Regex Threat Protection
+                  - title: Regex threat protection
                     output: web
                     url: /apim/3.x/apim_policies_regex_threat_protection.html
-                  - title: Request Content Limit
+                  - title: Request content limit
                     output: web
                     url: /apim/3.x/apim_policies_request_content_limit.html
-                  - title: Request Validation
+                  - title: Request validation
                     output: web
                     url: /apim/3.x/apim_policies_request_validation.html
-                  - title: Resource Filtering
+                  - title: Resource filtering
                     output: web
                     url: /apim/3.x/apim_policies_resource_filtering.html
-                  - title: Rest to Soap
+                  - title: REST to SOAP
                     output: web
                     url: /apim/3.x/apim_policies_rest2soap.html
-                  - title: Role-Based Access Control
+                  - title: Role-based access control
                     output: web
                     url: /apim/3.x/apim_policies_role_based_access_control.html
-                  - title: SSL Enforcement
+                  - title: SSL enforcement
                     output: web
                     url: /apim/3.x/apim_policies_ssl_enforcement.html
-                  - title: Transform Headers
+                  - title: Transform headers
                     output: web
                     url: /apim/3.x/apim_policies_transform_headers.html
-                  - title: Transform Query Parameters
+                  - title: Transform query parameters
                     output: web
                     url: /apim/3.x/apim_policies_transform_query_params.html
                   - title: URL rewriting
@@ -380,10 +380,10 @@ entries:
                   - title: XML to JSON
                     output: web
                     url: /apim/3.x/apim_policies_xml2json.html
-                  - title: XML Threat Protection
+                  - title: XML threat protection
                     output: web
                     url: /apim/3.x/apim_policies_xml_threat_protection.html
-                  - title: XML Validation
+                  - title: XML validation
                     output: web
                     url: /apim/3.x/apim_policies_xml_validation.html
                   - title: XSLT

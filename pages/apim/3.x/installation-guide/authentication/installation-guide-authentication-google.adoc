@@ -1,5 +1,5 @@
 [[gravitee-installation-authentication-google]]
-= Google
+= Configure Google authentication
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_authentication_google.html
 :page-folder: apim/installation-guide/portal/authentication
@@ -7,17 +7,19 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
-Here you will find how to configure Gravitee.io to allow users to connect using their Google account.
+== Overview
+
+This page allows you to configure APIM to allow users to connect using their Google account.
 
 == Create a Google Client
 
-Before being able to connect to the Gravitee.io portal using a Google account, you need to create an OAuth client ID.
+Before you can connect to APIM Portal with a Google account, you need to create an OAuth client ID.
 
-You can access the Google APIs developers console from https://console.developers.google.com/
+You can access the Google API developers console at https://console.developers.google.com/.
 
 === Check access to the Google+ API
 
-Before going further, please check that your current project has access to the Google+ API.
+Before you begin, you need to check that your current project has access to the Google+ API.
 
 .Check Google+ API
 image::apim/3.x/installation/authentication/google_enable_google+_api.png[Check Google+ API access]
@@ -32,24 +34,24 @@ image::apim/3.x/installation/authentication/google_create_client.png[Create a ne
 .Configure the client
 image::apim/3.x/installation/authentication/google_fill_client_form.png[Fill the form]
 
-WARNING: Be careful, the `Authorized redirect URIs` must match exactly to the domain which is hosting the portal.
+WARNING: The `Authorized redirect URIs` value must exactly match the domain which is hosting APIM Portal.
 
 [[gravitee-installation-authentication-google-credentials]]
-=== Get client's credentials
+=== Retrieve client credentials
 .Retrieve Client credentials
 image::apim/3.x/installation/authentication/google_client_credentials.png[Get Client credentials]
 
-== Configure Gravitee.io
+== Configure APIM
 
 include::../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
 
-=== Via the Portal
+=== In APIM Portal
 
-Got to Settings > Authentication > New provider (the `+` button) > select Google
+Go to *Settings > Authentication > New provider*, click the `+` button and select *Google*.
 
 image::apim/3.x/management-api-configuration-idp/new-google.png[Gravitee.io - New Google IDP]
 
-=== Via the `gravitee.yml`
+=== In the `gravitee.yml` file
 [source,yaml]
 ----
 security:
@@ -59,13 +61,13 @@ security:
       clientSecret: xxxx-xxx-xxx-xxx
 ----
 
-== It's time to play
+== Test the connection
 
-.Login Form
+.Login form
 image::apim/3.x/installation/authentication/google_login_form.png[Login Form]
 
 .Choose account
 image::apim/3.x/installation/authentication/google_choose_google_account.png[Login Form]
 
-.Login Success
+.Login success
 image::apim/3.x/installation/authentication/google_login_success.png[Here we are !]

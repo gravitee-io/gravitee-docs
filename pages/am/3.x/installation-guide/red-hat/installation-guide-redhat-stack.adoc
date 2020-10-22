@@ -87,7 +87,7 @@ sudo systemctl start elasticsearch
 
 [source,bash,subs="attributes"]
 ----
-sudo yum install {gravitee-package-name}-with-dependencies
+curl -L https://bit.ly/install-apim-3x | bash
 ----
 
 == Running Gravitee.io Access Management with `systemd`

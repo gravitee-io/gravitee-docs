@@ -1,5 +1,5 @@
 [[gravitee-installation-portal-configuration]]
-= Portal UI configuration
+= Configure APIM Portal
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_portal_ui_configuration.html
 :page-folder: apim/installation-guide/portal-ui
@@ -17,7 +17,7 @@ The only mandatory value in the `config.json` file is:
 }
 ----
 
-It describes where the portal API is, to be able to request it.
+It describes where the APIM API Portal endpoint is, and must be set so APIM Portal can send requests to it.
 
 == Default configuration
 
@@ -28,7 +28,6 @@ include::https://raw.githubusercontent.com/gravitee-io/gravitee-portal-webui/mas
 
 == Theme
 
-You have the possibility to change the default theme of Gravitee with your own custom theme.
-For that, you can manage the theme from the Management UI (Settings > Theme)
+You can change the default theme of APIM Portal to your own custom theme in APIM Managment with *Settings > Theme*.
 
 image::apim/3.x/installation/portal-ui/graviteeio-portal-configuration-theme.png[]

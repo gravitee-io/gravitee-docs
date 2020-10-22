@@ -8,25 +8,32 @@
 :github-repo: https://github.com/gravitee-io/gravitee-docker
 :docker-hub: https://hub.docker.com/r/graviteeio
 
-IMPORTANT: We assume that you are familiar with Docker. +
-To run our official images, you must start by installing https://docs.docker.com/installation/[Docker, window=\"_blank\"]
+== Overview
 
-Gravitee.io docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub, window=\"_blank\"].
-You could find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles on GitHub, window=\"_blank\"].
+This section explains how to run APIM images in Docker. The procedures are intended for users who are already familiar with Docker.
 
-== Run Gravitee.io API Management
+== Prequisites
 
-You can launch a complete Gravitee.io API Management stack using our ready-to-use docker-compose file.
+To run the official images, you must first install https://docs.docker.com/installation/[Docker, window=\"_blank\"].
 
-This latest is including Gravitee.io API Management + MongoDB + Elasticsearch.
+== Images
 
-[WARNING] 
-.Elasticsearch configuration
+The APIM Docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub, window=\"_blank\"].
+You can find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles on GitHub, window=\"_blank\"].
+
+== Run APIM API
+
+You can run a complete APIM stack using our docker-compose file.
+It includes the four APIM components, MongoDB and Elasticsearch.
+
+[WARNING]
 ====
-Before running the commands below:
+Before running the commands below, check the Elasticsearch configuration as follows:
 
-. Make sure you have the minimum vm.max_map_count property set in order to run Elasticsearch properly. https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html[Click here, window=\"_blank\"] to see how to check the current value and update if necessary.
-. Make sure the folder (e.g. `elasticsearch`) defined as the ES volume, within the docker-compose file, is https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_configuration_files_must_be_readable_by_the_elasticsearch_user[readable by elasticsearch user, window=\"_blank\"]: `sudo chmod g+rwx elasticsearch/ && sudo chgrp 0 elasticsearch/`
+. Ensure sure you have the minimum `vm.max_map_count` property needed set to run Elasticsearch properly. https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html[Click here, window=\"_blank\"] to see how to check the current value and update if necessary.
+. Ensure the folder defined as the ES volume in the docker-compose file (e.g. `elasticsearch`) is https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_configuration_files_must_be_readable_by_the_elasticsearch_user[readable by the elasticsearch user, window=\"_blank\"]:
++
+`sudo chmod g+rwx elasticsearch/ && sudo chgrp 0 elasticsearch/`
 ====
 
 [source,shell]
@@ -41,29 +48,27 @@ $ docker-compose pull
 $ docker-compose up
 ....
 
-== Check your platform
+== Check the APIM components are running
 
-When all components are started, you can do a quick test to see if everything is ok by checking these urls:
+When all components are started, you can run a quick test by checking these URLs:
 
 |===
-|Component |URL| Expected
+|Component |URL| Expected response
 
-|API Gateway
+|APIM Gateway
 |http://localhost:8082/
-|Must return 404 status code, with a `No context-path matches the request URI` payload.
+|404 status code, with a `No context-path matches the request URI` payload.
 
-|Management API
+|APIM API
 |http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/apis
-|Must return a 200 status code, with a `[]` payload.
+|200 status code, with a `[]` payload.
 
-|Management UI
+|APIM Management
 |http://localhost:8084/
-|Must return a 200 status code, showing the Management UI
+|200 status code, showing the UI
 
-|Portal UI
+|APIM Portal
 |http://localhost:8085/
-|Must return a 200 status code, showing the Portal
+|200 status code, showing the UI
 
 |===
-
-Once done, you're now ready to play with Gravitee.io API Management, so let's take a look to the link:/apim/3.x/apim_quickstart_publish.html[Quickstart guide].
