@@ -1,7 +1,7 @@
-= Configuration via gravitee.yml Vs UI
+= Configure with `gravitee.yml` or APIM Console
 
-This provider support both UI configuration and file configuration.
-Regardless your choice, the configuration is stored in the database.
-This means that Gravitee.io use your new configuration when you click on the "Save" button on the UI, or when you restart the Rest APIs if you choose to configure the provider via the configuration file.
+This provider supports both APIM Console configuration and file configuration.
+Whichever you choose, the configuration is stored in the database.
+This means that APIM starts using your new configuration as soon as you click the *Save* button in APIM Console, or restart APIM API if you choose to configure the provider via the configuration file.
 
-WARNING: if you choose the configuration file to configure the provider and then change values in the UI, all modifications will be overriden by those in the configuration file at the next restart of the Rest APIs.
+WARNING: If you choose the configuration file to configure the provider and then change values in APIM Console, all modifications are overwritten by those in the configuration file next time you restart APIM API.

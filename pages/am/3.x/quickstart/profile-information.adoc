@@ -4,28 +4,29 @@
 :page-folder: am/quickstart
 :page-layout: am
 
-After you have authenticated your first users (see link:/am/current/am_quickstart_authenticate_users.html[Authenticate users with Identity provider^]) you can retrieve the user's profile information by using OpenID Connect.
+After you have authenticated your first user (see link:/am/current/am_quickstart_authenticate_users.html[Authenticate users with Identity provider^]) you can retrieve user profile information with OpenID Connect.
 
 NOTE: OpenID Connect is an identity layer on top of the OAuth 2.0 protocol.
-It enables Clients to verify the identity of the End-User based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the End-User.
+It enables clients to verify the identity of the end user by using an Authorization Server to authenticate and obtain basic profile information about the end user.
 See link:http://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect specifications^] for more information.
 
-Gravitee.io Access Management is based upon OAuth2/OpenID Connect protocols and act as an identity providers broker. It helps you obtaining and verifying the users' identity of your applications by issuing link:http://openid.net/specs/openid-connect-core-1_0.html#IDToken[ID Token^] or calling the link:http://openid.net/specs/openid-connect-core-1_0.html#UserInfo[UserInfo Endpoint^].
+AM is based upon OAuth2/OpenID Connect protocols and acts as an identity provider broker. You use it to obtain and verify user identities for your applications by issuing link:http://openid.net/specs/openid-connect-core-1_0.html#IDToken[ID Tokens^] or calling the link:http://openid.net/specs/openid-connect-core-1_0.html#UserInfo[UserInfo Endpoint^].
 
 == ID Token
 
 === Get ID Token
 
-The ID token is a signed link:https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32[JSON Web Token (JWT)^] that contains user profile information, also known as `claims`.
-These claims are statements about the Authentication of the End-User and can be trusted only if application consumers can verify its signature.
-ID Token is self contained and supply all the necessary information about the current user without making additional HTTP requests.
+An ID Token is a signed link:https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32[JSON Web Token (JWT)^] that contains user profile information, also known as a `claim`.
+Claims are statements about end user authentication and can be trusted only if application consumers can verify their signature.
+ID tokens are self-contained and supply all the necessary information about the current user without making additional HTTP requests.
 
-You can retrieve an ID Token by requesting for an access token with the specific scope `openid`
+You can retrieve an ID Token by requesting an access token with a specific `openid` scope.
 
-. Go to your `Settings` application
-. And then go to `OAuth 2.0 / OIDC` section
-. Add `openid` scope and press `+ ADD`
-. Scroll down to the bottom of the page and click `SAVE`
+. In AM Console, click *Applications*.
+. Click the application, then click *Settings*.
+. Click *OAuth 2.0 / OIDC*.
+. In the *Scopes* section, select *openid* from the *Scope* drop-down menu and click *+ADD*.
+. Scroll down to the bottom of the page and click *SAVE*.
 
 Request a token::
 
@@ -52,7 +53,7 @@ curl -L -X POST 'http://GRAVITEEIO-AM-GATEWAY-HOST/:domainPath/oauth/token' \
 |scope           |*REQUIRED.* Set the value to `openid`.
 |==========================
 
-If everything goes well, you should see the following response :
+If it works correctly, you will see the following response:
 
 [source]
 ----
@@ -71,31 +72,31 @@ Pragma: no-cache
 
 === Verify ID Token
 
-ID token can be decoded and verified via 3rd-party JWT library that you can find at link:https://jwt.io/[JWT.IO website^].
+An ID Token can be decoded and verified using a 3rd-party JWT library that you can find on the link:https://jwt.io/[JWT.IO website^].
 
-ID token must contain at least the following link:http://openid.net/specs/openid-connect-core-1_0.html#IDToken[required claims^] :
+ID Tokens must contain at least the following link:http://openid.net/specs/openid-connect-core-1_0.html#IDToken[required claims^]:
 
 [width="100%",cols="2,8",frame="topbot",options="header,footer"]
 |==========================
 |Claim      |
-|iss        |Issuer Identifier, must be the `oidc.iss` configuration value (default http://gravitee.am)
-|sub        |Subject Identifier represented by the unique user's `username`
+|iss        |Issuer Identifier, must be the `oidc.iss` configuration value (default http://gravitee.am).
+|sub        |Subject Identifier represented by the unique user's `username`.
 |aud        |Audience(s) that this ID Token is intended for. It MUST contain your OAuth 2.0 `client_id`.
 |exp        |Expiration time on or after which the ID Token MUST NOT be accepted for processing.
 |iat        |Time at which the JWT was issued.
 |==========================
 
-Finally, make sure that the ID token was signed by Gravitee.io Access Management.
+Finally, you need to have the ID Token signed by AM.
 
-. Go to the `Certificates` section of your security domain
-. Retrieve your public key by clicking on image:am/current/graviteeio-am-quickstart-profile-public-key.png[] icon
+. Click *Certificates* for your security domain.
+. Retrieve your public key by clicking on the key icon image:am/current/graviteeio-am-quickstart-profile-public-key.png[].
 . Use a JWT library to verify the signature.
 
-NOTE: You can also use the link:https://gravitee.io[Gravitee.io API Management solution^] and the link:/apim_policies_jwt.html[JWT Policy^] to verify and retrieve user profile information.
+NOTE: You can also use link:https://gravitee.io[Gravitee.io API Management^] and the link:/apim_policies_jwt.html[JWT Policy^] to verify and retrieve user profile information.
 
 == UserInfo Endpoint
 
-In addition to the claims in the ID Token, OpenID Connect defines a standard protected endpoint, the link:http://openid.net/specs/openid-connect-core-1_0.html#UserInfo[UserInfo Endpoint^], that returns claims about the current user by the access token.
+In addition to the claims in the ID Token, OpenID Connect defines a standard protected endpoint, the link:http://openid.net/specs/openid-connect-core-1_0.html#UserInfo[UserInfo Endpoint^], that returns claims about the current user through the access token.
 
 Request a token::
 
@@ -104,7 +105,7 @@ Request a token::
 curl -X GET http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/oidc/userinfo -H 'Authorization: Bearer :access_token'
 ----
 
-If everything goes well, you should see the following response :
+If it works correctly, you will see the following response:
 
 [source]
 ----
@@ -124,17 +125,16 @@ Pragma: no-cache
 
 == Custom claims
 
-Identity provider serves default claims such as the user's `username`, `given_name`, `family_name`, ... . You can add custom claims by overriding identity provider's configuration.
+The identity provider serves default claims such as the user's `username`, `given_name`, `family_name`, and so on. You can add custom claims by updating the identity provider configuration.
 
 === Add new user information
 
-. Go to the `Providers` section of your security domain
-. Select your Identity Provider and click on `User Mappers` tab
-. Map new custom claims with user attributes contained in your user data store
-
+. Click *Providers* for your security domain.
+. Select your identity provider settings, the click the *User mappers* tab.
+. Map new custom claims with user attributes contained in your user data store.
++
 image::am/current/graviteeio-am-quickstart-profile-user-mappers.png[]
 
-[start=4]
 . Custom user attributes will be available in the UserInfo Endpoint response.
 
-TIP: more information about User mapping to be found in the dedicated section: link:/am/current/am_userguide_identity_provider_mapping.html[User and role mapping^].
+TIP: You can find more information about User mapping to be found in the link:/am/current/am_userguide_identity_provider_mapping.html[User and role mapping^] section.

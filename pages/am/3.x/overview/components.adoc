@@ -5,17 +5,17 @@
 :page-toc: false
 :page-layout: am
 
-Next sections are describing top components which are part of Gravitee.io Access Management.
+== Overview
 
-== Gateway
-The Auth gateway is the core component of the Gravitee.io Access Management platform.
-It will act as a broker trust with your identity providers and will provide Authentication and Authorization Flow for your users.
+This page describes the main components included in AM.
 
-== Management API
-A RESTful API providing a bunch of services to manage and configure the global platform. All exposed
-services are constraint by authentication and authorization rules.
-You can find more information by having a look to the link:am/current/am_devguide_management_api_documentation.html[Management API > Overview] section.
+== AM Gateway
+AM Gateway is the core component of the AM platform.
+It acts as a trust broker with your identity providers and provides an authentication and authorization flow for your users.
 
-== Portal
-This is the Web UI for the Gravitee.io AM Management API. This UI acts as a management tool for the platform.
+== AM API
+This RESTful API exposes services to manage and configure the entire platform. All exposed
+services are restricted by authentication and authorization rules. You can find more information in the link:am/current/am_devguide_management_api_documentation.html[Management API > Overview] section.
 
+== AM Console
+This web UI acts as a graphical interface to the AM API functionality.

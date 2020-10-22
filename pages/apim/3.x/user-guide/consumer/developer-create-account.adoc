@@ -1,23 +1,25 @@
-= Create an account
+= Create a user account
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_consumerguide_create_account.html
 :page-folder: apim/user-guide/consumer
 :page-layout: apim3x
 
-Gravitee.io allows user to register from the portal and the console.
+== Overview
+
+New users can be registered in either APIM Management or APIM Portal.
 
 == Prerequisites
 
-In order to work correctly:
+To work correctly, new user accounts require the following configuration:
 
-* the link:/apim/3.x/apim_installguide_rest_apis_configuration.html#sending_emails[email SMTP configuration] must be done
+* link:/apim/3.x/apim_installguide_rest_apis_configuration.html#sending_emails[email SMTP configuration]
 
-* the option enabled from the settings part:
-
+* the *Allow User Registration* option enabled in *Settings*:
++
 image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-activate-settings.png[]
 
-* the password validation regex must have been configured in the gravitee.yml (default based on link:https://owasp.org/www-community/OWASP_Validation_Regex_Repository[OWASP recommendations])
-
+* the password validation regex configured in `gravitee.yml` (the default regex is based on link:https://owasp.org/www-community/OWASP_Validation_Regex_Repository[OWASP recommendations])
++
 [source,yaml]
 ----
   # Password complexity validation policy
@@ -39,27 +41,25 @@ image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-ac
               #$                 # end-of-string
 ----
 
-== User registration workflow
+== Register as a new user
 
-. Click `Sign In` in the top menu. You access to the login form:
-
+. Click *Sign In* in the top menu. The login form is diplayed:
++
 image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-login-form.png[]
 
-[start=2]
-. Click `Sign Up` link at the bottom of the form. You will be redirected to a registration form:
-. Fill the form and click `SIGN UP` button
-
+. Click the *Sign Up* link at the bottom of the form. You are redirected to a registration form.
+. Fill in the form and click *SIGN UP*.
++
 image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-signin-form.png[]
-
-[start=4]
-. An email is sent. This email contains a link to validate the registration.
-
++
+APIM sends you a validation email.
++
 image:apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-email-registration-1.png[Confirmation, 300]
 image:apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-email-registration-2.png[Email, 300]
-
++
 [NOTE]
 ====
-By default, the link will be available for 24h (86400s), but this can be changed in the gravitee.yml
+By default, the link is available for 24h (86400s), but this can be changed in `gravitee.yml`.
 
 [source,yaml]
 ----
@@ -71,29 +71,26 @@ user:
 
 ====
 
-[start=5]
 . Click the link in the email.
-. Confirm registration by defining your password and click `CONFIRM` button.
-
+. Confirm registration by defining your password and clicking the *CONFIRM* button.
++
 image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-confirm-registration.png[]
-
++
 TIP: You can click on the `eye` icon to display the password
-
-[start=7]
-. That's it your registration is fully completed!
-
++
+APIM displays a message confirming your registration is complete.
++
 image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-confirm-registration-validated.png[Registration successful, 300]
 
-== Warning
-=== Link expiration
-If the link expire, you will see this message:
+== Expired link
+
+If the link expires, you will see this message:
 
 image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-link-expire.png[Expiration message, 300]
 
-Go back to registration page and send a new registration request.
+Click *Back to registration* to return to the registration page and send a new registration request.
 
-=== Password validation
+== Password validation
 If the password does not respect some security rules (see link:/apim/3.x/apim_consumerguide_create_account.html#prerequisites[Prerequisites]), you will see this message:
 
 image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-unsecure-password.png[]
-

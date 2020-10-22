@@ -34,15 +34,15 @@ By default, APIM includes three membership roles:
 
 == Add and remove users
 
-. Log in to APIM Management.
-. Click *APIs*` in the left menu.
+. Log in to APIM Console.
+. Click *APIs* in the left menu.
 . From the *APIs* page, select your API and click *Portal > Members*.
 +
 image::apim/3.x/api-publisher-guide/members/manage-members.png[Gravitee.io - manage members]
 
 To add new users:
 
-. Click the *(+)* button at the bottom right of the page.
+. Click the plus icon image:apim/3.x/icons/plus-icon.png[] at the bottom right of the page.
 . Search for the user with the form, then select the user.
 +
 image::apim/3.x/api-publisher-guide/members/manage-members-add.png[Gravitee.io - add member,300]
@@ -50,7 +50,7 @@ image::apim/3.x/api-publisher-guide/members/manage-members-add.png[Gravitee.io -
 To remove users:
 
 Repeat the steps above, then click the delete icon next to the user.
-+
+
 image::apim/3.x/api-publisher-guide/members/manage-members-remove.png[Gravitee.io - remove member]
 
 == Transfer ownership
@@ -58,7 +58,7 @@ image::apim/3.x/api-publisher-guide/members/manage-members-remove.png[Gravitee.i
 You can transfer ownership of an API from one user to another. You do this when the current Primary Owner leaves a project, for example.
 
 . Log in to APIM Management.
-. Click *APIs*` in the left menu.
+. Click *APIs* in the left menu.
 . From the *APIs* page, select your API and click *Portal > Transfer ownership*.
 . Choose the new Primary Owner.
 . Choose the new role of the current Primary Owner.

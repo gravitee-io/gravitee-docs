@@ -1,4 +1,4 @@
-= Install Portal with `.zip`
+= Install APIM Portal
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_portal_ui_install_zip.html
 :page-folder: apim/installation-guide/with-zip
@@ -7,13 +7,17 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
-== System Requirements
+== Prerequisites
+
+Your environment must meet the requirements listed below before you install APIM Portal.
+
+NOTE: Before you begin, ensure APIM API is installed and running.
 
 === Browsers
 
-Portal has been tested with the latest versions of Google Chrome, Firefox and Internet Explorer >= 10
+APIM Portal has been tested with the latest versions of Google Chrome and Firefox and with Internet Explorer from version 10.
 
-== Installing from the ZIP archive
+== Download and extract the `.zip` archive
 
 The binaries are available from https://gravitee.io/downloads/api-management[Downloads page] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip[Download].
 
@@ -31,9 +35,7 @@ $ unzip gravitee-standalone-distribution-{{ site.products.apim._3x.version }}.zi
 
 The portal is a client-side only Angular application and can be deployed on any HTTP server like https://httpd.apache.org/[Apache] or http://nginx.org/[Nginx].
 
-=== or Run it
-
-With Node::
+=== Run with Node.js
 
 [source,bash]
 [subs="attributes"]

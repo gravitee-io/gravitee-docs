@@ -67,11 +67,8 @@ be retrieved using EL by using the following syntax:
 .^|content       |Body content           ^.^|string          |-
 |===
 
-[WARNING]
-====
-* `{#request.content}` is only available when the policy is bound to an `on-request-content` phase.
-* `{#request.pathParams}` keys are based on the path defined in policies configuration. For the example above, the defined path is `/store/:storeId`
-====
+WARNING: `{#request.content}` is only available when the policy is bound to an `on-request-content` phase.
+
 === Example
 
 * Get the value of the `Content-Type` header for an incoming HTTP request:

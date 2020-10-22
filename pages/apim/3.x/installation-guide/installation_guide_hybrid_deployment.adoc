@@ -12,42 +12,39 @@ When you are running a hybrid architecture (i.e. a mix between on-premise and cl
 (which can be just technical constraints or cost constraints) preventing you from deploying all the components required by
 APIM in each data center.
 
-To answer this problem, Gravitee.io APIM is providing hybrid components (in the form of plugins) to think about a new way to define
-your architecture and your deployment vision.
+APIM presents a solution in the form of hybrid components (in the form of plugins), freeing you from these constraints so that you can find a new way to define
+your architecture and deployment vision.
 
-That's what we are calling "Hybrid mode" or "Hybrid deployment".
-
+We can describe this as _hybrid mode_ or _hybrid deployment_.
 
 == Architecture
 
-Here it is a typical Gravitee.io hybrid architecture:
+This is a typical hybrid APIM architecture:
 
 .Deployment architecture
-image::apim/3.x/installation/hybrid/hybrid_deployment_architecture.png[Deployment architecture]
+image::apim/3.x/installation/hybrid/hybrid_deployment_architecture.png
 
 == Configuration
 
-To make Gravitee.io API Gateway work in this architecture, you will need two components:
+For APIM Gateway to work in this architecture, you need two components:
 
-* The first one is a kind of "Technical API Gateway" (green instances on the schema) which is exposing new HTTP services used to bridge HTTP calls to the
- underlying repository (which can be any of our supported repositories such as MongoDB, JDBC and so on...)
+* A _technical API gateway_ (shown in green in the diagram) which exposes new HTTP services used to bridge HTTP calls to the
+ underlying repository (which can be any of our supported repositories, including MongoDB, JDBC and so on)
 
-* The second components is a classical API Gateway (red instances on the schema)  where we just have to switch the default repository plugin for a new
-HTTP bridge repository plugin.
+* A standard APIM Gateway (shown in red on the schema) with the default repository plugin switched to a new
+HTTP bridge repository plugin
 
+With this infrastructure the standard APIM Gateway can communicate with the technical API gateway
+through a secure HTTP/S channel, and your cloud data center does not need a datastore installation.
 
-Thanks to these two components, classical API Gateway will be able to "communicate" with the technical API Gateway
-through a secured HTTP/S channel. This way, no more datastore installation is required from your cloud DC.
-
-
-NOTE: What we are calling a technical API Gateway is, in fact, a classical API Gateway which have been improved thanks to
+NOTE: What we are describing as a technical API gateway is, in fact, a standard APIM Gateway which has been augmented with
 a new plugin.
 
-=== API Gateway - HTTP bridge (server)
+=== APIM Gateway - HTTP bridge (server)
 
 ==== Installation
 
-To expose the new HTTP API, you have to install a new plugin inside the `plugins` directory of the API Gateway.
+To expose the new HTTP API, you need Sto install a new plugin inside the `plugins` directory of APIM Gateway.
 This plugin can be found at https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/
 
 [source,bash]
@@ -57,7 +54,7 @@ $ wget -O ${GRAVITEEIO_HOME}/plugins https://download.gravitee.io/graviteeio-api
 
 [NOTE]
 ====
-You have to remove some of the existing plugins available by default in the API gateway: the sync service,
+You need to remove some of the existing plugins available by default in APIM Gateway: the sync service,
 all the cache services, the policies and the resources.
 
 For example, in Gravitee.io APIM 1.18.0, the `plugins` directory contains the following files :
@@ -76,7 +73,7 @@ For example, in Gravitee.io APIM 1.18.0, the `plugins` directory contains the fo
 
 ==== Configuration
 
-Then, you have to configure the new plugin in the `gravitee.yml` configuration file.
+You configure the new plugin in the `gravitee.yml` file.
 
 [source,yaml]
 ----
@@ -96,23 +93,23 @@ services:
           admin: adminadmin
 ----
 
-==== Validation
+==== Check the APIM Gateway node is running
 
-You can test that your API Gateway node is running by sending an HTTP request to port `8082` on `localhost`:
+You can test that your APIM Gateway node is running by sending an HTTP request to port `8082` on `localhost`:
 
 [source,bash]
 ----
 $ curl -X GET http://localhost:18092/_bridge/apis
 ----
 
-which should give you a response containing an empty array or a list of APIs.
+You should receive a response containing an empty array or a list of APIs.
 
-=== API Gateway - HTTP repository (client)
+=== APIM Gateway - HTTP repository (client)
 
 ==== Installation
 
-To consume the HTTP bridge, you will need to replace default repository plugin (most probably MongoDB repository) with
-a new HTTP repository inside the `plugins` directory of the API Gateway.
+To consume the HTTP bridge, you need to replace default repository plugins (usually a MongoDB repository) with
+a new HTTP repository in the APIM Gateway `plugins` directory.
 This plugin can be found at https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/
 
 [source,bash]
@@ -122,7 +119,7 @@ $ wget -O ${GRAVITEEIO_HOME}/plugins https://download.gravitee.io/graviteeio-api
 
 ==== Configuration
 
-Then, you have to configure the new plugin in the `gravitee.yml` configuration file.
+You configure the new plugin in the `gravitee.yml` file.
 
 [source,yaml]
 ----
@@ -139,7 +136,6 @@ management:
         password: adminadmin
 ----
 
-== Runtime
+== Start the APIM Gateways
 
-Now that the API Gateway are installed and well-configured, you are ready to start them.
-Finally, your consumers are able to call the API Gateway with the HTTP repository as usual.
+Start the APIM Gateways. Your consumers will be able to call APIM Gateway with the HTTP repository as usual.

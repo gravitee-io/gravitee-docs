@@ -14,7 +14,7 @@ This repository plugin is for connecting to SQL databases.
 == Supported databases
 
 |===
-|Database | Version tested | Gravitee.io Plugin | JDBC Driver
+|Database | Version tested | APIM Plugin | JDBC Driver
 
 |Postgresql
 |9 / 10 / 11
@@ -34,14 +34,14 @@ This repository plugin is for connecting to SQL databases.
 |https://docs.microsoft.com/en-us/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017[Download page]
 |===
 
-== How to install the jdbc plugin
-NOTE: You need to repeat the following steps on each components (gateway and management API) where the SQL database is used.
+== Install the JDBC plugin
+NOTE: You need to repeat the following steps on each component (APIM Gateway and APIM API) where the SQL database is used.
 
- . download the plugin according to your Gravitee.io APIM version (take the latest maintenance release)
- . put the zip file in the plugin directory on each component (`$GRAVITEE_HOME/plugins`)
- . download the jdbc driver according to your database version
- . put the driver in `$GRAVITEE_HOME/plugins/ext/repository-jdbc`
- . configure your `gravitee.yml`
+ . Download the plugin corresponding to your APIM version (take the latest maintenance release).
+ . Place the zip file in the plugin directory for each component (`$GRAVITEE_HOME/plugins`).
+ . Download the JDBC driver corresponding to your database version.
+ . Place the driver in `$GRAVITEE_HOME/plugins/ext/repository-jdbc`.
+ . Configure your `gravitee.yml`, as described in the next section.
 
 
 == Configuration
@@ -54,8 +54,8 @@ management:
     url:                 # jdbc url
 ----
 
-The above example is the minimum sample file to start with a JDBC database.
-Other properties allow you to fine tuned your JDBC connection and control the behavior of JDBC database.
+The above example is the minimum sample file needed to get started with a JDBC database.
+Other properties allow you to fine tune your JDBC connection and control the behavior of JDBC database.
 
 [source,yaml]
 ----

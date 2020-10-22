@@ -8,16 +8,16 @@
 :page-layout: apim3x
 
 The Elasticsearch connector is based on the HTTP API exposed by ES instances.
-This connector supports all versions of ES, from 5.x to 7.x. 
-For more detail about Elastic supported version, please refer to this link https://www.elastic.co/support/eol.
+This connector supports all versions of ES, from 5.x to 7.x.
+You can find more detail about supported versions of Elastic at https://www.elastic.co/support/eol.
 
-WARNING: Gravitee.io no longer supports native ES client and previous connector provided by us will not be supported anymore.
+WARNING: Gravitee.io no longer supports native ES client. Previous connectors provided by us are no longer supported.
 
 == Configuration
 
-=== Management API configuration
+=== APIM API configuration
 
-WARNING: The ElasticSearch client does not support URL schemes in the form of `http://USERNAME:PASSWORD@server.org`. You MUST provide the username and password via the `analytics.elasticsearch.security.username` and `analytics.elasticsearch.security.password` properties.
+WARNING: The Elasticsearch client does not support URL schemes in format `http://USERNAME:PASSWORD@server.org`. You MUST provide the username and password using the `analytics.elasticsearch.security.username` and `analytics.elasticsearch.security.password` properties.
 
 [source,yaml]
 ----
@@ -71,7 +71,7 @@ reporters:
 == Index management with ES Curator
 
 ES Curator is a great tool for ES administration.
-For optimizing data footprint and ES performance you can define a retention window and periodically merge shards into only one segment
+For optimizing data footprint and ES performance you can define a retention window and periodically merge shards into only one segment.
 
 [source,bash]
 ----
@@ -84,7 +84,7 @@ curator.yml :
 client:
   hosts:
     - node1
-    - node2	
+    - node2
   port: 9200
 
 logging:
@@ -135,5 +135,5 @@ actions:
       timestring: '%Y.%m.%d'
 ----
 
-NOTE: If you deploy it on every ES data node do not forget to set `master_only: True` into the curator config file.
-It will allow to run only once curator on the elected current master.
+NOTE: If you deploy it on every ES data node do not forget to set `master_only: True` into the curator configuration file.
+It will allow to run the curator only once on the elected current master.

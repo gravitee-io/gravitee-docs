@@ -4,61 +4,19 @@
 :page-folder: apim/user-guide/consumer
 :page-layout: apim3x
 
-Gravitee.io Portal exposes published APIs to let application developers browsing APIs,
-requesting access and generating subscriptions to secure access and identify consumers for monitoring and analytics.
+== Overview
+APIM Portal exposes published APIs to developers so they can browse the APIs, request access, generate subscriptions to secure access and identify consumers for monitoring and analytics.
 
-To access these APIs and start playing with, consumers must subscribe to the link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[APIs' plans] with their registered application.
+To access the APIs and start interacting with them, consumers must first subscribe to an link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[API plan] with their registered application.
 
 NOTE: Consumers must have a link:/apim/3.x/apim_consumerguide_create_account.html[user account] to register an application and subscribe to an API.
 
-== Create an application
-Consumers who want to use APIs need to register an application that will let API publishers to control and regulate access to their APIs.
-Typically, application can be a web application, a native application, bash/job applications and so on which want to access sensitive data.
+== Before you begin
 
-See link:/apim/3.x/apim_consumerguide_manage_applications.html#create_an_application[how to create your first application]
+=== Create an application
 
-== Subscribe to an API
-
-API's plans allow API publisher to provide and regulate access to their APIs. In order to use APIs, you must subscribe to an API's plan (see link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[plans and subscriptions]).
-
-To subscribe to an API:
-
-. Go to the Gravitee.io Portal
-. Click `Catalog` in the top menu
-. Browse APIs categories or search APIs by keywords
-
-.Select an API to subscribe
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-search-an-api.png[Gravitee.io - search an api]
-
-[start=4]
-. Select the API you want to subscribe
-
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-select-an-api.png[Gravitee.io - select an api]
-
-[start=5]
-. Click `SUBSCRIBE` in the sub-menu and choose the right API's plan
-
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-to-an-api.png[Gravitee.io - subscribe to an api]
-
-[start=6]
-. Select your application
-
-.Select an application
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-select-an-application.png[Gravitee.io - select an application]
-
-NOTE: Remember, if you choose an OAuth 2.0 plan you must have a `client_id` set in your application
-
-[start=7]
-. Click `NEXT`
-. You can check your information before validating the request
-. When you are ready, click `VALIDATE THE REQUEST`
-
-.Confirmation of the request before sending it
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-confirmation-before-validation.png[Gravitee.io - confirmation before validation]
-
-[NOTE]
-====
-If there are general conditions for the selected plan, you have to accept them before validating the subscription.
+Consumers wanting to use APIs need to register an application so that API publishers can control and regulate access to their APIs.
+Applications can be web applications, native application, bash/job applications and other applications needing to access sensitive data.
 
 .Waiting for the validation
 image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-general-conditions-acceptance.png[Gravitee.io - General Conditions]
@@ -67,10 +25,9 @@ image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-general-conditi
 [start=10]
 . If validation is automatic, you will get this message:
 
-.Validation of the subscription
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-validation.png[Gravitee.io - subscription validation]
+=== Plan security type
 
-Depending on the plan security type (API-Key, OAuth 2.0, JWT), you need to set proper HTTP headers to call the API.
+Depending on the plan security type (API-Key, OAuth 2.0, JWT), you need to set proper HTTP headers to call the API (for more details, see <<apim_publisherguide_plans_subscriptions.adoc#create-a-plan, Create a plan>>).
 
 **API Key**
 
@@ -80,62 +37,67 @@ curl -X GET "https://api.company.com/amazing-api" -H "X-Gravitee-Api-Key: xxxx-x
 
 **OAuth 2.0/JWT**
 
-You have to get an access_token from the authorization server before being able to consume this API.
+NOTE: You need to get an access token from the authorization server before you can consume the API.
 
 ----
 curl -X GET "https://api.company.com/amazing-api" -H "Authorization: Bearer xxxx-xxxx-xxxx-xxxx"
 ----
 
+
+== Subscribe to an API
+
+. Log in to APIM Portal.
+. Click *Catalog* in the top menu.
+. Browse the API categories or search for an API using keywords.
++
+image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-search-an-api.png[]
+
+. Select the API you want to subscribe to.
++
+image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-select-an-api.png[]
+
+. Click *SUBSCRIBE* in the sub-menu and choose the API plan.
++
+image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-to-an-api.png[]
+
+. Select your application.
++
+image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-select-an-application.png[]
++
+NOTE: Remember, if you choose an OAuth 2.0 plan, the application must have a `client_id` set.
+
+. Click *NEXT*. You can check your information before validating the request.
+. When you are ready, click *VALIDATE THE REQUEST*.
++
+image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-confirmation-before-validation.png[]
++
 [NOTE]
 ====
-If the API's publisher choose to manually validate application subscriptions, you must wait his approval to use the API.
+If there are general conditions for the selected plan, you need to accept them before validating the subscription.
 
-.Waiting for the validation
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-wait-for-validation.png[Gravitee.io - Wait for validation]
+image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-general-conditions-acceptance.png[]
 ====
++
+If validation is automatic, the following message is displayed:
++
+image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-validation.png[]
++
+If the API publisher chose to manually validate application subscriptions, you must await approval to use the API.
++
+image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-wait-for-validation.png[]
 
 == Manage subscriptions
 
-To see your subscriptions and their current status:
+To view your subscriptions and their current status:
 
-. Go to `Applications` page
-. Choose an application and go to `Subscriptions` section
-. You will see all your subscriptions with their status (Accepted, Pending, etc ...)
-. Click on a specific subscription to see the detail
+. Go to the *Applications* page.
+. Choose an application. In the *Subscriptions* section you will see all your subscriptions with their status (for example, *Accepted* or *Pending*).
+. Click on a specific subscription to see the details.
++
+image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-manage-subscriptions.png[]
++
+NOTE: For API-Key plans, you can retrieve the API-Key value and also renew or revoke subscriptions.
 
-.Manage subscriptions
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-manage-subscriptions.png[Gravitee.io - manage subscriptions]
+== Analytics
 
-NOTE: For API-Key plan, you can retrieve the API-Key value and also renew or revoke subscriptions.
-
-== APIs analysis
-
-For each APIs you have subscribed, Gravitee.io APIM provides some analytics to let you know how your application use the APIs.
-
-See below the list of the current analytics
-
-|===
-|Analytics|Description
-
-|Top API
-|Top APIs sort by the number of API calls
-
-|Status
-|HTTP status repartition summary
-
-|Top paths
-|Hits repartition by path
-
-|Top mapped paths
-|Hits repartition by mapped path
-
-|Response status
-|Hits repartition by status
-
-|Response times
-|Average response time
-
-|Hits by API
-|Hits repartition by API
-
-|===
+For each API you are subscribed to, APIM provides some analytics to show API usage in your application. For a list of the analytics available, see <<apim_consumerguide_manage_applications.adoc#analytics, Analytics>>.
