@@ -1,4 +1,4 @@
-= API Gateway - Configuration
+= Configure APIM Gateway
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_gateway_configuration.html
 :page-folder: apim/installation-guide/gateway
@@ -8,8 +8,12 @@
 
 include::../../partial/how-to-configure.adoc[leveloffset=+1]
 
+== `gravitee.yml` configuration
+
 [[api-gateway-http-server]]
-== HTTP Server
+=== Configure HTTP Server
+
+You configure the HTTP Server configuration in the following section of the `gravitee.yml` file:
 
 [source,yaml]
 ----
@@ -35,8 +39,8 @@ http:
       password: secret
 ----
 
-=== How to enable HTTPS support
-First, you need to provide a keystore. If you don't have one, you can generate it :
+==== Enable HTTPS support
+First, you need to provide a keystore. If you do not have one, you can generate it:
 ----
 keytool -genkey \
   -alias test \
@@ -49,7 +53,7 @@ keytool -genkey \
   -storepass secret
 ----
 
-After that, you have to enable secure mode in your `gravitee.yml` :
+You then need to enable secure mode in `gravitee.yml`:
 ----
 http:
   port: 8082
@@ -73,34 +77,36 @@ http:
       password:
 ----
 
-=== How to enable HTTP/2 support
+==== Enable HTTP/2 support
 
-You first need to enable HTTPS support. Then, you just have to enable alpn in the `gravitee.yml` :
+First, enable HTTPS support as described in the section above.
+
+You then need to enable `alpn` in `gravitee.yml`:
 ----
 http:
   alpn: true
   ...
 ----
 
-Now the gateway supports both HTTP 1 and HTTP/2 protocol. You can consume your api like that :
+You can now consume your API with both HTTP/1 and HTTP/2 protocols:
 ----
 curl -k -v --http2 https://localhost:8082/my_api
 ----
 
-=== How to enable WebSocket support
+==== Enable WebSocket support
 ----
 http:
   websocket:
     enabled: true
 ----
 
-Now the gateway supports both WS and WSS protocols. You can consume your api like that :
+You can now consume your API with both WS and WSS protocols:
 ----
 curl ws://localhost:8082/my_websocket
 ----
 
 
-=== How to enable certificate-based client authentication
+==== Enable certificate-based client authentication
 ----
 http:
   ssl:
@@ -110,15 +116,15 @@ http:
       password: adminadmin
 ----
 
-Available mode for `clientAuth` are:
+Available modes for `clientAuth` are:
 
 * none: Client authentication is disabled (replacement of the `false` value)
 * request: Client authentication is not required but can be if using link:apim_policies_ssl_enforcement.html[SSL enforcement policy]
 * requires: Client authentication is required (replacement of `true` value)
 
-== Plugins repository
+=== Configure the Plugins repository
 
-Gravitee.io Gateway <<gravitee-plugins,plugins>> directory configuration.
+You can configure the APIM Gateway <<gravitee-plugins,plugins>> directory.
 
 [source,yaml]
 ----
@@ -126,10 +132,10 @@ plugins:
   path: ${gravitee.home}/plugins
 ----
 
-== Management repository
+=== Configure the Management repository
 
-Management repository is used to store global configuration such as APIs, applications, apikeys, ...
-This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:
+The Management repository is used to store global configuration such as APIs, applications and apikeys.
+The default configuration uses MongoDB (single server). For more information about MongoDB configuration, see:
 
 http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html[window=\"_blank\"]
 
@@ -184,9 +190,9 @@ management:
 #    socketTimeout: 250
 ----
 
-== Rate Limit repository
+=== Configure the Rate Limit repository
 
-When defining <</apim_policies_rate_limiting.html, rate-limiting policy>>, the gateway has to store data to share with other gateway instances.
+When defining the <</apim_policies_rate_limiting.html, rate-limiting policy>>, APIM Gateway needs to store data to share with other APIM Gateway instances.
 
 In this example, we are using MongoDB to store counters.
 
@@ -198,10 +204,10 @@ ratelimit:
     uri: mongodb://${ds.mongodb.host}/${ds.mongodb.dbname}
 ----
 
-== Reporters
+=== Configure the Reporters
 
-Reporters configuration (used to store reporting monitoring data, request metrics, healthchecks and others...)
-All reporters are enabled by default. To stop one of them, you have to add the property 'enabled: false'
+You can configure various aspects of reporters, such as reporting monitoring data, request metrics and health checks.
+All reporters are enabled by default. To stop a reporter, you need to add the property 'enabled: false'
 
 [source,yaml]
 ----
@@ -218,9 +224,9 @@ reporters:
 #       password:
 ----
 
-== Services
+=== Configure services
 
-Gravitee.io Gateway services configuration. Provided values are default values. All services are enabled by default. To stop one of them, you have to add the property 'enabled: false' (See the 'local' service for an example).
+You can update the default APIM Gateway default values. All services are enabled by default. To stop a service, you need to add the property 'enabled: false' (you can see an example in the 'local' service).
 
 [source,yaml]
 ----
@@ -257,21 +263,20 @@ services:
     threads: 3 # Threads core size used to check endpoint availability
 ----
 
-== Sharding tags
+=== Configure sharding tags
 
-You can apply sharding on Gateway's instances either with system properties or with a configuration as below.
-System properties overrides the yaml configuration.
+You can apply sharding on APIM Gateway instances either at the system property level or with `gravitee.yml`.
 
-In this example, you are asking deployment only for APIs tagged 'product' or 'store' and among it, you exclude the APIs tagged 'international'.
+In this example, we are configuring deployment only for APIs tagged as `product` or `store` and of those, we are excluding APIs tagged as `international`.
 
 [source,yaml]
 ----
 tags: 'product,store,!international'
 ----
 
-== Default configuration
+=== Default configuration
 
-Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.yml` file. This section provides the general configuration of Gravitee.IO Gateway.
+You can configure various default properties of APIM Gateway in your `gravitee.yml` file.
 
 [source,yaml]
 ----

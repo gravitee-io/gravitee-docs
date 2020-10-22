@@ -1,5 +1,5 @@
 [[gravitee-installation-management-api-technical-api]]
-= API Gateway - Technical API
+= Configure the APIM Gateway internal API
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_gateway_technical_api.html
 :page-folder: apim/installation-guide/gateway
@@ -7,18 +7,20 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
+:gravitee-component-name: APIM Management
+
 :node_port: 18082
 include::../../../../../node/partial/technical-api.adoc[leveloffset=+1]
 
-== Specific endpoints
+== Component-specific endpoints
 
-The gateway provides dedicated endpoints to get information about apis deployed.
+In addition to the main endpoints listed above, the API includes dedicated endpoints to get more information about the APIs deployed on the APIM Gateway instance.
 
 |===
 |Operation |Description |Example
 
 |`GET /_node/apis`
-|Get the apis deployed on this gateway
+|Gets the APIs deployed on this APIM Gateway instance.
 a|
 [source,json]
 ----
@@ -40,7 +42,7 @@ Content-Type: application/json
 ----
 
 |`GET /_node/apis/{api.id}`
-|Get the api configuration on this gateway
+|Gets the API configuration for this APIM Gateway instance.
 a|
 [source,json]
 ----

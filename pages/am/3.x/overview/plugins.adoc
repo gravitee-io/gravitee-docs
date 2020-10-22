@@ -5,10 +5,14 @@
 :page-toc: false
 :page-layout: am
 
-_Plugins_ are additional components that can be _plugged into_ the Gateway and / or the Management API.
-_Plugins_ can specialized component's behavior to exactly fit your needs and your technical constraints.
+== Overview
 
-When using Gravitee.io AM, you must be face to multiple types of _plugins_, in particular:
+Plugins are additional components that can be _plugged into_ AM Gateway or AM API.
+They can customize the component's behavior to exactly fit your needs and technical constraints.
+
+== Types of plugins
+
+The table below lists the different types of plugins you can use with APIM, with the component(s) they can be plugged into and some examples. For more details of what each plugin type does, see the sections below.
 
 [width="100%",cols="^3,^3,^10",options="header"]
 |===
@@ -21,10 +25,10 @@ When using Gravitee.io AM, you must be face to multiple types of _plugins_, in p
 |===
 
 [[gravitee-plugins-idp]]
-== Identity Providers
-Broker trust with external users providers, to authenticate and get information for your end-users.
+=== Identity providers
+An *identity provider* brokers trust with external user providers, to authenticate and obtain information about your end users.
 
-"Out of the box" identity providers are :
+Out-of-the-box identity providers are:
 
 * MongoDB
 * LDAP / Active Directory
@@ -32,36 +36,36 @@ Broker trust with external users providers, to authenticate and get information 
 * SAML 2.0 IdP
 
 [[gravitee-plugins-policies]]
-== Policies
-A *policy* is acting as a behavior to apply to the request and / or response handled by the _gateway_ and can be chained by a request policy chain or a response policy chain using a logical order.
-Policies are used by the extension points to guarantee a given business rule to be fulfilled during request processing.
+=== Policies
+A *policy* modifies the behavior of a request or response handled by AM Gateway. It can be chained by a request policy chain or a response policy chain using a logical order.
+Policies are used by extension points to guarantee a given business rule is fulfilled during request processing.
 
-Good example for a policy is:
+An example of a policy is:
 
-* Call external web services during Login Flow (Policy HTTP Callout)
+* Call external web services during Login Flow (HTTP Callout policy)
 
 [[gravitee-plugins-reporters]]
-== Reporters
+=== Reporters
 
-A *reporter* is used by gateway and management API instances to report many types of event:
+A *reporter* is used by an AM API or AM Management instance to report many types of event:
 
-* Administration metrics : administrative tasks (CRUD on resources)
-* Authentication / Authorization metrics: (Sign-in activity, Sign-up activity)
+* Administration metrics -- administrative tasks (CRUD on resources)
+* Authentication / Authorization metrics -- (sign-in activity, sign-up activity)
 
-"Out of the box" reporters are :
+Out-of-the-box reporters are:
 
 * MongoDB Reporter
 
 [[gravitee-plugins-repositories]]
-== Repositories
-Storage component for the platform configuration.
+=== Repositories
+A *repository* is a storage component for AM platform configuration.
 
-"Out of the box" repositories are :
+Out-of-the-box repositories are :
 
 * MongoDB Repository
 
 [[gravitee-plugins-alerts]]
-== Alerts
+=== Alerts
 
-An *alert* allows to send trigger or event to the Alert Engine which will be processed to send a notification with the configured plugin notifier.
-The configuration of the notifier is the responsibility of the trigger.
+An *alert* allows AM to send triggers or events to the Alert Engine which can be processed to send a notification using the configured plugin notifier.
+Configuring the notifier is the responsibility of the trigger.

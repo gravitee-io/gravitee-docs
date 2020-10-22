@@ -11,7 +11,6 @@
 APIM allows you to create custom user roles to fit your needs.
 
 A role:
-
 - Is associated with a group of permissions
 - Has a scope
 - Defines what you can do with the APIM UI components and APIM API
@@ -26,10 +25,9 @@ Roles are defined in terms of _scopes_. As described in the link:/apim/3.x/apim_
 To be more precise, an environment's scope is all of the actions that can be performed in the specific context, in APIM Portal and APIM Management.
 
 For example:
-
- - APIs can be managed by API publishers in APIM Management
- - Applications can be managed in both APIM Management and APIM Portal
- - API rating can be managed by API consumers in APIM Portal
+ * APIs can be managed by API publishers in APIM Management
+ * Applications can be managed in both APIM Management and APIM Portal.
+ * API rating can be managed by API consumers in APIM Portal
 
 As the name suggests, the scope of an _organization_ is all aspects of an organization: users, roles, and so on. These actions are only available in APIM Management.
 

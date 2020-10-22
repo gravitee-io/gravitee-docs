@@ -1,28 +1,31 @@
 = Security
 
-== Brute Force attack
+== Brute Force attacks
 
-It consists of submitting lots authentication requests based on many passwords expecting one guessing right.
-More details on : https://en.wikipedia.org/wiki/Brute-force_attack.
-Even with oauth2 activated you can leave login form for in-memory or local users. Some tools can help you to prevent malicious actions by banning IP.
+Brute Force attacks consist of submitting lots authentication requests based on many passwords with the expectation of guessing one right.
+More details can be found at https://en.wikipedia.org/wiki/Brute-force_attack.
+Even with OAuth 2.0 activated you can leave behind a login form for in-memory or local users. Some tools can help you to prevent malicious actions by banning IPs.
 
 == Fail2Ban
 
-In this part we explain you how to secure APIM UI and REST API against brute force attack.
-To install fail2ban follow Official fail2ban website : https://www.fail2ban.org
+This section explains how to secure the APIM UI components (Management and Portal) and APIM APIs against brute force attacks using Fail2Ban.
+For instructions on installing Fail2Ban, see the Fail2Ban website: https://www.fail2ban.org.
 
 === Configuration
 
-Gravitee.io API REST trace all authentication failure into gravitee log file.
-Firstly you have to configure fail2ban filter to extract Gravitee authentication failure event.
+APIM API logs all authentication failures in the Gravitee log file. Follow the steps below to configure Fail2Ban to work with the Gravitee log file.
 
+NOTE: Each time you modify Fail2Ban configuration resources you need to restart the service.
+
+. Configure a Fail2Ban filter to extract Gravitee authentication failure events.
++
 [source,shell]
 ----
 2019-05-03 16:03:03.304 [gravitee-listener-31] WARN  i.g.m.s.l.AuthenticationFailureListener - Authentication failed event for : admin - IP : 10.50.24.18
 ----
 
-Add a conf file to declare filter : /etc/fail2ban/filter.d/gravitee.conf
-
+. Add a configuration file to declare filters: `/etc/fail2ban/filter.d/gravitee.conf`.
++
 [source,ini]
 ----
 [Definition]
@@ -30,9 +33,8 @@ failregex = .*Authentication failed event for.*IP : <HOST>
 ignoreregex =
 ----
 
-Now you have to provide actions to fail2ban in  /etc/fail2ban/action.d/gravitee.conf.
-Action are iptables or firewalld commands.
-
+. Add Fail2Ban actions to `gravitee.conf`. Actions are `iptables` or `firewalld` commands.
++
 [source,ini]
 ----
 [INCLUDES]
@@ -83,9 +85,8 @@ actionunban = <iptables> -D f2b-<name> -p tcp -m string --algo bm --string 'X-Fo
 
 ----
 
-Finally juste declare the new Gravitee Fail2ban block in the main configuration file.
-Up to you to provide right parameters. Each time you modify fail2ban configuration resources you have to restart the service.
-
+. Declare the new Gravitee Fail2Ban block in the main configuration file, with the required parameters.
++
 [source,ini]
 ----
 [gravitee]
@@ -95,5 +96,3 @@ filter = gravitee
 enabled = true
 maxretry = 3
 ----
-
-

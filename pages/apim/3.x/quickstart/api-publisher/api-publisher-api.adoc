@@ -1,19 +1,18 @@
-= Publish your first API with Management API
+= Publish your first API with APIM API
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_quickstart_publish_api.html
 :page-folder: apim/quickstart/api-publisher
 :page-layout: apim3x
 
-This guide walks you through the process of creating and publishing your first API by using the Management API.
-Gravitee.io Management API can be accessed using the following URL:
+== Overview
 
-http://MANAGEMENT_API_SERVER_DOMAIN (see link:/apim/3.x/apim_installguide_rest_apis_install_zip.html[Gravitee.io Management API installation] for more information)
+This section walks you through creating and publishing your first API with APIM API. You can find more information in the link:/apim/3.x/apim_publisherguide_manage_apis.html[API Publisher Guide].
 
-
-NOTE: *Gravitee.io Echo API* : In this tutorial we will use the https://api.gravitee.io/echo[Gravitee.io Echo API] to set up our first proxy API.
+NOTE: In this example we will use the https://api.gravitee.io/echo[Gravitee.io Echo API] to set up our first proxy API.
 The Gravitee.io Echo API returns JSON-formatted data via the following URL : https://api.gravitee.io/echo
 
-== Create your API with the Management API
+== Create your API with APIM API
+
 Create API request::
 [source]
 ----
@@ -59,8 +58,9 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
      http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|?action=START
 ----
 
-Publish API on Portal request::
-From the JSON response of `the Create API Request`, add the field `lifecyle_state` with value ="published" and send the result in a PUT request.
+Publish API on APIM Portal request::
+
+From the JSON response of the *Create API Request*, add the field `lifecyle_state` with value =`"published"` and send the result in a PUT request.
 [source]
 ----
 curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
@@ -70,4 +70,4 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
 '     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|
 ----
 
-For more information, you can find the full link:/apim/3.x/apim_installguide_rest_apis_documentation.html[Rest APIs Documentation].
+For more information, see the complete link:/apim/3.x/apim_installguide_rest_apis_documentation.html[APIM API documentation].

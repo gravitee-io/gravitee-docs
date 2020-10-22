@@ -1,5 +1,5 @@
 [[gravitee-installation-authentication]]
-= Authentication
+= Introduction
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_authentication.html
 :page-folder: apim/installation-guide/portal/authentication
@@ -7,17 +7,17 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
-Gravitee.io supports natively multiple type of authentication to the portal:
+== Overview
 
-* Using authentication providers (inmemory, LDAP, databases, ...)
-* Using Social providers (GitHub, Google, ...)
-* Using a custom OAuth2 / OpenID authorization server
+APIM natively support multiple types of authentication for accessing APIM Portal:
+* Authentication providers (such as In-memory, LDAP and databases)
+* Social providers (such as GitHub and Google)
+* A custom OAuth2 / OpenID authorization server
 
-== Identity Providers
+== Identity providers
 
 You can specify as many providers as you want.
-They will be checked in same order you declared them inside the providers attribute.
-Once a successful authentication is made, the Gravitee.io Management API will stop polling the providers.
+APIM API checks them in the same order you declare them in the `providers` attribute -- once a successful authentication is made, APIM API stops polling the providers.
 
 [source,yaml]
 ----
@@ -36,16 +36,4 @@ security:
       ...
 ----
 
-NOTE: The authentication process will loop through the three providers to attempt user authentication
-
-== How to configure
-
-You can find documentations on how to configure for:
-
-* link:/apim/3.x/apim_installguide_authentication_inmemory.html[in-memory]
-* link:/apim/3.x/apim_installguide_authentication_ldap.html[LDAP / Active Directory]
-* link:/apim/3.x/apim_installguide_authentication_apim.html[Gravitee.io APIM Repository]
-* link:/apim/3.x/apim_installguide_authentication_graviteeam.html[Gravitee.io Access Management]
-* link:/apim/3.x/apim_installguide_authentication_github.html[GitHub]
-* link:/apim/3.x/apim_installguide_authentication_google.html[Google]
-* link:/apim/3.x/apim_installguide_authentication_keycloak.html[Keycloak / generic OAuth2 server]
+NOTE: The authentication process loops through the three providers to attempt user authentication.
