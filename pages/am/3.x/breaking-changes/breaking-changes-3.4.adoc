@@ -1,0 +1,20 @@
+= Breaking changes in 3.4
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_3.4.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+NOTE: For all these breaking changes the Migration Guide can be found link:/am/current/am_installguide_migration.html[here].
+
+== Gateway Cookie Session
+
+Since the beginning, AM Gateway has been using a server side session to back up some context information during user authentication flow (such as login, passwordless, multi-factor, consent).
+
+In most cases, this server session was lost when 2 consecutive calls were handled on 2 different gateway instances.
+
+To avoid this problem, the simplest solution was to configure a sticky on the load balancer in front of the gateways but the problem sometimes still occurred during redeploy or auto scaling phases.
+
+*The server session has been replaced with a minimalist Cookie Session in the 3.4 version.*
+To make sure the user's context is well propagated between each step of the authentication flow, most of the *form's actions and links must be updated*.
+
+NOTE: If you are using custom form templates do not forget to run the link:/am/current/am_installguide_migration.html#upgrade_to_3_4_0[3.4 upgrade guide].
