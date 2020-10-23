@@ -1,0 +1,26 @@
+= Introduction
+:page-sidebar: comm_sidebar
+:page-permalink: comm/overview_introduction.html
+:page-folder: comm/overview
+:page-toc: false
+:page-description: Community - Introduction
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, community
+:page-layout: comm
+
+
+
+The Gravitee.io API Platform is a turnkey solution to manage (APIM) and secure (AM) APIs.
+It provides a lot of features including the ability to monitor several aspects of your APIs: health-check, availability, response-time and so on...
+To be even more complete, this feature needed to be coupled with an alerting component.
+
+And here we are with the Alert Engine (comm) component!
+
+From the Gravitee.io API Management side, this component allows to:
+
+- Notify API Publisher that the health-check service was able/not able to check an endpoint.
+
+- Notify consumers or publishers that they reach a given threshold percentage of the quota.
+
+- Notify administrator(s) that one of the gateway instance is consuming more than XX% of heap or XX% of CPU, a new one is available, or one node is down.
+
+- ... and many others uses cases...

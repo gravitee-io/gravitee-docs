@@ -1,0 +1,75 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+  - title: Sidebar
+    product: Community
+    folders:
+
+      - title: Overview
+        output: web
+        folderitems:
+          - title: Introduction
+            output: web
+            url: /comm/overview_introduction.html
+            type: homepage
+          - title: Others
+            output: web
+            url: /comm/overview_others.html
+
+      - title: How to contribute ?
+        output: web
+        folderitems:
+          - title: Github workflow
+            output: web
+            url: /ae/installguide_introduction.html
+          - title: Creating plugins and policies
+            output: web
+            url: /ae/installguide_engine.html
+          - title: Contribute to documentation (web + api/am internal)
+            output: web
+            url: /ae/installguide_docker.html
+          - title: Portal theme
+            output: web
+            url: /ae/installguide_kubernetes.html
+          - title: i18n
+            output: web
+            url: /ae/installguide_configuration.html
+          - title: FAQ / How to ?
+            output: web
+            url: /ae/installguide_technical_api.html
+
+      - title: Dev guidelines
+        output: web
+        folderitems:
+          - title: License header
+            output: web
+            url: /ae/userguide_definition.html
+          - title: Code format (linter)
+            output: web
+            url: /ae/userguide_conditions.html
+          - title: CONTRIBUTING.md
+            output: web
+            url: /ae/userguide_dampening.html
+            subfolders:
+              - title: Bootstrap your environment
+                output: web
+                subfolderitems:
+                  - title: For APIM
+                    output: web
+                    url: /apim/3.x/apim_devguide_bootstrap.html
+                  - title: For AM
+                    output: web
+                    url: /am/current/am_devguide_bootstrap.html
+
+      - title: Testing
+        output: web
+        folderitems:
+          - title: JUnit
+            output: web
+            url: /ae/apim_installation.html
+          - title: Jest
+            output: web
+            url: /ae/apim_configuration.html
+          - title: Postman
+            output: web
+            url: /ae/apim_platform.html
