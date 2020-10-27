@@ -1,5 +1,5 @@
 [[gravitee-installation-authentication-github]]
-= Configure GitHub authentication
+= GitHub
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_authentication_github.html
 :page-folder: apim/installation-guide/portal/authentication
@@ -7,32 +7,31 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
-== Overview
+Here you will find how to configure Gravitee.io to allow users to connect using their https://github.com/[GitHub] account.
 
-This page describes how to configure APIM to allow users to connect using their https://github.com/[GitHub] account.
+WARNING: GitHub authentication requires that users have a public email to be able to connect to the portal.
 
-WARNING: GitHub authentication requires users to use a public email address to connect to the portal.
+== Create a GitHub OAuth Apps
 
-== Create a GitHub OAuth application
+Before being able to connect to the Gravitee.io portal using a GitHub account, you need to associate a GitHub application.
 
-Before you can connect to APIM Portal using a GitHub account, you need to associate a GitHub application.
-
-You can access `GitHub OAuth Apps` at https://github.com/settings/developers.
+You can access the `GitHub OAuth Apps` from https://github.com/settings/developers
 
 === Register a new application
 
-.Register a new application.
+.Register a new app
 image::apim/3.x/installation/authentication/github_register_new_app.png[Register a new GitHub OAuth apps]
 
 === Create the application
 
-.Fill in the form.
+.Fill the form
 image::apim/3.x/installation/authentication/github_fill_app_form.png[Fill the form]
 
-WARNING: The `Authorization callback URL` must exactly match the domain which is hosting APIM Portal.
+
+WARNING: Be careful, the `Authorization callback URL` must match exactly to the domain which is hosting the portal.
 
 [[gravitee-installation-authentication-github-credentials]]
-=== Retrieve the application's OAuth2 credentials.
+=== Get application's OAuth2 credentials
 .Retrieve Oauth2 credentials
 image::apim/3.x/installation/authentication/github_oauth_credentials.png[Get Oauth2 credentials]
 
@@ -40,13 +39,13 @@ image::apim/3.x/installation/authentication/github_oauth_credentials.png[Get Oau
 
 include::../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
 
-=== In APIM Portal
+=== Via the Portal
 
 Got to Settings > Authentication > New provider (the `+` button) > select Github
 
 image::apim/3.x/management-api-configuration-idp/new-github.png[Gravitee.io - New Github IDP]
 
-=== In the `gravitee.yml` file
+=== Via the `gravitee.yml`
 [source,yaml]
 ----
 security:
@@ -56,13 +55,13 @@ security:
       clientSecret: xxxx-xxx-xxx-xxx
 ----
 
-== Test the connection
+== It's time to play
 
-.Login form
+.Login Form
 image::apim/3.x/installation/authentication/github_login_form.png[Login Form]
 
 .Allow access to user account
 image::apim/3.x/installation/authentication/github_access_account.png[Login Form]
 
-.Login success
+.Login Success
 image::apim/3.x/installation/authentication/github_login_success.png[Here we are !]

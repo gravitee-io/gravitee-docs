@@ -1,4 +1,4 @@
-= Introduction
+= Manage APIs
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_publisherguide_manage_apis.html
 :page-folder: apim/user-guide/publisher
@@ -18,6 +18,7 @@ If you click the *+* button at the bottom of the API page, you can see that ther
 
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-create-api-options-1.png[Create API]
 
+.Create API Options
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-create-api-options-2.png[Create API Options, 300]
 
 The following sections explain the different ways to create an API using APIM Management.
@@ -26,7 +27,7 @@ The following sections explain the different ways to create an API using APIM Ma
 When you create an API from scratch, you need to configure it correctly (name, version,
 context-path, backend endpoints, and so on) before publishing it for developers.
 
-You can find more details of how to create an API from scratch in the link:/apim/3.x/apim_quickstart_publish.html[Quick Start Guide].
+To understand how to create an API from scratch, please follow the link:/apim/3.x/apim_quickstart_publish.html[quick start guide].
 
 == Import an API
 You can import your existing APIs using one of the following methods.
@@ -36,7 +37,7 @@ You can import and export your APIs to a Gravitee API definition format (see the
 
 To import an API from an API definition:
 
-* If the definition is a file, select *IMPORT FILE* and browse your file system to select it.
+* If the definition is a file, select `IMPORT FILE` and browse your file-system to select it
 
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-definition-file.png[Import from definition file, 300]
 
@@ -72,13 +73,13 @@ Example Gravitee API definition::
 === Import an OpenAPI specification
 One of the most powerful features of APIM is its ability to import an OpenAPI specification to create an API. When you import an existing specification you do not have to complete all the fields required when you create a new API.
 
-To import an API from OpenAPI:
+To import an API from an OpenAPI:
 
-* If the OpenAPI specification is a file, select *IMPORT FILE* and browse your file system to select it.
+* If the OpenAPI is a file, select `IMPORT FILE` and browse your file-system to select it
 
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-file.png[Import from definition file, 300]
 
-* If the OpenAPI specification is a link, select *IMPORT FROM LINK*, choose *Swagger / OpenAPI* and enter the definition URL.
+* If the OpenAPI is a link, select `IMPORT FROM LINK`, choose `Swagger / OpenAPI` and enter the definition URL
 
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-link.png[Import from definition link, 300]
 
@@ -167,9 +168,9 @@ The value of this field is an `object` that follows this link:https://raw.github
 
 [NOTE]
 ====
-* `categories` must contain either a key or an id. Only existing categories are imported.
-* Import will fail if `virtualHosts` are already in use by *other* APIs.
-* If set, `virtualHosts` will override `contextPath`.
+* `categories` must contain either a key, or an id. Only existing categories are imported.
+* Import will fail if virtualHosts are already used by *others* API
+* If set, virtualHosts will override contextPath
 * `groups` must contain group names. Only existing groups are imported.
 * `metadata.format` is case-sensitive. Possible values are:
 ** STRING
@@ -178,7 +179,7 @@ The value of this field is an `object` that follows this link:https://raw.github
 ** DATE
 ** MAIL
 ** URL
-* `picture` only accepts Data-URI format (see example below).
+* `picture` only accept Data-URI format (see example below).
 ====
 
 Here is an example:
@@ -222,21 +223,21 @@ paths:
 ```
 
 ==== Policies on path
-When importing an OpenAPI definition, you can select the option `'Create policies on path'` in the import form.
-Then all routes declared in the OpenAPI specification are automatically created in APIM.
+When importing a Swagger or an OpenAPI definition, you can select the option `'Create policies on path'` in import form.
+Then all route declared in the Swagger descriptor are automatically created in Gravitee.io.
 You can navigate to the policies management view to check.
 
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-policies-path.png[Policies view - all routes imported]
 
-You can also choose to activate policies that will be configured using the OpenAPI specification.
+You can also choose to activate some policies that will be configured using the Swagger/OpenAPI descriptor.
 
 JSON Validation::
 For each operation, if an `application/json` request body exists, then a JSON schema is computed from this body to configure a JSON Validation policy. +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_json_validation.html[here].
+More info link:/apim/3.x/apim_policies_json_validation.html[here]
 
-REST to SOAP transformer::
-For each operation, if the definition contains some specific vendor extensions, a REST to SOAP policy can be configured. +
+Rest to SOAP transformer::
+For each operation, if the definition contains some specific vendor extensions, the Rest to SOAP policy can be configured. +
 These extensions are:
 - `x-graviteeio-soap-envelope`: contains the SOAP envelope
 - `x-graviteeio-soap-action`: contains the SOAP action
@@ -245,7 +246,7 @@ REQUEST only +
 More information is available link:/apim/3.x/apim_policies_rest2soap.html[here].
 
 Mock::
-For each operation, a mock policy is configured, based on the `example` field if it exists, or by generating a random value for the type of the attribute to mock. +
+For each operation, a mock policy is configured, based on `example` field if it exists, or generating random value regarding the type of the attribute to mock. +
 REQUEST only +
 More information is available link:/apim/3.x/apim_policies_mock.html[here].
 
@@ -311,4 +312,3 @@ image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-labels-2.
 You can search for APIs by label.
 
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-labels-3.png[]
-
