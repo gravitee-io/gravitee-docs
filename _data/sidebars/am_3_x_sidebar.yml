@@ -112,7 +112,19 @@ entries:
             - title: GitHub
               output: web
               url: /am/current/am_userguide_social_identity_provider_github.html
-          - title: Database
+            - title: Twitter
+              output: web
+              url: /am/current/am_userguide_social_identity_provider_twitter.html
+          - title: Legal Identity Providers
+            output: web
+            subfolderitems:
+            - title: Overview
+              output: web
+              url: /am/current/am_userguide_legal_identity_providers.html
+            - title: FranceConnect
+              output: web
+              url: /am/current/am_userguide_legal_identity_provider_franceconnect.html
+    - title: Database
             output: web
             subfolderitems:
             - title: Overview
