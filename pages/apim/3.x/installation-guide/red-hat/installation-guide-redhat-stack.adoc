@@ -1,4 +1,4 @@
-= Install the full APIM stack
+= Install API Management on Red Hat or CentOS
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_redhat_stack.html
 :page-folder: apim/installation-guide/redhat
@@ -9,24 +9,19 @@
 
 :gravitee-package-name: graviteeio-apim-3x
 
-== Overview
+This section describes how-to install the full API Management stack, including all the components (API Gateway, Management API, Portal)
+and, optionally, install dependencies (MongoDB, Elasticsearch).
 
-This section describes how to install the full APIM stack, including all the components and, optionally, dependencies (MongoDB, Elasticsearch).
+If you are looking to install Gravitee.io API Management individually, please go to their respective documentation:
 
-If you want to install APIM components separately, see the following sections:
+* link:/apim/3.x/apim_installguide_redhat_gateway.html[Install API Gateway]
+* link:/apim/3.x/apim_installguide_redhat_management_api.html[Install Management API]
+* link:/apim/3.x/apim_installguide_redhat_management_ui.html[Install Management UI]
+* link:/apim/3.x/apim_installguide_redhat_portal.html[Install Portal]
 
-* link:/apim/3.x/apim_installguide_redhat_gateway.html[Install APIM Gateway]
-* link:/apim/3.x/apim_installguide_redhat_management_api.html[Install APIM API]
-* link:/apim/3.x/apim_installguide_redhat_management_ui.html[Install APIM Management]
-* link:/apim/3.x/apim_installguide_redhat_portal.html[Install APIM Portal]
+== Install Nginx
 
-== Prerequisites
-
-Before you install the full APIM stack, you must complete the following configuration.
-
-=== Install Nginx
-
-To install Nginx, run the following commands:
+Nginx must be installed prior to Gravitee.io API Management:
 
 [source,bash,subs="attributes"]
 ----
@@ -34,28 +29,29 @@ sudo yum install epel-release
 sudo yum install nginx
 ----
 
-=== Configure your package management system
+== Installing Gravitee.io API Management package
 
-Ensure you have configured your package management system, as described in <<apim_installguide_redhat_introduction.adoc#configure-the-package-management-system-yum, Configure the package management system (yum)>>.
+IMPORTANT: We assume that you have configured your package management system by following link:/apim/3.x/apim_installguide_redhat_introduction.html[this documentation].
 
-== Install the APIM package (no dependencies)
-
-To install the APIM package only, run the following command:
+If you are looking to install all the Gravitee.io API Management components, you can do it with one of the following commands (depending on your system):
 
 [source,bash,subs="attributes"]
 ----
 sudo yum install {gravitee-package-name}
 ----
 
-== Install the APIM package with dependencies
+== Installing Gravitee.io API Management package with dependencies
+
+In a very similar way you did in first step, you can install the complete Gravitee.io API Management with dependencies
+thanks to a single command.
 
 === Configure dependency repositories
 
-Before you install the APIM package, you may need to add third-party repositories.
+Before this, you may potentially have to add third-party repositories:
 
 ==== MongoDB
 
-NOTE: For guidance on installing and configuring MongoDB, see the link:https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-red-hat/[MongoDB Installation documentation, window=\"_blank\"].
+NOTE: Please have a look to the link:https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-red-hat/[MongoDB Installation documentation, window=\"_blank\"]
 
 [source,bash]
 ----
@@ -72,7 +68,7 @@ sudo systemctl start mongod
 
 ==== Elasticsearch 7.x
 
-NOTE: For guidance on installing and configuring Elasticsearch, see the link:https://www.elastic.co/guide/en/elasticsearch/reference/7.6/rpm.html#rpm-repo[Elasticsearch Installation documentation, window=\"_blank\"].
+NOTE: Please have a look to the link:https://www.elastic.co/guide/en/elasticsearch/reference/7.6/rpm.html#rpm-repo[Elasticsearch Installation documentation, window=\"_blank\"].
 
 [source,bash]
 ----
@@ -88,16 +84,16 @@ sudo yum install -y elasticsearch
 sudo systemctl start elasticsearch
 ----
 
-=== Install APIM
+=== Install Gravitee.io API Management components
 
 [source,bash,subs="attributes"]
 ----
-curl -L https://bit.ly/install-apim-3x | bash
+sudo yum install {gravitee-package-name}-with-dependencies
 ----
 
-== Run APIM with `systemd`
+== Running Gravitee.io API Management with `systemd`
 
-To start up the APIM components, run the following commands:
+To run all Gravitee.io API Management components, run the following:
 
 [source,bash,subs="attributes"]
 ----
