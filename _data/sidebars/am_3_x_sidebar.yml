@@ -118,27 +118,27 @@ entries:
           - title: Legal Identity Providers
             output: web
             subfolderitems:
-              - title: Overview
-                output: web
-                url: /am/current/am_userguide_legal_identity_providers.html
-              - title: FranceConnect
-                output: web
-                url: /am/current/am_userguide_legal_identity_provider_franceconnect.html
+            - title: Overview
+              output: web
+              url: /am/current/am_userguide_legal_identity_providers.html
+            - title: FranceConnect
+              output: web
+              url: /am/current/am_userguide_legal_identity_provider_franceconnect.html
           - title: Database
             output: web
             subfolderitems:
-              - title: Overview
-                output: web
-                url: /am/current/am_userguide_database_identity_providers.html
-              - title: JDBC
-                output: web
-                url: /am/current/am_userguide_database_identity_provider_jdbc.html
-              - title: MongoDB
-                output: web
-                url: /am/current/am_userguide_database_identity_provider_mongodb.html
-              - title: Inline
-                output: web
-                url: /am/current/am_userguide_database_identity_provider_inline.html
+            - title: Overview
+              output: web
+              url: /am/current/am_userguide_database_identity_providers.html
+            - title: JDBC
+              output: web
+              url: /am/current/am_userguide_database_identity_provider_jdbc.html
+            - title: MongoDB
+              output: web
+              url: /am/current/am_userguide_database_identity_provider_mongodb.html
+            - title: Inline
+              output: web
+              url: /am/current/am_userguide_database_identity_provider_inline.html
       - title: Applications
         output: web
         subfolderitems:
