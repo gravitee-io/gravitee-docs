@@ -7,70 +7,69 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, support, ticket
 :page-layout: apim3x
 
+== Overview
+
+This section outlines the different ways you can get in touch with the Gravitee support team about issues with APIM.
+
 == Send a message to support
 
-=== Using Management UI
+=== Using APIM Console
 
-You can send a message to the support directly from the user menu.
-
-Click on "Support"
-
+. In the APIM Console user menu, click *Support*.
++
 image::apim/3.x/adminguide/support-mgmt-menu.png[Gravitee.io - Support user menu]
 
-Then, you can fill the ticket form and create the ticket.
-
+. Fill in the ticket details and create the ticket.
++
 image::apim/3.x/adminguide/support-mgmt-create.png[Gravitee.io - Support create]
 
-=== Using Portal UI
+=== Using APIM Portal
 
-==== From user menu
+==== From the user menu
 
-You can send a message to the support directly from the user menu.
-
-Click on "Contact"
-
+. In the APIM Portal user menu, click *Contact*.
++
 image::apim/3.x/adminguide/support-portal-user-menu.png[Gravitee.io - Support user menu]
 
-Then, you can fill the ticket form.
-
+. Fill in the ticket details and create the ticket.
++
 image::apim/3.x/adminguide/support-portal-user-create.png[Gravitee.io - Support create]
 
-==== From API menu
+==== From the API menu
 
-You can send a message to the support directly from the current API.
+You can send a message to the support team directly from the current API.
 
-Click on "Contact" tab.
-
-Then, you can fill the ticket form.
-
+. Click the *Contact* tab.
+. Fill in the ticket details and create the ticket.
++
 image::apim/3.x/adminguide/support-portal-api-create.png[Gravitee.io - Support create]
 
-== Consult your messages
+== Check your messages
 
-=== Using Management UI
+=== Using APIM Console
 
-On creation ticket screen, you can consult your tickets list by clicking on "See tickets history".
+In the ticket creation screen, you can list your tickets by clicking *See ticket history*.
 
 image::apim/3.x/adminguide/support-mgmt-list.png[Gravitee.io - Support list]
 
-You can visualize the detail of a ticket by clicking on the eye.
+You can view the details of a ticket by clicking the eye icon.
 
 image::apim/3.x/adminguide/support-mgmt-detail.png[Gravitee.io - Support detail]
 
-=== Using Portal UI
+=== Using APIM Portal
 
-==== From user menu
+==== From the user menu
 
-You can consult your messages directly from user menu by clicking on "Tickets".
-
-You can visualize the detail of a ticket by clicking on the ticket row.
-
+. In the APIM Portal user menu, click *Tickets*.
+. Click the ticket in the list to view the ticket and any messages.
++
 image::apim/3.x/adminguide/support-portal-user-list.png[Gravitee.io - Support list]
 
-==== From API menu
+==== From the API menu
 
-You can consult your messages directly from current API by clicking on "Tickets".
+You can view your messages directly from the current API.
 
-You can visualize the detail of a ticket by clicking on the ticket row.
-
+. Click the *Tickets* tab.
+. Click the ticket in the list to view the ticket and any messages.
++
 image::apim/3.x/adminguide/support-portal-api-list.png[Gravitee.io - Support list]
