@@ -11,6 +11,8 @@ This section walks you through creating and publishing your first API with APIM 
 NOTE: In this example we will use the https://api.gravitee.io/echo[Gravitee.io Echo API] to set up our first proxy API.
 The Gravitee.io Echo API returns JSON-formatted data via the following URL : https://api.gravitee.io/echo
 
+IMPORTANT: If option *Enable API review* is enabled in APIM Console, the API `workflow_state` attribute must be set to `REVIEW_OK` before you can deploy or start the API. See *APIs > Manage the API's review state* in the link:http://localhost:4000/apim/3.x/apim_installguide_rest_apis_documentation.html[API Reference].
+
 == Create your API with APIM API
 
 Create API request::
@@ -24,22 +26,24 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
 ----
 
 Create Plan request::
+
 [source]
 ----
 curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
      -H "Content-Type:application/json;charset=UTF-8" \
      -X POST \
      -d '{"name":"My Plan","description":"Unlimited access plan","validation":"auto","characteristics":[],"paths":{"/":[]},"security":"api_key"}' \
-     http://MANAGEMENT_API_SERVER_DOMAIN/management/organizations/DEFAULT/environments/DEFAULT/apis/|api-id|/plans
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/organizations/DEFAULT/environments/DEFAULT/apis/{api-id}/plans
 ----
 
 Publish Plan request::
+
 [source]
 ----
 curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
      -H "Content-Type:application/json;charset=UTF-8" \
      -X POST \
-     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|/plans/|plan-id|/_publish
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/organizations/DEFAULT/environments/DEFAULT/apis/{api-id}/plans/{plan-id}/_publish
 ----
 
 Deploy API request::
@@ -47,7 +51,7 @@ Deploy API request::
 ----
 curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
      -X POST \
-     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|/deploy
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/organizations/DEFAULT/environments/DEFAULT/apis/{api-id}/deploy
 ----
 
 Start API request::
@@ -55,7 +59,7 @@ Start API request::
 ----
 curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
      -X POST \
-     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|?action=START
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/organizations/DEFAULT/environments/DEFAULT/apis/{api-id}?action=START
 ----
 
 Publish API on APIM Portal request::
@@ -67,7 +71,7 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
      -H "Content-Type:application/json;charset=UTF-8" \
      -X PUT \
      -d '<RESPONSE_FROM_CREATE_API_REQUEST + ",lifecyle_state":"published">'
-'     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|
+'     http://MANAGEMENT_API_SERVER_DOMAIN/management/organizations/DEFAULT/environments/DEFAULT/apis/{api-id}
 ----
 
 For more information, see the complete link:/apim/3.x/apim_installguide_rest_apis_documentation.html[APIM API documentation].

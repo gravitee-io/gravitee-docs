@@ -32,7 +32,7 @@ This creates a subscription, which is verified in order to accept or deny the in
 
 == Create a plan
 
-You manage plans as part of the API creation process in or in the *Portal > Plans* function in APIM Management. For more details, see the link:/apim/3.x/apim_quickstart_publish_ui.html[Publish your first API with APIM Management].
+You manage plans as part of the API creation process or in the *Portal > Plans* function in APIM Console. For more details, see the link:/apim/3.x/apim_quickstart_publish_ui.html[Publish your first API with APIM Management].
 
 .Create plan
 image::apim/3.x/api-publisher-guide/plans-subscriptions/create-plan.png[Gravitee.io - Create plan, 873, 530, align=center, title-align=center]
@@ -65,9 +65,7 @@ This plan type ensures that API keys are valid, are not revoked or expired and a
 API key plans offer only a basic level of security, acting more as a unique identifier than a security token, since the API key can easily be found in the app code.
 For a higher level of security, see OAuth 2.0 and JWT plans.
 
-=== OAuth 2.0 plans
-
-=== Use a custom API key
+==== Use a custom API key
 
 You can specify a custom API key for an API key plan. This is particularly useful when you want to silently migrate to APIM and have a pre-defined API key.
 
@@ -91,7 +89,7 @@ image::apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-2.png[Gra
 
 image::apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-3.png[Gravitee.io - Renew custom API key, 873, 530, align=center, title-align=center]
 
-== OAuth 2.0 plan
+=== OAuth 2.0 plans
 
 You can specify a custom API key for an API key plan. This is particularly useful when you want to silently migrate to APIM and have a pre-defined API key.
 
