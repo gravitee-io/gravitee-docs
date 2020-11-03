@@ -283,6 +283,35 @@ user.creation.token.expire-after:: number (default: 86400) -- number of seconds 
 user.reference.secret:: 32 characters (default: s3cR3t4grAv1t33.1Ous3D4R3f3r3nc3) -- secret used to generate a unique anonymous reference to a user; *You must change this value*
 user.anonymize-on-delete:enabled:: boolean (default: false) - If true, the user *firstname*, *lastname* and *email* are anonymized when a user is deleted
 
+== Management settings
+
+You can configure various management settings from the APIM Console `Settings` section with environment variables. For a complete list of these settings, see <<management-settings-list,Management settings list>> below.
+Once you override these properties with environment variables, APIM Console configures them as read-only to prevent you overwriting the new values in the interface.
+
+[NOTE]
+====
+- For array properties, separate your environment variable properties with a comma. For example: `my_var=item1,item2,item3`.
+- We recommend you prefix Gravitee variables with `gravitee.` to avoid conflicts with other variables.
+====
+
+=== Example
+For example, to override the analytics client timeout, you can write:
+
+[source,properties]
+----
+GRAVITEE_ANALYTICS_CLIENT_TIMEOUT=15000
+GRAVITEE.ANALYTICS.CLIENT.TIMEOUT=15000
+gravitee_analytics_client_timeout=15000
+gravitee.analytics.client.timeout=15000
+----
+
+=== Management settings list
+
+[source,java]
+----
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/master/gravitee-rest-api-model/src/main/java/io/gravitee/rest/api/model/parameters/Key.java[]
+----
+
 == Default configuration
 
 Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.yml` file. This section provides the general configuration of Gravitee.IO Management API.
