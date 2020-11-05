@@ -22,7 +22,7 @@ Imagine you want to create a policy that controls if requests contains the `X-Fo
 $ mvn archetype:generate\
     -DarchetypeGroupId=io.gravitee.maven.archetypes\
     -DarchetypeArtifactId=gravitee-policy-maven-archetype\
-    -DarchetypeVersion=1.2.0\
+    -DarchetypeVersion=1.8.0\
     -DartifactId=foo-header-check-policy\
     -DgroupId=my.gravitee.extension.policy\
     -Dversion=1.0.0-SNAPSHOT\
