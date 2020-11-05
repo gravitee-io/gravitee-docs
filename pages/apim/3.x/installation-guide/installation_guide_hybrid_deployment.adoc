@@ -22,7 +22,7 @@ We can describe this as _hybrid mode_ or _hybrid deployment_.
 This is a typical hybrid APIM architecture:
 
 .Deployment architecture
-image::apim/3.x/installation/hybrid/hybrid_deployment_architecture.png
+image::apim/3.x/installation/hybrid/hybrid_deployment_architecture.png[Hybrid deployment architecture]
 
 == Configuration
 
@@ -44,7 +44,7 @@ a new plugin.
 
 ==== Installation
 
-To expose the new HTTP API, you need Sto install a new plugin inside the `plugins` directory of APIM Gateway.
+To expose the new HTTP API, you need to install a new plugin inside the `plugins` directory of APIM Gateway.
 This plugin can be found at https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/
 
 [source,bash]
@@ -54,7 +54,7 @@ $ wget -O ${GRAVITEEIO_HOME}/plugins https://download.gravitee.io/graviteeio-api
 
 [NOTE]
 ====
-You need to remove some of the existing plugins available by default in APIM Gateway: the sync service,
+You can remove some of the existing plugins available by default in APIM Gateway: the sync service,
 all the cache services, the policies and the resources.
 
 For example, in Gravitee.io APIM 1.18.0, the `plugins` directory contains the following files :
