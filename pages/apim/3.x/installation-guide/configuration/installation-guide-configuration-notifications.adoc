@@ -1,0 +1,261 @@
+= Configure notifications
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installguide_configuration_notifications.html
+:page-folder: apim/installation-guide/configuration
+:page-description: Gravitee.io API Management - Configuration - Management API
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, notification, template, freemarker
+:page-layout: apim3x
+
+== Overview
+
+APIM includes three categories of notifications:
+
+- *Portal* -- notifications about the platform
+- *API* -- notifications about a specific API
+- *Application* -- notifications about a specific application
+
+There are also three types of notifiers:
+
+- *Portal* -- this is the default notifier; messages are sent to users logged in to APIM Portal
+- *Email* -- you can configure an email notifier to send messages to a specific list of email addresses
+- *Webhook* -- you can configure a webhook notifier to send an HTTP POST request to a specific URL
+
+APIM includes a standard set of notifiers. You can also create new notifiers. For more details, see <<Notifiers>>.
+
+== Subscribe to Portal notifications
+
+To subscribe to Portal notifications:
+
+. In APIM Console, click *Settings > Notifications*.
++
+image:apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-subscriptions-portal.png[Subscribe to portal notifications]
+
+. Select the required notifications. For details, see <<portal-notifications,Portal notifications>>.
+. Click *SAVE*.
+
+== Subscribe to API notifications
+
+To subscribe to notifications about a specific API:
+
+. In APIM Console, click *APIs*.
+. Select the API and click *Notifications*.
++
+image:apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-subscriptions-api.png[Subscribe to API notifications]
+
+. Select the required notifications. For details, see <<api-notifications, API notifications>>.
+. Click *SAVE*.
+
+== Subscribe to application notifications
+
+To subscribe to notifications about a specific application:
+
+. In APIM Console, click *Applications*.
+. Select the application and click *Notifications*.
++
+image:apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-subscriptions-application.png[Subscribe to application notifications]
+
+. Select the required notifications. For details, see <<application-notifications, Application notifications>>.
+. Click *SAVE*.
+
+== Categories of notifications
+
+[[portal-notifications]]
+=== Portal notifications
+|===
+|Name 	                    |What triggers it?
+
+|First Login 	            |User logs in for the first time
+|Group invitation 	        |User is invited in a group
+|Message 	                |Custom message needs to be sent to an Environment Role (the message is sent in the notification)
+|New Support Ticket 	    |New support ticket is created
+|Password Reset 	        |Password is reset
+|User Created 	            |New user is created
+|User Registered 	        |User is registered
+|User Registration Request 	|New user is created and automatic validation is disabled
+|===
+
+[[api-notifications]]
+=== API notifications
+|===
+|Name                       |What triggers it?
+
+|Accept API review 	        |API review is accepted
+|API Deprecated 	        |API is deprecated
+|API key Expired 	        |API key is expired
+|API key Renewed 	        |API key is renewed
+|API key Revoked 	        |API key is revoked
+|API Started 	            |API is started
+|API Stopped 	            |API is stopped
+|Ask for API review 	    |API is ready for review
+|Message 	                |Custom message needs to be sent to an Application Role (the message is sent in the notification)
+|New Rating 	            |New rating is submitted
+|New Rating Answer 	        |New answer is submitted
+|New Subscription 	        |Subscription is created
+|New Support Ticket 	    |New support ticket is created
+|Reject API review 	        |API review is rejected
+|Subscription Accepted 	    |Subscription is accepted
+|Subscription Closed 	    |Subscription is closed
+|Subscription Paused 	    |Subscription is paused
+|Subscription Rejected 	    |Subscription is rejected
+|Subscription Resumed 	    |Subscription is resumed
+|Subscription Transferred 	|Subscription is transferred
+|===
+
+[[application-notifications]]
+=== Application notifications
+|===
+|Name 	                    |What triggers it?
+
+|New Subscription 	        |Subscription is created
+|New Support Ticket 	    |New support ticket is created
+|Subscription Accepted 	    |Subscription is accepted
+|Subscription Closed 	    |Subscription is closed
+|Subscription Paused 	    |Subscription is paused
+|Subscription Rejected 	    |Subscription is rejected
+|Subscription Resumed 	    |Subscription is resumed
+|Subscription Transferred 	|Subscription is transferred
+|===
+
+
+== Notifiers
+=== Portal
+The Portal notifier sends messages to logged in users.
+Notifications can be displayed by clicking the bell icon in the top menu of APIM Console.
+
+image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-portal-notifier-console.png[Notifications in the APIM Administration console, 300]
+
+In APIM Portal, notifications are displayed in a specific page, accessible from the user menu.
+
+image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-portal-notifier-portal.png[Notifications in the developer portal]
+
+The templates of portal notifications can be customized in *Settings*. For more information, see <<Templates>>.
+
+=== Email
+Email notifiers send an email to a specific list of email addresses.
+To create a new email notifier:
+
+. Click the plus icon.
+. Choose the *Default Email Notifier* type and give your notifier a name.
+. Add one or more email addresses.
+. Subscribe to the notifications you want.
+
+[NOTE]
+====
+When you create an API, a default email notifier is created. All notifications are selected and email are send to the primary owner.
+
+image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-email-notifier-api.png[Default configuration of an email notifier]
+====
+
+The templates of email notifications can be customized in *Settings*. See <<Templates>>
+
+=== Webhook
+Webhook notifiers send an HTTP POST request to a configured URL. The request contains two headers and a JSON body that represents the message.
+Headers are:
+
+- `X-Gravitee-Event` -- contains the event id (e.g. `API_KEY_REVOKED`)
+- `X-Gravitee-Event-Scope` -- contains the category of the notification (e.g. `API`)
+
+The JSON body looks like this (depending on the category of the notification, some fields may not be present in the body):
+```json
+{
+  "event": "",
+  "scope": "",
+  "api": {
+    "id": "",
+    "name": "",
+    "version": ""
+  },
+  "application": {
+    "id": "",
+    "name": ""
+  },
+  "owner": {
+    "id": "",
+    "username": "",
+    "owner": ""
+  },
+  "plan": {
+    "id": "",
+    "name": "",
+    "security": "",
+    "plan": ""
+  },
+  "subscription": {
+    "id": "",
+    "status": "",
+    "subscription": ""
+  }
+}
+```
+
+To create a new webhook notifier:
+
+. Click the plus icon.
+. Choose the *Default Webhook Notifier* type and give your notifier a name.
+. Add the URL which APIM will call to send notifications.
+. Subscribe to the notifications you want.
+
+
+== Templates
+
+Email and portal notification templates are based on HTML and YML files.
+They are located here:
+[source,yaml]
+----
+templates:
+  path: ${gravitee.home}/templates
+----
+
+Starting from APIM version 3.4.0, you can override these templates in APIM Console.
+
+image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-templates-1.png[Templates edition in the settings]
+
+You can also customize:
+
+- Email templates that are sent for specific actions and not related to a notification. Most of the time, these emails are for specific users.
+- The `header.html` file that is included by default in all email templates.
+
+image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-templates-2.png[Specific templates]
+
+=== Customize a template
+For almost all notifications, you can configure both Portal and email notifications.
+
+To customize a template, toggle the switch *Override default template* and update the title and/or the content.
+
+image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-templates-edition-1.png[Portal template edition]
+image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-templates-edition-2.png[Email template edition]
+
+
+=== Attributes
+You can use http://freemarker.org[Freemarker template engine] to add specific information to your templates (e.g. ${user.name} or ${api.metadata['foo-bar']}.
+
+Available attributes::
+[width="100%",cols="20%,20%,20%,20%,20%,20%",frame="topbot",options="header"]
+|======================
+|Api                |Application        |Group              |Plan               |Owner/User    |Subscription
+|name               |name               |name               |name               |username      |status
+|description        |description        |-                  |description        |firstname     |request
+|version            |type               |-                  |order              |lastname      |reason
+|role               |status             |-                  |publishedAt (Date) |displayName   |processedAt
+|metadata (Map)     |role               |-                  |closedAt (Date)    |email         |startingAt
+|deployedAt (Date)  |-                  |-                  |-                  |-             |endingAt
+|createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |-             |closedAt
+|updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |-             |subscribedAt
+|======================
+
+An example template is as follows:
+[source,html]
+----
+<html>
+	<body style="text-align: center;">
+		<header>
+			<#include "header.html" />
+		</header>
+		<div style="margin-top: 50px; color: #424e5a;">
+			<h3>Hi ${owner.username},</h3>
+			<p>The API Key <code>${apiKey}</code> has been expired.
+		</p>
+	</body>
+</html>
+
+----
