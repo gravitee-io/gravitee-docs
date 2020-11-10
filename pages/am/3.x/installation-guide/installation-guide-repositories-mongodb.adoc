@@ -1,4 +1,4 @@
-= MongoDB
+= Configure a MongoDB repository
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_installguide_repositories_mongodb.html
 :page-folder: am/installation-guide
@@ -7,7 +7,9 @@
 :page-description: Gravitee.io Access Management - Repositories - MongoDB
 :page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-Default implementation is based on https://www.mongodb.org/[MongoDB], let's see the configuration options:
+== Overview
+
+The MongoDB repository is included with AM by default.
 
 == Configuration
 [source,yaml]
@@ -15,7 +17,7 @@ Default implementation is based on https://www.mongodb.org/[MongoDB], let's see 
 # ===================================================================
 # MINIMUM MONGO REPOSITORY PROPERTIES
 #
-# This is a minimal sample file declared connection to MongoDB
+# This is a minimal sample file declaring connection to MongoDB
 # ===================================================================
 management:
   type: mongodb             # repository type
@@ -25,14 +27,14 @@ management:
     port:                   # mongodb port (default 27017)
 ----
 
-NOTE: This is the minimum sample file to start with a mongo server, number of other properties control the behavior of mongo database, let's jump into it.
+This is the minimum configuration you need to get started with MongoDB. You can also configure a number of other properties to fine-tune the behavior of your MongoDB database:
 
 [source,yaml]
 ----
 # ===================================================================
 # MONGO REPOSITORY PROPERTIES
 #
-# This is a sample file declared all properties for MongoDB Repository
+# This is a sample file declaring all properties for MongoDB Repository
 # ===================================================================
 management:
   type: mongodb                 # repository type
@@ -60,5 +62,3 @@ management:
     threadsAllowedToBlockForConnectionMultiplier: # mongodb threads allowed to block for connection multiplier (default null)
     cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
 ----
-
-NOTE: All theses properties allow you to fine tuned your MongoDB connection
