@@ -1,0 +1,115 @@
+= Configure a JDBC / R2DBC repository
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_repositories_jdbc.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Repositories - JDBC
+:page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+NOTE: New in AM 3.4.x
+
+== Overview
+
+You can deploy this repository plugin in AM to use the most common databases, including:
+
+- PostgreSQL 9.6
+- MySQL 5.7
+- Microsoft SQL Server 2017-CU12
+- MariaDB 10.3
+
+NOTE: AM uses the JDBC and R2DBC drivers together, since AM uses https://www.liquibase.org/[liquibase^] to manage the database schema. You need to deploy the correct JDBC and R2DBC drivers for your database in your AM instance's `plugins/ext/repository-am-jdbc` directory.
+
+|===
+|Database | Version tested | Gravitee.io Plugin | JDBC Driver | R2DBC Driver
+
+|Postgresql
+|9.6
+.4+|https://download.gravitee.io/graviteeio-am/plugins/repositories/gravitee-repository-jdbc/[Download the same version as your AM platform]
+|https://jdbc.postgresql.org/download.html[Download page]
+|https://repo1.maven.org/maven2/io/r2dbc/r2dbc-postgresql/0.8.5.RELEASE/r2dbc-postgresql-0.8.5.RELEASE.jar[Download page]
+
+|MySQL
+|5.7
+|https://dev.mysql.com/downloads/connector/j/[Download page]
+|https://repo1.maven.org/maven2/dev/miku/r2dbc-mysql/0.8.2.RELEASE/r2dbc-mysql-0.8.2.RELEASE.jar[Download page]
+
+|MariaDB
+|10.3
+|https://downloads.mariadb.org/connector-java/[Download page]
+|https://repo1.maven.org/maven2/org/mariadb/r2dbc-mariadb/0.8.4-rc/r2dbc-mariadb-0.8.4-rc.jar[Download page]
+
+|Microsoft SQL Server
+|2017-CU12
+|https://docs.microsoft.com/en-us/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017[Download page]
+|https://repo1.maven.org/maven2/io/r2dbc/r2dbc-mssql/0.8.4.RELEASE/r2dbc-mssql-0.8.4.RELEASE.jar[Download page]
+|===
+
+== Install the JDBC plugin
+
+NOTE: You need to repeat the following steps for each component (AM Gateway and AM API) where the SQL database is used.
+
+ . Download the plugin applicable to your version of AM (take the latest maintenance release).
+ . Place the zip file in the plugins directory for each component (`$GRAVITEE_HOME/plugins`).
+ . Remove the `gravitee-am-repository-mongodb` zip file from the plugins directory for each component.
+ . Download the JDBC and R2DBC drivers for your database version.
+ . Place the drivers in `$GRAVITEE_HOME/plugins/ext/repository-am-jdbc`.
+ . Configure `gravitee.yml`:
++
+[source,yaml]
+----
+# ===================================================================
+# MINIMUM JDBC REPOSITORY PROPERTIES
+#
+# This is a minimal sample file declaring connection to relational database
+# ===================================================================
+management:
+  type: jdbc             # repository type
+  jdbc:                  # jdbc/r2dbc repository
+    driver:              # jdbc driver
+    host:                # database hostname or IP
+    port:                # database listening port
+    database:            # database name to connect to
+    username:            # username
+    password:            # password
+----
++
+This is the minimum configuration you need to get started with a relational database. You can also configure a number of other properties to fine-tune the behavior of your database:
++
+[source,yaml]
+----
+# ===================================================================
+# JDBC REPOSITORY PROPERTIES
+#
+# This is a sample file declaring all properties for a relational database
+# ===================================================================
+management:
+  type: mongodb                 # repository type
+  jdbc:                         # jdbc/r2dbc repository
+    driver:                     # jdbc driver
+    host:                       # database hostname or IP
+    port:                       # database listening port
+    database:                   # database name to connect to
+    username:                   # username
+    password:                   # password
+    acquireRetry:               # Number of retries if the first connection acquiry attempt fails (default: 1)
+    initialSize:                # Initial pool size (default: 10)
+    maxSize:                    # Maximum pool size (default: 10)
+    maxIdleTime:                # Maximum idle time of the connection in the pool in millis (default: 1800000)
+    maxLIfeTime:                # Maximum life time of the connection in the pool in millis (default: 0)
+    maxAcquireTime:             # Maximum time to acquire connection from pool in millis (default: 0)
+    maxCreateConnectionTime:    # Maximum time to create a new connection in millis (default: 0)
+    validationQuery:            # Query that will be executed to validate that a connection to the database is still alive.
+----
+
+== Liquibase
+
+AM uses https://www.liquibase.org/[liquibase] to manage database schemas on startup of the AM services.
+
+If you want to disable automatic update, you'll need to add this section to your `gravitee.yaml` file.
+
+[source,yaml]
+----
+liquibase:
+  enabled: false
+----
