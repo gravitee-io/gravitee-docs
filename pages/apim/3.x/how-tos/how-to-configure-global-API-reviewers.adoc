@@ -38,7 +38,7 @@ You also need a `REVIEWER` role with at least the following permissions:
 ** *METADATA*: READ
 ** *NOTIFICATION*: READ, UPDATE
 ** *PLAN*: READ
-** *QUALITY_RULE*: READ
+** *QUALITY_RULE*: CREATE, READ, UPDATE
 ** *REVIEWS*: CREATE, READ, UPDATE, DELETE
 
 NOTE: APIM comes with a default `REVIEWER` role that includes all these conditions.
