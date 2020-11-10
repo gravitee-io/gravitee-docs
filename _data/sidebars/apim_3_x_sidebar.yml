@@ -194,9 +194,6 @@ entries:
                - title: General configuration
                  output: web
                  url: /apim/3.x/apim_installguide_portal_ui_configuration.html
-            - title: Configure notifications
-              output: web
-              url: /apim/3.x/apim_installguide_configuration_notifications.html
             - title: Configure repositories
               output: web
               subfolderitems:
@@ -242,7 +239,9 @@ entries:
                - title: Configure Keycloak
                  output: web
                  url: /apim/3.x/apim_installguide_authentication_keycloak.html
-
+         - title: Configure notifications
+           output: web
+           url: /apim/3.x/apim_installguide_configuration_notifications.html
       - title: API Publisher Guide
         output: web
         folderitems:
