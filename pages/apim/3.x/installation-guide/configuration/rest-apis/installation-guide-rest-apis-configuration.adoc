@@ -213,67 +213,6 @@ email:
 
 If you're using the 2-Factor Authentication (if not, you should), you have to generate an application password : https://security.google.com/settings/security/apppasswords .
 
-=== Email templates
-
-Email templates configuration. Gravitee.io Management API use http://freemarker.org[Freemarker template engine] to parse and create the email templates.
-
-[source,yaml]
-----
-templates:
-  path: ${gravitee.home}/templates
-----
-
-Here's the list of email templates :
-
-[width="100%",cols="20%,60%,20%",frame="topbot",options="header"]
-|======================
-|Email Template                 |Description                                    |Variables
-|groupMember.html               |New API group member notification.             |_username_, *group*, *user*
-|apiKeyExpired.html             |API Key expired notification.                  |*owner*, *api*, *plan*, *application*, apiKey, expirationDate
-|apiKeyRevoked.html             |API Key revoked notification.                  |*owner*, apiKey
-|apiMember.html                 |New API member notification.                   |_username_, *api*, *user*
-|applicationMember.html         |New application member notification.           |_username_, *application*, *user*
-|subscriptionApproved.html      |API subscription approved notification.        |*owner*, *api*, *plan*, *subscription*
-|subscriptionReceived.html      |API subscription received notification.        |*owner*, *api*, *plan*, *application*, *subscription*, subscriptionsUrl
-|subscriptionRejected.html      |API subscription rejected notification.        |*owner*, *api*, *plan*, *subscription*
-|userRegistration.html          |User registration notification.                |_username_, registrationUrl, *user*
-|supportTicket.html             |Support ticket creation.                       |*api*, *application*, *user*, content
-|======================
-
-You can access to your api data on your api's templates by doing so: ${api.name} or ${api.metadata['foo-bar']}
-
-Available attributes:
-
-[width="100%",cols="20%,20%,20%,20%,20%,20%",frame="topbot",options="header"]
-|======================
-|Api                |Application        |Group              |Plan               |Owner/User    |Subscription
-|name               |name               |name               |name               |username      |status
-|description        |description        |-                  |description        |firstname     |request
-|version            |type               |-                  |order              |lastname      |reason
-|role               |status             |-                  |publishedAt (Date) |displayName   |processedAt
-|metadata (Map)     |role               |-                  |closedAt (Date)    |email         |startingAt
-|deployedAt (Date)  |-                  |-                  |-                  |-             |endingAt
-|createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |-             |closedAt
-|updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |-             |subscribedAt
-|======================
-
-Here's an example of template:
-[source,html]
-----
-<html>
-	<body style="text-align: center;">
-		<header>
-			<#include "header.html" />
-		</header>
-		<div style="margin-top: 50px; color: #424e5a;">
-			<h3>Hi ${owner.username},</h3>
-			<p>The API Key <code>${apiKey}</code> has been expired.
-		</p>
-	</body>
-</html>
-
-----
-
 == User options
 
 You can configure various user options:
