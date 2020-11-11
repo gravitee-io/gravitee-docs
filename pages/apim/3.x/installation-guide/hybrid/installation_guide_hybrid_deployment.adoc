@@ -1,43 +1,39 @@
 [[gravitee-installation-hybrid-deployment]]
-= Hybrid deployment
+= Introduction
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_hybrid_deployment.html
-:page-folder: apim/installation-guide
+:page-folder: apim/installation-guide/hybrid
 :page-description: Gravitee.io API Management - Hybrid deployment
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
 == Overview
-When you are running a hybrid architecture (i.e. a mix between on-premise and cloud deployment), there are constraints
-(which can be just technical constraints or cost constraints) preventing you from deploying all the components required by
-APIM in each data center.
 
-APIM presents a solution in the form of hybrid components (in the form of plugins), freeing you from these constraints so that you can find a new way to define
-your architecture and deployment vision.
+Hybrid architectures (i.e. a combination of on-premise and cloud deployments) present unique technical and/or cost constraints when it comes to deploying APIM components in different data centers.
 
-We can describe this as _hybrid mode_ or _hybrid deployment_.
+The APIM hybrid deployment solution (in the form of hybrid components, or plugins) overcomes these constraints, giving you the freedom to define your architecture and deployment vision however you want.
 
 == Architecture
 
-This is a typical hybrid APIM architecture:
+The following diagram shows a typical hybrid APIM architecture:
 
 .Deployment architecture
 image::apim/3.x/installation/hybrid/hybrid_deployment_architecture.png[Hybrid deployment architecture]
 
 == Configuration
 
-For APIM Gateway to work in this architecture, you need two components:
+For APIM Gateway to work in this setup, you need two components:
 
-* A _technical API gateway_ (shown in green in the diagram) which exposes new HTTP services used to bridge HTTP calls to the
- underlying repository (which can be any of our supported repositories, including MongoDB, JDBC and so on)
+* A _bridge_ API Gateway (shown in green in the diagram) which exposes extra HTTP services for bridging HTTP calls to the
+ underlying repository (which can be any of our supported repositories: MongoDB, JDBC and so on)
 
-* A standard APIM Gateway (shown in red on the schema) with the default repository plugin switched to a new
+* A _standard_ APIM Gateway (shown in red on the schema) with the default repository plugin switched to a new
 HTTP bridge repository plugin
 
-With this infrastructure the standard APIM Gateway can communicate with the technical API gateway
-through a secure HTTP/S channel, and your cloud data center does not need a datastore installation.
+In this infrastructure the standard APIM Gateway can communicate with the bridge API Gateway
+through a secure HTTP/S channel, and your cloud data center does not need to have a datastore installed.
 
-NOTE: What we are describing as a technical API gateway is, in fact, a standard APIM Gateway which has been augmented with
+NOTE: What we describe as a _bridge_ API Gateway is, in fact, a standard APIM Gateway augmented with
 a new plugin.
 
 === APIM Gateway - HTTP bridge (server)
@@ -57,7 +53,7 @@ $ wget -O ${GRAVITEEIO_HOME}/plugins https://download.gravitee.io/graviteeio-api
 You can remove some of the existing plugins available by default in APIM Gateway: the sync service,
 all the cache services, the policies and the resources.
 
-For example, in Gravitee.io APIM 1.18.0, the `plugins` directory contains the following files :
+For example, in APIM 1.18.0, the `plugins` directory contains the following files:
 
  gravitee-gateway-services-localregistry-1.18.0.zip
  gravitee-gateway-services-ratelimit-1.2.0.zip
@@ -119,7 +115,7 @@ $ wget -O ${GRAVITEEIO_HOME}/plugins https://download.gravitee.io/graviteeio-api
 
 ==== Configuration
 
-You configure the new plugin in the `gravitee.yml` file.
+You configure the new plugin in the `gravitee.yml` file in the APIM Gateway `config` directory.
 
 [source,yaml]
 ----
@@ -138,4 +134,4 @@ management:
 
 == Start the APIM Gateways
 
-Start the APIM Gateways. Your consumers will be able to call APIM Gateway with the HTTP repository as usual.
+Start both APIM Gateways. Your consumers will be able to call APIM Gateway with the HTTP repository as usual.

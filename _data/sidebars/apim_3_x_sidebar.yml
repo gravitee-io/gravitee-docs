@@ -141,9 +141,15 @@ entries:
                  - title: Helm
                    output: web
                    url: /apim/3.x/apim_installguide_kubernetes.html
-          - title: Hybrid deployment
-            output: web
-            url: /apim/3.x/apim_installguide_hybrid_deployment.html
+              - title: Hybrid deployment
+                output: web
+                subfolderitems:
+                  - title: Introduction
+                    output: web
+                    url: /apim/3.x/apim_installguide_hybrid_deployment.html
+                  - title: Deploy a hybrid architecture in Kubernetes
+                    output: web
+                    url: /apim/3.x/apim_installguide_hybrid_kubernetes.html
           - title: Upgrade Guide
             output: web
             url: /apim/3.x/apim_installguide_migration.html
