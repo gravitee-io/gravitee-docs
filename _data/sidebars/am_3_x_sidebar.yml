@@ -31,12 +31,12 @@ entries:
   - title: Quick Start Guide
     output: web
     folderitems:
-    - title: Register a new application
+    - title: Log in to AM Console
       output: web
-      url: /am/current/am_quickstart_register_app.html
-    - title: Authenticate users with an identity provider
+      url: /am/current/am_userguide_authentication.html
+    - title: Set up your first application
       output: web
-      url: /am/current/am_quickstart_authenticate_users.html
+      url: /am/current/am_quickstart_app_setup.html
     - title: Get user profile information
       output: web
       url: /am/current/am_quickstart_profile_information.html
@@ -50,6 +50,130 @@ entries:
       output: web
       url: /am/current/am_quickstart_tokens_custom_claims.html
 
+  - title: Installation Guide
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /am/current/am_installguide_introduction.html
+    - title: Quick installation
+      output: web
+      url: /am/current/am_installguide_quickstart.html
+      subfolders:
+        - title: Install with .zip
+          output: web
+          subfolderitems:
+            - title: AM Gateway
+              output: web
+              url: /am/current/am_installguide_gateway_install_zip.html
+            - title: AM API
+              output: web
+              url: /am/current/am_installguide_management_api_install_zip.html
+            - title: AM Console
+              output: web
+              url: /am/current/am_installguide_management_ui_install_zip.html
+        - title: Install on Red Hat
+          output: web
+          subfolderitems:
+            - title: Introduction
+              output: web
+              url: /am/current/am_installguide_redhat_introduction.html
+            - title: Install the full AM stack
+              output: web
+              url: /am/current/am_installguide_redhat_stack.html
+            - title: Install AM Gateway
+              output: web
+              url: /am/current/am_installguide_redhat_gateway.html
+            - title: Install AM API
+              output: web
+              url: /am/current/am_installguide_redhat_management_api.html
+            - title: Install AM Console
+              output: web
+              url: /am/current/am_installguide_redhat_management_ui.html
+        - title: Install on Amazon
+          output: web
+          subfolderitems:
+            - title: Introduction
+              output: web
+              url: /am/current/am_installguide_amazon_introduction.html
+            - title: Install the full AM stack
+              output: web
+              url: /am/current/am_installguide_amazon_stack.html
+            - title: Install AM Gateway
+              output: web
+              url: /am/current/am_installguide_amazon_gateway.html
+            - title: Install AM API
+              output: web
+              url: /am/current/am_installguide_amazon_management_api.html
+            - title: Install AM Console
+              output: web
+              url: /am/current/am_installguide_amazon_management_ui.html
+        - title: Run on Docker
+          output: web
+          subfolderitems:
+            - title: Images
+              output: web
+              url: /am/current/am_installguide_docker_images.html
+            - title: Compose
+              output: web
+              url: /am/current/am_installguide_docker_compose.html
+        - title: Deploy in Kubernetes
+          output: web
+          subfolderitems:
+            - title: Helm
+              output: web
+              url: /am/current/am_installguide_kubernetes.html
+    - title: Upgrade Guide
+      output: web
+      url: /am/current/am_installguide_migration.html
+
+  - title: Configuration Guide
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /am/current/am_configurationguide.html
+      subfolders:
+      - title: Configure AM Gateway
+        output: web
+        subfolderitems:
+        - title: General configuration
+          output: web
+          url: /am/current/am_installguide_gateway_configuration.html
+        - title: Internal API
+          output: web
+          url: /am/current/am_installguide_gateway_technical_api.html
+        - title: Metrics
+          output: web
+          url: /am/current/am_installguide_gateway_metrics.html
+      - title: Configure AM API
+        output: web
+        subfolderitems:
+        - title: General configuration
+          output: web
+          url: /am/current/am_installguide_management_api_configuration.html
+        - title: Internal API
+          output: web
+          url: /am/current/am_installguide_management_api_technical_api.html
+        - title: Metrics
+          output: web
+          url: /am/current/am_installguide_management_api_metrics.html
+      - title: Configure AM Console
+        output: web
+        subfolderitems:
+        - title: General configuration
+          output: web
+          url: /am/current/am_installguide_management_ui_configuration.html
+      - title: Configure repositories
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_installguide_repositories.html
+        - title: MongoDB
+          output: web
+          url: /am/current/am_installguide_repositories_mongodb.html
+
   - title: User Guide
     output: web
     folderitems:
@@ -57,19 +181,13 @@ entries:
       output: web
       url: /am/current/am_userguide_overview.html
       subfolders:
-      - title: Getting Started
-        output: web
-        subfolderitems:
-        - title: Sign in to the Management UI
-          output: web
-          url: /am/current/am_userguide_authentication.html
       - title: Security domains
         output: web
         subfolderitems:
         - title: Overview
           output: web
           url: /am/current/am_userguide_security_domains.html
-        - title: Create security domain
+        - title: Create a security domain
           output: web
           url: /am/current/am_userguide_create_domain.html
       - title: Identity providers
@@ -78,14 +196,14 @@ entries:
         - title: Overview
           output: web
           url: /am/current/am_userguide_identity_providers.html
-        - title: Create identity provider
+        - title: Create an identity provider
           output: web
           url: /am/current/am_userguide_create_identity_provider.html
-        - title: User and Roles mapping
+        - title: User and role mapping
           output: web
           url: /am/current/am_userguide_identity_provider_mapping.html
           subfolders:
-          - title: Enteprise Identity Providers
+          - title: Enteprise identity providers
             output: web
             subfolderitems:
             - title: Overview
@@ -97,7 +215,7 @@ entries:
             - title: HTTP (web service)
               output: web
               url: /am/current/am_userguide_enterprise_identity_provider_http.html
-          - title: Social Identity Providers
+          - title: Social identity providers
             output: web
             subfolderitems:
             - title: Overview
@@ -115,10 +233,7 @@ entries:
             - title: Twitter
               output: web
               url: /am/current/am_userguide_social_identity_provider_twitter.html
-            - title: Google
-              output: web
-              url: /am/current/am_userguide_social_identity_provider_google.html
-          - title: Legal Identity Providers
+          - title: Legal identity providers
             output: web
             subfolderitems:
             - title: Overview
@@ -127,7 +242,7 @@ entries:
             - title: FranceConnect
               output: web
               url: /am/current/am_userguide_legal_identity_provider_franceconnect.html
-          - title: Database
+          - title: Database identity providers
             output: web
             subfolderitems:
             - title: Overview
@@ -151,10 +266,10 @@ entries:
         - title: Create application
           output: web
           url: /am/current/am_userguide_create_client.html
-        - title: Dynamic Client Registration
+        - title: Dynamic client registration
           output: web
           url: /am/current/am_userguide_dynamic_client_registration.html
-      - title: Login Page
+      - title: Login page
         output: web
         subfolderitems:
         - title: Overview
@@ -187,10 +302,10 @@ entries:
         - title: Overview
           output: web
           url: /am/current/am_userguide_certificates.html
-        - title: Create certificate
+        - title: Create a certificate
           output: web
           url: /am/current/am_userguide_create_certificate.html
-      - title: Extension Grants
+      - title: Extension grants
         output: web
         subfolderitems:
           - title: Overview
@@ -199,7 +314,7 @@ entries:
           - title: JWT Bearer
             output: web
             url: /am/current/am_userguide_extension_grants_jwt_bearer.html
-      - title: User Management
+      - title: User management
         output: web
         subfolderitems:
         - title: Overview
@@ -214,10 +329,10 @@ entries:
         - title: Roles
           output: web
           url: /am/current/am_userguide_user_management_roles.html
-        - title: User Registration
+        - title: User registration
           output: web
           url: /am/current/am_userguide_user_management_registration.html
-        - title: Custom Forms
+        - title: Custom forms
           output: web
           url: /am/current/am_userguide_user_management_forms.html
         - title: SCIM 2.0
@@ -226,22 +341,22 @@ entries:
         - title: User consent
           output: web
           url: /am/current/am_userguide_user_management_consent.html
-      - title: User Session Management
+      - title: User session management
         output: web
         subfolderitems:
         - title: Logout
           output: web
           url: /am/current/am_userguide_user_session_management_logout.html
-      - title: Audit Log
+      - title: Audit log
         output: web
         subfolderitems:
         - title: Overview
           output: web
           url: /am/current/am_userguide_logs.html
-        - title: Audit Trail
+        - title: Audit trail
           output: web
           url: /am/current/am_userguide_audit_log.html
-      - title: Extension Points
+      - title: Extension points
         output: web
         subfolderitems:
         - title: Overview
@@ -254,144 +369,62 @@ entries:
   - title: Administration Guide
     output: web
     folderitems:
-    - title: Roles and Permissions
+    - title: Roles and permissions
       output: web
       url: /am/current/am_adminguide_roles_and_permissions.html
       type: homepage
-    - title: Users and Groups
+    - title: Users and groups
       output: web
       url: /am/current/am_adminguide_users_and_groups.html
 
-  - title: Installation Guide
+  - title: Developer Guide
     output: web
     folderitems:
-    - title: Introduction
-      output: web
-      url: /am/current/am_installguide_introduction.html
-    - title: Quick installation
-      output: web
-      url: /am/current/am_installguide_quickstart.html
+      - title: Bootstrap your environment
+        output: web
+        url: /am/current/am_devguide_bootstrap.html
+  - title: API Reference
+    output: web
+    folderitems:
+      - title: Overview
+        output: web
+        url: /am/current/am_devguide_protocols_overview.html
+        subfolders:
+        - title: AM APIs
+          output: web
+          subfolderitems:
+          - title: AM Management
+            output: web
+            url: /am/current/am_devguide_management_api_documentation.html
+          - title: OAuth 2.0
+            output: web
+            url: /am/current/am_devguide_protocols_oauth2_overview.html
+          - title: OpenID Connect
+            output: web
+            url: /am/current/am_devguide_protocols_oidc_overview.html
+          - title: UMA 2.0
+            output: web
+            url: /am/current/am_devguide_protocols_uma2_overview.html
+          - title: SCIM 2.0
+            output: web
+            url: /am/current/am_devguide_protocols_scim_overview.html
+          - title: Users
+            output: web
+            url: /am/current/am_devguide_protocols_users_overview.html
+          - title: User Session
+            output: web
+            url: /am/current/am_devguide_protocols_session_overview.html
 
-      subfolders:
-        - title: Install with .zip
-          output: web
-          subfolderitems:
-            - title: Auth Gateway
-              output: web
-              url: /am/current/am_installguide_gateway_install_zip.html
-            - title: Management API
-              output: web
-              url: /am/current/am_installguide_management_api_install_zip.html
-            - title: Portal
-              output: web
-              url: /am/current/am_installguide_management_ui_install_zip.html
-        - title: Install on Red Hat
-          output: web
-          subfolderitems:
-            - title: Introduction
-              output: web
-              url: /am/current/am_installguide_redhat_introduction.html
-            - title: Install Access Management
-              output: web
-              url: /am/current/am_installguide_redhat_stack.html
-            - title: Install Access Gateway component
-              output: web
-              url: /am/current/am_installguide_redhat_gateway.html
-            - title: Install Management API component
-              output: web
-              url: /am/current/am_installguide_redhat_management_api.html
-            - title: Install Management UI component
-              output: web
-              url: /am/current/am_installguide_redhat_management_ui.html
-        - title: Install on Amazon
-          output: web
-          subfolderitems:
-            - title: Introduction
-              output: web
-              url: /am/current/am_installguide_amazon_introduction.html
-            - title: Install Access Management
-              output: web
-              url: /am/current/am_installguide_amazon_stack.html
-            - title: Install Access Gateway component
-              output: web
-              url: /am/current/am_installguide_amazon_gateway.html
-            - title: Install Management API component
-              output: web
-              url: /am/current/am_installguide_amazon_management_api.html
-            - title: Install Management UI component
-              output: web
-              url: /am/current/am_installguide_amazon_management_ui.html
-        - title: Run on Docker
-          output: web
-          subfolderitems:
-            - title: Images
-              output: web
-              url: /am/current/am_installguide_docker_images.html
-            - title: Compose
-              output: web
-              url: /am/current/am_installguide_docker_compose.html
-    - title: Kubernetes
-      output: web
-      url: /am/current/am_installguide_kubernetes.html
-    - title: Migration guide
-      output: web
-      url: /am/current/am_installguide_migration.html
-  - title: Configuration Guide
-    output: web
-    folderitems:
-    - title: Introduction
-      output: web
-      url: /am/current/am_configurationguide.html
-      subfolders:
-      - title: Configure AM Gateway
-        output: web
-        subfolderitems:
-        - title: General configuration
-          output: web
-          url: /am/current/am_installguide_gateway_configuration.html
-        - title: Internal API
-          output: web
-          url: /am/current/am_installguide_gateway_technical_api.html
-        - title: Metrics
-          output: web
-          url: /am/current/am_installguide_gateway_metrics.html
-      - title: Configure AM API
-        output: web
-        subfolderitems:
-        - title: General configuration
-          output: web
-          url: /am/current/am_installguide_management_api_configuration.html
-        - title: Internal API
-          output: web
-          url: /am/current/am_installguide_management_api_technical_api.html
-        - title: Metrics
-          output: web
-          url: /am/current/am_installguide_management_api_metrics.html
-      - title: Configure AM Portal
-        output: web
-        subfolderitems:
-        - title: General configuration
-          output: web
-          url: /am/current/am_installguide_management_ui_configuration.html
-      - title: Configure repositories
-        output: web
-        subfolderitems:
-        - title: Overview
-          output: web
-          url: /am/current/am_installguide_repositories.html
-        - title: MongoDB
-          output: web
-          url: /am/current/am_installguide_repositories_mongodb.html
-        - title: JDBC
-          output: web
-          url: /am/current/am_installguide_repositories_jdbc.html
-  - title: Breaking changes
+  - title: Breaking Changes
     output: web
     folderitems:
       - title: Overview
         output: web
         url: /am/current/am_breaking_changes.html
         type: homepage
+      - title: Breaking changes in 3.4
+        output: web
+        url: /am/current/am_breaking_changes_3.4.html
       - title: Breaking changes in 3.1
         output: web
         url: /am/current/am_breaking_changes_3.1.html
@@ -410,41 +443,6 @@ entries:
       - title: Breaking changes in 2.0
         output: web
         url: /am/current/am_breaking_changes_2.0.html
-
-  - title: Developer Guide
-    output: web
-    folderitems:
-      - title: Bootstrap your environment
-        output: web
-        url: /am/current/am_devguide_bootstrap.html
-      - title: Management API
-        output: web
-        url: /am/current/am_devguide_management_api_documentation.html
-        subfolders:
-          - title: APIs
-            output: web
-            subfolderitems:
-              - title: Overview
-                output: web
-                url: /am/current/am_devguide_protocols_overview.html
-              - title: OAuth 2.0
-                output: web
-                url: /am/current/am_devguide_protocols_oauth2_overview.html
-              - title: OpenID Connect
-                output: web
-                url: /am/current/am_devguide_protocols_oidc_overview.html
-              - title: UMA 2.0
-                output: web
-                url: /am/current/am_devguide_protocols_uma2_overview.html
-              - title: SCIM 2.0
-                output: web
-                url: /am/current/am_devguide_protocols_scim_overview.html
-              - title: Users
-                output: web
-                url: /am/current/am_devguide_protocols_users_overview.html
-              - title: User Session
-                output: web
-                url: /am/current/am_devguide_protocols_session_overview.html
 
   - title: Changelog
     output: web

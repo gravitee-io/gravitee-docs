@@ -1,5 +1,5 @@
 [[gravitee-installation-guide-quickstart]]
-= Quickstart
+= Quick installation
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_installguide_quickstart.html
 :page-folder: am/installation-guide
@@ -7,27 +7,29 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: am
 
-This tutorial assumes you are starting fresh and have no existing Gravitee.io Access Management data.
+== Overview
 
-== Using RPMs
+This tutorial assumes you are starting a clean installation and have no existing Access Management data.
+
+== Install with RPMs
 
 [source,shell]
 ....
 $ curl -sSL https://bit.ly/install-am-3x | bash
 ....
 
-Check the link:/am/current/am_installguide_redhat_stack.html[documentation]
+For more information, see link:/am/current/am_installguide_redhat_stack.html[Install on Red Hat].
 
-== Using Docker
+== Install with Docker
 
 [source,shell]
 ....
 $ curl -sSL https://bit.ly/docker-am-3x | bash
 ....
 
-Check the link:/am/current/am_installguide_docker_compose.html[documentation]
+For more information, see link:/am/current/am_installguide_docker_compose.html[Run on Docker].
 
-== Using Kubernetes
+== Install with Kubernetes
 
 [source,shell]
 ....
@@ -37,3 +39,5 @@ $ helm repo add graviteeio https://helm.gravitee.io
 # And install
 $ helm install --name graviteeio-am graviteeio/am
 ....
+
+For more information, see link:/am/current/am_installguide_kubernetes.html[Deploy in Kubernetes].

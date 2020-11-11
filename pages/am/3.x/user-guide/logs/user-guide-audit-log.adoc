@@ -4,32 +4,34 @@
 :page-folder: am/user-guide
 :page-layout: am
 
-== How to view audit log
+== View the audit log
 
-The Audit Log page of the Portal UI displays all events that occur, including user authentications and administrative actions such as managing Clients, Identity Providers, Users, Groups, Roles ...
+The AM Console Audit Log page displays all events which have taken place, including user authentication and administrative actions such as managing clients, identity providers, users, groups, roles and so on.
 
-. Go to http://GRAVITEEIO-AM-UI-HOST
-. From the homepage, go to your security domain's settings page and go to `Audit Log` section
-
+include::../../partial/login.adoc[leveloffset=+1]
+[start=3]
+. Click *Settings > Audit Log*.
++
 image::am/current/graviteeio-am-userguide-logs-audit.png[]
 
-NOTE: All these information can be retrieved via the link:/am/current/management-api/index.html#tag/audit[AM Management API].
+NOTE: All of this information can also be retrieved with the link:/am/current/management-api/index.html#tag/audit[AM API].
 
 == Retention log and storage
 
-Audit events are managed (store and fetch) by plugins call link:/apim_overview_plugins.html#gravitee-plugins-reporters[Reporter].
+Audit events are managed (store and fetch) by plugins called link:/apim_overview_plugins.html#gravitee-plugins-reporters[Reporters].
 
-By default a Reporter is created for each security domain and allow you to choose where the audit logs will be stored.
+By default, a reporter is created for each security domain and allows you to choose where the audit logs will be stored.
 
-NOTE: Currently only a MongoDB reporter is available but the Gravitee.io plugins system will ease the creation of new reporters (Splunk, Logstash, ES, ...)
+NOTE: Currently only a MongoDB reporter is available, but plugins can be used to create new reporters (Splunk, Logstash, Elasticsearch).
 
-. Go to http://GRAVITEEIO-AM-UI-HOST
-. From the homepage, go to your security domain's settings page and go to `Audit Log` section
-. Click on the "settings" icon and configure the reporter
-
+include::../../partial/login.adoc[leveloffset=+1]
+[start=3]
+. Click *Settings > Audit Log*.
+. Click the settings icon and configure the reporter.
++
 image::am/current/graviteeio-am-userguide-logs-audit-reporter.png[]
 
-NOTE: There is no log retention, is up to you define a retention window and periodically clear older data.
+NOTE: There is no log retention. It is up to you define a retention window and periodically clear old data.
 
 == Event types
 

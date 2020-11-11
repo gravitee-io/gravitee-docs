@@ -4,5 +4,7 @@
 :page-folder: am/user-guide
 :page-layout: am
 
-A _security domain_ gives you access to all the Gravitee.io AM resources such as applications, users, identity providers, etc ...
+A _security domain_ gives you access to all AM resources such as applications, users and identity providers.
 It exposes authentication and authorization URLs and provides analytics and reporting.
+
+The security domain acts as the container for your applications.

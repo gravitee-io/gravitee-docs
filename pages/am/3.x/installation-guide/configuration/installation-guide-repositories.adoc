@@ -1,0 +1,42 @@
+= Repositories
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_repositories.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Repositories
+:page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+In AM, repositories are used to store different type of data (different scopes). Repositories are configured in the `gravitee.yml` file.
+
+[[gravitee-repositories-types]]
+== Supported storage
+The following matrix shows scope and repository compatibility.
+
+**Compatibility Matrix: **
+|===
+|Scope|MongoDB|Redis |Elasticsearch| Cassandra
+
+|Management
+|X
+|-
+|-
+|-
+
+|OAuth2
+|X
+|-
+|-
+|-
+
+|===
+
+[[gravitee-repositories-scopes]]
+
+Management::
+
+All Access Management platform data, such as security domains, clients and identity providers.
+
+OAuth2::
+
+Tokens generated for OAuth2.

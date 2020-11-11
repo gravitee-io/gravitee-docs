@@ -1,0 +1,43 @@
+= JDBC
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_database_identity_provider_jdbc.html
+:page-folder: am/user-guide
+:page-layout: am
+
+NOTE: New in Gravitee.io AM 3.3.x
+
+== Overview
+
+You can authenticate users in AM with the most common databases, including:
+
+- PostgreSQL
+- MySQL
+- Microsoft SQL Server
+- MariaDB
+
+You do this by creating a new JDBC identity provider.
+
+NOTE: Before you begin, you need to ensure that your database has the appropriate fields to store user profile attributes, such as `id`, `username`, `email`, `password` and `metadata`.
+
+== Create a SQL database identity provider
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. If you want to change to a different security domain, select it from the user menu at the top right.
+. Click *Settings > Providers*.
+. Click the plus icon image:icons/plus-icon.png[].
+. Select *JDBC* as your identity provider type and click *Next*.
+. Give your identity provider a name.
+. Configure the database settings as required.
+. Click *Create*.
+
+== Test the connection
+
+You can test your database connection using a web application created in AM.
+
+. In AM Console, click *Applications* and select your JDBC identity provider.
++
+image::am/current/graviteeio-am-userguide-social-idp-list.png[]
++
+. Call the Login page (i.e `/oauth/authorize` endpoint) and try to sign in with the username/password form.
++
+If you are unable to authenticate your user, there may be a problem with the identity provider settings. Check the AM Gateway log and audit logs for more information.

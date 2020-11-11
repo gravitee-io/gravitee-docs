@@ -1,0 +1,122 @@
+= AM Docker images
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_docker_images.html
+:page-folder: am/installation-guide
+:docker-image-src: https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/images
+:github-repo: https://github.com/gravitee-io/graviteeio-access-management/tree/master/docker
+:docker-hub: https://hub.docker.com/r/graviteeio
+:page-layout: am
+
+== Overview
+
+This section explains how to run AM images in Docker. These procedures are intended for users who are already familiar with Docker.
+
+== Prerequisites
+
+To run our official images, you must first install https://docs.docker.com/installation/[Docker^].
+
+== Images
+
+You can find the complete set of AM images on https://hub.docker.com/u/graviteeio/[on Docker Hub].
+
+NOTE: You can also find all the https://github.com/gravitee-io/graviteeio-access-management/tree/master/docker/[Docker files on GitHub^].
+
+== Images
+|===
+|Image name |Source |Version |Base
+
+|{docker-hub}/am-gateway/[graviteeio/am-gateway]
+|{github-repo}/gateway/[images/am-gateway]
+|latest
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[openjdk11:jre-11.0.7_10-alpine]
+
+|{docker-hub}/am-management-api/[graviteeio/am-management-api]
+|{github-repo}/management-api/[images/am-management-api]
+|latest
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[openjdk11:jre-11.0.7_10-alpine]
+
+|{docker-hub}/am-management-ui/[graviteeio/am-management-ui]
+|{github-repo}/management-ui/[images/am-webui]
+|latest
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[nginx:1.18-alpine]
+
+|===
+
+=== graviteeio/am-gateway
+
+The AM Gateway image provides a set of environment variables which you can use to tune your container.
+
+You can replace the address of the default MongoDB repository (`localhost:27017`) with your own (`GRAVITEE_MONGODB_HOST:GRAVITEE_MONGODB_PORT`).
+
+==== Run the image
+[source,shell]
+....
+$ docker run  \
+        --publish 8092:8092  \
+        --name am-sgateway  \
+        --detach  \
+        graviteeio/am-gateway:latest
+....
+
+==== Configure the container
+If you want to override the default configuration for MongoDB and any other properties included in the `gravitee.yml` file,
+you need to use environment variables. For more information, see the AM Gateway <<am_installguide_gateway_configuration.adoc#environment_variables, configuration>> section.
+
+The following example changes the MongoDB connection:
+
+[source,shell]
+....
+$ docker run  \
+        --publish 8092:8092  \
+        --name am-gateway  \
+        --env GRAVITEE_MANAGEMENT_MONGODB_URI=mongodb://username:password@mongohost:27017/dbname
+        --detach  \
+        graviteeio/am-gateway:latest
+....
+
+=== graviteeio/am-management-api
+
+The AM API image provides a set of environment variables which you can use to tune your container.
+You can replace the address of the default MongoDB repository (`localhost:27017`) with your own (`GRAVITEE_MONGODB_HOST:GRAVITEE_MONGODB_PORT`).
+
+==== Run the image
+[source,shell]
+....
+$ docker run \
+          --publish 8093:8093 \
+          --name am-management-api \
+          --detach  \
+          graviteeio/am-management-api:latest
+....
+
+==== Configure the container
+If you want to override the default configuration for MongoDB and any other properties included in the `gravitee.yml` file,
+you need to use environment variables. For more information, see the AM API <<am_installguide_management_api_configuration.adoc#environment_variables, configuration>> section.
+
+The following example changes the MongoDB connection:
+
+[source,shell]
+....
+$ docker run \
+          --publish 8093:8093 \
+          --name am-management-api \
+          --env GRAVITEE_MANAGEMENT_MONGODB_URI=mongodb://username:password@mongohost:27017/dbname
+          --detach  \
+          graviteeio/am-management-api:latest
+....
+
+=== graviteeio/am-management-ui
+
+The AM Console image provides a set of environment variables which you can use to tune your container.
+AM Console needs AM API to run, so you need to update `MGMT_API_URL` to specify where `management-api` is running.
+
+==== Run the image
+[source,shell]
+....
+$ docker run \
+        --publish 80:8080 \
+        --env MGMT_API_URL=http://localhost:8093/management/ \
+        --name am-management-ui \
+        --detach  \
+        graviteeio/am-management-ui:latest
+....
