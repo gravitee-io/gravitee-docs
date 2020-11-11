@@ -1,0 +1,112 @@
+= Install AM API
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_management_api_install_zip.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Management API - Installation with .zip
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+== Overview
+
+AM API is required to run AM Console. You must install AM API first before you can use AM Console.
+
+== Prerequisites
+
+Your environment must meet the requirements listed below before you install AM API.
+
+=== JDK
+
+AM API supports Java from version 8 to version 11. Before you install it, check your Java version as follows:
+
+[source,bash]
+----
+java -version
+echo $JAVA_HOME
+----
+
+NOTE: You can download the latest OpenJDK from the https://jdk.java.net/archive/[OpenJDK download site^].
+
+=== MongoDB
+
+The default AM API distribution requires MongoDB 3.x to store data.
+
+NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#production[MongoDB download site^].
+
+== Download and extract the `.zip` archive
+
+. Download the binaries https://download.gravitee.io/graviteeio-am/components/gravitee-am-management-api/gravitee-am-management-api-standalone-{{ site.products.am.version }}.zip[here^] or from the https://gravitee.io/downloads/access-management[Gravitee download site^].
++
+[source,bash]
+[subs="attributes"]
+$ curl -L https://download.gravitee.io/graviteeio-am/components/gravitee-am-management-api/gravitee-am-management-api-standalone-{{ site.products.am.version }}.zip -o gravitee-am-management-api-standalone-{{ site.products.am.version }}.zip
++
+Unpack the archive and place the folders in the required location.
++
+[source,bash]
+[subs="attributes"]
+$ unzip gravitee-am-management-api-standalone-{{ site.products.am.version }}.zip
+
+== Check the installation
+
+Run AM API from the command line as follows:
+
+[source,bash]
+----
+$ cd gravitee-am-management-api-standalone-{{ site.products.am.version }}
+$ ./bin/gravitee
+----
+
+By default, AM API runs in the foreground, prints its logs to the standard output (stdout), and can be stopped
+by pressing *Ctrl-C*.
+
+Once AM API is running, you will see this log:
+
+[source,bash]
+[subs="attributes"]
+...
+16:21:01.995 [gravitee] [] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@1e1232cf{HTTP/1.1,[http/1.1]}{0.0.0.0:8093}
+16:21:01.996 [gravitee] [] INFO  org.eclipse.jetty.server.Server - Started @19214ms
+16:21:01.996 [gravitee] [] INFO  i.g.am.management.api.jetty.JettyHttpServer - HTTP Server is now started and listening on port 8093
+...
+
+== Check that AM API is running
+
+You can test that your AM API node is running by sending an HTTP request to port `8093` on `localhost`:
+
+[source,bash]
+----
+$ curl -X GET http://localhost:8093/management/domains/
+----
+
+== Run AM API as a daemon
+
+To run AM API as a daemon, specify `-d` on the command line and record the process ID in a file using the `-p` option:
+
+[source,bash]
+----
+$ ./bin/gravitee -d -p=/var/run/gio.pid
+----
+
+You can find log messages in the `$GRAVITEE_HOME/logs/` directory.
+
+To shut down AM API, kill the process ID recorded in the `pid` file:
+
+[source,bash]
+----
+$ kill `cat /var/run/gio.pid`
+----
+
+== AM API directory structure
+
+The following files and folders are in the `$GRAVITEE_HOME` directory, created when extracting the archive:
+
+[width="100%",cols="20%,80%",frame="topbot",options="header"]
+|======================
+|Folder    |Description
+|bin       |Startup/shutdown scripts
+|config    |Configuration files
+|lib       |Libraries (both AM and third party libraries)
+|logs      |AM API log files
+|plugins   |AM API plugins
+|======================

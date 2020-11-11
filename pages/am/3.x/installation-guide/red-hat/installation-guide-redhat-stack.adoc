@@ -1,4 +1,4 @@
-= Install Access Management on Red Hat or CentOS
+= Install the full AM stack
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_installguide_redhat_stack.html
 :page-folder: am/installation-guide/redhat
@@ -9,18 +9,23 @@
 
 :gravitee-package-name: graviteeio-am-3x
 
-This section describes how-to install the full Access Management stack, including all the components (API Gateway, Management API, Portal)
-and, optionally, install dependencies (MongoDB, Elasticsearch).
+== Overview
 
-If you are looking to install Gravitee.io Access Management individually, please go to their respective documentation:
+This section describes how-to install the full AM stack, including all the components and, optionally, dependencies.
 
-* link:/am/current/am_installguide_redhat_gateway.html[Install Access Gateway]
-* link:/am/current/am_installguide_redhat_management_api.html[Install Management API]
-* link:/am/current/am_installguide_redhat_management_ui.html[Install Management UI]
+If you want to install AM components individually, see the following sections:
 
-== Install Nginx
+* link:/am/current/am_installguide_amazon_gateway.html[Install AM Gateway]
+* link:/am/current/am_installguide_amazon_management_api.html[Install AM API]
+* link:/am/current/am_installguide_amazon_management_ui.html[Install AM Console]
 
-Nginx must be installed prior to Gravitee.io Access Management:
+== Prerequisites
+
+Before you install the AM stack, you must complete the following configuration.
+
+=== Install Nginx
+
+To install Nginx, run the following commands:
 
 [source,bash,subs="attributes"]
 ----
@@ -28,29 +33,28 @@ sudo yum install epel-release
 sudo yum install nginx
 ----
 
-== Installing Gravitee.io Access Management package
+=== Configure the package management system
 
-IMPORTANT: We assume that you have configured your package management system by following link:/am/current/am_installguide_redhat_introduction.html[this documentation].
+Ensure you have configured your package management system, as described in link:/am/current/am_installguide_redhat_introduction.html#configure-the-package-management-system-yum[Configure the package management system (yum)^].
 
-If you are looking to install all the Gravitee.io Access Management components, you can do it with one of the following commands (depending on your system):
+== Install the AM package (no dependencies)
+
+To install the AM package only, run the following command:
 
 [source,bash,subs="attributes"]
 ----
 sudo yum install {gravitee-package-name}
 ----
 
-== Install AM (with dependencies)
-
-In a very similar way you did in first step, you can install the complete Gravitee.io Access Management with dependencies
-thanks to a single command.
+== Install the AM package with dependencies
 
 === Configure dependency repositories
 
-Before this, you may potentially have to add third-party repositories:
+Before you install the AM package, you may need to add third-party repositories.
 
 ==== MongoDB
 
-NOTE: Please have a look to the link:https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-red-hat/[MongoDB Installation documentation]
+NOTE: For guidance on installing and configuring MongoDB, see the link:https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-red-hat/[MongoDB installation documentation^].
 
 [source,bash]
 ----
@@ -65,24 +69,6 @@ sudo yum install -y mongodb-org
 sudo systemctl start mongod
 ----
 
-==== Elasticsearch 7.x
-
-NOTE: Please have a look to the link:https://www.elastic.co/guide/en/elasticsearch/reference/7.6/rpm.html#rpm-repo[Elasticsearch Installation documentation].
-
-[source,bash]
-----
-echo "[elasticsearch-7.x]
-name=Elasticsearch repository for 7.x packages
-baseurl=https://artifacts.elastic.co/packages/7.x/yum
-gpgcheck=1
-gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-enabled=1
-autorefresh=1
-type=rpm-md" | sudo tee /etc/yum.repos.d/elasticsearch.repo > /dev/null
-sudo yum install -y elasticsearch
-sudo systemctl start elasticsearch
-----
-
 === Install AM
 
 [source,bash,subs="attributes"]
@@ -92,7 +78,7 @@ curl -L https://bit.ly/install-apim-3x | bash
 
 == Run AM with `systemd`
 
-To run all Gravitee.io Access Management components, run the following:
+To start up the AM components, run the following commands:
 
 [source,bash,subs="attributes"]
 ----

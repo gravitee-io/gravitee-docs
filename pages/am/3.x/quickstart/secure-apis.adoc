@@ -4,44 +4,47 @@
 :page-folder: am/quickstart
 :page-layout: am
 
+== Overview
+
+In this section we will demonstrate how to use link:https://www.gravitee.io/products/api-management[Gravitee.io API Management^] to secure your APIs.
+
 image::am/current/graviteeio-am-quickstart-secure-apis-overview.png[]
 
-NOTE: In this quick start we will use the link:https://gravitee.io[Gravitee.io API Management solution^] to protect our APIs.
-We assume that you have completed the installation of link:apim_installguide.html[Gravitee.io API Management^] and have a fully operational environment capable of interacting with your APIs (see link:/apim_quickstart_publish.html[Publish your first API^])
+=== Before you begin
 
-NOTE: Make sure you have completed the link:/am/current/am_quickstart_register_app.html[Register a new application^] quick start and grab your Client ID, Client Secret and Security Domain information.
+We assume that you have link:/apim/3.x/apim_installguide.html[installed Gravitee.io API Management^] and have a fully operational environment which can interact with your published APIs (see link:/apim/3.x/apim_quickstart_publish.html[Publish your first API^]).
+
+Ensure you have link:/am/current/am_quickstart_authenticate_users.html[set up a new application^] and have your Client ID, Client Secret and Security Domain information to hand.
 
 == Protect your API with OAuth 2
 
-Start by configuring the API security policy via the Gravitee.io API Management Portal.
+Start by configuring the API security policy in the Gravitee.io API Management Portal.
 
-NOTE: In this quickstart we are using the Gravitee.io API Management 1.8.x version.
-
-. Go to http://GRAVITEEIO-APIM-UI-HOST.
-. Sign in to the Portal and click `My APIs` in the navigation bar (or `Administration` if you are an admin user)
-. Go to `APIs` section and select the API you want to secure
-. Link your API with Gravitee.io Access Management
-.. Go to `Resources` section and click `(+)` button
-.. Choose and record the *resource's name* and select *Gravitee.io AM Authorization Server Resource* resource's type
-.. Under _Configuration_ specify the *Gravitee.io AM Server URL*, your *Security domain*, your *Client ID* and your *Client Secret* and press `SAVE`
-
+. link:/apim/3.x/apim_getstarted_portal.html[Log in to APIM Portal^].
+. Click *My APIs* in the navigation bar (or *Administration* if you are an admin user).
+. Click *APIs* and select the API you want to secure.
+. Link your API with AM:
+.. Click *Resources* and the plus icon image:icons/plus-icon.png[role="icon"].
+.. Enter a new resource name and select *Gravitee.io AM Authorization Server Resource* as the resource type.
+.. In the *Configuration* section, specify the *Gravitee.io AM Server URL*, your *Security domain*, your *Client ID* and your *Client Secret*, then click *SAVE*.
++
 image::am/current/graviteeio-am-quickstart-secure-apis-resource.png[]
 
-[start=5]
-. Go to `Policies` section and drag and drop the `OAuth2` policy to the selected API's path
-. Specify the resource's name you created for your API and press `SAVE`
-
+. Click *Policies* and drag and drop the `OAuth2` policy to the selected API's path.
+. Specify the resource name you created for your API and click *SAVE*.
++
 image::am/current/graviteeio-am-quickstart-quickstart-secure-apis-policy.png[]
 
-[start=7]
-. Finally deploy your API
+. Deploy your API.
 
-You can test that your API is OAuth 2 secured by calling it through the Gravitee.io APIM Gateway and see the following response :
+You can test that your API is OAuth2 secured by calling it through APIM Gateway.
 
 [source]
 ----
 curl -X GET http://GRAVITEEIO-APIM-GATEWAY-HOST/echo
 ----
+
+If OAuth2 security is correctly configured, you will receive the following response:
 
 [source]
 ----
@@ -53,11 +56,11 @@ WWW-Authenticate: Bearer realm=gravitee.io - No OAuth authorization header was s
 }
 ----
 
-== Request access token for your application
+== Request an access token for your application
 
-To access your protected API, you must acquire an access token from Gravitee.io Access Management by using OAuth 2.
+To access your protected API, you must acquire an access token from AM by using OAuth2.
 
-. Get your *Client ID*, *Client Secret* and *Security Domain* values and request for an access token.
+. Get your *Client ID*, *Client Secret* and *Security Domain* values and request an access token.
 
 Request a token::
 
@@ -79,9 +82,9 @@ curl -X POST \
 |scope           |*OPTIONAL.* The scopes of the access token.
 |==========================
 
-NOTE: For the convenience of this quick start we use server-to-server interactions with the Client Credentials grant type that not involved user registration.
+NOTE: In this example we are using server-to-server interactions with the Client Credentials grant type that does not involve user registration.
 
-If everything goes well, you should see the following response :
+If it is working correctly, you will receive the following response:
 
 [source]
 ----
@@ -98,19 +101,19 @@ Pragma: no-cache
 
 == Use the access token
 
-With the access token obtained at previous section, you can use it to make API calls.
+You can use the access token obtained in the previous section to make API calls.
 
-. From Gravitee.io API Managament Portal, go to your API page and choose the operation you want to call
-. Provide your access token and get your secured API data
-
+. In APIM Portal, go to your API page and choose the operation you want to call.
+. Provide your access token and get your secured API data.
++
 [source,bash,subs="verbatim"]
 ----
 curl -X GET http://GRAVITEEIO-APIM-GATEWAY-HOST/echo -H 'Authorization: Bearer :access_token'
 ----
++
+NOTE: See link:/apim/3.x/apim_policies_oauth2.html[the APIM OAuth2 Policy^] for more information about how to supply the access token while making the API call.
 
-NOTE: See link:/apim_policies_oauth2.html[OAuth2 Policy^] for more information about how to supply the access token while making the API call.
-
-If everything goes well, you should see the data from the selecting API operation :
+If it is working correctly, you will see the data from the selected API operation:
 
 [source]
 ----

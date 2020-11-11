@@ -1,20 +1,27 @@
-= Sign in to the Management UI
+= Log in to AM Console
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_userguide_authentication.html
 :page-folder: am/user-guide
 :page-layout: am
 
-After you have installed and configured Gravitee.io Access Management via the link:/am/current/am_installguide_introduction.html[Installation Guide] a default `admin` account have been created.
-This account will allow you to do all the management tasks provided by Gravitee.io AM such as create applications, identity providers, register users and more.
+== How to access AM Console
 
-By default, account to authenticate into the management UI is `admin /adminadmin`
+You access AM Console using the `GRAVITEEIO-AM-UI-HOST` URL created during installation. If you are running AM with our link:/am/current/am_installguide_docker.html#docker_compose[Docker Compose image], the `GRAVITEEIO-AM-UI-HOST` URL is `https://localhost/am/ui`.
 
-NOTE: You can change this default account by going to `Global Settings` (from the user menu), then `Settings` section and `Providers` page.
-The default account is set via the `Inline users` identity provider.
+During the AM installation process a default administrator account is created.
+You can use this account to perform all the management tasks provided by AM, such as creating applications and identity providers, registering users and configuring security.
 
-. Go to http://GRAVITEEIO-AM-UI-HOST and log in to Gravitee.io Access Management
+By default, the login details for the AM Console administrator account are `admin / adminadmin`.
 
+NOTE: You can change this default account in the AM Console by clicking *Settings > Providers*.
+The default account is created with the `Inline` identity provider.
+
+To log in:
+
+. Open AM Console.
++
 image::am/current/graviteeio-am-userguide-login-page.png[]
-
-[start=2]
-. You will be redirected to the Portal homepage
++
+. Log in with the administrator credentials. You are redirected to the AM Console dashboard for your default security domain.
++
+. If you want to change security domain, open the user menu from the top bar and select the domain from the list.

@@ -13,9 +13,14 @@ This page describes the main components included in AM.
 AM Gateway is the core component of the AM platform.
 It acts as a trust broker with your identity providers and provides an authentication and authorization flow for your users.
 
-== AM API
-This RESTful API exposes services to manage and configure the entire platform. All exposed
-services are restricted by authentication and authorization rules. You can find more information in the link:am/current/am_devguide_management_api_documentation.html[Management API > Overview] section.
+== AM APIs
+These RESTful APIs expose services to:
+
+* Manage and configure the AM platform
+* Manage users and user sessions
+* Manage the authorization flow for OAuth 2.0, OpenID Connect, UMA 2.0 and SCIM 2.0 protocols
+
+All exposed services are restricted by authentication and authorization rules. You can find more information in the link:am_devguide_protocols_overview.html[API Reference^] section.
 
 == AM Console
 This web UI acts as a graphical interface to the AM API functionality.
