@@ -7,17 +7,18 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
-Gravitee.io supports natively multiple type of authentication to the portal:
+== Overview
 
-* Using authentication providers (inmemory, LDAP, databases, ...)
-* Using Social providers (GitHub, Google, ...)
-* Using a custom OAuth2 / OpenID authorization server
+APIM natively support multiple types of authentication for accessing APIM Console and Portal:
 
-== Identity Providers
+* Authentication providers (such as In-memory, LDAP and databases)
+* Social providers (such as GitHub and Google)
+* A custom OAuth2 / OpenID authorization server
+
+== Identity providers
 
 You can specify as many providers as you want.
-They will be checked in same order you declared them inside the providers attribute.
-Once a successful authentication is made, the Gravitee.io Management API will stop polling the providers.
+APIM API loops through the providers in the same order you declare them in the `providers` attribute -- once a successful authentication is made, APIM API stops polling the providers.
 
 [source,yaml]
 ----
@@ -36,16 +37,38 @@ security:
       ...
 ----
 
-NOTE: The authentication process will loop through the three providers to attempt user authentication
-
 == How to configure
 
-You can find documentations on how to configure for:
+The following sections explain how to configure each authentication type:
 
-* link:/apim/3.x/apim_installguide_authentication_inmemory.html[in-memory]
-* link:/apim/3.x/apim_installguide_authentication_ldap.html[LDAP / Active Directory]
-* link:/apim/3.x/apim_installguide_authentication_apim.html[Gravitee.io APIM Repository]
+* link:/apim/3.x/apim_installguide_authentication_inmemory.html[In-memory]
+* link:/apim/3.x/apim_installguide_authentication_ldap.html[LDAP/Active Directory]
+* link:/apim/3.x/apim_installguide_authentication_apim.html[Gravitee.io APIM repository]
 * link:/apim/3.x/apim_installguide_authentication_graviteeam.html[Gravitee.io Access Management]
 * link:/apim/3.x/apim_installguide_authentication_github.html[GitHub]
 * link:/apim/3.x/apim_installguide_authentication_google.html[Google]
-* link:/apim/3.x/apim_installguide_authentication_keycloak.html[Keycloak / generic OAuth2 server]
+* link:/apim/3.x/apim_installguide_authentication_keycloak.html[Keycloak/Generic OAuth2 server]
+
+== Enable APIM Console authentication
+
+. In APIM Console, click *Settings > Authentication - Console*.
+. Select all the identity providers you want to use.
++
+image:apim/3.x/installation/authentication/provider-activation-console.png[Providers activations for Console]
+
+== Enable APIM Portal authentication
+
+. In APIM Console, click *Settings > Authentication - Portal*.
+. Select all the identity providers you want to use.
++
+image:apim/3.x/installation/authentication/provider-activation-portal.png[Providers activations for Portal]
+
+[NOTE]
+====
+Only available providers are displayed in the *Authentication* screen.
+
+To enable a provider, select the *Allow portal authentication to use this identity provider* option in the *Provider* page.
+
+image:apim/3.x/installation/authentication/provider-activation-portal-enablement.png[Provider enablement for Portal]
+
+====
