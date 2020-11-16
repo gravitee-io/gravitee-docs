@@ -172,13 +172,41 @@ This is the default configuration using https://www.elastic.co/products/elastics
 [[gravitee-standalone-management-authentication-configuration]]
 == Authentication
 
-See the link:/apim/3.x/apim_installguide_authentication.html[dedicated] section.
+See the link:/apim/3.x/apim_installguide_authentication.html[Authentication configuration] section.
+
+== CORS
+
+CORS (Cross-Origin Resource Sharing) is a mechanism that allows resources on a web page to be requested from another domain.
+
+For more information on CORS, take a look at the https://www.w3.org/TR/cors[CORS specification^].
+
+=== Configuration
+
+You can configure CORS using `gravitee.yml`, environment variables or directly in APIM Console.
+
+[source,yaml]
+----
+cors:
+  # Allows to configure the header Access-Control-Allow-Origin (default value: *)
+  # '*' is a valid value but is considered as a security risk as it will be opened to cross origin requests from anywhere.
+  allow-origin: http://developer.mycompany.com
+  # Allows to define how long the result of the preflight request should be cached for (default value; 1728000 [20 days])
+  max-age: 864000
+  # Which methods to allow (default value: OPTIONS, GET, POST, PUT, DELETE)
+  allow-methods: 'OPTIONS, GET, POST, PUT, DELETE'
+  # Which headers to allow (default values: Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, If-Match, X-Xsrf-Token)
+  allow-headers: 'X-Requested-With'
+----
+
+image::apim/3.x/installation/configuration/graviteeio-installation-configuration-cors.png[]
 
 == Sending emails
 
 === SMTP
 
 SMTP configuration used to send mails.
+
+You can configure SMTP using `gravitee.yml`, environment variables or directly in APIM Management.
 
 [source,yaml]
 ----
@@ -190,6 +218,8 @@ email:
   username: user@my.domain
   password: password
 ----
+
+image::apim/3.x/installation/configuration/graviteeio-installation-configuration-smtp.png[]
 
 ==== Configure the Gmail SMTP server
 
