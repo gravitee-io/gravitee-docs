@@ -1,0 +1,33 @@
+= gio
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_overview.html
+:page-folder: cli/reference
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+Manages Gravitee.io modules
+
+== Format
+
+[subs="+macros"]
+----
+gio <<Modules,modules>> <<Commands,commands>>
+----
+
+== Modules
+
+`apim`::
+API Management commands
+`am`::
+Access Management commands
+
+== Commands
+
+APIM::
+
+link:cli_reference_apim_ls.html[`ls`]::: Displays API list
+link:cli_reference_apim_deploy.html[`deploy`]::: Deploys API configuration
+
+AM::

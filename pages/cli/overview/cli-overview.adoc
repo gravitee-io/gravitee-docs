@@ -1,0 +1,12 @@
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_introduction.html
+:page-folder: cli/overview
+:page-toc: false
+:page-liquid:
+:page-layout: cli
+
+The Gravitee.io command line interface (Gravitee.io CLI) is a set of commands to help you manage the Gravitee.io ecosystem.
+You can use Gravitee.io CLI to automate tasks for all modules of the platform by calling their API.
+
+NOTE: Gravitee.io CLI is still under heavy development. The current version is {{ site.products.cli.version }}.
+If you're encountering bugs, please open an issue on link:https://github.com/gravitee-io/issues/issues/new[GitHub].

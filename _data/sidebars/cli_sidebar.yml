@@ -5,33 +5,39 @@ entries:
   product: CLI
   folders:
 
-  - title: Reference
+  - title: Overview
     output: web
     folderitems:
-    - title: Introduction
+    - title: Gravitee.io CLI
       output: web
       url: /cli/cli_introduction.html
       type: homepage
+    - title: Get started
+      output: web
+      url: /cli/cli_get_started.html
 
+  - title: Reference
+    output: web
+    folderitems:
+    - title: Overview
+      output: web
+      url: /cli/cli_reference_overview.html
       subfolders:
       - title: API Management
         output: web
-        url: /cli/reference/apim/cli_apim_overview.html
         subfolderitems:
           - title: Overview
             output: web
-            url: /cli/reference/apim/cli_apim_overview.html
-          - title: gio config
+            url: /cli/cli_reference_apim_overview.html
+          - title: gio ls
             output: web
-            url: /cli/reference/apim/cli_apim_config.html
-          - title: gio config get
+            url: /cli/cli_reference_apim_ls.html
+          - title: gio deploy
             output: web
-            url: /cli/reference/apim/cli_apim_config_get.html
-          - title: gio config set
+            url: /cli/cli_reference_apim_deploy.html
+      - title: Access Management
+        output: web
+        subfolderitems:
+          - title: Overview
             output: web
-            url: /cli/reference/apim/cli_apim_config_set.html
-          - title: gio config load
-            output: web
-            url: /cli/reference/apim/cli_apim_config_load.html
-
-
+            url: /cli/cli_reference_am_overview.html

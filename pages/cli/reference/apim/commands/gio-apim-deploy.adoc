@@ -1,0 +1,34 @@
+= gio apim deploy
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_apim_deploy.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+Deploys API configuration
+
+== Format
+
+[subs="+macros"]
+----
+gio apim deploy <<Options,options>>
+----
+
+== Options
+
+[cols="3", options="header"]
+|===
+|Option
+|Description
+|Default
+
+|`--api`, `api_id`
+|
+|
+
+|===
+
+== Examples

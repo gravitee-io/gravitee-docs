@@ -1,0 +1,32 @@
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_get_started.html
+:page-folder: cli/overview
+:page-toc: false
+:page-layout: cli
+
+Welcome to Gravitee.io CLI! If you're new to our command line interface, you've come to the right place.
+
+== Installation
+
+Before you install Gravitee.io CLI, you need to install Python 3.5 or later.
+
+Use link:https://pypi.python.org/pypi/pip[pip^] to install the latest stable version:
+
+  $ pip3 install graviteeio-cli
+
+== Usage
+
+  gio <module> <command>
+
+[cols="2", options="header"]
+|===
+|Module
+|Command
+
+| link:/cli/cli_reference_apim_overview.html[API Management]
+| `apim`
+
+| link:/cli/cli_reference_am_overview.html[Access Management]
+| `am`
+
+|===
