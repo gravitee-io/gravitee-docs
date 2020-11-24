@@ -1,0 +1,35 @@
+= Online resources
+:page-sidebar: comm_sidebar
+:page-permalink: comm/overview_online-resources.html
+:page-folder: comm/overview
+:page-toc: true
+:page-description: Community - Online Resources
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, community
+:page-layout: comm
+
+This page contains links to many useful websites or services
+
+== Demonstration (v1.30.25)
+
+- APIM UI: https://demo.gravitee.io[, window="_blank"]
+- APIM Gateway: \https://demo.gravitee.io/gateway/*_context_path_*
++
+E.g. `\https://demo.gravitee.io/gateway/echo`
+
+== Nightly builds (v3.4.0-SNAPSHOT)
+
+- APIM Console: https://nightly.gravitee.io[, window="_blank"]
+- APIM Portal: https://v3.nightly.gravitee.io[, window="_blank"]
+- APIM Gateway: \https://nightly.gravitee.io/gateway/*_context_path_*
++
+E.g. `\https://nightly.gravitee.io/gateway/echo`
+
+- Documentation: https://nightly-docs.gravitee.io/[, window="_blank"]
+
+== Gravitee Web Components
+
+- Storybook: https://components.gravitee.io/?path=/story/welcome-readme--gravitee-io-ui-components[, window="_blank"]
+
+== Public API for testing purpose
+
+- Echo API, Online service to mirror the request: `\https://api.gravitee.io/echo`

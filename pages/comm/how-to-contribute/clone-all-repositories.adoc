@@ -16,4 +16,4 @@ curl -s https://api.github.com/orgs/gravitee-io/repos\?per_page\=100\&page\=1 | 
 curl -s https://api.github.com/orgs/gravitee-io/repos\?per_page\=100\&page\=2 | jq ".[] | select(.archived == false).ssh_url" | xargs -n 1 git clone --recursive && git remote add origin
 ```
 
-NOTE: Github's API limits `per_page`parameter to 100 items. This is why we have to run two commands. For more information, please see https://developer.github.com/v3/#pagination.
+NOTE: Github's API limits `per_page` parameter to 100 items. This is why we have to run two commands. For more information, please see https://developer.github.com/v3/#pagination.
