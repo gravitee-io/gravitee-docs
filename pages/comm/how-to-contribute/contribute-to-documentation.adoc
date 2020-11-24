@@ -1,0 +1,45 @@
+= Contribute to documentation
+:page-sidebar: comm_sidebar
+:page-permalink: comm/how-to-contribute-to-documentation.html
+:page-folder: comm/how-to-contribute
+:page-toc: true
+:page-description: Community - Contribute to documentation
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, community
+:page-layout: comm
+
+As there are many kinds of documentation, you can contribute in different ways.
+
+From typo to tuto, everyone can contribute!
+
+== User documentation
+
+=== Prerequisites
+To contribute to user documentation, you need to clone the documentation repository:
+```shell
+git clone https://github.com/gravitee-io/gravitee-docs.git
+```
+
+We suggest you to use a live preview utility like the one available with jekyll.
+```shell
+bundle exec jekyll serve
+```
+
+Then, open http://127.0.0.1:4000/ to see your modifications.
+
+=== Add your content
+. Open an issue in gravitee-docs if none of the existing issues match your topic.
+. Create a branch on:
+- develop: for any documentation linked to a feature to come
+- master: for a typo or for adding information about an existing feature
+. Propose a PR and in GitHub and add the label `tw review`.
+
+Once merged, you will be able to see your contribution in:
+
+- https://docs.gravitee.io for master
+- https://nightly-docs.gravitee.io for develop
+
+== Technical documentation (openAPI/Swagger)
+  ...to be completed
+
+== Blog post
+  ...to be completed
