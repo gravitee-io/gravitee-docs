@@ -1,0 +1,93 @@
+= The Gravitee Developement Reference Guide
+:page-sidebar: comm_sidebar
+:page-permalink: comm/developers_guidelines_dev_guide.html
+:page-folder: comm/developers
+:page-toc: true
+:page-description: Developers - Introduction
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, community
+:page-layout: comm
+
+This page and all underlying pages are dedicated to the development process of Gravitee.io.
+
+== New Feature / Bug Fix
+
+Before starting, change the issue label to `in progress` and assign it to yourself.
+
+On each repository involved :
+* work in a dedicated branch
+* once development is finished, squash the commits to a single one
+* push and create a PR
+* For Java projects, if the pom version changes, update the release.json file into the release repository using the same process.
+
+Once All PR are created, change the issue label to `in review`
+
+=== Before commiting
+
+Format your file to add license information with: `mvn license:format`
+
+It will automatically add following documentation
+
+```java
+/**
+ * Copyright (C) 2015 The Gravitee team (http://gravitee.io)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+```
+
+=== Commit message
+
+Commit messages use the following format : https://gist.github.com/brianclements/841ea7bffdb01346392c=file-commit-formatting-md
+Last line of the comment should contains the reference to the gravitee issue using this github format : https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue=linking-a-pull-request-to-an-issue-using-a-keyword
+
+ex:
+```
+feat(registration): add an optional validation step in user registration process
+   
++ remove portalURL config from gravitee.yml (=4144)
+    
+Closes gravitee-io/issues=4069
+```
+
+=== Documentation
+
+When a feature or a bug fix require an update of the [online documentation](https://docs.gravitee.io), the `pull request` on the `gravitee-docs` repository must be done before passing the github issue in `in review`.
+
+=== Changes in gravitee-repository-jdbc module
+
+If the issue requires an update of the `gravitee-repository-jdbc` module, before creating the PR, run the test-container tests.
+
+`mvn clean test -Dtc=true`
+
+== Web UI
+
+Before creating the PR, check code style with `npm run lint` and fix simple issues with `npm run lint:fix`
+
+or simply run `mvn clean install`
+
+
+=== Portal WebUI
+==== i18n
+
+To create the i18n keys into the existing <local>.json files execute:
+
+`npm run generate:i18n`
+
+This will :
+* create new entries based on source code
+* remote useless entries
+* sort existing entries
+
+=== Useful links
+
+Here is a [Page](https://github.com/gravitee-io/kb/wiki/Gravitee-Online-Resources) with some gravitee links (nigthly environment, story book...)

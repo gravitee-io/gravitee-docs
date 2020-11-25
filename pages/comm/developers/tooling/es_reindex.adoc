@@ -1,0 +1,192 @@
+= ES re index
+:page-sidebar: comm_sidebar
+:page-permalink: comm/developers_tooling_es_reindex.html
+:page-folder: comm/developers
+:page-toc:
+:page-description: Developers - ES re index
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, community
+:page-layout: comm
+
+```shell
+#!/bin/bash
+
+# ES_HOST=localhost:9200
+# ES_INDEX_DATE=2020.10.29
+
+curl -X GET "http://$ES_HOST/_cat/indices?v"
+
+curl -X POST "http://$ES_HOST/_reindex" -H 'Content-Type: application/json' -d'
+{
+  "source": {
+    "index": "gravitee-request-$ES_INDEX_DATE"
+  },
+  "dest": {
+    "index": "tmp_gravitee-request-$ES_INDEX_DATE"
+  }
+}
+'
+
+curl -X DELETE "http://$ES_HOST/gravitee-request-$ES_INDEX_DATE"
+
+
+curl -X POST "http://$ES_HOST/_reindex" -H 'Content-Type: application/json' -d'
+{
+  "source": {
+    "index": "tmp_gravitee-request-$ES_INDEX_DATE"
+  },
+  "dest": {
+    "index": "gravitee-request-$ES_INDEX_DATE"
+  }
+}
+'
+
+curl -X PUT "http://$ES_HOST/gravitee-request-$ES_INDEX_DATE/_mapping/request" -H 'Content-Type: application/json' -d'
+{
+    "properties": {
+        "@timestamp": {
+            "type": "date"
+        },
+        "api": {
+            "type": "keyword"
+        },
+        "api-response-time": {
+            "type": "integer"
+        },
+        "application": {
+            "type": "keyword"
+        },
+        "endpoint": {
+            "type": "keyword"
+        },
+        "gateway": {
+            "type": "keyword"
+        },
+        "local-address": {
+            "type": "keyword",
+            "index": false
+        },
+        "message": {
+            "type": "text"
+        },
+        "method": {
+            "type": "short"
+        },
+        "plan": {
+            "type": "keyword"
+        },
+        "proxy-latency": {
+            "type": "integer"
+        },
+        "remote-address": {
+            "type": "ip"
+        },
+        "geoip" : {
+            "properties": {
+                "continent_name":{
+                    "type": "keyword",
+                    "index": true
+                },
+                "country_iso_code":{
+                    "type": "keyword",
+                    "index": true
+                },
+                "region_name":{
+                    "type": "keyword",
+                    "index": true
+                },
+                "city_name":{
+                    "type": "keyword",
+                    "index": true
+                },
+                "location": {
+                    "type": "geo_point"
+                }
+            }
+        },
+        "request-content-length": {
+            "type": "integer",
+            "index": false
+        },
+        "response-content-length": {
+            "type": "integer",
+            "index": false
+        },
+        "response-time": {
+            "type": "integer"
+        },
+        "status": {
+            "type": "short"
+        },
+        "tenant": {
+            "type": "keyword"
+        },
+        "transaction": {
+            "type": "keyword"
+        },
+        "uri": {
+            "type": "keyword"
+        },
+        "path": {
+            "type": "keyword"
+        },
+        "mapped-path": {
+            "type": "keyword"
+        },
+        "host": {
+            "type": "keyword"
+        },
+        "user-agent": {
+            "type": "keyword"
+        },
+        "user_agent": {
+            "properties": {
+                "device": {
+                    "properties": {
+                        "name": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "name": {
+                    "type": "keyword",
+                    "index": true
+                },
+                "original": {
+                    "type": "text"
+                },
+                "os_name": {
+                    "type": "keyword",
+                    "index": true
+                },
+                "version": {
+                    "type": "text"
+                }
+            }
+        },
+        "user": {
+            "type": "keyword"
+        },
+        "security-type": {
+            "type": "keyword",
+            "index": true
+        },
+        "security-token": {
+            "type": "keyword",
+            "index": true
+        },
+        "error-key": {
+            "type": "keyword",
+            "index": true
+        },
+        "subscription": {
+            "type": "keyword"
+        }
+    }
+}
+'
+
+curl -X DELETE "http://$ES_HOST/tmp_gravitee-request-$ES_INDEX_DATE"
+
+curl -X GET "http://$ES_HOST/_cat/indices?v"
+
+```

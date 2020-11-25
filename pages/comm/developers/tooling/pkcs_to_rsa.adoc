@@ -1,0 +1,26 @@
+= Convert PKCS to RSA
+:page-sidebar: comm_sidebar
+:page-permalink: comm/developers_tooling_pkcs_to_rsa.html
+:page-folder: comm/developers
+:page-toc:
+:page-description: Developers - Convert PKCS to RSA
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, community
+:page-layout: comm
+
+*pubkey.pem*
+
+```
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz58/fXnbPem1YHFlJCmo +fYIgNuHOqfYCGcDmA89uSrcT5/fdxRtEcpjytA0Xfgk9ylgacMM4J6ckqVeC92Q zDI+RDb4HBxL5EBD0CV34l5Uo8n31wtBqfbD50Knfc7/8Aq8kfGpCnhrzabBjxhh IHFePBLXEBaSsS+2an+UWHQgvKtI7SmfXzQBQG1ExCwFInIRLrR7iq6KP06TPf18 1aJLVDwYszoqP6u4jch84rkDA+UAxiCUKtEUHJztODKCSowKXkUvnLaBk4TehYdT j2h002JvXsnwi4rGAkxwNOaAL0YwTvCREPxmtgUcmuHtucgU7vCVg5sZwWOcSz5/ vwIDAQAB
+-----END PUBLIC KEY-----
+```
+
+`fold -w 64 pubkey.pem > pubkey2.pem`
+
+`ssh-keygen -f pubkey2.pem -i -mPKCS8`
+
+*pubkey2.pem*
+
+```shell
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDPnz99eds96bVgcWUkKaj59giA24c6p9gIZwOYDz25KtxPn993FG0RymPK0DRd+CT3KWBpwwzgnpySpV4L3ZDMMj5ENvgcHEvkQEPQJXfiXlSjyffXC0Gp9sPnQqd9zv/wCryR8akKeGvNpsGPGGEgcV48EtcQFpKxL7Zqf5RYdCC8q0jtKZ9fNAFAbUTELAUichEutHuKroo/TpM9/XzVoktUPBizOio/q7iNyHziuQMD5QDGIJQq0RQcnO04MoJKjApeRS+ctoGThN6Fh1OPaHTTYm9eyfCLisYCTHA05oAvRjBO8JEQ/Ga2BRya4e25yBTu8JWDmxnBY5xLPn+/
+```

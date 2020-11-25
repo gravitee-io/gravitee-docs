@@ -15,6 +15,16 @@ entries:
           - title: Online resources
             output: web
             url: /comm/overview_online-resources.html
+            subfolders:
+              - title: Bootstrap your environment
+                output: web
+                subfolderitems:
+                  - title: For APIM
+                    output: web
+                    url: /apim/3.x/apim_devguide_bootstrap.html
+                  - title: For AM
+                    output: web
+                    url: /am/current/am_devguide_bootstrap.html
 
       - title: How to contribute ?
         output: web
@@ -41,28 +51,65 @@ entries:
             output: web
             url: /ae/installguide_technical_api.html
 
-      - title: Dev guidelines
+      - title: Developers
         output: web
         folderitems:
-          - title: License header
+          - title: Introduction
             output: web
-            url: /ae/userguide_definition.html
-          - title: Code format (linter)
-            output: web
-            url: /ae/userguide_conditions.html
-          - title: CONTRIBUTING.md
-            output: web
-            url: /ae/userguide_dampening.html
+            url: /comm/developers_introduction.html
+
             subfolders:
-              - title: Bootstrap your environment
+              - title: Guidelines
                 output: web
                 subfolderitems:
-                  - title: For APIM
+                  - title: Dev guide
                     output: web
-                    url: /apim/3.x/apim_devguide_bootstrap.html
-                  - title: For AM
+                    url: /comm/developers_guidelines_dev_guide.html
+                  - title: License header
                     output: web
-                    url: /am/current/am_devguide_bootstrap.html
+                    url: /comm/developers_guidelines_guide.html
+                  - title: Code formatter
+                    output: web
+                    url: /comm/developers_guidelines_guide.html
+                  - title: Contributing
+                    output: web
+                    url: /comm/developers_guidelines_guide.html
+              - title: Tooling
+                output: web
+                subfolderitems:
+                  - title: Security - Convert PKCS to RSA
+                    output: web
+                    url: /comm/developers_tooling_pkcs_to_rsa.html
+                  - title: Cockroach dump import
+                    output: web
+                    url: /comm/developers_tooling_cockroach_dump_import.html
+                  - title: ES plugin Ingest
+                    output: web
+                    url: /comm/developers_tooling_es_plugin_ingest.html
+                  - title: ES re index
+                    output: web
+                    url: /comm/developers_tooling_es_reindex.html
+                  - title: HTTP 2 only server
+                    output: web
+                    url: /comm/developers_http_2_server.html
+              - title: Integration
+                output: web
+                subfolderitems:
+                  - title: LDAP
+                    output: web
+                    url: /comm/developers_guidelines_guide.html
+                  - title: Mutual TLS support
+                    output: web
+                    url: /comm/developers_guidelines_guide.html
+                  - title: Secrets everywhere
+                    output: web
+                    url: /comm/developers_guidelines_guide.html
+                  - title: ES re index
+                    output: web
+                    url: /comm/developers_guidelines_guide.html
+                  - title: HTTP 2 only server
+                    output: web
+                    url: /comm/developers_guidelines_guide.html
 
       - title: Testing
         output: web

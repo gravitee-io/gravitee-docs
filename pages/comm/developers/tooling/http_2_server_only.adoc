@@ -1,0 +1,22 @@
+= HTTP 2 only server
+:page-sidebar: comm_sidebar
+:page-permalink: comm/developers_http_2_server.html
+:page-folder: comm/developers
+:page-toc:
+:page-description: Developers - HTTP 2 only server
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, community
+:page-layout: comm
+
+== Run
+
+npm install http2 -g
+
+echo "require('http2').createServer({}, function(request, response) {
+response.end('Hello world!');
+}).listen(8080);" | tee /tmp/server.js > /dev/null
+
+node /tmp/server.js
+
+== Test
+
+curl http://localhost:8080/ -v --http2-prior-knowledge

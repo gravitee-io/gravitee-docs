@@ -1,0 +1,64 @@
+= Cockroach dump import
+:page-sidebar: comm_sidebar
+:page-permalink: comm/developers_tooling_cockroach_dump_import.html
+:page-folder: comm/developers
+:page-toc:
+:page-description: Developers - Cockroach dump import
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, community
+:page-layout: comm
+
+* Database dump without data
+```
+pg_dump --verbose --host=localhost --port=5432 \
+        --format=p \
+        --schema-only \
+        --clean \
+        --no-privileges \
+        --no-owner \
+        --no-comments \
+        --no-tablespaces \
+        -n "public" \
+        -f dump-1.30 \
+        gravitee130
+```
+
+* Extract "clean" part from "create/alter" part
+
+* Changelog dump
+```
+pg_dump --verbose --host=localhost --port=5432 \
+        --format=p \
+        --data-only \
+        --column-inserts \
+        --no-privileges \
+        --no-owner \
+        --no-comments \
+        --no-tablespaces \
+        -n "public" \
+        --table=databasechangelog \
+        -f changelog-1.30 \
+        gravitee130
+```
+
+* Push the scripts
+```
+scp clean.sql admin@188.165.243.140:/opt/dist/dist.gravitee.io/community/
+scp dump-1.30.sql admin@188.165.243.140:/opt/dist/dist.gravitee.io/community/
+scp changelog-1.30.sql admin@188.165.243.140:/opt/dist/dist.gravitee.io/community/
+```
+
+* Clean an existing database
+```
+cockroach sql --url='postgres://gravitee:ZE0aze09Ad;,fs@YOUR_CLUSTER.YOUR_ZONE.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=USER_WORKSPACE/cockroach-dump1.30/gravitee-cluster-ca.crt' < clean.sql
+```
+
+* Import tables
+```
+cockroach sql --url='postgres://gravitee:ZE0aze09Ad;,fs@YOUR_CLUSTER.YOUR_ZONE.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=USER_WORKSPACE/cockroach-dump1.30/gravitee-cluster-ca.crt'
+gravitee@YOUR_CLUSTER.YOUR_ZONE.cockroachlabs.cloud:26257/defaultdb> IMPORT PGDUMP 'https://download.gravitee.io/community/dump-1.30.sql';
+```
+
+* Load changelog
+```
+cockroach sql --url='postgres://gravitee:ZE0aze09Ad;,fs@YOUR_CLUSTER.YOUR_ZONE.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=USER_WORKSPACE/cockroach-dump1.30/gravitee-cluster-ca.crt' < changelog-1.30.sql
+```
