@@ -1,0 +1,30 @@
+= Configure a MongoDB reporter
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_reporters_mongodb.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Reporters - MongoDB
+:page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+== Overview
+
+The MongoDB reporter is included with AM by default.
+
+== Configuration
+[source,yaml]
+----
+# ===================================================================
+# MONGO REPORTER PROPERTIES
+#
+# This is a sample file declaring connection to MongoDB as reporter
+# ===================================================================
+reporter:
+  type: mongodb             # reporter type
+  mongodb:                  # mongodb reporter
+    dbname:                 # mongodb name (default gravitee)
+    host:                   # mongodb host (default localhost)
+    port:                   # mongodb port (default 27017)
+----
+
+Additional properties are available throught the Web UI.

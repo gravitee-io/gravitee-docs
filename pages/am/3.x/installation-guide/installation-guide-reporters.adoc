@@ -1,0 +1,21 @@
+= Reporters
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_reporters.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Reporter
+:page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+== Overview
+
+AM uses reporters to store audit events.
+
+You configure reporters in the `gravitee.yml` configuration file. 
+
+AM supports the following reporter:
+
+- link:am_installguide_reporters_mongodb.html[MongoDB reporters]
+- link:am_installguide_reporters_jdbc.html[JDBC reporters] (new in Gravitee.io AM 3.5.x)
+
+For information on how to install and configure the reporters, see the relevant configuration section.

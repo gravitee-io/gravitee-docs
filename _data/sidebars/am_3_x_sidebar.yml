@@ -377,6 +377,18 @@ entries:
             - title: JDBC
               output: web
               url: /am/current/am_installguide_repositories_jdbc.html
+        - title: Reporters
+          output: web
+          subfolderitems:
+            - title: Overview
+              output: web
+              url: /am/current/am_installguide_reporters.html
+            - title: MongoDB
+              output: web
+              url: /am/current/am_installguide_reporters_mongodb.html
+            - title: JDBC
+              output: web
+              url: /am/current/am_installguide_reporters_jdbc.html
     - title: Migration guide
       output: web
       url: /am/current/am_installguide_migration.html

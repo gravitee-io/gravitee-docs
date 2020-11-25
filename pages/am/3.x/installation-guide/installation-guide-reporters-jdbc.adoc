@@ -1,0 +1,74 @@
+= Configure a JDBC reporter
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_reporters_jdbc.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Reporters - JDBC
+:page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+== Overview
+
+You can deploy this reporter plugin in AM to use the most common databases, including:
+
+- PostgreSQL 9.6
+- MySQL 5.7
+- Microsoft SQL Server 2017-CU12
+- MariaDB 10.3
+
+NOTE: You need to deploy the correct R2DBC drivers for your database in your AM instance's `plugins/ext/jdbc` directory.
+
+|===
+|Database | Version tested | Gravitee.io Plugin | R2DBC Driver | Driver Name
+
+|Postgresql
+|9.6
+.4+|https://download.gravitee.io/graviteeio-am/plugins/reporters/gravitee-reporter-jdbc/[Download the same version as your AM platform]
+|https://repo1.maven.org/maven2/io/r2dbc/r2dbc-postgresql/0.8.5.RELEASE/r2dbc-postgresql-0.8.5.RELEASE.jar[Download page]
+|postgresql
+
+|MySQL
+|5.7
+|https://repo1.maven.org/maven2/dev/miku/r2dbc-mysql/0.8.2.RELEASE/r2dbc-mysql-0.8.2.RELEASE.jar[Download page]
+|mysql
+
+|MariaDB
+|10.3
+|https://repo1.maven.org/maven2/org/mariadb/r2dbc-mariadb/0.8.4-rc/r2dbc-mariadb-0.8.4-rc.jar[Download page]
+|mariadb
+
+|Microsoft SQL Server
+|2017-CU12
+|https://repo1.maven.org/maven2/io/r2dbc/r2dbc-mssql/0.8.4.RELEASE/r2dbc-mssql-0.8.4.RELEASE.jar[Download page]
+|sqlserver
+|===
+
+== Install the JDBC plugin
+
+NOTE: You need to repeat the following steps for each component (AM Gateway and AM API) where the SQL database is used.
+
+ . Download the plugin applicable to your version of AM (take the latest maintenance release).
+ . Place the zip file in the plugins directory for each component (`$GRAVITEE_HOME/plugins`).
+ . Download the R2DBC driver for your database version.
+ . Place the drivers in `$GRAVITEE_HOME/plugins/ext/jdbc`.
+ . Configure `gravitee.yml`:
++
+[source,yaml]
+----
+# ===================================================================
+# JDBC REPORTER PROPERTIES
+#
+# This is a sample file declaring connection to relational database
+# ===================================================================
+reporter:
+  type: jdbc             # reporter type
+  jdbc:                  # the reporter configuration
+    driver:              # r2dbc driver
+    host:                # database hostname or IP
+    port:                # database listening port
+    database:            # database name to connect to
+    username:            # username
+    password:            # password
+----
+
+NOTE: the user used to connect to the database requires permissions to create tables in order to automatically create report tables during a domain creation.

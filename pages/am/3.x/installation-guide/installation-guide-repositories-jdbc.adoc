@@ -21,28 +21,32 @@ You can deploy this repository plugin in AM to use the most common databases, in
 NOTE: AM uses the JDBC and R2DBC drivers together, since AM uses https://www.liquibase.org/[liquibase^] to manage the database schema. You need to deploy the correct JDBC and R2DBC drivers for your database in your AM instance's `plugins/ext/repository-am-jdbc` directory.
 
 |===
-|Database | Version tested | Gravitee.io Plugin | JDBC Driver | R2DBC Driver
+|Database | Version tested | Gravitee.io Plugin | JDBC Driver | R2DBC Driver | Driver Name
 
 |Postgresql
 |9.6
 .4+|https://download.gravitee.io/graviteeio-am/plugins/repositories/gravitee-repository-jdbc/[Download the same version as your AM platform]
 |https://jdbc.postgresql.org/download.html[Download page]
 |https://repo1.maven.org/maven2/io/r2dbc/r2dbc-postgresql/0.8.5.RELEASE/r2dbc-postgresql-0.8.5.RELEASE.jar[Download page]
+|postgresql
 
 |MySQL
 |5.7
 |https://dev.mysql.com/downloads/connector/j/[Download page]
 |https://repo1.maven.org/maven2/dev/miku/r2dbc-mysql/0.8.2.RELEASE/r2dbc-mysql-0.8.2.RELEASE.jar[Download page]
+|mysql
 
 |MariaDB
 |10.3
 |https://downloads.mariadb.org/connector-java/[Download page]
 |https://repo1.maven.org/maven2/org/mariadb/r2dbc-mariadb/0.8.4-rc/r2dbc-mariadb-0.8.4-rc.jar[Download page]
+|mariadb
 
 |Microsoft SQL Server
 |2017-CU12
 |https://docs.microsoft.com/en-us/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017[Download page]
 |https://repo1.maven.org/maven2/io/r2dbc/r2dbc-mssql/0.8.4.RELEASE/r2dbc-mssql-0.8.4.RELEASE.jar[Download page]
+|sqlserver
 |===
 
 == Install the JDBC plugin
