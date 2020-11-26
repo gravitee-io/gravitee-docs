@@ -3,7 +3,7 @@
 :page-permalink: comm/developers_guidelines_dev_guide.html
 :page-folder: comm/developers
 :page-toc: true
-:page-description: Developers - Introduction
+:page-description: Developers - Guidelines - Reference guide
 :page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, community
 :page-layout: comm
 
@@ -23,27 +23,9 @@ Once All PR are created, change the issue label to `in review`
 
 === Before commiting
 
-Format your file to add license information with: `mvn license:format`
+You have to add a licence header to new files.
 
-It will automatically add following documentation
-
-```java
-/**
- * Copyright (C) 2015 The Gravitee team (http://gravitee.io)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *         http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-```
+Please take a look at link:/comm/developers_guidelines_license_header.html[License header]
 
 === Commit message
 
@@ -61,7 +43,7 @@ Closes gravitee-io/issues=4069
 
 === Documentation
 
-When a feature or a bug fix require an update of the [online documentation](https://docs.gravitee.io), the `pull request` on the `gravitee-docs` repository must be done before passing the github issue in `in review`.
+When a feature or a bug fix require an update of the link:https://docs.gravitee.io[online documentation], the `pull request` on the `gravitee-docs` repository must be done before passing the github issue in `in review`.
 
 === Changes in gravitee-repository-jdbc module
 
@@ -77,17 +59,11 @@ or simply run `mvn clean install`
 
 
 === Portal WebUI
-==== i18n
 
-To create the i18n keys into the existing <local>.json files execute:
+If you create or delete keys for internationalization, you will need to modify all <local>.json files.
 
-`npm run generate:i18n`
-
-This will :
-* create new entries based on source code
-* remote useless entries
-* sort existing entries
+Please take a look at link:/comm/developers_guidelines_license_header.html[i18n]
 
 === Useful links
 
-Here is a [Page](https://github.com/gravitee-io/kb/wiki/Gravitee-Online-Resources) with some gravitee links (nigthly environment, story book...)
+Here is a link:/comm/overview_online-resources.html[page] with some gravitee links (nigthly environment, story book...)

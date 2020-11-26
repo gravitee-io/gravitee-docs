@@ -1,0 +1,22 @@
+= Internationalization
+:page-sidebar: comm_sidebar
+:page-permalink: comm/how_to_contribute_i18n.html
+:page-folder: comm/developers
+:page-toc: false
+:page-description: Developers - Guidelines - i18n
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, community
+:page-layout: comm
+
+== i18n
+
+To create the i18n keys into the existing <local>.json files execute:
+
+`npm run generate:i18n`
+
+This will :
+* create new entries based on source code
+* remote useless entries
+* sort existing entries
+
+
+Then you have to add translation for these keys.
