@@ -1,0 +1,82 @@
+= Mutual TLS support
+:page-sidebar: comm_sidebar
+:page-permalink: comm/developers_integration_mutual_tls_support.html
+:page-folder: comm/developers
+:page-toc:
+:page-description: Developers - Mutual TLS support
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, community
+:page-layout: comm
+
+
+== Create CA Certificate
+
+```shell
+# Generate CA key
+> openssl req -newkey rsa:4096 -keyform PEM -keyout ca.key -x509 -days 3650 -outform PEM -out ca.pem
+```
+
+== Generate server certificate
+
+```shell
+# Generate server key
+> openssl genrsa -out server.key 4096
+
+# Generate a server certificate signing request
+> openssl req -new -key server.key -out server.csr -sha256
+
+# Generate server certificate
+> openssl x509 -req -in server.csr -CA ca.pem -CAkey ca.key -set_serial 100 -extensions server -days 1460 -outform PEM -out server.cer -sha256
+
+# Generate server pkcs12 from key and cert
+> openssl pkcs12 -export -inkey server.key -in server.cer -out server.p12
+```
+
+== Generate client certificate
+
+```shell
+# Generate a client key
+> openssl genrsa -out client.key 4096
+
+# Generate a client certificate signing request
+> openssl req -new -key client.key -out client.csr
+
+# Generate client certificate
+> openssl x509 -req -in client.csr -CA ca.pem -CAkey ca.key -set_serial 101 -extensions client -days 365 -outform PEM -out client.cer
+
+# Convert to pkcs12
+> openssl pkcs12 -export -inkey client.key -in client.cer -out client.p12
+```
+
+== API Gateway
+
+=== Prepare truststore
+
+```shell
+# Create truststore for API Gateway
+> keytool -import -file ca.pem -keystore ca-truststore.jks
+
+```
+
+=== Configuration
+```yaml
+  ssl:
+    clientAuth: request
+    keystore:
+      type: pkcs12 # Supports jks, pem, pkcs12
+      path: /Users/david/java-ext/gravitee-io/mutual-ssl/server.p12
+      password: password
+    truststore:
+      type: jks # Supports jks, pem, pkcs12
+      path: /Users/david/java-ext/gravitee-io/mutual-ssl/ca-truststore.jks
+      password: password
+```
+
+== Try It !
+
+```shell
+# Test without client auth
+> curl -vvv --cacert server.cer -X GET https://localhost:8082/echo
+
+# Test with client auth
+> curl -vvv --cert client.cer --key client.key --cacert server.cer -X GET https://localhost:8082/echo
+```
