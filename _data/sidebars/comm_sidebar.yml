@@ -46,13 +46,13 @@ entries:
             url: /comm/how-to-contribute-to-documentation.html
           - title: Portal theme
             output: web
-            url: /ae/installguide_kubernetes.html
+            url: /comm/how_to_contribute_portal_theme.html
           - title: i18n
             output: web
             url: /comm/how_to_contribute_i18n.html
           - title: FAQ / How to ?
             output: web
-            url: /ae/installguide_technical_api.html
+            url: /comm/how_to_contribute_faq.html
 
       - title: Developers
         output: web
@@ -73,10 +73,10 @@ entries:
                     url: /comm/developers_guidelines_license_header.html
                   - title: Code formatter
                     output: web
-                    url: /comm/developers_guidelines_guide.html
+                    url: /comm/developers_guidelines_code_formatter.html
                   - title: Contributing
                     output: web
-                    url: /comm/developers_guidelines_guide.html
+                    url: /comm/developers_guidelines_contributing.html
               - title: Tooling
                 output: web
                 subfolderitems:
@@ -107,22 +107,16 @@ entries:
                   - title: Secrets everywhere
                     output: web
                     url: /comm/developers_integration_secrets_everywhere.html
-                  - title: ES re index
-                    output: web
-                    url: /comm/developers_guidelines_guide.html
-                  - title: HTTP 2 only server
-                    output: web
-                    url: /comm/developers_guidelines_guide.html
 
       - title: Testing
         output: web
         folderitems:
           - title: JUnit
             output: web
-            url: /ae/apim_installation.html
+            url: /comm/testing_junit.html
           - title: Jest
             output: web
-            url: /ae/apim_configuration.html
+            url: /comm/testing_jest.html
           - title: Postman
             output: web
-            url: /ae/apim_platform.html
+            url: /comm/testing_postman.html
