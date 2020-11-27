@@ -1,0 +1,26 @@
+= LDAP AD Example
+:page-sidebar: comm_sidebar
+:page-permalink: comm/developers_integration_ldap_example.html
+:page-folder: comm/developers
+:page-toc:
+:page-description: Developers - LDAP AD Example
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, community
+:page-layout: comm
+
+```yaml
+- type: ldap
+  context-source-username: "cn=ad_reader_gravitee,OU=z_comptes_speciaux,DC=osmoz,DC=org"
+  context-source-password: "*****"
+  context-source-url: "ldap://sysadm07:389"
+  context-source-base: "DC=osmoz,DC=org"
+  user-search-base: ""
+  user-search-filter: "sAMAccountName={0}"
+  group-search-base: "OU=Ressources,OU=Groupes,OU=000_Nouvelle_Organisation"
+  group-search-filter: "member={0}"
+  group-role-attribute: "cn"
+  role-mapper: {
+    GDLS_XXX_CONSUMERS: API_CONSUMER,
+    GDLS_XXX_PUBLISHERS: API_PUBLISHER,
+    GDLS_XXX_ADMINS: ADMIN
+  }
+```
