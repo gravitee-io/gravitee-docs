@@ -1,0 +1,47 @@
+= Github flow
+:page-sidebar: comm_sidebar
+:page-permalink: comm/how_to_contribute_github_flow.html
+:page-folder: comm/how-to-contribute
+:page-toc: false
+:page-description: Community - How to contribute - Github flow
+:page-keywords: Gravitee, API Platform, documentation, manual, guide, reference, api, community, git, developers
+:page-layout: comm
+:sectnums:
+
+We use Github issues to track new features, bug fixes, enhancement, etc.
+
+You can find them link:https://github.com/gravitee-io/issues/issues[on our dedicated repository]
+
+An issue belong to a milestone (link:https://github.com/gravitee-io/issues/milestones[milestones])
+
+
+You can create a new issue link:https://github.com/gravitee-io/issues/issues/new[here]. The template guides you to provide the maximum of information.
+
+== Start to contribute on an issue
+
+If you want to take an issue, you have just to assign it to yourself and choose the status `status: in progress`.
+
+image::comm/how-to-contribute/github-in-progress.png[Gravitee.io - Issue in progress]
+
+== Open PRs and reference issue
+
+Do your things, and open Pull request on the impacted repositories.
+
+WARNING: do not forget to reference the issue you are fixing.
+
+image::comm/how-to-contribute/github-pr-issue.png[Gravitee.io - PR references issue]
+
+== Change issue status
+
+When you are ready, just delete `status: in progress` and add `status: in review`
+
+image::comm/how-to-contribute/github-in-review.png[Gravitee.io - Issue in review]
+
+== What's next ?
+
+Maintainer may request changes. He will change the label to `status: changes required`.
+
+In this case, do the modifications and change label again to `status: in review` when you are ready.
+
+When maintainer will validate your work, he will merge your pull requests and the issue will be closed.
+
