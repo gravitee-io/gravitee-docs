@@ -1,0 +1,20 @@
+= Log in to APIM Console
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_quickstart_console_login.html
+:page-folder: apim/quickstart
+:page-layout: apim3x
+
+== How to access APIM Console
+
+You access APIM Console using the `http://MANAGEMENT_UI_SERVER_DOMAIN` URL created during installation.
+
+During the APIM installation process a default administrator account is created. You can use this account to perform all the management tasks provided by APIM, such as creating APIs, registering users and configuring security.
+
+By default, the login details for the APIM Console administrator account are `admin / admin`.
+
+To log in:
+
+. Open APIM Console.
+. Enter the administrator credentials and click *SIGN IN*.
++
+image:apim/3.x/quickstart/console-login.png[]
