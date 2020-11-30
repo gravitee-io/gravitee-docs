@@ -245,7 +245,9 @@ entries:
                - title: Configure Keycloak
                  output: web
                  url: /apim/3.x/apim_installguide_authentication_keycloak.html
-
+         - title: Configure notifications
+           output: web
+           url: /apim/3.x/apim_installguide_configuration_notifications.html
       - title: API Publisher Guide
         output: web
         folderitems:
@@ -456,6 +458,19 @@ entries:
           - title: Users and groups
             output: web
             url: /apim/3.x/apim_adminguide_users_and_groups.html
+          - title: Support
+            output: web
+            url: /apim/3.x/apim_adminguide_support-tickets.html
+
+      - title: How To
+        output: web
+        folderitems:
+          - title: Introduction
+            output: web
+            url: /apim/3.x/apim_how_to_introduction.html
+          - title: Configure global API reviewers
+            output: web
+            url: /apim/3.x/apim_how_to_configure_global_API_reviewers.html
 
       - title: Developer Guide
         output: web

@@ -42,6 +42,20 @@ This example configures an alert for the 50th percentile of response times excee
 .API Management - Percentile 50 for response time greater than X ms
 image::ae/apim/api_alert_50percentile.png[Percentile 50 for response-time greater than X ms]
 
+=== No API requests in the last minute
+
+The following example defines an alert triggered by no requests made to the API during the last minute:
+
+.API Management - No api request during last minute
+image::ae/apim/api_alert_api_no_request_last_minute.png[No api request during last minute]
+
+=== No API requests from my-application in the last minute
+
+The following example is the same as above, but filters on 'my-application':
+
+.API Management - No API request during last minute
+image::ae/apim/api_alert_application_no_request_last_minute.png[No api request from my-application during last minute]
+
 === Quota too many requests
 
 This example configures an alert for reaching the quota limit on requests:

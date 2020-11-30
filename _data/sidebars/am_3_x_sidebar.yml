@@ -115,6 +115,9 @@ entries:
             - title: Twitter
               output: web
               url: /am/current/am_userguide_social_identity_provider_twitter.html
+            - title: Google
+              output: web
+              url: /am/current/am_userguide_social_identity_provider_google.html
           - title: Legal Identity Providers
             output: web
             subfolderitems:
@@ -379,6 +382,9 @@ entries:
         - title: MongoDB
           output: web
           url: /am/current/am_installguide_repositories_mongodb.html
+        - title: JDBC
+          output: web
+          url: /am/current/am_installguide_repositories_jdbc.html
   - title: Breaking changes
     output: web
     folderitems:

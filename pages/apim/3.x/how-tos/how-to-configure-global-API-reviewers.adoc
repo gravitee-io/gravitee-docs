@@ -1,0 +1,84 @@
+= How to configure global API reviewers
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_how_to_configure_global_API_reviewers.html
+:page-folder: apim/how-tos
+:page-description: Gravitee.io API Management - How To
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, how-to, reviewer
+:page-layout: apim3x
+
+== Overview
+
+This How to describes how you can easily configure a group of global reviewers instead of manually adding reviewers as a member of each API.
+
+== API reviews
+
+In APIM Console, you can configure API reviewers. They can check various aspects of the API, such as:
+
+- Documentation
+- Versioning
+- Endpoints
+
+API reviews can be requested by the API owner. When their review is complete, reviewers can accept or reject the API. If reviewers reject the API, its owner knows the API needs some changes.
+
+API reviewers must have access rights to an API to review it.
+
+== Prerequisites
+
+You first need to enable the **Enable API review** option in the APIM Console in *Settings > API Quality*.
+
+You also need a `REVIEWER` role with at least the following permissions:
+
+* *Scope*: API
+* Permissions:
+** *ALERT*: READ
+** *DEFINITION*: READ
+** *DISCOVERY*: READ
+** *DOCUMENTATION*: READ
+** *GATEWAY_DEFINITION*: READ
+** *METADATA*: READ
+** *NOTIFICATION*: READ, UPDATE
+** *PLAN*: READ
+** *QUALITY_RULE*: CREATE, READ, UPDATE
+** *REVIEWS*: CREATE, READ, UPDATE, DELETE
+
+NOTE: APIM comes with a default `REVIEWER` role that includes all these conditions.
+
+== Configuration
+
+. In APIM Console, click *Settings > Groups* and click the plus icon image:icons\plus-icon.png[role="icon"] to create a new group.
++
+image:apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-1.png[Create a group]
+
+. Give it a name (e.g. *Global Reviewers*).
+. Select the *Associate automatically to every new API* option.
+. Click *CREATE*.
++
+image:apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-2.png[Give a name to the group]
+. Select a reviewer role in the *Default API role* dropdown list (e.g. `REVIEWER`).
+. Click *UPDATE*.
++
+image:apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-3.png[Choose default API role]
+. Click *ASSOCIATE TO EXISTING APIS*.
++
+image:apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-4.png[Associate group to existing APIs]
+. In the *Dependents* section, click the plus icon followed by the users icon to add users to the group, checking that their API role is correct.
++
+image:apim/3.x/how-tos/configure-global-API-reviewers/add-users.png[Add users]
++
+image:apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-5.png[Add users]
+. Click *UPDATE*.
+
+== Result
+With this configuration:
+
+* Your new group is attached to all existing APIs
+* Your new group will be attached to every new API
+* All the reviewers in this group (with a configured email address) are notified by email when a review is requested on an API
+
+
+[TIP]
+====
+You do not need to add new reviewers to every API or add every reviewer to new APIs.
+
+You can still add specific reviewers to a specific API. They will also be notified by email when a review is requested on this API.
+====

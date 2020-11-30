@@ -172,7 +172,33 @@ The default configuration uses https://www.elastic.co/products/elasticsearch[Ela
 [[gravitee-standalone-management-authentication-configuration]]
 === Configure authentication
 
-See the link:/apim/3.x/apim_installguide_authentication.html[dedicated] section.
+See the link:/apim/3.x/apim_installguide_authentication.html[Authentication configuration] section.
+
+== CORS
+
+CORS (Cross-Origin Resource Sharing) is a mechanism that allows resources on a web page to be requested from another domain.
+
+For more information on CORS, take a look at the https://www.w3.org/TR/cors[CORS specification^].
+
+=== Configuration
+
+You can configure CORS using `gravitee.yml`, environment variables or directly in APIM Console.
+
+[source,yaml]
+----
+cors:
+  # Allows to configure the header Access-Control-Allow-Origin (default value: *)
+  # '*' is a valid value but is considered as a security risk as it will be opened to cross origin requests from anywhere.
+  allow-origin: http://developer.mycompany.com
+  # Allows to define how long the result of the preflight request should be cached for (default value; 1728000 [20 days])
+  max-age: 864000
+  # Which methods to allow (default value: OPTIONS, GET, POST, PUT, DELETE)
+  allow-methods: 'OPTIONS, GET, POST, PUT, DELETE'
+  # Which headers to allow (default values: Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, If-Match, X-Xsrf-Token)
+  allow-headers: 'X-Requested-With'
+----
+
+image::apim/3.x/installation/configuration/graviteeio-installation-configuration-cors.png[]
 
 === Configure email
 
@@ -191,7 +217,10 @@ email:
   password: password
 ----
 
+image::apim/3.x/installation/configuration/graviteeio-installation-configuration-smtp.png[]
+
 ===== Configure the Gmail SMTP server
+
 
 [source,yaml]
 ----
@@ -211,68 +240,7 @@ email:
 
 If you are using 2-Factor Authentication (which is recommended), you need to generate an application password: https://security.google.com/settings/security/apppasswords .
 
-==== Configure email templates
-
-APIM API uses the http://freemarker.org[FreeMarker template engine] to parse and create email templates.
-
-[source,yaml]
-----
-templates:
-  path: ${gravitee.home}/templates
-----
-
-The list of email templates is as follows:
-
-[width="100%",cols="20%,60%,20%",frame="topbot",options="header"]
-|======================
-|Email Template                 |Description                                    |Variables
-|groupMember.html               |New API group member notification.             |_username_, *group*, *user*
-|apiKeyExpired.html             |API Key expired notification.                  |*owner*, *api*, *plan*, *application*, apiKey, expirationDate
-|apiKeyRevoked.html             |API Key revoked notification.                  |*owner*, apiKey
-|apiMember.html                 |New API member notification.                   |_username_, *api*, *user*
-|applicationMember.html         |New application member notification.           |_username_, *application*, *user*
-|subscriptionApproved.html      |API subscription approved notification.        |*owner*, *api*, *plan*, *subscription*
-|subscriptionReceived.html      |API subscription received notification.        |*owner*, *api*, *plan*, *application*, *subscription*, subscriptionsUrl
-|subscriptionRejected.html      |API subscription rejected notification.        |*owner*, *api*, *plan*, *subscription*
-|userRegistration.html          |User registration notification.                |_username_, registrationUrl, *user*
-|supportTicket.html             |Support ticket creation.                       |*api*, *application*, *user*, content
-|======================
-
-You can access your API data on your API templates with: ${api.name} or ${api.metadata['foo-bar']}
-
-Available attributes:
-
-[width="100%",cols="20%,20%,20%,20%,20%,20%",frame="topbot",options="header"]
-|======================
-|Api                |Application        |Group              |Plan               |Owner/User    |Subscription
-|name               |name               |name               |name               |username      |status
-|description        |description        |-                  |description        |firstname     |request
-|version            |type               |-                  |order              |lastname      |reason
-|role               |status             |-                  |publishedAt (Date) |displayName   |processedAt
-|metadata (Map)     |role               |-                  |closedAt (Date)    |email         |startingAt
-|deployedAt (Date)  |-                  |-                  |-                  |-             |endingAt
-|createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |-             |closedAt
-|updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |-             |subscribedAt
-|======================
-
-This is an example template:
-[source,html]
-----
-<html>
-	<body style="text-align: center;">
-		<header>
-			<#include "header.html" />
-		</header>
-		<div style="margin-top: 50px; color: #424e5a;">
-			<h3>Hi ${owner.username},</h3>
-			<p>The API Key <code>${apiKey}</code> has been expired.
-		</p>
-	</body>
-</html>
-
-----
-
-=== Configure user options
+== User options
 
 You can configure various user options:
 
@@ -280,6 +248,35 @@ user.login.defaultApplication:: boolean (default: true) -- creates a new applica
 user.creation.token.expire-after:: number (default: 86400) -- number of seconds before the user registration token expires
 user.reference.secret:: 32 characters (default: s3cR3t4grAv1t33.1Ous3D4R3f3r3nc3) -- secret used to generate a unique anonymous reference to a user; *You must change this value*
 user.anonymize-on-delete:enabled:: boolean (default: false) - If true, the user *firstname*, *lastname* and *email* are anonymized when a user is deleted
+
+== Management settings
+
+You can configure various management settings from the APIM Console `Settings` section with environment variables. For a complete list of these settings, see <<management-settings-list,Management settings list>> below.
+Once you override these properties with environment variables, APIM Console configures them as read-only to prevent you overwriting the new values in the interface.
+
+[NOTE]
+====
+- For array properties, separate your environment variable properties with a comma. For example: `my_var=item1,item2,item3`.
+- We recommend you prefix Gravitee variables with `gravitee.` to avoid conflicts with other variables.
+====
+
+=== Example
+For example, to override the analytics client timeout, you can write:
+
+[source,properties]
+----
+GRAVITEE_ANALYTICS_CLIENT_TIMEOUT=15000
+GRAVITEE.ANALYTICS.CLIENT.TIMEOUT=15000
+gravitee_analytics_client_timeout=15000
+gravitee.analytics.client.timeout=15000
+----
+
+=== Management settings list
+
+[source,java]
+----
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/master/gravitee-rest-api-model/src/main/java/io/gravitee/rest/api/model/parameters/Key.java[]
+----
 
 === Configure Gateway
 === Default configuration

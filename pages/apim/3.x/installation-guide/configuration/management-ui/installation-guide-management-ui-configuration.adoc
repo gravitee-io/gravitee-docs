@@ -133,3 +133,14 @@ These parameters can be modified in APIM Console with *Settings > Management > T
 image::apim/3.x/installation/management-ui/graviteeio-installation-management-ui-settings.png[]
 
 ====
+
+== Theme
+
+You can customize the theme of APIM Console by modifying `default-theme.json` or `light-theme.json`.
+
+The `default-theme.json` file is as follows:
+
+[source,json]
+----
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-webui/master/themes/default-theme.json[]
+----
