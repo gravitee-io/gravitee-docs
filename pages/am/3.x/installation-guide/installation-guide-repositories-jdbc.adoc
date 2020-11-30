@@ -84,7 +84,7 @@ This is the minimum configuration you need to get started with a relational data
 # This is a sample file declaring all properties for a relational database
 # ===================================================================
 management:
-  type: mongodb                 # repository type
+  type: jdbc                    # repository type
   jdbc:                         # jdbc/r2dbc repository
     driver:                     # jdbc driver
     host:                       # database hostname or IP
@@ -96,7 +96,7 @@ management:
     initialSize:                # Initial pool size (default: 10)
     maxSize:                    # Maximum pool size (default: 10)
     maxIdleTime:                # Maximum idle time of the connection in the pool in millis (default: 1800000)
-    maxLIfeTime:                # Maximum life time of the connection in the pool in millis (default: 0)
+    maxLifeTime:                # Maximum life time of the connection in the pool in millis (default: 0)
     maxAcquireTime:             # Maximum time to acquire connection from pool in millis (default: 0)
     maxCreateConnectionTime:    # Maximum time to create a new connection in millis (default: 0)
     validationQuery:            # Query that will be executed to validate that a connection to the database is still alive.
@@ -112,4 +112,25 @@ If you want to disable automatic update, you'll need to add this section to your
 ----
 liquibase:
   enabled: false
+----
+
+== Auto provisioning of IdentityProvider schema
+
+Since AM 3.5, a default table may be created automatically with the following fields : 
+
+- id
+- username
+- password
+- email
+- metadata 
+
+By consequences, the user declared into the `management.jdbc` section of the `gravitee.yaml` file needs the relevant permissions to create a table. If you doesn't want to generate the schema of the default JDBC IdentityProvider, you can disable this feature by setting the following property to false : 
+
+[source,yaml]
+----
+management:
+  type: jdbc                    
+  jdbc:
+    identityProvider:
+      provisioning: false                         
 ----
