@@ -34,6 +34,15 @@ entries:
             output: web
             url: /apim/3.x/apim_quickstart_publish.html
             subfolders:
+              - title: Get started
+                output: web
+                subfolderitems:
+                  - title: Log in to APIM Console
+                    output: web
+                    url: /apim/3.x/apim_quickstart_console_login.html
+                  - title: Log in to APIM Portal
+                    output: web
+                    url: /apim/3.x/apim_quickstart_portal_login.html
               - title: Publish your first API
                 output: web
                 subfolderitems:
@@ -471,7 +480,9 @@ entries:
           - title: Configure global API reviewers
             output: web
             url: /apim/3.x/apim_how_to_configure_global_API_reviewers.html
-
+          - title: Configure a production-ready APIM environment
+            output: web
+            url: /apim/3.x/apim_how_to_configuration.html
       - title: Developer Guide
         output: web
         folderitems:
