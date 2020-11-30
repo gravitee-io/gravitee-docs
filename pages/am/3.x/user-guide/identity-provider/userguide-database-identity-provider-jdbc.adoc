@@ -40,3 +40,4 @@ image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 To complete your tests, call the Login page (i.e `/oauth/authorize` endpoint) and try to sign in with the username/password form.
 
 NOTE: If you are unable to authenticate your users, there may be a problem with the identity provider settings. Check the AM Gateway log and audit logs for more information.
+
