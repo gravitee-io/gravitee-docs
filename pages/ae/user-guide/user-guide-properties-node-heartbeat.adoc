@@ -9,64 +9,80 @@
 
 Here is the list of properties available in every alerts triggered by a NODE_HEARTBEAT event.
 
-NOTE: To access one of those property, you have to use the following syntax: `${notification.properties['property_name']}`.
-
-[cols="1,3"]
+[cols="1,3,3"]
 |===
-|Key |Description
+|Key |Description |Syntax
 
 |`node.hostname`
 |The node hostname which has thrown the Alert.
+|${notification.properties['node.hostname']}
 
 |`node.application`
 |The node application (`gio-apim-gateway`, `gio-apim-management`, `gio-am-gateway`, `gio-am-management`) which has thrown the Alert.
+|${notification.properties['node.application']}
 
 |`node.id`
 |The uuid of the node which has thrown the Alert.
+|${notification.properties['node.id']}
 
 |`os.cpu.percent`
 |The CPU percentage used.
+|${notification.properties['os.cpu.percent']}
 
 |`os.cpu.average.0`
 |The CPU load average over 1 minutes if available.
+|${notification.properties['os.cpu.average.0']}
 
 |`os.cpu.average.1`
 |The CPU load average over 5 minutes if available.
+|${notification.properties['os.cpu.average.1']}
 
 |`os.cpu.average.2`
 |The CPU load average over 15 minutes if available.
+|${notification.properties['os.cpu.average.2']}
 
 |`process.fd.open`
 |Number of opened file descriptors.
+|${notification.properties['process.fd.open']}
 
 |`process.fd.max`
 |Max number of opened file descriptors.
+|${notification.properties['process.fd.max']}
 
 |`process.cpu.percent`
 |The CPU percentage used by the process.
+|${notification.properties['process.cpu.percent']}
 
 |`process.cpu.total`
 |The total CPU time of the process.
+|${notification.properties['process.cpu.total']}
 
 |`process.mem.virtual.total`
 |The total virtual memory of the process.
+|${notification.properties['process.mem.virtual.total']}
 
 |`jvm.uptime`
 |The uptime of the Java Virtual Machine.
+|${notification.properties['jvm.uptime']}
 
 |`jvm.threads.count`
 |The number of live threads of the java process.
+|${notification.properties['jvm.threads.count']}
 
 |`jvm.threads.peak`
 |The peak number of live threads of the java process.
+|${notification.properties['jvm.threads.peak']}
 
 |`jvm.mem.heap.used`
 |The amount of used memory in bytes.
+|${notification.properties['jvm.mem.heap.used']}
 
 |`jvm.mem.heap.max`
 |The maximum amount of memory in bytes that can be used.
+|${notification.properties['jvm.mem.heap.max']}
 
 |`jvm.mem.heap.percent`
 |The ratio between the used heap and the max heap.
+|${notification.properties['jvm.mem.heap.percent']}
 
 |===
