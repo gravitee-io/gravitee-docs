@@ -28,7 +28,7 @@ sudo amazon-linux-extras install nginx1.12
 sudo systemctl start nginx
 ----
 
-== Installing Gravitee.io Access Management package
+== Install AM (no dependencies)
 
 IMPORTANT: We assume that you have configured your package management system by following link:/am/current/am_installguide_amazon_introduction.html[this documentation].
 
@@ -39,7 +39,7 @@ If you are looking to install all the Gravitee.io Access Management components, 
 sudo yum install {gravitee-package-name}
 ----
 
-== Installing Gravitee.io Access Management package with dependencies
+== Install AM (with dependencies)
 
 In a very similar way you did in first step, you can install the complete Gravitee.io Access Management with dependencies
 thanks to a single command.
@@ -82,3 +82,20 @@ sudo systemctl daemon-reload
 sudo systemctl start {gravitee-package-name}-gateway {gravitee-package-name}-management-api
 sudo systemctl restart nginx
 ----
+
+== Check the AM components are running
+
+When all components are started, you can do a quick test to see if everything is ok by checking these URLs:
+
+|===
+|Component |URL
+
+|AM Gateway
+|http://localhost:8092
+
+|AM API
+|http://localhost:8093
+
+|AM Console
+|http://localhost:8094
+|===
