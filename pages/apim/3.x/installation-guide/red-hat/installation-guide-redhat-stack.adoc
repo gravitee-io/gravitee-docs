@@ -103,3 +103,24 @@ sudo systemctl daemon-reload
 sudo systemctl start {gravitee-package-name}-gateway {gravitee-package-name}-management-api
 sudo systemctl restart nginx
 ----
+
+== Check the APIM components are running
+
+When all components are started, you can run a quick test by checking these URLs:
+
+|===
+|Component |URL
+
+|APIM Gateway
+|http://localhost:8082/
+
+|APIM API
+|http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/apis
+
+|APIM Management
+|http://localhost:8084/
+
+|APIM Portal
+|http://localhost:8085/
+
+|===
