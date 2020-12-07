@@ -295,117 +295,6 @@ entries:
                   - title: System folders, links and APIM Portal customization
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation_system_folders.html
-              - title: Policies
-                output: web
-                subfolderitems:
-                  - title: Introduction
-                    output: web
-                    url: /apim/3.x/apim_policies_overview.html
-                  - title: API Key
-                    output: web
-                    url: /apim/3.x/apim_policies_apikey.html
-                  - title: Assign attributes
-                    output: web
-                    url: /apim/3.x/apim_policies_assign_attributes.html
-                  - title: Assign content
-                    output: web
-                    url: /apim/3.x/apim_policies_assign_content.html
-                  - title: Cache
-                    output: web
-                    url: /apim/3.x/apim_policies_cache.html
-                  - title: Callout HTTP
-                    output: web
-                    url: /apim/3.x/apim_policies_callout_http.html
-                  - title: Dynamic routing
-                    output: web
-                    url: /apim/3.x/apim_policies_dynamic_routing.html
-                  - title: Generate JWT
-                    output: web
-                    url: /apim/3.x/apim_policies_generate_jwt.html
-                  - title: Groovy
-                    output: web
-                    url: /apim/3.x/apim_policies_groovy.html
-                  - title: HTML to JSON
-                    output: web
-                    url: /apim/3.x/apim_policies_html2json.html
-                  - title: IP filtering
-                    output: web
-                    url: /apim/3.x/apim_policies_ip_filtering.html
-                  - title: JSON threat protection
-                    output: web
-                    url: /apim/3.x/apim_policies_json_threat_protection.html
-                  - title: JSON to JSON
-                    output: web
-                    url: /apim/3.x/apim_policies_json2json.html
-                  - title: JSON validation
-                    output: web
-                    url: /apim/3.x/apim_policies_json_validation.html
-                  - title: JWS
-                    output: web
-                    url: /apim/3.x/apim_policies_jws.html
-                  - title: JWT
-                    output: web
-                    url: /apim/3.x/apim_policies_jwt.html
-                  - title: Latency
-                    output: web
-                    url: /apim/3.x/apim_policies_latency.html
-                  - title: Mock
-                    output: web
-                    url: /apim/3.x/apim_policies_mock.html
-                  - title: OAuth2
-                    output: web
-                    url: /apim/3.x/apim_policies_oauth2.html
-                  - title: OpenID Connect - UserInfo
-                    output: web
-                    url: /apim/3.x/apim_policies_openid_connect_userinfo.html
-                  - title: Override HTTP method
-                    output: web
-                    url: /apim/3.x/apim_policies_override_http_method.html
-                  - title: Rate limiting
-                    output: web
-                    url: /apim/3.x/apim_policies_rate_limiting.html
-                  - title: Regex threat protection
-                    output: web
-                    url: /apim/3.x/apim_policies_regex_threat_protection.html
-                  - title: Request content limit
-                    output: web
-                    url: /apim/3.x/apim_policies_request_content_limit.html
-                  - title: Request validation
-                    output: web
-                    url: /apim/3.x/apim_policies_request_validation.html
-                  - title: Resource filtering
-                    output: web
-                    url: /apim/3.x/apim_policies_resource_filtering.html
-                  - title: REST to SOAP
-                    output: web
-                    url: /apim/3.x/apim_policies_rest2soap.html
-                  - title: Role-based access control
-                    output: web
-                    url: /apim/3.x/apim_policies_role_based_access_control.html
-                  - title: SSL enforcement
-                    output: web
-                    url: /apim/3.x/apim_policies_ssl_enforcement.html
-                  - title: Transform headers
-                    output: web
-                    url: /apim/3.x/apim_policies_transform_headers.html
-                  - title: Transform query parameters
-                    output: web
-                    url: /apim/3.x/apim_policies_transform_query_params.html
-                  - title: URL rewriting
-                    output: web
-                    url: /apim/3.x/apim_policies_url_rewriting.html
-                  - title: XML to JSON
-                    output: web
-                    url: /apim/3.x/apim_policies_xml2json.html
-                  - title: XML threat protection
-                    output: web
-                    url: /apim/3.x/apim_policies_xml_threat_protection.html
-                  - title: XML validation
-                    output: web
-                    url: /apim/3.x/apim_policies_xml_validation.html
-                  - title: XSLT
-                    output: web
-                    url: /apim/3.x/apim_policies_xslt.html
               - title: Resources
                 output: web
                 subfolderitems:
@@ -495,6 +384,128 @@ entries:
           - title: Policies
             output: web
             url: /apim/3.x/apim_devguide_policies.html
+      - title: Policy Reference
+        output: web
+        folderitems:
+          - title: Introduction
+            output: web
+            url: /apim/3.x/apim_policies_overview.html
+          - title: API key
+            output: web
+            url: /apim/3.x/apim_policies_apikey.html
+          - title: Assign attributes
+            output: web
+            url: /apim/3.x/apim_policies_assign_attributes.html
+          - title: Assign content
+            output: web
+            url: /apim/3.x/apim_policies_assign_content.html
+          - title: Authentication
+            output: web
+            url: /apim/3.x/apim_policies_authentication.html
+          - title: Basic authentication
+            output: web
+            url: /apim/3.x/apim_policies_basic_authentication.html
+            output: web
+            url: /apim/3.x/apim_policies_blank.html
+          - title: Cache
+            output: web
+            url: /apim/3.x/apim_policies_cache.html
+          - title: Callout HTTP
+            output: web
+            url: /apim/3.x/apim_policies_callout_http.html
+          - title: Dynamic routing
+            output: web
+            url: /apim/3.x/apim_policies_dynamic_routing.html
+          - title: Generate JWT
+            output: web
+            url: /apim/3.x/apim_policies_generate_jwt.html
+          - title: Groovy
+            output: web
+            url: /apim/3.x/apim_policies_groovy.html
+          - title: HTML to JSON
+            output: web
+            url: /apim/3.x/apim_policies_html2json.html
+          - title: IP filtering
+            output: web
+            url: /apim/3.x/apim_policies_ip_filtering.html
+          - title: JSON threat protection
+            output: web
+            url: /apim/3.x/apim_policies_json_threat_protection.html
+          - title: JSON to JSON
+            output: web
+            url: /apim/3.x/apim_policies_json2json.html
+          - title: JSON validation
+            output: web
+            url: /apim/3.x/apim_policies_json_validation.html
+          - title: JWS
+            output: web
+            url: /apim/3.x/apim_policies_jws.html
+          - title: JWT
+            output: web
+            url: /apim/3.x/apim_policies_jwt.html
+          - title: Keyless
+            output: web
+            url: /apim/3.x/apim_policies_keyless.html
+          - title: Latency
+            output: web
+            url: /apim/3.x/apim_policies_latency.html
+          - title: Mock
+            output: web
+            url: /apim/3.x/apim_policies_mock.html
+          - title: OAuth2
+            output: web
+            url: /apim/3.x/apim_policies_oauth2.html
+          - title: OpenID Connect - UserInfo
+            output: web
+            url: /apim/3.x/apim_policies_openid_connect_userinfo.html
+          - title: Override HTTP method
+            output: web
+            url: /apim/3.x/apim_policies_override_http_method.html
+          - title: Rate limiting
+            output: web
+            url: /apim/3.x/apim_policies_rate_limiting.html
+          - title: Regex threat protection
+            output: web
+            url: /apim/3.x/apim_policies_regex_threat_protection.html
+          - title: Request content limit
+            output: web
+            url: /apim/3.x/apim_policies_request_content_limit.html
+          - title: Request validation
+            output: web
+            url: /apim/3.x/apim_policies_request_validation.html
+          - title: Resource filtering
+            output: web
+            url: /apim/3.x/apim_policies_resource_filtering.html
+          - title: REST to SOAP
+            output: web
+            url: /apim/3.x/apim_policies_rest2soap.html
+          - title: Role-based access control
+            output: web
+            url: /apim/3.x/apim_policies_role_based_access_control.html
+          - title: SSL enforcement
+            output: web
+            url: /apim/3.x/apim_policies_ssl_enforcement.html
+          - title: Transform headers
+            output: web
+            url: /apim/3.x/apim_policies_transform_headers.html
+          - title: Transform query parameters
+            output: web
+            url: /apim/3.x/apim_policies_transform_query_params.html
+          - title: URL rewriting
+            output: web
+            url: /apim/3.x/apim_policies_url_rewriting.html
+          - title: XML to JSON
+            output: web
+            url: /apim/3.x/apim_policies_xml2json.html
+          - title: XML threat protection
+            output: web
+            url: /apim/3.x/apim_policies_xml_threat_protection.html
+          - title: XML validation
+            output: web
+            url: /apim/3.x/apim_policies_xml_validation.html
+          - title: XSLT
+            output: web
+            url: /apim/3.x/apim_policies_xslt.html
       - title: API Reference
         output: web
         folderitems:
