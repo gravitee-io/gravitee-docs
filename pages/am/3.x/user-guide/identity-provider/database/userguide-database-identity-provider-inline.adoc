@@ -38,6 +38,15 @@ curl -H "Authorization: Bearer :accessToken" \
      http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId/identities
 ----
 
+NOTE: New in Gravitee.io AM 3.4.x
+
+You can choose how passwords are encoded or hashed with the following algorithms:
+
+- `bcrypt`
+- none (plain text)
+
+WARNING: If you decide to switch from `bcrypt` to none, you must update all password fields before saving.
+
 == Test the connection
 
 You can test your database connection using a web application created in AM.
