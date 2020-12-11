@@ -5,3 +5,15 @@
 :page-layout: apim3x
 
 APIM is delivered with some default common _policies_, for standard APIM usage. The default policies are described in this section.
+
+You can configure these policies with two modes:
+
+    * Old fashion
+
+image::apim/3.x/api-publisher-guide/policies/graviteeio-old-studio-overview.png[]
+
+    * Policy Studio
+
+image::apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-overview.png[]
+
+NOTE: You can migrate from old studio to new one by following link:/apim/3.x/apim_policies_migrate.html[this procedure]
