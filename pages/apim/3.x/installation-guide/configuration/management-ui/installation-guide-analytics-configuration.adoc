@@ -1,0 +1,39 @@
+= Configure dashboards
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installguide_dashboard_configuration.html
+:page-folder: apim/user-guide/publisher
+:page-layout: apim3x
+
+== Overview
+
+You can configure _dashboards_ in APIM Console, which are views presenting different types of analytics in various formats.
+You can create new dashboards and configure dashboards to show the analytics you want.
+
+You can create dashboards at three different levels:
+
+- For the entire APIM platform, viewable with the main APIM Console *Dashboard* menu option.
+- For APIs, viewable with the *APIs* menu option, by selecting an API and clicking *Analytics*.
+- For applications, viewable with the *Applications* menu option, by selecting an application and clicking *Analytics*.
+
+== Create or configure a dashboard
+
+Dashboards are configured by adding and removing _widgets_, which are containers for different types and views of data. You can configure widgets to display charts, for example.
+
+. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
+. Click *Settings > Analytics*.
+. Perform one of the following:
+- Add a new platform-wide dashboard by clicking *ADD A NEW DASHBOARD PLATFORM*
+- Add a new API-level dashboard by clicking *ADD A NEW DASHBOARD API*
+- Add a new application-level dashboard by clicking *ADD A NEW APPLICATION API*
+- Select a dashboard from one of the three dashboard lists to configure it.
+. Click the plus icon image:apim/3.x/icons/plus-icon.png[] to add new widgets to the dashboard.
+. Select the widget type from the list and specify the other values.
++
+TIP: Click *ENABLE PREVIEW* to preview your dashboard changes before saving.
++
+. Click *SAVE*.
++
+Once the dashboard appears in the list, you can:
+- Delete it
+- Disable it
+- Move it up the list to appear higher in the dashboard menu
