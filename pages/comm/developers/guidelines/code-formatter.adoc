@@ -7,4 +7,132 @@
 :page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, community
 :page-layout: comm
 
-🚧 TO BE DONE 🚧
+== Prettier on a java project
+
+If you contribute to an existing project, you don't have anything to configure. Maven will do all the job for you.
+
+Else, if you create a new project, Prettier must be configured with Maven in
+order to check that source is well formatted. If not, build must break.
+
+[source,xml]
+----
+<plugin>
+    <groupId>com.hubspot.maven.plugins</groupId>
+    <artifactId>prettier-maven-plugin</artifactId>
+    <version>0.12</version>
+    <configuration>
+        <nodeVersion>12.13.0</nodeVersion>
+        <prettierJavaVersion>1.0.1</prettierJavaVersion>
+    </configuration>
+    <executions>
+        <execution>
+            <phase>validate</phase>
+            <goals>
+                <goal>check</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+----
+
+Also, add the following prettier configuration file `.prettierrc` at the root of the project:
+
+[source,yaml]
+----
+printWidth: 140
+tabWidth: 4
+----
+
+== Prettier on UI project
+
+If the project is an UI, follow the steps describe below.
+
+Add the following prettier configuration file `.prettierrc.json` at the root of the UI project:
+
+[source,json]
+----
+{
+    "singleQuote": true,
+    "printWidth": 140,
+    "tabWidth": 4,
+    "trailingComma": "all"
+}
+----
+
+Add the file `.prettierignore` to exclude some files from prettier.
+
+[source,ignorelang]
+----
+!/e2e
+!/projects
+!/src
+assets/
+dist/
+target/
+coverage/
+browserslist
+package*.json
+*.ico
+----
+
+Configure your `package.json` to trigger prettier on the different build phases:
+
+[source,json]
+----
+{
+  "scripts": {
+    "build": "npm run prettier:check && npm run test && ng build --aot",
+    "build:prod": "npm run prettier:check && npm run test && ng build --prod=true",
+    "prettier:check": "prettier --check \"**/*{.ts, .html, .scss}\"",
+    "prettier": "prettier --write \"**/*{.ts, .html, .scss}\""
+  }
+}
+----
+
+If your project uses tslint, extend its configuration with prettier:
+
+[source,json]
+----
+{
+  "extends": ["tslint:recommended", "tslint-config-prettier"]
+}
+----
+
+== IDE Integration
+
+This part is optional. If you want, you can make your favorite IDE behave like Prettier when formatting the source code.
+
+=== Intellij
+
+To use Prettier with Intellij, you need to install prettier command line first:
+
+[source,shell script]
+----
+npm install -g prettier prettier-plugin-java
+----
+
+Then, install the Prettier plugin for Intellij (https://plugins.jetbrains.com/plugin/10456-prettier).
+
+In Intellij Preferences -> Languages & Frameworks -> Prettier, add `java` to the list of file extensions and check options as you like
+
+image::comm/developers/guidelines/prettier-config-intellij.png[Prettier Intellij]
+
+=== Eclipse
+
+Prettier plugin is available for Eclipse. More details here: https://marketplace.eclipse.org/content/prettier-formatter
+
+== Format the code
+
+On a java project, you can run the following command to format all java code sources:
+
+[source,shell script]
+----
+mvn prettier:write
+----
+
+On an UI project, you can run the following command to format, javascript, typescript, css and html files:
+
+[source,shell script]
+----
+npm run prettier
+----
