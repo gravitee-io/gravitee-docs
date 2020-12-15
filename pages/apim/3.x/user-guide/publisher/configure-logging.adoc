@@ -14,23 +14,30 @@ API metrics are presented in one or more _dashboards_. You can select the dashbo
 You can then select a time period and view several different types of analytics for your API -- such as requests received and responses sent, the most frequently called applications, response times --
 presented in different views and formats.
 
+image:apim/3.x/api-publisher-guide/analytics/dashboards.png[]
+
 For more details on creating and configuring API dashboards, see link:/apim/3.x/apim_installguide_dashboard_configuration.html[Configure dashboards^].
 
 === Logs
 
-You can view the logs for an API by clicking *Analytics* and selecting the *Logs* menu option. This lists all the API requests in date and time order. You can click on an individual entry to view more details.
+You can view the logs for an API by clicking *Analytics* and selecting the *Logs* menu option. This lists all the API requests in date and time order.
+You can filter by date or search term and click on an individual entry to view more details.
+
+image:apim/3.x/api-publisher-guide/analytics/logs.png[]
 
 Log entries include details such as:
 
 - the API endpoint for the request
 - the URL of the gateway through which the request was sent
 
-By default, the request header and payload are not logged in APIM, to save space. You can enable this in the logging configuration.
+By default, the request header and payload are not logged in APIM, to save space, as shown in the basic logging detail page below. You specify how much detail to log in the logging configuration.
+
+image:apim/3.x/api-publisher-guide/analytics/logs-simple-view.png[Basic logging detail]
 
 == Configure API logging
 
 NOTE: If you configured a maximum logging duration in the global settings, the maximum duration will be applied to the API logging configuration specified here.
-For more details, see link:/apim/3.x/apim_how_to_configuration.html#step-4-update-the-default-apim-settings[Update the default APIM settings^].
+For more details, see <<apim-how-to-configuration.adoc#step-4-update-the-default-apim-settings,Update the default APIM settings>>.
 
 WARNING: Logging configuration changes can have a significant impact on performance. Proceed with caution.
 
@@ -38,23 +45,68 @@ WARNING: Logging configuration changes can have a significant impact on performa
 . Click *APIs* and select the API from the list.
 . Click *Analytics > Logs*.
 . Click the *Configure the logging* link at the top.
++
+image:apim/3.x/api-publisher-guide/analytics/logs-configure.png[]
+
++
+If you configured a maximum logging duration in the global settings, APIM displays a message to remind you:
+image:apim/3.x/api-publisher-guide/analytics/logs-configure-max-duration.png[]
+
 . In the *Mode* drop-down, select the type of logging required:
-- *Client only* -- to log HTTP request header and payload details between the client and the gateway
-- *Proxy only* -- to log HTTP request header and payload details between the gateway and the backend
-- *Client and proxy* -- to log HTTP request header and payload details for both
+* *Client only* -- to log HTTP request header and payload details between the client and the gateway
+* *Proxy only* -- to log HTTP request header and payload details between the gateway and the backend
+* *Client and proxy* -- to log HTTP request header and payload details for both
 . Select *Logging enabled* to go ahead and enable logging, or *Conditional logging* to specify conditions for logging.
++
+image:apim/3.x/api-publisher-guide/analytics/logs-configure-conditions.png[]
+
 . To specify logging conditions, click *SHOW EDITOR* and select all the conditions which apply. You can restrict logging by:
-- application or plan
-- request header or query parameter
-- HTTP method (GET, POST, etc.)
-- request IP address
-- duration
-- end date
+* application or plan
+* request header or query parameter
+* HTTP method
+* request IP address
+* duration
+* end date
 +
-You can create rules by combining conditions, for example, you can choose to log only `GET` HTTP methods with a request header called `X-debug` with a value of `true`.
-+
-Each new condition is added as a line in the *Condition* field.
-+
+You can create rules by combining conditions. Each new condition is added to the *Condition* field. See the example below for more details.
+
 . Click *SAVE*.
-+
+. When prompted, click on the link to redeploy the API with the new configuration.
+
 When you click on the *Back to logs* link, you can see the new information logged in all new log entries.
+
+== Example
+
+The following example shows how to configure logging to only log `GET` HTTP methods which include an `X-debug` request header with a value of `true`.
+We need to specify it as a combined condition in two parts.
+
+. Click *SHOW EDITOR* and in the condition editor, select *Condition type* as *HTTP Method*. Click *ADD*.
++
+image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step1.png[]
+
+. Select *GET* as the HTTP method.
++
+image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step2.png[]
+
+. Click *SAVE*. The new condition is added. Note that you need to take a copy the syntax of the condition, as it will be overwritten when you specify the next one.
++
+image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step3.png[]
+
+. Now click *SHOW EDITOR* again to specify the second part of the condition.
+. Select *Request query-parameter* as the *Condition type*. Click *ADD*.
++
+image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step4.png[]
+
+. Enter *X-debug* as the *Query parameter name* and *true* as the value.
++
+image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step5.png[]
+
+. Click *SAVE*. We can see that the second condition has been added. To add back in the first condition, go to the end of the condition line and type *&&*, then paste it at the end.
++
+image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step6.png[]
+
+. Click *SAVE* to save the new logging configuration. Don't forget to redeploy your API.
+
+We can now return to the logging screen and see the logging detail when we click on a log entry, as in the image below:
++
+image:apim/3.x/api-publisher-guide/analytics/logs-detailed-view2.png[]
