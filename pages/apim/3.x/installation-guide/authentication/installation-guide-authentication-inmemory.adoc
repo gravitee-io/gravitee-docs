@@ -1,5 +1,5 @@
 [[gravitee-installation-authentication-inmemory]]
-= Configure In-memory authentication
+= Configure in-memory authentication
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_authentication_inmemory.html
 :page-folder: apim/installation-guide/portal/authentication
@@ -8,11 +8,11 @@
 :page-layout: apim3x
 
 == Overview
-This section describes how to configure APIM to allow users to connect using in-memory accounts.
+This page describes how to set up authentication with in-memory accounts.
 
-== Example
+== In-memory configuration
 
-This is a basic in-memory implementation, providing a simple and convenient way to declare _technical_ users such as administrator users.
+This example shows a basic in-memory implementation, providing a simple and convenient way to declare advanced users of APIM, such as administrator users.
 
 NOTE: It is good practice to always have an administrator account which can log in to APIM even if other authentication methods are broken.
 
@@ -72,4 +72,13 @@ security:
           password: $2a$10$2gtKPYRB9zaVaPcn5RBx/.3T.7SeZoDGs9GKqbo9G64fKyXFR1He.
           roles: ORGANIZATION:USER,ENVIRONMENT:USER
           #email:
+----
+
+== Generate a new password
+
+If you use https://en.wikipedia.org/wiki/Bcrypt[bcrypt^] to hash passwords, you can generate new passwords with the https://httpd.apache.org/docs/current/en/programs/htpasswd.html[htpasswd^] command line, as shown in the following example (where `new_password` is your new password):
+
+[source,bash]
+----
+htpasswd -bnBC 10 "" new_password | tr -d ':\n'
 ----
