@@ -9,15 +9,17 @@
 
 == Overview
 
-APIM natively support multiple types of authentication for accessing APIM Portal:
-* Authentication providers (such as In-memory, LDAP and databases)
+APIM natively support several types of authentication for accessing APIM Portal:
+
+* Authentication providers (such as in-memory, LDAP and databases)
 * Social providers (such as GitHub and Google)
 * A custom OAuth2 / OpenID authorization server
 
 == Identity providers
 
-You can specify as many providers as you want.
-APIM API checks them in the same order you declare them in the `providers` attribute -- once a successful authentication is made, APIM API stops polling the providers.
+You specify identity providers in the APIM API `gravitee.yml` configuration file.
+
+You can specify as many providers as you want. APIM API loops through the providers in the order you declare them in the `providers` attribute until one of the authentication methods completes successfully.
 
 [source,yaml]
 ----
@@ -35,5 +37,3 @@ security:
     - type: gravitee
       ...
 ----
-
-NOTE: The authentication process loops through the three providers to attempt user authentication.
