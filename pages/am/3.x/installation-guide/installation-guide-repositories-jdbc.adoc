@@ -7,16 +7,16 @@
 :page-description: Gravitee.io Access Management - Repositories - JDBC
 :page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-NOTE: New in AM 3.4.x
+NOTE: New in AM 3.5.x
 
 == Overview
 
 You can deploy this repository plugin in AM to use the most common databases, including:
 
-- PostgreSQL 9.6
-- MySQL 5.7
-- Microsoft SQL Server 2017-CU12
-- MariaDB 10.3
+- PostgreSQL 9.6+
+- MySQL 5.7+
+- Microsoft SQL Server 2017-CU12+
+- MariaDB 10.3+
 
 NOTE: AM uses the JDBC and R2DBC drivers together, since AM uses https://www.liquibase.org/[liquibase^] to manage the database schema. You need to deploy the correct JDBC and R2DBC drivers for your database in your AM instance's `plugins/ext/repository-am-jdbc` directory.
 
@@ -102,11 +102,37 @@ management:
     validationQuery:            # Query that will be executed to validate that a connection to the database is still alive.
 ----
 
+=== Expired Data
+
+Some tables contain data with an expiration date. The AM management service provides a scheduled task in order to execute periodically a purge on related tables.
+To configure this task, you can complete the `services` section of the `gravitee.yml` AM management file.
+
+[source,yaml]
+----
+services:
+  purge:
+    enabled: true                               # enable the JDBC purge task (default: true)
+    cron: 0 0 23 * * *                          # configure the frequency (default: every day at 11 PM)
+    #exclude: login_attemps, refresh_token      # coma separated list of table to exclude from the purge process
+----
+
+Temporary data are stored into the following tables:
+
+* access_tokens,
+* authorization_codes,
+* refresh_tokens,
+* scope_approvals,
+* request_objects,
+* login_attempts,
+* uma_permission_ticket
+
+NOTE: If you want to clean data by yourself, please use the field `expire_at` to know if the row of the table must be deleted.
+
 == Liquibase
 
 AM uses https://www.liquibase.org/[liquibase] to manage database schemas on startup of the AM services.
 
-If you want to disable automatic update, you'll need to add this section to your `gravitee.yaml` file.
+If you want to disable automatic update, you'll need to add this section to your `gravitee.yml` file.
 
 [source,yaml]
 ----
@@ -129,21 +155,21 @@ NOTE: Reporter plugin uses the `management.jdbc` configuration section to connec
 
 == Auto provisioning of IdentityProvider schema
 
-Since AM 3.5, a default table may be created automatically with the following fields : 
+Since AM 3.5, a default table may be created automatically with the following fields :
 
 - id
 - username
 - password
 - email
-- metadata 
+- metadata
 
-By consequences, the user declared into the `management.jdbc` section of the `gravitee.yaml` file needs the relevant permissions to create a table. If you doesn't want to generate the schema of the default JDBC IdentityProvider, you can disable this feature by setting the following property to false : 
+By consequences, the user declared into the `management.jdbc` section of the `gravitee.yml` file needs the relevant permissions to create a table. If you doesn't want to generate the schema of the default JDBC IdentityProvider, you can disable this feature by setting the following property to false :
 
 [source,yaml]
 ----
 management:
-  type: jdbc                    
+  type: jdbc
   jdbc:
     identityProvider:
-      provisioning: false                         
+      provisioning: false
 ----
