@@ -5,37 +5,66 @@
 :page-toc: false
 :page-layout: am
 
+== Overview
+This page describes the main concepts used in AM.
+
 [[gravitee-am-concepts-security-domain]]
-== Security Domain
-* Give you access to all the Gravitee.io AM resources such as applications, users, identity providers, etc ...
-* Expose authentication and authorization URLs
-* Gather analytics and reporting
+== Security domain
+A security domain:
+
+* Gives you access to all the AM resources, such as applications, users and identity providers
+* Exposes authentication and authorization URLs
+* Gathers analytics and reporting
 
 [[gravitee-am-concepts-application]]
 == Application
-* Can be any type of application such as :
-** Web Application (PHP, Java, Node, …)
-** Single App (Javascript)
+An application:
+
+* Can be any type of application, for example:
+** Web Application (PHP, Java, Node.js)
+** Single App (JavaScript)
 ** Native App (iOS, Android)
-** Backend App (Job, CLI, …)
-* Applications use Gravitee.io AM to sign in and make requests to the Gateway Authorization Server
-* Applications can be used by end-users (B2C) or acts by itself (B2B)
+** Backend App (Job, CLI)
+
+* Applications use AM to sign in and make requests to the Gateway Authorization Server
+* Applications can be used by end users (B2C) or not (B2B)
 
 [[gravitee-am-concepts-idp]]
-== Identity Provider
-* Broker trust with external users providers such as :
+== Identity provider
+An identity provider:
+
+* Brokers trust with external user providers such as:
 ** LDAP / Active Directory
 ** Database
 ** Web services
 ** Social providers
 ** OpenID Connect providers
 ** SAML v2 IDP
-** Custom …
-* Identity providers are used during Sign-in process to verify user credentials and retrieve profile information
+** Custom providers
+
+* Is used during the login process to verify user credentials and retrieve profile information
 
 [[gravitee-am-concepts-extension-point]]
-== Extension Point
-* Extension Points allow you to extend the behavior of the Access Management Server by executing Policy on selected stages.
-* Extension Points are used to customize the authentication and authorization Flow
-** Add extra action after login form process
-** Add extra action before and after user consent process
+== Extension point
+
+NOTE: Deprecated in version 3.5.x and replaced by the `flow` concept described below
+
+An extension point:
+
+* Extends the behavior of the AM server by executing policies during specific phases of the authentication flow
+* Customizes the authentication and authorization flow by:
+** Adding extra actions after the login form process
+** Adding extra actions before and after the user consent process
+
+[[gravitee-am-concepts-flow]]
+== Flow
+
+NOTE: New in AM 3.5.x
+
+A flow:
+
+* Allows you to build your own custom authentication and authorization journey by executing policies during specific phases of the authentication flow
+* Can be used to:
+** Enrich user profiles
+** Notify 3rd party systems
+** Add extra authorization rules (such as verify users or enforce MFA)
