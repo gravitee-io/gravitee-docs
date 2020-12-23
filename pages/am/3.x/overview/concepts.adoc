@@ -27,6 +27,7 @@ An application:
 ** Single App (JavaScript)
 ** Native App (iOS, Android)
 ** Backend App (Job, CLI)
+
 * Applications use AM to sign in and make requests to the Gateway Authorization Server
 * Applications can be used by end users (B2C) or autonomous (B2B)
 
@@ -43,10 +44,13 @@ An identity provider:
 ** OpenID Connect providers
 ** SAML v2 IDP
 ** Custom providers
+
 * Is used during the login process to verify user credentials and retrieve profile information
 
 [[gravitee-am-concepts-extension-point]]
 == Extension point
+
+NOTE: Deprecated in version 3.5.x and replaced by the `flow` concept described below
 
 An extension point:
 
@@ -54,3 +58,16 @@ An extension point:
 * Customizes the authentication and authorization flow by:
 ** Adding extra actions after the login form process
 ** Adding extra actions before and after the user consent process
+
+[[gravitee-am-concepts-flow]]
+== Flow
+
+NOTE: New in AM 3.5.x
+
+A flow:
+
+* Allows you to build your own custom authentication and authorization journey by executing policies during specific phases of the authentication flow
+* Can be used to:
+** Enrich user profiles
+** Notify 3rd party systems
+** Add extra authorization rules (such as verify users or enforce MFA)

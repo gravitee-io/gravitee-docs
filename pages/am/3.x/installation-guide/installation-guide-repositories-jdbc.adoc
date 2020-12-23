@@ -7,16 +7,16 @@
 :page-description: Gravitee.io Access Management - Repositories - JDBC
 :page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-NOTE: New in AM 3.4.x
+NOTE: New in AM 3.5.x
 
 == Overview
 
 You can deploy this repository plugin in AM to use the most common databases, including:
 
-- PostgreSQL 9.6
-- MySQL 5.7
-- Microsoft SQL Server 2017-CU12
-- MariaDB 10.3
+- PostgreSQL 9.6+
+- MySQL 5.7+
+- Microsoft SQL Server 2017-CU12+
+- MariaDB 10.3+
 
 NOTE: AM uses the JDBC and R2DBC drivers together, since AM uses https://www.liquibase.org/[liquibase^] to manage the database schema. You need to deploy the correct JDBC and R2DBC drivers for your database in your AM instance's `plugins/ext/repository-am-jdbc` directory.
 
@@ -84,7 +84,7 @@ This is the minimum configuration you need to get started with a relational data
 # This is a sample file declaring all properties for a relational database
 # ===================================================================
 management:
-  type: mongodb                 # repository type
+  type: jdbc                    # repository type
   jdbc:                         # jdbc/r2dbc repository
     driver:                     # jdbc driver
     host:                       # database hostname or IP
@@ -96,20 +96,80 @@ management:
     initialSize:                # Initial pool size (default: 10)
     maxSize:                    # Maximum pool size (default: 10)
     maxIdleTime:                # Maximum idle time of the connection in the pool in millis (default: 1800000)
-    maxLIfeTime:                # Maximum life time of the connection in the pool in millis (default: 0)
+    maxLifeTime:                # Maximum life time of the connection in the pool in millis (default: 0)
     maxAcquireTime:             # Maximum time to acquire connection from pool in millis (default: 0)
     maxCreateConnectionTime:    # Maximum time to create a new connection in millis (default: 0)
     validationQuery:            # Query that will be executed to validate that a connection to the database is still alive.
 ----
 
+=== Expired Data
+
+Some tables contain data with an expiration date. The AM management service provides a scheduled task in order to execute periodically a purge on related tables.
+To configure this task, you can complete the `services` section of the `gravitee.yml` AM management file.
+
+[source,yaml]
+----
+services:
+  purge:
+    enabled: true                               # enable the JDBC purge task (default: true)
+    cron: 0 0 23 * * *                          # configure the frequency (default: every day at 11 PM)
+    #exclude: login_attemps, refresh_token      # coma separated list of table to exclude from the purge process
+----
+
+Temporary data are stored into the following tables:
+
+* access_tokens,
+* authorization_codes,
+* refresh_tokens,
+* scope_approvals,
+* request_objects,
+* login_attempts,
+* uma_permission_ticket
+
+NOTE: If you want to clean data by yourself, please use the field `expire_at` to know if the row of the table must be deleted.
+
 == Liquibase
 
 AM uses https://www.liquibase.org/[liquibase] to manage database schemas on startup of the AM services.
 
-If you want to disable automatic update, you'll need to add this section to your `gravitee.yaml` file.
+If you want to disable automatic update, you'll need to add this section to your `gravitee.yml` file.
 
 [source,yaml]
 ----
 liquibase:
   enabled: false
+----
+
+== JDBC Reporter
+
+When AM is configured with JDBC repositories, JDBC reporter is required.
+You can download the reporter plugin https://download.gravitee.io/graviteeio-am/plugins/reporters/gravitee-reporter-jdbc/[here].
+To install the jdbc reporter plugin you need to repeat the following steps for each component (AM Gateway and AM API) where the SQL database is used.
+
+ . Download the plugin applicable to your version of AM (take the latest maintenance release).
+ . Place the zip file in the plugins directory for each component (`$GRAVITEE_HOME/plugins`).
+ . Download the R2DBC drivers for your database version.
+ . Place the drivers in `$GRAVITEE_HOME/plugins/ext/reporter-am-jdbc`.
+
+NOTE: Reporter plugin uses the `management.jdbc` configuration section to connect to the database. The user declared in the `management.jdbc` section needs the relevant permissions to create a table.
+
+== Auto provisioning of IdentityProvider schema
+
+Since AM 3.5, a default table may be created automatically with the following fields :
+
+- id
+- username
+- password
+- email
+- metadata
+
+By consequences, the user declared into the `management.jdbc` section of the `gravitee.yml` file needs the relevant permissions to create a table. If you doesn't want to generate the schema of the default JDBC IdentityProvider, you can disable this feature by setting the following property to false :
+
+[source,yaml]
+----
+management:
+  type: jdbc
+  jdbc:
+    identityProvider:
+      provisioning: false
 ----

@@ -6,6 +6,19 @@
 
 APIM comes with a default set of out-of-the-box policies to provide some additional API processing and security functionality. This reference describes the default policies.
 
+You can configure these policies with two modes:
+
+* Old fashion
+
+image::apim/3.x/api-publisher-guide/policies/graviteeio-old-studio-overview.png[]
+
+* Policy Studio
+
+image::apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-overview.png[]
+
+NOTE: You can migrate from old studio to new one by following link:/apim/3.x/apim_policies_migrate.html[this procedure]
+
+
 See also:
 
 - link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions^] in the *API Publisher Guide* to learn how to configure policies for API plans in APIM Console

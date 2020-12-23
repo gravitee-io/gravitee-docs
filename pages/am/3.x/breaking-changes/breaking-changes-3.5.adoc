@@ -1,0 +1,27 @@
+= Breaking changes in 3.5
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_3.5.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+NOTE: For all these breaking changes, the Migration Guide can be found link:/am/current/am_installguide_migration.html[here^s].
+
+== AM Flows introduced
+
+AM link:/am/current/am_overview_concepts.html#gravitee-am-concepts-flow[flows] are the new way to build your own authentication and authorization journey. They replace the old concept of link:/am/current/am_overview_concepts.html#gravitee-am-concepts-extension-point[Extension Point].
+
+To provide this new feature, the AM Management API has been changed to reflect these changes.
+
+NOTE: All `/domains/:domainId/policies/**` routes have been removed for this version. See the new link:/am/current/management-api/index.html[AM v3 OpenAPI descriptor] for more information.
+
+NOTE: If you are using the AM Management API directly (not via the Portal) please update your configuration.
+
+----
+AM Management API < 3.5.x
+
+  - http(s)://AM_MANAGEMENT_API/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId/policies/**
+
+AM Management API >= 3.5.x
+
+  - http(s)://AM_MANAGEMENT_API/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId/flows/**
+----
