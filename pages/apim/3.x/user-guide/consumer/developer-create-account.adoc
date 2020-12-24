@@ -6,19 +6,19 @@
 
 == Overview
 
-New users can be registered in either APIM Management or APIM Portal.
+New user accounts can be registered in either APIM Console or APIM Portal.
 
 == Prerequisites
 
 To work correctly, new user accounts require the following configuration:
 
-* link:/apim/3.x/apim_installguide_rest_apis_configuration.html#sending_emails[email SMTP configuration]
+* email link:/apim/3.x/apim_installguide_rest_apis_configuration.html#smtp-configuration[SMTP configuration^]
 
 * the *Allow User Registration* option enabled in *Settings*:
 +
 image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-activate-settings.png[]
 
-* the password validation regex configured in `gravitee.yml` (the default regex is based on link:https://owasp.org/www-community/OWASP_Validation_Regex_Repository[OWASP recommendations])
+* the password validation regex configured in `gravitee.yml` (the default regex is based on link:https://owasp.org/www-community/OWASP_Validation_Regex_Repository[OWASP recommendations^])
 +
 [source,yaml]
 ----
@@ -43,7 +43,7 @@ image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-ac
 
 == Register as a new user
 
-. Click *Sign In* in the top menu. The login form is diplayed:
+. Click *Sign In* in the top menu. The login form is displayed:
 +
 image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-login-form.png[]
 

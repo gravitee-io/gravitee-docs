@@ -7,11 +7,9 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
-== Users
+== Overview
 
-The Installation Guide explained how to configure different identity providers (see link:/apim/3.x/apim_installguide_authentication.html[Configure authentication]).
-
-Users are listed in the *Users* section of the *Settings* menu.
+Users are listed in the *Organization settings > Users* page.
 
 You can:
 
@@ -29,9 +27,10 @@ When you select a user, you can:
 
 image::apim/3.x/adminguide/usersgroups-user.png[Gravitee.io - User]
 
-=== Create a user
+See also: link:/apim/3.x/apim_installguide_authentication.html[Configure authentication^].
 
-==== As an administrator
+== Create a user
+=== As an administrator
 You can pre-register a user by clicking the *Add* button at the bottom right of the page.
 An email will be sent to the user requesting them to finalize the registration.
 
@@ -47,14 +46,15 @@ image::apim/3.x/adminguide/usersgroups-portal-url-parameter.png[]
 
 ====
 
-==== With the registration form
+=== With the registration form
 Ordinary users can register using the `Registration form`. +
 For more information, see more link:/apim/3.x/apim_consumerguide_create_account.html[Create a user account].
 
-=== Manage registration requests
+==== Manage registration requests
 By default, if the `Allow User Registration` option is enabled then all registration requests will be automatically validated.
 
-image::apim/3.x/adminguide/usersgroups-auto-validation-parameters.png[Gravitee.io - Automatic registration validation option]
+image::apim/3.x/adminguide/usersgroups-console-auto-validation-parameters.png[Gravitee.io - Automatic registration validation option for console]
+image::apim/3.x/adminguide/usersgroups-portal-auto-validation-parameters.png[Gravitee.io - Automatic registration validation option for portal]
 
 If you disable this option, then you will be able to reject or accept user registration requests in the Users page.
 
