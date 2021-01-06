@@ -176,7 +176,12 @@ entries:
         - title: JDBC
           output: web
           url: /am/current/am_installguide_repositories_jdbc.html
-
+      - title: Configure reporters
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_installguide_reporters.html
   - title: User Guide
     output: web
     folderitems:
@@ -423,7 +428,6 @@ entries:
           - title: User Session
             output: web
             url: /am/current/am_devguide_protocols_session_overview.html
-
   - title: Breaking Changes
     output: web
     folderitems:

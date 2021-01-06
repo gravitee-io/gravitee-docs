@@ -1,0 +1,65 @@
+= Reporters
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_reporters.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Reporters
+:page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+== Overview
+
+A *reporter* is used by gateway and management API instances to report many types of event:
+
+* Administration metrics : administrative tasks (CRUD on resources)
+* Authentication / Authorization metrics: (Sign-in activity, Sign-up activity)
+
+By default, a default reporter is created using MongoDB or JDBC implementation according to the backend configured into the gravitee.yaml file.
+
+Since AM 3.6, it is possible to create additional reporters. 
+
+== File Reporter
+ 
+This implementation is a "File" based reporter to write events into a dedicated file. It may be useful if you want to ingest event into a thirdparty system.
+
+=== Configuration
+
+File reporters are configurable into the gravitee.yaml file under the `reporter` section with the following properties:
+
+|===
+|property | type | required | description 
+
+|enabled
+|boolean
+|N
+|boolean to enable globally the reporters (default: false)
+
+|directory
+|string
+|N
+|Path to the directory where files will be created, this directory has to exist (default: ${gravitee.home}/reporter-logs/)
+
+|output
+|string
+|N
+|Format used to export event. Possible values: JSON, MESSAGE_PACK, ELASTICSEARCH, CSV
+|===
+
+[source,yaml]
+----
+reporters:
+  file:
+    enabled: true
+    #directory:  # directory where the files are created (this directory have to exist): default value = ${gravitee.home}/reporter-logs/
+    #output: JSON # JSON, ELASTICSEARCH, MESSAGE_PACK, CSV
+----
+
+=== Create a File Reporter
+
+To create a File reporter for a domain, you have to go to the audit logs settings ( `settings` > `audits` > `settings` ) and then click on the " + " on the bottom right corner. 
+
+image::am/current/graviteeio-am-adminguide-add-reporter.png[]
+
+Once the form will be displayed, you will have to select the reporter type and fill the configuration elements.
+
+image::am/current/graviteeio-am-adminguide-file-reporter.png[]
