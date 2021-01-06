@@ -4,12 +4,14 @@
 :page-folder: apim/user-guide/publisher
 :page-layout: apim3x
 
-CORS (Cross-Origin Resource Sharing) is a mechanism that allows resources on a web page to be requested from another domain.
+== Overview
 
-For more information on CORS, first take a look at the https://www.w3.org/TR/cors[CORS specification].
+CORS is a mechanism that allows resources on a web page to be requested from another domain.
+
+For background information on CORS, take a look at the https://www.w3.org/TR/cors[CORS specification].
 
 == Configuration
-You can configure CORS for an API in *Proxy > CORS* in the *APIs* menu of APIM Management. The sections below detail the values you can specify.
+You can configure CORS for an API in APIM Console with the *Proxy > CORS* menu option. The sections below detail the values you can specify.
 
 image::apim/3.x/api-publisher-guide/cors/graviteeio-configuring-cors-configuration-1.png[]
 
