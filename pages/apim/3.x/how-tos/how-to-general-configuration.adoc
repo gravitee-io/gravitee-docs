@@ -147,6 +147,7 @@ jwt:
 - the `expire-after` value, to change the validity period from the default value of one week
 - the `cookie-path` and `cookie-domain` values, to adapt them to your own environment; the values you define must be specific to the domain and path where the API is running and not apply to any another environment (for example, `.gravitee.io` could apply to any domain called `xxx.gravitee.io`, such as `dev.gravitee.io` or `qa.gravitee.io`)
 
+[[update-the-default-apim-settings]]
 == Step 4: Update the default APIM settings
 
 The most common settings are described below. Not all of these settings need to be changed in every environment.
