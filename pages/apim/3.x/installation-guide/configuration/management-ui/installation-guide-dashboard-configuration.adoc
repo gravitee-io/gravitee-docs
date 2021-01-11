@@ -32,7 +32,7 @@ image:apim/3.x/installation/configuration/configure-dashboards.png[]
 * Add a new application-level dashboard by clicking *ADD A NEW DASHBOARD APPLICATION*
 * Select a dashboard from one of the three dashboard lists to configure it
 . Specify a query filter in the *Query filter* field if you want to filter the API calls included in the analytics.
-. Click the plus icon image:icons/plus-icon.png[] to add new widgets to the dashboard.
+. Click the plus icon image:icons/plus-icon.png[role="icon"] to add new widgets to the dashboard.
 . Select the widget type from the list and specify the other values.
 +
 image:apim/3.x/installation/configuration/configure-dashboard-widgets.png[]
@@ -54,6 +54,6 @@ See link:/apim/3.x/apim_how_to_add_custom_metrics_in_dashboards.html[How to add 
 
 You can perform the following actions on any dashboard in the three dashboard lists:
 
-* Delete it with the delete icon image:icons/delete-icon.png[]
-* Disable or enable it by toggling the enabled image:icons/enabled-icon.png[] and disabled image:icons/disabled-icon.png[] icons
-* Move it up or down the list with the up image:icons/up-arrow-icon.png[] and down image:icons/down-arrow-icon.png[] arrows to change its order of priority in the menu
+* Delete it with the delete icon image:icons/delete-icon.png[role="icon"]
+* Disable or enable it by toggling the enabled image:icons/enabled-icon.png[role="icon"] and disabled image:icons/disabled-icon.png[role="icon"] icons
+* Move it up or down the list with the up image:icons/up-arrow-icon.png[role="icon"] and down image:icons/down-arrow-icon.png[role="icon"] arrows to change its order of priority in the menu

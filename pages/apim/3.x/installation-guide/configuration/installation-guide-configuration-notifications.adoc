@@ -134,7 +134,7 @@ The templates of portal notifications can be customized in *Settings*. For more 
 Email notifiers send an email to a specific list of email addresses.
 To create a new email notifier:
 
-. Click the plus icon.
+. Click the plus icon image:icons/plus-icon.png[role="icon"] .
 . Choose the *Default Email Notifier* type and give your notifier a name.
 . Add one or more email addresses.
 . Subscribe to the notifications you want.
@@ -190,7 +190,7 @@ The JSON body looks like this (depending on the category of the notification, so
 
 To create a new webhook notifier:
 
-. Click the plus icon.
+. Click the plus icon image:icons/plus-icon.png[role="icon"] .
 . Choose the *Default Webhook Notifier* type and give your notifier a name.
 . Add the URL which APIM will call to send notifications.
 . Subscribe to the notifications you want.

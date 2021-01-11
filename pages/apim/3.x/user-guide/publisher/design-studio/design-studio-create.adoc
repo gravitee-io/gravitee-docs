@@ -1,0 +1,105 @@
+= Design your API with Design Studio
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_publisherguide_design_studio_create.html
+:page-folder: apim/user-guide/publisher/design-studio
+:page-layout: apim3x
+
+== Overview
+
+This page explains how to configure API definitions with Design Studio.
+
+You can use Design Studio to create new API flows for your plans and define policies for each flow.
+Creating different flows for a plan allows you to apply different policies by path and/or HTTP method.
+
+NOTE: Don't forget to click the *deploy your API* link when making changes to your API!
+
+== Get started with Design Studio
+
+. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
+. Click *APIs* and select your API in the list.
+. Click *Design*.
+. If your API was created in an earlier version of APIM, migrate it to Design Studio as described in link:/apim/3.x/apim_publisherguide_design_studio_migrate.html[Migrate to Design Studio^].
+
+== Create and configure an API flow
+
+You can create flows at API level or at plan level.
+
+. In the *DESIGN* tab, click the *API* tab to design a new API level flow or *PLANS* to create a new plan level flow.
++
+image:apim/3.x/api-publisher-guide/design-studio/design-studio.png[Design Studio]
+
+. Click the plus icon to add a new flow.
++
+image:apim/3.x/api-publisher-guide/design-studio/add-plan-flow.png[]
+
+. Double-click the flow to configure its details.
++
+image:apim/3.x/api-publisher-guide/design-studio/flow-configuration.png[]
++
+Configure the following:
+
+* Name
+* Path details to filter on: the path syntax for the flow in link:/apim/3.x/apim_policies_overview.html#ant-notation[Ant format^] and whether the path starts with or equals the value entered in *Path*.
+* One or methods to filter on (specify all which apply)
+* One or more conditions to filter on, in link:/apim/3.x/apim_publisherguide_expression_language.html[Expression Language format^] -- for example, a condition to filter on query parameters called `X-debug` would be written like this: `#request.params['X-debug'] != null`
+
+. Click *SAVE*.
+
+TIP: You can update a flow by clicking it and changing any required values, then clicking the tick icon image:icons/tick-icon.png[role="icon"] to update the values.
+
+== Additional flow properties
+
+Once you have created your basic flow definition, you can specify additional properties as described below.
+
+=== Specify Best match for your flow path
+
+In the *CONFIGURATION* tab, select *Best match* if you want APIM to match this flow from the path that is closest to that defined in the flow definition.
+
+image:apim/3.x/api-publisher-guide/design-studio/configuration-tab.png[]
+
+=== Add global properties to your flow
+
+In the *PROPERTIES* tab, specify global properties as property key-value pairs. Click *CONFIGURE DYNAMIC PROPERTIES* to configure properties fetched with a URL and subsequently updated according to the details you specify.
+
+image:apim/3.x/api-publisher-guide/design-studio/properties-tab.png[]
+
+[[create-resources]]
+=== Create resources to use in your flows
+
+In the *RESOURCES* tab, create new resources to use in your flows. You can add resources to a policy when configuring it for a flow.
+
+image:apim/3.x/api-publisher-guide/design-studio/resources-tab.png[]
+
+* `Cache` resources can be added to a `Cache` policy
+* `Generic OAuth2 Authorization Server` resources can be added to an `OAuth2` policy
+* `Gravitee.io AM Authorization Server` resources can be added to an `OAuth2` policy
+
+For example, specify a cache resource as follows:
+
+. Click *CACHE*.
++
+image:apim/3.x/api-publisher-guide/design-studio/cache-resource.png[]
+
+. Enter the cache name.
+. Specify the cache properties: time to idle, time to live and max entries on heap.
+. Click the tick icon image:icons/tick-icon.png[role="icon"].
+. Click *SAVE*.
+
+[[flow-policies]]
+== Add policies to a flow
+
+You can add as many policies as you want to a flow.
+
+TIP: You can find out more about a specific policy by selecting it to view the in-product reference documentation, or you can view the online Policy Reference link:/apim/3.x/apim_policies_overview.html[here^].
+
+. Click the *DESIGN* tab.
+. Click on a plan to expand it.
++
+image:apim\3.x\api-publisher-guide\design-studio\add-policies-expand-plan.png[]
+. From the list on the right, drag the policy to the required phase of the flow.
++
+image:apim\3.x\api-publisher-guide\design-studio\add-policies-new-policy.png[]
+. Specify the details of the policy configuration. If this is a `Cache` or `OAuth2` type policy, you can add the corresponding resources created in <<Create resources to use in your flows>>.
+. Click *SAVE*.
+
+TIP: If you hover over a policy in a flow you can perform various operations on it: drag the policy to another phase of the flow, disable, delete or duplicate the policy.

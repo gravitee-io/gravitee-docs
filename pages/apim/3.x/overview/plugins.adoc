@@ -19,7 +19,7 @@ The table below lists the different types of plugins you can use with APIM, with
 |===
 |Type|Component|Examples
 | <<gravitee-plugins-idp, Identity Providers>>|APIM API|LDAP, Oauth2, InMemory
-| <<gravitee-plugins-fetchers, Fetchers>>|APIM API|HTTP, GIT
+| Fetchers|APIM API|HTTP, GIT
 | <<gravitee-plugins-policies, Policies>>|APIM API +
 APIM Gateway
                                          |API Key, Rate-limiting, Cache
@@ -30,7 +30,7 @@ APIM Gateway
 | <<gravitee-plugins-resources, Resources>>|APIM API +
 APIM Gateway
                                            |Oauth2, Cache, LDAP
-| <<gravitee-plugins-services, Services>>|APIM API +
+| Services|APIM API +
 APIM Gateway
                                          |Sync, local-registry, health-check, monitor
 | <<gravitee-plugins-notifiers, Notifiers>>|Alert Engine|Email
@@ -51,7 +51,6 @@ Out-of-the-box identity providers are:
 * OpenID Connect IdP (Azure AD, Google)
 
 [[gravitee-plugins-fetchers]]
-=== Fetchers
 
 [[gravitee-plugins-policies]]
 === Policies
@@ -86,13 +85,20 @@ link:/apim/3.x/apim_devguide_plugins.html[Plugins Developer Guide].
 [[gravitee-plugins-repositories]]
 === Repositories
 A *repository* is a pluggable storage component for API configuration, policy configuration, analytics and so on.
-You can find more information in the link:/apim/3.x/apim_installguide_repositories.html[Installation Guide Repositories] section.
+You can find more information in the link:/apim/3.x/apim_installguide_repositories.html[Repositories^] section of the Installation Guide.
 
 [[gravitee-plugins-resources]]
 === Resources
 
+A *resource* can be added to an API for its whole lifecycle. APIM comes with three default resources:
+
+* Cache
+* OAuth2 - Gravitee Access Management
+* OAuth2 - Generic Authorization Server
+
+You can find more information in the link:/apim/3.x/apim_resources_overview.html[Resources^] section of the API Publisher Guide.
+
 [[gravitee-plugins-services]]
-=== Services
 
 [[gravitee-plugins-notifiers]]
 === Notifiers
