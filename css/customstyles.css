@@ -1000,6 +1000,13 @@ span.soft {
     }
 }
 
+.col-md-9 .image.icon img {
+    max-width: 100%;
+    max-height: 100%;
+    border: none;
+    margin: 0.2rem;
+}
+
 .col-md-9 img {
     max-width: 100%;
     max-height: 100%;

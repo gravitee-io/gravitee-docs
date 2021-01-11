@@ -6,16 +6,16 @@
 
 == Overview
 
-This section walks you through creating and publishing your first API with APIM Console. To learn more about creating and publishing APIs, see the link:/apim/3.x/apim_publisherguide_manage_apis.html[API Publisher Guide^].
+This section walks you through creating and publishing your first API with APIM Console. To learn more about creating and publishing APIs, see the link:/apim/3.x/apim_publisherguide_manage_api.html[API Publisher Guide].
 
 == Create your API with APIM Console
 
-. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
+. Log in to APIM Console.
 . Click **Start creating an API**.
 +
 image::apim/3.x/quickstart/publish/graviteeio-create-api-1.png[]
 
-. Click **Create an API from scratch**.
+. Click *CREATE*.
 +
 image::apim/3.x/quickstart/publish/graviteeio-create-api-2.png[]
 
@@ -27,7 +27,7 @@ image::apim/3.x/quickstart/publish/graviteeio-create-first-api-1.png[]
 +
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-2.png[]
 +
-NOTE: To subscribe to an API, you must publish one or more _plans_, as described in the following step. A plan allows access to the API operations.
+NOTE: Before consumers can subscribe to your API, you must publish one or more _plans_, as described in the following step. A plan gives access to the API operations.
 
 . Create a plan by giving it a name, a description and a security type. Switch on the **Auto validate subscription** option. Click **NEXT**.
 +
@@ -43,7 +43,7 @@ image::apim/3.x/quickstart/publish/graviteeio-create-first-api-4.png[]
 +
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-5.png[]
 
-Congratulations! You have created your brand new Echo API, published a plan and, if an APIM Gateway instance is running, deployed your API.
+Congratulations! You have created your brand new API, published a plan and, if an APIM Gateway instance is running, deployed your API.
 
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-6.png[]
 

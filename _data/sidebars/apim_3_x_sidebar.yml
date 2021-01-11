@@ -292,6 +292,18 @@ entries:
             url: /apim/3.x/apim_publisherguide_top_apis.html
 
             subfolders:
+              - title: Design Studio Guide
+                output: web
+                subfolderitems:
+                - title: Introduction
+                  output: web
+                  url: /apim/3.x/apim_publisherguide_design_studio_overview.html
+                - title: Migrate to Design Studio
+                  output: web
+                  url: /apim/3.x/apim_publisherguide_design_studio_migrate.html
+                - title: Design your API with Design Studio
+                  output: web
+                  url: /apim/3.x/apim_publisherguide_design_studio_create.html
               - title: Documentation
                 output: web
                 subfolderitems:

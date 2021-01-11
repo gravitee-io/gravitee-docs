@@ -6,23 +6,60 @@
 
 == Overview
 
-APIM Console provides various ways to create a new API. You can create a new definition from scratch or import an existing definition.
-
-All new API definitions start with clicking the plus icon image:apim/3.x/icons/plus-icon.png[] at the bottom of the *APIs* page:
-
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-create-api-options-1.png[Create API]
-
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-create-api-options-2.png[Create API Options, 300]
-
 The following sections describe the different ways you can create an API using APIM Console.
 
-For a quick introduction to creating an API in APIM, see the link:/apim/3.x/apim_quickstart_publish.html[Quick Start Guide^].
+For a quick introduction to creating an API in APIM, see the link:/apim/3.x/apim_quickstart_publish_ui.html[Quick Start Guide^].
+
+NOTE: From APIM 3.5.x, the recommended way to create an API is using the *DESIGN STUDIO* method described in the next section. For APIs created using this method, clicking the *Design* menu option automatically opens Design Studio.
+Old API definitions or APIs created using the *PATH BASED* option must be migrated before you can update them in Design Studio. For more information, see the link:/apim/3.x/apim_publisherguide_design_studio_overview.html[Design Studio Guide^].
+
+== Get started
+
+APIM Console provides various ways to create a new API. You can create a new definition from scratch or import an existing definition. You can also create a new API with APIM API, as described in the link:/apim/3.x/apim_quickstart_publish_api.html[Quick Start Guide^].
+
+To start creating an API:
+
+. Log in to APIM Console.
+. Click *APIs*.
+. Click the plus icon image:icons/plus-icon.png[role="icon"] at the bottom of the *APIs* page:
++
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-create-api-options-1.png[Create API]
+. Under *DESIGN STUDIO*, which is selected by default, click *CREATE* or *IMPORT*, then follow the instructions in the sections below.
++
+image::apim/3.x/quickstart/publish/graviteeio-create-api-2.png[]
 
 == Create an API from scratch
-When you create an API from scratch, you need to configure it correctly (name, version,
-context-path, backend endpoints, and so on) before publishing it for developers.
 
-You can find more details of how to create an API from scratch in the link:/apim/3.x/apim_quickstart_publish.html[Quick Start Guide].
+When you create an API from scratch, you need to configure it correctly (name, version,
+context-path, backend endpoints and so on) before publishing it for developers.
+
+NOTE: You can choose to define your API plan (which your consumers will need before they can subscribe to your API) later. link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions^] gives a detailed description of how to configure a plan and the different options available.
+
+. Enter the general details of the API: *Name*, *Version*, *Description* and *Context-path* where the API will be exposed on APIM Gateway. Click *NEXT*.
++
+image::apim/3.x/api-publisher-guide/manage-apis/create-api-general.png[]
+
+. Enter the backend URL for receiving API calls. Click *NEXT*.
++
+image::apim/3.x/api-publisher-guide/manage-apis/create-api-gateway.png[]
+
+. (Optional) If you want to create a plan for the API, enter the following details, otherwise click *SKIP*:
+.. Enter the *Name*, *Security type* and *Description*.
+.. If subscription auto-validation is required, toggle on the *Auto validate subscription* option.
+.. Enter the *Characteristics*.
+.. Enter *Rate limit* and *Quota* details. In this example, we are specifying a rate limit of 1 request every 5 seconds.
++
+image::apim/3.x/api-publisher-guide/manage-apis/create-api-plan1.png[]
+.. Enter *Path authorization* details, using link:/apim/3.x/apim_policies_overview.html#ant-notation[Ant^] notation and an HTTP method.
++
+image::apim/3.x/api-publisher-guide/manage-apis/create-api-plan-path.png[]
+.. Click *NEXT*.
+. (Optional) Import a documentation specification file if required, otherwise click *SKIP*.
+. Review the details of the API, then click one of the following options, depending on whether you want to create and deploy the API or simply create it:
+* *CREATE THE API WITHOUT DEPLOYING IT*
+* *CREATE AND START THE API*
++
+image::apim/3.x/api-publisher-guide/manage-apis/create-api-confirm.png[]
 
 == Import an API
 You can import your existing APIs using one of the following methods.
@@ -159,7 +196,7 @@ paths:
 ==== Vendor extensions
 You can use a vendor extension to add more information to OpenAPI specifications about your API.
 To do this, you need to add the `x-graviteeio-definition` field at the root of the specification.
-The value of this field is an `object` that follows this link:https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/master/gravitee-rest-api-service/src/main/resources/schema/xGraviteeIODefinition.json[JSON Schema^]
+The value of this field is an `object` that follows this link:https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/gravitee-rest-api-service/src/main/resources/schema/xGraviteeIODefinition.json[JSON Schema^]
 
 [NOTE]
 ====
@@ -229,7 +266,7 @@ You can also choose to activate policies that will be configured using the OpenA
 JSON Validation::
 For each operation, if an `application/json` request body exists, then a JSON schema is computed from this body to configure a JSON Validation policy. +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_json_validation.html[here^].
+More information is available link:/apim/3.x/apim_policies_json_validation.html[here].
 
 REST to SOAP transformer::
 For each operation, if the definition contains some specific vendor extensions, a REST to SOAP policy can be configured. +
@@ -238,22 +275,22 @@ These extensions are:
 - `x-graviteeio-soap-action`: contains the SOAP action
 +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_rest2soap.html[here^].
+More information is available link:/apim/3.x/apim_policies_rest2soap.html[here].
 
 Mock::
 For each operation, a mock policy is configured, based on the `example` field if it exists, or by generating a random value for the type of the attribute to mock. +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_mock.html[here^].
+More information is available link:/apim/3.x/apim_policies_mock.html[here].
 
 Validation Request::
 For each operation, `NOT__ __NULL` rules are created with query parameters and headers. +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_request_validation.html[here^].
+More information is available link:/apim/3.x/apim_policies_request_validation.html[here]-
 
 XML Validation::
 For each operation, if a `application/xml` request body exists, then a XSD schema is computed from this body to configure an XML Validation policy. +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_xml_validation.html[here^].
+More information is available link:/apim/3.x/apim_policies_xml_validation.html[here].
 
 === Import a WSDL
 
