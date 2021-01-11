@@ -4,19 +4,24 @@
 :page-folder: am/user-guide
 :page-layout: am
 
-Gravitee.io Access Management comes with a basic user registration feature.
+== Overview
 
-To enable this feature, go to your domain `Login` settings section and turn the `User registration` switch on.
+AM comes with a basic user registration feature.
 
+== Enable user registration
+
+include::../../../partial/login.adoc[leveloffset=+1]
+[start=3]
+. Click *Settings > Login* and toggle on the *User registration* switch.
++s
 image::am/current/graviteeio-am-userguide-um-registration-settings.png[]
-
++
 A new `Register` link will be available on the login form.
-
++
 image::am/current/graviteeio-am-userguide-um-registration-login.png[]
-
-Register link will redirect user to the registration page to create his account.
-
++
+The link will redirect the user to the registration page to create an account.
++
 image::am/current/graviteeio-am-userguide-um-registration-form.png[]
 
-NOTE: Look and feel of the Login form and Registration form can be overridden. See link:/am/current/am_userguide_user_management_forms.html[Custom forms] for more information.
-
+NOTE: You can change the look and feel of the login form and registration form. See link:/am/current/am_userguide_user_management_forms.html[Custom forms^] for more information.

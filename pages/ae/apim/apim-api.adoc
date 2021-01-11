@@ -10,7 +10,7 @@
 
 == Overview
 
-This section explains how to define alerts for an API.
+This section explains how to configure alerts for an API.
 
 .API Management - API Alerts
 image::ae/apim/api_alerts.png[API alerts]
@@ -23,23 +23,23 @@ image::ae/apim/api_alerts.png[API alerts]
 
 === Response time greater than X ms
 
-The following example defines an alert triggered by response times to requests greater than 1500ms:
+This example configures an alert for response times to requests exceeding a threshold of 1500ms:
 
 .API Management - Response time > 1500ms
 image::ae/apim/api_alert_response_time_threshold.png[Response time > 1500ms]
 
-=== Invalid API-KEY
+=== Invalid API key
 
-The following example defines an alert triggered by an invalid API key:
+This example configures an alert for invalid API keys:
 
-.API Management - Invalid API-KEY
+.API Management - Invalid API key
 image::ae/apim/api_alert_api_key_invalid.png[Invalid API-KEY]
 
-=== Percentile 50 for response-time greater than X ms
+=== 50th percentile of response time greater than X ms
 
-The following example defines an alert triggered by a 50th percentile response time greater than 200ms:
+This example configures an alert for the 50th percentile of response times exceeding a threshold of 200 ms in the last 5 minutes:
 
-.API Management - Percentile 50 for response-time greater than X ms
+.API Management - Percentile 50 for response time greater than X ms
 image::ae/apim/api_alert_50percentile.png[Percentile 50 for response-time greater than X ms]
 
 === No API requests in the last minute
@@ -56,5 +56,19 @@ The following example is the same as above, but filters on 'my-application':
 .API Management - No API request during last minute
 image::ae/apim/api_alert_application_no_request_last_minute.png[No api request from my-application during last minute]
 
+=== Quota too many requests
+
+This example configures an alert for reaching the quota limit on requests:
+
+.API Management - Quota too many requests
+image::ae/apim/api_alert_quota_too_many_requests.png[Quota too many requests]
+
+=== Too many errors in the last 5 minutes
+
+This example configures an alert for the number of 5xx errors reaching a threshold of 10 in the last 5 minutes:
+
+.API Management - Api too many errors
+image::ae/apim/api_alert_api_too_many_errors.png[Api too many errors]
+
 == Notifications
-For more information on configuring your notifications, see link:/ae/userguide_notifiers.html[Notifications].
+For more information on how to configure your notifications, see link:/ae/userguide_notifiers.html[Notifications].

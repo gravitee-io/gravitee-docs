@@ -9,22 +9,24 @@
 
 Here is the list of properties available in every alerts triggered by a NODE_LIFECYCLE event.
 
-NOTE: To access one of those property, you have to use the following syntax: `${notification.properties['property_name']}`.
-
-[cols="1,3"]
+[cols="1,3,3"]
 |===
-|Key |Description
+|Key |Description |Syntax
 
 |`node.hostname`
 |The node hostname which has thrown the Alert.
+|${notification.properties['node.hostname']}
 
 |`node.application`
 |The node application (`gio-apim-gateway`, `gio-apim-management`, `gio-am-gateway`, `gio-am-management`) which has thrown the Alert.
+|${notification.properties['node.application']}
 
 |`node.id`
 |The uuid of the node which has thrown the Alert.
+|${notification.properties['node.id']}
 
 |`node.event`
 |The lifecycle state. Values: `NODE_START`, `NODE_STOP`.
+|${notification.properties['node.event']}
 
 |===

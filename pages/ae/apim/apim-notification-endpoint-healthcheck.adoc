@@ -57,7 +57,7 @@ the `application`, ... (for that purpose look at the <<Data, data>> section).
 
 |`success`
 |Values: `true` or `false`.
-|${notification.properties['success']}
+|${notification.properties['success']?string('yes','no')}
 
 |`message`
 |If `success` is `false`, contains the error message.

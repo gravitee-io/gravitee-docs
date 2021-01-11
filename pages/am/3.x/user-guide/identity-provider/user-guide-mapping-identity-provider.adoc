@@ -1,23 +1,22 @@
-= User and Role mapping
+= Map your identity provider to user profiles
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_userguide_identity_provider_mapping.html
 :page-folder: am/user-guide
 :page-layout: am
 
-TIP: We advise you to first read about link:/am/current/am_quickstart_profile_information.html[User Profile information^].
+== Overview
 
-Attribute mapping lets you bind some Identity Provider attributes to a *Gravitee.io AM* _User Profile_.
+You can bind some identity provider attributes to an AM _user profile_ with attribute mapping. Using this method, AM clients can receive additional attributes through your identity provider.
 
-That way, *Gravitee AM* Clients gets additional attributes, picked from your IdP (Identity Provider).
+TIP: We advise you to read link:/am/current/am_quickstart_profile_information.html[Get user profile information^] first.
 
-These _User Profile_ attributes can then be retrieved either by calling the _UserInfo_ endpoint or, if you specified the `openid` scope, by parsing the claims in the `id_token`.
+_User profile_ attributes can be retrieved either by calling the _UserInfo_ endpoint or, if you specify an `openid` scope for your application, by parsing the claims in the `id_token`.
 
+== User mappers
 
-== User mapper
+In the identity providers *User mappers* tab, you can add mappings between user attributes to be returned by the identity provider, with custom attributes that will be stored within the _User Profile_.
 
-In this tab, one can add mappings between user attributes, returned by the IdP, with custom attributes that will be stored within the _User Profile_.
-
-By default, with he LDAP IdP, if you don't define any mapping then the following attributes are fetched:
+With an LDAP identity provider, if you don't define any mappings, the following attributes are returned by default:
 
 [width="50%",cols="6,4"]
 |===
@@ -30,30 +29,34 @@ By default, with he LDAP IdP, if you don't define any mapping then the following
 |the username typed in the login form|preferred_username
 |===
 
-That last one is also the attribute used to lookup the user in the LDAP, as defined per the default pattern: `uid={0}`
+The user name is also the attribute used to look up the user in LDAP, as defined per the default pattern: `uid={0}`
 
-WARNING: As opposite, as soon as you start using the *User Mapper* feature, the default claims listed above won't appear in the _User Profile_. Instead, only declared mappings will occur. +
-Same rule as soon as the Client start using scopes other than the single `openid`.
+WARNING: Once you start using the *User Mapper* feature, the default claims listed above will no longer appear in the _User Profile_. Instead, only the declared mappings will apply. +
+The same applies when the client starts using scopes other than `openid`.
 
-As an example, let's say a Client application wants to retrieve the `telephoneNumber` attribute present in the LDAP IdP, you can do it by configuring the IdP like so:
+=== Example
 
-. Go to http://GRAVITEEIO-AM-UI-HOST
-. From the homepage, go to your security domain's settings page, go to `Providers` section
-. From the security domain's providers page, select your LDAP identity provider and go to `User mappers` tab
+Let's imagine a client application wants to retrieve the `telephoneNumber` attribute present in the LDAP identity provider. You can do this by configuring the identity provider as follows:
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
++
+TIP: If you want to update your identity provider in a different security domain, select the domain from the user menu.
++
+. Click *Settings > Providers*.
+. Select your LDAP identity provider and click the *User mappers* tab.
 . Map your LDAP (raw) attribute `telephoneNumber` to a new user attribute named `telephone_number`:
-
++
 image::am/current/graviteeio-am-userguide-idp-user-mappers.png[]
-
-[start=5]
-. Get the _User Profile_ information via the UserInfo Endpoint and you will see that the new user attribute is present
-
++
+. Get the _User Profile_ information via the link::\am\current\UserInfo Endpoint[UserInfo Endpoint] and you will see that the new user attribute is present.
++
 [source,bash,subs="verbatim"]
 ----
 curl -X GET http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/oidc/userinfo -H 'Authorization: Bearer :accessToken'
 ----
-
-If everything goes well, you should see the something like:
-
++
+If it is working correctly, you will see the something like this:
++
 [source]
 ----
 HTTP/1.1 200 OK
@@ -68,48 +71,46 @@ Pragma: no-cache
 }
 ----
 
-The same principle applies for any Identity Provider.
-
-
+The same principle applies for any identity provider.
 
 === A few words about OIDC scopes and claims
 
 According to the https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims[OpenID Connect core specification^], using scopes such as `profile`, `phone`, `email` or `address` will retrieve sets of specific claims. +
-For example, using the `profile` scope with bring back those claims, if available: `name`, `family_name`, `given_name`, `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, `zoneinfo`, `locale`, and `updated_at`. +
-See their https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims[definitions here^].
-
+For example, using the `profile` scope will return the following claims, if available: `name`, `family_name`, `given_name`, `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, `zoneinfo`, `locale`, and `updated_at`. +
+You can see their https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims[definitions here^].
 
 == Role mapper and dynamic OAuth2 scopes
 
-*Gravitee.io AM* allows you to create roles and permissions for your users. You can map these roles with your IdP's user attributes or groups. +
+AM allows you to create roles and permissions for your users. You can map these roles to your identity provider user attributes or groups. +
 
-Defining roles in *Gravitee AM* helps you to centralize Access Management for every Client part of a given _domain_.
+Defining roles in AM helps you to centralize Access Management for all clients in a given _domain_.
 
-Also, when it comes to fine grained authorization management, it's a good practice to take advantage of OAuth _scopes_.
+In addition, when it comes to fine grained authorization management, it is considered good practice to use OAuth _scopes_.
 
-The goal is to dynamically add scopes to `access_token`, depending on the role that were attributed to the user while authenticating.
+The goal is to dynamically add scopes to the `access_token`, depending on the role associated with the user when authenticating.
 
-In the following example, let's imagine you want to map a role named `administrator` to people part of the `IT_DEVELOPERS_TEAM` LDAP group. +
-Once done, you want to dynamically add the `admin` scope to the `access_token`. Then, you can imagine that the Client will provide that scope when accessing an API via an API Manager. That latter will check for this scope before granting access to the upstream API.
+=== Example
 
-And here we are, you've just configured fine grained authorization!
+In the following example, we will map a role named `administrator` to users who are members of the `IT_DEVELOPERS_TEAM` LDAP group. +
+We will then dynamically add the `admin` scope to the `access_token`.
+The client will provide this scope when accessing an API via an API Manager, and the API Manager will check for the scope before granting access to the upstream API.
 
-Let's do that together: +
-
-. Go to http://GRAVITEEIO-AM-UI-HOST
-. From the homepage, go to your security domain's settings page, go to the `Scopes` section
-. Click the `(+)` button and create an `admin` scope
-. Go to the `Roles` section
-. Click the `(+)` button and create an `administrator` role. Select the `admin` scope permission
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Click *Settings > Scopes*.
+. Click the plus icon image:icons\plus-icon.png[] and create an `admin` scope.
+. Click *Settings > Roles*.
+. Click the plus icon image:icons\plus-icon.png[] and create an `administrator` role. Select the `admin` scope permission.
 . Go to the `Providers` section
-. From the security domain's providers page, select your LDAP Identity Provider and go to the `Role mappers` tab
-. Set the user's roles configuration:
-
+. Click *Settings > Providers* and select your LDAP identity provider.
+. Click the *Role mappers* tab.
+. Set the user's role configuration:
++
 image::am/current/graviteeio-am-userguide-idp-role-mappers.png[]
-
-[start=7]
-. When the Client requests the _Token_ endpoint, it will benefit of that new scope representing the user roles permissions values. Just make sure you enabled the _"Enhance scopes"_ option for your Client (OAuth tab).
-
++
+. When the client requests the _Token_ endpoint, the new scope representing the user roles will be used.
++
+NOTE: Ensure you enable the _"Enhance scopes"_ option for your client (*OAuth* tab).
++
 image::am/current/graviteeio-am-user-guide-mapping-idp-enhance-scopes.png[]
 
-The same principle applies for any Identity Provider.
+The same principle applies for all identity providers.

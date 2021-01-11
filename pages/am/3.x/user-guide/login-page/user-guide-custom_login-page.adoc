@@ -1,24 +1,30 @@
-= Custom Login Page
+= Custom login page
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_userguide_custom_login_page.html
 :page-folder: am/user-guide
 :page-layout: am
 
-Login page is shared by all the applications and will be applied to all the users who want to log in to the security domain.
-To override the login page, you can do it at security domain level or for each application. To do so at application level, follow these steps :
+== Overview
 
-. Go to http://GRAVITEEIO-AM-UI-HOST
-. From the homepage, select your application and go to the `Design` tab.
-. Select `Login` template
-. Write your own login html code and press `SAVE`
+The login page is shared by all applications and will be displayed to any user logging in to the security domain.
+You can override the login page at security domain level or application level.
 
+== Override an application login page
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. If you want to change to a different security domain, select it from the user menu at the top right.
+. Click *Applications*.
+. Select your application and click the *Design* tab.
+. Select the *Login* template.
+. Write your own login HTML code and click *SAVE*.
++
 image::am/current/graviteeio-am-userguide-custom-login-page.png[]
 
-NOTE: To go back to the default login, switch off the `Enable custom login form` press `SAVE`
+NOTE: To revert to the default login page, toggle off the *Enable custom login form* button and click *SAVE*.
 
 == Minimal login form
 
-To perform the login, your custom html code must contains some required elements
+To perform the login, your custom html HTML must contain some required elements:
 
 [source,html]
 ----

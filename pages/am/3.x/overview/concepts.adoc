@@ -10,6 +10,7 @@ This page describes the main concepts used in AM.
 
 [[gravitee-am-concepts-security-domain]]
 == Security domain
+
 A security domain:
 
 * Gives you access to all the AM resources, such as applications, users and identity providers
@@ -18,6 +19,7 @@ A security domain:
 
 [[gravitee-am-concepts-application]]
 == Application
+
 An application:
 
 * Can be any type of application, for example:
@@ -27,10 +29,11 @@ An application:
 ** Backend App (Job, CLI)
 
 * Applications use AM to sign in and make requests to the Gateway Authorization Server
-* Applications can be used by end users (B2C) or not (B2B)
+* Applications can be used by end users (B2C) or autonomous (B2B)
 
 [[gravitee-am-concepts-idp]]
 == Identity provider
+
 An identity provider:
 
 * Brokers trust with external user providers such as:
@@ -51,7 +54,7 @@ NOTE: Deprecated in version 3.5.x and replaced by the `flow` concept described b
 
 An extension point:
 
-* Extends the behavior of the AM server by executing policies during specific phases of the authentication flow
+* Extends the behavior of the AM server by executing policies on selected stages
 * Customizes the authentication and authorization flow by:
 ** Adding extra actions after the login form process
 ** Adding extra actions before and after the user consent process

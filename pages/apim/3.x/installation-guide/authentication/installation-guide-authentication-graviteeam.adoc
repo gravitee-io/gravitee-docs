@@ -1,39 +1,48 @@
-= Gravitee.io Access Management
+= Configure Gravitee.io Access Management authentication
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_authentication_graviteeam.html
 :page-folder: apim/installation-guide/portal/authentication
 :page-layout: apim3x
-Here you will find how to configure Gravitee.io to allow users to connect using https://gravitee.io/[Gravitee.io Access Management].
 
-NOTE: For this guide, Gravitee.io AM 2.x (>= 2.0.4) is used.
+== Overview
 
-== Create a client
+This page explains how to configure APIM authentication using the https://www.gravitee.io/products/access-management[Gravitee.io Access Management^] product.
 
-Before being able to connect to the Gravitee.io portal using Gravitee.io Access Management, you need to create a new client.
+NOTE: The examples below are based on Access Management 2.x (2.0.4 or above).
 
-Please refer to link:/am/2.x/am_quickstart_register_app.html[Register your first client, window="_blank"] quickstart to set up your first security domain and client application.
+== Create a new client in Access Management
 
-WARNING: Be careful, the `Valid Redirect URIs` must match exactly to the domain which is hosting the portal.
+Before you can connect to APIM using Access Management (AM), you need to create a new client.
 
+See link:/am/current/am_quickstart_app_setup.html[Set up your first application^] in the AM documentation for guidance on setting up your first security domain and client application.
 
-=== Get client's credentials
+WARNING: The `Valid Redirect URIs` value must exactly match the domain hosting APIM Portal.
 
-Once your client created, you will be able to get its credentials.
+=== Retrieve client credentials
 
-.Retrieve Client credentials
-image::apim/3.x/installation/authentication/graviteeam_client_credentials.png[Get Client credentials]
+After you create the client, you can retrieve its credentials for authentication configuration.
 
-== Configure Gravitee.io
+image::apim/3.x/installation/authentication/graviteeam_client_credentials.png[Get client credentials]
+
+== Configure APIM
 
 include::../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
 
-=== Via the Portal
+==== APIM Console configuration
 
-Got to Settings > Authentication > New provider (the `+` button) > select Gravitee.io AM
-
+. Click *Organization Settings > Authentication*.
+. Click the plus icon image:icons/plus-icon.png[] and select the *Gravitee.io AM* icon.
+. If you want to use this provider to log in to APIM Portal, ensure that *Allow portal authentication to use this identity provider* is checked. To use it only for APIM Console, uncheck this option.
+. Enter the details of the provider, including the credentials created in the AM client.
++
 image::apim/3.x/management-api-configuration-idp/new-am.png[Gravitee.io - New Gravitee.io AM IDP]
+. Click *CREATE*.
+. Activate the provider for Portal or Console login, as described in link:/apim/3.x/apim_installguide_authentication.html#activating-providers[Activating providers^].
 
-=== Via the `gravitee.yml`
+==== `gravitee.yml` file configuration
+
+Update the following section of the file with the AM client credentials.
+
 [source,yaml]
 ----
 security:
@@ -66,26 +75,30 @@ security:
             - "MANAGEMENT:API_CONSUMER"
 ----
 
-== It's time to play
+== Test the configuration
 
-=== Create a user in Gravitee.io AM
+=== Create a user in AM
 
-Please refer to link:/am/2.x/am_quickstart_register_app.html[Authenticate users with Identity Provider, window="_blank"] quickstart to set up your identity provider and create your first users.
+See link:/am/current/am_quickstart_app_setup.html[Set up your first application^] for guidance on setting up your new AM user.
 
-NOTE: Gravitee.io API Management requires a profile `email` information to enable the portal authentication. If you create an `Inline identity provider`, please set an email for the `username` field.
+NOTE: APIM requires an `email` profile to enable portal authentication. If you create an Inline identity provider in AM, you need to specify an email address in the *Username* field.
 
-.Create a user
-image::apim/3.x/installation/authentication/graviteeam_create_user.png[Fill the user form]
+image::apim/3.x/installation/authentication/graviteeam_create_user.png[]
 
-=== Login into the portal
-.Login Form
-image::apim/3.x/installation/authentication/graviteeam_login_form.png[Login Form]
+=== Log in to APIM Portal
 
-.Gravitee.io AM Login Form
-image::apim/3.x/installation/authentication/graviteeam_login_form2.png[Gravitee.io Login Form]
+. Click *Sign in with Gravitee.io AM*.
++
+image::apim/3.x/installation/authentication/graviteeam_login_form.png[]
 
-.OPTIONAL : Gravitee.io AM Approval page
-image::apim/3.x/installation/authentication/graviteeam_login_form3.png[Gravitee.io Approval Page]
-
-.Login Success
-image::apim/3.x/installation/authentication/graviteeam_login_success.png[Here we are !]
+. Enter your user credentials and click *LOG IN*.
++
+image::apim/3.x/installation/authentication/graviteeam_login_form2.png[]
++
+. Click *AUTHORIZE* on the approval page.
++
+image::apim/3.x/installation/authentication/graviteeam_login_form3.png[]
++
+You have successfully logged in:
++
+image::apim/3.x/installation/authentication/graviteeam_login_success.png[]

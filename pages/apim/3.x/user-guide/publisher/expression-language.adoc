@@ -7,8 +7,8 @@
 The APIM Expression Language (EL for short) is one of the key features
 that can be used by API publishers to configure various aspects and services of an API.
 
-This expression language is a powerful language that supports querying and
-manipulating an object graph and is based on the http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html[SpEL] (Spring Expression Language).
+The EL is a powerful language used for querying and
+manipulating an object graph. It is based on the http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html[SpEL^] (Spring Expression Language).
 This means that you can do everything described in the link.
 
 In addition, APIM extends the standard SpEL capabilities by providing extra objects and properties
@@ -31,14 +31,12 @@ automatically _injected_ into the expression language context to be used later.
 `{#properties['my-property']}`
 
 === Endpoints
-When defining endpoints for your API, you need to give them a _name_ which
-must be a unique identifier across all the endpoints of the API.
+When you define endpoints for your API, you need to give them a _name_ which
+must be a unique identifier across all endpoints of the API. This identifier can be used to get an endpoint reference (i.e. uri).
 
-Once done, this identifier can be used to get an endpoint reference (ie. uri).
-
-For example: when you're creating an API, a _default_ endpoint is created,
+For example: when you create an API, a _default_ endpoint is created,
 corresponding to the value you set for the backend property. This endpoint can
-be retrieved using EL by using the following syntax:
+be retrieved with EL by using the following syntax:
 
 `{#endpoints['default']}`
 
@@ -67,11 +65,8 @@ be retrieved using EL by using the following syntax:
 .^|content       |Body content           ^.^|string          |-
 |===
 
-[WARNING]
-====
-* `{#request.content}` is only available when the policy is bound to an `on-request-content` phase.
-* `{#request.pathParams}` keys are based on the path defined in policies configuration. For the example above, the defined path is `/store/:storeId`
-====
+WARNING: `{#request.content}` is only available when the policy is bound to an `on-request-content` phase.
+
 === Example
 
 * Get the value of the `Content-Type` header for an incoming HTTP request:
@@ -156,8 +151,24 @@ register other attributes in the context. See the documentation for the policies
 
 `{#request.path.startsWith('/my/api')}`
 
+== Response
+
+=== Properties
+|===
+.^|Property      |Description            ^.^|Type            |Example
+
+.^|content       |Body content           ^.^|string          |-
+.^|headers       |Headers                ^.^|key / value     |X-Custom -> myvalue
+.^|status        |Status of the HTTP response      ^.^|int    |200
+|===
+
+=== Example
+
+* Get the status of an HTTP response:
+`{#response.status}`
+
 == Policies
-Expression language can be used to configure some aspects of policy configuration.
+You can use the EL to update some aspects of policy configuration.
 The policy needs to specify if it supports EL or not.
 
 == Mixin

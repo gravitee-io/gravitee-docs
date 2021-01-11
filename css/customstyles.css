@@ -67,7 +67,9 @@ body {
 .gi-5x{font-size: 5em;}
 
 
-
+.image.icon { border: none;
+	vertical-align: center;
+}
 
 
 .breadcrumb > .active {color: #777 !important;}
@@ -1308,4 +1310,8 @@ span.icon>.fa {
 .admonitionblock td.icon .icon-important:before {
     content: "\f06a";
     color: #bf0000;
+}
+
+.icon image { border: 0 
+	      vertical-align: middle;
 }

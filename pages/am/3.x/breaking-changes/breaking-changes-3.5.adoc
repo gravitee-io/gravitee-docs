@@ -12,7 +12,7 @@ AM link:/am/current/am_overview_concepts.html#gravitee-am-concepts-flow[flows] a
 
 To provide this new feature, the AM Management API has been changed to reflect these changes.
 
-NOTE: All `/domains/:domainId/policies/**` routes have been removed for this version. See the new link:/am/current/management-api/index.html[AM v3 OpenAPI descriptor] for more information.
+NOTE: All `/domains/:domainId/policies/**` routes have been removed for this version. See the new link:/am/current/management-api/3.5/index.html[AM v3 OpenAPI descriptor] for more information.
 
 NOTE: If you are using the AM Management API directly (not via the Portal) please update your configuration.
 

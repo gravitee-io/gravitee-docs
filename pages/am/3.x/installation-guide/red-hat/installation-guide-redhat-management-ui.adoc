@@ -1,4 +1,4 @@
-= Install Management UI on Red Hat or CentOS
+= Install AM Console
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_installguide_redhat_management_ui.html
 :page-folder: am/installation-guide/redhat
@@ -7,15 +7,17 @@
 :page-description: Gravitee.io Access Management - Installation Guide - Red Hat or CentOS - Management UI
 :page-keywords: Gravitee.io, API Platform, Access Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-:gravitee-component-name: Management UI
+:gravitee-component-name: AM Console
 :gravitee-package-name: graviteeio-am-management-ui-3x
 :gravitee-service-name: graviteeio-am-management-ui
 
-== Installing Gravitee.io {gravitee-component-name} package
+== Prerequisites
 
-IMPORTANT: We assume that you have configured your package management system by following link:/am/current/am_installguide_redhat_introduction.html[this documentation].
+Before you install AM Console, you must complete the following configuration. You must also ensure AM API is installed and running.
 
-Nginx must be installed prior to Gravitee.io {gravitee-component-name}:
+=== Install Nginx
+
+To install Nginx, run the following commands:
 
 [source,bash,subs="attributes"]
 ----
@@ -23,18 +25,24 @@ sudo yum install epel-release
 sudo yum install nginx
 ----
 
-Then, to install the latest stable version of Gravitee.io {gravitee-component-name}, issue the following command:
+=== Configure your package management system
+
+Ensure you have configured your package management system, as described in link:/am/current/am_installguide_redhat_introduction.html#configure-the-package-management-system-yum[Configure the package management system (yum)^].
+
+== Install the {gravitee-component-name} package
+
+To install the latest stable version of {gravitee-component-name}, run the following command:
 
 [source,bash,subs="attributes"]
 ----
 sudo yum install -y {gravitee-package-name}
 ----
 
-== Running Gravitee.io {gravitee-component-name}
+== Run {gravitee-component-name}
 
-NOTE: Gravitee.io {gravitee-component-name} is based on Nginx
+NOTE: {gravitee-component-name} is based on Nginx
 
-To configure Gravitee.io {gravitee-component-name} to start automatically when the system boots up, run the following commands:
+To configure {gravitee-component-name} to start automatically when the system boots up, run the following commands:
 
 [source,bash,subs="attributes"]
 ----
@@ -42,7 +50,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable nginx
 ----
 
-Nginx can be started and stopped as follows:
+To start and stop Nginx, run the following commands:
 
 [source,bash,subs="attributes"]
 ----
@@ -50,16 +58,18 @@ sudo systemctl start nginx
 sudo systemctl stop nginx
 ----
 
+== View the logs
+
 When `systemd` logging is enabled, the logging information are available using the `journalctl` commands:
 
-To tail the journal:
+To tail the journal, run the following command:
 
 [source,shell]
 ----
 sudo journalctl -f
 ----
 
-To list journal entries for the Nginx service:
+To list journal entries for the Nginx service, run the following command:
 
 [source,shell]
 ----

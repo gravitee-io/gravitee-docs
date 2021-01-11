@@ -1,5 +1,5 @@
 [[gravitee-installation-authentication-github]]
-= GitHub
+= Configure GitHub authentication
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_authentication_github.html
 :page-folder: apim/installation-guide/portal/authentication
@@ -7,45 +7,56 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
-Here you will find how to configure Gravitee.io to allow users to connect using their https://github.com/[GitHub] account.
+== Overview
 
-WARNING: GitHub authentication requires that users have a public email to be able to connect to the portal.
+This page explains how to configure an APIM Portal connection with a https://github.com/[GitHub^] account.
 
-== Create a GitHub OAuth Apps
+WARNING: GitHub authentication requires users to use a public email address to connect to the portal.
 
-Before being able to connect to the Gravitee.io portal using a GitHub account, you need to associate a GitHub application.
+== Create a GitHub OAuth application
 
-You can access the `GitHub OAuth Apps` from https://github.com/settings/developers
+Before you can connect to APIM Portal using a GitHub account, you need to create a GitHub application to link to APIM.
 
-=== Register a new application
+=== Create a new GitHub application
 
-.Register a new app
+. Go to https://github.com/settings/developers.
+. Click *OAuth Apps*.
+. Click *Register an application*.
++
 image::apim/3.x/installation/authentication/github_register_new_app.png[Register a new GitHub OAuth apps]
-
-=== Create the application
-
-.Fill the form
+. Enter the application details.
++
 image::apim/3.x/installation/authentication/github_fill_app_form.png[Fill the form]
-
-
-WARNING: Be careful, the `Authorization callback URL` must match exactly to the domain which is hosting the portal.
++
+WARNING: The `Authorization callback URL` must exactly match the domain hosting APIM Portal.
+. Click *Register application*.
 
 [[gravitee-installation-authentication-github-credentials]]
-=== Get application's OAuth2 credentials
-.Retrieve Oauth2 credentials
+=== Retrieve the OAuth2 credentials
+
+After you create the GitHub application, you can retrieve the OAuth2 client ID and secret.
+
 image::apim/3.x/installation/authentication/github_oauth_credentials.png[Get Oauth2 credentials]
 
-== Configure Gravitee.io
+== Configure APIM
 
 include::../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
 
-=== Via the Portal
+==== APIM Console configuration
 
-Got to Settings > Authentication > New provider (the `+` button) > select Github
-
+. Click *Organization Settings > Authentication*.
+. Click the plus icon image:icons/plus-icon.png[] and select the *GitHub* icon.
+. If you want to use this provider to log in to APIM Portal, ensure that *Allow portal authentication to use this identity provider* is checked. To use it only for APIM Console, uncheck this option.
+. Enter the details of the provider, including the OAuth2 credentials created in the GitHub OAuth app.
++
 image::apim/3.x/management-api-configuration-idp/new-github.png[Gravitee.io - New Github IDP]
+. Click *CREATE*.
+. Activate the provider for Portal or Console login, as described in link:/apim/3.x/apim_installguide_authentication.html#activating-providers[Activating providers^].
 
-=== Via the `gravitee.yml`
+==== `gravitee.yml` file configuration
+
+Update the following section of the file with the GitHub OAuth2 app credentials.
+
 [source,yaml]
 ----
 security:
@@ -55,13 +66,18 @@ security:
       clientSecret: xxxx-xxx-xxx-xxx
 ----
 
-== It's time to play
+== Test the connection
 
-.Login Form
+=== Log in to APIM Portal
+
+. Click *Sign in with GitHub*.
++
 image::apim/3.x/installation/authentication/github_login_form.png[Login Form]
 
-.Allow access to user account
+. Allow access to the user account.
++
 image::apim/3.x/installation/authentication/github_access_account.png[Login Form]
-
-.Login Success
++
+You have successfully logged in:
++
 image::apim/3.x/installation/authentication/github_login_success.png[Here we are !]

@@ -4,18 +4,11 @@
 :page-folder: am/user-guide
 :page-layout: am
 
-Certificates are created for each security domain, to create a certificate, follow these steps :
-
-. Go to http://GRAVITEEIO-AM-UI-HOST
-. From the homepage, go to your security domain's settings page, go to `Certificates` section
-. From the security domain's certificates page, click `(+)` button
-. Choose the certificate's type and press `NEXT`
-
 == Java KeyStore (JKS)
 
-Storage for cryptographic keys and certificates based on the (.jks) file.
+Storage for cryptographic keys and certificates is managed in a (`.jks`) file.
 
-NOTE: To generate a new keystore, you can use the Key and Certificate Management Tool `keytool`
+NOTE: To generate a new keystore, you can use the Key and Certificate Management Tool `keytool`.
 
 [source]
 ----
@@ -28,13 +21,21 @@ $ keytool -genkeypair
           -storepass letmein
 ----
 
-TIP: Default key are RS256 (SHA256withRSA), for RS512 key add those following options: -sigalg SHA512withRSA -keysize 4096
+TIP: Default keys are RS256 (SHA256withRSA). For RS512 keys, add the following options: `-sigalg SHA512withRSA -keysize 4096`
 
-. Give your certificate a *name* and create a certificate by filling out the configuration form and press `CREATE`
+== Create a new certificate with AM Console
 
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. If you want to change to a different security domain, select it from the user menu at the top right.
+. Click *Settings > Certificates*.
+. Click the plus icon image:icons/plus-icon.png[].
+. Choose the certificate type and click *Next*.
+. Give your certificate a name, then enter the details of the keystore file.
+. Click *Create*.
++
 image::am/current/graviteeio-am-userguide-create-certificate.png[]
 
-You can also create a certificate via the Gravitee.io AM API
+== Create a new certificate with AM API
 
 [source]
 ----
@@ -51,27 +52,27 @@ curl -H "Authorization: Bearer :accessToken" \
 
 == Public keys
 
-Public keys will allow you to verify the token's payload integrity. To get public key of your certificate, follow these steps :
+You can use public keys to verify a token payload's integrity. To obtain the public key for your certificate:
 
-. From `Certificates` list page, click image:am/current/graviteeio-am-quickstart-profile-public-key.png[] button.
-. You can copy/paste the public to use them with third party library to verify your tokens
-
+. In AM Console, click *Settings > Certificates*.
+. Next to your certificate, click the key image:am/current/graviteeio-am-quickstart-profile-public-key.png[] icon.
+. You can copy/paste the public key to use with third party libraries to verify your tokens.
++
 image::am/current/graviteeio-am-userguide-public-key.png[]
 
-NOTE: link:https://gravitee.io[Gravitee.io API Management] comes with a JWT Policy use to verify and decode tokens that can be used for your APIs.
+NOTE: link:https://www.gravitee.io/products/api-management[Gravitee.io API Management] comes with a JWT Policy to verify and decode tokens that can be used for your APIs.
 
-== Use the certificate for your application
+== Apply the certificate to your application
 
-To use your certificate for your application, follow these steps :
-
-. Go to the `Settings` tab of your API and the `Certificates` section
-. Choose your certificate and press `SAVE`
-
+. In AM Console, click *Applications*.
+. In the *Settings* tab, click *Certificates*.
+. Choose your certificate and click *SAVE*.
++
 image::am/current/graviteeio-am-userguide-certificate-app.png[]
 
-== Custom certificate
+== Custom certificates
 
 image::am/current/graviteeio-am-userguide-custom-certificate.png[]
 
-Gravitee.io Access Management is a flexible and extensible solution based on pluggable modules architecture.
+AM is designed to be extended based on a pluggable modules architecture.
 You can develop your own certificate and provide a sign method for tokens.

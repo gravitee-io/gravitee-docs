@@ -1,8 +1,9 @@
 [[gravitee-installation-metrics-prometheus]]
 = Prometheus
 
-In this part we explain you how to expose metrics to Prometheus.
+This section explains how to expose metrics to Prometheus.
 
+== Enable the metrics service
 
 You enable the metrics service in the `gravitee.yml` configuration file.
 Prometheus support is activated and exposed using the component's internal API.
@@ -16,14 +17,14 @@ services:
       enabled: true
 ----
 
-WARNING: By default, the technical API is bind to `localhost` only, so it must not be invoked outside `localhost`.
-If you need to expose the API wider, you may have to set the `services.core.http.host` property to the correct network interface.
-If you're running within a docker container, set the IP to the IP address of the container.
+WARNING: By default, the internal component API is bound to `localhost` only, so it must not be invoked outside `localhost`.
+If you need to expose the API more widely, you may need to set the `services.core.http.host` property to the correct network interface.
+If you are running APIM in a Docker container, set the IP to the IP address of the container.
 Each change requires a restart.
 
-== Prometheus Configuration
+== Prometheus configuration
 
-Here is an example to ask Prometheus to scrape the API Gateway technical API where from formatted metrics are available.
+The following example requests Prometheus scrape the formatted metrics available in the APIM Gateway internal API.
 
 [source,yaml]
 ----
@@ -39,14 +40,12 @@ scrape_configs:
 
 == Prometheus UI
 
-Now we have everything correctly configured, we can have a look to Prometheus and explore metrics.
-By default, and when running Prometheus, the UI is exposed at http://localhost:9090/graph
+By default when running Prometheus, the UI is exposed at \http://localhost:9090/graph
 
 .Show `http_client_connections` metrics
 image::apim/3.x/installation/metrics/prometheus/metrics_prometheus_graph.png[Show `http_client_connections` metrics]
 
-
-If you want to take a look to the memory consumed by the gateway:
+The following example shows the memory consumed by the APIM Gateway instance:
 
 .Show `jvm_memory_used_bytes` metrics
 image::apim/3.x/installation/metrics/prometheus/metrics_prometheus_graph_memory.png[Show `jvm_memory_used_bytes` metrics]

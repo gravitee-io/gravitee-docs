@@ -1,0 +1,301 @@
+= Create APIs
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_publisherguide_create_apis.html
+:page-folder: apim/user-guide/publisher
+:page-layout: apim3x
+
+== Overview
+
+APIM Console provides various ways to create a new API. You can create a new definition from scratch or import an existing definition.
+
+All new API definitions start with clicking the plus icon image:apim/3.x/icons/plus-icon.png[] at the bottom of the *APIs* page:
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-create-api-options-1.png[Create API]
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-create-api-options-2.png[Create API Options, 300]
+
+The following sections describe the different ways you can create an API using APIM Console.
+
+For a quick introduction to creating an API in APIM, see the link:/apim/3.x/apim_quickstart_publish.html[Quick Start Guide^].
+
+== Create an API from scratch
+When you create an API from scratch, you need to configure it correctly (name, version,
+context-path, backend endpoints, and so on) before publishing it for developers.
+
+You can find more details of how to create an API from scratch in the link:/apim/3.x/apim_quickstart_publish.html[Quick Start Guide].
+
+== Import an API
+You can import your existing APIs using one of the following methods.
+
+=== Import an existing API definition
+You can import and export your APIs to a Gravitee API definition format (see the example below).
+
+To import an API from an API definition:
+
+* If the definition is a file, select *IMPORT FILE* and browse your file system to select it.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-definition-file.png[Import from definition file, 300]
+
+* If the definition is a link, select *IMPORT FROM LINK*, then choose *API Definition* and enter the definition URL.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-definition-link.png[Import from definition link, 300]
+
+Example Gravitee API definition::
+[source,json]
+----
+{
+  "name": "My first API",
+  "version": "1",
+  "description": "Gravitee.io Echo API Proxy",
+  "visibility": "private",
+  "paths": {
+    "/": []
+  },
+  "resources": [],
+  "members": [
+    {
+      "source": "memory",
+      "sourceId": "admin",
+      "roles": [
+        "2eb2dc44-5cc9-48fa-b2dc-445cc978fa66"
+      ]
+    }
+  ],
+  ...
+}
+----
+
+=== Import an OpenAPI specification
+One of the most powerful features of APIM is its ability to import an OpenAPI specification to create an API. When you import an existing specification you do not have to complete all the fields required when you create a new API.
+
+To import an API from OpenAPI:
+
+* If the OpenAPI specification is a file, select *IMPORT FILE* and browse your file system to select it.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-file.png[Import from definition file, 300]
+
+* If the OpenAPI specification is a link, select *IMPORT FROM LINK*, choose *Swagger / OpenAPI* and enter the definition URL.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-link.png[Import from definition link, 300]
+
+==== How the context-path is determined
+
+|===
+|Specification version |Definition |Example |Context-path
+
+.2+|Swagger (V2)
+|`basePath` field, if it exists.
+a|
+[source,json]
+----
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "...",
+    "version": "1.0.5",
+    "title": "Swagger Petstore"
+  },
+  "host": "petstore.swagger.io",
+  "basePath": "/v2",
+  ...
+}
+----
+| /v2
+
+|If not, lowercase trimmed `info.title`.
+a|
+[source,json]
+----
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "...",
+    "version": "1.0.5",
+    "title": "Swagger Petstore"
+  },
+  "host": "petstore.swagger.io",
+
+  ...
+}
+----
+| /swaggerpetstore
+
+.2+|OpenAPI (V3)
+|Path of the first `servers.url`, if it exists, without "/". +
+a|
+[source,yaml]
+----
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+  license:
+    name: MIT
+servers:
+  - url: http://petstore.swagger.io/v1
+paths:
+...
+----
+| /v1
+
+|If not, lowercase trimmed `info.title`.
+a|
+[source,yaml]
+----
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+  license:
+    name: MIT
+servers:
+  - url: http://petstore.swagger.io/
+paths:
+  ...
+----
+| /swaggerpetstore
+|===
+
+==== Vendor extensions
+You can use a vendor extension to add more information to OpenAPI specifications about your API.
+To do this, you need to add the `x-graviteeio-definition` field at the root of the specification.
+The value of this field is an `object` that follows this link:https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/master/gravitee-rest-api-service/src/main/resources/schema/xGraviteeIODefinition.json[JSON Schema^]
+
+[NOTE]
+====
+* `categories` must contain either a key or an id. Only existing categories are imported.
+* Import will fail if `virtualHosts` are already in use by *other* APIs.
+* If set, `virtualHosts` will override `contextPath`.
+* `groups` must contain group names. Only existing groups are imported.
+* `metadata.format` is case-sensitive. Possible values are:
+** STRING
+** NUMERIC
+** BOOLEAN
+** DATE
+** MAIL
+** URL
+* `picture` only accepts Data-URI format (see example below).
+====
+
+Here is an example:
+```yaml
+openapi: "3.0.0"
+info:
+  version: 1.2.3
+  title: Gravitee.io Echo API
+  license:
+    name: MIT
+servers:
+  - url: https://demo.gravitee.io/gateway/echo
+x-graviteeio-definition:
+  categories:
+    - supplier
+    - product
+  virtualHosts:
+    - host: api.gravitee.io
+      path: /echo
+      overrideEntrypoint: true
+  groups:
+    - myGroupName
+  labels:
+    - echo
+    - api
+  metadata:
+    - name: relatedLink
+      value: http://external.link
+      format: URL
+  picture: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
+  properties:
+    - key: customHttpHeader
+      value: X-MYCOMPANY-ID
+  tags:
+    - DMZ
+    - partner
+    - internal
+  visibility: PRIVATE
+paths:
+...
+```
+
+==== Policies on path
+When importing an OpenAPI definition, you can select the option *Create policies on path* in the import form.
+This specifies that all routes declared in the OpenAPI specification are to be automatically created in APIM.
+You can navigate to the policy management view to check.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-policies-path.png[Policies view - all routes imported]
+
+You can also choose to activate policies that will be configured using the OpenAPI specification.
+
+JSON Validation::
+For each operation, if an `application/json` request body exists, then a JSON schema is computed from this body to configure a JSON Validation policy. +
+REQUEST only +
+More information is available link:/apim/3.x/apim_policies_json_validation.html[here^].
+
+REST to SOAP transformer::
+For each operation, if the definition contains some specific vendor extensions, a REST to SOAP policy can be configured. +
+These extensions are:
+- `x-graviteeio-soap-envelope`: contains the SOAP envelope
+- `x-graviteeio-soap-action`: contains the SOAP action
++
+REQUEST only +
+More information is available link:/apim/3.x/apim_policies_rest2soap.html[here^].
+
+Mock::
+For each operation, a mock policy is configured, based on the `example` field if it exists, or by generating a random value for the type of the attribute to mock. +
+REQUEST only +
+More information is available link:/apim/3.x/apim_policies_mock.html[here^].
+
+Validation Request::
+For each operation, `NOT__ __NULL` rules are created with query parameters and headers. +
+REQUEST only +
+More information is available link:/apim/3.x/apim_policies_request_validation.html[here^].
+
+XML Validation::
+For each operation, if a `application/xml` request body exists, then a XSD schema is computed from this body to configure an XML Validation policy. +
+REQUEST only +
+More information is available link:/apim/3.x/apim_policies_xml_validation.html[here^].
+
+=== Import a WSDL
+
+APIM can import a WSDL to create an API. This means you do not have to declare all the routing and policies to interact with your service.
+
+To import an API from a WSDL:
+
+* If the WSDL is a file, select *IMPORT FILE* and browse your file system to select it.
+* If the WSDL is a link, select *IMPORT FROM LINK*, choose *WSDL* and enter the definition URL.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-wsdl-rest-to-soap-options.png[Import from WSDL link]
+
+If you select the option *Apply REST to SOAP Transformer policy* in addition to the option *Create policies on path* in the import form, a REST-To-SOAP policy will be generated for each path. These policies provide a SOAP envelope for each method with sample data that you can change using expression language. An XML-to-JSON policy will also be generated to convert the entire SOAP response to JSON format.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-wsdl-rest-to-soap-policy.png[WSDL REST to SOAP policy]
+
+== Organize your APIs into categories
+You can create _categories_ to group APIs. The purpose of categories is to group APIs so consumers can easily find the APIs they need in APIM Portal.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-1.png[]
+
+You can describe a category with the following characteristics:
+
+- Name
+- Description
+- Picture
+- Markdown page as documentation
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-2.png[]
+
+Once you have finished describing the category, you select the APIs you want to include in it.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-3.png[]
+
+You can also choose to highlight a particular API. This API will be shown at the top of the category page.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-4.png[]
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-4.png[]
+The next time you enter labels for an API, APIM Console makes suggestions based on your registered labels.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-labels-2.png[]
+
+You can search for APIs by label.
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-labels-3.png[]
