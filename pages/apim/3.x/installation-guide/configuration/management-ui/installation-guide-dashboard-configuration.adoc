@@ -15,7 +15,7 @@ You can create generic dashboards for the whole APIM platform, or specific dashb
 * API dashboards are viewable with the *APIs* menu option, by selecting an API and clicking *Analytics*.
 * Application dashboards are viewable with the *Applications* menu option, by selecting an application and clicking *Analytics*.
 
-You can create multiple dashboards of each type with different configurations, and choose the order of priority in which they are displayed in the menu.
+You can create multiple dashboards of each type with different configurations, and choose the order in which they are displayed in the menu.
 
 == Create or configure a dashboard
 
@@ -42,6 +42,13 @@ TIP: Click *ENABLE PREVIEW* to preview your dashboard changes before saving.
 image:apim/3.x/installation/configuration/configure-dashboards-preview.png[]
 . Add more widgets, as required. You can also edit or delete existing widgets.
 . Click *SAVE*.
+
+[TIP]
+====
+By using the link:/apim/3.x/apim_policies_assign_metrics.html[Assign Metrics policy] in one of your APIs, you can use a custom field in the widget.
+
+See link:/apim/3.x/apim_how_to_add_custom_metrics_in_dashboards.html[How to add custom metrics in dashboards].
+====
 
 == Update a dashboard
 

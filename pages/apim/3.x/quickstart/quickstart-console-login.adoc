@@ -18,3 +18,15 @@ To log in:
 . Enter the administrator credentials and click *SIGN IN*.
 +
 image:apim/3.x/quickstart/console-login.png[]
++
+After login you are directed to your home dashboard, where you can access information and statistics relating to your APIs:
++
+image:apim/3.x/quickstart/home-dashboard.png[]
++
+You can:
+
+* change the time period or click *Refresh* to update the display
+* perform basic customization by resizing or removing widgets (for more advanced configuration, see link:/apim/3.x/apim_installguide_management_ui_configuration.html#home-dashboard[Home dashboard^] in the Configuration Guide)
+* drill down to the *Analytics* page for a specific API event to obtain more information about the event
++
+image:apim/3.x/quickstart/home-dashboard-events.png[]

@@ -384,6 +384,10 @@ entries:
           - title: Configure a production-ready APIM environment
             output: web
             url: /apim/3.x/apim_how_to_configuration.html
+          - title: Add custom metrics in dashboards
+            output: web
+            url: /apim/3.x/apim_how_to_add_custom_metrics_in_dashboards.html
+
       - title: Developer Guide
         output: web
         folderitems:
@@ -396,6 +400,7 @@ entries:
           - title: Policies
             output: web
             url: /apim/3.x/apim_devguide_policies.html
+
       - title: Policy Reference
         output: web
         folderitems:
@@ -423,6 +428,7 @@ entries:
           - title: Basic authentication
             output: web
             url: /apim/3.x/apim_policies_basic_authentication.html
+          - title: Blank
             output: web
             url: /apim/3.x/apim_policies_blank.html
           - title: Cache
@@ -524,12 +530,14 @@ entries:
           - title: XSLT
             output: web
             url: /apim/3.x/apim_policies_xslt.html
+
       - title: API Reference
         output: web
         folderitems:
           - title: API reference
             output: web
             url: /apim/3.x/apim_installguide_rest_apis_documentation.html
+
       - title: Changelog
         output: web
         folderitems:
