@@ -34,15 +34,19 @@ This repository plugin is for connecting to SQL databases.
 |https://docs.microsoft.com/en-us/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017[Download page]
 |===
 
-== Install the JDBC plugin
+== Install
 NOTE: You need to repeat the following steps on each component (APIM Gateway and APIM API) where the SQL database is used.
+
+== Install the JDBC plugin (before 3.5)
+NOTE: Because the plugin is part of the default distribution since version 3.5 you may skip this step than
 
  . Download the plugin corresponding to your APIM version (take the latest maintenance release).
  . Place the zip file in the plugin directory for each component (`$GRAVITEE_HOME/plugins`).
+
+== Install the JDBB driver
  . Download the JDBC driver corresponding to your database version.
  . Place the driver in `$GRAVITEE_HOME/plugins/ext/repository-jdbc`.
  . Configure your `gravitee.yml`, as described in the next section.
-
 
 == Configuration
 
