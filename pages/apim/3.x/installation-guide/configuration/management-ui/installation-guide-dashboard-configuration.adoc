@@ -43,6 +43,13 @@ image:apim/3.x/installation/configuration/configure-dashboards-preview.png[]
 . Add more widgets, as required. You can also edit or delete existing widgets.
 . Click *SAVE*.
 
+[TIP]
+====
+By using the link:/apim/3.x/apim_policies_assign_metrics.html[Assign Metrics policy] in one of your APIs, you can use a custom field in the widget.
+
+See link:/apim/3.x/apim_how_to_add_custom_metrics_in_dashboards.html[How to add custom metrics in dashboards].
+====
+
 == Update a dashboard
 
 You can perform the following actions on any dashboard in the three dashboard lists:
