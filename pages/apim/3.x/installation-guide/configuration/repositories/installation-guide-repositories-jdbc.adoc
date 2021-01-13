@@ -43,7 +43,7 @@ NOTE: Because the plugin is part of the default distribution since version 3.5 y
  . Download the plugin corresponding to your APIM version (take the latest maintenance release).
  . Place the zip file in the plugin directory for each component (`$GRAVITEE_HOME/plugins`).
 
-== Install the JDBB driver
+== Install the JDBC driver
  . Download the JDBC driver corresponding to your database version.
  . Place the driver in `$GRAVITEE_HOME/plugins/ext/repository-jdbc`.
  . Configure your `gravitee.yml`, as described in the next section.
