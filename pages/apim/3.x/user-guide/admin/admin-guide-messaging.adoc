@@ -1,0 +1,83 @@
+[[gravitee-admin-guide-messaging]]
+= Messaging
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_adminguide_messaging.html
+:page-folder: apim/user-guide/admin
+:page-description: Gravitee.io API Management - Admin Guide - Messaging
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim3x
+
+== Overview
+
+You can use the APIM Console messaging feature to communicate with your users. You can send notifications about the entire APIM platform or about a specific API, and you can choose who to send them to.
+
+You can send three types of notifications:
+
+* *Portal* notifications
+* *Email* notifications
+* *POST HTTP message* notifications
+
+You send APIM platform-level notifications with the *Messages* menu option:
+
+image:apim/3.x/adminguide/message-platform-level.png[]
+
+You send API specific notifications with the API *Messages* menu option:
+
+image:apim/3.x/adminguide/message-api-level.png[]
+
+NOTE: You can only send API notifications to consumers subscribed to your API applications.
+
+== Send portal notifications
+
+When sending *Portal* notifications, you need to specify:
+
+* the user link:/apim/3.x/apim_adminguide_roles_and_permissions[role^] to notify
+* the title of the notification
+* the text of the notification
+
+Portal notifications are visible to all users belonging to the specified role in APIM Console, by clicking the bell in the top bar.
+
+image:apim/3.x/adminguide/message-notifications.png[]
+
+They are also visible in the notifications area of the system, if enabled for the browser:
+
+image:apim/3.x/adminguide/message-notifications-system.png[]
+
+== Send email notifications
+
+When sending *Email* notifications, you specify the same information as for portal notifications.
+
+APIM sends an email to all the users with the specified role who have an email address configured for their profile.
+
+TIP: For more details on configuring user profiles, see link:/apim/3.x/apim_adminguide_users_and_groups[Users and groups^].
+
+== Send HTTP POST notifications
+
+When sending *POST HTTP message* notifications, you need to specify:
+
+* HTTP headers
+* whether a system proxy is to be used
+* the URL to use for the HTTP message
+* the text of the message
+
+== Example
+
+In this example we will see how to send a notification to all platform administrators.
+
+. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
+. Click *Messages*.
+. Select *Portal Notifications*.
+. Choose the *ENVIRONMENT* role to notify as *ADMIN*.
+. Give the message a *Name* and enter the detail of the message in *Text*.
++
+image:apim/3.x/adminguide/message-portal-example.png[]
++
+. Click *SEND*.
++
+Users are notified of new messages by a number on the bell in the top bar:
++
+image:apim/3.x/adminguide/message-notifications.png[]
++
+Clicking on the bell shows the content of the message:
++
+image:apim/3.x/adminguide/message-portal-example-notification.png[]
