@@ -8,22 +8,24 @@
 :page-layout: apim3x
 
 == Overview
-APIM allows you to create custom user roles to fit your needs.
 
-A role:
+APIM allows you to create custom user roles to fit your needs. Some default roles are provided for you.
 
-- Is associated with a group of permissions
-- Has a scope
-- Defines what you can do with the APIM UI components and APIM API
+In APIM, a role:
+
+- is associated with a group of permissions
+- has a scope
+- defines what you can do with the APIM UI components and APIM API
 
 Before defining some key concepts, we recommend you first take a look at the new link:/apim/3.x/apim_adminguide_organizations_and_environments.html[Gravitee.io Platform design^].
 
 NOTE: Any changes to a role may take a short time to be applied to a user.
 
+[[scope]]
 === Scopes
 
-Roles are defined in terms of _scopes_. As described in the link:/apim/3.x/apim_adminguide_organizations_and_environments.html[Organizations and environments] page, an _environment_ is roughly equivalent to what you can find in APIM Portal.
-To be more precise, an environment's scope is all of the actions that can be performed in the specific context, in APIM Portal and APIM Console.
+Roles are defined in terms of _scopes_. As described in the link:/apim/3.x/apim_adminguide_organizations_and_environments.html[Organizations and environments] page, an _environment_ corresponds roughly to what you can find in APIM Portal.
+More precisely, an environment's scope is all of the actions that can be performed in the specific context, whether in APIM Portal or APIM Console.
 
 For example:
 
@@ -31,16 +33,16 @@ For example:
  * Applications can be managed in both APIM Console and APIM Portal.
  * API ratings can be managed by API consumers in APIM Portal.
 
-As the name suggests, the scope of an _organization_ is all aspects of an organization: users, roles, and so on. These actions are only available in APIM Console.
+As the name suggests, the scope of an _organization_ is all aspects of an organization: users, roles, and so on. Organization-level actions are only available in APIM Console.
 
-NOTE: A user can have more than one organization role and more than one environment role in an environment.
+NOTE: A user can have more than one organization role and more than one environment role.
 
 The scopes of _API_ and _application_ work slightly differently.
 
 As an API publisher or consumer, you have access to APIs and/or applications.
-APIM allows you to have a different role in each API and application.
-Sometimes you are the owner, sometimes an ordinary user, sometimes the person in charge of writing the documentation.
-This means that the API and application roles only have a meaning in terms of their association with am API or application.
+APIM allows you to have a different role for each API and application.
+You can be the owner for one, an ordinary user for another and the person in charge of writing the documentation for another.
+This means that the API and application roles are only meaningful in terms of their association with am API or application.
 
 === Role
 A role is a functional group of permissions.
@@ -50,24 +52,23 @@ They all need to be administered, however.
 Some roles are special. The are tagged as `System` or `Default`.
 
 ==== System role
-The System role is a read-only role (i.e. you cannot change permissions) used by APIM.
+The System role is a read-only role (i.e. you cannot change its permissions) used by APIM.
 It is both an `ADMIN` role with an `ENVIRONMENT` and `ORGANIZATION` scope, and a `PRIMARY_OWNER` role with an `API` and `APPLICATION` scope.
-It gives the user all permissions.
+The System role gives the user all permissions.
 
 ==== Default role
 The Default role is the role used by APIM when a role is not specified.
-For example, the default `ENVIRONMENT` and `ORGANIZATION` roles are set to a new registered user.
-This is a role with less permissions.
+For example, new registered users are assigned the default `ENVIRONMENT` and `ORGANIZATION`.
+The Default role gives the user limited permissions.
 
 You can change the default on each scope.
 
 === Permission
-A permission a list of actions allowed on a resource. The actions are `Create`, `Read`, `Update` and `Delete`.
+A permission is a list of actions allowed on a resource. The actions are `Create`, `Read`, `Update` and `Delete`.
 
 The list of permissions by scope is as follows:
 
-
-.Permissions scoped `ENVIRONMENT`
+.`ENVIRONMENT` scope permissions
 [cols="1,3"]
 |===
 |Name |Description
@@ -147,7 +148,7 @@ and the `READ` permission to allow the user to request the policies list and res
 
 |===
 
-.Permissions scoped `ORGANIZATION`
+.`ORGANIZATION` scope permissions
 [cols="1,3"]
 |===
 |Name |Description
@@ -163,7 +164,7 @@ and the `READ` permission to allow the user to request the policies list and res
 
 |===
 
-.Permissions scoped `API`
+.`API` scope permissions
 [cols="1,3"]
 |===
 |Name |Description
@@ -235,7 +236,7 @@ and the `READ` permission to allow the user to request the policies list and res
 
 |===
 
-.Permissions scoped `APPLICATION`
+.`APPLICATION` scope permissions
 [cols="1,3"]
 |===
 |Name |Description
@@ -262,7 +263,6 @@ and the `READ` permission to allow the user to request the policies list and res
 | Manages application alerting.
 
 |===
-
 
 == Create a custom role
 In this example, we will create a writer role which allows a user to create API documentation.
