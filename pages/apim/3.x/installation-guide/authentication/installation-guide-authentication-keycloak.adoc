@@ -18,8 +18,11 @@ Before you can connect to the Gravitee.io portal using Keycloak, you need to cre
 === Create a new client
 
 . In Keycloak, create a new client.
++
 image::apim/3.x/installation/authentication/keycloak_create_client.png[Create a new client]
++
 . Enter the client details.
++
 image::apim/3.x/installation/authentication/keycloak_configure_client.png[Fill the form]
 +
 WARNING: The `Valid Redirect URIs` value must exactly match the domain which is hosting APIM Portal.
