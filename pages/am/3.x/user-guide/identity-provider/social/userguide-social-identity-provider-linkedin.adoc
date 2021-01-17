@@ -63,7 +63,7 @@ You can test your LinkedIn connection using a web application created in AM.
 image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 +
 To test the connection, call the Login page (the `/oauth/authorize` endpoint). If the connection is working you will see a *Sign in with* button.
-*
++
 image::am/current/graviteeio-am-userguide-social-idp-login.png[]
-*
++
 If the button is not visible, there may be a problem with the identity provider settings. Check the AM Gateway log for more information.
