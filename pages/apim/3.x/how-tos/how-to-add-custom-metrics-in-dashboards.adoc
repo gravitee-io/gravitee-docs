@@ -22,21 +22,22 @@ _Example:_ `{#request.headers['X-MyCustomHeader'] != null ? #request.headers['X-
 image::apim/3.x/how-tos/configure-custom-metrics/configure-assign-metrics-policy.png[]
 
 == Configure your dashboard
+NOTE: Only *table*, *pie* and *line* widgets can be configured with a custom field.
 
 . Click *Settings > Analytics*.
 . Create or edit a dashboard.
-. Add a widget and select the *table* type.
-. Switch the `Use custom field` button.
-. Add your metric name in the _field_ input. +
+. Add a widget and select the *table*, *line* or *pie* type.
+. Toggle on the *Use custom field?* option.
+. Add your metric name in the *Field* input. +
 _Example: MyCustomHeader_
 . Save your configuration.
 
-.Configuration of a widget using a custom field
+.Configuration of widgets using a custom field
 image::apim/3.x/how-tos/configure-custom-metrics/configure-custom-field.png[]
 
 == Result
-You have now a widget using your custom metric. +
+You now have a widget using your custom metric. +
 In the example, you can see the distribution of different requests depending on the HTTP Header _X-MyCustomHeader_.
 
-.Custom widget in action
+.Custom widgets in action
 image::apim/3.x/how-tos/configure-custom-metrics/custom-metric-dashboard-result.png[]
