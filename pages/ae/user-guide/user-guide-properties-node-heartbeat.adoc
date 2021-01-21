@@ -1,4 +1,4 @@
-= Notification properties for NODE_HEARTBEAT's event
+= Notification properties for NODE_HEARTBEAT event
 :page-sidebar: ae_sidebar
 :page-permalink: ae/userguide_properties_node_heartbeat.html
 :page-folder: ae/user-guide
@@ -7,82 +7,82 @@
 :page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
 :page-layout: ae
 
-Here is the list of properties available in every alerts triggered by a NODE_HEARTBEAT event.
+The following table lists the properties available in every alert triggered by a `NODE_HEARTBEAT` event.
 
 [cols="1,3,3"]
 |===
 |Key |Description |Syntax
 
 |`node.hostname`
-|The node hostname which has thrown the Alert.
+|Alerting node hostname
 |${notification.properties['node.hostname']}
 
 |`node.application`
-|The node application (`gio-apim-gateway`, `gio-apim-management`, `gio-am-gateway`, `gio-am-management`) which has thrown the Alert.
+|Alerting node application (`gio-apim-gateway`, `gio-apim-management`, `gio-am-gateway`, `gio-am-management`)
 |${notification.properties['node.application']}
 
 |`node.id`
-|The uuid of the node which has thrown the Alert.
+|Alerting note UUID
 |${notification.properties['node.id']}
 
 |`os.cpu.percent`
-|The CPU percentage used.
+|CPU percentage used
 |${notification.properties['os.cpu.percent']}
 
 |`os.cpu.average.0`
-|The CPU load average over 1 minutes if available.
+|CPU load average over 1 minute, if available
 |${notification.properties['os.cpu.average.0']}
 
 |`os.cpu.average.1`
-|The CPU load average over 5 minutes if available.
+|CPU load average over 5 minutes, if available
 |${notification.properties['os.cpu.average.1']}
 
 |`os.cpu.average.2`
-|The CPU load average over 15 minutes if available.
+|CPU load average over 15 minutes, if available
 |${notification.properties['os.cpu.average.2']}
 
 |`process.fd.open`
-|Number of opened file descriptors.
+|Number of open file descriptors
 |${notification.properties['process.fd.open']}
 
 |`process.fd.max`
-|Max number of opened file descriptors.
+|Maximum number of open file descriptors
 |${notification.properties['process.fd.max']}
 
 |`process.cpu.percent`
-|The CPU percentage used by the process.
+|CPU percentage used by the process
 |${notification.properties['process.cpu.percent']}
 
 |`process.cpu.total`
-|The total CPU time of the process.
+|Total CPU time of the process
 |${notification.properties['process.cpu.total']}
 
 |`process.mem.virtual.total`
-|The total virtual memory of the process.
+|Total virtual memory of the process
 |${notification.properties['process.mem.virtual.total']}
 
 |`jvm.uptime`
-|The uptime of the Java Virtual Machine.
+|Uptime of the Java Virtual Machine.
 |${notification.properties['jvm.uptime']}
 
 |`jvm.threads.count`
-|The number of live threads of the java process.
+|Number of live threads of the Java process
 |${notification.properties['jvm.threads.count']}
 
 |`jvm.threads.peak`
-|The peak number of live threads of the java process.
+|Peak number of live threads of the Java process
 |${notification.properties['jvm.threads.peak']}
 
 |`jvm.mem.heap.used`
-|The amount of used memory in bytes.
+|Memory used, in bytes
 |${notification.properties['jvm.mem.heap.used']}
 
 |`jvm.mem.heap.max`
-|The maximum amount of memory in bytes that can be used.
+|Maximum memory that can be used, in bytes
 |${notification.properties['jvm.mem.heap.max']}
 
 |`jvm.mem.heap.percent`
-|The ratio between the used heap and the max heap.
+|Ratio between the used heap and the max heap
 |${notification.properties['jvm.mem.heap.percent']}
 
 |===

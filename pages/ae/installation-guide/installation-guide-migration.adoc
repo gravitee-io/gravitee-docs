@@ -17,8 +17,8 @@ Major changes:
 
 === Deployment strategy
 
-Because we upgraded Hazelcast to v4, AE v1.3.0 can no longer communicate with previous versions. Therefore it is not possible to upgrade AE using a rolling update strategy.
+Since the upgrade to Hazelcast v4, AE v1.3.0 can no longer communicate with previous versions. Therefore it is not possible to upgrade AE using a rolling update strategy.
 
-For version 1.3.0, we recommend opting for a *Blue/Green deployment* instead of rolling update strategy in order to switch all the traffic when ready.
+For version 1.3.0, we recommend opting for a *Blue/Green deployment* instead of rolling update strategy, so you can switch all the traffic when ready.
 
-You must keep in mind that you may lose some alerts during the upgrade because all counters will be reset during the operation. This mostly depends on the duration of aggregated periods configured on the alerts (the longer the period, the more likely the loss of alerts is).
+Be aware that you may lose some alerts during the upgrade because all counters will be reset. This mostly depends on the duration of aggregated periods configured on the alerts (the longer the period, the more likely the loss of alerts is).

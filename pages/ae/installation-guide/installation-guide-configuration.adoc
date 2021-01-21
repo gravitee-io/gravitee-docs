@@ -9,7 +9,7 @@
 
 == Overview
 
-There are three different ways to configure the Alert Engine (AE) component:
+There are three different ways to configure AE:
 
 - environment variables
 - system properties
@@ -17,9 +17,9 @@ There are three different ways to configure the Alert Engine (AE) component:
 
 The order in which they are listed above corresponds to their order of precedence. In other words, environment variables override the other two configuration types, and system properties override `gravitee.yml`.
 
-=== gravitee.yml
+=== `gravitee.yml`
 
-The gravitee.yml file, found in `GRAVITEE_HOME/config/`, is the default way to configure AE.
+The `gravitee.yml` file, found in `GRAVITEE_HOME/config/`, is the default way to configure AE.
 
 WARNING: YAML (`yml`) format is very sensitive to indentation. Ensure you include the correct number of spaces and use spaces instead of tabs.
 
@@ -106,7 +106,7 @@ Add this property to the JVM:
 
 === Environment variables
 
-You can override the default `gravitee.yml` and system properties by defining environment variables.
+You can override the default `gravitee.yml` configuration and system properties by defining environment variables.
 
 To override this property:
 
@@ -126,7 +126,7 @@ gravitee_management_mongodb_dbname=myDatabase
 gravitee.management.mongodb.dbname=myDatabase
 ----
 
-WARNING: Some properties are case-sensitive and cannot be written in upper case (for example,
+WARNING: Some properties are case sensitive and cannot be written in upper case (for example,
 `gravitee_security_providers_0_tokenIntrospectionEndpoint`). We advise you to define environment variables in lower case. Ensure you use the correct syntax for each property.
 
 TIP: In some systems, hyphens are not allowed in variable names. You can replace them with another character such as an underscore (for example, `gravitee_policy_apikey_header` instead of `gravitee_policy_api-key_header`).

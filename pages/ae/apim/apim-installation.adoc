@@ -1,4 +1,4 @@
-= API Management
+= Integrate AE with API Management
 :page-sidebar: ae_sidebar
 :page-permalink: ae/apim_installation.html
 :page-folder: ae/apim
@@ -8,12 +8,14 @@
 :page-layout: ae
 :page-liquid:
 
-This section is explaining how to integrate the Alert Engine within Gravitee.io API Management.
+== Overview
 
-If you are running a fresh installation of Gravitee.io Enterprise API Platform or if you are running Enterprise
-Docker images, you can skip the installation part.
+This page explains how to integrate AE with link:https://www.gravitee.io/products/api-management[Gravitee.io API Management^] (APIM).
 
-IMPORTANT: For being able to integrate API Management with Alert Engine, your API Management platform must
+If you are performing a new installation of Gravitee.io Enterprise API Platform or running Enterprise
+Docker images, you can skip the installation section.
+
+IMPORTANT: To integrate APIM with AE, your APIM platform must
 be an link:/ee/ee_introduction.html[Enterprise version].
 
 == Installation
@@ -26,7 +28,7 @@ $ curl -L https://download.gravitee.io/graviteeio-ae/plugins/connectors/gravitee
 
 === Install connector
 
-In this section, we admit that ${GRAVITEEIO_HOME} can refer to both the API Gateway and the Management API.
+In the command below, `${GRAVITEEIO_HOME}` refers to the root directory of both APIM Gateway and APIM API.
 
 [source,bash]
 [subs="attributes"]
@@ -34,8 +36,7 @@ $ cp gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip ${GRAVITEEIO_HOM
 
 == Configuration
 
-For both the API Gateway and the Management API, you have to configure access to Alert Engine through WebSockets. This can
-be done that way:
+For both APIM Gateway and APIM API, you need to configure access to AE through WebSockets, as in the following  example:
 
 ```yaml
 alerts:
@@ -51,11 +52,10 @@ alerts:
 ```
 
 === Endpoints
-You can have as many endpoints as you need. The node will select one of them in round-robin fashion.
+You can have as many endpoints as you need. The node will select one of them using a round-robin method.
 
 === Discovery mode
-Discovery mode is very useful when running a cluster of Alert Engine. By using it, you just have to refer to a single
-AE node and the other nodes from the cluster will be automatically registered.
+You can use discovery mode when running an AE cluster to automatically register other nodes in the cluster from a single node reference.
 
 .Alert Engine - Auto-discovery
 image::ae/howitworks/discovery.png[Discovery mode]
