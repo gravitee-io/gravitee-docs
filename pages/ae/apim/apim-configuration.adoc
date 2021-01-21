@@ -8,17 +8,21 @@
 :page-layout: ae
 :page-liquid:
 
-This section is explaining how to define alerts from Gravitee.io API Management
+== Overview
 
-== Activate alerting
+This section explains how to configure AE alerts in APIM.
+
+== Enable alerting
+
+You enable alerting in the APIM *Organization settings*.
 
 .API Management - Enable alerting
 image::ae/apim/settings_enable_alert.png[Enable alerting]
 
-== Setting-up alerts
+== Define alerts
 
-Within API Management, alerts can be defined at three levels:
+You can define alerts at three levels:
 
 * For the <</ae/apim_platform.adoc#, platform>>
 * By <</ae/apim_api.adoc#, API>>
-* By Application (work in progress...)
+* By application (available soon)

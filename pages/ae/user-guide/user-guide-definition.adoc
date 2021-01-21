@@ -1,4 +1,4 @@
-= User Guide
+= Introduction
 :page-sidebar: ae_sidebar
 :page-permalink: ae/userguide_definition.html
 :page-folder: ae/user-guide
@@ -7,13 +7,13 @@
 :page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
 :page-layout: ae
 
-== Definition
+== Anatomy of an alert
 
-An alert is defined in a `JSON` format and is composed by:
+An alert is defined in `JSON` format and includes the following elements:
 
 * Name
 * Description
-* Source (event's source)
+* Source (event source)
 * Severity (info, warning, critical)
 * List of <</ae/userguide_conditions.adoc#, conditions>>
 * List of filters
@@ -48,4 +48,3 @@ An alert is defined in a `JSON` format and is composed by:
   }]
 }
 ```
-
