@@ -9,18 +9,19 @@
 
 == Overview
 
-APIM allows you to create custom user roles to fit your needs.
+APIM allows you to create custom user roles to fit your needs. Some default roles are provided for you.
 
-A role:
+In APIM, a role:
 
-- Is associated with a group of permissions
-- Has a scope
-- Defines what you can do with the APIM UI components and APIM API
+- is associated with a group of permissions
+- has a scope
+- defines what you can do with the APIM UI components and APIM API
 
 Before defining some key concepts, we recommend you first take a look at the new link:/apim/3.x/apim_adminguide_organizations_and_environments.html[Gravitee.io Platform design^].
 
 NOTE: Any changes to a role may take a short time to be applied to a user.
 
+[[scope]]
 === Scopes
 
 Roles are defined in terms of _scopes_. As described in the link:/apim/3.x/apim_adminguide_organizations_and_environments.html[Organizations and environments] page, an _environment_ corresponds roughly to what you can find in APIM Portal.
@@ -67,8 +68,7 @@ A permission is a list of actions allowed on a resource. The actions are `Create
 
 The list of permissions by scope is as follows:
 
-
-.Permissions scoped `ENVIRONMENT`
+.`ENVIRONMENT` scope permissions
 [cols="1,3"]
 |===
 |Name |Description
@@ -148,7 +148,7 @@ and the `READ` permission to allow the user to request the policies list and res
 
 |===
 
-.Permissions scoped `ORGANIZATION`
+.`ORGANIZATION` scope permissions
 [cols="1,3"]
 |===
 |Name |Description
@@ -164,7 +164,7 @@ and the `READ` permission to allow the user to request the policies list and res
 
 |===
 
-.Permissions scoped `API`
+.`API` scope permissions
 [cols="1,3"]
 |===
 |Name |Description
@@ -236,7 +236,7 @@ and the `READ` permission to allow the user to request the policies list and res
 
 |===
 
-.Permissions scoped `APPLICATION`
+.`APPLICATION` scope permissions
 [cols="1,3"]
 |===
 |Name |Description
@@ -263,7 +263,6 @@ and the `READ` permission to allow the user to request the policies list and res
 | Manages application alerting.
 
 |===
-
 
 == Create a custom role
 In this example, we will create a writer role which allows a user to create API documentation.
