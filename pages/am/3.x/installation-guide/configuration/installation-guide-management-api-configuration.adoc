@@ -9,9 +9,11 @@
 
 include::../partial/how-to-configure.adoc[leveloffset=+1]
 
-== HTTP Server
+== `gravitee.yml` configuration
 
-HTTP server configuration.
+=== Configure HTTP server
+
+You can update the HTTP server configuration in the following section of the `gravitee.yml` file.
 
 [source,yaml]
 ----
@@ -33,9 +35,9 @@ jetty:
       password:
 ----
 
-== Enable HTTPS
+==== Enable HTTPS support
 
-First, you need to provide a keystore. If you don’t have one, you can generate it :
+First, you need to provide a keystore. If you don’t have one, you can generate it:
 
 [source,yaml]
 ----
@@ -50,7 +52,7 @@ keytool -genkey \
   -storepass secret
 ----
 
-After that, you have to enable secure mode in your gravitee.yml :
+You then need to enable secure mode in your `gravitee.yml`:
 
 [source,yaml]
 ----
@@ -72,7 +74,7 @@ jetty:
       password:
 ----
 
-== Email configuration
+=== Configure email
 
 ----
 # SMTP configuration used to send mails
@@ -94,7 +96,7 @@ email:
 #  path: ${gravitee.home}/templates
 ----
 
-== Plugins repository
+=== Configure the Plugins repository
 
 Gravitee.io Gateway <<gravitee-plugins,plugins>> directory configuration.
 
@@ -104,7 +106,7 @@ plugins:
   path: ${gravitee.home}/plugins
 ----
 
-== Management repository
+=== Configure the Management repository
 
 Management repository is used to store global configuration such as APIs, applications, apikeys, ...
 This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:
@@ -162,14 +164,14 @@ management:
 #    socketTimeout: 250
 ----
 
-== Load Balancing
+== Configure load balancing
 
-If you're a planning to use multiple instances, you need to implement sticky sessions in your load balancer, until https://github.com/gravitee-io/issues/issues/2523[this issue] is closed.
+If you are planning to use multiple instances, you need to implement sticky sessions in your load balancer, until https://github.com/gravitee-io/issues/issues/2523[this issue] is closed.
 
 === Apache
 
-Example using three instances of AM Management API. We add an aditional cookie named ROUTEID.
-TLS termination is configured in Apache, so we just use http.
+Example using three instances of AM API. We add an additional cookie named ROUTEID.
+TLS termination is configured in Apache, so we just use HTTP.
 
 ----
 <Proxy balancer://amm_hcluster>
@@ -183,7 +185,7 @@ TLS termination is configured in Apache, so we just use http.
 </Proxy>
 ----
 
-Then in your VirtualHost configuration we declare the paths we want to proxy:
+Then, in your VirtualHost configuration we declare the paths we want to proxy:
 
 ----
 # Management Realm

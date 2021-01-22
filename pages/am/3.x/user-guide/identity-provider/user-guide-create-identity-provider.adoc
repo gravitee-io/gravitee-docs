@@ -17,11 +17,8 @@ This section gives a general overview of creating identity providers. For more d
 In this example, we are creating an inline identity provider.
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-+
-TIP: If you want to create your identity provider in a different security domain, select the domain from the user menu.
-+
 . Click *Settings > Providers*.
-. In the Identity Providers page, click the plus icon image:icons/plus-icon.png[].
+. In the Providers page, click the plus icon image:icons/plus-icon.png[role="icon"].
 . Choose an *Inline* identity provider type and click *Next*.
 +
 image::am/current/graviteeio-am-quickstart-idp-type.png[]

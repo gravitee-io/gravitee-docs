@@ -108,7 +108,7 @@ entries:
             - title: Install AM Console
               output: web
               url: /am/current/am_installguide_amazon_management_ui.html
-        - title: Run on Docker
+        - title: Run in Docker
           output: web
           subfolderitems:
             - title: Images
@@ -296,7 +296,7 @@ entries:
         - title: Factors
           output: web
           url: /am/current/am_userguide_mfa_factors.html
-        - title: Reset User's MFA
+        - title: Reset a user's MFA
           output: web
           url: /am/current/am_userguide_mfa_user_factors.html
       - title: Passwordless (W3C WebAuthn)

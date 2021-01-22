@@ -26,9 +26,8 @@ TIP: Default keys are RS256 (SHA256withRSA). For RS512 keys, add the following o
 == Create a new certificate with AM Console
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. If you want to change to a different security domain, select it from the user menu at the top right.
 . Click *Settings > Certificates*.
-. Click the plus icon image:icons/plus-icon.png[].
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Choose the certificate type and click *Next*.
 . Give your certificate a name, then enter the details of the keystore file.
 . Click *Create*.
@@ -55,7 +54,7 @@ curl -H "Authorization: Bearer :accessToken" \
 You can use public keys to verify a token payload's integrity. To obtain the public key for your certificate:
 
 . In AM Console, click *Settings > Certificates*.
-. Next to your certificate, click the key image:am/current/graviteeio-am-quickstart-profile-public-key.png[] icon.
+. Next to your certificate, click the key image:am/current/graviteeio-am-quickstart-profile-public-key.png[role="icon"] icon.
 . You can copy/paste the public key to use with third party libraries to verify your tokens.
 +
 image::am/current/graviteeio-am-userguide-public-key.png[]

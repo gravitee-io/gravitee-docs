@@ -29,9 +29,8 @@ $ openssl rsa -in rsa_private.pem -pubout -out rsa_public.pem
 == Create a new JWT bearer extension grant
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. If you want to change to a different security domain, select it from the user menu at the top right.
 . Click *Settings*, then in the *OAUTH 2.0* section, click *Extension Grants*.
-. Click the plus icon image:icons/plus-icon.png[].
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
 +
 image::am/current/graviteeio-am-userguide-extension-grants-jwt-bearer-create1.png[]
 . Select *Extension Grant JWT Bearer* and click *Next*.

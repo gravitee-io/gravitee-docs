@@ -32,9 +32,8 @@ NOTE: The `Authorization callback URL` is a temporary value that will be updated
 == Create a GitHub identity provider
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. If you want to change to a different security domain, select it from the user menu at the top right.
 . Click *Settings > Providers*.
-. Click the plus icon image:icons/plus-icon.png[].
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Choose the *GitHub* identity provider type and click *Next*.
 +
 NOTE: Ensure you have the GitHub application generated Client ID and Client Secret to hand.

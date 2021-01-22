@@ -12,7 +12,6 @@ You can override the login page at security domain level or application level.
 == Override an application login page
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. If you want to change to a different security domain, select it from the user menu at the top right.
 . Click *Applications*.
 . Select your application and click the *Design* tab.
 . Select the *Login* template.
@@ -24,7 +23,7 @@ NOTE: To revert to the default login page, toggle off the *Enable custom login f
 
 == Minimal login form
 
-To perform the login, your custom html HTML must contain some required elements:
+To perform the login, your custom HTML must contain some required elements:
 
 [source,html]
 ----
