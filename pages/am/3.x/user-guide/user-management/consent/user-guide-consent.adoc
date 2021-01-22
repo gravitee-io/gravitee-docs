@@ -18,11 +18,10 @@ NOTE: You can change the look and feel of the user consent dialog form. See link
 You can view a list of applications for which each user has provided consent.
 To revoke access to an application:
 
-include::../../../partial/login.adoc[leveloffset=+1]
-[start=3]
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
 . Click *Settings > Users*.
 . Select the user and in the *Authorized Apps* tab, revoke the application.
 +
 image::am/current/graviteeio-am-userguide-um-consent.png[]
 
-NOTE: Revoking consent can also be done via the link:/am/current/management-api/index.html#tag/user[AM Management API] and the link:/am/current/users/index.html#tag/Users[Authorization Gateway Server].
+NOTE: Revoking consent can also be done via the link:/am/current/management-api/3.5/index.html#tag/user[AM Management API^] and the link:/am/current/users/index.html#tag/Users[Authorization Gateway Server^].

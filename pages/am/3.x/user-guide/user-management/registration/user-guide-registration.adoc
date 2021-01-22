@@ -10,10 +10,9 @@ AM comes with a basic user registration feature.
 
 == Enable user registration
 
-include::../../../partial/login.adoc[leveloffset=+1]
-[start=3]
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
 . Click *Settings > Login* and toggle on the *User registration* switch.
-+s
++
 image::am/current/graviteeio-am-userguide-um-registration-settings.png[]
 +
 A new `Register` link will be available on the login form.

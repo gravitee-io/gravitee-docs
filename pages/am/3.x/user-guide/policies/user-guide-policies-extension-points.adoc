@@ -1,4 +1,4 @@
-= Extension Points
+= Extension points
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_userguide_policies_extension_points.html
 :page-folder: am/user-guide
@@ -8,11 +8,11 @@
 
 Pre End-User Consent happens after the user has logged in. It allows you to fetch more information or validate incoming data before displaying the User Consent HTML Page.
 
-The following attributes are available while processing the policy chain :
+The following attributes are available while processing the policy chain:
 
-* link:/[Request] : current HTTP Request
-* link:/[Client] : the application
-* link:/[User] : the End-User
+* link:/[Request]: current HTTP Request
+* link:/[Client]: the application
+* link:/[User]: the End-User
 * link:/[Authorization Request]: OAuth 2.0 Authorization Request
 
 == Post End-User Consent
@@ -21,9 +21,9 @@ Post End-User Consent happens after the user has given his consent to the proces
 
 The following attributes are available while processing the policy chain :
 
-* link:/am/current/am_userguide_policies_extension_points.html#request[Request] : current HTTP Request (with form attributes : scope approvals)
-* link:/am/current/am_userguide_policies_extension_points.html#client[Client] : the application
-* link:/am/current/am_userguide_policies_extension_points.html#user[User] : the End-User
+* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request (with form attributes : scope approvals)
+* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
+* link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
 * link:/am/current/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request[Authorization Request]: OAuth 2.0 Authorization Request
 
 == Objects
@@ -179,6 +179,3 @@ The following attributes are available while processing the policy chain :
 
 * Get the value of the first `scopes` param for the OAuth 2.0 authorization request:
 `{#context.attributes['authorizationRequest'].scopes[0]}`
-
-
-

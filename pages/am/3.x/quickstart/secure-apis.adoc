@@ -14,13 +14,13 @@ image::am/current/graviteeio-am-quickstart-secure-apis-overview.png[]
 
 We assume that you have link:/apim/3.x/apim_installguide.html[installed Gravitee.io API Management^] and have a fully operational environment which can interact with your published APIs (see link:/apim/3.x/apim_quickstart_publish.html[Publish your first API^]).
 
-Ensure you have link:/am/current/am_quickstart_authenticate_users.html[set up a new application^] and have your Client ID, Client Secret and Security Domain information to hand.
+Ensure you have link:/am/current/am_quickstart_app_setup.html[set up a new application^] and have your Client ID, Client Secret and Security Domain information to hand.
 
 == Protect your API with OAuth 2
 
 Start by configuring the API security policy in the Gravitee.io API Management Portal.
 
-. link:/apim/3.x/apim_getstarted_portal.html[Log in to APIM Portal^].
+. link:/apim/3.x/apim_quickstart_portal_login.html[Log in to APIM Portal^].
 . Click *My APIs* in the navigation bar (or *Administration* if you are an admin user).
 . Click *APIs* and select the API you want to secure.
 . Link your API with AM:

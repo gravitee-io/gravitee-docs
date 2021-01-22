@@ -8,8 +8,7 @@
 
 The AM Console Audit Log page displays all events which have taken place, including user authentication and administrative actions such as managing clients, identity providers, users, groups, roles and so on.
 
-include::../../partial/login.adoc[leveloffset=+1]
-[start=3]
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
 . Click *Settings > Audit Log*.
 +
 image::am/current/graviteeio-am-userguide-logs-audit.png[]
@@ -24,8 +23,7 @@ By default, a reporter is created for each security domain and allows you to cho
 
 NOTE: Currently only a MongoDB reporter is available, but plugins can be used to create new reporters (Splunk, Logstash, Elasticsearch).
 
-include::../../partial/login.adoc[leveloffset=+1]
-[start=3]
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
 . Click *Settings > Audit Log*.
 . Click the settings icon and configure the reporter.
 +
