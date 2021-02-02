@@ -1,0 +1,48 @@
+= Manage accounts
+:page-sidebar: cockpit_sidebar
+:page-permalink: cockpit/1.x/cockpit_userguide_manage_accounts.html
+:page-folder: cockpit/userguide
+:page-description: Gravitee.io Cockpit - Manage accounts
+:page-keywords: Gravitee.io, API Platform, API Management, Cockpit, documentation, manual, guide
+
+== What can you do with an account?
+
+You can:
+
+* Update the account settings
+* Invite members
+* Transfer ownership of the account
+
+You can access account settings from the user menu by selecting the *Account settings* entry for the relevant account.
+
+image:cockpit/account-settings.png[]
+
+
+== Update the account settings
+
+. Click *Account settings > General*.
+. Update the organization *Name*.
+. Update the organization *Description*.
+. Click *SAVE*.
+. Update the *Human Readable ID* and click *CHANGE HRID*.
+
+== Invite a member to the account
+
+You can invite users to become owner or user members of your account.
+
+. Click *Invite a member*.
+. Enter the member email address.
+. Select the role for the member.
+. Click *SEND INVITATION*.
++
+Cockpit sends the user an invitation by email.
+The user needs to follow the link in the email to register a new account in Cockpit or log in to an existing account.
+
+== Transfer account ownership
+
+`ACCOUNT_PRIMARY_OWNER` users can transfer membership to another user.
+
+. Click *Transfer ownership*.
+. Enter the *New primary owner* name. The name entered must match a registered member -- if it does not, click *INVITE A USER* and follow the instructions in the section above.
+. Select the new role for the current user. It can be `ACCOUNT_USER` or `ACCOUNT_OWNER`.
+. Click *TRANSFER OWNERSHIP*.

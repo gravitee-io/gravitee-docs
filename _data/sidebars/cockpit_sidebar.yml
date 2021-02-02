@@ -1,0 +1,39 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  product: Cockpit
+  folders:
+
+  - title: Overview
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /cockpit/1.x/cockpit_overview_introduction.html
+
+  - title: Quick Start Guide
+    output: web
+    folderitems:
+      - title: Get started with Gravitee Cockpit
+        output: web
+        url: /cockpit/1.x/cockpit_quickstart_getstarted.html
+
+  - title: User Guide
+    output: web
+    folderitems:
+      - title: Introduction
+        output: web
+        url: /cockpit/1.x/cockpit_userguide_introduction.html
+      - title: Manage accounts
+        output: web
+        url: /cockpit/1.x/cockpit_userguide_manage_accounts.html
+      - title: Manage organizations
+        output: web
+        url: /cockpit/1.x/cockpit_userguide_manage_organizations.html
+      - title: Manage environments
+        output: web
+        url: /cockpit/1.x/cockpit_userguide_manage_environments.html
+      - title: Register installations
+        output: web
+        url: /cockpit/1.x/cockpit_userguide_register_installations.html

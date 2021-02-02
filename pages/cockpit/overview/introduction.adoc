@@ -1,0 +1,31 @@
+= Introduction
+:page-sidebar: cockpit_sidebar
+:page-permalink: cockpit/1.x/cockpit_overview_introduction.html
+:page-folder: cockpit/overview
+:page-description: Gravitee.io Cockpit - Introduction
+:page-keywords: Gravitee.io, API Platform, API Management, Cockpit, documentation, manual, guides
+
+== Overview
+
+Gravitee Cockpit is a centralized, multi-environment tool for managing all your Gravitee API Management and Access Management installations in one handy, interactive dashboard.
+
+.Cockpit dashboard
+image::cockpit/cockpit-dashboard.png[]
+
+[[organizational-hierarchy]]
+== Cockpit hierarchy
+
+Cockpit is based on a hierarchy of three entity types:
+
+* The top level is an _account_ (corresponding to a company)
+* The next level is an _organization_ (corresponding to a logical part of the company in the particular company context, such as a region or business unit)
+* The lowest level is an _environment_ (corresponding to an environment in an IT infrastructure, such as a development or production environment)
+
+.Hierarchy of a Cockpit account
+image::cockpit/entity-hierarchy.png[]
+
+You can link your APIM or AM installations at the environment level in Cockpit. This hierarchy is represented in Cockpit by a visual map on the dashboard.
+
+NOTE: The organization and environment entities defined in Cockpit are equivalent to the same entities in APIM and AM, including the roles you can define for them (for example, the `ORGNIZATION_OWNER` role exists in both APIM and AM). For more information, see the APIM and AM product documentation.
+
+//How is organization entity correspondence established if installations only link at environment level?

@@ -110,6 +110,7 @@ sidebars:
 - ae_sidebar
 - cli_sidebar
 - ee_sidebar
+- cockpit_sidebar
 
 # needed for sitemap.xml file only
 url: https://docs.gravitee.io
@@ -131,6 +132,8 @@ products:
     name: Gravitee.io Alert Engine (AE)
   cli:
     version: 0.3
+  cockpit:
+    version: 1.0
 
 asciidoc: {}
 asciidoctor:
