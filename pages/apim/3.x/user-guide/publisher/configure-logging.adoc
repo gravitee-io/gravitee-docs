@@ -52,15 +52,24 @@ image:apim/3.x/api-publisher-guide/analytics/logs-configure.png[]
 If you configured a maximum logging duration in the global settings, APIM displays a message to remind you:
 image:apim/3.x/api-publisher-guide/analytics/logs-configure-max-duration.png[]
 
-. In the *Mode* drop-down, select the type of logging required:
+. In the *Mode* options, select the type of logging required:
 * *Client only* -- to log HTTP request header and payload details between the client and the gateway
 * *Proxy only* -- to log HTTP request header and payload details between the gateway and the backend
 * *Client and proxy* -- to log HTTP request header and payload details for both
-. Select *Logging enabled* to go ahead and enable logging, or *Conditional logging* to specify conditions for logging.
 +
 image:apim/3.x/api-publisher-guide/analytics/logs-configure-conditions.png[]
 
-. To specify logging conditions, click *SHOW EDITOR* and select all the conditions which apply. You can restrict logging by:
+. In the *Content* options, select the content you want to log:
+* *Headers and payloads* -- to log headers and payloads
+* *Headers only* -- to log headers without payloads
+* *Payloads only* -- to log payloads without headers
+
+. In the *Scope* options, select the scope you want to log:
+* *Request and response* -- to log request and response
+* *Request only* -- to log request content only
+* *response only* -- to log response content only
+
+. To specify logging conditions you can use expression language input or click to the *pen icon* and select all the conditions which apply. You can restrict logging by:
 * application or plan
 * request header or query parameter
 * HTTP method
@@ -80,7 +89,7 @@ When you click on the *Back to logs* link, you can see the new information logge
 The following example shows how to configure logging to only log `GET` HTTP methods which include an `X-debug` request header with a value of `true`.
 We need to specify it as a combined condition in two parts.
 
-. Click *SHOW EDITOR* and in the condition editor, select *Condition type* as *HTTP Method*. Click *ADD*.
+. Click to the *pen icon* and in the condition editor, select *Condition type* as *HTTP Method*. Click *ADD*.
 +
 image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step1.png[]
 
