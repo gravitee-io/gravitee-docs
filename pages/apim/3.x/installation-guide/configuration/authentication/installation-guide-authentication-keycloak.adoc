@@ -117,8 +117,10 @@ security:
       roleMapping:
         - condition: "{#jsonPath(#profile, '$.job_id') != 'API_MANAGER'}"
           roles:
-            - "PORTAL:PARTNER"
-            - "MANAGEMENT:API_CONSUMER"
+            - "ORGANIZATION:USER"
+            - "ENVIRONMENT:API_CONSUMER"                  #applied to the DEFAULT environment
+            - "ENVIRONMENT:DEFAULT:API_CONSUMER"          #applied to the DEFAULT environment
+            - "ENVIRONMENT:<ENVIRONMENT_ID>:API_CONSUMER" #applied to environment whose id is <ENVIRONMENT_ID>
 ----
 
 == Test the connection
