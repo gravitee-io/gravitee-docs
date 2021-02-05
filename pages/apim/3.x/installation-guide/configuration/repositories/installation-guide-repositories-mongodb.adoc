@@ -52,6 +52,7 @@ management:
     port:                       # mongodb port (default 27017)
     username:                   # mongodb username (default null)
     password:                   # mongodb password (default null)
+    authSource:                 # mongodb authentication source (default gravitee)
     connectionPerHost:          # mongodb connection per host (default 10)
     connectTimeOut:             # mongodb connection time out (default 0 -> never)
     maxWaitTime:                # mongodb max wait time (default 120000)
