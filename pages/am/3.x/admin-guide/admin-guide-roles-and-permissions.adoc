@@ -20,6 +20,7 @@ For example, you don't want to allow a simple user or the person in charge of yo
 In order to limit the scope of the roles, scopes are bound to what we call an `assignable type`:
 
 - `ORGANIZATION` -- role for the whole platform
+- `ENVIRONMENT` -- role for an environment
 - `DOMAIN` -- role for a security domain
 - `APPLICATION` -- role for an application
 
@@ -135,6 +136,9 @@ NOTE: All the permissions required to use AM API are described in the link:/am/c
 | DOMAIN_EXTENSION_GRANT
 | Manage all security domain OAuth 2.0 extension grants
 
+| DOMAIN_UMA
+| Manage all security domain User Managed Access settings
+
 | DOMAIN_OPENID
 | Manage all security domain OAuth 2.0 / OpenID Connect settings (DCR)
 
@@ -149,6 +153,9 @@ NOTE: All the permissions required to use AM API are described in the link:/am/c
 
 | DOMAIN_FACTOR
 | Manage all security domain MFA settings
+
+| DOMAIN_FLOW
+| Manage all security domain Flow settings
 
 | APPLICATION
 | Read all application information
@@ -176,6 +183,118 @@ NOTE: All the permissions required to use AM API are described in the link:/am/c
 
 | APPLICATION_FACTOR
 | Manage all application MFA settings
+
+| APPLICATION_ANALYTICS
+| Manage all application analytics
+
+| APPLICATION_FLOW
+| Manage all application Flow settings
+
+|===
+
+.`ENVIRONMENT` permissions
+[cols="1,3"]
+|===
+|Name |Description
+
+| ENVIRONMENT
+| Manage organization / platform environments (for example, dev, qual, prod)
+
+| DOMAIN
+| Read all security domain information
+
+| DOMAIN_SETTINGS
+| Manage all security domain global settings
+
+| DOMAIN_FORM
+| Manage all security domain custom HTML templates
+
+| DOMAIN_EMAIL_TEMPLATE
+| Manage all security domain custom email templates
+
+| DOMAIN_EXTENSION_POINT
+| Manage all security domain custom extension points
+
+| DOMAIN_IDENTITY_PROVIDER
+| Manage all security domain identity providers
+
+| DOMAIN_AUDIT
+| Manage all security domain audit logs
+
+| DOMAIN_CERTIFICATE
+| Manage all security domain certificates
+
+| DOMAIN_USER
+| Manage all security domain users
+
+| DOMAIN_GROUP
+| Manage all security domain groups
+
+| DOMAIN_ROLE
+| Manage all security domain roles
+
+| DOMAIN_SCIM
+| Manage all security domain audit SCIM settings
+
+| DOMAIN_SCOPE
+| Manage all security domain scopes (role permissions)
+
+| DOMAIN_EXTENSION_GRANT
+| Manage all security domain OAuth 2.0 extension grants
+
+| DOMAIN_UMA
+| Manage all security domain User Managed Access settings
+
+| DOMAIN_OPENID
+| Manage all security domain OAuth 2.0 / OpenID Connect settings (DCR)
+
+| DOMAIN_REPORTER
+| Manage all security domain reporters (audit logs storage)
+
+| DOMAIN_MEMBER
+| Manage all security domain memberships
+
+| DOMAIN_ANALYTICS
+| Manage all security domain analytics
+
+| DOMAIN_FACTOR
+| Manage all security domain MFA settings
+
+| DOMAIN_FLOW
+| Manage all security domain Flow settings
+
+| APPLICATION
+| Read all application information
+
+| APPLICATION_SETTINGS
+| Manage all application global settings
+
+| APPLICATION_IDENTITY_PROVIDER
+| Manage all application identity providers
+
+| APPLICATION_FORM
+| Manage all application custom HTML templates
+
+| APPLICATION_EMAIL_TEMPLATE
+| Manage all application custom email templates
+
+| APPLICATION_OPENID
+| Manage all application custom OAuth 2.0 / OpenID Connect settings
+
+| APPLICATION_CERTIFICATE
+| Manage all application certificates
+
+| APPLICATION_MEMBER
+| Manage all application memberships.
+
+| APPLICATION_FACTOR
+| Manage all application MFA settings
+
+| APPLICATION_ANALYTICS
+| Manage all application analytics
+
+| APPLICATION_FLOW
+| Manage all application Flow settings
 
 |===
 
@@ -229,6 +348,9 @@ NOTE: All the permissions required to use AM API are described in the link:/am/c
 | DOMAIN_OPENID
 | Manage the security domain OAuth 2.0 / OpenID Connect settings (DCR)
 
+| DOMAIN_UMA
+| Manage the security domain User Managed Access settings
+
 | DOMAIN_REPORTER
 | Manage the security domain reporters (audit logs storage)
 
@@ -240,6 +362,9 @@ NOTE: All the permissions required to use AM API are described in the link:/am/c
 
 | DOMAIN_FACTOR
 | Manage the security domain MFA settings
+
+| DOMAIN_FLOW
+| Manage the security domain Flow settings
 
 | APPLICATION
 | Read the security domain application information
@@ -268,6 +393,12 @@ NOTE: All the permissions required to use AM API are described in the link:/am/c
 | APPLICATION_FACTOR
 | Manage the security domain application MFA settings
 
+| APPLICATION_ANALYTICS
+| Manage the security domain application analytics settings
+
+| APPLICATION_FLOW
+| Manage the security domain application flow settings
+
 |===
 
 .Permissions `APPLICATION`
@@ -276,31 +407,37 @@ NOTE: All the permissions required to use AM API are described in the link:/am/c
 |Name |Description
 
 | APPLICATION
-| Read the application information
+| Read the security domain application information
 
 | APPLICATION_SETTINGS
-| Manage the application global settings
+| Manage the security domain application global settings
 
 | APPLICATION_IDENTITY_PROVIDER
-| Manage the application identity providers
+| Manage the security domain application identity providers
 
 | APPLICATION_FORM
-| Manage the application custom HTML templates
+| Manage the security domain application custom HTML templates
 
 | APPLICATION_EMAIL_TEMPLATE
-| Manage the application custom email templates
+| Manage the security domain application custom email templates
 
 | APPLICATION_OPENID
-| Manage the application custom OAuth 2.0 / OpenID Connect settings
+| Manage the security domain application custom OAuth 2.0 / OpenID Connect settings
 
 | APPLICATION_CERTIFICATE
-| Manage the application certificate
+| Manage the security domain application certificates
 
 | APPLICATION_MEMBER
-| Manage the application memberships
+| Manage the security domain application memberships
 
 | APPLICATION_FACTOR
-| Manage the application MFA settings
+| Manage the security domain application MFA settings
+
+| APPLICATION_ANALYTICS
+| Manage the security domain application analytics settings
+
+| APPLICATION_FLOW
+| Manage the security domain application flow settings
 
 |===
 

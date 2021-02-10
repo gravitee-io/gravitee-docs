@@ -8,6 +8,20 @@
 == Overview
 This page describes the main concepts used in AM.
 
+[[gravitee-am-concepts-organization]]
+== Organization
+
+NOTE: New in AM 3.6, the OSS version of AM comes with a single default organization
+
+An organization is internal data space AM provisions for you, to hold all the resources to handle user authentication.
+
+[[gravitee-am-concepts-environment]]
+== Environment
+
+NOTE: New in AM 3.6, the OSS version of AM comes with a single default environment
+
+An environment is a logical workspace in which administrative users can manage security domains.
+
 [[gravitee-am-concepts-security-domain]]
 == Security domain
 

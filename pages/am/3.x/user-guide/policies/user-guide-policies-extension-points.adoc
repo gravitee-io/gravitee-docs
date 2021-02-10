@@ -1,21 +1,63 @@
-= Extension points
+= Flows
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_userguide_policies_extension_points.html
 :page-folder: am/user-guide
 :page-layout: am
 
-== Pre End-User Consent
 
-Pre End-User Consent happens after the user has logged in. It allows you to fetch more information or validate incoming data before displaying the User Consent HTML Page.
+There are currently four flows defined in AM:
+
+* all
+* login
+* consent
+* register
+
+image::am/current/graviteeio-am-userguide-policies.png[]
+
+== All Flow
+
+The *all* flow is executed on each incoming request for one of the login, consent and register flow.
+
+== Login Flow
+
+The login flow allows you to fetch more information or validate incoming data during the End-User authentication phase.
+
+=== Pre Login
+
+The Pre step allows you to fetch more information before displaying the Login HTML Page.
 
 The following attributes are available while processing the policy chain:
 
-* link:/[Request]: current HTTP Request
-* link:/[Client]: the application
-* link:/[User]: the End-User
-* link:/[Authorization Request]: OAuth 2.0 Authorization Request
+* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
+* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
 
-== Post End-User Consent
+=== Post Login
+
+Post End-User Consent happens after the user has given his consent to the processing of personal data. It allows you to validate incoming data (user consent) before giving access to the application.
+
+The following attributes are available while processing the policy chain :
+
+* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
+* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
+* link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
+
+== Consent Flow
+
+The consent flow allows you to fetch more information or validate incoming data during the End-User consent phase.
+This flow happens after the user has logged in.
+
+=== Pre End-User Consent
+
+Pre End-User Consent allows you to fetch more information or validate incoming data before displaying the User Consent HTML Page.
+
+The following attributes are available while processing the policy chain:
+
+* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
+* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
+* link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
+* link:/am/current/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request[Authorization Request]: OAuth 2.0 Authorization Request
+
+=== Post End-User Consent
 
 Post End-User Consent happens after the user has given his consent to the processing of personal data. It allows you to validate incoming data (user consent) before giving access to the application.
 
@@ -26,7 +68,32 @@ The following attributes are available while processing the policy chain :
 * link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
 * link:/am/current/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request[Authorization Request]: OAuth 2.0 Authorization Request
 
-== Objects
+== Register Flow
+
+The register flow allows you to fetch more information or validate incoming data during the End-User registration phase.
+
+=== Pre End-User Registration
+
+Pre End-User Registration step is executed before displaying the User Consent HTML Page.
+
+The following attributes are available while processing the policy chain:
+
+* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
+* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
+
+=== Post End-User Registration
+
+Post End-User Registration step is executed once the user submit the registration form and information are preserve in database.
+
+The following attributes are available while processing the policy chain :
+
+* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
+* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
+* link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
+
+== Execution context information
+
+This section describe the objects provided by the execution context. 
 
 === Request
 ==== Properties

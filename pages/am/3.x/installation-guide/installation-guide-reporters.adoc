@@ -29,37 +29,28 @@ File reporters are configurable into the gravitee.yaml file under the `reporter`
 |===
 |property | type | required | description 
 
-|enabled
-|boolean
-|N
-|boolean to enable globally the reporters (default: false)
-
 |directory
 |string
 |N
-|Path to the directory where files will be created, this directory has to exist (default: ${gravitee.home}/reporter-logs/)
+|Path to the directory where files will be created, this directory has to exist (default: ${gravitee.home}/audit-logs/)
 
 |output
 |string
 |N
-|Format used to export event. Possible values: JSON, MESSAGE_PACK, ELASTICSEARCH, CSV
+|Format used to export event. Possible values: JSON, MESSAGE_PACK, ELASTICSEARCH, CSV (default: JSON)
 |===
 
 [source,yaml]
 ----
 reporters:
   file:
-    enabled: true
-    #directory:  # directory where the files are created (this directory have to exist): default value = ${gravitee.home}/reporter-logs/
+    #directory:  # directory where the files are created (this directory have to exist): default value = ${gravitee.home}/audit-logs/
     #output: JSON # JSON, ELASTICSEARCH, MESSAGE_PACK, CSV
 ----
 
-=== Create a File Reporter
+NOTE: Audit logs will be created in a tree of directories that represent the resource hierarchy from the organization to the domain. For example, audit logs of the domain `my-domain` in the environment `dev` and organization `my-company` will be created into the tree of directories : ${reporters.file.directory}/my-company/dev/my-domain/audit-2021_02_11.json
 
-To create a File reporter for a domain, you have to go to the audit logs settings ( `settings` > `audits` > `settings` ) and then click on the " + " on the bottom right corner. 
+WARNING: There are currently no retention period for the audit logs, so you will have to manage an independent process to remove old logs.
 
-image::am/current/graviteeio-am-adminguide-add-reporter.png[]
+To create a file reporter for a domain, follow this link:/am/current/am_userguide_audit_log_file[documentation]
 
-Once the form will be displayed, you will have to select the reporter type and fill the configuration elements.
-
-image::am/current/graviteeio-am-adminguide-file-reporter.png[]

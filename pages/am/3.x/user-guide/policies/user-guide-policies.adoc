@@ -6,7 +6,7 @@
 
 == Introduction
 
-You can use Extension Points to extend the behavior of AM by executing link:/am/current/am_devguide_policies[policies] during the `OnRequest` step of selected stages.
+You can use Flows to extend the behavior of AM by executing link:/am/current/am_devguide_policies[policies] during the `OnRequest` step of selected stages. Flows may be configured at the security domain level or at an application level.
 
 == Execution context
 
@@ -24,13 +24,13 @@ In this example we are getting `Execution Context` data using the link:/apim_pub
 
 image::am/current/graviteeio-am-userguide-policies.png[]
 
-== Extension points
+== Flows
 
-Policies are executed only against selected steps throughout the request process.
+Policies are executed only against selected steps throughout the flow.
 
-The following is a list of the available extension points:
+The following is a list of the available Flows:
 
-* link:/am/current/am_userguide_policies_extension_points.html#pre_end_user_consent[Pre End-User Consent]: happens after the user has logged in. It allows you to fetch more information or validate incoming data before displaying the User Consent HTML Page.
-* link:/am/current/am_userguide_policies_extension_points.html#post_end_user_consent[Post End-User Consent]: happens after the user has given his consent to the processing of personal data. It allows you to validate incoming data (user consent) before giving access to the application.
-
-NOTE: More extension points will be added to future releases of Gravitee.io AM.
+* link:/am/current/am_userguide_policies_extension_points.html#all_flow[All Flow]: happens for each request.
+* link:/am/current/am_userguide_policies_extension_points.html#login_flow[Login Flow]: happens during the user login phase. It allows you to execute policies before displaying the login form or after the user authentication.
+* link:/am/current/am_userguide_policies_extension_points.html#consent_flow[Consent Flow]: happens during the user consent phase. It allows you to execute policies before displaying the User Consent HTML Page or after the user has given his consent to the processing of personal data.
+* link:/am/current/am_userguide_policies_extension_points.html#registration_flow[Registration Flow]: happens during the user registration phase. It allows you to execute policies before displaying the User Regsitration HTML Page or after the user data has been processed.
