@@ -30,7 +30,7 @@ WORKDIR /tmp
 ADD Gemfile /tmp/
 ADD Gemfile.lock /tmp/
 RUN gem install bundler
-RUN gem install jekyll -v 3.8.7
+RUN gem install jekyll -v 4.2.0
 RUN bundle install
 
 VOLUME /src

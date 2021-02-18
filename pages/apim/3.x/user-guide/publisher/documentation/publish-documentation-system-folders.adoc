@@ -1,4 +1,4 @@
-= Customize APIM Portal header and footer
+= Customize the APIM Portal navigation
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_publisherguide_publish_documentation_system_folders.html
 :page-folder: apim/user-guide/publisher
@@ -6,22 +6,33 @@
 
 == Overview
 
-You can use the `SYSTEM FOLDERS` folder to customize APIM Portal documentation.
-
-System folders allows you to customize:
+You can use the system folders to customize the APIM Portal navigation. You can customize:
 
 * the APIM Portal menu in the header and footer
 * the API side menu
 
-In these system folders, you can create `LINK` pages. There are 3 kinds of link:
+=== Links
+
+You customize the navigation by create link pages in the folders. There are 3 kinds of link:
 
 * External link
 * Link to an existing documentation page
 * Link to a category
 
+=== Access system folders
+
+To access system folders:
+
+* for the APIM Portal, click *Settings > Documentation*
+* for an APIM menu, click *APIs* and select the API, then click *Pages*
+
+System folders are listed with a padlock icon:
+
+image::apim/3.x/api-publisher-guide/documentation/system-folders.png[]
+
 == Manage links
 
-To create a link, go to a system folder and click the *+* button.
+To create a link, go to a system folder and click the plus icon image:icons/plus-icon.png[role="icon"].
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-link-create.png[]
 
