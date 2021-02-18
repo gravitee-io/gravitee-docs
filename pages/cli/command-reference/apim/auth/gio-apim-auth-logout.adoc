@@ -1,0 +1,46 @@
+= gio apim auth logout
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_apim_auth_logout.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+Logs out
+
+== Usage
+
+[subs="+macros"]
+----
+gio apim auth logout <<Options,options>>
+----
+
+== Options
+
+[cols="3", options="header"]
+|===
+|Option
+|Description
+|Default
+
+|
+|
+|
+
+|===
+
+== Parent command
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_auth.adoc[gio apim auth]
+|API Management authentication commands
+
+|===
+
+== Examples

@@ -1,0 +1,49 @@
+= gio am auth login
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_am_auth_login.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-liquid:
+:page-layout: cli
+
+== Description
+
+Logs in with username/password
+
+== Usage
+
+[subs="+macros"]
+----
+gio am auth login <<options>>
+----
+
+== Options
+
+[cols="3", options="header"]
+|===
+|Option
+|Description
+|Default
+
+|`--username`
+|Username for login
+|
+
+|`--password`
+|Password for login
+|
+
+|===
+
+== Parent command
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_am_auth.adoc[gio am auth]
+|Access Management authentication commands
+
+|===

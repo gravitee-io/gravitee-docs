@@ -1,0 +1,45 @@
+= gio apim apis spec
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_apim_apis_spec.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+A group of commands for API specifications
+
+== Usage
+
+[subs="+macros"]
+----
+gio apim apis spec <<child_commands, child commands>>
+----
+
+== Parent command
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_apis.adoc[gio apim apis]
+|API Management API commands
+
+|===
+
+== Child commands
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_apis_spec_apply.adoc[gio apim apis spec apply]
+|Creates/updates an API from a specification like Swagger or OpenAPI (OAS)
+
+|xref:cli_reference_apim_apis_spec_lint.adoc[gio apim apis spec lint]
+|Runs a series of tests to verify that the API specification is correctly formed
+
+|===

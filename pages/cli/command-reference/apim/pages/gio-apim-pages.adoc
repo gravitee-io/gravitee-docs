@@ -1,0 +1,41 @@
+= gio apim pages
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_apim_pages.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+API Management documentation page commands
+
+== Parent command
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_overview.adoc[gio apim]
+|API Management commands
+
+|===
+
+== Child commands
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_pages_fetch.adoc[gio apim pages fetch]
+|Fetches API or Portal documentation
+
+|xref:cli_reference_apim_pages_get.adoc[gio apim pages get]
+|Gets API or Portal documentation
+
+|xref:cli_reference_apim_pages_update.adoc[gio apim pages update-content]
+|Updates API or Portal documentation
+
+|===

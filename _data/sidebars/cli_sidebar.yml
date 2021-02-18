@@ -15,29 +15,118 @@ entries:
     - title: Get started
       output: web
       url: /cli/cli_get_started.html
-
-  - title: Reference
+    - title: Filtering and output
+      output: web
+      url: /cli/cli_filtering.html
+  - title: Command-line reference
     output: web
     folderitems:
-    - title: Overview
+    - title: gio
       output: web
       url: /cli/cli_reference_overview.html
       subfolders:
-      - title: API Management
+      - title: gio apim
         output: web
         subfolderitems:
-          - title: Overview
+          - title: gio apim
             output: web
             url: /cli/cli_reference_apim_overview.html
-          - title: gio ls
+          - title: gio apim apis
             output: web
-            url: /cli/cli_reference_apim_ls.html
-          - title: gio deploy
+            url: /cli/cli_reference_apim_apis.html
+          - title: gio apim apis definition
             output: web
-            url: /cli/cli_reference_apim_deploy.html
-      - title: Access Management
+            url: /cli/cli_reference_apim_apis_definition.html
+          - title: gio apim apis definition apply
+            output: web
+            url: /cli/cli_reference_apim_apis_definition_apply.html
+          - title: gio apim apis definition create
+            output: web
+            url: /cli/cli_reference_apim_apis_definition_create.html
+          - title: gio apim apis definition diff
+            output: web
+            url: /cli/cli_reference_apim_apis_definition_diff.html
+          - title: gio apim apis definition generate
+            output: web
+            url: /cli/cli_reference_apim_apis_definition_generate.html
+          - title: gio apim apis definition lint
+            output: web
+            url: /cli/cli_reference_apim_apis_definition_lint.html
+          - title: gio apim apis deploy
+            output: web
+            url: /cli/cli_reference_apim_apis_deploy.html
+          - title: gio apim apis get
+            output: web
+            url: /cli/cli_reference_apim_apis_get.html
+          - title: gio apim apis health
+            output: web
+            url: /cli/cli_reference_apim_apis_health.html
+          - title: gio apim apis list
+            output: web
+            url: /cli/cli_reference_apim_apis_list.html
+          - title: gio apim apis logs
+            output: web
+            url: /cli/cli_reference_apim_apis_logs.html
+          - title: gio apim apis spec
+            output: web
+            url: /cli/cli_reference_apim_apis_spec.html
+          - title: gio apim apis spec apply
+            output: web
+            url: /cli/cli_reference_apim_apis_spec_apply.html
+          - title: gio apim apis spec lint
+            output: web
+            url: /cli/cli_reference_apim_apis_spec_lint.
+          - title: gio apim apis start
+            output: web
+            url: /cli/cli_reference_apim_apis_start.html
+          - title: gio apim apis status
+            output: web
+            url: /cli/cli_reference_apim_apis_status.html
+          - title: gio apim apis stop
+            output: web
+            url: /cli/cli_reference_apim_apis_stop.html
+          - title: gio apim auth
+            output: web
+            url: /cli/cli_reference_apim_auth.html
+          - title: gio apim auth list
+            output: web
+            url: /cli/cli_reference_apim_auth_list.html
+          - title: gio apim auth login
+            output: web
+            url: /cli/cli_reference_apim_auth_login.html
+          - title: gio apim auth logout
+            output: web
+            url: /cli/cli_reference_apim_auth_logout.html
+          - title: gio apim auth token
+            output: web
+            url: /cli/cli_reference_apim_auth_token.html
+          - title: gio apim pages
+            output: web
+            url: /cli/cli_reference_apim_pages.html
+          - title: gio apim pages fetch
+            output: web
+            url: /cli/cli_reference_apim_pages_fetch.html
+          - title: gio apim pages get
+            output: web
+            url: /cli/cli_reference_apim_pages_get.html
+          - title: gio apim pages update-content
+            output: web
+            url: /cli/cli_reference_apim_pages_update.html
+      - title: gio am
         output: web
         subfolderitems:
-          - title: Overview
+          - title: gio am
             output: web
             url: /cli/cli_reference_am_overview.html
+          - title: gio am auth
+            output: web
+            url: /cli/cli_reference_am_auth.html
+          - title: gio apim auth list
+            output: web
+            url: /cli/cli_reference_am_auth_list.html
+          - title: gio apim auth login
+            output: web
+            url: /cli/cli_reference_am_auth_login.html
+          - title: gio apim auth logout
+            output: web
+            url: /cli/cli_reference_am_auth_logout.html

@@ -1,0 +1,48 @@
+= gio apim auth token
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_apim_auth_token.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+Logs in with a personal access token
+
+If the token start with `env:`, the token is retrieved from an environment variable, i.e: `env:TOKEN`
+
+== Usage
+
+[subs="+macros"]
+----
+gio apim auth token <<Options,options>>
+----
+
+== Options
+
+[cols="3", options="header"]
+|===
+|Option
+|Description
+|Default
+
+|`--name`
+|Token name
+|
+
+|===
+
+== Parent command
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_auth.adoc[gio apim auth]
+|API Management authentication commands
+
+|===
+
+== Examples

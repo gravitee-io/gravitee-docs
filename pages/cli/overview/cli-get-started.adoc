@@ -16,17 +16,18 @@ Use link:https://pypi.python.org/pypi/pip[pip^] to install the latest stable ver
 
 == Usage
 
-  gio <module> <command>
+The CLI includes commands for API Management and Access Management.
+For more details, see the CLI reference.
 
 [cols="2", options="header"]
 |===
 |Module
 |Command
 
-| link:/cli/cli_reference_apim_overview.html[API Management]
-| `apim`
+| API Management
+| link:/cli/cli_reference_apim_overview.html[`gio apim`]
 
-| link:/cli/cli_reference_am_overview.html[Access Management]
-| `am`
+| Access Management
+| link:/cli/cli_reference_am_overview.html[`gio am`]
 
 |===

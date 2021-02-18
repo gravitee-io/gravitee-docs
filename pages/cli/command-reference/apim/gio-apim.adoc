@@ -1,0 +1,41 @@
+= gio apim
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_apim_overview.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+API Management base command
+
+== Parent command
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_overview.adoc[gio]
+|Gravitee CLI base command
+
+|===
+
+== Child commands
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_apis.adoc[gio apim apis]
+|API Management API commands
+
+|xref:cli_reference_apim_auth.adoc[gio apim auth]
+|API Management authorization commands
+
+|xref:cli_reference_apim_pages.adoc[gio apim pages]
+|API Management pages commands
+
+|===

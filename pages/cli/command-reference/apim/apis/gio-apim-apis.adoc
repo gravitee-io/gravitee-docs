@@ -1,0 +1,62 @@
+= gio apim apis
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_apim_apis.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+API Management API commands
+
+== Parent command
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_overview.adoc[gio apim]
+|API Management commands
+
+|===
+
+== Child commands
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_apis_definition.adoc[gio apim apis definition]
+|A group of commands for defining APIs from templating and value files
+
+|xref:cli_reference_apim_apis_deploy.adoc[gio apim apis deploy]
+|Deploys API configuration
+
+|xref:cli_reference_apim_apis_get.adoc[gio apim apis get]
+|Gets API configuration
+
+|xref:cli_reference_apim_apis_health.adoc[gio apim apis health]
+|Returns the last API availability: minute, hour, day, week, month
+
+|xref:cli_reference_apim_apis_list.adoc[gio apim apis list]
+|Displays API list
+
+|xref:cli_reference_apim_apis_logs.adoc[gio apim apis logs]
+|Gets API logs
+
+|xref:cli_reference_apim_apis_spec.adoc[gio apim apis spec]
+|A group of commands for creating and checking API specifications
+
+|xref:cli_reference_apim_apis_start.adoc[gio apim apis start]
+|Starts an API
+
+|xref:cli_reference_apim_apis_status.adoc[gio apim apis status]
+|Displays status of an API
+
+|xref:cli_reference_apim_apis_stop.adoc[gio apim apis stop]
+|Stops an API
+
+|===

@@ -1,0 +1,88 @@
+= gio apim apis definition apply
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_apim_apis_definition_apply.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+Updates an API definition configuration. The API definition is managed with the template engine (jinja). API properties are defined in plain YAML or JSON files.
+
+== Usage
+
+[subs="+macros"]
+----
+gio apim apis definition apply <<options>>
+----
+
+== Options
+
+[cols="3", options="header"]
+|===
+|Option
+|Description
+|Default
+
+|`--api`
+|API ID (required)
+|
+
+|`-f`, `--file`
+|Path of value file. By default `Graviteeio` is loaded in the current directory with the extension `.json`, `.yaml` or `.yml`, depending on the format of the data.
+|
+
+|`-s`, `--set`
+|Override the value(s) of value file e.g.: `--set proxy.groups[0].name=mynewtest`
+|
+
+|`-d`, `--debug`
+|Debug mode (do not perform any changes)
+|
+
+|`--def-path`
+|Path of all configuration folders and setting files for API definition
+|Current directory
+
+|`--with-deploy`
+|Deploy API after applying
+|
+
+|===
+
+== Parent command
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_apis_definition.adoc[gio apim apis definition]
+|A group of commands for defining APIs from templating and value files
+
+|===
+
+
+== Related commands
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_apis_definition_create.adoc[gio apim apis definition create]
+|Creates API definition
+
+|xref:cli_reference_apim_apis_definition_diff.adoc[gio apim apis definition diff]
+|Compares the API definition configuration developed on a local machine with the configuration on the remote server
+
+|xref:cli_reference_apim_apis_definition_generate.adoc[gio apim apis definition generate]
+|Generates default templates, setting and value files for API definition
+
+|xref:cli_reference_apim_apis_definition_lint.adoc[gio apim apis definition lint]
+|Runs a series of tests to check the API definition configuration is correctly formed
+
+|===
+
+== Examples
