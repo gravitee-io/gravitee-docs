@@ -340,3 +340,53 @@ The `default-theme.json` file is as follows:
 ----
 include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-webui/master/themes/default-theme.json[]
 ----
+
+[[home-dashboard]]
+== Home dashboard
+
+The Home dashboard is the default page users see when they first log in to APIM Console, or when they click the *Home* menu option.
+You can configure the Home dashboard by modifying `home.json`.
+
+This file is located in the `/dashboards` folder of the Management API distribution folder.
+
+To customize the Home dashboard you can either modify this file or specify a new folder in the `gravitee.yml` file:
+
+```yaml
+# Console dashboards
+console:
+  dashboards:
+    path: ${gravitee.home}/dashboards
+```
+
+By default, this section is commented out and the path is `${gravitee.home}/dashboards`
+
+Charts are generated with https://api.highcharts.com/highcharts/[Highcharts^]. You can use the Highchart documentation to help you define the `chart` section of the JSON objects.
+
+For example:
+
+```json
+[
+  {
+    "row": 0,
+    "col": 0,
+    "sizeY": 1,
+    "sizeX": 1,
+    "title": "Number of APIs",
+    "chart": {
+      "type": "count",
+      "data": [
+        {
+          "key": "count",
+          "label": "total",
+          "color": "#42a5f5"
+        }
+      ],
+      "request": {
+        "type": "count",
+        "field": "api"
+      }
+    }
+  },
+  ...
+]
+```

@@ -120,34 +120,44 @@ The security domain settings includes several sections that you can navigate usi
 |Configure UMA 2.0 protocol. User-Managed Access is about data sharing and protected-resource access by requesting parties.
 |===
 
-=== Platform settings
+=== Security Domains
 
-NOTE: To access the platform settings, open the user menu from the top bar and click *Global Settings*.
+NOTE: To access the security domains, open the user menu from the top bar and click *All Domains*. 
 
-Here you can configure several aspects of your platform such as :
+The security domains overview display all the domains available for the current environment.
+To access one specific security domain, click on its name.
+
+.Gravitee.io AM - Security Domains overview
+image::am/current/graviteeio-am-userguide-list-domains.png[]
+
+=== Environments
+
+There are no settings for environments. An environment is only used to regroup security domains in a logical workspace. If you use the OSS distribution of AM, there are only the "default" environment and the dropdown menu on the top left corner is disabled.
+
+=== Organization settings
+
+NOTE: To access the organization settings, click on *Organization Settings* on the bottom left corner.
+
+Here you can configure several aspects of your organization such as :
 
 * AM Console access : how to log in to the console.
-* Security domains overview : create and switch security domain
 * link:/am/current/am_adminguide_roles_and_permissions.html[Administrative roles] : register new administrative users and manager their roles.
 * Deployment configuration : set up entrypoints and sharding tags for your AM gateway.
 
-.Gravitee.io AM - Platform dashboard
-image::am/current/graviteeio-am-userguide-platform-dashboard.png[]
+.Gravitee.io AM - Organization Settings
+image::am/current/graviteeio-am-userguide-organization-settings.png[]
 
-The platform settings includes several sections that you can navigate using the sidebar menu on your left.
+The organization settings includes several sections that you can navigate using the sidebar menu on your left.
 
 [cols="2,8"]
 |===
 |Section |Description
 
-|Domains
-|Security domains overview : create and switch between security domains.
-
 |Settings -> General
 |Configure how to authenticate to the AM console. By default only one identity provider is registered, see *Settings -> Providers* to add more.
 
 |Settings -> Administrative roles
-|Grant access to specific areas of the platform settings.
+|Grant access to specific areas of the organization settings.
 
 |Settings -> Providers
 |Manage identity providers to authenticate users to the AM console. Instead of using the default `Inline` one, you can use your enterprise Active Directory server to log in to the AM Console.

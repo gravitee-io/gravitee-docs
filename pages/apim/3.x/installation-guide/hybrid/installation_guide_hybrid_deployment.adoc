@@ -87,6 +87,21 @@ services:
         type: basic
         users:
           admin: adminadmin
+      secured: true
+      ssl:
+        clientAuth: false
+        keystore:
+          type: # can be jks / pem / pkcs12
+          path:
+          password:
+          certs: # Required for pem
+            -  /path/to/cert
+          keys:
+            -  /path/to/key
+        trustore:
+          type: # can be jks / pem / pkcs12
+          path:
+          password:
 ----
 
 ==== Check the APIM Gateway node is running
@@ -130,6 +145,17 @@ management:
       basic:
         username: admin
         password: adminadmin
+    ssl:
+      trustAll: true
+      verifyHostname: true
+      keystore:
+        type: # can be jks / pem / pkcs12
+        path:
+        password:
+      trustore:
+        type: # can be jks / pem / pkcs12
+        path:
+        password:
 ----
 
 == Start the APIM Gateways

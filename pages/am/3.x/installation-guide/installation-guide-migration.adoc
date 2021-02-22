@@ -10,6 +10,32 @@ WARNING: If you plan to skip versions when you upgrade, ensure that you read the
 
 WARNING: Be sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs;`
 
+== Upgrade to 3.6.0
+
+NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.6.html[Breaking changes in 3.6]
+
+=== Repository
+
+==== Mongodb
+
+Before you run any scripts, create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docs/upgrades/3.x/3.6.0/mongodb/1-add-environment-permissions.js[upgrades/3.x/3.6.0/mongodb/1-add-environment-permissions.js]::
+This script updates the database to reflect the following changes :
+
+* Addition of new permissions related to the multi environments feature
+* Update existing users permissions according to their role in order to grant access to the default organization and environment
+
+==== JDBC
+
+Before you start for the first time the AM Management API and AM Gateway in version 3.6.0, create a dump of your existing database.
+
+https://github.com/gravitee-io/graviteeio-access-management/tree/master/gravitee-am-repository/gravitee-am-repository-jdbc/src/main/resources/liquibase/changelogs/cockpit[Liquibase scripts]::
+These script are executed automatically on startup of AM gateway and AM management console. This script updates the database to reflect the following changes :
+
+* Addition of new permissions related to the multi environments feature
+* Update existing users permissions according to their role in order to grant access to the default organization and environment
+
 == Upgrade to 3.4.0
 
 NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.4.html[Breaking changes in 3.4]

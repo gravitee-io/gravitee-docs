@@ -8,8 +8,7 @@
 
 === List users
 
-include::../../../partial/login.adoc[leveloffset=+1]
-[start=3]
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
 . Search for users by clicking *Settings > Users* and entering the username in the search field.
 +
 image::am/current/graviteeio-am-userguide-um-search-users.png[]
@@ -126,12 +125,11 @@ List users by first name
 
 You create users in a security domain.
 
-include::../../../partial/login.adoc[leveloffset=+1]
-[start=3]
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
 . Click *Settings > Users*.
-. Click the plus icon image:icons/plus-icon.png[].
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Give your user a *First name*, a *Last name*, an *Email* and a *Username* and click *SAVE*.
-. Optional : You can also add/modify specific attributes relating to the user. This user metadata will be available in the user's profile.
+. (Optional) You can also add/modify specific attributes relating to the user. This user metadata will be available in the user's profile.
 . You will be redirected to the created user's page.
 +
 image::am/current/graviteeio-am-userguide-um-create-user.png[]

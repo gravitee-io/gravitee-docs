@@ -43,7 +43,7 @@ entries:
     - title: Secure your APIs
       output: web
       url: /am/current/am_quickstart_secure_apis.html
-    - title: Use your first Extension Point
+    - title: Use your first Flow
       output: web
       url: /am/current/am_quickstart_use_policies.html
     - title: Add Custom Claims to Tokens
@@ -108,7 +108,7 @@ entries:
             - title: Install AM Console
               output: web
               url: /am/current/am_installguide_amazon_management_ui.html
-        - title: Run on Docker
+        - title: Run in Docker
           output: web
           subfolderitems:
             - title: Images
@@ -176,7 +176,12 @@ entries:
         - title: JDBC
           output: web
           url: /am/current/am_installguide_repositories_jdbc.html
-
+      - title: Configure reporters
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_installguide_reporters.html
   - title: User Guide
     output: web
     folderitems:
@@ -239,6 +244,9 @@ entries:
             - title: LinkedIn
               output: web
               url: /am/current/am_userguide_social_identity_provider_linkedin.html
+            - title: Salesforce
+              output: web
+              url: /am/current/am_userguide_social_identity_provider_salesforce.html
           - title: Legal identity providers
             output: web
             subfolderitems:
@@ -293,7 +301,7 @@ entries:
         - title: Factors
           output: web
           url: /am/current/am_userguide_mfa_factors.html
-        - title: Reset User's MFA
+        - title: Reset a user's MFA
           output: web
           url: /am/current/am_userguide_mfa_user_factors.html
       - title: Passwordless (W3C WebAuthn)
@@ -362,23 +370,36 @@ entries:
         - title: Audit trail
           output: web
           url: /am/current/am_userguide_audit_log.html
-      - title: Extension points
+          subfolders:
+          - title: Storage
+            output: web
+            subfolderitems:
+            - title: Overview
+              output: web
+              url: /am/current/am_userguide_audit_log_storage.html
+            - title: File
+              output: web
+              url: /am/current/am_userguide_audit_log_file.html
+      - title: Flows
         output: web
         subfolderitems:
         - title: Overview
           output: web
           url: /am/current/am_userguide_policies.html
-        - title: Extension points
+        - title: Flows configuration
           output: web
           url: /am/current/am_userguide_policies_extension_points.html
 
   - title: Administration Guide
     output: web
     folderitems:
+    - title: Organizations and environments
+      output: web
+      url: /am/current/am_adminguide_organizations_and_environments.html
+      type: homepage
     - title: Roles and permissions
       output: web
       url: /am/current/am_adminguide_roles_and_permissions.html
-      type: homepage
     - title: Users and groups
       output: web
       url: /am/current/am_adminguide_users_and_groups.html
@@ -420,7 +441,6 @@ entries:
           - title: User Session
             output: web
             url: /am/current/am_devguide_protocols_session_overview.html
-
   - title: Breaking Changes
     output: web
     folderitems:
@@ -428,6 +448,9 @@ entries:
         output: web
         url: /am/current/am_breaking_changes.html
         type: homepage
+      - title: Breaking changes in 3.6
+        output: web
+        url: /am/current/am_breaking_changes_3.6.html
       - title: Breaking changes in 3.5
         output: web
         url: /am/current/am_breaking_changes_3.5.html

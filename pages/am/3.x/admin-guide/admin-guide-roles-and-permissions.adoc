@@ -1,271 +1,403 @@
-= Roles and Permissions
+= Roles and permissions
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_adminguide_roles_and_permissions.html
 :page-folder: am/admin-guide
 :page-layout: am
 
-Gravitee.io AM allows you to create `Administrator roles` that can be used to grant access to specific areas of a resource (Organization (Platform), Security Domain, Application).
-Depending of the role permissions, administrators can have full access to this resource. Administrator accounts represent users that can access to the administration portal.
+== Overview
 
-== Glossary
+You can create administrator roles in AM to grant access to specific areas of a resource (Organization (Platform), Security Domain, Application).
+Depending on the role permissions, administrators can have full access to this resource. Administrator accounts represent users that can access the administration portal.
+
 === Assignable type
 
-When you log in Gravitee.io AM, you are redirected to the portal with at least one `ORGANIZATION` role to be able to see some screens of the platform.
+When you log in AM, you are redirected to the portal with at least one `ORGANIZATION` role to be able to see some screens of the platform.
 
-As a owner of a security domain or an application you want to manage your members by giving them roles that make sense only when it is associated with a `DOMAIN` / `APPLICATION`.
+As an owner of a security domain or an application you want to manage your members by giving them roles that make sense only when associated with a `DOMAIN` / `APPLICATION`.
 
-For example you don't want to allow a simple user or the person in charge of your application settings to be able to manage the whole platform.
+For example, you don't want to allow a simple user or the person in charge of your application settings to be able to manage the whole platform.
 
-In order to limit the scope of the roles, scopes are bound to what we call an `Assignable type` :
+In order to limit the scope of the roles, scopes are bound to what we call an `assignable type`:
 
-- ORGANIZATION -> role for the whole platform
-- DOMAIN -> role for a security domain
-- APPLICATION -> role for an application
+- `ORGANIZATION` -- role for the whole platform
+- `ENVIRONMENT` -- role for an environment
+- `DOMAIN` -- role for a security domain
+- `APPLICATION` -- role for an application
 
 image::am/current/graviteeio-am-adminguide-roles-permissions.png[]
 
 === Role
 A role is a functional group of permissions.
-There is no limit on the number of roles you're allowed to create.
+There is no limit on the number of roles you are allowed to create.
 
-Some roles are specials. The are tagged as `System` or `Default`.
+Some roles are special: they are tagged as `System` or `Default`.
 
-==== System Role
-A System Role is a read-only role (i.e. you cannot change permissions) needs by Gravitee.io AM. For example `ORGANIZATION_PRIMARY_OWNER` give user all permissions.
+==== System role
+A System role is a read-only role (i.e. you cannot change its permissions) used by AM. For example `ORGANIZATION_PRIMARY_OWNER` gives the user all permissions.
 
-==== Default Role
-A Default Role is a role used by Gravitee.io AM when a role is not specified.
-For example, the default `ORGANIZATION_USER` role is set to a new registered user.
+==== Default role
+A Default role is a role used by AM when a role is not specified.
+For example, new registered users are assigned the default `ORGANIZATION_USER` role.
 
-=== Permissions
+=== Permission
 A permission is a list of actions allowed on a resource. The actions are `Create`, `Read`, `List`, `Update` and `Delete`.
-Some permissions can be assigned to multiple kind of resources. For instance, the DOMAIN READ permission has different meaning whether it is assigned:
+Some permissions can be assigned to multiple types of resources. For instance, the `DOMAIN READ` permission has a different meaning depending on whether it is assigned:
 
-- to a domain: means the user can read the specified domain
-- to an organization: means the user can read all the domains of the specified organization
+- to a domain: the user can read the specified domain
+- to an organization: the user can read all the domains of the specified organization
 
-Here is the list of permissions by assignable type.
+The following tables list the permissions by assignable type.
 
-NOTE: All the permissions required to use the AM Management API are described in the link:/am/current/management-api/index.html[AM V3 OpenAPI descriptor].
+NOTE: All the permissions required to use AM API are described in the link:/am/current/management-api/index.html[AM V3 OpenAPI descriptor^].
 
-.Permissions `ORGANIZATION`
+.`ORGANIZATION` permissions
 [cols="1,3"]
 |===
 |Name |Description
 
 | ORGANIZATION
-| Read organization / platform information.
+| Read organization / platform information
 
 | ORGANIZATION_SETTINGS
-| Manage organization / platform global settings.
+| Manage organization / platform global settings
 
 | ORGANIZATION_IDENTITY_PROVIDER
-| Manage organization / platform global identity providers (Authentication to the portal).
+| Manage organization / platform global identity providers (AM Console authentication)
 
 | ORGANIZATION_AUDIT
-| Manage organization / platform audit logs.
+| Manage organization / platform audit logs
 
 | ORGANIZATION_REPORTER
-| Manage organization / platform reporters (for the audit logs storage).
+| Manage organization / platform reporters (for the audit logs storage)
 
 | ORGANIZATION_USER
-| Manage organization / platform users (administrator accounts).
+| Manage organization / platform users (administrator accounts)
 
 | ORGANIZATION_GROUP
-| Manage organization / platform groups (administrator groups).
+| Manage organization / platform groups (administrator groups)
 
 | ORGANIZATION_ROLE
-| Manage organization / platform roles (roles and permissions used throughout the portal).
+| Manage organization / platform roles (roles and permissions used throughout AM Console)
 
 | ORGANIZATION_TAG
-| Manage organization / platform sharding tags.
+| Manage organization / platform sharding tags
 
 | ORGANIZATION_ENTRYPOINT
-| Manage organization / platform entry points (Root URL for the Authentication and Authorization operations).
+| Manage organization / platform entry points (root URL for Authentication and Authorization operations)
 
 | ORGANIZATION_FORM
-| Manage organization / platform HTML templates (Login Form of the Portal).
+| Manage organization / platform HTML templates (AM Console login form)
 
 | ORGANIZATION_MEMBER
-| Manage organization / platform HTML memberships.
+| Manage organization / platform HTML memberships
 
 | ENVIRONMENT
-| Manage organization / platform environments (dev, qual, prod, ...).
+| Manage organization / platform environments (for example, dev, qual, prod)
 
 | DOMAIN
-| Read all security domains information.
+| Read all security domain information
 
 | DOMAIN_SETTINGS
-| Manage all security domains global settings.
+| Manage all security domain global settings
 
 | DOMAIN_FORM
-| Manage all security domains custom HTML templates.
+| Manage all security domain custom HTML templates
 
 | DOMAIN_EMAIL_TEMPLATE
-| Manage all security domains custom Email templates.
+| Manage all security domain custom email templates
 
 | DOMAIN_EXTENSION_POINT
-| Manage all security domains custom extension points.
+| Manage all security domain custom extension points
 
 | DOMAIN_IDENTITY_PROVIDER
-| Manage all security domains identity providers.
+| Manage all security domain identity providers
 
 | DOMAIN_AUDIT
-| Manage all security domains audit logs.
+| Manage all security domain audit logs
 
 | DOMAIN_CERTIFICATE
-| Manage all security domains certificates.
+| Manage all security domain certificates
 
 | DOMAIN_USER
-| Manage all security domains users.
+| Manage all security domain users
 
 | DOMAIN_GROUP
-| Manage all security domains groups.
+| Manage all security domain groups
 
 | DOMAIN_ROLE
-| Manage all security domains roles.
+| Manage all security domain roles
 
 | DOMAIN_SCIM
-| Manage all security domains audit SCIM settings.
+| Manage all security domain audit SCIM settings
 
 | DOMAIN_SCOPE
-| Manage all security domains scopes (role permissions).
+| Manage all security domain scopes (role permissions)
 
 | DOMAIN_EXTENSION_GRANT
-| Manage all security domains OAuth 2.0 extension grants.
+| Manage all security domain OAuth 2.0 extension grants
+
+| DOMAIN_UMA
+| Manage all security domain User Managed Access settings
 
 | DOMAIN_OPENID
-| Manage all security domains OAuth 2.0 / OpenID Connect settings (DCR).
+| Manage all security domain OAuth 2.0 / OpenID Connect settings (DCR)
 
 | DOMAIN_REPORTER
-| Manage all security domains reporters (audit logs storage).
+| Manage all security domain reporters (audit logs storage)
 
 | DOMAIN_MEMBER
-| Manage all security domains memberships.
+| Manage all security domain memberships
 
 | DOMAIN_ANALYTICS
-| Manage all security domains analytics.
+| Manage all security domain analytics
 
 | DOMAIN_FACTOR
-| Manage all security domains MFA settings.
+| Manage all security domain MFA settings
+
+| DOMAIN_FLOW
+| Manage all security domain Flow settings
 
 | APPLICATION
-| Read all applications information.
+| Read all application information
 
 | APPLICATION_SETTINGS
-| Manage all applications global settings.
+| Manage all application global settings
 
 | APPLICATION_IDENTITY_PROVIDER
-| Manage all applications identity providers.
+| Manage all application identity providers
 
 | APPLICATION_FORM
-| Manage all applications custom HTML templates.
+| Manage all application custom HTML templates
 
 | APPLICATION_EMAIL_TEMPLATE
-| Manage all applications custom Email templates.
+| Manage all application custom email templates
 
 | APPLICATION_OPENID
-| Manage all applications custom OAuth 2.0 / OpenID Connect settings.
+| Manage all application custom OAuth 2.0 / OpenID Connect settings
 
 | APPLICATION_CERTIFICATE
-| Manage all applications certificate.
+| Manage all application certificates
 
 | APPLICATION_MEMBER
-| Manage all applications memberships.
+| Manage all application memberships.
 
 | APPLICATION_FACTOR
-| Manage all applications MFA settings.
+| Manage all application MFA settings
+
+| APPLICATION_ANALYTICS
+| Manage all application analytics
+
+| APPLICATION_FLOW
+| Manage all application Flow settings
 
 |===
 
-.Permissions `DOMAIN`
+.`ENVIRONMENT` permissions
+[cols="1,3"]
+|===
+|Name |Description
+
+| ENVIRONMENT
+| Manage organization / platform environments (for example, dev, qual, prod)
+
+| DOMAIN
+| Read all security domain information
+
+| DOMAIN_SETTINGS
+| Manage all security domain global settings
+
+| DOMAIN_FORM
+| Manage all security domain custom HTML templates
+
+| DOMAIN_EMAIL_TEMPLATE
+| Manage all security domain custom email templates
+
+| DOMAIN_EXTENSION_POINT
+| Manage all security domain custom extension points
+
+| DOMAIN_IDENTITY_PROVIDER
+| Manage all security domain identity providers
+
+| DOMAIN_AUDIT
+| Manage all security domain audit logs
+
+| DOMAIN_CERTIFICATE
+| Manage all security domain certificates
+
+| DOMAIN_USER
+| Manage all security domain users
+
+| DOMAIN_GROUP
+| Manage all security domain groups
+
+| DOMAIN_ROLE
+| Manage all security domain roles
+
+| DOMAIN_SCIM
+| Manage all security domain audit SCIM settings
+
+| DOMAIN_SCOPE
+| Manage all security domain scopes (role permissions)
+
+| DOMAIN_EXTENSION_GRANT
+| Manage all security domain OAuth 2.0 extension grants
+
+| DOMAIN_UMA
+| Manage all security domain User Managed Access settings
+
+| DOMAIN_OPENID
+| Manage all security domain OAuth 2.0 / OpenID Connect settings (DCR)
+
+| DOMAIN_REPORTER
+| Manage all security domain reporters (audit logs storage)
+
+| DOMAIN_MEMBER
+| Manage all security domain memberships
+
+| DOMAIN_ANALYTICS
+| Manage all security domain analytics
+
+| DOMAIN_FACTOR
+| Manage all security domain MFA settings
+
+| DOMAIN_FLOW
+| Manage all security domain Flow settings
+
+| APPLICATION
+| Read all application information
+
+| APPLICATION_SETTINGS
+| Manage all application global settings
+
+| APPLICATION_IDENTITY_PROVIDER
+| Manage all application identity providers
+
+| APPLICATION_FORM
+| Manage all application custom HTML templates
+
+| APPLICATION_EMAIL_TEMPLATE
+| Manage all application custom email templates
+
+| APPLICATION_OPENID
+| Manage all application custom OAuth 2.0 / OpenID Connect settings
+
+| APPLICATION_CERTIFICATE
+| Manage all application certificates
+
+| APPLICATION_MEMBER
+| Manage all application memberships.
+
+| APPLICATION_FACTOR
+| Manage all application MFA settings
+
+| APPLICATION_ANALYTICS
+| Manage all application analytics
+
+| APPLICATION_FLOW
+| Manage all application Flow settings
+
+|===
+
+.`DOMAIN` permissions
 [cols="1,3"]
 |===
 |Name |Description
 
 | DOMAIN
-| Read the security domain information.
+| Read the security domain information
 
 | DOMAIN_SETTINGS
-| Manage the security domain global settings.
+| Manage the security domain global settings
 
 | DOMAIN_FORM
-| Manage the security domain custom HTML templates.
+| Manage the security domain custom HTML templates
 
 | DOMAIN_EMAIL_TEMPLATE
-| Manage the security domain custom Email templates.
+| Manage the security domain custom email templates
 
 | DOMAIN_EXTENSION_POINT
-| Manage the security domain custom extension points.
+| Manage the security domain custom extension points
 
 | DOMAIN_IDENTITY_PROVIDER
-| Manage the security domain identity providers.
+| Manage the security domain identity providers
 
 | DOMAIN_AUDIT
-| Manage the security domain audit logs.
+| Manage the security domain audit logs
 
 | DOMAIN_CERTIFICATE
-| Manage the security domain certificates.
+| Manage the security domain certificates
 
 | DOMAIN_USER
-| Manage the security domain users.
+| Manage the security domain users
 
 | DOMAIN_GROUP
-| Manage the security domain groups.
+| Manage the security domain groups
 
 | DOMAIN_ROLE
-| Manage the security domain roles.
+| Manage the security domain roles
 
 | DOMAIN_SCIM
-| Manage the security domain audit SCIM settings.
+| Manage the security domain audit SCIM settings
 
 | DOMAIN_SCOPE
-| Manage the security domain scopes (role permissions).
+| Manage the security domain scopes (role permissions)
 
 | DOMAIN_EXTENSION_GRANT
-| Manage the security domain OAuth 2.0 extension grants.
+| Manage the security domain OAuth 2.0 extension grants
 
 | DOMAIN_OPENID
-| Manage the security domain OAuth 2.0 / OpenID Connect settings (DCR).
+| Manage the security domain OAuth 2.0 / OpenID Connect settings (DCR)
+
+| DOMAIN_UMA
+| Manage the security domain User Managed Access settings
 
 | DOMAIN_REPORTER
-| Manage the security domain reporters (audit logs storage).
+| Manage the security domain reporters (audit logs storage)
 
 | DOMAIN_MEMBER
-| Manage the security domain memberships.
+| Manage the security domain memberships
 
 | DOMAIN_ANALYTICS
-| Manage the security domain analytics.
+| Manage the security domain analytics
 
 | DOMAIN_FACTOR
-| Manage the security domain MFA settings.
+| Manage the security domain MFA settings
+
+| DOMAIN_FLOW
+| Manage the security domain Flow settings
 
 | APPLICATION
-| Read the security domain's applications information.
+| Read the security domain application information
 
 | APPLICATION_SETTINGS
-| Manage the security domain's applications global settings.
+| Manage the security domain application global settings
 
 | APPLICATION_IDENTITY_PROVIDER
-| Manage the security domain's applications identity providers.
+| Manage the security domain application identity providers
 
 | APPLICATION_FORM
-| Manage the security domain's applications custom HTML templates.
+| Manage the security domain application custom HTML templates
 
 | APPLICATION_EMAIL_TEMPLATE
-| Manage the security domain's applications custom Email templates.
+| Manage the security domain application custom email templates
 
 | APPLICATION_OPENID
-| Manage the security domain's applications custom OAuth 2.0 / OpenID Connect settings.
+| Manage the security domain application custom OAuth 2.0 / OpenID Connect settings
 
 | APPLICATION_CERTIFICATE
-| Manage the security domain's applications certificate.
+| Manage the security domain application certificates
 
 | APPLICATION_MEMBER
-| Manage the security domain's applications memberships.
+| Manage the security domain application memberships
 
 | APPLICATION_FACTOR
-| Manage the security domain's applications MFA settings.
+| Manage the security domain application MFA settings
+
+| APPLICATION_ANALYTICS
+| Manage the security domain application analytics settings
+
+| APPLICATION_FLOW
+| Manage the security domain application flow settings
 
 |===
 
@@ -275,62 +407,72 @@ NOTE: All the permissions required to use the AM Management API are described in
 |Name |Description
 
 | APPLICATION
-| Read the application information.
+| Read the security domain application information
 
 | APPLICATION_SETTINGS
-| Manage the application global settings.
+| Manage the security domain application global settings
 
 | APPLICATION_IDENTITY_PROVIDER
-| Manage the application identity providers.
+| Manage the security domain application identity providers
 
 | APPLICATION_FORM
-| Manage the application custom HTML templates.
+| Manage the security domain application custom HTML templates
 
 | APPLICATION_EMAIL_TEMPLATE
-| Manage the application custom Email templates.
+| Manage the security domain application custom email templates
 
 | APPLICATION_OPENID
-| Manage the application custom OAuth 2.0 / OpenID Connect settings.
+| Manage the security domain application custom OAuth 2.0 / OpenID Connect settings
 
 | APPLICATION_CERTIFICATE
-| Manage the application certificate.
+| Manage the security domain application certificates
 
 | APPLICATION_MEMBER
-| Manage the application memberships.
+| Manage the security domain application memberships
 
 | APPLICATION_FACTOR
-| Manage the application MFA settings.
+| Manage the security domain application MFA settings
+
+| APPLICATION_ANALYTICS
+| Manage the security domain application analytics settings
+
+| APPLICATION_FLOW
+| Manage the security domain application flow settings
 
 |===
 
 == Manage roles
 
-To manage roles and permissions :
+To manage roles and permissions:
 
-. Go to http://GRAVITEEIO-AM-UI-HOST
-. From the homepage, go to the `Global Settings` via the User Menu (top right).
-. Go to `Settings -> Roles` section and start editing or adding a new role.
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. From the user menu at the top right, select *Global settings*.
+. Click *Settings > Roles*, then create a role as described in the examples below.
 
 === Create the `REVIEWER_APPLICATION` role
-Let say that we want to create a reviewer role which allow a user to check if your application's configuration is valid.
-To do that, click on the `(+)` button and fill out the form with the following values and press `CREATE` :
+Let's imagine we want to create a reviewer role, which allows a user to check if your application configuration is valid.
+
+. Click the plus icon image:icons\plus-icon.png[role="icon"] and enter the following values:
 
 - Assignable type : `APPLICATION`
 - Name : `REVIEWER_APPLICATION`
 - Description : `Read-only role`
-
++
 image::am/current/graviteeio-am-adminguide-new-role.png[]
 
-=== Configure the `REVIEWER_APPLICATION` role
-You must give `READ` permission on all section of your application.
-This allow the user to see the whole configuration of your application.
+. Click *CREATE*.
 
-Press `SAVE` to store the changes.
+=== Configure the `REVIEWER_APPLICATION` role
+You must give `READ` permissions to all sections of your application.
+This allows the user to see the whole configuration of your application.
+
+Click *SAVE* to store the changes.
 
 .Configure
 image::am/current/graviteeio-am-adminguide-role-configure.png[]
 
 === Result
-Go to your application `Administrative roles` settings section and add a new member with the `REVIEWER_APPLICATION` role. The user `Reviewer User` now has read access to your application.
+
+Go to your application *Administrative roles* settings section and add a new member with the `REVIEWER_APPLICATION` role. The user `Reviewer User` now has read access to your application.
 
 image::am/current/graviteeio-am-adminguide-role-member.png[]

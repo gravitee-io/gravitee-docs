@@ -26,12 +26,12 @@ image::apim/3.x/installation/authentication/graviteeam_client_credentials.png[Ge
 
 == Configure APIM
 
-include::../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
+include::../../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
 
 ==== APIM Console configuration
 
 . Click *Organization Settings > Authentication*.
-. Click the plus icon image:icons/plus-icon.png[] and select the *Gravitee.io AM* icon.
+. Click the plus icon image:icons/plus-icon.png[role="icon"] and select the *Gravitee.io AM* icon.
 . If you want to use this provider to log in to APIM Portal, ensure that *Allow portal authentication to use this identity provider* is checked. To use it only for APIM Console, uncheck this option.
 . Enter the details of the provider, including the credentials created in the AM client.
 +
@@ -71,8 +71,10 @@ security:
       roleMapping:
         - condition: "{#jsonPath(#profile, '$.job_id') != 'API_MANAGER'}"
           roles:
-            - "PORTAL:PARTNER"
-            - "MANAGEMENT:API_CONSUMER"
+            - "ORGANIZATION:USER"
+            - "ENVIRONMENT:API_CONSUMER"                  #applied to the DEFAULT environment
+            - "ENVIRONMENT:DEFAULT:API_CONSUMER"          #applied to the DEFAULT environment
+            - "ENVIRONMENT:<ENVIRONMENT_ID>:API_CONSUMER" #applied to environment whose id is <ENVIRONMENT_ID>
 ----
 
 == Test the configuration

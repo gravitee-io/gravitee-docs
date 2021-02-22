@@ -1,4 +1,4 @@
-= Use an extension point
+= Use Flows
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_quickstart_use_policies.html
 :page-folder: am/quickstart
@@ -6,23 +6,23 @@
 
 == Overview
 
-You can use extension points to extend AM's standard functionality.
+You can use flows to extend AM's standard functionality.
 
-This section walks you through creating an extension point to enhance the information displayed in the link:/am/current/am_userguide_user_management_consent.html[End user agreement^] by calling a remote service before rendering the HTML page. For a more detailed overview, see link:/am/current/am_userguide_policies.html[Extension Points^] in the User Guide.
+This section walks you through using flows to enhance the information displayed in the link:/am/current/am_userguide_user_management_consent.html[End user agreement^] by calling a remote service before rendering the HTML page. For a more detailed overview, see link:/am/current/am_userguide_policies.html[Flows^] in the User Guide.
 The example in this section uses the Gravitee.io Echo API.
 
-NOTE: AM extension points are available from version 2.7.
+NOTE: AM Flows are available from version 3.5 and replace the AM extension points.
 
 == Before you begin
 
-You must link:/am/current/am_quickstart_authenticate_users.html[Set up your first application^] before performing these steps.
+You must link:/am/current/am_quickstart_app_setup.html[Set up your first application^] before performing these steps.
 
 == Use the HTTP Callout Policy
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Extension Points*.
-. Click the plus icon image:icons/plus-dropdown-icon.png[] next to the *PRE_CONSENT* extension point and select the *HTTP Callout* policy.
-. Give your extension point a *Name* and the following configuration:
+. Click *Settings > Flows*.
+. Select the *CONSENT* flow and drag & drop the *HTTP Callout* policy into the *Pre Consent* step.
+. Give your policy a *Name* and the following configuration:
 
 - HTTP Method: `GET`
 - URL: `https://api.gravitee.io/echo`
@@ -38,16 +38,60 @@ image::am/current/graviteeio-am-quickstart-policies.png[]
 ----
 curl -H "Authorization: Bearer :accessToken" \
      -H "Content-Type:application/json;charset=UTF-8" \
-     -X POST \
-     -d '{
-          "extensionPoint":"PRE_CONSENT",
-          "type":"policy-http-callout",
-          "enabled":true,
-          "order":0,
-          "name":"Enhance consent data",
-          "configuration":"{\"variables\":[{\"name\":\"X-Custom-Variable\",\"value\":\"{#jsonPath(#calloutResponse.content, '$.headers.X-Custom-Header')}\"}],\"method\":\"GET\",\"url\":\"https://api.gravitee.io/echo\",\"headers\":[{\"name\":\"X-Custom-Header\",\"value\":\"{#context.attributes['user'].username}\"}],\"exitOnError\":true,\"errorCondition\":\"{#calloutResponse.status >= 400 and #calloutResponse.status <= 599}\",\"errorStatusCode\":\"500\"}"
-        }'
-     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId/policies
+     -X PUT \
+     -d '[
+   {
+      "name":"ALL",
+      "pre":[
+         
+      ],
+      "post":[
+         
+      ],
+      "enabled":true,
+      "type":"root"
+   },
+   {
+      "name":"LOGIN",
+      "pre":[
+         
+      ],
+      "post":[
+         
+      ],
+      "enabled":true,
+      "type":"login"
+   },
+   {
+      "name":"CONSENT",
+      "pre":[
+         {
+            "name":"HTTP Callout",
+            "policy":"policy-http-callout",
+            "description":"Enrich User Consent",
+            "enabled":true,
+            "configuration":"{\"method\":\"GET\",\"exitOnError\":false,\"errorCondition\":\"{#calloutResponse.status >= 400 and #calloutResponse.status <= 599}\",\"errorStatusCode\":\"500\",\"url\":\"https://api.gravitee.io/echo\",\"headers\":[{\"name\":\"X-Custom-Header\",\"value\":\"{#context.attributes['user'].username}\"}],\"variables\":[{\"value\":\"{#jsonPath(#calloutResponse.content, '$.headers.X-Custom-Header')}\",\"name\":\"X-Custom-Variable\"}]}"
+         }
+      ],
+      "post":[
+         
+      ],
+      "enabled":true,
+      "type":"consent"
+   },
+   {
+      "name":"REGISTER",
+      "pre":[
+         
+      ],
+      "post":[
+         
+      ],
+      "enabled":true,
+      "type":"register"
+   }
+]'
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/domain/flows
 ----
 
 == Display the End User consent page

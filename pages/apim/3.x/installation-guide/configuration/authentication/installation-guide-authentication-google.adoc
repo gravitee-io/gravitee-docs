@@ -43,12 +43,12 @@ image::apim/3.x/installation/authentication/google_client_credentials.png[Get Cl
 
 == Configure APIM
 
-include::../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
+include::../../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
 
 ==== APIM Console configuration
 
 . Click *Organization Settings > Authentication*.
-. Click the plus icon image:icons/plus-icon.png[] and select the *Google* icon.
+. Click the plus icon image:icons/plus-icon.png[role="icon"] and select the *Google* icon.
 . If you want to use this provider to log in to APIM Portal, ensure that *Allow portal authentication to use this identity provider* is checked. To use it only for APIM Console, uncheck this option.
 . Enter the details of the provider, including the credentials created in the AM client.
 +

@@ -7,7 +7,7 @@
 
 == Overview
 
-AM Management API exposes a complete Restful API accessible to anyone wanting to script some part of the administration.
+AM API exposes a complete Restful API accessible to anyone wanting to script some part of the administration.
 
 You can access the online API reference or the OpenAPI specification:
 
@@ -20,9 +20,9 @@ You can access the online API reference or the OpenAPI specification:
 
 == Authorization
 
-AM Management API is secured using token-based authorization.
+AM API is secured using token-based authorization.
 
-NOTE: Use the HTTP Authorization request header (`Authorization Bearer token`) to call the API. You can also use an `Authorization="Bearer token"` cookie to access the Management API resources.
+NOTE: Use the HTTP Authorization request header (`Authorization Bearer token`) to call the API. You can also use an `Authorization="Bearer token"` cookie to access the API resources.
 
 === Token endpoint
 
