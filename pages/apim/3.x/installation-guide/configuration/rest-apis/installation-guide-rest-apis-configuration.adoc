@@ -293,7 +293,7 @@ user.anonymize-on-delete:enabled:: boolean (default: false) - If true, the user 
 
 == Management configuration
 
-You can configure various management settings in the APIM Console *Settings* page with environment variables. For a complete list of these settings, see <<management-settings-list,Management settings list>> below.
+You can configure various management settings in the APIM Console *Settings* page with environment variables. For a complete list of these settings, see <<management_settings_list,Management settings list>> below.
 Once you override these properties with environment variables, APIM Console configures them as read-only to prevent you overwriting the new values in the interface.
 
 [NOTE]
