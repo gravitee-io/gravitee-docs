@@ -149,3 +149,56 @@ image::apim/3.x/installation/authentication/keycloak_login_form2.png[Keycloak Lo
 You have successfully logged in:
 +
 image::apim/3.x/installation/authentication/keycloak_login_success.png[Here we are !]
+
+== Managing roles with keycloak
+
+Configure Keycloak and Gravitee to map your own organization with available bilt-in or your custom registered roles. 
+
+=== Gravitee roles console
+
+. Consider built-in or create custom Gravitee roles.
++
+image::apim/3.x/installation/authentication/keycloak_mng-00-gravitee-default_roles.png[Gravitee console - roles page]
+
+=== Create and configure Keycloak Client scope
+
+. Set a special gravitee-client-groups https://oauth.net/2/scope/[Scope] that will contain users' roles.
++
+image::apim/3.x/installation/authentication/keycloak_mng-01-client_scopes-roles_add_client_scope.png[Keycloak console - Create scope]
+
+. Set a mapper with Claim name "groups" 
++
+image::apim/3.x/installation/authentication/keycloak_mng-02-client_scopes-mapper.png[Keycloak console - Add mapper to scope]
+
+. Add the new configured scope to Gravitee Client.
++
+image::apim/3.x/installation/authentication/keycloak_mng-03-client-add_scope.png[Keycloak console - Add scope to client]
+
+=== Create Keycloak Client roles 
+
+. Create roles as needed by organization.
++
+image::apim/3.x/installation/authentication/keycloak_mng-04-client-add_roles.png[Keycloak console - Create client roles ]
+
+=== Configure Keycloack users with appropiate roles
+
+image::apim/3.x/installation/authentication/keycloak_mng-roles-05-users-add_user_client_roles.png[Keycloak console - Add roles to user]
+
+=== Configure Gravitee role mappings
+
+Gravitee role mapping uses Spring Expression Language (https://docs.spring.io/spring-framework/docs/3.0.x/reference/expressions.html[SpEL^]) for writting conditions. The only available object in context is #profile set from https://www.oauth.com/oauth2-servers/signing-in-with-google/verifying-the-user-info/[userInfoEndpoint^].
+
+[source,yaml]
+----
+security:
+  providers:
+    - type: oidc
+      ...
+      roleMapping:
+        - condition: "{(#jsonPath(#profile, '$.groups') matches 'gravitee-admin' )}"
+          roles:
+            - "ORGANIZATION:ADMIN"
+            - "ENVIRONMENT:ADMIN"
+----
+
+
