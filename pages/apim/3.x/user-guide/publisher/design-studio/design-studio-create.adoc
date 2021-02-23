@@ -4,14 +4,12 @@
 :page-folder: apim/user-guide/publisher/design-studio
 :page-layout: apim3x
 
+
+[label label-version]#New in version 3.5#
+
 == Overview
-
-This page explains how to configure API definitions with Design Studio.
-
 You can use Design Studio to create new API flows for your plans and define policies for each flow.
 Creating different flows for a plan allows you to apply different policies by path and/or HTTP method.
-
-NOTE: Don't forget to click the *deploy your API* link when making changes to your API!
 
 == Get started with Design Studio
 
@@ -59,9 +57,25 @@ image:apim/3.x/api-publisher-guide/design-studio/configuration-tab.png[]
 
 === Add global properties to your flow
 
-In the *PROPERTIES* tab, specify global properties as property key-value pairs. Click *CONFIGURE DYNAMIC PROPERTIES* to configure properties fetched with a URL and subsequently updated according to the details you specify.
+In the *PROPERTIES* tab, specify global properties as property key-value pairs.
 
 image:apim/3.x/api-publisher-guide/design-studio/properties-tab.png[]
+
+==== Dynamic properties
+
+You can configure dynamic properties, which retrieve properties from a remote server with a URL and update them according to the details you specify.
+
+. Click *CONFIGURE DYNAMIC PROPERTIES*.
+. Specify the details of the property:
+* `cron` schedule
+* URL
+* request headers and body to include with the call
+* JOLT transformation to perform on the response
+. Toggle on the *Enabled* option.
+. Click the tick icon image:icons/tick-icon.png[role="icon"] to save your changes.
+. Click *SAVE*.
++
+After the first call, the resulting property is added to the list of global properties, where its value is continuously updated according to the `cron` schedule specified.
 
 [[create-resources]]
 === Create resources to use in your flows
@@ -103,3 +117,17 @@ image:apim\3.x\api-publisher-guide\design-studio\add-policies-new-policy.png[]
 . Click *SAVE*.
 
 TIP: If you hover over a policy in a flow you can perform various operations on it: drag the policy to another phase of the flow, disable, delete or duplicate the policy.
+
+== Deploy your API and view it in the audit history
+
+When you have finished designing an API, you need to click the *deploy your API* link to deploy your API with your changes.
+
+Each new API deployment has a version associated, for which you can add a description as a label when deploying the API:
+
+image:apim\3.x\api-publisher-guide\design-studio\deploy-label.png[]
+
+You can use this label to identify the API deployment in the audit trail and in views on the API dashboard:
+
+image:apim\3.x\api-publisher-guide\audit\audit-history.png[]
+
+The audit history allows you to view the deployment in detail. For more information, see link:\apim\3.x\apim_publisherguide_audit.html[Audit trail^].

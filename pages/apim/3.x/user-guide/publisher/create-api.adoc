@@ -3,6 +3,7 @@
 :page-permalink: apim/3.x/apim_publisherguide_create_apis.html
 :page-folder: apim/user-guide/publisher
 :page-layout: apim3x
+:page-liquid:
 
 == Overview
 
@@ -35,9 +36,16 @@ context-path, backend endpoints and so on) before publishing it for developers.
 
 NOTE: You can choose to define your API plan (which your consumers will need before they can subscribe to your API) later. link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions^] gives a detailed description of how to configure a plan and the different options available.
 
+ifeval::[{{ site.products.apim._3x.version }} < 3.6.0]
 . Enter the general details of the API: *Name*, *Version*, *Description* and *Context-path* where the API will be exposed on APIM Gateway. Click *NEXT*.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-general.png[]
+endif::[]
+ifeval::[{{ site.products.apim._3x.version }} >= 3.6.0]
+. Enter the general details of the API: *Name*, *Version*, *Description*, the *Context-path* where the API will be exposed on APIM Gateway and one or more groups, if defined (for more details, see link:/apim/3.x/apim_adminguide_users_and_groups.html[Users and groups]). Click *NEXT*.
++
+image::apim/3.x/api-publisher-guide/manage-apis/create-api-general-withgroups.png[]
+endif::[]
 
 . Enter the backend URL for receiving API calls. Click *NEXT*.
 +
