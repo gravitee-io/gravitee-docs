@@ -2,10 +2,14 @@
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_publisherguide_design_studio_migrate.html
 :page-folder: apim/user-guide/publisher/policies
+:page-liquid:
 :page-layout: apim3x
 
-== Overview
 
+[label label-version]#New in version 3.5#
+
+
+== Overview
 This page explains how to migrate your existing API to Design Studio.
 
 The migration process transforms each `Path`-`HTTP methods`-`Policy` into one flow.

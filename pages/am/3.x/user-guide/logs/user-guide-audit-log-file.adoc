@@ -1,30 +1,37 @@
-= File Audit Log
+= Audit log file
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_userguide_audit_log_file.html
 :page-folder: am/user-guide
 :page-layout: am
 
-== File reporter
+[label label-version]#New in version 3.6#
 
-By default, The AM Console Audit Log page displays all events which have taken place, including user authentication and administrative actions such as managing clients, identity providers, users, groups, roles and so on through a MongoDB reporter plugin (or a JDBC plugin accordong to your deployment).
+== Overview
 
-Since AM 3.6, a file reporter is available and allows to send audit log to a file in order to provide a way to ingest these logs into a third party system like ElasticSearch or Splunk.
+By default, the AM Console Audit log page displays all events which have taken place, including user authentication and administrative actions such as managing clients, identity providers, users, groups, roles and so on through a MongoDB reporter plugin (or a JDBC plugin, according to your deployment).
 
-=== Create a File Reporter
+AM versions from 3.6 include a file reporter for sending audit logs to a file, which you can use to ingest your logs into a third party system like ElasticSearch or Splunk.
 
-To create a File reporter for a domain, you have to go to the audit logs settings ( `settings` > `audits` > `settings` ) and then click on the " + " on the bottom right corner. 
+== Create a File reporter
 
+To create a File reporter for a domain:
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Click *Settings > Audit Log*.
+. Click the settings icon image:icons/am-settings-icon.png[role="icon"].
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
++
 image::am/current/graviteeio-am-adminguide-add-reporter.png[]
 
-Once the form will be displayed, you will have to select the reporter type and fill the configuration elements.
-
+. Select *File* as the reporter type and enter the reporter name and file name.
++
 image::am/current/graviteeio-am-adminguide-file-reporter.png[]
 
-=== Ingest audit logs into ElasticSearch
+== Example: ingest audit logs into ElasticSearch
 
-This section provides a configuration example to show how to ingest audit logs configured using the ELASTICSEARCH format into an Elasticsearch instance using logstash.
+The example below demonstrates how to configure audit logs to be ingested using the ELASTICSEARCH format into an Elasticsearch instance using Logstash.
 
-First you have to define a template of the audit log entries in order to define the way of elasticsearch will index the data.
+The first step is to define a template for the audit log entries to specify how Elasticsearch will index the data:
 
 [source,json]
 ----
@@ -42,7 +49,7 @@ First you have to define a template of the audit log entries in order to define 
                 },
                 "event_type": {
                     "type": "keyword"
-                }, 
+                },
                 "organizationId": {
                     "type": "keyword"
                 },
@@ -67,39 +74,39 @@ First you have to define a template of the audit log entries in order to define 
                 "status": {
                     "type": "keyword"
                 },
-                "accessPoint": { 
+                "accessPoint": {
                     "properties": {
 	                "id": {
                     	     "type": "keyword",
                     	     "index": true
-                	 }, 
+                	 },
                 	 "alternativeId": {
                     	     "type": "keyword",
                     	     "index": true
-                	 }, 
+                	 },
                 	 "ipAddress": {
                     	     "type": "keyword",
                     	     "index": true
-                	 }, 
+                	 },
                 	 "userAgent": {
                     	     "type": "keyword"
                 	 }
-		     }                
+		     }
                 },
-                "actor": { 
+                "actor": {
                     "properties": {
 	                "id": {
                     	     "type": "keyword",
                     	     "index": true
-                	 }, 
+                	 },
                 	 "alternativeId": {
                     	     "type": "keyword",
                     	     "index": true
-                	 }, 
+                	 },
                 	 "type": {
                     	     "type": "keyword",
                     	     "index": true
-                	 }, 
+                	 },
                 	 "displayName": {
                     	     "type": "text",
                     	     "index": true
@@ -107,27 +114,27 @@ First you have to define a template of the audit log entries in order to define 
                 	 "referenceType": {
                     	     "type": "keyword",
                     	     "index": true
-                	 }, 
+                	 },
                 	 "referenceId": {
                     	     "type": "keyword",
                     	     "index": true
                 	 }
-		     }                
+		     }
                 },
-		"target": { 
+		"target": {
                     "properties": {
 	                "id": {
                     	     "type": "keyword",
                     	     "index": true
-                	 }, 
+                	 },
                 	 "alternativeId": {
                     	     "type": "keyword",
                     	     "index": true
-                	 }, 
+                	 },
                 	 "type": {
                     	     "type": "keyword",
                     	     "index": true
-                	 }, 
+                	 },
                 	 "displayName": {
                     	     "type": "text",
                     	     "index": true
@@ -135,19 +142,19 @@ First you have to define a template of the audit log entries in order to define 
                 	 "referenceType": {
                     	     "type": "keyword",
                     	     "index": true
-                	 }, 
+                	 },
                 	 "referenceId": {
                     	     "type": "keyword",
                     	     "index": true
                 	 }
-		     }                
+		     }
                 }
 	}
     }
 }
 ----
 
-Then a logstash configuration must be defined.
+Next, you need to create a Logstash configuration:
 
 [source,json]
 ----
@@ -181,9 +188,9 @@ output {
 }
 ----
 
-In this example, the variable `gravitee_audit_path` must match with the `reporters.file.directory` value as defined into the `gravitee.yaml` file. 
+NOTE: The variable `gravitee_audit_path` must match the `reporters.file.directory` value defined in the `gravitee.yml` file.
 
-Finally, you can start logstash 
+Finally, you can start Logstash:
 
 [source,bash]
 ----
@@ -191,4 +198,3 @@ Finally, you can start logstash
 #export gravitee_audit_path=/path/to/audits/
 ./bin/logstash -f config/gravitee-am-file.conf
 ----
-

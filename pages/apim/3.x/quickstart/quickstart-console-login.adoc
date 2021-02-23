@@ -18,15 +18,40 @@ To log in:
 . Enter the administrator credentials and click *SIGN IN*.
 +
 image:apim/3.x/quickstart/console-login.png[]
-+
-After login you are directed to your home dashboard, where you can access information and statistics relating to your APIs:
-+
+
+You are now ready to link:/apim/3.x/apim_quickstart_publish_ui.html[publish your first API^].
+
+== Home dashboard
+
+After login you are directed to your home dashboard, where you can access  information and statistics relating to your APIs:
+
 image:apim/3.x/quickstart/home-dashboard.png[]
-+
+
+NOTE: The dashboard view may vary according to your APIM version.
+
 You can:
 
-* change the time period or click *Refresh* to update the display
-* perform basic customization by resizing or removing widgets (for more advanced configuration, see link:/apim/3.x/apim_installguide_management_ui_configuration.html#home-dashboard[Home dashboard^] in the Configuration Guide)
-* drill down to the *Analytics* page for a specific API event to obtain more information about the event
+* change the time period or click *REFRESH* to update the display
+* view the API health check in the *API STATUS* tab (see below for more details)
+* view the other dashboards and logs in the *ANALYTICS* tab
+* drill down to the details of a specific API event by clicking it in the list at the bottom of the page
 +
 image:apim/3.x/quickstart/home-dashboard-events.png[]
+
+=== API status
+
+You can view the status of all your APIs or only APIs with health checking enabled, by toggling on and off the *View all APIs* option.
+
+For APIs with health checking enabled, clicking the detail of the API redirects you to the Health check page. For more details, see link:/apim/3.x/apim_publisherguide_backend_services.html[Load balancing, failover and health check^].
+
+The APIs can be in three different states:
+
+* If the uptime is over 95%, the API is shown as in an OK state (green)
+* If the uptime is between 80 and 95%, the API is shown as in a warning state (orange)
+* If the uptime is under 80%, the API is shown as in an error state (red)
+
+=== Customize the dashboard
+
+You can customize the default dashboard view by resizing or removing widgets, or by adding custom metrics, as described in link:/apim/3.x/apim_how_to_add_custom_metrics_in_dashboards.html[How to add custom metrics in dashboards^].
+
+To perform more advanced configuration, see link:/apim/3.x/apim_installguide_management_ui_configuration.html#home-dashboard[Home dashboard^] in the Configuration Guide.

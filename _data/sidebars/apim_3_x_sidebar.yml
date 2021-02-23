@@ -284,7 +284,10 @@ entries:
           - title: Logging and analytics
             output: web
             url: /apim/3.x/apim_publisherguide_logging_analytics.html
-          - title: Load balancing, failover and health checks
+          - title: Audit trail
+            output: web
+            url: /apim/3.x/apim_publisherguide_audit.html
+          - title: Load balancing, failover and health check
             output: web
             url: /apim/3.x/apim_publisherguide_backend_services.html
           - title: Send notifications
@@ -455,7 +458,7 @@ entries:
           - title: Callout HTTP
             output: web
             url: /apim/3.x/apim_policies_callout_http.html
-          - title: Data Logging Masking
+          - title: Data logging masking
             output: web
             url: /apim/3.x/apim_policies_data_logging_masking.html
           - title: Dynamic routing

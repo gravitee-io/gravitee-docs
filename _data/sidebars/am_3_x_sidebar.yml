@@ -43,10 +43,10 @@ entries:
     - title: Secure your APIs
       output: web
       url: /am/current/am_quickstart_secure_apis.html
-    - title: Use your first Flow
+    - title: Configure a flow
       output: web
       url: /am/current/am_quickstart_use_policies.html
-    - title: Add Custom Claims to Tokens
+    - title: Add custom claims to tokens
       output: web
       url: /am/current/am_quickstart_tokens_custom_claims.html
 
@@ -364,13 +364,13 @@ entries:
         - title: Logout
           output: web
           url: /am/current/am_userguide_user_session_management_logout.html
-      - title: Audit log
+      - title: Audit trail
         output: web
         subfolderitems:
         - title: Overview
           output: web
           url: /am/current/am_userguide_logs.html
-        - title: Audit trail
+        - title: Audit log
           output: web
           url: /am/current/am_userguide_audit_log.html
           subfolders:
@@ -389,7 +389,7 @@ entries:
         - title: Overview
           output: web
           url: /am/current/am_userguide_policies.html
-        - title: Flows configuration
+        - title: Flow configuration
           output: web
           url: /am/current/am_userguide_policies_extension_points.html
 
