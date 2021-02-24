@@ -41,7 +41,7 @@ NOTE: You need to repeat the following steps on each component (APIM Gateway and
  . Place the zip file in the plugin directory for each component (`$GRAVITEE_HOME/plugins`).
  . Download the JDBC driver corresponding to your database version.
  . Place the driver in `$GRAVITEE_HOME/plugins/ext/repository-jdbc`.
- . Configure your `gravitee.yml`, as described in the next section.
+ . Configure your `gravitee.yml` files, as described in the next section.
 
 
 == Configuration
@@ -62,6 +62,7 @@ Other properties allow you to fine tune your JDBC connection and control the beh
 management:
   type: jdbc                    # repository type
   jdbc:                         # jdbc repository
+    prefix:                     # tables prefix
     url:                        # jdbc url
     username:                   # jdbc username
     password:                   # jdbc password
@@ -73,3 +74,16 @@ management:
         minIdle:                # jdbc min idle (default 10)
         maxPoolSize:            # jdbc max pool size (default 10)
 ----
+
+== Use a custom prefix
+
+The following steps show how to rename your tables with a custom prefix, using the prefix `prefix_` as an example.
+
+NOTE: Before running any scripts, you must to create a dump of your existing database.
+
+1. Modify your `gravitee.yml` configuration files to configure `management.jdbc.prefix`.
+2. Run the application on a new database to generate `prefix_databasechangelog`.
+3. Replace the content of the `databasechangelog` table with the content you generated from `prefix_databasechangelog`.
+4. Rename your tables using format `prefix_tablename`.
+5. Rename your indexes using format `idx_prefix_indexname`.
+6. Rename your primary keys using format `pk_prefix_pkname`.

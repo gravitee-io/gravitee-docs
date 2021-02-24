@@ -6,7 +6,7 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
-== Supported version
+== Supported versions
 
 |===
 |Version tested | APIM plugin
@@ -47,6 +47,7 @@ NOTE: This is the minimum sample file to start with a MongoDB server. A number o
 management:
   type: mongodb                 # repository type
   mongodb:                      # mongodb repository
+    prefix:                     # collections prefix
     dbname:                     # mongodb name (default gravitee)
     host:                       # mongodb host (default localhost)
     port:                       # mongodb port (default 27017)
@@ -75,20 +76,27 @@ management:
     cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
 ----
 
-NOTE: All theses properties allow you to fine tune your MongoDB connection.
+== Use a custom prefix
+
+NOTE: Before running any scripts, you must create a dump of your existing database.
+
+To prefix your collections, you need to rename them. You can use the following https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.7.0/mongodb/1-rename-collections-with-prefix.js[script, window=\"_blank\"].
+
+This script renames all the collections by adding the prefix you choose on line 5.
+
+Then, modify gravitee.yml to configure `management.mongodb.prefix`.
 
 == Index
 
-A https://github.com/gravitee-io/gravitee-repository-mongodb/blob/master/src/main/resources/scripts/create-index.js[script, window=\"_blank\"] is available from our MongoDB GitHub repository.
+You can create an index using the https://github.com/gravitee-io/gravitee-repository-mongodb/blob/master/src/main/resources/scripts/create-index.js[script, window=\"_blank\"] available from our MongoDB GitHub repository.
 You must use the correct version of this script for the version of APIM you are running.
 
+NOTE: If you use a custom prefix for collections, do not forget to set it on the first line of the script.
 
 == Security
 
-Sometimes, you may want to apply specific security constraints and rules to users allowed to access the database.
-
-The following table summarizes how to define these fine-grained constraints per collection.
-
+Sometimes you need to apply specific security constraints and rules to users accessing your database.
+The following table summarizes how to define fine-grained constraints per collection.
 
 |===
 |Component|Read-only |Read-write
