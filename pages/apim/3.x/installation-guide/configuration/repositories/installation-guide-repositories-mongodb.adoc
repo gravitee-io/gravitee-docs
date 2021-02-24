@@ -18,7 +18,7 @@
 == Configuration
 https://www.mongodb.org/[MongoDB, window=\"_blank\"] is the default repository implementation used by APIM.
 
-The configuration options are as follows:
+=== Mandatory configuration
 
 [source,yaml]
 ----
@@ -35,7 +35,9 @@ management:
     port:                   # mongodb port (default 27017)
 ----
 
-NOTE: This is the minimum sample file to start with a MongoDB server. A number of other properties control the behavior of a MongoDB database, as described below.
+=== Optional configuration
+
+The example above shows the minimum configuration required to get started with a MongoDB database. You can configure the following additional properties to customize the behavior of a MongoDB database.
 
 [source,yaml]
 ----
@@ -76,15 +78,26 @@ management:
     cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
 ----
 
+[[use-a-custom-prefix]]
 == Use a custom prefix
 
-NOTE: Before running any scripts, you must create a dump of your existing database.
+From APIM 3.7, you can use a custom prefix for your collection names. This is useful if you want to use the same databases for APIM and AM, for example.
 
-To prefix your collections, you need to rename them. You can use the following https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.7.0/mongodb/1-rename-collections-with-prefix.js[script, window=\"_blank\"].
+=== On a new installation
 
-This script renames all the collections by adding the prefix you choose on line 5.
+If you are installing APIM for the first time, you need to update the following two values in the APIM Gateway and APIM API `gravitee.yml` files:
 
-Then, modify gravitee.yml to configure `management.mongodb.prefix`.
+* `management.mongodb.prefix`
+* `ratelimit.mongodb.prefix`
+
+By default, these values are empty.
+
+=== Migrating an existing installation
+
+NOTE: Before running any scripts, you must create a dump of your existing database. You need to repeat these steps on both APIM Gateway and APIM API.
+
+. To prefix your collections, you need to rename them. You can use following https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.7.0/mongodb/1-rename-collections-with-prefix.js[this script^], which renames all the collections by adding a prefix and rateLimitPrefix of your choice.
+. Update values `management.mongodb.prefix` and `ratelimit.mongodb.prefix` in the `gravitee.yml` file.
 
 == Index
 
