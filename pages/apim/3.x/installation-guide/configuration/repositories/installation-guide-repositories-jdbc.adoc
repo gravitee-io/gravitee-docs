@@ -46,6 +46,8 @@ NOTE: You need to repeat the following steps on each component (APIM Gateway and
 
 == Configuration
 
+=== Mandatory configuration
+
 [source,yaml]
 ----
 management:
@@ -54,8 +56,9 @@ management:
     url:                 # jdbc url
 ----
 
-The above example is the minimum sample file needed to get started with a JDBC database.
-Other properties allow you to fine tune your JDBC connection and control the behavior of JDBC database.
+=== Optional configuration
+
+The example above shows the minimum configuration needed to get started with a JDBC database. You can configure the following additional properties to fine-tune your JDBC connection and control the behavior of your JDBC database.
 
 [source,yaml]
 ----
@@ -75,13 +78,27 @@ management:
         maxPoolSize:            # jdbc max pool size (default 10)
 ----
 
+[[use-a-custom-prefixs]]
 == Use a custom prefix
 
-The following steps show how to rename your tables with a custom prefix, using the prefix `prefix_` as an example.
+From APIM 3.7, you can use a custom prefix for your tables name. This is useful if you want to use the same databases for APIM and AM, for example.
 
-NOTE: Before running any scripts, you must to create a dump of your existing database.
+The following steps explain how to rename your tables with a custom prefix, using the prefix `prefix_` as an example.
 
-1. Modify your `gravitee.yml` configuration files to configure `management.jdbc.prefix`.
+=== On a new installation
+
+If you are installing APIM for the first time, you need to update the following two values in the APIM Gateway and APIM API `gravitee.yml` files:
+
+* `management.jdbc.prefix`
+* `ratelimit.jdbc.prefix`
+
+By default, these values are empty.
+
+=== Migrating an existing installation
+
+NOTE: Before running any scripts, you need to create a dump of your existing database. You need to repeat these steps on both APIM Gateway and APIM API.
+
+1. Update values `management.jdbc.prefix` and `ratelimit.jdbc.prefix` in your `gravitee.yml` configuration file.
 2. Run the application on a new database to generate `prefix_databasechangelog`.
 3. Replace the content of the `databasechangelog` table with the content you generated from `prefix_databasechangelog`.
 4. Rename your tables using format `prefix_tablename`.
