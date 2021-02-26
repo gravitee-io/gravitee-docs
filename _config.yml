@@ -1,17 +1,13 @@
-
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-asciidoc
-
 title: Gravitee.io API Platform Documentation
 description: Home page for Gravitee.io API Platform documentation
 summary: Gravitee.io API Platform documentation
 keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, alert, alerting, engine
-
 twitter:
   username: graviteeio
-
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
@@ -60,21 +56,16 @@ feedback_disable: true
 # auto_ids: true
 # hard_wrap: false
 # syntax_highlighter: rouge
-
 google_analytics: UA-67690250-1
-
 newsletter_api: 'https://newsletter.gravitee.io/'
-
 # filter used to process markdown. note that kramdown differs from github-flavored markdown in some subtle ways
-
 collections:
   tooltips:
     output: true
 # collections are declared here. this renders the content in _tooltips and processes it, but doesn't output it as actual files in the output unless you change output to true
 
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
       type: "pages"
     values:
@@ -103,22 +94,19 @@ defaults:
 #      sidebar: home_sidebar
 
 # these are defaults used for the frontmatter for these file types
-
 sidebars:
-- apim_sidebar
-- am_sidebar
-- ae_sidebar
-- cli_sidebar
-- ee_sidebar
-- cockpit_sidebar
-
+  - apim_sidebar
+  - am_sidebar
+  - ae_sidebar
+  - cli_sidebar
+  - ee_sidebar
+  - cockpit_sidebar
 # needed for sitemap.xml file only
 url: https://docs.gravitee.io
-
 products:
   apim:
     _1x:
-      version: 1.30.31
+      version: 1.25.27
     _3x:
       version: 3.6.0
     ee:
@@ -134,7 +122,6 @@ products:
     version: 0.3
   cockpit:
     version: 1.0
-
 asciidoc: {}
 asciidoctor:
   base_dir: :docdir
