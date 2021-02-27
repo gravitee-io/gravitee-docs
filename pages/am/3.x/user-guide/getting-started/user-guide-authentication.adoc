@@ -15,7 +15,7 @@ You can use this account to perform all the management tasks provided by AM, suc
 
 NOTE: By default, the login details for the AM Console administrator account are `admin / adminadmin`.
 
-NOTE: You can change this default account in the AM Console by opening the user menu from the top bar and by clicking *Global Settings > Settings > Providers*.
+NOTE: You can change this default account in the AM Console by going to *Organization settings > Settings > Providers*.
 The default account is created with the `Inline` identity provider.
 
 To log in:
@@ -31,9 +31,9 @@ image::am/current/graviteeio-am-userguide-login-page.png[]
 == AM Console overview
 
 The AM Console is where you manage all aspects of your account and configuration.
-It consists of two distinct parts, the *security domain settings* and the *platform settings*.
+It consists of two distinct parts, the *security domain settings* and the *organization settings*.
 
-NOTE: AM console is accessible by `administrative users` that you can manage in the *platform settings* section.
+NOTE: AM console is accessible by `administrative users` that you can manage in the *organization settings* section.
 
 === Security domain settings
 
@@ -122,7 +122,7 @@ The security domain settings includes several sections that you can navigate usi
 
 === Security Domains
 
-NOTE: To access the security domains, open the user menu from the top bar and click *All Domains*. 
+NOTE: To access the security domains, open the user menu from the top bar and click *All Domains*.
 
 The security domains overview display all the domains available for the current environment.
 To access one specific security domain, click on its name.
@@ -169,14 +169,14 @@ The organization settings includes several sections that you can navigate using 
 |Manage administrators for the AM Console.
 
 |Settings -> Groups
-|Manage groups for the AM Console. Groups can be used to manage access to the platform.
+|Manage groups for the AM Console. Groups can be used to manage access to the organization.
 
 |Settings -> Roles
-|Manage roles for the AM Console. Roles can be used to manage access to the platform.
+|Manage roles for the AM Console. Roles can be used to manage access to the organization.
 
 |Settings -> Sharding tags
 |A sharding-tag determines how security domain will be deployed across multiple AM Gateway.
 
 |Settings -> Entrypoints
-|Configure platform endpoints. An entrypoint allows you to display the url to use when end-user applications will contact the AM Gateway.
+|Configure organization endpoints. An entrypoint allows you to display the url to use when end-user applications will contact the AM Gateway.
 |===
