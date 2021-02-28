@@ -22,7 +22,7 @@ image::am/current/graviteeio-am-userguide-social-idp-saml2.png[]
 
 == Get your SAML 2.0 identity provider (IdP) metadata
 
-To connect your applications to an SAML 2.0 IdP, you need at least the following information :
+To connect your applications to a SAML 2.0 IdP, you need at least the following information :
 
 - *SingleSignOnService* : The SAML IdP Sign In URL
 - *SingleLogoutService* : The SAML IdP Sign Out URL
@@ -37,10 +37,12 @@ NOTE: Request those data from your SAML IdP administrator team and make a note o
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *SAML 2.0* as your identity provider type and click *Next*.
 . Give your identity provider a name.
-. Configure the settings (Sign in URL, Sign out URL, Signing certificate, ...)
+. Configure the settings (EntityID, Sign in URL, Sign out URL, Signing certificate, ...)
 . Click *Create*.
 
 NOTE: The connector provides advanced settings like the protocol binding (HTTP-REDIRECT or HTTP-POST), NameId format, Request Signing options to connect to your SAML 2.0 IdP. Ask your technical team to select the best options.
+
+NOTE: Copy the URL in *1. Configure the Redirect URI* to the right of the page. It's the SAML 2.0 Assertion Consumer Service URL you need to provide to the SAML 2.0 IdP to register your Access Management instance.
 
 == Test the connection
 
