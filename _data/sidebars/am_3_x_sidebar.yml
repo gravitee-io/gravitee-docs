@@ -289,15 +289,18 @@ entries:
         - title: Dynamic client registration
           output: web
           url: /am/current/am_userguide_dynamic_client_registration.html
-      - title: Login page
+      - title: Branding
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /am/current/am_userguide_login_page.html
-        - title: Custom login page
+          url: /am/current/am_userguide_branding.html
+        - title: Custom pages
           output: web
-          url: /am/current/am_userguide_custom_login_page.html
+          url: /am/current/am_userguide_user_management_forms.html
+        - title: Custom email templates
+          output: web
+          url: /am/current/am_userguide_branding_email_templates.html
       - title: Multi-factor authentication
         output: web
         subfolderitems:
@@ -352,9 +355,6 @@ entries:
         - title: User registration
           output: web
           url: /am/current/am_userguide_user_management_registration.html
-        - title: Custom forms
-          output: web
-          url: /am/current/am_userguide_user_management_forms.html
         - title: SCIM 2.0
           output: web
           url: /am/current/am_userguide_user_management_scim.html
