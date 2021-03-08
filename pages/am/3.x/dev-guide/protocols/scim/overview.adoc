@@ -4,22 +4,17 @@
 :page-folder: am/dev-guide/protocols/scim
 :page-layout: am
 
-== Overview
+link:http://www.simplecloud.info/[SCIM 2.0^] is a standard for automating the exchange of user identity information between identity domains, or IT systems.
 
-NOTE: New in Gravitee.io AM 2.2.x
-
-link:http://www.simplecloud.info/[SCIM 2.0] is a standard for automating the exchange of user identity information between identity domains, or IT systems.
-
-Since it is a standard, SCIM ensures interoperability and user data consistency that can be communicated across heterogeneous applications.
+Since it is a standard, SCIM ensures interoperability and user data consistency that can be communicated across similar applications.
 SCIM enables to automate the provisioning/deprovisioning process and manage users and groups.
 
-You can find SCIM 2.0 endpoints exposed by Gravitee.io Access Management :
+SCIM protocol endpoints exposed by AM API are as follows:
 
-* link:/am/current/scim/index.html[SCIM 2.0 Console, window="_blank"] - link:/am/current/scim/swagger.yml[Swagger spec, window="_blank"]
+* link:/am/current/scim/index.html[SCIM 2.0 Console^] - link:/am/current/scim/swagger.yml[Swagger spec^]
 
 == Protocol
 
-The SCIM is a standard that defines schema and protocol for identity management.
+SCIM is a standard that defines schema and protocols for identity management.
 
-It relies on REST API with endpoints exposing CRUD (Create, Read, Update, Delete) functionality for Users and Groups as well as Search, Discovery and Bulk features.
-
+It relies on REST APIs with endpoints exposing CRUD (Create, Read, Update, Delete) functionality for users and groups as well as search, discovery and bulk features.

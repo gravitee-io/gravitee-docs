@@ -328,15 +328,6 @@ entries:
         - title: Create a certificate
           output: web
           url: /am/current/am_userguide_create_certificate.html
-      - title: Extension grants
-        output: web
-        subfolderitems:
-          - title: Overview
-            output: web
-            url: /am/current/am_userguide_extension_grants.html
-          - title: JWT Bearer
-            output: web
-            url: /am/current/am_userguide_extension_grants_jwt_bearer.html
       - title: User management
         output: web
         subfolderitems:
@@ -416,37 +407,58 @@ entries:
       - title: Bootstrap your environment
         output: web
         url: /am/current/am_devguide_bootstrap.html
-  - title: API Reference
+
+  - title: Protocols
     output: web
     folderitems:
       - title: Overview
         output: web
         url: /am/current/am_devguide_protocols_overview.html
         subfolders:
-        - title: AM APIs
-          output: web
-          subfolderitems:
-          - title: AM Management
-            output: web
-            url: /am/current/am_devguide_management_api_documentation.html
           - title: OAuth 2.0
             output: web
-            url: /am/current/am_devguide_protocols_oauth2_overview.html
+            subfolderitems:
+              - title: Overview
+                output: web
+                url: /am/current/am_devguide_protocols_oauth2_overview.html
+              - title: Which flow should I use ?
+                output: web
+                url: /am/current/am_devguide_protocols_oauth2_flows.html
+              - title: PKCE
+                output: web
+                url: /am/current/am_devguide_protocols_oauth2_pkce.html
+              - title: Best practices
+                output: web
+                url: /am/current/am_devguide_protocols_oauth2_best_practices.html
+                subfolders:
+                  - title: Extension grants
+                    output: web
+                    subfolderitems:
+                      - title: Overview
+                        output: web
+                        url: /am/current/am_userguide_extension_grants.html
+                      - title: JWT Bearer
+                        output: web
+                        url: /am/current/am_userguide_extension_grants_jwt_bearer.html
           - title: OpenID Connect
             output: web
-            url: /am/current/am_devguide_protocols_oidc_overview.html
+            subfolderitems:
+              - title: Overview
+                output: web
+                url: /am/current/am_devguide_protocols_oidc_overview.html
           - title: UMA 2.0
             output: web
-            url: /am/current/am_devguide_protocols_uma2_overview.html
+            subfolderitems:
+              - title: Overview
+                output: web
+                url: /am/current/am_devguide_protocols_uma2_overview.html
           - title: SCIM 2.0
             output: web
-            url: /am/current/am_devguide_protocols_scim_overview.html
-          - title: Users
-            output: web
-            url: /am/current/am_devguide_protocols_users_overview.html
-          - title: User Session
-            output: web
-            url: /am/current/am_devguide_protocols_session_overview.html
+            subfolderitems:
+              - title: Overview
+                output: web
+                url: /am/current/am_devguide_protocols_scim_overview.html
+
   - title: Breaking Changes
     output: web
     folderitems:
