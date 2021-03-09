@@ -296,8 +296,22 @@ entries:
           - title: Top APIs
             output: web
             url: /apim/3.x/apim_publisherguide_top_apis.html
-
             subfolders:
+              - title: Resources
+                output: web
+                subfolderitems:
+                - title: Introduction
+                  output: web
+                  url: /apim/3.x/apim_resources_overview.html
+                - title: Cache
+                  output: web
+                  url: /apim/3.x/apim_resources_cache.html
+                - title: OAuth2 - Gravitee.io Access Management
+                  output: web
+                  url: /apim/3.x/apim_resources_oauth2_am.html
+                - title: OAuth2 - Generic Authorization Server
+                  output: web
+                  url: /apim/3.x/apim_resources_oauth2_generic.html
               - title: Design Studio Guide
                 output: web
                 subfolderitems:
@@ -325,21 +339,6 @@ entries:
                   - title: System folders, links and APIM Portal customization
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation_system_folders.html
-              - title: Resources
-                output: web
-                subfolderitems:
-                  - title: Introduction
-                    output: web
-                    url: /apim/3.x/apim_resources_overview.html
-                  - title: Cache
-                    output: web
-                    url: /apim/3.x/apim_resources_cache.html
-                  - title: OAuth2 - Gravitee.io Access Management
-                    output: web
-                    url: /apim/3.x/apim_resources_oauth2_am.html
-                  - title: OAuth2 - Generic Authorization Server
-                    output: web
-                    url: /apim/3.x/apim_resources_oauth2_generic.html
               - title: Service Discovery
                 output: web
                 subfolderitems:
@@ -425,9 +424,6 @@ entries:
           - title: Introduction
             output: web
             url: /apim/3.x/apim_policies_overview.html
-          - title: Migrate to new Policy Studio
-            output: web
-            url: /apim/3.x/apim_policies_migrate.html
           - title: API key
             output: web
             url: /apim/3.x/apim_policies_apikey.html

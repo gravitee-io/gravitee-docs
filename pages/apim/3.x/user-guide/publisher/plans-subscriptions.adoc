@@ -69,8 +69,12 @@ APIM supports the following four security types:
 
 Keyless plans allow public access to the API and bypass any security mechanisms on the whole request process.
 
-Keyless plans offer no security and are most useful for quickly and easily exposing your API to external users and getting their feedback.
+By default, keyless plans offer no security and are most useful for quickly and easily exposing your API to external users and getting their feedback.
 Due to the lack of consumer identifier token (API key), keyless consumers are set as `unknown application` in the API analytics section.
+
+==== Basic authentication
+
+You can configure basic authentication for keyless plans, by associating a basic authentication policy with either an LDAP or inline resource. For more details, see link:/apim/3.x/apim_policies_basic_authentication.html[Basic authentication policy^].
 
 === API key plans
 
