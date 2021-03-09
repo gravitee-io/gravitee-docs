@@ -62,7 +62,7 @@ This frequency definition uses a `cron` expression, which is a string consisting
 
 For example:
 
-* Fetch every hour: `* * */1 * * *`
+* Fetch every second: `* * */1 * * *`
 * At 00:00 on Saturday : `0 0 0 * * SAT`
 
 NOTE: If the APIM administrator configured a maximum fetch frequency, the value configured by the APIM administrator will override the frequency you specify.
