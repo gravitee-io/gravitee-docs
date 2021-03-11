@@ -9,9 +9,9 @@
 As described in link:https://tools.ietf.org/html/rfc6819#section-5.1.3[RFC 6819^], users should always be in control of authorization
 processes and have the necessary information to make informed decisions.
 
-If you want users to acknowledge and accept that they are giving an app access to their data, you can configure AM to display a consent dialog page during the OAuth 2.0/OIDC authentication flow.
+If you want users to acknowledge and accept that they are giving an app access to their data, you can configure AM to display a consent page during the OAuth 2.0/OIDC authentication flow.
 
-NOTE: You can change the look and feel of the user consent dialog form. See link:/am/current/am_userguide_user_management_forms.html[Custom forms^] for more information.
+NOTE: You can change the look and feel of the user consent form. See link:/am/current/am_userguide_user_management_forms.html[Custom forms^] for more information.
 
 == Revoke user consent
 
