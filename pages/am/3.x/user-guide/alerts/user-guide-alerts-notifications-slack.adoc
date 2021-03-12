@@ -1,0 +1,35 @@
+= Slack
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_alerts_notifications_slack.html
+:page-folder: am/user-guide
+:page-layout: am
+
+== Overview
+
+You can notify and alert administrators using link:https://slack.com[Slack^].
+
+== Register a new application in Slack
+
+link:https://slack.com/help/articles/215770388-Create-and-regenerate-API-tokens[Create and regenerate API tokens^].
+
+. Open your link:https://api.slack.com/apps[Slack apps^].
+. Click an app or create a new one.
+. In the *Install App* section, click *Reinstall App*. Your new tokens appear at the top of the page.
+
+NOTE: Slack generates a token. Make a note of it for later use.
+
+NOTE: For more information about Slack integration, see the link:/ae/userguide_notifier_slack.html[Alert Engine Slack notifier documentation^].
+
+== Create a Slack notification channel
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Click *Settings > Alerts > Notifiers*.
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Select *Slack* as your notifier type and click *Next*.
+. Give your notifier a name.
+. Configure the settings (slack channel and slack token).
+. Click *Create*.
+
+NOTE: You can customize the `message` input text with notification properties.
+
+include::./user-guide-alerts-notifications-partial.adoc[leveloffset=+1]
