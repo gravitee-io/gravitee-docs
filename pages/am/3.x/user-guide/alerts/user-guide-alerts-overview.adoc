@@ -1,0 +1,16 @@
+= Alerts
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_alerts_overview.html
+:page-folder: am/user-guide
+:page-layout: am
+
+[label label-enterprise]#Enterprise feature#
+
+You can put in place a system of alerting to warn of any unusual and potentially dangerous events on AM authorization server that may be of interest to administrators or monitoring services.
+
+AM integrates with the link:/ae/overview_introduction.html[Alert Engine] product, a notification system to deliver messages using channels such as SMTP, Webhooks or link:https://slack.com[Slack].
+
+Out of the box, some pre-defined alerts and notification systems (known as notifiers) are available to help you get started.
+
+- link:/am/current/am_userguide_alerts.html[Manage alerts]
+- link:/am/current/am_userguide_alerts_notifications.html[Notifications]

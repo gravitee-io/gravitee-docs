@@ -392,6 +392,34 @@ entries:
         - title: Flows configuration
           output: web
           url: /am/current/am_userguide_policies_extension_points.html
+      - title: Alerts
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_alerts_overview.html
+        - title: Alert Engine
+          output: web
+          url: /am/current/am_userguide_alerts_ae.html
+        - title: Manage alerts
+          output: web
+          url: /am/current/am_userguide_alerts.html
+          subfolders:
+          - title: Notification channels
+            output: web
+            subfolderitems:
+            - title: Overview
+              output: web
+              url: /am/current/am_userguide_alerts_notifications.html
+            - title: Email
+              output: web
+              url: /am/current/am_userguide_alerts_notifications_email.html
+            - title: Webhook
+              output: web
+              url: /am/current/am_userguide_alerts_notifications_webhook.html
+            - title: Slack
+              output: web
+              url: /am/current/am_userguide_alerts_notifications_slack.html
 
   - title: Administration Guide
     output: web

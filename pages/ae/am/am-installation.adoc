@@ -34,4 +34,28 @@ $ cp gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip ${GRAVITEEIO_HOM
 
 == Configuration
 
-NOTE: work in progress...
+For both the AM Gateway and the AM Management API, you have to configure access to Alert Engine through WebSockets. This can
+be done that way:
+
+```yaml
+alerts:
+  alert-engine:
+    enabled: true
+    ws:
+      discovery: true
+      endpoints:
+        - http://localhost:8072/
+      security:
+        username: admin
+        password: adminadmin
+```
+
+=== Endpoints
+You can have as many endpoints as you need. The node will select one of them in round-robin fashion.
+
+=== Discovery mode
+Discovery mode is very useful when running a cluster of Alert Engine. By using it, you just have to refer to a single
+AE node and the other nodes from the cluster will be automatically registered.
+
+.Alert Engine - Auto-discovery
+image::ae/howitworks/discovery.png[Discovery mode]
