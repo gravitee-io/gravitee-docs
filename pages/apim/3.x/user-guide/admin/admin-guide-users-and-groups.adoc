@@ -151,3 +151,47 @@ If you return to *Settings > Groups* and select the group name, you can now see 
 image::apim/3.x/adminguide/usersgroups-groups-dependents.png[Gravitee.io - Api Group]
 +
 This means members of the `FOO Team` are members of the API with the role you set in <<Configure users>>.
+
+[[primary_owner_mode]]
+== Configure primary owner groups
+
+[label label-version]#New in version 3.7#
+
+From APIM 3.7, you can configure three different ways of managing primary owners for APIs in APIM Console:
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-api-primaryowner-mode-1.png[]
+
+USER::
+
+* Only users can be primary owner of an API
+* Creating primary owner groups is not allowed
+
+GROUP::
+
+* Only primary owner groups can be primary owner of an API
+* Creating primary owner groups is allowed
+* To create or import an API, you must belong to at least one primary owner group
+* You can only transfer API ownership to a primary owner group which you belong to
+
+HYBRID (default)::
+
+* Creating primary owner groups is allowed
+* Either a primary owner group or a user can be primary owner of an API
+* You can transfer API ownership to either a primary owner group or a user
+
+[NOTE]
+====
+
+For a group to be defined as primary owner, it must contain one member with the PRIMARY OWNER role in the    link:/apim/3.x/apim_adminguide_roles_and_permissions.html#scopes[API scope^].
+You can only add one member with the PRIMARY OWNER role to a group.
+
+====
+
+=== Update the API primary owner mode
+
+. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
+. Click *Settings > Settings*.
+. Set *API Primary Owner mode* to *HYBRID* or *GROUP*.
++
+Any groups which include a PRIMARY OWNER member will now be available to add to your APIs.
+For more details, see link:/apim/3.x/apim_publisherguide_create_apis.html[Create APIs^].
