@@ -567,6 +567,25 @@ entries:
             output: web
             url: /apim/3.x/apim_policies_xslt.html
 
+      - title: Kubernetes Controller
+        output: web
+        folderitems:
+          - title: Introduction
+            output: web
+            url: /apim/3.x/apim_kubernetes_overview.html
+          - title: Quick Start
+            output: web
+            url: /apim/3.x/apim_kubernetes_quick_start.html
+          - title: How to install
+            output: web
+            url: /apim/3.x/apim_kubernetes_installation.html
+          - title: Custom Resources
+            output: web
+            url: /apim/3.x/apim_kubernetes_custom_resources.html
+          - title: Admission Hook
+            output: web
+            url: /apim/3.x/apim_kubernetes_admission_hook.html
+
       - title: API Reference
         output: web
         folderitems:
