@@ -46,6 +46,15 @@ ifeval::[{{ site.products.apim._3x.version }} >= 3.6.0]
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-general-withgroups.png[]
 endif::[]
+ifeval::[{{ site.products.apim._3x.version }} >= 3.7.0]
++
+NOTE: If the link:/apim/3.x/apim_adminguide_users_and_groups.html#primary_owner_mode[Primary owner mode^] is *HYBRID*, you need to click the *Advanced mode* link to load the *Groups* section of the form.
++
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-api-primaryowner-mode-3.png[]
+
+. If your administrator has configured a primary owner group and you want to associate it with your API, toggle on the *Use a group as the primary owner* option.
+. Click *NEXT*.
+endif::[]
 
 . Enter the backend URL for receiving API calls. Click *NEXT*.
 +
@@ -314,6 +323,19 @@ image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-wsdl-rest-to-s
 If you select the option *Apply REST to SOAP Transformer policy* in addition to the option *Create policies on path* in the import form, a REST-To-SOAP policy will be generated for each path. These policies provide a SOAP envelope for each method with sample data that you can change using expression language. An XML-to-JSON policy will also be generated to convert the entire SOAP response to JSON format.
 
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-wsdl-rest-to-soap-policy.png[WSDL REST to SOAP policy]
+
+== Manage your API
+
+The API is created private, so it is only accessible in APIM Portal to users after you:
+
+* Publish it
+* Make it public or add new members or groups to it
+
+The process for adding new members or groups to the API is explained in link:/apim/3.x/apim_publisherguide_manage_members.html[API users and ownership^].
+
+You can publish the API or make it public, as well as remove it from APIM Portal or delete it, in the *Danger Zone*:
+
+image::apim/3.x/api-publisher-guide/manage-apis/danger-zone.png[]
 
 == Organize your APIs into categories
 You can create _categories_ to group APIs. The purpose of categories is to group APIs so consumers can easily find the APIs they need in APIM Portal.
