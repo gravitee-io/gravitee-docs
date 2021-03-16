@@ -1,0 +1,24 @@
+[[apim-kubernetes-overview]]
+= Kubernetes plugin
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_kubernetes_overview.html
+:page-folder: apim/kubernetes
+:page-layout: apim3x
+:page-liquid:
+
+[label label-version]#New in version 3.7#
+
+== Overview
+
+APIM 3.7.0 introduces a Kubernetes plugin for APIM Gateway allowing the deployment of APIs using https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/[Custom Resource Definitions (CRDs)^].
+
+APIs deployed using CRDs are not visible through APIM Console.
+
+WARNING: This plugin is currently in Alpha version; the API key policy isn't available for APIs deployed using this plugin.
+
+You can find more detailed information about the plugin in the following sections:
+
+* link:/apim/3.x/apim_kubernetes_quick_start.html[Quick Start]
+* link:/apim/3.x/apim_kubernetes_installation.html[How to install]
+* link:/apim/3.x/apim_kubernetes_custom_resources.html[Custom Resources]
+* link:/apim/3.x/apim_kubernetes_admission_hook.html[Admission hook]
