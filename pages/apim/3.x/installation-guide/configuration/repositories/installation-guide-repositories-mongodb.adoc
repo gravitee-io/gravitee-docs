@@ -78,7 +78,7 @@ management:
     cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
 ----
 
-[[use-a-custom-prefix]]
+[[use_a_custom_prefix]]
 == Use a custom prefix
 
 From APIM 3.7, you can use a custom prefix for your collection names. This is useful if you want to use the same databases for APIM and AM, for example.
