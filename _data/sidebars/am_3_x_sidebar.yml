@@ -43,10 +43,10 @@ entries:
     - title: Secure your APIs
       output: web
       url: /am/current/am_quickstart_secure_apis.html
-    - title: Use your first Flow
+    - title: Configure a flow
       output: web
       url: /am/current/am_quickstart_use_policies.html
-    - title: Add Custom Claims to Tokens
+    - title: Add custom claims to tokens
       output: web
       url: /am/current/am_quickstart_tokens_custom_claims.html
 
@@ -223,6 +223,9 @@ entries:
             - title: HTTP (web service)
               output: web
               url: /am/current/am_userguide_enterprise_identity_provider_http.html
+            - title: Kerberos
+              output: web
+              url: /am/current/am_userguide_enterprise_identity_provider_kerberos.html
             - title: SAML 2.0
               output: web
               url: /am/current/am_userguide_enterprise_identity_provider_saml2.html
@@ -352,19 +355,22 @@ entries:
         - title: User consent
           output: web
           url: /am/current/am_userguide_user_management_consent.html
+        - title: Password policy
+          output: web
+          url: /am/current/am_userguide_user_management_password_policy.html
       - title: User session management
         output: web
         subfolderitems:
         - title: Logout
           output: web
           url: /am/current/am_userguide_user_session_management_logout.html
-      - title: Audit log
+      - title: Audit trail
         output: web
         subfolderitems:
         - title: Overview
           output: web
           url: /am/current/am_userguide_logs.html
-        - title: Audit trail
+        - title: Audit log
           output: web
           url: /am/current/am_userguide_audit_log.html
           subfolders:
@@ -383,9 +389,37 @@ entries:
         - title: Overview
           output: web
           url: /am/current/am_userguide_policies.html
-        - title: Flows configuration
+        - title: Flow configuration
           output: web
           url: /am/current/am_userguide_policies_extension_points.html
+      - title: Alerts
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_alerts_overview.html
+        - title: Alert Engine
+          output: web
+          url: /am/current/am_userguide_alerts_ae.html
+        - title: Manage alerts
+          output: web
+          url: /am/current/am_userguide_alerts.html
+          subfolders:
+          - title: Notification channels
+            output: web
+            subfolderitems:
+            - title: Overview
+              output: web
+              url: /am/current/am_userguide_alerts_notifications.html
+            - title: Email
+              output: web
+              url: /am/current/am_userguide_alerts_notifications_email.html
+            - title: Webhook
+              output: web
+              url: /am/current/am_userguide_alerts_notifications_webhook.html
+            - title: Slack
+              output: web
+              url: /am/current/am_userguide_alerts_notifications_slack.html
 
   - title: Administration Guide
     output: web

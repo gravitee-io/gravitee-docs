@@ -1,12 +1,14 @@
-= Introduction
+= Flows
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_userguide_policies.html
 :page-folder: am/user-guide
 :page-layout: am
 
-== Introduction
+[label label-version]#New in version 3.5#
 
-You can use Flows to extend the behavior of AM by executing link:/am/current/am_devguide_policies[policies] during the `OnRequest` step of selected stages. Flows may be configured at the security domain level or at an application level.
+== Overview
+
+You can use _flows_ to extend the standard AM behavior by executing policies during the `OnRequest` step of selected stages. Flows can be configured at security domain level or application level.
 
 == Execution context
 

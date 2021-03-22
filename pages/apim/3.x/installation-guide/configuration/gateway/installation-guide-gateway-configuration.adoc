@@ -195,7 +195,11 @@ management:
 
 When defining the <</apim_policies_rate_limiting.html, rate-limiting policy>>, APIM Gateway needs to store data to share with other APIM Gateway instances.
 
-In this example, we are using MongoDB to store counters.
+For Management repositories, you can define a custom prefix for the Rate Limit table or collection name.
+
+==== Store counters in MongoDB
+
+NOTE: If you want to use a custom prefix, you need to follow the following link:apim_installguide_repositories_mongodb.html#use_a_custom_prefix[instructions^].
 
 [source,yaml]
 ----
@@ -203,6 +207,22 @@ ratelimit:
   type: mongodb
   mongodb:
     uri: mongodb://${ds.mongodb.host}/${ds.mongodb.dbname}
+    prefix: # collection prefix
+----
+
+==== Store counters in JDBC
+
+NOTE: If you want to use a custom prefix, you need to follow the following link:apim_installguide_repositories_jdbc.html#use_a_custom_prefix[instructions^].
+
+[source,yaml]
+----
+ratelimit:
+  type: jdbc
+  jdbc:
+    url: jdbc:postgresql://host:port/dbname
+    password: # password
+    username: # username
+    prefix:   # collection prefix
 ----
 
 === Configure the Reporters

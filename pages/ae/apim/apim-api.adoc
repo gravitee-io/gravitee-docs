@@ -10,16 +10,10 @@
 
 == Overview
 
-This section explains how to configure alerts for an API.
+This section explains how to configure alerts for an API in APIM.
 
 .API Management - API Alerts
 image::ae/apim/api_alerts.png[API alerts]
-
-== Rules
-
-== Metrics
-
-== Examples
 
 === Response time greater than X ms
 
@@ -44,14 +38,14 @@ image::ae/apim/api_alert_50percentile.png[Percentile 50 for response-time greate
 
 === No API requests in the last minute
 
-The following example defines an alert triggered by no requests made to the API during the last minute:
+The following example configures an alert for no requests made to the API during the last minute:
 
 .API Management - No api request during last minute
 image::ae/apim/api_alert_api_no_request_last_minute.png[No api request during last minute]
 
 === No API requests from my-application in the last minute
 
-The following example is the same as above, but filters on 'my-application':
+The following example is the same as above, but filters on `my-application`:
 
 .API Management - No API request during last minute
 image::ae/apim/api_alert_application_no_request_last_minute.png[No api request from my-application during last minute]
@@ -69,6 +63,3 @@ This example configures an alert for the number of 5xx errors reaching a thresho
 
 .API Management - Api too many errors
 image::ae/apim/api_alert_api_too_many_errors.png[Api too many errors]
-
-== Notifications
-For more information on how to configure your notifications, see link:/ae/userguide_notifiers.html[Notifications].

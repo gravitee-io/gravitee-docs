@@ -1,4 +1,4 @@
-= Notifications
+= What is a notifier?
 :page-sidebar: ae_sidebar
 :page-permalink: ae/userguide_notifiers.html
 :page-folder: ae/user-guide
@@ -7,20 +7,18 @@
 :page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
 :page-layout: ae
 
-
-In addition to create an alert, you probably want to be notified on your preferred channel.
-That's why we include different kinds of notifiers.
-
 == Notifiers
 
-Notifiers are a kind of plugin available to configure a notification for a recipient.
-We provide 4 notifiers.
+When you create an alert in AE, you can choose to be notified through your preferred channel with one of the provided _notifiers_.
+
+Notifiers are a type of plugin used to configure a notification for a recipient.
+AE includes four notifiers:
 
 * link:/ae/userguide_notifier_email.html[Email]
-* link:/ae/userguide_notifier_system_email.html[System Email]
+* link:/ae/userguide_notifier_system_email.html[System email]
 * link:/ae/userguide_notifier_slack.html[Slack]
 * link:/ae/userguide_notifier_webhook.html[Webhook]
 
 == Notification template properties
 
-Please read link:/ae/userguide_notifier_message.html[the following page] to know how to create dynamic content for your notifications.
+For guidance on creating dynamic content for your notifications, see link:/ae/userguide_notifier_message.html[Create a custom message^].

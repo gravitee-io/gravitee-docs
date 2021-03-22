@@ -1,4 +1,4 @@
-= Access Management
+= Integrate AE with Access Management
 :page-sidebar: ae_sidebar
 :page-permalink: ae/am_installation.html
 :page-folder: ae/am
@@ -8,12 +8,13 @@
 :page-layout: ae
 :page-liquid:
 
-This section is explaining how to integrate the Alert Engine within Gravitee.io Access Management.
+== Overview
+This page explains how to integrate AE with link:https://www.gravitee.io/products/access-management[Gravitee.io Access Management^] (AM).
 
-If you are running a fresh installation of Gravitee.io Enterprise API Platform or if you are running Enterprise
-Docker images, you can skip the installation part.
+If you are performing a new installation of Gravitee.io Enterprise API Platform or running Enterprise
+Docker images, you can skip the installation section.
 
-IMPORTANT: For being able to integrate Access Management with Alert Engine, your Access Management platform must
+IMPORTANT: To integrate AM with AE, your AM platform must
 be an link:/ee/ee_introduction.html[Enterprise version].
 
 == Installation
@@ -26,7 +27,7 @@ $ curl -L https://download.gravitee.io/graviteeio-ae/plugins/connectors/gravitee
 
 === Install connector
 
-In this section, we admit that ${GRAVITEEIO_HOME} can refer to both the API Gateway and the Management API.
+In the command below, ${GRAVITEEIO_HOME} refers to the root directory of both the APIM Gateway and APIM API.
 
 [source,bash]
 [subs="attributes"]
@@ -34,4 +35,27 @@ $ cp gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip ${GRAVITEEIO_HOM
 
 == Configuration
 
-NOTE: work in progress...
+For both AM Gateway and the AM API, you need to configure access to Alert Engine through WebSockets. You can do this with the following configuration:
+
+```yaml
+alerts:
+  alert-engine:
+    enabled: true
+    ws:
+      discovery: true
+      endpoints:
+        - http://localhost:8072/
+      security:
+        username: admin
+        password: adminadmin
+```
+
+=== Endpoints
+You can have as many endpoints as you need. The node will select one of them in round-robin fashion.
+
+=== Discovery mode
+Discovery mode is very useful when running a cluster of Alert Engine. By using it, you just have to refer to a single
+AE node and the other nodes from the cluster will be automatically registered.
+
+.Alert Engine - Auto-discovery
+image::ae/howitworks/discovery.png[Discovery mode]

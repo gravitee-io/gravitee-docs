@@ -4,10 +4,11 @@
 :page-folder: am/user-guide
 :page-layout: am
 
-AM includes the most common enterprise servers to authenticate your users, including Active Directory, LDAP, SAML and HTTP.
+AM includes the most common enterprise servers to authenticate your users:
 
 - link:/am/current/am_userguide_enterprise_identity_provider_ldap.html[Connect your application with an Active Directory / LDAP server]
 - link:/am/current/am_userguide_enterprise_identity_provider_http.html[Connect your application with a web service (HTTP)]
+- link:/am/current/am_userguide_enterprise_identity_provider_kerberos.html[Connect your application with Kerberos]
 - link:/am/current/am_userguide_enterprise_identity_provider_saml2.html[SAML 2.0]
 - link:/am/current/am_userguide_enterprise_identity_provider_cas.html[CAS]
 

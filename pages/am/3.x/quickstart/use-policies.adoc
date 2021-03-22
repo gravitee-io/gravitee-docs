@@ -1,17 +1,19 @@
-= Use Flows
+= Configure a flow
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_quickstart_use_policies.html
 :page-folder: am/quickstart
 :page-layout: am
 
+
 == Overview
 
 You can use flows to extend AM's standard functionality.
 
-This section walks you through using flows to enhance the information displayed in the link:/am/current/am_userguide_user_management_consent.html[End user agreement^] by calling a remote service before rendering the HTML page. For a more detailed overview, see link:/am/current/am_userguide_policies.html[Flows^] in the User Guide.
-The example in this section uses the Gravitee.io Echo API.
+This section walks you through using flows to enhance the information displayed in the link:/am/current/am_userguide_user_management_consent.html[End user agreement^] by calling a remote service before rendering the HTML page. The example in this section uses the Gravitee.io Echo API.
 
-NOTE: AM Flows are available from version 3.5 and replace the AM extension points.
+For more information about flows, see link:/am/current/am_userguide_policies.html[Flows] in the User Guide.
+
+NOTE: AM flows are available from version 3.5 and replace extension points.
 
 == Before you begin
 
@@ -21,7 +23,7 @@ You must link:/am/current/am_quickstart_app_setup.html[Set up your first applica
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
 . Click *Settings > Flows*.
-. Select the *CONSENT* flow and drag & drop the *HTTP Callout* policy into the *Pre Consent* step.
+. Select the *CONSENT* flow and drag the *HTTP Callout* policy to the *Pre Consent* step.
 . Give your policy a *Name* and the following configuration:
 
 - HTTP Method: `GET`
@@ -43,10 +45,10 @@ curl -H "Authorization: Bearer :accessToken" \
    {
       "name":"ALL",
       "pre":[
-         
+
       ],
       "post":[
-         
+
       ],
       "enabled":true,
       "type":"root"
@@ -54,10 +56,10 @@ curl -H "Authorization: Bearer :accessToken" \
    {
       "name":"LOGIN",
       "pre":[
-         
+
       ],
       "post":[
-         
+
       ],
       "enabled":true,
       "type":"login"
@@ -74,7 +76,7 @@ curl -H "Authorization: Bearer :accessToken" \
          }
       ],
       "post":[
-         
+
       ],
       "enabled":true,
       "type":"consent"
@@ -82,10 +84,10 @@ curl -H "Authorization: Bearer :accessToken" \
    {
       "name":"REGISTER",
       "pre":[
-         
+
       ],
       "post":[
-         
+
       ],
       "enabled":true,
       "type":"register"

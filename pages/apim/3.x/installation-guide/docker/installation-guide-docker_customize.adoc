@@ -32,6 +32,8 @@ $ docker run  \
 
 This mounts a new volume containing additional plugins and declares them as part of the configuration (`--env GRAVITEE_PLUGINS_PATH_1=$${gravitee.home}/plugins-ext`)
 
+NOTE: Plugins must also be installed in APIM API.
+
 === Use Redis as the datastore for rate-limit counters
 
 This example shows how to switch from MongoDB (default connector) to Redis for rate-limit (the example assumes the Redis connector is available from `./plugins` on the Docker host):

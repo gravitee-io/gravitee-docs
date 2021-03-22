@@ -1,11 +1,14 @@
-= Flows
+= Flow configuration
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_userguide_policies_extension_points.html
 :page-folder: am/user-guide
 :page-layout: am
 
+[label label-version]#New in version 3.5#
 
-There are currently four flows defined in AM:
+== Overview
+
+AM includes four flow types:
 
 * all
 * login
@@ -14,13 +17,13 @@ There are currently four flows defined in AM:
 
 image::am/current/graviteeio-am-userguide-policies.png[]
 
-== All Flow
+== All flow
 
-The *all* flow is executed on each incoming request for one of the login, consent and register flow.
+The *ALL* flow is executed on each incoming request for one of the login, consent or register flows.
 
-== Login Flow
+== Login flow
 
-The login flow allows you to fetch more information or validate incoming data during the End-User authentication phase.
+The *LOGIN* flow allows you to fetch more information or validate incoming data during the End-User authentication phase.
 
 === Pre Login
 
@@ -41,9 +44,9 @@ The following attributes are available while processing the policy chain :
 * link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
 * link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
 
-== Consent Flow
+== Consent flow
 
-The consent flow allows you to fetch more information or validate incoming data during the End-User consent phase.
+The *CONSENT* flow allows you to fetch more information or validate incoming data during the End-User consent phase.
 This flow happens after the user has logged in.
 
 === Pre End-User Consent
@@ -68,9 +71,9 @@ The following attributes are available while processing the policy chain :
 * link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
 * link:/am/current/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request[Authorization Request]: OAuth 2.0 Authorization Request
 
-== Register Flow
+== Register flow
 
-The register flow allows you to fetch more information or validate incoming data during the End-User registration phase.
+The *REGISTER* flow allows you to fetch more information or validate incoming data during the End-User registration phase.
 
 === Pre End-User Registration
 
@@ -93,7 +96,7 @@ The following attributes are available while processing the policy chain :
 
 == Execution context information
 
-This section describe the objects provided by the execution context. 
+This section describe the objects provided by the execution context.
 
 === Request
 ==== Properties

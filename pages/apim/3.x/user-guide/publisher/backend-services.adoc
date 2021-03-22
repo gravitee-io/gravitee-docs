@@ -3,6 +3,7 @@
 :page-permalink: apim/3.x/apim_publisherguide_backend_services.html
 :page-folder: apim/user-guide/publisher
 :page-layout: apim3x
+:page-liquid:
 
 == Overview
 
@@ -116,13 +117,25 @@ This section explains how to create a global health check configuration. When yo
 
 To create an endpoint-specific health check configuration or disable health checking for an endpoint, choose the endpoint first and click the health check settings, as described in <<Add endpoints to your group>>.
 
+From APIM version 3.6, you can view the health of your APIs in *Dashboard*, by clicking the *APIS STATUS* tab:
+
+image:apim/3.x/api-publisher-guide/backend-services/api-status-dashboard.png[]
+
+To configure health checking:
+
 . Click *Health-check*.
 . Click the *Configure Health-check* link at the top of the page.
 . Select *Enable health-check*.
 +
 image:apim/3.x/api-publisher-guide/backend-services/api-backend-health-check.png[]
 
+ifeval::[{{ site.products.apim._3x.version }} < 3.6.0]
 . Enter the interval between each health check as an *Interval* number and a *Time Unit*. Note that this interval is applied for each gateway in your APIM environment.
+endif::[]
+ifeval::[{{ site.products.apim._3x.version }} >= 3.6.0]
+. Enter the schedule as a `cron` expression.
+endif::[]
+
 . Enter the *HTTP Method* which triggers the health check.
 . Add the path which triggers the health check. Select *From root path* to apply the path specified at root URL level. For example, if your endpoint URL is `www.test.com/api`, this option removes `/api` before appending the path.
 . Specify headers which trigger the health check, if any.

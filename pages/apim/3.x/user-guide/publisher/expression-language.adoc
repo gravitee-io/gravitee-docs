@@ -4,6 +4,8 @@
 :page-folder: apim/user-guide/publisher
 :page-layout: apim3x
 
+== Overview
+
 The APIM Expression Language (EL for short) is one of the key features
 that can be used by API publishers to configure various aspects and services of an API.
 
@@ -14,10 +16,12 @@ This means that you can do everything described in the link.
 In addition, APIM extends the standard SpEL capabilities by providing extra objects and properties
 inside the expression language context.
 
-== Syntax
-The expression language syntax is as follows:
+== Usage
+The basic expression language syntax is as follows:
 
 `{#request.id}`
+
+See the sections below for example expression notations.
 
 == API
 === Properties
@@ -25,10 +29,19 @@ The expression language syntax is as follows:
 As an API publisher, you can define properties for your API. These properties are
 automatically _injected_ into the expression language context to be used later.
 
-=== Example
+==== Example
 
 * Get the value of the property `my-property` defined in API properties:
 `{#properties['my-property']}`
+
+=== Dictionaries
+
+Dictionaries work in a similar way to properties, but you need to specify the dictionary name as well as the property name.
+
+==== Example
+
+* Get the value of the property `my-property` defined in dictionary `my-dictionary`:
+`{#dictionaries['my-dictionary']['my-property']}`
 
 === Endpoints
 When you define endpoints for your API, you need to give them a _name_ which
@@ -41,7 +54,9 @@ be retrieved with EL by using the following syntax:
 `{#endpoints['default']}`
 
 == Request
-=== Properties
+
+The properties you can access for API requests are listed below.
+
 |===
 .^|Property      |Description            ^.^|Type            |Example
 
@@ -65,7 +80,7 @@ be retrieved with EL by using the following syntax:
 .^|content       |Body content           ^.^|string          |-
 |===
 
-WARNING: `{#request.content}` is only available when the policy is bound to an `on-request-content` phase.
+WARNING: `{#request.content}` is only available for policies bound to an `on-request-content` phase.
 
 === Example
 
@@ -76,7 +91,9 @@ WARNING: `{#request.content}` is only available when the policy is bound to an `
 `{#request.paths[1]}`
 
 == Request context
+
 === Properties
+
 |===
 |Property |Description |Type |Always present
 
@@ -169,7 +186,7 @@ register other attributes in the context. See the documentation for the policies
 
 == Policies
 You can use the EL to update some aspects of policy configuration.
-The policy needs to specify if it supports EL or not.
+The policy specifies if it supports EL or not.
 
 == Mixin
 

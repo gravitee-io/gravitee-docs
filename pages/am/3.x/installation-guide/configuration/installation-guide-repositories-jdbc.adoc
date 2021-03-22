@@ -124,7 +124,8 @@ Temporary data are stored into the following tables:
 * scope_approvals,
 * request_objects,
 * login_attempts,
-* uma_permission_ticket
+* uma_permission_ticket,
+* auth_flow_ctx
 
 NOTE: If you want to clean data by yourself, please use the field `expire_at` to know if the row of the table must be deleted.
 

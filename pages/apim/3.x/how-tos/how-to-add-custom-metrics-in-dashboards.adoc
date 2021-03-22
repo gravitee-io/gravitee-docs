@@ -6,16 +6,20 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, how-to, custom, metric, dashboard
 :page-layout: apim3x
 
+
+[label label-enterprise]#Enterprise feature#
+
+
 == Overview
 
-This How to describes how you can easily configure the link:/apim/3.x/apim_policies_assign_metrics.html[Assign Metrics policy] to use custom metrics in your dashboards.
+This How to describes how you can easily configure the Assign metrics policy to use custom metrics in your dashboards.
 
 == Assign metrics policy
 
-. In the design studio, use the assign-metrics policy on a request or a response.
-. Add a new metric, give it a name. This name will be the _field_ name to use in dashboards. +
+. In Design Studio, add the Assign metrics policy to a request or a response.
+. Add a new metric and give it a name. This name will be the field name to use in dashboards. +
 _Example: MyCustomHeader_
-. Give a value to your metric. It can be a static value but you can also use Expression Language syntax. +
+. Specify a value for your metric. It can be a static value, but you can also use Expression Language syntax. +
 _Example:_ `{#request.headers['X-MyCustomHeader'] != null ? #request.headers['X-MyCustomHeader'][0] : null}`
 
 .Assign-metrics policy configuration

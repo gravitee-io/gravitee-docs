@@ -1,0 +1,28 @@
+= Markdown templates
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_publisherguide_publish_documentation_markdown_template.html
+:page-folder: apim/user-guide/publisher
+:page-layout: apim3x
+
+== Overview
+
+You can create Markdown template pages in the same way as Markdown pages.
+See link:/apim/3.x/apim_publisherguide_publish_documentation_markdown.html[Markdown documentation] for more information.
+
+The sections below describe specific configuration for Markdown templates.
+
+== Create a template page
+
+You can use the *PAGE* editor to edit a Markdown page's content and preview it.
+
+As for any Markdown page, you can use templates to create your templates.
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-template-creation.png[]
+
+== Using a template page
+
+When creating a Markdown page, you can select the template from a list, if any are available.
+
+You can now modify the content as you want.
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-template-usage.png[]

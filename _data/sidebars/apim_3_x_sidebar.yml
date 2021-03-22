@@ -257,9 +257,15 @@ entries:
                - title: Connect with Keycloak
                  output: web
                  url: /apim/3.x/apim_installguide_authentication_keycloak.html
+         - title: Configure cache
+           output: web
+           url: /apim/3.x/apim_installguide_cache.html
          - title: Configure notifications
            output: web
            url: /apim/3.x/apim_installguide_configuration_notifications.html
+         - title: Configure dictionaries
+           output: web
+           url: /apim/3.x/apim_installguide_configuration_dictionaries.html
       - title: API Publisher Guide
         output: web
         folderitems:
@@ -272,7 +278,7 @@ entries:
           - title: Plans and subscriptions
             output: web
             url: /apim/3.x/apim_publisherguide_plans_subscriptions.html
-          - title: Manage members
+          - title: API users and ownership
             output: web
             url: /apim/3.x/apim_publisherguide_manage_members.html
           - title: Response templates
@@ -284,7 +290,10 @@ entries:
           - title: Logging and analytics
             output: web
             url: /apim/3.x/apim_publisherguide_logging_analytics.html
-          - title: Load balancing, failover and health checks
+          - title: Audit trail
+            output: web
+            url: /apim/3.x/apim_publisherguide_audit.html
+          - title: Load balancing, failover and health check
             output: web
             url: /apim/3.x/apim_publisherguide_backend_services.html
           - title: Send notifications
@@ -333,6 +342,9 @@ entries:
                   - title: Markdown documentation
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation_markdown.html
+                  - title: Markdown template documentation
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_publish_documentation_markdown_template.html
                   - title: OpenAPI documentation
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation_openapi.html
@@ -448,7 +460,7 @@ entries:
           - title: Callout HTTP
             output: web
             url: /apim/3.x/apim_policies_callout_http.html
-          - title: Data Logging Masking
+          - title: Data logging masking
             output: web
             url: /apim/3.x/apim_policies_data_logging_masking.html
           - title: Dynamic routing
@@ -553,6 +565,25 @@ entries:
           - title: XSLT
             output: web
             url: /apim/3.x/apim_policies_xslt.html
+
+      - title: Kubernetes Controller
+        output: web
+        folderitems:
+          - title: Introduction
+            output: web
+            url: /apim/3.x/apim_kubernetes_overview.html
+          - title: Quick Start
+            output: web
+            url: /apim/3.x/apim_kubernetes_quick_start.html
+          - title: How to install
+            output: web
+            url: /apim/3.x/apim_kubernetes_installation.html
+          - title: Custom Resources
+            output: web
+            url: /apim/3.x/apim_kubernetes_custom_resources.html
+          - title: Admission Hook
+            output: web
+            url: /apim/3.x/apim_kubernetes_admission_hook.html
 
       - title: API Reference
         output: web
