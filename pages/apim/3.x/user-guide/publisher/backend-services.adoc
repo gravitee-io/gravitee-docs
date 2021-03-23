@@ -36,7 +36,10 @@ APIM Gateway includes a built-in load balancer, which you can enable and configu
 
 You configure load balancing by creating a logical grouping of endpoints and specifying a load balancing algorithm for them. For example, you can define a group of endpoints representing instances of the same API deployed on different servers.
 
-APIM always uses the first group defined for load balancing. Any additional groups you define are for use in redirection rules in the `dynamic-routing` policy. For more details on how to use named groups in regular expressions in this policy, see link:/apim/3.x/apim_policies_dynamic_routing.html#regular-expressions[Dynamic routing^].
+APIM always uses the first group defined for load balancing. Any additional groups you define are for use in policies:
+
+* redirection rules including named groups in the link:/apim/3.x/apim_policies_dynamic_routing.html#regular_expressions[Dynamic routing^] policy
+* traffic shadowing using endpoints in these groups link:/apim/3.x/apim_policies_traffic_shadowing.html[Traffic shadowing^] policy
 
 === Load balancing types
 
