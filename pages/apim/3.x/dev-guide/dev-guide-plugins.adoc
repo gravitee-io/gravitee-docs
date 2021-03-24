@@ -5,7 +5,11 @@
 :page-folder: apim/dev-guide
 :page-layout: apim3x
 
-APIM _plugins_ are additional components that can be _plugged into_ the Gravitee ecosystem. Plugins help you to specify behaviors that meet your strategic needs.
+APIM _plugins_ are additional components that can be _plugged into_ the Gravitee ecosystem. You can use plugins to extend and customize the behavior of Gravitee to meet your strategic needs.
+
+NOTE: APIM includes a default set of plugins with each distribution. You can also obtain and install some additional plugins from Gravitee. For more information, see the Installation Guide.
+
+This section describes how to create your own custom plugins.
 
 == Common structure
 

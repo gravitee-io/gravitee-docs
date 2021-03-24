@@ -35,7 +35,10 @@ This repository plugin is for connecting to SQL databases.
 |===
 
 == Install the JDBC plugin
-NOTE: You need to repeat the following steps on each component (APIM Gateway and APIM API) where the SQL database is used.
+
+NOTE: Because the plugin is part of the default distribution from APIM version 3.5, you only need to complete these steps for version 3.4 or earlier.
+
+Repeat these steps on each component (APIM Gateway and APIM API) where the SQL database is used.
 
  . Download the plugin corresponding to your APIM version (take the latest maintenance release).
  . Place the zip file in the plugin directory for each component (`$GRAVITEE_HOME/plugins`).
@@ -81,7 +84,7 @@ management:
 [[use_a_custom_prefix]]
 == Use a custom prefix
 
-From APIM 3.7, you can use a custom prefix for your tables name. This is useful if you want to use the same databases for APIM and AM, for example.
+From APIM 3.7, you can use a custom prefix for your table names. This is useful if you want to use the same databases for APIM and AM, for example.
 
 The following steps explain how to rename your tables with a custom prefix, using the prefix `prefix_` as an example.
 
@@ -98,9 +101,9 @@ By default, these values are empty.
 
 NOTE: Before running any scripts, you need to create a dump of your existing database. You need to repeat these steps on both APIM Gateway and APIM API.
 
-1. Update values `management.jdbc.prefix` and `ratelimit.jdbc.prefix` in your `gravitee.yml` configuration file.
-2. Run the application on a new database to generate `prefix_databasechangelog`.
-3. Replace the content of the `databasechangelog` table with the content you generated from `prefix_databasechangelog`.
-4. Rename your tables using format `prefix_tablename`.
-5. Rename your indexes using format `idx_prefix_indexname`.
-6. Rename your primary keys using format `pk_prefix_pkname`.
+. Update values `management.jdbc.prefix` and `ratelimit.jdbc.prefix` in your `gravitee.yml` configuration file.
+. Run the application on a new database to generate `prefix_databasechangelog`.
+. Replace the content of the `databasechangelog` table with the content you generated from `prefix_databasechangelog`.
+. Rename your tables using format `prefix_tablename`.
+. Rename your indexes using format `idx_prefix_indexname`.
+. Rename your primary keys using format `pk_prefix_pkname`.
