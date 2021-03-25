@@ -162,7 +162,10 @@ entries:
           - title: Upgrade Guide
             output: web
             url: /apim/3.x/apim_installguide_migration.html
-
+            subfolderitems:
+              - title: Upgrade
+                output: web
+                url: /apim/3.x/apim_installguide_migration.html
       - title: Configuration Guide
         output: web
         folderitems:
