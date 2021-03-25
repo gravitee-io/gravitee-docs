@@ -1,0 +1,182 @@
+= Reindexing when upgrading from APIM 1.20
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installguide_reindex.html
+:page-folder: apim/installation-guide
+:page-toc: true
+:page-layout: apim3x
+
+== Overview
+
+When you upgrade APIM from version 1.20 to a later version, you need to reindex using the commands below.
+
+== Retrieve the old index
+
+[source,bash]
+----
+curl -X GET "https://{ES_HOST}/_cat/indices?v"
+----
+
+== Create a copy of the old index
+
+[source,bash]
+----
+curl -X POST "https://{ES_HOST}/_reindex" -H 'Content-Type: application/json' -d '
+{
+  "source": {
+    "index": "gravitee-request-2019.01.22"
+  },
+  "dest": {
+    "index": "tmp_gravitee-request-2019.01.22"
+  }
+}
+'
+----
+
+== Delete the old index
+
+[source,bash]
+----
+curl -X DELETE "https://{ES_HOST}/gravitee-request-2019.01.22"
+----
+
+== Create a new index placeholder from the temporary placeholder
+
+[source,bash]
+----
+
+curl -X POST "https://{ES_HOST}/_reindex" -H 'Content-Type: application/json' -d '
+{
+  "source": {
+    "index": "tmp_gravitee-request-2019.01.22"
+  },
+  "dest": {
+    "index": "gravitee-request-2019.01.22"
+  }
+}
+'
+----
+
+== Create the new index
+
+[source,bash]
+----
+curl -X PUT "https://{ES_HOST}/gravitee-request-2019.01.22/_mapping/request" -H 'Content-Type: application/json' -d '
+{
+ "properties": {
+        "@timestamp": {
+            "type": "date"
+        },
+        "api": {
+            "type": "keyword"
+        },
+        "api-key": {
+            "type": "keyword",
+            "index": false
+        },
+        "api-response-time": {
+            "type": "integer"
+        },
+        "application": {
+            "type": "keyword"
+        },
+        "endpoint": {
+            "type": "keyword"
+        },
+        "gateway": {
+            "type": "keyword"
+        },
+        "local-address": {
+            "type": "keyword",
+            "index": false
+        },
+        "message": {
+            "type": "keyword",
+            "index": false
+        },
+        "method": {
+            "type": "short"
+        },
+        "plan": {
+            "type": "keyword"
+        },
+        "proxy-latency": {
+            "type": "integer",
+            "index": false
+        },
+        "remote-address": {
+            "type": "ip",
+            "index": false
+        },
+        "geoip": {
+            "properties": {
+                "continent_name": {
+                    "type": "keyword",
+                    "index": true
+                },
+                "country_iso_code": {
+                    "type": "keyword",
+                    "index": true
+                },
+                "region_name": {
+                    "type": "keyword",
+                    "index": true
+                },
+                "city_name": {
+                    "type": "keyword",
+                    "index": true
+                },
+                "location": {
+                    "type": "geo_point"
+                }
+            }
+        },
+        "request-content-length": {
+            "type": "integer",
+            "index": false
+        },
+        "response-content-length": {
+            "type": "integer",
+            "index": false
+        },
+        "response-time": {
+            "type": "integer"
+        },
+        "status": {
+            "type": "short"
+        },
+        "tenant": {
+            "type": "keyword"
+        },
+        "transaction": {
+            "type": "keyword"
+        },
+        "uri": {
+            "type": "keyword"
+        },
+        "path": {
+            "type": "keyword"
+        },
+        "mapped-path": {
+            "type": "keyword"
+        },
+        "host": {
+            "type": "keyword"
+        }
+    }
+}
+'
+----
+
+== Delete the old index copy
+
+[source,bash]
+----
+curl -X DELETE "https://{ES_HOST}/tmp_gravitee-request-2019.01.22"
+----
+
+== Check the new index
+
+[source,bash]
+----
+curl -X GET "https://{ES_HOST}/_cat/indices?v"
+----

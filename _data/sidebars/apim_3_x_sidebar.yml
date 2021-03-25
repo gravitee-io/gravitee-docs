@@ -159,13 +159,15 @@ entries:
                   - title: Deploy a hybrid architecture in Kubernetes
                     output: web
                     url: /apim/3.x/apim_installguide_hybrid_kubernetes.html
-          - title: Upgrade Guide
-            output: web
-            url: /apim/3.x/apim_installguide_migration.html
-            subfolderitems:
-              - title: Upgrade
+              - title: Upgrade Guide
                 output: web
-                url: /apim/3.x/apim_installguide_migration.html
+                subfolderitems:
+                  - title: Reindexing when upgrading from APIM 1.20
+                    output: web
+                    url: /apim/3.x/apim_installguide_reindex.html
+                  - title: Upgrade
+                    output: web
+                    url: /apim/3.x/apim_installguide_migration.html
       - title: Configuration Guide
         output: web
         folderitems:
