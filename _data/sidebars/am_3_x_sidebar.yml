@@ -316,6 +316,15 @@ entries:
         - title: Reset a user's MFA
           output: web
           url: /am/current/am_userguide_mfa_user_factors.html
+      - title: Resources
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_resources.html
+        - title: Twilio
+          output: web
+          url: /am/current/am_userguide_resources_twilio.html
       - title: Passwordless (W3C WebAuthn)
         output: web
         subfolderitems:
