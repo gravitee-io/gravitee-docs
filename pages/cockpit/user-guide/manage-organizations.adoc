@@ -15,9 +15,12 @@ You can:
 
 * View details of the organization in the dashboard
 * Update the organization settings
+* Delete the organization
+* Add environments to the organization (see link:/cockpit/1.x/cockpit_quickstart_getstarted.html#create_a_new_environment[Create a new environment^])
 * Add members
 * Invite members
 * Transfer ownership of the organization
+* Add an environment to an organization
 
 You can update organization settings by selecting the organization from the drop-down list on the left or clicking an organization's dashboard icon image:icons/dashboard-icon.png[role="icon"] in the interactive map, then clicking *Settings* on the left.
 
@@ -30,6 +33,13 @@ image:cockpit/organization-settings.png[]
 . Update the organization *Description*.
 . Click *SAVE*.
 . Update the *Human Readable ID* and click *CHANGE HRID*.
+
+== Delete the organization
+
+NOTE: You cannot delete an organization with environments defined.
+
+. Go to the organization settings page.
+. Click *DELETE THIS ORGANIZATION*.
 
 == Add a member to the organization
 

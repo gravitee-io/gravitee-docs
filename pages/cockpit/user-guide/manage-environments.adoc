@@ -9,14 +9,13 @@
 
 Environments in Cockpit correspond to APIM and AM environments. Environment members and owners described in the procedures below can be users which are already defined with the appropriate role in APIM and AM.
 
-// can't see how the concept of environment is defined in AM
-
 == What can you do with an environment?
 
 You can:
 
 * View details of the environment in the dashboard
 * Update the environment settings
+* Delete the environment
 * Add members
 * Invite members
 * Transfer ownership of the environment
@@ -37,6 +36,13 @@ image:cockpit/environment-settings.png[]
 . Update the environment *Description*.
 . Click *SAVE*.
 . Update the *Human Readable ID* and click *CHANGE HRID*.
+
+== Delete the environment
+
+NOTE: You cannot delete an environment with linked installations.
+
+. Go to the environment settings page.
+. Click *DELETE THIS ENVIRONMENT*.
 
 == Add a member to the environment
 
