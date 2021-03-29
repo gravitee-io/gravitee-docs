@@ -43,3 +43,10 @@ image::cockpit/linked-installations.png[]
 image::cockpit/linked-installations-login.png[]
 +
 You are redirected to the Console login page of the APIM or AM instance. If multiple APIM or AM instances are linked, the Console login page of the first instance linked to the environment opens.
+
+== Delete an installation
+
+WARNING: Never delete an installation unless you are sure you want to permanently remove it from Cockpit. Deleting installations permanently closes the WebSocket link between Cockpit and the installation. It cannot be reopened, even by restarting the installation. 
+
+. Click the installation details icon.
+. Click *DELETE THIS INSTALLATION*.
