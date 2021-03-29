@@ -49,10 +49,32 @@ Content-Type: application/json
 }
 ----
 
-|`GET /_node/health?probe=management-api,management-repository,`
-|Gets the health status of the component. Probes can be filtered using the optional `probe` query param. If no query param, you get the health of all probes. If the return status is 200 then everything is ok, if 500, there is at least one error.
+|`GET /_node/health?probes=#probe1,#probe2`
+|Gets the health status of the component. Probes can be filtered using the optional `probes` query param. The parameter can handle a list of probes, separated by commas (`,`). If no query param, you get the health of all probes. If the return status is 200 then everything is ok, if 500, there is at least one error.
 This endpoint can be used by a load balancer, to determine if a component instance is not in the pool, for example.
+
+Some probes are not displayed by default. You have to explicitly use the query param to retrieve them.
+These probes are:
+
+- *cpu*
+
+- *memory*
+
+- *api-sync*
+
+Those probes are considered healthy if there are under a configurable threshold (default is 80%). To configure it, add in your `gravitee.yml`:
+
+[source, yml]
+----
+services:
+  health:
+    threshold:
+      cpu: 80
+      memory: 80
+----
+
 a|
+`GET /_node/health?probes=management-api,management-repository`
 [source,json]
 ----
 HTTP/1.1 200 OK
@@ -63,6 +85,9 @@ Content-Type: application/json
         "healthy": true
     },
     "management-repository": {
+        "healthy": true
+    },
+    "api-sync": {
         "healthy": true
     }
 }
