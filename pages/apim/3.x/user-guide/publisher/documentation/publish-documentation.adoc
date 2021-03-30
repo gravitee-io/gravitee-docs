@@ -131,18 +131,19 @@ APIM adds the files to your documentation set.
 +
 image:apim/3.x/api-publisher-guide/documentation/import-multiple-files-result.png[]
 
+=== Publish your documentation
 
-== Publish a page
-
-Once your documentation page is created, you can view it before publishing it in APIM Portal. APIM displays the following message:
+Once your documentation page is created, you can view it before publishing it. APIM displays the following message:
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-draft.png[]
 
 You can publish a page in one of the following ways:
 
 * Check the *Publish this page* option in the *CONFIGURATION* tab:
-
++
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-publish-1.png[]
++
+When you publish the page in this way, you can enable the option *Allow access to anonymous user* to display the page to users browsing APIM Portal without logging in. The option is checked by default.
 
 * Click the cloud icon in the documentation list:
 
