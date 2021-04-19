@@ -80,10 +80,10 @@ The list of permissions by scope is as follows:
 | Manages user groups.
 
 | TAG
-| Manages sharding tags.
+| Manages sharding tags. *Deprecated, will be removed on 3.10.0*
 
 | TENANT
-| Manages tenants.
+| Manages tenants. *Deprecated, will be removed on 3.10.0*
 
 | API
 | Manages APIs in general. This means that the `CREATE` action is used to establish if the user is allowed to create an API or not,
@@ -111,7 +111,7 @@ and the `READ` permission to allow the user to request the policies list and res
 | Manages environment alerting.
 
 | ENTRYPOINT
-| Manages environment entrypoint configuration.
+| Manages environment entrypoint configuration. *Deprecated, will be removed on 3.10.0*
 
 | SETTINGS
 | Manages environment settings.
@@ -161,6 +161,15 @@ and the `READ` permission to allow the user to request the policies list and res
 
 | ROLE
 | Manages roles.
+
+| TAG
+| Manages sharding tags.
+
+| TENANT
+| Manages tenants.
+
+| ENTRYPOINT
+| Manages environment entrypoint configuration.
 
 |===
 
