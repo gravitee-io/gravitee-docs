@@ -10,6 +10,21 @@ WARNING: If you plan to skip versions when you upgrade, ensure that you read the
 
 WARNING: Be sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs;`
 
+== Upgrade to 3.8.0
+
+NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.8.html[Breaking changes in 3.8]
+
+=== Repository
+
+==== Mongodb
+
+Before you run any scripts, create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/3.8.x/docs/upgrades/3.x/3.8.0/mongodb/1-add-domain-hrid.js[upgrades/3.x/3.8.0/mongodb/1-add-domain-hrid.js]::
+This script updates the database to reflect the following changes :
+
+* Add hrid field to the security domains
+
 == Upgrade to 3.6.0
 
 NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.6.html[Breaking changes in 3.6]
