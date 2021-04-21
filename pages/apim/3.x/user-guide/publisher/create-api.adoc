@@ -67,7 +67,7 @@ image::apim/3.x/api-publisher-guide/manage-apis/create-api-gateway.png[]
 .. Enter *Rate limit* and *Quota* details. In this example, we are specifying a rate limit of 1 request every 5 seconds.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-plan1.png[]
-.. Enter *Path authorization* details, using link:/apim/3.x/apim_policies_overview.html#ant-notation[Ant^] notation and an HTTP method.
+.. Enter *Resource filtering* details, using link:/apim/3.x/apim_policies_overview.html#ant-notation[Ant^] notation and an HTTP method.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-plan-path.png[]
 .. Click *NEXT*.
