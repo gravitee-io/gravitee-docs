@@ -223,15 +223,15 @@ image::apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-quota.png[Gr
 
 NOTE: You can use quotas to enforce business or financial requirements to limit the number of calls partner or third-party apps can make in a period of time.
 
-=== Path authorization
+=== Resource filtering
 
-You can use path authorization to limit access to a subset of API resources.
+You can use resource filtering to limit access to a subset of API resources.
 
 In the following example, the plan only allows GET requests:
 
-image::apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-path-authorization.png[Gravitee.io - Create plan - Path Authorization , 873, 530, align=center, title-align=center]
+image::apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-path-authorization.png[Gravitee.io - Create plan - Resource Filtering, 873, 530, align=center, title-align=center]
 
-NOTE: You can use path authorization to make an API read-only for public members and give premium members access to more resources.
+NOTE: You can use resource filtering to make an API read-only for public members and give premium members access to more resources.
 
 == Configure plan policies
 
