@@ -295,6 +295,25 @@ In this example, we are configuring deployment only for APIs tagged as `product`
 tags: 'product,store,!international'
 ----
 
+=== Configure organizations and environments
+
+You can configure organizations and environments using their `hrids` on APIM Gateway instances either at the system property level or with `gravitee.yml`.
+
+Only APIs and dictionaries belonging to the configured organizations and environments will be loaded.
+
+If only `organizations` configuration is set, then all environments belonging to these organizations are used.
+If only `environments` configuration is set, then all environments matching the setting will be used, regardless their organization.
+If both `organizations` and `environments` are set, all environments matching the setting and belonging to these organizations will be used.
+If none of these fields is set, then all organizations and environment are used.
+
+In this example, we are configuring deployment only for `dev` and `integration` environments for `mycompany` organization.
+
+[source,yaml]
+----
+organizations: mycompany
+environments: dev,integration
+----
+
 === Default configuration
 
 You can configure various default properties of APIM Gateway in your `gravitee.yml` file.
