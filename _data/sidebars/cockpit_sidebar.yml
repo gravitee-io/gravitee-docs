@@ -22,6 +22,20 @@ entries:
         output: web
         url: /cockpit/1.x/cockpit_quickstart_getstarted.html
 
+  - title: Configuration Guide
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /cockpit/1.x/cockpit_configurationguide.html
+      subfolders:
+      - title: Configure repositories
+        output: web
+        subfolderitems:
+          - title: JDBC
+            output: web
+            url: /cockpit/1.x/cockpit_installguide_repositories_jdbc.html
+
   - title: User Guide
     output: web
     folderitems:
