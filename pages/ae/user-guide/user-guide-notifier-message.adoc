@@ -33,6 +33,10 @@ These properties are available regardless of the alert type.
 |`alert.description`
 |Description of the alert
 
+|`alert.conditions[]`
+|Array of conditions. Each condition contains specific fields. +
+See link:/ae/userguide_conditions.html[Conditions]
+
 |`notification.timestamp`
 |Timestamp (long value) of the trigger
 
