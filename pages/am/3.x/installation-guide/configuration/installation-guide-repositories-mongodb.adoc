@@ -49,7 +49,6 @@ management:
     connectTimeOut:             # mongodb connection time out (default 0 -> never)
     maxWaitTime:                # mongodb max wait time (default 120000)
     socketTimeout:              # mongodb socket time out (default 0 -> never)
-    socketKeepAlive:            # mongodb socket keep alive (default false)
     maxConnectionLifeTime:      # mongodb max connection life time (default null)
     maxConnectionIdleTime:      # mongodb max connection idle time (default null)
     minHeartbeatFrequency:      # mongodb min heartbeat frequency (default null)
