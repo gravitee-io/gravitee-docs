@@ -35,6 +35,12 @@ entries:
           - title: JDBC
             output: web
             url: /cockpit/1.x/cockpit_installguide_repositories_jdbc.html
+      - title: Configure identity providers
+        output: web
+        subfolderitems:
+          - title: Generic OAuth2
+            output: web
+            url: /cockpit/1.x/cockpit_installguide_idp_generic_oauth2.html
 
   - title: User Guide
     output: web
