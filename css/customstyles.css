@@ -168,6 +168,12 @@ table > thead:first-child > tr:first-child > td {
 
 table > tbody > tr:nth-of-type(odd) {
     background-color: #f9f9f9;
+    color: #262626;
+}
+
+table > tbody > tr:nth-of-type(even) {
+    background-color: #ffffff;
+    color: #262626;
 }
 
 table col[class*="col-"] {
@@ -245,10 +251,10 @@ ul#results-container a:hover {
     color: black;
 }
 #search-input {
-    padding: .5em;
     margin-left:20px;
     width:20em;
     font-size: 0.8em;
+    font-weight: bold;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -303,11 +309,9 @@ li.dropdownActive a {
     font-weight: bold;
 }
 
-
 .post-content a.fa-rss {
     color: orange;
 }
-
 
 .navbar-inverse .navbar-nav > li > a {
     background-color: transparent;
@@ -348,11 +352,11 @@ a.accordion-toggle, a.accordion-collapsed {
 }
 
 .nav > li {
-    margin: 1px 0;
+    margin: 0;
 }
 
 .nav > li li {
-    margin: 2px 0;
+    margin: 0;
 }
 
 .nav a {
@@ -468,7 +472,7 @@ span.projectTitle {
 
 .footer-links a {
     margin: 0.5rem;
-    color: #86c3d0;
+    color: #0ff;
 }
 
 .footer-links a[href^="http://"]::after, .footer-links a[href^="https://"]::after {
@@ -492,7 +496,7 @@ span.projectTitle {
 }
 
 .newsletter-success {
-    color: #86c3d0;
+    color: #0ff;
 }
 
 .newsletter-box p {
@@ -505,9 +509,10 @@ span.projectTitle {
 }
 
 .newsletter-title {
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
+    flex: 1;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .newsletter-form {
@@ -539,45 +544,46 @@ span.projectTitle {
 }
 
 .gv-input {
-    border: var(--gv-input--bdw, 1px) var(--gv-input--bds, solid) var(--gv-input--bdc, var(--gv-theme-neutral-color-dark, #D9D9D9));
+    border: 2px solid #fff;
+    border-radius: 8em;
     box-sizing: border-box;
-    border-radius: 4px;
     font-style: normal;
     font-weight: normal;
     outline: none;
     width: 100%;
     -webkit-appearance: none;
-    padding: 10px 5px;
+    padding: 10px 15px;
     font-size: 14px;
     line-height: 17px;
     height: calc(17px + 10px + 10px);
+    margin-bottom: 0;
+    background-color: transparent;
+    color: #fff;
+}
+
+.gv-input::placeholder {
+    color: #fff;
 }
 
 .gv-button {
-    border: 1px solid #86c3d0;
-    outline: 0;
-    font-size: 14px;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    text-decoration: none;
-    box-sizing: border-box;
-    display: flex;
+    background-color: #fff;
+    border: none;
+    border-radius: 8em;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
     align-items: center;
-    text-align: center;
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    transition: all 75ms ease-in-out;
-    background-color: #86c3d0;
+    -webkit-transition: background-color .2s;
+    transition: background-color .2s;
     color: #1c1d1f;
+    font-weight: bold;
+    text-align: center;
     text-transform: uppercase;
-    font-weight: 700;
 }
-
-.gv-button:focus, .gv-button:hover {
-    box-shadow: 0 1px 3px var(--gv-theme-color-darker, #383E3F);
-}
-
 
 .footerMeta {
     background-color: whitesmoke;
@@ -701,7 +707,7 @@ hr.shaded {
     border: 0;
     box-shadow: inset 0 6px 6px -6px rgba(0,0,0,0.5);
     margin-top: 70px;
-    background: white;
+    background: transparent;
     width: 100%;
     margin-bottom: 10px;
 }
@@ -738,7 +744,7 @@ a.fa.fa-envelope-o.mailto {
     font-weight: 600;
 }
 
-h3 {color: #ED1951; font-weight:normal; font-size:130%;}
+h3 {color: #ff9100; font-weight:normal; font-size:130%;}
 h4 {color: #808080; font-weight:normal; font-size:120%; font-style:italic;}
 
 .alert, .callout {
