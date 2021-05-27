@@ -37,12 +37,11 @@ body {
 }
 
 .homepage .sect1 {
-    border: 1px solid white;
-    border-radius: 4px;
+    border: 2px solid #ff9100;
+    border-radius: 24px;
+    color: #262626;
     font-size: 14px;
-    text-transform: uppercase;
     background-color: white;
-    box-shadow: 0 0 0 1px #F5F5F5, 0 1px 3px #BFBFBF;
     transition: all;
 }
 
@@ -53,9 +52,9 @@ body {
 .homepage h2 {
     display: flex;
     font-size: 16px;
+    font-weight: bold;
     padding: 2rem;
     margin: 0;
-    border-bottom: 2px solid #86c3d0;
     text-transform: none;
 }
 
@@ -63,7 +62,6 @@ body {
     flex: 1;
     text-decoration: none;
     font-size: 28px;
-    color: #86c3d0;
     font-weight: bold;
 }
 

@@ -1,0 +1,44 @@
+body {
+    background: rgb(1, 0, 2) linear-gradient(180deg, rgba(1, 0, 2, 1) 0%, rgba(23, 12, 102, 1) 55%, rgba(25, 139, 183, 1) 100%);
+    background-size:  100%;
+    font-family: Libre Franklin, IBM Plex Sans, sans-serif;
+    color: #ffffff;
+}
+
+.container {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.navbar-inverse {
+    background-color: black;
+    border-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus,
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus,
+.content {
+    background-color: #ffffff;
+    color: #262626;
+}
+
+.navbar-brand img {
+    height: 30px;
+    margin-left: 100px;
+}
+
+.summary {
+    text-align: right;
+    padding-right: 10px;
+    color: #00d4ff;
+    border-right: 5px solid #E50E51;
+    font-size: 16px;
+}
+
+.navbar-collapse .navbar-nav.navbar-right:last-child {
+    margin-right: 0;
+}
+
+.post-content .sect1 a {
+    color: #00d4ff !important;
+}
