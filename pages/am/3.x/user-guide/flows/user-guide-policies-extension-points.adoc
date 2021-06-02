@@ -17,6 +17,8 @@ AM includes four flow types:
 
 image::am/current/graviteeio-am-userguide-policies.png[]
 
+NOTE: Since version 3.10.0, it is possible to add new flows and apply condition execution on each flow using Expression Language. If multiple flows have a valid condition (or have an empty one), all these flows are executed.
+
 == All flow
 
 The *ALL* flow is executed on each incoming request for one of the login, consent or register flows.
