@@ -22,6 +22,32 @@ entries:
         output: web
         url: /cockpit/1.x/cockpit_quickstart_getstarted.html
 
+  - title: Installation Guide
+    output: web
+    folderitems:
+      - title: Introduction
+        output: web
+        url: /cockpit/1.x/cockpit_installguide_introduction.html
+        subfolders:
+          - title: Install with .zip
+            output: web
+            subfolderitems:
+              - title: Cockpit API
+                output: web
+                url: /cockpit/1.x/cockpit_installguide_management_api_install_zip.html
+              - title: Cockpit UI
+                output: web
+                url: /cockpit/1.x/cockpit_installguide_management_ui_install_zip.html
+      - title: Run in Docker
+        output: web
+        url: /cockpit/1.x/cockpit_installguide_docker_images.html
+      - title: Deploy in Kubernetes
+        output: web
+        url: /cockpit/1.x/cockpit_installguide_kubernetes.html
+      - title: Configure
+        output: web
+        url: /cockpit/1.x/cockpit_installguide_configuration.html
+
   - title: Configuration Guide
     output: web
     folderitems:
