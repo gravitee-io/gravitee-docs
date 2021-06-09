@@ -131,9 +131,9 @@ APIM adds the files to your documentation set.
 +
 image:apim/3.x/api-publisher-guide/documentation/import-multiple-files-result.png[]
 
-=== Publish your documentation
+=== Publish your page
 
-Once your documentation page is created, you can view it before publishing it. APIM displays the following message:
+Once your page is created, you can view it before publishing it. APIM displays the following message:
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-draft.png[]
 
@@ -184,8 +184,9 @@ NOTE: If the APIM administrator configured a maximum fetch frequency, the value 
 
 === Access control
 
-You can restrict which groups can access the documentation page.
-In the *ACCESS CONTROL* tab, you can exclude members of specific user groups from viewing a page. +
+In the *ACCESS CONTROL* tab, you can mark a page as PRIVATE if you want to deny access to anonymous user.
+
+For private pages, you can configure access lists by required or to be excluded roles/groups.
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-access-control.png[]
 

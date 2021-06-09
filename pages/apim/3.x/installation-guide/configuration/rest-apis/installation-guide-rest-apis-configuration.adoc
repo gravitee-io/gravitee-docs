@@ -77,13 +77,61 @@ http:
   api:
     # Configure the listening path for the API. Default to /
 #    entrypoint: /
-    # Configure Management API and Portal API.
+    # Configure Management API.
 #    management:
 #      enabled: true
 #      entrypoint: ${http.api.entrypoint}management
+#      cors: ...
+    # Configure Portal API.
 #    portal:
 #      enabled: true
 #      entrypoint: ${http.api.entrypoint}portal
+#      cors: ...
+----
+
+== CORS configuration
+CORS (Cross-Origin Resource Sharing) is a mechanism that allows resources on a web page to be requested from another domain.
+
+For more information on CORS, take a look at the https://www.w3.org/TR/cors[CORS specification^].
+
+You can configure CORS using `gravitee.yml`, environment variables or directly in APIM Console.
+
+=== Configure in `gravitee.yml`
+
+[source,yaml]
+----
+http:
+  api:
+    # Configure the listening path for the API. Default to /
+#    entrypoint: /
+    # Configure Management API.
+#    management:
+#      enabled: true
+#      entrypoint: ${http.api.entrypoint}management
+#      cors:
+    # Allows to configure the header Access-Control-Allow-Origin (default value: *)
+    # '*' is a valid value but is considered as a security risk as it will be opened to cross origin requests from anywhere.
+#       allow-origin: http://developer.mycompany.com
+    # Allows to define how long the result of the preflight request should be cached for (default value; 1728000 [20 days])
+#       max-age: 864000
+    # Which methods to allow (default value: OPTIONS, GET, POST, PUT, DELETE)
+#      allow-methods: 'OPTIONS, GET, POST, PUT, DELETE'
+    # Which headers to allow (default values: Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, If-Match, X-Xsrf-Token)
+#      allow-headers: 'X-Requested-With'
+  # Configure Portal API.
+#    portal:
+#      enabled: true
+#      entrypoint: ${http.api.entrypoint}portal
+#      cors:
+    # Allows to configure the header Access-Control-Allow-Origin (default value: *)
+    # '*' is a valid value but is considered as a security risk as it will be opened to cross origin requests from anywhere.
+#       allow-origin: http://developer.mycompany.com
+    # Allows to define how long the result of the preflight request should be cached for (default value; 1728000 [20 days])
+#       max-age: 864000
+    # Which methods to allow (default value: OPTIONS, GET, POST, PUT, DELETE)
+#      allow-methods: 'OPTIONS, GET, POST, PUT, DELETE'
+    # Which headers to allow (default values: Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, If-Match, X-Xsrf-Token)
+#      allow-headers: 'X-Requested-With'
 ----
 
 === Configure the Plugins repository
@@ -184,29 +232,6 @@ include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-
 == Authentication configuration
 
 See the link:/apim/3.x/apim_installguide_authentication.html[Authentication configuration^] section.
-
-== CORS configuration
-CORS (Cross-Origin Resource Sharing) is a mechanism that allows resources on a web page to be requested from another domain.
-
-For more information on CORS, take a look at the https://www.w3.org/TR/cors[CORS specification^].
-
-You can configure CORS using `gravitee.yml`, environment variables or directly in APIM Console.
-
-=== Configure in `gravitee.yml`
-
-[source,yaml]
-----
-cors:
-  # Allows to configure the header Access-Control-Allow-Origin (default value: *)
-  # '*' is a valid value but is considered as a security risk as it will be opened to cross origin requests from anywhere.
-  allow-origin: http://developer.mycompany.com
-  # Allows to define how long the result of the preflight request should be cached for (default value; 1728000 [20 days])
-  max-age: 864000
-  # Which methods to allow (default value: OPTIONS, GET, POST, PUT, DELETE)
-  allow-methods: 'OPTIONS, GET, POST, PUT, DELETE'
-  # Which headers to allow (default values: Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, If-Match, X-Xsrf-Token)
-  allow-headers: 'X-Requested-With'
-----
 
 === Configure in APIM Console
 

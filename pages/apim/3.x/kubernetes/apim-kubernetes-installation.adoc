@@ -80,7 +80,7 @@ gateway:
       enabled: true
       service-account: "gravitee-gateway-sa"
   additionalPlugins:
-  - https://repo1.maven.org/maven2/io/gravitee/kubernetes/gravitee-kubernetes-controller/0.1.0/gravitee-kubernetes-controller-0.1.0.zip
+  - https://download.gravitee.io/graviteeio-apim/plugins/services/gravitee-kubernetes-controller/gravitee-kubernetes-controller-0.1.0.zip
 
 ----
 

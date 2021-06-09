@@ -10,6 +10,18 @@ WARNING: If you plan to skip versions when you upgrade, ensure that you read the
 
 WARNING: Be sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs;`
 
+== Upgrade to 3.9.0
+
+NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.9.html[Breaking changes in 3.9]
+
+=== REST API
+
+If you are using the Management API to list domains, scopes or roles, please note that the output has been changed to return a page of result with default size set to 50 elements.
+
+=== HEAP SIZE
+
+Starting from this new version, the default Xms and Xmx parameters has been fixed to 256m.
+
 == Upgrade to 3.8.0
 
 NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.8.html[Breaking changes in 3.8]
