@@ -25,7 +25,7 @@ NOTE: AM uses the JDBC and R2DBC drivers together, since AM uses https://www.liq
 
 |Postgresql
 |9.6
-.4+|https://download.gravitee.io/graviteeio-am/plugins/repositories/gravitee-repository-jdbc/[Download the same version as your AM platform]
+.4+|https://download.gravitee.io/#graviteeio-am/plugins/repositories/gravitee-repository-jdbc/[Download the same version as your AM platform]
 |https://jdbc.postgresql.org/download.html[Download page]
 |https://repo1.maven.org/maven2/io/r2dbc/r2dbc-postgresql/0.8.5.RELEASE/r2dbc-postgresql-0.8.5.RELEASE.jar[Download page]
 
@@ -144,7 +144,7 @@ liquibase:
 == JDBC Reporter
 
 When AM is configured with JDBC repositories, JDBC reporter is required.
-You can download the reporter plugin https://download.gravitee.io/graviteeio-am/plugins/reporters/gravitee-reporter-jdbc/[here].
+You can download the reporter plugin https://download.gravitee.io/#graviteeio-am/plugins/reporters/gravitee-reporter-jdbc/[here].
 To install the jdbc reporter plugin you need to repeat the following steps for each component (AM Gateway and AM API) where the SQL database is used.
 
  . Download the plugin applicable to your version of AM (take the latest maintenance release).

@@ -49,7 +49,7 @@ a new plugin.
 ==== Installation
 
 To expose the new HTTP API, you have to install a new plugin inside the `plugins` directory of the API Gateway.
-This plugin can be found at https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/
+This plugin can be found at https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/
 
 [source,bash]
 ----
@@ -114,7 +114,7 @@ which should give you a response containing an empty array or a list of APIs.
 
 To consume the HTTP bridge, you will need to replace default repository plugin (most probably MongoDB repository) with
 a new HTTP repository inside the `plugins` directory of the API Gateway.
-This plugin can be found at https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/
+This plugin can be found at #https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/
 
 [source,bash]
 ----
