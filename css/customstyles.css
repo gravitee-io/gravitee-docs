@@ -68,17 +68,17 @@ body {
 
 
 .image.icon { border: none;
-	vertical-align: center;
+    vertical-align: center;
 }
 
 .label-version{
-	background-color: #5bc0de;
-	font-size: 100%
+    background-color: #5bc0de;
+    font-size: 100%
 }
 
 .label-enterprise{
-	background-color: #f0ad4e;
-	font-size: 100%
+    background-color: #f0ad4e;
+    font-size: 100%
 }
 
 .breadcrumb > .active {color: #777 !important;}
@@ -91,8 +91,8 @@ h4[id],
 h5[id],
 h6[id],
 dt[id]{
-padding-top: 60px;
-margin-top: -40px
+    padding-top: 60px;
+    margin-top: -40px
 }
 
 body h1 {margin-top:40px;}
@@ -168,12 +168,6 @@ table > thead:first-child > tr:first-child > td {
 
 table > tbody > tr:nth-of-type(odd) {
     background-color: #f9f9f9;
-    color: #262626;
-}
-
-table > tbody > tr:nth-of-type(even) {
-    background-color: #ffffff;
-    color: #262626;
 }
 
 table col[class*="col-"] {
@@ -251,10 +245,10 @@ ul#results-container a:hover {
     color: black;
 }
 #search-input {
+    padding: .5em;
     margin-left:20px;
     width:20em;
     font-size: 0.8em;
-    font-weight: bold;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -309,9 +303,11 @@ li.dropdownActive a {
     font-weight: bold;
 }
 
+
 .post-content a.fa-rss {
     color: orange;
 }
+
 
 .navbar-inverse .navbar-nav > li > a {
     background-color: transparent;
@@ -352,11 +348,11 @@ a.accordion-toggle, a.accordion-collapsed {
 }
 
 .nav > li {
-    margin: 0;
+    margin: 1px 0;
 }
 
 .nav > li li {
-    margin: 0;
+    margin: 2px 0;
 }
 
 .nav a {
@@ -386,7 +382,7 @@ a.accordion-toggle, a.accordion-collapsed {
 }
 
 .nav > li.active > a  {
-background-color: #347DBE;
+    background-color: #347DBE;
 }
 
 .nav li a {
@@ -472,7 +468,7 @@ span.projectTitle {
 
 .footer-links a {
     margin: 0.5rem;
-    color: #0ff;
+    color: #86c3d0;
 }
 
 .footer-links a[href^="http://"]::after, .footer-links a[href^="https://"]::after {
@@ -496,7 +492,7 @@ span.projectTitle {
 }
 
 .newsletter-success {
-    color: #0ff;
+    color: #86c3d0;
 }
 
 .newsletter-box p {
@@ -509,7 +505,6 @@ span.projectTitle {
 }
 
 .newsletter-title {
-    flex: 1;
     font-size: 28px;
     font-weight: bold;
     text-decoration: none;
@@ -544,46 +539,45 @@ span.projectTitle {
 }
 
 .gv-input {
-    border: 2px solid #fff;
-    border-radius: 8em;
+    border: var(--gv-input--bdw, 1px) var(--gv-input--bds, solid) var(--gv-input--bdc, var(--gv-theme-neutral-color-dark, #D9D9D9));
     box-sizing: border-box;
+    border-radius: 4px;
     font-style: normal;
     font-weight: normal;
     outline: none;
     width: 100%;
     -webkit-appearance: none;
-    padding: 10px 15px;
+    padding: 10px 5px;
     font-size: 14px;
     line-height: 17px;
     height: calc(17px + 10px + 10px);
-    margin-bottom: 0;
-    background-color: transparent;
-    color: #fff;
-}
-
-.gv-input::placeholder {
-    color: #fff;
 }
 
 .gv-button {
-    background-color: #fff;
-    border: none;
-    border-radius: 8em;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
+    border: 1px solid #86c3d0;
+    outline: 0;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    text-decoration: none;
+    box-sizing: border-box;
+    display: flex;
     justify-content: center;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
     align-items: center;
-    -webkit-transition: background-color .2s;
-    transition: background-color .2s;
-    color: #1c1d1f;
-    font-weight: bold;
     text-align: center;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    transition: all 75ms ease-in-out;
+    background-color: #86c3d0;
+    color: #1c1d1f;
     text-transform: uppercase;
+    font-weight: 700;
 }
+
+.gv-button:focus, .gv-button:hover {
+    box-shadow: 0 1px 3px var(--gv-theme-color-darker, #383E3F);
+}
+
 
 .footerMeta {
     background-color: whitesmoke;
@@ -707,7 +701,7 @@ hr.shaded {
     border: 0;
     box-shadow: inset 0 6px 6px -6px rgba(0,0,0,0.5);
     margin-top: 70px;
-    background: transparent;
+    background: white;
     width: 100%;
     margin-bottom: 10px;
 }
@@ -744,7 +738,7 @@ a.fa.fa-envelope-o.mailto {
     font-weight: 600;
 }
 
-h3 {color: #ff9100; font-weight:normal; font-size:130%;}
+h3 {color: #ED1951; font-weight:normal; font-size:130%;}
 h4 {color: #808080; font-weight:normal; font-size:120%; font-style:italic;}
 
 .alert, .callout {
@@ -1081,7 +1075,7 @@ a[href^="http://"]:after, a[href^="https://"]:after {
 /* Strip the outbound icon when this class is present */
 a[href].noCrossRef::after,
 a.no_icon:after
- {
+{
     content:"" !important;
     padding-left: 0;
 }
@@ -1151,7 +1145,7 @@ span.label.label-primary {
     background-color: whitesmoke;
     font-weight: bold;
     color: black;
-    }
+}
 
 a code {
     color: #248EC2;
@@ -1218,7 +1212,7 @@ h2.userMapTitle {
 
 #userMap a:hover {
     text-decoration: none;
-  }
+}
 
 div.arrow {
     max-width: 50px;
@@ -1270,12 +1264,12 @@ div.box.box1 {
 }
 
 #userMap .btn-lg  {
-        white-space: pre-wrap;       /* css-3 */
-        white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-        white-space: -o-pre-wrap;    /* Opera 7 */
-        word-wrap: break-word;       /* Internet Explorer 5.5+ */
-        font-size: 14px;
-    }
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    font-size: 14px;
+}
 
 /*
  * Let's target IE to respect aspect ratios and sizes for img tags containing SVG files
@@ -1334,6 +1328,6 @@ span.icon>.fa {
     color: #bf0000;
 }
 
-.icon image { border: 0 
-	      vertical-align: middle;
+.icon image { border: 0
+    vertical-align: middle;
 }
