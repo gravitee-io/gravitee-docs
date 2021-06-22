@@ -311,7 +311,6 @@ li.dropdownActive a {
 
 .navbar-inverse .navbar-nav > li > a {
     background-color: transparent;
-    margin-top:10px;
 }
 
 .post-content .rssfeedLink {
@@ -445,7 +444,9 @@ ul#mysidebar {
 }
 
 .navbar-brand img {
-    vertical-align: -20px;
+    height: 30px;
+    margin-left: 40px;
+    margin-top: 15px;
 }
 
 span.projectTitle {
@@ -851,6 +852,13 @@ ol.series li {
     font-family: courier, "Courier New", monospace;
     color: #444;
     display:block;
+}
+
+.navbar-right, .navbar-header {
+    display: flex;
+    flex-direction: row;
+    /* align-content: center; */
+    align-items: center;
 }
 
 /* not sure if using this ...*/
