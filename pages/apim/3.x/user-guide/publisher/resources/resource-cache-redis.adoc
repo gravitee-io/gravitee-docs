@@ -1,0 +1,8 @@
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_resources_cache_redis.html
+:page-folder: apim/user-guide/publisher/resources
+:page-layout: apim3x
+
+WARNING: This plugin is not in distribution by default, but you can https://download.gravitee.io/#graviteeio-apim/plugins/resources/gravitee-resource-cache-redis/[download] plugin and follow link:/apim/3.x/apim_installguide_docker_customize.html#install_an_additional_plugin[instructions] to install it.
+
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-resource-cache-redis/master/README.adoc[]
