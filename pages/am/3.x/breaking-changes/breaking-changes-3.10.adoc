@@ -15,3 +15,7 @@ Starting from v3.0.0 `Clients` concept has been replaced by `Applications`. In t
   - http(s)://AM_MANAGEMENT_API/management/organization/DEFAULT/environment/DEFAULT/domains/:domainId/clients/**
 
 ----
+
+== Users Management
+
+Until now, the users collection/table contained users related both to domains and organizations. Starting from this version there is a dedicated collection/table to store users linked to an organization (ie.: users used to connect to the AM console). If you encounter authentication issue on the console, please make sure that you have followed the link:/am/current/am_installguide_migration.html[migration guide].

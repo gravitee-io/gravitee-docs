@@ -20,6 +20,22 @@ NOTE: For more information about the breaking changes of this version please vis
 
 With previous versions the administrator user for the Management API was created on startup using hard coded values for username and password. Starting from 3.10.0 it is possible to define your own values thanks to the link:/am/current/am_installguide_management_api_configuration.html#security[security] section of the `gravitee.yml` file. By default, this configuration section use the same behaviour as AM 3.9 and earlier.
 
+=== Repository
+
+==== Mongodb
+
+Before you run any scripts, create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/3.10.x/docs/upgrades/3.x/3.10.0/mongodb/1-move-organization-users.js[upgrades/3.x/3.10.0/mongodb/1-move-organization-users.js]::
+
+This script will move users linked to an organization to a dedicated collection.
+
+==== JDBC
+
+The liquibase script will move users automatically on the REST API startup. If you disabled the liquibase execution using the `liquibase.enabled` option, please apply changes discribed in the `users-migration.yml` descriptor.
+
+https://github.com/gravitee-io/graviteeio-access-management/blob/master/gravitee-am-repository/gravitee-am-repository-jdbc/src/main/resources/liquibase/changelogs/v3_10_0/users-migration.yml[v3_10_0/users-migration.yml]::
+
 == Upgrade to 3.9.2
 
 NOTE: For users of Gravitee Enterprise Edition with Alert Engine, please check your gravitee configuration to ensure that the alert engine feature is explicitly enabled. Starting from this version, the alert engine connector is disabled by default if the option `alerts.alert-engine-enabled` is missing from the `gravitee.yml` file. (see https://docs.gravitee.io/ae/am_configuration.html)
