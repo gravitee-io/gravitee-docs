@@ -67,22 +67,16 @@ entries:
           - title: Generic OAuth2
             output: web
             url: /cockpit/1.x/cockpit_installguide_idp_generic_oauth2.html
+          - title: Connect with Github
+            output: web
+            url: /cockpit/1.x/cockpit_installguide_idp_github.html
+          - title: Connect with Google
+            output: web
+            url: /cockpit/1.x/cockpit_installguide_idp_google.html
 
   - title: User Guide
     output: web
     folderitems:
-      - title: Introduction
-        output: web
-        url: /cockpit/1.x/cockpit_userguide_introduction.html
-      - title: Manage accounts
-        output: web
-        url: /cockpit/1.x/cockpit_userguide_manage_accounts.html
-      - title: Manage organizations
-        output: web
-        url: /cockpit/1.x/cockpit_userguide_manage_organizations.html
-      - title: Manage environments
-        output: web
-        url: /cockpit/1.x/cockpit_userguide_manage_environments.html
       - title: Register installations
         output: web
         url: /cockpit/1.x/cockpit_userguide_register_installations.html
