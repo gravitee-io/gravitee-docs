@@ -16,11 +16,10 @@ A registered installation communicates with Cockpit via a WebSocket connection, 
 To register new APIM or AM installations with Cockpit, you need to:
 
 * Have a Cockpit connector in your installation plugins
-* Download the certificate to allow secure connection
+* Download the certificate to allow secure connection via Cockpit UI
+* Install the certificate, and restart your installation.
 
-The following steps give an overview of registering a new installation.
-
-. Register the new installation by following the registration instructions in the *How to register a new installation* link, below *Installations* in the dashboard.
+All the detailed information are available in the *How to register a new installation* link, below *Installations* in the dashboard.
 +
 After registration, the installation is displayed as a pending installation in Cockpit:
 +
@@ -34,7 +33,7 @@ The installation is added to the map with a link to the environment:
 +
 image::cockpit/linked-installations-dashboard.png[]
 
-. You can then link the accepted installation to other environments in Cockpit from the link:/cockpit/1.x/cockpit_userguide_manage_environments.html[environment settings^] page.
+. You can then link the accepted installation to other environments in Cockpit from the environment settings page.
 +
 image::cockpit/linked-installations.png[]
 
@@ -43,10 +42,3 @@ image::cockpit/linked-installations.png[]
 image::cockpit/linked-installations-login.png[]
 +
 You are redirected to the Console login page of the APIM or AM instance. If multiple APIM or AM instances are linked, the Console login page of the first instance linked to the environment opens.
-
-== Delete an installation
-
-WARNING: Never delete an installation unless you are sure you want to permanently remove it from Cockpit. Deleting installations permanently closes the WebSocket link between Cockpit and the installation. It cannot be reopened, even by restarting the installation. 
-
-. Click the installation details icon.
-. Click *DELETE THIS INSTALLATION*.
