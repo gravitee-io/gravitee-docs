@@ -202,7 +202,7 @@ These are just the basic properties, you can't use them to retrieve more informa
 
 |`error.key`
 |Key for identify the root cause of error
-|${notification.properties['quota.key']}
+|${notification.properties['error.key']}
 |-
 |===
 
