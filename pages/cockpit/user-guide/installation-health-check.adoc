@@ -2,7 +2,7 @@
 :page-sidebar: cockpit_sidebar
 :page-permalink: cockpit/1.x/cockpit_userguide_installation_health_check.html
 :page-folder: cockpit/userguide
-:page-description: Gravitee.io Cockpit - Installation health check
+:page-description: Gravitee.io Cockpit - Installation health check and monitoring
 :page-keywords: Gravitee.io, API Platform, API Management, Cockpit, documentation, manual, guide
 
 
@@ -12,17 +12,13 @@ NOTE: This feature is only available with APIM & AM 3.8 or higher
 
 == Overview
 
-Installations that are registered with Cockpit will send valuable information to the dashboard, including configuration of the installation, list of nodes, plugins, and also some regular updates regarding their health status.
+Installations that are registered with Cockpit will send valuable information to the dashboard, including configuration of the installation, list of nodes, plugins, and also some regular updates regarding their health status and monitoring.
 
 On the Cockpit UI, you can view all the nodes of an installation on the Organization dashboard.
 
-image::cockpit/installation-health-check.png[]
-
-TIP: The installation nodes are not visible on the Account dashboard to guarantee a readable schema.
+image:cockpit/installation-node-details-page.png[]
 
 == Installation node details
 
-You can click on an installation node icon image:cockpit/installation-node-icon.png to access more details about that node. On this page you will find general info regarding the node (such as its name, version, etc.), the list of plugins, and the health check history.
-
-image:cockpit/installation-node-details-page.png[]
+You can click on an installation node icon to access more details about that node. On this page you will find general info regarding the node (such as its name, version, etc.), the list of plugins, and health check and monitoring data.
 
