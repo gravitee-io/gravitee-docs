@@ -1,0 +1,54 @@
+= gio apim apis health
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_apim_apis_health.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+Returns the last API availability: minute, hour, day, week, month
+
+== Usage
+
+[subs="+macros"]
+----
+gio apim apis health <<Options,options>>
+----
+
+== Options
+
+[cols="3", options="header"]
+|===
+|Option
+|Description
+|Default
+
+|`--api`
+|API ID (required)
+|
+
+|`-o`, `--output`
+|Format for printing command output resources (`table`, `json`, `yaml`, `tsv`)
+|`table`
+
+|`-q`, `--query`
+|Execute JMESPath query
+| `[].{Time: time, Percent: percent}`
+
+|===
+
+== Parent command
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_apis.adoc[gio apim apis]
+|API Management API commands
+
+|===
+
+== Examples

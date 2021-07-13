@@ -1,0 +1,50 @@
+= gio apim apis list
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_apim_apis_list.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+Displays API list
+
+== Usage
+
+[subs="+macros"]
+----
+gio apim apis list <<options>>
+----
+
+== Options
+
+[cols="3", options="header"]
+|===
+|Option
+|Description
+|Default
+
+|`-o`, `--output`
+|Format for printing output resources (`table`, `json`, `yaml`, `tsv`)
+|`table`
+
+|`-q`, `--query`
+|Executes JMESPath query. Some function styles are available for the output format `table`: `style_synchronized()` for value `is_synchronized`, `style_state()` for value `state`, `style_workflow_state()` for value `workflow_state`. This function allows you to add color according to the value.
+|
+
+|===
+
+== Parent command
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_apis.adoc[gio apim apis]
+|API Management API commands
+
+|===
+
+== Examples

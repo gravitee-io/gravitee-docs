@@ -1,0 +1,10 @@
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_filtering.html
+:page-folder: cli/overview
+:page-toc: false
+:page-liquid:
+:page-layout: cli
+
+:github-repo: https://raw.githubusercontent.com/gravitee-io/graviteeio-cli/master
+
+include::{github-repo}/docs/filtering_and_output.adoc[]

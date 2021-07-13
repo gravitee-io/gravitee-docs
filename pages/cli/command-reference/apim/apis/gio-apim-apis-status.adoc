@@ -1,0 +1,61 @@
+= gio apim apis status
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_apim_apis_status.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+Displays status of an API
+
+== Usage
+
+[subs="+macros"]
+----
+gio apim apis status <<options>>
+----
+
+== Options
+
+[cols="3", options="header"]
+|===
+|Option
+|Description
+|Default
+
+|`--api`
+|API ID (required)
+|
+
+|`-o`, `--output`
+|Command output resource printing format
+|`table`
+
+|`-q`, `--query`
+|Executes JMESPath query, e.g. filtered on `5xx`
+status: `[?status==`5xx`].{Status: status,
+Hits: hits, Percent: percent}`
+|`reverse(@)[].{Status: status, Hits: hits,
+                                  Percent: percent}`
+
+|`-tf`, `--time-frame`
+| Timeframe from now and the value (`m` for minute, `h` for hour, `d` for days)
+|`5m`
+
+|===
+
+== Parent command
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_apis.adoc[gio apim apis]
+|API Management API commands
+
+|===
+
+== Examples

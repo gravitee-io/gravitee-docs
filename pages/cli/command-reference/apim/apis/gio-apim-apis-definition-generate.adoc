@@ -1,0 +1,74 @@
+= gio apim apis definition generate
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_apim_apis_definition_generate.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+Generates default templates, setting and value files for API definition
+
+== Usage
+
+[subs="+macros"]
+----
+gio apim apis definition generate <<options>>
+----
+
+== Options
+
+[cols="3", options="header"]
+|===
+|Option
+|Description
+|Default
+
+|`--def-path`
+|Path where API definition is generated
+|Current directory
+
+|`--format`
+|Generated format (`json` or `yaml`)
+|`yaml`
+
+|`--from-id`
+|Generate templates and value file from an existing API
+|
+
+|===
+
+== Parent command
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_apis_definition.adoc[gio apim apis definition]
+|A group of commands for defining APIs from templating and value files
+
+|===
+
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_apis_definition_apply.adoc[gio apim apis definition apply]
+|Updates an API definition configuration. The API definition is managed with the template engine (jinja). API properties are defined in plain YAML or JSON files.
+
+|xref:cli_reference_apim_apis_definition_create.adoc[gio apim apis definition create]
+|Creates API definition
+
+|xref:cli_reference_apim_apis_definition_diff.adoc[gio apim apis definition diff]
+|Compares the API definition configuration developed on a local machine with the configuration on the remote server
+
+|xref:cli_reference_apim_apis_definition_lint.adoc[gio apim apis definition lint]
+|Runs a series of tests to check the API definition configuration is correctly formed
+
+|===
+
+== Examples

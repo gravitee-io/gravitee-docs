@@ -1,0 +1,54 @@
+= gio apim apis logs
+:page-sidebar: cli_sidebar
+:page-permalink: cli/cli_reference_apim_apis_logs.html
+:page-folder: cli/reference
+:page-description: Gravitee.io CLI - API Management
+:page-toc: false
+:page-layout: cli
+
+== Description
+
+Gets API logs
+
+== Usage
+
+[subs="+macros"]
+----
+gio apim apis logs <<options>>
+----
+
+== Options
+
+[cols="3", options="header"]
+|===
+|Option
+|Description
+|Default
+
+|`--api`
+|API ID (required)
+|
+
+|`-l`, `--line`
+|Number of lines
+|`10`
+
+|`-o`, `--output`
+|Command output resource printing format
+|`table`
+
+|===
+
+== Parent command
+
+[cols="2", options="header"]
+|===
+|Command
+|Description
+
+|xref:cli_reference_apim_apis.adoc[gio apim apis]
+|API Management API commands
+
+|===
+
+== Examples
