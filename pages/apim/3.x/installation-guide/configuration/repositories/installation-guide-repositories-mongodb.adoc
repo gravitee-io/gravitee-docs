@@ -12,7 +12,7 @@
 |Version tested | APIM plugin
 
 |3.6 / 4.0 / 4.2
-|https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-repository-mongodb/[Download the same version as your APIM platform, window=\"_blank\"]
+|https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-apim-repository-mongodb/[Download the same version as your APIM platform, window=\"_blank\"]
 |===
 
 == Configuration
@@ -101,7 +101,7 @@ NOTE: Before running any scripts, you must create a dump of your existing databa
 
 == Index
 
-You can create an index using the https://github.com/gravitee-io/gravitee-repository-mongodb/blob/master/src/main/resources/scripts/create-index.js[script, window=\"_blank\"] available from our MongoDB GitHub repository.
+You can create an index using the https://github.com/gravitee-io/gravitee-api-management/blob/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/create-index.js[script, window=\"_blank\"] available from our MongoDB GitHub repository.
 You must use the correct version of this script for the version of APIM you are running.
 
 NOTE: If you use a custom prefix for collections, do not forget to set it on the first line of the script.
