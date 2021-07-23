@@ -16,18 +16,24 @@ Cockpit can also be installed on-premise. Find the installation guide here: link
 
 === Dashboard
 
-After login, Cockpit opens the dashboard, which displays an interactive map of the organizational hierarchy associated with your account.
+After login, Cockpit opens the dashboard, which displays some analytics about your account organizations, environments and installations.
 
-image::cockpit/cockpit-dashboard.png[]
-
-This dashboard gives you an overview of your account hierarchy.
+image::cockpit/cockpit-add-organizations-or-environments.png[]
 
 You can create one or more organizations within your account and one or more environments within your organizations. Each environment can then be linked to existing APIM or AM installations.
 
+
 === Register a new installation
+
 
 You can register any APIM or AM installation from version 3.6.0. You can find details of how to do this in Cockpit by clicking the *How to register a new installation* link under *Installations*.
 
 image::cockpit/installation-how-to.png[]
 
 See also link:/cockpit/1.x/cockpit_userguide_register_installations.html[Register an APIM or AM installation^].
+
+=== Hierarchy
+
+Following the associated link on the navigation bar, you can access an interactive map of the organizational hierarchy associated with your account.
+
+image::cockpit/cockpit-dashboard.png[]
