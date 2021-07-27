@@ -313,6 +313,21 @@ entries:
         - title: Bot Detection Plugins
           output: web
           url: /am/current/am_userguide_bot_detection_plugins.html
+      - title: Login
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_login.html
+        - title: Step-up authentication
+          output: web
+          url: /am/current/am_userguide_mfa_step_up.html
+        - title: Passwordless (W3C WebAuthn)
+          output: web
+          url: /am/current/am_userguide_passwordless.html
+        - title: Silent re-authentication
+          output: web
+          url: /am/current/am_userguide_login_silent_re_auth.html
       - title: Multi-factor authentication
         output: web
         subfolderitems:
@@ -325,9 +340,6 @@ entries:
         - title: Reset MFA
           output: web
           url: /am/current/am_userguide_mfa_user_factors.html
-        - title: Step-up authentication
-          output: web
-          url: /am/current/am_userguide_mfa_step_up.html
       - title: Resources
         output: web
         subfolderitems:
@@ -337,12 +349,6 @@ entries:
         - title: Twilio
           output: web
           url: /am/current/am_userguide_resources_twilio.html
-      - title: Passwordless (W3C WebAuthn)
-        output: web
-        subfolderitems:
-        - title: Overview
-          output: web
-          url: /am/current/am_userguide_passwordless.html
       - title: Certificates
         output: web
         subfolderitems:
