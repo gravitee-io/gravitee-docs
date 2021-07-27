@@ -369,7 +369,12 @@ entries:
                   - title: Consul.io
                     output: web
                     url: /apim/3.x/apim_service_discovery_consul.html
-
+              - title: Cockpit features
+                output: web
+                subfolderitems:
+                  - title: Promote APIs
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_promote_apis.html
           - title: Expression Language
             output: web
             url: /apim/3.x/apim_publisherguide_expression_language.html
