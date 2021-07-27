@@ -382,9 +382,12 @@ entries:
         - title: Self-Service account mgmt
           output: web
           url: /am/current/am_userguide_user_management_ssam.html
-      - title: User session management
+      - title: Session management
         output: web
         subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_user_session_management.html
         - title: Logout
           output: web
           url: /am/current/am_userguide_user_session_management_logout.html
