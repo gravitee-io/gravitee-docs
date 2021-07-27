@@ -11,7 +11,7 @@
 |===
 |Version tested | APIM plugin
 
-|3.6 / 4.0 / 4.2
+|3.6 / 4.0 / 4.2 / 4.4
 |https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-apim-repository-mongodb/[Download the same version as your APIM platform, window=\"_blank\"]
 |===
 
@@ -53,30 +53,62 @@ management:
     dbname:                     # mongodb name (default gravitee)
     host:                       # mongodb host (default localhost)
     port:                       # mongodb port (default 27017)
+
+## Client settings
+    description:                # mongodb description (default gravitee.io)
     username:                   # mongodb username (default null)
     password:                   # mongodb password (default null)
-    authSource:                 # mongodb authentication source (default gravitee)
-    connectionPerHost:          # mongodb connection per host (default 10)
-    connectTimeOut:             # mongodb connection time out (default 0 -> never)
+    authSource:                 # mongodb authentication source (when at least a user or a password is defined, default gravitee)
+    readPreference:              # possible values are 'nearest', 'primary', 'primaryPreferred', 'secondary', 'secondaryPreferred'
+    readPreferenceTags:          # list of read preference tags (https://docs.mongodb.com/manual/core/read-preference-tags/#std-label-replica-set-read-preference-tag-sets)
+### Write concern
+    writeConcern:               # possible values are 1,2,3... (the number of node) or 'majority' (default is 1)
+    wtimeout:                   # (default is 0)
+    journal:                    # (default is true)
+
+## Socket settings
+    connectTimeout:             # mongodb connection timeout (default 1000)
+    socketTimeout:              # mongodb socket timeout (default 1000)
+
+## Cluster settings
+    serverSelectionTimeout:     # mongodb server selection timeout (default 1000)
+    localThreshold:             # mongodb local threshold (default 15)
+
+## Connection pool settings
     maxWaitTime:                # mongodb max wait time (default 120000)
-    socketTimeout:              # mongodb socket time out (default 0 -> never)
-    socketKeepAlive:            # mongodb socket keep alive (default false)
-    maxConnectionLifeTime:      # mongodb max connection life time (default null)
-    maxConnectionIdleTime:      # mongodb max connection idle time (default null)
-    minHeartbeatFrequency:      # mongodb min heartbeat frequency (default null)
-    description:                # mongodb description (default null)
-    heartbeatConnectTimeout:    # mongodb heartbeat connection time out (default null)
-    heartbeatFrequency:         # mongodb heartbeat frequency (default null)
-    heartbeatsocketTimeout:     # mongodb heartbeat socket time out (default null)
-    localThreshold:             # mongodb local threshold (default null)
-    minConnectionsPerHost:      # mongodb min connections per host (default null)
+    maxConnectionLifeTime:      # mongodb max connection life time (default 0)
+    maxConnectionIdleTime:      # mongodb max connection idle time (default 0)
+    connectionsPerHost:         # mongodb max connections per host (default 100)
+    minConnectionsPerHost:      # mongodb min connections per host (default 0)
+
+## Server settings
+    heartbeatFrequency:         # mongodb heartbeat frequency (default 10000)
+    minHeartbeatFrequency:      # mongodb min heartbeat frequency (default 500)
+
+## SSL settings
     sslEnabled:                 # mongodb ssl mode (default false)
-    keystore:                   # path to KeyStore (when sslEnabled is true)
-    keystorePassword:           # KeyStore password
-    keyPassword:                # password for recovering keys in the KeyStore
-    threadsAllowedToBlockForConnectionMultiplier: # mongodb threads allowed to block for connection multiplier (default null)
-    cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
+    keystore:                   # path to KeyStore (when sslEnabled is true, default null)
+    keystorePassword:           # KeyStore password (when sslEnabled is true, default null)
+    keyPassword:                # password for recovering keys in the KeyStore (when sslEnabled is true, default null)
 ----
+
+[WARNING]
+====
+From version 3.10.0, Gravitee.io APIM uses the 4.1.2 version of the Java Driver. Therefore, some settings are no longer available.
+
+`threadsAllowedToBlockForConnectionMultiplier` and `socketKeepAlive` have been deprecated in 3.12 and removed in 4.0.
+
+`heartbeatConnectTimeout` and `heartbeatSocketTimeout` can't be used to configure the `MongoClient` object. Instead, `connectTimeout` and `socketTimeout` values are used to configure the heartbeat.
+
+`cursorFinalizerEnabled` has been removed.
+
+See: +
+https://mongodb.github.io/mongo-java-driver/3.12/javadoc/com/mongodb/MongoClientOptions.html#getThreadsAllowedToBlockForConnectionMultiplier()
+
+https://mongodb.github.io/mongo-java-driver/3.12/javadoc/com/mongodb/MongoClientOptions.html#isSocketKeepAlive()
+
+https://github.com/mongodb/mongo-java-driver/blob/master/driver-core/src/main/com/mongodb/MongoClientSettings.java#L807-L814
+====
 
 [[use_a_custom_prefix]]
 == Use a custom prefix
