@@ -154,7 +154,7 @@ image::apim/3.x/installation/authentication/keycloak_login_success.png[Here we a
 
 == Managing roles with keycloak
 
-Configure Keycloak and Gravitee to map your own organization with available bilt-in or your custom registered roles. 
+Configure Keycloak and Gravitee to map your own organization with available built-in or your custom registered roles. 
 
 === Gravitee roles console
 
@@ -163,22 +163,24 @@ Configure Keycloak and Gravitee to map your own organization with available bilt
 image::apim/3.x/installation/authentication/keycloak_mng-00-gravitee-default_roles.png[Gravitee console - roles page]
 
 === Create and configure Keycloak Client scope
+. In your realm, go to the `Client scopes` page.
 
 . Set a special gravitee-client-groups https://oauth.net/2/scope/[Scope] that will contain users' roles.
 +
 image::apim/3.x/installation/authentication/keycloak_mng-01-client_scopes-roles_add_client_scope.png[Keycloak console - Create scope]
 
-. Set a mapper with Claim name "groups" 
+.  In the new client scope, set a mapper with Claim name "groups".
 +
 image::apim/3.x/installation/authentication/keycloak_mng-02-client_scopes-mapper.png[Keycloak console - Add mapper to scope]
 
-. Add the new configured scope to Gravitee Client.
+. In your realm, go to the `Client` page, and select your Client.
+. Add the new configured scope in the `Client Scopes` tab.
 +
 image::apim/3.x/installation/authentication/keycloak_mng-03-client-add_scope.png[Keycloak console - Add scope to client]
 
 === Create Keycloak Client roles 
 
-. Create roles as needed by organization.
+. In your client, create roles as needed by organization.
 +
 image::apim/3.x/installation/authentication/keycloak_mng-04-client-add_roles.png[Keycloak console - Create client roles ]
 
