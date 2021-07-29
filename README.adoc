@@ -1,23 +1,35 @@
-= Gravitee.IO - Documentations
+= Gravitee.io - Documentation
 
 ifdef::env-github[]
-image:https://ci.gravitee.io/buildStatus/icon?job=gravitee-io/gravitee-docs/master["Build status", link="https://ci.gravitee.io/job/gravitee-io/job/gravitee-docs/"]
+image:https://img.shields.io/badge/License-Apache%202.0-blue.svg["License", link="https://github.com/gravitee-io/gravitee-api-management/blob/master/LICENSE"]
 image:https://badges.gitter.im/Join Chat.svg["Gitter", link="https://gitter.im/gravitee-io/gravitee-io?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"]
 endif::[]
 
-== How to write documentation for GraviteeIO
+== How to write documentation for Gravitee.io
 
-Our doc website is generated from AsciiDoc files. +
+Our documentation website is generated from AsciiDoc files. +
 You'll find these pages under the `/pages` directory.
 
 === Live Preview
 
 We suggest you to use a live preview utility like the one available with jekyll.
-```
-> bundle exec jekyll serve
-```
 
-Then, open http://127.0.0.1:4000/ to see your modifications.
+First, you need to install:
+
+- Ruby: https://www.ruby-lang.org/en
+- Bundler: run the following command line in your favorite terminal `gem install bundler`
+
+Then, you will be able to install required dependencies and start the documentation:
+[source,bash]
+----
+# Install dependencies
+bundle install
+
+# Build and start the documentation locally
+bundle exec jekyll serve --incremental
+----
+
+Go to `http://127.0.0.1:4000` to see your modifications.
 
 For contributions guidelines, please refer to CONTRIBUTING.adoc
 
