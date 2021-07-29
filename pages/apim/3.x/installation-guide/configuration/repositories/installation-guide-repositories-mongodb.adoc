@@ -6,19 +6,19 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
-== Supported version
+== Supported versions
 
 |===
 |Version tested | APIM plugin
 
 |3.6 / 4.0 / 4.2
-|https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-mongodb/[Download the same version as your APIM platform, window=\"_blank\"]
+|https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-repository-mongodb/[Download the same version as your APIM platform, window=\"_blank\"]
 |===
 
 == Configuration
 https://www.mongodb.org/[MongoDB, window=\"_blank\"] is the default repository implementation used by APIM.
 
-The configuration options are as follows:
+=== Mandatory configuration
 
 [source,yaml]
 ----
@@ -35,7 +35,9 @@ management:
     port:                   # mongodb port (default 27017)
 ----
 
-NOTE: This is the minimum sample file to start with a MongoDB server. A number of other properties control the behavior of a MongoDB database, as described below.
+=== Optional configuration
+
+The example above shows the minimum configuration required to get started with a MongoDB database. You can configure the following additional properties to customize the behavior of a MongoDB database.
 
 [source,yaml]
 ----
@@ -47,11 +49,13 @@ NOTE: This is the minimum sample file to start with a MongoDB server. A number o
 management:
   type: mongodb                 # repository type
   mongodb:                      # mongodb repository
+    prefix:                     # collections prefix
     dbname:                     # mongodb name (default gravitee)
     host:                       # mongodb host (default localhost)
     port:                       # mongodb port (default 27017)
     username:                   # mongodb username (default null)
     password:                   # mongodb password (default null)
+    authSource:                 # mongodb authentication source (default gravitee)
     connectionPerHost:          # mongodb connection per host (default 10)
     connectTimeOut:             # mongodb connection time out (default 0 -> never)
     maxWaitTime:                # mongodb max wait time (default 120000)
@@ -74,20 +78,38 @@ management:
     cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
 ----
 
-NOTE: All theses properties allow you to fine tune your MongoDB connection.
+[[use_a_custom_prefix]]
+== Use a custom prefix
+
+From APIM 3.7, you can use a custom prefix for your collection names. This is useful if you want to use the same databases for APIM and AM, for example.
+
+=== On a new installation
+
+If you are installing APIM for the first time, you need to update the following two values in the APIM Gateway and APIM API `gravitee.yml` files:
+
+* `management.mongodb.prefix`
+* `ratelimit.mongodb.prefix`
+
+By default, these values are empty.
+
+=== Migrating an existing installation
+
+NOTE: Before running any scripts, you must create a dump of your existing database. You need to repeat these steps on both APIM Gateway and APIM API.
+
+. To prefix your collections, you need to rename them. You can use following https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.7.0/mongodb/1-rename-collections-with-prefix.js[this script^], which renames all the collections by adding a prefix and rateLimitPrefix of your choice.
+. Update values `management.mongodb.prefix` and `ratelimit.mongodb.prefix` in the `gravitee.yml` file.
 
 == Index
 
-A https://github.com/gravitee-io/gravitee-repository-mongodb/blob/master/src/main/resources/scripts/create-index.js[script, window=\"_blank\"] is available from our MongoDB GitHub repository.
+You can create an index using the https://github.com/gravitee-io/gravitee-repository-mongodb/blob/master/src/main/resources/scripts/create-index.js[script, window=\"_blank\"] available from our MongoDB GitHub repository.
 You must use the correct version of this script for the version of APIM you are running.
 
+NOTE: If you use a custom prefix for collections, do not forget to set it on the first line of the script.
 
 == Security
 
-Sometimes, you may want to apply specific security constraints and rules to users allowed to access the database.
-
-The following table summarizes how to define these fine-grained constraints per collection.
-
+Sometimes you need to apply specific security constraints and rules to users accessing your database.
+The following table summarizes how to define fine-grained constraints per collection.
 
 |===
 |Component|Read-only |Read-write

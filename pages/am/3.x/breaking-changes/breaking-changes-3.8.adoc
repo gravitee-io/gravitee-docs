@@ -1,0 +1,15 @@
+= Breaking changes in 3.8
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_3.8.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+NOTE: For all these breaking changes, the Migration Guide can be found link:/am/current/am_installguide_migration.html[here].
+
+== Human readable identifier (hrid) for security domains
+
+Since the beginning of AM, the technical id of a security domain was generated from the security domain's name.
+
+For technical debt reasons we have move the technical id to an UUID format and introduced a new field called HRID, to keep readable URLs from the Console UI.
+
+To provide this evolution, the execution of database migration script is required (see link:/am/current/am_installguide_migration.html[Migration Guide]).

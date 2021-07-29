@@ -1,0 +1,85 @@
+body {
+    font-family: Libre Franklin, IBM Plex Sans, sans-serif;
+    color: #111c4e;
+}
+
+.navbar-inverse {
+    background: rgb(1, 0, 2) linear-gradient(90deg, rgba(1, 0, 2, 1) 0%, rgba(23, 12, 102, 1) 55%, rgba(25, 139, 183, 1) 100%);
+    border-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus,
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .open > a .caret, .navbar-inverse .navbar-nav > .open > a:hover .caret, .navbar-inverse .navbar-nav > .open > a:focus .caret {
+    background-color: #ff9100;
+    border-top-color: #111c4e;
+    border-bottom-color: #111c4e;
+    color: #111c4e;
+}
+
+.navbar-brand img {
+    height: 30px;
+    margin-left: 100px;
+}
+
+.summary {
+    text-align: right;
+    padding-right: 10px;
+    border-right: 5px solid #ff9100;
+    font-size: 16px;
+}
+
+.navbar-collapse .navbar-nav.navbar-right:last-child {
+    margin-right: 0;
+}
+
+.gv-input {
+    border: 2px solid;
+    border-radius: 8em;
+    padding: 10px 15px;
+    margin-bottom: 0;
+    background-color: transparent;
+    color: #fff;
+}
+
+.gv-input, .gv-input::placeholder {
+    color: #1ecad3;
+    border-color: #1ecad3;
+}
+
+.ds-input, .ds-input::placeholder {
+    color: #fff;
+    border-color: #fff;
+}
+
+.gv-button {
+    background-color: #1ecad3;
+    border: none;
+    border-radius: 8em;
+    color: #fff;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    -webkit-transition: background-color .2s;
+    transition: background-color .2s;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.footer-links a, .newsletter-success,
+.homepage h2, .summary {
+    color: #1ecad3 !important;
+}
+
+.homepage .sect1 {
+    border-color: #1ecad3;
+}
+
+.nav > li.active > a {
+    background-color: #111c4e;
+}

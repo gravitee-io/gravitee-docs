@@ -1,0 +1,65 @@
+= CAS
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_enterprise_identity_provider_cas.html
+:page-folder: am/user-guide
+:page-layout: am
+
+[label label-enterprise]#Enterprise feature#
+
+== Overview
+
+The CAS protocol is a simple and powerful ticket-based protocol.
+
+It involves one or many clients and one server. Clients are embedded in CASified applications (called "CAS services") and the CAS server is a standalone component:
+
+- The CAS server is responsible for authenticating users and granting accesses to applications.
+- The CAS clients protect the CAS applications and retrieve the identity of the granted users from the CAS server.
+
+The key concepts are:
+
+* *TGT (Ticket Granting Ticket)*: the TGT is stored in the TGC cookie and represents a SSO session for a user.
+* *ST (Service Ticket)*: the ST is transmitted as a GET parameter in a URL. It stands for the access granted by the CAS server to the CASified application for a specific user.
+
+CAS specifies a Browser Single-Signon sequence diagram involving a CAS server, an application (CAS Service) and a principal wielding an HTTP user agent (a browser)
+which is used by AM to create a bridge between your applications and a CAS Server.
+
+NOTE: In this scenario the AM CAS identity provider acts as a CAS service between your application and the CAS server.
+
+image::am/current/graviteeio-am-userguide-social-idp-cas.png[]
+
+== Get your CAS Server metadata
+
+To connect your applications to a CAS, you need at least the following information:
+
+- *Login URL*: location of the CAS server login URL
+- *Service Validate URL*: CAS service validate URL
+
+NOTE: Before you begin, obtain this information from your CAS server administrator and make a note of it for later use.
+
+== Create a CAS connector
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Click *Settings > Providers*.
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Select *CAS* as your identity provider type and click *Next*.
+. Give your identity provider a name.
+. Configure the settings (Login URL, Service Validate URL)
+. Click *Create*.
+
+NOTE: Make a note of the URL in *1. Configure the Redirect URI* to the right of the page. This is the CAS service URL you need to provide to the CAS server to register your Access Management instance.
+
+== Test the connection
+
+You can test your CAS connection using a web application created in AM.
+
+. In AM Console, click *Applications > App > Identity Providers* and select your CAS connector.
++
+image::am/current/graviteeio-am-userguide-social-idp-list.png[]
++
+. Call the Login page (the `/oauth/authorize` endpoint). If the connection is working you will see a *Sign in with CAS* button.
++
+If the button is not visible, there may be a problem with the identity provider settings. Check the AM Gateway log for more information.
+
+. Click *Sign in with CAS*. You will be redirected your CAS Server login page to authenticate your users.
++
+If your user is already connected (SSO session), the user will be automatically redirected to your application with an OAuth 2.0 access token and Open ID Connect ID token, if requested.

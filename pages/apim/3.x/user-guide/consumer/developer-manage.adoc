@@ -143,3 +143,24 @@ The table below lists the analytics available.
 |Hits by API
 
 |===
+
+
+== Restore an archived application
+
+When a user deletes an application, it is in `ARCHIVED` status.
+
+It means that:
+
+- The link to the primary owner of the application is deleted.
+
+- The subscriptions are closed. In case of subscription to an API-Key plan, the keys are revoked.
+
+- Notification settings are deleted.
+
+As an `ADMIN`, you can restore application in the APIM Console.
+
+The `ADMIN` user will become the primary owner of the application.
+
+NOTE: Every application's subscriptions will be restored in `PENDING` status. The API publisher will have to reactivate manually the needed subscriptions.
+
+image::apim/3.x/api-consumer-guide/developer-manage/app-restore.png[]

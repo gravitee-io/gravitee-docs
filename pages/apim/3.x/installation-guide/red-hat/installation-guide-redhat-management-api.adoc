@@ -8,8 +8,8 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
 :gravitee-component-name: APIM API
-:gravitee-package-name: graviteeio-apim-management-api-3x
-:gravitee-service-name: graviteeio-apim-management-api
+:gravitee-package-name: graviteeio-apim-rest-api-3x
+:gravitee-service-name: graviteeio-apim-rest-api
 
 == Prerequisites
 
@@ -45,7 +45,7 @@ sudo systemctl stop {gravitee-service-name}
 ----
 
 NOTE: These commands provide no feedback as to whether {gravitee-component-name} started successfully.
-This information is written to the log files located in `/opt/graviteeio/apim/management-api/logs/`.
+This information is written to the log files located in `/opt/graviteeio/apim/rest-api/logs/`.
 
 == View the logs
 

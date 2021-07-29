@@ -4,7 +4,7 @@
 :page-folder: am/user-guide
 :page-layout: am
 
-NOTE: New in Gravitee.io AM 3.2.x
+[label label-version]#New in version 3.2#
 
 == Overview
 
@@ -45,8 +45,7 @@ NOTE: Record the client secret value for later use, as it is not displayed again
 == Create an Azure AD identity provider
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. If you want to change to a different security domain, select it from the user menu at the top right.
-. Click the plus icon image:icons/plus-icon.png[].
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Choose the *Azure AD* identity provider type and click *Next*.
 +
 NOTE: Ensure you have the generated Client ID and Client Secret from the Azure AD application to hand.

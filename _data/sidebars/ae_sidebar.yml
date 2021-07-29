@@ -22,29 +22,32 @@ entries:
     - title: Introduction
       output: web
       url: /ae/installguide_introduction.html
-    - title: Installation
+    - title: Install with .zip
       output: web
       url: /ae/installguide_engine.html
-    - title: Docker
+    - title: Run in Docker
       output: web
       url: /ae/installguide_docker.html
-    - title: Kubernetes
+    - title: Deploy in Kubernetes
       output: web
       url: /ae/installguide_kubernetes.html
-    - title: Configuration
+    - title: Configure
       output: web
       url: /ae/installguide_configuration.html
-    - title: Technical API
+    - title: Internal API
       output: web
       url: /ae/installguide_technical_api.html
     - title: Metrics
       output: web
       url: /ae/installguide_metrics.html
+    - title: Upgrade Guide
+      output: web
+      url: /ae/installguide_migration.html
 
   - title: User Guide
     output: web
     folderitems:
-      - title: Definition
+      - title: Introduction
         output: web
         url: /ae/userguide_definition.html
       - title: Conditions
@@ -57,19 +60,19 @@ entries:
         - title: Notifications
           output: web
           subfolderitems:
-            - title: What is a Notifier ?
+            - title: What is a notifier?
               output: web
               url: /ae/userguide_notifiers.html
-            - title: Notifier Email
+            - title: Email notifier
               output: web
               url: /ae/userguide_notifier_email.html
-            - title: Notifier System Email
+            - title: System email notifier
               output: web
               url: /ae/userguide_notifier_system_email.html
-            - title: Notifier Slack
+            - title: Slack notifier
               output: web
               url: /ae/userguide_notifier_slack.html
-            - title: Notifier Webhook
+            - title: Webhook notifier
               output: web
               url: /ae/userguide_notifier_webhook.html
             - title: Create a custom message
@@ -78,10 +81,10 @@ entries:
             - title: Node lifecycle notification
               output: web
               url: /ae/userguide_properties_node_lifecycle.html
-            - title: Node hearbeat notification
+            - title: Node heartbeat notification
               output: web
               url: /ae/userguide_properties_node_heartbeat.html
-            - title: Node health-check notification
+            - title: Node health check notification
               output: web
               url: /ae/userguide_properties_node_healthcheck.html
 
@@ -91,32 +94,43 @@ entries:
       - title: Installation
         output: web
         url: /ae/apim_installation.html
-      - title: Configuration
-        output: web
-        url: /ae/apim_configuration.html
-      - title: Platform
-        output: web
-        url: /ae/apim_platform.html
-      - title: API
-        output: web
-        url: /ae/apim_api.html
         subfolders:
-          - title: Notifications
-            output: web
-            subfolderitems:
-              - title: Request notification
-                output: web
-                url: /ae/apim_notification_request.html
-              - title: Health-check notification
-                output: web
-                url: /ae/apim_notification_endpoint_healthcheck.html
-
+        - title: Configuration
+          output: web
+          subfolderitems:
+            - title: Enable alerting in APIM
+              output: web
+              url: /ae/apim_configuration.html
+            - title: Platform alerts
+              output: web
+              url: /ae/apim_platform.html
+            - title: API alerts
+              output: web
+              url: /ae/apim_api.html
+            - title: Consumer alerts
+              output: web
+              url: /ae/apim_consumer.html
+        - title: Notifications
+          output: web
+          subfolderitems:
+           - title: Request notification
+             output: web
+             url: /ae/apim_notification_request.html
+           - title: Health-check notification
+             output: web
+             url: /ae/apim_notification_endpoint_healthcheck.html
+      - title: Alerts dashboard
+        output: web
+        url: /ae/apim_alerts_dashboard.html
   - title: Access Management
     output: web
     folderitems:
       - title: Installation
         output: web
         url: /ae/am_installation.html
+      - title: Configuration
+        output: web
+        url: /ae/am_configuration.html
 
   - title: Third Parties
     output: web
@@ -124,3 +138,10 @@ entries:
       - title: Installation
         output: web
         url: /ae/3rdparties_installation.html
+
+  - title: Changelog
+    output: web
+    folderitems:
+      - title: Changelog
+        output: web
+        url: /ae/ae_changelog.html

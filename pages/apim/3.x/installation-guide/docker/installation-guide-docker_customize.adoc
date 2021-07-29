@@ -32,6 +32,8 @@ $ docker run  \
 
 This mounts a new volume containing additional plugins and declares them as part of the configuration (`--env GRAVITEE_PLUGINS_PATH_1=$${gravitee.home}/plugins-ext`)
 
+NOTE: Plugins must also be installed in APIM API.
+
 === Use Redis as the datastore for rate-limit counters
 
 This example shows how to switch from MongoDB (default connector) to Redis for rate-limit (the example assumes the Redis connector is available from `./plugins` on the Docker host):
@@ -51,7 +53,7 @@ $ docker run  \
         graviteeio/apim-gateway:latest
 ....
 
-=== Use JDBC as the datastore for management
+=== Use JDBC as the datastore for management (APIM 3.4 and earlier)
 
 This example shows how to switch from MongoDB (the default connector) to a JDBC-based connector (the example assumes the JDBC connector is available from `./plugins` on the Docker Host).
 
@@ -65,6 +67,26 @@ $ docker run  \
         --volume ./plugins:/opt/graviteeio-gateway/plugins-ext \
         --env GRAVITEE_PLUGINS_PATH_0=$${gravitee.home}/plugins \
         --env GRAVITEE_PLUGINS_PATH_1=$${gravitee.home}/plugins-ext \
+        --env GRAVITEE_MANAGEMENT_TYPE=jdbc \
+        --env GRAVITEE_MANAGEMENT_JDBC_URL=jdbc:mysql://localhost:3306/gravitee?useSSL=false&user=mysql_users&password=mysql_password \
+        --detach  \
+        graviteeio/apim-gateway:latest
+....
+
+=== Use JDBC as the datastore for management (APIM 3.5 onwards)
+
+From APIM version 3.5, the JDBC plugin is included with the APIM distribution by default, so the procedure for switching to a JDBC-based connector is a little bit different.
+
+NOTE: You must ensure you have the correct JDBC driver for your RDBMS. The example below assumes the JDBC connector is available from `/plugins/ext/repository-jdbc/` on the Docker host.
+
+The driver needs to be in the same directory hierarchy as the JDBC plugin, so the volume must be mounted under the default `/plugin` directory. The `plugin-ext` directory from the example above is not needed.
+
+....
+$ docker run  \
+        --publish 8082:8082  \
+        --name gateway  \
+        --volume ./driver:/opt/graviteeio-gateway/plugins/ext/repository-jdbc \
+        --volume ./plugins:/opt/graviteeio-gateway/plugins-ext \
         --env GRAVITEE_MANAGEMENT_TYPE=jdbc \
         --env GRAVITEE_MANAGEMENT_JDBC_URL=jdbc:mysql://localhost:3306/gravitee?useSSL=false&user=mysql_users&password=mysql_password \
         --detach  \

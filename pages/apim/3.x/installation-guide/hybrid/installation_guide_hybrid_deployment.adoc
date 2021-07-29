@@ -41,7 +41,7 @@ a new plugin.
 ==== Installation
 
 To expose the new HTTP API, you need to install a new plugin inside the `plugins` directory of APIM Gateway.
-This plugin can be found at https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/
+This plugin can be found at https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/
 
 [source,bash]
 ----
@@ -87,6 +87,21 @@ services:
         type: basic
         users:
           admin: adminadmin
+      secured: true
+      ssl:
+        clientAuth: false
+        keystore:
+          type: # can be jks / pem / pkcs12
+          path:
+          password:
+          certs: # Required for pem
+            -  /path/to/cert
+          keys:
+            -  /path/to/key
+        trustore:
+          type: # can be jks / pem / pkcs12
+          path:
+          password:
 ----
 
 ==== Check the APIM Gateway node is running
@@ -106,7 +121,7 @@ You should receive a response containing an empty array or a list of APIs.
 
 To consume the HTTP bridge, you need to replace default repository plugins (usually a MongoDB repository) with
 a new HTTP repository in the APIM Gateway `plugins` directory.
-This plugin can be found at https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/
+This plugin can be found at https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/
 
 [source,bash]
 ----
@@ -130,6 +145,17 @@ management:
       basic:
         username: admin
         password: adminadmin
+    ssl:
+      trustAll: true
+      verifyHostname: true
+      keystore:
+        type: # can be jks / pem / pkcs12
+        path:
+        password:
+      trustore:
+        type: # can be jks / pem / pkcs12
+        path:
+        password:
 ----
 
 == Start the APIM Gateways

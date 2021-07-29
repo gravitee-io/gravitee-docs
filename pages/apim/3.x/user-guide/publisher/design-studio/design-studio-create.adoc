@@ -1,0 +1,154 @@
+= Design your API with Design Studio
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_publisherguide_design_studio_create.html
+:page-folder: apim/user-guide/publisher/design-studio
+:page-layout: apim3x
+
+
+[label label-version]#New in version 3.5#
+
+== Overview
+You can use Design Studio to create new API flows for your plans and define policies for each flow.
+Creating different flows for a plan allows you to apply different policies by path and/or HTTP method.
+
+== Get started with Design Studio
+
+. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
+. Click *APIs* and select your API in the list.
+. Click *Design*.
+. If your API was created in an earlier version of APIM, migrate it to Design Studio as described in link:/apim/3.x/apim_publisherguide_design_studio_migrate.html[Migrate to Design Studio^].
+
+== Create and configure an API flow
+
+You can create flows at API level or at plan level.
+
+. In the *DESIGN* tab, click the *API* tab to design a new API level flow or *PLANS* to create a new plan level flow.
++
+image:apim/3.x/api-publisher-guide/design-studio/design-studio.png[Design Studio]
+
+. Click the plus icon to add a new flow.
++
+image:apim/3.x/api-publisher-guide/design-studio/add-plan-flow.png[]
+
+. Double-click the flow to configure its details.
++
+image:apim/3.x/api-publisher-guide/design-studio/flow-configuration.png[]
++
+Configure the following:
+
+* Name
+* Path details to filter on: the path syntax for the flow in link:/apim/3.x/apim_policies_overview.html#ant-notation[Ant format^] and whether the path starts with or equals the value entered in *Path*.
+* One or methods to filter on (specify all which apply)
+* One or more conditions to filter on, in link:/apim/3.x/apim_publisherguide_expression_language.html[Expression Language format^] -- for example, a condition to filter on query parameters called `X-debug` would be written like this: `#request.params['X-debug'] != null`
+
+. Click *SAVE*.
+
+TIP: You can update a flow by clicking it and changing any required values, then clicking the tick icon image:icons/tick-icon.png[role="icon"] to update the values.
+
+== Additional configuration
+
+You can configure the following additional resources and properties for your API flows.
+
+=== Specify Best match for your flow paths
+
+In the *CONFIGURATION* tab, select *Best match* if you want APIM to match your flows from the path that is closest to that defined in the flow definition.
+
+image:apim/3.x/api-publisher-guide/design-studio/configuration-tab.png[]
+
+[[api-properties]]
+=== Define properties for your API flows
+
+In the *PROPERTIES* tab, specify properties as key-value pairs. You can specify them one by one, or toggle from *Simple* to *Expert* mode and paste property definitions into an editor in format `<key>=<value>`.
+
+You can also configure dynamic properties by clicking *CONFIGURE DYNAMIC PROPERTIES*. Dynamic properties are fetched with a URL on a regular schedule and subsequently updated according to the details you specify.
+
+image:apim/3.x/api-publisher-guide/design-studio/properties-tab.png[]
+
+When you add new policies to your API flows which include link:/apim/3.x/apim_publisherguide_expression_language.html#api[Expression Language^] fields as part of their configuration (such as the dynamic routing policy), you can retrieve and query property values with the `#properties` statement. For more details, see the <<example>> below.
+
+==== Dynamic properties
+
+You can configure dynamic properties, which retrieve properties from a remote server with a URL and update them according to the details you specify.
+
+. Click *CONFIGURE DYNAMIC PROPERTIES*.
+. Specify the details of the property:
+* `cron` schedule
+* URL
+* request headers and body to include with the call
+* JOLT transformation to perform on the response
+. Toggle on the *Enabled* option.
+. Click the tick icon image:icons/tick-icon.png[role="icon"] to save your changes.
+. Click *SAVE*.
++
+After the first call, the resulting property is added to the list of global properties, where its value is continuously updated according to the `cron` schedule specified.
+
+[[create-resources]]
+=== Create resources to use in your flows
+
+In the *RESOURCES* tab, create new resources to use in your flows. You can add resources to policies which support them when configuring them for a flow.
+
+image:apim/3.x/api-publisher-guide/design-studio/resources-tab.png[]
+
+* `Cache` resources can be added to a `Cache` policy
+* `Generic OAuth2 Authorization Server` resources can be added to an `OAuth2` policy
+* `Gravitee.io AM Authorization Server` resources can be added to an `OAuth2` policy
+
+For example, specify a cache resource as follows:
+
+. Click *CACHE*.
++
+image:apim/3.x/api-publisher-guide/design-studio/cache-resource.png[]
+
+. Enter the cache name.
+. Specify the cache properties: time to idle, time to live and max entries on heap.
+. Click the tick icon image:icons/tick-icon.png[role="icon"].
+. Click *SAVE*.
+
+[[flow-policies]]
+== Add policies to a flow
+
+You can add as many policies as you want to a flow.
+
+TIP: You can find out more about a specific policy by selecting it to view the in-product reference documentation, or you can view the online Policy Reference link:/apim/3.x/apim_policies_overview.html[here^].
+
+. Click the *DESIGN* tab.
+. Click on a plan to expand it.
++
+image:apim\3.x\api-publisher-guide\design-studio\add-policies-expand-plan.png[]
+. From the list on the right, drag the policy to the required phase of the flow.
++
+image:apim\3.x\api-publisher-guide\design-studio\add-policies-new-policy.png[]
+. Specify the details of the policy configuration. If this is a `Cache` or `OAuth2` type policy, you can add the corresponding resources created in <<Create resources to use in your flows>>.
+. Click *SAVE*.
+
+TIP: If you hover over a policy in a flow you can perform various operations on it: drag the policy to another phase of the flow, disable, delete or duplicate the policy.
+
+== Example
+
+In this example, we want our API to query our shop databases to check their stock levels. We will dynamically reroute any API calls containing a shop ID to its associated URL.
+
+The first step is to <<api-properties,define a list of properties>> for the shops, with each unique shop ID as the key and the URL of the shop as the value.
+
+image::apim\3.x\api-publisher-guide\design-studio\global-properties-list.png[]
+
+We then configure a dynamic routing policy for the API with a routing rule which builds a new URL dynamically through property matching. The URL is created with a `#properties` statement which matches properties returned by querying the request header containing the shop ID.
+
+image::apim\3.x\api-publisher-guide\design-studio\dynamic-routing-properties.png[]
+
+If the ID in the request header matches the key of one of the properties, it is replaced with the URL. The dynamic routing policy then reroutes the API call to the URL.
+
+TIP: The list of shop IDs and URLs could also be maintained using a dictionary, for example, in organizations where the administrator maintains this information independently of the API creation process or if the list needs to be available to multiple APIs. For more details, see link:/apim/3.x/apim_installguide_configuration_dictionaries.html[Configure dictionaries^] in the Configuration Guide.
+
+== Deploy your API and view it in the audit history
+
+When you have finished designing an API, you need to click the *deploy your API* link to deploy your API with your changes.
+
+Each new API deployment has a version associated, for which you can add a description as a label when deploying the API:
+
+image:apim\3.x\api-publisher-guide\design-studio\deploy-label.png[]
+
+You can use this label to identify the API deployment in the audit trail and in views on the API dashboard:
+
+image:apim\3.x\api-publisher-guide\audit\audit-history.png[]
+
+The audit history allows you to view the deployment in detail. For more information, see link:\apim\3.x\apim_publisherguide_audit.html[Audit trail^].

@@ -12,10 +12,9 @@ The MFA factors associated with their user will be removed and MFA configuration
 == Remove a user's MFA factors
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. If you want to change to a different security domain, select it from the user menu at the top right.
 . Click *Settings > Users*.
 . Select the user and click the *Multi-Factor Authentication* tab.
-. Select the MFA factor you want to remove and click the remove icon image:icons/remove-icon.png[].
+. Select the MFA factor you want to remove and click the remove icon image:icons/remove-icon.png[role="icon"].
 +
 image::am/current/graviteeio-am-userguide-mfa-factor-reset.png[]
 

@@ -9,9 +9,11 @@
 
 include::../partial/how-to-configure.adoc[leveloffset=+1]
 
-== HTTP Server
+== `gravitee.yml` configuration
 
-HTTP server configuration.
+=== Configure HTTP server
+
+You can update the HTTP server configuration in the following section of the `gravitee.yml` file.
 
 [source,yaml]
 ----
@@ -33,9 +35,9 @@ http:
       password:
 ----
 
-== Enable HTTPS
+==== Enable HTTPS support
 
-First, you need to provide a keystore. If you don’t have one, you can generate it :
+First, you need to provide a keystore. If you don’t have one, you can generate it:
 
 [source,yaml]
 ----
@@ -50,7 +52,7 @@ keytool -genkey \
   -storepass secret
 ----
 
-After that, you have to enable secure mode in your gravitee.yml :
+You then need to enable secure mode in `gravitee.yml`:
 
 [source,yaml]
 ----
@@ -71,7 +73,7 @@ http:
       password:
 ----
 
-== Email configuration
+=== Configure email
 
 ----
 # SMTP configuration used to send mails
@@ -93,7 +95,7 @@ email:
 #  path: ${gravitee.home}/templates
 ----
 
-== Plugins repository
+=== Configure the Plugins repository
 
 Gravitee.io Access Gateway <<gravitee-plugins,plugins>> directory configuration.
 
@@ -103,7 +105,7 @@ plugins:
   path: ${gravitee.home}/plugins
 ----
 
-== Management repository
+=== Configure the Management repository
 
 Management repository is used to store global configuration such as security domains, clients, tokens, users, ...
 This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:

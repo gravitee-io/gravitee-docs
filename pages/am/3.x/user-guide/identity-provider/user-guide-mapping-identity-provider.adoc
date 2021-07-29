@@ -10,11 +10,11 @@ You can bind some identity provider attributes to an AM _user profile_ with attr
 
 TIP: We advise you to read link:/am/current/am_quickstart_profile_information.html[Get user profile information^] first.
 
-_User profile_ attributes can be retrieved either by calling the _UserInfo_ endpoint or, if you specify an `openid` scope for your application, by parsing the claims in the `id_token`.
+User profile attributes can be retrieved either by calling the *UserInfo* endpoint or, if you specify an `openid` scope for your application, by parsing the claims in the `id_token`.
 
 == User mappers
 
-In the identity providers *User mappers* tab, you can add mappings between user attributes to be returned by the identity provider, with custom attributes that will be stored within the _User Profile_.
+In the identity provider *User mappers* tab, you can add mappings between user attributes to be returned by the identity provider, with custom attributes that will be stored within the _User Profile_.
 
 With an LDAP identity provider, if you don't define any mappings, the following attributes are returned by default:
 
@@ -31,7 +31,7 @@ With an LDAP identity provider, if you don't define any mappings, the following 
 
 The user name is also the attribute used to look up the user in LDAP, as defined per the default pattern: `uid={0}`
 
-WARNING: Once you start using the *User Mapper* feature, the default claims listed above will no longer appear in the _User Profile_. Instead, only the declared mappings will apply. +
+WARNING: Once you start using the *User Mapper* feature, the default claims listed above will no longer appear in the user profile. Instead, only the declared mappings will apply. +
 The same applies when the client starts using scopes other than `openid`.
 
 === Example
@@ -39,16 +39,13 @@ The same applies when the client starts using scopes other than `openid`.
 Let's imagine a client application wants to retrieve the `telephoneNumber` attribute present in the LDAP identity provider. You can do this by configuring the identity provider as follows:
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-+
-TIP: If you want to update your identity provider in a different security domain, select the domain from the user menu.
-+
 . Click *Settings > Providers*.
 . Select your LDAP identity provider and click the *User mappers* tab.
-. Map your LDAP (raw) attribute `telephoneNumber` to a new user attribute named `telephone_number`:
+. Map your LDAP (raw) attribute `telephoneNumber` to a new user attribute named `telephone_number`.
 +
-image::am/current/graviteeio-am-userguide-idp-user-mappers.png[]
-+
-. Get the _User Profile_ information via the link::\am\current\UserInfo Endpoint[UserInfo Endpoint] and you will see that the new user attribute is present.
+image::am/current/graviteeio-am-userguide-idp-user-mappers-phoneno.png[]
+
+. Get the User Profile information via the link:/am/current/am_quickstart_profile_information.html#userinfo-endpoint[UserInfo Endpoint^] and you will see that the new user attribute is present.
 +
 [source,bash,subs="verbatim"]
 ----
@@ -97,9 +94,9 @@ The client will provide this scope when accessing an API via an API Manager, and
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
 . Click *Settings > Scopes*.
-. Click the plus icon image:icons\plus-icon.png[] and create an `admin` scope.
+. Click the plus icon image:icons\plus-icon.png[role="icon"] and create an `admin` scope.
 . Click *Settings > Roles*.
-. Click the plus icon image:icons\plus-icon.png[] and create an `administrator` role. Select the `admin` scope permission.
+. Click the plus icon image:icons\plus-icon.png[role="icon"] and create an `administrator` role. Select the `admin` scope permission.
 . Go to the `Providers` section
 . Click *Settings > Providers* and select your LDAP identity provider.
 . Click the *Role mappers* tab.

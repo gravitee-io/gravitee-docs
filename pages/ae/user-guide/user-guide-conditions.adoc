@@ -1,4 +1,4 @@
-= User Guide
+= Conditions
 :page-sidebar: ae_sidebar
 :page-permalink: ae/userguide_conditions.html
 :page-folder: ae/user-guide
@@ -7,50 +7,208 @@
 :page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
 :page-layout: ae
 
-== Conditions
+== Overview
 
-=== String
+The list of conditions you can define for an alert are described below.
+
+When defining a link:user-guide-notifier-message.adoc[custom message], you can access the configuration of the conditions of your alert. For each condition, you will find a description of available fields.
+
+== String
 
 Used to compare a string property value to a given value.
 
-Available operators are: EQUALS, NOT_EQUALS, STARTS_WITH`, ENDS_WITH, CONTAINS, MATCHES
+Available operators are: `EQUALS`, `NOT_EQUALS`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `MATCHES`
 
-=== Threshold
+[cols="1,3"]
+|===
+|Key |Description
 
-Used to compare a number property value to a given threshold ( `property < X ).
+|`alert.conditions[__integer__].type`
+|Type of the condition: `STRING`
 
-Available operators are: LT, LTE, GTE, GT
+|`alert.conditions[__integer__].property`
+|Property of the condition
 
-=== Threshold Range
+|`alert.conditions[__integer__].operator`
+|Operator of the condition: `EQUALS`, `NOT_EQUALS`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `MATCHES`
 
-Used to compare a number property value to a given threshold range ( `X < property < Y ).
+|`alert.conditions[__integer__].pattern`
+|Pattern used to compare the property value
 
-Available operators are: LT, LTE, GTE, GT
+|`alert.conditions[__integer__].ignoreCase`
+|Boolean that indicates if the comparison should ignore the case of the property value
+|===
 
-=== Aggregation
+== Threshold
 
-Used to compare an aggregated property value to a threshold. Note that this kind of condition requires a time-frame
-window to aggregate property values.
+Used to compare a number property value to a given threshold (`property < X`).
 
-Available operators are: LT, LTE, GTE, GT
+Available operators are: `LT`, `LTE`, `GTE`, `GT`
 
-Available functions are: COUNT, AVG, MIN, MAX, P50, P90, P95, P99
+[cols="1,3"]
+|===
+|Key |Description
 
-=== Rate
+|`alert.conditions[__integer__].type`
+|Type of the condition: `THRESHOLD`
+
+|`alert.conditions[__integer__].property`
+|Property of the condition
+
+|`alert.conditions[__integer__].operator`
+|Operator of the condition: `LT`, `LTE`, `GTE`, `GT`
+
+|`alert.conditions[__integer__].threshold`
+|Threshold value of the condition (double value)
+|===
+
+== Threshold Range
+
+Used to compare a number property value to a given threshold range (`X < property < Y`).
+
+Available operators: `LT`, `LTE`, `GTE`, `GT`
+
+[cols="1,3"]
+|===
+|Key |Description
+
+|`alert.conditions[__integer__].type`
+|Type of the condition: `THRESHOLD_RANGE`
+
+|`alert.conditions[__integer__].property`
+|Property of the condition
+
+|`alert.conditions[__integer__].operatorLow`
+|Operator for the low bound of the condition: `LT`, `LTE`, `GTE`, `GT`
+
+|`alert.conditions[__integer__].thresholdLow`
+|Threshold value for the low bound of the condition (double value)
+
+|`alert.conditions[__integer__].operatorHigh`
+|Operator for the high bound of the condition: `LT`, `LTE`, `GTE`, `GT`
+
+|`alert.conditions[__integer__].thresholdHigh`
+|Threshold value for the high bound of the condition (double value)
+|===
+
+== Aggregation
+
+Used to compare an aggregated property value to a threshold. Note that this kind of condition requires a time-frame window to aggregate property values.
+
+Available operators are: `LT`, `LTE`, `GTE`, `GT`
+
+Available functions: `COUNT`, `AVG`, `MIN`, `MAX`, `P50`, `P90`, `P95`, `P99`
+
+[cols="1,3"]
+|===
+|Key |Description
+
+|`alert.conditions[__integer__].type`
+|Type of the condition: `AGGREGATION`
+
+|`alert.conditions[__integer__].function`
+|Function used to compute the aggregation of the condition: `COUNT`, `AVG`, `MIN`, `MAX`, `P50`, `P90`, `P95`, `P99`
+
+|`alert.conditions[__integer__].property`
+|Property of the condition
+
+|`alert.conditions[__integer__].operator`
+|Operator of the condition: `LT`, `LTE`, `GTE`, `GT`
+
+|`alert.conditions[__integer__].threshold`
+|Threshold value of the condition (double value)
+
+|`alert.conditions[__integer__].duration`
+|Size of the time-frame window to aggregate values (long value)
+
+|`alert.conditions[__integer__].timeUnit`
+|Unit of time of the duration.
+
+|`alert.conditions[__integer__].projections[0].property`
+|Property the aggregation will use to group results
+|===
+
+== Rate
 
 Used to calculate the rate for property value in comparison to a given condition and compare it to a threshold. Note
 that this kind of condition requires a time-frame window to aggregate property values.
 
-Available operators are: LT, LTE, GTE, GT
+Available operators: `LT`, `LTE`, `GTE`, `GT`
 
-=== Comparison
+[cols="1,3"]
+|===
+|Key |Description
 
-Used to compare a number property value to an other number property value ( `property1 < property2 ).
+|`alert.conditions[__integer__].type`
+|Type of the condition: `RATE`
 
-Available operators are: LT, LTE, GTE, GT
+|`alert.conditions[__integer__].operator`
+|Operator of the condition: `LT`, `LTE`, `GTE`, `GT`
 
-=== String comparison
+|`alert.conditions[__integer__].threshold`
+|Threshold value of the condition (double value)
 
-Used to compare a string property value to an other string property value ( `property1 < property2 ).
+|`alert.conditions[__integer__].comparison`
+|A single value condition. It can be: <<String>>, <<String comparison>>, <<Threshold>>, <<Threshold Range>>, <<Comparison>>
 
-Available operators are: EQUALS, NOT_EQUALS, STARTS_WITH`, ENDS_WITH, CONTAINS, MATCHES
+|`alert.conditions[__integer__].duration`
+|Size of the time-frame window to aggregate values (long value)
+
+|`alert.conditions[__integer__].timeUnit`
+|Unit of time of the duration
+
+|`alert.conditions[__integer__].projections[0].property`
+|Property the aggregation will use to group results
+|===
+
+== Comparison
+
+Used to compare a number property value to an other number property value (`property1 < property2`).
+
+Available operators: `LT`, `LTE`, `GTE`, `GT`
+
+[cols="1,3"]
+|===
+|Key |Description
+
+|`alert.conditions[__integer__].type`
+|Type of the condition: `COMPARE`
+
+|`alert.conditions[__integer__].property`
+|Property of the condition
+
+|`alert.conditions[__integer__].operator`
+|Operator of the condition: `LT`, `LTE`, `GTE`, `GT`
+
+|`alert.conditions[__integer__].multiplier`
+|Multiplier value of the condition (double value)
+
+|`alert.conditions[__integer__].property2`
+|Second property of the condition
+|===
+
+== String comparison
+
+Used to compare a string property value to an other string property value (`property1 < property2`).
+
+Available operators are: `EQUALS`, `NOT_EQUALS`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `MATCHES`
+
+[cols="1,3"]
+|===
+|Key |Description
+
+|`alert.conditions[__integer__].type`
+|Type of the condition: `STRING_COMPARE`
+
+|`alert.conditions[__integer__].property`
+|Property of the condition
+
+|`alert.conditions[__integer__].operator`
+|Operator of the condition: `EQUALS`, `NOT_EQUALS`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `MATCHES`
+
+|`alert.conditions[__integer__].property2`
+|Second property of the condition
+
+|`alert.conditions[__integer__].ignoreCase`
+|Boolean that indicates if the comparison should ignore the case of the properties value
+|===

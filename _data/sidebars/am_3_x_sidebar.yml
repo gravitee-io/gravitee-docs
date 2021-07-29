@@ -43,10 +43,10 @@ entries:
     - title: Secure your APIs
       output: web
       url: /am/current/am_quickstart_secure_apis.html
-    - title: Use your first Extension Point
+    - title: Configure a flow
       output: web
       url: /am/current/am_quickstart_use_policies.html
-    - title: Add Custom Claims to Tokens
+    - title: Add custom claims to tokens
       output: web
       url: /am/current/am_quickstart_tokens_custom_claims.html
 
@@ -108,7 +108,7 @@ entries:
             - title: Install AM Console
               output: web
               url: /am/current/am_installguide_amazon_management_ui.html
-        - title: Run on Docker
+        - title: Run in Docker
           output: web
           subfolderitems:
             - title: Images
@@ -176,7 +176,12 @@ entries:
         - title: JDBC
           output: web
           url: /am/current/am_installguide_repositories_jdbc.html
-
+      - title: Configure reporters
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_installguide_reporters.html
   - title: User Guide
     output: web
     folderitems:
@@ -206,7 +211,7 @@ entries:
           output: web
           url: /am/current/am_userguide_identity_provider_mapping.html
           subfolders:
-          - title: Enteprise identity providers
+          - title: Enterprise identity providers
             output: web
             subfolderitems:
             - title: Overview
@@ -218,6 +223,15 @@ entries:
             - title: HTTP (web service)
               output: web
               url: /am/current/am_userguide_enterprise_identity_provider_http.html
+            - title: Kerberos
+              output: web
+              url: /am/current/am_userguide_enterprise_identity_provider_kerberos.html
+            - title: SAML 2.0
+              output: web
+              url: /am/current/am_userguide_enterprise_identity_provider_saml2.html
+            - title: CAS
+              output: web
+              url: /am/current/am_userguide_enterprise_identity_provider_cas.html
           - title: Social identity providers
             output: web
             subfolderitems:
@@ -239,6 +253,9 @@ entries:
             - title: LinkedIn
               output: web
               url: /am/current/am_userguide_social_identity_provider_linkedin.html
+            - title: Salesforce
+              output: web
+              url: /am/current/am_userguide_social_identity_provider_salesforce.html
           - title: Legal identity providers
             output: web
             subfolderitems:
@@ -275,15 +292,27 @@ entries:
         - title: Dynamic client registration
           output: web
           url: /am/current/am_userguide_dynamic_client_registration.html
-      - title: Login page
+      - title: Branding
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /am/current/am_userguide_login_page.html
-        - title: Custom login page
+          url: /am/current/am_userguide_branding.html
+        - title: Custom pages
           output: web
-          url: /am/current/am_userguide_custom_login_page.html
+          url: /am/current/am_userguide_user_management_forms.html
+        - title: Custom email templates
+          output: web
+          url: /am/current/am_userguide_branding_email_templates.html
+      - title: Bot Detection
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_bot_detection.html
+        - title: Bot Detection Plugins
+          output: web
+          url: /am/current/am_userguide_bot_detection_plugins.html
       - title: Multi-factor authentication
         output: web
         subfolderitems:
@@ -293,9 +322,21 @@ entries:
         - title: Factors
           output: web
           url: /am/current/am_userguide_mfa_factors.html
-        - title: Reset User's MFA
+        - title: Reset MFA
           output: web
           url: /am/current/am_userguide_mfa_user_factors.html
+        - title: Step-up authentication
+          output: web
+          url: /am/current/am_userguide_mfa_step_up.html
+      - title: Resources
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_resources.html
+        - title: Twilio
+          output: web
+          url: /am/current/am_userguide_resources_twilio.html
       - title: Passwordless (W3C WebAuthn)
         output: web
         subfolderitems:
@@ -311,15 +352,6 @@ entries:
         - title: Create a certificate
           output: web
           url: /am/current/am_userguide_create_certificate.html
-      - title: Extension grants
-        output: web
-        subfolderitems:
-          - title: Overview
-            output: web
-            url: /am/current/am_userguide_extension_grants.html
-          - title: JWT Bearer
-            output: web
-            url: /am/current/am_userguide_extension_grants_jwt_bearer.html
       - title: User management
         output: web
         subfolderitems:
@@ -338,47 +370,88 @@ entries:
         - title: User registration
           output: web
           url: /am/current/am_userguide_user_management_registration.html
-        - title: Custom forms
-          output: web
-          url: /am/current/am_userguide_user_management_forms.html
         - title: SCIM 2.0
           output: web
           url: /am/current/am_userguide_user_management_scim.html
         - title: User consent
           output: web
           url: /am/current/am_userguide_user_management_consent.html
+        - title: Password policy
+          output: web
+          url: /am/current/am_userguide_user_management_password_policy.html
       - title: User session management
         output: web
         subfolderitems:
         - title: Logout
           output: web
           url: /am/current/am_userguide_user_session_management_logout.html
-      - title: Audit log
+      - title: Audit trail
         output: web
         subfolderitems:
         - title: Overview
           output: web
           url: /am/current/am_userguide_logs.html
-        - title: Audit trail
+        - title: Audit log
           output: web
           url: /am/current/am_userguide_audit_log.html
-      - title: Extension points
+          subfolders:
+          - title: Storage
+            output: web
+            subfolderitems:
+            - title: Overview
+              output: web
+              url: /am/current/am_userguide_audit_log_storage.html
+            - title: File
+              output: web
+              url: /am/current/am_userguide_audit_log_file.html
+      - title: Flows
         output: web
         subfolderitems:
         - title: Overview
           output: web
           url: /am/current/am_userguide_policies.html
-        - title: Extension points
+        - title: Flow configuration
           output: web
           url: /am/current/am_userguide_policies_extension_points.html
+      - title: Alerts
+        output: web
+        subfolderitems:
+        - title: Overview
+          output: web
+          url: /am/current/am_userguide_alerts_overview.html
+        - title: Alert Engine
+          output: web
+          url: /am/current/am_userguide_alerts_ae.html
+        - title: Manage alerts
+          output: web
+          url: /am/current/am_userguide_alerts.html
+          subfolders:
+          - title: Notification channels
+            output: web
+            subfolderitems:
+            - title: Overview
+              output: web
+              url: /am/current/am_userguide_alerts_notifications.html
+            - title: Email
+              output: web
+              url: /am/current/am_userguide_alerts_notifications_email.html
+            - title: Webhook
+              output: web
+              url: /am/current/am_userguide_alerts_notifications_webhook.html
+            - title: Slack
+              output: web
+              url: /am/current/am_userguide_alerts_notifications_slack.html
 
   - title: Administration Guide
     output: web
     folderitems:
+    - title: Organizations and environments
+      output: web
+      url: /am/current/am_adminguide_organizations_and_environments.html
+      type: homepage
     - title: Roles and permissions
       output: web
       url: /am/current/am_adminguide_roles_and_permissions.html
-      type: homepage
     - title: Users and groups
       output: web
       url: /am/current/am_adminguide_users_and_groups.html
@@ -389,37 +462,64 @@ entries:
       - title: Bootstrap your environment
         output: web
         url: /am/current/am_devguide_bootstrap.html
-  - title: API Reference
+
+  - title: Protocols
     output: web
     folderitems:
       - title: Overview
         output: web
         url: /am/current/am_devguide_protocols_overview.html
         subfolders:
-        - title: AM APIs
-          output: web
-          subfolderitems:
-          - title: AM Management
-            output: web
-            url: /am/current/am_devguide_management_api_documentation.html
           - title: OAuth 2.0
             output: web
-            url: /am/current/am_devguide_protocols_oauth2_overview.html
+            subfolderitems:
+              - title: Overview
+                output: web
+                url: /am/current/am_devguide_protocols_oauth2_overview.html
+              - title: Which flow should I use ?
+                output: web
+                url: /am/current/am_devguide_protocols_oauth2_flows.html
+              - title: PKCE
+                output: web
+                url: /am/current/am_devguide_protocols_oauth2_pkce.html
+              - title: Best practices
+                output: web
+                url: /am/current/am_devguide_protocols_oauth2_best_practices.html
+                subfolders:
+                  - title: Extension grants
+                    output: web
+                    subfolderitems:
+                      - title: Overview
+                        output: web
+                        url: /am/current/am_userguide_extension_grants.html
+                      - title: JWT Bearer
+                        output: web
+                        url: /am/current/am_userguide_extension_grants_jwt_bearer.html
           - title: OpenID Connect
             output: web
-            url: /am/current/am_devguide_protocols_oidc_overview.html
+            subfolderitems:
+              - title: Overview
+                output: web
+                url: /am/current/am_devguide_protocols_oidc_overview.html
           - title: UMA 2.0
             output: web
-            url: /am/current/am_devguide_protocols_uma2_overview.html
+            subfolderitems:
+              - title: Overview
+                output: web
+                url: /am/current/am_devguide_protocols_uma2_overview.html
           - title: SCIM 2.0
             output: web
-            url: /am/current/am_devguide_protocols_scim_overview.html
-          - title: Users
-            output: web
-            url: /am/current/am_devguide_protocols_users_overview.html
-          - title: User Session
-            output: web
-            url: /am/current/am_devguide_protocols_session_overview.html
+            subfolderitems:
+              - title: Overview
+                output: web
+                url: /am/current/am_devguide_protocols_scim_overview.html
+
+  - title: API Reference
+    output: web
+    folderitems:
+      - title: API Reference
+        output: web
+        url: /am/current/am_devguide_management_api_documentation.html
 
   - title: Breaking Changes
     output: web
@@ -428,6 +528,15 @@ entries:
         output: web
         url: /am/current/am_breaking_changes.html
         type: homepage
+      - title: Breaking changes in 3.9
+        output: web
+        url: /am/current/am_breaking_changes_3.9.html
+      - title: Breaking changes in 3.8
+        output: web
+        url: /am/current/am_breaking_changes_3.8.html
+      - title: Breaking changes in 3.6
+        output: web
+        url: /am/current/am_breaking_changes_3.6.html
       - title: Breaking changes in 3.5
         output: web
         url: /am/current/am_breaking_changes_3.5.html

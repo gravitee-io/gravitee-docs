@@ -7,10 +7,14 @@
 
 == Overview
 
-AM Management API exposes a complete Restful API accessible to anyone wanting to script some part of the administration.
+AM API exposes a complete Restful API accessible to anyone wanting to script some part of the administration.
 
 You can access the online API reference or the OpenAPI specification:
 
+* 3.9 -- link:/am/current/management-api/3.9/index.html[online reference] - link:/am/current/management-api/3.9/swagger.json[OpenAPI spec]
+* 3.8 -- link:/am/current/management-api/3.8/index.html[online reference] - link:/am/current/management-api/3.8/swagger.json[OpenAPI spec]
+* 3.7 -- link:/am/current/management-api/3.7/index.html[online reference] - link:/am/current/management-api/3.7/swagger.json[OpenAPI spec]
+* 3.6 -- link:/am/current/management-api/3.6/index.html[online reference] - link:/am/current/management-api/3.6/swagger.json[OpenAPI spec]
 * 3.5 -- link:/am/current/management-api/3.5/index.html[online reference] - link:/am/current/management-api/3.5/swagger.json[OpenAPI spec]
 * 3.4 -- link:/am/current/management-api/3.4/index.html[online reference] - link:/am/current/management-api/3.4/swagger.json[OpenAPI spec]
 * 3.3 -- link:/am/current/management-api/3.3/index.html[online reference] - link:/am/current/management-api/3.3/swagger.json[OpenAPI spec]
@@ -20,9 +24,9 @@ You can access the online API reference or the OpenAPI specification:
 
 == Authorization
 
-AM Management API is secured using token-based authorization.
+AM API is secured using token-based authorization.
 
-NOTE: Use the HTTP Authorization request header (`Authorization Bearer token`) to call the API. You can also use an `Authorization="Bearer token"` cookie to access the Management API resources.
+NOTE: Use the HTTP Authorization request header (`Authorization Bearer token`) to call the API. You can also use an `Authorization="Bearer token"` cookie to access the API resources.
 
 === Token endpoint
 

@@ -1,0 +1,15 @@
+= Corporate Identity Providers
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_enterprise_identity_providers.html
+:page-folder: am/user-guide
+:page-layout: am
+
+AM includes the most common corporate/enterprise servers to authenticate your users:
+
+- link:/am/current/am_userguide_enterprise_identity_provider_ldap.html[Connect your application with an Active Directory / LDAP server]
+- link:/am/current/am_userguide_enterprise_identity_provider_http.html[Connect your application with a web service (HTTP)]
+- link:/am/current/am_userguide_enterprise_identity_provider_kerberos.html[Connect your application with Kerberos]
+- link:/am/current/am_userguide_enterprise_identity_provider_saml2.html[SAML 2.0]
+- link:/am/current/am_userguide_enterprise_identity_provider_cas.html[CAS]
+
+Identity provider definitions apply at _security domain_ level.

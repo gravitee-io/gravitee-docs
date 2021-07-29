@@ -1,0 +1,31 @@
+[[gravitee-admin-guide-orgs-and-envs]]
+= Organizations and environments
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_adminguide_organizations_and_environments.html
+:page-folder: am/admin-guide
+:page-description: Gravitee.io API Management - Admin Guide - Organizations and Environments
+:page-keywords: Gravitee.io, oauth2, openid, organization, envrionment
+:page-layout: am
+
+== Overview
+
+In preparation for the upcoming Cockpit product offering (see link:https://www.gravitee.io/products/roadmap[Roadmap > Cockpit]), we have introduced two concepts:
+
+== Environment
+An _environment_ is a logical workspace in which users can manage their security domains and applications with underlying configuration and auditing capabilities . +
+
+Some examples of environments you can define are:
+
+* technical environments, such as DEV / TEST / PRODUCTION
+* functional environments, such as PRIVATE DOMAINS / PUBLIC DOMAINS / PARTNERSHIP
+
+An environment belongs to one organization.
+
+== Organization
+An _organization_ allows users to customize AM to their own internal organization. It can manage multiple environments by sharing configurations like:
+
+* Users allows to access the AM Console
+* Roles
+* Identity providers to access the AM Console
+
+NOTE: By default, the OSS version of AM comes with a default organization and a default environment. For a multi-environment setup, you need an integration with link:https://www.gravitee.io/products/cockpit[Cockpit].

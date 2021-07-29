@@ -1,0 +1,100 @@
+= Get started with Cockpit
+:page-sidebar: cockpit_sidebar
+:page-permalink: cockpit/1.x/cockpit_quickstart_getstarted.html
+:page-folder: cockpit/quickstart
+:page-description: Gravitee.io Cockpit - Get started
+:page-keywords: Gravitee.io, API Platform, API Management, Cockpit, documentation, manual, guide
+
+== Overview
+
+Cockpit can only be accessed in SaaS mode. To get started with Cockpit, access this link: https://cockpit.gravitee.io.
+
+First time users can register a new user account. You can also choose to log in with an existing Google or GitHub account.
+
+== Register a new user account
+
+You can skip this section if you intend to log in to Cockpit with a Google or GitHub account.
+
+. Open Cockpit.
+. Click *Register*.
+. Enter your details and click *REGISTER*.
++
+Cockpit sends you a confirmation email.
+. Click the *Click here* link to confirm your registration.
+. Enter a new password and click *CONFIRM REGISTRATION*.
+. Enter the company details. The company name you enter is the top level of your Cockpit organizational hierarchy (the _account_) after login.
+. Click *FINISH* to complete the registration.
+
+== Log in to Cockpit
+
+. Access Cockpit with this link: https://cockpit.gravitee.io.
++
+image::cockpit/login.png[]
+
+. Log in using one of the following methods:
+
+* Enter your user credentials, then click *SIGN IN*.
+* Click one of the pre-configured identity providers (GitHub or Google). If this is your first time signing in:
+
+.. Enter the details of the identity provider linked account.
+.. Enter the company details and human readable ID. The company name you enter is the top level of your Cockpit hierarchy (the _account_) after login.
+.. Click *FINISH*.
+
+=== Dashboard
+
+After login, Cockpit opens the dashboard, which displays an interactive map of the organizational hierarchy associated with your account.
+
+image::cockpit/cockpit-dashboard.png[]
+
+In the dashboard map, you can:
+
+* View the dashboard for an account or organization by clicking its dashboard icon image:icons/dashboard-icon.png[role="icon"]
+* Expand or collapse the sub-entities for an account or organization by clicking its expand-collapse icon image:icons/expand-collapse-icon.png[role="icon"]
+* Update the settings for an environment by clicking its settings icon image:icons/cockpit-settings-icon.png[role="icon"]
+
+== Accounts, organizations and environments
+
+Once you have logged in to Cockpit with the user account, you can start creating your organizational hierarchy.
+
+You can create one or more organizations within your account and one or more environments within your organizations. Each environment can then be linked to existing APIM or AM installations.
+
+=== Create a new organization
+
+An account can include one or more organizations.
+
+. Click *NEW ORGANIZATION*.
++
+image:cockpit/new-organization.png[]
+
+. Enter the organization details:
+
+* *Name*
+* *Human Readable ID*
+* *Description*
+
+. Click *NEXT*.
+
+=== Create a new environment
+
+An organization can include one or more environments.
+
+. Select the organization and click *Environments*.
+. Click *NEW ENVIRONMENT*.
++
+image:cockpit/new-environment.png[]
+
+. Enter the environment details:
+
+* *Name*
+* *Human Readable ID*
+* *Description*
+
+. Click *CREATE*.
+
+=== Register a new installation
+
+You can register any APIM or AM installation from version 3.6.0. You can find details of how to do this in Cockpit by clicking the *How to register a new installation* link under *Installations*.
+
+image::cockpit/installation-how-to.png[]
+
+See also link:/cockpit/1.x/cockpit_userguide_register_installations.html[Register an APIM or AM installation^].

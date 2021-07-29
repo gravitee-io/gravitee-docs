@@ -26,7 +26,7 @@ WORKDIR /src
 ADD Gemfile /src/
 ADD Gemfile.lock /src/
 RUN gem install bundler
-RUN gem install jekyll -v 3.8.7
+RUN gem install jekyll -v 4.2.0
 RUN bundle install
 
 ADD . /src
@@ -34,6 +34,6 @@ RUN bundle exec jekyll build
 
 FROM nginx:stable
 LABEL maintainer="Gravitee Team <http://gravitee.io>"
-WORKDIR /usr/share/nginx/html 
+WORKDIR /usr/share/nginx/html
 COPY --from=builder /src/_site .
 

@@ -1,0 +1,88 @@
+= Configure cache
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installguide_cache.html
+:page-folder: apim/installation-guide/cache
+:page-description: Gravitee.io API Management - Cache
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim3x
+
+
+== Overview
+
+Caches are used to store different types of data in APIM.
+
+They use a https://docs.hazelcast.org/docs/rn/index.html#3-12-12[Hazelcast^] implementation. You can tune the configuration in the `hazelcast.xml` file.
+
+== Default configuration
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hazelcast xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.hazelcast.com/schema/config
+           http://www.hazelcast.com/schema/config/hazelcast-config-3.12.xsd">
+
+    <network>
+        <join>
+            <!-- Multicast is disabled by default to avoid latency when starting gateway -->
+            <multicast enabled="false" />
+        </join>
+    </network>
+
+    <map name="apikeys">
+        <!-- Eviction is managed programmatically-->
+        <eviction-policy>NONE</eviction-policy>
+        <max-size>0</max-size>
+    </map>
+
+    <map name="subscriptions">
+        <!-- Eviction is managed programmatically-->
+        <eviction-policy>NONE</eviction-policy>
+        <max-size>0</max-size>
+    </map>
+
+    <map name="apis">
+        <!-- Eviction is managed programmatically-->
+        <eviction-policy>NONE</eviction-policy>
+        <!-- no restriction on the number of API to share -->
+        <max-size>0</max-size>
+    </map>
+</hazelcast>
+----
+
+By default, the configuration contains 3 maps to cache API keys, subscriptions and APIs.
+
+WARNING: Be careful when modifying the default configuration, it is designed with performance in mind.
+
+== How are cache resources managed in APIM?
+
+API publishers can create cache resources:
+
+- to cache upstream of a response with the link:/apim/3.x/apim_policies_cache.html[Cache policy^].
+- to cache access tokens with the link:/apim/3.x/apim_policies_oauth2.html[OAuth2 policy^].
+
+You can define cache usage in the `hazelcast.xml` file configuration file, as in the following example:
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hazelcast xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.hazelcast.com/schema/config
+           http://www.hazelcast.com/schema/config/hazelcast-config-3.12.xsd">
+
+
+    <map name="cache-resource-name">
+        <eviction-policy>LRU</eviction-policy>
+        <max-size>100</max-size>
+        <time-to-live-seconds>60</time-to-live-seconds>
+        <max-idle-seconds>60</max-idle-seconds>
+    </map>
+
+</hazelcast>
+----
+
+You can find more information in the https://docs.hazelcast.org/docs[Hazelcast documentation^].

@@ -1,0 +1,25 @@
+= Storage
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_audit_log_storage.html
+:page-folder: am/user-guide
+:page-layout: am
+
+== Storage and retention log
+
+Audit events are managed (store and fetch) by plugins called link:/apim_overview_plugins.html#gravitee-plugins-reporters[Reporters^].
+
+By default, a reporter is created for each security domain and allows you to choose where the audit logs will be stored.
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Click *Settings > Audit Log*.
+. Click the settings icon and configure the reporter.
++
+image::am/current/graviteeio-am-userguide-logs-audit-reporter.png[]
+
+NOTE: There is no log retention. It is up to you define a retention window and periodically clear old data.
+
+NOTE: AM includes by default database reporters based on your AM distribution such as MongoDB or JDBC.
+
+AM also provides the following reporters :
+
+- link:/am/current/am_userguide_audit_log_file.html[File^]

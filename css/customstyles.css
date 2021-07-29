@@ -68,9 +68,18 @@ body {
 
 
 .image.icon { border: none;
-	vertical-align: center;
+    vertical-align: center;
 }
 
+.label-version{
+    background-color: #5bc0de;
+    font-size: 100%
+}
+
+.label-enterprise{
+    background-color: #f0ad4e;
+    font-size: 100%
+}
 
 .breadcrumb > .active {color: #777 !important;}
 
@@ -82,8 +91,8 @@ h4[id],
 h5[id],
 h6[id],
 dt[id]{
-padding-top: 60px;
-margin-top: -40px
+    padding-top: 60px;
+    margin-top: -40px
 }
 
 body h1 {margin-top:40px;}
@@ -373,7 +382,7 @@ a.accordion-toggle, a.accordion-collapsed {
 }
 
 .nav > li.active > a  {
-background-color: #347DBE;
+    background-color: #347DBE;
 }
 
 .nav li a {
@@ -496,9 +505,9 @@ span.projectTitle {
 }
 
 .newsletter-title {
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .newsletter-form {
@@ -1000,6 +1009,13 @@ span.soft {
     }
 }
 
+.col-md-9 .image.icon img {
+    max-width: 100%;
+    max-height: 100%;
+    border: none;
+    margin: 0.2rem;
+}
+
 .col-md-9 img {
     max-width: 100%;
     max-height: 100%;
@@ -1059,7 +1075,7 @@ a[href^="http://"]:after, a[href^="https://"]:after {
 /* Strip the outbound icon when this class is present */
 a[href].noCrossRef::after,
 a.no_icon:after
- {
+{
     content:"" !important;
     padding-left: 0;
 }
@@ -1129,7 +1145,7 @@ span.label.label-primary {
     background-color: whitesmoke;
     font-weight: bold;
     color: black;
-    }
+}
 
 a code {
     color: #248EC2;
@@ -1196,7 +1212,7 @@ h2.userMapTitle {
 
 #userMap a:hover {
     text-decoration: none;
-  }
+}
 
 div.arrow {
     max-width: 50px;
@@ -1248,12 +1264,12 @@ div.box.box1 {
 }
 
 #userMap .btn-lg  {
-        white-space: pre-wrap;       /* css-3 */
-        white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-        white-space: -o-pre-wrap;    /* Opera 7 */
-        word-wrap: break-word;       /* Internet Explorer 5.5+ */
-        font-size: 14px;
-    }
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    font-size: 14px;
+}
 
 /*
  * Let's target IE to respect aspect ratios and sizes for img tags containing SVG files
@@ -1312,6 +1328,6 @@ span.icon>.fa {
     color: #bf0000;
 }
 
-.icon image { border: 0 
-	      vertical-align: middle;
+.icon image { border: 0
+    vertical-align: middle;
 }

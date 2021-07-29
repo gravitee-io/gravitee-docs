@@ -4,6 +4,7 @@
 :page-folder: apim/installation-guide/gateway
 :page-description: Gravitee.io API Management - Configuration - Gateway
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-liquid:
 :page-layout: apim3x
 
 include::../../partial/how-to-configure.adoc[leveloffset=+1]
@@ -194,7 +195,11 @@ management:
 
 When defining the <</apim_policies_rate_limiting.html, rate-limiting policy>>, APIM Gateway needs to store data to share with other APIM Gateway instances.
 
-In this example, we are using MongoDB to store counters.
+For Management repositories, you can define a custom prefix for the Rate Limit table or collection name.
+
+==== Store counters in MongoDB
+
+NOTE: If you want to use a custom prefix, you need to follow the following link:apim_installguide_repositories_mongodb.html#use_a_custom_prefix[instructions^].
 
 [source,yaml]
 ----
@@ -202,6 +207,22 @@ ratelimit:
   type: mongodb
   mongodb:
     uri: mongodb://${ds.mongodb.host}/${ds.mongodb.dbname}
+    prefix: # collection prefix
+----
+
+==== Store counters in JDBC
+
+NOTE: If you want to use a custom prefix, you need to follow the following link:apim_installguide_repositories_jdbc.html#use_a_custom_prefix[instructions^].
+
+[source,yaml]
+----
+ratelimit:
+  type: jdbc
+  jdbc:
+    url: jdbc:postgresql://host:port/dbname
+    password: # password
+    username: # username
+    prefix:   # collection prefix
 ----
 
 === Configure the Reporters
@@ -274,11 +295,30 @@ In this example, we are configuring deployment only for APIs tagged as `product`
 tags: 'product,store,!international'
 ----
 
+=== Configure organizations and environments
+
+You can configure organizations and environments using their `hrids` on APIM Gateway instances either at the system property level or with `gravitee.yml`.
+
+Only APIs and dictionaries belonging to the configured organizations and environments will be loaded.
+
+If only `organizations` configuration is set, then all environments belonging to these organizations are used.
+If only `environments` configuration is set, then all environments matching the setting will be used, regardless their organization.
+If both `organizations` and `environments` are set, all environments matching the setting and belonging to these organizations will be used.
+If none of these fields is set, then all organizations and environment are used.
+
+In this example, we are configuring deployment only for `dev` and `integration` environments for `mycompany` organization.
+
+[source,yaml]
+----
+organizations: mycompany
+environments: dev,integration
+----
+
 === Default configuration
 
 You can configure various default properties of APIM Gateway in your `gravitee.yml` file.
 
 [source,yaml]
 ----
-include::https://raw.githubusercontent.com/gravitee-io/gravitee-gateway/3.4.x/gravitee-gateway-standalone/gravitee-gateway-standalone-distribution/src/main/resources/config/gravitee.yml[]
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-gateway/{{ site.products.apim._3x.version }}/gravitee-gateway-standalone/gravitee-gateway-standalone-distribution/src/main/resources/config/gravitee.yml[]
 ----
