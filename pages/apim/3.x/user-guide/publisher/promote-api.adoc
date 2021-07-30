@@ -11,14 +11,14 @@ The following sections describe how you can promote an API from one environment 
 
 For a quick introduction on how to create an API in APIM, see link:/apim/3.x/apim_publisherguide_create_apis.html[Create an API^].
 
-NOTE: This feature is available from APIM 3.10.0 and requires your installation to be linked to Cockpit. For more information about Cockpit, see link:/cockpit/1.x/cockpit_overview_introduction.html[Cockpit]
+NOTE: This feature is available from APIM 3.10.0 and requires your installation to be linked to Cockpit. For more information about Cockpit, see link:/cockpit/1.x/cockpit_overview_introduction.html[Cockpit]. 
 
 == Context
 
-* Two installations
-** One linked to Demo and Production environments
-** Another one linked to Dev and QA environments
-** An API to promote
+* Two installations: 
+** One linked to Demo and Production environments.
+** Another one linked to Dev and QA environments.
+* An API to promote.
 +
 image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-cockpit-graph.png[Map of installations in Cockpit]
 
@@ -26,6 +26,10 @@ image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-cockpit-
 
 Here, we will see how to promote our API from environment `DEV` to environment `QA`.
 The following actions must be done with an API Publisher on `DEV` environment.
+
+NOTE: You may only promote an API from one environment to another *[underline]##from within an organization##* and you'll notice this in the list of available environments (you are not permitted to promote APIs from one organization to another). 
+
+
 
 . Go to the API to promote and click on image:icons/promote-button.png[role="icon"] *PROMOTE* button
 +
@@ -58,3 +62,6 @@ image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-
 ** Accepting the promotion will:
 *** Create or update the API (depending on if it has already been promoted or not)
 *** Remove the task.
+
+== Roles & Permission Required
+Currently, the only required permission set necessary to promote an API is 'Definition.' Questions about roles and  permissions? See https://nightly-docs.gravitee.io/apim/3.x/apim_adminguide_roles_and_permissions.html#permission[Table 3, API Scope Permissions]. 
