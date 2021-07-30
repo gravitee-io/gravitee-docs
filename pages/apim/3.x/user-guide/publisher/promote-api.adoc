@@ -11,27 +11,30 @@ The following sections describe how you can promote an API from one environment 
 
 For a quick introduction on how to create an API in APIM, see link:/apim/3.x/apim_publisherguide_create_apis.html[Create an API^].
 
-NOTE: This feature is available from APIM 3.10.0 and requires your installation to be linked to Cockpit. For more information about Cockpit, see link:/cockpit/1.x/cockpit_overview_introduction.html[Cockpit]. 
+NOTE: This feature is available from APIM 3.10.0 and requires your installation to be linked to Cockpit. For more information about Cockpit, see link:/cockpit/1.x/cockpit_overview_introduction.html[Cockpit].
+
+*APIs can only be promoted to environments belonging to the same organization.*
 
 == Context
 
-* Two installations: 
+* Two installations
 ** One linked to Demo and Production environments.
 ** Another one linked to Dev and QA environments.
-* An API to promote.
+** An API to promote.
 +
 image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-cockpit-graph.png[Map of installations in Cockpit]
-+
 
-NOTE: You may only promote an API from one environment to another [underline]#*from within an organization*# (you are not permitted to promote APIs from one organization to another). 
-
-== Request Promotion or an API
+== Request Promotion For An API
 
 Here, we will see how to promote our API from environment `DEV` to environment `QA`.
+
+To request a promotion, you only need to have *API-DEFINITION* link:/apim/3.x/apim_adminguide_roles_and_permissions.html[permissions^].
+
+Promotion requests are logged in link:/apim/3.x/apim_publisherguide_audit.html[Audits trail^].
+
 The following actions must be done with an API Publisher on `DEV` environment.
 
-
-. Go to the API to promote and click on image:icons/promote-button.png[role="icon"] *PROMOTE* button
+. Go to the API to promote and click the image:icons/promote-button.png[role="icon"] button.
 +
 image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-1.png[Promote button]
 +
@@ -49,28 +52,18 @@ NOTE: When promoting an API, *members* and *groups* information are lost.
 
 NOTE: If a promotion has already been accepted for an API, you can request a new one on the same target environment. Once this promotion is accepted, the API on the target environment will be updated.
 
-== Accepting a Promotion
+== Accepting Or Rejecting A Promotion
+
+To be able to accept or reject a promotion, you need to have *ENVIRONMENT-API* link:/apim/3.x/apim_adminguide_roles_and_permissions.html[permissions^].
 
 As a user of `QA` environment, promotion requests are visible in the *Tasks* section.
 
-. Go to the *Tasks* section
+. Go to the *Tasks* section.
 +
 image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-3.png[Promotion tasks]
 +
 . You can choose to accept or reject the promotion.
 ** Rejecting the promotion will Remove the task.
 ** Accepting the promotion will:
-*** Create or update the API (depending on if it has already been promoted or not)
+*** Create or update the API (depending on if it has already been promoted or not).
 *** Remove the task.
-
-== Roles & Permission Required
-Currently, the only required permission set necessary to promote an API is 'Definition.' Questions about roles and  permissions? See https://nightly-docs.gravitee.io/apim/3.x/apim_adminguide_roles_and_permissions.html#permission[Table 3, API Scope Permissions]. 
-
-To give a user the ability to request an API promotion, you will need to create a custom role for API Scope with 'Create' and 'Update' permissions. 
-
-To do so, follow these steps: 
-
-. Go to Organization Settings. 
-. Choose Roles and scroll down to *scope: API*. Click *ADD A NEW ROLE* and name the role something sensible for your use case. 
-. Now finish creating the custom role and ensure you have checked the *CREATE* and *UPDATE* checkboxes for *DEFINITION*.
-. Save your new custom role.  
