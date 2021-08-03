@@ -14,6 +14,17 @@ WARNING: Be sure to run scripts on the correct database since `gravitee-am` is n
 
 NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.10.html[Breaking changes in 3.10]
 
+=== Warning
+
+For JDBC users only, please don’t upgrade to 3.10.0 since we detected a critical bug in a liquibase script that could lead to data loss.
+
+This has been fixed in 3.10.1.
+
+We apologize for this inconvenience.
+
+GitHub issue: link:https://github.com/gravitee-io/issues/issues/5957[5957]
+
+
 === REST API
 
 `Clients` endpoints have been removed since there are deprecated from 3.0.0.
