@@ -30,11 +30,17 @@ https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/3.10.
 
 This script will move users linked to an organization to a dedicated collection.
 
+https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/3.10.x/docs/upgrades/3.x/3.10.0/mongodb/2-add-default-scopes.js[upgrades/3.x/3.10.0/mongodb/2-add-default-scopes.js]::
+
+This script will create default scopes for applications.
+
 ==== JDBC
 
-The liquibase script will move users automatically on the REST API startup. If you disabled the liquibase execution using the `liquibase.enabled` option, please apply changes discribed in the `users-migration.yml` descriptor.
+Before you run any scripts, create a dump of your existing database.
 
 https://github.com/gravitee-io/graviteeio-access-management/blob/master/gravitee-am-repository/gravitee-am-repository-jdbc/src/main/resources/liquibase/changelogs/v3_10_0/users-migration.yml[v3_10_0/users-migration.yml]::
+
+The liquibase script will move users automatically on the REST API startup. If you disabled the liquibase execution using the `liquibase.enabled` option, please apply changes discribed in the `users-migration.yml` descriptor.
 
 == Upgrade to 3.9.2
 
