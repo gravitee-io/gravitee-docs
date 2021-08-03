@@ -108,9 +108,9 @@ entries:
                   - title: Customize
                     output: web
                     url: /apim/3.x/apim_installguide_docker_customize.html
-                - title: Install on Red Hat and CentOS
-                  output: web
-                  subfolderitems: 
+              - title: Install on Red Hat and CentOS
+                output: web
+                subfolderitems:
                   - title: Introduction
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_introduction.html
@@ -132,9 +132,9 @@ entries:
               - title: Install on Kubernetes
                 output: web
                 subfolderitems:
-                 - title: Helm
-                   output: web
-                   url: /apim/3.x/apim_installguide_kubernetes.html
+                  - title: Helm
+                    output: web
+                    url: /apim/3.x/apim_installguide_kubernetes.html
               - title: Hybrid Deployment
                 output: web
                 subfolderitems:
@@ -145,9 +145,9 @@ entries:
                     output: web
                     url: /apim/3.x/apim_installguide_hybrid_kubernetes.html
               - title: Install with .zip
-                  output: web
-                  subfolderitems:
-                   - title: Install APIM Gateway
+                output: web
+                subfolderitems:
+                  - title: Install APIM Gateway
                     output: web
                     url: /apim/3.x/apim_installguide_gateway_install_zip.html
                   - title: Install APIM API
@@ -162,7 +162,6 @@ entries:
           - title: Upgrade Guide
             output: web
             url: /apim/3.x/apim_installguide_migration.html
-
       - title: Configuration Guide
         output: web
         folderitems:
