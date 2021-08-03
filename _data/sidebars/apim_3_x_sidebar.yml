@@ -75,42 +75,6 @@ entries:
             output: web
             url: /apim/3.x/apim_installguide_quickstart.html
             subfolders:
-              - title: Install with .zip
-                output: web
-                subfolderitems:
-                  - title: Install APIM Gateway
-                    output: web
-                    url: /apim/3.x/apim_installguide_gateway_install_zip.html
-                  - title: Install APIM API
-                    output: web
-                    url: /apim/3.x/apim_installguide_rest_apis_install_zip.html
-                  - title: Install APIM Console
-                    output: web
-                    url: /apim/3.x/apim_installguide_management_ui_install_zip.html
-                  - title: Install APIM Portal
-                    output: web
-                    url: /apim/3.x/apim_installguide_portal_ui_install_zip.html
-              - title: Install on Red Hat and CentOS
-                output: web
-                subfolderitems:
-                  - title: Introduction
-                    output: web
-                    url: /apim/3.x/apim_installguide_redhat_introduction.html
-                  - title: Install the full APIM stack
-                    output: web
-                    url: /apim/3.x/apim_installguide_redhat_stack.html
-                  - title: Install APIM Gateway
-                    output: web
-                    url: /apim/3.x/apim_installguide_redhat_gateway.html
-                  - title: Install APIM API
-                    output: web
-                    url: /apim/3.x/apim_installguide_redhat_management_api.html
-                  - title: Install APIM Console
-                    output: web
-                    url: /apim/3.x/apim_installguide_redhat_management_ui.html
-                  - title: Install APIM Portal
-                    output: web
-                    url: /apim/3.x/apim_installguide_redhat_portal.html
               - title: Install on Amazon
                 output: web
                 subfolderitems:
@@ -132,7 +96,7 @@ entries:
                   - title: Install APIM Portal
                     output: web
                     url: /apim/3.x/apim_installguide_amazon_portal.html
-              - title: Run on Docker
+              - title: Install on Docker
                 output: web
                 subfolderitems:
                   - title: Images
@@ -144,7 +108,28 @@ entries:
                   - title: Customize
                     output: web
                     url: /apim/3.x/apim_installguide_docker_customize.html
-              - title: Deploy in Kubernetes
+                - title: Install on Red Hat and CentOS
+                  output: web
+                  subfolderitems:
+                  - title: Introduction
+                    output: web
+                    url: /apim/3.x/apim_installguide_redhat_introduction.html
+                  - title: Install the full APIM stack
+                    output: web
+                    url: /apim/3.x/apim_installguide_redhat_stack.html
+                  - title: Install APIM Gateway
+                    output: web
+                    url: /apim/3.x/apim_installguide_redhat_gateway.html
+                  - title: Install APIM API
+                    output: web
+                    url: /apim/3.x/apim_installguide_redhat_management_api.html
+                  - title: Install APIM Console
+                    output: web
+                    url: /apim/3.x/apim_installguide_redhat_management_ui.html
+                  - title: Install APIM Portal
+                    output: web
+                    url: /apim/3.x/apim_installguide_redhat_portal.html
+              - title: Install on Kubernetes
                 output: web
                 subfolderitems:
                  - title: Helm
@@ -159,6 +144,21 @@ entries:
                   - title: Deploy a hybrid architecture in Kubernetes
                     output: web
                     url: /apim/3.x/apim_installguide_hybrid_kubernetes.html
+              - title: Install with .zip
+                  output: web
+                  subfolderitems:
+                   - title: Install APIM Gateway
+                    output: web
+                    url: /apim/3.x/apim_installguide_gateway_install_zip.html
+                  - title: Install APIM API
+                    output: web
+                    url: /apim/3.x/apim_installguide_rest_apis_install_zip.html
+                  - title: Install APIM Console
+                    output: web
+                    url: /apim/3.x/apim_installguide_management_ui_install_zip.html
+                  - title: Install APIM Portal
+                    output: web
+                    url: /apim/3.x/apim_installguide_portal_ui_install_zip.html
           - title: Upgrade Guide
             output: web
             url: /apim/3.x/apim_installguide_migration.html
