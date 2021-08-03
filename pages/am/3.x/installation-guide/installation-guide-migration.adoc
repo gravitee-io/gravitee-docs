@@ -49,9 +49,15 @@ This script will create default scopes for applications.
 
 Before you run any scripts, create a dump of your existing database.
 
-https://github.com/gravitee-io/graviteeio-access-management/blob/master/gravitee-am-repository/gravitee-am-repository-jdbc/src/main/resources/liquibase/changelogs/v3_10_0/users-migration.yml[v3_10_0/users-migration.yml]::
+The liquibase scripts will update data automatically on the REST API startup.
 
-The liquibase script will move users automatically on the REST API startup. If you disabled the liquibase execution using the `liquibase.enabled` option, please apply changes discribed in the `users-migration.yml` descriptor.
+If you disabled the liquibase execution using the `liquibase.enabled` option, please apply changes via the following liquibase descriptors :
+
+- https://github.com/gravitee-io/gravitee-access-management/blob/master/gravitee-am-repository/gravitee-am-repository-jdbc/src/main/resources/liquibase/changelogs/v3_10_0/schema.yml[v3_10_0/schema.yml]
+- https://github.com/gravitee-io/graviteeio-access-management/blob/master/gravitee-am-repository/gravitee-am-repository-jdbc/src/main/resources/liquibase/changelogs/v3_10_0/users-migration.yml[v3_10_0/users-migration.yml]
+- https://github.com/gravitee-io/gravitee-access-management/blob/master/gravitee-am-repository/gravitee-am-repository-jdbc/src/main/resources/liquibase/changelogs/v3_10_0/schema-add-default-scopes.yml[v3_10_0/schema-add-default-scopes.yml]
+- https://github.com/gravitee-io/gravitee-access-management/blob/master/gravitee-am-repository/gravitee-am-repository-jdbc/src/main/resources/liquibase/changelogs/v3_10_0/schema-add-self-service-account-settings.yml[v3_10_0/schema-add-self-service-account-settings.yml]
+
 
 == Upgrade to 3.9.2
 
@@ -87,6 +93,19 @@ https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/3.8.x
 This script updates the database to reflect the following changes :
 
 * Add hrid field to the security domains
+
+== Upgrade to 3.7.0
+
+=== Repository
+
+==== Mongodb
+
+Before you run any scripts, create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.7.0/mongodb/1-add-alert-permissions.js[upgrades/3.x/3.7.0/mongodb/1-add-alert-permissions.js]::
+This script updates the database to reflect the following changes :
+
+* Enable alerting support
 
 == Upgrade to 3.6.0
 
