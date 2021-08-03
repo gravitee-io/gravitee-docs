@@ -110,7 +110,7 @@ entries:
                     url: /apim/3.x/apim_installguide_docker_customize.html
                 - title: Install on Red Hat and CentOS
                   output: web
-                  subfolderitems:
+                  subfolderitems: 
                   - title: Introduction
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_introduction.html
@@ -135,7 +135,7 @@ entries:
                  - title: Helm
                    output: web
                    url: /apim/3.x/apim_installguide_kubernetes.html
-              - title: Hybrid deployment
+              - title: Hybrid Deployment
                 output: web
                 subfolderitems:
                   - title: Introduction
