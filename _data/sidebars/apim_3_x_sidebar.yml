@@ -34,7 +34,7 @@ entries:
             output: web
             url: /apim/3.x/apim_quickstart_publish.html
             subfolders:
-              - title: Get started
+              - title: Get Started
                 output: web
                 subfolderitems:
                   - title: Log in to APIM Console
@@ -43,7 +43,7 @@ entries:
                   - title: Log in to APIM Portal
                     output: web
                     url: /apim/3.x/apim_quickstart_portal_login.html
-              - title: Publish your first API
+              - title: Publish Your First API
                 output: web
                 subfolderitems:
                   - title: Using APIM Console
@@ -71,9 +71,6 @@ entries:
           - title: Introduction
             output: web
             url: /apim/3.x/apim_installguide.html
-          - title: Quick installation
-            output: web
-            url: /apim/3.x/apim_installguide_quickstart.html
             subfolders:
               - title: Install on Amazon
                 output: web
@@ -81,7 +78,7 @@ entries:
                   - title: Introduction
                     output: web
                     url: /apim/3.x/apim_installguide_amazon_introduction.html
-                  - title: Install the full APIM stack
+                  - title: Install Full APIM stack
                     output: web
                     url: /apim/3.x/apim_installguide_amazon_stack.html
                   - title: Install APIM Gateway
@@ -144,7 +141,7 @@ entries:
                   - title: Deploy a hybrid architecture in Kubernetes
                     output: web
                     url: /apim/3.x/apim_installguide_hybrid_kubernetes.html
-              - title: Install with .zip
+              - title: Install with .ZIP
                 output: web
                 subfolderitems:
                   - title: Install APIM Gateway
@@ -184,7 +181,7 @@ entries:
             - title: Configure APIM API
               output: web
               subfolderitems:
-               - title: General configuration
+               - title: General Configuration
                  output: web
                  url: /apim/3.x/apim_installguide_rest_apis_configuration.html
                - title: Internal API
