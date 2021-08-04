@@ -1,4 +1,4 @@
-= Install the full APIM stack
+= Install Full APIM Stack
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installguide_amazon_stack.html
 :page-folder: apim/installation-guide/amazon
@@ -8,17 +8,11 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
 :gravitee-package-name: graviteeio-apim-3x
-
 == Overview
 
-This section describes how to install the full APIM stack, including all the components and, optionally, dependencies (MongoDB, Elasticsearch).
+This section describes how to install the full APIM stack(including all components), along with optional dependencies (MongoDB, Elasticsearch). 
 
-If you want to install APIM components individually, see the following sections:
-
-* link:/apim/3.x/apim_installguide_amazon_gateway.html[Install APIM Gateway]
-* link:/apim/3.x/apim_installguide_amazon_management_api.html[Install APIM API]
-* link:/apim/3.x/apim_installguide_amazon_management_ui.html[Install APIM Console]
-* link:/apim/3.x/apim_installguide_amazon_portal.html[Install APIM Portal]
+To install APIM components individually, see the respective documentation for link:/apim/3.x/apim_installguide_hybrid_deployment.html#architecture[APIM Gateway], link:/apim/3.x/apim_installguide_amazon_management_api.html[APIM API], link:/apim/3.x/apim_installguide_amazon_management_ui.html[APIM Console], and link:/apim/3.x/apim_installguide_amazon_portal.html[APIM Portal]. 
 
 == Prerequisites
 
@@ -32,22 +26,22 @@ sudo amazon-linux-extras install nginx1.12
 sudo systemctl start nginx
 ----
 
-=== Configure your package management system
+=== Configure Your Package Management System
 
-Ensure that you have configured your package management system, as described in <<apim_installguide_amazon_introduction.adoc#configure-the-package-management-system-yum, Configure the package management system (yum)>>.
+Make sure that you have configured your package management system. For instructions on how to do so, see <<apim_installguide_amazon_introduction.adoc#configure-the-package-management-system-yum, Configure the package management system (yum)>>.
 
-== Install the APIM package (no dependencies)
+== Install APIM Package (No Dependencies)
 
-To install the APIM package only, run the following command:
+To install the APIM package only, run the following command on your favorite terminal:
 
 [source,bash,subs="attributes"]
 ----
 sudo yum install {gravitee-package-name}
 ----
 
-== Install the APIM package with dependencies
+== Install APIM Package With Dependencies
 
-=== Configure dependency repositories
+=== Configure Dependency Repositories
 
 Before you install the APIM package, you may need to add third-party repositories:
 
@@ -106,7 +100,7 @@ sudo systemctl restart nginx
 
 == Check the APIM components are running
 
-When all components are started, you can run a quick test by checking these URLs:
+To test that all components have started, check these URLs:
 
 |===
 |Component |URL
