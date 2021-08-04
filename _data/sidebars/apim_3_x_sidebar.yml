@@ -111,7 +111,7 @@ entries:
                   - title: Introduction
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_introduction.html
-                  - title: Install the full APIM stack
+                  - title: Install Full APIM stack
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_stack.html
                   - title: Install APIM Gateway
@@ -132,13 +132,13 @@ entries:
                   - title: Helm
                     output: web
                     url: /apim/3.x/apim_installguide_kubernetes.html
-              - title: Hybrid Deployment
+              - title: Install a Hybrid Deployment
                 output: web
                 subfolderitems:
                   - title: Introduction
                     output: web
                     url: /apim/3.x/apim_installguide_hybrid_deployment.html
-                  - title: Deploy a hybrid architecture in Kubernetes
+                  - title: Deploy a Hybrid Architecture in Kubernetes
                     output: web
                     url: /apim/3.x/apim_installguide_hybrid_kubernetes.html
               - title: Install with .ZIP
@@ -169,7 +169,7 @@ entries:
             - title: Configure APIM Gateway
               output: web
               subfolderitems:
-               - title: General configuration
+               - title: General Configuration
                  output: web
                  url: /apim/3.x/apim_installguide_gateway_configuration.html
                - title: Internal API
@@ -196,7 +196,7 @@ entries:
             - title: Configure APIM Console
               output: web
               subfolderitems:
-               - title: General configuration
+               - title: General Configuration
                  output: web
                  url: /apim/3.x/apim_installguide_management_ui_configuration.html
                - title: Dashboards
@@ -205,10 +205,10 @@ entries:
             - title: Configure APIM Portal
               output: web
               subfolderitems:
-               - title: General configuration
+               - title: General Configuration
                  output: web
                  url: /apim/3.x/apim_installguide_portal_ui_configuration.html
-            - title: Configure repositories
+            - title: Configure Repositories
               output: web
               subfolderitems:
                - title: Introduction
@@ -226,19 +226,19 @@ entries:
                - title: Redis
                  output: web
                  url: /apim/3.x/apim_installguide_repositories_redis.html
-            - title: Configure authentication
+            - title: Configure Authentication
               output: web
               subfolderitems:
                - title: Introduction
                  output: web
                  url: /apim/3.x/apim_installguide_authentication.html
-               - title: Connect with in-memory users
+               - title: Connect with In-Memory Users
                  output: web
                  url: /apim/3.x/apim_installguide_authentication_inmemory.html
                - title: Connect with LDAP/Active Directory
                  output: web
                  url: /apim/3.x/apim_installguide_authentication_ldap.html
-               - title: Connect with APIM repository
+               - title: Connect with APIM Repository
                  output: web
                  url: /apim/3.x/apim_installguide_authentication_apim.html
                - title: Connect with Gravitee.io Access Management
@@ -253,13 +253,13 @@ entries:
                - title: Connect with Keycloak
                  output: web
                  url: /apim/3.x/apim_installguide_authentication_keycloak.html
-         - title: Configure cache
+         - title: Configure Cache
            output: web
            url: /apim/3.x/apim_installguide_cache.html
-         - title: Configure notifications
+         - title: Configure Notifications
            output: web
            url: /apim/3.x/apim_installguide_configuration_notifications.html
-         - title: Configure dictionaries
+         - title: Configure Dictionaries
            output: web
            url: /apim/3.x/apim_installguide_configuration_dictionaries.html
       - title: API Publisher Guide
@@ -271,31 +271,31 @@ entries:
           - title: Create APIs
             output: web
             url: /apim/3.x/apim_publisherguide_create_apis.html
-          - title: Plans and subscriptions
+          - title: Plans and Subscriptions
             output: web
             url: /apim/3.x/apim_publisherguide_plans_subscriptions.html
-          - title: API users and ownership
+          - title: API Users and Ownership
             output: web
             url: /apim/3.x/apim_publisherguide_manage_members.html
-          - title: Response templates
+          - title: Response Templates
             output: web
             url: /apim/3.x/apim_publisherguide_response_templates.html
           - title: CORS
             output: web
             url: /apim/3.x/apim_publisherguide_configuring_cors.html
-          - title: Logging and analytics
+          - title: Logging and Analytics
             output: web
             url: /apim/3.x/apim_publisherguide_logging_analytics.html
-          - title: Audit trail
+          - title: Audit Trail
             output: web
             url: /apim/3.x/apim_publisherguide_audit.html
-          - title: Load balancing, failover and health check
+          - title: Load balancing, Failover & Health Check
             output: web
             url: /apim/3.x/apim_publisherguide_backend_services.html
-          - title: Send notifications
+          - title: Send Notifications
             output: web
             url: /apim/3.x/apim_publisherguide_messaging.html
-          - title: API rating
+          - title: API Rating
             output: web
             url: /apim/3.x/apim_publisherguide_api_rating.html
           - title: Top APIs
@@ -329,28 +329,28 @@ entries:
                 - title: Migrate to Design Studio
                   output: web
                   url: /apim/3.x/apim_publisherguide_design_studio_migrate.html
-                - title: Design your API with Design Studio
+                - title: Design Your API with Design Studio
                   output: web
                   url: /apim/3.x/apim_publisherguide_design_studio_create.html
               - title: Documentation
                 output: web
                 subfolderitems:
-                  - title: Publish documentation for your APIs
+                  - title: Publish API Documentation 
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation.html
-                  - title: Markdown documentation
+                  - title: Markdown Documentation
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation_markdown.html
-                  - title: AsciiDoc documentation
+                  - title: AsciiDoc Documentation
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation_asciidoc.html
-                  - title: Markdown template documentation
+                  - title: Markdown Template Documentation
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation_markdown_template.html
-                  - title: OpenAPI documentation
+                  - title: OpenAPI Documentation
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation_openapi.html
-                  - title: System folders, links and APIM Portal customization
+                  - title: System Folders, Links & APIM Portal Customization
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation_system_folders.html
               - title: Service Discovery
@@ -365,7 +365,7 @@ entries:
                   - title: Consul.io
                     output: web
                     url: /apim/3.x/apim_service_discovery_consul.html
-              - title: Cockpit features
+              - title: Cockpit Features
                 output: web
                 subfolderitems:
                   - title: Promote APIs
@@ -381,27 +381,27 @@ entries:
          - title: Introduction
            output: web
            url: /apim/3.x/apim_consumerguide_portal.html
-         - title: Create an account
+         - title: Create an Account
            output: web
            url: /apim/3.x/apim_consumerguide_create_account.html
-         - title: Manage applications
+         - title: Manage Applications
            output: web
            url: /apim/3.x/apim_consumerguide_manage_applications.html
-         - title: Subscribe to an API
+         - title: Subscribe to APIs
            output: web
            url: /apim/3.x/apim_consumerguide_subscribe.html
 
       - title: Administration Guide
         output: web
         folderitems:
-          - title: Organizations and environments
+          - title: Organizations & Environments
             output: web
             url: /apim/3.x/apim_adminguide_organizations_and_environments.html
             type: homepage
-          - title: Roles and permissions
+          - title: Roles & Permissions
             output: web
             url: /apim/3.x/apim_adminguide_roles_and_permissions.html
-          - title: Users and groups
+          - title: Users & Groups
             output: web
             url: /apim/3.x/apim_adminguide_users_and_groups.html
           - title: Support
@@ -414,20 +414,20 @@ entries:
           - title: Introduction
             output: web
             url: /apim/3.x/apim_how_to_introduction.html
-          - title: Configure global API reviewers
+          - title: Configure Global API Reviewers
             output: web
             url: /apim/3.x/apim_how_to_configure_global_API_reviewers.html
-          - title: Configure a production-ready APIM environment
+          - title: Configure a Production-Ready APIM Environment
             output: web
             url: /apim/3.x/apim_how_to_configuration.html
-          - title: Add custom metrics in dashboards
+          - title: Add Custom Metrics in Dashboards
             output: web
             url: /apim/3.x/apim_how_to_add_custom_metrics_in_dashboards.html
 
       - title: Developer Guide
         output: web
         folderitems:
-          - title: Bootstrap your environment
+          - title: Bootstrap Your Dev Environment
             output: web
             url: /apim/3.x/apim_devguide_bootstrap.html
           - title: Plugins
@@ -443,19 +443,19 @@ entries:
           - title: Introduction
             output: web
             url: /apim/3.x/apim_policies_overview.html
-          - title: API key
+          - title: API Key
             output: web
             url: /apim/3.x/apim_policies_apikey.html
-          - title: Assign attributes
+          - title: Assign Attributes
             output: web
             url: /apim/3.x/apim_policies_assign_attributes.html
-          - title: Assign content
+          - title: Assign Content
             output: web
             url: /apim/3.x/apim_policies_assign_content.html
-          - title: Assign metrics
+          - title: Assign Metrics
             output: web
             url: /apim/3.x/apim_policies_assign_metrics.html
-          - title: Basic authentication
+          - title: Basic Authentication
             output: web
             url: /apim/3.x/apim_policies_basic_authentication.html
           - title: Cache
@@ -464,10 +464,10 @@ entries:
           - title: Callout HTTP
             output: web
             url: /apim/3.x/apim_policies_callout_http.html
-          - title: Data logging masking
+          - title: Data Logging Masking
             output: web
             url: /apim/3.x/apim_policies_data_logging_masking.html
-          - title: Dynamic routing
+          - title: Dynamic Routing
             output: web
             url: /apim/3.x/apim_policies_dynamic_routing.html
           - title: Generate JWT
@@ -479,13 +479,13 @@ entries:
           - title: HTML to JSON
             output: web
             url: /apim/3.x/apim_policies_html2json.html
-          - title: HTTP signature
+          - title: HTTP Signature
             output: web
             url: /apim/3.x/apim_policies_http_signature.html
-          - title: IP filtering
+          - title: IP Filtering
             output: web
             url: /apim/3.x/apim_policies_ip_filtering.html
-          - title: JSON threat protection
+          - title: JSON Threat Protection
             output: web
             url: /apim/3.x/apim_policies_json_threat_protection.html
           - title: JSON to JSON
@@ -494,7 +494,7 @@ entries:
           - title: JSON to XML
             output: web
             url: /apim/3.x/apim_policies_json2xml.html
-          - title: JSON validation
+          - title: JSON Validation
             output: web
             url: /apim/3.x/apim_policies_json_validation.html
           - title: JWS
@@ -509,7 +509,7 @@ entries:
           - title: Latency
             output: web
             url: /apim/3.x/apim_policies_latency.html
-          - title: Metrics reporter
+          - title: Metrics Reporter
             output: web
             url: /apim/3.x/apim_policies_metrics_reporter.html
           - title: Mock
@@ -521,22 +521,22 @@ entries:
           - title: OpenID Connect - UserInfo
             output: web
             url: /apim/3.x/apim_policies_openid_connect_userinfo.html
-          - title: Override HTTP method
+          - title: Override HTTP Method
             output: web
             url: /apim/3.x/apim_policies_override_http_method.html
-          - title: Rate limiting
+          - title: Rate Limiting
             output: web
             url: /apim/3.x/apim_policies_rate_limiting.html
-          - title: Regex threat protection
+          - title: Regex Threat Protection
             output: web
             url: /apim/3.x/apim_policies_regex_threat_protection.html
-          - title: Request content limit
+          - title: Request Content Limit
             output: web
             url: /apim/3.x/apim_policies_request_content_limit.html
-          - title: Request validation
+          - title: Request Validation
             output: web
             url: /apim/3.x/apim_policies_request_validation.html
-          - title: Resource filtering
+          - title: Resource Filtering
             output: web
             url: /apim/3.x/apim_policies_resource_filtering.html
           - title: REST to SOAP
@@ -545,31 +545,31 @@ entries:
           - title: Retry
             output: web
             url: /apim/3.x/apim_policies_retry.html
-          - title: Role-based access control
+          - title: Role-Based Access Control
             output: web
             url: /apim/3.x/apim_policies_role_based_access_control.html
-          - title: Traffic shadowing
+          - title: Traffic Shadowing
             output: web
             url: /apim/3.x/apim_policies_traffic_shadowing.html
-          - title: SSL enforcement
+          - title: SSL Enforcement
             output: web
             url: /apim/3.x/apim_policies_ssl_enforcement.html
-          - title: Transform headers
+          - title: Transform Headers
             output: web
             url: /apim/3.x/apim_policies_transform_headers.html
-          - title: Transform query parameters
+          - title: Transform Query Parameters
             output: web
             url: /apim/3.x/apim_policies_transform_query_params.html
-          - title: URL rewriting
+          - title: URL Rewriting
             output: web
             url: /apim/3.x/apim_policies_url_rewriting.html
           - title: XML to JSON
             output: web
             url: /apim/3.x/apim_policies_xml2json.html
-          - title: XML threat protection
+          - title: XML Threat Protection
             output: web
             url: /apim/3.x/apim_policies_xml_threat_protection.html
-          - title: XML validation
+          - title: XML Validation
             output: web
             url: /apim/3.x/apim_policies_xml_validation.html
           - title: XSLT
@@ -585,7 +585,7 @@ entries:
           - title: Quick Start
             output: web
             url: /apim/3.x/apim_kubernetes_quick_start.html
-          - title: How to install
+          - title: How to Install
             output: web
             url: /apim/3.x/apim_kubernetes_installation.html
           - title: Custom Resources
@@ -598,7 +598,7 @@ entries:
       - title: API Reference
         output: web
         folderitems:
-          - title: API reference
+          - title: API Reference
             output: web
             url: /apim/3.x/apim_installguide_rest_apis_documentation.html
 
