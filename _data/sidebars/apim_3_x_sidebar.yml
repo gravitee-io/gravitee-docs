@@ -78,7 +78,7 @@ entries:
                   - title: Introduction
                     output: web
                     url: /apim/3.x/apim_installguide_amazon_introduction.html
-                  - title: Install Full APIM stack
+                  - title: Install Full APIM Stack
                     output: web
                     url: /apim/3.x/apim_installguide_amazon_stack.html
                   - title: Install APIM Gateway
@@ -105,13 +105,19 @@ entries:
                   - title: Customize
                     output: web
                     url: /apim/3.x/apim_installguide_docker_customize.html
-              - title: Install on Red Hat and CentOS
+                    - title: Install on Kubernetes
+                output: web
+                subfolderitems:
+                  - title: Helm
+                    output: web
+                    url: /apim/3.x/apim_installguide_kubernetes.html
+              - title: Install on Red Hat & CentOS
                 output: web
                 subfolderitems:
                   - title: Introduction
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_introduction.html
-                  - title: Install Full APIM stack
+                  - title: Install Full APIM Stack
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_stack.html
                   - title: Install APIM Gateway
@@ -126,19 +132,13 @@ entries:
                   - title: Install APIM Portal
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_portal.html
-              - title: Install on Kubernetes
-                output: web
-                subfolderitems:
-                  - title: Helm
-                    output: web
-                    url: /apim/3.x/apim_installguide_kubernetes.html
               - title: Install a Hybrid Deployment
                 output: web
                 subfolderitems:
                   - title: Introduction
                     output: web
                     url: /apim/3.x/apim_installguide_hybrid_deployment.html
-                  - title: Deploy a Hybrid Architecture in Kubernetes
+                  - title: Hybrid Deployment on Kubernetes
                     output: web
                     url: /apim/3.x/apim_installguide_hybrid_kubernetes.html
               - title: Install with .ZIP
@@ -271,10 +271,10 @@ entries:
           - title: Create APIs
             output: web
             url: /apim/3.x/apim_publisherguide_create_apis.html
-          - title: Plans and Subscriptions
+          - title: Plans & Subscriptions
             output: web
             url: /apim/3.x/apim_publisherguide_plans_subscriptions.html
-          - title: API Users and Ownership
+          - title: API Users & Ownership
             output: web
             url: /apim/3.x/apim_publisherguide_manage_members.html
           - title: Response Templates
@@ -283,13 +283,13 @@ entries:
           - title: CORS
             output: web
             url: /apim/3.x/apim_publisherguide_configuring_cors.html
-          - title: Logging and Analytics
+          - title: Logging & Analytics
             output: web
             url: /apim/3.x/apim_publisherguide_logging_analytics.html
           - title: Audit Trail
             output: web
             url: /apim/3.x/apim_publisherguide_audit.html
-          - title: Load balancing, Failover & Health Check
+          - title: Load Balancing, Failover & Health Check
             output: web
             url: /apim/3.x/apim_publisherguide_backend_services.html
           - title: Send Notifications
