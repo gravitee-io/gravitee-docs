@@ -28,12 +28,8 @@ Gravitee.io API Management (APIM) is a flexible, lightweight, and blazing-fast o
 [[why-gravitee-API]]
 == Why Gravitee.io API Management?
 
-Our goal in launching Gravitee.io APIM is to provide users with a highly flexible and scalable solution that integrates with their infrastructure seamlessly and fits their business needs perfectly.
+Our goal in launching Gravitee.io APIM is to provide users with a highly flexible and scalable solution that integrates with their infrastructure seamlessly and fits their business needs perfectly.We’ve designed and developed APIM to be fully extensible using its internal plugin system, so you can define your own policy, develop your own reporting system, and more.
 
-We’ve designed and developed APIM to be fully extensible using its internal plugin system, so you can define your own policy, develop your own reporting system, and more.
+Finally, all APIM components (including <<apim_overview_components.adoc#gravitee-components-gateway, API Gateway>> and <<apim_overview_components.adoc#gravitee-components-rest-api, APIM API>>) are incredibly lightweight. We took a consciously aggressive approach to CPU and memory management with our products and this strategy allows for high availability with our lightning-fast component start-up times. Typically, *_it takes less than 5 seconds_* for the API Gateway to be accessible to consumers (subject to the number of APIs being deployed).
 
-Finally, all APIM components (including <<apim_overview_components.adoc#gravitee-components-gateway, API Gateway>> and <<apim_overview_components.adoc#gravitee-components-rest-api, APIM API>>) are incredibly lightweight. We took a consciously aggressive approach to CPU and memory management with our products. 
-
-This strategy makes life much easier when it comes to high availability with our lightning-fast component start-up times. Typically, *_it takes less than 5 seconds_* for the API Gateway to be accessible to consumers (subject to the number of APIs being deployed).
-
-_Are you ready to use Gravitee.io API Management? Let’s do this!_
+Are you ready to use Gravitee.io API Management? Get started today! 
