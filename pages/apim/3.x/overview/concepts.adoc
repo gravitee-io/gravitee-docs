@@ -8,16 +8,16 @@ This page describes the concepts you need to understand when using APIM.
 
 [[gravitee-concepts-api]]
 == API
-*API* is the root concept defined and used by APIM. You can see it as the starting point through which to expose services to the gateway.
+*API* is the root concept defined and used by APIM. Think of this as the starting point through which services are exposed to the gateway.
 
 [[gravitee-concepts-publisher]]
 == Publisher
-A *publisher* (also called *API publisher*) is the role defined in the platform for declaring an API and managing it. See also *Consumer*.
+In our platform, we define a *publisher* (also called *API publisher*) as the role that declares and manages APIs.
 
 [[gravitee-concepts-consumer]]
 == Consumer
-A *consumer* (also called *API consumer*) is the role defined in the platform for consuming an API. A consumer can only consume an API after subscribing to it. See also *Publisher*.
+In our platform, we define a *consumer* (also called *API consumer*) as the role that consumes APIs. [underline]*PRO-TIP*: A consumer can only consume an API after subscribing to it. 
 
 [[gravitee-concepts-application]]
 == Application
-An *application* is an intermediate level between a *consumer* and an API. It is used by the consumer to subscribe to that API before being able to consume it.
+An *application* is an intermediate level between a *consumer* and an API. The consumer uses an application to subscribe to the API before they are able to consume it.
