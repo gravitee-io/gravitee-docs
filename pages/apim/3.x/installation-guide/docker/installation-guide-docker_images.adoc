@@ -41,7 +41,7 @@ You can find the complete set of APIM images https://hub.docker.com/u/graviteeio
 |===
 
 
-=== graviteeio/apim-gateway
+=== APIM Gateway graviteeio/apim-gateway
 
 The APIM Gateway image provides a set of environment variables which you can use to tune your container.
 
@@ -49,7 +49,7 @@ MongoDB is the default repository. You can replace the default MongoDB address (
 
 The APIM Gateway image also uses the Elasticsearch reporter. You can replace the default Elasticsearch address (`localhost:9300`) with another address (`GRAVITEEIO_ELASTIC_HOST:GRAVITEEIO_ELASTIC_PORT`).
 
-==== Run the image
+==== Run The Image
 [source,shell]
 ....
 $ docker run  \
@@ -59,7 +59,7 @@ $ docker run  \
         graviteeio/apim-gateway:latest
 ....
 
-==== Configure the container
+==== Configure The Container
 If you want to override the default configuration for MongoDB, Elasticsearch and any other properties included in the `gravitee.yml` file,
 you need to use environment variables. For more information, see the APIM Gateway link:/apim/3.X/apim_installguide_gateway_configuration.html#environment_variables[configuration] section.
 
@@ -74,7 +74,7 @@ $ docker run  \
         graviteeio/apim-gateway:latest
 ....
 
-=== graviteeio/apim-management-api
+=== APIM API graviteeio/apim-management-api
 
 The APIM API image provides a set of environment variables which you can use to tune your container.
 
@@ -82,7 +82,7 @@ MongoDB is our default repository. You can replace the default MongoDB address (
 
 The Management API image also uses the Elasticsearch reporter. You can replace default Elasticsearch address (`localhost:9300`) by another address (`GRAVITEEIO_ELASTIC_HOST:GRAVITEEIO_ELASTIC_PORT`).
 
-==== Run the image
+==== Run The Image
 [source,shell]
 ....
 $ docker run \
@@ -92,7 +92,7 @@ $ docker run \
           graviteeio/apim-management-api:latest
 ....
 
-==== Configure the container
+==== Configure The Container
 
 If you want to override the default configuration for MongoDB, Elasticsearch and any other properties included in the `gravitee.yml` file,
 you have to use environment variables. For more information, see the APIM API link:/apim/3.X/apim_installguide_rest_apis_configuration.html#environment_variables[configuration] section.
@@ -108,13 +108,13 @@ $ docker run \
           graviteeio/apim-management-api:latest
 ....
 
-=== graviteeio/apim-management-ui
+=== APIM Console graviteeio/apim-management-ui
 
 The APIM Console image provides a set of environment variables which you can use to tune your container.
 
 APIM Console needs APIM API to run, so you need to update `MGMT_API_URL` to specify where `management-api` is running.
 
-==== Run the image
+==== Run The Image
 [source,shell]
 ....
 $ docker run \
@@ -125,13 +125,13 @@ $ docker run \
         graviteeio/apim-management-ui:latest
 ....
 
-=== graviteeio/apim-portal-ui
+=== APIM Portal graviteeio/apim-portal-ui
 
 The APIM Portal image provides a set of environment variables which you can use to tune your container.
 
 APIM Portal needs APIM API to run, so you need to update `PORTAL_API_URL` to specify where `management-api` is running.
 
-==== Run the image
+==== Run The Image
 [source,shell]
 ....
 $ docker run \

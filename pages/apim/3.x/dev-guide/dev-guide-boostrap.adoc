@@ -1,5 +1,5 @@
 [[gravitee-devguide-bootstrap]]
-= Bootstrap your dev environment
+= Bootstrap Your Dev Environment
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_devguide_bootstrap.html
 :page-folder: apim/dev-guide
@@ -12,19 +12,19 @@ This section explains how to set up your environment to start contributing to AP
 
 == Prerequisites
 
-You will need the following tools on your computer:
+You will need the following tools installed on your computer:
 
 * Java (JDK >= 11)
 * Maven
 * Docker
 * NPM (preferably NVM)
 
-== Download the APIM image
+== Download The APIM Image
 
 Download the latest APIM full distribution available: https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip
 Unzip it into the directory of your choice. You will need these files later on to copy plugins into your local repository.
 
-== Projects to clone
+== Projects To Clone
 
 Clone the following repositories in your workspace
 
@@ -34,7 +34,7 @@ Clone the following repositories in your workspace
 
 If you are using IntelliJ, create a new project and add the 3 repositories as Maven modules (*File -> New -> Module from existing sources -> Import module from external model -> Maven*).
 
-== Prepare for launch
+== Prepare For Launch
 
 We will run APIM Gateway standalone using *Run configuration* in IntelliJ.
 
@@ -50,7 +50,7 @@ Repeat the previous step for `gravitee-management-rest-api`:
 cp ../graviteeio-full-{{ site.products.apim._3x.version }}/graviteeio-full-{{ site.products.apim._3x.version }}/graviteeio-rest-api-{{ site.products.apim._3x.version }}/plugins/* ./gravitee-management-rest-api/gravitee-rest-api-standalone/gravitee-rest-api-standalone-distribution/src/main/resources/plugins
 ```
 
-=== Run prerequisites
+=== Run Prerequisites
 
 Before starting APIM Gateway, you need to start MongoDB and ElasticSearch.
 
@@ -66,9 +66,9 @@ ElasticSearch:
 docker run -d --name local-es7 -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.7.0
 ```
 
-=== Run configuration
+=== Run Configuration
 
-==== APIM Gateway
+==== APIM Gateway (gravitee-gateway)
 
 Create a new Run configuration in IntelliJ:
 
@@ -82,7 +82,7 @@ Create a new Run configuration in IntelliJ:
 -Dgravitee.home=/home/user/dev/gravitee-gateway/gravitee-gateway-standalone/gravitee-gateway-standalone-distribution/src/main/resources
 ```
 
-==== APIM API
+==== APIM API (gravitee-management-rest-api)
 
 . Create a new Run configuration in IntelliJ: click *Run -> Edit configurations -> ✚ -> Application*.
 . Name it as required.
@@ -95,7 +95,7 @@ Create a new Run configuration in IntelliJ:
 ```
 
 
-==== APIM Console
+==== APIM Console (gravitee-management-webui)
 
 ===== CLI Version
 
@@ -115,7 +115,7 @@ To `npm install`, you can duplicate this configuration and choose *Command > Ins
 
 ==== APIM Portal
 
-===== CLI Version
+===== CLI Version (gravitee-portal-webui)
 
 . Run `npm install` from the `gravitee-portal-webui` directory.
 . Run 'npm run serve' to start the UI.
