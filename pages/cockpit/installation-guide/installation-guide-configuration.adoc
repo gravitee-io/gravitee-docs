@@ -234,7 +234,7 @@ services:
     prometheus:
       enabled: true
 
-  nodeMonitoringDataPurge:
+  dataPurge:
     # Overwrite the next property to change the cron trigger of the job purging the health check reports.
     cron: "0 0 0 */1 * *"
     # The following property is only used to define on premise plan attributes.
