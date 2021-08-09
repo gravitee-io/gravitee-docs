@@ -41,7 +41,7 @@ You can find the complete set of APIM images https://hub.docker.com/u/graviteeio
 |===
 
 
-=== APIM Gateway graviteeio/apim-gateway
+=== APIM Gateway (graviteeio/apim-gateway)
 
 The APIM Gateway image provides a set of environment variables which you can use to tune your container.
 
@@ -74,7 +74,7 @@ $ docker run  \
         graviteeio/apim-gateway:latest
 ....
 
-=== APIM API graviteeio/apim-management-api
+=== APIM API (graviteeio/apim-management-api)
 
 The APIM API image provides a set of environment variables which you can use to tune your container.
 
@@ -108,7 +108,7 @@ $ docker run \
           graviteeio/apim-management-api:latest
 ....
 
-=== APIM Console graviteeio/apim-management-ui
+=== APIM Console (graviteeio/apim-management-ui)
 
 The APIM Console image provides a set of environment variables which you can use to tune your container.
 
@@ -125,7 +125,7 @@ $ docker run \
         graviteeio/apim-management-ui:latest
 ....
 
-=== APIM Portal graviteeio/apim-portal-ui
+=== APIM Portal (graviteeio/apim-portal-ui)
 
 The APIM Portal image provides a set of environment variables which you can use to tune your container.
 
