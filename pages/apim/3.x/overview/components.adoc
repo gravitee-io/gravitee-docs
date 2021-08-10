@@ -20,10 +20,10 @@ APIM Gateway is the core component of the APIM platform. You can think of it lik
 Unlike a traditional HTTP proxy, APIM Gateway has the capability to apply <<apim_overview_plugins.adoc#gravitee-plugins-policies, policies>> (i.e., rules) to both HTTP requests and responses according to your needs. With these policies, you can enhance request and response processing by adding transformations, security, and many other exciting features. 
 
 .Gravitee.io - Internal Gateway
-image::apim/3.x/overview/components/new-gravitee-gateway-internal.png[Gravitee.io -- Internal Gateway]
+image::apim/3.x/overview/components/graviteeio-gateway-internal.png[Gravitee.io -- Internal Gateway]
 
 .Gravitee.io - Gateway Architecture
-image::apim/3.x/overview/components/new-gravitee-gateway-architecture.png[Gravitee.io -- Gateway Architecture]
+image::apim/3.x/overview/components/graviteeio-gateway-architecture.png[Gravitee.io -- Gateway Architecture]
 
 [[gravitee-components-rest-api]]
 == APIM API
