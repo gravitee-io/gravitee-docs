@@ -21,44 +21,6 @@ entries:
             output: web
             url: /apim/3.x/apim_overview_plugins.html
 
-      - title: Quick Start Guide
-        output: web
-        folderitems:
-          - title: Introduction
-            output: web
-            url: /apim/3.x/apim_quickstart_publish.html
-            subfolders:
-              - title: Get Started
-                output: web
-                subfolderitems:
-                  - title: Log in to APIM Console
-                    output: web
-                    url: /apim/3.x/apim_quickstart_console_login.html
-                  - title: Log in to APIM Portal
-                    output: web
-                    url: /apim/3.x/apim_quickstart_portal_login.html
-              - title: Publish Your First API
-                output: web
-                subfolderitems:
-                  - title: Using APIM Console
-                    output: web
-                    url: /apim/3.x/apim_quickstart_publish_ui.html
-                  - title: Using APIM API
-                    output: web
-                    url: /apim/3.x/apim_quickstart_publish_api.html
-              - title: Consume an API
-                output: web
-                subfolderitems:
-                  - title: Using APIM Portal
-                    output: web
-                    url: /apim/3.x/apim_quickstart_consume_ui.html
-                  - title: Using APIM API
-                    output: web
-                    url: /apim/3.x/apim_quickstart_consume_api.html
-                  - title: Test the API
-                    output: web
-                    url: /apim/3.x/apim_quickstart_consume_test.html
-
       - title: Installation Guide
         output: web
         folderitems:
@@ -126,7 +88,7 @@ entries:
                   - title: Install APIM Portal
                     output: web
                     url: /apim/3.x/apim_installguide_redhat_portal.html
-              - title: Install a Hybrid Deployment
+              - title: Hybrid Deployment
                 output: web
                 subfolderitems:
                   - title: Introduction
@@ -153,6 +115,45 @@ entries:
           - title: Upgrade Guide
             output: web
             url: /apim/3.x/apim_installguide_migration.html
+
+      - title: Quick Start Guide
+        output: web
+        folderitems:
+          - title: Introduction
+            output: web
+            url: /apim/3.x/apim_quickstart_publish.html
+            subfolders:
+              - title: Get Started
+                output: web
+                subfolderitems:
+                  - title: Log in to APIM Console
+                    output: web
+                    url: /apim/3.x/apim_quickstart_console_login.html
+                  - title: Log in to APIM Portal
+                    output: web
+                    url: /apim/3.x/apim_quickstart_portal_login.html
+              - title: Publish Your First API
+                output: web
+                subfolderitems:
+                  - title: Using APIM Console
+                    output: web
+                    url: /apim/3.x/apim_quickstart_publish_ui.html
+                  - title: Using APIM API
+                    output: web
+                    url: /apim/3.x/apim_quickstart_publish_api.html
+              - title: Consume an API
+                output: web
+                subfolderitems:
+                  - title: Using APIM Portal
+                    output: web
+                    url: /apim/3.x/apim_quickstart_consume_ui.html
+                  - title: Using APIM API
+                    output: web
+                    url: /apim/3.x/apim_quickstart_consume_api.html
+                  - title: Test the API
+                    output: web
+                    url: /apim/3.x/apim_quickstart_consume_test.html
+
       - title: Configuration Guide
         output: web
         folderitems:
