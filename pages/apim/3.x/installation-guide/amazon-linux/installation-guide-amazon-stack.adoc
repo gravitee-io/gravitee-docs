@@ -10,11 +10,15 @@
 :gravitee-package-name: graviteeio-apim-3x
 == Overview
 
-This section describes how to install the full APIM stack(including all components), along with optional dependencies (MongoDB, Elasticsearch). 
+Ready to install APIM? Excellent! In this section, you'll learn how to install the full APIM stack (including all components), along with optional dependencies (MongoDB, Elasticsearch). 
 
 To install APIM components individually, see the respective documentation for link:/apim/3.x/apim_installguide_hybrid_deployment.html#architecture[APIM Gateway], link:/apim/3.x/apim_installguide_amazon_management_api.html[APIM API], link:/apim/3.x/apim_installguide_amazon_management_ui.html[APIM Console], and link:/apim/3.x/apim_installguide_amazon_portal.html[APIM Portal]. 
 
 == Prerequisites
+
+. [underline]#*Nginx*# must be installed. 
+
+. [underline]#*YUM package manager*# must be configured (link:/apim/3.x/apim_installguide_amazon_configure_yum.html[click here] for instructions on how to configure `yum`). 
 
 === Install Nginx
 
@@ -26,28 +30,23 @@ sudo amazon-linux-extras install nginx1.12
 sudo systemctl start nginx
 ----
 
-=== Configure Your Package Management System
-
-Make sure that you have configured your package management system. For instructions on how to do so, see <<apim_installguide_amazon_introduction.adoc#configure-the-package-management-system-yum, Configure the package management system (yum)>>.
-
-== Install APIM Package (No Dependencies)
-
-To install the APIM package only, run the following command on your favorite terminal:
-
-[source,bash,subs="attributes"]
-----
-sudo yum install {gravitee-package-name}
-----
+=== Configure YUM Package Manager
+link:/apim/3.x/apim_installguide_amazon_configure_yum.html[Click here] for instructions on how to configure `yum`. 
 
 == Install APIM Package With Dependencies
+With almost every Amazon install, you'll need to set up the required dependencies *__before__* attempting to install APIM. 
 
-=== Configure Dependency Repositories
+(Already have dependencies installed? Skip to link:/apim/3.x/apim_installguide_amazon_stack.html#install_apim_package_no_dependencies[this section.]
+
+Skip forward to this section.)
+
+=== 1. Configure Dependency Repositories
 
 Before you install the APIM package, you may need to add third-party repositories:
 
-==== MongoDB
+==== *[underline]#MongoDB#*
 
-NOTE: For guidance on installing and configuring MongoDB, see the link:https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-amazon/[MongoDB Installation documentation, window=\"_blank\"]
+NOTE: For guidance on installing and configuring MongoDB, see the link:https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-amazon/[MongoDB Installation documentation., window=\"_blank\"]
 
 [source,bash]
 ----
@@ -62,9 +61,9 @@ sudo yum install -y mongodb-org
 sudo systemctl start mongod
 ----
 
-==== Elasticsearch 7.x
+==== *[underline]#Elasticsearch 7.x#*
 
-NOTE: For guidance on installing and configuring Elasticsearch, see the link:https://www.elastic.co/guide/en/elasticsearch/reference/7.6/rpm.html#rpm-repo[Elasticsearch Installation documentation, window=\"_blank\"].
+NOTE: For guidance on installing and configuring Elasticsearch, see the link:https://www.elastic.co/guide/en/elasticsearch/reference/7.6/rpm.html#rpm-repo[Elasticsearch installation documentation, window=\"_blank\"].
 
 [source,bash]
 ----
@@ -80,16 +79,16 @@ sudo yum install -y elasticsearch
 sudo systemctl start elasticsearch
 ----
 
-=== Install APIM
+=== 2. Install APIM
 
 [source,bash,subs="attributes"]
 ----
 curl -L https://bit.ly/install-apim-3x | bash
 ----
 
-== Run APIM with `systemd`
+== Run APIM with Systemd
 
-To start up the APIM components, run the following commands:
+To start up the APIM components using systemd, run the following commands:
 
 [source,bash,subs="attributes"]
 ----
@@ -98,9 +97,20 @@ sudo systemctl start {gravitee-package-name}-gateway {gravitee-package-name}-man
 sudo systemctl restart nginx
 ----
 
-== Check the APIM components are running
+== Install APIM Package (No Dependencies)
 
-To test that all components have started, check these URLs:
+Already have all required dependencies installed? Lucky you! You can install APIM by running the following command on your favorite terminal:
+
+[source,bash,subs="attributes"]
+----
+sudo yum install {gravitee-package-name}
+----
+
+Now, run APIM using systemd (as mentioned above) and then confirm that all APIM components were installed by checking the URLs below. 
+
+== Confirm APIM Components Were Installed
+
+To test that all components have been installed and started up properly, check these URLs:
 
 |===
 |Component |URL
