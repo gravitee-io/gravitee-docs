@@ -9,10 +9,11 @@
 
 == Overview
 
-Amazon Linux instances use the package manager `yum` to manage their software. This section explains how to configure the `yum` package manager for Gravitee APIM. 
+Amazon Linux instances use the package manager `yum` to manage their software. Since `yum` is a prerequisite  
+for the major components of APIM, follow these instructions on how to configure the `yum` package manager for Gravitee APIM. 
 
 == Configure YUM Package Management System
-. Create a file called `graviteeio.repo` in location `/etc/yum.repos.d/` so that you can install APIM directly using `yum`:
+. In location `/etc/yum.repos.d/`, create a file called `graviteeio.repo` so that you can install APIM directly using `yum`:
 +
 [source,bash]
 ----
