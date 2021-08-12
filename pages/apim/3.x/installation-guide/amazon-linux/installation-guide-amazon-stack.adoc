@@ -6,19 +6,21 @@
 :page-layout: apim3x
 :page-description: Gravitee.io API Management - Installation Guide - Amazon - API Management
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-toc: false
 
 :gravitee-package-name: graviteeio-apim-3x
 == Overview
 
-Ready to install APIM? Excellent! In this section, you'll learn how to install the full APIM stack (including all components), along with optional dependencies (MongoDB, Elasticsearch). 
+Ready to install APIM? Excellent! In this section, you'll learn how to install the full APIM stack (including all components), along with optional dependencies (MongoDB, Elasticsearch).
 
-To install APIM components individually, see the respective documentation for link:/apim/3.x/apim_installguide_hybrid_deployment.html#architecture[APIM Gateway], link:/apim/3.x/apim_installguide_amazon_management_api.html[APIM API], link:/apim/3.x/apim_installguide_amazon_management_ui.html[APIM Console], and link:/apim/3.x/apim_installguide_amazon_portal.html[APIM Portal]. 
+To install APIM components individually, see the respective documentation for link:/apim/3.x/apim_installguide_hybrid_deployment.html#architecture[APIM Gateway], link:/apim/3.x/apim_installguide_amazon_management_api.html[APIM API], link:/apim/3.x/apim_installguide_amazon_management_ui.html[APIM Console], and link:/apim/3.x/apim_installguide_amazon_portal.html[APIM Portal].
 
 == Prerequisites
 
-. [underline]#*Nginx*# must be installed. 
+. [underline]#*Nginx*# must be installed.
 
-. [underline]#*YUM package manager*# must be configured (link:/apim/3.x/apim_installguide_amazon_configure_yum.html[click here] for instructions on how to configure `yum`). 
+. [underline]#*YUM package manager*# must be configured (link:/apim/3.x/apim_installguide_amazon_configure_yum.html[click here] for instructions on how to configure `yum`).
+. You must have access to a **t2.medium instance** size in AWS.
 
 === Install Nginx
 
@@ -31,12 +33,12 @@ sudo systemctl start nginx
 ----
 
 === Configure YUM Package Manager
-link:/apim/3.x/apim_installguide_amazon_configure_yum.html[Click here] for instructions on how to configure `yum`. 
+link:/apim/3.x/apim_installguide_amazon_configure_yum.html[Click here] for instructions on how to configure `yum`.
 
 == Install APIM Package With Dependencies
-With almost every Amazon install, you'll need to set up the required dependencies *__before__* attempting to install APIM. 
+With almost every Amazon install, you'll need to set up the required dependencies *__before__* attempting to install APIM.
 
-(Already have dependencies installed? Skip to link:/apim/3.x/apim_installguide_amazon_stack.html#install_apim_package_no_dependencies[this section.])
+Already have all dependencies installed? Skip to link:/apim/3.x/apim_installguide_amazon_stack.html#install_apim_package_no_dependencies[this section.]
 
 === 1. Configure Dependency Repositories
 
@@ -77,7 +79,24 @@ sudo yum install -y elasticsearch
 sudo systemctl start elasticsearch
 ----
 
-=== 2. Install APIM
+=== 2. Configure Your Amazon Instance
+In your AWS settings, choose the following:
+
+* *[underline]#For IP Address#*. Choose to **auto-assign a public IP** for this option.
+
+* *[underline]#For Instance Type/Size#*. Select a **t.2medium** instance.
+
+* *[underline]#For Storage#*. Generally, **40GB** is a good amount.
+
+* *[underline]#For Security Groups#*. Open the ports listed below, so that after you complete the installation, you can check the necessary URLs to ensure that APIM has been installed properly:
+
+** 8082.
+** 8083.
+** 8084.
+** 8085.
+
+
+=== 3. Install APIM
 
 [source,bash,subs="attributes"]
 ----
@@ -104,7 +123,7 @@ Already have all required dependencies installed? Lucky you! You can install API
 sudo yum install {gravitee-package-name}
 ----
 
-Now, run APIM using systemd (as mentioned above) and then confirm that all APIM components were installed by checking the URLs below. 
+Now, run APIM using systemd (as mentioned above) and then confirm that all APIM components were installed by checking the URLs below.
 
 == Confirm APIM Components Were Installed
 

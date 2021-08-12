@@ -112,6 +112,9 @@ entries:
                   - title: Install APIM Portal
                     output: web
                     url: /apim/3.x/apim_installguide_portal_ui_install_zip.html
+          - title: Configure a Production-Ready APIM Environment
+            output: web
+            url: /apim/3.x/apim_how_to_configuration.html          
           - title: Upgrade Guide
             output: web
             url: /apim/3.x/apim_installguide_migration.html
@@ -406,15 +409,9 @@ entries:
       - title: How To
         output: web
         folderitems:
-          - title: Introduction
-            output: web
-            url: /apim/3.x/apim_how_to_introduction.html
           - title: Configure Global API Reviewers
             output: web
             url: /apim/3.x/apim_how_to_configure_global_API_reviewers.html
-          - title: Configure a Production-Ready APIM Environment
-            output: web
-            url: /apim/3.x/apim_how_to_configuration.html
           - title: Add Custom Metrics in Dashboards
             output: web
             url: /apim/3.x/apim_how_to_add_custom_metrics_in_dashboards.html
