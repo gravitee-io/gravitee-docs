@@ -6,17 +6,28 @@
 :page-layout: apim3x
 :page-description: Gravitee.io API Management - Installation Guide - Amazon - Portal
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-toc: false
 
 :gravitee-component-name: APIM Portal
 :gravitee-package-name: graviteeio-apim-portal-ui-3x
 :gravitee-service-name: graviteeio-apim-portal-ui
 
+To install Gravitee.io API Management Portal, be sure to check the list of prerequisites and complete the following configuration (both listed below). 
+
 == Prerequisites
-Before you install {gravitee-component-name}, you must complete the following configuration. You must also ensure APIM API is installed and running.
+
+. [underline]#*APIM API*# must be installed and running (link:/apim/3.x/apim_installguide_amazon_management_api.html[click here] for instructions on how to install APIM API). 
+
+. [underline]#*Nginx*# must be installed.
+
+. [underline]#*YUM package manager*# must be configured (link:/apim/3.x/apim_installguide_amazon_configure_yum.html[click here] for instructions on how to configure `yum`).
+
+=== Install APIM API
+link:/apim/3.x/apim_installguide_amazon_management_api.html[Click here] for instructions on how to install and test that APIM API is running. 
 
 === Install Nginx
 
-To install Nginx, run the following command:
+To install Nginx, run the following commands:
 
 [source,bash,subs="attributes"]
 ----
@@ -24,11 +35,10 @@ sudo amazon-linux-extras install nginx1.12
 sudo systemctl start nginx
 ----
 
-=== Configure your package management system
+=== Configure YUM Package Manager
+link:/apim/3.x/apim_installguide_amazon_configure_yum.html[Click here] for instructions on how to configure `yum`.
 
-Ensure you have configured your package management system, as described in <<apim_installguide_amazon_introduction.adoc#configure-the-package-management-system-yum, Configure the package management system (yum)>>.
-
-== Install the {gravitee-component-name} package
+== Install the {gravitee-component-name} Package
 
 To install the latest stable version of {gravitee-component-name}, run the following command:
 
@@ -57,9 +67,9 @@ sudo systemctl start nginx
 sudo systemctl stop nginx
 ----
 
-== View the logs
+== View The Logs
 
-When `systemd` logging is enabled, logging information are available using the `journalctl` commands.
+*You must check the logs to confirm if APIM Portal has been installed correctly.* When `systemd` logging is enabled, logging information is available using the `journalctl` commands.
 
 To tail the journal, run the following command:
 
@@ -81,3 +91,17 @@ To list journal entries for the Nginx service starting from a given time, run th
 ----
 sudo journalctl --unit nginx --since  "2020-01-30 12:13:14"
 ----
+
+
+== Confirm {gravitee-component-name} Was Installed
+
+To test that {gravitee-component-name} has been installed and has started up properly, check this URL:
+
+|===
+|Component |URL
+
+
+|APIM Portal
+|http://localhost:8085/
+
+|===

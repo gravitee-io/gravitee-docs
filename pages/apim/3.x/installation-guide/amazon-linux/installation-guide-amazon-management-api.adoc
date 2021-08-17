@@ -10,12 +10,13 @@
 :gravitee-component-name: APIM API
 :gravitee-package-name: graviteeio-apim-management-api-3x
 :gravitee-service-name: graviteeio-apim-management-api
+:page-toc: false 
 
 == Prerequisites
 
-The following steps assume you have configured your package management system as described in <<apim_installguide_amazon_introduction.adoc#configure-the-package-management-system-yum, Configure the package management system (yum)>>.
+. *YUM package manager* must be configured (link:/apim/3.x/apim_installguide_amazon_configure_yum.html[click here] for instructions on how to configure yum).
 
-== Install the {gravitee-component-name} package
+== Install the {gravitee-component-name} Package
 
 To install the last stable version of {gravitee-component-name}, run the following command:
 
@@ -46,9 +47,9 @@ sudo systemctl stop {gravitee-service-name}
 
 NOTE: These commands provide no feedback as to whether {gravitee-component-name} started successfully. This information is written to the log files located in `/opt/graviteeio/apim/management-api/logs/`.
 
-== View the logs
+== View The Logs
 
-When `systemd` logging is enabled, the logging information is available using the `journalctl` commands:
+*You must check the logs to confirm if APIM Portal has been installed correctly.* When `systemd` logging is enabled, logging information is available using the `journalctl` commands.
 
 To tail the journal, run the following command:
 
@@ -70,3 +71,18 @@ To list journal entries for the {gravitee-component-name} service starting from 
 ----
 sudo journalctl --unit {gravitee-service-name} --since  "2020-01-30 12:13:14"
 ----
+
+
+== Confirm {gravitee-component-name} Was Installed
+
+To test that {gravitee-component-name} has been installed and has started up properly, check this URL:
+
+|===
+|Component |URL
+
+
+|APIM API
+|http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/apis
+
+
+|===
