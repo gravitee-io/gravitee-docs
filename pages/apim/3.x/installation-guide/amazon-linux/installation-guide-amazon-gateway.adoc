@@ -49,7 +49,7 @@ NOTE: These commands provide no feedback as to whether {gravitee-component-name}
 
 == View The Logs
 
-*You must check the logs to confirm if APIM Portal has been installed correctly.* When `systemd` logging is enabled, logging information is available using the `journalctl` commands.
+*You must check the logs to confirm if {gravitee-component-name} has been installed correctly.* When `systemd` logging is enabled, logging information is available using the `journalctl` commands.
 
 To tail the journal, run the following command:
 
