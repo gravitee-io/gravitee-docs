@@ -176,9 +176,6 @@ entries:
                - title: Metrics
                  output: web
                  url: /apim/3.x/apim_installguide_gateway_metrics.html
-               - title: Enable OpenTracing 
-                 output: web
-                 url: /apim/3.x/apim_how_to_enable_opentracing_with_jaeger.html                 
             - title: Configure APIM API
               output: web
               subfolderitems:
@@ -278,9 +275,6 @@ entries:
           - title: API Users & Ownership
             output: web
             url: /apim/3.x/apim_publisherguide_manage_members.html
-          - title: API Properties & Encryption
-            output: web
-            url: /apim/3.x/apim_publisherguide_api_properties.html
           - title: Response Templates
             output: web
             url: /apim/3.x/apim_publisherguide_response_templates.html
@@ -421,9 +415,9 @@ entries:
           - title: Configure Global API Reviewers
             output: web
             url: /apim/3.x/apim_how_to_configure_global_API_reviewers.html
-          - title: Enable Open Tracing With Jaeger
+          - title: Enable OpenTracing With Jaeger
             output: web
-            url: /apim/3.x/apim_how_to_enable_opentracing_with_jaeger.html
+            url: /apim/3.x/apim_how_to_opentracing.html
 
       - title: Developer Guide
         output: web
