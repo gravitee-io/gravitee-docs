@@ -48,7 +48,7 @@ $ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-
 ----
 
 [start=2]
-. Extract the `graviteeio-rest-api-xxx` directory from the archive and place it in the required location.
+. Extract the `graviteeio-apim-rest-api-xxx` directory from the archive and place it in the required location.
 
 [source,bash]
 ----
@@ -61,7 +61,7 @@ You start APIM API from the command line as follows:
 
 [source,bash]
 ----
-$ cd graviteeio-rest-api-{{ site.products.apim._3x.version }}
+$ cd graviteeio-apim-rest-api-{{ site.products.apim._3x.version }}
 $ ./bin/gravitee
 ----
 
@@ -138,7 +138,7 @@ $ kill `cat /var/run/gio.pid`
 == APIM API directory structure
 
 The `.zip` and (`.tar.gz`) package is entirely self-contained. All files and directories are, by default, contained within
-`$GRAVITEE_HOME`, the directory created when extracting the archive.
+`$GRAVITEE_HOME`, the directory created when extracting the archive.
 
 [width="100%",cols="20%,80%",frame="topbot",options="header"]
 |======================

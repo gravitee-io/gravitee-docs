@@ -4,6 +4,7 @@ entries:
 - title: Sidebar
   product: Access Management 3.x
   folders:
+
   - title: Overview
     output: web
     folderitems:
@@ -122,6 +123,9 @@ entries:
             - title: Helm
               output: web
               url: /am/current/am_installguide_kubernetes.html
+    - title: Configure a Production-Ready AM Environment
+      output: web
+      url: /am/current/am_installguide_how_to_configuration.html
     - title: Upgrade Guide
       output: web
       url: /am/current/am_installguide_migration.html
