@@ -61,7 +61,7 @@ sudo systemctl stop {gravitee-service-name}
 
 NOTE: These commands provide no feedback as to whether {gravitee-component-name} started successfully. This information is written to the log files located in `/opt/graviteeio/apim/gateway/logs/`.
 
-== 3. View The Logs
+== 4. View The Logs
 
 *You must check the logs to confirm if {gravitee-component-name} has been installed correctly.* When `systemd` logging is enabled, logging information is available using the `journalctl` commands.
 
@@ -86,7 +86,7 @@ To list journal entries for the {gravitee-component-name} service starting from 
 sudo journalctl --unit {gravitee-service-name} --since  "2020-01-30 12:13:14"
 ----
 
-== Confirm {gravitee-component-name} Was Installed
+== 5. Confirm {gravitee-component-name} Was Installed (Optional)
 
 You can also confirm that {gravitee-component-name} has been installed and has started up properly by checking this URL:
 
