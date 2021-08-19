@@ -225,7 +225,7 @@ You can configure various default properties of APIM API in your `gravitee.yml` 
 
 [source,yaml]
 ----
-include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/master/gravitee-rest-api-standalone/gravitee-rest-api-standalone-distribution/src/main/resources/config/gravitee.yml[]
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-rest-api/gravitee-apim-rest-api-standalone/gravitee-apim-rest-api-standalone-distribution/src/main/resources/config/gravitee.yml[]
 ----
 
 [[gravitee-standalone-management-authentication-configuration]]
@@ -342,5 +342,5 @@ gravitee.analytics.client.timeout=15000
 
 [source,java]
 ----
-include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/master/gravitee-rest-api-model/src/main/java/io/gravitee/rest/api/model/parameters/Key.java[]
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-rest-api/gravitee-apim-rest-api-model/src/main/java/io/gravitee/rest/api/model/parameters/Key.java[]
 ----

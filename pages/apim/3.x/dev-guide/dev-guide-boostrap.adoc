@@ -28,11 +28,12 @@ Unzip it into the directory of your choice. You will need these files later on t
 
 Clone the following repositories in your workspace
 
+* https://github.com/gravitee-io/gravitee-api-management
 * https://github.com/gravitee-io/gravitee-gateway
-* https://github.com/gravitee-io/gravitee-management-rest-api
 * https://github.com/gravitee-io/gravitee-management-webui
+* https://github.com/gravitee-io/gravitee-portal-webui
 
-If you are using IntelliJ, create a new project and add the 3 repositories as Maven modules (*File -> New -> Module from existing sources -> Import module from external model -> Maven*).
+If you are using IntelliJ, create a new project and add the 4 repositories as Maven modules (*File -> New -> Module from existing sources -> Import module from external model -> Maven*).
 
 == Prepare For Launch
 
@@ -45,9 +46,9 @@ For instance, if your download is in the `Downloads` folder and your project is 
 cp ~/Downloads/graviteeio-full-{{ site.products.apim._3x.version }}/graviteeio-gateway-{{ site.products.apim._3x.version }}/plugins/* ~/dev/gravitee-gateway/gravitee-gateway-standalone/gravitee-gateway-standalone-distribution/src/main/resources/plugins
 ```
 
-Repeat the previous step for `gravitee-management-rest-api`:
+Repeat the previous step for `gravitee-apim-rest-api`:
 ```
-cp ../graviteeio-full-{{ site.products.apim._3x.version }}/graviteeio-full-{{ site.products.apim._3x.version }}/graviteeio-rest-api-{{ site.products.apim._3x.version }}/plugins/* ./gravitee-management-rest-api/gravitee-rest-api-standalone/gravitee-rest-api-standalone-distribution/src/main/resources/plugins
+cp ../graviteeio-full-{{ site.products.apim._3x.version }}/graviteeio-full-{{ site.products.apim._3x.version }}/graviteeio-apim-rest-api-{{ site.products.apim._3x.version }}/plugins/* ./gravitee-api-management/gravitee-apim-rest-api/gravitee-apim-rest-api-standalone/gravitee-apim-rest-api-standalone-distribution/src/main/resources/plugins
 ```
 
 === Run Prerequisites
@@ -82,16 +83,16 @@ Create a new Run configuration in IntelliJ:
 -Dgravitee.home=/home/user/dev/gravitee-gateway/gravitee-gateway-standalone/gravitee-gateway-standalone-distribution/src/main/resources
 ```
 
-==== APIM API (gravitee-management-rest-api)
+==== APIM API (gravitee-apim-rest-api)
 
 . Create a new Run configuration in IntelliJ: click *Run -> Edit configurations -> ✚ -> Application*.
 . Name it as required.
-. Choose *Use classpath of module:gravitee-rest-api-standalone-container*.
+. Choose *Use classpath of module:gravitee-apim-rest-api-standalone-container*.
 . Select *Main class:io.gravitee.rest.api.standalone.GraviteeApisContainer*.
 . In the VM options, add the following (change the path to point to your project):
 +
 ```
--Dgravitee.home=/home/user/dev/gravitee-management-rest-api/gravitee-rest-api-standalone/gravitee-rest-api-standalone-distribution/src/main/resources
+-Dgravitee.home=/home/user/dev/gravitee-api-management/gravitee-apim-rest-api/gravitee-apim-rest-api-standalone/gravitee-apim-rest-api-standalone-distribution/src/main/resources
 ```
 
 
@@ -99,7 +100,7 @@ Create a new Run configuration in IntelliJ:
 
 ===== CLI Version
 
-. Run `npm install` from the 'gravitee-management-webui' directory.
+. Run `npm install` from the `gravitee-management-webui` directory.
 . Run `npm run serve` to start the UI.
 
 ===== IntelliJ configuration
