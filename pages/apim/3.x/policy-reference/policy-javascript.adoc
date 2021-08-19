@@ -1,0 +1,9 @@
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_policies_javascript.html
+:page-folder: apim/user-guide/publisher/policies
+:page-layout: apim3x
+:page-title: Javascript policy
+
+include::https://gh.gravitee.io/gravitee-io/gravitee-policy-javascript/master/README.adoc[]
+
+WARNING: the javascript policy is not included by default in the distribution. You will have to download and manually install the policy to use it.
