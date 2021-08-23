@@ -9,6 +9,7 @@
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js"></script>
     <script src="{{ '/js/init-table.js' | relative_url }}"></script>
     {% endif %}
+    {% include GoogleTagManager_head.liquid %}
 </head>
 <body>
 {% include topnav.html %}
@@ -33,5 +34,6 @@
 </body>
 {% if site.google_analytics %}
 {% include google_analytics.html %}
+{% include GoogleTagManager_body.liquid %}
 {% endif %}
 </html>
