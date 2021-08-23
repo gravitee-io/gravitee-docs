@@ -3,9 +3,18 @@
     {% include head.html %}
     <script src="{{ '/js/init-default.js' | relative_url }}"></script>
     <link rel="stylesheet" href="{{ "/css/homepage.css" | relative_url }}">
+    {% if jekyll.environment == 'production' %}
+    {% include GoogleTagManager_head.liquid %}
+    {% endif %}
+
+    {% if site.google_analytics %}
+    {% include google_analytics.html %}
+    {% endif %}   
 </head>
 <body>
 {% include topnav.html %}
+{% include GoogleTagManager_body.liquid %}
+
 <!-- Page Content -->
 <div class="container">
     <div class="homepage">
@@ -13,8 +22,6 @@
     </div>
 
 </body>
-{% if site.google_analytics %}
-{% include google_analytics.html %}
-{% endif %}
+
 {% include footer.html %}
 </html>
