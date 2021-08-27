@@ -409,12 +409,15 @@ entries:
       - title: How To
         output: web
         folderitems:
-          - title: Configure Global API Reviewers
-            output: web
-            url: /apim/3.x/apim_how_to_configure_global_API_reviewers.html
           - title: Add Custom Metrics in Dashboards
             output: web
             url: /apim/3.x/apim_how_to_add_custom_metrics_in_dashboards.html
+          - title: Configure Global API Reviewers
+            output: web
+            url: /apim/3.x/apim_how_to_configure_global_API_reviewers.html
+          - title: Enable Open Tracing With Jaeger
+            output: web
+            url: /apim/3.x/apim_how_to_enable_opentracing_with_jaeger.html
 
       - title: Developer Guide
         output: web
