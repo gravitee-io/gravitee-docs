@@ -1,0 +1,23 @@
+= How to Enable OpenTracing With Jaeger 
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_how_to_opentracing.html
+:page-folder: apim/how-tos
+:page-description: Gravitee.io API Management - How To Enable OpenTracing 
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, opentracing, open tracing, jaeger, distributed tracing, documentation, manual, guide, reference, api, how-to 
+:page-layout: apim3x
+:page-toc: false 
+
+== Why Enable OpenTracing? 
+
+Enabling OpenTracing gives you the ability to use an open-source tracing system for your microservices. In our case, we've implemented this feature using the open source option, Jaeger. 
+
+== Prerequisites
+
+I need to double check this part with Yann. 
+
+== How To Enable OpenTracing 
+
+In our examples, we'll use a unmodified configuration file and also provide a configuration file with evnironment variables...(check on this, tiffany)
+
+1. You must enable the tracing feature in `gravitee.yml`. Search for tracing and change `enabled` from `false` to `true`. 
+image:apim/3.x/how-tos/enable-opentracing/opentracing-enable-open-tracing-value.png[Change value from false to true.]
