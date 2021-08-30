@@ -1,0 +1,60 @@
+= API Properties & Encryption
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_publisherguide_api_properties.html
+:page-folder: apim/user-guide/publisher
+:page-layout: apim3x
+:page-toc: false 
+
+== How To Add API Properties
+With Gravitee APIM, you can add and encrypt properties that are local to the API by taking advantage of key-value pairings. Get the most out of this feature and comply with your organization's security requirements by adding these properties to policies afterwards. Note **values are unencrypted by default.** 
+
+=== Step 1
+First, select an API, then click on the **Design** tab. Once this tab is open, select the **Properties** tab in the upper right corner. 
+
+=== Step 2 
+Now, add a property by creating your key and value. 
+
+image:apim/3.x/api-publisher-guide/api-property-encryption/api-properties-encryption1.png[Create an API property.]
+
+
+NOTE: Values are **not** encrypted by default. If the value is not encrypted, you can edit the value contents at any time. 
+
+=== Step 3
+Choose whether or not to encrypt the API property. 
+
+* To encrypt the property, turn the slide button on before clicking the **+** button. **PRO-TIP:** The value will remain unencrypted and editable until you save your changes. 
+* If you do not want the property to be encrypted, do not turn on this slide button. 
+image:apim/3.x/api-publisher-guide/api-property-encryption/encrypted-vs-unencrypted.png[Encrypted vs. unencrypted toggle button.]
+
+=== Step 4 
+Click the **+** sign to add your property, then click **Save** in the lower left corner of the page so the system retains your changes. **If you do not click save, no changes will be retained.** 
+
+Now, you can redeploy your API. 
+
+image:apim/3.x/api-publisher-guide/api-property-encryption/api-properties-encryption3.png[Save your encrypted API property.]
+
+The value remains unencrypted and editable until you click **Save.** Once you click save, you can no longer edit, modify, or view the value. 
+
+WARNING: Encrypted values can still be used by API Policies (under the *Design* tab) and **APIM Gateway will automatically decrypt these values**. Pay special attention to how you use encrypted data in policies. 
+
+=== Step 5 (Optional)
+Now, you can apply your property to a policy. To experiment with this feature, you can add your property to the body of a Mock Policy. 
+
+Use this syntax for your property: `{#properties['property_name']}`
+
+WARNING: Remember, encrypted values can still be used by API Policies (under the *Design* tab) and **APIM Gateway will automatically decrypt these values**. Be especially careful when using encrypted data in policies. 
+
+=== Step 6 
+Lastly, you'll need to reset the secret key. The method of encryption used for API properties is based on the default secret key in the 'gravitee.yml` config file which you must override to ensure proper security. 
+
+WARNING: Do not use this default secret key. Instead, set your own custom 32-byte secret length in the 'gravitee.yml' config file. 
+
+----
+# Encrypt API properties using this secret:
+api:
+  properties:
+    encryption:
+      secret: vvLJ4Q8Khvv9tm2tIPdkGEdmgKUruAL6
+
+ to provide the best security available. 
+ ---- 
