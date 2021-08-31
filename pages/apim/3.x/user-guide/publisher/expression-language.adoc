@@ -68,7 +68,7 @@ The properties you can access for API requests are listed below.
 .^|pathInfo      |Path info              ^.^|string          |/store/MyStore
 .^|pathInfos     |Path info parts        ^.^|array of string |[,store,MyStore]
 .^|contextPath   |Context path           ^.^|string          |/v2/
-.^|params        |Query parameters       ^.^|key / value     |order -> 100
+.^|params        |Query parameters       ^.^|array           |#request.params['test'][0]
 .^|pathParams    |Path parameters        ^.^|key / value     |storeId -> MyStore (__see Warning for details__)
 .^|headers       |Headers                ^.^|key / value     |X-Custom -> myvalue
 .^|method        |HTTP method            ^.^|string          |GET
