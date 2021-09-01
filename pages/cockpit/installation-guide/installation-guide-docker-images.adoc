@@ -1,6 +1,6 @@
 = Cockpit Docker images
 :page-sidebar: cockpit_sidebar
-:page-permalink: cockpit/1.x/cockpit_installguide_docker_images.html
+:page-permalink: cockpit/3.x/cockpit_installguide_docker_images.html
 :page-folder: cockpit/installation-guide
 :docker-hub: https://hub.docker.com/r/graviteeio
 
@@ -46,7 +46,7 @@ $ docker run \
 
 ==== Configure the container
 If you want to override the default configuration for MongoDB and any other properties included in the `gravitee.yml` file,
-you need to use environment variables. For more information, see the Cockpit API link:/cockpit/1.x/cockpit_installguide_configuration.html#environment_variables[Configuration^].
+you need to use environment variables. For more information, see the Cockpit API link:/cockpit/3.x/cockpit_installguide_configuration.html#environment_variables[Configuration^].
 
 The following example changes the MongoDB connection:
 
