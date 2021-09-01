@@ -47,6 +47,9 @@ entries:
       - title: Configure
         output: web
         url: /cockpit/1.x/cockpit_installguide_configuration.html
+      - title: Upgrade guide
+        output: web
+        url: /cockpit/1.x/cockpit_installguide_migration.html
 
   - title: Configuration Guide
     output: web
@@ -83,3 +86,10 @@ entries:
       - title: Installation health check
         output: web
         url: /cockpit/1.x/cockpit_userguide_installation_health_check.html
+
+  - title: Changelog
+    output: web
+    folderitems:
+      - title: Change log
+        output: web
+        url: /cockpit/1.x/cockpit_changelog.html
