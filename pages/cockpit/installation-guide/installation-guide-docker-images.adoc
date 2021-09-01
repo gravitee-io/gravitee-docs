@@ -29,12 +29,12 @@ You can find the complete set of Cockpit images on https://hub.docker.com/u/grav
 
 |===
 
-=== graviteeio/cockpit-management-api
+=== Cockpit API (graviteeio/cockpit-management-api)
 
 The Cockpit API image provides a set of environment variables which you can use to tune your container.
 You can replace the address of the default MongoDB repository (`localhost:27017`) with your own (`GRAVITEE_MONGODB_HOST:GRAVITEE_MONGODB_PORT`).
 
-==== Run the image
+==== Run The Image
 [source,shell]
 ....
 $ docker run \
@@ -44,9 +44,9 @@ $ docker run \
           graviteeio/cockpit-management-api:latest
 ....
 
-==== Configure the container
-If you want to override the default configuration for MongoDB and any other properties included in the `gravitee.yml` file,
-you need to use environment variables. For more information, see the Cockpit API link:/cockpit/3.x/cockpit_installguide_configuration.html#environment_variables[Configuration^].
+==== Configure The Container
+To override the default configuration for MongoDB or any other properties included in the `gravitee.yml` file,
+you must to use environment variables. For more information, see the Cockpit API link:/cockpit/3.x/cockpit_installguide_configuration.html#environment_variables[Configuration^].
 
 The following example changes the MongoDB connection:
 
@@ -60,12 +60,12 @@ $ docker run \
           graviteeio/cockpit-management-api:latest
 ....
 
-=== graviteeio/cockpit-management-ui
+=== Cockpit UI (graviteeio/cockpit-management-ui)
 
 The Cockpit UI image provides a set of environment variables which you can use to tune your container.
 Cockpit UI needs Cockpit API to run, so you need to update `API_URL` to specify where `management-api` is running.
 
-==== Run the image
+==== Run The Image
 [source,shell]
 ....
 $ docker run \
