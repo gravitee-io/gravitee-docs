@@ -78,17 +78,105 @@ The properties you can access for API requests are listed below.
 .^|remoteAddress |Remote address         ^.^|string          |0:0:0:0:0:0:0:1
 .^|localAddress  |Local address          ^.^|string          |0:0:0:0:0:0:0:1
 .^|content       |Body content           ^.^|string          |-
+.^|ssl           |SSLSession information ^.^|<<SSL Object>>  |-
 |===
 
 WARNING: `{#request.content}` is only available for policies bound to an `on-request-content` phase.
 
-=== Example
+=== SSL Object
+The properties you can access in SSL Session object are listed below.
+
+|===
+.^|Property      |Description               ^.^|Type                    |Example
+
+.^|clientHost    |Host name of the client   ^.^|string                  |client.domain.com
+.^|clientPort    |Port number of the client ^.^|long                    |443
+.^|client        |Client information        ^.^|<<Principal Object>>    |-
+.^|server        |Server information        ^.^|<<Principal Object>>    |-
+|===
+
+=== Principal Object
+The properties you can access in Principal object are listed below.
+
+|===
+.^|Property                 |Description                            ^.^|Type    |Example
+
+4+|*Common DN attributes*
+.^|businessCategory         |Business category                      ^.^|string  |-
+.^|c                        |Country code                           ^.^|string  |FR
+.^|cn                       |Common name                            ^.^|string  |-
+.^|countryOfCitizenship     |RFC 3039 CountryOfCitizenship          ^.^|string  |-
+.^|countryOfResidence       |RFC 3039 CountryOfResidence            ^.^|string  |-
+.^|dateOfBirth              |RFC 3039 RFC 3039 DateOfBirth          ^.^|string  |19830719000000Z
+.^|dc                       |Domain component                       ^.^|string  |-
+.^|description              |Description                            ^.^|string  |-
+.^|dmdName                  |RFC 2256 directory management domain   ^.^|string  |-
+.^|dnQualifier              |Domain name qualifier                  ^.^|string  |-
+.^|e                        |Email address in Verisign certificates ^.^|string  |-
+.^|emailAddress             |Email address (RSA PKCS#9 extension)   ^.^|string  |-
+.^|gender                   |RFC 3039 Gender                        ^.^|string  |"M", "F", "m" or "f"
+.^|generation               |Naming attributes of type X520name     ^.^|string  |-
+.^|givenname                |Naming attributes of type X520name     ^.^|string  |-
+.^|initials                 |Naming attributes of type X520name     ^.^|string  |-
+.^|l                        |Locality name                          ^.^|string  |-
+.^|name                     |Name                                   ^.^|string  |-
+.^|nameAtBirth              |ISIS-MTT NameAtBirth                   ^.^|string  |-
+.^|o                        |Organization                           ^.^|string  |-
+.^|organizationIdentifier   |Organization identifier                ^.^|string  |-
+.^|ou                       |Organization unit name                 ^.^|string  |-
+.^|placeOfBirth             |RFC 3039 PlaceOfBirth                  ^.^|string  |-
+.^|postalAddress            |RFC 3039 PostalAddress                 ^.^|string  |-
+.^|postalCode               |Postal code                            ^.^|string  |-
+.^|pseudonym                |RFC 3039 Pseudonym                     ^.^|string  |-
+.^|role                     |Role                                   ^.^|string  |-
+.^|serialnumber             |Device serial number name              ^.^|string  |-
+.^|st                       |State or province name                 ^.^|string  |-
+.^|street                   |Street                                 ^.^|string  |-
+.^|surname                  |Naming attributes of type X520name     ^.^|string  |-
+.^|t                        |Title                                  ^.^|string  |-
+.^|telephoneNumber          |Telephone number                       ^.^|string  |-
+.^|uid                      |LDAP User id                           ^.^|string  |-
+.^|uniqueIdentifier         |Naming attributes of type X520name     ^.^|string  |-
+.^|unstructuredAddress      |Unstructured address (from PKCS#9)     ^.^|string  |-
+4+|*Other attributes*
+.^|attributes               |Retrieves all attribute values         ^.^|key / value  |"ou" -> ["Test team", "Dev team"]
+.^|defined                  |Returns true if the principal object is defined and contains values. False otherwise.         ^.^|boolean  |-
+.^|dn                       |Full domain name                       ^.^|string  |-
+
+|===
+
+Even if some of these attributes can be arrays, EL will return the first item in the array.
+If you want to retrieve all values of an attribute, you can use the `attributes` field
+
+If the principal is not defined, all values are empty.
+
+=== Examples
 
 * Get the value of the `Content-Type` header for an incoming HTTP request:
 `{#request.headers['content-type']}`
 
 * Get the second part of the request path:
 `{#request.paths[1]}`
+
+* Get the client HOST from the SSL session:
+`{#request.ssl.clientHost}`
+
+* Get the client DN from the SSL session:
+`{#request.ssl.client.dn}`
+
+* Get the server organization from the SSL session:
+`{#request.ssl.server.o}`
+
+* Get all the organization units of the server from the SSL session:
+- `{#request.ssl.server.attributes['ou'][0]}`
+- `{#request.ssl.server.attributes['OU'][1]}`
+- `{#request.ssl.server.attributes['Ou'][2]}`
+
+* Get a custom attribute of the client from the SSL session:
+`{#request.ssl.client.attributes['1.2.3.4'][0]}`
+
+* Determine if the SSL attributes of the client are set:
+`{#request.ssl.client.defined}`
 
 == Request context
 
