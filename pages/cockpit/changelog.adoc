@@ -4,7 +4,12 @@
 :page-folder: cockpit
 :page-toc: false
 
-== 3.11
+== 3.11.1
+=== Bugfixes
+- Fix database high usage rate.
+- Handle node disconnect properly to avoid having multiple nodes linked to installation after restart.
+
+== 3.11.0
 === Features
 - Feature flipping (for development purpose).
 
