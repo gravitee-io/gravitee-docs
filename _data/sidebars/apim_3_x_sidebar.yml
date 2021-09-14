@@ -114,7 +114,7 @@ entries:
                     url: /apim/3.x/apim_installguide_portal_ui_install_zip.html
           - title: Configure a Production-Ready APIM Environment
             output: web
-            url: /apim/3.x/apim_how_to_configuration.html          
+            url: /apim/3.x/apim_how_to_configuration.html
           - title: Upgrade Guide
             output: web
             url: /apim/3.x/apim_installguide_migration.html
@@ -176,6 +176,9 @@ entries:
                - title: Metrics
                  output: web
                  url: /apim/3.x/apim_installguide_gateway_metrics.html
+               - title: Enable OpenTracing
+                 output: web
+                 url: /apim/3.x/apim_how_to_enable_opentracing_with_jaeger.html
             - title: Configure APIM API
               output: web
               subfolderitems:
@@ -275,6 +278,9 @@ entries:
           - title: API Users & Ownership
             output: web
             url: /apim/3.x/apim_publisherguide_manage_members.html
+          - title: API Properties & Encryption
+            output: web
+            url: /apim/3.x/apim_publisherguide_api_properties.html
           - title: Response Templates
             output: web
             url: /apim/3.x/apim_publisherguide_response_templates.html
@@ -336,7 +342,7 @@ entries:
               - title: Documentation
                 output: web
                 subfolderitems:
-                  - title: Publish API Documentation 
+                  - title: Publish API Documentation
                     output: web
                     url: /apim/3.x/apim_publisherguide_publish_documentation.html
                   - title: Markdown Documentation
