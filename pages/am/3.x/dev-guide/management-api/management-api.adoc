@@ -1,39 +1,27 @@
-= AM Management
+= Management API - Documentation
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_devguide_management_api_documentation.html
 :page-folder: am/dev-guide/management-api
 :page-toc: false
 :page-layout: am
 
-== Overview
+The Management API exposes a complete Restful API accessible to anyone who wants to script some part of the administration.
 
-AM API exposes a complete Restful API accessible to anyone wanting to script some part of the administration.
+You can access API console or the OpenAPI descriptor (formerly Swagger) :
 
-You can access the online API reference or the OpenAPI specification:
+* link:/am/current/management-api/index.html[API Console] - link:/am/current/management-api/swagger.json[OpenAPI spec]
 
-* 3.10 -- link:/am/current/management-api/3.10/index.html[online reference] - link:/am/current/management-api/3.10/swagger.json[OpenAPI spec]
-* 3.9 -- link:/am/current/management-api/3.9/index.html[online reference] - link:/am/current/management-api/3.9/swagger.json[OpenAPI spec]
-* 3.8 -- link:/am/current/management-api/3.8/index.html[online reference] - link:/am/current/management-api/3.8/swagger.json[OpenAPI spec]
-* 3.7 -- link:/am/current/management-api/3.7/index.html[online reference] - link:/am/current/management-api/3.7/swagger.json[OpenAPI spec]
-* 3.6 -- link:/am/current/management-api/3.6/index.html[online reference] - link:/am/current/management-api/3.6/swagger.json[OpenAPI spec]
-* 3.5 -- link:/am/current/management-api/3.5/index.html[online reference] - link:/am/current/management-api/3.5/swagger.json[OpenAPI spec]
-* 3.4 -- link:/am/current/management-api/3.4/index.html[online reference] - link:/am/current/management-api/3.4/swagger.json[OpenAPI spec]
-* 3.3 -- link:/am/current/management-api/3.3/index.html[online reference] - link:/am/current/management-api/3.3/swagger.json[OpenAPI spec]
-* 3.2 -- link:/am/current/management-api/3.2/index.html[online reference] - link:/am/current/management-api/3.2/swagger.json[OpenAPI spec]
-* 3.1 -- link:/am/current/management-api/3.1/index.html[online reference] - link:/am/current/management-api/3.1/swagger.json[OpenAPI spec]
-* 3.0 -- link:/am/current/management-api/3.0/index.html[online reference] - link:/am/current/management-api/3.0/swagger.json[OpenAPI spec]
+== Available authorizations
 
-== Authorization
+Management API is protect by a token-based authentication which allows you to call the Management API resources.
 
-AM API is secured using token-based authorization.
-
-NOTE: Use the HTTP Authorization request header (`Authorization Bearer token`) to call the API. You can also use an `Authorization="Bearer token"` cookie to access the API resources.
+NOTE: Use the HTTP Authorization request header (`Authorization Bearer token`) to call the Management API. You can also use `Authorization="Bearer token"` cookie to access the Management API resources.
 
 === Token endpoint
 
-The `token` endpoint is used to obtain the `AM Management API token` by presenting user credentials via the `Basic authentication scheme`.
+The token endpoint is used to obtain `AM Management API's token` by presenting user credentials via the `Basic authentication scheme`.
 
-The following example exchanges default admin account credentials (`admin/adminadmin`) for a token.
+The following example, exchange default admin account credentials (admin/adminadmin) for a token.
 
 ```
 POST http(s)://AM_MANAGEMENT_API/management/auth/token HTTP/1.1
@@ -57,8 +45,8 @@ curl -X POST \
 
 === Authorization endpoint
 
-The `authorization` endpoint is used to interact with the end user to obtain the `AM Management API token`.
-The user will be redirected to the AM login page and authentication processed to obtain the token via an HTTP cookie.
+The authorization endpoint is used to interact with the end-user to obtain `AM Management API's token`.
+The user will be redirect to the login page of the AM Access Management and process authentication to get token via an HTTP cookie.
 
 ```
 GET http(s)://AM_MANAGEMENT_API/management/auth/authorize?redirect_uri=http://callback-app HTTP/1.1
@@ -76,4 +64,4 @@ POST http(s)://AM_MANAGEMENT_API/management/auth/login
   Location: http://callback-app
 ```
 
-* `redirect_uri`: redirection endpoint after authentication success
+* `redirect_uri` : redirection endpoint after authentication success

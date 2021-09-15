@@ -6,7 +6,7 @@ This section explains how to expose metrics to Prometheus.
 == Enable the metrics service
 
 You enable the metrics service in the `gravitee.yml` configuration file.
-Prometheus support is activated and exposed using the component's internal API.
+Prometheus support is activated and exposed using the <<apim_installguide_gateway_technical_api.adoc#gravitee-installation-management-api-technical-api, APIM Gateway internal API>>.
 
 [source,yaml]
 ----
@@ -19,12 +19,12 @@ services:
 
 WARNING: By default, the internal component API is bound to `localhost` only, so it must not be invoked outside `localhost`.
 If you need to expose the API more widely, you may need to set the `services.core.http.host` property to the correct network interface.
-If you are running the application in a Docker container, set the IP to the IP address of the container.
+If you are running APIM in a Docker container, set the IP to the IP address of the container.
 Each change requires a restart.
 
 == Prometheus configuration
 
-The following example requests Prometheus scrape the formatted metrics available in the Gateway internal API.
+The following example requests Prometheus scrape the formatted metrics available in the APIM Gateway internal API.
 
 [source,yaml]
 ----
@@ -45,7 +45,7 @@ By default when running Prometheus, the UI is exposed at \http://localhost:9090/
 .Show `http_client_connections` metrics
 image::apim/3.x/installation/metrics/prometheus/metrics_prometheus_graph.png[Show `http_client_connections` metrics]
 
-The following example shows the memory consumed by the Gateway instance:
+The following example shows the memory consumed by the APIM Gateway instance:
 
 .Show `jvm_memory_used_bytes` metrics
 image::apim/3.x/installation/metrics/prometheus/metrics_prometheus_graph_memory.png[Show `jvm_memory_used_bytes` metrics]

@@ -5,15 +5,11 @@
 :page-folder: apim/dev-guide
 :page-layout: apim3x
 
-APIM _plugins_ are additional components that can be _plugged into_ the Gravitee ecosystem. You can use plugins to extend and customize the behavior of Gravitee to meet your strategic needs.
-
-NOTE: APIM includes a default set of plugins with each distribution. You can also obtain and install some additional plugins from Gravitee. For more information, see the Installation Guide.
-
-This section describes how to create your own custom plugins.
+Gravitee _plugins_ are additional components that can be _plugged into_ the Gravitee ecosystem. Thus, _plugins_ help you to specify behaviors that meet your strategic needs.
 
 == Common structure
 
-Each plugin follows the following common structure:
+Each _plugin_ follows the following common structure:
 
 [source]
 -----------------
@@ -22,47 +18,47 @@ Each plugin follows the following common structure:
 ├── README.md
 └── src
     ├── assembly
-    │   └── <plugin>-assembly.xml
+    │   └── <plugin>-assembly.xml
     ├── main
-    │   ├── java
-    │   │   └── <main java files>
-    │   └── resources
-    │       └── plugin.properties
+    │   ├── java
+    │   │   └── <main java files>
+    │   └── resources
+    │       └── plugin.properties
     └── test
         └── java
             └── <test java files>
 -----------------
 
-The different key files are as follows:
+Hereafter a description about the different key files:
 
 |===
 | File                                                               | Description
 
 | <<gravitee-dev-guide-plugins-pom, `pom.xml`>>                      | The main Maven POM file
-| <<gravitee-dev-guide-plugins-readme, `README.md`>>                 | The main entry point for the plugin documentation
+| <<gravitee-dev-guide-plugins-readme, `README.md`>>                 | The main entry point for the _plugin_ documentation
 | <<gravitee-dev-guide-plugins-assembly, `<plugin>-assembly.xml`>>   | The common Maven assembly descriptor
-| <<gravitee-dev-guide-plugins-descriptor, `plugin.properties`>>     | The plugin descriptor file
+| <<gravitee-dev-guide-plugins-descriptor, `plugin.properties`>>     | The _plugin_ descriptor file
 |===
 
 [discrete]
 [[gravitee-dev-guide-plugins-pom]]
 === pom.xml
 
-Any plugins (and more generally any Gravitee projects) are https://maven.apache.org/[Maven] managed. A plugin project is described by using the Maven https://maven.apache.org/pom.html[Project Object Model] file.
+Any _plugins_ (and more generally any Gravitee projects) are https://maven.apache.org/[Maven] managed. Thus, a _plugin_ project is described by using the Maven https://maven.apache.org/pom.html[Project Object Model] file.
 
 [discrete]
 [[gravitee-dev-guide-plugins-readme]]
 === README.md
 
-Each plugin should have a dedicated `README.md` file to document it. The `README.md` file should contain everything related to the use of your plugin: _What is its functionality? How can you use it? How can you configure it?_
+Each _plugin_ should have a dedicated `README.md` file to document it. The `README.md` file should contain everything related to the use of your _plugin_: _What is its functionality? How can use it? How can configure it?_
 
 [discrete]
 [[gravitee-dev-guide-plugins-assembly]]
 === <plugin>-assembly.xml
 
-In order to be plugged into the Gravitee ecosystem, a plugin needs to be deployed following a given file structure. The `<plugin>-assembly.xml` file is the http://maven.apache.org/plugins/maven-assembly-plugin/[Maven Assembly] descriptor used to build the distribution file.
+In order to be _plugged into_ the Gravitee ecosystem, a _plugin_ need to be deployed following a given file structure. Thus, the `<plugin>-assembly.xml` file is the http://maven.apache.org/plugins/maven-assembly-plugin/[Maven Assembly] descriptor using to build the distribution file.
 
-Commonly, a plugin distribution file is organized as follows:
+Commonly, a _plugin_ distribution file is organized as follow:
 
 [source]
 -----------------
@@ -71,49 +67,49 @@ Commonly, a plugin distribution file is organized as follows:
 └── lib
 -----------------
 
-The different files are as follows:
+Hereafter a description about the different files:
 
 |===
 | File                   | Description
 
-| `<main Jar File>.jar`  | The plugin's main Jar file
+| `<main Jar File>.jar`  | The _plugin_'s main Jar file
 | `lib/`                 | A directory containing external libraries to correctly execute the <main Jar File>.jar
 |===
 
 [discrete]
 ==== <main Jar File>.jar
 
-Each plugin has its main Jar file containing the business behavior *plus* the <<gravitee-dev-guide-plugins-descriptor, plugin descriptor file>>.
+Each _plugin_ has its main Jar file containing the business behavior *plus* the <<gravitee-dev-guide-plugins-descriptor, _plugin_ descriptor file>>.
 
 [discrete]
 ==== lib/
 
-This directory contains all the plugin's external dependencies (non provided-scope Maven dependencies).
+This directory contains all the _plugin_'s external dependencies (non provided-scope Maven dependencies).
 
 [discrete]
 [[gravitee-dev-guide-plugins-descriptor]]
 === plugin.properties
 
-The `plugin.properties` file is the descriptor of the plugin. It acts as the _ID Card_ of the plugin and will be read by APIM Gateway during the plugin loading process.
+The plugin.properties file is the descriptor of the _plugin_. It acts as the _ID Card_ of the _plugin_ and will be read by _gateway_ during the _plugin_ loading process.
 
 Hereafter parameters included into the descriptor:
 
 |===
 | Parameter	    | Description
 
-| id	        | The plugin identifier
-| name	        | The plugin name
-| version	    | The plugin version
-| description	| The plugin description
-| class	        | The main plugin class
-| type	        | The type of plugin (_policy_, _reporter_)
+| id	        | The _plugin_ identifier
+| name	        | The _plugin_ name
+| version	    | The _plugin_ version
+| description	| The _plugin_ description
+| class	        | The main _plugin_ class
+| type	        | The type of _plugin_ (_policy_, _reporter_)
 |===
 
-NOTE: Naturally, the plugin identifier has to be unique to be correctly loaded by APIM Gateway.
+NOTE: Naturally, the _plugin_ identifier has to be unique to be correctly loaded by the _gateway_.
 
 == Deployment
 
-Deploying a plugin is as easy as copying the plugin archive (zip) into the dedicated directory. By default, you need to
-deploy the archives in ${GRAVITEE_HOME/plugins}. Refer to the configuration <<gravitee-standalone-gateway-configuration,documentation>> for more information.
+Deploying a _plugin_ is as easy as leave the plugin archive (zip) into the dedicated directory. By default, you have to
+deploy those archive into ${GRAVITEE_HOME/plugins}. Please refer to the configuration <<gravitee-standalone-gateway-configuration,documentation>>.
 
-IMPORTANT: You must restart APIM nodes when applying new or updated plugins!
+IMPORTANT: Gravitee.io nodes must be restarted to take care about new or updated plugins !

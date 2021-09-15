@@ -1,0 +1,73 @@
+[[gravitee-installation-authentication-google]]
+= Configure Google authentication
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installguide_authentication_google.html
+:page-folder: apim/installation-guide/portal/authentication
+:page-description: Gravitee.io API Management - Portal - Authentication - Google
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim3x
+
+== Overview
+
+This page allows you to configure APIM to allow users to connect using their Google account.
+
+== Create a Google Client
+
+Before you can connect to APIM Portal with a Google account, you need to create an OAuth client ID.
+
+You can access the Google API developers console at https://console.developers.google.com/.
+
+=== Check access to the Google+ API
+
+Before you begin, you need to check that your current project has access to the Google+ API.
+
+.Check Google+ API
+image::apim/3.x/installation/authentication/google_enable_google+_api.png[Check Google+ API access]
+
+=== Create a new client
+
+.Create a new client
+image::apim/3.x/installation/authentication/google_create_client.png[Create a new OAuth client]
+
+=== Configure the client
+
+.Configure the client
+image::apim/3.x/installation/authentication/google_fill_client_form.png[Fill the form]
+
+WARNING: The `Authorized redirect URIs` value must exactly match the domain which is hosting APIM Portal.
+
+[[gravitee-installation-authentication-google-credentials]]
+=== Retrieve client credentials
+.Retrieve Client credentials
+image::apim/3.x/installation/authentication/google_client_credentials.png[Get Client credentials]
+
+== Configure APIM
+
+include::../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
+
+=== In APIM Portal
+
+Go to *Settings > Authentication > New provider*, click the `+` button and select *Google*.
+
+image::apim/3.x/management-api-configuration-idp/new-google.png[Gravitee.io - New Google IDP]
+
+=== In the `gravitee.yml` file
+[source,yaml]
+----
+security:
+  providers:
+    - type: google
+      clientId: xxxx-xxx-xxx-xxx
+      clientSecret: xxxx-xxx-xxx-xxx
+----
+
+== Test the connection
+
+.Login form
+image::apim/3.x/installation/authentication/google_login_form.png[Login Form]
+
+.Choose account
+image::apim/3.x/installation/authentication/google_choose_google_account.png[Login Form]
+
+.Login success
+image::apim/3.x/installation/authentication/google_login_success.png[Here we are !]

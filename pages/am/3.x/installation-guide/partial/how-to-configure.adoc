@@ -2,23 +2,24 @@
 
 There are three different ways to configure this component:
 
- - environment variables
- - system properties
  - `gravitee.yml`
+ - System Properties
+ - Environment variables
 
-The order in which they are listed above corresponds to their order of precedence. In other words, environment variables override the other two configuration types, and system properties override `gravitee.yml`.
+In terms of prevalence, environment variables override system properties which are themselves overriding `gravitee.yml` file.
 
 == gravitee.yml
 
-The `gravitee.yml` file, found in `GRAVITEE_HOME/config/`, is the default way to configure AM.
+This is the default way to configure Gravitee.io
 
-WARNING: YAML (`yml`) format is very sensitive to indentation. Ensure you include the correct number of spaces and use spaces instead of tabs.
+WARNING: Yaml (yml) format is very sensitive with indentation. Be careful, and use spaces instead of tabs.
 
-== System properties
 
-You can override the default AM configuration (`gravitee.yml`) by defining system properties.
+== System Properties
 
-To override this property:
+You can override the default configuration (`gravitee.yml`) to configure Gravitee.io by defining system properties.
+
+If you want to override this property:
 
 [source,yaml]
 ----
@@ -27,18 +28,18 @@ management:
     dbname: myDatabase
 ----
 
-Add this property to the JVM:
+You have to add this property to the JVM:
 
 ----
 -Dmanagement.mongodb.dbname=myDatabase
 ----
 
 
-== Environment variables
+== Environment Variables
 
-You can override the default AM configuration (`gravitee.yml`) and system properties by defining environment variables.
+You can override the default configuration (`gravitee.yml`) and system properties by defining environment variables.
 
-To override this property:
+If you want to override this property:
 
 [source,yaml]
 ----
@@ -47,7 +48,7 @@ management:
     dbname: myDatabase
 ----
 
-Define one of the following variables:
+You have to define one of the following variables:
 
 ----
 GRAVITEE_MANAGEMENT_MONGODB_DBNAME=myDatabase
@@ -56,12 +57,13 @@ gravitee_management_mongodb_dbname=myDatabase
 gravitee.management.mongodb.dbname=myDatabase
 ----
 
-WARNING: Some properties are case sensitive and cannot be written in uppercase (for example,
-`gravitee_security_providers_0_tokenIntrospectionEndpoint`. We advise you to define environment variables in lowercase and use the correct syntax for each property.
+WARNING: Some properties are case-sensitive and can not be defined upper-case (for example:
+`gravitee_security_providers_0_tokenIntrospectionEndpoint`. We advise you to define environment variables in lower-case
+and use the correct syntax for each property.
 
-TIP: In some systems, hyphens are not allowed in variable names. For example, you may need to write `gravitee_policy_apikey_header` as `gravitee_policy_api-key_header`.
+TIP: In some systems, hyphens are forbidden in the variable name. You can remove them like `gravitee_policy_apikey_header` instead of `gravitee_policy_api-key_header`
 
-=== How to manage arrays?
+=== How to manage arrays ?
 
 Some properties are arrays. For example:
 [source,yaml]
@@ -79,7 +81,7 @@ security:
       context-source-password: "password"
 ----
 
-Below are some examples of how to write your environment variables. In case of doubt, we recommend you try both.
+Here is some ways to write your environment variables. In case of errors, you really should try both of them.
 
 ----
 gravitee_analytics_elasticsearch_endpoints_0=https://my.first.endpoint.com

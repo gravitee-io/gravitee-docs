@@ -1,12 +1,12 @@
 <footer class="footer">
     <div class="newsletter-box">
-        <div class="newsletter-title">Stay Connected</div>
-        <p>Join us today and be the first to know about our latest product launches.</p>
+        <div class="newsletter-title">Join the community</div>
+        <p>Subscribe to get product updates in your inbox</p>
         <form id="newsletter-form" class="newsletter-form">
-            <input required name="email" type="email" class="gv-input" placeholder="Email">
-            <button type="submit" class="gv-button">Submit</button>
+            <input required name="email" type="email" class="gv-input" placeholder="Email Address">
+            <button type="submit" class="gv-button">Subscribe</button>
         </form>
-        <span class="message">We won’t send you spam (unsubscribe at any time). View our <a href="https://docs.gravitee.io/gravitee_privacy_policy.html" target="blank"> Privacy Policy</a>.</span>
+        <span class="message">We won’t send you spam, unsubscribe at any time</span>
 
         <span class="newsletter-error">
             <i class="fa fa-exclamation"></i>
@@ -27,8 +27,7 @@
         </div>
         <div>
             &copy;{{ site.time | date: "%Y" }} {{site.company_name}}. All rights reserved. <br/>
-          
-            Gravitee.io API Management & Access Management are distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache
+            Gravitee.io API Platform is distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache
             License V2</a><br/>
             {% if page.last_updated %}<span>Page last updated:</span> {{page.last_updated}}<br/>{% endif %} Site last
             generated: {{ site.time | date: "%b %-d, %Y" }}

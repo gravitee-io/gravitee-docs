@@ -1,25 +1,41 @@
-= Audit log
+= Audit Log
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_userguide_audit_log.html
 :page-folder: am/user-guide
 :page-layout: am
 
-== View the audit log
+== How to view audit log
 
-The AM Console Audit log page displays all events which have taken place, including user authentication and administrative actions such as managing clients, identity providers, users, groups, roles and so on.
+The Audit Log page of the Portal UI displays all events that occur, including user authentications and administrative actions such as managing Clients, Identity Providers, Users, Groups, Roles ...
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Audit Log*.
-+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page and go to `Audit Log` section
+
 image::am/current/graviteeio-am-userguide-logs-audit.png[]
 
-NOTE: All of this information can also be retrieved with the link:/am/current/management-api/index.html#tag/audit[AM API].
+NOTE: All these information can be retrieved via the link:/am/current/management-api/index.html#tag/audit[AM Management API].
+
+== Retention log and storage
+
+Audit events are managed (store and fetch) by plugins call link:/apim_overview_plugins.html#gravitee-plugins-reporters[Reporter].
+
+By default a Reporter is created for each security domain and allow you to choose where the audit logs will be stored.
+
+NOTE: Currently only a MongoDB reporter is available but the Gravitee.io plugins system will ease the creation of new reporters (Splunk, Logstash, ES, ...)
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page and go to `Audit Log` section
+. Click on the "settings" icon and configure the reporter
+
+image::am/current/graviteeio-am-userguide-logs-audit-reporter.png[]
+
+NOTE: There is no log retention, is up to you define a retention window and periodically clear older data.
 
 == Event types
 
 The following table lists the available log event types.
 
-NOTE: The result of an event can be either SUCCESS or FAILURE.
+NOTE: Result of event can be either SUCCESS or FAILURE
 
 [width="100%",cols="^3,^3,^3",options="header"]
 |===

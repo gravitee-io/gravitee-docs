@@ -1,4 +1,4 @@
-= System email notifier
+= Notifier System Email
 :page-sidebar: ae_sidebar
 :page-permalink: ae/userguide_notifier_system_email.html
 :page-folder: ae/user-guide
@@ -7,29 +7,18 @@
 :page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
 :page-layout: ae
 
-== Overview
+== Description
 
-Use the SMTP server already configured for your platform and specify the message to send:
+Use the SMTP server already configured in your platform and the message to send.
 
 image::ae/notifiers/cfg-system-email.png[Configure your Email notification]
 
-== Configuration
+== Example
 
-Configure the notifier as in the following example:
-
-[source,yaml]
+[source,html]
 ----
-notifiers:
-  email:
-    enabled: true
-    host: ${email.host}
-    subject: ${email.subject}
-    port: ${email.port}
-    username: ${email.username}
-    password: ${email.password}
-#    starttls.enabled: false
-#    ssl:
-#      trustAll: false
-#      keyStore:
-#      keyStorePassword:
+The alert [<b>${alert.name}</b>] has been thrown with the following message:
+<p>
+${notification.message}
+</p>
 ----

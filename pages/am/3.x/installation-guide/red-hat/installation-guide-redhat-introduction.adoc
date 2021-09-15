@@ -1,4 +1,4 @@
-= Introduction
+= Install Gravitee.io Access Management on Red Hat or CentOS
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_installguide_redhat_introduction.html
 :page-folder: am/installation-guide/redhat
@@ -9,15 +9,21 @@
 
 == Overview
 
-This section explains how to install AM on Red Hat Enterprise Linux, CentOS Linux or Oracle Linux
-using the `yum` package manager.
+Use this tutorial to install Gravitee.io Access Management on Red Hat Enterprise Linux, CentOS Linux, or Oracle Linux
+using the yum package manager.
 
-NOTE: RPM installation is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. If you are running one of these versions, you need to link:/am/current/am_installguide_gateway_install_zip.html[Install Access Management with .zip^] instead.
+NOTE: RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Please see link:/am/current/am_installguide_gateway_install_zip.html[Install Gravitee.io Access Management with .zip] instead.
 
-== Configure the package management system (`yum`)
+=== Gravitee.io Access Management Version
 
-. Create a file called `graviteeio.repo` in location `/etc/yum.repos.d/` so that you can install AM directly using `yum`:
-+
+This tutorial installs Gravitee.io Access Management {{ site.products.am._3x.version }}. To install a different version of
+Gravitee.io Access Management, just replace the version with the one expected.
+
+== Install Gravitee.io Access Management
+
+=== Configure the package management system (yum)
+Create a file called `graviteeio.repo` in the `/etc/yum.repos.d/` so that you can install Gravitee.io Access Management directly using yum:
+
 [source,properties]
 ----
 [graviteeio]
@@ -30,28 +36,28 @@ sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ----
-+
-. Enable GPG signature handling, which is required by some of our RPM packages:
-+
+
+Then, some packages are required to handle GPG signatures of our RPM packages:
+
 [source,bash]
 ----
 sudo yum install pygpgme yum-utils
 ----
-+
-. Before continuing, you may need to refresh your local cache:
-+
+
+Before going ahead, you may to refresh your local cache.
+
 [source,bash]
 ----
 sudo yum -q makecache -y --disablerepo='*' --enablerepo='graviteeio'
 ----
 
-Your repository is now ready to use.
+Your repository is ready to use, now it's time to install Gravitee.io Access Management.
 
-== Install the AM components
+=== Install the Gravitee.io components on Red Hat or CentOS
 
-You can choose to install the full AM stack or install components one by one:
+You can choose to install the complete Gravitee.io Access Management stack or install components one by one:
 
-* link:/am/current/am_installguide_redhat_stack.html[Install the full AM stack] (includes all components below)
-* link:/am/current/am_installguide_redhat_gateway.html[Install AM Gateway]
-* link:/am/current/am_installguide_redhat_management_api.html[Install AM API]
-* link:/am/current/am_installguide_redhat_management_ui.html[Install AM Console]
+* link:/am/current/am_installguide_redhat_stack.html[Install Access Management] (includes all components below)
+* link:/am/current/am_installguide_redhat_gateway.html[Install API Gateway]
+* link:/am/current/am_installguide_redhat_management_api.html[Install Management API]
+* link:/am/current/am_installguide_redhat_management_ui.html[Install Management UI]

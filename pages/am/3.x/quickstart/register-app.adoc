@@ -1,0 +1,110 @@
+= Register your first application
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_quickstart_register_app.html
+:page-folder: am/quickstart
+:page-layout: am
+
+This guide walks you through the process of creating your first application by using the Gravitee.io AM Management UI.
+
+NOTE: Gravitee.io Access Management UI can be accessed using the following URL :
+http://GRAVITEEIO-AM-UI-HOST (see link:/am/current/am_installguide_portal.html[Gravitee.io AM Management UI installation^] for more information)
+
+NOTE: If you are running Gravitee.io AM thanks to our link:/am/current/am_installguide_docker.html#docker_compose[Docker Compose], the http://GRAVITEEIO-AM-UI-HOST must be https://localhost/am/ui
+
+== Create a security domain
+
+A _security domain_ is a series of security policies apply to a set of applications that all share common security mechanisms for authentication, authorization and identity management.
+
+. Go to http://GRAVITEEIO-AM-UI-HOST. (Default Administrator account is `admin/adminadmin`)
+. From the homepage, click `Create a Security Domain` button
+. Give your security domain a *name*, a *description* and press `CREATE`
+. Last step, enable your domain by clicking on the banner `click here` link.
+
+NOTE: You can create new security domains from the user menu (top right)
+
+[source]
+----
+# create domain
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"name":"My First Security Domain","description":"My First Security Domain description"}' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains
+
+
+# enable domain
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '{"enabled": true}' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId
+----
+
+== Create your application
+
+Before interact with the AM Authorization Gateway, you must create an application.
+The application will give you the necessary information (like the client ID/client Secret) for authentication and authorization.
+The application can be a native mobile app, a single page front-end web app, or a regular web app that executes on a server.
+
+Create your first application by following these steps :
+
+. Go to `Applications` section and click `(+)` button
+. Choose `Backend to Backend` application type, click `Next` button
+. Give your application a *name* and press `Create`
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"name":"My App", "type": "SERVICE"}' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId/applications
+----
+
+== Test your application with OAuth2
+
+OAuth 2 is an authorization framework that let applications acting on behalf the end user to obtain limited access to HTTP services.
+link:https://tools.ietf.org/html/rfc6749[OAuth 2 RFC^] defines two endpoints :
+
+- The *authorization endpoint* used to interact with the resource owner and obtain an authorization grant via user-agent redirection.
+- The *token endpoint* used by the client to obtain an access token by presenting its authorization grant.
+
+NOTE: For further information about OAuth2, please visit the link:https://tools.ietf.org/html/rfc6749[RFC page^].
+
+In order to validate the application configuration, we will request for an access token.
+From your application `Overview` section, you can copy/paste the curl command to start interacting with Gravitee.io AM OAuth 2.0 endpoints.
+
+Request a token::
+
+[source]
+----
+curl -X POST \
+  'http://GRAVITEEIO-AM-GATEWAY-HOST/:domainPath/oauth/token \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Authorization: Basic Base64.encode64(:clientId + ':' + :clientSecret)' \
+  -d 'grant_type=client_credentials'
+----
+
+[width="100%",cols="2,8",frame="topbot",options="header,footer"]
+|==========================
+|Parameter       |Description
+|grant_type      |*REQUIRED.* Set the value to `client_credentials`.
+|client_id       |*REQUIRED.* Client's ID. (Basic Auth)
+|client_secret   |*REQUIRED.* Client's secret. (Basic Auth)
+|scope           |*OPTIONAL.* The scopes of the access token.
+|==========================
+
+If everything goes well, you should see the following response :
+
+[source]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+{
+  "access_token" : "eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOiI0NTM...QW5rN0h2SEdUOFNMYyJ9.w8A9yKJcuFbE_SYmRRAdGBEz-6nnXg7rdv1S4JD9xGI",
+  "token_type" : "bearer",
+  "expires_in" : 7199
+}
+----

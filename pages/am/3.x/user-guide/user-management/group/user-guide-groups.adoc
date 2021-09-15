@@ -8,33 +8,28 @@
 
 === List groups
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Search for groups by clicking *Groups*.
-+
+To search groups, navigate to `Groups` section of your domain's settings.
+
 image::am/current/graviteeio-am-userguide-um-search-groups.png[]
 
-=== Create a new group
+=== Create group
 
-You create groups in a security domain.
+Groups are created for each security domain, to create a group, follow these steps:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Groups*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"].
-. Give your group a *Name* and click *SAVE*.
-. You will be redirected to the new group's page.
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page, go to `Groups` section and click `(+)` button
+. Give your group a *Name* and press `SAVE`
+. You will be redirected to the created group's page
 
 === Manage members
 
-You can add an new member to your group as follows:
+You can add any member to a group, this can be achieved by selecting you group, go to `Members` tab, click `+ Asdd members` button, search users by username and add the member.
 
-. In AM Console, click *Settings > Groups*.
-. Select your group, and in the *Members* tab, click *Add members*.
-. Search for users by username, then click *Add*.
-+
 image::am/current/graviteeio-am-userguide-um-add-member.png[]
 
-NOTE: Currently only users created by AM API or the SCIM protocol and external users who have already logged in can be found.
+NOTE: Currently only users created by the AM management API or the SCIM protocol and external users who have been already logged can be found.
 
 === Group roles
 
-You can assign roles to a group in the *Roles* tab. Each member of this group will automatically have these roles after each authentication.
+You can assign roles to a group the `Roles` tab. Each members of this group will automatically have these roles safter each authentication.
+

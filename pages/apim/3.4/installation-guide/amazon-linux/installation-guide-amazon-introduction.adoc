@@ -1,0 +1,54 @@
+= Introduction
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installguide_amazon_introduction.html
+:page-folder: apim/installation-guide/amazon
+:page-liquid:
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - Introduction
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+== Overview
+
+This section explains how to install APIM on Amazon Linux using the `yum` package manager.
+
+== Configure the package management system (`yum`)
+. Create a file called `graviteeio.repo` in location `/etc/yum.repos.d/` so that you can install APIM directly using `yum`:
++
+[source,bash]
+----
+[graviteeio]
+name=graviteeio
+baseurl=https://packagecloud.io/graviteeio/rpms/el/7/$basearch
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/graviteeio/rpms/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+----
+
+. Enable GPG signature handling, which is required by some of our RPM packages:
++
+[source,bash]
+----
+sudo yum install pygpgme yum-utils
+----
+
+. Before continuing, you may need to refresh your local cache:
+
+[source,bash]
+----
+sudo yum -q makecache -y --disablerepo='*' --enablerepo='graviteeio'
+----
+
+Your repository is now ready to use.
+
+== Install the APIM components
+
+You can choose to install the full APIM stack or install the components one by one:
+
+* link:/apim/3.x/apim_installguide_amazon_stack.html[Install the full APIM stack] (includes all components below)
+* link:/apim/3.x/apim_installguide_amazon_gateway.html[Install APIM Gateway]
+* link:/apim/3.x/apim_installguide_amazon_management_api.html[Install APIM API]
+* link:/apim/3.x/apim_installguide_amazon_management_ui.html[Install APIM Management]
+* link:/apim/3.x/apim_installguide_amazon_portal.html[Install APIM Portal]

@@ -1,4 +1,4 @@
-= Dampening
+= User Guide
 :page-sidebar: ae_sidebar
 :page-permalink: ae/userguide_dampening.html
 :page-folder: ae/user-guide
@@ -7,9 +7,12 @@
 :page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
 :page-layout: ae
 
-== Overview
+== Dampening
 
-When a condition is validated many times in a very short period, there is a risk of flooding users with notifications. To mitigate this, AE includes the concept of _dampening_.
+When a condition is validated many times in a very short period of times, the user would probably be disturb by all
+the notifications he is receiving.
+
+To limit the number of notifications, the alert engine has defined the concept of `dampening`.
 
 When defining a condition for a given rule, it is mandatory to associate a dampening algorithm.
 

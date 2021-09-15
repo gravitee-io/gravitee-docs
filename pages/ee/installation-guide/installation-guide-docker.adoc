@@ -7,34 +7,34 @@
 :docker-hub: https://hub.docker.com/r/graviteeio
 :page-liquid:
 
-All the Docker images for Gravitee.io APIM and AM are available with an `-ee` suffix as part of their tag name.
+All the Docker images for Gravitee.io APIM and AM are available with the `-ee` suffix as part of their tag name.
 
-== Gravitee.io API Management Enterprise images
+== Gravitee.io API Management Enterprise Images
 |===
 |Image name |Tag |Base
 
-|{docker-hub}/gateway/[graviteeio/gateway^]
+|{docker-hub}/gateway/[graviteeio/gateway]
 |{{ site.products.apim.ee.version }}-ee
-|https://hub.docker.com/_/alpine/[alpine:3.7^]
+|https://hub.docker.com/_/alpine/[alpine:3.7]
 
-|{docker-hub}/management-api/[graviteeio/management-api^]
+|{docker-hub}/management-api/[graviteeio/management-api]
 |{{ site.products.apim.ee.version }}-ee
-|https://hub.docker.com/_/alpine/[alpine:3.7^]
+|https://hub.docker.com/_/alpine/[alpine:3.7]
 
-|{docker-hub}/management-ui/[graviteeio/management-ui^]
+|{docker-hub}/management-ui/[graviteeio/management-ui]
 |{{ site.products.apim.ee.version }}-ee
-|https://hub.docker.com/_/alpine/[nginx:1.10.2-alpine^]
+|https://hub.docker.com/_/alpine/[nginx:1.10.2-alpine]
 
 |===
 
 == Gravitee.io Access Management Enterprise Images
 
-NOTE: Coming soon.
+NOTE: Work in progress...
 
 == License support
 
 When running an enterprise node, a license file must be supplied to bootstrap the node. When running the node within Docker
-the license file must be passed with a volume:
+the license file must be pass thanks to a volume:
 
 [source,shell]
 ....

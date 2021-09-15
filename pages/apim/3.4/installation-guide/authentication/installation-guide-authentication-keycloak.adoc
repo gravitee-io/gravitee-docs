@@ -1,0 +1,134 @@
+[[gravitee-installation-authentication-keycloak]]
+= Configure Keycloak authentication
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installguide_authentication_keycloak.html
+:page-folder: apim/installation-guide/portal/authentication
+:page-description: Gravitee.io API Management - Portal - Authentication - Keycloak
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim3x
+
+== Overview
+
+This page explains how to configure APIM to allow users to connect using https://www.keycloak.org/[Keycloak].
+
+== Create a client
+
+Before you can connect to the Gravitee.io portal using Keycloak, you need to create a new client.
+
+=== Create a new client
+
+.Create a new client.
+image::apim/3.x/installation/authentication/keycloak_create_client.png[Create a new client]
+
+=== Configure the client
+
+.Configure the client.
+image::apim/3.x/installation/authentication/keycloak_configure_client.png[Fill the form]
+
+WARNING: The `Valid Redirect URIs` value must exactly match the domain which is hosting APIM Portal.
+
+=== Retrieve client credentials
+.Retrieve client credentials
+image::apim/3.x/installation/authentication/keycloak_client_credentials.png[Get Client credentials]
+
+== Configure APIM
+
+=== SSL support
+
+When using custom a Public Key Infrastructure (PKI) for your OAuth2 authentication provider, you may have to specify the certificate authority chain of your provider in APIM.
+
+[source,bash]
+----
+export JAVA_OPTS="
+  -Djavax.net.ssl.trustStore=/opt/graviteeio-management-api/security/truststore.jks
+  -Djavax.net.ssl.trustStorePassword=<MYPWD>"
+----
+
+::Docker environment
+
+[source,yaml]
+----
+ local_managementapi:
+    extends:
+      file: common.yml
+      service: managementapi
+    ports:
+      - "8005:8083"
+    volumes:
+      - ./conf/ssl/truststore.jks:/opt/graviteeio-management-api/security/truststore.jks:ro
+      - ./logs/management-api:/home/gravitee/logs
+    links:
+      - "local_mongodb:demo-mongodb"
+      - "local_elasticsearch:demo-elasticsearch"
+    environment:
+      - JAVA_OPTS=-Djavax.net.ssl.trustStore=/opt/graviteeio-management-api/security/truststore.jks -Djavax.net.ssl.trustStorePassword=<MYPWD>
+      - gravitee_management_mongodb_uri=mongodb://demo-mongodb:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000
+      - gravitee_analytics_elasticsearch_endpoints_0=http://demo-elasticsearch:9200
+----
+
+include::../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
+
+=== In APIM Portal
+
+Got to Settings > Authentication > New provider (the `+` button) > select OpenID Connect
+
+image::apim/3.x/management-api-configuration-idp/new-oidc.png[Gravitee.io - New OIDC IDP]
+
+=== In the `gravitee.yml` file
+[source,yaml]
+----
+security:
+  providers:
+    - type: oidc
+      id: keycloak # not required if not present, the type is used
+      clientId: gravitee
+      clientSecret: 3aea136c-f056-49a8-80f4-a6ea521b0c94
+      tokenIntrospectionEndpoint: http://localhost:8080/auth/realms/master/protocol/openid-connect/token/introspect
+      tokenEndpoint: http://localhost:8080/auth/realms/master/protocol/openid-connect/token
+      authorizeEndpoint: http://localhost:8080/auth/realms/master/protocol/openid-connect/auth
+      userInfoEndpoint: http://localhost:8080/auth/realms/master/protocol/openid-connect/userinfo
+      userLogoutEndpoint: http://localhost:8080/auth/realms/master/protocol/openid-connect/logout
+      color: "#0076b4"
+      syncMappings: false
+      scopes:
+        - openid
+        - profile
+      userMapping:
+        id: sub
+        email: email
+        lastname: family_name
+        firstname: given_name
+        picture: picture
+      groupMapping:
+        - condition: "{#jsonPath(#profile, '$.identity_provider_id') == 'PARTNERS' && #jsonPath(#profile, '$.job_id') != 'API_MANAGER'}"
+          groups:
+            - Group 1
+            - Group 2
+      roleMapping:
+        - condition: "{#jsonPath(#profile, '$.job_id') != 'API_MANAGER'}"
+          roles:
+            - "PORTAL:PARTNER"
+            - "MANAGEMENT:API_CONSUMER"
+----
+
+== Test the connection
+
+=== Create a user in Keycloak
+.Create a user
+image::apim/3.x/installation/authentication/keycloak_users.png[Create a user]
+
+.Fill the user form
+image::apim/3.x/installation/authentication/keycloak_create_user.png[Fill the user form]
+
+.Define user credentials
+image::apim/3.x/installation/authentication/keycloak_create_user_credentials.png[Define user credentials]
+
+=== Login into the portal
+.Login Form
+image::apim/3.x/installation/authentication/keycloak_login_form.png[Login Form]
+
+.Keycloak Login Form
+image::apim/3.x/installation/authentication/keycloak_login_form2.png[Keycloak Login Form]
+
+.Login Success
+image::apim/3.x/installation/authentication/keycloak_login_success.png[Here we are !]

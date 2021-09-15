@@ -1,107 +1,59 @@
-= Configure a flow
+= Use your first Extension Point
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_quickstart_use_policies.html
 :page-folder: am/quickstart
 :page-layout: am
 
+This guide walks you through the process of using your first Extension Point to extend the behavior of the Gravitee.io AM Server.
 
-== Overview
+NOTE: Gravitee.io Access Management link:/am/current/am_userguide_policies.html[Policies] are available since the 2.7 version
 
-You can use flows to extend AM's standard functionality.
+In this tutorial we will enhance the information display in the link:am/current/am_userguide_user_management_consent.html[End-User consent] by calling a remote service before rendering the HTML page.
 
-This section walks you through using flows to enhance the information displayed in the link:/am/current/am_userguide_user_management_consent.html[End user agreement^] by calling a remote service before rendering the HTML page. The example in this section uses the Gravitee.io Echo API.
 
-For more information about flows, see link:/am/current/am_userguide_policies.html[Flows] in the User Guide.
-
-NOTE: AM flows are available from version 3.5 and replace extension points.
-
-== Before you begin
-
-You must link:/am/current/am_quickstart_app_setup.html[Set up your first application^] before performing these steps.
+NOTE: Be sure to complete the link:/am/current/am_quickstart_register_app.html[Register your first applications] and the link:/am/current/am_quickstart_authenticate_users.html[Authenticate users with Identity Provider] quick-starts before doing this walkthrough guide.
 
 == Use the HTTP Callout Policy
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Flows*.
-. Select the *CONSENT* flow and drag the *HTTP Callout* policy to the *Pre Consent* step.
-. Give your policy a *Name* and the following configuration:
+. Go to http://GRAVITEEIO-AM-UI-HOST. (Default Administrator account is `admin/adminadmin`)
+. From the homepage, select your security domain and go to `Settings`
+. From the domain's settings page, go to `Extension Points`
+. Add the Policy `HTTP Callout` to the `PRE_CONSENT` extension point by clicking on the `(+)` button
+. Give your policy a *name* and the following configuration :
+.. Method : `GET`
+.. URL : `https://api.gravitee.io/echo`
+.. Headers : `X-Custom-Header` / `{#context.attributes['user'].username}`
+.. Variables : `X-Custom-Variable` / `{#jsonPath(#calloutResponse.content, '$.headers.X-Custom-Header')}`
 
-- HTTP Method: `GET`
-- URL: `https://api.gravitee.io/echo`
-- Header: *Name* -- `X-Custom-Header` *Value* -- `{#context.attributes['user'].username}`
-- Variable: *Name* -- `X-Custom-Variable` *Value* -- `{#jsonPath(#calloutResponse.content, '$.headers.X-Custom-Header')}`
-+
-NOTE: In this example, we will retrieve the username from the execution context `{#context.attributes['user'].username}` and pass it to our remote service which responds with new information *X-Custom-Variable* (`{#jsonPath(#calloutResponse.content, '$.headers.X-Custom-Header')}`).
-We will be using this *X-Custom-Variable* in the End User consent HTML page.
-+
+NOTE: In this example, we retrieve the username from the execution context `{#context.attributes['user'].username}` and pass it to our remote service which responds with a new information *X-Custom-Variable* (`{#jsonPath(#calloutResponse.content, '$.headers.X-Custom-Header')}`).
+Will be using this *X-Custom-Variable* in the End-User Consent HTML page.
+
 image::am/current/graviteeio-am-quickstart-policies.png[]
-+
+
 [source]
 ----
 curl -H "Authorization: Bearer :accessToken" \
      -H "Content-Type:application/json;charset=UTF-8" \
-     -X PUT \
-     -d '[
-   {
-      "name":"ALL",
-      "pre":[
-
-      ],
-      "post":[
-
-      ],
-      "enabled":true,
-      "type":"root"
-   },
-   {
-      "name":"LOGIN",
-      "pre":[
-
-      ],
-      "post":[
-
-      ],
-      "enabled":true,
-      "type":"login"
-   },
-   {
-      "name":"CONSENT",
-      "pre":[
-         {
-            "name":"HTTP Callout",
-            "policy":"policy-http-callout",
-            "description":"Enrich User Consent",
-            "enabled":true,
-            "configuration":"{\"method\":\"GET\",\"exitOnError\":false,\"errorCondition\":\"{#calloutResponse.status >= 400 and #calloutResponse.status <= 599}\",\"errorStatusCode\":\"500\",\"url\":\"https://api.gravitee.io/echo\",\"headers\":[{\"name\":\"X-Custom-Header\",\"value\":\"{#context.attributes['user'].username}\"}],\"variables\":[{\"value\":\"{#jsonPath(#calloutResponse.content, '$.headers.X-Custom-Header')}\",\"name\":\"X-Custom-Variable\"}]}"
-         }
-      ],
-      "post":[
-
-      ],
-      "enabled":true,
-      "type":"consent"
-   },
-   {
-      "name":"REGISTER",
-      "pre":[
-
-      ],
-      "post":[
-
-      ],
-      "enabled":true,
-      "type":"register"
-   }
-]'
-     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/domain/flows
+     -X POST \
+     -d '{
+          "extensionPoint":"PRE_CONSENT",
+          "type":"policy-http-callout",
+          "enabled":true,
+          "order":0,
+          "name":"Enhance consent data",
+          "configuration":"{\"variables\":[{\"name\":\"X-Custom-Variable\",\"value\":\"{#jsonPath(#calloutResponse.content, '$.headers.X-Custom-Header')}\"}],\"method\":\"GET\",\"url\":\"https://api.gravitee.io/echo\",\"headers\":[{\"name\":\"X-Custom-Header\",\"value\":\"{#context.attributes['user'].username}\"}],\"exitOnError\":true,\"errorCondition\":\"{#calloutResponse.status >= 400 and #calloutResponse.status <= 599}\",\"errorStatusCode\":\"500\"}"
+        }'
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId/policies
 ----
 
-== Display the End User consent page
+== Display the End-User Consent Page
 
-. Click *Settings > Forms*.
-. Click the edit icon image:icons/edit-icon.png[role="icon"] next to the *User consent* form.
-. Toggle on the *Enable custom oauth2 user consent form* button and add the following content:
-+
+For this quick start guide part, we will create a custom End-User consent page (see link:/am/current/am_userguide_user_management_forms.html[Custom forms] for more information).
+
+. From the domain's settings page, go to `Forms`
+. Edit `User consent` form
+. Add the following content :
+
 [source]
 ----
 <!DOCTYPE html>
@@ -141,15 +93,15 @@ curl -H "Authorization: Bearer :accessToken" \
 </body>
 </html>
 ----
-+
+
 NOTE: Notice the `<p th:text="'Hi ' + ${#ctx.getVariable('X-Custom-Variable')} + ' !'"></p>` custom code.
-+
-. Click *SAVE*.
-. Initiate the login flow by calling the OpenID Connect Authorization Code or Implicit Flow https://AM_GW_HOST:8092/your-domain/oauth/authorize?client_id=your-client&response_type=token&redirect_uri=http://localhost:4001/login/callback&scope=openid&state=1234
-. After login you will be redirected to the consent page with your custom code.
-+
+
+. Initiate the login flow by calling the OpenID Connect Authorization Code or Implicit Flow
+. https://AM_GW_HOST:8092/your-domain/oauth/authorize?client_id=your-client&response_type=token&redirect_uri=http://localhost:4001/login/callback&scope=openid&state=1234
+. After the login form you should be redirected to the consent page with your custom code
+
 image::am/current/graviteeio-am-quickstart-policies-consent-page.png[]
-+
+
 [source]
 ----
 curl -H "Authorization: Bearer :accessToken" \
@@ -162,3 +114,5 @@ curl -H "Authorization: Bearer :accessToken" \
         }'
       http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId/forms
 ----
+
+That was a first glimpse on how to use the extension points with Gravitee.io Access Management.

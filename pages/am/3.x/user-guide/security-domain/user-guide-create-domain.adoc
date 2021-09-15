@@ -4,43 +4,20 @@
 :page-folder: am/user-guide
 :page-layout: am
 
-== Overview
+To create a security domain, follow these steps:
 
-The first task of setting up new authorization and authentication in AM is to create a security domain for your applications.
-AM comes with a default security domain.
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to user menu (top right) and click `+ Create domain`
+. Give your security domain a *name*, a *description* and press `CREATE`
+. You will be redirected to the new created security domain homepage
 
-== Create a security domain with AM Console
-
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. From the user menu at the top right, click *Create domain*.
-+
-image::am/current/quickstart-create-domain.png[]
-+
-. Give your security domain a *Name* and a *Description* and click *CREATE*.
-. Click on the banner *click here* link to enable the domain.
-+
-image::am/current/quickstart-enable-domain.png[]
-
-== Create a security domain with AM API
+You can also create a security domain via the Gravitee.io AM API
 
 [source]
 ----
-# create domain
 curl -H "Authorization: Bearer :accessToken" \
      -H "Content-Type:application/json;charset=UTF-8" \
      -X POST \
      -d '{"name":"My First Security Domain","description":"My First Security Domain description"}' \
      http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains
-
-# enable domain
-curl -H "Authorization: Bearer :accessToken" \
-     -H "Content-Type:application/json;charset=UTF-8" \
-     -X PATCH \
-     -d '{"enabled": true}' \
-     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId
 ----
-
-== What do I do next?
-
-Once you have created your security domain, you can configure it using the *Settings* menu (for example, configure security, users or identity providers) and add applications to it using the *Applications* menu.
-See the following sections for more details.

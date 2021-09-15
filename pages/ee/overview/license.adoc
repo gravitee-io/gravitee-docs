@@ -5,20 +5,23 @@
 :page-description: Gravitee Enterprise Edition - Installation - License
 :page-keywords: Gravitee, API Platform, Enterprise Edition, documentation, manual, guide, reference, api
 
-To run a Gravitee.io Enterprise node, you must have a valid license file.
+To run a Gravitee.io Enterprise node, you must provide a valid license file.
 
 [[ask-license]]
-== Get a license
+== Ask for a license
 
-* Send an email to contact@graviteesource.com requesting a license
-* Download a trial version from the Gravitee.io website (coming soon)
+* Send an email to contact (at) graviteesource.com by precising your demand
+* Ask for a trial from the gravitee.io website (Work in progress)
 
-== Apply the license
-Depending on how you want to run the Gravitee Enterprise nodes, the following options are available to you for pushing the license file to the nodes:
+== Use a license
+Depending on the way you are running the Gravitee Enterprise nodes, several options are available to push the license file
+to the nodes. Follow the guides:
 
-* Manual installation (coming soon)
-* link:/ee/installguide_docker.html#license_support[Docker images^]
+* Manual installation
+* link:/ee/installguide_docker.html#license_support[Docker]
 
 == My license is ending
-Thirty days before the end of the license, a daily `WARN` log is print in the log file of the node to inform you that the license is ending.
-To keep the nodes running, you need to provide an updated license file. This file will be reloaded silently by the node.
+Thirty days before the end of the license, a daily `WARN` log is print in the log file of the node to inform you that the license
+is ending.
+If you do not want to see the nodes stopping, you have to provide an updated license file. This file will be reloaded
+silently by the node.

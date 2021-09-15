@@ -1,0 +1,25 @@
+= Portal Configuration
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_management_ui_configuration.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Configuration - Portal
+:page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+== How to configure
+
+You can configure your web UI with a file named `constants.json`.
+
+The only mandatory values in the `constants.json` file is :
+
+```
+$ cd gravitee-am-webui-{{ site.products.am.version }}
+$ vi constants.json
+
+{
+  "baseURL": "gravitee_am_management_api_url"
+}
+```
+
+It describes where is the management api to be able to request it.

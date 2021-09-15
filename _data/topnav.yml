@@ -3,14 +3,12 @@
 topnav:
 - title: Topnav
   items:
-    - title: Cockpit
-      url: /cockpit/3.x/cockpit_overview_introduction.html
-    - title: Alert Engine
-      url: /ae/overview_introduction.html
-    - title: CLI
-      url: /cli/cli_introduction.html
-    - title: Enterprise
-      url: /ee/ee_introduction.html
+    - title: Home
+      url: /.
+    - title: Guides
+      url: /apim/3.x/apim_overview_introduction.html
+    - title: Resources
+      url: /apim/3.x/apim_how_to_add_custom_metrics_in_dashboards.html
 
 #Topnav dropdowns
 topnav_dropdowns:
@@ -18,8 +16,10 @@ topnav_dropdowns:
   folders:
     - title: API Management
       folderitems:
-        - title: 3.x (current)
+        - title: 3.11 (current)
           url: /apim/3.x/apim_overview_introduction.html
+        - title: 3.4
+          url: /apim/3.4/apim_overview_introduction.html
         - title: 1.x
           url: /apim/1.x/apim_overview_introduction.html
     - title: Access Management
@@ -30,6 +30,15 @@ topnav_dropdowns:
           url: /am/2.x/am_overview_introduction.html
         - title: 1.x
           url: /am/1.x/am_overview_introduction.html
+    - title: Reference
+      folderitems:
+        - title: APIM API Reference
+          url: /apim/3.x/apim_installguide_rest_apis_documentation.html
+        - title: APIM Policy Reference
+          url: /apim/3.x/apim_policies_overview.html
+        - title: Gravitee CLI
+          url: /cli/cli_introduction.html
+
 #    - title: Jekyll Resources
 #      folderitems:
 #        - title: Github Repo
