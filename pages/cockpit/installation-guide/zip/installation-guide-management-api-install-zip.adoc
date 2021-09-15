@@ -34,17 +34,17 @@ NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#pr
 
 == Download and extract the `.zip` archive
 
-. Download the binaries https://download.gravitee.io/graviteeio-cockpit/components/gravitee-cockpit-management-api/gravitee-cockpit-management-api-standalone-{{ site.products.cockpit.version }}.zip[here^] or from the https://gravitee.io/downloads/access-management[Gravitee download site^].
+. Download the binaries https://download.gravitee.io/graviteeio-cockpit/components/gravitee-cockpit-management-api/gravitee-cockpit-management-api-{{ site.products.cockpit.version }}.zip[here^].
 +
 [source,bash]
 [subs="attributes"]
-$ curl -L https://download.gravitee.io/graviteeio-cockpit/components/gravitee-cockpit-management-api/gravitee-cockpit-management-api-standalone-{{ site.products.cockpit.version }}.zip -o gravitee-cockpit-management-api-standalone-{{ site.products.cockpit.version }}.zip
+$ curl -L https://download.gravitee.io/graviteeio-cockpit/components/gravitee-cockpit-management-api/gravitee-cockpit-management-api-{{ site.products.cockpit.version }}.zip -o gravitee-cockpit-management-api-{{ site.products.cockpit.version }}.zip
 +
 Unpack the archive and place the folders in the required location.
 +
 [source,bash]
 [subs="attributes"]
-$ unzip gravitee-cockpit-management-api-standalone-{{ site.products.cockpit.version }}.zip
+$ unzip gravitee-cockpit-management-api-{{ site.products.cockpit.version }}.zip
 
 == Check the installation
 
@@ -52,7 +52,7 @@ Run Cockpit API from the command line as follows:
 
 [source,bash]
 ----
-$ cd gravitee-cockpit-management-api-standalone-{{ site.products.cockpit.version }}
+$ cd gravitee-cockpit-management-api-{{ site.products.cockpit.version }}
 $ ./bin/gravitee
 ----
 
