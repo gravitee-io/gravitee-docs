@@ -3,14 +3,9 @@
 <html>
 <head>
     {% include head_print.html %}
-    {% include GoogleTagManager_head.liquid %}
-    {% if site.google_analytics %}
-    {% include google_analytics.html %}
-    {% endif %}
 </head>
 
 <body class="{% if page.type == "title"%}title{% elsif page.type == "frontmatter" %}frontmatter{% elsif page.type == "first_page" %}first_page{% endif %} print">
-    {% include GoogleTagManager_body.liquid %}
 <!-- Page Content -->
 <div class="container">
     <!-- Content Column -->
