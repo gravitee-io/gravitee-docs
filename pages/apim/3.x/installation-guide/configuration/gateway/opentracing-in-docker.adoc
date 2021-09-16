@@ -54,10 +54,13 @@ image:apim/3.x/installation/configuration/tracing-info-detailed.png[Detailed tra
 
 
 == Configure Environment Variables 
-You can change the variables as needed in the Jaeger Gateway. 
+You can configure the environment variables as needed in the Jaeger Gateway. For example, 
 
-image:apim/3.x/installation/configuration/environment-variables-closeup.png[Environment variables in Jaeger Gateway, fig. 2.] 
-
+---- 
+gravitee_service_tracing_enabled: true
+gravitee_services_tracing_jaegar_host: localhost
+gravitee_services_tracing_jaeger_port: 14250
+----
 
 == How To Enable OpenTracing Via Docker Compose 
 
