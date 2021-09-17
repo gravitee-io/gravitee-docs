@@ -1,0 +1,50 @@
+= Breaking changes in 3.12
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_3.12.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+NOTE: For all these breaking changes, the Migration Guide can be found link:/am/current/am_installguide_migration.html[here].
+
+== Management REST API : Application scopes
+
+Until now, the application oauth settings contained multiple collections about scopes:
+
+* scopes: a list with all scopes authorized for the application
+* defaultScopes: a list of scopes added as default one if the authorize request doesn't specify a list of scopes
+* scopeApprovals: a map to specify the amount of time (in seconds) that a scope is considered as accepted per the enduser
+
+[source,json]
+----
+{
+  "settings": {
+    "oauth": {
+      "scopes": [ "scope1", "openid"],      
+      "defaultScopes": [ "openid"],
+      "scopeApprovals": { "opendid" : 3600}
+    }
+  }
+}
+----
+
+Because there are more and more settings related to a scope, the oauth settings for an application has be refactor to provide a single list `scopeSettings` containing objects with scope settings. This object will have following attribtues: 
+
+* scope: the scope name
+* defautlScope : boolean to defined this scope as a default one if the authorize request doesn't specify a list of scopes
+* scopeApproval : the amount of time (in seconds) that a scope is considered as accepted per the enduser
+
+[source,json]
+----
+{
+  "settings": {
+    "oauth": {
+      "scopeSettings": [ 
+        {"scope" : "scope1", "defaultScope" :true},
+        {"scope" : "openid", "scopeApproval": 3600, "defaultScope" :true}]
+    }
+  }
+}
+----
+
+
+If you are directly using the Management REST API, please take care of this change and adapt your application or scipts.
