@@ -1,6 +1,6 @@
-= Two-step Login Flow
+= Identifier-first Login Flow
 :page-sidebar: am_3_x_sidebar
-:page-permalink: am/current/am_userguide_login_two_step_login_flow.html
+:page-permalink: am/current/am_userguide_login_identifier_first_login_flow.html
 :page-folder: am/user-guide
 :page-layout: am
 
@@ -8,29 +8,29 @@
 
 == Overview
 
-Two step login authentication enables the login flow to be in two steps:
+Identifier-first login authentication enables the login flow to be split into two steps:
 
 - The first step consists in a page containing a single form field where you can input your username
 
-image::am/current/graviteeio-am-userguide-login-two-step-first-page-flow.png[Two-Step Login flow first page]
+image::am/current/graviteeio-am-userguide-login-identifier-first-first-page-flow.png[alt=Identifier-first login flow first page, width=500,height=438]
 
 - Regarding the input submitted, the user gets redirected to the login form and are asked to input your password
 - If the username is an email, the user gets redirected to an external provider matching your domain based on a whitelist
 
-image::am/current/graviteeio-am-userguide-login-two-step-second-page-flow.png[Two-Step Login flow second page]
+image::am/current/graviteeio-am-userguide-login-identifier-first-second-page-flow.png[alt=Identifier-first login flow second page, width=500,height=438]
 
 
-== Activate Two-step Login
+== Activate Identifier-first Login
 
-To activate Two-step Login Flow:
+To activate Identifier-first login Flow:
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
 . Go to *Settings > Login* or *Application > "Your app" > Settings > Login*.
-. Switch on *2-Step login* and click *SAVE*.
+. Switch on *Identifier-first login* and click *SAVE*.
 
-image::am/current/graviteeio-am-userguide-login-two-step-settings.png[Two-Step Login flow Settings]
+image::am/current/graviteeio-am-userguide-login-identifier-first-settings.png[Identifier-first login flow Settings]
 
-== Domain Whitelist on External Identity providers
+== Identity providers allowed domain list
 
 External Identity providers now enable you to enter domain whitelists so that if the username submitted is an email and
 its domain matches the whitelisted domain during the first step of the flow, the user gets redirected to the provider.
@@ -39,7 +39,7 @@ If you don't input any domain, the user will just get redirected to the second l
 
 . Go to *Settings > Providers*.
 . Create a new provider or Edit an existing one
-. Enter the domains you wish to whitelist
+. Enter the domains you wish to allow
 . Complete the provider's form and click *SAVE*.
 
-image::am/current/graviteeio-am-userguide-login-two-step-identity-provider-domain-whitelist.png[Two-Step Login flow provider Domain Whitelist]
+image::am/current/graviteeio-am-userguide-login-identifier-first-identity-provider-domain-whitelist.png[Identifier-first login flow provider Domain Whitelist]
