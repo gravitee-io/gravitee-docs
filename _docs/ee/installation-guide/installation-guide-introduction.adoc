@@ -1,0 +1,37 @@
+= Installation Guide
+:page-sidebar: ee_sidebar
+:page-permalink: ee/installguide_introduction.html
+:page-folder: ee/installation-guide
+:page-description: Gravitee Enterprise Edition - Installation - License
+:page-keywords: Gravitee, API Platform, Enterprise Edition, documentation, manual, guide, reference, api
+
+Gravitee.io Enterprise API Platform is provided in separate bundles compared to the community version.
+
+To install the enterprise version, two options are available:
+
+* Starting with a fresh installation of the Enterprise platform
+* Moving from an existing OSS platform
+
+
+To be sure that you are running the API platform in optimal conditions, we advise you to start with a fresh installation.
+This, to ensure that mandatory libraries and plugins are all well-deployed.
+
+== Running a fresh API Platform
+
+=== Docker installation
+If you're looking to use the official Gravitee.io Docker images, we recommend you to use the images with a tag ending by
+s`-ee`.
+Please have a look to the link:/ee/installguide_docker.html[dedicated documentation].
+
+
+== Migration from an existing platform
+
+Before going further please ensure, as per our link:/ee/ee_version.html[versioning], that you're running a LTS version.
+
+=== Manual installation
+This option is only available if you're running a plain installation using the zip file distribution.
+
+
+=== Docker installation
+If you're running Docker, we recommend you to update your docker images to use the `-ee` tags.
+Please have a look to the link:/ee/installguide_docker.html[dedicated documentation].

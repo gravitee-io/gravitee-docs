@@ -1,0 +1,48 @@
+= Notification properties for NODE_HEALTHCHECK's event
+:page-sidebar: ae_sidebar
+:page-permalink: ae/userguide_properties_node_healthcheck.html
+:page-folder: ae/user-guide
+:page-description: Gravitee Alert Engine - User Guide - Notifier - Message Properties NODE_HEALTHCHECK
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+Here is the list of properties available in every alerts triggered by a NODE_HEALTHCHECK event.
+
+NOTE: To access one of those property, you have to use the following syntax: `${notification.properties['property_name']}`.
+
+[cols="1,3"]
+|===
+|Key |Description
+
+|`node.hostname`
+|The node hostname which has thrown the Alert.
+
+|`node.application`
+|The node application (`gio-apim-gateway`, `gio-apim-management`, `gio-am-gateway`, `gio-am-management`) which has thrown the Alert.
+
+|`node.id`
+|The uuid of the node which has thrown the Alert.
+
+|`node.healthy`
+|the global health of the node. Values: `true` or `false`.
+
+|`node.probe.repository-analytics`
+|The health of a dedicated probe. Values: `true` or `false`.
+
+|`node.probe.repository-analytics.message`
+|If `node.probe.repository-analytics` is false, it contains the error message.
+
+|`node.probe.management-repository`
+|The health of a dedicated probe. Values: `true` or `false`.
+
+|`node.probe.management-repository.message`
+|If `node.probe.management-repository` is false, it contains the error message.
+
+|`node.probe.management-api`
+|The health of a dedicated probe. Values: `true` or `false`.
+
+|`node.probe.management-api.message`
+|If `node.probe.management-api` is false, it contains the error message.
+
+|===

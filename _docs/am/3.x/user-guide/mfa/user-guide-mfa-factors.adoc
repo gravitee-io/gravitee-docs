@@ -1,0 +1,23 @@
+= Multi-factor Authentication Factors
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_mfa_factors.html
+:page-folder: am/user-guide
+:page-layout: am
+
+Out of the box Gravitee.io AM supports different MFA factors for protecting user account access.
+To create a new MFA factor go to your `Security Domain > Multifactor Auth` settings page, and select which factors you want to configure.
+
+image::am/current/graviteeio-am-userguide-mfa-factor-types.png[]
+
+== One-time password
+
+One-Time Password (OTP) allows you to use an Authenticator application via your digital device (mobile phone), such as Google Authenticator, Microsoft Authenticator or Free OTP,
+to generate a one-time code which changes over time and will be used as the second factor to validate a user’s account.
+
+If your application enable the OTP Factor, next time your users will authenticate they will see the following screens :
+
+image::am/current/graviteeio-am-userguide-mfa-enroll.png[MFA Enroll]
+
+image::am/current/graviteeio-am-userguide-mfa-challenge.png[MFA Challenge]
+
+NOTE: Look and feel of the MFA forms can be overridden. See link:/am/current/am_userguide_user_management_forms.html[Custom forms] for more information.

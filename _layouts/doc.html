@@ -1,0 +1,61 @@
+---
+layout: default
+toc: true
+---
+
+<!DOCTYPE html>
+<head>
+  {% include header.html %}
+  {% include doc_post_header.html %}
+
+
+    {% if page.datatable == true %}
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js"></script>
+    <script src="{{ '/js/init-table.js' | relative_url }}"></script>
+    {% endif %}
+
+    {% include GoogleTagManager_head.liquid %}
+    {% if site.google_analytics %}
+    {% include google_analytics.html %}
+    {% endif %}
+</head>
+<body>
+
+
+{% include GoogleTagManager_body.liquid %}
+<!--
+<section class="layout-area bg-color1 content tutorial">
+
+<div class="layout-wrapper section-spacing bminus-30">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          {% include doc_post_breadcrumb.html %}
+        </div>
+      </div>
+    </div>
+-->
+
+<!-- Page Content -->
+{% include GoogleTagManager_body.liquid %}
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          {% include sidebar.html %}
+    <!-- Content Column -->
+    <div class="col-md-9">
+        {{content}}
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+</html>

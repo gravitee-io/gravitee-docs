@@ -1,92 +1,84 @@
-<footer class="footer">
-    <div class="newsletter-box">
-        <div class="newsletter-title">Stay Connected</div>
-        <p>Join us today and be the first to know about our latest product launches.</p>
-        <form id="newsletter-form" class="newsletter-form">
-            <input required name="email" type="email" class="gv-input" placeholder="Email">
-            <button type="submit" class="gv-button">Submit</button>
-        </form>
-        <span class="message">We won’t send you spam (unsubscribe at any time). View our <a href="https://docs.gravitee.io/gravitee_privacy_policy.html" target="blank"> Privacy Policy</a>.</span>
+<!-- Start Footer Area -->
+<footer class="footer-area bg-color3">
+    <div class="footer-wrapper section-spacing bminus-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="footer-widget wow fadeIn" data-wow-duration="1s">
+                        <h5 class="footer-title heading-5">About Gravitee</h5>
+                        <p>Gravitee.io API Management & Access Management are distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License V2</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <div class="footer-widget wow fadeIn" data-wow-duration="2s">
+                        <h5 class="footer-title heading-5">Pages</h5>
+                        <ul class="footer-category list-inline">
+                            <li><a href="/pages/testimonials">Testimonials</a></li>
+                            <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
+                            <li><a href="/pages/support">Support Topic </a></li>
+                            <li><a href="/tag/education">Education</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-widget wow fadeIn" data-wow-duration="3s">
+                        <h5 class="footer-title heading-5">Get Help</h5>
+                        <ul class="footer-category list-inline">
+                            <li><a href="/pages/support">Support</a></li>
+                            <li><a href="/pages/submit-ticket">Supmit Ticket</a></li>
+                            <li><a href="/pages/register">Register</a></li>
+                            <li><a href="/pages/login">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-widget wow fadeIn" data-wow-duration="4s">
+                        <h5 class="footer-title heading-5">Follow Us</h5>
+                        <ul class="footer-socials list-inline">
+                            {% if site.behance %}
+                                <li class="list-inline-item"><a href="{{site.behance}}"><i class="fa fa-behance"></i></a></li>
+                            {% endif %}
 
-        <span class="newsletter-error">
-            <i class="fa fa-exclamation"></i>
-            <span></span>
-        </span>
-        <span class="newsletter-success">
-            <i class="fa fa-check"></i>
-            <span></span>
-        </span>
-    </div>
-    <div class="footer-information">
-        <div class="footer-links">
-            <a title="Github" href="https://github.com/gravitee-io" target="_blank"><i
-                    class="fa fa-github fa-3x"></i></a>
-            <a title="Twitter" href="https://twitter.com/graviteeio" target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
-            <a title="Linkedin" href="https://www.linkedin.com/company/gravitee-io" target="_blank"><i
-                    class="fa fa-linkedin fa-3x"></i></a>
+                            {% if site.twitter %}
+                                <li class="list-inline-item"><a href="{{site.twitter}}"><i class="fa fa-twitter"></i></a></li>
+                            {% endif %}
+
+                            {% if site.instagram %}
+                                <li class="list-inline-item"><a href="{{site.instagram}}"><i class="fa fa-instagram"></i></a></li>
+                            {% endif %}
+
+                            {% if site.linkedin %}
+                                <li class="list-inline-item"><a href="{{site.linkedin}}"><i class="fa fa-linkedin"></i></a></li>
+                            {% endif %}
+
+                            {% if site.reddit %}
+                                <li class="list-inline-item"><a href="{{site.reddit}}"><i class="fa fa-reddit"></i></a></li>
+                             {% endif %}
+
+                            {% if site.vimeo %}
+                                <li class="list-inline-item"><a href="{{site.vimeo}}"><i class="fa fa-vimeo"></i></a></li>
+                            {% endif %}
+
+                            {% if site.dribbble %}
+                                 <li class="list-inline-item"><a href="{{site.dribbble}}"><i class="fa fa-dribbble"></i></a></li>
+                            {% endif %}
+
+                            {% if site.github %}
+                                <li class="list-inline-item"><a href="{{site.github}}"><i class="fa fa-github"></i></a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            &copy;{{ site.time | date: "%Y" }} {{site.company_name}}. All rights reserved. <br/>
-          
-            Gravitee.io API Management & Access Management are distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache
-            License V2</a><br/>
-            {% if page.last_updated %}<span>Page last updated:</span> {{page.last_updated}}<br/>{% endif %} Site last
-            generated: {{ site.time | date: "%b %-d, %Y" }}
+    </div>
+    <div class="footer-wrapper">
+        <div class="container">
+            <div class="footer-copyright text-center">
+                <p> &copy; Copyright {{ site.time | date: '%Y' }} {{site.title}} </p>
+            </div>
         </div>
     </div>
+    <a href="#" class="home-top"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 </footer>
-
-<!-- Algolia search -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
-<script type="text/javascript"> docsearch({
-  apiKey: 'b1c2f572a3911c288af513bd3e7d87f4',
-  indexName: 'gravitee',
-  inputSelector: '#search-input',
-  debug: false // Set debug to true if you want to inspect the dropdown
-});
-
-$(document).ready(function () {
-  $('#newsletter-form').on('submit', function (event) {
-    var formData = $(this).serializeArray();
-    $.ajax({
-      type: 'POST',
-      url: '{{ site.newsletter_api }}',
-      dataType: 'json',
-      data: JSON.stringify({ email: formData[0].value }),
-      contentType: 'application/json; charset=utf-8',
-      cache: false,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      statusCode: {
-        201: function () {
-          $('.newsletter-error').hide();
-          $('.newsletter-success span')[0].innerText = 'Your subscription has been sent.';
-          $('.newsletter-success').show();
-        },
-        400: function () {
-          $('.newsletter-error').hide();
-          $('.newsletter-success span')[0].innerText = 'You have already subscribe to the newsletter.';
-          $('.newsletter-success').show();
-        },
-        500: function () {
-          $('.newsletter-error span')[0].innerText = 'Sorry, an error occurred. Please try again later.';
-          $('.newsletter-success').hide();
-          $('.newsletter-error').show();
-        }
-      },
-      complete: function () {
-        $('.message').hide();
-      }
-    });
-    event.preventDefault();
-    event.stopPropagation();
-  });
-});
-
-</script>
-
-<!-- Start of HubSpot Embed Code -->
-<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7600448.js"></script>
-<!-- End of HubSpot Embed Code -->
+<!-- End Footer Area -->

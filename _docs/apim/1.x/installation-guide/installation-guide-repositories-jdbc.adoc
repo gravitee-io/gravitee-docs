@@ -1,0 +1,76 @@
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_repositories_jdbc.html
+:page-folder: apim/installation-guide/repositories
+:page-description: Gravitee.io API Management - Repositories - JDBC
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, jdbc
+:page-layout: apim1x
+
+[[gravitee-installation-repositories-jdbc]]
+= JDBC
+
+This repository plugin implementation allows to connect to SQL databases.
+
+== Supported databases
+
+|===
+
+|Database | Version tested | Gravitee.io Plugin | JDBC Driver
+
+|Postgresql
+|9 / 10 / 11
+.4+|https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-jdbc/[Download the same version as your APIM platform]
+|https://jdbc.postgresql.org/download.html[Download page]
+
+|MySQL
+|5.6 / 5.7 / 8.0
+|https://dev.mysql.com/downloads/connector/j/[Download page]
+
+|MariaDB
+|10.1 / 10.2 / 10.3 / 10.4
+|https://downloads.mariadb.org/connector-java/[Download page]
+
+|Microsoft SQL Server
+|2017-CU12
+|https://docs.microsoft.com/en-us/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017[Download page]
+
+|===
+
+== How to install the jdbc plugin
+NOTE: You need to repeat the following steps on each components (gateway and management API) where the SQL database is used.
+
+ . download the plugin according to your Gravitee.io APIM version (take the latest maintenance release)
+ . put the zip file in the plugin directory on each component (`$GRAVITEE_HOME/plugins`)
+ . download the jdbc driver according to your database version
+ . put the driver in `$GRAVITEE_HOME/plugins/ext/repository-jdbc`
+ . configure your `gravitee.yml`
+
+
+== Configuration
+
+[source,yaml]
+----
+management:
+  type: jdbc             # repository type
+  jdbc:                  # jdbc repository
+    url:                 # jdbc url
+----
+
+The above example is the minimum sample file to start with a JDBC database.
+Other properties allow you to fine tuned your JDBC connection and control the behavior of JDBC database.
+
+[source,yaml]
+----
+management:
+  type: jdbc                    # repository type
+  jdbc:                         # jdbc repository
+    url:                        # jdbc url
+    username:                   # jdbc username
+    password:                   # jdbc password
+    pool:
+        autoCommit:             # jdbc auto commit (default true)
+        connectionTimeout:      # jdbc connection timeout (default 10000)
+        idleTimeout:            # jdbc idle timeout (default 600000)
+        maxLifetime:            # jdbc max lifetime (default 1800000)
+        minIdle:                # jdbc min idle (default 10)
+        maxPoolSize:            # jdbc max pool size (default 10)
+----

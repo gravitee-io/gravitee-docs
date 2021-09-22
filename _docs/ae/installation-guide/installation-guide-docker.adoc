@@ -1,0 +1,55 @@
+= Docker
+:page-sidebar: ae_sidebar
+:page-permalink: ae/installguide_docker.html
+:page-folder: ae/installation-guide
+:page-description: Gravitee Alert Engine - Docker
+:page-toc: false
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:docker-image-src: https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/images
+:docker-hub: https://hub.docker.com/r/graviteeio
+:page-layout: ae
+:page-liquid:
+
+IMPORTANT: We assume that you are familiar with Docker terms. +
+To run our official images, you must start by installing https://docs.docker.com/installation/[Docker]
+
+Gravitee.io Alert Engine Docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
+
+== Images
+|===
+|Image name |Version |Base
+
+|{docker-hub}/ae-engine/[graviteeio/ae-engine]
+|latest
+|https://hub.docker.com/_/alpine/[alpine:3.8]
+
+|===
+
+=== graviteeio/ae-engine
+
+The engine image provides a set of environment variables which could be used to tune your container.
+
+==== Run the image
+[source,shell]
+....
+$ docker run  \
+        --publish 72:8072  \
+        --name alert-engine  \
+        --detach  \
+        graviteeio/ae-engine:{{site.products.ae.version}}
+....
+
+==== Configure the container
+If you want to override the default configuration and override properties included in the `gravitee.yml` file,
+you have to use environment variables. Please have a look to the Alert Engine <<ae_installguide_configuration.adoc#environment_variables, configuration>> section.
+
+Here is an example to modify the Hazelcast config file:
+[source,shell]
+....
+$ docker run  \
+        --publish 72:8072  \
+        --name alert-engine  \
+        --env GRAVITEE_CLUSTER_HAZELCAST_CONFIG_PATH=/path/to/hazelcast.xml
+        --detach  \
+        graviteeio/ae-engine:{{site.products.ae.version}}
+....

@@ -1,0 +1,73 @@
+= Install Management UI on Amazon Linux
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_amazon_management_ui.html
+:page-folder: am/installation-guide/amazon
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Installation Guide - Amazon - Management UI
+:page-keywords: Gravitee.io, API Platform, Access Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+:gravitee-component-name: Management UI
+:gravitee-package-name: graviteeio-am-management-ui-3x
+:gravitee-service-name: graviteeio-am-management-ui
+
+== Installing Gravitee.io {gravitee-component-name} package
+
+IMPORTANT: We assume that you have configured your package management system by following link:/am/current/am_installguide_amazon_introduction.html[this documentation].
+
+Nginx must be installed prior to Gravitee.io {gravitee-component-name}:
+
+[source,bash,subs="attributes"]
+----
+sudo amazon-linux-extras install nginx1.12
+----
+
+Then, to install the latest stable version of Gravitee.io {gravitee-component-name}, issue the following command:
+
+[source,bash,subs="attributes"]
+----
+sudo yum install -y {gravitee-service-name}
+----
+
+== Running Gravitee.io {gravitee-component-name}
+
+NOTE: Gravitee.io {gravitee-component-name} is based on Nginx
+
+To configure Gravitee.io {gravitee-component-name} to start automatically when the system boots up, run the following commands:
+
+[source,bash,subs="attributes"]
+----
+sudo systemctl daemon-reload
+sudo systemctl enable nginx
+----
+
+Nginx can be started and stopped as follows:
+
+[source,bash,subs="attributes"]
+----
+sudo systemctl start nginx
+sudo systemctl stop nginx
+----
+
+When `systemd` logging is enabled, the logging information are available using the `journalctl` commands:
+
+To tail the journal:
+
+[source,shell]
+----
+sudo journalctl -f
+----
+
+To list journal entries for the Nginx service:
+
+[source,shell]
+----
+sudo journalctl --unit nginx
+----
+
+To list journal entries for the Nginx service starting from a given time:
+
+[source,shell]
+----
+sudo journalctl --unit nginx --since  "2020-01-30 12:13:14"
+----

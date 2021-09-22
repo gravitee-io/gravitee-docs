@@ -1,0 +1,56 @@
+= User Guide
+:page-sidebar: ae_sidebar
+:page-permalink: ae/userguide_conditions.html
+:page-folder: ae/user-guide
+:page-description: Gravitee Alert Engine - User Guide - Conditions
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+== Conditions
+
+=== String
+
+Used to compare a string property value to a given value.
+
+Available operators are: EQUALS, NOT_EQUALS, STARTS_WITH`, ENDS_WITH, CONTAINS, MATCHES
+
+=== Threshold
+
+Used to compare a number property value to a given threshold ( `property < X ).
+
+Available operators are: LT, LTE, GTE, GT
+
+=== Threshold Range
+
+Used to compare a number property value to a given threshold range ( `X < property < Y ).
+
+Available operators are: LT, LTE, GTE, GT
+
+=== Aggregation
+
+Used to compare an aggregated property value to a threshold. Note that this kind of condition requires a time-frame
+window to aggregate property values.
+
+Available operators are: LT, LTE, GTE, GT
+
+Available functions are: COUNT, AVG, MIN, MAX, P50, P90, P95, P99
+
+=== Rate
+
+Used to calculate the rate for property value in comparison to a given condition and compare it to a threshold. Note
+that this kind of condition requires a time-frame window to aggregate property values.
+
+Available operators are: LT, LTE, GTE, GT
+
+=== Comparison
+
+Used to compare a number property value to an other number property value ( `property1 < property2 ).
+
+Available operators are: LT, LTE, GTE, GT
+
+=== String comparison
+
+Used to compare a string property value to an other string property value ( `property1 < property2 ).
+
+Available operators are: EQUALS, NOT_EQUALS, STARTS_WITH`, ENDS_WITH, CONTAINS, MATCHES

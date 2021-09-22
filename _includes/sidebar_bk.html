@@ -1,0 +1,38 @@
+{% include custom/sidebarconfigs.html %}
+
+<div class="col-md-3">
+  <div class="custom-links">
+    <h5>In this article</h5>
+<ul class="nav navbar-nav" id="nav">
+  {% for entry in sidebar %}
+  {% assign active = nil %}
+
+  {% for sublink in link.submenu %}
+    {% if page.url contains sublink.url %}
+      {% assign active = 'active' %}
+    {% endif %}
+  {% endfor %}
+
+  {% if page.url contains link.url %}
+    {% assign active = 'active' %}
+  {% endif %}
+
+  <li class="subitem">
+    <a href="{{ link.url | relative_url }}">{{ link.text }}
+
+    </a>{% if link.submenu %}<a class="pb-0 pt-0" href="#nav"><i class="fa fa-angle-right"></i></a> {% endif %}
+
+    {% if link.submenu %}
+       <ul class="sub-dropdown">
+        {% for sublink in link.submenu %}
+          <li {% if page.url contains sublink.url %}class="active"{% endif %}>
+            <a href="{{ sublink.url | relative_url }}">{{ sublink.text }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>
+  </div>
+</div>

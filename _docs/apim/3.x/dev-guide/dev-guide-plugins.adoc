@@ -1,0 +1,115 @@
+[[gravitee-devguide-plugins]]
+= Plugins
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_devguide_plugins.html
+:page-folder: apim/dev-guide
+:page-layout: apim3x
+
+Gravitee _plugins_ are additional components that can be _plugged into_ the Gravitee ecosystem. Thus, _plugins_ help you to specify behaviors that meet your strategic needs.
+
+== Common structure
+
+Each _plugin_ follows the following common structure:
+
+[source]
+-----------------
+.
+├── pom.xml
+├── README.md
+└── src
+    ├── assembly
+    │   └── <plugin>-assembly.xml
+    ├── main
+    │   ├── java
+    │   │   └── <main java files>
+    │   └── resources
+    │       └── plugin.properties
+    └── test
+        └── java
+            └── <test java files>
+-----------------
+
+Hereafter a description about the different key files:
+
+|===
+| File                                                               | Description
+
+| <<gravitee-dev-guide-plugins-pom, `pom.xml`>>                      | The main Maven POM file
+| <<gravitee-dev-guide-plugins-readme, `README.md`>>                 | The main entry point for the _plugin_ documentation
+| <<gravitee-dev-guide-plugins-assembly, `<plugin>-assembly.xml`>>   | The common Maven assembly descriptor
+| <<gravitee-dev-guide-plugins-descriptor, `plugin.properties`>>     | The _plugin_ descriptor file
+|===
+
+[discrete]
+[[gravitee-dev-guide-plugins-pom]]
+=== pom.xml
+
+Any _plugins_ (and more generally any Gravitee projects) are https://maven.apache.org/[Maven] managed. Thus, a _plugin_ project is described by using the Maven https://maven.apache.org/pom.html[Project Object Model] file.
+
+[discrete]
+[[gravitee-dev-guide-plugins-readme]]
+=== README.md
+
+Each _plugin_ should have a dedicated `README.md` file to document it. The `README.md` file should contain everything related to the use of your _plugin_: _What is its functionality? How can use it? How can configure it?_
+
+[discrete]
+[[gravitee-dev-guide-plugins-assembly]]
+=== <plugin>-assembly.xml
+
+In order to be _plugged into_ the Gravitee ecosystem, a _plugin_ need to be deployed following a given file structure. Thus, the `<plugin>-assembly.xml` file is the http://maven.apache.org/plugins/maven-assembly-plugin/[Maven Assembly] descriptor using to build the distribution file.
+
+Commonly, a _plugin_ distribution file is organized as follow:
+
+[source]
+-----------------
+.
+├── <main Jar file>.jar
+└── lib
+-----------------
+
+Hereafter a description about the different files:
+
+|===
+| File                   | Description
+
+| `<main Jar File>.jar`  | The _plugin_'s main Jar file
+| `lib/`                 | A directory containing external libraries to correctly execute the <main Jar File>.jar
+|===
+
+[discrete]
+==== <main Jar File>.jar
+
+Each _plugin_ has its main Jar file containing the business behavior *plus* the <<gravitee-dev-guide-plugins-descriptor, _plugin_ descriptor file>>.
+
+[discrete]
+==== lib/
+
+This directory contains all the _plugin_'s external dependencies (non provided-scope Maven dependencies).
+
+[discrete]
+[[gravitee-dev-guide-plugins-descriptor]]
+=== plugin.properties
+
+The plugin.properties file is the descriptor of the _plugin_. It acts as the _ID Card_ of the _plugin_ and will be read by _gateway_ during the _plugin_ loading process.
+
+Hereafter parameters included into the descriptor:
+
+|===
+| Parameter	    | Description
+
+| id	        | The _plugin_ identifier
+| name	        | The _plugin_ name
+| version	    | The _plugin_ version
+| description	| The _plugin_ description
+| class	        | The main _plugin_ class
+| type	        | The type of _plugin_ (_policy_, _reporter_)
+|===
+
+NOTE: Naturally, the _plugin_ identifier has to be unique to be correctly loaded by the _gateway_.
+
+== Deployment
+
+Deploying a _plugin_ is as easy as leave the plugin archive (zip) into the dedicated directory. By default, you have to
+deploy those archive into ${GRAVITEE_HOME/plugins}. Please refer to the configuration <<gravitee-standalone-gateway-configuration,documentation>>.
+
+IMPORTANT: Gravitee.io nodes must be restarted to take care about new or updated plugins !

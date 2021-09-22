@@ -1,0 +1,15 @@
+= Extension Grants
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_extension_grants.html
+:page-folder: am/user-guide
+:page-layout: am
+
+OAuth 2.0 defines standard grant types for the token endpoint, such as _password_, _authorization_code_ and _refresh_token_.
+
+Extension grants are a way to add support for non-standard token issuance scenarios like token exchange, delegation, or
+custom credentials.
+
+Gravitee.io Access Management allows you to extend available grants for an application by adding custom extension grant.
+
+
+* link:/am/current/am_userguide_extension_grants_jwt_bearer.html[JWT Bearer]

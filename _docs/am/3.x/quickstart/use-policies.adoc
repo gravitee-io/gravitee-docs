@@ -1,0 +1,118 @@
+= Use your first Extension Point
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_quickstart_use_policies.html
+:page-folder: am/quickstart
+:page-layout: am
+
+This guide walks you through the process of using your first Extension Point to extend the behavior of the Gravitee.io AM Server.
+
+NOTE: Gravitee.io Access Management link:/am/current/am_userguide_policies.html[Policies] are available since the 2.7 version
+
+In this tutorial we will enhance the information display in the link:am/current/am_userguide_user_management_consent.html[End-User consent] by calling a remote service before rendering the HTML page.
+
+
+NOTE: Be sure to complete the link:/am/current/am_quickstart_register_app.html[Register your first applications] and the link:/am/current/am_quickstart_authenticate_users.html[Authenticate users with Identity Provider] quick-starts before doing this walkthrough guide.
+
+== Use the HTTP Callout Policy
+
+. Go to http://GRAVITEEIO-AM-UI-HOST. (Default Administrator account is `admin/adminadmin`)
+. From the homepage, select your security domain and go to `Settings`
+. From the domain's settings page, go to `Extension Points`
+. Add the Policy `HTTP Callout` to the `PRE_CONSENT` extension point by clicking on the `(+)` button
+. Give your policy a *name* and the following configuration :
+.. Method : `GET`
+.. URL : `https://api.gravitee.io/echo`
+.. Headers : `X-Custom-Header` / `{#context.attributes['user'].username}`
+.. Variables : `X-Custom-Variable` / `{#jsonPath(#calloutResponse.content, '$.headers.X-Custom-Header')}`
+
+NOTE: In this example, we retrieve the username from the execution context `{#context.attributes['user'].username}` and pass it to our remote service which responds with a new information *X-Custom-Variable* (`{#jsonPath(#calloutResponse.content, '$.headers.X-Custom-Header')}`).
+Will be using this *X-Custom-Variable* in the End-User Consent HTML page.
+
+image::am/current/graviteeio-am-quickstart-policies.png[]
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{
+          "extensionPoint":"PRE_CONSENT",
+          "type":"policy-http-callout",
+          "enabled":true,
+          "order":0,
+          "name":"Enhance consent data",
+          "configuration":"{\"variables\":[{\"name\":\"X-Custom-Variable\",\"value\":\"{#jsonPath(#calloutResponse.content, '$.headers.X-Custom-Header')}\"}],\"method\":\"GET\",\"url\":\"https://api.gravitee.io/echo\",\"headers\":[{\"name\":\"X-Custom-Header\",\"value\":\"{#context.attributes['user'].username}\"}],\"exitOnError\":true,\"errorCondition\":\"{#calloutResponse.status >= 400 and #calloutResponse.status <= 599}\",\"errorStatusCode\":\"500\"}"
+        }'
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId/policies
+----
+
+== Display the End-User Consent Page
+
+For this quick start guide part, we will create a custom End-User consent page (see link:/am/current/am_userguide_user_management_forms.html[Custom forms] for more information).
+
+. From the domain's settings page, go to `Forms`
+. Edit `User consent` form
+. Add the following content :
+
+[source]
+----
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>User consent</title>
+</head>
+<body>
+<div>
+  <div>
+    <div>
+        <h3>
+          <p th:text="'Hi ' + ${#ctx.getVariable('X-Custom-Variable')} + ' !'"></p>
+          <span th:text="${client.clientId}"></span> is requesting permissions to access your account
+        </h3>
+    </div>
+    <div>
+      <form role="form" th:action="@{authorize}" method="post">
+        <div>
+          <h3>Review permissions</h3>
+          <div th:each="scope : ${scopes}">
+            <span th:text="(${scope.name}) ? ${scope.name} : ${scope.key}"></span> (<span th:text="${scope.key}"></span>)
+            <p th:text="${scope.description}"></p>
+            <input type="hidden" th:name="'scope.'+${scope.key}" value="true"/>
+          </div>
+        </div>
+
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <div class="access-confirmation-form-actions">
+          <button type="submit" name="user_oauth_approval" value="true">Authorize</button>
+          <button type="submit" name="user_oauth_approval" value="false">Deny</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+----
+
+NOTE: Notice the `<p th:text="'Hi ' + ${#ctx.getVariable('X-Custom-Variable')} + ' !'"></p>` custom code.
+
+. Initiate the login flow by calling the OpenID Connect Authorization Code or Implicit Flow
+. https://AM_GW_HOST:8092/your-domain/oauth/authorize?client_id=your-client&response_type=token&redirect_uri=http://localhost:4001/login/callback&scope=openid&state=1234
+. After the login form you should be redirected to the consent page with your custom code
+
+image::am/current/graviteeio-am-quickstart-policies-consent-page.png[]
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{
+          "template":"OAUTH2_USER_CONSENT",
+          "enabled":true,
+          "content":"     <!DOCTYPE html>\n        <html lang=\"en\" xmlns:th=\"http://www.thymeleaf.org\">\n        <head>\n          <title>User consent</title>\n        </head>\n        <body>\n        <div>\n          <div>\n            <div>\n                <h3>\n                  <p th:text=\"'Hi ' + ${#ctx.getVariable('X-Custom-Variable')} + ' !'\"></p>\n                  <span th:text=\"${client.clientId}\"></span> is requesting permissions to access your account\n                </h3>\n            </div>\n            <div>\n              <form role=\"form\" th:action=\"@{authorize}\" method=\"post\">\n                <div>\n                  <h3>Review permissions</h3>\n                  <div th:each=\"scope : ${scopes}\">\n                    <span th:text=\"(${scope.name}) ? ${scope.name} : ${scope.key}\"></span> (<span th:text=\"${scope.key}\"></span>)\n                    <p th:text=\"${scope.description}\"></p>\n                    <input type=\"hidden\" th:name=\"'scope.'+${scope.key}\" value=\"true\"/>\n                  </div>\n                </div>\n\n                <input type=\"hidden\" th:name=\"${_csrf.parameterName}\" th:value=\"${_csrf.token}\"/>\n                <div class=\"access-confirmation-form-actions\">\n                  <button type=\"submit\" name=\"user_oauth_approval\" value=\"true\">Authorize</button>\n                  <button type=\"submit\" name=\"user_oauth_approval\" value=\"false\">Deny</button>\n                </div>\n              </form>\n            </div>\n          </div>\n        </div>\n        </body>\n        </html>"
+        }'
+      http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId/forms
+----
+
+That was a first glimpse on how to use the extension points with Gravitee.io Access Management.

@@ -1,0 +1,37 @@
+= Access Management
+:page-sidebar: ae_sidebar
+:page-permalink: ae/am_installation.html
+:page-folder: ae/am
+:page-description: Gravitee Alert Engine - Access Management - Installation
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+:page-liquid:
+
+This section is explaining how to integrate the Alert Engine within Gravitee.io Access Management.
+
+If you are running a fresh installation of Gravitee.io Enterprise API Platform or if you are running Enterprise
+Docker images, you can skip the installation part.
+
+IMPORTANT: For being able to integrate Access Management with Alert Engine, your Access Management platform must
+be an link:/ee/ee_introduction.html[Enterprise version].
+
+== Installation
+
+=== Download connector
+
+[source,bash]
+[subs="attributes"]
+$ curl -L https://download.gravitee.io/graviteeio-ae/plugins/connectors/gravitee-ae-connectors-ws/gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip -o gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip
+
+=== Install connector
+
+In this section, we admit that ${GRAVITEEIO_HOME} can refer to both the API Gateway and the Management API.
+
+[source,bash]
+[subs="attributes"]
+$ cp gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip ${GRAVITEEIO_HOME}/plugins/
+
+== Configuration
+
+NOTE: work in progress...

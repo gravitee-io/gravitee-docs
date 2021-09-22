@@ -1,0 +1,103 @@
+= Manual installation
+:page-sidebar: ae_sidebar
+:page-permalink: ae/installguide_engine.html
+:page-folder: ae/installation-guide
+:page-description: Gravitee Alert Engine - Engine
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+:page-liquid:
+
+== System Requirements
+
+=== JDK
+
+Gravitee.io Alert Engine is supporting from Java 8 to latest Java 11. Before you install it, please check your Java version :
+
+[source,bash]
+----
+java -version
+echo $JAVA_HOME
+----
+
+NOTE: You can download the latest OpenJDK from https://jdk.java.net/archive/[OpenJDK Download Site].
+
+== Installing from the ZIP archive
+
+Binaries are available from https://download.gravitee.io/graviteeio-ae/components/gravitee-ae-engine-{{site.products.ae.version}}.zip.
+
+[source,bash]
+[subs="attributes"]
+$ curl -L https://download.gravitee.io/graviteeio-ae/components/gravitee-ae-engine-{{site.products.ae.version}}.zip -o gravitee-ae-standalone-{{site.products.ae.version}}.zip
+
+Once file has been downloaded, you just have to unpack it in the right place.
+
+[source,bash]
+[subs="attributes"]
+$ unzip gravitee-ae-standalone-{{site.products.ae.version}}.zip
+
+== Running AE Engine from the command line
+
+AE Engine can be started from the command line as follows:
+
+[source,bash]
+----
+$ cd gravitee-ae-standalone-{{site.products.ae.version}}
+$ ./bin/gravitee
+----
+
+By default, AE Engine runs in the foreground, prints its logs to the standard output (stdout), and can be stopped
+by pressing Ctrl-C.
+
+If everything goes well, you should see this log:
+
+[source,bash]
+[subs="attributes"]
+...
+11:23:06.835 [main] [] INFO  i.g.ae.standalone.node.AlertEngineNode - Gravitee.io - Alert Engine - Engine id[92c03b26-5f21-4460-803b-265f211460be] version[{{site.products.ae.version}}] pid[4528] build[${env.BUILD_NUMBER}#${env.GIT_COMMIT}] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 1860 ms.
+...
+
+== Checking that AE Engine is running
+
+You can test that your AE Engine node is running by sending an HTTP request to port `8072` on `localhost`:
+
+[source,bash]
+----
+$ curl -X GET http://localhost:8072/
+----
+
+which should give you an empty 401 response
+
+== Running as a daemon
+
+To run AE Engine as a daemon, specify -d on the command line, and record the process ID in a file using the -p option:
+
+[source,bash]
+----
+$ ./bin/gravitee -d -p=/var/run/gio.pid
+----
+
+Log messages can be found in the `$GRAVITEE_HOME/logs/` directory.
+
+To shut down AE Engine, kill the process ID recorded in the pid file:
+
+[source,bash]
+----
+$ kill `cat /var/run/gio.pid`
+----
+
+== Directory structure
+
+After successfully installed AE Engine, the `gravitee-ae-standalone` directory looks like this:
+
+[width="100%",cols="20%,80%",frame="topbot",options="header"]
+|======================
+|Folder    |Description
+|bin       |Startup/shutdown scripts
+|config    |App configuration
+|lib       |Libraries (gravitee.io AE libraries and third parties library)
+|license   |License for Enterprise Edition
+|logs      |Engine log files
+|plugins   |Engine plugins
+|======================
+

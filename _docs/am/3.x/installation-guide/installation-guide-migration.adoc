@@ -1,0 +1,49 @@
+= Migration guide
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_migration.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+NOTE: Files specified in this guide can be found at https://github.com/gravitee-io/graviteeio-access-management/tree/master/docs/upgrades
+
+WARNING: If you plan to skip versions when you upgrade, ensure that you read the version-specific upgrade notes for each intermediate version. You may be required to perform manual actions as part of the upgrade.
+
+WARNING: Be sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs;`
+
+== Upgrade to 3.1.0
+
+NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.1.html[Breaking changes in 3.1]
+
+=== Repository
+
+==== Mongodb
+
+Before running any script, please create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docs/upgrades/3.x/3.1.0/mongodb/1-email-templates-migration.js[upgrades/3.x/3.1.0/mongodb/1-email-templates-migration]::
+This script updates the database to reflect the following changes :
+
+* New email service
+
+== Upgrade to 3.0.0
+
+NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.0.html[Breaking changes in 3.0]
+
+WARNING: We highly recommend that you run the MongoDB database script before starting the Management API.
+
+=== Repository
+
+==== Mongodb
+
+Before running any script, please create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/3.0.x/docs/upgrades/3.x/3.0.0/mongodb/1-migration-v3.js[upgrades/3.x/3.0.0/mongodb/1-migration-v3]::
+This script updates the database to reflect the following changes :
+
+* Adds new fields that refer the default environment and the default organization.
+* Attach data to their environment and organization
+* Remove unnecessary data
+
+WARNING: During the migration, AM V2 Gateways will still continue to work without any problem. Just make sure to not stop or restart them until the migration is fully completed.
+
+WARNING: Do not forget to update plugins and re-install your custom plugins.

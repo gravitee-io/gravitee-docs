@@ -1,0 +1,59 @@
+= Notifier Slack
+:page-sidebar: ae_sidebar
+:page-permalink: ae/userguide_notifier_slack.html
+:page-folder: ae/user-guide
+:page-description: Gravitee Alert Engine - User Guide - Notifier - Slack
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+== Description
+Configure your slack channel and the token to use to send your message
+
+image::ae/notifiers/cfg-slack.png[Configure your Slack notification]
+
+== Example
+
+[source,text]
+----
+The alert "${alert.name}" has been thrown with the following message: \n>${notification.message}
+----
+
+== Generate a Slack Bot token
+
+Note: Here we are assuming that you're already connected to the workspace.
+
+=== Step 1
+Go to your apps and click on "Create New App"
+
+image::ae/notifiers/slack/create-app1.png[Create an application]
+
+=== Step 2
+Complete the app form and don't forget to associate the app to a workspace
+
+image::ae/notifiers/slack/create-app2.png[Complete app form]
+
+=== Step 3
+From the application's basic information page, click on "Permissions"
+
+image::ae/notifiers/slack/create-app3.png[Manage app's permissions]
+
+=== Step 4
+Define the scopes / permissions for your application.
+You need, at least `channel:read` and `chat:write`
+
+image::ae/notifiers/slack/create-app4.png[Manage app's permissions]
+
+=== Step 5
+Then, you have to install the application into the appropriate workspace
+
+image::ae/notifiers/slack/create-app5.png[Install into workspace]
+
+And accept the permissions
+
+image::ae/notifiers/slack/create-app6.png[Accept permissions]
+
+=== Step 6
+Get your token!
+
+image::ae/notifiers/slack/create-app7.png[Here you are!]

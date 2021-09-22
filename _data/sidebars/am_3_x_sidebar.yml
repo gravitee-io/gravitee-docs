@@ -27,29 +27,7 @@ entries:
       output: web
       url: /am/current/am_overview_plugins.html
 
-  - title: Quick Start Guide
-    output: web
-    folderitems:
-    - title: Log in to AM Console
-      output: web
-      url: /am/current/am_userguide_authentication.html
-    - title: Set up your first application
-      output: web
-      url: /am/current/am_quickstart_app_setup.html
-    - title: Get user profile information
-      output: web
-      url: /am/current/am_quickstart_profile_information.html
-    - title: Secure your APIs
-      output: web
-      url: /am/current/am_quickstart_secure_apis.html
-    - title: Configure a flow
-      output: web
-      url: /am/current/am_quickstart_use_policies.html
-    - title: Add custom claims to tokens
-      output: web
-      url: /am/current/am_quickstart_tokens_custom_claims.html
-
-  - title: Installation Guide
+  - title: Install
     output: web
     folderitems:
     - title: Introduction
@@ -122,14 +100,11 @@ entries:
             - title: Helm
               output: web
               url: /am/current/am_installguide_kubernetes.html
-    - title: Configure a Production-Ready AM Environment
-      output: web
-      url: /am/current/am_installguide_how_to_configuration.html
     - title: Upgrade Guide
       output: web
       url: /am/current/am_installguide_migration.html
 
-  - title: Configuration Guide
+  - title: Configure
     output: web
     folderitems:
     - title: Introduction
@@ -184,7 +159,7 @@ entries:
         - title: Overview
           output: web
           url: /am/current/am_installguide_reporters.html
-  - title: User Guide
+  - title: Configure Authentication
     output: web
     folderitems:
     - title: Overview
@@ -456,7 +431,7 @@ entries:
               output: web
               url: /am/current/am_userguide_alerts_notifications_slack.html
 
-  - title: Administration Guide
+  - title: Setup and Administration
     output: web
     folderitems:
     - title: Organizations and environments
@@ -527,61 +502,3 @@ entries:
               - title: Overview
                 output: web
                 url: /am/current/am_devguide_protocols_scim_overview.html
-
-  - title: API Reference
-    output: web
-    folderitems:
-      - title: API Reference
-        output: web
-        url: /am/current/am_devguide_management_api_documentation.html
-
-  - title: Breaking Changes
-    output: web
-    folderitems:
-      - title: Overview
-        output: web
-        url: /am/current/am_breaking_changes.html
-        type: homepage
-      - title: Breaking changes in 3.10
-        output: web
-        url: /am/current/am_breaking_changes_3.10.html
-      - title: Breaking changes in 3.9
-        output: web
-        url: /am/current/am_breaking_changes_3.9.html
-      - title: Breaking changes in 3.8
-        output: web
-        url: /am/current/am_breaking_changes_3.8.html
-      - title: Breaking changes in 3.6
-        output: web
-        url: /am/current/am_breaking_changes_3.6.html
-      - title: Breaking changes in 3.5
-        output: web
-        url: /am/current/am_breaking_changes_3.5.html
-      - title: Breaking changes in 3.4
-        output: web
-        url: /am/current/am_breaking_changes_3.4.html
-      - title: Breaking changes in 3.1
-        output: web
-        url: /am/current/am_breaking_changes_3.1.html
-      - title: Breaking changes in 3.0
-        output: web
-        url: /am/current/am_breaking_changes_3.0.html
-      - title: Breaking changes in 2.10
-        output: web
-        url: /am/current/am_breaking_changes_2.10.html
-      - title: Breaking changes in 2.8
-        output: web
-        url: /am/current/am_breaking_changes_2.8.html
-      - title: Breaking changes in 2.5
-        output: web
-        url: /am/current/am_breaking_changes_2.5.html
-      - title: Breaking changes in 2.0
-        output: web
-        url: /am/current/am_breaking_changes_2.0.html
-
-  - title: Changelog
-    output: web
-    folderitems:
-      - title: Changelog
-        output: web
-        url: /am/current/am_changelog.html

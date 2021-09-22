@@ -1,0 +1,322 @@
+= Request notification
+:page-sidebar: ae_sidebar
+:page-permalink: ae/apim_notification_request.html
+:page-folder: ae/apim
+:page-description: Gravitee Alert Engine - API Management - Message Properties REQUEST
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+Here is the list of properties available in every alerts triggered by a `REQUEST` event.
+
+== Properties
+
+The notification's properties are values which have been send or computed while processing event by the engine.
+The value of those properties are simple, ie. you can't retrieve more information about some particular object like the `api`,
+the `application`, ... (for that purpose look at the <<Data, data>> section).
+
+[cols="1,3,3,1"]
+|===
+|Key |Description |Syntax |Processor
+
+|`node.hostname`
+|The node hostname which has thrown the Alert.
+|${notification.properties['node.hostname']}
+|-
+
+|`node.application`
+|The node application (`gio-apim-gateway`, `gio-apim-management`, `gio-am-gateway`, `gio-am-management`) which has thrown the Alert.
+|${notification.properties['node.application']}
+|-
+
+|`node.id`
+|The uuid of the node which has thrown the Alert.
+|${notification.properties['node.id']}
+|-
+
+|`gateway.port`
+|The port of the gateway.
+|${notification.properties['gateway.port']}
+|-
+
+|`tenant`
+|The tenant (if exists) of the node.
+|${notification.properties['tenant']}
+|-
+
+|`request.id`
+|The request ID.
+|${notification.properties['request.id']}
+|-
+
+|`request.content_length`
+|The request content length in bytes
+|${notification.properties['request.content_length']}
+|-
+
+|`request.ip`
+|The request IP.
+|${notification.properties['request.ip']}
+|-
+
+|`request.ip.country_iso_code`
+|The country ISO code associated with the IP.
+|${notification.properties['request.ip.country_iso_code']}
+|geoip
+
+|`request.ip.country_name`
+|The country name associated with the IP.
+|${notification.properties['request.ip.country_name']}
+|geoip
+
+|`request.ip.continent_name`
+|The continent name associated with the IP.
+|${notification.properties['request.ip.continent_name']}
+|geoip
+
+|`request.ip.region_name`
+|The region name associated with the IP.
+|${notification.properties['request.ip.region_name']}
+|geoip
+
+|`request.ip.city_name`
+|The city name associated with the IP.
+|${notification.properties['request.ip.city_name']}
+|geoip
+
+|`request.ip.timezone`
+|The timezone associated with the IP.
+|${notification.properties['request.ip.timezone']}
+|geoip
+
+|`request.ip.lat`
+|The latitude associated with the IP.
+|${notification.properties['request.ip.lat']}
+|geoip
+
+|`request.ip.lon`
+|The longitude associated with the IP.
+|${notification.properties['request.ip.lon']}
+|geoip
+
+|`request.user_agent`
+|The request User Agent.
+|${notification.properties['request.user_agent.']}
+|-
+
+|`request.user_agent.device_class`
+|The device's class of the User Agent.
+|${notification.properties['request.user_agent.device_class']}
+|useragent
+
+|`request.user_agent.device_brand`
+|The device's brand of the User Agent.
+|${notification.properties['request.user_agent.device_brand']}
+|useragent
+
+|`request.user_agent.device_name`
+|The device's name of the User Agent.
+|${notification.properties['request.user_agent.device_name']}
+|useragent
+
+|`request.user_agent.os_class`
+|The OS's class of the User Agent.
+|${notification.properties['request.user_agent.os_class']}
+|useragent
+
+|`request.user_agent.os_name`
+|The OS's name of the User Agent.
+|${notification.properties['request.user_agent.os_name']}
+|useragent
+
+|`request.user_agent.os_version`
+|The OS's version of the User Agent.
+|${notification.properties['request.user_agent.os_version']}
+|useragent
+
+|`request.user_agent.browser_name`
+|The browser's name of the User Agent.
+|${notification.properties['request.user_agent.browser_name']}
+|useragent
+
+|`request.user_agent.browser_version`
+|The browser's version of the User Agent.
+|${notification.properties['request.user_agent.browser_version']}
+|useragent
+
+|`user`
+|The request user.
+|${notification.properties['user']}
+|-
+
+|`api`
+|The request API.
+|${notification.properties['api']}
+|-
+
+|`application`
+|The request application.
+|${notification.properties['application']}
+|-
+
+|`plan`
+|The request plan.
+|${notification.properties['plan']}
+|-
+
+|`response.status`
+|The response status.
+|${notification.properties['response.status']}
+|-
+
+|`response.latency`
+|The response latency.
+|${notification.properties['response.latency']}
+|-
+
+|`response.response_time`
+|The response time.
+|${notification.properties['response.response_time']}
+|-
+
+|`response.content_length`
+|The response content length.
+|${notification.properties['response.content_length']}
+|-
+
+|`response.upstream_response_time`
+|The upstream response time, the time between the gateway and the backend.
+|${notification.properties['response.upstream_response_time']}
+|-
+
+|`quota.counter`
+|The quota counter state.
+|${notification.properties['quota.counter']}
+|-
+
+|`quota.limit`
+|The quota limit.
+|${notification.properties['quota.limit']}
+|-
+
+|`error.key`
+|A key that allows you to identify the root cause of error.
+|${notification.properties['quota.key']}
+|-
+|===
+
+== Data
+
+The data (or `resolved data`) are specific objects which have been resolved from the notification's properties.
+For example, in the case of the `REQUEST` event, the engine is looking to resolve the `api`, `app` and `plan` to provide
+more contextualized information to define your message templates.
+
+=== API
+
+For the `api`, you can access the following data:
+
+[cols="1,3,3"]
+|===
+|Key |Description |Syntax
+
+|`id`
+|The API's identifier
+|${api.id}
+
+|`name`
+|The API's name
+|${api.name}
+
+|`version`
+|The API's version
+|${api.version}
+
+|`description`
+|The API's description
+|${api.description}
+
+|`primaryOwner.email`
+|The API's description
+|${api.primaryOwner.email}
+
+|`primaryOwner.displayName`
+|The API's primary owner's display name
+|${api.primaryOwner.displayName}
+
+|`tags`
+|The API's sharding tags
+|${api.tags}
+
+|`labels`
+|The API's labels
+|${api.labels}
+
+|`views`
+|The API's views
+|${api.views}
+
+|`metadata`
+|The API's metadata
+|${api.metadata['metadata_name']}
+
+|===
+
+=== Application
+
+For the `application`, you can access the following data:
+
+[cols="1,3,3"]
+|===
+|Key |Description |Syntax
+
+|`id`
+|The application's identifier
+|${application.id}
+
+|`name`
+|The application's name
+|${application.name}
+
+|`description`
+|The application's description
+|${application.description}
+
+|`status`
+|The application's status
+|${application.status}
+
+|`type`
+|The application's type
+|${application.type}
+
+|`primaryOwner.email`
+|The application's description
+|${application.primaryOwner.email}
+
+|`primaryOwner.displayName`
+|The application's primary owner's display name
+|${application.primaryOwner.displayName}
+
+|===
+
+=== Plan
+
+For the `plan`, you can access the following data:
+
+[cols="1,3,3"]
+|===
+|Key |Description |Syntax
+
+|`id`
+|The plan's identifier
+|${plan.id}
+
+|`name`
+|The plan's name
+|${plan.name}
+
+|`description`
+|The plan's description
+|${plan.description}
+
+|===

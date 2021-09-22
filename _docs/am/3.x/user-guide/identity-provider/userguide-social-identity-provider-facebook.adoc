@@ -1,0 +1,74 @@
+= Facebook
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_social_identity_provider_facebook.html
+:page-folder: am/user-guide
+:page-layout: am
+
+NOTE: New in Gravitee.io AM 3.2.x
+
+NOTE: Before you begin, sign up for a link:https://www.facebook.com/r.php?next=https%3A%2F%2Fdevelopers.facebook.com%2F&locale=en_US&display=page[Facebook Developer account].
+
+== Steps
+
+To connect your application to Facebook, you will:
+
+- Register a new application in Facebook
+- Create a Facebook identity provider in Gravitee.io AM
+- Set up the connection in Facebook
+- Test connection
+
+== Register a new application in Facebook
+
+link:https://developers.facebook.com/apps/[Add a New App] from Facebook for developers Portal.
+
+. For "How are you using your app?" select `For everything else.`
+. Give your application a name
+. and press `Create`
+
+NOTE: Facebook will generate a App ID and App Secret for your application; make note of these for later use.
+
+== Create a Facebook identity provider
+
+Identity providers are created for each security domain, to create an identity provider, follow these steps:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's `Settings` page, go to `Providers` section
+. From the security domain's providers page, click `(+)` button
+. Choose the Facebook identity provider and press `NEXT`
+
+NOTE: Make sure to grab the generated App ID and App Secret from Facebook application.
+
+[start=5]
+. Give your identity provider a name
+. Copy/paste your Facebook application App ID and App Secret
+. Press `Create`
+
+image::am/current/graviteeio-am-userguide-social-idp-facebook.png[]
+
+NOTE: On the right side of the screen, under `1. Configure the Redirect URI` copy the value of the URL, it will be used to update your Facebook application settings.
+
+== Set up the connection
+
+Go to your Facebook application settings and add `Facebook Login` to the app as a Product.
+
+While setting up the Facebook Login product, set the following settings:
+
+. Enable `Client OAuth Login`
+. Enable `Web OAuth Login`
+. Add a `Valid OAuth Redirect URIs` with the Redirect URI created in the previous step.
+. Press `Save Changes`
+
+== Test connection
+
+You can test Facebook connection via your web applications created in Gravitee.io AM.
+
+In the Portal UI, navigate to your `Application > Identity Providers` section and select your social identity provider.
+
+image::am/current/graviteeio-am-userguide-social-idp-list.png[]
+
+To properly test, you should call the Login Page (i.e `/oauth/authorize` endpoint) and should see the `Sign in with ...` button.
+
+image::am/current/graviteeio-am-userguide-social-idp-login.png[]
+
+NOTE: If the social button is not here, it means that something is invalid with the identity provider settings. Check the Gravitee.io AM gateway log for more information.
+

@@ -1,0 +1,24 @@
+= API Management
+:page-sidebar: ae_sidebar
+:page-permalink: ae/apim_configuration.html
+:page-folder: ae/apim
+:page-description: Gravitee Alert Engine - API Management - Configuration
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+:page-liquid:
+
+This section is explaining how to define alerts from Gravitee.io API Management
+
+== Activate alerting
+
+.API Management - Enable alerting
+image::ae/apim/settings_enable_alert.png[Enable alerting]
+
+== Setting-up alerts
+
+Within API Management, alerts can be defined at three levels:
+
+* For the <</ae/apim_platform.adoc#, platform>>
+* By <</ae/apim_api.adoc#, API>>
+* By Application (work in progress...)

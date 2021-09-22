@@ -1,0 +1,140 @@
+= Get user profile information
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_quickstart_profile_information.html
+:page-folder: am/quickstart
+:page-layout: am
+
+After you have authenticated your first users (see link:/am/current/am_quickstart_authenticate_users.html[Authenticate users with Identity provider^]) you can retrieve the user's profile information by using OpenID Connect.
+
+NOTE: OpenID Connect is an identity layer on top of the OAuth 2.0 protocol.
+It enables Clients to verify the identity of the End-User based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the End-User.
+See link:http://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect specifications^] for more information.
+
+Gravitee.io Access Management is based upon OAuth2/OpenID Connect protocols and act as an identity providers broker. It helps you obtaining and verifying the users' identity of your applications by issuing link:http://openid.net/specs/openid-connect-core-1_0.html#IDToken[ID Token^] or calling the link:http://openid.net/specs/openid-connect-core-1_0.html#UserInfo[UserInfo Endpoint^].
+
+== ID Token
+
+=== Get ID Token
+
+The ID token is a signed link:https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32[JSON Web Token (JWT)^] that contains user profile information, also known as `claims`.
+These claims are statements about the Authentication of the End-User and can be trusted only if application consumers can verify its signature.
+ID Token is self contained and supply all the necessary information about the current user without making additional HTTP requests.
+
+You can retrieve an ID Token by requesting for an access token with the specific scope `openid`
+
+. Go to your `Settings` application
+. And then go to `OAuth 2.0 / OIDC` section
+. Add `openid` scope and press `+ ADD`
+. Scroll down to the bottom of the page and click `SAVE`
+
+Request a token::
+
+[source]
+----
+curl -L -X POST 'http://GRAVITEEIO-AM-GATEWAY-HOST/:domainPath/oauth/token' \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-H 'Authorization: Basic Base64.encode(:clientId + ':' + :clientSecret)' \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'username=:username' \
+--data-urlencode 'password=:password' \
+--data-urlencode 'scope=openid'
+----
+
+[width="100%",cols="2,8",frame="topbot",options="header,footer"]
+|==========================
+|Parameter       |Description
+|grant_type      |*REQUIRED.* Set the value to `password`.
+|client_id       |*REQUIRED.* Client's ID. (Basic Auth)
+|client_secret   |*REQUIRED.* Client's secret. (Basic Auth)
+|username        |*REQUIRED.* User's name.
+|password        |*REQUIRED.* User's password.
+|scope           |*REQUIRED.* Set the value to `openid`.
+|==========================
+
+If everything goes well, you should see the following response :
+
+[source]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+{
+    "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsXQiOjE...WlseV9uYW1lIjoiYWRtaW4ifQ.P4nEWfdOCR6ViWWu_uh7bowLQfttkOjBmmkqDIY1nxRoxsSWJjJCXaDmwzvcnmk6PsfuW9ZOryJ9AyMMXjE_4cR70w4OESy01qnH-kKAE9jiLt8wj1mbObZEhFYAVcDHOZeKGBs5UweW-s-9eTjbnO7y7i6OYuugZJ3qdKIhzlp9qhzwL2cqRDDwgYFq4iVnv21L302JtO22Q7Up9PGCGc3vxmcRhyQYiKB3TFtxnxm8fPMFcuHLdMuwaYSRp3EesOBXa8UN_iIokCGyk0Cw_KPvpRq91GU8x6cMnVEFXnlYokEuP3aYWE4VYcQu0_cErr122vD6774HSnOVns_BLA",
+    "token_type": "bearer",
+    "expires_in": 7199,
+    "scope": "openid",
+    "id_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsXQiOjE...WlseV9uYW1lIjoiYWRtaW4ifQ.P4nEWfdOCR6ViWWu_uh7bowLQfttkOjBmmkqDIY1nxRoxsSWJjJCXaDmwzvcnmk6PsfuW9ZOryJ9AyMMXjE_4cR70w4OESy01qnH-kKAE9jiLt8wj1mbObZEhFYAVcDHOZeKGBs5UweW-s-9eTjbnO7y7i6OYuugZJ3qdKIhzlp9qhzwL2cqRDDwgYFq4iVnv21L302JtO22Q7Up9PGCGc3vxmcRhyQYiKB3TFtxnxm8fPMFcuHLdMuwaYSRp3EesOBXa8UN_iIokCGyk0Cw_KPvpRq91GU8x6cMnVEFXnlYokEuP3aYWE4VYcQu0_cErr122vD6774HSnOVns_BLA"
+}
+----
+
+=== Verify ID Token
+
+ID token can be decoded and verified via 3rd-party JWT library that you can find at link:https://jwt.io/[JWT.IO website^].
+
+ID token must contain at least the following link:http://openid.net/specs/openid-connect-core-1_0.html#IDToken[required claims^] :
+
+[width="100%",cols="2,8",frame="topbot",options="header,footer"]
+|==========================
+|Claim      |
+|iss        |Issuer Identifier, must be the `oidc.iss` configuration value (default http://gravitee.am)
+|sub        |Subject Identifier represented by the unique user's `username`
+|aud        |Audience(s) that this ID Token is intended for. It MUST contain your OAuth 2.0 `client_id`.
+|exp        |Expiration time on or after which the ID Token MUST NOT be accepted for processing.
+|iat        |Time at which the JWT was issued.
+|==========================
+
+Finally, make sure that the ID token was signed by Gravitee.io Access Management.
+
+. Go to the `Certificates` section of your security domain
+. Retrieve your public key by clicking on image:am/current/graviteeio-am-quickstart-profile-public-key.png[] icon
+. Use a JWT library to verify the signature.
+
+NOTE: You can also use the link:https://gravitee.io[Gravitee.io API Management solution^] and the link:/apim_policies_jwt.html[JWT Policy^] to verify and retrieve user profile information.
+
+== UserInfo Endpoint
+
+In addition to the claims in the ID Token, OpenID Connect defines a standard protected endpoint, the link:http://openid.net/specs/openid-connect-core-1_0.html#UserInfo[UserInfo Endpoint^], that returns claims about the current user by the access token.
+
+Request a token::
+
+[source,bash,subs="verbatim"]
+----
+curl -X GET http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/oidc/userinfo -H 'Authorization: Bearer :access_token'
+----
+
+If everything goes well, you should see the following response :
+
+[source]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+{
+  "sub": "14ea6291-...-916bb7056c9a",
+  "auth_time": 1587317601,
+  "name": "John Doe",
+  "preferred_username": "johndoe",
+  "given_name": "John",
+  "family_name": "Doe"
+}
+----
+
+== Custom claims
+
+Identity provider serves default claims such as the user's `username`, `given_name`, `family_name`, ... . You can add custom claims by overriding identity provider's configuration.
+
+=== Add new user information
+
+. Go to the `Providers` section of your security domain
+. Select your Identity Provider and click on `User Mappers` tab
+. Map new custom claims with user attributes contained in your user data store
+
+image::am/current/graviteeio-am-quickstart-profile-user-mappers.png[]
+
+[start=4]
+. Custom user attributes will be available in the UserInfo Endpoint response.
+
+TIP: more information about User mapping to be found in the dedicated section: link:/am/current/am_userguide_identity_provider_mapping.html[User and role mapping^].

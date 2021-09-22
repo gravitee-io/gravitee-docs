@@ -1,0 +1,272 @@
+= Management API - Configuration
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_management_api_configuration.html
+:page-folder: apim/installation-guide/management-api
+:page-description: Gravitee.io API Management - Configuration - Management API
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim1x
+
+include::partial/how-to-configure.adoc[leveloffset=+1]
+
+== HTTP Server
+
+Management API HTTP server configuration.
+
+[source,yaml]
+----
+jetty:
+  port: 8083
+  idleTimeout: 30000
+  acceptors: -1
+  selectors: -1
+  pool:
+    minThreads: 10
+    maxThreads: 200
+    idleTimeout: 60000
+    queueSize: 6000
+  jmx: false
+  statistics: false
+  accesslog:
+    enabled: true
+    path: ${gravitee.home}/logs/gravitee_accesslog_yyyy_mm_dd.log
+----
+
+=== How to enable HTTPS support
+First, you need to provide a keystore. If you don't have one, you can generate it :
+----
+keytool -genkey \
+  -alias test \
+  -keyalg RSA \
+  -keystore server-keystore.jks \
+  -keysize 2048 \
+  -validity 360 \
+  -dname CN=localhost \
+  -keypass secret \
+  -storepass secret
+----
+
+After that, you have to enable secure mode in your `gravitee.yml` :
+----
+jetty:
+  ...
+  secured: true
+  ssl:
+    keystore:
+      path: ${gravitee.home}/security/keystore.jks
+      password: secret
+    truststore:
+      path: ${gravitee.home}/security/truststore.jks
+      password: secret
+----
+
+WARNING: Truststore and keystore defined within `jetty` section are only used to secure access to the Management API. These are not
+used by any HTTP client calls for other purposes (Fetch, DCR, ...)
+
+== Plugins repository
+
+Gravitee.io Management API <<gravitee-plugins,plugins>> directory configuration.
+
+[source,yaml]
+----
+plugins:
+  path: ${gravitee.home}/plugins
+----
+
+== Management repository
+
+Management repository is used to store global configuration such as APIs, applications, apikeys, ...
+This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:
+
+http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html
+
+[source,yaml]
+----
+management:
+  type: mongodb
+  mongodb:
+    dbname: ${ds.mongodb.dbname}
+    host: ${ds.mongodb.host}
+    port: ${ds.mongodb.port}
+#    username:
+#    password:
+#    connectionsPerHost: 0
+#    connectTimeout: 500
+#    maxWaitTime: 120000
+#    socketTimeout: 500
+#    socketKeepAlive: false
+#    maxConnectionLifeTime: 0
+#    maxConnectionIdleTime: 0
+#    serverSelectionTimeout: 0
+#    description: gravitee.io
+#    heartbeatFrequency: 10000
+#    minHeartbeatFrequency: 500
+#    heartbeatConnectTimeout: 1000
+#    heartbeatSocketTimeout: 20000
+#    localThreshold: 15
+#    minConnectionsPerHost: 0
+#    sslEnabled: false
+#    threadsAllowedToBlockForConnectionMultiplier: 5
+#    cursorFinalizerEnabled: true
+
+# Management repository: single MongoDB using URI
+# For more information about MongoDB configuration using URI, please have a look to:
+# - http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html
+#management:
+#  type: mongodb
+#  mongodb:
+#    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+
+# Management repository: clustered MongoDB
+#management:
+#  type: mongodb
+#  mongodb:
+#    servers:
+#      - host: mongo1
+#        port: 27017
+#      - host: mongo2
+#        port: 27017
+#    dbname: ${ds.mongodb.dbname}
+#    connectTimeout: 500
+#    socketTimeout: 250
+----
+
+== Analytics
+
+Analytics repository is used to store all reporting, metrics, health-checks stored by gateway instances.
+
+This is the default configuration using https://www.elastic.co/products/elasticsearch[Elasticsearch].
+
+[source,yaml]
+----
+  type: elasticsearch
+  elasticsearch:
+    endpoints:
+      - http://localhost:9200
+#    index: gravitee
+#    security:
+#       username:
+#       password:
+----
+
+[[gravitee-standalone-management-authentication-configuration]]
+== Authentication
+
+See the link:/apim/1.x/apim_installguide_authentication.html[dedicated] section.
+
+== Sending emails
+
+=== SMTP
+
+SMTP configuration used to send mails.
+
+[source,yaml]
+----
+email:
+  host: smtp.my.domain
+  port: 465
+  from: noreply@my.domain
+  subject: "[Gravitee.io] %s"
+  username: user@my.domain
+  password: password
+----
+
+==== Configure the Gmail SMTP server
+
+Here is the Gmail SMTP configuration.
+
+[source,yaml]
+----
+email:
+  enabled: true
+  host: smtp.gmail.com
+  port: 587
+  from: user@gmail.com
+  subject: "[Gravitee.io] %s"
+  username: user@gmail.com
+  password: xxxxxxxx
+  properties:
+    auth: true
+    starttls.enable: true
+    ssl.trust: smtp.gmail.com
+----
+
+If you're using the 2-Factor Authentication (if not, you should), you have to generate an application password : https://security.google.com/settings/security/apppasswords .
+
+=== Email templates
+
+Email templates configuration. Gravitee.io Management API use http://freemarker.org[Freemarker template engine] to parse and create the email templates.
+
+[source,yaml]
+----
+templates:
+  path: ${gravitee.home}/templates
+----
+
+Here's the list of email templates :
+
+[width="100%",cols="20%,60%,20%",frame="topbot",options="header"]
+|======================
+|Email Template                 |Description                                    |Variables
+|groupMember.html               |New API group member notification.             |_username_, *group*, *user*
+|apiKeyExpired.html             |API Key expired notification.                  |*owner*, *api*, *plan*, *application*, apiKey, expirationDate
+|apiKeyRevoked.html             |API Key revoked notification.                  |*owner*, apiKey
+|apiMember.html                 |New API member notification.                   |_username_, *api*, *user*
+|applicationMember.html         |New application member notification.           |_username_, *application*, *user*
+|subscriptionApproved.html      |API subscription approved notification.        |*owner*, *api*, *plan*, *subscription*
+|subscriptionReceived.html      |API subscription received notification.        |*owner*, *api*, *plan*, *application*, *subscription*, subscriptionsUrl
+|subscriptionRejected.html      |API subscription rejected notification.        |*owner*, *api*, *plan*, *subscription*
+|userRegistration.html          |User registration notification.                |_username_, registrationUrl, *user*
+|supportTicket.html             |Support ticket creation.                       |*api*, *application*, *user*, content
+|======================
+
+You can access to your api data on your api's templates by doing so: ${api.name} or ${api.metadata['foo-bar']}
+
+Available attributes:
+
+[width="100%",cols="20%,20%,20%,20%,20%,20%",frame="topbot",options="header"]
+|======================
+|Api                |Application        |Group              |Plan               |Owner/User    |Subscription
+|name               |name               |name               |name               |username      |status
+|description        |description        |-                  |description        |firstname     |request
+|version            |type               |-                  |order              |lastname      |reason
+|role               |status             |-                  |publishedAt (Date) |displayName   |processedAt
+|metadata (Map)     |role               |-                  |closedAt (Date)    |email         |startingAt
+|deployedAt (Date)  |-                  |-                  |-                  |-             |endingAt
+|createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |createdAt (Date)   |-             |closedAt
+|updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |updatedAt (Date)   |-             |subscribedAt
+|======================
+
+Here's an example of template:
+[source,html]
+----
+<html>
+	<body style="text-align: center;">
+		<header>
+			<#include "header.html" />
+		</header>
+		<div style="margin-top: 50px; color: #424e5a;">
+			<h3>Hi ${owner.username},</h3>
+			<p>The API Key <code>${apiKey}</code> has been expired.
+		</p>
+	</body>
+</html>
+
+----
+
+== User options
+
+You have different options to customize :
+
+user.login.defaultApplication:: boolean (default: true) - Create a new application for every new users.
+user.creation.token.expire-after:: number (default: 86400) - Number of seconds before the user registration token expired.
+user.reference.secret:: 32 characters (default: s3cR3t4grAv1t33.1Ous3D4R3f3r3nc3) - CHANGE IT! secret used to generate a unique anonymous reference to a user.
+user.anonymize-on-delete:enabled:: boolean (default: false) - If true, the users firstname, lastname and email are anonymized when a user is deleted.
+
+== Default configuration
+
+Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.yml` file. This section provides the general configuration of Gravitee.IO Management API.
+
+[source,yaml]
+----
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/1.30.x/gravitee-management-api-standalone/gravitee-management-api-standalone-distribution/src/main/resources/config/gravitee.yml[]
+----

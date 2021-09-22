@@ -1,0 +1,63 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+  - title: Sidebar
+    folders:
+      - title: APIM Quick Start Guide
+        output: web
+        folderitems:
+          - title: Introduction
+            output: web
+            url: /guides/apim/3.x/apim_quickstart_publish.html
+            subfolders:
+              - title: Get Started
+                output: web
+                subfolderitems:
+                  - title: Log in to APIM Console
+                    output: web
+                    url: /guides/apim/current/apim_quickstart_console_login.html
+                  - title: Log in to APIM Portal
+                    output: web
+                    url: /apim/3.x/apim_quickstart_portal_login.html
+              - title: Publish Your First API
+                output: web
+                subfolderitems:
+                  - title: Using APIM Console
+                    output: web
+                    url: /apim/3.x/apim_quickstart_publish_ui.html
+                  - title: Using APIM API
+                    output: web
+                    url: /apim/3.x/apim_quickstart_publish_api.html
+              - title: Consume an API
+                output: web
+                subfolderitems:
+                  - title: Using APIM Portal
+                    output: web
+                    url: /apim/3.x/apim_quickstart_consume_ui.html
+                  - title: Using APIM API
+                    output: web
+                    url: /apim/3.x/apim_quickstart_consume_api.html
+                  - title: Test the API
+                    output: web
+                    url: /apim/3.x/apim_quickstart_consume_test.html
+      - title: AM Quick Start Guide
+        output: web
+        folderitems:
+          - title: Log in to AM Console
+            output: web
+            url: /am/current/am_userguide_authentication.html
+          - title: Set up your first application
+            output: web
+            url: /am/current/am_quickstart_app_setup.html
+          - title: Get user profile information
+            output: web
+            url: /am/current/am_quickstart_profile_information.html
+          - title: Secure your APIs
+            output: web
+            url: /am/current/am_quickstart_secure_apis.html
+          - title: Configure a flow
+            output: web
+            url: /am/current/am_quickstart_use_policies.html
+          - title: Add custom claims to tokens
+            output: web
+            url: /am/current/am_quickstart_tokens_custom_claims.html

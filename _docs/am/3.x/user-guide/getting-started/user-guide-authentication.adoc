@@ -1,0 +1,20 @@
+= Sign in to the Management UI
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_authentication.html
+:page-folder: am/user-guide
+:page-layout: am
+
+After you have installed and configured Gravitee.io Access Management via the link:/am/current/am_installguide_introduction.html[Installation Guide] a default `admin` account have been created.
+This account will allow you to do all the management tasks provided by Gravitee.io AM such as create applications, identity providers, register users and more.
+
+By default, account to authenticate into the management UI is `admin /adminadmin`
+
+NOTE: You can change this default account by going to `Global Settings` (from the user menu), then `Settings` section and `Providers` page.
+The default account is set via the `Inline users` identity provider.
+
+. Go to http://GRAVITEEIO-AM-UI-HOST and log in to Gravitee.io Access Management
+
+image::am/current/graviteeio-am-userguide-login-page.png[]
+
+[start=2]
+. You will be redirected to the Portal homepage

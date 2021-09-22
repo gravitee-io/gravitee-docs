@@ -1,0 +1,143 @@
+[[gravitee-devguide-bootstrap]]
+= Bootstrap your dev environment
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_devguide_bootstrap.html
+:page-folder: apim/dev-guide
+:page-layout: apim3x
+:page-liquid:
+
+You want to setup your environment to be able to start contributing to Gravitee, here is what you need to do
+
+== Prerequisites
+
+You will need the following tools on your computer:
+
+* Java (JDK >= 11)
+* Maven
+* Docker
+* NPM (preferably NVM)
+
+== Download Gravitee image
+
+Download the latest gravitee full distribution available: https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip
+Unzip it into the directory of your choice. We will need them later on to copy plugins into our local repository.
+
+== Projects to clone
+
+Clone the following repositories in your workspace
+
+* https://github.com/gravitee-io/gravitee-gateway
+* https://github.com/gravitee-io/gravitee-management-rest-api
+* https://github.com/gravitee-io/gravitee-management-webui
+
+If you are using IntelliJ, create a new project, and add those 3 repositories as Maven modules (File -> New -> Module from existing sources -> Import module from external model -> Maven)
+
+== Prepare for launch
+
+We will run the gateway as standalone thanks to a Run configuration in IntelliJ.
+
+To be able to do so, we need to copy all the plugins available in the current distribution we downloaded earlier in the resources directory of the standalone project.
+
+For instance if your download is in `Downloads` folder, and your project in `~/dev/gravitee-gateway`, run
+```
+cp ~/Downloads/graviteeio-full-{{ site.products.apim._3x.version }}/graviteeio-gateway-{{ site.products.apim._3x.version }}/plugins/* ~/dev/gravitee-gateway/gravitee-gateway-standalone/gravitee-gateway-standalone-distribution/src/main/resources/plugins
+```
+
+Do the same for gravitee-management-rest-api
+```
+cp ../graviteeio-full-{{ site.products.apim._3x.version }}/graviteeio-full-{{ site.products.apim._3x.version }}/graviteeio-rest-api-{{ site.products.apim._3x.version }}/plugins/* ./gravitee-management-rest-api/gravitee-rest-api-standalone/gravitee-rest-api-standalone-distribution/src/main/resources/plugins
+```
+
+=== Run prerequisites
+
+Before starting the gateway, you will need to start mongo and ElasticSearch.
+
+* Mongo
+
+```
+docker run -p 27017:27017 --name local-mongo -d mongo:3
+```
+
+* Elastic
+
+```
+docker run -d --name local-es7 -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+```
+
+=== Run configuration
+
+==== Gateway
+
+Create a new Run configuration in IntelliJ: click on Run -> Edit configurations -> ✚ -> Application
+
+Give it the name you want.
+
+Choose "Use classpath of module": gravitee-gateway-standalone-container.
+
+Then select "Main class": "io.gravitee.gateway.standalone.GatewayContainer"
+
+In the VM options, add the following (change the path to point to your project)
+```
+-Dgravitee.home=/home/user/dev/gravitee-gateway/gravitee-gateway-standalone/gravitee-gateway-standalone-distribution/src/main/resources
+```
+
+
+==== Management Rest API
+
+Create a new Run configuration in IntelliJ: click on Run -> Edit configurations -> ✚ -> Application
+
+Give it the name you want.
+
+Choose "Use classpath of module": gravitee-rest-api-standalone-container.
+
+Then select "Main class": "io.gravitee.rest.api.standalone.GraviteeApisContainer"
+
+In the VM options, add the following (change the path to point to your project)
+```
+-Dgravitee.home=/home/user/dev/gravitee-management-rest-api/gravitee-rest-api-standalone/gravitee-rest-api-standalone-distribution/src/main/resources
+```
+
+
+==== Management Web UI
+
+===== CLI Version
+
+Run `npm install` from 'gravitee-management-webui' directory.
+
+Then run 'npm run serve' to start the UI.
+
+===== IntelliJ Configuration
+
+Create a new Run configuration in IntelliJ: click on Run -> Edit configurations -> ✚ -> npm
+
+Give it the name you want.
+
+Choose "package.json": #path_to_project_folder#/gravitee-management-webui/package.json
+
+Then select "Command": "run".
+
+Then, "Script": "serve".
+
+To `npm install`, you can duplicate this configuration and choose "Command": "Install".
+
+==== Portal Web UI
+
+===== CLI Version
+
+Run `npm install` from 'gravitee-portal-webui' directory.
+
+Then run 'npm run serve' to start the UI.
+
+===== IntelliJ Configuration
+
+Create a new Run configuration in IntelliJ: click on Run -> Edit configurations -> ✚ -> npm
+
+Give it the name you want.
+
+Choose "package.json": #path_to_project_folder#/gravitee-portal-webui/package.json
+
+Then select "Command": "run".
+
+Then, "Script": "serve".
+
+To `npm install`, you can duplicate this configuration and choose "Command": "Install".

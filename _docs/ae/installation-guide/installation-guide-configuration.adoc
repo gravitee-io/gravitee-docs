@@ -1,0 +1,133 @@
+= Configuration
+:page-sidebar: ae_sidebar
+:page-permalink: ae/installguide_configuration.html
+:page-folder: ae/installation-guide
+:page-description: Gravitee Alert Engine - Configuration
+:page-toc: false
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+= How to configure
+
+There are three different ways to configure this component:
+
+ - `gravitee.yml`
+ - System Properties
+ - Environment variables
+
+In terms of prevalence, environment variables override system properties which are themselves overriding `gravitee.yml` file.
+
+== gravitee.yml
+
+This is the default way to configure Gravitee.io
+
+WARNING: Yaml (yml) format is very sensitive with indentation. Be careful, and use spaces instead of tabs.
+
+```yaml
+############################################################################################################
+################################## Gravitee.io Alert Engine - Configuration ################################
+############################################################################################################
+
+############################################################################################################
+# This file is the general configuration of Gravitee.io Alert Engine:
+# - Properties (and respective default values) in comment are provided for information.
+# - You can reference other property by using ${property.name} syntax
+# - gravitee.home property is automatically set-up by launcher and refers to the installation path. Do not override it !
+#
+############################################################################################################
+
+# Ingesters
+ingesters:
+  ws:
+#    instances: 0
+#    port: 8072
+#    host: 0.0.0.0
+#    secured: false
+#    alpn: false
+#    ssl:
+#      clientAuth: false
+#      keystore:
+#        path: ${gravitee.home}/security/keystore.jks
+#        password: secret
+#      truststore:
+#        path: ${gravitee.home}/security/truststore.jks
+#        password: secret
+    authentication: # authentication type to be used for HTTP authentication
+      type: basic # none to disable authentication / basic for basic authentication
+      users:
+        admin: adminadmin
+
+# Alert service configurations. Provided values are default values.
+# All services are enabled by default. To stop one of them, you have to add the property 'enabled: false'.
+services:
+  core:
+    http:
+      enabled: true
+      port: 18072
+      host: localhost
+      authentication:
+        # authentication type to be used for the core services
+        # - none : to disable authentication
+        # - basic : to use basic authentication
+        # default is "basic"
+        type: basic
+        users:
+          admin: adminadmin
+  metrics:
+    enabled: false
+    prometheus:
+      enabled: true
+
+cluster:
+  hazelcast:
+    config:
+      path: ${gravitee.home}/config/hazelcast.xml
+```
+
+== System Properties
+
+You can override the default configuration (`gravitee.yml`) to configure Gravitee.io by defining system properties.
+
+If you want to override this property:
+
+[source,yaml]
+----
+management:
+  mongodb:
+    dbname: myDatabase
+----
+
+You have to add this property to the JVM:
+
+----
+-Dmanagement.mongodb.dbname=myDatabase
+----
+
+
+== Environment Variables
+
+You can override the default configuration (`gravitee.yml`) and system properties by defining environment variables.
+
+If you want to override this property:
+
+[source,yaml]
+----
+management:
+  mongodb:
+    dbname: myDatabase
+----
+
+You have to define one of the following variables:
+
+----
+GRAVITEE_MANAGEMENT_MONGODB_DBNAME=myDatabase
+GRAVITEE.MANAGEMENT.MONGODB.DBNAME=myDatabase
+gravitee_management_mongodb_dbname=myDatabase
+gravitee.management.mongodb.dbname=myDatabase
+----
+
+WARNING: Some properties are case-sensitive and can not be defined upper-case (for example:
+`gravitee_security_providers_0_tokenIntrospectionEndpoint`. We advise you to define environment variables in lower-case
+and use the correct syntax for each property.
+
+TIP: In some systems, hyphens are forbidden in the variable name. You can remove them like `gravitee_policy_apikey_header` instead of `gravitee_policy_api-key_header`

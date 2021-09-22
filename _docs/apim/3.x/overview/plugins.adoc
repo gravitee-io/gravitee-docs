@@ -1,0 +1,99 @@
+= Plugins
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_overview_plugins.html
+:page-folder: apim/overview
+:page-layout: apim3x
+
+== Overview
+
+Plugins are additional components that can be _plugged into_ <<apim_overview_components.adoc#gravitee-components-gateway, API Gateway>> or <<apim_overview_components.adoc#gravitee-components-rest-api, APIM API>>.
+They can customize the component's behavior to exactly fit your needs and technical constraints.
+
+For more information about plugins, including how to deploy them and details of their directory structure, see the link:/apim/3.x/apim_devguide_plugins.html[Plugins Developer Guide].
+
+== Types of plugins
+
+The table below lists the different types of plugins you can use with APIM, with the component(s) they can be plugged into and some examples. For more details of what each plugin type does, see the sections below.
+
+[width="100%",cols="20,20,50",options="header"]
+|===
+|Type|Component|Examples
+| <<gravitee-plugins-idp, Identity Providers>>|APIM API|LDAP, Oauth2, InMemory
+| <<gravitee-plugins-fetchers, Fetchers>>|APIM API|HTTP, GIT
+| <<gravitee-plugins-policies, Policies>>|APIM API +
+APIM Gateway
+                                         |API Key, Rate-limiting, Cache
+| <<gravitee-plugins-reporters, Reporters>>|APIM Gateway|Elasticsearch, Accesslog
+| <<gravitee-plugins-repositories, Repositories>>|APIM API +
+APIM Gateway
+                                                 |MongoDB, Redis, Elasticsearch
+| <<gravitee-plugins-resources, Resources>>|APIM API +
+APIM Gateway
+                                           |Oauth2, Cache, LDAP
+| <<gravitee-plugins-services, Services>>|APIM API +
+APIM Gateway
+                                         |Sync, local-registry, health-check, monitor
+| <<gravitee-plugins-notifiers, Notifiers>>|Alert Engine|Email
+| <<gravitee-plugins-alerts, Alerts>>|APIM API +
+APIM Gateway
+                                     |Vertx
+|===
+
+[[gravitee-plugins-idp]]
+=== Identity Providers
+
+[[gravitee-plugins-fetchers]]
+=== Fetchers
+
+[[gravitee-plugins-policies]]
+=== Policies
+A *policy* modifies the behavior of the request or response handled by APIM Gateway. It can be chained by a request policy chain or a response policy chain using a logical order.
+Policies can be considered like a _proxy controller_, guaranteeing that a given business rule is fulfilled during request/response processing.
+
+Examples of a policy are:
+
+* Authorization using an API key (see the link:/apim/3.x/apim_policies_apikey.html[api-key policy])
+* Applying header or query parameter transformations
+* Applying rate limiting or quotas to avoid API flooding
+
+NOTE: Want to know how to create, use and deploy a custom policy? Check out the link:/apim/3.x/apim_devguide_policies.html[Policies Developer Guide].
+
+[[gravitee-plugins-reporters]]
+=== Reporters
+
+A *reporter* is used by an APIM Gateway instance to report many types of event:
+
+* Request/response metrics -- for example, response-time, content-length, api-key
+* Monitoring metrics -- for example, CPU, Heap usage
+* Health-check metrics -- for example, status, response code
+
+_Out of the box_ reporters are :
+
+* Elasticsearch Reporter
+* File Reporter
+
+NOTE: As with all plugins, you can create, use and deploy custom reporters as described in the
+link:/apim/3.x/apim_devguide_plugins.html[Plugins Developer Guide].
+
+[[gravitee-plugins-repositories]]
+=== Repositories
+A *repository* is a pluggable storage component for API configuration, policy configuration, analytics and so on.
+You can find more information in the link:/apim/3.x/apim_installguide_repositories.html[Installation Guide Repositories] section.
+
+[[gravitee-plugins-resources]]
+=== Resources
+
+[[gravitee-plugins-services]]
+=== Services
+
+[[gravitee-plugins-notifiers]]
+=== Notifiers
+
+A *notifier* is used to send notifications.
+Currently, the only notifier available is the *email notifier*, but others including *slack* and *portal* are planned soon.
+
+[[gravitee-plugins-alerts]]
+=== Alerts
+
+An *alert* is used to send triggers or events to the Alert Engine which can be processed to send a notification using the configured plugin notifier.
+Configuring the notifier is the responsibility of the trigger.

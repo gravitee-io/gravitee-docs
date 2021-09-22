@@ -1,0 +1,123 @@
+= Endpoint Health-check notification
+:page-sidebar: ae_sidebar
+:page-permalink: ae/apim_notification_endpoint_healthcheck.html
+:page-folder: ae/apim
+:page-description: Gravitee Alert Engine - API Management - Message Properties ENDPOINT_HEALTHCHECK
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+Here is the list of properties available in every alerts triggered by an `ENDPOINT_HEALTHCHECK` event.
+
+== Properties
+
+The notification's properties are values which have been send or computed while processing event by the engine.
+The value of those properties are simple, ie. you can't retrieve more information about some particular object like the `api`,
+the `application`, ... (for that purpose look at the <<Data, data>> section).
+
+[cols="1,3,3"]
+|===
+|Key |Description |Syntax
+
+|`node.hostname`
+|The node hostname which has thrown the Alert.
+|${notification.properties['node.hostname']}
+
+|`node.application`
+|The node application (`gio-apim-gateway`, `gio-apim-management`, `gio-am-gateway`, `gio-am-management`) which has thrown the Alert.
+|${notification.properties['node.application']}
+
+|`node.id`
+|The uuid of the node which has thrown the Alert.
+|${notification.properties['node.id']}
+
+|`response_time`
+|The endpoint response time in ms.
+|${notification.properties['response_time']}
+
+|`tenant`
+|The tenant (if exists) of the node.
+|${notification.properties['tenant']}
+
+|`api`
+|The API Id of the healthcheck.
+|${notification.properties['api']}
+
+|`endpoint.name`
+|The endpoint name.
+|${notification.properties['endpoint.name']}
+
+|`status.old`
+|Values: `UP`, `DOWN`, `TRANSITIONALLY_UP`, `TRANSITIONALLY_DOWN`.
+|${notification.properties['status.old']}
+
+|`status.new`
+|Values: `UP`, `DOWN`, `TRANSITIONALLY_UP`, `TRANSITIONALLY_DOWN`.
+|${notification.properties['status.new']}
+
+|`success`
+|Values: `true` or `false`.
+|${notification.properties['success']}
+
+|`message`
+|If `success` is `false`, contains the error message.
+|${notification.properties['message']}
+
+|===
+
+
+== Data
+
+The data (or `resolved data`) are specific objects which have been resolved from the notification's properties.
+For example, in the case of the `ENDPOINT_HEALTHCHECK` event, the engine is looking to resolve the `api` to provide
+more contextualized information to define your message templates.
+
+=== API
+
+For the `api`, you can access the following data:
+
+[cols="1,3,3"]
+|===
+|Key |Description |Syntax
+
+|`id`
+|The API's identifier
+|${api.id}
+
+|`name`
+|The API's name
+|${api.name}
+
+|`version`
+|The API's version
+|${api.version}
+
+|`description`
+|The API's description
+|${api.description}
+
+|`primaryOwner.email`
+|The API's description
+|${api.primaryOwner.email}
+
+|`primaryOwner.displayName`
+|The API's primary owner's display name
+|${api.primaryOwner.displayName}
+
+|`tags`
+|The API's sharding tags
+|${api.tags}
+
+|`labels`
+|The API's labels
+|${api.labels}
+
+|`views`
+|The API's views
+|${api.views}
+
+|`metadata`
+|The API's metadata
+|${api.metadata['metadata_name']}
+
+|===

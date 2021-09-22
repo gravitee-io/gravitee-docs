@@ -1,0 +1,146 @@
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_hybrid_deployment.html
+:page-folder: apim/installation-guide
+:page-description: Gravitee.io API Management - Hybrid deployment
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim1x
+
+[[gravitee-installation-hybrid-deployment]]
+= Hybrid deployment
+
+== Introduction
+When you're running on an hybrid architecture (ie. a mix between on-premise and cloud deployment), there are some constraints
+(which can be just technical constraints or costs constraints) that prevent you to deploy all the components required by
+Gravitee.io APIM in each data center.
+
+To answer this problem, Gravitee.io APIM is providing hybrid components (in the form of plugins) to think about a new way to define
+your architecture and your deployment vision.
+
+That's what we are calling "Hybrid mode" or "Hybrid deployment".
+
+
+== Architecture
+
+Here it is a typical Gravitee.io hybrid architecture:
+
+.Deployment architecture
+image::apim/1.x/installation/hybrid/hybrid_deployment_architecture.png[Deployment architecture]
+
+== Configuration
+
+To make Gravitee.io API Gateway work in this architecture, you will need two components:
+
+* The first one is a kind of "Technical API Gateway" (green instances on the schema) which is exposing new HTTP services used to bridge HTTP calls to the
+ underlying repository (which can be any of our supported repositories such as MongoDB, JDBC and so on...)
+
+* The second components is a classical API Gateway (red instances on the schema)  where we just have to switch the default repository plugin for a new
+HTTP bridge repository plugin.
+
+
+Thanks to these two components, classical API Gateway will be able to "communicate" with the technical API Gateway
+through a secured HTTP/S channel. This way, no more datastore installation is required from your cloud DC.
+
+
+NOTE: What we are calling a technical API Gateway is, in fact, a classical API Gateway which have been improved thanks to
+a new plugin.
+
+=== API Gateway - HTTP bridge (server)
+
+==== Installation
+
+To expose the new HTTP API, you have to install a new plugin inside the `plugins` directory of the API Gateway.
+This plugin can be found at https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/
+
+[source,bash]
+----
+$ wget -O ${GRAVITEEIO_HOME}/plugins https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/gravitee-repository-gateway-bridge-http-server-${PLUGIN_VERSION}.zip
+----
+
+[NOTE]
+====
+You have to remove some of the existing plugins available by default in the API gateway: the sync service,
+all the cache services, the policies and the resources.
+
+For example, in Gravitee.io APIM 1.18.0, the `plugins` directory contains the following files :
+```
+gravitee-gateway-services-localregistry-1.18.0.zip
+gravitee-gateway-services-ratelimit-1.2.0.zip
+gravitee-gateway-services-monitoring-1.18.0.zip
+gravitee-gateway-services-node-healthcheck-1.18.0.zip
+gravitee-reporter-elasticsearch-1.18.0.zip
+gravitee-reporter-file-1.3.0.zip
+gravitee-repository-ehcache-1.0.0.zip
+gravitee-repository-gateway-bridge-http-server-1.0.0.zip
+gravitee-repository-mongodb-1.18.0.zip
+```
+====
+
+==== Configuration
+
+Then, you have to configure the new plugin in the `gravitee.yml` configuration file.
+
+[source,yaml]
+----
+services:
+  bridge:
+    http:
+      enabled: true
+      port: 18092
+      host: localhost
+      authentication:
+        # authentication type to be used for the core services
+        # - none : to disable authentication
+        # - basic : to use basic authentication
+        # default is "basic"
+        type: basic
+        users:
+          admin: adminadmin
+----
+
+==== Validation
+
+You can test that your API Gateway node is running by sending an HTTP request to port `8082` on `localhost`:
+
+[source,bash]
+----
+$ curl -X GET http://localhost:18092/_bridge/apis
+----
+
+which should give you a response containing an empty array or a list of APIs.
+
+=== API Gateway - HTTP repository (client)
+
+==== Installation
+
+To consume the HTTP bridge, you will need to replace default repository plugin (most probably MongoDB repository) with
+a new HTTP repository inside the `plugins` directory of the API Gateway.
+This plugin can be found at https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/
+
+[source,bash]
+----
+$ wget -O ${GRAVITEEIO_HOME}/plugins https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-repository-gateway-bridge-http/gravitee-repository-gateway-bridge-http-client-${PLUGIN_VERSION}.zip
+----
+
+==== Configuration
+
+Then, you have to configure the new plugin in the `gravitee.yml` configuration file.
+
+[source,yaml]
+----
+management:
+  type: http
+  http:
+    url: http://localhost:18092/
+    keepAlive: true
+    idleTimeout: 30000
+    connectTimeout: 10000
+    authentication:
+      basic:
+        username: admin
+        password: adminadmin
+----
+
+== Runtime
+
+Now that the API Gateway are installed and well-configured, you are ready to start them.
+Finally, your consumers are able to call the API Gateway with the HTTP repository as usual.

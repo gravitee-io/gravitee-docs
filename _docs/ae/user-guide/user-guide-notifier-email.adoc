@@ -1,0 +1,25 @@
+= Notifier Email
+:page-sidebar: ae_sidebar
+:page-permalink: ae/userguide_notifier_email.html
+:page-folder: ae/user-guide
+:page-description: Gravitee Alert Engine - User Guide - Notifier - Email
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+== Description
+
+Configure your SMTP server and the message to send.
+
+image::ae/notifiers/cfg-email.png[Configure your Email notification]
+
+
+== Example
+
+[source,html]
+----
+The alert [<b>${alert.name}</b>] has been thrown with the following message:
+<p>
+${notification.message}
+</p>
+----

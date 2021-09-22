@@ -1,0 +1,24 @@
+[[gravitee-installation-repositories-redis]]
+= Redis
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installguide_repositories_redis.html
+:page-folder: apim/installation-guide/repositories
+:page-description: Gravitee.io API Management - Repositories - Redis
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim3x
+
+[source,yaml]
+----
+# ===================================================================
+# MINIMUM REDIS REPOSITORY PROPERTIES
+#
+# This is a minimal sample file declared connection to Redis
+# ===================================================================
+management:
+  type: redis               # repository type
+  redis:                    # redis repository
+    host:                   # redis host (default localhost)
+    port:                   # redis port (default 6379)
+    password:               # redis password (default null)
+    timeout:                # redis timeout (default -1)
+----

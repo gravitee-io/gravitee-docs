@@ -1,9 +1,0 @@
-= Audit trail
-:page-sidebar: am_3_x_sidebar
-:page-permalink: am/current/am_userguide_logs.html
-:page-folder: am/user-guide
-:page-layout: am
-
-AM includes an audit trail feature to record the set of events taking place when users interact with AM.
-
-Login and logout, user management and other administrative operations are stored in a database or remote system (via plugins) and can be reviewed with AM Console or AM API.

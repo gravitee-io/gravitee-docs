@@ -1,0 +1,27 @@
+= User consent and third-party applications
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_user_management_consent.html
+:page-folder: am/user-guide
+:page-layout: am
+
+== User consent
+
+As per as link:https://tools.ietf.org/html/rfc6819#section-5.1.3[RFC 6819], the user should always be in control of the authorization
+processes and get the necessary information to make informed decisions.
+
+If you want users to acknowledge and accept that they are giving an app access to their data, you can configure Gravitee.io AM to display a consent dialog page during the OAuth 2.0/OIDC authentication flow.
+
+NOTE: Look and feel of the User consent dialog form can be overridden. See link:/am/current/am_userguide_user_management_forms.html[Custom forms] for more information.
+
+== Revoke user consent
+
+For each user, you can see all the applications he has provided consent.
+To revoke access to an application :
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page and go to `Users` section
+. Select the user and go to the `Authorized Apps` tab and revoke the appropriate application.
+
+image::am/current/graviteeio-am-userguide-um-consent.png[]
+
+NOTE: Revoking consent can also be done via the link:/am/current/management-api/index.html#tag/user[AM Management API] and the link:/am/current/users/index.html#tag/Users[Authorization Gateway Server].

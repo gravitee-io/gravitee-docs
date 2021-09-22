@@ -1,0 +1,75 @@
+<section class="topics-area bg-color3">
+   <div class="topics-wrapper section-spacing pt-0 bminus-30">
+      <div class="container">
+         <div class="section-title">
+            <h2 class="heading-2">Browse Our Products</h2>
+         </div>
+
+         <div class="row">
+                 <div class="col-md-6">
+
+                     <article class="faq-service bg-color1">
+                         <header class="faq-logo wow bounceIn" data-wow-duration="1s">
+                           <h4 class="heading-4 text-capitalize">API Management</h4>  </h4>
+                         </header>
+                        <footer class="faq-content">
+                         <ul class="topics-list list-inline">
+                            {% for product in site.data.APIM_products %}
+                              <li><a href="{{ product.url }}">{{ product.name }} </a></li>
+                            {% endfor %}
+                         </ul>
+                         </footer>
+                     </article>
+                  </div>
+                  <div class="col-md-6">
+
+                     <article class="faq-service bg-color1">
+                         <header class="faq-logo wow bounceIn" data-wow-duration="1s">
+                           <h4 class="heading-4 text-capitalize">Access Management</h4>  </h4>
+                         </header>
+                         <footer class="faq-content">
+                         <ul class="topics-list list-inline">
+                            {% for product in site.data.AM_products %}
+                              <li><a href="{{ product.url }}">{{ product.name }} </a></li>
+                            {% endfor %}
+                         </ul>
+                         </footer>
+                     </article>
+                    </div>
+                    <div class="col-md-6">
+
+                     <article class="faq-service bg-color1">
+                         <header class="faq-logo wow bounceIn" data-wow-duration="1s">
+                           <h4 class="heading-4 text-capitalize">Cockpit</h4>  </h4>
+                         </header>
+                         <footer class="faq-content">
+                         <ul class="topics-list list-inline">
+                            {% for product in site.data.Cockpit_products %}
+                              <li><a href="{{ product.url }}">{{ product.name }} </a></li>
+                            {% endfor %}
+                         </ul>
+                         </footer>
+                     </article>
+                     </div>
+
+                     <div class="col-md-6">
+
+
+                     <article class="faq-service bg-color1">
+                         <header class="faq-logo wow bounceIn" data-wow-duration="1s">
+                           <h4 class="heading-4 text-capitalize">Alert Engine</h4>  </h4>
+                         </header>
+                         <footer class="faq-content">
+                         <ul class="topics-list list-inline">
+                            {% for product in site.data.AE_products %}
+                              <li><a href="{{ product.url }}">{{ product.name }} </a></li>
+                            {% endfor %}
+                         </ul>
+                         </footer>
+                     </article>
+                     </div>
+
+               </div>
+           </div>
+       </div>
+     </section>

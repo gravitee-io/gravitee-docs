@@ -1,0 +1,42 @@
+= Platform
+:page-sidebar: ae_sidebar
+:page-permalink: ae/apim_platform.html
+:page-folder: ae/apim
+:page-description: Gravitee Alert Engine - API Management - Platform
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+:page-liquid:
+
+This section is explaining how to define alerts for the API Management Platform.
+
+== Overview
+
+.API Management - Platform Alerts
+image::ae/apim/platform_alerts.png[Platform alerts]
+
+== Rules
+
+Platform alerts can be define for being alerted under certain conditions for the runtime nodes (API Gateway / Management API)
+
+These conditions are mainly referring to the node status and all the information from it.
+
+== Metrics
+
+== Examples
+
+=== API Gateway CPU > 60%
+Here is an example to be notified when the CPU of an API Gateway is reaching a 60% threshold:
+
+.API Management - API Gateway CPU > 60%
+image::ae/apim/api_gateway_alert_threshold_60.png[API Gateway CPU > 60%]
+
+=== API Gateway is stopped
+
+To be alerted when an API Gateway is stopped:
+
+.API Management - API Gateway stopped
+image::ae/apim/api_gateway_alert_lifecycle_stopped.png[API Gateway stopped]
+
+== Notifications
+Please see how to configure your notifications link:/ae/userguide_notifiers.html[here].

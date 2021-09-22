@@ -1,0 +1,69 @@
+= Install Access Gateway on Amazon Linux
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_amazon_gateway.html
+:page-folder: am/installation-guide/amazon
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Installation Guide - Amazon - Access Gateway
+:page-keywords: Gravitee.io, API Platform, Access Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+:gravitee-component-name: Access Gateway
+:gravitee-package-name: graviteeio-am-gateway-3x
+:gravitee-service-name: graviteeio-am-gateway
+
+== Installing Gravitee.io {gravitee-component-name} package
+
+IMPORTANT: We assume that you have configured your package management system by following link:/am/current/am_installguide_amazon_introduction.html[this documentation].
+
+To install the latest stable version of Gravitee.io {gravitee-component-name}, issue the following command:
+
+[source,bash,subs="attributes"]
+----
+sudo yum install -y {gravitee-package-name}
+----
+
+== Running Gravitee.io {gravitee-component-name}
+
+Follow these steps to run Gravitee.io {gravitee-component-name}. These instructions assume that you are using the default settings.
+
+To configure Gravitee.io {gravitee-component-name} to start automatically when the system boots up, run the following commands:
+
+[source,bash,subs="attributes"]
+----
+sudo systemctl daemon-reload
+sudo systemctl enable {gravitee-service-name}
+----
+
+Gravitee.io {gravitee-component-name} can be started and stopped as follows:
+
+[source,bash,subs="attributes"]
+----
+sudo systemctl start {gravitee-service-name}
+sudo systemctl stop {gravitee-service-name}
+----
+
+These commands provide no feedback as to whether Gravitee.io {gravitee-component-name} was started successfully or not.
+Instead, this information will be written in the log files located in `/opt/graviteeio/am/gateway/logs/`.
+
+When `systemd` logging is enabled, the logging information are available using the `journalctl` commands:
+
+To tail the journal:
+
+[source,bash,subs="attributes"]
+----
+sudo journalctl -f
+----
+
+To list journal entries for the Gravitee.io {gravitee-component-name} service:
+
+[source,bash,subs="attributes"]
+----
+sudo journalctl --unit {gravitee-service-name}
+----
+
+To list journal entries for the Gravitee.io {gravitee-component-name} service starting from a given time:
+
+[source,bash,subs="attributes"]
+----
+sudo journalctl --unit {gravitee-service-name} --since  "2020-01-30 12:13:14"
+----

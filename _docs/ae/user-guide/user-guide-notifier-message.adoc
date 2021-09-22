@@ -1,0 +1,86 @@
+= Notification Message
+:page-sidebar: ae_sidebar
+:page-permalink: ae/userguide_notifier_message.html
+:page-folder: ae/user-guide
+:page-description: Gravitee Alert Engine - User Guide - Notifier - Message
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+When an alert trigger a notification the Alert Engine provide you different properties to build the most informative notification possible.
+Those properties are accessible through the Freemarker language (with the notation `${my.property}`).
+
+== Common properties
+Those properties are available regardless the type of Alert.
+[cols="1,3"]
+|===
+|Key |Description
+
+|`alert.id`
+|The uuid of the Alert.
+
+|`alert.name`
+|The name of the Alert.
+
+|`alert.severity`
+|The severity of the Alert. Values: `info`, `warning`, `critical`.
+
+|`alert.source`
+|The source of the Alert. Values: `NODE_HEARTBEAT`, `NODE_HEALTHCHECK`, `ENDPOINT_HEALTH_CHECK`, `REQUEST`.
+
+|`alert.description`
+|The description of the Alert.
+
+|`notification.timestamp`
+|The timestamp (long value) of the trigger.
+
+|`notification.message`
+|A human readable message in relation to the Alert condition.
+
+|`notification.result.value`
+|When defining an aggregation-based condition (rate, aggregation, ...), you can retrieve the computed value using this property.
+
+|`notification.result.threshold`
+|When defining an aggregation-based condition (rate, aggregation, ...), you can retrieve the defined threshold value using this property.
+
+|===
+
+== Specific properties
+
+Depending on the kind of rules you have configured, you will have access to more properties.
+Those properties are depending on the type of event that being processed by the Alert Engine.
+
+To access one of those property, you have to use the following syntax: `${notification.properties['property_name\']}`.
+
+[cols="1,1,5"]
+|===
+|Scope |Category |Rules
+
+|Platform
+|Node
+a|
+* link:/ae/userguide_properties_node_lifecycle.html[Alert when the lifecycle status of a node has changed]
+* link:/ae/userguide_properties_node_heartbeat.html[Alert when a metric of the node validates a condition]
+* link:/ae/userguide_properties_node_heartbeat.html[Alert when the aggregated value of a node metric rises a threshold]
+* link:/ae/userguide_properties_node_heartbeat.html[Alert when the rate of a given condition rises a threshold]
+* link:/ae/userguide_properties_node_healthcheck.html[Alert on the health status of the node]
+
+|Platform
+|API Metrics
+a|
+* link:/ae/apim_notification_request.html[Alert when a metric of the request validates a condition]
+* link:/ae/apim_notification_request.html[Alert when the aggregated value of a request metric rises a threshold]
+* link:/ae/apim_notification_request.html[Alert when the rate of a given condition rises a threshold]
+
+|API
+|API Metrics
+a|
+* link:/ae/apim_notification_request.html[Alert when a metric of the request validates a condition]
+* link:/ae/apim_notification_request.html[Alert when the aggregated value of a request metric rises a threshold]
+* link:/ae/apim_notification_request.html[Alert when the rate of a given condition rises a threshold]
+
+|API
+|Health Check
+a|
+* link:/ae/apim_notification_endpoint_healthcheck.html[Alert when the health status of an endpoint has changed]
+|===

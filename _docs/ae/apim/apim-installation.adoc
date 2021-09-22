@@ -1,0 +1,61 @@
+= API Management
+:page-sidebar: ae_sidebar
+:page-permalink: ae/apim_installation.html
+:page-folder: ae/apim
+:page-description: Gravitee Alert Engine - API Management - Installation
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+:page-liquid:
+
+This section is explaining how to integrate the Alert Engine within Gravitee.io API Management.
+
+If you are running a fresh installation of Gravitee.io Enterprise API Platform or if you are running Enterprise
+Docker images, you can skip the installation part.
+
+IMPORTANT: For being able to integrate API Management with Alert Engine, your API Management platform must
+be an link:/ee/ee_introduction.html[Enterprise version].
+
+== Installation
+
+=== Download connector
+
+[source,bash]
+[subs="attributes"]
+$ curl -L https://download.gravitee.io/graviteeio-ae/plugins/connectors/gravitee-ae-connectors-ws/gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip -o gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip
+
+=== Install connector
+
+In this section, we admit that ${GRAVITEEIO_HOME} can refer to both the API Gateway and the Management API.
+
+[source,bash]
+[subs="attributes"]
+$ cp gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip ${GRAVITEEIO_HOME}/plugins/
+
+== Configuration
+
+For both the API Gateway and the Management API, you have to configure access to Alert Engine through WebSockets. This can
+be done that way:
+
+```yaml
+alerts:
+  alert-engine:
+    enabled: true
+    ws:
+      discovery: true
+      endpoints:
+        - http://localhost:8072/
+      security:
+        username: admin
+        password: adminadmin
+```
+
+=== Endpoints
+You can have as many endpoints as you need. The node will select one of them in round-robin fashion.
+
+=== Discovery mode
+Discovery mode is very useful when running a cluster of Alert Engine. By using it, you just have to refer to a single
+AE node and the other nodes from the cluster will be automatically registered.
+
+.Alert Engine - Auto-discovery
+image::ae/howitworks/discovery.png[Discovery mode]

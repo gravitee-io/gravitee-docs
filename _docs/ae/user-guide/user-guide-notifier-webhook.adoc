@@ -1,0 +1,25 @@
+= Notifier Webhook
+:page-sidebar: ae_sidebar
+:page-permalink: ae/userguide_notifier_webhook.html
+:page-folder: ae/user-guide
+:page-description: Gravitee Alert Engine - User Guide - Notifier - Webhook
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+== Description
+You define an URL, HTTP Headers and a body to send a POST request.
+
+image::ae/notifiers/cfg-webhook.png[Configure your Webhook notification]
+
+== Example
+
+[source,json]
+----
+{
+  "alert": "${alert.name}",
+  "severity": "${alert.severity}",
+  "message": "${notification.message}",
+  "request_id": "${notification.properties['request.id']}"
+}
+----

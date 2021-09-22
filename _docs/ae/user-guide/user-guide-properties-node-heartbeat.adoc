@@ -1,0 +1,72 @@
+= Notification properties for NODE_HEARTBEAT's event
+:page-sidebar: ae_sidebar
+:page-permalink: ae/userguide_properties_node_heartbeat.html
+:page-folder: ae/user-guide
+:page-description: Gravitee Alert Engine - User Guide - Notifier - Message Properties NODE_HEARTBEAT
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+Here is the list of properties available in every alerts triggered by a NODE_HEARTBEAT event.
+
+NOTE: To access one of those property, you have to use the following syntax: `${notification.properties['property_name']}`.
+
+[cols="1,3"]
+|===
+|Key |Description
+
+|`node.hostname`
+|The node hostname which has thrown the Alert.
+
+|`node.application`
+|The node application (`gio-apim-gateway`, `gio-apim-management`, `gio-am-gateway`, `gio-am-management`) which has thrown the Alert.
+
+|`node.id`
+|The uuid of the node which has thrown the Alert.
+
+|`os.cpu.percent`
+|The CPU percentage used.
+
+|`os.cpu.average.0`
+|The CPU load average over 1 minutes if available.
+
+|`os.cpu.average.1`
+|The CPU load average over 5 minutes if available.
+
+|`os.cpu.average.2`
+|The CPU load average over 15 minutes if available.
+
+|`process.fd.open`
+|Number of opened file descriptors.
+
+|`process.fd.max`
+|Max number of opened file descriptors.
+
+|`process.cpu.percent`
+|The CPU percentage used by the process.
+
+|`process.cpu.total`
+|The total CPU time of the process.
+
+|`process.mem.virtual.total`
+|The total virtual memory of the process.
+
+|`jvm.uptime`
+|The uptime of the Java Virtual Machine.
+
+|`jvm.threads.count`
+|The number of live threads of the java process.
+
+|`jvm.threads.peak`
+|The peak number of live threads of the java process.
+
+|`jvm.mem.heap.used`
+|The amount of used memory in bytes.
+
+|`jvm.mem.heap.max`
+|The maximum amount of memory in bytes that can be used.
+
+|`jvm.mem.heap.percent`
+|The ratio between the used heap and the max heap.
+
+|===

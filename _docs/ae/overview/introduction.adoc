@@ -1,0 +1,37 @@
+:page-sidebar: ae_sidebar
+:page-permalink: /ae/overview_introduction.html
+:page-folder: /ae/overview
+:page-toc: false
+:page-description: Gravitee Alert Engine - Introduction
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-layout: ae
+
+IMPORTANT: Gravitee.io Alert Engine is part of link:/ee/ee_introduction.html[Gravitee.io Enterprise]. You can <</ee/ee_license.adoc#ask-license, ask for a license>>.
+
+= Introduction
+
+The Gravitee.io API Platform is a turnkey solution to manage (APIM) and secure (AM) APIs.
+It provides a lot of features including the ability to monitor several aspects of your APIs: health-check, availability, response-time and so on...
+To be even more complete, this feature needed to be coupled with an alerting component.
+
+And here we are with the Alert Engine (AE) component!
+
+From the Gravitee.io API Management side, this component allows to:
+
+- Notify API Publisher that the health-check service was able/not able to check an endpoint.
+
+- Notify consumers or publishers that they reach a given threshold percentage of the quota.
+
+- Notify administrator(s) that one of the gateway instance is consuming more than XX% of heap or XX% of CPU, a new one is available, or one node is down.
+
+- ... and many others uses cases...
+
+
+== Gravitee.io Alert Engine
+
+Alert Engine allows users to configure alerts and receive notifications through different channels (emails, slack, ...)
+to help them to monitor efficiently their API platform.
+
+
+The solution does not require any external component as it does not store anything (no database).
+AE receives events and is responsible for sending notifications under certain conditions (which have been configured upstream with triggers).
