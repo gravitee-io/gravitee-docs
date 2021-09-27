@@ -10,6 +10,10 @@ WARNING: If you plan to skip versions when you upgrade, ensure that you read the
 
 WARNING: Be sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs;`
 
+== Upgrade to 3.10.4
+
+NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.10.4.html[Breaking changes in 3.10.4]
+
 == Upgrade to 3.10.0
 
 NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.10.html[Breaking changes in 3.10]
