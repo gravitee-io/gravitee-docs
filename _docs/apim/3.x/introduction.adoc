@@ -1,72 +1,71 @@
 ---
 layout: doc
 product: API Management
-permalink: /apim/current/apim_overview_introduction.html
 tags: [APIM]
 toc: true
 custom_links:
 - text: API Management
-  url: /apim/current/apim_overview_introduction.html
+- text: Installation Guide
+  url: /apim/current/apim_installguide.html
   submenu:
-  - text: Install
-    url: /apim/current/apim_installguide.html
-  - text: Configure
-    url: /apim/current/apim_configurationguide.html
-  - text: Publish APIs
-    url: /apim/current/apim_publisherguide_create_apis.html
-  - text: Consume APIs
-    url: /apim/current/apim_consumerguide_portal.html
-  - text: Administration Guide
-    url: /apim/current/apim_adminguide_organizations_and_environments.html
-  - text: Developer Guide
-    url: apim/current/apim_devguide_bootstrap.html
+  - text: Install with Amazon
+    url:
+  - text: Install with Docker
+- text: Configuration Guide
+  url: /apim/current/apim_configurationguide.html
+- text: Publisher Guide
+  url: /apim/current/apim_publisherguide_create_apis.html
+- text: Consumer Guide
+  url: /apim/current/apim_consumerguide_portal.html
+- text: Administration Guide
+  url: /apim/current/apim_adminguide_organizations_and_environments.html
+- text: Developer Guide
+  url: apim/current/apim_devguide_bootstrap.html
 - text: Access Management
-  url: /am/current/am_overview_introduction.html
+- text: Installation Guide
+  url: /am/current/am_installguide.html
   submenu:
-  - text: Installation Guide
-    url: /am/current/am_installguide.html
-    submenuitems:
-    - text: Install on Amazon
-      url: /apim/current/apim_installguide_amazon_introduction.html
-    - text:
-      url:
-  - text: Configuration Guide
-    url: /pages/support
-  - text: User Guide
-    url: /explore-topics/
-    submenu:
-    - text: Overview
-      url: /blog-post-left-sidebar
-    - text: Payment
-      url: /blog-post-right-sidebar
-  - text: Administration Guide
-    url: /pages/contact
-  - text: Developer Guide
-    url: /pages/contact
-- text: Cockpit
-  url:
-  - text: Installation Guide
-    url:
-    text: Configuration Guide
-    url:
-    User Guide:
-    url:
-- text: Alert Engine
-  url:
+  - text: Install on Amazon
+    url: /apim/current/apim_installguide_amazon_introduction.html
   - text:
     url:
+- text: Configuration Guide
+  url: /pages/support
+- text: User Guide
+  url: /explore-topics/
+  submenu:
+  - text: Overview
+    url: /blog-post-left-sidebar
+  - text: Payment
+    url: /blog-post-right-sidebar
+- text: Administration Guide
+  url: /pages/contact
+- text: Developer Guide
+  url: /pages/contact
+- text: Cockpit
+- text: Installation Guide
+  url:
+  text: Configuration Guide
+  url:
+  User Guide:
+  url:
+- text: Alert Engine
+  url:
+  submenu:
+    text:
 ---
 
-= API Management overview
+= Introduction
+:page-permalink: /apim/current/apim_overview_introduction.html
 :page-folder: /apim/overview
 :page-description: Gravitee.io API Management - Introduction
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: doc
 
-== API Management overview
+== APIM overview
 
-Organizations are increasingly using API management solutions to publish their APIs to third parties such as external developers, internal developers and other
-partners. API management can unlock the potential of their data and services and help them transform an OpenAPI and OpenData approach, extending their
+With the growing complexity of the API space, organizations are increasingly using API management solutions to publish their APIs to third parties such as external developers, internal developers and other
+partners. API management can unlock the potential of their data and services and facilitate their transformation to OpenAPI and OpenData, extending their
 digital platform offerings, opening up new communication channels and bringing in new customers.
 
 New customers bring new challenges, including:
@@ -77,7 +76,7 @@ New customers bring new challenges, including:
 * How to share existing APIs and how to discover them
 * How to manage the API lifecycle, versioning, documentation, and so on
 
-A centralized management tool is a must for any organization trying to overcome all of these challenges seamlessly for all their APIs. This is where Gravitee.io API Management comes in.
+For any organization trying to overcome all of these challenges seamlessly for all their APIs, a centralized management tool is absolutely indispensable. This is where Gravitee.io API Management comes in.
 
 Gravitee.io API Management (APIM) is a flexible, lightweight, blazing-fast open source API management solution that gives your organization full control over who accesses your APIs, when and how. APIM is both simple to use and powerful, providing a global solution for API management.
 
@@ -89,10 +88,10 @@ image::apim/3.x/overview/architecture/new-gravitee-global-architecture-schema.pn
 
 APIM is made up of four main components:
 
-- APIM Gateway
-- APIM API
-- APIM Console
-- APIM Portal
+- link:/apim/3.x/apim_overview_components.html#gravitee-components-gateway[APIM Gateway]
+- link:/apim/3.x/apim_overview_components.html#gravitee-components-rest-api[APIM API]
+- link:/apim/3.x/apim_overview_components.html#gravitee-components-mgmt-ui[APIM Console]
+- link:/apim/3.x/apim_overview_components.html#gravitee-components-portal-ui[APIM Portal]
 
 [[gravitee-components-gateway]]
 === APIM Gateway
@@ -157,7 +156,7 @@ APIM Gateway
 |===
 
 [[gravitee-plugins-idp]]
-==== Identity Providers
+=== Identity Providers
 
 [[gravitee-plugins-fetchers]]
 ==== Fetchers

@@ -6,17 +6,17 @@
             <h2 class="heading-2">Explore Topics</h2>
             <p>Lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed </p>
          </div>
- 
-		 
-		 
-		 
+
+
+
+
 				<div class="topics-service-area">
 				 {% assign my_doc_tags =  site.docs | map: 'tags' | join: ','  | split: ',' | uniq %}
             {% for tag in my_doc_tags %}
-			
+
 					<article class="post topics-service bg-color3 wow fadeIn" data-wow-duration="3s">
 						<header class="topics-title">
-						 <h4 class="heading-4 text-capitalize">{{ tag }} </h4>  </h4>
+						 <h4 class="heading-4 text-capitalize">{{ tag }} </h4>
 						</header>
                   <ul class="topics-list list-inline">
                      {% for doc_post in site.docs %}
@@ -25,27 +25,27 @@
                      {% endif %}
                      {% endfor %}
                   </ul>
-						 
+
 					</article>
 
 				{%endfor%}
-				
-			 
-			</div>		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
+
+
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
    </div>
 </section>

@@ -9,8 +9,8 @@
 
 theme: minima
 plugins:
-  - jekyll-sitemap
   - jekyll-asciidoc
+  - jekyll-sitemap
   - jekyll-feed
   - jekyll-paginate-v2
   - jekyll-archives
@@ -96,7 +96,7 @@ newsletter_api: 'https://newsletter.gravitee.io/'
 
 toc:
   min_level: 1
-  max_level: 6
+  max_level: 2
   no_toc_section_class: no_toc_section
   list_class: section-nav
   sublist_class: ''

@@ -1,20 +1,30 @@
+---
+layout: doc
+title: Install APIM
+product: API Management
+permalink: apim/current/apim_installguide.html
+tags: [APIM]
+toc: true
+custom_links:
+
+---
+
 [[gravitee-installation-guide]]
-= Introduction
-:page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/current/apim_installguide.html
+= Install APIM
 :page-folder: apim/installation-guide
 :page-description: Gravitee.io API Management - Installation
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
-:page-layout: apim3x
 
-As described in the link:/apim/3.x/apim_overview_architecture.html[architecture overview] page, Gravitee.io API Management (APIM) is split into four main components:
+== Install APIM
 
-* link:/apim/3.x/apim_installguide_gateway_install_zip.html[APIM Gateway]
-* link:/apim/3.x/apim_installguide_rest_apis_install_zip.html[APIM API]
-* link:/apim/3.x/apim_installguide_management_ui_install_zip.html[APIM Management]
-* link:/apim/3.x/apim_installguide_portal_ui_install_zip.html[APIM Portal]
+This guide explains how to install the four API Management (APIM) components:
+
+* APIM Gateway
+* APIM API
+* APIM Management
+* APIM Portal
 
 The following sections explain how to prepare, install and configure your APIM environment.
 
 NOTE: The Installation Guide provides information about how to install Gravitee.io components. For third-party components such as
- MongoDB, Elasticsearch and so on, please see the relevant vendor documentation.
+ MongoDB, Elasticsearch and so on, see the relevant vendor documentation.
