@@ -4,66 +4,15 @@ product: API Management
 permalink: /apim/current/apim_overview_introduction.html
 tags: [APIM]
 toc: true
-custom_links:
-- text: API Management
-  url: /apim/current/apim_overview_introduction.html
-  submenu:
-  - text: Install
-    url: /apim/current/apim_installguide.html
-  - text: Configure
-    url: /apim/current/apim_configurationguide.html
-  - text: Publish APIs
-    url: /apim/current/apim_publisherguide_create_apis.html
-  - text: Consume APIs
-    url: /apim/current/apim_consumerguide_portal.html
-  - text: Administration Guide
-    url: /apim/current/apim_adminguide_organizations_and_environments.html
-  - text: Developer Guide
-    url: apim/current/apim_devguide_bootstrap.html
-- text: Access Management
-  url: /am/current/am_overview_introduction.html
-  submenu:
-  - text: Installation Guide
-    url: /am/current/am_installguide.html
-    submenuitems:
-    - text: Install on Amazon
-      url: /apim/current/apim_installguide_amazon_introduction.html
-    - text:
-      url:
-  - text: Configuration Guide
-    url: /pages/support
-  - text: User Guide
-    url: /explore-topics/
-    submenu:
-    - text: Overview
-      url: /blog-post-left-sidebar
-    - text: Payment
-      url: /blog-post-right-sidebar
-  - text: Administration Guide
-    url: /pages/contact
-  - text: Developer Guide
-    url: /pages/contact
-- text: Cockpit
-  url:
-  - text: Installation Guide
-    url:
-    text: Configuration Guide
-    url:
-    User Guide:
-    url:
-- text: Alert Engine
-  url:
-  - text:
-    url:
+sidebar: guides_sidebar
+title: API Management Overview
 ---
 
-= API Management overview
 :page-folder: /apim/overview
 :page-description: Gravitee.io API Management - Introduction
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
-:page-layout: doc
 
-== API Management overview
+== API Management Overview
 
 Organizations are increasingly using API management solutions to publish their APIs to third parties such as external developers, internal developers and other
 partners. API management can unlock the potential of their data and services and help them transform an OpenAPI and OpenData approach, extending their

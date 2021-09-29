@@ -212,13 +212,7 @@ defaults:
 # these are defaults used for the frontmatter for these file types
 
 sidebars:
-- apim_sidebar
-- apim_3_5_sidebar
-- am_sidebar
-- ae_sidebar
-- cli_sidebar
-- ee_sidebar
-- cockpit_sidebar
+- guides_sidebar
 
 # needed for sitemap.xml file only
 url: https://docs.gravitee.io

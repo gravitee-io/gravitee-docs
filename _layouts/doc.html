@@ -14,45 +14,10 @@ toc: true
         </div>
       </div>
       <div class="row">
-	  {% if page.custom_links != nil %}
+	  {% if page.sidebar != nil %}
 
-        <div class="col-md-3">
-          <div class="custom-links">
-			       <ul class="nav navbar-nav" id="nav">
-               {% for link in page.custom_links %}
-     					{% assign active = nil %}
+      {% include sidebar.html %}
 
-     					{% for sublink in link.submenu %}
-     						{% if page.url contains sublink.url %}
-     							{% assign active = 'active' %}
-     						{% endif %}
-     					{% endfor %}
-
-     					{% if page.url contains link.url %}
-     						{% assign active = 'active' %}
-     					{% endif %}
-
-     					<li class="subitem">
-     						<a href="{{ link.url | relative_url }}">{{ link.text }}
-
-     						</a>{% if link.submenu %}<a class="pb-0 pt-0" href="#nav"><i class="fa fa-angle-right"></i></a> {% endif %}
-
-     						{% if link.submenu %}
-     							 <ul class="sub-dropdown">
-     								{% for sublink in link.submenu %}
-     									<li {% if page.url contains sublink.url %}class="active"{% endif %}>
-     										<a href="{{ sublink.url | relative_url }}">{{ sublink.text }}</a>
-     									</li>
-     								{% endfor %}
-     							</ul>
-     						{% endif %}
-     					</li>
-     				{% endfor %}
-
-              </ul>
-
-          </div>
-        </div>
 		{% endif %}
 
 
@@ -62,7 +27,7 @@ toc: true
 		{% assign col1 = "3" %}
 		{% endif %}
 
-		{% if page.custom_links == nil %}
+		{% if page.sidebar == nil %}
 		{% assign col2 = "3" %}
 		{% endif %}
 
@@ -93,8 +58,7 @@ toc: true
       </div>
     </div>
   </div>
-  </div>
-</section>
+  </section>
 
 {% include support_area.html %}
 {% include support_area_2.html %}
