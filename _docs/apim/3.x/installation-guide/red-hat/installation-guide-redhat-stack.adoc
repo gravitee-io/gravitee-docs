@@ -1,15 +1,20 @@
-= Install the full APIM stack
-:page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_installguide_redhat_stack.html
-:page-folder: apim/installation-guide/redhat
+---
+layout: doc
+product: API Management
+permalink: apim/current/apim_installguide_redhat_stack.html
+tags: [APIM]
+toc: true
+sidebar: apim_3_x_sidebar
+title: Install the full APIM stack
+---
+
 :page-liquid:
-:page-layout: apim3x
 :page-description: Gravitee.io API Management - Installation Guide - Red Hat or CentOS - API Management
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
 :gravitee-package-name: graviteeio-apim-3x
 
-== Overview
+== Install the full APIM stack
 
 This section describes how to install the full APIM stack, including all the components and, optionally, dependencies (MongoDB, Elasticsearch).
 

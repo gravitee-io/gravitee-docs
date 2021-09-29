@@ -1,9 +1,14 @@
-= Install APIM Gateway
-:page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_installguide_amazon_gateway.html
-:page-folder: apim/installation-guide/amazon
+---
+layout: doc
+product: API Management
+permalink: apim/current/apim_installguide_amazon_gateway.html
+tags: [APIM]
+toc: true
+sidebar: apim_3_x_sidebar
+title: Install APIM Gateway
+---
+
 :page-liquid:
-:page-layout: apim3x
 :page-description: Gravitee.io API Management - Installation Guide - Amazon - API Gateway
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
@@ -11,7 +16,9 @@
 :gravitee-package-name: graviteeio-apim-gateway-3x
 :gravitee-service-name: graviteeio-apim-gateway
 
-== Prerequisites
+== Install APIM Gateway
+
+=== Prerequisites
 
 The following steps assume you have configured your package management system as described in <<apim_installguide_amazon_introduction.adoc#configure-the-package-management-system-yum, Configure the package management system (yum)>>.
 

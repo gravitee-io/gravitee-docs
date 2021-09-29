@@ -1,14 +1,18 @@
-= Customize
-:page-toc: false
-:page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_installguide_docker_customize.html
-:page-folder: apim/installation-guide/docker
-:page-layout: apim3x
+---
+layout: doc
+product: API Management
+permalink: apim/current/apim_installguide_docker_customization.html
+tags: [APIM]
+toc: true
+sidebar: apim_3_x_sidebar
+title: Docker customization
+---
+
 :docker-image-src: https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/images
 :github-repo: https://github.com/gravitee-io/gravitee-docker
 :docker-hub: https://hub.docker.com/r/graviteeio
 
-== Overview
+== Customization
 
 This section explains how to customize your Docker installation. These procedures are intended for users who are already familiar with Docker.
 

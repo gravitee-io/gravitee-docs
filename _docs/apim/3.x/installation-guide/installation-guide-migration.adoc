@@ -1,7 +1,11 @@
-:page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_installguide_migration.html
-:page-folder: apim/installation-guide
-:page-toc: true
-:page-layout: apim3x
+---
+layout: doc
+product: API Management
+permalink: apim/current/apim_installguide_upgrade.html
+tags: [APIM]
+toc: true
+sidebar: guides_sidebar
+title: Upgrade API Management
+---
 
 include::https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/README.adoc[]

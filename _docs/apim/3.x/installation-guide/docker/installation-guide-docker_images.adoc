@@ -1,13 +1,18 @@
-= APIM Docker images
-:page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_installguide_docker_images.html
-:page-folder: apim/installation-guide/docker
-:page-layout: apim3x
+---
+layout: doc
+product: API Management
+permalink: apim/current/apim_installguide_docker_images.html
+tags: [APIM]
+toc: true
+sidebar: apim_3_x_sidebar
+title: APIM Docker images
+---
+
 :docker-image-src: https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/images
 :github-repo: https://github.com/gravitee-io/gravitee-docker
 :docker-hub: https://hub.docker.com/r/graviteeio
 
-== Overview
+== Run the APIM images
 
 This section explains how to run APIM images in Docker. These procedures are intended for users who are already familiar with Docker.
 

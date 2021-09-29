@@ -2,6 +2,9 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
+
+  <script src="{{ '/assets/js/init-default.js' | relative_url }}"></script>
+
     <!-- meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +36,20 @@
     <link rel="icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/x-icon"/>
     <!-- Add CSS File -->
     <link rel="stylesheet" href="{{ '/assets/css/app.min.css' | relative_url }} "/>
+    <link rel="stylesheet" href="{{ "/assets/css/modern-business.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/lavish-bootstrap.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/rouge_github.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/customstyles.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/theme-gravitee-new.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/fonts/plex/css/ibm-plex.css" | relative_url }}">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+
+    <script src="{{ "/assets/js/jquery.navgoco.min.js" | relative_url }}"></script>
+
+    {% include GoogleTagManager_head.liquid %}
+    {% if site.google_analytics %}
+    {% include google_analytics.html %}
+    {% endif %}
 
 </head>
 
