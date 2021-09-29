@@ -2,62 +2,62 @@
 
 entries:
   - title: Sidebar
+    product: Get started
     folders:
-      - title: APIM Quick Start Guide
+      - title: Quick installation
         output: web
         folderitems:
-          - title: Introduction
+          - title: Quick API Management installation
             output: web
-            url: /guides/apim/3.x/apim_quickstart_publish.html
-            subfolders:
-              - title: Get Started
-                output: web
-                subfolderitems:
-                  - title: Log in to APIM Console
-                    output: web
-                    url: /guides/apim/current/apim_quickstart_console_login.html
-                  - title: Log in to APIM Portal
-                    output: web
-                    url: /apim/3.x/apim_quickstart_portal_login.html
-              - title: Publish Your First API
-                output: web
-                subfolderitems:
-                  - title: Using APIM Console
-                    output: web
-                    url: /apim/3.x/apim_quickstart_publish_ui.html
-                  - title: Using APIM API
-                    output: web
-                    url: /apim/3.x/apim_quickstart_publish_api.html
-              - title: Consume an API
-                output: web
-                subfolderitems:
-                  - title: Using APIM Portal
-                    output: web
-                    url: /apim/3.x/apim_quickstart_consume_ui.html
-                  - title: Using APIM API
-                    output: web
-                    url: /apim/3.x/apim_quickstart_consume_api.html
-                  - title: Test the API
-                    output: web
-                    url: /apim/3.x/apim_quickstart_consume_test.html
-      - title: AM Quick Start Guide
+            url: /apim/current/apim_getstarted_quickinstallation.html
+          - title: Configure a production-ready APIM environment
+            output: web
+            url: /apim/current/apim_getstarted_configureAPIM.html
+          - title: Quick Access Management installation
+            output: web
+            url:
+          - title: Quick Cockpit installation
+            output: web
+            url:
+          - title: Quick Alert Engine installation
+            output: web
+            url:
+      - title: Getting started with APIM
         output: web
         folderitems:
-          - title: Log in to AM Console
+          - title: Log in
             output: web
-            url: /am/current/am_userguide_authentication.html
-          - title: Set up your first application
+            folderitems:
+              - title: Log in to APIM Console
+              - title: Log in to APIM Portal
+          - title: Publish your first API
             output: web
-            url: /am/current/am_quickstart_app_setup.html
-          - title: Get user profile information
+            folderitems:
+              title: With APIM Console
+              output: web
+              url: /apim/current/apim_publisherguide_create_apis.html
+              title: With APIM API
+          - title: Consume your first API
             output: web
-            url: /am/current/am_quickstart_profile_information.html
-          - title: Secure your APIs
+            url: /
+      - title: Getting started with AM
+        output: web
+        folderitems:
+          - title: Log in
             output: web
-            url: /am/current/am_quickstart_secure_apis.html
-          - title: Configure a flow
+            url:
+          - title: Configure authentication
             output: web
-            url: /am/current/am_quickstart_use_policies.html
-          - title: Add custom claims to tokens
+            url:
+      - title: Getting started with AE
+        output: web
+        folderitems:
+          - title: Configure alerts with AE
             output: web
-            url: /am/current/am_quickstart_tokens_custom_claims.html
+            url:
+      - title: Getting started with Cockpit
+        output: web
+        folderitems:
+          - title: Set up an environment in Cockpit
+            output: web
+            url:

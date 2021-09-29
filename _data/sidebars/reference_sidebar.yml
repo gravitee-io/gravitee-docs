@@ -1,0 +1,24 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+  - title: Sidebar
+    product: Reference
+    folders:
+      - title: API references
+        output: web
+        folderitems:
+          - title: API Management
+            output: web
+            url: /apim/current/apim_reference_api.html
+          - title: Access Management
+            output: web
+      - title: Policy references
+        output: web
+        folderitems:
+          - title: API Management
+            output: web
+      - title: CLI reference
+        output: web
+        folderitems:
+          - title: APIM CLI
+            output: web

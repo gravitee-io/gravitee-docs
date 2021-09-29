@@ -7,11 +7,9 @@ entries:
       - title: Overview
         output: web
         folderitems:
-          - title: Introduction
+          - title: Overview
             output: web
             url: /apim/current/apim_overview_introduction.html
-            type: homepage
-
       - title: Installation Guide
         output: web
         folderitems:
@@ -58,7 +56,7 @@ entries:
                   - title: Helm
                     output: web
                     url: /apim/current/apim_installguide_kubernetes.html
-              - title: Install on Red Hat & CentOS
+              - title: Install on Linux (Red Hat, CentOS and Oracle)
                 output: web
                 subfolderitems:
                   - title: Introduction
@@ -79,15 +77,6 @@ entries:
                   - title: Install APIM Portal
                     output: web
                     url: /apim/current/apim_installguide_redhat_portal.html
-              - title: Hybrid Deployment
-                output: web
-                subfolderitems:
-                  - title: Introduction
-                    output: web
-                    url: /apim/current/apim_installguide_hybrid_deployment.html
-                  - title: Hybrid Deployment on Kubernetes
-                    output: web
-                    url: /apim/current/apim_installguide_hybrid_kubernetes.html
               - title: Install with .ZIP
                 output: web
                 subfolderitems:
@@ -103,6 +92,15 @@ entries:
                   - title: Install APIM Portal
                     output: web
                     url: /apim/current/apim_installguide_portal_ui_install_zip.html
+          - title: Hybrid Deployment
+            output: web
+            subfolders:
+              - title: Overview
+                output: web
+                url: /apim/current/apim_resources_hybrid.html
+              - title: Hybrid deployment with Kubernetes
+                output: web
+                url: /apim/current/apim_resources_hybrid_k8s.html
           - title: Configure a Production-Ready APIM Environment
             output: web
             url: /apim/current/apim_how_to_configuration.html
@@ -216,9 +214,6 @@ entries:
       - title: API Publisher Guide
         output: web
         folderitems:
-          - title: Introduction
-            output: web
-            url: /apim/current/apim_publisherguide_manage_apis.html
           - title: Create APIs
             output: web
             url: /apim/current/apim_publisherguide_create_apis.html

@@ -1,5 +1,8 @@
-{% if page.sidebar == "guides_sidebar" %}
-{% assign sidebar = site.data.sidebars.guides_sidebar.entries %}
+{% if page.sidebar == "reference_sidebar" %}
+{% assign sidebar = site.data.sidebars.reference_sidebar.entries %}
+
+{% elsif page.sidebar == "gettingstarted_sidebar" %}
+{% assign sidebar = site.data.sidebars.gettingstarted_sidebar.entries %}
 
 {% elsif page.sidebar == "am_2_x_sidebar" %}
 {% assign sidebar = site.data.sidebars.am_2_x_sidebar.entries %}

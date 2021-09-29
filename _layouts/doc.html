@@ -35,7 +35,7 @@ toc: true
         <div class="col-md-{{ col | plus: col1 | plus: col2 }}">
           <div class="tutorial-content mx-auto">
             <div class="doc-content">
-
+ <h1 class="heading-1">{{page.title}}</h1>
               {{content}}
             </div>
           </div>
@@ -65,7 +65,7 @@ toc: true
 {% include footer.html %}
 
 <script>
-  var headings = document.querySelectorAll("h2[id]");
+  var headings = document.querySelectorAll("h1[id]");
   for (var i = 0; i < headings.length; i++) {
     var anchorLink = document.createElement("a");
     anchorLink.innerText = "#";
