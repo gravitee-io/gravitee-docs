@@ -14,13 +14,16 @@ AM self-service account management allows users to manage their accounts with th
 - Read and manage their account information.
 - List user activities.
 - Request to change passwords.
-- Manage Multi-factor Authentication (MFA) devices (work in progress).
+- Manage Multi-factor Authentication (MFA) devices.
+- Manage Passwordless credentials.
 
 NOTE: By default these actions are possible only during the login process, but in order to provide a *My Account* space for your end-users, AM includes a REST API to perform all these requests.
 
 You can access the online API reference or the OpenAPI specification :
 
 * 3.10 -- link:/am/current/account/3.10/index.html[online reference] - link:/am/current/account/3.10/swagger.yml[OpenAPI spec]
+* 3.11 -- link:/am/current/account/3.11/index.html[online reference] - link:/am/current/account/3.11/swagger.yml[OpenAPI spec]
+* 3.12 -- link:/am/current/account/3.12/index.html[online reference] - link:/am/current/account/3.12/swagger.yml[OpenAPI spec]
 
 == Configure the self-service account management
 
