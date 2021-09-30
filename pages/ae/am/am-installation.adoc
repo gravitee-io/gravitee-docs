@@ -61,7 +61,7 @@ AE node and the other nodes from the cluster will be automatically registered.
 image::ae/howitworks/discovery.png[Discovery mode]
 
 === Event sending mode
-Starting from v1.5.1 of the alert engine connector, it is possible to configure the connection to send events either over WebSocket (default), either over Http.
+Starting from v1.5.0 of the alert engine connector, it is possible to configure the connection to send events either over WebSocket (default), either over Http.
 
 On environment with high throughput (~1000 rps), we highly recommend configuring the event sending over http in order to benefit from a good load balancing and load repartition.
 
