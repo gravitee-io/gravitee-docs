@@ -1,0 +1,35 @@
+= Adaptive Multi-factor Authentication
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_mfa_amfa.html
+:page-folder: am/user-guide
+:page-layout: am
+
+[label label-version]#New in version 3.13#
+
+== Overview
+Adaptive Multi-factor authentication (A-MFA) requires the user to produce additional forms of authentication after the login step.
+
+When A-MFA is enabled, it allows the user to skip MFA, based on the following trusted information:
+
+- The IP of the user.
+- The number of times the user has logged in
+- The content of the request.
+
+=== Example use cases
+
+A-MFA is often used in the following situations:
+
+- A user fails to log in three times and succeeds on the fourth attempt.
+- A user tries to log in from a different location (such as country, continent or region).
+
+Both of these can be secured with A-MFA to prevent the account from being compromised.
+
+== Configure A-MFA
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Select your application.
+. Click **Settings > Multifactor Auth**.
+. Select your MFA factor and set the *Adaptive MFA* rule.
+. Click *SAVE*.
+
+image::am/current/graviteeio-am-userguide-mfa-adaptive-mfa-rule.png[]
