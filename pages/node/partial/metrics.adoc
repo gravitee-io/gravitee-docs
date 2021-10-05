@@ -22,6 +22,33 @@ If you need to expose the API more widely, you may need to set the `services.cor
 If you are running the application in a Docker container, set the IP to the IP address of the container.
 Each change requires a restart.
 
+== Configure labels
+Labels are used to provide dimensionality to a metric. For instance, metrics related to a http request have a `http_path` label, which allows then to query timeseries for a specific path, or any other operation on timeseries.
+
+You can specify which labels you want in the configuration file:
+[source,yaml]
+----
+services:
+  metrics:
+    enabled: true
+    labels:
+      - local
+      - remote
+      - http_method
+      - http_code
+      - http_path
+    prometheus:
+      enabled: true
+----
+
+The list of available labels can be found here: https://vertx.io/docs/apidocs/io/vertx/micrometer/Label.html[Label]
+
+WARNING: Enabling labels may result in a high cardinality in values, which can cause troubles on the metrics backend (i.e. the gateway) and affect performances. +
+So it must be used with care. +
+In general, it is fine to enable labels when the set of possible values is bounded.
+
+Default values are `local`, `http_method` and `http_code`.
+
 == Prometheus configuration
 
 The following example requests Prometheus scrape the formatted metrics available in the Gateway internal API.
