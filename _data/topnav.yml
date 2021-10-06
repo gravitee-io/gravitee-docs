@@ -1,0 +1,40 @@
+#Please use the main menu items under the "text"
+
+topnav:
+- title: Topnav
+  items:
+    - title: Home
+      url: /
+    - title: Get started
+      url: /apim/current/apim_getstarted_quickinstallation.html
+
+#Topnav dropdowns
+topnav_dropdowns:
+- title: Topnav dropdowns
+  folders:
+    - title: Product Guides
+      folderitems:
+        - title: API Management
+          url: /apim/current/apim_overview_introduction
+        - title: Access Management
+          url: /am/current/am_overview_introduction
+        - title: Alert Engine
+          url: /ae/overview_introduction.html
+        - title: Cockpit
+          url: /cockpit/current/cockpit_overview_introduction.html
+    - title: Reference
+      folderitems:
+        - title: APIM API Reference
+          url: /apim/current/apim_reference_api.html
+        - title: AM API Reference
+          url: /am/current/am_devguide_management_api_documentation.html
+        - title: APIM Policy Reference
+          url: /apim/current/apim_policies_overview.html
+        - title: APIM CLI Reference
+          url: /pages/privacy-policy
+    - title: Resources
+      folderitems:
+        - title: HowTos
+          url: /apim/current/apim_policies_overview.html
+        - title: Tutorials
+          url: /apim/current/apim_policies_overview.html

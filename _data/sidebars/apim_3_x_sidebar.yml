@@ -4,7 +4,7 @@ entries:
   - title: Sidebar
     product: API Management
     folders:
-      - title: Overview
+      - title: API Management
         output: web
         folderitems:
           - title: Overview
@@ -13,7 +13,7 @@ entries:
       - title: Installation Guide
         output: web
         folderitems:
-          - title: Introduction
+          - title: Overview
             output: web
             url: /apim/current/apim_installguide.html
             subfolders:
@@ -23,7 +23,7 @@ entries:
                   - title: Configure YUM
                     output: web
                     url: /apim/current/apim_installguide_amazon_yum.html
-                  - title: Install Full APIM Stack
+                  - title: Install the full APIM stack
                     output: web
                     url: /apim/current/apim_installguide_amazon_fullstack.html
                   - title: Install APIM Gateway
@@ -62,7 +62,7 @@ entries:
                   - title: Introduction
                     output: web
                     url: /apim/current/apim_installguide_redhat_introduction.html
-                  - title: Install Full APIM Stack
+                  - title: Install the full APIM stack
                     output: web
                     url: /apim/current/apim_installguide_redhat_stack.html
                   - title: Install APIM Gateway

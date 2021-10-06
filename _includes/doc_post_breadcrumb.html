@@ -2,6 +2,15 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ "/" | relative_url }}">Home</a></li>
         <li class="breadcrumb-item">{{page.product}}</li>
+    	  {% if page.guide != nil %}
+        <li class="breadcrumb-item">{{page.guide}}</li>
+        <li class="breadcrumb-item">{{page.guide-section}}</li>
         <li class="breadcrumb-item active" aria-current="page">{{page.title}}</li>
+
+        {% else %}
+
+        <li class="breadcrumb-item active" aria-current="page">{{page.title}}</li>
+
+      {% endif %}
     </ol>
 </nav>

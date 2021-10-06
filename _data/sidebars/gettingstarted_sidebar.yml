@@ -9,55 +9,62 @@ entries:
         folderitems:
           - title: Quick API Management installation
             output: web
-            url: /apim/current/apim_getstarted_quickinstallation.html
+            url: /apim/current/apim_getstarted_quickinstall.html
           - title: Configure a production-ready APIM environment
             output: web
             url: /apim/current/apim_getstarted_configureAPIM.html
           - title: Quick Access Management installation
             output: web
-            url:
-          - title: Quick Cockpit installation
-            output: web
-            url:
-          - title: Quick Alert Engine installation
-            output: web
-            url:
+            url: /am/current/am_getstarted_quickinstall.html
       - title: Getting started with APIM
         output: web
         folderitems:
-          - title: Log in
+          - title: Access APIM Portal and Console
             output: web
-            folderitems:
-              - title: Log in to APIM Console
-              - title: Log in to APIM Portal
-          - title: Publish your first API
+            url: /apim/current/apim_getstarted_login.html
+          - title: Publish your first API with APIM Console
             output: web
-            folderitems:
-              title: With APIM Console
-              output: web
-              url: /apim/current/apim_publisherguide_create_apis.html
-              title: With APIM API
-          - title: Consume your first API
+            url: /apim/current/apim_getstarted_publish_ui.html
+          - title: Publish your first API with APIM API
             output: web
-            url: /
+            url: /apim/current/apim_getstarted_publish_api.html
+          - title: Subscribe to an API with APIM Portal
+            output: web
+            url: /apim/current/apim_getstarted_subscribe_ui.html
+          - title: Subscribe to an API with APIM API
+            output: web
+            url: /apim/current/apim_getstarted_subscribe_api.html
+          - title: Consume the API
+            output: web
+            url: /apim/current/apim_getstarted_consume.html
       - title: Getting started with AM
         output: web
         folderitems:
-          - title: Log in
+          - title: Access AM Console
             output: web
-            url:
-          - title: Configure authentication
+            url: /am/current/am_getstarted_login.html
+          - title: Set up your first application
             output: web
-            url:
-      - title: Getting started with AE
-        output: web
-        folderitems:
-          - title: Configure alerts with AE
+            url: /am/current/am_getstarted_register_app.html
+          - title: Get user profile information
             output: web
-            url:
+            url: /am/current/am_getstarted_profile.html
+
+          - title: Secure your APIs in APIM
+            output: web
+            url: /am/current/am_getstarted_secure_apis.html
+
+          - title: Configure a flow
+            output: web
+            url: /am/current/am_getstarted_configure_flow.html
+
+          - title: Add custom claims to tokens
+            output: web
+            url: /am/current/am_getstarted_custom_claims.html
+
       - title: Getting started with Cockpit
         output: web
         folderitems:
-          - title: Set up an environment in Cockpit
-            output: web
-            url:
+          title: Get started with Cockpit
+          output: web
+          url: /cockpit/current/cockpit_getstarted.html

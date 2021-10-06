@@ -1,16 +1,14 @@
 {% include custom/sidebarconfigs.html %}
-
-<div class="col-md-3">
-  <div class="custom-links">
-    <ul id="mysidebar" class="nav">
-      <li class="sidebarTitle">{{sidebar[0].product}}<place-holder-for-version-dropdown></li>
+<div class="custom-links">
+    <h5>{{sidebar[0].product}}<place-holder-for-version-dropdown></h5>
+    <ul id="mysidebar" class="nav navbar-nav">
 
         {% for entry in sidebar %}
         {% for folder in entry.folders %}
         {% if folder.output contains "web" %}
-        <li>
+        <li class="subitem">
             <a href="#">{{ folder.title }}</a>
-            <ul>
+            <ul class="sub-dropdown">
                 {% for folderitem in folder.folderitems %}
                 {% if folderitem.output contains "web" %}
                 {% if folderitem.external_url %}
@@ -22,9 +20,9 @@
                 {% endif %}
                 {% for subfolders in folderitem.subfolders %}
                 {% if subfolders.output contains "web" %}
-                <li class="subfolders">
+                <li class="subitem">
                     <a href="#">{{ subfolders.title }}</a>
-                    <ul>
+                    <ul class="sub-dropdown">
                         {% for subfolderitem in subfolders.subfolderitems %}
                         {% if subfolderitem.output contains "web" %}
                         {% if subfolderitem.external_url %}
@@ -36,9 +34,9 @@
                         {% endif %}
                         {% for subfolders in subfolderitem.subfolders %}
                         {% if subfolders.output contains "web" %}
-                        <li class="subfolders">
+                        <li class="subitem">
                             <a href="#">{{ subfolders.title }}</a>
-                            <ul>
+                            <ul class="sub-dropdown">
                                 {% for subfolderitem in subfolders.subfolderitems %}
                                 {% if subfolderitem.output contains "web" %}
                                 {% if subfolderitem.external_url %}
@@ -54,8 +52,6 @@
                         </li>
                         {% endif %}
                         {% endfor %}
-
-
                         {% endif %}
                         {% endfor %}
                     </ul>
@@ -75,9 +71,4 @@
                -->
         </li>
     </ul>
-
-  </div>
 </div>
-
-<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
-<script>$("li.active").parents('li').toggleClass("active");</script>

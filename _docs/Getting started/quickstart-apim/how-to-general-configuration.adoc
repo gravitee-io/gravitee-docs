@@ -5,33 +5,31 @@ permalink: apim/current/apim_getstarted_configureAPIM.html
 tags: [APIM]
 toc: true
 sidebar: gettingstarted_sidebar
-title: Quick APIM installation
+title: Configure a production-ready APIM environment
 ---
 
-= How to configure a production-ready APIM environment
+= Configure a production-ready APIM environment
 
 During APIM installation some default settings are created.
-While these default settings can be useful for testing your new installation, some of them may not be suitable for a production environment, where security is more of a consideration.
-
-NOTE: This How to gives some tips on important settings to check in APIM when preparing to move to a production environment.
-APIM includes many other configuration options and every environment is unique. We recommend you also read the link:/apim/3.x/apim_configurationguide.html[Configuration Guide^] to determine if you have completed all the configuration you need before you deploy APIM in production.
-
-=== Configuring APIM
+While these default settings can be useful for testing your new installation, some of them may not be suitable for a production environment, where security is more of a concern.
 
 You can configure APIM settings in various ways -- the `gravitee.yml` file, the APIM Console settings and environment and system variables.
-When you configure new settings, it is important to understand that one configuration type can override another.
-link:/apim/3.x/apim_installguide_rest_apis_configuration.html[Configure APIM API^] gives a good overview of this topic.
+When you configure new settings, it is important to understand how one configuration type overrides another. You can get a good overview of this topic from
+link:/apim/current/apim_installguide_rest_apis_configuration.html[Configure APIM API^].
+
+NOTE: APIM includes many other configuration options and every environment is unique. We recommend you also read the link:/apim/3.x/apim_configurationguide.html[Configuration Guide^] to make sure you've completed all the configuration you need, before you deploy APIM in production.
 
 == Step 1: Disable the internal APIs
 
-APIM API and APIM Gateway include internal APIs which are enabled by default. If you do not intend to use them, we recommend you disable them.
+APIM API and APIM Gateway include internal APIs which are enabled by default. If you don't intend to use them, we recommend you disable them.
 
 Perform the following steps on both the APIM API component and the APIM Gateway component:
 
 . Open your `gravitee.yml` file.
 . In the `services:` section, set the `http:` `enabled` value to `false`:
 +
-----
+[source,shell]
+....
 services:
   core:
     http:
@@ -46,7 +44,7 @@ services:
         type: basic
         users:
           admin: adminadmin
-----
+....
 
 To learn more about the internal APIs, see:
 
@@ -55,7 +53,7 @@ To learn more about the internal APIs, see:
 
 == Step 2: Update the default users
 
-Some default users are created for you during installation. We recommend you remove any users you do not need.
+Some default users are created for you during installation. We recommend you remove any users you don't need.
 
 IMPORTANT: We strongly recommend that, regardless of the user management system you put in place, you keep the default *admin* user, so that you can recover APIM in case of issues.
 Remember to change the default administrator password.
@@ -65,7 +63,8 @@ Perform the following steps on the APIM API component:
 . Open your `gravitee.yml` file.
 . In the `security \ providers` section, remove any users you do not need:
 +
-----
+[source,shell]
+....
 security:
   # When using an authentication providers, use trustAll mode for TLS connections
   # trustAll: false
@@ -113,7 +112,7 @@ security:
           # Password value: application1
           password: $2a$10$2gtKPYRB9zaVaPcn5RBx/.3T.7SeZoDGs9GKqbo9G64fKyXFR1He.
           roles: ORGANIZATION:USER,ENVIRONMENT:USER
-----
+....
 +
 . Update the default administrator password:
 +
@@ -130,7 +129,8 @@ Perform the following steps on the APIM API component:
 . Open your `gravitee.yml` file.
 . In the `jwt` section, update the `secret` value:
 +
-----
+[source,shell]
+....
 jwt:
   secret: myJWT4Gr4v1t33_S3cr3t
   # Allows to define the end of validity of the token in seconds (default 604800 = a week)
@@ -145,7 +145,7 @@ jwt:
   #cookie-domain: .gravitee.io
   # Allows to define if cookie secure only (default false)
   #cookie-secure: true
-----
+....
 +
 . You can also update other values, such as:
 - the `expire-after` value, to change the validity period from the default value of one week

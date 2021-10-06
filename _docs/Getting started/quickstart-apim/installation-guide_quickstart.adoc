@@ -1,9 +1,9 @@
 ---
 layout: doc
 product: API Management
-permalink: apim/current/apim_getstarted_quickinstallation.html
-toc: true
+permalink: apim/current/apim_getstarted_quickinstall.html
 sidebar: gettingstarted_sidebar
+toc: true
 title: Quick APIM installation
 ---
 
@@ -12,9 +12,7 @@ title: Quick APIM installation
 :page-description: Gravitee.io API Management - Installation - Quickstart
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-= APIM quick installation
-
-This guide assumes you are starting fresh and have no existing API Management data.
+Use these procedures to quickly install API Management for the first time. They are not suitable for existing AM environments.
 
 == Install with RPMs
 
@@ -23,7 +21,7 @@ This guide assumes you are starting fresh and have no existing API Management da
 $ curl -sSL https://bit.ly/install-apim-3x | bash
 ....
 
-For more information, see link:/apim/3.x/apim_installguide_redhat_stack.html[Install on RedHat].
+For more information, see link:/apim/current/apim_installguide_redhat_stack.html[Install on RedHat].
 
 == Install with Docker
 
@@ -39,7 +37,7 @@ $ docker-compose pull
 $ docker-compose up
 ....
 
-For more information, see link:/apim/3.x/apim_installguide_docker_compose.html[Run on Docker].
+For more information, see link:/apim/current/apim_installguide_docker_compose.html[Run the APIM images in Docker].
 
 == Install with Kubernetes
 

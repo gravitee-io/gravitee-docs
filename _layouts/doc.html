@@ -1,10 +1,10 @@
 ---
-layout: default
+layout: default_docs
 toc: true
 ---
 
-{% include header.html %}
-{% include doc_post_header.html %}
+{% include doc_header.html %}
+
 <section class="layout-area bg-color1 content tutorial">
   <div class="layout-wrapper section-spacing bminus-30">
     <div class="container">
@@ -15,9 +15,11 @@ toc: true
       </div>
       <div class="row">
 	  {% if page.sidebar != nil %}
-
+    <div class="col-md-3">
       {% include sidebar.html %}
-
+</div>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
 		{% endif %}
 
 
