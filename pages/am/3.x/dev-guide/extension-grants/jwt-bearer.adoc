@@ -53,6 +53,7 @@ $ ssh-keygen -i -m PKCS8 -f rsa_public.pem
 image::am/current/graviteeio-am-userguide-extension-grants-jwt-bearer-create3.png[]
 
 If you want to copy claims from the incoming token to the final access token, you can use the *Claims mapper*.
+The *Claims mapper* will copy the incoming token claims as additional information about the user profile under the `claims` entry. This will allow you to add these claims using token customization.
 ====
 
 == Associate the extension grant with an application
