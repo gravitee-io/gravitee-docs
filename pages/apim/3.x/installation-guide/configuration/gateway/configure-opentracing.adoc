@@ -1,35 +1,34 @@
-= Enable OpenTracing 
+= Enable OpenTracing
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_how_to_enable_opentracing_with_jaeger.html
-:page-folder: apim/how-tos
-:page-description: Gravitee.io API Management - How To Enable OpenTracing 
-:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, opentracing, open tracing, jaeger, distributed tracing, documentation, manual, guide, reference, api, how-to 
+:page-permalink: apim/3.x/apim_enable_opentracing_with_jaeger.html
+:page-folder: apim/installation-guide/gateway
+:page-description: Gravitee.io API Management - How To Enable OpenTracing
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, opentracing, open tracing, jaeger, distributed tracing, documentation, manual, guide, reference, api, how-to
 :page-layout: apim3x
-:page-toc: false 
+:page-toc: false
 
-== Why Should I Enable OpenTracing? 
+== Why Should I Enable OpenTracing?
 
-Using OpenTracing allows Gravitee to trace every request that comes through the APIM Gateway, creating a deep level of insight on API policies and making debugging a cinch. Without OpenTracing, you'll only receive limited details – making monitoring and troubleshooting complicated and time-consuming. 
+Using OpenTracing allows Gravitee to trace every request that comes through the APIM Gateway, creating a deep level of insight on API policies and making debugging a cinch. Without OpenTracing, you'll only receive limited details – making monitoring and troubleshooting complicated and time-consuming.
 
-So, if you're looking for a way to simplify debugging, improve monitoring, and enhance visibility into requests across multiple services, Gravitee's OpenTracing solution with Jaeger as a tracer has you covered. Learn how to set up OpenTracing with the instructions below. 
+So, if you're looking for a way to simplify debugging, improve monitoring, and enhance visibility into requests across multiple services, Gravitee's OpenTracing solution with Jaeger as a tracer has you covered. Learn how to set up OpenTracing with the instructions below.
 
 
-== How To Enable OpenTracing 
+== How To Enable OpenTracing
 
-=== 1. Modify The Config File
-In the `gravitee.yml` file, enable tracing by adding the following configuration: 
+In the `gravitee.yml` file, enable tracing by adding the following configuration:
 
 ----
 tracing:
     enabled: true
     type: jaeger
-    jaeger: 
+    jaeger:
     host: localhost
     port: 14250
 ----
 
-Here, you *must* change `enabled` from `false` to `true`. 
+Here, you *must* change `enabled` from `false` to `true`.
 
-And that's it! You've enabled OpenTracing on APIM Gateway. 
+And that's it! You've enabled OpenTracing on APIM Gateway.
 
-Want to try it yourself in Docker? link:/apim/3.x/apim_opentracing_in_docker.html[Click here] for more details. 
+Want to try it yourself in Docker? link:/apim/3.x/apim_opentracing_in_docker.html[Click here] for more details.
