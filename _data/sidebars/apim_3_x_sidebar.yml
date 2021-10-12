@@ -178,7 +178,10 @@ entries:
                  url: /apim/3.x/apim_installguide_gateway_metrics.html
                - title: Enable OpenTracing
                  output: web
-                 url: /apim/3.x/apim_how_to_enable_opentracing_with_jaeger.html
+                 url: /apim/3.x/apim_enable_opentracing_with_jaeger.html
+               - title: OpenTracking in Docker
+                 output: web
+                 url: /apim/3.x/apim_opentracing_in_docker.html
             - title: Configure APIM API
               output: web
               subfolderitems:
@@ -427,10 +430,6 @@ entries:
           - title: Configure Global API Reviewers
             output: web
             url: /apim/3.x/apim_how_to_configure_global_API_reviewers.html
-          - title: Enable Open Tracing With Jaeger
-            output: web
-            url: /apim/3.x/apim_how_to_enable_opentracing_with_jaeger.html
-
       - title: Developer Guide
         output: web
         folderitems:
