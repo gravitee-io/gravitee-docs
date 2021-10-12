@@ -43,6 +43,8 @@ a new plugin.
 To expose the new HTTP API, you need to install a new plugin inside the `plugins` directory of APIM Gateway.
 This plugin can be found at https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-apim-repository-gateway-bridge-http/
 
+NOTE: This plugin is disabled by default from APIM 3.13.0.
+
 [source,bash]
 ----
 $ wget -O ${GRAVITEEIO_HOME}/plugins https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-apim-repository-gateway-bridge-http/gravitee-apim-repository-gateway-bridge-http-server-${PLUGIN_VERSION}.zip
