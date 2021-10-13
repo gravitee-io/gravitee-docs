@@ -65,6 +65,32 @@ entries:
       - title: Getting started with Cockpit
         output: web
         folderitems:
-          title: Get started with Cockpit
-          output: web
-          url: /cockpit/current/cockpit_getstarted.html
+          - title: Get started with Cockpit
+            output: web
+            url: /cockpit/current/cockpit_getstarted.html
+      - title: Resources
+        output: web
+        folderitems:
+          - title: Tutorials
+            output: web
+            url: /pages/tutorials.html
+            subfolders:
+              - title: APIM tutorials
+                output: web
+                subfolderitems:
+                  - title: Add custom metrics to APIM dashboards
+                    output: web
+                    url: /apim/current/apim_resources_custom_metrics.html
+                  - title: Configure global API reviewers
+                    output: web
+                    url: /apim/current/apim_resources_global_reviewers.html
+          - title: Case Studies
+            output: web
+            url: /pages/case-studies.html
+            subfolders:
+              - title: APIM case studies
+                output: web
+                subfolderitems:
+                  - title: Deploy a hybrid architecture in Kubernetes
+                    output: web
+                    url: /apim/current/apim_resources_hybrid_k8s.html

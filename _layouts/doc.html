@@ -4,6 +4,7 @@ toc: true
 ---
 
 {% include doc_header.html %}
+{% include doc_post_header.html %}
 
 <section class="layout-area bg-color1 content tutorial">
   <div class="layout-wrapper section-spacing bminus-30">
@@ -67,7 +68,7 @@ toc: true
 {% include footer.html %}
 
 <script>
-  var headings = document.querySelectorAll("h1[id]");
+  var headings = document.querySelectorAll("h2[id]");
   for (var i = 0; i < headings.length; i++) {
     var anchorLink = document.createElement("a");
     anchorLink.innerText = "#";

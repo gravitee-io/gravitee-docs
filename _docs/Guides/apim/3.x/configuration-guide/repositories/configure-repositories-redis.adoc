@@ -1,0 +1,40 @@
+---
+layout: doc
+product: API Management
+permalink: apim/current/apim_configguide_repos_redis.html
+sidebar: apim_3_x_sidebar
+guide: Configuration Guide
+toc: true
+title: Configure the Redis repository plugin
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+---
+
+This repository plugin is for connecting to Redis databases for rate limiting.
+
+== Install the Rate Limit repository plugin
+
+NOTE: Because the plugin is part of the default distribution from APIM version 3.5, you only need to complete these steps for version 3.4 or earlier.
+
+Repeat these steps on each component (APIM Gateway and APIM API) where the SQL database is used.
+
+. Download the plugin corresponding to your APIM version (take the latest maintenance release).
+. Place the zip file in the plugin directory for each component (`$GRAVITEE_HOME/plugins`).
+. Configure your `gravitee.yml` files, as described in the next section.
+
+[source,yaml]
+----
+# ===================================================================
+# MINIMUM REDIS REPOSITORY PROPERTIES
+#
+# This is a minimal sample file declared connection to Redis
+# ===================================================================
+ratelimit:
+  type: redis               # repository type
+  redis:                    # redis repository
+    host:                   # redis host (default localhost)
+    port:                   # redis port (default 6379)
+    password:               # redis password (default null)
+    timeout:                # redis timeout (default -1)
+----
+
+IMPORTANT: If THE Redis Rate Limit repository is not accessible, the API call will be successful. Do not forget to monitor your probe healthcheck to verify if the Redis repository is healthy. You can find health endpoints here: link:/apim/3.x/apim_configguide_api_internal_api.html#endpoints[Installation Guide^]

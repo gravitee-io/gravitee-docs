@@ -1,18 +1,19 @@
-= How to add custom metrics in dashboards
-:page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_how_to_add_custom_metrics_in_dashboards.html
-:page-folder: apim/how-tos
-:page-description: Gravitee.io API Management - How To
+---
+layout: doc
+product: API Management
+permalink: apim/current/apim_resources_custom_metrics.html
+sidebar: gettingstarted_sidebar
+tags: [APIM Tutorials]
+toc: true
+title: How to add custom metrics in dashboards
+---
+
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, how-to, custom, metric, dashboard
-:page-layout: apim3x
 
 
 [label label-enterprise]#Enterprise feature#
 
-
-== Overview
-
-This How to describes how you can easily configure the Assign metrics policy to use custom metrics in your dashboards.
+This tutorial shows you how to configure the Assign metrics policy to use custom metrics in your dashboards.
 
 == Assign metrics policy
 

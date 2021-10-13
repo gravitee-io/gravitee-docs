@@ -1,0 +1,107 @@
+---
+layout: doc
+product: API Management
+permalink: apim/current/apim_publisherguide_messaging.html
+toc: true
+guide: Publisher Guide
+sidebar: apim_3_x_sidebar
+title: Send notifications
+---
+
+You can use the APIM Console messaging feature to communicate with your users. You can send notifications at the level of the entire APIM platform or a specific API.
+
+There are three types of platform-wide and API notifications:
+
+* Portal notifications
+* Email notifications
+* POST HTTP message notifications
+
+You define the audience for your notifications in terms of roles, as described in the section below.
+For a detailed explanation of roles in APIM, see link:/apim/3.x/apim_adminguide_roles_and_permissions.html[Roles and permissions^].
+
+=== Platform-wide notifications
+
+You send APIM platform-wide notifications with the *Messages* menu option:
+
+image:apim/3.x/api-publisher-guide/messaging/message-platform-level.png[]
+
+You can send platform-wide notifications to users defined with the following link:/apim/3.x/apim_adminguide_roles_and_permissions.html#scope[environment scope^] roles:
+
+* ADMIN
+* API_PUBLISHER
+* USER
+
+=== API notifications
+
+NOTE: You can only send API notifications to consumers with a valid subscription to your API applications.
+
+You send API notifications with the API *Messages* menu option:
+
+image:apim/3.x/api-publisher-guide/messaging/message-api-level.png[]
+
+You can send API notifications to users defined with the following link:/apim/3.x/apim_adminguide_roles_and_permissions.html#scope[application scope^] roles:
+
+* OWNER
+* PRIMARY_OWNER
+* USER
+
+== Send a notification
+
+=== Portal notification
+
+When sending *Portal* notifications, you need to specify:
+
+* the user role to notify
+* the title of the notification
+* the text of the notification
+
+When you click *SEND*, APIM sends the notification to all users belonging to the specified role (as long as they have a valid application subscription, in the case of API level subscriptions). They can access the notification in APIM Console, by clicking the bell in the top bar.
+
+image:apim/3.x/api-publisher-guide/messaging/message-notifications.png[]
+
+The notification is also visible in the notifications area of the system, if enabled for the browser:
+
+image:apim/3.x/api-publisher-guide/messaging/message-notifications-system.png[]
+
+=== Email notification
+
+When sending *Email* notifications, you specify the same information as for portal notifications.
+
+When you click *SEND*, APIM sends an email to all the users with the specified role who have an email address configured for their profile (as long as they have a valid application subscription, in the case of API level subscriptions).
+
+TIP: For more details on configuring user profiles, see link:/apim/3.x/apim_adminguide_users_and_groups[Users and groups^].
+
+=== HTTP POST notification
+
+When sending *POST HTTP message* notifications, you need to specify:
+
+* HTTP headers
+* whether a system proxy is to be used
+* the URL to use for the HTTP message
+* the text of the message
+
+image:apim/3.x/api-publisher-guide/messaging/message-post-http.png[]
+
+When you click *SEND*, APIM sends the message to the URL, including any HTTP headers specified.
+
+== Example
+
+In this example we will see how to send a notification to all platform administrators.
+
+. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
+. Click *Messages*.
+. Select *Portal Notifications*.
+. Choose the *ENVIRONMENT* role to notify as *ADMIN*.
+. Give the message a *Title* and enter the detail of the message in *Text*.
++
+image:apim/3.x/api-publisher-guide/messaging/message-portal-example.png[]
++
+. Click *SEND*.
++
+All users with the ADMIN role are notified of new messages by a number on the bell in the top bar:
++
+image:apim/3.x/api-publisher-guide/messaging/message-notifications.png[]
++
+Clicking on the bell shows the content of the message:
++
+image:apim/3.x/api-publisher-guide/messaging/message-portal-example-notification.png[]

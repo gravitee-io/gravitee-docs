@@ -4,7 +4,10 @@
         <li class="breadcrumb-item">{{page.product}}</li>
     	  {% if page.guide != nil %}
         <li class="breadcrumb-item">{{page.guide}}</li>
+        {% if page.guide-section != nil %}
+
         <li class="breadcrumb-item">{{page.guide-section}}</li>
+            {% endif %}
         <li class="breadcrumb-item active" aria-current="page">{{page.title}}</li>
 
         {% else %}

@@ -800,16 +800,16 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 .page-title-wrapper {
   max-width: 900px;
   margin: auto;
-  padding-top: 150px;
-  padding-bottom: 100px; }
+  padding-top: 60px;
+  padding-bottom: 60px; }
   @media (min-width: 768px) and (max-width: 991px) {
     .page-title-wrapper {
       max-width: 700px; } }
   @media (max-width: 768px) {
     .page-title-wrapper {
       max-width: 750px;
-      padding-top: 150px;
-      padding-bottom: 100px; } }
+      padding-top: 50px;
+      padding-bottom: 50px; } }
 
 .page-title {
   position: relative;

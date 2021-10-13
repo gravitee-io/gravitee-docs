@@ -18,6 +18,21 @@
 <!-- Page Content -->
 
         {{content}}
+        <!-- Add Javascript File -->
+        <!--       <script src="/assets/js/build.min.js"></script> - this script needed for topnav but breaks sidebar -->
+       		<script>
+    			$(function() {
+    				$('a[href*=\\#]').not(".no-smooth").on('click', function(event){
+    					var el = $(this.hash);
+    					if (el.length > 0) {
+    						// event.preventDefault();
+    						$('html,body').animate({scrollTop:$(this.hash).offset().top - 100}, 500);
+    					}
+    				});
 
+    				});
+
+
+    		</script>
 </body>
 </html>
