@@ -15,8 +15,12 @@ entries:
       - title: Policy references
         output: web
         folderitems:
-          - title: API Management
+          - title: API Key
             output: web
+            url: /apim/current/apim_policies_apikey.html
+          - title: Assign Attributes
+            output: web
+            url: /apim/current/apim_policies_assign_attributes.html
       - title: CLI reference
         output: web
         folderitems:

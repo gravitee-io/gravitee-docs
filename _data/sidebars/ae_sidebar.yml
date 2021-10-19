@@ -2,7 +2,7 @@
 
 entries:
 - title: Sidebar
-  product: Alert Engine 1.x
+  product: Alert Engine
   folders:
 
   - title: Overview
@@ -10,11 +10,7 @@ entries:
     folderitems:
     - title: Introduction
       output: web
-      url: /ae/overview_introduction.html
-      type: homepage
-    - title: How it works
-      output: web
-      url: /ae/overview_howitworks.html
+      url: /ae/current/ae_overview_introduction.html
 
   - title: Installation Guide
     output: web
@@ -132,7 +128,7 @@ entries:
         output: web
         url: /ae/am_configuration.html
 
-  - title: Third Parties
+  - title: Third party products
     output: web
     folderitems:
       - title: Installation

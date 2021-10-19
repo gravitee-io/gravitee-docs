@@ -1,69 +1,120 @@
 ---
 layout: doc
+product: Access Management
 title: AM Overview
-permalink: /am/current/am_overview_introduction.html
-tags: [AM]
+permalink: am/current/am_overview_introduction.html
 toc: true
-custom_links:
-- text: API Management
-  url: /apim/current/apim_overview_introduction.html
-  submenu:
-  - text: Install
-    url: /apim/current/apim_installguide.html
-  - text: Configure
-    url: /apim/current/apim_configurationguide.html
-  - text: Publish APIs
-    url: /apim/current/apim_publisherguide_create_apis.html
-  - text: Consume APIs
-    url: /apim/current/apim_consumerguide_portal.html
-  - text: Administration Guide
-    url: /apim/current/apim_adminguide_organizations_and_environments.html
-  - text: Developer Guide
-    url: apim/current/apim_devguide_bootstrap.html
-- text: Access Management
-  url: am_overview_introduction.html
-  submenu:
-  - text: Installation Guide
-    url: /am/current/am_installguide.html
-    submenuitems:
-    - text: Install on Amazon
-      url: /apim/current/apim_installguide_amazon_introduction.html
-    - text:
-      url:
-  - text: Configuration Guide
-    url: /pages/support
-  - text: User Guide
-    url: /explore-topics/
-    submenu:
-    - text: Overview
-      url: /blog-post-left-sidebar
-    - text: Payment
-      url: /blog-post-right-sidebar
-  - text: Administration Guide
-    url: /pages/contact
-  - text: Developer Guide
-    url: /pages/contact
-- text: Cockpit
-  url:
-  - text: Installation Guide
-    url:
-    text: Configuration Guide
-    url:
-    User Guide:
-    url:
-- text: Alert Engine
-  url:
-  - text:
-    url:
+sidebar: am_3_x_sidebar
+title: Access Management overview
 ---
 
-= Access Management Overview
-:page-folder: am/overview
-:page-toc: false
-:page-layout: am
+Gravitee.io Access Management (AM) is a flexible, lightweight and easy to use open source Identity and Access Management solution. It offers a centralized authentication and authorization service to deliver secure access for authorized users to your applications and APIs from any device.
 
-== Access Management Overview
+== Authorization in AM
 
-Gravitee.io AM is a flexible, lightweight and easy to use Open Source Identity and Access Management solution that offers a centralized Authentication and Authorization Service to secure your applications and your APIs.
+AM is based on OAuth2/OpenID Connect protocols and acts as an identity provider broker.
 
-NOTE: In the rest of the document, we use the short name *Gravitee.io* or *Gravitee.io AM* to talk about *Gravitee.io Access Management*.
+=== OAuth2
+OAuth2 is an authorization framework that allows applications acting on behalf of the end user to obtain limited access to HTTP services. https://tools.ietf.org/html/rfc6749[OAuth 2 RFC^] defines two endpoints:
+
+- The **authorization endpoint** used to interact with the resource owner and obtain an authorization grant via user-agent redirection.
+- The **token endpoint** used by the client to obtain an access token by presenting its authorization grant.
+
+https://tools.ietf.org/html/rfc6749[Learn more about OAuth2^]
+
+=== OpenID Connect
+OpenID Connect is an identity layer on top of the OAuth 2.0 protocol. It enables clients to verify the identity of the end user by using an Authorization Server to authenticate and obtain basic profile information about the end user.
+
+http://openid.net/specs/openid-connect-core-1_0.html[Learn more about OpenID Connect^]
+
+== Use cases
+
+Here are some common AM use cases:
+
+- You’ve built a new application and you want to add user authentication and authorization
+- You’ve built a new frontend, mobile or web application and you want it to securely access your APIs
+- You’re using Gravitee.io API Management to manage your APIs and you want to implement a seamless authorization flow
+- You want the flexibility of logging in users either with a username and password or with their social media accounts
+- You have a group of applications for which you want to implement single sign-on
+- You want to focus on developing apps and leave the headache of password and user management to an external solution
+- You have multiple user directories (database, web service, LDAP, AD) and want to federate them
+- You want to rely on standard protocols to ensure interoperability with your enterprise tools
+
+== Concepts
+
+The main AM concepts are described below.
+
+=== Organization
+
+NOTE: As of AM version 3.6, the open source version of AM comes with a single default organization.
+
+An organization is internal data space AM provisions for you, to hold all the resources to handle user authentication.
+
+=== Environment
+
+NOTE: As of AM version 3.6, the open source version of AM comes with a single default environment.
+
+An environment is a logical workspace in which administrative users can manage security domains.
+
+=== Security domain
+
+Security domains in AM have the following characteristics:
+
+- Gives you access to all the AM resources, such as applications, users and identity providers
+- Exposes authentication and authorization URLs
+- Gathers analytics and reporting
+
+=== Application
+
+Applications in AM have the following characteristics:
+
+- Can be any type of application, for example:
+
+  - Web Application (PHP, Java, Node.js)
+  - Single App (JavaScript)
+  - Native App (iOS, Android)
+  - Backend App (Job, CLI)
+
+- Applications use AM to sign in and make requests to the Gateway Authorization Server
+- Applications can be used by end users (B2C) or be autonomous (B2B)
+
+=== Identity provider
+
+An identity provider in AM:
+
+- Brokers trust with external user providers such as:
+
+  - LDAP / Active Directory
+  - Database
+  - Web services
+  - Social providers
+  - OpenID Connect providers
+  - SAML v2 IDP
+  - Custom providers
+
+- Is used during the login process to verify user credentials and retrieve profile information
+
+=== Extension point
+
+NOTE: Extension points are deprecated in version 3.5.x and replaced by the flow concept described below.
+
+An extension point:
+
+- Extends the behavior of the AM server by executing policies on selected stages
+- Customizes the authentication and authorization flow by:
+
+  - Adding extra actions after the login form process
+  - Adding extra actions before and after the user consent process
+
+=== Flow
+
+NOTE: New in AM 3.5.x
+
+A flow:
+
+- Allows you to build your own custom authentication and authorization journey by executing policies during specific phases of the authentication flow
+- Can be used to:
+
+  - Enrich user profiles
+  - Notify 3rd party systems
+  - Add extra authorization rules (such as verify users or enforce MFA)

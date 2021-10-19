@@ -18,8 +18,10 @@
 <!-- Page Content -->
 
         {{content}}
-        <!-- Add Javascript File -->
-        <!--       <script src="/assets/js/build.min.js"></script> - this script needed for topnav but breaks sidebar -->
+        <!-- Add Javascript File - this script needed for topnav but breaks sidebar -->
+         <script src="/assets/js/build.min.js"></script>
+         <script src="{{ "/assets/js/jquery.navgoco.min.js" | relative_url }}"></script>
+
        		<script>
     			$(function() {
     				$('a[href*=\\#]').not(".no-smooth").on('click', function(event){

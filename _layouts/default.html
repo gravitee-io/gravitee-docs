@@ -48,11 +48,11 @@
 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<script src="{{ "/assets/js/jquery.navgoco.min.js" | relative_url }}"></script>
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="{{ "/assets/js/jquery.navgoco.min.js" | relative_url }}"></script>
 <script src="{{ "/assets/js/toc.js" | relative_url }}"></script>
 <script src="{{ "/assets/js/customscripts.js" | relative_url }}"></script>
 
@@ -69,7 +69,8 @@
 <body>
    {{ content }}
     <!-- Add Javascript File -->
-   <script src="{{ '/assets/js/build.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/build.min.js' | relative_url }}"></script>
+  
    		<script>
 			$(function() {
 				$('a[href*=\\#]').not(".no-smooth").on('click', function(event){

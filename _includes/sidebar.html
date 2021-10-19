@@ -1,6 +1,28 @@
 {% include custom/sidebarconfigs.html %}
 <div class="custom-links">
-    <h5>{{sidebar[0].product}}<place-holder-for-version-dropdown></h5>
+  <!--  <h5>{{sidebar[0].product}}</h5> -->
+{% if sidebar[0].product contains "API Management" %}
+    {% for entry in site.data.side-nav-versions.apim_sidenav_versions %}
+    {% for folder in entry.folders %}
+      <li class="dropdown-button">
+        Version<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            {% for folderitem in folder.folderitems %}
+              {% if folderitem.external_url %}
+              <li><a href="{{folderitem.external_url}}" target="_blank">{{folderitem.title}}</a></li>
+              {% elsif page.url contains folderitem.url %}
+              <li class="dropdownActive"><a href="{{folderitem.url}}">{{folderitem.title}}</a></li>
+              {% else %}
+              <li><a href="{{folderitem.url}}">{{folderitem.title}}</a></li>
+              {% endif %}
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+
+
     <ul id="mysidebar" class="nav navbar-nav">
 
         {% for entry in sidebar %}

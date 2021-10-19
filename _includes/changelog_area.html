@@ -1,0 +1,36 @@
+<!-- Start Changelog  Area -->
+<section class="changelog-area bg-color1">
+   <div class="changelog-wrapper inner-spacing">
+      <div class="container">
+         <div class="row">
+           {% assign my_doc_tags =  site.docs | map: 'tags' | join: ','  | split: ',' | uniq %}
+           {% for tag in my_doc_tags %}
+{% if tag contains "Changelog" %}
+{% for doc_post in site.docs %}
+{% if doc_post.tags contains tag %}
+
+            <div class="col-md-6 col-lg-4">
+               <div class="changelog-service wow fadeIn" data-wow-duration="3s">
+
+                  <div class="changelog-tile">
+                     <h5 class="heading-5">{{doc_post.product}}</h5>
+                     <p><i class="changelog-date"></i> Updated :  {{changelog_entry.date}}
+
+                     </p>
+                  </div>
+                  <ul class="changelog-list list-inline">
+                     {{change_log.changelog}}
+                  </ul>
+               </div>
+
+            </div>
+
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+</section>
+<!-- End Changelog Area -->

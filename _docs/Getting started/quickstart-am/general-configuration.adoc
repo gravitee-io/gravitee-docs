@@ -1,10 +1,11 @@
-= How to configure a production-ready AM environment
-:page-sidebar: am_3_x_sidebar
-:page-permalink: am/current/am_installguide_how_to_configuration.html
-:page-folder: am/installation-guide
-:page-layout: am
-
-== Overview
+---
+layout: doc
+product: Access Management
+permalink: am/current/apim_getstarted_configureAM.html
+toc: true
+sidebar: am_3_x_sidebar
+title: Configure a production-ready AM environment
+---
 
 During AM installation some default settings are created.
 While these default settings can be useful for testing your new installation, some of them may not be suitable for a production environment, where security is more of a consideration.

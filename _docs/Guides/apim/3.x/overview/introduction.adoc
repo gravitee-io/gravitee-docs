@@ -5,11 +5,9 @@ permalink: apim/current/apim_overview_introduction.html
 toc: true
 sidebar: apim_3_x_sidebar
 title: API Management overview
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 ---
-
-:page-description: Gravitee.io API Management - Introduction
-:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
-
+  
 = API Management overview
 
 Organizations are increasingly using API management solutions to publish their APIs to third parties such as external developers, internal developers and other
@@ -67,6 +65,44 @@ Administrators can also configure global platform settings and specific portal s
 This web UI gives easy access to some key <<gravitee-components-rest-api, APIM API>> services.
 <<apim_overview_concepts.adoc#gravitee-concepts-consumer, API Consumers>> can use it to search for, view, try out and subscribe to a published API.
 They can also use it to manage their <<apim_overview_concepts.adoc#gravitee-concepts-application, applications>>.
+
+== Concepts
+
+[[gravitee-am-concepts-security-domain]]
+=== Security Domain
+* Give you access to all the Gravitee.io AM resources such as applications, users, identity providers, etc ...
+* Expose authentication and authorization URLs
+* Gather analytics and reporting
+
+[[gravitee-am-concepts-application]]
+=== Application
+* Can be any type of application such as :
+** Web Application (PHP, Java, Node, …)
+** Single App (Javascript)
+** Native App (iOS, Android)
+** Backend App (Job, CLI, …)
+* Applications use Gravitee.io AM to sign in and make requests to the Gateway Authorization Server
+* Applications can be used by end-users (B2C) or acts by itself (B2B)
+
+[[gravitee-am-concepts-idp]]
+=== Identity Provider
+* Broker trust with external users providers such as :
+** LDAP / Active Directory
+** Database
+** Web services
+** Social providers
+** OpenID Connect providers
+** SAML v2 IDP
+** Custom …
+* Identity providers are used during Sign-in process to verify user credentials and retrieve profile information
+
+[[gravitee-am-concepts-extension-point]]
+=== Extension Point
+* Extension Points allow you to extend the behavior of the Access Management Server by executing Policy on selected stages.
+* Extension Points are used to customize the authentication and authorization Flow
+** Add extra action after login form process
+** Add extra action before and after user consent process
+
 
 == Plugins
 

@@ -1,4 +1,4 @@
-= Install Gravitee.io Access Management on Amazon Linux
+= Introduction
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_installguide_amazon_introduction.html
 :page-folder: am/installation-guide/amazon
@@ -9,18 +9,12 @@
 
 == Overview
 
-Use this tutorial to install Gravitee.io Access Management on Amazon Linux using the yum package manager.
+This section explains how to install AM on Amazon Linux using the `yum` package manager.
 
-=== Gravitee.io Access Management Version
+== Configure the package management system (yum)
 
-This tutorial installs Gravitee.io Access Management {{ site.products.am._3x.version }}. To install a different version of
-Gravitee.io Access Management, just replace the version with the one expected.
-
-== Install Gravitee.io Access Management
-
-=== Configure the package management system (yum)
-Create a file called `graviteeio.repo` in the `/etc/yum.repos.d/` so that you can install Gravitee.io Access Management directly using yum:
-
+. Create a file called `graviteeio.repo` in location `/etc/yum.repos.d/` so that you can install AM directly using `yum`:
++
 [source,bash]
 ----
 [graviteeio]
@@ -33,28 +27,28 @@ sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ----
-
-Then, some packages are required to handle GPG signatures of our RPM packages:
-
++
+. Enable GPG signature handling, which is required by some of our RPM packages:
++
 [source,bash]
 ----
 sudo yum install pygpgme yum-utils
 ----
-
-Before going ahead, you may to refresh your local cache.
-
++
+Before continuing, you may to refresh your local cache:
++
 [source,bash]
 ----
 sudo yum -q makecache -y --disablerepo='*' --enablerepo='graviteeio'
 ----
++
+Your repository is now ready to use.
 
-Your repository is ready to use, now it's time to install Gravitee.io Access Management.
+== Install the AM components
 
-=== Install the Gravitee.io components on Amazon Linux
+You can choose to install the full AM stack or install components one by one:
 
-You can choose to install the complete Gravitee.io Access Management stack or install components one by one:
-
-* link:/am/current/am_installguide_amazon_stack.html[Install Access Management] (includes all components below)
-* link:/am/current/am_installguide_amazon_gateway.html[Install API Gateway]
-* link:/am/current/am_installguide_amazon_management_api.html[Install Management API]
-* link:/am/current/am_installguide_amazon_portal.html[Install Portal]
+* link:/am/current/am_installguide_amazon_stack.html[Install the full AM stack] (includes all components below)
+* link:/am/current/am_installguide_amazon_gateway.html[Install AM Gateway]
+* link:/am/current/am_installguide_amazon_management_api.html[Install AM API]
+* link:/am/current/am_installguide_amazon_portal.html[Install AM Console]

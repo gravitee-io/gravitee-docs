@@ -2,40 +2,24 @@
 
 entries:
 - title: Sidebar
-  product: Access Management 3.x
+  product: Access Management
   folders:
   - title: Overview
     output: web
     folderitems:
-    - title: Introduction
+    - title: Product overview
       output: web
       url: /am/current/am_overview_introduction.html
-      type: homepage
-    - title: Why Gravitee.io Access Management?
+    - title: Technical overview
       output: web
-      url: /am/current/am_overview_why.html
-    - title: Architecture
-      output: web
-      url: /am/current/am_overview_architecture.html
-    - title: Components
-      output: web
-      url: /am/current/am_overview_components.html
-    - title: Concepts
-      output: web
-      url: /am/current/am_overview_concepts.html
-    - title: Plugins
-      output: web
-      url: /am/current/am_overview_plugins.html
+      url: /am/current/am_overview_technical.html
 
-  - title: Install
+  - title: Installation Guide
     output: web
     folderitems:
-    - title: Introduction
+    - title: Installing AM
       output: web
       url: /am/current/am_installguide_introduction.html
-    - title: Quick installation
-      output: web
-      url: /am/current/am_installguide_quickstart.html
       subfolders:
         - title: Install with .zip
           output: web
@@ -102,7 +86,7 @@ entries:
               url: /am/current/am_installguide_kubernetes.html
     - title: Upgrade Guide
       output: web
-      url: /am/current/am_installguide_migration.html
+      url: /am/current/am_installguide_upgrade.html
 
   - title: Configure
     output: web

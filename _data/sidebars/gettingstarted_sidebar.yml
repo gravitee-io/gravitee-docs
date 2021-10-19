@@ -16,6 +16,9 @@ entries:
           - title: Quick Access Management installation
             output: web
             url: /am/current/am_getstarted_quickinstall.html
+          - title: Configure a production-ready AM environment
+            output: web
+            url: /am/current/apim_getstarted_configureAM.html
       - title: Getting started with APIM
         output: web
         folderitems:
@@ -84,6 +87,9 @@ entries:
                   - title: Configure global API reviewers
                     output: web
                     url: /apim/current/apim_resources_global_reviewers.html
+                  - title: Test OpenTracing in Docker
+                    output: web
+                    url: /apim/current/apim_resources_docker_opentracing.html
           - title: Case Studies
             output: web
             url: /pages/case-studies.html

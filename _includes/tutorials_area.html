@@ -9,6 +9,7 @@
 				<div class="topics-service-area">
 				 {% assign my_doc_tags =  site.docs | map: 'tags' | join: ','  | split: ',' | uniq %}
             {% for tag in my_doc_tags %}
+{% if tag contains "Tutorials" %}
 
 					<article class="post topics-service bg-color3 wow fadeIn" data-wow-duration="3s">
 						<header class="topics-title">
@@ -17,13 +18,15 @@
                   <ul class="topics-list list-inline">
                      {% for doc_post in site.docs %}
                      {% if doc_post.tags contains tag %}
+
                      <li><a href="{{ doc_post.url | relative_url }}">{{ doc_post.title }} </a></li>
+
                      {% endif %}
                      {% endfor %}
                   </ul>
 
 					</article>
-
+ {% endif %}
 				{%endfor%}
 
 
