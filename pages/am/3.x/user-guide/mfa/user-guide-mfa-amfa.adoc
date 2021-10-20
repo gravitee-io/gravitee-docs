@@ -7,6 +7,7 @@
 [label label-version]#New in version 3.13#
 
 == Overview
+
 Adaptive Multi-factor authentication (A-MFA) requires the user to produce additional forms of authentication after the login step.
 
 When A-MFA is enabled, it allows the user to skip MFA, based on the following trusted information:
@@ -17,12 +18,15 @@ When A-MFA is enabled, it allows the user to skip MFA, based on the following tr
 
 === Example use cases
 
-A-MFA is often used in the following situations:
+A-MFA is often used in the following scenarios:
 
 - A user fails to log in three times and succeeds on the fourth attempt.
-- A user tries to log in from a different location (such as country, continent or region).
+- A user tries to log in from a different location (such as country, continent, or region).
 
-Both of these can be secured with A-MFA to prevent the account from being compromised.
+You can use A-MFA in both cases to prevent account security breaches.
+
+WARNING: To apply location rules, you must first install plugin link:https://download.gravitee.io/plugins/services/gravitee-service-geoip-1.0.0.zip[`gravitee-service-geoip`].
+This plugin loads the `geoip` databases in memory, so you need to adjust the JVM Heap settings of your AM Gateways accordingly.
 
 == Configure A-MFA
 

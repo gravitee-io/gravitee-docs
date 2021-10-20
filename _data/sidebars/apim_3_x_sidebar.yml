@@ -2,14 +2,15 @@
 
 entries:
   - title: Sidebar
-    product: API Management 3.x
+    product: apim
+    version: 3.x
     folders:
       - title: Overview
         output: web
         folderitems:
           - title: Introduction
             output: web
-            url: /apim/3.x/apim_overview_introduction.html
+            url: /Guides/apim/3.x/overview/introduction.html
             type: homepage
           - title: Architecture
             output: web
