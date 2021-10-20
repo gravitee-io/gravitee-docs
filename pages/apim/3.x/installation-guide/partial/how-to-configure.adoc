@@ -25,9 +25,7 @@ Define one of the following variables:
 [source,properties]
 ----
 GRAVITEE_MANAGEMENT_MONGODB_DBNAME=myDatabase
-GRAVITEE.MANAGEMENT.MONGODB.DBNAME=myDatabase
 gravitee_management_mongodb_dbname=myDatabase
-gravitee.management.mongodb.dbname=myDatabase
 ----
 
 WARNING: Some properties are case-sensitive and cannot be written in uppercase (for example,
@@ -59,8 +57,8 @@ gravitee_analytics_elasticsearch_endpoints_0=https://my.first.endpoint.com
 gravitee_analytics_elasticsearch_endpoints_1=https://my.second.endpoint.com
 
 gravitee_security_providers_0_type=ldap
-gravitee_security_providers_0_context-source-username=cn=Directory Manager
-gravitee_security_providers_0_context-source-password=password
+gravitee_security_providers_0_contextsourceusername=cn=Directory Manager
+gravitee_security_providers_0_contextsourcepassword=password
 ----
 
 or

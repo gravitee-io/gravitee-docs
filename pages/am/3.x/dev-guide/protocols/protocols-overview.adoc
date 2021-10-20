@@ -20,3 +20,5 @@ as well as to obtain basic profile information about the end user in an interope
 Its intent is to reduce the cost and complexity of user management operations by providing a common user schema and extension model.
 
 - link:/am/current/am_devguide_protocols_fapi_overview.html[FAPI 1.0]: The Financial-grade API (FAPI) is a highly secured OAuth profile that aims to provide specific implementation guidelines for security and interoperability. 
+
+- link:/am/current/am_devguide_protocols_ciba_overview.html[CIBA 1.0]: The Client-Initiated Backchannel Authentication Flow - Core 1.0 (CIBA) is an authentication flow where the Relying Party communicates with OpenID Provider without redirects through the user's browser.

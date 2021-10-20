@@ -1,0 +1,22 @@
+= CIBA - Authentication Device Plugins
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_devguide_protocols_ciba_plugins.html
+:page-folder: am/dev-guide/protocols/ciba
+:page-layout: am
+
+
+The goal of CIBA is to avoid Browser redirect in order to grab the user authorization or identity. The common way to obtain this is to rely on the smartphone of the end user by sending a push notification on a mobile app.
+
+This page introduces AM plugins that will allow you to manage these device notifications.
+
+== External HTTP Service
+
+The *External HTTP Service* plugin brings you the freedom of implementing the notification mechanism in the way you want to by delegate this responsibiltiy to an external HTTP service.
+
+This service must follow the requirements here after : 
+
+* Be registered as an application on AM in order to provide client ID and client Secret on the AM callback endpoint
+* Implement the link:/am/current/ciba_external_service/index.html[notification endpoint, window="_blank"] to receive notification request
+* Call the AM link:/am/current/ciba/index.html[callback endpoint] to update the authentication request status
+
+image::am/current/graviteeio-am-CIBA-Flow.png[]
