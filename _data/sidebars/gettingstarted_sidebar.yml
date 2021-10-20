@@ -4,6 +4,12 @@ entries:
   - title: Sidebar
     product: Get started
     folders:
+      - title: Getting started with Gravitee API platform
+        output: web
+        folderitems:
+          - title: Overview
+            output: web
+            url: /getstarted.html
       - title: Quick installation
         output: web
         folderitems:
@@ -71,12 +77,10 @@ entries:
           - title: Get started with Cockpit
             output: web
             url: /cockpit/current/cockpit_getstarted.html
-      - title: Resources
+      - title: Tutorials
         output: web
         folderitems:
-          - title: Tutorials
-            output: web
-            url: /pages/tutorials.html
+          - title: APIM
             subfolders:
               - title: APIM tutorials
                 output: web
@@ -90,13 +94,12 @@ entries:
                   - title: Test OpenTracing in Docker
                     output: web
                     url: /apim/current/apim_resources_docker_opentracing.html
-          - title: Case Studies
-            output: web
-            url: /pages/case-studies.html
-            subfolders:
-              - title: APIM case studies
-                output: web
-                subfolderitems:
                   - title: Deploy a hybrid architecture in Kubernetes
                     output: web
                     url: /apim/current/apim_resources_hybrid_k8s.html
+              - title: AM tutorials
+                output: web
+                subfolderitems:
+                  - title: xxx
+                    output: web
+                    url: /

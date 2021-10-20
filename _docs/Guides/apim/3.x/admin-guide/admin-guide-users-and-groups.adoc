@@ -5,7 +5,7 @@
 :page-folder: apim/user-guide/admin
 :page-description: Gravitee.io API Management - Admin Guide - Users and Groups
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
-:page-layout: apim3x
+:page-layout: doc
 
 == Users
 
@@ -83,7 +83,7 @@ The dialog box will ask you some inputs:
 
 image::apim/3.x/adminguide/custom-user-fields-create.png[Gravitee.io - Create User Field]
 
-_Note:_ Gravitee provides a list of predefined keys. There are visible by clicking on the key field. 
+_Note:_ Gravitee provides a list of predefined keys. There are visible by clicking on the key field.
 
 Once the user fields are defined, they will be displayed in the registration form of the console and the portal.
 
@@ -97,7 +97,7 @@ A user may visualize and update these information through the account page.
 
 image::apim/3.x/adminguide/custom-user-fields-account.png[Gravitee.io - User Account]
 
-TIP: 	Translations of the label for the custom fields is based on the field key. To add translation for your own fields, please declare them in the translation files (https://github.com/gravitee-io/gravitee-portal-webui/blob/master/src/assets/i18n/en.json[en.json], https://github.com/gravitee-io/gravitee-portal-webui/blob/master/src/assets/i18n/fr.json[fr.json]...) under the element `register.field`. If no translation is available the default label will be used. 
+TIP: 	Translations of the label for the custom fields is based on the field key. To add translation for your own fields, please declare them in the translation files (https://github.com/gravitee-io/gravitee-portal-webui/blob/master/src/assets/i18n/en.json[en.json], https://github.com/gravitee-io/gravitee-portal-webui/blob/master/src/assets/i18n/fr.json[fr.json]...) under the element `register.field`. If no translation is available the default label will be used.
 
 
 == Groups

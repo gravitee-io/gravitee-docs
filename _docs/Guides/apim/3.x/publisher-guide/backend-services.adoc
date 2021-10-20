@@ -5,7 +5,7 @@ permalink: apim/current/apim_publisherguide_backend_services.html
 toc: true
 guide: Publisher Guide
 sidebar: apim_3_x_sidebar
-title: Load balancing, failover and health check
+title: Load balancing, failover, and health check
 ---
 
 :page-liquid:
@@ -16,12 +16,11 @@ APIM includes a number of backend services for managing your APIs. This page exp
 * Failover
 * Health check
 
-=== How to access the API backend service configuration
+== How to access the API backend service configuration
 
 To update the configuration for these services:
 
-. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
-. Click *APIs* and select an API.
+. In APIM Console, click *APIs* and select an API.
 . Click *Proxy*.
 +
 The backend service configuration options are in the *BACKEND SERVICES* section.

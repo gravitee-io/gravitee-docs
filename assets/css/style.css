@@ -372,7 +372,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
   background: transparent; }
 
 .bg-cover1 {
-  background: url(../images/bg-pattern.svg) 50% no-repeat, linear-gradient(60deg, #0D65B0, #3399f0); }
+  background: url(../images/website-bg.jpg) 50% no-repeat, linear-gradient(60deg, #0D65B0, #3399f0); }
 
 .bg-cover2 {
   background: url(../images/bg-pattern2.svg) 50% no-repeat, linear-gradient(0deg, #0D65B0, #062e51); }
@@ -744,6 +744,13 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
   @media (max-width: 768px) {
     .full-padding {
       padding: 200px 0; } }
+	  
+.medium-padding {
+  padding: 170px 0; }
+  @media (max-width: 768px) {
+    .medium-padding {
+      padding: 100px 0; } }
+	  
 
 .small-padding {
   padding: 0px 0; }
@@ -2146,6 +2153,9 @@ ul#results-container {
 
 .modal-body {
   padding: .5rem; }
+
+.modal-body-center {
+  position: center; }
 
 .modal-content {
   border-radius: 0; }

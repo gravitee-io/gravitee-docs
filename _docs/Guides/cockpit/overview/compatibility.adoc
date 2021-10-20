@@ -1,16 +1,15 @@
-= Compatibility
-:page-sidebar: cockpit_sidebar
-:page-permalink: cockpit/3.x/cockpit_overview_compatibility.html
-:page-folder: cockpit/overview
-:page-description: Gravitee.io Cockpit - Compatibility
-:page-keywords: Gravitee.io, API Platform, API Management, Cockpit, documentation, manual, guides
+---
+layout: doc
+product: Cockpit
+permalink: cockpit/current/cockpit_overview_compatibility.html
+sidebar: cockpit_sidebar
+title: Product compatibility
+---
+
 :page-liquid:
 
-== Compatibility
-
-The lastest version of Gravitee Cockpit ``{{site.products.cockpit.version}}`` requires the following versions to be able to accept installations:
+The lastest version of Gravitee Cockpit ({{site.products.cockpit.version}}) requires the following product versions to be able to accept installations:
 
 * APIM: 3.6.3
 * AM: 3.6.2
 * Cockpit connector: 1.0.0
-

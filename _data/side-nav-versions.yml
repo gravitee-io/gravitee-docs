@@ -2,10 +2,14 @@
 apim_sidenav_versions:
 - title: Sidenav versions
   folders:
-    - default_version: 3.x (current)
+    - default_version: 3.12.x (current)
       folderitems:
-        - title: 3.x (current)
-          url: /apim/current/apim_overview_introduction.html
+        - title: 3.12.x (current)
+          url: /apim/3.x/apim_overview_introduction.html
+        - title: 3.11.x
+          url: /apim/3.11.x/apim_overview_introduction.html
+        - title: 3.4.x
+          url: /apim/3.4.x/apim_overview_introduction.html
         - title: 1.x
           url: /apim/1.x/apim_overview_introduction.html
 

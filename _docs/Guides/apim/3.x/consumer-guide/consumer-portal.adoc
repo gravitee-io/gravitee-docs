@@ -1,0 +1,24 @@
+---
+layout: doc
+product: API Management
+permalink: apim/current/apim_consumerguide_portal.html
+sidebar: apim_3_x_sidebar
+guide: Consumer Guide
+toc: true
+title: Consuming APIs
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+---
+
+This section explains how to consume APIs using APIM Portal.
+
+== Access
+
+You can access APIM Portal without a connection (as an anonymous user), but to do anything with an API, you need to connect with a user account
+and subscribe to some _plans_.
+
+The default view in APIM Portal shows all the APIs the authenticated user can access (or only _public_ APIs for anonymous users).
+
+The rules for accessing APIs is as follows:
+
+* Public API: all users
+* Private API: a user must be a member of the API (user, owner, primary_owner)

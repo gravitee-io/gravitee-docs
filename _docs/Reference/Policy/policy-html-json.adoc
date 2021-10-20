@@ -1,7 +1,10 @@
-:page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_policies_html2json.html
-:page-folder: apim/user-guide/publisher/policies
-:page-layout: apim3x
-:page-title: HTML to JSON policy
+---
+layout: doc
+product: API Management
+permalink: apim/current/apim_policies_html_json.html
+toc: true
+sidebar: reference_sidebar
+title: HTML to JSON policy
+---
 
 include::https://gh.gravitee.io/gravitee-io/gravitee-policy-html-json/master/README.adoc[]

@@ -3,7 +3,7 @@
 - text: Home
   url: /
 - text: Get Started
-  url: /apim/current/apim_getstarted_quickinstall.html
+  url: /getstarted.html
 - text: Product Guides
   submenu:
   - text: API Management
@@ -20,15 +20,19 @@
   - text: APIM API Reference
     url: /apim/current/apim_reference_api.html
   - text: AM API Reference
-    url: /am/current/am_devguide_management_api_documentation.html
+    url: /am/current/am_reference_api.html
   - text: APIM Policy Reference
     url: /apim/current/apim_policies_apikey.html
   - text: APIM CLI Reference
-    url: /apim/current/apim_policies_overview.html
+    url: /
 - text: Resources
   url: /
   submenu:
   - text: Tutorials
     url: /pages/tutorials.html
+  - text: Case Studies
+    url: https://www.gravitee.io/case-studies
   - text: Changelogs
     url: /pages/changelog.html
+  - text: APIM Changelog
+    url: /apim/changelog.html

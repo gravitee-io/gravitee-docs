@@ -12,6 +12,7 @@ entries:
             url: /apim/current/apim_reference_api.html
           - title: Access Management
             output: web
+            url: /am/current/am_reference_api.html
       - title: Policy references
         output: web
         folderitems:
@@ -21,6 +22,39 @@ entries:
           - title: Assign Attributes
             output: web
             url: /apim/current/apim_policies_assign_attributes.html
+          - title: Assign Content
+            output: web
+            url: /apim/current/apim_policies_assign_content.html
+          - title: Assign Metrics
+            output: web
+            url: /apim/current/apim_policies_assign_metrics.html
+          - title: Basic Authentication
+            output: web
+            url: /apim/current/apim_policies_basic_authentication.html
+          - title: Cache
+            output: web
+            url: /apim/current/apim_policies_cache.html
+          - title: Callout HTTP
+            output: web
+            url: /apim/current/apim_policies_callout_http.html
+          - title: Data Logging Masking
+            output: web
+            url: /apim/current/apim_policies_data_logging.html
+          - title: Dynamic Routing
+            output: web
+            url: /apim/current/apim_policies_dynamic_routing.html
+          - title: Generate HTTP Signature
+            output: web
+            url: /apim/current/apim_policies_http_signature.html
+          - title: Generate JWT
+            output: web
+            url: /apim/current/apim_policies_generate_jwt.html
+          - title: Groovy
+            output: web
+            url: /apim/current/apim_policies_groovy.html
+          - title: HTML to JSON
+            output: web
+            url: /apim/current/apim_policies_html_json.html
       - title: CLI reference
         output: web
         folderitems:

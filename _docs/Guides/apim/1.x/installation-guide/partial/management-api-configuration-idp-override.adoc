@@ -1,0 +1,7 @@
+= Configuration via gravitee.yml Vs UI
+
+This provider support both UI configuration and file configuration.
+Regardless your choice, the configuration is stored in the database.
+This means that Gravitee.io use your new configuration when you click on the "Save" button on the UI, or when you restart the management API if you choose to configure the provider via the configuration file.
+
+WARNING: if you choose the configuration file to configure the provider and then change values in the UI, all modifications will be overriden by those in the configuration file at the next restart of the management api.

@@ -1,7 +1,10 @@
-:page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_policies_url_rewriting.html
-:page-folder: apim/user-guide/publisher/policies
-:page-layout: apim3x
-:page-title: URL rewriting policy
+---
+layout: doc
+product: API Management
+permalink: apim/current/apim_policies_url_rewriting.html
+toc: true
+sidebar: reference_sidebar
+title: URL Rewriting policy
+---
 
 include::https://gh.gravitee.io/gravitee-io/gravitee-policy-url-rewriting/master/README.adoc[]

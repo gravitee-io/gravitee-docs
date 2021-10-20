@@ -1,7 +1,11 @@
 <nav class="layout-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ "/" | relative_url }}">Home</a></li>
+        {% if page.product != nil %}
+
         <li class="breadcrumb-item">{{page.product}}</li>
+        {% endif %}
+
     	  {% if page.guide != nil %}
         <li class="breadcrumb-item">{{page.guide}}</li>
         {% if page.guide-section != nil %}

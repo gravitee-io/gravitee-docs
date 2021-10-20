@@ -1,7 +1,10 @@
-:page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_policies_callout_http.html
-:page-folder: apim/user-guide/publisher/policies
-:page-layout: apim3x
-:page-title: HTTP callout policy
+---
+layout: doc
+product: API Management
+permalink: apim/current/apim_policies_http_callout.html
+toc: true
+sidebar: reference_sidebar
+title: HTTP Callout policy
+---
 
 include::https://gh.gravitee.io/gravitee-io/gravitee-policy-callout-http/master/README.adoc[]

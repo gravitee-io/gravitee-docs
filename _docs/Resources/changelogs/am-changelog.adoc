@@ -1,6 +1,7 @@
-:page-sidebar: am_3_x_sidebar
-:page-permalink: am/current/am_changelog.html
-:page-folder: am
-:page-layout: am
+---
+permalink: am/current/am_changelog.html
+tags: [AM Changelog]
+product: AM
+---
 
 include::https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/CHANGELOG-v3.adoc[]

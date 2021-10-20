@@ -4,7 +4,7 @@ entries:
 - title: Sidebar
   product: Access Management
   folders:
-  - title: Overview
+  - title: Access Management
     output: web
     folderitems:
     - title: Product overview
@@ -88,7 +88,7 @@ entries:
       output: web
       url: /am/current/am_installguide_upgrade.html
 
-  - title: Configure
+  - title: Configuration Guide
     output: web
     folderitems:
     - title: Introduction
@@ -143,7 +143,7 @@ entries:
         - title: Overview
           output: web
           url: /am/current/am_installguide_reporters.html
-  - title: Configure Authentication
+  - title: User Guide
     output: web
     folderitems:
     - title: Overview
@@ -415,7 +415,7 @@ entries:
               output: web
               url: /am/current/am_userguide_alerts_notifications_slack.html
 
-  - title: Setup and Administration
+  - title: Administration Guide
     output: web
     folderitems:
     - title: Organizations and environments

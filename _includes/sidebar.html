@@ -1,8 +1,17 @@
 {% include custom/sidebarconfigs.html %}
 <div class="custom-links">
   <!--  <h5>{{sidebar[0].product}}</h5> -->
+
+<!-- Version dropdown -->
 {% if sidebar[0].product contains "API Management" %}
-    {% for entry in site.data.side-nav-versions.apim_sidenav_versions %}
+  {% assign sidebar_versions = site.data.side-nav-versions.apim_sidenav_versions %}
+{% elsif sidebar[0].product contains "Access Management" %}
+  {% assign sidebar_versions = site.data.side-nav-versions.am_sidenav_versions %}
+{% elsif sidebar[0].product contains "Cockpit" %}
+{% elsif sidebar[0].product contains "" %}
+{% endif %}
+
+    {% for entry in sidebar_versions %}
     {% for folder in entry.folders %}
       <li class="dropdown-button">
         Version<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
@@ -20,9 +29,8 @@
     </li>
     {% endfor %}
     {% endfor %}
-    {% endif %}
 
-
+<!-- sidebar -->
     <ul id="mysidebar" class="nav navbar-nav">
 
         {% for entry in sidebar %}
@@ -32,6 +40,7 @@
             <a href="#">{{ folder.title }}</a>
             <ul class="sub-dropdown">
                 {% for folderitem in folder.folderitems %}
+
                 {% if folderitem.output contains "web" %}
                 {% if folderitem.external_url %}
                 <li><a href="{{folderitem.external_url}}" target="_blank">{{folderitem.title}}</a></li>
@@ -40,6 +49,10 @@
                 {% else %}
                 <li><a href="{{folderitem.url}}">{{folderitem.title}}</a></li>
                 {% endif %}
+
+                {% endif %}
+
+
                 {% for subfolders in folderitem.subfolders %}
                 {% if subfolders.output contains "web" %}
                 <li class="subitem">
@@ -80,7 +93,7 @@
                 </li>
                 {% endif %}
                 {% endfor %}
-                {% endif %}
+
                 {% endfor %}
             </ul>
             {% endif %}

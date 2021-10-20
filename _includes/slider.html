@@ -1,10 +1,7 @@
 <!-- Start Slider  Area -->
 <section class="slider-area bg-cover1">
-    <div class="slider-wrapper full-padding">
+    <div class="slider-wrapper medium-padding">
         <div class="container">
-            <div class="row">
-
-                <div class="col-lg-9">
 <!--
                      <div class="slider-carousel owl-carousel">
 
@@ -18,24 +15,25 @@
                              </div>
                           -->
 
-                          <div class="modal-body">
-                              <form class="modal-search-form" action="#">
-                                  <div class="input-group">
-                                      <input type="text" class="form-control" id="search-input" placeholder="Search our docs" required="">
-                                      <span class="input-group-btn">
-                                 <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
-                                   </span>
-                                  </div>
+                            <div class="row justify-content-center">
+                              <form action="/search/" method="get" class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+                                <label class="sr-only" for="st-search-input">Search</label>
+                                <input
+                                  id="st-search-input"
+                                  class="form-control"
+                                  name="q"
+                                  placeholder="Search for docs"
+                                  type="search"
+                                  autocomplete="off"
+                                  spellcheck="false"
+                                  dir="auto"
+                                  autofocus
+                                />
+                                <div id="autocompleteResults"></div>
                               </form>
-                          </div>
-                          <!--
-                        <h1 class="heading-1">Search the docs</h1>   -->
+                            </div>
+                            </div>
+                            </div>
+                          </section>
 
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-</section>
 <!-- End Slider Area -->
