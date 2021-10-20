@@ -24,6 +24,10 @@ A-MFA is often used in the following situations:
 
 Both of these can be secured with A-MFA to prevent the account from being compromised.
 
+NOTE: In order to use the geoip features, you can download the link:https://download.gravitee.io/#graviteeio-am/plugins/repositories/gravitee-service-geoip/[Gravitee Geoip Plugin]
+
+WARNING: The Gravitee Geoip Plugin uses MaxMind, make sure your AM instance is well provisioned in terms of resources
+
 == Configure A-MFA
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
