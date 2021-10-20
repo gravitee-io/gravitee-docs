@@ -28,6 +28,10 @@ You can use A-MFA in both cases to prevent account security breaches.
 WARNING: To apply location rules, you must first install plugin link:https://download.gravitee.io/plugins/services/gravitee-service-geoip-1.0.0.zip[`gravitee-service-geoip`].
 This plugin loads the `geoip` databases in memory, so you need to adjust the JVM Heap settings of your AM Gateways accordingly.
 
+NOTE: In order to use the geoip features, you can download the link:https://download.gravitee.io/#graviteeio-am/plugins/repositories/gravitee-service-geoip/[Gravitee Geoip Plugin]
+
+WARNING: The Gravitee Geoip Plugin uses MaxMind, make sure your AM instance is well provisioned in terms of resources
+
 == Configure A-MFA
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
