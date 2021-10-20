@@ -30,7 +30,7 @@ It describes where the APIM API Management endpoint is, and must be set so APIM 
 
 [source,json]
 ----
-include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-webui/master/constants.json[]
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-console-webui/constants.json[]
 ----
 
 == Configuration endpoints
@@ -338,7 +338,7 @@ The `default-theme.json` file is as follows:
 
 [source,json]
 ----
-include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-webui/master/themes/default-theme.json[]
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-console-webui/themes/default-theme.json[]
 ----
 
 [[home-dashboard]]
