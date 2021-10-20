@@ -30,10 +30,9 @@ Clone the following repositories in your workspace
 
 * https://github.com/gravitee-io/gravitee-api-management
 * https://github.com/gravitee-io/gravitee-gateway
-* https://github.com/gravitee-io/gravitee-management-webui
 * https://github.com/gravitee-io/gravitee-portal-webui
 
-If you are using IntelliJ, create a new project and add the 4 repositories as Maven modules (*File -> New -> Module from existing sources -> Import module from external model -> Maven*).
+If you are using IntelliJ, create a new project and add the 3 repositories as Maven modules (*File -> New -> Module from existing sources -> Import module from external model -> Maven*).
 
 == Prepare For Launch
 
@@ -96,11 +95,11 @@ Create a new Run configuration in IntelliJ:
 ```
 
 
-==== APIM Console (gravitee-management-webui)
+==== APIM Console (gravitee-apim-console-webui)
 
 ===== CLI Version
 
-. Run `npm install` from the `gravitee-management-webui` directory.
+. Run `npm install` from the `gravitee-api-management/gravitee-apim-console-webui` directory.
 . Run `npm run serve` to start the UI.
 
 ===== IntelliJ configuration
@@ -108,7 +107,7 @@ Create a new Run configuration in IntelliJ:
 
 . Create a new Run configuration in IntelliJ: click *Run -> Edit configurations -> ✚ -> npm*.
 . Name it as required.
-. Choose *package.json:{path_to_project_folder}/gravitee-management-webui/package.json*.
+. Choose *package.json: gravitee-api-management/gravitee-apim-console-webui/package.json*.
 . Select *Command: run*.
 . Select *Script: serve*.
 
