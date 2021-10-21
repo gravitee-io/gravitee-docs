@@ -276,9 +276,34 @@ entries:
           - title: Create APIs
             output: web
             url: /apim/3.x/apim_publisherguide_create_apis.html
-          - title: Plans & Subscriptions
-            output: web
-            url: /apim/3.x/apim_publisherguide_plans_subscriptions.html
+            subfolders:
+              - title: Plans & Subscriptions
+                output: web
+                subfolderitems:
+                  - title: Introduction
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_plans_subscriptions.html
+                  - title: Create a plan
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_create_plan.html
+                  - title: Configure plan security
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_plan_security.html
+                  - title: Configure plan restrictions
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_plan_restrictions.html
+                  - title: Configure plan policies
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_plan_policies.html
+                  - title: Publish a plan
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_plan_publish.html
+                  - title: Plan general conditions of use
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_plan_general_conditions.html  
+                  - title: Manage plan subscriptions
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_plan_subscriptions.html
           - title: API Users & Ownership
             output: web
             url: /apim/3.x/apim_publisherguide_manage_members.html

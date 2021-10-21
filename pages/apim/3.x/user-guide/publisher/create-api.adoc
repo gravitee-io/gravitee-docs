@@ -16,70 +16,79 @@ Old API definitions or APIs created using the *PATH BASED* option must be migrat
 
 == Get started
 
-APIM Console provides various ways to create a new API. You can create a new definition from scratch or import an existing definition. You can also create a new API with APIM API, as described in the link:/apim/3.x/apim_quickstart_publish_api.html[Quick Start Guide^].
+Using APIM Console, you can create new API definitions from scratch, or import existing definitions.
+
+NOTE: You can also create APIs using APIM API. For more details, see the link:/apim/3.x/apim_quickstart_publish_api.html[Quick Start Guide^].
 
 To start creating an API:
 
-. Log in to APIM Console.
-. Click *APIs*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"] at the bottom of the *APIs* page:
+. In APIM Console, click *APIs*.
+. Click the plus icon image:icons/plus-icon.png[role="icon"] at the bottom right of the page.
 +
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-create-api-options-1.png[Create API]
-. Under *DESIGN STUDIO*, which is selected by default, click *CREATE* or *IMPORT*, then follow the instructions in the sections below.
+image::apim/3.10/apim-console-create-api.png[Create API]
++
+APIM presents you with two options for creating APIs. The recommended option is **DESIGN STUDIO**.
 +
 image::apim/3.x/quickstart/publish/graviteeio-create-api-2.png[]
 
+. Under *DESIGN STUDIO*, click:
+
+  * *CREATE* to create an API from scratch.
++
+Learn how to <<create_an_api_from_scratch>>
+
+ * *IMPORT* to import an external API definition.
++
+Learn how to <<import_an_api_definition>>
+
 == Create an API from scratch
 
-When you create an API from scratch, you need to configure it correctly (name, version,
-context-path, backend endpoints and so on) before publishing it for developers.
+These steps describe how to create all of the basic API configuration your developers need to call your API.
+If a short TTFAC (time to first API call) is your goal, configure only the mandatory parts and a basic plan now -- you can always update these later on.
 
-NOTE: You can choose to define your API plan (which your consumers will need before they can subscribe to your API) later. link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions^] gives a detailed description of how to configure a plan and the different options available.
+NOTE: You need to create a plan before you can accept user subscriptions to your API. You can do that now or when you get to the link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions^] section, but the plan options available to you now are more limited.
 
-ifeval::[{{ site.products.apim._3x.version }} < 3.6.0]
-. Enter the general details of the API: *Name*, *Version*, *Description* and *Context-path* where the API will be exposed on APIM Gateway. Click *NEXT*.
-+
-image::apim/3.x/api-publisher-guide/manage-apis/create-api-general.png[]
-endif::[]
-ifeval::[{{ site.products.apim._3x.version }} >= 3.6.0]
-. Enter the general details of the API: *Name*, *Version*, *Description*, the *Context-path* where the API will be exposed on APIM Gateway and one or more groups, if defined (for more details, see link:/apim/3.x/apim_adminguide_users_and_groups.html[Users and groups]). Click *NEXT*.
+. Enter the general details of the API:
+  * A **Name**, **Version**, and **Description**.
+  * The **Context-path** where the API will be exposed on APIM Gateway, starting from **/**.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-general-withgroups.png[]
-endif::[]
-ifeval::[{{ site.products.apim._3x.version }} >= 3.7.0]
-+
-NOTE: If the link:/apim/3.x/apim_adminguide_users_and_groups.html#primary_owner_mode[Primary owner mode^] is *HYBRID*, you need to click the *Advanced mode* link to load the *Groups* section of the form.
+
+. (Optional) Associate a group with the API, if any are defined (see link:/apim/3.x/apim_adminguide_users_and_groups.html[Users and Groups] for more details):
+      * Select a group which can access the API in **Groups**.
+      * If the link:/apim/3.x/apim_adminguide_users_and_groups.html#primary_owner_mode[Primary owner mode^] is *HYBRID*, click the *Advanced mode* link to associate a primary owner group.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-api-primaryowner-mode-3.png[]
 
-. If your administrator has configured a primary owner group and you want to associate it with your API, toggle on the *Use a group as the primary owner* option.
 . Click *NEXT*.
-endif::[]
-
-. Enter the backend URL for receiving API calls. Click *NEXT*.
+. Enter the details of the gateway:
+  * A backend URL for receiving API calls.
+  * (Optional) Click the **Advanced mode** link to specify details of tenants and sharding tags.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-gateway.png[]
 
-. (Optional) If you want to create a plan for the API, enter the following details, otherwise click *SKIP*:
-.. Enter the *Name*, *Security type* and *Description*.
-.. If subscription auto-validation is required, toggle on the *Auto validate subscription* option.
-.. Enter the *Characteristics*.
-.. Enter *Rate limit* and *Quota* details. In this example, we are specifying a rate limit of 1 request every 5 seconds.
+. Click *NEXT*.
+. (Optional) If you want to create a plan for the API, enter the following details and click **NEXT**, otherwise click *SKIP*:
+  * The *Name*, *Security type*, and *Description*.
+  * If subscription auto-validation is required, toggle on the *Auto validate subscription* option.
+  * The *Characteristics*.
+  * *Rate limit* and *Quota* details. In this example, we are specifying a rate limit of 1 request every 5 seconds.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-plan1.png[]
-.. Enter *Resource filtering* details, using link:/apim/3.x/apim_policies_overview.html#ant-notation[Ant^] notation and an HTTP method.
+  * *Resource filtering* details, using link:/apim/3.x/apim_policies_overview.html#ant-notation[Ant^] notation and an HTTP method.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-plan-path.png[]
-.. Click *NEXT*.
-. (Optional) Import a documentation specification file if required, otherwise click *SKIP*.
+
+. (Optional) Import a documentation specification file, otherwise click *SKIP*.
 . Review the details of the API, then click one of the following options, depending on whether you want to create and deploy the API or simply create it:
-* *CREATE THE API WITHOUT DEPLOYING IT*
-* *CREATE AND START THE API*
+  * *CREATE THE API WITHOUT DEPLOYING IT*
+  * *CREATE AND START THE API*
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-confirm.png[]
 
-== Import an API
-You can import your existing APIs using one of the following methods.
+== Import an API definition
+
+You can import external API definitions using one of the following methods.
 
 === Import an existing API definition
 You can import and export your APIs to a Gravitee API definition format (see the example below).

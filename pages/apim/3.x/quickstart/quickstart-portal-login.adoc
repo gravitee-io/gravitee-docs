@@ -10,7 +10,12 @@ You can access APIM Portal as a public user without logging in. You only need to
 
 == How to access APIM Portal
 
-You access APIM Portal using the `http://PORTAL_UI_SERVER_DOMAIN` URL created during installation.
+There are two ways to access APIM Portal:
+
+* If you are logged into APIM Console already, with the **DEVELOPERS PORTAL** button:
++
+image:apim/3.10/apim-console-devportal.png[]
+* Directly in your browser, with the `http://PORTAL_UI_SERVER_DOMAIN` URL created during installation.
 
 During the APIM installation process a default administrator account is created. By default, the login details for the APIM Portal administrator account are `admin / admin`.
 Ordinary users of APIM Portal need to obtain their user credentials from an administrator.
