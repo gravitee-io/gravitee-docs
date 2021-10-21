@@ -1,0 +1,67 @@
+= Configure plan restrictions
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_publisherguide_plan_restrictions.html
+:page-folder: apim/user-guide/publisher
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, documentation, manual, guide, reference, api, CGU, GCU
+:page-layout: apim3x
+
+== Overview
+
+You can configure some more advanced features to restrict plans.
+
+image::apim/3.x/api-publisher-guide/plans-subscriptions/add-plan-restrictions.png[]
+
+== Configure restrictions
+
+You configure restrictions on the **Restrictions** page of a new or existing plan.
+
+. To edit an existing plan:
+  .. In APIM Console, select your API.
+  .. Click **Portal > Plans**.
+  .. Click the edit icon image::icons/edit-icon.png[role="icon"]
+. On the **Restrictions** page, configure the restrictions for the plan, as described in the sections below.
+. Click **SAVE** to save your plan.
++
+NOTE: For some APIs created in earlier versions of APIM, you can click **NEXT** to configure plan policies.
++
+APIM adds the plan to the list of **Staging** plans.
+
+image::apim/3.x/api-publisher-guide/plans-subscriptions/staging-plan.png[]
+
+You can now:
+* link:/apim/3.x/apim_publisherguide_plan_policies.html[Configure flows and policies for your plan].
+* link:/apim/3.x/apim_publisherguide_plan_publish.html[Publish your plan]
+
+=== Limit request traffic
+
+Plans provide tools for maintaining and optimizing traffic management and protecting the health of the API backend.
+
+==== Rate-limiting
+
+You can rate limit how many HTTP requests an application can make in a specified period of seconds or minutes.
+
+In the following example, the plan enforces a limit of 1000 requests per minute:
+
+image::apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-rate-limit.png[]
+
+NOTE: Rate-limiting helps you prevent sudden increases in the number of requests at any point in time.
+
+==== Quotas
+
+A quota specifies the number of requests allowed to call an API backend during a specified time interval.
+
+In the following example, the plan enforces a limit of 100000 requests per day:
+
+image::apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-quota.png[]
+
+NOTE: You can use quotas to enforce business or financial requirements to limit the number of calls partner or third-party apps can make in a period of time.
+
+=== Resource filtering
+
+You can use resource filtering to limit access to a subset of API resources.
+
+In the following example, the plan only allows GET requests:
+
+image::apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-path-authorization.png[]
+
+NOTE: You can use resource filtering to make an API read-only for public members and give premium members access to more resources.
