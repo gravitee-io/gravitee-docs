@@ -40,6 +40,6 @@ The portal is a client-side only Angular application and can be deployed on any 
 [source,bash]
 [subs="attributes"]
 $ npm install angular-http-server -g
-$ cd graviteeio-portal-ui-{{ site.products.apim._3x.version }}
+$ cd graviteeio-apim-portal-ui-{{ site.products.apim._3x.version }}
 $ angular-http-server
 $ Listening on 8080
