@@ -13,23 +13,42 @@ All the Docker images for Gravitee.io APIM and AM are available with an `-ee` su
 |===
 |Image name |Tag |Base
 
-|{docker-hub}/gateway/[graviteeio/gateway^]
+|{docker-hub}/apim-gateway/[graviteeio/apim-gateway^]
 |{{ site.products.apim.ee.version }}-ee
-|https://hub.docker.com/_/alpine/[alpine:3.7^]
+|https://hub.docker.com/_/openjdk/[openjdk:11-jre-slim-buster^]
 
-|{docker-hub}/management-api/[graviteeio/management-api^]
+|{docker-hub}/apim-management-api/[graviteeio/apim-management-api^]
 |{{ site.products.apim.ee.version }}-ee
-|https://hub.docker.com/_/alpine/[alpine:3.7^]
+|https://hub.docker.com/_/openjdk/[openjdk:11-jre-slim-buster^]
 
-|{docker-hub}/management-ui/[graviteeio/management-ui^]
+|{docker-hub}/apim-management-ui/[graviteeio/apim-management-ui^]
 |{{ site.products.apim.ee.version }}-ee
-|https://hub.docker.com/_/alpine/[nginx:1.10.2-alpine^]
+|https://hub.docker.com/_/nginx/[nginx:1.21-alpine^]
+
+|{docker-hub}/apim-portal-ui/[graviteeio/apim-portal-ui^]
+|{{ site.products.apim.ee.version }}-ee
+|https://hub.docker.com/_/nginx/[nginx:1.21-alpine^]
 
 |===
 
 == Gravitee.io Access Management Enterprise Images
 
-NOTE: Coming soon.
+|===
+|Image name |Tag |Base
+
+|{docker-hub}/am-gateway/[graviteeio/am-gateway^]
+|{{ site.products.apim.ee.version }}-ee
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[openjdk:jre-11.0.11_9-alpine^]
+
+|{docker-hub}/am-management-api/[graviteeio/apim-management-api^]
+|{{ site.products.apim.ee.version }}-ee
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[openjdk:jre-11.0.11_9-alpine^]
+
+|{docker-hub}/am-management-ui/[graviteeio/apim-management-ui^]
+|{{ site.products.apim.ee.version }}-ee
+|https://hub.docker.com/_/nginx/[nginx:alpine^]
+
+|===
 
 == License support
 
@@ -42,5 +61,5 @@ $ docker run  \
         -v license.key:/opt/graviteeio-gateway/license \
         --name api-gateway  \
         --detach  \
-        graviteeio/gateway:{{ site.products.apim.ee.version }}-ee
+        graviteeio/apim-gateway:{{ site.products.apim.ee.version }}-ee
 ....
