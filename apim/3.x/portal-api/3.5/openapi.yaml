@@ -10,7 +10,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0
-  version: "3.5.0"
+  version: "3.5.20"
 servers:
   - url: http://localhost:8083/portal/environments/{envId}
     description: The portal API for a given environment
@@ -3305,6 +3305,10 @@ components:
             type: string
         owner:
           $ref: '#/components/schemas/User'
+        created_at:
+          description: create date and time.
+          type: string
+          format: date-time
         updated_at:
           description: Last update date and time.
           type: string
@@ -3830,6 +3834,22 @@ components:
           type: string
         email:
           type: string
+        editable_profile:
+          description: True if the user can edit the MyAccount information
+          type: boolean
+          default: false
+        permissions:
+          description: Map of Permissions.
+          type: object
+          properties:
+            APPLICATION:
+              type: array
+              items:
+                type: string
+            USER:
+              type: array
+              items:
+                type: string
         customFields:
           type: object
           description: Values for CustomUserFields
@@ -3852,6 +3872,10 @@ components:
         token:
           type: string
         state:
+          type: string
+        access_token:
+          type: string
+        id_token:
           type: string
     Category:
       properties:
@@ -4380,6 +4404,18 @@ components:
           type: string
         avatar:
           description: Avatar of the user.
+          type: string
+          writeOnly: true
+        first_name:
+          description: Firstname of the user.
+          type: string
+          writeOnly: true
+        last_name:
+          description: Lastname of the user.
+          type: string
+          writeOnly: true
+        email:
+          description: Email of the user.
           type: string
           writeOnly: true
         customFields:
