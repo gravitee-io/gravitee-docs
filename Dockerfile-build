@@ -23,7 +23,7 @@ RUN apt-get clean \
 RUN apt-get update
 
 RUN apt-get install -y \
-    nodejs \
+    nodejs build-essential \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/
 
