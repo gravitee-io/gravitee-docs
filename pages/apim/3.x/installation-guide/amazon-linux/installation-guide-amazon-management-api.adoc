@@ -6,7 +6,7 @@
 :page-layout: apim3x
 :page-description: Gravitee.io API Management - Installation Guide - Amazon - Management API
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
-:page-toc: false 
+:page-toc: true
 
 :gravitee-component-name: APIM API
 :gravitee-package-name: graviteeio-apim-management-api-3x
@@ -28,10 +28,10 @@ In your AWS settings, choose the following:
 
 * *[underline]#For Storage#*. Generally, **40GB** is a good amount.
 
-* *[underline]#For Security Groups#*. Open port *8083* so that after you complete the installation, you can check the necessary URLs to ensure that APIM API has been installed properly. 
+* *[underline]#For Security Groups#*. Open port *8083* so that after you complete the installation, you can check the necessary URLs to ensure that APIM API has been installed properly.
 
 
-== 2. Install The {gravitee-component-name} Package
+=== 2. Install The {gravitee-component-name} Package
 
 To install the last stable version of {gravitee-component-name}, run the following command:
 
@@ -40,7 +40,7 @@ To install the last stable version of {gravitee-component-name}, run the followi
 sudo yum install -y {gravitee-package-name}
 ----
 
-== 3. Run {gravitee-component-name}
+=== 3. Run {gravitee-component-name}
 
 These steps assume that you are using the default settings.
 
@@ -62,7 +62,7 @@ sudo systemctl stop {gravitee-service-name}
 
 NOTE: These commands provide no feedback as to whether {gravitee-component-name} started successfully. This information is written to the log files located in `/opt/graviteeio/apim/management-api/logs/`.
 
-== 4. View The Logs
+=== 4. View The Logs
 
 *You must check the logs to confirm if {gravitee-component-name} has been installed correctly.* When `systemd` logging is enabled, logging information is available using the `journalctl` commands.
 
@@ -88,7 +88,7 @@ sudo journalctl --unit {gravitee-service-name} --since  "2020-01-30 12:13:14"
 ----
 
 
-== 5. Confirm {gravitee-component-name} Was Installed (Optional) 
+=== 5. Confirm {gravitee-component-name} Was Installed (Optional)
 
 You can also confirm that {gravitee-component-name} has been installed and has started up properly by checking this URL:
 

@@ -6,7 +6,7 @@
 :page-layout: apim3x
 :page-description: Gravitee.io API Management - Installation Guide - Amazon - API Management
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
-:page-toc: false
+:page-toc: true
 
 :gravitee-package-name: graviteeio-apim-3x
 == Overview
@@ -105,14 +105,15 @@ sudo systemctl start elasticsearch
 curl -L https://bit.ly/install-apim-3x | bash
 ----
 
-== Known Issues
+=== 4. Modify The Config File
+
+==== Known Issue
 Due to our current install scripting, you must modify the *Developer Portal config.JSON file* before attempting to login to the Developer Portal.
 
 If you attempt to open and run the Developer Portal before modifying the config file, you'll see an error similar to this:
 
 image::apim/3.x/installation/amazon-known-issues/amazon-install-deveportalui-known-issue-fix-config-file1.png[Developer Portal Amazon Config File Known Issue]
 
-== Modify The Config File
 Follow these steps to modify the Developer Portal config.JSON file.
 
 1. On your favorite terminal, drill into the APIM directory using `cd apim`.
@@ -125,16 +126,15 @@ Follow these steps to modify the Developer Portal config.JSON file.
 
 5. Initially, the config file will show an additional prefix on the `baseURL` which must be removed (URL: http://localhost:8083http://your-IP-address:8083/environment/DEFAULT
 ).
-
++
 For example (see screenshot below), the extra URL at the start: http://localhost:8083 *must be deleted.*
-
++
 image::apim/3.x/installation/amazon-known-issues/amazon-install-deveportalui-known-issue-fix-config-file2.png[Developer Portal Amazon Config File Incorrect URL]
 
-[start=6]
 6. Now, you can use `sudo vi config.JSON` and edit the config file, removing any additional URL information that is inaccurate. In our example, *the correct URL (after editing) is this: http://3.142.146.114:8083/environment/DEFAULT*
 
 
-== Run APIM with Systemd
+=== 5. Run APIM with Systemd
 
 To start up the APIM components using systemd, run the following commands:
 
@@ -145,18 +145,7 @@ sudo systemctl start {gravitee-package-name}-gateway {gravitee-package-name}-man
 sudo systemctl restart nginx
 ----
 
-== Install APIM Package (No Dependencies)
-
-Already have all required dependencies installed? Lucky you! You can install APIM by running the following command on your favorite terminal:
-
-[source,bash,subs="attributes"]
-----
-sudo yum install {gravitee-package-name}
-----
-
-Now, run APIM using systemd (as mentioned above) and then confirm that all APIM components were installed by checking the URLs below.
-
-== Confirm APIM Components Were Installed
+=== 6. Confirm APIM Components Were Installed
 
 To test that all components have been installed and started up properly, check these URLs:
 
@@ -176,3 +165,14 @@ To test that all components have been installed and started up properly, check t
 |http://localhost:8085/
 
 |===
+
+== Install APIM Package (No Dependencies)
+
+Already have all required dependencies installed? Lucky you! You can install APIM by running the following command on your favorite terminal:
+
+[source,bash,subs="attributes"]
+----
+sudo yum install {gravitee-package-name}
+----
+
+Now, run APIM using systemd and then confirm that all APIM components were installed, as described above.
