@@ -228,6 +228,11 @@ JSON format::
     "exposedHeaders" : [ "ETag", "X-Xsrf-Token" ],
     "maxAge" : 1728000
   },
+  "dashboards" : {
+    "apiStatus": {
+      "enabled": true
+    }
+  },
   "documentation" : {
     "url" : "https://docs.gravitee.io"
   },
@@ -341,8 +346,10 @@ The `default-theme.json` file is as follows:
 include::https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-console-webui/themes/default-theme.json[]
 ----
 
-[[home-dashboard]]
-== Home dashboard
+[[dashboard]]
+== Dashboard
+
+=== Home
 
 The Home dashboard is the default page users see when they first log in to APIM Console, or when they click the *Dashboard* menu option.
 You can configure the Home dashboard by modifying `home.json`.
@@ -390,3 +397,8 @@ For example:
   ...
 ]
 ```
+=== Api STATUS
+
+The api status page is a panel in the dashboard that displays the status of all apis.
+
+The tab is enabled by default but depending on the number of APIs, it may take a while to load. You can disable it in the settings section.
