@@ -10,10 +10,11 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 #-------------------------------------------------------------------------------
-FROM ruby:2.7 as builder
-
+FROM ruby:2.7-slim-bullseye as builder
 LABEL maintainer="Gravitee Team <http://gravitee.io>"
+
 ENV RUBYOPT=-KU
+ARG JEKYLL_VERSION=4.2.1
 
 RUN apt-get clean
 RUN mv /var/lib/apt/lists /var/lib/apt/lists.broke
@@ -26,14 +27,14 @@ WORKDIR /src
 ADD Gemfile /src/
 ADD Gemfile.lock /src/
 RUN gem install bundler
-RUN gem install jekyll -v 4.2.0
+RUN gem install jekyll -v ${JEKYLL_VERSION}
 RUN bundle install
 
 ADD . /src
 RUN bundle exec jekyll build
 
-FROM nginx:stable
+FROM nginx:1.21-alpine
 LABEL maintainer="Gravitee Team <http://gravitee.io>"
+
 WORKDIR /usr/share/nginx/html
 COPY --from=builder /src/_site .
-
