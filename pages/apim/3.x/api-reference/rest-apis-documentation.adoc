@@ -7,6 +7,9 @@
 :page-layout: apim3x
 :page-liquid:
 
+{% assign version = site.products.apim._3x.version | split: "." %}
+{% capture current_version %}{{ version[0] }}.{{ version[1] }}{% endcapture %}
+
 == Overview
 
 APIM API includes endpoints for APIM Console and APIM Portal. The sections below gives links to the documentation for the two sets of services.
@@ -17,8 +20,8 @@ APIM API exposes a complete set of endpoints for developers wanting to script so
 
 You can access the online endpoint reference or the OpenAPI specification by version. For the:
 
-* Online reference, see https://docs.gravitee.io/apim/3.x/management-api/{{ site.products.apim._3x.version | round: 2 }}
-* OpenAPI spec, see https://docs.gravitee.io/apim/3.x/management-api/{{ site.products.apim._3x.version | round: 2 }}/swagger.json
+* Online reference, see https://docs.gravitee.io/apim/3.x/management-api/{{ current_version }}
+* OpenAPI spec, see https://docs.gravitee.io/apim/3.x/management-api/{{ current_version }}/swagger.json
 
 [TIP]
 ====
@@ -34,8 +37,8 @@ APIM API exposes a complete set of endpoints for developers wanting to script so
 
 You can access the online endpoint reference or the OpenAPI specification by version. For the:
 
-* Online reference, see https://docs.gravitee.io/apim/3.x/portal-api/{{ site.products.apim._3x.version | round: 2 }}
-* OpenAPI spec, see https://docs.gravitee.io/apim/3.x/portal-api/{{ site.products.apim._3x.version | round: 2 }}/openapi.yaml
+* Online reference, see https://docs.gravitee.io/apim/3.x/portal-api/{{ current_version }}
+* OpenAPI spec, see https://docs.gravitee.io/apim/3.x/portal-api/{{ current_version }}/openapi.yaml
 
 [TIP]
 ====
