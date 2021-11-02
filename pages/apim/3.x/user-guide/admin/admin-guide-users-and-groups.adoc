@@ -99,7 +99,7 @@ Users can view and update this information on their account page.
 
 image::apim/3.x/adminguide/custom-user-fields-account.png[Gravitee.io - User Account]
 
-TIP: Translations of the label for custom fields are based on the field key. To add translations for your own fields, you need to declare them in the translation files (https://github.com/gravitee-io/gravitee-portal-webui/blob/master/src/assets/i18n/en.json[en.json], https://github.com/gravitee-io/gravitee-portal-webui/blob/master/src/assets/i18n/fr.json[fr.json]...) under the element `register.field`. If no translation is available, the default label will be used.
+TIP: Translations of the label for custom fields are based on the field key. To add translations for your own fields, you need to declare them in the translation files (https://github.com/gravitee-io/gravitee-api-management/blob/master/gravitee-apim-portal-webui/src/assets/i18n/en.json[en.json], https://github.com/gravitee-io/gravitee-api-management/blob/master/gravitee-apim-portal-webui/src/assets/i18n/fr.json[fr.json]...) under the element `register.field`. If no translation is available, the default label will be used.
 
 == Groups
 

@@ -1,0 +1,34 @@
+= Device Identifier Plugins
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_device_identifier_plugins.html
+:page-folder: am/user-guide
+:page-layout: am
+
+[label label-version]#New in version 3.13#
+
+== Overview
+
+AM supports various Device Identifier mechanisms to remember the devices of your users for MFA.
+
+== Create a new Device Identifier
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Click *Settings > Device Identifier*.
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Select the Device Identifier type and click *Next*.
+. Enter the configuration details and click *Create*.
+
+
+== FingerprintJs v3 Community
+
+You don't need to configure anything for FingerprintJS v3 community. Just create the configuration and associate
+it to the Remember Device MFA feature.
+
+image::am/current/graviteeio-am-userguide-device-identifier-fpjsv3community.png[Code Snippets]
+
+== FingerprintJs v3 Pro
+
+You will need to create an account and enter your `Browser token` along with the `region` (optional if you have a non-european
+account)
+
+image::am/current/graviteeio-am-userguide-device-identifier-fpjsv3pro.png[Code Snippets]

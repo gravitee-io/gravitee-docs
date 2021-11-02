@@ -1,0 +1,26 @@
+= Remember device Authentication
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_mfa_remember_device.html
+:page-folder: am/user-guide
+:page-layout: am
+
+[label label-version]#New in version 3.13#
+
+== Overview
+
+Remember device authentication registers the device of the users after the login is successful.
+It allows then to add the trusted device to the user account for a certain period of time and skip MFA if the
+device is known.
+
+== Configure Remember device Authentication
+
+. Make sure you have configured a link:/am/current/am_userguide_device_identifier_plugins.html[device identifier]
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Select your application.
+. Click **Settings > Multifactor Auth**.
+. Select your MFA factor.
+. Toggle **Enable Remember Device**
+. Input your configured device identifier and the time you want to keep the devices (default is 2 hours)
+. Click *SAVE*.
+
+image::am/current/graviteeio-am-userguide-mfa-remember-device.png[]
