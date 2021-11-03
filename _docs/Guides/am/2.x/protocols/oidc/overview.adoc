@@ -1,0 +1,79 @@
+= OpenID Connect
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_protocols_oidc_overview.html
+:page-folder: am/dev-guide/protocols/oidc
+:page-layout: am
+
+== Overview
+
+link:https://openid.net/connect[OpenID Connect] allows clients of all types, including Web-based, mobile, and JavaScript clients, to request and receive information about authenticated sessions and end-users.
+
+While OAuth 2.0 is more about accessing resources with opaque tokens, OpenID Connect is about authentication built on top of OAuth 2.0 and the use of Claims to communicate information about the End-User.
+
+OpenID Connect provides endpoints and some tools, such as link:https://tools.ietf.org/html/rfc7519[JSON Web Token (JWT)], to authenticate and retrieve End-User Information.
+
+You can find OpenID Connect endpoints exposed by Gravitee.io Access Management :
+
+* link:/am/2.x/oidc/index.html[OpenID Connect API Console, window="_blank"] - link:/am/2.x/oidc/swagger.yml[Swagger spec, window="_blank"]
+
+
+== Protocol
+
+The OpenID Connect protocol, in abstract, follows the following steps.
+
+1. The RP (Client) sends a request to the OpenID Provider (OP).
+2. The OP authenticates the End-User and obtains authorization.
+3. The OP responds with an ID Token and usually an Access Token.
+4. The RP can send a request with the Access Token to the UserInfo Endpoint.
+5. The UserInfo Endpoint returns Claims about the End-User.
+
+NOTE: A scope parameter MUST always be passed using the OAuth 2.0 request syntax containing the `openid` scope value to indicate to the underlying OAuth 2.0 logic that this is an OpenID Connect request.
+
+== Flows
+
+=== Authorization Code Flow
+
+The Authorization Code Flow returns an Authorization Code to the Client, which can then exchange it for an ID Token and an Access Token directly.
+This provides the benefit of not exposing any tokens to the User Agent and possibly other malicious applications with access to the User Agent.
+The Authorization Server can also authenticate the Client before exchanging the Authorization Code for an Access Token.
+The Authorization Code flow is suitable for Clients that can securely maintain a Client Secret between themselves and the Authorization Server.
+
+NOTE: Authorization Code Flow URL : https://am-gateway/{domain}/oauth/authorize?response_type=code&client_id=web-app&redirect_uri=https://web-app/callback&scope=openid
+
+=== Implicit Flow
+
+When using the Implicit Flow, all tokens are returned from the link:/am/2.x/am_protocols_oauth2_overview.html#authorization_endpoint[Authorization Endpoint]; the link:/am/2.x/am_protocols_oauth2_overview.html#token_endpoint[Token Endpoint] is not used.
+
+The Implicit Flow is mainly used by Clients implemented in a browser using a scripting language.
+The Access Token and ID Token are returned directly to the Client, which may expose them to the End-User and applications that have access to the End-User's User Agent.
+The Authorization Server does not perform Client Authentication.
+
+NOTE: Implicit Flow URL : https://am-gateway/{domain}/oauth/authorize?response_type=id_token|id_token+token&client_id=web-app&redirect_uri=https://web-app/callback
+
+=== Hybrid Flow
+
+When using the Hybrid Flow, some tokens are returned from the link:/am/2.x/am_protocols_oauth2_overview.html#authorization_endpoint[Authorization Endpoint] and others are returned from the link:/am/2.x/am_protocols_oauth2_overview.html#token_endpoint[Token Endpoint].
+Hybrid is used by Clients who want tokens separately from front channel and back channel
+
+NOTE: Hybrid Flow URL : https://am-gateway/{domain}/oauth/authorize?response_type=code+id_token|code+token|code+id_token+token&client_id=web-app&redirect_uri=https://web-app/callback&scope=openid
+
+== ID Token
+
+The ID Token is a security token that contains Claims about the Authentication of an End-User by an Authorization Server when using a Client.
+The ID Token is represented as a JSON Web Token (JWT) and contains user information like username, mail, name, address and so on.
+ID Tokens are digitally signed to create secure exchanges between two parties.
+
+NOTE: In order to get an ID Token, Client must use Authorization Code Flow or link:/am/2.x/am_protocols_oauth2_overview.html#implicit[Implicit Grant] with scope `openid` or use Implicit/Hybrid Flow.
+
+== Dynamic Client Registration
+
+NOTE: New in Gravitee.io AM 2.2.x
+
+In order for an OpenID Connect Relying Party (client) to use OpenID services, it needs first to register and be known by the OpenID Provider.
+Dynamic Client Registration enable to self register RP by providing information and obtain as a result the required information (client_id) to use it.
+Gravitee.io Access Management follow the link:https://openid.net/specs/openid-connect-registration-1_0.html[Openid Connect Dynamic Client Registration] specifications.
+
+NOTE: Register URL is available through the registration_endpoint attribute, under the openid connect discovery endpoint, and, used to be: POST https://am-gateway/{domain}/oidc/register +
+READ/UPDATE/DELETE can be performed with respectively GET/(PUT or PATCH)/DELETE on the registration_client_uri attribut retrieved from the register payload result.
+
+IMPORTANT: Unlike PATCH, PUT require you to fill all the client metadata, omitted fields WILL be treated as null or empty values.

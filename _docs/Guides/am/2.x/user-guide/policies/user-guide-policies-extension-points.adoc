@@ -1,0 +1,188 @@
+= Extension Points
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_userguide_policies_extension_points.html
+:page-folder: am/user-guide
+:page-layout: am
+
+NOTE: New in Gravitee.io AM 2.7.x
+
+== Pre End-User Consent
+
+Pre End-User Consent happens after the user has logged in. It allows you to fetch more information or validate incoming data before displaying the User Consent HTML Page.
+
+The following attributes are available while processing the policy chain :
+
+* link:/[Request] : current HTTP Request
+* link:/[Client] : the application
+* link:/[User] : the End-User
+* link:/[Authorization Request]: OAuth 2.0 Authorization Request
+
+
+
+== Post End-User Consent
+
+Post End-User Consent happens after the user has given his consent to the processing of personal data. It allows you to validate incoming data (user consent) before giving access to the application.
+
+The following attributes are available while processing the policy chain :
+
+* link:/am/2.x/am_userguide_policies_extension_points.html#request[Request] : current HTTP Request (with form attributes : scope approvals)
+* link:/am/2.x/am_userguide_policies_extension_points.html#client[Client] : the application
+* link:/am/2.x/am_userguide_policies_extension_points.html#user[User] : the End-User
+* link:/am/2.x/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request[Authorization Request]: OAuth 2.0 Authorization Request
+
+== Objects
+
+=== Request
+==== Properties
+|===
+|Property |Description |Type |Always present
+
+.^|id
+|Request identifier
+^.^|string
+^.^|X
+
+.^|headers
+|Request headers
+^.^|key / value
+^.^|X
+
+.^|params
+|Request query parameters + Form attributes
+^.^|key / value
+^.^|X
+
+.^|path
+|Request path
+^.^| string
+^.^|X
+
+.^|paths
+|Request path parts
+^.^|array of string
+^.^|X
+
+|===
+
+==== Example
+
+* Get the value of the `Content-Type` header for an incoming HTTP request:
+`{#request.headers['content-type']}`
+
+* Get the second part of the request path:
+`{#request.paths[1]}`
+
+=== Client
+==== Properties
+|===
+|Property |Description |Type |Always present
+
+.^|id
+|Client technical identifier
+^.^|string
+^.^|X
+
+.^|clientId
+|Client OAuth 2.0 client_id headers
+^.^|string
+^.^|X
+
+.^|clientName
+|Client's name
+^.^|string
+^.^|
+
+|===
+
+==== Example
+
+* Get the value of the `client_id` of the client:
+`{#context.attributes['client'].clientId}`
+
+=== User
+==== Properties
+|===
+|Property |Description |Type |Always present
+
+.^|id
+|User technical identifier
+^.^|string
+^.^|X
+
+.^|username
+|User's username
+^.^|string
+^.^|X
+
+.^|email
+|User's email
+^.^|string
+^.^|
+
+.^|firstName
+|User's first name
+^.^|string
+^.^|
+
+.^|lastName
+|User's last name
+^.^|string
+^.^|
+
+.^|displayName
+|User's display name
+^.^|string
+^.^|
+
+.^|additionalInformation
+|User additional attributes
+^.^|key / value
+^.^|X
+
+
+|===
+
+==== Example
+
+* Get the value of the `user` of the user :
+`{#context.attributes['user'].username}`
+
+=== OAuth 2.0 Authorization Request
+==== Properties
+|===
+|Property |Description |Type |Always present
+
+.^|responseType
+|OAuth 2.0 response type
+^.^|string
+^.^|X
+
+.^|scopes
+|OAuth 2.0 requested scopes
+^.^|array of string
+^.^|
+
+.^|clientId
+|OAuth 2.0 client_id
+^.^|string
+^.^|X
+
+.^|redirectUri
+|OAuth 2.0 redirect_uri
+^.^|string
+^.^|X
+
+.^|state
+|OAuth 2.0 state
+^.^|string
+^.^|
+
+|===
+
+==== Example
+
+* Get the value of the first `scopes` param for the OAuth 2.0 authorization request:
+`{#context.attributes['authorizationRequest'].scopes[0]}`
+
+
+

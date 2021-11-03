@@ -1,0 +1,67 @@
+= Management API - Documentation
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_management_api_documentation.html
+:page-folder: am/management-api
+:page-toc: false
+:page-layout: am
+
+The Management API exposes a complete Restful API accessible to anyone who wants to script some part of the administration.
+
+You can access API console or the OpenAPI descriptor (formerly Swagger) :
+
+* link:/am/2.x/management-api/index.html[API Console] - link:/am/2.x/management-api/swagger.json[OpenAPI spec]
+
+== Available authorizations
+
+Management API is protect by a token-based authentication which allows you to call the Management API resources.
+
+NOTE: Use the HTTP Authorization request header (`Authorization Bearer token`) to call the Management API. You can also use `Authorization="Bearer token"` cookie to access the Management API resources.
+
+=== Token endpoint
+
+The token endpoint is used to obtain `AM Management API's token` by presenting user credentials via the `Basic authentication scheme`.
+
+The following example, exchange default admin account credentials (admin/adminadmin) for a token.
+
+```
+POST /admin/token HTTP/1.1
+
+curl -X POST \
+  http://GRAVITEE_AM_MGT_API_HOST/admin/token \
+  -H 'authorization: Basic base64(admin:adminadmin)' \
+
+
+  HTTP/1.1 200 OK
+  Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+  Content-Type: application/json
+  {
+      "access_token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZ....m4g9SK1fPtcPTLmbxWZDyP1hV9vjdsLdA",
+      "expires_at": "Thu Jun 28 10:35:31 CEST 2018",
+      "token_type": "bearer"
+  }
+```
+
+=== Authorization endpoint
+
+The authorization endpoint is used to interact with the end-user to obtain `AM Management API's token`.
+The user will be redirect to the login page of the AM Access Management and process authentication to get token via an HTTP cookie.
+
+```
+GET /admin/authorize?redirect_uri=http://callback-app HTTP/1.1
+
+curl http://GRAVITEE_AM_MGT_API_HOST/admin/authorize?redirect_uri=http://callback-app
+
+  HTTP/1.1 302 Found
+  Location: http://GRAVITEE_AM_MGT_API_HOST/admin/login
+
+
+POST /admin/login
+
+  Set-Cookie: Authorization="Bearer token"
+  HTTP/1.1 302 Found
+  Location: http://callback-app
+```
+
+* `redirect_uri` : redirection endpoint after authentication success

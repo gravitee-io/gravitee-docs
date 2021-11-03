@@ -1,0 +1,43 @@
+---
+product: Access Management
+toc: true
+title: Quick AM installation
+---
+
+:page-description: Gravitee.io Access Management - Installation - Quickstart
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+= Quick AM installation
+
+Use these procedures to quickly install Access Management for the first time. They are not suitable for existing AM environments.
+
+== Install with RPMs
+
+[source,shell]
+....
+$ curl -sSL https://bit.ly/install-am-3x | bash
+....
+
+For more information, see link:/am/current/am_installguide_redhat_stack.html[Install on Red Hat].
+
+== Install with Docker
+
+[source,shell]
+....
+$ curl -sSL https://bit.ly/docker-am-3x | bash
+....
+
+For more information, see link:/am/current/am_installguide_docker_compose.html[Run on Docker].
+
+== Install with Kubernetes
+
+[source,shell]
+....
+# Add Gravitee.io charts repository
+$ helm repo add graviteeio https://helm.gravitee.io
+
+# And install
+$ helm install --name graviteeio-am graviteeio/am
+....
+
+For more information, see link:/am/current/am_installguide_kubernetes.html[Deploy in Kubernetes].

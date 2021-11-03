@@ -1,0 +1,88 @@
+= Install Management API with RPM
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_installguide_management_api_install_rpm.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Management API - Installation with RPM
+:page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+The RPM for Gravitee.io Management API can be downloaded from our link:#installing_from_the_rpm_repository[RPM repository].
+It can be used to install Gravitee.io Management API on any RPM-based system such as OpenSuSE, SLES, CentOS, Red Hat, and Oracle Enterprise.
+
+NOTE: RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Please see link:/am/2.x/am_installguide_management_api_install_zip.html[Install Gravitee.io Management API with .zip] instead.
+
+== Installing from the RPM repository
+Create a file called graviteeio.repo in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:
+
+[source,bash]
+----
+[graviteeio]
+name=graviteeio
+baseurl=https://packagecloud.io/graviteeio/rpms/el/7/$basearch
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/graviteeio/rpms/gpgkey
+autorefresh=1
+----
+
+And your repository is ready for use. You can now install Gravitee.io Management API with one of the following commands:
+
+[source,bash]
+----
+sudo yum install graviteeio-am-management-api
+sudo dnf install graviteeio-am-management-api
+sudo zypper install graviteeio-am-management-api
+----
+
+== Download and install the RPM manually
+
+[source,bash]
+----
+wget --content-disposition https://packagecloud.io/graviteeio/rpms/packages/el/7/graviteeio-am-management-api-{{ site.products.am.version }}-0.noarch.rpm/download.rpm
+sudo rpm --install graviteeio-am-management-api-{{ site.products.am.version }}-0.noarch.rpm
+----
+
+== Running Gravitee.io Management API with `systemd`
+
+To configure Gravitee.io Management API to start automatically when the system boots up, run the following commands:
+
+[source,shell]
+----
+sudo systemctl daemon-reload
+sudo systemctl enable graviteeio-am-management-api
+----
+
+Gravitee.io Management API can be started and stopped as follows:
+
+[source,shell]
+----
+sudo systemctl start graviteeio-am-management-api
+sudo systemctl stop graviteeio-am-management-api
+----
+
+These commands provide no feedback as to whether Gravitee.io Management API was started successfully or not.
+Instead, this information will be written in the log files located in `/opt/graviteeio/am/management-api/logs/`.
+
+When `systemd` logging is enabled, the logging information are available using the `journalctl` commands:
+
+To tail the journal:
+
+[source,shell]
+----
+sudo journalctl -f
+----
+
+To list journal entries for the Gravitee.io Management API service:
+
+[source,shell]
+----
+sudo journalctl --unit graviteeio-am-management-api
+----
+
+To list journal entries for the Gravitee.io Management API service starting from a given time:
+
+[source,shell]
+----
+sudo journalctl --unit graviteeio-am-management-api --since  "2020-01-30 12:13:14"
+----

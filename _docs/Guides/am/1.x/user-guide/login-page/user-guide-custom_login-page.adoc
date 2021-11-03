@@ -1,0 +1,48 @@
+= Custom Login Page
+:page-sidebar: am_1_x_sidebar
+:page-permalink: am/1.x/am_userguide_custom_login_page.html
+:page-folder: am/user-guide
+
+Security domain's login page is shared by all the clients and will be applied to all the users who want to log in to the security domain. To override the login page, follow these steps :
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page, go to `Login page` section
+. Switch on the `Custom login page` button
+. Write your own login html code and press `SAVE`
+
+image::am/1.x/graviteeio-am-userguide-custom-login-page.png[]
+
+NOTE: To go back to the default login, switch off the `Custom login page` button and press `SAVE`
+
+== Minimal login form
+
+To perform the login, your custom html code must contains some required elements
+
+[source,html]
+----
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login custom</title>
+</head>
+<body>
+  <form th:action="@{login}" method="post">
+      <input type="text" name="username" required/>
+      <input type="password" name="password" required/>
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+      <input type="hidden" th:name="client_id" th:value="${param.client_id}"/>
+      <p th:if="${param.error}">Wrong user or password</p>
+      <button type="submit">login</button>
+  </form>
+</body>
+</html>
+----
+
+[width="100%",cols="2,8",frame="topbot",options="header,footer"]
+|==========================
+|Parameters |Description
+|*action*   |Login action, must be set to `@{login}`
+|*username* |Username input field
+|*password* |Password input field
+|*CSRF*     |link:https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)[CSRF] token to prevent unauthorized commands
+|==========================

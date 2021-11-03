@@ -1,0 +1,289 @@
+= OAuth 2.0
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_protocols_oauth2_overview.html
+:page-folder: am/dev-guide/protocols/oauth2
+:page-layout: am
+
+== Overview
+
+link:https://tools.ietf.org/html/rfc6749[OAuth 2.0] is the industry-standard protocol for authorization providing specific authorization flows for web applications, desktop applications, mobile phones, and living room devices.
+
+OAuth 2.0 specifies standard endpoints to interact with the resource owner (or the client when is acting on its own behalf) to grant/introspect/revoke tokens used to access protected resources.
+
+You can find OAuth 2.0 protocol endpoints exposed by Gravitee.io Access Management :
+
+* link:/am/2.x/oauth2/index.html[OAuth 2.0 API Console, window="_blank"] - link:/am/2.x/oauth2/swagger.yml[Swagger spec, window="_blank"]
+
+== Roles
+
+OAuth 2.0 defines four roles:
+
+* `resource owner`
+      An entity capable of granting access to a protected resource.
+      When the resource owner is a person, it is referred to as an
+      end-user.
+
+* `resource server`
+      The server hosting the protected resources, capable of accepting
+      and responding to protected resource requests using access tokens.
+
+* `client`
+      An application making protected resource requests on behalf of the
+      resource owner and with its authorization.  The term "client" does
+      not imply any particular implementation characteristics (e.g.,
+      whether the application executes on a server, a desktop, or other
+      devices).
+
+* `authorization server`
+      The server issuing access tokens to the client after successfully
+      authenticating the resource owner and obtaining authorization.
+
+== Protocol flow
+
+The OAuth 2.0 flow describes the interaction between the four roles and includes the following steps:
+
+* The client requests authorization from the resource owner.  The
+        authorization request can be made directly to the resource owner
+        (as shown), or preferably indirectly via the authorization
+        server as an intermediary.
+
+* The client receives an authorization grant, which is a
+        credential representing the resource owner's authorization,
+        expressed using one of four grant types defined in this
+        specification or using an extension grant type.  The
+        authorization grant type depends on the method used by the
+        client to request authorization and the types supported by the
+        authorization server.
+
+* The client requests an access token by authenticating with the
+        authorization server and presenting the authorization grant.
+
+* The authorization server authenticates the client and validates
+        the authorization grant, and if valid, issues an access token.
+
+* The client requests the protected resource from the resource
+        server and authenticates by presenting the access token.
+
+* The resource server validates the access token, and if valid,
+        serves the request.
+
+NOTE: The preferred method for the client to obtain an authorization grant from the resource owner is to use the authorization server as an intermediary (i.e Authorization Code Flow).
+https://am-gateway/{domain}/oauth/authorize?response_type=code&client_id=my-client&redirect_uri=https://my-app/callback&state=KHGF4567
+
+== Authorization Grant
+
+An authorization grant is a flow used by the client to obtain an access token.
+The specification defines four grant types -- authorization code, implicit, resource owner password credentials, and client credentials -- as well as an extensibility mechanism for defining additional types.
+The use of one of these grant types will mainly depend of your application type.
+
+=== Authorization Code
+
+The authorization code is obtained by using an authorization server as an intermediary between the client and resource owner.
+
+NOTE: Flow used in web (server side) and mobile apps. For native application (mobile app), you should also use the link:https://tools.ietf.org/html/rfc7636[PKCE extension], which provides protections against other attacks where the authorization code may be intercepted.
+
+NOTE: Authorization Code grant URL : GET https://am-gateway/{domain}/oauth/authorize?response_type=code&client_id=web-app&redirect_uri=https://web-app/callback
+
+=== Implicit
+
+The implicit grant is a simplified authorization code flow.
+
+NOTE: Flow optimized for clients implemented in a browser using a scripting language such as JavaScript
+
+NOTE: Implicit grant URL : GET https://am-gateway/{domain}/oauth/authorize?response_type=token&client_id=web-app&redirect_uri=https://web-app/callback
+
+=== Resource Owner Password Credentials
+
+The resource owner password credentials (i.e., username and password) can be used directly as an authorization grant to obtain an access token (in REST manner)
+
+NOTE: Should only be used when there is a high degree of trust between the resource owner and the client (e.g., the client is part of the device operating system or a highly privileged application), and when other authorization grant types are not available (such as an authorization code)
+
+NOTE: Resource Owner Password Credentials grant URL : POST https://am-gateway/{domain}/oauth/token?grant_type=password&username=john&password=doe (with Basic client credentials)
+
+=== Client Credentials
+
+The Client Credentials grant type is used by clients to obtain an access token outside of the context of a user. This is typically used by clients to access resources about themselves rather than to access a user's resources.
+
+NOTE: Flow used typically when the client is acting on its own behalf (the client is also the resource owner). Machine to machine communication
+
+NOTE: Client Credentials grant URL : POST https://am-gateway/{domain}/oauth/token?grant_type=client_credentials (with Basic client credentials)
+
+=== Refresh Token
+
+A refresh token is used to get a new access token letting client application to renew access to protected resources without prompting login page to the resource owner.
+
+NOTE: For security reason (a user can remain authenticated forever), a refresh token must be stored in secure place (i.e server side) and the client MUST discard the old refresh token and replace it with the new refresh token.
+
+NOTE: Refresh token grant URL : POST https://am-gateway/{domain}/oauth/token?grant_type=refresh_token&refresh_token={refreshToken} (with Basic client credentials)
+
+== Endpoints
+
+=== Authorization Endpoint
+
+link:https://tools.ietf.org/html/rfc6749#section-3.1[The authorization endpoint] is used to interact with the resource owner and obtain an authorization grant.
+The authorization server MUST first verify the identity of the resource owner.
+
+NOTE: Authorization endpoint URL : https://am-gateway/{domain}/oauth/authorize
+
+=== Token Endpoint
+
+link:https://tools.ietf.org/html/rfc6749#section-3.2[The token endpoint] is used by the client to obtain an access token by presenting its authorization grant or refresh token.
+
+NOTE: Authorization endpoint URL : https://am-gateway/{domain}/oauth/token
+
+=== Introspection Endpoint
+
+link:https://tools.ietf.org/html/rfc7662#section-2[The introspection endpoint] is an OAuth 2.0 endpoint that takes a parameter representing an OAuth 2.0 token and returns a JSON [RFC7159] document representing the meta information surrounding the token, including whether this token is currently active.
+
+NOTE: Introspection endpoint URL : https://am-gateway/{domain}/oauth/introspect
+
+=== Revocation Endpoint
+
+link:https://tools.ietf.org/html/rfc7009[The revocation endpoint] is an OAuth 2.0 endpoint which allows clients to notify the authorization server that a previously obtained refresh or access token is no longer needed.
+
+NOTE: Revocation endpoint URL : https://am-gateway/{domain}/oauth/revoke
+
+== Concrete example
+
+Let's imagine that a user want to access his personal data via a web application. The personal data are exposed through an API secured by OAuth 2.0 protocol.
+
+. The user must be logged in to access his data. He asks the web application to sign in
+. The web application sends an Authorization Request (resource owner ask to grant access to his data) to the Authorization Server
+
+[source]
+----
+GET  https://am-gateway/{domain}/oauth/authorize?response=code&client_id=web-app&redirect_uri=https://web-app/callback&state=6789DSKL HTTP/1.1
+----
+
+[start=3]
+. The authorization server authenticates the resource owner and obtains authorization
+
+[source]
+----
+HTTP/1.1 302 Found
+Location: https://am-gateway/{domain}/login?client_id=web-app
+
+Login page with username/password form
+----
+
+[source]
+----
+HTTP/1.1 302 Found
+Location: https://am-gateway/{domain}/oauth/confirm_access
+
+Consent resource owner page. The resource owner accepts or denies that the web app can access his personal data
+----
+
+[source]
+----
+HTTP/1.1 302 Found
+Location: https://web-app/callback?code=js89p2x1&state=6789DSKL
+
+Come back to the web application
+----
+
+[start=4]
+. The resource owner is authenticated and approved webapp acting on his behalf. The web app can ask for an access token
+
+[source]
+----
+POST https://am-gateway/{domain}/oauth/token HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
+grant_type=authorization_code&code=6789DSKL&redirect_uri=https://web-app/callback&state=6789DSKL
+----
+
+[source]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+{
+    "access_token": "b02063f8-2698-4141-a063-f82698e1419c",
+    "token_type": "bearer",
+    "expires_in": 7199,
+    "scope": "read",
+    "refresh_token": "4f85e0ad-b5df-4717-85e0-adb5dfc7174d"
+}
+----
+
+[start=5]
+. The web application just got an access token, it can use it to get user personal data
+
+[source]
+----
+GET  https://api.company.com/users/@me
+Authorization: Bearer b02063f8-2698-4141-a063-f82698e1419c
+----
+
+[start=6]
+. The Users API must check the incoming token to determine the active state of the access token and decide to accept or deny the request
+
+[source]
+----
+POST https://am-gateway/{domain}/oauth/introspect HTTP/1.1
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
+token=b02063f8-2698-4141-a063-f82698e1419c
+
+Introspection request
+----
+
+[source]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "active": true,
+  "client_id": "web-app",
+  "username": "jdoe",
+  "sub": "Z5O3upPC88QrAjx00dis",
+  "aud": "https://web-app",
+  "iss": "https://am-gateway/",
+  "exp": 1419356238,
+  "iat": 1419350238
+}
+
+Introspection response
+----
+
+[source]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "username": "jdoe",
+  "family_name": "doe",
+  "name": "John doe",
+  "email": "jdoe@mail.com"
+}
+
+Users API response
+----
+
+[start=7]
+. The access is valid and the web application can display to the resource owner his personal data
+
+. If the resource owner decides to log out, the web application can ask Authorization Server to revoke active access token
+
+[source]
+----
+POST https://am-gateway/{domain}/oauth/revoke HTTP/1.1
+Host: server.example.com
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
+token=b02063f8-2698-4141-a063-f82698e1419c
+
+Revocation request
+----
+
+[source]
+----
+HTTP/1.1 200 OK
+
+Revocation response
+----

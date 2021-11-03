@@ -1,0 +1,385 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+  - title: Sidebar
+    product: API Management
+    folders:
+      - title: API Management
+        output: web
+        folderitems:
+          - title: Overview
+            output: web
+            url: /Guides/apim/current/overview/introduction.html
+      - title: Installation Guide
+        output: web
+        folderitems:
+          - title: Installing APIM
+            output: web
+            url: /Guides/apim/current/installation-guide/installation-guide.html
+          - title: Hybrid Deployment
+            output: web
+            url: /Guides/apim/current/installation-guide/hybrid-deployment/installation_guide_hybrid_deployment.html.html
+            subfolders:
+              - title: Install on Amazon
+                output: web
+                subfolderitems:
+                  - title: Configure YUM
+                    output: web
+                    url: /Guides/apim/current/installation-guide/amazon-linux/installation-guide-amazon-configure-yum.html
+                  - title: Install the full APIM stack
+                    output: web
+                    url: /Guides/apim/current/installation-guide/amazon-linux/installation-guide-amazon-stack.html
+                  - title: Install APIM Gateway
+                    output: web
+                    url: /Guides/apim/current/installation-guide/amazon-linux/installation-guide-amazon-gateway.html
+                  - title: Install APIM API
+                    output: web
+                    url: /Guides/apim/current/installation-guide/amazon-linux/installation-guide-amazon-management-api.html
+                  - title: Install APIM Console
+                    output: web
+                    url: /Guides/apim/current/installation-guide/amazon-linux/installation-guide-amazon-management-ui.html
+                  - title: Install APIM Portal
+                    output: web
+                    url: /Guides/apim/current/installation-guide/amazon-linux/installation-guide-amazon-portal.html
+              - title: Install on Docker
+                output: web
+                subfolderitems:
+                  - title: Images
+                    output: web
+                    url: /Guides/apim/current/installation-guide/docker/installation-guide-docker_images.html
+                  - title: Compose
+                    output: web
+                    url: /Guides/apim/current/installation-guide/docker/installation-guide-docker_compose.html
+                  - title: Customize
+                    output: web
+                    url: /Guides/apim/current/installation-guide/docker/installation-guide-docker_customize.html
+              - title: Install on Kubernetes
+                output: web
+                subfolderitems:
+                  - title: Helm
+                    output: web
+                    url: /Guides/apim/current/installation-guide/installation-guide-kubernetes.html
+              - title: Install on Linux (Red Hat, CentOS and Oracle)
+                output: web
+                subfolderitems:
+                  - title: Introduction
+                    output: web
+                    url: /Guides/apim/current/installation-guide/red-hat/installation-guide-redhat-introduction.html
+                  - title: Install the full APIM stack
+                    output: web
+                    url: /Guides/apim/current/installation-guide/red-hat/apim_installguide_redhat_stack.html
+                  - title: Install APIM Gateway
+                    output: web
+                    url: /Guides/apim/current/installation-guide/red-hat/installation-guide-redhat-gateway.html
+                  - title: Install APIM API
+                    output: web
+                    url: /Guides/apim/current/installation-guide/red-hat/installation-guide-redhat-management-api.html
+                  - title: Install APIM Console
+                    output: web
+                    url: /Guides/apim/current/installation-guide/red-hat/installation-guide-redhat-management-ui.html
+                  - title: Install APIM Portal
+                    output: web
+                    url: /Guides/apim/current/installation-guide/red-hat/installation-guide-redhat-portal.html
+              - title: Install with .ZIP
+                output: web
+                subfolderitems:
+                  - title: Install APIM Gateway
+                    output: web
+                    url: /Guides/apim/current/installation-guide/with-zip/installation-guide-gateway-install-zip.html
+                  - title: Install APIM API
+                    output: web
+                    url: /Guides/apim/current/installation-guide/with-zip/installation-guide-rest-apis-install-zip.html
+                  - title: Install APIM Console
+                    output: web
+                    url: /Guides/apim/current/installation-guide/with-zip/installation-guide-management-ui-install-zip.html
+                  - title: Install APIM Portal
+                    output: web
+                    url: /Guides/apim/current/installation-guide/with-zip/installation-guide-portal-ui-install-zip.html
+
+          - title: Upgrade Guide
+            output: web
+            url: /Guides/apim/current/installation-guide/installation-guide-upgrade.html
+
+      - title: Configuration Guide
+        output: web
+        folderitems:
+         - title: Configuring APIM
+           output: web
+           url: /Guides/apim/current/configuration-guide/configuration-guide.html
+           subfolders:
+            - title: Configure APIM Gateway
+              output: web
+              subfolderitems:
+               - title: General configuration
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/gateway/configure-gateway-general.html
+               - title: Internal API
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/gateway/configure-gateway-internal-api.html
+               - title: Metrics
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/gateway/configure-gateway-metrics.html
+            - title: Configure APIM API
+              output: web
+              subfolderitems:
+               - title: General configuration
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/rest-apis/configure-rest-apis-general.html
+               - title: Internal API
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/rest-apis/configure-rest-apis-internal-api.html
+               - title: Metrics
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/rest-apis/configure-rest-apis-metrics.html
+               - title: Security
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/rest-apis/configure-rest-apis-security.html
+            - title: Configure APIM Console
+              output: web
+              subfolderitems:
+               - title: General configuration
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/management-ui/configure-console-general.html
+               - title: Dashboards
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/management-ui/configure-console-dashboard.html
+            - title: Configure APIM Portal
+              output: web
+              subfolderitems:
+               - title: General configuration
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/portal-ui/configure-portal-general.html
+            - title: Configure repositories
+              output: web
+              subfolderitems:
+               - title: Configuring repositories
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/repositories/configure-repositories.html
+               - title: Elasticsearch
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/repositories/configure-repositories-elasticsearch.html
+               - title: MongoDB
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/repositories/configure-repositories-mongodb.html
+               - title: JDBC
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/repositories/configure-repositories-jdbc.html
+               - title: Redis
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/repositories/configure-repositories-redis.html
+            - title: Configure authentication
+              output: web
+              subfolderitems:
+               - title: Configuring authentication
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/authentication/configure-authentication.html
+               - title: Connect with in-memory Users
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/authentication/configure-authentication-inmemory.html
+               - title: Connect with LDAP/Active Directory
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/authentication/configure-authentication-ldap.html
+               - title: Configure APIM repository authentication
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/authentication/configure-authentication-apim.html
+               - title: Connect with Gravitee.io Access Management
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/authentication/configure-authentication-graviteeam.html
+               - title: Configure GitHub authentication
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/authentication/configure-authentication-github.html
+               - title: Connect with Google
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/authentication/configure-authentication-google.html
+               - title: Connect with Keycloak
+                 output: web
+                 url: /Guides/apim/current/configuration-guide/authentication/configure-authentication-keycloak.html
+         - title: Configure cache
+           output: web
+           url: /Guides/apim/current/configuration-guide/cache/configuration-guide-cache.html
+         - title: Configure notifications
+           output: web
+           url: /Guides/apim/current/configuration-guide/notifications/configuration-guide-notifications.html
+         - title: Configure dictionaries
+           output: web
+           url: /Guides/apim/current/configuration-guide/dictionaries/configuration-guide-dictionaries.html
+      - title: API Publisher Guide
+        output: web
+        folderitems:
+          - title: Create APIs
+            output: web
+            url: /Guides/apim/current/publisher-guide/create-api.html
+          - title: Plans and subscriptions
+            output: web
+            url: /Guides/apim/current/publisher-guide/plans-subscriptions.html
+          - title: API users and ownership
+            output: web
+            url: /Guides/apim/current/publisher-guide/manage-members.html
+          - title: Response templates
+            output: web
+            url: /Guides/apim/current/publisher-guide/response-templates.html
+          - title: CORS
+            output: web
+            url: /Guides/apim/current/publisher-guide/configuring-cors.html
+          - title: Logging and analytics
+            output: web
+            url: /Guides/apim/current/publisher-guide/logging-analytics.html
+          - title: Audit trail
+            output: web
+            url: /Guides/apim/current/publisher-guide/audit-trail.html
+          - title: Load balancing, failover, and health check
+            output: web
+            url: /Guides/apim/current/publisher-guide/backend-services.html
+          - title: Send notifications
+            output: web
+            url: /Guides/apim/current/publisher-guide/messaging.html
+          - title: API rating
+            output: web
+            url: /Guides/apim/current/publisher-guide/api_rating.html
+          - title: Top APIs
+            output: web
+            url: /Guides/apim/current/publisher-guide/top_apis.html
+            subfolders:
+              - title: Resources
+                output: web
+                subfolderitems:
+                - title: APIM resources
+                  output: web
+                  url: /Guides/apim/current/publisher-guide/resources/resources-overview.html
+                - title: Cache
+                  output: web
+                  url: /Guides/apim/current/publisher-guide/resources/resource-cache.html
+                - title: Redis cache
+                  output: web
+                  url: /Guides/apim/current/publisher-guide/resources/resource-cache-redis.html
+                - title: OAuth2 - Gravitee.io Access Management
+                  output: web
+                  url: /Guides/apim/current/publisher-guide/resources/resource-oauth2-am.html
+                - title: OAuth2 - generic authorization server
+                  output: web
+                  url: /Guides/apim/current/publisher-guide/resources/resource-oauth2-generic.html
+              - title: Design Studio Guide
+                output: web
+                subfolderitems:
+                - title: APIM Design Studio
+                  output: web
+                  url: /Guides/apim/current/publisher-guide/design-studio/design-studio-overview.html
+                - title: Migrate to Design Studio
+                  output: web
+                  url: /Guides/apim/current/publisher-guide/design-studio/design-studio-migrate.html
+                - title: Design your API with Design Studio
+                  output: web
+                  url: /Guides/apim/current/publisher-guide/design-studio/design-studio-create
+                - title: Create and delete an API model
+                  output: web
+                  url: /Guides/apim/current/publisher-guide/design-studio/design-studio-model.html
+                - title: Try It! mode
+                  output: web
+                  url: /Guides/apim/3.11.x/publisher-guide/design-studio/design-studio-tryit.html
+              - title: Documentation
+                output: web
+                subfolderitems:
+                  - title: Publish API documentation
+                    output: web
+                    url: /Guides/apim/current/publisher-guide/documentation/publish-documentation.html
+                  - title: Markdown documentation
+                    output: web
+                    url: /Guides/apim/current/publisher-guide/documentation/publish-documentation-markdown.html
+                  - title: AsciiDoc documentation
+                    output: web
+                    url: /Guides/apim/current/publisher-guide/documentationn/publish-documentation-asciidoc.html
+                  - title: Markdown template documentation
+                    output: web
+                    url: /Guides/apim/current/publisher-guide/documentation/publish-documentation-markdown-template.html
+                  - title: OpenAPI documentation
+                    output: web
+                    url: /Guides/apim/current/publisher-guide/documentation/publish-documentation-openapi.html
+                  - title: System folders, links, and APIM Portal customization
+                    output: web
+                    url: /Guides/apim/current/publisher-guide/documentation/publish-documentation-system-folders.html
+              - title: Service Discovery
+                output: web
+                subfolderitems:
+                  - title: Introduction
+                    output: web
+                    url: /Guides/apim/current/publisher-guide/service-discovery/service-discovery-overview.html
+                  - title: Eureka
+                    output: web
+                    url: /Guides/apim/current/publisher-guide/service-discovery/service-discovery-eureka.html
+                  - title: Consul.io
+                    output: web
+                    url: /Guides/apim/current/publisher-guide/service-discovery/service-discovery-consul.html
+              - title: Cockpit features
+                output: web
+                subfolderitems:
+                  - title: Promote APIs
+                    output: web
+                    url: /Guides/apim/current/publisher-guide/promote-api.html
+          - title: Expression Language
+            output: web
+            url: /Guides/apim/current/publisher-guide/expression-language.html
+
+      - title: API Consumer Guide
+        output: web
+        folderitems:
+         - title: Introduction
+           output: web
+           url: /Guides/apim/current/consumer-guide/consumer-overview.html
+         - title: Create an Account
+           output: web
+           url: /Guides/apim/current/consumer-guide/consumer-create-account.html
+         - title: Manage Applications
+           output: web
+           url: /Guides/apim/current/consumer-guide/consumer-manage.html
+         - title: Subscribe to APIs
+           output: web
+           url: /Guides/apim/current/consumer-guide/consumer-subscribe.html
+
+      - title: Administration Guide
+        output: web
+        folderitems:
+          - title: Organizations & Environments
+            output: web
+            url: /Guides/apim/current/admin-guide/admin-guide-organizations-and-environments.html
+            type: homepage
+          - title: Roles & Permissions
+            output: web
+            url: /Guides/apim/current/admin-guide/admin-guide-roles-and-permissions.html
+          - title: Users & Groups
+            output: web
+            url: /Guides/apim/current/admin-guide/admin-guide-users-and-groups.html
+          - title: Support
+            output: web
+            url: /Guides/apim/current/admin-guide/admin-guide-users-support-tickets.html
+
+      - title: Developer Guide
+        output: web
+        folderitems:
+          - title: Bootstrap Your Dev Environment
+            output: web
+            url: /Guides/apim/current/dev-guide/dev-guide-bootstrap.html
+          - title: Plugins
+            output: web
+            url: /Guides/apim/current/dev-guide/dev-guide-plugins.html
+          - title: Policies
+            output: web
+            url: /Guides/apim/current/dev-guide/dev-guide-policies.html
+
+      - title: Kubernetes Controller
+        output: web
+        folderitems:
+          - title: Introduction
+            output: web
+            url: /Guides/apim/current/kubernetes/apim_kubernetes_overview.html
+          - title: Quick Start
+            output: web
+            url: /Guides/apim/current/kubernetes/apim_kubernetes_quick_start.html
+          - title: How to Install
+            output: web
+            url: /Guides/apim/current/kubernetes/apim_kubernetes_installation.html
+          - title: Custom Resources
+            output: web
+            url: /Guides/apim/current/kubernetes/apim_kubernetes_custom_resources.html
+          - title: Admission Hook
+            output: web
+            url: /Guides/apim/current/kubernetes/apim_kubernetes_admission_hook.html

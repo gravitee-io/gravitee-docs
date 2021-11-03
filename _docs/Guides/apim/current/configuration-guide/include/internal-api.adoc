@@ -1,0 +1,119 @@
+The {gravitee-component-name} component comes with its own internal API, for monitoring and retrieving technical information about the component.
+
+== Configuration
+You need to enable the API as a service in the `gravitee.yml` file and update any other required configuration.
+
+[source,yaml]
+[subs="attributes"]
+----
+services:
+  core:
+    http:
+      enabled: true
+      port: {node_port}
+      host: localhost
+      authentication:
+        type: basic
+        users:
+          admin: adminadmin
+----
+enabled:: Whether the service is enabled (default `true`).
+port:: The port the service listens on (default `{node_port}`). You must ensure you use a port which is not already in use by another APIM component.
+host:: The host (default `localhost`).
+authentication.type:: Authentication type for requests: `none` if no authentication is required or `basic` (default `basic`).
+authentication.users:: A list of `user: password` combinations. Only required if authentication type is `basic`.
+
+== Endpoints
+
+|===
+|Operation |Description |Example
+
+|`GET /_node`
+|Gets generic node information
+a|
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+    "id": "a70b9fd9-9deb-4ccd-8b9f-d99deb6ccd32",
+    "metadata": {},
+    "name": "Gravitee.io - Management API",
+    "version": {
+        "BUILD_ID": "309",
+        "BUILD_NUMBER": "309",
+        "MAJOR_VERSION": "1.20.14",
+        "REVISION": "132e719ef314b40f352e6399034d68a9a95e95ef"
+    }
+}
+----
+
+|`GET /_node/health`
+|Gets the health status of the component. If the return status is 200 then everything is ok, if 500, there is at least one error.
+This endpoint can be used by a load balancer, to determine if a component instance is not in the pool, for example.
+a|
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "management-api": {
+        "healthy": true
+    },
+    "management-repository": {
+        "healthy": true
+    },
+    "repository-analytics": {
+        "healthy": true
+    }
+}
+----
+
+|`GET /_node/configuration`
+|Gets the node configuration from the `gravitee.yml` file and/or environment variables.
+a|
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "analytics.elasticsearch.endpoints[0]": "http://${ds.elastic.host}:${ds.elastic.port}",
+    "analytics.type": "elasticsearch",
+    "ds.elastic.host": "localhost",
+    "ds.elastic.port": 9200,
+    ...
+}
+----
+
+|`GET /_node/monitor`
+|Gets monitoring information from the JVM and the server.
+a|
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "jvm": {
+        "gc": {
+            "collectors": [
+                {
+                    "collectionCount": 7,
+                    "collectionTime": 98,
+                    "name": "young"
+                },
+                {
+                    "collectionCount": 3,
+                    "collectionTime": 189,
+                    "name": "old"
+                }
+            ]
+        },
+        "mem": {
+    ...
+}
+----
+
+|===

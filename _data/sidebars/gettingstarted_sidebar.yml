@@ -9,74 +9,74 @@ entries:
         folderitems:
           - title: Overview
             output: web
-            url: /getstarted.html
+            url: /Getstarted/getting-started.html
       - title: Quick installation
         output: web
         folderitems:
           - title: Quick API Management installation
             output: web
-            url: /apim/current/apim_getstarted_quickinstall.html
+            url: /Getstarted/quickstart-apim/installation-guide_quickstart.html
           - title: Configure a production-ready APIM environment
             output: web
-            url: /apim/current/apim_getstarted_configureAPIM.html
+            url: /Getstarted/quickstart-apim/how-to-general-configuration.html
           - title: Quick Access Management installation
             output: web
-            url: /am/current/am_getstarted_quickinstall.html
+            url: /Getstarted/quickstart-am/installation-guide_quickstart.html
           - title: Configure a production-ready AM environment
             output: web
-            url: /am/current/apim_getstarted_configureAM.html
+            url: /Getstarted/quickstart-am/general-configuration.html
       - title: Getting started with APIM
         output: web
         folderitems:
           - title: Access APIM Portal and Console
             output: web
-            url: /apim/current/apim_getstarted_login.html
+            url: /Getstarted/quickstart-apim/quickstart-login.html
           - title: Publish your first API with APIM Console
             output: web
-            url: /apim/current/apim_getstarted_publish_ui.html
+            url: /Getstarted/quickstart-apim/api-publisher-ui.html
           - title: Publish your first API with APIM API
             output: web
-            url: /apim/current/apim_getstarted_publish_api.html
+            url: /Getstarted/quickstart-apim/api-publisher-api.html
           - title: Subscribe to an API with APIM Portal
             output: web
-            url: /apim/current/apim_getstarted_subscribe_ui.html
+            url: /Getstarted/quickstart-apim/api-consumer-ui.html
           - title: Subscribe to an API with APIM API
             output: web
-            url: /apim/current/apim_getstarted_subscribe_api.html
+            url: /Getstarted/quickstart-apim/api-consumer-api.html
           - title: Consume the API
             output: web
-            url: /apim/current/apim_getstarted_consume.html
+            url: /Getstarted/quickstart-apim/api-consumer-test.html
       - title: Getting started with AM
         output: web
         folderitems:
           - title: Access AM Console
             output: web
-            url: /am/current/am_getstarted_login.html
+            url: /Getstarted/quickstart-am/user_guide_authentication.html
           - title: Set up your first application
             output: web
-            url: /am/current/am_getstarted_register_app.html
+            url: /Getstarted/quickstart-am/setup_app.html
           - title: Get user profile information
             output: web
-            url: /am/current/am_getstarted_profile.html
+            url: /Getstarted/quickstart-am/profile-information.html
 
           - title: Secure your APIs in APIM
             output: web
-            url: /am/current/am_getstarted_secure_apis.html
+            url: /Getstarted/quickstart-am/secure-apis.html
 
           - title: Configure a flow
             output: web
-            url: /am/current/am_getstarted_configure_flow.html
+            url: /Getstarted/quickstart-am/use-policies.html
 
           - title: Add custom claims to tokens
             output: web
-            url: /am/current/am_getstarted_custom_claims.html
+            url: /Getstarted/quickstart-am/tokens-custom-claims.html
 
       - title: Getting started with Cockpit
         output: web
         folderitems:
           - title: Get started with Cockpit
             output: web
-            url: /cockpit/current/cockpit_getstarted.html
+            url: /Getstarted/quickstart-cockpit/cockpit_getstarted.html
       - title: Tutorials
         output: web
         folderitems:
@@ -87,16 +87,16 @@ entries:
                 subfolderitems:
                   - title: Add custom metrics to APIM dashboards
                     output: web
-                    url: /apim/current/apim_resources_custom_metrics.html
+                    url: /Resources/apim/apim_resources_custom_metrics.html
                   - title: Configure global API reviewers
                     output: web
-                    url: /apim/current/apim_resources_global_reviewers.html
+                    url: /Resources/apim/apim_resources_global_reviewers.html
                   - title: Test OpenTracing in Docker
                     output: web
-                    url: /apim/current/apim_resources_docker_opentracing.html
+                    url: /Resources/apim/apim_resources_docker_opentracing.html
                   - title: Deploy a hybrid architecture in Kubernetes
                     output: web
-                    url: /apim/current/apim_resources_hybrid_k8s.html
+                    url: /Resources/apim/apim_resources_hybrid_k8s.html
               - title: AM tutorials
                 output: web
                 subfolderitems:

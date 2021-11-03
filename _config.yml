@@ -108,17 +108,14 @@ toc:
 # collections are declared here. this renders the content in _tooltips and processes it, but doesn't output it as actual files in the output unless you change output to true
 
 collections:
-  tooltips:
-    output: true
-  team_members:
-    output: true
-    permalink: /team_members/:path/
-  testimonials:
-    output: true
-    permalink: /testimonials/:path/
   docs:
     output: true
-    permalink: /guides/:title/
+    permalink: /:path
+    layout: "doc"
+  pages:
+    output: true
+    permalink:
+    layout: "page"
 defaults:
   -
     scope:
@@ -128,7 +125,6 @@ defaults:
       layout: "page"
       comments: true
       search: true
-      sidebar: home_sidebar
 
 ############################################################
 # Site configuration for the Jekyll Pagination Gem

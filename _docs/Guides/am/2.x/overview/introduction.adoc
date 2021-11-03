@@ -1,0 +1,14 @@
+= Introduction
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_overview_introduction.html
+:page-folder: am/overview
+:page-toc: false
+:page-layout: am
+
+Gravitee.io AM aims to be a bridge between applications and identity providers to authenticate, authorize and getting
+information about user accounts.
+
+It relies on different protocols such as OAuth2 and OpenId Connect and supports many authentication/identity providers
+thanks to a plugin system that can specialized platform behavior to exactly fit your needs.
+
+NOTE: In the rest of the document, we use the short name *Gravitee.io* or *Gravitee.io AM* to talk about *Gravitee.io Access Management*.

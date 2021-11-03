@@ -5,13 +5,11 @@ apim_sidenav_versions:
     - default_version: 3.12.x (current)
       folderitems:
         - title: 3.12.x (current)
-          url: /apim/3.x/apim_overview_introduction.html
-        - title: 3.11.x
-          url: /apim/3.11.x/apim_overview_introduction.html
-        - title: 3.4.x
-          url: /apim/3.4.x/apim_overview_introduction.html
+          url: /Guides/apim/current/overview/introduction.html
+        - title: 3.9.x
+          url: /Guides/apim/3.9.x/overview/introduction.html
         - title: 1.x
-          url: /apim/1.x/apim_overview_introduction.html
+          url: /Guides/apim/1.x/overview/introduction.html
 
 am_sidenav_versions:
   - title: Sidenav versions
@@ -19,8 +17,8 @@ am_sidenav_versions:
       - title: Access Management
         folderitems:
           - title: 3.x (current)
-            url: /am/current/apim_overview_introduction.html
+            url: /Guides/am/current/overview/introduction.html
           - title: 2.x
-            url: /am/2.x/am_overview_introduction.html
+            url: /Guides/am/2.x/overview/introduction.html
           - title: 1.x
-            url: /am/1.x/am_overview_introduction.html
+            url: /Guides/am/1.x/overview/introduction.html

@@ -1,0 +1,98 @@
+= Install Management UI with `.zip`
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_installguide_management_ui_install_zip.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Management UI - Installation with .zip
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+== System Requirements
+
+=== Browsers
+
+Access Management UI has been tested with the latest versions of Google Chrome, Firefox and Internet Explorer >= 10
+
+== Installing from the ZIP archive
+
+The binaries are available from https://download.gravitee.io/graviteeio-am/components/gravitee-am-webui/gravitee-am-webui-{{ site.products.am.version }}.zip.
+
+[source,bash]
+[subs="attributes"]
+$ curl -L https://download.gravitee.io/graviteeio-am/components/gravitee-am-webui/gravitee-am-webui-{{ site.products.am.version }}.zip -o gravitee-am-webui-{{ site.products.am.version }}.zip
+
+Once file has been downloaded, you just have to unpack it in the right place
+
+[source,bash]
+[subs="attributes"]
+$ unzip gravitee-am-webui-{{ site.products.am.version }}.zip
+
+=== Deploy
+
+The AM Management UI is a client-side Angular application and can be deployed on any HTTP server like https://httpd.apache.org/[Apache] or http://nginx.org/[Nginx].
+
+NOTE: The AM UI use HTML5 mode and requires server side rewrites to make it works. Here are examples with Apache and Nginx
+
+==== Apache
+
+----
+<VirtualHost *:80>
+    ServerName my-app
+
+    DocumentRoot /path/to/app
+
+    <Directory /path/to/app>
+        RewriteEngine on
+
+        # Don't rewrite files or directories
+        RewriteCond %{REQUEST_FILENAME} -f [OR]
+        RewriteCond %{REQUEST_FILENAME} -d
+        RewriteRule ^.*$ - [L]
+
+        # Rewrite everything else to index.html to allow html5 state links
+        RewriteRule ^ index.html [L]
+    </Directory>
+</VirtualHost>
+----
+
+==== Nginx
+
+----
+server {
+    server_name my-app;
+
+    index index.html;
+
+    root /path/to/app;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+----
+
+
+=== Configuration
+
+The Gravitee.io AM management API is secured and requires some redirect callbacks to log in and log out a user. You can set these properties inside the `constants.json` file.
+
+NOTE: A default domain `admin` and a default OAuth2 client `admin` were created during the first Gravitee.io AM initialization stage.
+For current usage only `GRAVITEEIO-AM-MGT-API-HOST` and `GRAVITEEIO-AM-UI-HOST` properties must be changed.
+
+[source,bash]
+[subs="attributes"]
+$ cd gravitee-am-webui-{{ site.products.am.version }}
+$ vi constants.json
+
+[source,json]
+[subs="attributes"]
+{
+  "portalTitle": "Access Management",
+  "baseURL": "http://${GRAVITEEIO-AM-MGT-API-HOST}/management",
+  "authentication": {
+    "domainId": "admin",
+    "authorize": "http://${GRAVITEEIO-AM-MGT-API-HOST}/admin/authorize",
+    "redirectUri": "http://${GRAVITEEIO-AM-UI-HOST}/login/callback",
+    "logoutUri": "http://${GRAVITEEIO-AM-MGT-API-HOST}/admin/logout?target_url=http://${GRAVITEEIO-AM-UI-HOST}/logout/callback"
+  }
+}

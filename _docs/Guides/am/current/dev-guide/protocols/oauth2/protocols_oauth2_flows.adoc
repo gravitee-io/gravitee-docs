@@ -1,0 +1,41 @@
+= Which flow should I use?
+:page-sidebar: am_3_x_sidebar
+
+
+Deciding which OAuth 2.0 flow to use depends mainly on the type of client the end user will be using
+and the level of trust between AM authorization server and your clients.
+
+NOTE: An OAuth 2.0 client is an application (such as web, mobile or native) requesting access to a protected resource (API) on behalf of the resource owner (end user).
+
+== Client acts on its own (machine-to-machine)
+
+If the party requested for access does not involve an end user, for example a batch program or an API calling another API,
+the flow to use is the link:/am/current/am_devguide_protocols_oauth2_overview.html#client_credentials[client credentials^] grant type.
+
+== Client is a web application with a backend server
+
+If the party requested for access is a web app running on server (such as an Java, PHP or .NET app), the link:/am/current/am_devguide_protocols_oauth2_overview.html#client_credentials[authorization code^] grant type is the best match.
+With this kind of application, the access and refresh tokens can be securely stored without risking exposure.
+
+== Client is running on a web browser (single-age app or SPA)
+
+If the party requested for access is an SPA (such as an Angular, React or Vue app) the recommended option is to use the
+link:/am/current/am_devguide_protocols_oauth2_overview.html#client_credentials[authorization code^] grant type with the link:/am/current/am_devguide_protocols_oauth2_pkce.html[PKCE^] extension.
+
+NOTE: The link:/am/current/am_devguide_protocols_oauth2_overview.html#implicit[implicit^] grant type was previously used for SPA applications but has been deprecated for security reasons.
+
+== Client is a mobile/native application
+
+If the party requested for access is a mobile or native application, the link:/am/current/am_devguide_protocols_oauth2_overview.html#client_credentials[authorization code^] grant type with the link:/am/current/am_devguide_protocols_oauth2_pkce.html[PKCE^] extension is your best option.
+
+== Client is highly trustable
+
+If the party requested for access is able to use the link:/am/current/am_devguide_protocols_oauth2_overview.html#client_credentials[authorization code^] grant type and deal with HTTP browser redirection,
+the end user will need to set their credentials in the client application and the client will send this information to the AM server.
+
+NOTE: Due to the fact that user credentials are propagated between the client and AM, you need to ensure that there is a highly trusted communication level between those parties.
+
+== Your APIs are accessed by third parties
+
+If a partner or third party wants to access your protected resources (APIs) which are secured by AM server, it's possible to ask your partners to exchange their own tokens for AM tokens.
+You can use the link:/am/current/am_userguide_extension_grants_jwt_bearer.html[JWT Bearer^] grant type for this purpose.

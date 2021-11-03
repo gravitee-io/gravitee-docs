@@ -1,0 +1,43 @@
+= Breaking changes in 2.8
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_breaking_changes_2.8.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+== Username/email case sensitivity
+
+Starting from version 2.8, username and email are case insensitive for the default MongoDB Identity Provider (use to store AM users).
+
+This feature will prevent the situation where a user `userA` and `usera` in the system which refer to different accounts.
+Moreover, users will be able to use their username and email independent of the case to log in and manage their account (e.g reset password).
+
+WARNING: In order to authenticate your existing users you MUST run the following MongoDB script to update the user model.
+
+NOTE: Each domain has a default MongoDB Identity Provider which stores the users in the collection : `idp_users_xxx`. Be sure to apply the following script for every collections.
+
+----
+Update AM users model
+
+$ vi users-xxx-migration.js
+
+-------
+print('Users migration');
+db.idp_users_xxx.find().forEach(
+    function (user) {
+        print("    update the user", user._id);
+        db.idp_users_xxx.updateOne(
+            { _id: user._id },
+            { $set: { username: user.username.toLowerCase() }});
+    }
+);
+-------
+
+// do not forget to apply this script for every idp_users_xxx collection !!!
+$ mongo localhost:27017/gravitee-am users-xxx-migration.js
+----
+
+== Remove deprecated /oauth/check_token endpoint
+
+Gravitee.io homemade token introspection which was deprecated since several versions has been removed.
+
+Please use the link:https://tools.ietf.org/html/rfc7662[RFC] compliant `/oauth/introspect` link:/am/2.x/oauth2/index.html#tag/OAuth-2.0%2Fpaths%2F~1introspect%2Fpost[endpoint] to determine the active state of an OAuth 2.0 token.

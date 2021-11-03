@@ -1,0 +1,87 @@
+---
+product: API Management
+toc: true
+guide: Publisher Guide
+sidebar: apim_3_x_sidebar
+title: API users and ownership
+---
+
+When you first create your API, by default it is defined as a private API and cannot be accessed through APIM Portal or subscribed to.
+
+If you want to grant specific users or groups access to a private API, the way to do this is by managing its members.
+
+NOTE: Only users with the required permissions can manage an application's members. For more details, see link:/apim/3.x/apim_adminguide_roles_and_permissions.html[Roles and permissions].
+
+== Roles
+
+By default, APIM includes three membership roles:
+
+[cols="2*", options="header"]
+|===
+^|Role
+^|Description
+
+.^| *Primary Owner*
+.^| When an API is created, the Primary Owner is the creator of the API. A Primary Owner can perform all possible actions on an API.
+
+.^| *Owner*
+.^| Owner is similar to the Primary Owner role. An Owner can perform all the same actions on an API apart from change the context-path of the API or delete it.
+
+.^| *User*
+.^| A User is a person who can access the API and subscribe to it through a plan.
+
+|===
+
+=== Primary Owner groups
+
+[label label-version]#New in version 3.7#
+
+From APIM 3.7, APIM Console provides a configurable mode to define how you manage the primary owners of your API. For more details, see link:/apim/3.x/apim_adminguide_users_and_groups.html#primary_owner_mode[Configure primary owners as groups^].
+
+== Add and remove users
+
+You can manage users for APIs and applications.
+
+. link:/apim/3.x/apim_quickstart_portal_login.html[Log in to APIM Console^].
+. If you want to manage users for an:
+** application, click *Applications* in the menu, then select your application and click *Members*.
+** API, click *APIs* in the menu, then select your API and click *Portal > Members*.
++
+image::apim/3.x/api-publisher-guide/members/manage-members.png[Gravitee.io - manage members]
+
+To add new users:
+
+. Click the plus icon image:icons/plus-icon.png[role="icon"] at the bottom right of the page.
+. Search for the user with the form, then select the user.
++
+image::apim/3.x/api-publisher-guide/members/manage-members-add.png[Gravitee.io - add member,300]
+
+To remove users:
+
+Navigate to the *Members* page for the API or application as described above, then click the delete icon next to the user.
+
+image::apim/3.x/api-publisher-guide/members/manage-members-remove.png[Gravitee.io - remove member]
+
+== Transfer ownership
+
+You can transfer ownership of an API or application from one user to another. You do this when the current Primary Owner leaves a project, for example.
+
+NOTE: From APIM 3.7, you can also transfer ownership to a group, depending on your configuration. For more details, see link:/apim/3.x/apim_adminguide_users_and_groups.html#primary_owner_mode[Configure primary owners as groups^].
+
+. In APIM Console, click *APIs* or *Applications* in the left menu.
+. If you want to transfer ownership for an:
+** application, click *Applications* in the menu, then select your application and click *Members*.
+** API, click *APIs* in the menu, then select your API and click *Portal > Transfer ownership*.
++
+. Choose the new Primary Owner or Primary Owner Group.
++
+[NOTE]
+====
+You can only select a Primary Owner Group which you belong to.
+If your Primary owner mode is configured as *GROUP*, you can only select a Primary Owner Group and not a user.
+====
+
+. Choose the new role of the current Primary Owner, if the current Primary Owner is a user.
+. Click *TRANSFER*.
++
+image::apim/3.x/api-publisher-guide/members/manage-members-transfer-ownership.png[Gravitee.io - transfer ownership]

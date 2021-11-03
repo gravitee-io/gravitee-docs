@@ -1,0 +1,43 @@
+= Custom email templates
+:page-sidebar: am_3_x_sidebar
+
+
+== Overview
+
+AM comes with a list of predefined email templates, used for identity and access-related tasks during the authorization process, which you can override to create custom templates.
+
+=== List of email templates
+
+[width="80%",cols="2,10",options="header"]
+|=========================================================
+|Email |Description
+
+|Registration confirmation |
+Registration email to confirm user account
+
+|Blocked account |
+Recover account after it has been blocked
+
+|Reset password |
+Reset password email to request a new one
+
+|=========================================================
+
+== Customize an email template
+
+You can customize email templates for an entire security domain or for an individual application.
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. To customize email templates:
+
+* for a security domain, click *Settings*
+* for an application, click *Applications* and select your application, then click the *Design* tab
+
+. In the *Emails* section, click the edit icon image:icons/edit-icon.png[role="icon"] of the email template.
+. Update the HTML as required. You can preview the result in the *Preview* tab.
++
+image::am/current/graviteeio-am-userguide-um-emails.png[]
+
+NOTE: Each email requires a minimum configuration. You can retrieve contextual documentation on the HTML needed for each type of page by clicking the image:icons/am-info-icon.png[role="icon"] information icon.
+
+image::am/current/graviteeio-am-userguide-um-email-info.png[]

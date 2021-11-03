@@ -1,0 +1,40 @@
+---
+product: API Management
+toc: true
+guide: Publisher Guide
+title: Try It mode
+---
+
+[label label-version]#New in version 3.11#
+
+You can use Design Studio Try-it Mode to test a non deployed API.
+This mode allows you to modify your API without saving or deploying it.
+
+== Get Started With Try It Mode
+
+. link:/apim/3.x/apim_publisherguide_design_studio_create.html[Design your API^].
+. Click *TRY IT*.
+. Send a request to your API with whatever parameters you'd like to try.
+
+== How To Test Your API Concept With Try It Mode
+
+You can test your *API* through the HTTP client available in the *TRY IT* tab.
+
+image:apim/3.x/api-publisher-guide/design-studio/try-it/try-it-view.png[HTTP Client]
+
+With this client, you can call your *API,* and test and experiment with the following:
+
+. HTTP Method.
+. Path (and query params).
+. Headers.
+. Request body.
+
+image:apim/3.x/api-publisher-guide/design-studio/try-it/try-it-example.png[Try it example]
+
+== Limitations
+
+Some features are not testable with Try It Mode:
+
+. Rate Limit & Quota.
+. Health-Check.
+. Virtual hosts (the first host is selected).

@@ -1,4 +1,32 @@
-{% include custom/sidebarconfigs.html %}
+{% if page.sidebar != nil}
+
+  {% assign sidebar = page.sidebar | prepend: 'site.data.sidebars.' | append: '.entries' %}
+    {% assign sidebar = site.data.sidebars.[page.sidebar].entries %}
+    <p>sidebar {{sidebar}}</p>
+
+{% else %}
+
+{% assign sidebar_url = page.url | split: '/' %}
+
+{% if sidebar_url[1] == "Guides" %}
+
+  {% capture sidebar_name %}{{sidebar_url[2]}}_{{sidebar_url[3]}}_sidebar{% endcapture %}
+<!--   {% assign sidebar = sidebar_name | prepend: 'site.data.sidebars.' | append: '.entries' %}-->
+
+  {% assign sidebar = site.data.sidebars.[sidebar_name].entries %}
+
+{% elsif sidebar_url[1] == "Getstarted" %}
+
+  {% assign sidebar = site.data.sidebars.gettingstarted_sidebar.entries %}
+
+{% elsif sidebar_url[1] == "Reference" %}
+
+  {% assign sidebar = site.data.sidebars.reference_sidebar.entries %}
+
+{% endif %}
+
+{% endif %}
+
 <div class="custom-links">
   <!--  <h5>{{sidebar[0].product}}</h5> -->
 

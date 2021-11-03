@@ -1,0 +1,114 @@
+---
+product: Access Management
+toc: true
+title: Set up your first application
+---
+
+Before you can interact with the AM Authorization Gateway, you must first create an application in AM Console.
+
+In this example we will:
+
+- Create a security domain for the application
+- Create a new web application
+- Create a new identity provider and associate it with the application
+- Test the application
+
+== Create a security domain
+
+A _security domain_ is a series of security policies that apply to a set of applications which all share common security mechanisms for authentication, authorization and identity management.
+
+NOTE: You only need to create a new security domain for an application when you do not have a suitable domain configured already. You can find a list of security domains in your user menu.
+
+=== Create a domain with AM Console
+
+. In AM Console, click *Create domain* at the top right of the user menu.
++
+image::am/current/quickstart-create-domain.png[]
++
+. Give your security domain a *Name* and a *Description* and click *CREATE*.
++
+image::am/current/quickstart-create-domain2.png[]
++
+. Click on the banner *click here* link to enable the domain.
++
+image::am/current/quickstart-enable-domain.png[]
+
+=== Create a domain with AM API
+
+[source]
+----
+# create domain
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"name":"My First Security Domain","description":"My First Security Domain description"}' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains
+
+# enable domain
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '{"enabled": true}' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId
+----
+
+== Create an application
+
+Before you can work with AM Gateway, you must create an _application_.
+The application will provide the necessary information (such as the client ID and client Secret) for authentication and authorization.
+The application can be a native mobile app, a single page front-end web application or a regular web application that executes on a server.
+
+In this example, we will create a regular web application.
+
+. Click *Applications*.
+. In the Applications page, click the plus icon image:icons/plus-icon.png[role="icon"].
+. Choose a *Web* application type.
++
+image::am/current/quickstart-create-application.png[]
++
+. Click the *Next* button.
+. Give your application a *Name* and a *Redirect URI* (with https scheme and non localhost) and click the *Create* button.
++
+image::am/current/quickstart-create-application2.png[]
+
+NOTE: This application will be used by end users, so we need to bind them with an identity provider.
+
+== Create an identity provider
+
+An _identity provider_ is usually a service used to authenticate and communicate authorization and user information.
+It can be a social provider like Facebook, Google or Twitter, an enterprise provider such as Active Directory or a custom provider such as a database.
+
+In this example, we will create an In-memory identity provider with an inline user configuration.
+
+. Click *Settings > Providers*.
+. In the Identity Providers page, click the plus icon image:icons/plus-icon.png[].
+. Choose *Inline* and click *Next*.
++
+image::am/current/graviteeio-am-quickstart-idp-type.png[]
++
+. Give your identity provider a *Name* and enter the user details, then click *Create*.
++
+image::am/current/graviteeio-am-quickstart-create-idp.png[]
++
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{
+           "external": false,
+           "type": "inline-am-idp",
+           "configuration": "{\"users\":[{\"firstname\":\"John\",\"lastname\":\"Doe\",\"username\":\"johndoe\",\"password\":\"johndoepassword\"}]}",
+           "name": "Inline IdP"
+         }' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:securityDomainPath/identities
+----
++
+. Click *Applications* and select your web application.
+. In the *Identity Providers* tab, select *Inline identity provider* and click *SAVE*.
++
+image::am/current/graviteeio-am-quickstart-client-idp.png[]
+
+== Test your identity provider with OAuth2
+
+You can now test your identity provider by requesting a token, as described in link:am_quickstart_profile_information.html#id_token[ID Token] in the next section.

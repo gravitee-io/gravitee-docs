@@ -1,0 +1,85 @@
+= Docker
+:page-sidebar: am_1_x_sidebar
+:page-permalink: am/1.x/am_installguide_docker.html
+:page-folder: am/installation-guide
+:docker-image-src: https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/images
+:github-repo: https://github.com/gravitee-io/graviteeio-access-management/tree/master/docker
+:docker-hub: https://hub.docker.com/r/graviteeio
+
+IMPORTANT: We assume that you are familiar with Docker terms. +
+To run our official images, you must start by installing https://docs.docker.com/installation/[Docker]
+
+Gravitee.io Access Management Docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
+You could find all https://github.com/gravitee-io/graviteeio-access-management/tree/master/docker/[Dockerfiles on GitHub].
+
+We provide a complete set of images.
+
+== Images
+|===
+|Image name |Source |Version |Base
+
+|{docker-hub}/am-gateway/[graviteeio/am-gateway]
+|{github-repo}/gateway/[images/am-gateway]
+|latest
+|https://hub.docker.com/_/alpine/[alpine:3.3]
+
+|{docker-hub}/am-webui/[graviteeio/am-webui]
+|{github-repo}/webui/[images/am-webui]
+|latest
+|https://hub.docker.com/_/alpine/[nginx:1.12.1-alpine]
+
+|===
+
+
+== Docker Compose
+
+=== Running AM manually
+You can launch a complete environment using our ready-to-use docker-compose file. It includes Gravitee.io Access Management + MongoDB.
+
+[source,shell]
+....
+# Download required Docker Compose files
+$ mkdir -p config
+$ curl -L https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/docker-compose.yml -o "docker-compose.yml"
+$ cd config && { curl -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/config/constants.json ; cd -; }
+$ cd config && { curl -O https://raw.githubusercontent.com/gravitee-io/graviteeio-access-management/master/docker/compose/config/nginx.conf ; cd -; }
+
+# (Optional step: pull to ensure that you are running latest images)
+$ docker-compose -f docker-compose.yml pull
+
+# And run...
+$ docker-compose -f docker-compose.yml up
+....
+
+When all components are started, you can do a quick test to see if everything is ok by checking these urls:
+
+|===
+|Image |URL
+
+|{docker-hub}/am-gateway/[graviteeio/am-gateway]
+|http://localhost/am/
+
+|{docker-hub}/am-webui/[graviteeio/am-webui]
+|http://localhost/am/ui/
+
+|===
+
+Once done, you're now ready to play with Gravitee.io Access Management, so let's take a look to the <<gravitee-quickstart, Quickstart guide>>.
+
+=== Running AM in a single line
+
+If you are impatient to play with Gravitee.io Access Management (something we can understand!), you can also run the following command line:
+
+[source,shell]
+....
+$ curl -L http://bit.ly/graviteeio-am | bash
+....
+
+NOTE: You can change default http port (80), by passing -s <port> argument to the curl command.
+
+[source,shell]
+....
+$ curl -L http://bit.ly/graviteeio-am | bash -s 8080
+....
+
+Validation steps are the same as the previous section.

@@ -1,0 +1,59 @@
+= Create a client
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_userguide_create_client.html
+:page-folder: am/user-guide
+:page-layout: am
+
+Clients are created for each security domain, to create a client, follow these steps:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page, go to `Clients` section
+. From the security domain's clients page, click `(+)` button
+. Choose an *Client ID* and press `SAVE`
+
+NOTE: You can specify an *Client Secret* value or leave it blank to generate a random one
+
+You can also create a client via the Gravitee.io AM API
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"clientId":"THE-CLIENT-ID"}' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainSecurityPath/clients
+----
+
+== Client information
+
+=== Settings
+
+image::am/2.x/graviteeio-am-userguide-client-settings.png[]
+
+After you have created the new client, you will be redirected to this client's settings page that contains the following information :
+
+- *Client ID* : The client identifier.
+- *Client Secret* : The client secret. Client credentials will let you request and validate access tokens.
+- *Client name* : An human readable application name which will be displayed into the user approval page.
+- *Auto approval* : Allow to skip user approval. Generally used for internal trusted service applications.
+- *Identity providers* : Identity provider use to authenticate the users
+- *Grant types* : link:https://tools.ietf.org/html/rfc6749#section-1.3[OAuth2 grant flows] used for a client to acquire an access token.
+- *Response types* : link:https://tools.ietf.org/html/rfc6749#section-3.1.1[Oauth2 Response Type] used to specify which kind of response (code/token) must be returned on the authorize endpoint.
+- *Redirect URIs* : Set of allowed URLs where the user will be redirected after successfully login to your client. It prevents some vulnerabilities like being redirected to unsafe websites.
+- *Scopes* : link:https://tools.ietf.org/html/rfc6749#section-3.3[Access Token Scope], let you limit client's access to protected resources/APIs.
+- *Enhance scope* : Enhance client scopes with user permissions. Useful for fine tuned resources access.
+- *Access token validity* : Access token lifetime.
+- *Refresh token validity* : Refresh token lifetime. Refresh token is used to request for a new access token.
+- *Certificate* : Certificate use to sign tokens.
+
+=== OpenID Connect
+
+Client can request for an access token to access protected resources. It can also request for an link:/am_userguide_concepts.html#id_token[ID Token] that contains profile information of the current authenticated user.
+ID Token contains claims which are statements about the user, these claims can be overridden to include specific users attributes defined in the related identity provider.
+
+image::am/2.x/graviteeio-am-userguide-client-oidc.png[]
+
+== Testing client
+
+The fastest way to test your fresh created client is to request for an OAuth2 access token by following the link:/am_quickstart_register_app.html[Register your first client] tutorial.
+If you succeed to get an access token, your client is all set.

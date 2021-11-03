@@ -1,0 +1,92 @@
+= Audit Log
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_userguide_audit_log.html
+:page-folder: am/user-guide
+:page-layout: am
+
+== How to view audit log
+
+The Audit Log page of the Portal UI displays all events that occur, including user authentications and administrative actions such as managing Clients, Identity Providers, Users, Groups, Roles ...
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page and go to `Audit Log` section
+
+image::am/2.x/graviteeio-am-userguide-logs-audit.png[]
+
+NOTE: All these information can be retrieved via the link:/am/2.x/management-api/index.html#tag/audit[AM Management API].
+
+== Retention log and storage
+
+Audit events are managed (store and fetch) by plugins call link:/apim_overview_plugins.html#gravitee-plugins-reporters[Reporter].
+
+By default a Reporter is created for each security domain and allow you to choose where the audit logs will be stored.
+
+NOTE: Currently only a MongoDB reporter is available but the Gravitee.io plugins system will ease the creation of new reporters (Splunk, Logstash, ES, ...)
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page and go to `Audit Log` section
+. Click on the "settings" icon and configure the reporter
+
+image::am/2.x/graviteeio-am-userguide-logs-audit-reporter.png[]
+
+NOTE: There is no log retention, is up to you define a retention window and periodically clear older data.
+
+== Event types
+
+The following table lists the available log event types.
+
+NOTE: Result of event can be either SUCCESS or FAILURE
+
+[width="100%",cols="^3,^3,^3",options="header"]
+|===
+|Type|Description|Additional information
+| CERTIFICATE_CREATED|Certificate created|API Operation
+| CERTIFICATE_UPDATED|Certificate updated|API Operation
+| CERTIFICATE_DELETED|Certificate deleted|API Operation
+| CLIENT_CREATED|Client created|API Operation
+| CLIENT_UPDATED|Client updated|API Operation
+| CLIENT_SECRET_RENEWED|Client secret renewed|API Operation
+| CLIENT_DELETED|Client deleted|API Operation
+| DOMAIN_CREATED|Security domain created|API Operation
+| DOMAIN_UPDATED|Security domain updated|API Operation
+| DOMAIN_DELETED|Security domain deleted|API Operation
+| EMAIL_TEMPLATE_CREATED|Email template created|API Operation (e.g reset password email)
+| EMAIL_TEMPLATE_UPDATED|Email template updated|API Operation
+| EMAIL_TEMPLATE_DELETED|Email template deleted|API Operation
+| EXTENSION_GRANT_CREATED|OAuth 2.0 extension grant created|API Operation
+| EXTENSION_GRANT_UPDATED|OAuth 2.0 extension grant updated|API Operation
+| EXTENSION_GRANT_DELETED|OAuth 2.0 extension grant deleted|API Operation
+| FORGOT_PASSWORD_REQUESTED|User ask for reset its password|From the login page (forgot password link)
+| FORM_TEMPLATE_CREATED|HTML template created|API Operation (e.g login page)
+| FORM_TEMPLATE_UPDATED|HTML template updated|API Operation
+| FORM_TEMPLATE_DELETED|HTML template deleted|API Operation
+| GROUP_CREATED|Group created|API Operation
+| GROUP_UPDATED|Group updated|API Operation
+| GROUP_DELETED|Group deleted|API Operation
+| IDENTITY_PROVIDER_CREATED|Identity provider created|API Operation (e.g LDAP server)
+| IDENTITY_PROVIDER_UPDATED|Identity provider updated|API Operation
+| IDENTITY_PROVIDER_DELETED|Identity provider deletes|API Operation
+| REGISTRATION_CONFIRMATION|User has completed its registration |From registration confirmation email
+| REGISTRATION_CONFIRMATION_REQUESTED|A request to complete user registration has been sent|An email should have been sent
+| REPORTER_CREATED|Reporter created|API Operation
+| REPORTER_UPDATED|Reporter updated|API Operation
+| REPORTER_DELETED|Reporter deleted|API Operation
+| ROLE_CREATED|Role created|API Operation
+| ROLE_UPDATED|Role updated|API Operation
+| ROLE_DELETED|Role deleted|API Operation
+| SCOPE_CREATED|OAuth 2.0 scope created|API Operation
+| SCOPE_UPDATED|OAuth 2.0 scope updated|API Operation
+| SCOPE_DELETED|OAuth 2.0 scope deleted|API Operation
+| USER_CONSENT_CONSENTED|User accept or deny access during consent step|
+| USER_CONSENT_REVOKED|User has revoked access to an application|
+| USER_CREATED|User created|API Operation
+| USER_UPDATED|User updated|API Operation
+| USER_DELETED|User deleted|API Operation
+| USER_LOGIN|User login|User just sign-in
+| USER_LOGOUT|User logout|User sign-out
+| USER_PASSWORD_RESET|User has reset its password|
+| USER_REGISTERED|User has been registered|From the login page (register link)
+| USER_UPDATED|User updated|API Operation
+| RESET_PASSWORD_EMAIL_SENT|Reset password email has been sent|
+| REGISTRATION_CONFIRMATION_EMAIL_SENT|Registration confirmation email has been set|
+|===

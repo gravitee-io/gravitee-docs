@@ -1,0 +1,100 @@
+= Authenticate users with Identity Provider
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_quickstart_authenticate_users.html
+:page-folder: am/quickstart
+:page-layout: am
+
+After successfully created your first client (see link:/am/2.x/am_quickstart_register_app.html[Register a new client^]) you will see how to define an identity provider used to authenticate users of that client.
+
+== Create an identity provider
+
+An _identity provider_ is usually a service used to authenticate and communicate authorization and user information.
+It can be social providers like Facebook, Google or Twitter, enterprise provider such as an Active Directory or custom providers like Databases.
+
+NOTE: For the convenience of this quick start, we will create an In-memory identity provider with an inline users configuration.
+
+. Go to http://GRAVITEEIO-AM-UI-HOST. (Default Administrator account is `admin/adminadmin`)
+. From the user menu (top right), choose your security domain and go to the `Settings` page
+. Go to `Providers` section
+. From the providers page, click `(+)` button
+. Choose the Inline Identity Provider and press `NEXT`
+
+image::am/2.x/graviteeio-am-quickstart-idp-type.png[]
+
+[start=6]
+. Give your identity provider a *name* and create a user by filling out the user form and press `CREATE`
+
+image::am/2.x/graviteeio-am-quickstart-create-idp.png[]
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{
+           "external": false,
+           "type": "inline-am-idp",
+           "configuration": "{\"users\":[{\"firstname\":\"John\",\"lastname\":\"Doe\",\"username\":\"johndoe\",\"password\":\"johndoepassword\"}]}",
+           "name": "Inline IdP"
+         }' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:securityDomainPath/identities
+----
+
+[start=7]
+. Go to the `client` 's settings page you want to use, and select the previously created identity provider and press `SAVE`
+
+image::am/2.x/graviteeio-am-quickstart-client-idp.png[]
+
+Now you can test users connection.
+
+== Test your identity provider with OAuth2
+
+OAuth 2 is an authorization framework that let applications acting on behalf the end user to obtain limited access to HTTP services.
+link:https://tools.ietf.org/html/rfc6749[OAuth 2 RFC^] defines two endpoints :
+
+- The *authorization endpoint* used to interact with the resource owner and obtain an authorization grant via user-agent redirection.
+- The *token endpoint* used by the client to obtain an access token by presenting its authorization grant.
+
+NOTE: For further information about OAuth2, please visit the link:https://tools.ietf.org/html/rfc6749[RFC page^].
+
+In order to validate the identity provider configuration, we will request for an access token.
+
+`POST http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/oauth/token`
+
+[width="100%",cols="2,8",frame="topbot",options="header,footer"]
+|==========================
+|Parameter       |Description
+|grant_type      |*REQUIRED.* Set the value to `password`.
+|client_id       |*REQUIRED.* Client's ID.
+|client_secret   |*REQUIRED.* Client's secret.
+|username        |*REQUIRED.* User's name.
+|password        |*REQUIRED.* User's password.
+|scope           |*OPTIONAL.* The scopes of the access token.
+|==========================
+
+Request a token::
+
+[source]
+----
+curl -X POST \
+  'http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/oauth/token?grant_type=password&client_id=:clientId&client_secret=:clientSecret&username=:username&password=:password&scope=read' \
+----
+
+NOTE: You can also specify the client credentials by providing `client_id` and `client_secret` in  `Authorization` header with the Basic auth scheme.
+
+If everything goes well, you should see the following response :
+
+[source]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+{
+    "access_token": "b02063f8-2698-4141-a063-f82698e1419c",
+    "token_type": "bearer",
+    "expires_in": 7199,
+    "scope": "read",
+    "refresh_token": "4f85e0ad-b5df-4717-85e0-adb5dfc7174d"
+}
+----

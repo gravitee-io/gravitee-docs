@@ -1,0 +1,33 @@
+= Concepts and terms
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_userguide_concepts.html
+:page-folder: am/user-guide
+:page-layout: am
+
+Here are concepts and terms to better understanding Gravitee.io Access Management solution.
+
+== Security domain
+
+A _security domain_ is a series of security policies applied to a set of clients that share common security mechanisms for authentication, authorization and identity management.
+A _security domain_ manage a set of clients, users and identity providers.
+
+== Client
+
+_Clients_ are applications that act on behalf of the user to request tokens, user identity information and retrieve protected resources from remote services and APIs.
+
+== Identity provider
+
+An _identity provider_ is usually a service used to authenticate and communicate authorization and user information.
+It can be social providers like Facebook, Google or Twitter, enterprise provider such as an Active Directory or custom providers like Databases.
+
+== Access token
+
+An _access token_ is a string representing an authorization issued to the client by the authorization server. It is used to access protected resources.
+
+== ID token
+
+The _ID token_ is a signed link:https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32[JSON Web Token (JWT)^] that contains user profile information, also known as `claims`.
+
+== Certificate
+
+Cryptographic algorithms such as KeyStore (private/public key) used to sign ID Token to ensure the integrity of the ID Token's payload.

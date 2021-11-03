@@ -1,0 +1,26 @@
+= Bot Detection Plugins
+:page-sidebar: am_3_x_sidebar
+
+== Overview
+
+AM supports various Bot Detection mechanisms for protecting user account out of the box.
+
+== Create a new Bot Detection
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Click *Settings > Bot Detection*.
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Select the bot detection type and click *Next*.
+. Enter the configuration details and click *Create*.
+
+Once created, the details page of the plugin instance will display some code snippet to help you in the integration with your custom application pages if any.
+
+image::am/current/graviteeio-am-userguide-bot-detection-snippet.png[Code Snippets]
+
+== Google reCAPTCHA v3
+
+You can enable the link:https://developers.google.com/recaptcha/docs/v3[Google reCAPTCHA v3] that allows you to verify if an interaction is legitimate without any user interaction.
+
+Using this service requires the creation of a site in the Google reCAPTCHA link:https://www.google.com/recaptcha/admin/create[administration interface].
+
+Follow the instructions and select the *reCAPTCHA version 3* as reCAPTCHA type. Once created copy the site key and the secret key into the AM plugin configuration.

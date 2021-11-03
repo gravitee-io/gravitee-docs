@@ -1,0 +1,88 @@
+= Install Access Gateway with RPM
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_installguide_gateway_install_rpm.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Gateway - Installation with RPM
+:page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+The RPM for Gravitee.io Access Gateway can be downloaded from our link:#installing_from_the_rpm_repository[RPM repository].
+It can be used to install Gravitee.io Access Gateway on any RPM-based system such as OpenSuSE, SLES, CentOS, Red Hat, and Oracle Enterprise.
+
+NOTE: RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Please see link:/am/2.x/am_installguide_gateway_install_zip.html[Install Gravitee.io Access Gateway with .zip] instead.
+
+== Installing from the RPM repository
+Create a file called graviteeio.repo in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:
+
+[source,bash]
+----
+[graviteeio]
+name=graviteeio
+baseurl=https://packagecloud.io/graviteeio/rpms/el/7/$basearch
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/graviteeio/rpms/gpgkey
+autorefresh=1
+----
+
+And your repository is ready for use. You can now install Gravitee.io Access Gateway with one of the following commands:
+
+[source,bash]
+----
+sudo yum install graviteeio-am-gateway
+sudo dnf install graviteeio-am-gateway
+sudo zypper install graviteeio-am-gateway
+----
+
+== Download and install the RPM manually
+
+[source,bash]
+----
+wget --content-disposition https://packagecloud.io/graviteeio/rpms/packages/el/7/graviteeio-am-gateway-{{ site.products.am.version }}-0.noarch.rpm/download.rpm
+sudo rpm --install graviteeio-am-gateway-{{ site.products.am.version }}-0.noarch.rpm
+----
+
+== Running Gravitee.io Access Gateway with `systemd`
+
+To configure Gravitee.io Access Gateway to start automatically when the system boots up, run the following commands:
+
+[source,shell]
+----
+sudo systemctl daemon-reload
+sudo systemctl enable graviteeio-am-gateway
+----
+
+Gravitee.io Access Gateway can be started and stopped as follows:
+
+[source,shell]
+----
+sudo systemctl start graviteeio-am-gateway
+sudo systemctl stop graviteeio-am-gateway
+----
+
+These commands provide no feedback as to whether Gravitee.io Access Gateway was started successfully or not.
+Instead, this information will be written in the log files located in `/opt/graviteeio/am/gateway/logs/`.
+
+When `systemd` logging is enabled, the logging information are available using the `journalctl` commands:
+
+To tail the journal:
+
+[source,shell]
+----
+sudo journalctl -f
+----
+
+To list journal entries for the Gravitee.io Access Gateway service:
+
+[source,shell]
+----
+sudo journalctl --unit graviteeio-am-gateway
+----
+
+To list journal entries for the Gravitee.io Access Gateway service starting from a given time:
+
+[source,shell]
+----
+sudo journalctl --unit graviteeio-am-gateway --since  "2020-01-30 12:13:14"
+----

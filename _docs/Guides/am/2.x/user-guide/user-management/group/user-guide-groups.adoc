@@ -1,0 +1,40 @@
+= Groups
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_userguide_user_management_groups.html
+:page-folder: am/user-guide
+:page-layout: am
+
+== Manage groups
+
+=== List groups
+
+To search groups, navigate to `Groups` section of your domain's settings.
+
+image::am/2.x/graviteeio-am-userguide-um-search-groups.png[]
+
+=== Create group
+
+Groups are created for each security domain, to create a group, follow these steps:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page, go to `Groups` section and click `(+)` button
+. Give your group a *Name* and press `SAVE`
+. You will be redirected to the created group's page
+
+image::am/2.x/graviteeio-am-userguide-um-create-group.png[]
+
+=== Manage members
+
+You can add any member to a group, this can be achieved by selecting you group, go to `Members` tab, click `(+)` button, search users by username and add the member.
+
+image::am/2.x/graviteeio-am-userguide-um-add-member.png[]
+
+NOTE: Currently only users created by the AM management API or the SCIM protocol and external users who have been already logged can be found.
+
+=== User/Group roles
+
+Note: By default, users are stored in the pre-defined `Default Identity Provider` which is available out of the box for each security domain.
+You can apply role mapping with your group members.
+
+image::am/2.x/graviteeio-am-userguide-um-group-role-mapping.png[]
+

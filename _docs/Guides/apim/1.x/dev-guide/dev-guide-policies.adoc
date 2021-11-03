@@ -1,8 +1,4 @@
 = Policies
-:page-sidebar: apim_1_x_sidebar
-:page-permalink: apim/1.x/apim_devguide_policies.html
-:page-folder: apim/dev-guide
-:page-layout: docs
 
 Policies are steps in the Request/Response _gateway_ proxy chain. A _policy_ acts as a _proxy controller_ by guaranteeing if a given business rule is fulfilled during the Request/Response processing.
 

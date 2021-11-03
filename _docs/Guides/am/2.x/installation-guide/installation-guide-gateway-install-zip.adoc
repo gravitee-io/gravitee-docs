@@ -1,0 +1,107 @@
+= Install Access Gateway with `.zip`
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_installguide_gateway_install_zip.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Gateway - Installation with .zip
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+== System Requirements
+
+=== JDK
+
+Gravitee.io AM Gateway is supporting from Java 8 to latest Java 11. Before you install Gravitee.io AM Gateway, please check your Java version :
+
+[source,bash]
+----
+java -version
+echo $JAVA_HOME
+----
+
+NOTE: You can download the latest OpenJDK from https://jdk.java.net/archive/[OpenJDK Download Site].
+
+=== Repository
+
+Default AM Gateway distribution requires MongoDB 3.x to store data.
+
+NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#production[MongoDB Download Site].
+
+== Installing from the ZIP archive
+
+Binaries are available from https://download.gravitee.io/graviteeio-am/components/gravitee-am-gateway/gravitee-am-gateway-standalone-{{ site.products.am.version }}.zip.
+
+[source,bash]
+[subs="attributes"]
+$ curl -L https://download.gravitee.io/graviteeio-am/components/gravitee-am-gateway/gravitee-am-gateway-standalone-{{ site.products.am.version }}.zip -o gravitee-am-gateway-standalone-{{ site.products.am.version }}.zip
+
+Once file has been downloaded, you just have to unpack it in the right place.
+
+[source,bash]
+[subs="attributes"]
+$ unzip gravitee-am-gateway-standalone-{{ site.products.am.version }}.zip
+
+== Running AM Gateway from the command line
+
+AM Gateway can be started from the command line as follows:
+
+[source,bash]
+----
+$ cd gravitee-am-gateway-standalone-{{ site.products.am.version }}
+$ ./bin/gravitee
+----
+
+By default, AM Gateway runs in the foreground, prints its logs to the standard output (stdout), and can be stopped
+by pressing Ctrl-C.
+
+If everything goes well, you should see this log:
+
+[source,bash]
+[subs="attributes"]
+...
+11:23:06.835 [main] [] INFO  i.g.am.gateway.node.GatewayNode - Gravitee.io - Access Management - Gateway id[92c03b26-5f21-4460-803b-265f211460be] version[{{ site.products.am.version }}] pid[4528] build[${env.BUILD_NUMBER}#${env.GIT_COMMIT}] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 1860 ms.
+...
+
+== Checking that AM Gateway is running
+
+You can test that your AM Gateway node is running by sending an HTTP request to port `8092` on `localhost`:
+
+[source,bash]
+----
+$ curl -X GET http://localhost:8092/
+----
+
+which should give you an empty 404 response (no context-path found)
+
+== Running as a daemon
+
+To run AM Gateway as a daemon, specify -d on the command line, and record the process ID in a file using the -p option:
+
+[source,bash]
+----
+$ ./bin/gravitee -d -p=/var/run/gio.pid
+----
+
+Log messages can be found in the `$GRAVITEE_HOME/logs/` directory.
+
+To shut down AM Gateway, kill the process ID recorded in the pid file:
+
+[source,bash]
+----
+$ kill `cat /var/run/gio.pid`
+----
+
+== Directory structure
+
+After successfully installed AM Gateway, the `graviteeio-am-gateway` directory looks like this:
+
+[width="100%",cols="20%,80%",frame="topbot",options="header"]
+|======================
+|Folder    |Description
+|bin       |Startup/shutdown scripts
+|config    |App configuration
+|lib       |Libraries (gravitee.io AM libraries and third parties library)
+|logs      |Gateway log files
+|plugins   |Gateway plugins
+|======================
+

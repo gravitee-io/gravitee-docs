@@ -1,3 +1,8 @@
+{% assign url = page.url | split: '/' %}
+{% assign doctype = url[1] %}
+{% assign version = url[3] %}
+
+
 <nav class="layout-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ "/" | relative_url }}">Home</a></li>
@@ -6,7 +11,13 @@
         <li class="breadcrumb-item">{{page.product}}</li>
         {% endif %}
 
-    	  {% if page.guide != nil %}
+        {% if doctype == "Guides" %}
+
+        <li class="breadcrumb-item">{{version}}</li>
+
+        {% endif %}
+
+        {% if page.guide != nil %}
         <li class="breadcrumb-item">{{page.guide}}</li>
         {% if page.guide-section != nil %}
 

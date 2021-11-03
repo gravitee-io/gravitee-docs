@@ -1,0 +1,299 @@
+= Create an identity provider
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_userguide_create_identity_provider.html
+:page-folder: am/user-guide
+:page-layout: am
+
+Identity providers are created for each security domain, to create an identity provider, follow these steps:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page, go to `Providers` section
+. From the security domain's providers page, click `(+)` button
+. Choose the identity provider's type and press `NEXT`
+
+== Inline identity provider
+
+In memory user directory, useful for testing purpose or setting default accounts.
+
+. Give your identity provider a *name* and create a identity provider by filling out the configuration form and press `CREATE`
+
+image::am/2.x/graviteeio-am-quickstart-create-idp.png[]
+
+You can also create a security domain via the Gravitee.io AM API
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{
+           "type": "inline-am-idp",
+           "name": "Inline IdP",
+           "configuration": "{\"users\":[{\"firstname\":\"johndoe\",\"lastname\":\"John\",\"username\":\"Doe\",\"password\":\"johndoepassword\"}]}"
+         }' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId/identities
+----
+
+== LDAP identity provider
+
+LDAP and Active Directory user/groups directory mainly used inside organizations to authenticate and share information about employee users.
+
+. Give your identity provider a *name* and create a identity provider by filling out the configuration form and press `CREATE`
+
+image::am/2.x/graviteeio-am-userguide-ldap-idp.png[]
+
+You can also create a security domain via the Gravitee.io AM API
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{
+           "type": "ldap-am-idp",
+           "name": "LDAP IdP",
+           "configuration": "{\"contextSourceUrl\":\"ldap://myserver.example.com:389\",\"contextSourceBase\":\"baseDN\",\"contextSourceUsername\":\"username\",\"contextSourcePassword\":\"password\",\"userSearchFilter\":\"uid={0}\",\"userSearchBase\":\"ou=users\",\"groupSearchBase\":\"ou=applications\",\"groupSearchFilter\":\"(uniqueMember={0})\",\"groupRoleAttribute\":\"cn\"}"
+         }' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId/identities
+----
+
+== HTTP identity provider
+
+NOTE: New in Gravitee.io AM 2.10.x
+
+=== Description
+
+HTTP Identity Provider let you authenticate and manage your users thanks to remote API calls. To create a new HTTP Identity Provider :
+
+* Give your identity provider a *name* and create a identity provider by filling out the configuration form and press `CREATE`
+
+image::am/2.x/graviteeio-am-userguide-http-idp.png[]
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"external":false,"type":"http-am-idp","configuration":"{\"authenticationResource\":{\"baseURL\":\"https://api.mycompany.com/authenticate\",\"httpMethod\":\"POST\",\"httpBody\":\"{\\\"username\\\":\\\"{#principal}\\\",\\\"password\\\":\\\"{#credentials}\\\"}\",\"httpResponseErrorConditions\":[{\"value\":\"{#authenticationResponse.status == 401}\",\"exception\":\"io.gravitee.am.common.exception.authentication.BadCredentialsException\"}]},\"usersResource\":{\"enabled\":false,\"identifierAttribute\":\"id\",\"paths\":{\"createResource\":{\"baseURL\":\"/users\",\"httpMethod\":\"POST\",\"httpResponseErrorConditions\":[{\"value\":\"{#usersResponse.status == 400}\",\"exception\":\"io.gravitee.am.service.exception.UserAlreadyExistsException\"}]},\"readResource\":{\"baseURL\":\"/users?username={#user.username}\",\"httpMethod\":\"GET\",\"httpResponseErrorConditions\":[{\"value\":\"{#usersResponse.status == 404}\",\"exception\":\"io.gravitee.am.service.exception.UserNotFoundException\"}]},\"updateResource\":{\"baseURL\":\"/users/{#user.id}\",\"httpMethod\":\"PUT\",\"httpResponseErrorConditions\":[{\"value\":\"{#usersResponse.status == 404}\",\"exception\":\"io.gravitee.am.service.exception.UserNotFoundException\"}]},\"deleteResource\":{\"baseURL\":\"/users/{#user.id}\",\"httpMethod\":\"DELETE\",\"httpResponseErrorConditions\":[{\"value\":\"{#usersResponse.status == 404}\",\"exception\":\"io.gravitee.am.service.exception.UserNotFoundException\"}]}}},\"connectTimeout\":10000,\"maxPoolSize\":200}","name":"HTTP"}' \
+     http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId/identities
+----
+
+WARNING: For the Identity Provider to work, the user's payload must at least contain the following claims : _sub_.
+To have a more information about your user you can rely on the link:https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims[Standard Claims] of the OpenID Connect protocol.
+To achieve this you can use the User Mapper feature of Gravitee.io AM.
+
+image::am/2.x/graviteeio-am-userguide-http-idp-mapping.png[]
+
+=== Configuration
+
+The HTTP Identity Provider is used to invoke an HTTP(S) URL and put the response content into one or more variables of the execution context.
+
+The result of the authentication is put in a variable named _authenticationResponse_ and the User Management operations are stored in the _usersResponse_ variable.
+
+These variables can be used to check if the result API calls have failed or not. To configure your Identity Provider, you can find after all the data context and options to suit your needs.
+
+==== Authentication Resource
+
+|===
+|Property |Required |Description |Type |Default
+
+.^|baseURL
+^.^|X
+|URL invoked by the HTTP client (support EL)
+^.^|URL
+^.^|-
+
+.^|httpMethod
+^.^|X
+|HTTP Method used to invoke URL
+^.^|HTTP method
+^.^|POST
+
+.^|httpHeaders
+^.^|-
+|List of HTTP headers used to invoke the URL (support EL)
+^.^|HTTP Headers
+^.^|-
+
+.^|httpBody
+^.^|-
+|The body content send when calling the URL (support EL)
+^.^|string
+^.^|{"username":"{#principal}","password":"{#credentials}"}
+
+.^|httpResponseErrorConditions
+^.^|X
+|List of conditions which will be verified to end the request (support EL)
+^.^|string
+^.^|{#authenticationResponse.status == 401}
+|===
+
+==== Users Resource
+
+|===
+|Property |Required |Description |Type |Default
+
+.^|baseURL
+^.^|X
+|URL invoked by the HTTP client (support EL)
+^.^|URL
+^.^|
+|===
+
+===== Create
+
+|===
+|Property |Required |Description |Type |Default
+
+.^|Path
+^.^|X
+|URL invoked by the HTTP client (support EL)
+^.^|URL
+^.^|/users
+
+.^|httpMethod
+^.^|X
+|HTTP Method used to invoke URL
+^.^|HTTP method
+^.^|POST
+
+.^|httpHeaders
+^.^|-
+|List of HTTP headers used to invoke the URL (support EL)
+^.^|HTTP Headers
+^.^|-
+
+.^|httpBody
+^.^|-
+|The body content send when calling the URL (support EL)
+^.^|string
+^.^|{"username":"{#user.username}","email":"{#user.email}", "firstName":"{#user.firstName}", "lastName":"{#user.lastName}"}
+
+.^|httpResponseErrorConditions
+^.^|X
+|List of conditions which will be verified to end the request (support EL)
+^.^|string
+^.^|{#usersResponse.status == 400}
+|===
+
+===== Read
+
+NOTE: Only the _username_ attribute is available at this stage.
+
+|===
+|Property |Required |Description |Type |Default
+
+.^|path
+^.^|X
+|URL invoked by the HTTP client (support EL)
+^.^|URL
+^.^|/users?username={#user.username}
+
+.^|httpMethod
+^.^|X
+|HTTP Method used to invoke URL
+^.^|HTTP method
+^.^|GET
+
+.^|httpHeaders
+^.^|-
+|List of HTTP headers used to invoke the URL (support EL)
+^.^|HTTP Headers
+^.^|-
+
+.^|httpBody
+^.^|-
+|The body content send when calling the URL (support EL)
+^.^|string
+^.^|-
+
+.^|httpResponseErrorConditions
+^.^|X
+|List of conditions which will be verified to end the request (support EL)
+^.^|string
+^.^|{#usersResponse.status == 404}
+|===
+
+===== Update
+
+|===
+|Property |Required |Description |Type |Default
+
+.^|path
+^.^|X
+|URL invoked by the HTTP client (support EL)
+^.^|URL
+^.^|/users/{#user.id}
+
+.^|httpMethod
+^.^|X
+|HTTP Method used to invoke URL
+^.^|HTTP method
+^.^|PUT
+
+.^|httpHeaders
+^.^|-
+|List of HTTP headers used to invoke the URL (support EL)
+^.^|HTTP Headers
+^.^|-
+
+.^|httpBody
+^.^|-
+|The body content send when calling the URL (support EL)
+^.^|string
+^.^|{"username":"{#user.username}","email":"{#user.email}", "firstName":"{#user.firstName}", "lastName":"{#user.lastName}"}
+
+.^|httpResponseErrorConditions
+^.^|X
+|List of conditions which will be verified to end the request (support EL)
+^.^|string
+^.^|{#usersResponse.status == 404}
+|===
+
+===== Delete
+
+|===
+|Property |Required |Description |Type |Default
+
+.^|path
+^.^|X
+|URL invoked by the HTTP client (support EL)
+^.^|URL
+^.^|/users/{#user.id}
+
+.^|httpMethod
+^.^|X
+|HTTP Method used to invoke URL
+^.^|HTTP method
+^.^|DELETE
+
+.^|httpHeaders
+^.^|-
+|List of HTTP headers used to invoke the URL (support EL)
+^.^|HTTP Headers
+^.^|-
+
+.^|httpBody
+^.^|-
+|The body content send when calling the URL (support EL)
+^.^|string
+^.^|-
+
+.^|httpResponseErrorConditions
+^.^|X
+|List of conditions which will be verified to end the request (support EL)
+^.^|string
+^.^|{#usersResponse.status == 404}
+|===
+
+== Custom identity provider
+
+image::am/2.x/graviteeio-am-userguide-custom-idp.png[]
+
+Gravitee.io Access Management is a flexible and extensible solution based on pluggable modules architecture.
+You can develop your own identity provider and provide an authenticate method to register your users to use them with Gravitee.io AM.
+
+== Testing identity provider
+
+The fastest way to test your fresh created identity provider is to request for an OAuth2 access token by following the link:/am/2.x/am_quickstart_authenticate_users.html[Authenticate users with Identity Provider] tutorial.
+If you succeed to get an access token, your identity provider is all set.

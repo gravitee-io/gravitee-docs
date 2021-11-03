@@ -1,0 +1,74 @@
+---
+product: API Management
+toc: true
+title: Docker customization
+guide: Installation Guide
+guide-section: Docker
+---
+
+:docker-image-src: https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/images
+:github-repo: https://github.com/gravitee-io/gravitee-docker
+:docker-hub: https://hub.docker.com/r/graviteeio
+
+= Customization
+
+This section explains how to customize your Docker installation. These procedures are intended for users who are already familiar with Docker.
+
+== Install an additional plugin
+
+APIM Docker images contain the default plugins (for a full list, see https://github.com/gravitee-io/release/blob/3.0.x/release.json[window=\"_blank\"]). Listed below are some examples showing how to install custom plugins.
+
+To install additional plugins in APIM Gateway, run a command such as the following:
+
+[source,shell]
+....
+$ docker run  \
+        --publish 8082:8082  \
+        --name gateway  \
+        --volume ./plugins:/opt/graviteeio-gateway/plugins-ext \
+        --env GRAVITEE_PLUGINS_PATH_0=$${gravitee.home}/plugins \
+        --env GRAVITEE_PLUGINS_PATH_1=$${gravitee.home}/plugins-ext \
+        --detach  \
+        graviteeio/apim-gateway:latest
+....
+
+This mounts a new volume containing additional plugins and declares them as part of the configuration (`--env GRAVITEE_PLUGINS_PATH_1=$${gravitee.home}/plugins-ext`)
+
+=== Use Redis as the datastore for rate-limit counters
+
+This example shows how to switch from MongoDB (default connector) to Redis for rate-limit (the example assumes the Redis connector is available from `./plugins` on the Docker host):
+
+[source,shell]
+....
+$ docker run  \
+        --publish 8082:8082  \
+        --name gateway  \
+        --volume ./plugins:/opt/graviteeio-gateway/plugins-ext \
+        --env GRAVITEE_PLUGINS_PATH_0=$${gravitee.home}/plugins \
+        --env GRAVITEE_PLUGINS_PATH_1=$${gravitee.home}/plugins-ext \
+        --env GRAVITEE_RATELIMIT_TYPE=redis \
+        --env GRAVITEE_RATELIMIT_REDIS_HOST=localhost \
+        --env GRAVITEE_RATELIMIT_REDIS_PORT=6379 \
+        --detach  \
+        graviteeio/apim-gateway:latest
+....
+
+=== Use JDBC as the datastore for management
+
+This example shows how to switch from MongoDB (the default connector) to a JDBC-based connector (the example assumes the JDBC connector is available from `./plugins` on the Docker Host).
+
+NOTE: You must ensure that the JDBC connector version corresponds to the API Management version and that you have the correct JDBC driver for your RDBMS.
+
+....
+$ docker run  \
+        --publish 8082:8082  \
+        --name gateway  \
+        --volume ./driver:/opt/graviteeio-gateway/plugins/ext/repository-jdbc \
+        --volume ./plugins:/opt/graviteeio-gateway/plugins-ext \
+        --env GRAVITEE_PLUGINS_PATH_0=$${gravitee.home}/plugins \
+        --env GRAVITEE_PLUGINS_PATH_1=$${gravitee.home}/plugins-ext \
+        --env GRAVITEE_MANAGEMENT_TYPE=jdbc \
+        --env GRAVITEE_MANAGEMENT_JDBC_URL=jdbc:mysql://localhost:3306/gravitee?useSSL=false&user=mysql_users&password=mysql_password \
+        --detach  \
+        graviteeio/apim-gateway:latest
+....

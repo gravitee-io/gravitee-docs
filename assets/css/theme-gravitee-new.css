@@ -306,7 +306,7 @@ ul#mysidebar {
 
 /* end sidebar */
 
-body .slider-area>medium-padding {
+.slider-wrapper.medium-padding {
   padding: 170px 0; }
   @media (max-width: 768px) {
     .medium-padding {
@@ -331,3 +331,12 @@ body.slider-area .hero #autocompleteResults {
   left: 14px;
   right: 14px;
   width: unset;
+  
+.header-navigation {
+	position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 20em;
+    background-color: rgba(0,0,0,.85);
+	font-weight: 700;
+}

@@ -1,0 +1,69 @@
+= Create an identity provider
+:page-sidebar: am_1_x_sidebar
+:page-permalink: am/1.x/am_userguide_create_identity_provider.html
+:page-folder: am/user-guide
+
+Identity providers are created for each security domain, to create an identity provider, follow these steps:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page, go to `Providers` section
+. From the security domain's providers page, click `(+)` button
+. Choose the identity provider's type and press `NEXT`
+
+== Inline identity provider
+
+In memory user directory, useful for testing purpose or setting default accounts.
+
+. Give your identity provider a *name* and create a identity provider by filling out the configuration form and press `CREATE`
+
+image::am/1.x/graviteeio-am-quickstart-create-idp.png[]
+
+You can also create a security domain via the Gravitee.io AM API
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{
+           "type": "inline-am-idp",
+           "name": "Inline IdP",
+           "configuration": "{\"users\":[{\"firstname\":\"johndoe\",\"lastname\":\"John\",\"username\":\"Doe\",\"password\":\"johndoepassword\"}]}"
+         }' \
+     http://GRAVITEEIO-AM-GATEWAY-HOST/management/domains
+----
+
+== LDAP identity provider
+
+LDAP and Active Directory user/groups directory mainly used inside organizations to authenticate and share information about employee users.
+
+. Give your identity provider a *name* and create a identity provider by filling out the configuration form and press `CREATE`
+
+image::am/1.x/graviteeio-am-userguide-ldap-idp.png[]
+
+You can also create a security domain via the Gravitee.io AM API
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{
+           "type": "ldap-am-idp",
+           "name": "LDAP IdP",
+           "configuration": "{\"contextSourceUrl\":\"ldap://myserver.example.com:389\",\"contextSourceBase\":\"baseDN\",\"contextSourceUsername\":\"username\",\"contextSourcePassword\":\"password\",\"userSearchFilter\":\"uid={0}\",\"userSearchBase\":\"ou=users\",\"groupSearchBase\":\"ou=applications\",\"groupSearchFilter\":\"(uniqueMember={0})\",\"groupRoleAttribute\":\"cn\"}"
+         }' \
+     http://GRAVITEEIO-AM-GATEWAY-HOST/management/domains
+----
+
+== Custom identity provider
+
+image::am/1.x/graviteeio-am-userguide-custom-idp.png[]
+
+Gravitee.io Access Management is a flexible and extensible solution based on pluggable modules architecture.
+You can develop your own identity provider and provide an authenticate method to register your users to use them with Gravitee.io AM.
+
+== Testing identity provider
+
+The fastest way to test your fresh created identity provider is to request for an OAuth2 access token by following the link:/am/1.x/am_quickstart_authenticate_users.html[Authenticate users with Identity Provider] tutorial.
+If you succeed to get an access token, your identity provider is all set.

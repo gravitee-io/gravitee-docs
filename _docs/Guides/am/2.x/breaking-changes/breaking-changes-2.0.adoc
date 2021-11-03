@@ -1,0 +1,54 @@
+= Breaking changes in 2.0
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_breaking_changes_2.0.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+== OAuth 2.0 access and refresh tokens
+
+Starting from version 2.x, OAuth 2.0 access token and refresh token internal structure have changed for more simplicity and flexibility.
+
+Which means that OAuth 2.0 tokens (access and refresh) from 1.x version are now incompatible with the 2.x
+and lead you to `token not recognized` for link:https://tools.ietf.org/html/rfc7662[OAuth 2.0 Token Introspection] and link:https://tools.ietf.org/html/rfc6749#section-6[Refreshing an Access Token].
+
+NOTE: If you switch from 1.x to 2.x with active tokens, your client applications should probably need to re-login the end-user.
+
+== Custom plugins
+
+Moving from a synchronous to Reactive programming architecture implies that we have changed some of our API signatures.
+
+If you have written some custom plugins such as custom identity providers, extension grants or repositories, please follow these steps to update your plugins :
+
+. Update the `gravitee-plugin-api` to the `2.x.x` version of the `pom.xml` file (see below an example with a custom identity provider)
+
+[source,xml]
+----
+<dependencies>
+    <!-- Gravitee.io -->
+    <dependency>
+        <groupId>io.gravitee.am.identityprovider</groupId>
+        <artifactId>gravitee-am-identityprovider-api</artifactId>
+        <version>2.x.x</version>
+        <scope>provided</scope>
+    </dependency>
+    ...
+</dependencies>
+----
+
+[start=2]
+. Mandatory interfaces will change to their link:http://reactivex.io/[Rx], link:https://github.com/ReactiveX/RxJava[RxJava 2] version
+. Update your code and re-build the plugin
+. Replace your zip file in the `plugins` folder
+. Start the Gravitee.io AM processes
+
+== OpenID Connect
+
+Starting from Gravitee.io AM *2.0.4*, OpenID Connect endpoints have been moved under `/oidc` base path.
+
+|===
+|Endpoint|URL
+
+|http://openid.net/specs/openid-connect-core-1_0.html#UserInfo[UserInfo Endpoint] |`https://am_gateway/:securityDomainPath/oidc/userinfo`
+|https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata[OpenID Provider Configuration Endpoint] |`https://am_gateway/:securityDomainPath/oidc/.well-known/openid-configuration`
+
+|===

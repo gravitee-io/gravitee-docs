@@ -1,0 +1,20 @@
+= Webhook
+:page-sidebar: am_3_x_sidebar
+
+== Overview
+
+You can notify and alert administrators using a webhook.
+
+== Create a webhook notification channel
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Click *Settings > Alerts > Notifiers*.
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Select *Webhook* as your notifier type and click *Next*.
+. Give your notifier a name.
+. Configure the settings.
+. Click *Create*.
+
+NOTE: You can customize the `request body` input text with notification properties.
+
+include::./user-guide-alerts-notifications-partial.adoc[leveloffset=+1]

@@ -1,0 +1,83 @@
+---
+product: API Management
+guide: Configuration Guide
+toc: true
+title: Configure Google authentication
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+---
+
+This page explains how to enable APIM authentication using Google accounts.
+
+== Create a Google OAuth client
+
+Before you can connect to APIM with a Google account, you need to create an OAuth client ID.
+
+=== Check access to the Google+ API
+
+Before you begin, you need to create a Google project with access to the Google+ API at https://console.developers.google.com/.
+
+image::apim/3.x/installation/authentication/google_enable_google+_api.png[Check Google+ API access]
+
+=== Create a new client
+
+. Go to https://console.developers.google.com/.
+. In your project *Credentials*, click *Create credentials* and select *OAuth client ID*.
++
+image::apim/3.x/installation/authentication/google_create_client.png[Create a new OAuth client]
+
+. Enter the client details.
++
+image::apim/3.x/installation/authentication/google_fill_client_form.png[Fill the form]
++
+WARNING: The `Authorized redirect URIs` value must exactly match the domain hosting APIM Portal.
+
+[[gravitee-installation-authentication-google-credentials]]
+=== Retrieve client credentials
+
+After you create the client, you can retrieve its credentials for authentication configuration.
+
+image::apim/3.x/installation/authentication/google_client_credentials.png[Get Client credentials]
+
+== Configure APIM
+
+include::../../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
+
+==== APIM Console configuration
+
+. Click *Organization Settings > Authentication*.
+. Click the plus icon image:icons/plus-icon.png[role="icon"] and select the *Google* icon.
+. If you want to use this provider to log in to APIM Portal, ensure that *Allow portal authentication to use this identity provider* is checked. To use it only for APIM Console, uncheck this option.
+. Enter the details of the provider, including the credentials created in the AM client.
++
+image::apim/3.x/management-api-configuration-idp/new-google.png[Gravitee.io - New Google IDP]
+. Click *CREATE*.
+. Activate the provider for Portal or Console login, as described in link:/apim/3.x/apim_installguide_authentication.html#activating-providers[Activating providers^].
+
+==== `gravitee.yml` file configuration
+
+Update the following section of the file with the Google client credentials.
+
+[source,yaml]
+----
+security:
+  providers:
+    - type: google
+      clientId: xxxx-xxx-xxx-xxx
+      clientSecret: xxxx-xxx-xxx-xxx
+----
+
+== Test the connection
+
+=== Log in to APIM Portal
+
+. Click *Sign in with Google*.
++
+image::apim/3.x/installation/authentication/google_login_form.png[Login Form]
+
+. Choose the Google account.
++
+image::apim/3.x/installation/authentication/google_choose_google_account.png[Login Form]
++
+You have successfully logged in:
++
+image::apim/3.x/installation/authentication/google_login_success.png[]

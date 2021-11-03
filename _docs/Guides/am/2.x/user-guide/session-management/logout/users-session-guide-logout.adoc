@@ -1,0 +1,11 @@
+= Logout
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_userguide_user_session_management_logout.html
+:page-folder: am/user-guide
+:page-layout: am
+
+Any authenticated users who want to invalidate their session can call the following URL : `https://AM_GATEWAY_HOST/{domain}/logout`
+
+NOTE: By default access tokens and refresh tokens are not revoked. You can add the `invalidate_tokens=true` query parameter to the request to invalidate current user tokens.
+
+NOTE: You can also specify the `target_url=http://myApp/logoutCallback` query parameter to redirect the user to your application after logout process.

@@ -15,7 +15,7 @@ toc: true
         </div>
       </div>
       <div class="row">
-	  {% if page.sidebar != nil %}
+	  {% if page.sidebar == nil or page.sidebar != false %}
     <div class="col-md-3">
       {% include sidebar.html %}
 </div>
@@ -26,11 +26,11 @@ toc: true
 
 		{% assign col = "6" %}
 
-		{% if page.toc != true %}
+		{% if page.toc == false %}
 		{% assign col1 = "3" %}
 		{% endif %}
 
-		{% if page.sidebar == nil %}
+		{% if page.sidebar == false %}
 		{% assign col2 = "3" %}
 		{% endif %}
 
@@ -43,7 +43,9 @@ toc: true
             </div>
           </div>
         </div>
-		{% if page.toc == true %}
+
+    {% if page.toc == true or page.toc == nil %}
+
         <div class="col-md-3">
           <div class=" doc-sidebar-menu doc-right-sidebar">
 

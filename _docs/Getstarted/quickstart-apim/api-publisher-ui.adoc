@@ -1,0 +1,51 @@
+---
+product: API Management
+toc: true
+sidebar: gettingstarted_sidebar
+title: Publish your first API with APIM Console
+---
+
+This section walks you through creating and publishing your first API with APIM Console. To learn more about creating and publishing APIs, see the link:/apim/3.x/apim_publisherguide_manage_api.html[API Publisher Guide].
+
+== Create your API
+
+. Log in to APIM Console.
+. Click **Start creating an API**.
++
+image::apim/3.x/quickstart/publish/graviteeio-create-api-1.png[]
+
+. Click *CREATE*.
++
+image::apim/3.x/quickstart/publish/graviteeio-create-api-2.png[]
+
+. Give your API a name, a version, a description and a context path. **Click NEXT**.
++
+image::apim/3.x/quickstart/publish/graviteeio-create-first-api-1.png[]
+
+. Set **Backend** to the URL of the API, in this example `https://api.gravitee.io/echo`. Click **NEXT**.
++
+image::apim/3.x/quickstart/publish/graviteeio-create-first-api-2.png[]
++
+NOTE: Before consumers can subscribe to your API, you must publish one or more _plans_, as described in the following step. A plan gives access to the API operations.
+
+. Create a plan by giving it a name, a description and a security type. Switch on the **Auto validate subscription** option. Click **NEXT**.
++
+image::apim/3.x/quickstart/publish/graviteeio-create-first-api-3.png[]
++
+NOTE: Ensure you set the link:/apim/3.x/apim_policies_apikey.html[API Key] **security type**. For more information about plan configuration, see the link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[API Publisher Plans and subscriptions Guide].
+
+. In the **Doc** step, you can add some Markdown and OpenAPI files. You can skip this step for now. Click **SKIP**.
++
+image::apim/3.x/quickstart/publish/graviteeio-create-first-api-4.png[]
+
+. Check your API information before deploying it. When you are ready, click **CREATE AND START THE API**.
++
+image::apim/3.x/quickstart/publish/graviteeio-create-first-api-5.png[]
+
+Congratulations! You have created your brand new API, published a plan and, if an APIM Gateway instance is running, deployed your API.
+
+image::apim/3.x/quickstart/publish/graviteeio-create-first-api-6.png[]
+
+You need to complete one more step before your API is ready to be used by your consumers: click **PUBLISH THE API** to display the API in APIM Portal.
+
+image::apim/3.x/quickstart/publish/graviteeio-create-first-api-7.png[]

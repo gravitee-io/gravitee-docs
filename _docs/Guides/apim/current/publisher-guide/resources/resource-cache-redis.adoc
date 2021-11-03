@@ -1,0 +1,10 @@
+---
+product: API Management
+toc: true
+guide: Publisher Guide
+title: Redis cache
+---
+
+WARNING: This plugin is not included with the APIM distribution by default. You can https://download.gravitee.io/#graviteeio-apim/plugins/resources/gravitee-resource-cache-redis/[download] a plugin and follow link:/apim/3.x/apim_installguide_docker_customize.html#install_an_additional_plugin[these instructions] to install it.
+
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-resource-cache-redis/master/README.adoc[]

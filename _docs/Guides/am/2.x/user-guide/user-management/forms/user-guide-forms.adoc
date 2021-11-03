@@ -1,0 +1,45 @@
+== Custom forms
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_userguide_user_management_forms.html
+:page-folder: am/user-guide
+:page-layout: am
+
+Gravitee.io AM is shipped with predefined forms containing relating identity and access functionality which occur during authorization process.
+
+=== Available forms
+
+[width="80%",cols="2,10",options="header"]
+|=========================================================
+|Form |Description
+
+|Login |
+Login page to authenticate users.
+
+|Registration |
+Registration page to create an account.
+
+|Registration confirmation |
+Register page to confirm user account.
+
+|Forgot password |
+Forgot password to recover account.
+
+|Reset password |
+Reset password page to make a new password.
+
+|User consent |
+User consent to acknowledge and accept data access.
+
+|=========================================================
+
+=== Override forms
+
+To customize a form, go to domain `Forms` settings section, select a form and start editing the form content.
+
+An HTML editor will let you write or copy/paste your own HTML template as well as preview the result.
+
+image::am/2.x/graviteeio-am-userguide-um-forms.png[]
+
+NOTE: Each form come with a minimal configuration to be functional, you can retrieve contextual documentation for each type of forms by clicking on the `(i)` icon.
+
+image::am/2.x/graviteeio-am-userguide-um-form-info.png[]

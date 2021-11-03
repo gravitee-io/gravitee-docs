@@ -1,0 +1,105 @@
+= Register your first client
+:page-sidebar: am_1_x_sidebar
+:page-permalink: am/1.x/am_quickstart_register_app.html
+:page-folder: am/quickstart
+
+This guide walks you through the process of creating your first client by using the Gravitee.io AM Management UI.
+
+NOTE: Gravitee.io Access Management UI can be accessed using the following URL :
+http://GRAVITEEIO-AM-UI-HOST (see link:/am/1.x/am_installguide_portal.html[Gravitee.io AM Management UI installation^] for more information)
+
+== Create a security domain
+
+A _security domain_ is a series of security policies apply to a set of applications that all share common security mechanisms for authentication, authorization and identity management.
+
+. Go to http://GRAVITEEIO-AM-UI-HOST. (Default Administrator account is `admin/adminadmin`)
+. From the homepage, click `(+)` button
+. Give your security domain a *name*, a *description* and press `SAVE`
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"name":"My First Security Domain","description":"My First Security Domain description"}' \
+     http://GRAVITEEIO-AM-GATEWAY-HOST/management/domains
+----
+
+== Create your client
+
+Before interact with the AM Authorization Gateway, you must create a client.
+The client represents your application and will give you the necessary information (like the client ID/client Secret) for sign-in, authorization, authentication and identity management.
+The application can be a native mobile app, a single page front-end web app, or a regular web app that executes on a server.
+
+Create your first client by following these steps :
+
+. Go to the previously created security domain's settings page
+. Go to `Clients` section
+. From the security domain's clients page, click `(+)` button
+. Choose an *Client ID* and press `SAVE`
+
+NOTE: You can specify an *Client Secret* value or leave it blank to generate a random one
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"clientId":"THE-CLIENT-ID"}' \
+     http://GRAVITEEIO-AM-GATEWAY-HOST/management/domains/:domainSecurityPath/clients
+----
+
+[start=5]
+. From the resulting OAuth client create form, you can copy the Client ID and the Client Secret to start interacting with Gravitee.io AM endpoints and APIs.
+
+image::am/1.x/graviteeio-am-oauth-client.png[]
+
+== Test your application with OAuth2
+
+OAuth 2 is an authorization framework that let applications acting on behalf the end user to obtain limited access to HTTP services.
+link:https://tools.ietf.org/html/rfc6749[OAuth 2 RFC^] defines two endpoints :
+
+- The *authorization endpoint* used to interact with the resource owner and obtain an authorization grant via user-agent redirection.
+- The *token endpoint* used by the client to obtain an access token by presenting its authorization grant.
+
+NOTE: For further information about OAuth2, please visit the link:https://tools.ietf.org/html/rfc6749[RFC page^].
+
+In order to validate the application configuration, we will request for an access token.
+
+`POST http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/oauth/token`
+
+[width="100%",cols="2,8",frame="topbot",options="header,footer"]
+|==========================
+|Parameter       |Description
+|grant_type      |*REQUIRED.* Set the value to `client_credentials`.
+|client_id       |*REQUIRED.* Client's ID.
+|client_secret   |*REQUIRED.* Client's secret.
+|scope           |*OPTIONAL.* The scopes of the access token.
+|==========================
+
+Request a token::
+
+[source]
+----
+curl -X POST \
+  'http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/oauth/token?grant_type=client_credentials&scope=read&client_id=:clientId&client_secret=:clientSecret'
+----
+
+NOTE: You can also specify the client credentials by providing `client_id` and `client_secret` in  `Authorization` header with the Basic auth scheme.
+
+If everything goes well, you should see the following response :
+
+[source]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+{
+    "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6InJlYWQiLCJhY3RpdmUiOnRydWUsImV4cCI6MTUwMTEwNTMwOSwidG9rZW5fdHlwZSI6ImJlYXJlciIsImp0aSI6IjkzYmViNGE5LWM2ZmYtNDIyOC04MWIxLTczZTMwMGRkNjgzMCIsImNsaWVudF9pZCI6InRlc3QifQ.AqGFp7J4pUcaR0_BJYmzV7XuPFgW0CXdv5hX9kChW0VSuK6AHuSx8OBdJlELSHt5U_RH2IVEviE5ChC8V_Bcpdr04nLVTdXgsvwU0edXU2r6k0R9oepHPsWu5gpVNL3i20rdsqZX2WuP1Ccq2QC6NVxkrN4bYKbVBfrfbbtPowPt_K6ouyokE74nAR50Iyo401aJKNP8RQZuqUSzLzG6g9tSgf1ut9dsf69r6ECQWvgOvlXGqM92I4L0NaRBO5A0e28LB4fY3swsTP248BQrWigxw_jk3iFejdvYrm9DKnovXme1DjHoXuESvYjr9S7l31EY1kJyy_1d7lfD04_4Yw",
+    "token_type": "bearer",
+    "expires_in": 7199,
+    "scope": "read",
+    "jti": "93beb4a9-c6ff-4228-81b1-73e300dd6830"
+}
+----

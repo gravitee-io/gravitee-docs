@@ -1,0 +1,99 @@
+= Repositories
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_installguide_repositories.html
+:page-folder: am/installation-guide
+:page-liquid:
+:page-layout: am
+:page-description: Gravitee.io Access Management - Repositories
+:page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+In Gravitee.io Access Management, repositories are used to store different type of datas (different scopes).
+Repositories are configured in the `gravitee.yml` configuration file an can be different for each scope.
+For example you can decide to put the management in MongoDB, rate limit in Redis and analytics in Elasticsearch.
+
+[[gravitee-repositories-scopess]]
+== Scopes
+
+* Management: All the data to manage the Gravitee.io Access Management platform, including security domains, clients,
+identity providers, ...
+* OAuth2: Tokens generated for OAuth2
+
+[[gravitee-repositories-types]]
+== Supported storage
+Here is the matrix between scopes and implementations.
+
+**Compatibility Matrix: **
+|===
+|Scope|MongoDB|Redis |Elasticsearch| Cassandra
+
+|Management
+|X
+|-
+|-
+|-
+
+|OAuth2
+|X
+|-
+|-
+|-
+
+|===
+
+[[gravitee-repository-mongodb-configuration]]
+=== MongoDB
+
+Default implementation is based on https://www.mongodb.org/[MongoDB], let's see the configuration options:
+
+[source,yaml]
+----
+# ===================================================================
+# MINIMUM MONGO REPOSITORY PROPERTIES
+#
+# This is a minimal sample file declared connection to MongoDB
+# ===================================================================
+management:
+  type: mongodb             # repository type
+  mongodb:                  # mongodb repository
+    dbname:                 # mongodb name (default gravitee)
+    host:                   # mongodb host (default localhost)
+    port:                   # mongodb port (default 27017)
+----
+
+NOTE: This is the minimum sample file to start with a mongo server, number of other properties control the behavior of mongo database, let's jump into it.
+
+[source,yaml]
+----
+# ===================================================================
+# MONGO REPOSITORY PROPERTIES
+#
+# This is a sample file declared all properties for MongoDB Repository
+# ===================================================================
+management:
+  type: mongodb                 # repository type
+  mongodb:                      # mongodb repository
+    dbname:                     # mongodb name (default gravitee)
+    host:                       # mongodb host (default localhost)
+    port:                       # mongodb port (default 27017)
+    username:                   # mongodb username (default null)
+    password:                   # mongodb password (default null)
+    connectionPerHost:          # mongodb connection per host (default 10)
+    connectTimeOut:             # mongodb connection time out (default 0 -> never)
+    maxWaitTime:                # mongodb max wait time (default 120000)
+    socketTimeout:              # mongodb socket time out (default 0 -> never)
+    socketKeepAlive:            # mongodb socket keep alive (default false)
+    maxConnectionLifeTime:      # mongodb max connection life time (default null)
+    maxConnectionIdleTime:      # mongodb max connection idle time (default null)
+    minHeartbeatFrequency:      # mongodb min heartbeat frequency (default null)
+    description:                # mongodb description (default null)
+    heartbeatConnectTimeout:    # mongodb heartbeat connection time out (default null)
+    heartbeatFrequency:         # mongodb heartbeat frequency (default null)
+    heartbeatsocketTimeout:     # mongodb heartbeat socket time out (default null)
+    localThreshold:             # mongodb local threshold (default null)
+    minConnectionsPerHost:      # mongodb min connections per host (default null)
+    sslEnabled:                 # mongodb ssl mode (default false)
+    threadsAllowedToBlockForConnectionMultiplier: # mongodb threads allowed to block for connection multiplier (default null)
+    cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
+----
+
+NOTE: All theses properties allow you to fine tuned your MongoDB connection

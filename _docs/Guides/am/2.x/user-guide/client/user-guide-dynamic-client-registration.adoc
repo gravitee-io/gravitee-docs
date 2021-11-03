@@ -1,0 +1,341 @@
+= Dynamic Client Registration
+:page-sidebar: am_2_x_sidebar
+:page-permalink: am/2.x/am_userguide_dynamic_client_registration.html
+:page-folder: am/user-guide
+:page-layout: am
+
+Another way to create clients is to use the Openid Connect Dynamic Client Registration endpoint. +
+This specification enable Relying Party (clients) to register application into the Openid Provider (OP).
+
+== Enable Dynamic Client Registration.
+
+By default this feature is disabled, you can enable it through the domain settings:
+
+. Go to http://GRAVITEEIO-AM-UI-HOST
+. From the homepage, go to your security domain's settings page, go to `Openid` section then `Client Registration`
+. Enable the Dynamic Client Registration.
+
+
+IMPORTANT: There is a second parameter called "open dynamic client registration", this parameter is used to allow any non authenticated request to register new clients through the registration endpoint. It is part of the openid specification, but for some obvious security reasons, it is disabled by default.
+
+image::am/2.x/graviteeio-am-userguide-domain-enable-dcr.png[]
+
+You can also enable this feature via the Gravitee.io AM API
+
+[source]
+----
+# enable Dynamic Client Registration
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "isDynamicClientRegistrationEnabled": true,
+            "isOpenDynamicClientRegistrationEnabled": false
+      }}}' \
+  http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId
+----
+
+== Register new client
+
+=== Obtain an access token
+
+Unless you enabled the open dynamic registration, you will need to obtain an access token via the client_credentials flow, with as scope "dcr_admin".
+
+CAUTION: This "dcr_admin" scope grant CRUD access to any clients of your domain.
+You will need to allow this scope only for a trusted RP (client).
+
+[source]
+----
+#Request a token
+curl -X POST \
+  'http://GRAVITEEIO-AM-GATEWAY-HOST/:domain/oauth/token?grant_type=client_credentials&scope=dcr_admin&client_id=:clientId&client_secret=:clientSecret'
+----
+
+=== Register new RP (Client)
+
+Once you obtain the access token, you can call the gateway through the registration endpoint.
+You can specify many client information such as client_name, but only the redirect_uris property is mandatory.
+Please see the link:https://openid.net/specs/openid-connect-registration-1_0.html[Openid Connect Dynamic Client Registration] specification for more details.
+
+The endpoint used to register an application is available into the link:http://GRAVITEEIO-AM-GATEWAY-HOST/:domain/oidc/.well-known/openid-configuration[openid discovery endpoint] under the "registration_endpoint" property.
+
+The response will contains some additional fields such as the expected client_id and client_secret information.
+
+TIP: In the response, you will also find the registration_access_endpoint and the registration_client_uri used to read/update/delete those informations.
+
+CAUTION: According to the link:https://tools.ietf.org/html/rfc6749#section-10.6[specification]: Authorization Server MUST require public clients and SHOULD require confidential clients to register their redirection URIs. +
+Confidential clients are clients that can keep their credentials secrets, ex: +
+ - web application (using a web server to save their credentials) : authorization_code +
+ - server application (considering credentials saved on a server as safe) : client_credentials +
+By opposition to confidential, public clients are clients than can not keep their credentials as secret, ex: +
+ - Single Page Application : implicit +
+ - Native mobile application : authorization_code +
+**Because mobile and web application use the same grant, we force redirect_uri only for implicit grant.**
+
+==== Register Web application example
+
+Here is an example of how to create a web application (access_token being kept on a backend server).
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "redirect_uris": ["https://myDomain/callback"], \
+        "client_name": "my web application", \
+        "grant_types": [ "authorization_code","refresh_token"], \
+        "scope":"openid" \
+      }' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register
+----
+NOTE: "response_types" metadata is not required here as the default value (code) corresponds to the authorization_code grant type.
+
+==== Register Single Page Application (SPA) example
+
+As a SPA does not use a backend, we do recommend to use implicit flow as below:
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "redirect_uris": ["https://myDomain/callback"], \
+        "client_name": "my single page application", \
+        "grant_types": [ "implicit" ], \
+        "response_types": [ "token" ], \
+        "scope":"openid" \
+      }' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register
+----
+CAUTION: "response_types" metadata MUST be set to token in order to override the default value.
+
+==== Register Server to Server application example
+
+Sometimes you may have a bot/software that need to be authenticated as an application and not as an user. +
+In this case you should use client_credentials flow as below:
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "redirect_uris": [], \
+        "application_type": "server", \
+        "client_name": "my server application", \
+        "grant_types": [ "client_credentials" ], \
+        "response_types": [ ] \
+      }' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register
+----
+CAUTION: "response_types" metadata MUST be set as an empty array in order to override the default value. +
+There's no need of redirect_uris, but this metadata is REQUIRED in the link:https://openid.net/specs/openid-connect-registration-1_0.html[specification], so it must be set as an empty array. +
+**We strongly discourage to use this flow in addition to a real user authentication flow, you would better create multiple clients instead.**
+
+==== Register mobile application example
+
+For mobile app, the authorization_code grant is recommended, in addition to link:https://tools.ietf.org/html/rfc7636[Proof Key for Code Exchange]:
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "redirect_uris": ["com.mycompany.app://callback"], \
+        "application_type": "native", \
+        "client_name": "my mobile application", \
+        "grant_types": [ "authorization_code","refresh_token" ], \
+        "response_types": [ "code" ] \
+      }' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register
+----
+
+
+=== Read/Update/Delete client information
+
+The register endpoint also allow GET/UPDATE/PATCH/DELETE actions on a client_id that has been registered through the registration endpoint. +
+To do so, you need the access token generated during the client registration process, provided into the response under the registration_access_token field.
+
+TIP: UPDATE http verb will act as an full overwrite while PATCH http verb will act as a partial update.
+
+NOTE: This access token contains a "dcr" scope which can not be obtained even if you enable the client_credentials flow.
+Plus, even if the endpoint used to be the openid registration endpoint combinated with the client_id, the DCR specifications imply you to not compute this endpoint but use the registration_client_uri given in the register response.
+
+CAUTION: A new registration access token is generated each time the client is updated through the Dynamic Client Registration URI endpoint. Which result in revoking the previous value.
+
+[source]
+----
+# Update a registered Relying Party (client)
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "client_name": "myNewApplicationName"}' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register/:client_id
+----
+
+=== Renew client secret
+
+It is possible to renew the client_secret, to do so, you need to concatenate :client_id and '/renew_secret' to the registration endpoint and use POST http verb.
+
+
+TIP: The renew secret endpoint can also be retrieved through the link:http://GRAVITEEIO-AM-GATEWAY-HOST/:domain/oidc/.well-known/openid-configuration[openid discovery endpoint] under the "registration_renew_secret_endpoint" property. You will then require to replace :client_id by yours. +
+This renew secret endpoint does not need a body.
+
+CAUTION: As for client updates, a new registration access token is generated each time you renew the client secret.
+
+[source]
+----
+# Renew the client secret of a registered Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register/:client_id/renew_secret
+----
+
+=== Scope Management
+
+Gravitee Access Management allow you to whit list which scopes can be requested, define some default scopes to apply or even force a specific set of scope.
+
+==== Allowed scopes (scope list restriction)
+
+By default, no scope restriction are applied while registering a new application. +
+But it is possible to define a list of allowed scopes through the "Allowed scopes" tab. +
+To do so, you need to enable the feature and then select the allowed scopes...
+
+You can also enable this feature via the Gravitee.io AM API
+
+[source]
+----
+# Enable Allowed Scopes feature.
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "allowedScopes": true,
+            "isAllowedScopesEnabled": ['your','scope','list','...']
+      }}}' \
+  http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId
+----
+
+==== Default scopes
+
+The link:https://tools.ietf.org/html/rfc7591#section-2[specification] state that if scopes are omitted while registering an application, the authorization server may set a default list of scopes. +
+To enable this feature, you only need to select which scopes you wish to be automatically set.
+
+You can also enable this feature via the Gravitee.io AM API
+
+[source]
+----
+# Enable Default Scopes feature
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "defaultScopes": ['your','scope','list','...']
+      }}}' \
+  http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId
+----
+
+==== Force same set of scopes to all client registration
+
+If you want to force all client to have the same set of scopes, you can do it by enabling the allowed scopes feature with an empty list and then select some default scopes.
+
+NOTE: Enabling the allowed scopes feature with an empty list will result in removing all requested scopes from the client registration request. +
+Then as there is no more requested scope into the request, the default scopes will be applied.
+
+You can also enable this feature via the Gravitee.io AM API
+
+[source]
+----
+# Force set of scopes on each client registration
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "allowedScopes": true,
+            "isAllowedScopesEnabled": [],
+            "defaultScopes": ['your','scope','list','...']
+      }}}' \
+  http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId
+----
+
+== Register new client using templates
+
+Gravitee.io Access Management allow you to create a client and define it as a template.
+Registering a new application using a template allow you to specify which Identity Providers to use, apply templates Forms (login, password management, error...) or emails (registration confirmation, reset password...)
+
+=== Enable Dynamic Client Registration templates
+
+In the Dynamic Client Registration settings tab, enable the template feature:
+
+image::am/2.x/graviteeio-am-userguide-domain-enable-dcr-templates.png[]
+
+You can also enable this feature via the Gravitee.io AM API
+
+[source]
+----
+# enable Dynamic Client Registration
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "isDynamicClientRegistrationEnabled": true,
+            "isClientTemplateEnabled": true
+      }}}' \
+  http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId
+----
+
+=== Define which client must be used as a template
+
+In the Dynamic Client Registration "Client templates" tab, enable this feature mode on the client to be used as a template:
+
+image::am/2.x/graviteeio-am-userguide-domain-define-dcr-templates[]
+
+You can also enable this feature via the Gravitee.io AM API
+
+[source]
+----
+# enable Dynamic Client Registration
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{"template":true}' \
+  http://GRAVITEEIO-AM-MGT-API-HOST/management/domains/:domainId/clients/:clientId
+----
+
+IMPORTANT: Once a client is set as a template, it will not longer be able to be used for authentication purpose.
+
+image::am/2.x/graviteeio-am-userguide-domain-dcr-templates.png[]
+
+=== Register call with template example
+
+NOTE: You need to retrieve the software_id of the template, which is available under the registration_templates_endpoint provided by the openid discovery service https://am_gateway/:domainId/oidc/.well-known/openid-configuration
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "software_id": "{{templateSoftwareId}}", \
+        "redirect_uris": ["https://myDomain/callback"], \
+        "client_name": "my single page application from a template" \
+      }' \
+  http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register
+----
+
+TIP: You can override some properties of the template by filling some metadatas such as "client_name" in the above example.
+
+IMPORTANT: Some critical information are not copied from the template (ex: client_secret, redirect_uris...). That is why in the above example, we need to provide a valid redirect_uris metadata, as in our example, the template we are using is a Single Page Application.

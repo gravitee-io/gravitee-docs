@@ -3,26 +3,26 @@
 - text: Home
   url: /
 - text: Get Started
-  url: /getstarted.html
+  url: /Getstarted/getting-started.html
 - text: Product Guides
   submenu:
   - text: API Management
-    url: /apim/current/apim_overview_introduction
+    url: /Guides/apim/current/overview/introduction.html
   - text: Access Management
-    url: /am/current/am_overview_introduction
+    url: /Guides/am/current/am_overview_introduction
   - text: Cockpit
-    url: /cockpit/current/cockpit_overview_introduction.html
+    url: /Guides/cockpit/current/cockpit_overview_introduction.html
   - text: Alert Engine
-    url: /ae/current/ae_overview_introduction.html
+    url: /Guides/ae/current/ae_overview_introduction.html
 - text: Reference
   url: /
   submenu:
   - text: APIM API Reference
-    url: /apim/current/apim_reference_api.html
+    url: /Reference/apim/current/apim_reference_api.html
   - text: AM API Reference
-    url: /am/current/am_reference_api.html
+    url: /Reference/am/current/am_reference_api.html
   - text: APIM Policy Reference
-    url: /apim/current/apim_policies_apikey.html
+    url: /Reference/apim/current/apim_policies_apikey.html
   - text: APIM CLI Reference
     url: /
 - text: Resources
@@ -35,4 +35,4 @@
   - text: Changelogs
     url: /pages/changelog.html
   - text: APIM Changelog
-    url: /apim/changelog.html
+    url: /Guides/apim/changelog.html
