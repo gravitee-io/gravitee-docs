@@ -14,6 +14,20 @@ WARNING: Be sure to run scripts on the correct database since `gravitee-am` is n
 
 NOTE: For more information about the breaking changes of this version, see link:/am/current/am_breaking_changes_3.12.html[Breaking changes in 3.12]
 
+== Upgrade to 3.10.7
+
+NOTE: For more information about the breaking changes of this version, see link:/am/current/am_breaking_changes_3.10.7.html[Breaking changes in 3.10.7]
+
+=== Warning
+
+For everyone, please don’t upgrade to 3.10.7 since we detected a critical bug introduced by our release process which leads to a corrupted version of AM.
+
+This has been fixed in 3.10.8.
+
+We apologize for this inconvenience.
+
+GitHub issue: link:https://github.com/gravitee-io/issues/issues/6504[6504]
+
 == Upgrade to 3.10.6
 
 NOTE: For more information about the breaking changes of this version, see link:/am/current/am_breaking_changes_3.10.6.html[Breaking changes in 3.10.6]
