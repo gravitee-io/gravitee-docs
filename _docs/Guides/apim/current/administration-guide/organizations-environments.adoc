@@ -1,0 +1,32 @@
+[[gravitee-admin-guide-orgs-and-envs]]
+= Organizations & environments
+
+:page-description: Gravitee.io API Management - Admin Guide - Organizations and Environments
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+The following concepts exist in APIM for integration with the Cockpit product (see link:https://www.gravitee.io/products/roadmap[Roadmap > Cockpit]).
+
+== Environment
+An _environment_ is roughly equivalent to what you can find in APIM Portal. In an environment, users can manage their APIs, applications and subscriptions. +
+An environment handles its own categories, groups, documentation pages and quality rules. +
+
+Some examples of environments you can define are:
+
+* technical environments, such as DEV / TEST / PRODUCTION
+* functional environments, such as PRIVATE APIS / PUBLIC APIS / PARTNERSHIP
+
+An environment belongs to one organization.
+
+== Organization
+An _organization_ allows users to customize APIM to their own internal organization. It can manage multiple environments by sharing configurations like:
+
+* Users
+* Roles
+* Identity providers
+* Notification templates
+
+It also allows operations across managed environments (like API import/export).
+
+WARNING: The descriptions above may change slightly in future versions. Stay informed by subscribing to our link:https://gravitee.io/[newsletter].
+
+NOTE: By default, the OSS version of APIM comes with a default organization and a default environment. For a multi-environment setup, you need APIM link:/ee/ee_introduction.html[Enterprise Edition].

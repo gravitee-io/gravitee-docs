@@ -1,0 +1,128 @@
+---
+product: API Management
+guide: Developer Guide
+toc: true
+title: Bootstrap your dev environment
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+---
+
+This section explains how to set up your environment to start contributing to APIM.
+
+== Prerequisites
+
+You will need the following tools installed on your computer:
+
+* Java (JDK >= 11)
+* Maven
+* Docker
+* NPM (preferably NVM)
+
+== Download The APIM Image
+
+Download the latest APIM full distribution available: https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip
+Unzip it into the directory of your choice. You will need these files later on to copy plugins into your local repository.
+
+== Projects To Clone
+
+Clone the following repositories in your workspace
+
+* https://github.com/gravitee-io/gravitee-api-management
+* https://github.com/gravitee-io/gravitee-gateway
+
+If you are using IntelliJ, create a new project and add the 2 repositories as Maven modules (*File -> New -> Module from existing sources -> Import module from external model -> Maven*).
+
+== Prepare For Launch
+
+We will run APIM Gateway standalone using *Run configuration* in IntelliJ.
+
+You first need to copy all of the plugins available in the distribution you downloaded earlier in the `/resources` directory of the standalone project.
+
+For instance, if your download is in the `Downloads` folder and your project is in `~/dev/gravitee-gateway`, run:
+```
+cp ~/Downloads/graviteeio-full-{{ site.products.apim._3x.version }}/graviteeio-gateway-{{ site.products.apim._3x.version }}/plugins/* ~/dev/gravitee-gateway/gravitee-gateway-standalone/gravitee-gateway-standalone-distribution/src/main/resources/plugins
+```
+
+Repeat the previous step for `gravitee-apim-rest-api`:
+```
+cp ../graviteeio-full-{{ site.products.apim._3x.version }}/graviteeio-full-{{ site.products.apim._3x.version }}/graviteeio-apim-rest-api-{{ site.products.apim._3x.version }}/plugins/* ./gravitee-api-management/gravitee-apim-rest-api/gravitee-apim-rest-api-standalone/gravitee-apim-rest-api-standalone-distribution/src/main/resources/plugins
+```
+
+=== Run Prerequisites
+
+Before starting APIM Gateway, you need to start MongoDB and ElasticSearch.
+
+MongoDB:
+
+```
+docker run -p 27017:27017 --name local-mongo -d mongo:3
+```
+
+ElasticSearch:
+
+```
+docker run -d --name local-es7 -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+```
+
+=== Run Configuration
+
+==== APIM Gateway (gravitee-gateway)
+
+Create a new Run configuration in IntelliJ:
+
+. Click *Run -> Edit configurations -> ✚ -> Application*.
+. Name it as required.
+. Choose *Use classpath of module:gravitee-gateway-standalone-container*.
+. Select *Main class*:*io.gravitee.gateway.standalone.GatewayContainer*.
+. In the VM options, add the following (change the path to point to your project):
++
+```
+-Dgravitee.home=/home/user/dev/gravitee-gateway/gravitee-gateway-standalone/gravitee-gateway-standalone-distribution/src/main/resources
+```
+
+==== APIM API (gravitee-apim-rest-api)
+
+. Create a new Run configuration in IntelliJ: click *Run -> Edit configurations -> ✚ -> Application*.
+. Name it as required.
+. Choose *Use classpath of module:gravitee-apim-rest-api-standalone-container*.
+. Select *Main class:io.gravitee.rest.api.standalone.GraviteeApisContainer*.
+. In the VM options, add the following (change the path to point to your project):
++
+```
+-Dgravitee.home=/home/user/dev/gravitee-api-management/gravitee-apim-rest-api/gravitee-apim-rest-api-standalone/gravitee-apim-rest-api-standalone-distribution/src/main/resources
+```
+
+
+==== APIM Console (gravitee-apim-console-webui)
+
+===== CLI Version
+
+. Run `npm install` from the `gravitee-api-management/gravitee-apim-console-webui` directory.
+. Run `npm run serve` to start the UI.
+
+===== IntelliJ configuration
+
+
+. Create a new Run configuration in IntelliJ: click *Run -> Edit configurations -> ✚ -> npm*.
+. Name it as required.
+. Choose *package.json: gravitee-api-management/gravitee-apim-console-webui/package.json*.
+. Select *Command: run*.
+. Select *Script: serve*.
+
+To `npm install`, you can duplicate this configuration and choose *Command > Install*.
+
+==== APIM Portal (gravitee-apim-portal-webui)
+
+===== CLI Version
+
+. Run `npm install` from the `gravitee-api-management/gravitee-apim-portal-webui` directory.
+. Run `npm run serve` to start the UI.
+
+===== IntelliJ Configuration
+
+. Create a new Run configuration in IntelliJ: click *Run -> Edit configurations -> ✚ -> npm*.
+. Name it as required.
+. Choose *package.json: gravitee-api-management/gravitee-apim-portal-webui/package.json*.
+. Select *Command: run*.
+. Select *Script: serve*.
+
+To `npm install`, you can duplicate this configuration and choose *Command > Install*.

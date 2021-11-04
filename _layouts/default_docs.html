@@ -2,6 +2,7 @@
 <head>
     {% include head.html %}
     <link rel="stylesheet" href="{{ '/assets/css/app.min.css' | relative_url }} "/>
+    <link rel="stylesheet" href="{{ "/assets/css/theme-gravitee-new.css" | relative_url }}">
 
     <script src="{{ '/assets/js/init-default.js' | relative_url }}"></script>
 
@@ -14,12 +15,14 @@
 </head>
 <body>
 
+{% include topnav.html %}
 
 <!-- Page Content -->
 
         {{content}}
-        <!-- Add Javascript File - this script needed for topnav but breaks sidebar -->
+        <!-- Add Javascript File - this script needed for topnav but breaks sidebar
          <script src="/assets/js/build.min.js"></script>
+-->
          <script src="{{ "/assets/js/jquery.navgoco.min.js" | relative_url }}"></script>
 
        		<script>

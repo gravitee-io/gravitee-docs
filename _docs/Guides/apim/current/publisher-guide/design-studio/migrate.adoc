@@ -1,0 +1,30 @@
+---
+product: API Management
+toc: true
+guide: Publisher Guide
+title: Migrate to Design Studio
+---
+
+[label label-version]#New in version 3.5#
+
+This page explains how to migrate your existing API to Design Studio.
+
+The migration process transforms each `Path`-`HTTP methods`-`Policy` into one flow.
+
+For more information on the differences between the APIM Console *Design* function and Design Studio, see link:./introduction.html#differences[Differences between Design function and Design Studio^].
+
+== Migrate an API
+
+. Log in to APIM Console.
+. Click *APIs*.
+. Select your API and click *Design*.
++
+image::apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-before-migration.png[]
+
+. Click the migrate button.
++
+image::apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-migration-button.png[]
++
+You are redirected to Design Studio.
++
+image::apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-migrated.png[]

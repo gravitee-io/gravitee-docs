@@ -1,8 +1,7 @@
 {% if page.sidebar != nil}
 
-  {% assign sidebar = page.sidebar | prepend: 'site.data.sidebars.' | append: '.entries' %}
+<!--  {% assign sidebar = page.sidebar | prepend: 'site.data.sidebars.' | append: '.entries' %} -->
     {% assign sidebar = site.data.sidebars.[page.sidebar].entries %}
-    <p>sidebar {{sidebar}}</p>
 
 {% else %}
 

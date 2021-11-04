@@ -1,9 +1,9 @@
 = API Properties & Encryption
-:page-sidebar: apim_3_x_sidebar
 
+== Add API Properties
+With Gravitee APIM, you can add and encrypt properties that are local to the API by taking advantage of key-value pairings. Get the most out of this feature and comply with your organization's security requirements by adding these properties to policies afterwards.
 
-== How To Add API Properties
-With Gravitee APIM, you can add and encrypt properties that are local to the API by taking advantage of key-value pairings. Get the most out of this feature and comply with your organization's security requirements by adding these properties to policies afterwards. Note **values are unencrypted by default.**
+NOTE: Values are unencrypted by default.
 
 === Step 1
 First, select an API, then click on the **Design** tab. Once this tab is open, select the **Properties** tab in the upper right corner.

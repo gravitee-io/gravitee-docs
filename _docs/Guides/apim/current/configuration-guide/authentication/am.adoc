@@ -1,0 +1,106 @@
+---
+product: API Management
+guide: Configuration Guide
+toc: true
+title: Configure Access Management authentication
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+---
+
+This page explains how to configure APIM authentication using the https://www.gravitee.io/products/access-management[Gravitee.io Access Management^] product.
+
+NOTE: The examples below are based on Access Management 2.x (2.0.4 or above).
+
+== Create a new client in Access Management
+
+Before you can connect to APIM using Access Management (AM), you need to create a new client.
+
+See link:/Getstarted/quickstart-am/setup-app.html[Set up your first application^] in the AM documentation for guidance on setting up your first security domain and client application.
+
+WARNING: The `Valid Redirect URIs` value must exactly match the domain hosting APIM Portal.
+
+=== Retrieve client credentials
+
+After you create the client, you can retrieve its credentials for authentication configuration.
+
+image::apim/3.x/installation/authentication/graviteeam_client_credentials.png[Get client credentials]
+
+== Configure APIM
+
+include::../../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
+
+==== APIM Console configuration
+
+. Click *Organization Settings > Authentication*.
+. Click the plus icon image:icons/plus-icon.png[role="icon"] and select the *Gravitee.io AM* icon.
+. If you want to use this provider to log in to APIM Portal, ensure that *Allow portal authentication to use this identity provider* is checked. To use it only for APIM Console, uncheck this option.
+. Enter the details of the provider, including the credentials created in the AM client.
++
+image::apim/3.x/management-api-configuration-idp/new-am.png[Gravitee.io - New Gravitee.io AM IDP]
+. Click *CREATE*.
+. Activate the provider for Portal or Console login, as described in link:./introduction.html#activating-providers[Activating providers^].
+
+==== `gravitee.yml` file configuration
+
+Update the following section of the file with the AM client credentials.
+
+[source,yaml]
+----
+security:
+  providers:
+    - type: graviteeio_am
+      clientId: xxxx-xxx-xxx-xxx
+      clientSecret: xxxx-xxx-xxx-xxx
+      serverURL: https://gravitee.io/am
+      domain: gravitee
+      color: "#3C3C3C"
+      syncMappings: false
+      scopes:
+        - openid
+        - email
+      userMapping:
+        id: sub
+        email: email
+        lastname: family_name
+        firstname: given_name
+        picture: picture
+      groupMapping:
+        - condition: "{#jsonPath(#profile, '$.identity_provider_id') == 'PARTNERS' && #jsonPath(#profile, '$.job_id') != 'API_MANAGER'}"
+          groups:
+            - Group 1
+            - Group 2
+      roleMapping:
+        - condition: "{#jsonPath(#profile, '$.job_id') != 'API_MANAGER'}"
+          roles:
+            - "ORGANIZATION:USER"
+            - "ENVIRONMENT:API_CONSUMER"                  #applied to the DEFAULT environment
+            - "ENVIRONMENT:DEFAULT:API_CONSUMER"          #applied to the DEFAULT environment
+            - "ENVIRONMENT:<ENVIRONMENT_ID>:API_CONSUMER" #applied to environment whose id is <ENVIRONMENT_ID>
+----
+
+== Test the configuration
+
+=== Create a user in AM
+
+See link:/Getstarted/quickstart-am/setup-app.html[Set up your first application^] for guidance on setting up your new AM user.
+
+NOTE: APIM requires an `email` profile to enable portal authentication. If you create an Inline identity provider in AM, you need to specify an email address in the *Username* field.
+
+image::apim/3.x/installation/authentication/graviteeam_create_user.png[]
+
+=== Log in to APIM Portal
+
+. Click *Sign in with Gravitee.io AM*.
++
+image::apim/3.x/installation/authentication/graviteeam_login_form.png[]
+
+. Enter your user credentials and click *LOG IN*.
++
+image::apim/3.x/installation/authentication/graviteeam_login_form2.png[]
++
+. Click *AUTHORIZE* on the approval page.
++
+image::apim/3.x/installation/authentication/graviteeam_login_form3.png[]
++
+You have successfully logged in:
++
+image::apim/3.x/installation/authentication/graviteeam_login_success.png[]

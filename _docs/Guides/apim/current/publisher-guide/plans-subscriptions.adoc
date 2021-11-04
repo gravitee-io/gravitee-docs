@@ -2,7 +2,6 @@
 product: API Management
 toc: true
 guide: Publisher Guide
-sidebar: apim_3_x_sidebar
 title: Plans and subscriptions
 ---
 
@@ -10,7 +9,7 @@ Once an API is registered and made public, you can manage subscriptions to it th
 
 == What is a plan?
 
-A plan provides a service and access layer on top of your API for consumer applications.
+A plan provides a service and access layer on top of your API for consumer link:../introduction.html#application[applications].
 A plan specifies access limits, subscription validation modes and other configuration to tailor it to a specific application.
 
 image::apim/3.x/api-publisher-guide/plans-subscriptions/plan-diagram.png[Gravitee.io - Plan diagram, 873, 530, align=center, title-align=center]
@@ -26,10 +25,10 @@ Imagine the following scenarios:
 
 These scenarios can be difficult to encode into your APIs and are better managed using external tools. APIM manages all of these scenarios and more using plans.
 
-To subscribe to an API, developers (consumers) must create an link:/apim/3.x/apim_overview_concepts.html#gravitee-concepts-application[application] and associate it with a plan.
+To subscribe to an API, developers (consumers) must create an application and associate it with a plan.
 This creates a subscription, which APIM uses to decide whether to accept or deny an incoming request.
 
-You can find more information about applications and subscriptions in the link:/apim/3.x/apim_consumerguide_portal.html[API Consumer Guide^].
+You can find more information about applications and subscriptions in the link:../consumer-guide/introduction.html[API Consumer Guide^].
 
 == How to create a plan
 
@@ -41,7 +40,7 @@ The workflow is as follows:
 . *Restrictions* -- specify details of plan restrictions (see <<Configure plan restrictions>>)
 . *Policies* -- add policy definitions (see <<Configure plan policies>>)
 
-NOTE: From APIM 3.5.x, adding policies is taken care of as part of the API design process in link:/apim/3.x/apim_publisherguide_design_studio_overview.html[Design Studio^].
+NOTE: From APIM 3.5.x, adding policies is taken care of as part of the API design process in link:./design-studio/introduction.html[Design Studio^].
 
 == Create a plan
 
@@ -53,7 +52,7 @@ Create or update a plan with *Portal > Plans*:
 
 image::apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-2.png[Gravitee.io - Manage plan, 873, 530, align=center, title-align=center]
 
-Once you create and publish a plan it appears in Design Studio, where you can configure flow details for it. For more details, see link:/apim/3.x/apim_publisherguide_design_studio_create.html[Design your API with Design Studio^].
+Once you create and publish a plan it appears in Design Studio, where you can configure flow details for it. For more details, see link:./design-studio/create-flow.html[Design your API with Design Studio^].
 
 == Configure plan security
 
@@ -74,7 +73,7 @@ Due to the lack of consumer identifier token (API key), keyless consumers are se
 
 ==== Basic authentication
 
-You can configure basic authentication for keyless plans, by associating a basic authentication policy with either an LDAP or inline resource. For more details, see link:/apim/3.x/apim_policies_basic_authentication.html[Basic authentication policy^].
+You can configure basic authentication for keyless plans, by associating a basic authentication policy with either an LDAP or inline resource. For more details, see link:/Reference/policy/policy-basic-authentication.html[Basic authentication policy^].
 
 === API key plans
 
@@ -141,7 +140,7 @@ the introspection endpoint *must* also require some form of authorization to acc
 
 ==== Create an OAuth 2.0 plan
 
-NOTE: If you already have a suitable plan defined, you can add your OAuth2 resource to one of the flows defined for it in Design Studio, by following the steps in link:/apim/3.x/apim_publisherguide_design_studio_create.html#flow-policies[Add policies to a flow^].
+NOTE: If you already have a suitable plan defined, you can add your OAuth2 resource to one of the flows defined for it in Design Studio, by following the steps in link:./design-studio/create-flow.html#flow-policies[Add policies to a flow^].
 
 . In APIM Console, click *Portal > Plans*.
 . Create your new plan.
@@ -182,7 +181,7 @@ The policy searches for a client ID in the payload as follows:
 . When you reach the *Secure* section (the second step), choose *JWT* as the authorization type.
 . Specify the public key used to verify the incoming JWT token.
 +
-NOTE: You can also set the public key in the `gravitee.yml` file. See link:/apim/3.x/apim_policies_jwt.html[JWT policy] for more information. APIM only supports the RSA Public Key format.
+NOTE: You can also set the public key in the `gravitee.yml` file. See link:/Reference/policy/policy-jwt.html[JWT policy] for more information. APIM only supports the RSA Public Key format.
 +
 image::apim/3.x/api-publisher-guide/plans-subscriptions/create-jwt-plan.png[Gravitee.io - Create JWT plan, 873, 530, align=center, title-align=center]
 . Click *NEXT*, then *SAVE* to save your new plan.
@@ -234,7 +233,7 @@ NOTE: You can use resource filtering to make an API read-only for public members
 
 == Configure plan policies
 
-NOTE: From APIM 3.5.x, the recommended method for adding policies to plans is with link:/apim/3.x/apim_publisherguide_design_studio_create.html#flow-policies[Design Studio^]
+NOTE: From APIM 3.5.x, the recommended method for adding policies to plans is with link:./design-studio/create-flow.html#flow-policies[Design Studio^]
 
 You can configure a policy or chain of policies of one or more types.
 
