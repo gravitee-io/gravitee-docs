@@ -10,8 +10,7 @@ AM supports various MFA factors for protecting user account access out of the bo
 
 == Create a new MFA factor
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Multifactor Auth*.
+. In AM Console, click *Settings > Multifactor Auth*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select the factor type and click *Next*.
 +
@@ -19,6 +18,7 @@ image::am/current/graviteeio-am-userguide-mfa-factor-types.png[]
 +
 . Enter the factor details and click *Create*.
 . Click *Applications* and select your application.
+. Click the *Settings* tab, then click *Multifactor Auth*.
 . Enable MFA by selecting an available factor.
 +
 image::am/current/graviteeio-am-userguide-mfa-application-factor.png[]
@@ -50,6 +50,20 @@ image::am/current/graviteeio-am-userguide-mfa-sms-challenge.png[SMS Challenge]
 
 NOTE: You can change the look and feel of forms using link:/am/current/am_userguide_user_management_forms.html[Custom forms^]. The enrollment form must send the phone number using the `phone` parameter in E.164 notation.
 
+== Phone call verification
+
+With Phone call verification, you can receive a verification code via a phone call to be used as the second factor to validate a user’s account.
+
+NOTE: Phone call MFA requires a compatible link:/am/current/am_userguide_resources.html[resource^].
+
+If you enable a *Call* type factor for your application, next time your users log in they will see the following screens:
+
+image::am/current/graviteeio-am-userguide-mfa-call-enroll.png[Call Enroll]
+
+image::am/current/graviteeio-am-userguide-mfa-call-challenge.png[Call Challenge]
+
+NOTE: You can change the look and feel of forms using link:/am/current/am_userguide_user_management_forms.html[Custom forms^]. The enrollment form must send the phone number using the `phone` parameter in E.164 notation.
+
 == Email verification
 
 With Email verification, you can receive a verification code on your email address to be used as the second factor to validate a user’s account.
@@ -66,6 +80,6 @@ If you enable an Email type factor for your application, next time your users lo
 
 image::am/current/graviteeio-am-userguide-mfa-email-enroll.png[Email Enroll]
 
-image::am/current/graviteeio-am-userguide-mfa-emal-challenge.png[Email Challenge]
+image::am/current/graviteeio-am-userguide-mfa-email-challenge.png[Email Challenge]
 
 NOTE: You can change the look and feel of forms using link:/am/current/am_userguide_user_management_forms.html[Custom forms^]. The enrollment form must send the email address using the `email` parameter.
