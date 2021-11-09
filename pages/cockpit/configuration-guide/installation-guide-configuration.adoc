@@ -22,7 +22,8 @@ The `gravitee.yml` file, found in `GRAVITEE_HOME/config/`, is the default way to
 
 WARNING: YAML (`yml`) format is very sensitive to indentation. Ensure you include the correct number of spaces and use spaces instead of tabs.
 
-```yaml
+[source,yaml]
+----
 ############################################################################################################
 ############################ Gravitee.IO Cockpit Management API - Configuration ############################
 ############################################################################################################
@@ -113,35 +114,37 @@ controller:
     #host: 0.0.0.0
     #alpn: false
 
-#ssl:
-#  keystore:
-#    type: pkcs12 # Supports jks, pem, pkcs12
-#    path:
-#    password:
-#  truststore:
-#    type: jks # Supports jks, pem, pkcs12
-#    path:
-#    password:
+ssl:
+  keystore:
+    type: pkcs12 # Supports jks, pem, pkcs12
+    path:
+    password:
+  truststore:
+    type: pkcs12 # Supports jks, pem, pkcs12
+    path:
+    password:
 
-#keystore:
-#  type: pkcs12 # Supports jks, pem, pkcs12
-#  path:
-#  password:
+keystore:
+  type: pkcs12 # Supports jks, pem, pkcs12
+  path:
+  password:
 
-#truststore:
-#  type: pkcs12 # Supports jks, pem, pkcs12
-#  path:
-#  password:
+truststore:
+  type: pkcs12 # Supports jks, pem, pkcs12
+  path:
+  password:
 
-# Plugins repository
-#plugins:
-#  path:
-#    - ${gravitee.home}/plugins
-#    - ${gravitee.home}/my-custom-plugins
-# If a external is already installed (but with a different version), management node does not start anymore
-#  failOnDuplicate: true
+# Management repository is used to store global configuration
 
-# Management repository is used to store global configuration such as APIs, applications, apikeys, ...
+# Management repository: single MongoDB using URI
+# For more information about MongoDB configuration using URI, please have a look to:
+# - http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html
+#management:
+#  type: mongodb
+#  mongodb:
+#    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+
+
 # This is the default configuration using MongoDB (single server)
 # For more information about MongoDB configuration, please have a look to:
 # - http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html
@@ -171,18 +174,14 @@ management:
 #    sslEnabled: false
 #    threadsAllowedToBlockForConnectionMultiplier: 5
 #    cursorFinalizerEnabled: true
-# possible values are 1,2,3... (the number of node) or 'majority'
 #    writeConcern: 1
 #    wtimeout: 0
 #    journal: true
-
-# Management repository: single MongoDB using URI
-# For more information about MongoDB configuration using URI, please have a look to:
-# - http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html
-#management:
-#  type: mongodb
-#  mongodb:
-#    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+ds:
+  mongodb:
+    dbname: gravitee-cockpit
+    host: localhost
+    port: 27017
 
 # Management repository: clustered MongoDB
 #management:
@@ -212,7 +211,6 @@ management:
 #      minIdle:
 #      maxPoolSize:
 
-
 services:
   core:
     http:
@@ -241,13 +239,6 @@ services:
     onPremise:
       # On premise we won't delete any health check report by default, that why the default value is -1.
       monitoringDataRetentionDuration: -1
-
-# Referenced properties
-ds:
-  mongodb:
-    dbname: gravitee-cockpit
-    host: localhost
-    port: 27017
 
 certificates:
   # The default secret to use to protect passwords of generated account keystores (WARN: need to be changed).
@@ -344,7 +335,7 @@ auth:
 #    http:
 #      connectionTimeout: 10000
 #      maxTotalConnection: 10
-```
+----
 
 === System properties
 
