@@ -8,9 +8,12 @@
 <title>{{ page.title }} | {{ site.site_title }}</title>
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ '/assets/css/app.min.css' | relative_url }} "/>
+<link rel="stylesheet" href="{{ "/assets/css/lavish-bootstrap.css" | relative_url }}">
+<link rel="stylesheet" href="{{ "/assets/css/theme-gravitee-new.css" | relative_url }}">
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ "/assets/css/modern-business.css" | relative_url }}">
-<link rel="stylesheet" href="{{ "/assets/css/lavish-bootstrap.css" | relative_url }}">
+
 <link rel="stylesheet" href="{{ "/assets/css/rouge_github.css" | relative_url }}">
 <link rel="stylesheet" href="{{ "/assets/css/customstyles.css" | relative_url }}">
 <link rel="stylesheet" href="{{ "/assets/fonts/plex/css/ibm-plex.css" | relative_url }}">-->
@@ -34,3 +37,11 @@
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "feed.xml" | prepend: site.url }}">
 <!-- Algolia search -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+<script src="{{ '/assets/js/init-default.js' | relative_url }}"></script>
+
+{% if page.datatable == true %}
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js"></script>
+<script src="{{ '/assets/js/init-table.js' | relative_url }}"></script>
+{% endif %}

@@ -1,3 +1,48 @@
+{% assign sidebar_url = page.url | split: '/' %}
+
+<!-- Guides -->
+{% assign doc_cat = sidebar_url[1] %}
+{% assign doc_product = sidebar_url[2] %}
+{% assign doc_version = sidebar_url[3] %}
+{% assign idoc_url = sidebar_url | last %}
+
+<!-- only true for top-level intro -->
+{% if sidebar_url.size > 5 %}
+
+  {% assign doc_guide = sidebar_url[4] %}
+
+<!-- only true if there is a guide but no subguide -->
+
+  {% if sidebar_url.size > 6 %}
+
+    {% assign doc_subguide = sidebar_url[5] %}
+
+  {% endif %}
+
+{% endif %}
+
+{% capture doc_url %}{{idoc_url}}.html{% endcapture %}
+{% capture page_url %}{{page.url}}.html{% endcapture %}
+
+{% if doc_cat == "Guides" %}
+
+  {% capture sidebar_name %}{{doc_product}}_{{doc_version}}_sidebar{% endcapture %}
+<!--   {% assign sidebar = sidebar_name | prepend: 'site.data.sidebars.' | append: '.entries' %}-->
+
+  {% assign sidebar = site.data.sidebars.[sidebar_name].entries %}
+
+{% elsif doc_cat == "Getstarted" %}
+
+  {% assign sidebar = site.data.sidebars.gettingstarted_sidebar.entries %}
+
+{% elsif doc_cat == "Reference" %}
+
+  {% assign sidebar = site.data.sidebars.reference_sidebar.entries %}
+
+{% endif %}
+
+<!--
+
 {% if page.sidebar == "reference_sidebar" %}
 {% assign sidebar = site.data.sidebars.reference_sidebar.entries %}
 
@@ -38,3 +83,5 @@
 {% assign sidebar = site.data.sidebars.gettingstarted_sidebar.entries %}
 
 {% endif %}
+
+-->

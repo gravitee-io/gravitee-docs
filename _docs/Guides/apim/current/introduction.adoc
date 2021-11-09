@@ -1,12 +1,11 @@
 ---
-product: API Management
-toc: true
 keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+toc: true
 ---
 
-Organizations are increasingly using API management solutions to publish their APIs to third parties such as external developers, internal developers and other
-partners. API management can unlock the potential of their data and services and help them transform an OpenAPI and OpenData approach, extending their
-digital platform offerings, opening up new communication channels and bringing in new customers.
+Organizations are increasingly using API management solutions to publish their APIs to third parties such as external developers, internal developers, and other
+partners. API management can unlock the potential of their data and services and help them transform to an OpenAPI and OpenData approach, extending their
+digital platform offerings, opening up new communication channels, and bringing in new customers.
 
 New customers bring new challenges. Here are a few examples:
 
@@ -14,7 +13,7 @@ New customers bring new challenges. Here are a few examples:
 * How to identify partners and manage their API consumption.
 * How to measure consumption from a consumer and/or producer point of view.
 * How to share existing APIs and how to discover them.
-* How to manage the API lifecycle, versioning, documentation, and so on.s
+* How to manage the API lifecycle, versioning, documentation, and so on.
 
 A centralized management tool is a must for any organization trying to overcome all of these challenges seamlessly for all their APIs. This is where Gravitee.io API Management comes in.
 
@@ -26,22 +25,23 @@ image::apim/3.x/overview/architecture/new-gravitee-global-architecture-schema.pn
 
 == APIM concepts
 
-=== API
+==== API
 
 **API** is the root concept defined and used by APIM. Think of this as the starting point through which services are exposed to the gateway.
 
-=== Publisher
+==== Publisher
 
-In APIM, a **publisher** (AKA **API publisher**) is the role that declares and manages APIs.
+In APIM, a **publisher** (**API publisher**) is the role that declares and manages APIs.
 
-=== Consumer
+==== Consumer
 
-In APIM, a **consumer** (AKA **API Consumer**) is the role that consumers APIs.
-**PRO-TIP**: A consumer can only consume an API after subscribing to it.
+In APIM, a **consumer** (**API Consumer**) is the role that consumes APIs.
 
-=== Application
+**PRO-TIP**: Consumer can only consume APIs after subscribing to them.
 
-An **application** is an intermediate layer between a consumer and an API. The consumer uses an application to subscribe to the API before they are able to consume it.
+==== Application
+
+An **application** is an intermediate layer between a consumer and an API. Consumers use an application to subscribe to the API so they can consume it.
 
 == APIM components
 
@@ -53,7 +53,7 @@ APIM is made up of four main components:
 - APIM Portal
 
 [[gravitee-components-gateway]]
-=== APIM Gateway
+==== APIM Gateway
 APIM Gateway is the core component of the APIM platform. You can think of it like a _smart_ proxy.
 
 Unlike a traditional HTTP proxy, APIM Gateway has the capability to apply <<gravitee-plugins-policies, policies>> (or rules) to both HTTP requests and responses. With policies, you can enhance request and response processing by adding transformations, security, and many other exciting features.
@@ -62,19 +62,19 @@ Unlike a traditional HTTP proxy, APIM Gateway has the capability to apply <<grav
 image::apim/3.x/overview/components/new-components-apim-gateway-internal-gateway.png[Gravitee.io -- Internal Gateway]
 
 [[gravitee-components-rest-api]]
-=== APIM API
+==== APIM API
 This RESTful API exposes services to manage and configure the <<gravitee-components-mgmt-ui, APIM Console>> and <<gravitee-components-portal-ui, APIM Portal>> web UIs.
 All exposed services are restricted by authentication and authorization rules. For more information, see
 the link:/Reference/API/apim-rest-api-doc.html[API Reference] section.
 
 [[gravitee-components-mgmt-ui]]
-=== APIM Console
+==== APIM Console
 This web UI gives easy access to some key <<gravitee-components-rest-api, APIM API>> services.
 <<publisher, API Publishers>> can use it to publish APIs.
 Administrators can also configure global platform settings and specific portal settings.
 
 [[gravitee-components-portal-ui]]
-=== APIM Portal
+==== APIM Portal
 This web UI gives easy access to some key <<gravitee-components-rest-api, APIM API>> services.
 <<consumer, API Consumers>> can use it to search for, view, try out and subscribe to a published API.
 They can also use it to manage their <<application, applications>>.
@@ -86,8 +86,6 @@ Plugins are additional components that can be _plugged in_ to <<gravitee-compone
 They can customize the component's behavior to exactly fit your needs and technical constraints.
 
 For more information about plugins, including how to deploy them and details of their directory structure, see the link:../dev-guide/dev-guide-plugins.html[Plugins] section of the Developer Guide.
-
-=== Types of plugins
 
 The table below lists the different types of plugins you can use with APIM, with the component(s) they can be plugged into and some examples. For more details of what each plugin type does, see the sections below.
 

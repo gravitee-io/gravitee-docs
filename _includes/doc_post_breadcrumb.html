@@ -1,34 +1,33 @@
-{% assign url = page.url | split: '/' %}
-{% assign doctype = url[1] %}
-{% assign version = url[3] %}
-
+{% include custom/sidebarconfigs.html %}
 
 <nav class="layout-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ "/" | relative_url }}">Home</a></li>
-        {% if page.product != nil %}
 
-        <li class="breadcrumb-item">{{page.product}}</li>
+      {% if doc_cat == "Guides" %}
+
+        <li class="breadcrumb-item">{{doc_product}}</li>
+        <li class="breadcrumb-item">{{doc_version}}</li>
+        {% if doc_guide != nil %}
+        <li class="breadcrumb-item">{{doc_guide}}</li>
+        {% if doc_subguide != nil %}
+
+        <li class="breadcrumb-item">{{doc_subguide}}</li>
+
         {% endif %}
 
-        {% if doctype == "Guides" %}
-
-        <li class="breadcrumb-item">{{version}}</li>
-
         {% endif %}
 
-        {% if page.guide != nil %}
-        <li class="breadcrumb-item">{{page.guide}}</li>
-        {% if page.guide-section != nil %}
+      {% elsif doc_cat == "Getstarted" %}
+          <li class="breadcrumb-item">Get started</li>
 
-        <li class="breadcrumb-item">{{page.guide-section}}</li>
-            {% endif %}
-        <li class="breadcrumb-item active" aria-current="page">{{page.title}}</li>
+      {% elsif doc_cat == "Reference" %}
 
-        {% else %}
-
-        <li class="breadcrumb-item active" aria-current="page">{{page.title}}</li>
+          <li class="breadcrumb-item">Reference</li>
 
       {% endif %}
+
+        <li class="breadcrumb-item active" aria-current="page">{{page.title}}</li>
+
     </ol>
 </nav>

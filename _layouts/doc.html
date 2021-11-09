@@ -2,10 +2,6 @@
 layout: default_docs
 toc: true
 ---
-<!--
-{% include doc_header.html %}
-{% include doc_post_header.html %}
--->
 
 <section class="layout-area bg-color1 content tutorial">
   <div class="layout-wrapper section-spacing bminus-30">
@@ -22,9 +18,8 @@ toc: true
 </div>
 <!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
 <script>$("li.active").parents('li').toggleClass("active");</script>
-		{% endif %}
 
-
+{% endif %}
 		{% assign col = "6" %}
 
 		{% if page.toc == false %}
@@ -45,8 +40,7 @@ toc: true
           </div>
         </div>
 
-    {% if page.toc == true or page.toc == nil %}
-
+		{% if page.toc != false %}
         <div class="col-md-3">
           <div class=" doc-sidebar-menu doc-right-sidebar">
 
@@ -60,7 +54,7 @@ toc: true
 
           </div>
         </div>
-		{% endif %}
+      {% endif %}  
       </div>
     </div>
   </div>

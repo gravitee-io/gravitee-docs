@@ -1,28 +1,9 @@
+{% include custom/sidebarconfigs.html %}
+
 {% if page.sidebar != nil}
 
 <!--  {% assign sidebar = page.sidebar | prepend: 'site.data.sidebars.' | append: '.entries' %} -->
     {% assign sidebar = site.data.sidebars.[page.sidebar].entries %}
-
-{% else %}
-
-{% assign sidebar_url = page.url | split: '/' %}
-
-{% if sidebar_url[1] == "Guides" %}
-
-  {% capture sidebar_name %}{{sidebar_url[2]}}_{{sidebar_url[3]}}_sidebar{% endcapture %}
-<!--   {% assign sidebar = sidebar_name | prepend: 'site.data.sidebars.' | append: '.entries' %}-->
-
-  {% assign sidebar = site.data.sidebars.[sidebar_name].entries %}
-
-{% elsif sidebar_url[1] == "Getstarted" %}
-
-  {% assign sidebar = site.data.sidebars.gettingstarted_sidebar.entries %}
-
-{% elsif sidebar_url[1] == "Reference" %}
-
-  {% assign sidebar = site.data.sidebars.reference_sidebar.entries %}
-
-{% endif %}
 
 {% endif %}
 
@@ -30,9 +11,9 @@
   <!--  <h5>{{sidebar[0].product}}</h5> -->
 
 <!-- Version dropdown -->
-{% if sidebar[0].product contains "API Management" %}
+{% if doc_product == "apim" %}
   {% assign sidebar_versions = site.data.side-nav-versions.apim_sidenav_versions %}
-{% elsif sidebar[0].product contains "Access Management" %}
+{% elsif doc_product == "am" %}
   {% assign sidebar_versions = site.data.side-nav-versions.am_sidenav_versions %}
 {% elsif sidebar[0].product contains "Cockpit" %}
 {% elsif sidebar[0].product contains "" %}
@@ -41,12 +22,12 @@
     {% for entry in sidebar_versions %}
     {% for folder in entry.folders %}
       <li class="dropdown-button">
-        Version<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+        Version<a href="#" class="dropdown-toggle" data-toggle="dropdown"></a>
           <ul class="dropdown-menu">
             {% for folderitem in folder.folderitems %}
               {% if folderitem.external_url %}
               <li><a href="{{folderitem.external_url}}" target="_blank">{{folderitem.title}}</a></li>
-              {% elsif page.url contains folderitem.url %}
+              {% elsif doc_url == folderitem.url %}
               <li class="dropdownActive"><a href="{{folderitem.url}}">{{folderitem.title}}</a></li>
               {% else %}
               <li><a href="{{folderitem.url}}">{{folderitem.title}}</a></li>
@@ -71,7 +52,7 @@
                 {% if folderitem.output contains "web" %}
                 {% if folderitem.external_url %}
                 <li><a href="{{folderitem.external_url}}" target="_blank">{{folderitem.title}}</a></li>
-                {% elsif page.url == folderitem.url %}
+                {% elsif page_url == folderitem.url %}
                 <li class="active"><a href="{{folderitem.url}}">{{folderitem.title}}</a></li>
                 {% else %}
                 <li><a href="{{folderitem.url}}">{{folderitem.title}}</a></li>
@@ -89,7 +70,7 @@
                         {% if subfolderitem.output contains "web" %}
                         {% if subfolderitem.external_url %}
                         <li><a href="{{subfolderitem.external_url}}" target="_blank">{{subfolderitem.title}}</a></li>
-                        {% elsif page.url == subfolderitem.url %}
+                        {% elsif page_url == subfolderitem.url %}
                         <li class="active"><a href="{{subfolderitem.url}}">{{subfolderitem.title}}</a></li>
                         {% else %}
                         <li><a href="{{subfolderitem.url}}">{{subfolderitem.title}}</a></li>
@@ -103,7 +84,7 @@
                                 {% if subfolderitem.output contains "web" %}
                                 {% if subfolderitem.external_url %}
                                 <li><a href="{{subfolderitem.external_url}}" target="_blank">{{subfolderitem.title}}</a></li>
-                                {% elsif page.url == subfolderitem.url %}
+                                {% elsif page_url == subfolderitem.url %}
                                 <li class="active"><a href="{{subfolderitem.url}}">{{subfolderitem.title}}</a></li>
                                 {% else %}
                                 <li><a href="{{subfolderitem.url}}">{{subfolderitem.title}}</a></li>

@@ -28,6 +28,19 @@ body {
     margin-right: 0;
 }
 
+.navbar-right, .navbar-header {
+    display: flex;
+    flex-direction: row;
+    /* align-content: center; */
+    align-items: center;
+}
+
+.navbar-brand img{
+	height: 30px;
+	margin-left: 40px;
+	margin-top: 15px;
+}	
+
 .gv-input {
     border: 2px solid;
     border-radius: 8em;
