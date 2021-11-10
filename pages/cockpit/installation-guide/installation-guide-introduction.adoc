@@ -13,7 +13,7 @@ The following sections explain how to prepare, install, and configure your Cockp
 NOTE: This Installation Guide provides information about how to install Gravitee.io components. For external components, such as
 MongoDB, see the relevant product documentation.
 
-Cockpit generates a certificate that will be used to authenticate installations (APIM/AM) that will connect. To create this certificate, you need to put private/public keys in keystore/truststore file and provide them using the following configuration attributes:
+Cockpit generates a certificate that will be used to authenticate installations (APIM/AM) when they connect. To create this certificate, you need to put private/public keys in a keystore/truststore file and provide details using the following configuration attributes:
 
 [source,yaml]
 ----
@@ -27,7 +27,7 @@ truststore:
   password: <password>
 ----
 
-You also need a certificate to activate SSL for the WebSocket. Put this certificate in a `server.p12` Keystore and provide it through the following configuration attributes:
+You also need a certificate to activate SSL for WebSocket. Put this certificate in a `server.p12` keystore and provide it through the following configuration attributes:
 
 [source,yaml]
 ----
@@ -42,4 +42,31 @@ ssl:
     password: <password>
 ----
 
-WARNING: Cockpit won't start if no keystore/truststore are provided.
+WARNING: Cockpit won't start if no keystore/truststore is provided.
+
+== Generate certificates
+
+If you don't have certificates but still want to install Cockpit for dev purposes, you can generate local certificates.
+
+WARNING: The following commands are only for local development. The certificates they generate are not suitable for production environments.
+
+NOTE: We assume you are in a dedicated folder such as `/path-to-certificates`
+
+[source,bash]
+----
+# Create certificate authority
+openssl req -newkey rsa:4096 -keyform PEM -keyout ca.key -x509 -days 3650 -subj "/emailAddress=contact@company.com/CN=cockpit.company.com/OU=Company/O=Company/L=Lille/ST=France/C=FR" -passout pass:ca-secret -outform PEM -out ca.pem
+openssl pkcs12 -export -inkey ca.key -in ca.pem -out ca.p12 -passin pass:ca-secret -passout pass:ca-secret -name cockpit-ca
+
+# Create Java truststore with certificate authority (public, no private key will be exported)
+keytool -import -file ca.pem -storetype PKCS12 -keystore ca-truststore.p12 -storepass truststore-secret -noprompt -alias cockpit-ca
+
+# Server key (localhost)
+openssl genrsa -out server.key 4096
+openssl req -new -key server.key -out server.csr -sha256 -subj "/emailAddress=contact@company.com/CN=localhost/OU=Cockpit/O=Company/L=Lille/ST=France/C=FR"
+openssl x509 -req -in server.csr -CA ca.pem -CAkey ca.key -set_serial 100 -extensions server -days 1460 -outform PEM -out server.cer -sha256 -passin pass:ca-secret
+openssl pkcs12 -export -inkey server.key -in server.cer -out server.p12 -passout pass:server-secret -name cockpit-server
+
+# Import all into a global keystore
+keytool -importkeystore -srcstoretype pkcs12 -srckeystore ca.p12 -srcstorepass ca-secret -deststoretype pkcs12 -destkeystore keystore.p12 -deststorepass keystore-secret
+----
