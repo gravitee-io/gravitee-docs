@@ -10,10 +10,14 @@
     <script src="{{ '/js/init-table.js' | relative_url }}"></script>
     {% endif %}
 
+    {% include GoogleTagManager_head.liquid %}
+    {% if site.google_analytics %}
+    {% include google_analytics.html %}
+    {% endif %}
 </head>
 <body>
 {% include topnav.html %}
-
+{% include GoogleTagManager_body.liquid %}
 <!-- Page Content -->
 <div class="container">
     <div class="col-lg-12">&nbsp;</div>
