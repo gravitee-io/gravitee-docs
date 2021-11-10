@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <head>
     {% include head.html %}
-
+    {% include GoogleTagManager_head.liquid %}
+    {% if site.google_analytics %}
+    {% include google_analytics.html %}
+    {% endif %}
 </head>
 <body>
 {% include topnav.html %}
+{% include GoogleTagManager_body.liquid %}
 
 <!-- API Content -->
 <div class="container" style="width: 100%; max-width: 100%; margin: 0; padding: 0">
