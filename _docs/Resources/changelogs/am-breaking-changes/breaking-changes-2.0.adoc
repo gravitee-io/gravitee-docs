@@ -1,5 +1,8 @@
 = Breaking changes in 2.0
 :page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_2.0.html
+:page-folder: am/installation-guide
+:page-layout: am
 
 == OAuth 2.0 access and refresh tokens
 
@@ -49,3 +52,8 @@ Starting from Gravitee.io AM *2.0.4*, OpenID Connect endpoints have been moved u
 |https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata[OpenID Provider Configuration Endpoint] |`https://am_gateway/:securityDomainPath/oidc/.well-known/openid-configuration`
 
 |===
+
+
+
+
+

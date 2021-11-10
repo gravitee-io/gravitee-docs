@@ -1,6 +1,5 @@
 ---
 layout: default_docs
-toc: true
 ---
 
 <section class="layout-area bg-color1 content tutorial">
@@ -40,7 +39,7 @@ toc: true
           </div>
         </div>
 
-		{% if page.toc != false %}
+        {% unless page.toc == false %}
         <div class="col-md-3">
           <div class=" doc-sidebar-menu doc-right-sidebar">
 
@@ -54,14 +53,12 @@ toc: true
 
           </div>
         </div>
-      {% endif %}  
+{% endunless %}
       </div>
     </div>
   </div>
   </section>
 
-{% include support_area.html %}
-{% include support_area_2.html %}
 {% include footer.html %}
 
 <script>

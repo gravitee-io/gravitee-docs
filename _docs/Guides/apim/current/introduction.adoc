@@ -1,6 +1,6 @@
 ---
-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 toc: true
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 ---
 
 Organizations are increasingly using API management solutions to publish their APIs to third parties such as external developers, internal developers, and other
@@ -20,8 +20,14 @@ A centralized management tool is a must for any organization trying to overcome 
 Gravitee.io API Management (APIM) is a flexible, lightweight, blazing-fast open source API management solution that gives your organization full control over who accesses your APIs, when and how. APIM is both simple to use and powerful, providing a global solution for API management.
 
 == APIM architecture
+
+Before you install and use the product, take a few moments to get to know the APIM architecture. These images show the global and platform architecture.
+
 .Gravitee.io APIM - Global Architecture
 image::apim/3.x/overview/architecture/new-gravitee-global-architecture-schema.png[Gravitee.io APIM - Global Architecture]
+
+.Gravitee.io APIM - Platform Architecture
+image::apim/3.x/overview/architecture/new-gravitee-platform-architecture-schema.png[Gravitee.io Platform Architecture]
 
 == APIM concepts
 
@@ -54,12 +60,15 @@ APIM is made up of four main components:
 
 [[gravitee-components-gateway]]
 ==== APIM Gateway
-APIM Gateway is the core component of the APIM platform. You can think of it like a _smart_ proxy.
+APIM Gateway is the core component of the APIM platform. You can think of it like a smart proxy.
 
 Unlike a traditional HTTP proxy, APIM Gateway has the capability to apply <<gravitee-plugins-policies, policies>> (or rules) to both HTTP requests and responses. With policies, you can enhance request and response processing by adding transformations, security, and many other exciting features.
 
 .Gravitee.io APIM - Internal Gateway
-image::apim/3.x/overview/components/new-components-apim-gateway-internal-gateway.png[Gravitee.io -- Internal Gateway]
+image::apim/3.x/overview/components/new-gravitee-gateway-internal.png[Gravitee.io -- Internal Gateway]
+
+.Gravitee.io APIM - Gateway Architecture
+image::apim/3.x/overview/components/new-gravitee-gateway-architecture.png[Gravitee.io -- Gateway Architecture]
 
 [[gravitee-components-rest-api]]
 ==== APIM API

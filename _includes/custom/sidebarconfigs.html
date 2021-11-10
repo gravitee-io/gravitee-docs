@@ -2,7 +2,7 @@
 
 <!-- Guides -->
 {% assign doc_cat = sidebar_url[1] %}
-{% assign doc_product = sidebar_url[2] %}
+{% assign doc_product = sidebar_url[2] | %}
 {% assign doc_version = sidebar_url[3] %}
 {% assign idoc_url = sidebar_url | last %}
 
@@ -26,9 +26,7 @@
 
 {% if doc_cat == "Guides" %}
 
-  {% capture sidebar_name %}{{doc_product}}_{{doc_version}}_sidebar{% endcapture %}
-<!--   {% assign sidebar = sidebar_name | prepend: 'site.data.sidebars.' | append: '.entries' %}-->
-
+  {% capture sidebar_name %}{{doc_product | downcase}}_{{doc_version}}_sidebar{% endcapture %}
   {% assign sidebar = site.data.sidebars.[sidebar_name].entries %}
 
 {% elsif doc_cat == "Getstarted" %}

@@ -8,6 +8,19 @@ body {
     border-color: transparent;
 }
 
+.header-navigation {
+    background: rgb(1, 0, 2) linear-gradient(90deg, rgba(1, 0, 2, 1) 0%, rgba(23, 12, 102, 1) 55%, rgba(25, 139, 183, 1) 100%);
+    border-color: transparent;
+}
+
+.header-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 0;
+}
+
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus,
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus,
 .navbar-inverse .navbar-nav > .open > a .caret, .navbar-inverse .navbar-nav > .open > a:hover .caret, .navbar-inverse .navbar-nav > .open > a:focus .caret {
@@ -40,6 +53,25 @@ body {
 	margin-left: 40px;
 	margin-top: 15px;
 }	
+
+.bg-cover1 {
+  background: url(../images/slider-img.jpg) 50% no-repeat, linear-gradient(0deg, #0D65B0, #062e51); }
+
+.bg-cover2 {
+  background: url(../images/headline-img.jpg) 50% no-repeat, linear-gradient(0deg, #0D65B0, #062e51); }
+
+.bg-cover3 {
+  background: url(../images/footer-img.jpg) 50% no-repeat, linear-gradient(0deg, #0D65B0, #062e51); }
+
+.bg-color4 {
+    background-color: #000535;
+}
+
+.btn-style3 {
+    background-color: #0ff;
+    border-color #0ff;
+    color: #1b1464;
+}
 
 .gv-input {
     border: 2px solid;
@@ -354,7 +386,5 @@ body.slider-area .hero #autocompleteResults {
 	font-weight: 700;
 }
 
-.btn-style3 {
-	border-color: #0ff;
-    color: #1b1464;
-}
+
+

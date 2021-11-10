@@ -45,3 +45,8 @@
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js"></script>
 <script src="{{ '/assets/js/init-table.js' | relative_url }}"></script>
 {% endif %}
+
+{% include GoogleTagManager_head.liquid %}
+{% if site.google_analytics %}
+{% include google_analytics.html %}
+{% endif %}

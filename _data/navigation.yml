@@ -7,22 +7,22 @@
 - text: Product Guides
   submenu:
   - text: API Management
-    url: /Guides/apim/current/introduction.html
+    url: /Guides/APIM/current/introduction.html
   - text: Access Management
-    url: /Guides/am/current/am_overview_introduction
+    url: /Guides/AM/current/introduction
   - text: Cockpit
-    url: /Guides/cockpit/current/cockpit_overview_introduction.html
+    url: /Guides/Cockpit/current/introduction.html
   - text: Alert Engine
-    url: /Guides/ae/current/ae_overview_introduction.html
+    url: /Guides/AE/current/introduction.html
 - text: Reference
   url: /
   submenu:
   - text: APIM API Reference
-    url: /Reference/apim/current/apim_reference_api.html
+    url: /Reference/API/apim-rest-api.html
   - text: AM API Reference
-    url: /Reference/am/current/am_reference_api.html
+    url: /Reference/API/am-rest-api.html
   - text: APIM Policy Reference
-    url: /Reference/apim/current/apim_policies_apikey.html
+    url: /Reference/policy/policy-apikey.html
   - text: APIM CLI Reference
     url: /
 - text: Resources
@@ -32,7 +32,11 @@
     url: /pages/tutorials.html
   - text: Case Studies
     url: https://www.gravitee.io/case-studies
-  - text: Changelogs
-    url: /pages/changelog.html
   - text: APIM Changelog
-    url: /Guides/apim/changelog.html
+    url: /Resources/changelogs/apim-changelog.html
+  - text: AM Changelog
+    url: /Resources/changelogs/am-changelog.html
+  - text: Cockpit Changelog
+    url: /Resources/changelogs/cockpit-changelog.html
+  - text: AE Changelog
+    url: /Resources/changelogs/ae-changelog.html

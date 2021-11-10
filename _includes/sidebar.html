@@ -8,15 +8,16 @@
 {% endif %}
 
 <div class="custom-links">
-  <!--  <h5>{{sidebar[0].product}}</h5> -->
 
 <!-- Version dropdown -->
-{% if doc_product == "apim" %}
+{% if doc_product == "APIM" %}
   {% assign sidebar_versions = site.data.side-nav-versions.apim_sidenav_versions %}
-{% elsif doc_product == "am" %}
+{% elsif doc_product == "AM" %}
   {% assign sidebar_versions = site.data.side-nav-versions.am_sidenav_versions %}
-{% elsif sidebar[0].product contains "Cockpit" %}
-{% elsif sidebar[0].product contains "" %}
+{% elsif sidebar[0].product == "Cockpit" %}
+{% elsif sidebar[0].product == "AE" %}
+{% elsif sidebar[0].product == "EE" %}
+
 {% endif %}
 
     {% for entry in sidebar_versions %}

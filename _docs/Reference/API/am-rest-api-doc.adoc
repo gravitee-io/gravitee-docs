@@ -1,19 +1,12 @@
----
-layout: doc
-product: Access Management
-permalink: am/current/am_reference_api.html
-toc: true
-sidebar: reference_sidebar
-title: AM API reference
-keywords: Gravitee.io, API Platform, Access Management, oauth2, openid, documentation, manual, guide, reference, api
----
+= AM Management
+
+== Overview
 
 AM API exposes a complete Restful API accessible to anyone wanting to script some part of the administration.
 
-== AM API reference
-
 You can access the online API reference or the OpenAPI specification:
 
+* 3.13 -- link:/am/current/management-api/3.13/index.html[online reference] - link:/am/current/management-api/3.13/swagger.json[OpenAPI spec]
 * 3.12 -- link:/am/current/management-api/3.12/index.html[online reference] - link:/am/current/management-api/3.12/swagger.json[OpenAPI spec]
 * 3.11 -- link:/am/current/management-api/3.11/index.html[online reference] - link:/am/current/management-api/3.11/swagger.json[OpenAPI spec]
 * 3.10 -- link:/am/current/management-api/3.10/index.html[online reference] - link:/am/current/management-api/3.10/swagger.json[OpenAPI spec]

@@ -1,0 +1,65 @@
+= Docker
+:page-sidebar: ee_sidebar
+:page-permalink: ee/installguide_docker.html
+:page-folder: ee/installation-guide
+:page-description: Gravitee Enterprise Edition - Installation - Docker
+:page-keywords: Gravitee, API Platform, Enterprise Edition, documentation, manual, guide, reference, api
+:docker-hub: https://hub.docker.com/r/graviteeio
+:page-liquid:
+
+All the Docker images for Gravitee.io APIM and AM are available with an `-ee` suffix as part of their tag name.
+
+== Gravitee.io API Management Enterprise images
+|===
+|Image name |Tag |Base
+
+|{docker-hub}/apim-gateway/[graviteeio/apim-gateway^]
+|{{ site.products.apim.ee.version }}-ee
+|https://hub.docker.com/_/openjdk/[openjdk:11-jre-slim-buster^]
+
+|{docker-hub}/apim-management-api/[graviteeio/apim-management-api^]
+|{{ site.products.apim.ee.version }}-ee
+|https://hub.docker.com/_/openjdk/[openjdk:11-jre-slim-buster^]
+
+|{docker-hub}/apim-management-ui/[graviteeio/apim-management-ui^]
+|{{ site.products.apim.ee.version }}-ee
+|https://hub.docker.com/_/nginx/[nginx:1.21-alpine^]
+
+|{docker-hub}/apim-portal-ui/[graviteeio/apim-portal-ui^]
+|{{ site.products.apim.ee.version }}-ee
+|https://hub.docker.com/_/nginx/[nginx:1.21-alpine^]
+
+|===
+
+== Gravitee.io Access Management Enterprise Images
+
+|===
+|Image name |Tag |Base
+
+|{docker-hub}/am-gateway/[graviteeio/am-gateway^]
+|{{ site.products.am.ee.version }}-ee
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[openjdk:jre-11.0.11_9-alpine^]
+
+|{docker-hub}/am-management-api/[graviteeio/am-management-api^]
+|{{ site.products.am.ee.version }}-ee
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[openjdk:jre-11.0.11_9-alpine^]
+
+|{docker-hub}/am-management-ui/[graviteeio/am-management-ui^]
+|{{ site.products.am.ee.version }}-ee
+|https://hub.docker.com/_/nginx/[nginx:alpine^]
+
+|===
+
+== License support
+
+When running an enterprise node, a license file must be supplied to bootstrap the node. When running the node within Docker
+the license file must be passed with a volume:
+
+[source,shell]
+....
+$ docker run  \
+        -v license.key:/opt/graviteeio-gateway/license \
+        --name api-gateway  \
+        --detach  \
+        graviteeio/apim-gateway:{{ site.products.apim.ee.version }}-ee
+....

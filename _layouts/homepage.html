@@ -36,6 +36,7 @@
     <link rel="icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/x-icon"/>
     <!-- Add CSS File -->
     <link rel="stylesheet" href="{{ '/assets/css/app.min.css' | relative_url }} "/>
+
     <link rel="stylesheet" href="{{ '/assets/css/theme-gravitee-new.css' | relative_url }}">
 
     <!--
@@ -66,8 +67,13 @@
 </head>
 
 <body>
-  <section bg-cover1>
+
+
+  <main class="page-area bg-cover3">
+
    {{ content }}
+    </main>
+
     <!-- Add Javascript File -->
    <script src="{{ '/assets/js/build.min.js' | relative_url }}"></script>
    		<script>
@@ -82,7 +88,6 @@
 
 				});
 
-        </section>
 		</script>
 </body>
 </html>
