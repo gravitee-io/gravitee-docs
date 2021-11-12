@@ -28,17 +28,17 @@ NOTE: You can also find all the https://github.com/gravitee-io/graviteeio-access
 |{docker-hub}/am-gateway/[graviteeio/am-gateway]
 |{github-repo}/gateway/[images/am-gateway]
 |latest
-|https://hub.docker.com/r/adoptopenjdk/openjdk11/[openjdk11:jre-11.0.7_10-alpine]
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[openjdk11:jre-11.0.11_9-alpine]
 
 |{docker-hub}/am-management-api/[graviteeio/am-management-api]
 |{github-repo}/management-api/[images/am-management-api]
 |latest
-|https://hub.docker.com/r/adoptopenjdk/openjdk11/[openjdk11:jre-11.0.7_10-alpine]
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[openjdk11:jre-11.0.11_9-alpine]
 
 |{docker-hub}/am-management-ui/[graviteeio/am-management-ui]
 |{github-repo}/management-ui/[images/am-webui]
 |latest
-|https://hub.docker.com/r/adoptopenjdk/openjdk11/[nginx:1.18-alpine]
+|https://hub.docker.com/_/nginx/[nginx:alpine^]
 
 |===
 

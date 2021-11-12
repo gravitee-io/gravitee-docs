@@ -15,11 +15,11 @@ All the Docker images for Gravitee.io APIM and AM are available with an `-ee` su
 
 |{docker-hub}/apim-gateway/[graviteeio/apim-gateway^]
 |{{ site.products.apim.ee.version }}-ee
-|https://hub.docker.com/_/openjdk/[openjdk:11-jre-slim-buster^]
+|https://hub.docker.com/_/eclipse-temurin/[eclipse-temurin:11-jre-focal]
 
 |{docker-hub}/apim-management-api/[graviteeio/apim-management-api^]
 |{{ site.products.apim.ee.version }}-ee
-|https://hub.docker.com/_/openjdk/[openjdk:11-jre-slim-buster^]
+|https://hub.docker.com/_/eclipse-temurin/[eclipse-temurin:11-jre-focal]
 
 |{docker-hub}/apim-management-ui/[graviteeio/apim-management-ui^]
 |{{ site.products.apim.ee.version }}-ee
