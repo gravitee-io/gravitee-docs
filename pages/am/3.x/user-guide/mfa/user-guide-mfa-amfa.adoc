@@ -1,4 +1,4 @@
-= Adaptive Multi-factor Authentication
+= Adaptive multi-factor authentication
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_userguide_mfa_amfa.html
 :page-folder: am/user-guide
@@ -8,12 +8,12 @@
 
 == Overview
 
-Adaptive Multi-factor authentication (A-MFA) requires the user to produce additional forms of authentication after the login step.
+Adaptive multi-factor authentication (A-MFA) requires users to produce additional forms of authentication after the login step.
 
 When A-MFA is enabled, it allows the user to skip MFA, based on the following trusted information:
 
 - The IP of the user.
-- The number of times the user has logged in
+- The number of times the user has logged in.
 - The content of the request.
 
 === Example use cases
@@ -25,19 +25,18 @@ A-MFA is often used in the following scenarios:
 
 You can use A-MFA in both cases to prevent account security breaches.
 
-WARNING: To apply location rules, you must first install plugin link:https://download.gravitee.io/plugins/services/gravitee-service-geoip/gravitee-service-geoip-1.1.0.zip[`gravitee-service-geoip`].
+WARNING: To apply location rules, you must first install plugin link:https://download.gravitee.io/plugins/services/gravitee-service-geoip-1.0.0.zip[`gravitee-service-geoip`].
 This plugin loads the `geoip` databases in memory, so you need to adjust the JVM Heap settings of your AM Gateways accordingly.
 
-NOTE: In order to use the geoip features, you can download the link:https://download.gravitee.io/#plugins/services/gravitee-service-geoip/[Gravitee Geoip Plugin]
+NOTE: In order to use the Geoip features, you can download the link:https://download.gravitee.io/#graviteeio-am/plugins/repositories/gravitee-service-geoip/[Gravitee Geoip Plugin].
 
-WARNING: The Gravitee Geoip Plugin uses MaxMind, make sure your AM instance is well provisioned in terms of resources
+WARNING: The Gravitee Geoip Plugin uses MaxMind, make sure your AM instance is well provisioned in terms of resources.
 
 == Configure A-MFA
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Select your application.
-. Click **Settings > Multifactor Auth**.
-. Select your MFA factor and set the *Adaptive MFA* rule.
+. In AM Console, select your application.
+. Click the **Settings** tab, then click **Multifactor Auth**.
+. Set the *Adaptive MFA* rule.
 . Click *SAVE*.
 
 image::am/current/graviteeio-am-userguide-mfa-adaptive-mfa-rule.png[]
