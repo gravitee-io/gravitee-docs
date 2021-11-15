@@ -13,21 +13,21 @@ All the Docker images for Gravitee.io APIM and AM are available with an `-ee` su
 |===
 |Image name |Tag |Base
 
-|{docker-hub}/apim-gateway/[graviteeio/apim-gateway^]
+|{docker-hub}/apim-gateway/[graviteeio/apim-gateway]
 |{{ site.products.apim.ee.version }}-ee
-|https://hub.docker.com/_/eclipse-temurin/[eclipse-temurin:11-jre-focal]
+|https://hub.docker.com/_/eclipse-temurin?tab=tags&name=11-jre-focal[eclipse-temurin:11-jre-focal]
 
-|{docker-hub}/apim-management-api/[graviteeio/apim-management-api^]
+|{docker-hub}/apim-management-api/[graviteeio/apim-management-api]
 |{{ site.products.apim.ee.version }}-ee
-|https://hub.docker.com/_/eclipse-temurin/[eclipse-temurin:11-jre-focal]
+|https://hub.docker.com/_/eclipse-temurin?tab=tags&name=11-jre-focal[eclipse-temurin:11-jre-focal]
 
-|{docker-hub}/apim-management-ui/[graviteeio/apim-management-ui^]
+|{docker-hub}/apim-management-ui/[graviteeio/apim-management-ui]
 |{{ site.products.apim.ee.version }}-ee
-|https://hub.docker.com/_/nginx/[nginx:1.21-alpine^]
+|https://hub.docker.com/_/nginx?tab=tags&name=1.21-alpine[nginx:1.21-alpine]
 
-|{docker-hub}/apim-portal-ui/[graviteeio/apim-portal-ui^]
+|{docker-hub}/apim-portal-ui/[graviteeio/apim-portal-ui]
 |{{ site.products.apim.ee.version }}-ee
-|https://hub.docker.com/_/nginx/[nginx:1.21-alpine^]
+|https://hub.docker.com/_/nginx?tab=tags&name=1.21-alpine[nginx:1.21-alpine]
 
 |===
 
@@ -36,17 +36,17 @@ All the Docker images for Gravitee.io APIM and AM are available with an `-ee` su
 |===
 |Image name |Tag |Base
 
-|{docker-hub}/am-gateway/[graviteeio/am-gateway^]
+|{docker-hub}/am-gateway/[graviteeio/am-gateway]
 |{{ site.products.am.ee.version }}-ee
-|https://hub.docker.com/_/eclipse-temurin/[eclipse-temurin:11-jre-focal]
+|https://hub.docker.com/_/eclipse-temurin?tab=tags&name=11-jre-focal[eclipse-temurin:11-jre-focal]
 
-|{docker-hub}/am-management-api/[graviteeio/am-management-api^]
+|{docker-hub}/am-management-api/[graviteeio/am-management-api]
 |{{ site.products.am.ee.version }}-ee
-|https://hub.docker.com/_/eclipse-temurin/[eclipse-temurin:11-jre-focal]
+|https://hub.docker.com/_/eclipse-temurin?tab=tags&name=11-jre-focal[eclipse-temurin:11-jre-focal]
 
-|{docker-hub}/am-management-ui/[graviteeio/am-management-ui^]
+|{docker-hub}/am-management-ui/[graviteeio/am-management-ui]
 |{{ site.products.am.ee.version }}-ee
-|https://hub.docker.com/_/nginx/[nginx:1.21-alpine^]
+|https://hub.docker.com/_/nginx?tab=tags&name=1.21-alpine[nginx:1.21-alpine]
 
 |===
 
