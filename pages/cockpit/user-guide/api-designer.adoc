@@ -1,0 +1,36 @@
+= Create & Delete An API Model In API Designer
+:page-sidebar: cockpit_sidebar
+:page-permalink: cockpit/3.x/cockpit_userguide_api_designer.html
+:page-folder: cockpit/user-guide
+
+[label label-version]#New in version 3.11#
+
+== Overview
+Starting in version 3.15, API Designer is available in Cockpit! You can easily design your APIs with this graphical tool.
+
+image:cockpit/api-designer.png[]
+
+Had "move to design-first APIs" languishing on your to-do list for years now? It's time to take the plunge! With API Designer's efficient, no-code approach, you can produce fully OAS-compliant API models in minutes.
+Once you have designed your API, you can export the design as an OAS spec in JSON format, or push the API design to one of your linked APIM installations, where you can work with it like any other API. It couldn't be simpler.
+
+== How To Create An API Model In Cockpit
+
+=== Log in To Cockpit & Create An API Model
+To get started, log in to link:/https://cockpit.gravitee.io[Cockpit].
+
+. Select API Designer in the left pane menu, then click the + (plus sign) to create a new model.
+image:apim/3.x/api-publisher-guide/design-studio/new-model.png[Create a new model with API Designer from Gravitee]
+
+. Name your model something sensible and note that the model name will automatically format with the proper hyphenated naming convention (description not required).
+image:apim/3.x/api-publisher-guide/design-studio/model-test.png[Test API model in Gravitee Cockpit]
+
+. Create your API model.
+.
+
+== How To Delete An API Model In Cockpit
+Deleting an API model in Cockpit is even easier than creating one. Simply do the following:
+
+. Click the three dots in the lower right corner to access the model menu. Then, click delete.
+image:apim/3.x/api-publisher-guide/design-studio/delete-model.png[Delete an API model in Gravitee Cockpit]
+
+Click ok to confirm that you want to delete the model. Then, the selected model will be deleted.
