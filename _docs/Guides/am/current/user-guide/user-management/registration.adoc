@@ -1,0 +1,20 @@
+= User registration
+
+AM comes with a basic user registration feature.
+
+== Enable user registration
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Click *Settings > Login* and toggle on the *User registration* switch.
++
+image::am/current/graviteeio-am-userguide-um-registration-settings.png[]
++
+A new `Register` link will be available on the login form.
++
+image::am/current/graviteeio-am-userguide-um-registration-login.png[]
++
+The link will redirect the user to the registration page to create an account.
++
+image::am/current/graviteeio-am-userguide-um-registration-form.png[]
+
+NOTE: You can change the look and feel of the login form and registration form. See link:/am/current/am_userguide_user_management_forms.html[Custom forms^] for more information.

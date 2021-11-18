@@ -1,0 +1,52 @@
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_authentication.html
+:page-folder: apim/installation-guide/portal/authentication
+:page-description: Gravitee.io API Management - Portal - Authentication
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim1x
+
+[[gravitee-installation-authentication]]
+= Authentication
+
+Gravitee.io supports natively multiple type of authentication to the portal:
+
+* Using authentication providers (inmemory, LDAP, databases, ...)
+* Using Social providers (GitHub, Google, ...)
+* Using a custom OAuth2 / OpenID authorization server
+
+== Identity Providers
+
+You can specify as many providers as you want.
+They will be checked in same order you declared them inside the providers attribute.
+Once a successful authentication is made, the Gravitee.io Management API will stop polling the providers.
+
+[source,yaml]
+----
+security:
+  providers:
+    # First authentication source
+    - type: ldap
+      ...
+
+    # Second authentication source
+    - type: memory
+      ...
+
+    # Third authentication source
+    - type: gravitee
+      ...
+----
+
+NOTE: The authentication process will loop through the three providers to attempt user authentication
+
+== How to configure
+
+You can find documentations on how to configure for:
+
+* link:/apim/1.x/apim_installguide_authentication_inmemory.html[in-memory]
+* link:/apim/1.x/apim_installguide_authentication_ldap.html[LDAP / Active Directory]
+* link:/apim/1.x/apim_installguide_authentication_apim.html[Gravitee.io APIM Repository]
+* link:/apim/1.x/apim_installguide_authentication_graviteeam.html[Gravitee.io Access Management]
+* link:/apim/1.x/apim_installguide_authentication_github.html[GitHub]
+* link:/apim/1.x/apim_installguide_authentication_google.html[Google]
+* link:/apim/1.x/apim_installguide_authentication_keycloak.html[Keycloak / generic OAuth2 server]

@@ -1,0 +1,51 @@
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_repositories.html
+:page-folder: apim/installation-guide/repositories
+:page-description: Gravitee.io API Management - Repositories
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim1x
+
+[[gravitee-installation-repositories]]
+= Repositories
+
+In Gravitee.io APIM, repositories are used to store different type of datas (different scopes).
+Repositories are configured in the `gravitee.yml` configuration file an can be different for each scope.
+For example you can decide to put the management in MongoDB, rate limit in Redis and analytics in Elasticsearch.
+
+== Supported storage
+Here is the matrix between scopes and implementations.
+
+[cols=5*,options=header]
+|===
+
+|Scope
+|link:/apim/1.x/apim_installguide_repositories_mongodb.html[MongoDB]
+|link:/apim/1.x/apim_installguide_repositories_redis.html[Redis]
+|link:/apim/1.x/apim_installguide_repositories_elasticsearch.html[Elasticsearch]
+|link:/apim/1.x/apim_installguide_repositories_jdbc.html[JDBC]
+
+|Management
+|X
+|X
+|-
+|X
+
+|Rate Limit
+|X
+|X
+|-
+|X
+
+|Analytics
+|-
+|-
+|X
+|-
+
+|===
+
+Management:: All the data to manage the Gravitee.io API Management platform, including API definitions, users,
+applications, plans, ...
+Rate Limit:: Rate limiting data
+Analytics:: Analytics data
+

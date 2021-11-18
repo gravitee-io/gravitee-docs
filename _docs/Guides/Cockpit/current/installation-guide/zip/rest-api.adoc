@@ -1,0 +1,109 @@
+= Install Cockpit API
+:page-liquid:
+:page-description: Gravitee.io Cockpit - Management API - Installation with .zip
+:page-keywords: Gravitee.io, API Platform, API Management, Cockpit, documentation, manual, guide, reference, api
+
+== Overview
+
+Cockpit API is required to run Cockpit UI. You must install Cockpit API first before you can use Cockpit UI.
+
+== Prerequisites
+
+Your environment must meet the requirements listed below before you install Cockpit API.
+
+=== JDK
+
+Cockpit API supports Java 11. Before you install it, check your Java version as follows:
+
+[source,bash]
+----
+java -version
+echo $JAVA_HOME
+----
+
+NOTE: You can download the latest OpenJDK from the https://jdk.java.net/archive/[OpenJDK download site^].
+
+=== MongoDB
+
+The default Cockpit API distribution requires MongoDB 3.x to store data.
+
+NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#production[MongoDB download site^].
+
+== Download and extract the `.zip` archive
+
+. Download the binaries https://download.gravitee.io/graviteeio-cockpit/components/gravitee-cockpit-management-api/gravitee-cockpit-management-api-{{ site.products.cockpit.version }}.zip[here^].
++
+[source,bash]
+[subs="attributes"]
+$ curl -L https://download.gravitee.io/graviteeio-cockpit/components/gravitee-cockpit-management-api/gravitee-cockpit-management-api-{{ site.products.cockpit.version }}.zip -o gravitee-cockpit-management-api-{{ site.products.cockpit.version }}.zip
++
+Unpack the archive and place the folders in the required location.
++
+[source,bash]
+[subs="attributes"]
+$ unzip gravitee-cockpit-management-api-{{ site.products.cockpit.version }}.zip
+
+== Check the installation
+
+Run Cockpit API from the command line as follows:
+
+[source,bash]
+----
+$ cd gravitee-cockpit-management-api-{{ site.products.cockpit.version }}
+$ ./bin/gravitee
+----
+
+By default, Cockpit API runs in the foreground, prints its logs to the standard output (stdout), and can be stopped
+by pressing *Ctrl-C*.
+
+Once Cockpit API is running, you will see this log:
+
+[source,bash]
+[subs="attributes"]
+...
+15:53:52.409 [graviteeio-node] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@2809e38a{HTTP/1.1, (http/1.1)}{0.0.0.0:8063}
+15:53:52.409 [graviteeio-node] INFO  org.eclipse.jetty.server.Server - Started @8903ms
+15:53:52.409 [graviteeio-node] INFO  i.g.node.jetty.JettyHttpServer - HTTP Server is now started and listening on port 8063
+...
+
+== Check that Cockpit API is running
+
+You can test that your Cockpit API node is running by sending an HTTP request to port `8063` on `localhost`:
+
+[source,bash]
+----
+$ curl -X GET http://localhost:8063/management/config
+----
+
+== Run Cockpit API as a daemon
+
+To run Cockpit API as a daemon, specify `-d` on the command line and record the process ID in a file using the `-p` option:
+
+[source,bash]
+----
+$ ./bin/gravitee -d -p=/var/run/gio.pid
+----
+
+You can find log messages in the `$GRAVITEE_HOME/logs/` directory.
+
+To shut down Cockpit API, kill the process ID recorded in the `pid` file:
+
+[source,bash]
+----
+$ kill `cat /var/run/gio.pid`
+----
+
+== Cockpit API directory structure
+
+The following files and folders are in the `$GRAVITEE_HOME` directory, created when extracting the archive:
+
+[width="100%",cols="20%,80%",frame="topbot",options="header"]
+|======================
+|Folder    |Description
+|bin       |Startup/shutdown scripts
+|config    |Configuration files
+|lib       |Libraries (both Cockpit and third party libraries)
+|license   |License for Enterprise Edition
+|logs      |Cockpit API log files
+|plugins   |Cockpit API plugins
+|======================

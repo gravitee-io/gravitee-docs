@@ -1,15 +1,11 @@
----
-product: API Management
-toc: true
-title: Subscribe to an API with APIM API
----
+= Subscribe to an API with APIM API
 
 These steps walk you through creating your first application and subscribing to your first API with APIM API. For a brief overview of how to set up your first API, see the **Publish your first API** sections of **Getting started with APIM**.
 
-NOTE: APIM includes several ways to access and secure an API, as described in (link:/apim/current/apim_publisherguide_plans_subscriptions.html[API Publisher Plans and subscriptions]).
-In this example, we will access an API using an link:/apim/3.x/apim_policies_apikey.html[API Key].
+NOTE: APIM includes several ways to access and secure an API, as described in link:/Guides/APIM/current/publisher-guide/plans-subscriptions.html[Plans and subscriptions^].
+In this example, we will access an API using an link:/Reference/policy/policy-apikey.html[API Key^].
 Only trusted applications can access the API data by requesting an API Key.
-Let's see how to create the application and subscription. We'll generate the API key when we (link:/apim/current/apim_getstarted_consume.html[consume the API]) later.
+Let's see how to create the application and subscription. We'll generate the API key when we link:./api-consumer-test.html[consume the API^] later.
 
 == Create your application
 
@@ -31,4 +27,4 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
      http://MANAGEMENT_API_SERVER_DOMAIN/portal/environments/DEFAULT/applications/|application-id|/subscriptions/?plan=|plan-id|
 ----
 
-For more information, see the complete link:/apim/3.x/apim_installguide_rest_apis_documentation.html[Rest API documentation].
+For more information, see the complete link:/Reference/API/apim-rest-api-doc.html[Rest API documentation^].

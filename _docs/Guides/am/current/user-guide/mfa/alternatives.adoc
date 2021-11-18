@@ -1,0 +1,23 @@
+= MFA alternative methods
+
+If your users are unable to sign in to their account with their primary MFA factor,
+they can use an alternative verification method to recover access.
+
+NOTE: To add an alternative verification method, your applications can use the link:/am/current/am_userguide_user_management_ssam.html[Self-service account management API].
+
+== Sign in another way
+
+1. Sign in to your account.
+2. In the *MFA Challenge* page, click *Having trouble ? Try other options*.
+
+image::am/current/graviteeio-am-userguide-mfa-alternatives-step1.png[,500]
+
+[start=3]
+3. Choose your alternative verification method and press *NEXT*.
+
+image::am/current/graviteeio-am-userguide-mfa-alternatives-step2.png[,800]
+
+[start=4]
+4. Continue with the MFA verification process.
+
+NOTE: You can change the look and feel of forms using link:/am/current/am_userguide_user_management_forms.html[Custom forms^].

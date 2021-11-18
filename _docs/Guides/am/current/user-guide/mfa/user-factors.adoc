@@ -1,0 +1,21 @@
+= Reset a user's MFA
+
+If users lose their mobile device or can't use their authenticator application for any reason, they can ask the security domain administrator to reset their multi-factor authentication (MFA) devices.
+The MFA factors associated with their user will be removed and MFA configuration screens (Enroll and Challenge) will be displayed during the next login attempt.
+
+== Remove a user's MFA factors
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Click *Settings > Users*.
+. Select the user and click the *Multi-Factor Authentication* tab.
+. Select the MFA factor you want to remove and click the remove icon image:icons/remove-icon.png[role="icon"].
++
+image::am/current/graviteeio-am-userguide-mfa-factor-reset.png[]
+
+You can also reset a user's MFA with AM API:
+
+[source]
+----
+curl -H "Authorization: Bearer :accessToken" \
+-X DELETE http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/domains/:domainId/users/:userId/factors/:factorId
+----

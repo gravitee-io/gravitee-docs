@@ -1,0 +1,48 @@
+[[gravitee-installation-guide-quickstart]]
+= Quickstart
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_quickstart.html
+:page-folder: apim/installation-guide
+:page-description: Gravitee.io API Management - Installation - Quickstart
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim3x
+
+This tutorial assumes you are starting fresh and have no existing Gravitee.io API Management data.
+
+== Using RPMs
+
+[source,shell]
+....
+$ curl -sSL https://bit.ly/install-apim-1x | bash
+....
+
+Check the link:/apim/1.x/apim_installguide_redhat_stack.html[documentation]
+
+== Using Docker
+
+[source,shell]
+....
+# Download docker-compose file
+$ curl -L https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/1.x/docker-compose.yml -o "docker-compose.yml"
+
+# (Optional step: pull to ensure that you are running latest images)
+$ docker-compose pull
+
+# And run...
+$ docker-compose up
+....
+
+Check the link:/apim/1.x/apim_installguide_docker_compose.html[documentation]
+
+== Using Kubernetes
+
+[source,shell]
+....
+# Add Gravitee.io charts repository
+$ helm repo add graviteeio https://helm.gravitee.io
+
+# And install
+$ helm install --name graviteeio-apim graviteeio/apim
+....
+
+Check the link:/apim/1.x/apim_installguide_kubernetes.html[documentation]

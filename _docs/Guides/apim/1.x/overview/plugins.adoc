@@ -1,0 +1,86 @@
+= Plugins
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_overview_plugins.html
+:page-folder: apim/overview
+:page-layout: apim1x
+
+_Plugins_ are additional components that can be _plugged into_ the Gateway and / or the Management API.
+_Plugins_ can specialized component's behavior to exactly fit your needs and your technical constraints.
+
+They follow a given directory structure convention, look at the <<apim_devguide_plugins.adoc, Developer Guide>>
+to have more information about it.
+
+When using Gravitee.io, you must be face to multiple types of _plugins_, in particular:
+
+[width="100%",cols="^3,^3,^10",options="header"]
+|===
+|Type|Components|Examples
+| <<gravitee-plugins-idp, Identity Providers>>|Management API|LDAP, Oauth2, InMemory, ...
+| <<gravitee-plugins-fetchers, Fetchers>>|Management API|HTTP, GIT, ...
+| <<gravitee-plugins-policies, Policies>>|Management API / Gateway|API Key, Rate-limiting, Cache, ...
+| <<gravitee-plugins-reporters, Reporters>>|Gateway|Elasticsearch, Accesslog, ...
+| <<gravitee-plugins-repositories, Repositories>>|Management API / Gateway|MongoDB, Redis, Elasticsearch, ...
+| <<gravitee-plugins-resources, Resources>>|Management API / Gateway|Oauth2, Cache, LDAP, ...
+| <<gravitee-plugins-services, Services>>|Management API / Gateway|Sync, local-registry, health-check, monitor, ...
+| <<gravitee-plugins-notifiers, Notifiers>>|Alert Engine|Email, ...
+| <<gravitee-plugins-alerts, Alerts>>|Management API / Gateway|Vertx, ...
+|===
+
+[[gravitee-plugins-idp]]
+== Identity Providers
+
+[[gravitee-plugins-fetchers]]
+== Fetchers
+
+[[gravitee-plugins-policies]]
+== Policies
+A *policy* is acting as a behavior to apply to the request and / or response handled by the _gateway_ and can be chained by a request policy chain or a response policy chain using a logical order.
+Policy can be treated like a _proxy controller_ by guaranteeing if a given business rule is fulfilled during request / response processing.
+
+Good examples for a policy are:
+
+* Authorization using an API key (see the <<apim_policies_apikey, api-key policy>>)
+* Applying header/query params transformations
+* Applying rate limiting or quota to avoid API flooding.
+
+NOTE: Want to know how to create, use, and deploy a custom policy? Check out the <<apim_devguide_policies.adoc, Developer Guide>>!
+
+[[gravitee-plugins-reporters]]
+== Reporters
+
+A *reporter* is used by gateway instance to report many types of event:
+
+* Requests/responses metrics : response-time, content-length, api-key, ...
+* Monitoring metrics: CPU, Heap usage, ...
+* Health-check metrics: status, response code,
+
+"Out of the box" reporters are :
+
+* Elasticsearch Reporter
+* File Reporter
+
+NOTE: Like any other plugin you can create, use, and deploy a custom reporter thanks to the
+<<apim_devguide_plugins.adoc, Developer Guide>>!
+
+[[gravitee-plugins-repositories]]
+== Repositories
+Pluggable storage component for APIs' configurations, policies configurations, analytics and so on.
+You can find more information by having a look to the <<gravitee-management-api-repository, Management API : Repository>> section.
+
+[[gravitee-plugins-resources]]
+== Resources
+
+[[gravitee-plugins-services]]
+== Services
+
+[[gravitee-plugins-notifiers]]
+== Notifiers
+
+A *notifier* is used to send notifications.
+For now the only one available is the *email notifier*, but others like *slack* or *portal* are planned soon.
+
+[[gravitee-plugins-alerts]]
+== Alerts
+
+An *alert* allows to send trigger or event to the Alert Engine which will be processed to send a notification with the configured plugin notifier.
+The configuration of the notifier is the responsibility of the trigger.

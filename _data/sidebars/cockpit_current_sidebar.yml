@@ -1,0 +1,78 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  product: Cockpit
+  folders:
+
+  - title: Cockpit
+    output: web
+    folderitems:
+    - title: Overview
+      output: web
+      url: /Guides/Cockpit/current/introduction.html
+    - title: Compatibility
+      output: web
+      url: /Guides/Cockpit/current/compatibility.html
+
+  - title: Installation Guide
+    output: web
+    folderitems:
+      - title: Installing Cockpit
+        output: web
+        url: /Guides/Cockpit/current/installation-guide/introduction.html
+        subfolders:
+          - title: Install with .zip
+            output: web
+            subfolderitems:
+              - title: Cockpit API
+                output: web
+                url: /Guides/Cockpit/current/installation-guide/zip/rest-api.html
+              - title: Cockpit UI
+                output: web
+                url: /Guides/Cockpit/current/installation-guide/zip/console.html
+      - title: Run in Docker
+        output: web
+        url: /Guides/Cockpit/current/installation-guide/docker/images.html
+      - title: Deploy in Kubernetes
+        output: web
+        url: /Guides/Cockpit/current/installation-guide/kubernetes.html
+      - title: Upgrade guide
+        output: web
+        url: /Guides/Cockpit/current/installation-guide/upgrade.html
+
+  - title: Configuration Guide
+    output: web
+    folderitems:
+    - title: Configuring Cockpit
+      output: web
+      url: /Guides/Cockpit/current/configuration-guide/introduction.html
+      subfolders:
+      - title: Configure repositories
+        output: web
+        subfolderitems:
+          - title: JDBC
+            output: web
+            url: /Guides/Cockpit/current/configuration-guide/repositories/jdbc.html
+      - title: Configure identity providers
+        output: web
+        subfolderitems:
+          - title: Generic OAuth2
+            output: web
+            url: /Guides/Cockpit/current/configuration-guide/identity-providers/generic_oauth2.html
+          - title: Connect with Github
+            output: web
+            url: /Guides/Cockpit/current/configuration-guide/identity-providers/github.html
+          - title: Connect with Google
+            output: web
+            url: /Guides/Cockpit/current/configuration-guide/identity-providers/google.html
+
+  - title: User Guide
+    output: web
+    folderitems:
+      - title: Register installations
+        output: web
+        url: /Guides/Cockpit/current/user-guide/register-installations.html
+      - title: Installation health check
+        output: web
+        url: /Guides/Cockpit/current/user-guide/installation-health-check.html

@@ -1,0 +1,86 @@
+= MongoDB
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_repositories_mongodb.html
+:page-folder: apim/installation-guide/repositories
+:page-description: Gravitee.io API Management - Repositories - MongoDB
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim1x
+
+== Configuration
+https://www.mongodb.org/[MongoDB] is the default repository implementation used by Gravitee.io API Management.
+
+Let's see the configuration options:
+
+[source,yaml]
+----
+# ===================================================================
+# MINIMUM MONGO REPOSITORY PROPERTIES
+#
+# This is a minimal sample file declared connection to MongoDB
+# ===================================================================
+management:
+  type: mongodb             # repository type
+  mongodb:                  # mongodb repository
+    dbname:                 # mongodb name (default gravitee)
+    host:                   # mongodb host (default localhost)
+    port:                   # mongodb port (default 27017)
+----
+
+NOTE: This is the minimum sample file to start with a mongo server, number of other properties control the behavior of mongo database, let's jump into it.
+
+[source,yaml]
+----
+# ===================================================================
+# MONGO REPOSITORY PROPERTIES
+#
+# This is a sample file declared all properties for MongoDB Repository
+# ===================================================================
+management:
+  type: mongodb                 # repository type
+  mongodb:                      # mongodb repository
+    dbname:                     # mongodb name (default gravitee)
+    host:                       # mongodb host (default localhost)
+    port:                       # mongodb port (default 27017)
+    username:                   # mongodb username (default null)
+    password:                   # mongodb password (default null)
+    connectionPerHost:          # mongodb connection per host (default 10)
+    connectTimeOut:             # mongodb connection time out (default 0 -> never)
+    maxWaitTime:                # mongodb max wait time (default 120000)
+    socketTimeout:              # mongodb socket time out (default 0 -> never)
+    socketKeepAlive:            # mongodb socket keep alive (default false)
+    maxConnectionLifeTime:      # mongodb max connection life time (default null)
+    maxConnectionIdleTime:      # mongodb max connection idle time (default null)
+    minHeartbeatFrequency:      # mongodb min heartbeat frequency (default null)
+    description:                # mongodb description (default null)
+    heartbeatConnectTimeout:    # mongodb heartbeat connection time out (default null)
+    heartbeatFrequency:         # mongodb heartbeat frequency (default null)
+    heartbeatsocketTimeout:     # mongodb heartbeat socket time out (default null)
+    localThreshold:             # mongodb local threshold (default null)
+    minConnectionsPerHost:      # mongodb min connections per host (default null)
+    sslEnabled:                 # mongodb ssl mode (default false)
+    keystore:                   # path to KeyStore (when sslEnabled is true)
+    keystorePassword:           # KeyStore password
+    keyPassword:                # password for recovering keys in the KeyStore
+    threadsAllowedToBlockForConnectionMultiplier: # mongodb threads allowed to block for connection multiplier (default null)
+    cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
+----
+
+NOTE: All theses properties allow you to fine tuned your MongoDB connection
+
+== Security
+
+Sometimes, you may want to apply specific security constraints and rules to users allowed to access the database.
+
+Thanks to the following table, you will be able to define these fine-grained constraints per collection.
+
+
+|===
+|Component|Read-only |Read-write
+
+|API Gateway
+|apis - keys - subscriptions - plans | events - ratelimit - commands
+
+|Management API
+|- | all collections except ratelimit
+
+|===

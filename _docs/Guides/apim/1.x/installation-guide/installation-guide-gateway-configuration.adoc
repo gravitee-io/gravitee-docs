@@ -1,0 +1,291 @@
+= API Gateway - Configuration
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_gateway_configuration.html
+:page-folder: apim/installation-guide/gateway
+:page-description: Gravitee.io API Management - Configuration - Gateway
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim1x
+
+include::partial/how-to-configure.adoc[leveloffset=+1]
+
+[[api-gateway-http-server]]
+== HTTP Server
+
+[source,yaml]
+----
+http:
+  port: 8082
+  host: 0.0.0.0
+  idleTimeout: 0
+  tcpKeepAlive: true
+  compressionSupported: false
+  maxHeaderSize: 8192
+  maxChunkSize: 8192
+  instances: 0
+  requestTimeout: 30000
+  secured: false
+  alpn: false
+  ssl:
+    clientAuth: none # Supports none, request, requires
+    keystore:
+      path: ${gravitee.home}/security/keystore.jks
+      password: secret
+    truststore:
+      path: ${gravitee.home}/security/truststore.jks
+      password: secret
+----
+
+=== How to enable HTTPS support
+First, you need to provide a keystore. If you don't have one, you can generate it :
+----
+keytool -genkey \
+  -alias test \
+  -keyalg RSA \
+  -keystore server-keystore.jks \
+  -keysize 2048 \
+  -validity 360 \
+  -dname CN=localhost \
+  -keypass secret \
+  -storepass secret
+----
+
+After that, you have to enable secure mode in your `gravitee.yml` :
+----
+http:
+  port: 8082
+  host: 0.0.0.0
+  idleTimeout: 0
+  tcpKeepAlive: true
+  compressionSupported: false
+  maxHeaderSize: 8192
+  maxChunkSize: 8192
+  instances: 0
+  requestTimeout: 30000
+  alpn: false
+  secured: true
+  ssl:
+    clientAuth: none # Supports none, request, requires
+    keystore:
+      path: /path/to/keystore.jks
+      password: adminadmin
+    truststore:
+      path:
+      password:
+----
+
+=== How to enable HTTP/2 support
+
+You first need to enable HTTPS support. Then, you just have to enable alpn in the `gravitee.yml` :
+----
+http:
+  alpn: true
+  ...
+----
+
+Now the gateway supports both HTTP 1 and HTTP/2 protocol. You can consume your api like that :
+----
+curl -k -v --http2 https://localhost:8082/my_api
+----
+
+=== How to enable WebSocket support
+----
+http:
+  websocket:
+    enabled: true
+----
+
+Now the gateway supports both WS and WSS protocols. You can consume your api like that :
+----
+curl ws://localhost:8082/my_websocket
+----
+
+
+=== How to enable certificate-based client authentication
+----
+http:
+  ssl:
+    clientAuth: none # Supports none, request, requires
+    truststore:
+      path: /path/to/truststore.jks
+      password: adminadmin
+----
+
+Available mode for `clientAuth` are:
+
+* none: Client authentication is disabled (replacement of the `false` value)
+* request: Client authentication is not required but can be if using link:apim_policies_ssl_enforcement.html[SSL enforcement policy]
+* requires: Client authentication is required (replacement of `true` value)
+
+== Plugins repository
+
+Gravitee.io Gateway <<gravitee-plugins,plugins>> directory configuration.
+
+[source,yaml]
+----
+plugins:
+  path: ${gravitee.home}/plugins
+----
+
+== Management repository
+
+Management repository is used to store global configuration such as APIs, applications, apikeys, ...
+This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:
+
+http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html
+
+[source,yaml]
+----
+management:
+  type: mongodb
+  mongodb:
+    dbname: ${ds.mongodb.dbname}
+    host: ${ds.mongodb.host}
+    port: ${ds.mongodb.port}
+#    username:
+#    password:
+#    connectionsPerHost: 0
+#    connectTimeout: 500
+#    maxWaitTime: 120000
+#    socketTimeout: 500
+#    socketKeepAlive: false
+#    maxConnectionLifeTime: 0
+#    maxConnectionIdleTime: 0
+#    serverSelectionTimeout: 0
+#    description: gravitee.io
+#    heartbeatFrequency: 10000
+#    minHeartbeatFrequency: 500
+#    heartbeatConnectTimeout: 1000
+#    heartbeatSocketTimeout: 20000
+#    localThreshold: 15
+#    minConnectionsPerHost: 0
+#    sslEnabled: false
+#    threadsAllowedToBlockForConnectionMultiplier: 5
+#    cursorFinalizerEnabled: true
+
+# Management repository: single MongoDB using URI
+# For more information about MongoDB configuration using URI, please have a look to:
+# - http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html
+#management:
+#  type: mongodb
+#  mongodb:
+#    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+
+# Management repository: clustered MongoDB
+#management:
+#  type: mongodb
+#  mongodb:
+#    servers:
+#      - host: mongo1
+#        port: 27017
+#      - host: mongo2
+#        port: 27017
+#    dbname: ${ds.mongodb.dbname}
+#    connectTimeout: 500
+#    socketTimeout: 250
+----
+
+== Rate Limit repository
+
+When defining <</apim_policies_rate_limiting.html, rate-limiting policy>>, the gateway has to store data to share with other gateway instances.
+
+In this example, we are using MongoDB to store counters.
+
+[source,yaml]
+----
+ratelimit:
+  type: mongodb
+  mongodb:
+    uri: mongodb://${ds.mongodb.host}/${ds.mongodb.dbname}
+----
+
+== Reporters
+
+Reporters configuration (used to store reporting monitoring data, request metrics, healthchecks and others...)
+All reporters are enabled by default. To stop one of them, you have to add the property 'enabled: false'
+
+[source,yaml]
+----
+reporters:
+  elasticsearch:
+    endpoints:
+      - http://localhost:9200
+#    index: gravitee
+#    bulk:
+#       actions: 500           # Number of requests action before flush
+#       flush_interval: 1      # Flush interval in seconds
+#    security:
+#       username:
+#       password:
+----
+
+
+
+If you need to add custom regexes, you will need to add this configuration on the gravitee.yml:
+
+```yml
+reporters.elasticsearch.user_agent.regex_file=regexes_custom.yml
+```
+
+In addition to this configuration, you will have to add the regexes_custom.yml file to the config/ingest-user-agent directory of your ES installation.
+(This must contain all the regex present in the default file as this is an overload and it must be present when restarting the instance to be loaded)
+Finally, after the restart of ES and your gateway, the custom regexes will be successfully used.
+
+== Services
+
+Gravitee.io Gateway services configuration. Provided values are default values. All services are enabled by default. To stop one of them, you have to add the property 'enabled: false' (See the 'local' service for an example).
+
+[source,yaml]
+----
+services:
+  # Synchronization daemon used to keep the gateway state in sync with the configuration from the management repository
+  # Be aware that, by disabling it, the gateway will not be sync with the configuration done through management API and management UI
+  sync:
+    # Synchronization is done each 5 seconds
+    cron: '*/5 * * * * *'
+
+  # Service used to store and cache api-keys from the management repository to avoid direct repository communication
+  # while serving requests.
+  apikeyscache:
+    delay: 10000
+    unit: MILLISECONDS
+    threads: 3 # Threads core size used to retrieve api-keys from repository.
+
+  # Local registry service.
+  # This registry is used to load API Definition with json format from the file system. By doing so, you do not need
+  # to configure your API using the web console or the rest API (but you need to know and understand the json descriptor
+  # format to make it work....)
+  local:
+    enabled: false
+    path: ${gravitee.home}/apis # The path to API descriptors
+
+  # Gateway monitoring service.
+  # This service retrieves metrics like os / process / jvm metrics and send them to an underlying reporting service.
+  monitoring:
+    delay: 5000
+    unit: MILLISECONDS
+
+  # Endpoint healthcheck service.
+  healthcheck:
+    threads: 3 # Threads core size used to check endpoint availability
+----
+
+== Sharding tags
+
+You can apply sharding on Gateway's instances either with system properties or with a configuration as below.
+System properties overrides the yaml configuration.
+
+In this example, you are asking deployment only for APIs tagged 'product' or 'store' and among it, you exclude the APIs tagged 'international'.
+
+[source,yaml]
+----
+tags: 'product,store,!international'
+----
+
+== Default configuration
+
+Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.yml` file. This section provides the general configuration of Gravitee.IO Gateway.
+
+[source,yaml]
+----
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-gateway/1.30.x/gravitee-gateway-standalone/gravitee-gateway-standalone-distribution/src/main/resources/config/gravitee.yml[]
+----

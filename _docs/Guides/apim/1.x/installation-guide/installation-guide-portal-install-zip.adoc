@@ -1,0 +1,50 @@
+= Install Portal with `.zip`
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_portal_install_zip.html
+:page-folder: apim/installation-guide/portal
+:page-liquid:
+:page-description: Gravitee.io API Management - Portal - Installation with .zip
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim1x
+
+== System Requirements
+
+=== Browsers
+
+Management UI Portal has been tested with the latest versions of Google Chrome, Firefox and Internet Explorer >= 10
+
+== Installing from the ZIP archive
+
+The binaries are available from https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._1x.version }}.zip[Download].
+
+[source,bash]
+[subs="attributes"]
+$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._1x.version }}.zip -o gravitee-standalone-distribution-{{ site.products.apim._1x.version }}.zip
+
+Once file has been downloaded, you just have to unpack it in the right place
+
+[source,bash]
+[subs="attributes"]
+$ unzip gravitee-standalone-distribution-{{ site.products.apim._1x.version }}.zip
+
+=== Deploy
+
+The Management UI is a client-side only Angular application and can be deployed on any HTTP server like https://httpd.apache.org/[Apache] or http://nginx.org/[Nginx].
+
+=== or Run it
+
+With Python::
+
+[source,bash]
+[subs="attributes"]
+$ cd graviteeio-management-ui-{{ site.products.apim._1x.version }}
+$ python3 -m http.server
+$ Serving HTTP on 0.0.0.0 port 8000 ...
+
+With Node::
+
+[source,bash]
+[subs="attributes"]
+$ npm install http-server -g
+$ cd graviteeio-management-ui-{{ site.products.apim._1x.version }}
+$ http-server

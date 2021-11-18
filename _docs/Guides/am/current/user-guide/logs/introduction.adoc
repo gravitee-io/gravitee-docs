@@ -1,0 +1,5 @@
+= Audit trail
+
+AM includes an audit trail feature to record the set of events taking place when users interact with AM.
+
+Login and logout, user management and other administrative operations are stored in a database or remote system (via plugins) and can be reviewed with AM Console or AM API.

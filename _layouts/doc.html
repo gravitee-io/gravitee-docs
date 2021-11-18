@@ -1,9 +1,9 @@
 ---
-layout: default_docs
+layout: default
 ---
 
 <section class="layout-area bg-color1 content tutorial">
-  <div class="layout-wrapper section-spacing bminus-30">
+  <div class="layout-wrapper section-spacing">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -37,6 +37,7 @@ layout: default_docs
               {{content}}
             </div>
           </div>
+
         </div>
 
         {% unless page.toc == false %}
@@ -44,9 +45,9 @@ layout: default_docs
           <div class=" doc-sidebar-menu doc-right-sidebar">
 
             <div>
-              <div id="table-of-contents">
-               <h5 class="px-3 pt-3">In this article</h5>
-				{% toc %}
+              <div>
+               <h4>On this page</h4>
+				{% include toc.html html=content id="toc" class="section-nav" h_min=2 h_max=3 %}
               </div>
 
             </div>
@@ -59,6 +60,7 @@ layout: default_docs
   </div>
   </section>
 
+{% include footer_top.html %}
 {% include footer.html %}
 
 <script>
@@ -71,4 +73,29 @@ layout: default_docs
 
     headings[i].appendChild(anchorLink);
   }
+
+
+  var codeBlocks = document.querySelectorAll('pre.highlight');
+
+codeBlocks.forEach(function (codeBlock) {
+  var copyButton = document.createElement('button');
+  copyButton.className = 'copy';
+  copyButton.type = 'button';
+  copyButton.ariaLabel = 'Copy code to clipboard';
+  copyButton.innerText = 'Copy';
+
+  codeBlock.append(copyButton);
+
+  copyButton.addEventListener('click', function () {
+    var code = codeBlock.querySelector('code').innerText.trim();
+    window.navigator.clipboard.writeText(code);
+
+    copyButton.innerText = 'Copied';
+    var fourSeconds = 4000;
+
+    setTimeout(function () {
+      copyButton.innerText = 'Copy';
+    }, fourSeconds);
+  });
+});
 </script>

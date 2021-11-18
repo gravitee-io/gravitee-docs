@@ -1,0 +1,136 @@
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_repositories_elasticsearch.html
+:page-folder: apim/installation-guide/repositories
+:page-description: Gravitee.io API Management - Repositories - Elasticsearch
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, elastic, es, elasticsearch
+:page-layout: apim1x
+
+[[gravitee-installation-repositories-elasticsearch]]
+= Elasticsearch
+
+The Elasticsearch connector is based on the HTTP API exposed by ES instances.
+This connector supports all versions of ES, from 5.x to 7.x. 
+For more detail about Elastic supported version, please refer to this link https://www.elastic.co/support/eol.
+
+WARNING: Gravitee.io no longer supports native ES client and previous connector provided by us will not be supported anymore.
+
+== Configuration
+
+=== Management API configuration
+[source,yaml]
+----
+analytics:
+  type: elasticsearch
+  elasticsearch:
+    endpoints:
+      - http://localhost:9200
+#    index: gravitee
+#    security:
+#       username:
+#       password:
+#    ssl:                        # for https es connection
+#      keystore:
+#        type: jks               # required. also valid values are "pem", "pfx"
+#        path: path/to/jks         # only for only for jks / pkcs12
+#        password: <keystore pass> # only for only for jks / pkcs12
+#        certs: 'path/to/cert'      # only for pems
+#        keys: 'path/to/key'        # only for pems
+----
+
+=== API Gateway configuration
+[source,yaml]
+----
+reporters:
+  elasticsearch:
+    enabled: true # Is the reporter enabled or not (default to true)
+    endpoints:
+      - http://${ds.elastic.host}:${ds.elastic.port}
+#    index: gravitee
+#    cluster: elasticsearch
+#    bulk:
+#      actions: 1000           # Number of requests action before flush
+#      flush_interval: 5       # Flush interval in seconds
+#      concurrent_requests: 5  # Concurrent requests
+#    settings:
+#      number_of_shards: 5
+#      number_of_replicas: 1
+#    pipeline:
+#      plugins:
+#        ingest: geoip
+#    ssl:                        # for https es connection
+#      keystore:
+#        type: jks               # required. also valid values are "pem", "pfx"
+#        path: path/to/jks         # only for only for jks / pkcs12
+#        password: <keystore pass> # only for only for jks / pkcs12
+#        certs: 'path/to/cert'      # only for pems
+#        keys: 'path/to/key'        # only for pems
+----
+
+== Index management with ES Curator
+
+ES Curator is a great tool for ES administration.
+For optimizing data footprint and ES performance you can define a retention window and periodically merge shards into only one segment
+
+----
+/usr/bin/curator --config /opt/curator/curator.yml /opt/curator/action-curator.yml
+----
+
+curator.yml :
+[source,yaml]
+----
+client:
+  hosts:
+    - node1
+    - node2	
+  port: 9200
+
+logging:
+  loglevel: INFO
+  logfile:
+  logformat: default
+  blacklist: ['elasticsearch', 'urllib3']
+----
+
+action-curator.yml :
+[source,yaml]
+----
+actions:
+  1:
+    action: forcemerge
+    description: "Perform a forceMerge on selected indices to 'max_num_segments' per shard. Merge Days - 1 index for optimize disk space footprint on Elasticsearch TS"
+    options:
+      max_num_segments: 1
+      continue_if_exception: True
+      ignore_empty_list: True
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: '^(gravitee-).*$'
+      exclude: False
+    - filtertype: age
+      source: name
+      direction: older
+      unit: days
+      unit_count: 1
+      timestring: '%Y.%m.%d'
+  2:
+    action: delete_indices
+    description: "Delete selected indices older than 15d days"
+    options:
+      continue_if_exception: True
+      ignore_empty_list: True
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: '^(gravitee-).*$'
+      exclude: False
+    - filtertype: age
+      source: name
+      direction: older
+      unit: days
+      unit_count: 15
+      timestring: '%Y.%m.%d'
+----
+
+NOTE: If you deploy it on every ES data node do not forget to set `master_only: True` into the curator config file.
+It will allow to run only once curator on the elected current master.

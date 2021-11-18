@@ -1,0 +1,73 @@
+= Cockpit Docker Images
+
+== Overview
+
+This section explains how to run Cockpit images in Docker. These procedures are intended for users who are already familiar with Docker.
+
+== Prerequisites
+
+To run our official images, you must first install https://docs.docker.com/installation/[Docker^].
+
+== Images
+
+You can find the complete set of Cockpit images on https://hub.docker.com/u/graviteeio/[on Docker Hub].
+
+|===
+|Image name |Version |Base
+
+|{docker-hub}/cockpit-management-api/[graviteeio/cockpit-management-api]
+|latest
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[openjdk11:jre-11.0.9.1_1-alpine]
+
+|{docker-hub}/cockpit-management-ui/[graviteeio/cockpit-management-ui]
+|latest
+|https://hub.docker.com/r/adoptopenjdk/openjdk11/[nginx:1.19-alpine]
+
+|===
+
+=== Cockpit API (graviteeio/cockpit-management-api)
+
+The Cockpit API image provides a set of environment variables which you can use to tune your container.
+You can replace the address of the default MongoDB repository (`localhost:27017`) with your own (`GRAVITEE_MONGODB_HOST:GRAVITEE_MONGODB_PORT`).
+
+==== Run The Image
+[source,shell]
+....
+$ docker run \
+          --publish 8063:8063 \
+          --name cockpit-management-api \
+          --detach  \
+          graviteeio/cockpit-management-api:latest
+....
+
+==== Configure The Container
+To override the default configuration for MongoDB or any other properties included in the `gravitee.yml` file,
+you must to use environment variables. For more information, see the Cockpit API link:/cockpit/3.x/cockpit_installguide_configuration.html#environment_variables[Configuration^].
+
+The following example changes the MongoDB connection:
+
+[source,shell]
+....
+$ docker run \
+          --publish 8063:8063 \
+          --name cockpit-management-api \
+          --env GRAVITEE_MANAGEMENT_MONGODB_URI=mongodb://username:password@mongohost:27017/dbname
+          --detach  \
+          graviteeio/cockpit-management-api:latest
+....
+
+=== Cockpit UI (graviteeio/cockpit-management-ui)
+
+The Cockpit UI image provides a set of environment variables which you can use to tune your container.
+Cockpit UI needs Cockpit API to run, so you need to update `API_URL` to specify where `management-api` is running.
+
+==== Run The Image
+[source,shell]
+....
+$ docker run \
+        --publish 80:8080 \
+        --env API_URL=http://localhost:8063/cockpit/management/ \
+        --name cockpit-management-ui \
+        --detach  \
+        graviteeio/cockpit-management-ui:latest
+....

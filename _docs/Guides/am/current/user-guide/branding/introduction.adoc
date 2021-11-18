@@ -1,0 +1,13 @@
+= Branding
+
+AM can be customized to suit your organization's brand requirements and user expectations.
+AM branding gives you a consistent user experience when navigating between customer applications and AM server.
+
+You can create customized templates for individual applications or across all applications in a security domain.
+
+NOTE: AM uses link:https://www.thymeleaf.org/[Thymeleaf^] syntax to dynamically customize your templates with execution context values such as the current application, the current end user and the current HTTP request.
+
+For more information on customizing templates, see the following sections:
+
+* link:/am/current/am_userguide_user_management_forms.html[Custom pages]
+* link:/am/current/am_userguide_branding_email_templates.html[Custom email templates]

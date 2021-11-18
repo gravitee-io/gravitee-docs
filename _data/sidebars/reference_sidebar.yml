@@ -18,43 +18,142 @@ entries:
         folderitems:
           - title: API Key
             output: web
-            url: /Reference/policy/apim_policies_apikey.html
+            url: /Reference/policy/policy-apikey.html
           - title: Assign Attributes
             output: web
-            url: /Reference/policy/apim_policies_assign_attributes.html
+            url: /Reference/policy/policy-assign-attributes.html
           - title: Assign Content
             output: web
-            url: /Reference/policy/apim_policies_assign_content.html
+            url: /Reference/policy/policy-assign-content.html
           - title: Assign Metrics
             output: web
-            url: /Reference/policy/apim_policies_assign_metrics.html
+            url: /Reference/policy/policy-assign-metrics.html
           - title: Basic Authentication
             output: web
-            url: /Reference/policy/apim_policies_basic_authentication.html
+            url: /Reference/policy/policy-basic-authentication.html
           - title: Cache
             output: web
-            url: /Reference/policy/apim_policies_cache.html
+            url: /Reference/policy/policy-cache.html
           - title: Callout HTTP
             output: web
-            url: /Reference/policy/apim_policies_callout_http.html
+            url: /Reference/policy/policy-callout-http.html
           - title: Data Logging Masking
             output: web
-            url: /Reference/policy/apim_policies_data_logging.html
+            url: /Reference/policy/policy-data-logging-masking.html
           - title: Dynamic Routing
             output: web
-            url: /Reference/policy/apim_policies_dynamic_routing.html
+            url: /Reference/policy/policy-dynamic-routing.html
           - title: Generate HTTP Signature
             output: web
-            url: /Reference/policy/apim_policies_http_signature.html
+            url: /Reference/policy/policy-generate-http-signature.html
           - title: Generate JWT
             output: web
-            url: /Reference/policy/apim_policies_generate_jwt.html
+            url: /Reference/policy/policy-generate-jwt.html
           - title: Groovy
             output: web
-            url: /Reference/policy/apim_policies_groovy.html
+            url: /Reference/policy/policy-groovy.html
           - title: HTML to JSON
             output: web
-            url: /Reference/policy/apim_policies_html_json.html
+            url: /Reference/policy/policy-html-json.html
+          - title: HTTP Signature
+            output: web
+            url: /Reference/policy/policy-http-signature.html
+          - title: IP Filtering
+            output: web
+            url: /Reference/policy/policy-ip-filtering.html
+          - title: Javascript
+            output: web
+            url: /Reference/policy/policy-javascript.html
+          - title: JSON Threat Protection
+            output: web
+            url: /Reference/policy/policy-json-threat-protection.html
+          - title: JSON to JSON
+            output: web
+            url: /Reference/policy/policy-json-json.html
+          - title: JSON to XML
+            output: web
+            url: /Reference/policy/policy-json-xml.html
+          - title: JSON Validation
+            output: web
+            url: /Reference/policy/policy-json-validation.html
+          - title: JWS
+            output: web
+            url: /Reference/policy/policy-jws.html
+          - title: JWT
+            output: web
+            url: /Reference/policy/policy-jwt.html
+          - title: Keyless
+            output: web
+            url: /Reference/policy/policy-keyless.html
+          - title: Latency
+            output: web
+            url: /Reference/policy/policy-latency.html
+          - title: Metrics Reporter
+            output: web
+            url: /Reference/policy/policy-metrics-reporter.html
+          - title: Mock
+            output: web
+            url: /Reference/policy/policy-mock.html
+          - title: OAuth2
+            output: web
+            url: /Reference/policy/policy-oauth2.html
+          - title: OpenID Connect - UserInfo
+            output: web
+            url: /Reference/policy/policy-openid-connect-userinfo.html
+          - title: Override HTTP Method
+            output: web
+            url: /Reference/policy/policy-override-http-method.html
+          - title: Rate Limiting
+            output: web
+            url: /Reference/policy/policy-rate-limiting.html
+          - title: Regex Threat Protection
+            output: web
+            url: /Reference/policy/policy-regex-threat-protection.html
+          - title: Request Content Limit
+            output: web
+            url: /Reference/policy/policy-request-content-limit.html
+          - title: Request Validation
+            output: web
+            url: /Reference/policy/policy-request-validation.html
+          - title: Resource Filtering
+            output: web
+            url: /Reference/policy/policy-resource-filtering.html
+          - title: REST to SOAP
+            output: web
+            url: /Reference/policy/policy-rest-soap.html
+          - title: Retry
+            output: web
+            url: /Reference/policy/policy-retry.html
+          - title: Role-Based Access Control
+            output: web
+            url: /Reference/policy/policy-role-based-access-control.html
+          - title: SSL Enforcement
+            output: web
+            url: /Reference/policy/policy-ssl-enforcement.html
+          - title: Traffic Shadowing
+            output: web
+            url: /Reference/policy/policy-traffic-shadowing.html
+          - title: Transform Headers
+            output: web
+            url: /Reference/policy/policy-transform-headers.html
+          - title: Transform Query Parameters
+            output: web
+            url: /Reference/policy/policy-transform-query-params.html
+          - title: URL Rewriting
+            output: web
+            url: /Reference/policy/policy-url-rewriting.html
+          - title: XML to JSON
+            output: web
+            url: /Reference/policy/policy-xml-json.html
+          - title: XML Threat Protection
+            output: web
+            url: /Reference/policy/policy-xml-threat-protection.html
+          - title: XML Validation
+            output: web
+            url: /Reference/policy/policy-xml-validation.html
+          - title: XSLT
+            output: web
+            url: /Reference/policy/policy-xslt.html
       - title: CLI reference
         output: web
         folderitems:

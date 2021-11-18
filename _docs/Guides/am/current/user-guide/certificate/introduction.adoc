@@ -1,0 +1,6 @@
+= Certificates
+
+Cryptographic algorithms such as KeyStore (private/public key) are used to sign using JSON-based data structures (JWT) tokens.
+Certificates are used as part of the OAuth 2.0 and OpenID Connect protocol to sign access, create and renew ID tokens and ensure the integrity of a token's payload.
+
+Certificate definitions apply at _security domain_ level.

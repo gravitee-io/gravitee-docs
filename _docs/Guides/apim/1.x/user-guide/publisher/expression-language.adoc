@@ -1,0 +1,179 @@
+= Expression Language
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_publisherguide_expression_language.html
+:page-folder: apim/user-guide/publisher
+:page-layout: apim1x
+
+The Gravitee.io Expression Language (EL for short) is one of the key feature
+that can be used by API publisher to configure several points / services of an API.
+
+This expression language is a powerful language that support querying and
+manipulating an object graph and is based on the great http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html[SpEL] (Spring Expression Language).
+This also mean that you can do exactly all the things described in the previous
+link.
+
+Gravitee.io is extending SpEL capabilities by providing useful objects and properties
+inside the expression language context.
+
+== Syntax
+The Expression Language syntax is as follow:
+
+`{#request.id}`
+
+== API
+=== Properties
+
+As an API publisher, you can define properties for your API. These properties are
+automatically _injected_ into the expression language context to be used later.
+
+=== Example
+
+* Get the value of the property `my-property` defined in API properties:
+`{#properties['my-property']}`
+
+=== Endpoints
+When defining endpoints for your API, you must have to give them a _name_ which
+must be a unique identifier across all the endpoints of this API.
+
+Once done, this identifier can be used to get an endpoint reference (ie. uri).
+
+For example: when you're creating an API, a _default_ endpoint is created,
+corresponding to the value you set for the backend property. This endpoint can
+be retrieved using EL by using the following syntax:
+
+`{#endpoints['default']}`
+
+== Request
+=== Properties
+|===
+|Property |Description |Type |Always present
+
+.^|id
+|Request identifier
+^.^|string
+^.^|X
+
+.^|headers
+|Request headers
+^.^|key / value
+^.^|X
+
+.^|params
+|Request query parameters
+^.^|key / value
+^.^|X
+
+.^|path
+|Request path
+^.^|string
+^.^|X
+
+.^|paths
+|Request path parts
+^.^|array of string
+^.^|X
+
+.^|content
+|Request body content
+^.^|string
+^.^|-
+|===
+
+WARNING: `{#request.content}` is only available when the policy is bind to a `on-request-content` phase.
+
+=== Example
+
+* Get the value of the `Content-Type` header for an incoming HTTP request:
+`{#request.headers['content-type']}`
+
+* Get the second part of the request path:
+`{#request.paths[1]}`
+
+== Request context
+=== Properties
+|===
+|Property |Description |Type |Always present
+
+.^|attributes
+|Request context attributes
+^.^|key-value
+^.^|X
+|===
+
+=== Attributes
+When the gateway handles an incoming HTTP request, some attributes are
+automatically created. These attributes are:
+
+|===
+|Property |Description |Type |Nullable
+
+.^|context-path
+|Context-path
+^.^|string
+^.^|-
+
+.^|resolved-path
+|Resolved-path is the path defined in policies
+^.^|string
+^.^|-
+
+.^|application
+|The authenticated application doing incoming HTTP request
+^.^|string
+^.^|X (for keyless plan)
+
+.^|api
+|Called API
+^.^|string
+^.^|-
+
+.^|user-id
+|The user identifier of incoming HTTP request:
+
+* The subscription id for api-key based plan
+
+* Remote IP for keyless based plan
+
+^.^|string
+^.^|-
+
+.^|plan
+|Plan used to manage incoming HTTP request
+^.^|string
+^.^|-
+
+.^|api-key
+|the api-key used (in case of an api-key based plan)
+^.^|string
+^.^|X (for no api-key plan)
+|===
+
+Also, some policies (like the <<apim_policies_oauth2.adoc#attributes, OAuth2 policy>>)
+are registering some other attributes in the context. Please check the
+documentation of the policies you are using to be aware of them.
+
+=== Example
+
+* Get the value of the `user-id` attribute for an incoming HTTP request:
+
+`{#context.attributes['user-id']}`
+
+* Get the value of the `plan` attribute for an incoming HTTP request:
+
+`{#context.attributes['plan']}`
+
+
+== Policies
+Expression language can be used to configure some part of policies configuration.
+It's up to the policy to specify if its supports EL or not.
+
+== Mixin
+
+In previous examples, we show several examples to manipulate objects available
+in the EL context. One amazing thing you can also achieve is to mix property
+usage to provide a more and more dynamic configuration.
+
+As an example, we would like to retrieve the value of an HTTP header where the name
+is based on an API property named `my-property`:
+
+`{#request.headers[#properties['my-property']]}`

@@ -1,14 +1,10 @@
----
-product: Access Management
-toc: true
-title: Configure a flow
----
+= Configure a flow
 
 You can use flows to extend AM's standard functionality.
 
-This section shows you how to use flows to enhance the information displayed in the AM link:/am/current/am_userguide_user_management_consent.html[end user agreement^], by calling a remote service before rendering the HTML page. The example in this section uses the Gravitee.io Echo API.
+This section shows you how to use flows to enhance the information displayed in the AM link:/Guides/AM/current/user-guide/user-management/consent.html[end user agreement^], by calling a remote service before rendering the HTML page. The example in this section uses the Gravitee.io Echo API.
 
-For more information about flows, see link:/am/current/am_userguide_policies.html[Flows] in the User Guide.
+For more information about flows, see link:/Guides/AM/current/user-guide/flows/introduction.html[Flows^] in the User Guide.
 
 NOTE: AM flows are available from version 3.5 and replace extension points.
 

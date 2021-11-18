@@ -1,0 +1,81 @@
+= MFA factors
+
+== Overview
+
+AM supports various MFA factors for protecting user account access out of the box.
+
+== Create a new MFA factor
+
+. In AM Console, click *Settings > Multifactor Auth*.
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Select the factor type and click *Next*.
++
+image::am/current/graviteeio-am-userguide-mfa-factor-types.png[]
++
+. Enter the factor details and click *Create*.
+. Click *Applications* and select your application.
+. Click the *Settings* tab, then click *Multifactor Auth*.
+. Enable MFA by selecting an available factor.
++
+image::am/current/graviteeio-am-userguide-mfa-application-factor.png[]
+
+== One-time password
+
+One-Time Password (OTP) allows you to use an Authenticator application via your digital device (mobile phone), such as Google Authenticator, Microsoft Authenticator or Free OTP,
+to generate a one-time code which changes over time and will be used as the second factor to validate a user’s account.
+
+If you enable an OTP type factor for your application, next time your users log in they will see the following screens:
+
+image::am/current/graviteeio-am-userguide-mfa-enroll.png[MFA Enroll]
+
+image::am/current/graviteeio-am-userguide-mfa-challenge.png[MFA Challenge]
+
+NOTE: The look and feel of the MFA forms can be overridden. See link:/am/current/am_userguide_user_management_forms.html[Custom forms^] for more information.
+
+== SMS verification
+
+With SMS verification, you can receive a verification code on your mobile phone to be used as the second factor to validate a user’s account.
+
+NOTE: SMS MFA requires a compatible link:/am/current/am_userguide_resources.html[resource^].
+
+If you enable an SMS type factor for your application, next time your users log in they will see the following screens:
+
+image::am/current/graviteeio-am-userguide-mfa-sms-enroll.png[SMS Enroll]
+
+image::am/current/graviteeio-am-userguide-mfa-sms-challenge.png[SMS Challenge]
+
+NOTE: You can change the look and feel of forms using link:/am/current/am_userguide_user_management_forms.html[Custom forms^]. The enrollment form must send the phone number using the `phone` parameter in E.164 notation.
+
+== Phone call verification
+
+With Phone call verification, you can receive a verification code via a phone call to be used as the second factor to validate a user’s account.
+
+NOTE: Phone call MFA requires a compatible link:/am/current/am_userguide_resources.html[resource^].
+
+If you enable a *Call* type factor for your application, next time your users log in they will see the following screens:
+
+image::am/current/graviteeio-am-userguide-mfa-call-enroll.png[Call Enroll]
+
+image::am/current/graviteeio-am-userguide-mfa-call-challenge.png[Call Challenge]
+
+NOTE: You can change the look and feel of forms using link:/am/current/am_userguide_user_management_forms.html[Custom forms^]. The enrollment form must send the phone number using the `phone` parameter in E.164 notation.
+
+== Email verification
+
+With Email verification, you can receive a verification code on your email address to be used as the second factor to validate a user’s account.
+
+NOTE: Email MFA requires a compatible link:/am/current/am_userguide_resources.html[resource^].
+
+The `email-am-factor` plugin configuration form allows to define the number of digits used to generate the verification code. The configured resource must be a link:am/current/am_userguide_resources_smtp.html[SMTP Resource]. The email template used by this plugin is defined in the design section of the domain or application.
+
+image::am/current/graviteeio-am-userguide-mfa-email-config.png[Email Configuration]
+
+*Subject* and *Template* fields use the freemarker syntaxe to customize the message content. The generated *code* is available using the expression `${code}`. The user profile and the application are accessible using respectively the expression `${user}` and  `${client}` (ex: `${client.clientName}` will return the application name and `${user.firstName}` will return the firstname of the user.)
+
+If you enable an Email type factor for your application, next time your users log in they will see the following screens:
+
+image::am/current/graviteeio-am-userguide-mfa-email-enroll.png[Email Enroll]
+
+image::am/current/graviteeio-am-userguide-mfa-email-challenge.png[Email Challenge]
+
+NOTE: You can change the look and feel of forms using link:/am/current/am_userguide_user_management_forms.html[Custom forms^]. The enrollment form must send the email address using the `email` parameter.

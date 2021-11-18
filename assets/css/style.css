@@ -63,7 +63,7 @@ INDEX SASS
 */
 body {
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: Libre Franklin, IBM Plex Sans, sans-serif;;
   font-size: 16px;
   line-height: 30px;
   font-weight: 400;
@@ -229,28 +229,28 @@ iframe {
 * ============================
 */
 ::-webkit-input-placeholder {
-  font-family: "Poppins", sans-serif;
+  font-family: Libre Franklin, IBM Plex Sans, sans-serif;
   font-size: 16px;
   line-height: 30px;
   color: #777777;
   font-weight: 400; }
 
 :-moz-placeholder {
-  font-family: "Poppins", sans-serif;
+  font-family: Libre Franklin, IBM Plex Sans, sans-serif;
   font-size: 16px;
   line-height: 30px;
   color: #777777;
   font-weight: 400; }
 
 ::-o-placeholder {
-  font-family: "Poppins", sans-serif;
+  font-family: Libre Franklin, IBM Plex Sans, sans-serif;
   font-size: 16px;
   line-height: 30px;
   color: #777777;
   font-weight: 400; }
 
 :-ms-input-placeholder {
-  font-family: "Poppins", sans-serif;
+  font-family: Libre Franklin, IBM Plex Sans, sans-serif;
   font-size: 16px;
   line-height: 30px;
   color: #777777;
@@ -519,7 +519,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
   .header-navigation .navigation-box .navigation-left {
     float: left; }
   .header-navigation .navigation-box .navigation-right {
-    float: right; }
+    float: right; margin-right: 40px;}
   .header-navigation .navigation-box .header-logo {
     margin: 10px  0;
     display: block; }

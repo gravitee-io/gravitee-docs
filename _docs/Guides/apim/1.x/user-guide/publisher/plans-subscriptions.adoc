@@ -1,0 +1,200 @@
+= Plans and subscriptions
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_publisherguide_plans_subscriptions.html
+:page-folder: apim/user-guide/publisher
+:page-layout: apim1x
+
+Once an API is registered, and made public, you can manage subscriptions to it through the platform.
+Managing subscriptions and plans is a key feature in Gravitee.io and allows the publisher to provide and regulate access to the API.
+
+== What is a plan ?
+
+A plan provides a service and access layer on your API for the consumer link:/apim/1.x/apim_overview_concepts.html#gravitee-concepts-application[applications].
+A plan specifies access limits, subscription validation mode and other configurations to meet the specific applications needs.
+
+image::apim/1.x/api-publisher-guide/plans-subscriptions/plan-diagram.png[Gravitee.io - Plan diagram, 873, 530, align=center, title-align=center]
+
+In API Strategy, we see `API as a Product` concept which helps us to understand the needs of the customers and make the product compelling to them.
+Instead of providing only pure technical API resources, API's plans will offer a business/service perspective to the consumers and in the meantime leverage your API product line.
+
+You can imagine the following scenarios :
+
+* Create an Open API plan with a readonly access and an limited request traffic letting potential customers discover and try your API
+* Create a Premium plan with public resources and no limit access for your partners
+* Create an internal plan with all access to your internal enterprise applications
+
+All these notions can be hard to code in your API and should be manage in external tool such as an Plan.
+
+To subscribe to a Plan, developers must create an link:/apim/1.x/apim_overview_concepts.html#gravitee-concepts-application[application] and choose the Plan they want to subscribe.
+That will create a subscription associate with the application. This subscription will be verify in order to accept or deny the incoming request.
+
+
+== Create a plan
+
+API plans can be manage during API creation process or in the `Portal/Plans` section of the API.
+
+.Create plan
+image::apim/1.x/api-publisher-guide/plans-subscriptions/create-plan.png[Gravitee.io - Create plan, 873, 530, align=center, title-align=center]
+
+.Manage plan
+image::apim/1.x/api-publisher-guide/plans-subscriptions/create-plan-2.png[Gravitee.io - Manage plan, 873, 530, align=center, title-align=center]
+
+When creating plans in Gravitee.io, 4 security types are supported to restrict access to an API. The security types are as follows :
+
+* Keyless (public)
+* API Key
+* OAuth 2.0
+* JWT
+
+== Keyless plan
+
+Keyless plan permits all access for the API and will bypass any security mechanism on the whole request process.
+
+NOTE: Keyless plan can be useful to quickly and easily expose your API to external users and get their feedbacks.
+Due to missing consumer identifier token (API key), keyless consumer will be set as `unknown application` in the API analytics part.
+
+== API Key plan
+
+API Key plan lets you enforce verification of API keys during request processing, letting only apps with approved API keys access your APIs.
+
+This plan ensures that API keys are valid, have not been revoked or expired, and are approved to consume the specific resources associated with your API.
+
+NOTE: The API key plan represents the simplest security mechanism and acts more as a unique identifier than a security token since the API key can be easily found in app code.
+For stronger security please see OAuth 2.0 and JWT plans.
+
+== OAuth 2.0 plan
+
+OAuth 2.0 plan ensures that access tokens provided by 3rd party OAuth 2.0 Authorization Server are valid. Letting only apps with approved OAuth 2.0 access token access your APIs.
+
+NOTE: https://tools.ietf.org/html/rfc6749[OAuth 2.0] is a delegation protocol for authorization decisions across applications and APIs.
+It defines standards endpoints and flows to both obtain and verify access tokens. If you want to learn more about OAuth 2.0 you can take a look at https://oauth.net/2/[oauth.net].
+
+To create an OAuth 2.0 plan, you will first need an OAuth 2.0 resource that represents your OAuth 2.0 Authorization Server.
+
+Go to `Design/Resources` section of your API and create a new `Generic OAuth 2.0 Authorization Server Resource`
+
+NOTE: If you use https://gravitee.io/[Gravitee.io Access Management], we provide a dedicated OAuth 2.0 AM resource.
+
+.Create OAuth 2.0 resource
+image::apim/1.x/api-publisher-guide/plans-subscriptions/create-oauth2-resource.png[Gravitee.io - Create OAuth 2.0 resource, 873, 530, align=center, title-align=center]
+
+* Set the OAuth 2.0 Authorization server URL
+* Set the https://tools.ietf.org/html/rfc7662[Token introspection endpoint] URI with the correct HTTP method and https://tools.ietf.org/html/rfc6749#section-3.3[scope] delimiter.
+* If you want to obtain the requested claims about the end-user you can enter the http://openid.net/specs/openid-connect-core-1_0.html#UserInfo[UserInfo Endpoint] URI
+* Enter the `client id` and `client secret` used for token introspection.
+
+NOTE: Why do I need to set up a client id and client secret ? As per https://tools.ietf.org/html/rfc7662#section-2.1[RFC 7662], to prevent token scanning attacks,
+the introspection endpoint MUST also require some form of authorization to access this endpoint such as client authentication.
+Don't forget to create an OAuth 2.0 client acting as a resource server from your OAuth 2.0 authorization server.
+
+Once the OAuth2 resource is set up you can create an OAuth 2.0 plan. Go to `Portal/Plans` section of your API and create a new plan.
+
+On the secure section (second step) choose `OAuth2` Authorization type,  write down the OAuth2 resource's name previously created and choose if you want to check specific https://tools.ietf.org/html/rfc6749#section-3.3[scopes] to access the API.
+
+.Create OAuth 2.0 plan
+image::apim/1.x/api-publisher-guide/plans-subscriptions/create-oauth2-plan.png[Gravitee.io - Create OAuth 2.0 plan, 873, 530, align=center, title-align=center]
+
+* Click `NEXT` and create your plan by clicking on the `SAVE` button.
+
+NOTE: After plan creation, the plan is in staging mode, don't forget to publish it to make it available to the consumers.
+
+Your API is now OAuth 2.0 secured and the consumers must call the API with the `Authorization Bearer :token:` HTTP header in order to access the API's resources.
+
+NOTE: Applications who want to subscribe to an OAuth 2.0 plan, must have a existing client with a valid `client_id` registered in the OAuth 2.0 authorization server.
+The `client_id` will be use to make the connection between the OAuth 2.0 client and the Gravitee.io consumer application.
+
+== JWT plan
+
+Json Web Tokens (JWT) plan ensures that JWT token issued by third party are valid. Letting only apps with approved JWT token access your APIs.
+
+https://tools.ietf.org/html/rfc7519[JSON Web Tokens] are an open method for representing claims securely between two parties.
+JWT are digitally-signed using HMAC shared keys or RSA public/private key pairs. JWT plan allows you to verify the signature of the JWT and check if the JWT is still valid according to its expiry date.
+
+NOTE: JWT defines some https://tools.ietf.org/html/rfc7519#section-4.1[registered claim names] including subject, issuer, audience, expiration time, and not-before time. In addition to these claims, the inbound JWT payload
+MUST contains the `client_id` claim* to make the connection between the JWT and the Gravitee.io application's subscription.
+
+*The policy is looking for a client ID on the payload as follow:
+
+* First on the azp claim
+* Then on the aud claim
+* Finally on the client_id claim
+
+To create an JWT plan, go to `Portal/Plans` section of your API and create a new plan.
+
+On the secure section (second step) choose `JWT` Authorization type and set up the public key used to verify the incoming JWT token.
+
+NOTE: Public key can also be set in the `gravitee.yml` file. See link:/apim/1.x/apim_policies_jwt.html[JWT policy] for more information. Currently Gravitee.io only support RSA Public Key format.
+
+.Create JWT plan
+image::apim/1.x/api-publisher-guide/plans-subscriptions/create-jwt-plan.png[Gravitee.io - Create JWT plan, 873, 530, align=center, title-align=center]
+
+* Click `NEXT` and create your plan by clicking on the `SAVE` button.
+
+NOTE: After plan creation, the plan is in staging mode, don't forget to publish it to make it available to the consumers.
+
+Your API is now JWT secured and the consumers must call the API with the `Authorization Bearer :JWT Token:` HTTP header in order to access the API’s resources.
+
+== Advanced settings, what can I use plans for ?
+
+Plans provide and secure access to the API thanks to their Authorization type, let's see what you can do more with Plans.
+
+=== Limit request traffic
+
+Plan provide tools to maintain and optimize traffic management and protect API backends health.
+
+==== Rate-limiting
+
+Rate limit how many HTTP requests an application can make in a given period of seconds or minutes.
+
+.Enforces limit of 1 000 requests per minute
+image::apim/1.x/api-publisher-guide/plans-subscriptions/create-plan-rate-limit.png[Gravitee.io - Create plan - Rate-Limit , 873, 530, align=center, title-align=center]
+
+
+NOTE: Rate-limit will help you limit the sudden increase in the number of requests at any point in time.
+
+==== Quota
+
+Quota specifies the number of requests allow to call API backends in the given time interval.
+
+.Enforces limit of 100 000 requests per day
+image::apim/1.x/api-publisher-guide/plans-subscriptions/create-plan-quota.png[Gravitee.io - Create plan - Rate-Limit , 873, 530, align=center, title-align=center]
+
+NOTE: Quota can be use to business/financial requirements where you decide the limit of how many calls partner/third-party apps can do in a period of time.
+
+=== Path Authorization
+
+Path authorization allows you to constraint access to a subset of the API resources.
+
+.Allow only GET requests
+image::apim/1.x/api-publisher-guide/plans-subscriptions/create-plan-path-authorization.png[Gravitee.io - Create plan - Path Authorization , 873, 530, align=center, title-align=center]
+
+NOTE: With Path Authorization it's possible to make an readonly API for public members and give access to more resource for premium members.
+
+== Manage subscriptions
+
+Plans will let consumers to request for subscription and begin to play with your API.
+
+.API Plans from consumers' perspective
+image::apim/1.x/api-publisher-guide/plans-subscriptions/plans-subscriptions.png[Gravitee.io - API plans , 873, 530, align=center, title-align=center]
+
+=== Approving subscriptions
+
+If you set your plan to auto validate subscription mode, you have nothing to do, consumers will be ready to access the API.
+Otherwise, if you set manual approval, the publisher must approve subscriptions by following these steps :
+
+NOTE: If you enable mail or portal notification, you will see that a task requires your attention to validate the subscription.
+
+1. Go to `Portal/Subscriptions` of your API
+2. Select the `Pending` subscription
+3. Click `ACCEPT`, enter the start date and end date (no end date means forever) to approve the subscription
+
+.Approve subscription
+image::apim/1.x/api-publisher-guide/plans-subscriptions/approve-subscription.png[Gravitee.io - approve subscription , 873, 530, align=center, title-align=center]
+
+=== Revoking subscriptions
+
+Every subscriptions can be revoked to invalidate access to the APIs. Go to `Portal/Subscriptions` of your API, select the subscription you want to cancel and click `CLOSE`
+
+.Revoke subscription
+image::apim/1.x/api-publisher-guide/plans-subscriptions/revoke-subscription.png[Gravitee.io - revoke subscription , 873, 530, align=center, title-align=center]
+

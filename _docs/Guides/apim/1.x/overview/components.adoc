@@ -1,0 +1,30 @@
+= Components
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_overview_components.html
+:page-folder: apim/overview
+:page-layout: apim1x
+
+Next sections are describing top components which are part of Gravitee.io.
+
+== Gateway
+The gateway is the core component of the Gravitee.io platform. You can compare it to a "smart" proxy to understand its goal.
+
+Unlike traditional HTTP proxy, the gateway is able to apply <<apim_overview_plugins.adoc#gravitee-plugins-policies, policies>> (ie. rules) to
+both HTTP requests and responses according to your needs, meaning that you can enhance requests and responses processing
+by adding transformation, security, and many other crazy features!
+
+.Gravitee.io - Gateway Internal
+image::apim/1.x/architecture/graviteeio-gateway-internal.png[Gravitee.io - Gateway Internal]
+
+.Gravitee.io - Gateway Architecture
+image::apim/1.x/architecture/graviteeio-gateway-architecture.png[Gravitee.io - Gateway Architecture]
+
+== Management API
+A restful API providing a bunch of services to manage and configure the global platform. All exposed
+services are constraint by authentication and authorization rules.
+You can find more information by having a look to the link:apim/1.x/apim_installguide_management_api_documentation.html[Management API > Documentation] section.
+
+== Management UI
+This is the Web UI for <<gravitee-components-mgmt-api, Gravitee.io Management API>>. This UI acts as a management tool
+for API Publishers but also as a portal for your API Consumers.
+

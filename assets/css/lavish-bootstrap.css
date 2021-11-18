@@ -250,7 +250,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Libre Franklin, IBM Plex Sans, sans-serif;;
   font-size: 14px;
   line-height: 1.428571429;
   /*color: #77777a; */
@@ -5376,9 +5376,13 @@ body.modal-open,
 .hide {
   display: none !important;
 }
+
+/*
 .show {
   display: block !important;
 }
+*/
+
 .invisible {
   visibility: hidden;
 }

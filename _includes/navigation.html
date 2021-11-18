@@ -1,0 +1,56 @@
+<header class="header-area">
+    <div class="header-navigation">
+        <div class="container">
+            <div class="navigation-box">
+                <div class="navigation-left">
+                    <a class="header-logo" href="{{ "/" | relative_url }}"><img src="{{ '/assets/images/header-logo.png' | relative_url }}" alt="header logo"></a>
+                </div>
+
+      <div class="navigation-right">
+
+                     <nav class="navbar-nav">
+                        <ul id="navigation-menu" class="slimmenu">
+
+				{% for link in site.data.navigation %}
+        	{% assign active = nil %}
+					{% for sublink in link.submenu %}
+						{% if page.url contains sublink.url %}
+							{% assign active = 'active' %}
+						{% endif %}
+					{% endfor %}
+					{% if page.url contains link.url %}
+						{% assign active = 'active' %}
+					{% endif %}
+
+					<li class="{{ active }}{% if link.submenu %} themeix-dropdown has-children{% endif %}">
+						<a href="{{ link.url | relative_url }}">{{ link.text }}</a>
+
+						{% if link.submenu %}
+
+							<ul class="themeix-dropdown-item" role="menu">
+								{% for sublink in link.submenu %}
+									<li {% if page.url contains sublink.url %}class="active"{% endif %}>
+										<a href="{{ sublink.url | relative_url }}">{{ sublink.text }}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+					</li>
+				{% endfor %}
+        <!-- {% if page.title != nil %} -->
+
+			 	 <li>
+           <div>
+               <input class="gv-input" type="text" id="search-input" placeholder="Search our docs">
+           </div>
+         </li>
+                          <!--    {% endif %} -->
+			 </ul>
+                     </nav>
+
+                </div>
+
+
+            </div>
+        </div>
+</header>

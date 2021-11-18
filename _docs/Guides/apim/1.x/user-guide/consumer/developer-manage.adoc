@@ -1,0 +1,100 @@
+= Manage applications
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_consumerguide_manage_applications.html
+:page-folder: apim/user-guide/consumer
+:page-layout: apim1x
+
+== What is an application ?
+
+Consumers who want to use APIs need to register an application that will let API publishers to control and regulate access to their APIs.
+Typically application can be a web application, a native application, bash/job applications and so on which want to access data.
+
+== Create an application
+
+NOTE: Only users with correct role permission can create an application, see link:/apim/1.x/apim_adminguide_roles_and_permissions.html[roles and permissions]
+
+1. Login to the Gravitee.io APIM portal
+2. Open the user menu (top right) and click `Applications`
+3. From the `Applications` screen, click `(+)` button to create a new application
+4. Enter application's name and description and press `SAVE`
+5. `OPTIONAL` You want to subscribe to an API's OAuth 2.0/JWT plan and you have an OAuth 2.0 client ? Grab your `client_id` and complete the security part
+6. Click `SAVE` to register your application
+
+Your application is created and you can use it to subscribe to an API.
+
+== Manage members
+
+When an application is registered only the application's creator (PRIMARY OWNER) can see and manage the application.
+
+Most of the time an application will be share across the developers' application and they will ask access for an application to get information such as API keys and API analytics.
+
+By default, Gravitee.io is defining three roles for membership:
+
+[cols="2*", options="header"]
+|===
+^|Role
+^|Description
+
+.^| *Primary owner*
+.^| When an application is created, the primary owner is the creator of the applcation. Primary owner can do all possible actions for an API.
+
+.^| *Owner*
+.^| Owner is a lightest version of the primary owner role. Owner can do all possible actions except delete the application.
+
+.^| *User*
+.^| A user is a person who can access the application in read only mode and use the application to subscribe to an API.
+
+|===
+
+**To manage members : **
+
+NOTE: Only users with correct role permission can manage application's members, see link:/apim/1.x/apim_adminguide_roles_and_permissions.html[roles and permissions]
+
+1. Login to the Gravitee.io APIM portal
+2. Open the user menu (top right) and click `Applications`
+3. From the `Applications` screen, select your application and go to `Members` section
+4. Click (+) to search and add members
+
+NOTE: You can also transfer ownership to an other user, that can be useful when the current primary owner leave the project.
+
+.Manage members
+image::apim/1.x/api-consumer-guide/developer-manage/manage-members.png[Gravitee.io - manage members]
+
+== Manage subscriptions
+
+Subscription represents the plans the application has subscribed to. Subscriptions page will let application's members to see if their access to the APIs are still valid, not revoked or under API publisher approval process.
+
+image::apim/1.x/api-consumer-guide/developer-manage/app-subscriptions.png[Gravitee.io - application subscriptions]
+.Application subscriptions
+
+== Analytics
+
+For each APIs you have subscribed, Gravitee.io APIM provides some analytics to let you know how your application use the APIs.
+
+See below the list of the current analytics
+
+|===
+|Analytics|Description
+
+|Top API
+|Top APIs sort by the number of API calls
+
+|Status
+|HTTP status repartition summary
+
+|Top paths
+|Hits repartition by path
+
+|Top mapped paths
+|Hits repartition by mapped path
+
+|Response status
+|Hits repartition by status
+
+|Response times
+|Average response time
+
+|Hits by API
+|Hits repartition by API
+
+|===

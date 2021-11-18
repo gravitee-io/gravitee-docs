@@ -1,0 +1,45 @@
+= Step-up authentication
+
+[label label-version]#New in version 3.9#
+
+== Overview
+
+Step-up authentication requires users to produce additional forms of authentication when they are already authenticated with a first set of credentials.
+
+Step-up authentication uses multi-factor authentication (MFA), and can include any number of authentication methods, such as a one-time code over SMS, knowledge-based authentication (KBA), and biometrics.
+
+[NOTE]
+====
+While both step-up authentication and MFA require users to produce multiple forms of authentication, each has a slightly different purpose:
+
+* The purpose of MFA is to increase confidence in a user's identity.
+* The purpose of step-up authentication is to increase the level of security when needed: you can use it to implement an adaptive authentication scheme that seeks to find the best balance between the risk level of a request and the confidence level of the authentication.
+
+Step-up authentication helps you ensure that users can access non-sensitive resources with a lower level of authentication, while prompting them for additional credentials when they request access to sensitive resources.
+====
+
+=== Example use cases
+
+Step-up authentication is often used in the following scenarios:
+
+- Users want to modify their password.
+- Users initiate a payment.
+- Users want to delegate access to third parties.
+
+== Configure step-up authentication
+
+. In AM Console, select your application.
+. Click the **Settings** tab, then click **Multifactor Auth**.
+. Set the *Step up authentication* rule.
+. Click *SAVE*.
++
+image::am/current/graviteeio-am-userguide-mfa-step-up.png[]
+
+You can leverage access control by asking your users to confirm their identity before making any sensitive actions.
+In this example the sensitive action is represented by the `pisp` (Payment Initiation Service Provider) OAuth 2.0 scope.
+
+NOTE: In order to use the API endpoints for payment initiation, an OAuth 2 access token must be presented to the API with scope `psip`.
+This is the standard flow defined by the PSD2 and Open Banking protocols.
+Payment initiation requires a *consent process* and a *strong customer authentication*.
+
+NOTE: MFA step-up authentication is based on our execution context and can be triggered according to the incoming request, the user profile, and more.

@@ -1,0 +1,179 @@
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_portal_configuration.html
+:page-folder: apim/installation-guide/portal
+:page-description: Gravitee.io API Management - Configuration - Portal
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim1x
+
+[[gravitee-installation-portal-configuration]]
+= Portal configuration
+
+There is 2 ways to configure your web UI :
+
+ - with a file named `constants.json`
+ - with the values stored in the management repository
+
+Those two ways can work together.
+The config file override the repository configuration.
+For example, you can centralize all your configuration with the repository and override the `portal.entrypoint` with the `constants.json` file to adapt values to different datacenters.
+
+
+The only mandatory values in the `constants.json` file is`:
+```
+{
+  "baseURL": "gravitee_management_api_url"
+}
+```
+It describes where is the management api to be able to request it.
+
+== Endpoint
+
+To retrieve the portal configuration stored in repository:
+`GET /management/portal`
+
+To update the portal configuration : `POST /management/portal`
+
+__You have to provide a full json in case of update. Otherwise, this will store default values.__
+
+== JSON format
+
+[source,json]
+----
+{
+  "baseURL": "gravitee_management_api_url",
+  "company" : {
+    "name" : "Gravitee.io"
+  },
+  "management" : {
+    "title" : "Gravitee.io Management"
+  },
+  "portal" : {
+    "title" : "Gravitee.io Portal",
+    "entrypoint" : "https://api.company.com",
+    "apikeyHeader" : "X-Gravitee-Api-Key",
+    "support" : {
+      "enabled" : true
+    },
+    "rating" : {
+      "enabled" : false
+    },
+    "devMode" : {
+      "enabled" : false
+    },
+    "userCreation" : {
+      "enabled" : true
+    },
+    "apis" : {
+      "tilesMode" : {
+        "enabled" : true
+      }
+    },
+    "analytics" : {
+      "enabled" : true,
+      "trackingId" : "GA_TRACKING_ID"
+    },
+    "dashboard" : {
+      "widgets": [ "geo_country", "geo_city" ]
+    }
+  },
+  "authentication" : {
+    "forceLogin" : {
+      "enabled" : false
+    },
+    "localLogin" : {
+      "enabled" : true
+    },
+    "google" : {
+      "clientId" : "googleplus_clientid"
+    },
+    "github" : {
+      "clientId" : "github_clientId"
+    },
+    "oauth2" : {
+      "clientId" : "oauth2_clientId",
+      "name" : "My OAuth2 server",
+      "color" : "#0076b4",
+      "authorizationEndpoint" : "https://oauth2_authorization_server/authorize",
+      "userLogoutEndpoint" : "https://oauth2_authorization_server/logout",
+      "scope" : [ "profile", "admin" ]
+    }
+  },
+  "scheduler" : {
+    "tasks" : 10,
+    "notifications" : 10
+  },
+  "documentation" : {
+    "url" : "https://docs.gravitee.io"
+  },
+  "theme" : {
+    "name" : "default",
+    "logo" : "themes/assets/GRAVITEE_LOGO1-01.png",
+    "loader" : "assets/gravitee_logo_anim.gif"
+  }
+}
+----
+
+== Theme
+
+You have the possibility to change the default theme of Gravitee with your own custom theme.
+For that, create a new file themes/custom-theme.json. This file must be like :
+
+[source,javascript]
+[subs="attributes"]
+{
+  "portal": {
+    "navbar": {
+      "background-color": "#2d323e",
+      "color": "#fff"
+    },
+    "footer": {
+      "content": {
+        "background-color": "#2d323e",
+        "color": "#e1e2e1"
+      },
+      "links": {
+        "color": "#f5f5f6"
+      }
+    },
+    "home": {
+      "header": {
+        "background-color": "#2d323e",
+        "color": "#fff"
+      },
+      "topapis": {
+        "background-color": "#34a0d4"
+      }
+    },
+    "apisList": {
+      "background-color": "#f5f5f6"
+    },
+    "api": {
+      "header": {
+        "background-color": "#eff4f9"
+      },
+      "plans": {
+        "background-color": "#34a0d4"
+      }
+    }
+  }
+}
+
+You can just change the different values with your own CSS properties.
+
+Then, edit `constants.json` or use the settings screen and change the value of `theme.name from "default" to "custom".
+
+== Screenshots
+
+.Gravitee.io - Home ('/')
+image::apim/1.x/themes/gravitee-io-homepage.png[Gravitee.io - Home ('/')]
+
+.Gravitee.io - APIs List ('/apis')
+image::apim/1.x/themes/gravitee-io-apisList.png[Gravitee.io - APIs List ('/apis')]
+
+.Gravitee.io - API ('/apis/:idApi')
+image::apim/1.x/themes/gravitee-io-api.png[Gravitee.io - API ('/apis/:idApi')]
+
+== Logo
+
+You can also change the logo.
+For that, edit constants.json and change the value of `theme.logo` to "themes/assets/your_logo.png".

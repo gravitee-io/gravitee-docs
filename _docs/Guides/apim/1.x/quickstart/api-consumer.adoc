@@ -1,0 +1,74 @@
+= Consuming an API
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_quickstart_consume.html
+:page-folder: apim/quickstart
+:page-layout: apim1x
+
+NOTE: See the link:/apim/1.x/apim_quickstart_publish.html[API publisher QuickStart guide] to set up your first API
+
+== Create your application
+
+NOTE: Gravitee.io offers differents ways to access/secure an API (link:/apim/1.x/apim_publisherguide_plans_subscriptions.html[Gravitee.io Plans]), in this quick start we will access an API via an link:/apim/1.x/apim_policies_apikey.html[API Key]. Only trusted application can access the API data by requesting an API Key. Let's see how to create an application and generate an API Key.
+
+. Go to `Applications` menu
+
+. Click `CREATE APPLICATIONS` (i.e (+) button)
+
+image::apim/1.x/graviteeio-create-first-app.png[]
+
+[start=3]
+. Give your Application a name, a type and a description
+
+. Click the `CREATE` button and your Application is created
+
+image::apim/1.x/graviteeio-first-app.png[]
+
+Create Application request::
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"name":"My First Application","type":"Web","description":"Web client for the Gravitee.io Echo API"}' \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/applications
+----
+
+NOTE: You can also use your default application.
+
+== Subscribe to an API
+
+.. Go back to the API list and select the API you want to subscribe by clicking on the API card and click `SUBSCRIBE` button.
+
+.. Choose your plan
+
+.. And select your application
+
+image::apim/1.x/graviteeio-subscribe-api.png[]
+
+Subscribe API request :
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -X POST \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/applications/|application-id|/subscriptions/?plan=|plan-id|
+----
+
+You have just subscribed to an API and you are ready to use it by grabbing your API Key.
+
+image::apim/1.x/graviteeio-application-subscriptions.png[]
+
+== Test an API
+
+Now that you have created your application and get your API Key, we can go back to the API and start using it.
+
+NOTE: You can use your API Key by setting the HTTP Header `X-Gravitee-Api-Key` or using the request query parameter `api-key`.
+
+[source]
+----
+curl -H "X-Gravitee-Api-Key: <your-api-key>" \
+     http://GATEWAY_SERVER_DOMAIN/myfirstapi
+----
+
+You can see that the Gravitee.io Echo API data has been served successfully. You can test different requests specified in the https://github.com/gravitee-io/gravitee-sample-apis/blob/master/gravitee-echo-api/README.md[Gravitee.io Echo API documentation].

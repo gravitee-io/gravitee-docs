@@ -1,5 +1,4 @@
 ---
-product: API Management
 toc: true
 title: Quick APIM installation
 ---
@@ -18,7 +17,7 @@ Use these procedures to quickly install API Management for the first time. They 
 $ curl -sSL https://bit.ly/install-apim-3x | bash
 ....
 
-For more information, see link:/Guides/apim/current/installation-guide/red-hat/introduction.html[Install on RedHat].
+For more information, see link:/Guides/apim/current/installation-guide/red-hat/introduction.html[Install on RedHat^].
 
 == Install with Docker
 
@@ -34,7 +33,7 @@ $ docker-compose pull
 $ docker-compose up
 ....
 
-For more information, see link:/Guides/apim/current/installation-guide/docker/compose.html[Run the APIM images in Docker].
+For more information, see link:/Guides/apim/current/installation-guide/docker/compose.html[Run the APIM images in Docker^].
 
 == Install with Kubernetes
 
@@ -47,4 +46,4 @@ $ helm repo add graviteeio https://helm.gravitee.io
 $ helm install --name graviteeio-apim graviteeio/apim3
 ....
 
-For more information, see link:/Guides/apim/current/installation-guide/kubernetes.html[Kubernetes].
+For more information, see link:/Guides/apim/current/installation-guide/kubernetes.html[Kubernetes^].

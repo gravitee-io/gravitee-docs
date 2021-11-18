@@ -1,0 +1,119 @@
+= Docker
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_docker_images.html
+:page-folder: apim/installation-guide/docker
+:page-layout: apim1x
+:docker-image-src: https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/images
+:github-repo: https://github.com/gravitee-io/gravitee-docker
+:docker-hub: https://hub.docker.com/r/graviteeio
+
+IMPORTANT: We assume that you are familiar with Docker. +
+To run our official images, you must start by installing https://docs.docker.com/installation/[Docker]
+
+Gravitee.io docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
+You could find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles on GitHub].
+
+We provide a complete set of images.
+
+== Images
+|===
+|Image name |Source |Version |Base
+
+|{docker-hub}/gateway/[graviteeio/gateway]
+|{github-repo}/tree/master/images/gateway[images/gateway]
+|latest
+|https://hub.docker.com/_/alpine/[alpine:3.7]
+
+|{docker-hub}/management-api/[graviteeio/management-api]
+|{github-repo}/tree/master/images/management-api[images/management-api]
+|latest
+|https://hub.docker.com/_/alpine/[alpine:3.7]
+
+|{docker-hub}/management-ui/[graviteeio/management-ui]
+|{github-repo}/tree/master/images/management-ui[images/management-ui]
+|latest
+|https://hub.docker.com/_/alpine/[nginx:1.10.2-alpine]
+
+|===
+
+
+=== graviteeio/gateway
+
+The gateway image provides a set of environment variables which could be used to tune your container. 
+Because mongoDB is our default repository, you can replace default mongoDB address (`localhost:27017`) by the one you provide (`GRAVITEEIO_MONGODB_HOST:GRAVITEEIO_MONGODB_PORT`).
+The gateway image also use the elasticsearch reporter.
+You can replace default ES address (`localhost:9300`) by the one you provide (`GRAVITEEIO_ELASTIC_HOST:GRAVITEEIO_ELASTIC_PORT`).
+
+==== Run the image
+[source,shell]
+....
+$ docker run  \
+        --publish 82:8082  \
+        --name gateway  \
+        --detach  \
+        graviteeio/gateway:latest
+....
+
+==== Configure the container
+If you want to override the default configuration for MongoDB, Elasticsearch and all other properties included in the `gravitee.yml` file,
+you have to use environment variables. Please have a look to the API Gateway <<apim_installguide_gateway_configuration.adoc#environment_variables, configuration>> section.
+
+Here is an example to set the mongodb connection:
+[source,shell]
+....
+$ docker run  \
+        --publish 82:8082  \
+        --name gateway  \
+        --env GRAVITEE_MANAGEMENT_MONGODB_URI=mongodb://username:password@mongohost:27017/dbname
+        --detach  \
+        graviteeio/gateway:latest
+....
+
+=== graviteeio/management-api
+
+The management-api image provides a set of environment variables which could be used to tune your container. 
+Because mongoDB is our default repository, you can replace default mongoDB address (`localhost:27017`) by the one you provide (`GRAVITEEIO_MONGODB_HOST:GRAVITEEIO_MONGODB_PORT`).
+The management-api image also use the elasticsearch reporter.
+You can replace default ES address (`localhost:9300`) by the one you provide (`GRAVITEEIO_ELASTIC_HOST:GRAVITEEIO_ELASTIC_PORT`).
+
+==== Run the image
+[source,shell]
+....
+$ docker run \
+          --publish 81:8083 \
+          --name management-api \
+          --detach  \
+          graviteeio/management-api:latest
+....
+
+==== Configure the container
+If you want to override the default configuration for MongoDB, Elasticsearch and all other properties included in the `gravitee.yml` file,
+you have to use environment variables. Please have a look to the Management API <<apim_installguide_management_api_configuration.adoc#environment_variables, configuration>> section.
+
+Here is an example to set the mongodb connection:
+[source,shell]
+....
+$ docker run \
+          --publish 81:8083 \
+          --name management-api \
+          --env GRAVITEE_MANAGEMENT_MONGODB_URI=mongodb://username:password@mongohost:27017/dbname
+          --detach  \
+          graviteeio/management-api:latest
+....
+
+=== graviteeio/management-ui
+
+The management-ui image provides a set of environment variables which could be used to tune your container. 
+The UI need to know where the management-api is. 
+So you have to override `MGMT_API_URL` to specify where the management-api is running.
+
+==== Run the image
+[source,shell]
+....
+$ docker run \
+        --publish 80:80 \
+        --env MGMT_API_URL=http://localhost:81/management/ \
+        --name management-ui \
+        --detach  \
+        graviteeio/management-ui:latest
+....

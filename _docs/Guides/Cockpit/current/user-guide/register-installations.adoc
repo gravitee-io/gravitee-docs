@@ -1,0 +1,39 @@
+= Register installations
+:page-description: Gravitee.io Cockpit - Register installation
+:page-keywords: Gravitee.io, API Platform, API Management, Cockpit, documentation, manual, guide
+
+Existing on-premise installations of APIM and AM can be registered in Cockpit. This will allow users to create and propagate new organizations and environments to these existing installations.
+
+A registered installation communicates with Cockpit via a WebSocket connection, secured with TLS.
+
+== How To Register A New Installation
+
+To register new APIM or AM installations with Cockpit, you need to:
+
+* Have a Cockpit connector in your installation plugins
+* Download the certificate to allow secure connection via Cockpit UI
+* Install the certificate, and restart your installation.
+
+All the detailed information are available in the *How to register a new installation* link, below *Installations* in the dashboard.
++
+After registration, the installation is displayed as a pending installation in Cockpit:
++
+image::cockpit/pending-installations.png[]
+
+. Accept the installation by clicking it, selecting the environment to which to link the installation and clicking *ACCEPT*.
++
+image::cockpit/accept-installation.png[]
++
+The installation is added to the map with a link to the environment:
++
+image::cockpit/linked-installations-dashboard.png[]
+
+. You can then link the accepted installation to other environments in Cockpit from the environment settings page.
++
+image::cockpit/linked-installations.png[]
+
+. You can log in to the installation by clicking the login icon image:icons/cockpit-login-icon.png[role="icon"] on the installation in the dashboard or from the environment settings page:
++
+image::cockpit/linked-installations-login.png[]
++
+You are redirected to the Console login page of the APIM or AM instance. If multiple APIM or AM instances are linked, the Console login page of the first instance linked to the environment opens.

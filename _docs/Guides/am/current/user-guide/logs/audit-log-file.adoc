@@ -1,0 +1,196 @@
+= Audit log file
+
+[label label-version]#New in version 3.6#
+
+== Overview
+
+By default, the AM Console Audit log page displays all events which have taken place, including user authentication and administrative actions such as managing clients, identity providers, users, groups, roles and so on through a MongoDB reporter plugin (or a JDBC plugin, according to your deployment).
+
+AM versions from 3.6 include a file reporter for sending audit logs to a file, which you can use to ingest your logs into a third party system like ElasticSearch or Splunk.
+
+== Create a File reporter
+
+To create a File reporter for a domain:
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Click *Settings > Audit Log*.
+. Click the settings icon image:icons/am-settings-icon.png[role="icon"].
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
++
+image::am/current/graviteeio-am-adminguide-add-reporter.png[]
+
+. Select *File* as the reporter type and enter the reporter name and file name.
++
+image::am/current/graviteeio-am-adminguide-file-reporter.png[]
+
+== Example: ingest audit logs into ElasticSearch
+
+The example below demonstrates how to configure audit logs to be ingested using the ELASTICSEARCH format into an Elasticsearch instance using Logstash.
+
+The first step is to define a template for the audit log entries to specify how Elasticsearch will index the data:
+
+[source,json]
+----
+{
+    "index_patterns": ["gravitee-am-audit-*"],
+    "settings": {
+        "index.number_of_shards": 1,
+        "index.number_of_replicas": 1,
+        "index.refresh_interval": "5s"
+    },
+    "mappings": {
+            "properties": {
+                "@timestamp": {
+                    "type": "date"
+                },
+                "event_type": {
+                    "type": "keyword"
+                },
+                "organizationId": {
+                    "type": "keyword"
+                },
+                "environmentId": {
+                    "type": "keyword"
+                },
+                "transactionId": {
+                    "type": "keyword"
+                },
+                "nodeId": {
+                    "type": "keyword"
+                },
+                "nodeHostname": {
+                    "type": "keyword"
+                },
+                "referenceType": {
+                    "type": "keyword"
+                },
+                "referenceId": {
+                    "type": "keyword"
+                },
+                "status": {
+                    "type": "keyword"
+                },
+                "accessPoint": {
+                    "properties": {
+	                "id": {
+                    	     "type": "keyword",
+                    	     "index": true
+                	 },
+                	 "alternativeId": {
+                    	     "type": "keyword",
+                    	     "index": true
+                	 },
+                	 "ipAddress": {
+                    	     "type": "keyword",
+                    	     "index": true
+                	 },
+                	 "userAgent": {
+                    	     "type": "keyword"
+                	 }
+		     }
+                },
+                "actor": {
+                    "properties": {
+	                "id": {
+                    	     "type": "keyword",
+                    	     "index": true
+                	 },
+                	 "alternativeId": {
+                    	     "type": "keyword",
+                    	     "index": true
+                	 },
+                	 "type": {
+                    	     "type": "keyword",
+                    	     "index": true
+                	 },
+                	 "displayName": {
+                    	     "type": "text",
+                    	     "index": true
+                	 },
+                	 "referenceType": {
+                    	     "type": "keyword",
+                    	     "index": true
+                	 },
+                	 "referenceId": {
+                    	     "type": "keyword",
+                    	     "index": true
+                	 }
+		     }
+                },
+		"target": {
+                    "properties": {
+	                "id": {
+                    	     "type": "keyword",
+                    	     "index": true
+                	 },
+                	 "alternativeId": {
+                    	     "type": "keyword",
+                    	     "index": true
+                	 },
+                	 "type": {
+                    	     "type": "keyword",
+                    	     "index": true
+                	 },
+                	 "displayName": {
+                    	     "type": "text",
+                    	     "index": true
+                	 },
+                	 "referenceType": {
+                    	     "type": "keyword",
+                    	     "index": true
+                	 },
+                	 "referenceId": {
+                    	     "type": "keyword",
+                    	     "index": true
+                	 }
+		     }
+                }
+	}
+    }
+}
+----
+
+Next, you need to create a Logstash configuration:
+
+[source,json]
+----
+input {
+  file {
+      codec => "json"
+      path => "${gravitee_audit_path}/**/*"
+      start_position => beginning
+   }
+}
+
+filter {
+    mutate {
+        add_field => { "[@metadata][index]" => "gravitee-am-%{[_type]}-%{[date]}" }
+        add_field => { "[@metadata][id]" => "%{[event_id]}" }
+        add_field => { "[@metadata][type]" => "%{[_type]}" }
+        remove_field => [ "date", "_type", "event_id" ]
+    }
+}
+
+output {
+
+    elasticsearch {
+       hosts => ["localhost:9200"]
+       index => "%{[@metadata][index]}"
+       document_id => "%{[@metadata][id]}"
+       template => "${gravitee_templates_path}/template-audit.json"
+       template_name => "gravitee-am-management"
+       template_overwrite => true
+    }
+}
+----
+
+NOTE: The variable `gravitee_audit_path` must match the `reporters.file.directory` value defined in the `gravitee.yml` file.
+
+Finally, you can start Logstash:
+
+[source,bash]
+----
+#export gravitee_templates_path=/path/to/template.json
+#export gravitee_audit_path=/path/to/audits/
+./bin/logstash -f config/gravitee-am-file.conf
+----

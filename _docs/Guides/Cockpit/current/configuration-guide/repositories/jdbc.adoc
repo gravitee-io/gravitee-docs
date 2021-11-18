@@ -1,0 +1,78 @@
+[[gravitee-cockpit-installation-repositories-jdbc]]
+= Configure a JDBC / R2DBC repository
+
+:page-folder: cockpit/installation-guide/repositories
+:page-description: Gravitee.io Cockpit - Repositories - JDBC
+:page-keywords: Gravitee.io, API Platform, API Management, Cockpit, documentation, manual, guide, reference, api, jdbc
+
+
+This repository plugin is for connecting to SQL databases.
+
+== Supported databases
+
+|===
+|Database | Version tested | JDBC Driver | R2DBC Driver
+
+|Postgresql
+|9.6
+|https://jdbc.postgresql.org/download.html[Download page]
+|https://repo1.maven.org/maven2/io/r2dbc/r2dbc-postgresql/0.8.7.RELEASE/r2dbc-postgresql-0.8.7.RELEASE.jar[Download page]
+
+|MySQL
+|5.7
+|https://dev.mysql.com/downloads/connector/j/[Download page]
+|https://repo1.maven.org/maven2/dev/miku/r2dbc-mysql/0.8.2.RELEASE/r2dbc-mysql-0.8.2.RELEASE.jar[Download page]
+
+|MariaDB
+|10.3
+|https://downloads.mariadb.org/connector-java/[Download page]
+|https://repo1.maven.org/maven2/org/mariadb/r2dbc-mariadb/1.0.1/r2dbc-mariadb-1.0.1.jar[Download page]
+
+|Microsoft SQL Server
+|2017-CU12
+|https://docs.microsoft.com/en-us/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017[Download page]
+|https://repo1.maven.org/maven2/io/r2dbc/r2dbc-mssql/0.8.5.RELEASE/r2dbc-mssql-0.8.5.RELEASE.jar[Download page]
+|===
+
+
+== Install the JDBC & R2DBC driver
+
+NOTE: Cockpit uses the JDBC and R2DBC drivers together, since Cockpit uses https://www.liquibase.org/[liquibase^] to manage the database schema. You need to deploy the correct JDBC and R2DBC drivers for your database in your Cockpit instance's.
+
+ . Download the JDBC driver and R2BBC driver corresponding to your database version.
+ . Place the drivers in `$GRAVITEE_HOME/plugins/ext/cockpit-repository-jdbc`.
+ . Configure your `gravitee.yml` files, as described in the next section.
+
+
+== Configuration
+
+=== Mandatory configuration
+
+[source,yaml]
+----
+management:
+  type: jdbc             # repository type
+  jdbc:                  # jdbc repository
+    url:                 # jdbc url
+----
+
+=== Optional configuration
+
+The example above shows the minimum configuration needed to get started with a JDBC database. You can configure the following additional properties to fine-tune your JDBC connection and control the behavior of your JDBC database.
+
+[source,yaml]
+----
+management:
+  type: jdbc                    # repository type
+  jdbc:                         # jdbc repository
+    url:                        # jdbc url
+    username:                   # jdbc username
+    password:                   # jdbc password
+    pool:
+        autoCommit:             # jdbc auto commit (default true)
+        connectionTimeout:      # jdbc connection timeout (default 10000)
+        idleTimeout:            # jdbc idle timeout (default 600000)
+        maxLifetime:            # jdbc max lifetime (default 1800000)
+        minIdle:                # jdbc min idle (default 10)
+        maxPoolSize:            # jdbc max pool size (default 10)
+----

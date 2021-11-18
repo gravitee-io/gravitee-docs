@@ -1,8 +1,6 @@
----
-product: API Management
-sidebar: gettingstarted_sidebar
-title: Consume the API
----
+:page-toc: false
+
+= Consume the API
 
 Now that you have created your application and API subscription, you can go ahead and obtain your API key.
 
@@ -32,4 +30,4 @@ curl http://GATEWAY_SERVER_DOMAIN/myfirstapi \
 +
 The Gravitee.io Echo API data is returned successfully.
 
-You can now test API requests, as described in the https://github.com/gravitee-io/gravitee-sample-apis/blob/master/gravitee-echo-api/README.md[Gravitee.io Echo API documentation].
+You can now test API requests, as described in the https://github.com/gravitee-io/gravitee-sample-apis/blob/master/gravitee-echo-api/README.md[Gravitee.io Echo API documentation^].

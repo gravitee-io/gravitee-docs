@@ -2,14 +2,10 @@
 layout: homepage
 ---
 
-    {% include header.html %}
-    {% if site.animated_header == "true" %}
-      {% include animated_header.html %}
-      {% else %}
-      {% include slider.html %}
-    {% endif %}
-    {% include header_bottom_area.html %}
-    {% include products_area.html %}
-    {% include faq_area.html %}
-    {% include support_area.html %}
-    {% include footer.html %}
+{% include navigation.html %}
+{% include search_area.html %}
+{% include header_bottom_area.html %}
+{% include products_area.html %}
+{% include faq_area.html %}
+{% include support_area.html %}
+{% include footer.html %}

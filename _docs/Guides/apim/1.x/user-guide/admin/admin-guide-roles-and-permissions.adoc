@@ -1,0 +1,228 @@
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_adminguide_roles_and_permissions.html
+:page-folder: apim/user-guide/admin
+:page-description: Gravitee.io API Management - Admin Guide - Roles and Permissions
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim1x
+
+[[gravitee-admin-guide]]
+= Roles and Permissions
+
+Gravitee.io APIM allows you to create custom user roles to fit your needs.
+A role is a group of permissions and it has a scope.
+Roles defines what you can do with the UI and also with the REST API.
+
+NOTE: The changes may take some few seconds to be effectively applied to a user
+
+Let begin with some vocabulary.
+
+== Glossary
+=== Scope
+When you log in Gravitee.io APIM, you are redirecting to the portal part of the webui.
+What you can do on those screens are driven by your role for the scope `PORTAL`.
+
+If you select an element on your user menu, you are redirected to the management part of the webui.
+What you can do on those screens are driven by your role for the scope `MANAGEMENT`.
+
+*A user can only have one `MANAGEMENT` role and one `PORTAL` role.*
+
+Scopes `API` and `APPLICATION` are slightly different.
+
+As an API publisher or consumer, you will have access to APIs and/or Applications.
+Gravitee.io allows you to have a different role on every single API and Applications.
+Sometimes you are the owner, sometimes a simple user or the person in charge of writing the documentation.
+This means that the `API` / `APPLICATION` role makes sense only when it is associated with and API / Application.
+
+=== Role
+A role is a functional group of permissions.
+There is no limit on the number of roles you're allowed to create.
+But don't forget that you need to administrate them 🙂.
+
+Some roles are specials. The are tagged as `System` or `Default`.
+
+==== System Role
+A System Role is a read-only role (i.e. you cannot change permissions) needs by Gravitee.io.
+It's the `ADMIN` role scoped `PORTAL` and `MANAGEMENT`, and the `PRIMARY_OWNER` role scoped `API` and `APPLICATION`.
+They give user all permissions.
+
+==== Default Role
+A Default Role is a role used by Gravitee.io when a role is not specified.
+For example, the default `PORTAL` and `MANAGEMENT` role is set to a new registered user.
+This why is a role with the lower permissions.
+
+You can change the default on each scope.
+
+=== Permission
+A permission a list of actions allowed on a resource. The actions are `Create`, `Read`, `Update` and `Delete`.
+
+Here is the list of permissions by scope
+
+
+.Permissions scoped `PORTAL`
+[cols="1,3"]
+|===
+|Name |Description
+
+| METADATA
+| Manage portal metadatas.
+
+| DOCUMENTATION
+| Manage portal configuration.
+
+| VIEW
+| Manage views.
+
+| TOP_APIS
+| Manage the top apis.
+
+| SETTINGS
+| Manage the portal settings.
+
+|===
+
+.Permissions scoped `MANAGEMENT`
+[cols="1,3"]
+|===
+|Name |Description
+
+| INSTANCE
+| Access to Gateways instances information. Currently, only the `READ` permission is used.
+
+| GROUP
+| Manage user groups.
+
+| TAG
+| Manage the sharding tags.
+
+| TENANT
+| Manage the tenants.
+
+| API
+| Manage APIs in general. This means that the `CREATE` action is used to know if you're allowed to create an API or not,
+and the `READ` permission to allow you to requests policies list and resources list.
+
+| ROLE
+| Manage Roles.
+
+| APPLICATION
+| Manage Applications in general. `CREATE` to allow a user to create an application, `READ` to allow a user to list applications.
+
+| PLATFORM
+| Get monitoring metrics of the platform.  Currently, only the `READ` permission is used.
+
+| AUDIT
+| Get audit of the platform. Currently, only the `READ` permission is used.
+
+| NOTIFICATION
+| Manage the global notifications.
+
+| USER
+| Manage Users.
+
+|===
+
+.Permissions scoped `API`
+[cols="1,3"]
+|===
+|Name |Description
+
+| DEFINITION
+| Manage the API definition.
+
+| PLAN
+| Manage API plans.
+
+| SUBSCRIPTION
+| Manage API subscriptions.
+
+| MEMBER
+| Manage API members.
+
+| METADATA
+| Manage the API metadatas.
+
+| ANALYTICS
+| Manage the API analytics. Currently, only the `READ` permission is used.
+
+| EVENT
+| Manage the API events. Currently, only the `READ` permission is used.
+
+| HEALTH
+| Manage the API healthcheck.
+
+| LOG
+| Manage API logs. Currently, only the `READ` permission is used.
+
+| DOCUMENTATION
+| Manage API documentation.
+
+| GATEWAY_DEFINITION
+| A specific permission used to update the context-path (`UPDATE`) and to give access to sensitive datas (`READ`) like :
+ endpoints,
+ paths,
+ ...
+
+| AUDIT
+| Manage API audit. Currently, only the `READ` permission is used.
+
+| RATING
+| Manage API rating.
+
+| RATING_ANSWERS
+| Manage API rating answers.
+
+| NOTIFICATION
+| Manage the API notifications.
+
+|===
+
+.Permissions scoped `APPLICATION`
+[cols="1,3"]
+|===
+|Name |Description
+
+| DEFINITION
+| Manage the Application definition.
+
+| MEMBER
+| Manage the Application members.
+
+| ANALYTICS
+| Manage the Application analytics. Currently, only the `READ` permission is used.
+
+| LOG
+| Manage the Application logs. Currently, only the `READ` permission is used.
+
+| SUBSCRIPTION
+| Manage the Application subscriptions.
+
+| NOTIFICATION
+| Manage the Application notifications.
+
+|===
+
+
+== How to create a custom role.
+Let say that we want to create a writer role which allow a user to create documentation on APIs.
+
+=== Create the `WRITER` role
+To do that, click on the (+) icon in the table header and fill a the name and the description of the new role
+
+.Create
+image::apim/1.x/adminguide/newrole-create.png[Gravitee.io - Create a New Role]
+
+=== Configure the `WRITER` role
+You must give `READ` permission on the `DEFINITION` and `GATEWAY_DEFINITION`.
+This allow the user to see the API in the api list.
+Next, you have to give `CRUD` permission on the DOCUMENTATION.
+
+.Configure
+image::apim/1.x/adminguide/newrole-configure.png[Gravitee.io - Configure a New Role]
+
+=== Result
+As expected, the user with this role can now only see the documentation menu.
+
+.Menu
+image::apim/1.x/adminguide/newrole-menu.png[Gravitee.io - Menu, 200]
+
+NOTE: Granting a GROUP permission for MANAGEMENT role will also require the READ operation for the ROLE permission in order to see which roles are provided by a group.  

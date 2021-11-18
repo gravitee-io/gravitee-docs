@@ -1,0 +1,122 @@
+= Publish your first API
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_quickstart_publish.html
+:page-folder: apim/quickstart
+:page-layout: apim1x
+
+This guide walks you through the process of creating your first API by using the Web UI Portal.
+Gravitee.io Management UI can be accessed using the following URL:
+
+http://MANAGEMENT_UI_SERVER_DOMAIN (see link:/apim/1.x/apim_installguide_portal.html[Gravitee.io Management UI installation] for more information)
+
+NOTE: *Gravitee.io Echo API* : In this tutorial we will use the https://api.gravitee.io/echo[Gravitee.io Echo API] to set up our first proxy API. The Gravitee.io Echo API returns JSON-formatted data via the following URL : https://api.gravitee.io/echo
+
+== Create your API
+
+. Login to http://MANAGEMENT_UI_SERVER_DOMAIN. (Default Administrator account is admin/admin, see link:/apim/1.x/apim_installguide_authentication.html[security section] for more information)
+
+. Click `Create a new API`
+
+image::apim/1.x/graviteeio-create-api.png[]
+
+.. Give your API a name, a version, a description and a context path
+
+image::apim/1.x/graviteeio-create-first-api-1.png[]
+
+[start=2]
+.. Make sure that `Backend` is set to `https://api.gravitee.io/echo`
+
+image::apim/1.x/graviteeio-create-first-api-2.png[]
+
+[start=3]
+.. Click `CREATE` button and your API is created
+
+image::apim/1.x/graviteeio-first-api.png[]
+
+Create API request::
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"name":"My First API","version":"1","description":"Gravitee.io Echo API Proxy","contextPath":"/myfirstapi","endpoint":"https://api.gravitee.io/echo"}' \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis
+----
+
+== Create your API Plan
+
+NOTE: To subscribe to an API, you must publish one or more Plans. A Plan will allow you to gain access of the API operations.
+
+To create your API plan, first click on `Plans` menu item and follow these instructions :
+
+. Give your Plan a name, a description, a security type and trigger the `auto-validation` switch.
+
+image::apim/1.x/graviteeio-create-plan.png[]
+
+NOTE: Make sure to choose link:/apim/1.x/apim_policies_apikey.html[API Key security type]. To go further into the Plan configuration, you can take a look at the link:/apim/1.x/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions Guide]
+
+[start=2]
+. Click `SAVE` button and your Plan is created
+
+image::apim/1.x/graviteeio-create-plan-2.png[]
+
+Create Plan request::
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{"name":"My Plan","description":"Unlimited access plan","validation":"auto","characteristics":[],"paths":{"/":[]},"security":"api_key"}' \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|/plans
+----
+
+[start=3]
+. Publish your Plan
+
+Your plan is in staging state, in order to make it visible for everyone, you must publish it.
+
+image::apim/1.x/graviteeio-create-plan-3.png[]
+
+Publish Plan request::
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|/plans/|plan-id|/_publish
+----
+
+== Deploy your API
+
+Deploy your API to the Gravitee.io Gateway instances by clicking on `deploy your API`
+
+image::apim/1.x/graviteeio-create-first-api-3.png[]
+
+Deploy API request::
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -X POST \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|/deploy
+----
+
+== Start your API
+
+Start your API by switching on the `Started` button
+
+Start API request::
+
+[source]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -X POST \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/apis/|api-id|?action=START
+----
+
+Your API is now ready to be use by your consumers. Let's see how to do this : link:/apim/1.x/apim_quickstart_consume.html[Use your first API]
+
+This quick start was just an overview to create your first API. To go further into API management detail you can take a look at the link:/apim/1.x/apim_publisherguide_manage_apis.html[User Guide]

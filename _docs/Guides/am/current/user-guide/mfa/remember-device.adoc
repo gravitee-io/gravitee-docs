@@ -1,0 +1,20 @@
+= Remember authentication device
+
+[label label-version]#New in version 3.13#
+
+== Overview
+
+You can configure AM to register the device a user uses for authentication.
+After a successful login attempt, AM adds the trusted device to the user account for a certain period of time and skips MFA as long as the
+device is known.
+
+== Configure AM to remember an authentication device
+
+. Configure a link:/am/current/am_userguide_device_identifier_plugins.html[device identifier^].
+. In AM Console, select your application.
+. Click the **Settings** tab, then click **Multifactor Auth**.
+. Toggle on **Enable Remember Device**.
+. Enter the details of the device identifier and the amount of time you want to remember the device (2 hours by default).
+. Click *SAVE*.
+
+image::am/current/graviteeio-am-userguide-mfa-remember-device.png[]

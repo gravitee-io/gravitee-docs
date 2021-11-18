@@ -1,0 +1,46 @@
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_authentication_inmemory.html
+:page-folder: apim/installation-guide/portal/authentication
+:page-description: Gravitee.io API Management - Portal - Authentication - In Memory
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim1x
+
+[[gravitee-installation-authentication-inmemory]]
+= In Memory
+
+Here you will find how to configure Gravitee.io to allow users to connect using in memories accounts.
+
+
+It's a basic in-memory implementation, a simple and convenient way to declare "technical" users such as the administrator users.
+A good practice is to always have an admin account which can login in gravitee even if the others authentication methods are broken.
+An example configuration is shown below:
+
+[source,yaml]
+----
+security:
+  providers:
+  - type: memory
+    # password encoding/hashing algorithm. One of:
+    # - bcrypt : passwords are hashed with bcrypt (supports only $2a$ algorithm)
+    # - none : passwords are not hashed/encrypted
+    # default value is bcrypt
+    password-encoding-algo: bcrypt
+    users:
+      - user:
+        username: user
+        # Passwords are encoded using BCrypt
+        # Password value: password
+        password: $2a$10$9kjw/SH9gucCId3Lnt6EmuFreUAcXSZgpvAYuW2ISv7hSOhHRH1AO
+        roles: MANAGEMENT:USER, PORTAL:USER
+      - user:
+        username: admin
+        # Password value: admin
+        password: $2a$10$Ihk05VSds5rUSgMdsMVi9OKMIx2yUvMz7y9VP3rJmQeizZLrhLMyq
+        roles: MANAGEMENT:ADMIN, PORTAL:ADMIN
+      - user:
+        username: api1
+        # Password value: api1
+        password: $2a$10$iXdXO4wAYdhx2LOwijsp7.PsoAZQ05zEdHxbriIYCbtyo.y32LTji
+        # You can declare multiple roles using comma separator
+        roles: MANAGEMENT:API_PUBLISHER, PORTAL:API_PUBLISHER
+----

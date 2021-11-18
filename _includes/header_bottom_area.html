@@ -1,11 +1,11 @@
 <!-- Start Headline Area -->
-<div class="headline-area">
+<section class="headline-area">
     <div class="headline-wrapper ">
         <div class="container">
             <div class="row">
                 {% for service in site.data.services %}
                     <div class="col-md-6 col-lg-4">
-                        <div class="headline-box wow fadeInUp" data-wow-duration="1s" style="visibility:visible; animation-duration:1s; animation-name:fadeInUp;">
+                        <div class="headline-box">
                             <div class="headline-logo">
                                 <a href="{{service.url | relative_url}}"><img src="{{service.icon | relative_url}}" alt="{{service.title}}"></a>
                             </div>
@@ -20,5 +20,5 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 <!-- End Headline Area -->

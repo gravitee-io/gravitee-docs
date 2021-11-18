@@ -1,0 +1,62 @@
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_adminguide_users_and_groups.html
+:page-folder: apim/user-guide/admin
+:page-description: Gravitee.io API Management - Admin Guide - Users and Groups
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim1x
+
+[[gravitee-admin-guide]]
+= Users and Groups
+
+== Users
+
+In the installation guide, you have learnt how to configure different identity providers (see link:/apim/1.x/apim_installguide_management_api_configuration.html#authentication_type[how to configure authentication]).
+
+Users are listed in the `Users` section of the `Settings` menu.
+
+image::apim/1.x/adminguide/usersgroups-users.png[Gravitee.io - List users]
+
+Here you can :
+
+ * remove a user account (only if the user is not a primary owner of an api or an application),
+ * reset its password (only for users created with the Gravitee form)
+
+If you select a user, you have access to a detailed information about its account and permissions and the ability to manage its groups.
+
+image::apim/1.x/adminguide/usersgroups-user.png[Gravitee.io - User]
+
+== Groups
+
+Groups represent users groups where you put members of the same team/partner and set their role for the `API` scope and/or `APPLICATION` scope (see link:/apim/1.x/apim_adminguide_roles_and_permissions.html[Roles and Permissions] for details).
+Once a group is created, you can associate it to an API and/or an application and users with role on this scope become members of the API/Application.
+
+Let use groups to create a `FOO Team` group where you can put all members of your FOO team.
+
+=== How to manage groups
+==== Create the `FOO Team` group
+
+image::apim/1.x/adminguide/usersgroups-newgroup.png[Gravitee.io - New Group]
+
+You can see that in addition to the group name, you have two other input :
+
+Associate to every new API::
+Every time an API is created, this group will be added to it.
+
+Associate to every new Application::
+Every time an Application is created, this group will be added to it.
+
+Those checkbox can be useful if the group is transverse (an helpdesk group for example).
+
+==== Configure users
+
+Select the new group and clic on the (+) button to add users
+
+image::apim/1.x/adminguide/usersgroups-groupmembers.png[Gravitee.io - Group member]
+
+==== Add the group to an API or an application
+
+Go to the API/Application you want to modify and select the `groups` section.
+
+image::apim/1.x/adminguide/usersgroups-apigroups.png[Gravitee.io - Api Group]
+
+Now you can go to the `memberships` section to find that members of the `FOO Team` are members of the API with the role you have set globally.

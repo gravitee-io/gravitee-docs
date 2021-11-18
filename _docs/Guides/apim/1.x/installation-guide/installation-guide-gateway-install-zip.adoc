@@ -1,0 +1,116 @@
+= Install API Gateway with `.zip`
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_gateway_install_zip.html
+:page-folder: apim/installation-guide/gateway
+:page-liquid:
+:page-layout: apim1x
+:page-description: Gravitee.io API Management - Gateway - Installation with .zip
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+== System Requirements
+
+=== JDK
+
+API Gateway is supporting from Java 8 to latest Java 11. Before you install it, please check your Java version :
+
+[source,bash]
+----
+$ java -version
+$ echo $JAVA_HOME
+----
+
+NOTE: You can download the latest OpenJDK from https://jdk.java.net/archive/[OpenJDK Download Site].
+
+=== Repository
+
+Default API Gateway distribution requires link:/apim/1.x/apim_installguide_repositories_mongodb.html[MongoDB] to poll environment configuration and link:/apim/1.x/apim_installguide_repositories_elasticsearch.html[Elasticsearch] for
+reporting / analytics. Please refer to the respective documentation page for supported versions.
+
+NOTE: You can download MongoDB from https://www.mongodb.org/downloads#production[MongoDB Download Site]
+and Elasticsearch from https://www.elastic.co/downloads/elasticsearch[Elastic Download Site]
+
+== Download and install the +.zip+ package
+
+Binaries are available from https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._1x.version }}.zip[Download].
+
+[source,bash]
+----
+$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._1x.version }}.zip -o gravitee-standalone-distribution-{{ site.products.apim._1x.version }}.zip
+----
+
+Once file has been downloaded, you just have to unpack it in the right place.
+
+[source,bash]
+----
+$ unzip gravitee-standalone-distribution-{{ site.products.apim._1x.version }}.zip
+----
+
+== Running API Gateway from the command line
+
+API Gateway can be started from the command line as follows:
+
+[source,bash]
+----
+$ cd graviteeio-gateway-{{ site.products.apim._1x.version }}
+$ ./bin/gravitee
+----
+
+By default, API Gateway runs in the foreground, prints its logs to the standard output (stdout), and can be stopped
+by pressing Ctrl-C.
+
+If everything goes well, you should see this log:
+
+[source,bash]
+[subs="attributes"]
+...
+11:01:53.162 [gravitee] [] INFO  i.g.g.standalone.node.GatewayNode - Gravitee.io - Gateway id[2e05c0fa-8e48-4ddc-85c0-fa8e48bddc11] version[{{ site.products.apim._1x.version }}] pid[24930] build[175] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 15837 ms.
+...
+
+== Checking that API Gateway is running
+
+You can test that your API Gateway node is running by sending an HTTP request to port `8082` on `localhost`:
+
+[source,bash]
+----
+$ curl -X GET http://localhost:8082/
+----
+
+which should give you a response something like this:
+
+[source,bash]
+----
+No context-path matches the request URI.
+----
+
+== Running as a daemon
+
+To run API Gateway as a daemon, specify -d on the command line, and record the process ID in a file using the -p option:
+
+[source,bash]
+----
+$ ./bin/gravitee -d -p=/var/run/gio.pid
+----
+
+Log messages can be found in the `$GRAVITEE_HOME/logs/` directory.
+
+To shut down API Gateway, kill the process ID recorded in the pid file:
+
+[source,bash]
+----
+$ kill `cat /var/run/gio.pid`
+----
+
+== Directory layout of .zip archive
+
+The .zip and .tar.gz packages are entirely self-contained. All files and directories are, by default, contained within
+$GRAVITEE_HOME — the directory created when unpacking the archive.
+
+[width="100%",cols="20%,80%",frame="topbot",options="header"]
+|======================
+|Location    |Description
+|bin       |Binary scripts including `gravitee` to start a node
+|config    |Configuration files including `gravitee.yml`
+|lib       |Libraries (gravitee.io libraries and third parties library)
+|logs      |Log files location.
+|plugins   |Plugin files location.
+|======================

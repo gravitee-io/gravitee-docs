@@ -1,0 +1,120 @@
+= Endpoint Health-check notification
+:page-description: Gravitee Alert Engine - API Management - Message Properties ENDPOINT_HEALTHCHECK
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+
+== Overview
+
+This page lists the properties available in all alerts triggered by an `ENDPOINT_HEALTHCHECK` event. For more information about notifications in AE, see the link:/ae/userguide_notifiers.html[Notifications^] section of the User Guide.
+
+== Properties
+
+The notification properties are values which have been sent or computed while processing the event by AE.
+These are just the basic properties, you can't use them to retrieve more information about a particular object like the `api` or the `application` (to achieve this, see the <<Data, data>> section).
+
+[cols="1,3,3"]
+|===
+|Key |Description |Syntax
+
+|`node.hostname`
+|Alerting node hostname
+|${notification.properties['node.hostname']}
+
+|`node.application`
+|Alerting node application (`gio-apim-gateway`, `gio-apim-management`, `gio-am-gateway`, `gio-am-management`)
+|${notification.properties['node.application']}
+
+|`node.id`
+|Alerting node UUID
+|${notification.properties['node.id']}
+
+|`response_time`
+|Endpoint response time in ms
+|${notification.properties['response_time']}
+
+|`tenant`
+|Tenant of the node (if one exists)
+|${notification.properties['tenant']}
+
+|`api`
+|The API Id of the healthcheck.
+|${notification.properties['api']}
+
+|`endpoint.name`
+|The endpoint name.
+|${notification.properties['endpoint.name']}
+
+|`status.old`
+|Values: `UP`, `DOWN`, `TRANSITIONALLY_UP`, `TRANSITIONALLY_DOWN`.
+|${notification.properties['status.old']}
+
+|`status.new`
+|Values: `UP`, `DOWN`, `TRANSITIONALLY_UP`, `TRANSITIONALLY_DOWN`.
+|${notification.properties['status.new']}
+
+|`success`
+|Values: `true` or `false`.
+|${notification.properties['success']?string('yes','no')}
+
+|`message`
+|If `success` is `false`, contains the error message.
+|${notification.properties['message']}
+
+|===
+
+
+== Data
+
+Data (or `resolved data`) consists of specific objects which have been resolved from the notification properties.
+For example, in the case of the `ENDPOINT_HEALTHCHECK` event, AE tries to resolve `api` to provide
+more contextualized information to define your message templates.
+
+=== API
+
+For the `api`, you can access the following data:
+
+[cols="1,3,3"]
+|===
+|Key |Description |Syntax
+
+|`id`
+|API identifier
+|${api.id}
+
+|`name`
+|API name
+|${api.name}
+
+|`version`
+|API version
+|${api.version}
+
+|`description`
+|API description
+|${api.description}
+
+|`primaryOwner.email`
+|API primary owner email
+|${api.primaryOwner.email}
+
+|`primaryOwner.displayName`
+|API primary owner display name
+|${api.primaryOwner.displayName}
+
+|`tags`
+|API sharding tags
+|${api.tags}
+
+|`labels`
+|API labels
+|${api.labels}
+
+|`views`
+|API views
+|${api.views}
+
+|`metadata`
+|API metadata
+|${api.metadata['metadata_name']}
+
+|===

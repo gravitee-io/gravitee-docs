@@ -1,13 +1,49 @@
-= Alerts
-:page-sidebar: am_3_x_sidebar
+= Manage alerts
 
 [label label-enterprise]#Enterprise feature#
 
-You can put in place a system of alerting to warn of any unusual and potentially dangerous events on AM authorization server that may be of interest to administrators or monitoring services.
+To manage alerts:
 
-AM integrates with the link:/ae/overview_introduction.html[Alert Engine] product, a notification system to deliver messages using channels such as SMTP, Webhooks or link:https://slack.com[Slack].
+. In AM Console, click *Settings > Alerts*.
+. Switch on *Enable Alerts*.
+. Enable the alerts you are interested in.
 
-Out of the box, some pre-defined alerts and notification systems (known as notifiers) are available to help you get started.
+== Alert types
 
-- link:/am/current/am_userguide_alerts.html[Manage alerts]
-- link:/am/current/am_userguide_alerts_notifications.html[Notifications]
+The following table lists the available alert types.
+
+[width="100%",cols="^1,^1,^3",options="header"]
+|===
+|Type|Key|Description
+| Too many login failures |too_many_login_failures| Alert when the number of login failures is abnormally high.
+| Too many reset passwords |too_many_reset_password| Alert when the number of reset passwords is abnormally high.
+| Too many locked out users |too_many_locked_users| Alert when then number of user lockouts is abnormally high.
+| Slow user signin |slow_user_signin| Alert when the user sign-in phase is unusually slow.
+| Too many user registrations |too_many_user_registrations| Alert when the number of user registrations is abnormally high.
+|===
+
+NOTE: For each alert type, you can select the link:/am/current/am_userguide_alerts_notifications.html[notification channels^] you want to use to send the events.
+
+== Configure alerts
+
+You can override the default configuration for each alert in the AM API `gravitee.yml` file.
+
+----
+vi GRAVITEE_AM_HOME/am-management-api/config/gravitee.yml
+
+...
+# Gravitee.io AM Alerts managed by the Alert Engine module
+alerts:
+  too_many_login_failures:
+    name: "Too many login failures detected"
+    description: "More than {threshold}% of logins are in failure over the last {window} second(s)"
+    # the threshold rate in % to reach before notify. Default 10% of login failures.
+    threshold: 10
+    # the minimum sample size. Default 1000 login attempts.
+    sampleSize: 1000
+    # window time in seconds. Default 600s (10 minutes).
+    window: 600
+    # severity of the alert (INFO, WARNING, CRITICAL). Default WARNING.
+    severity: WARNING
+...
+----

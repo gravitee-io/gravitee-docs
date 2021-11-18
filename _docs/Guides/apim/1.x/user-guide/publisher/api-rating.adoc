@@ -1,0 +1,47 @@
+= API rating
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_publisherguide_api_rating.html
+:page-folder: apim/user-guide/publisher
+:page-layout: apim1x
+
+The API rating is a good way to promote your APIs. Only members of the API with correct permissions are allowed to rate it.
+
+Permission RATING:
+
+- CREATE: the user will be able to give a rating from 0 to 5
+- READ: the user will be able to see the ratings of the API
+- UPDATE: the user will be able to add a comment to his rating
+- DELETE: the user will be able to delete any comment
+
+A member can also answer to a rating.
+
+Permission RATING_ANSWER:
+
+- CREATE: the user will be able to answer a rating
+- READ: the user will be able to see the rating answers of the API
+- DELETE: the user will be able to delete any answer
+
+
+By default, the API rating is disabled. In order to enable is, there is two configuration file to change:
+
+- On the UI, change the constants.json like this:
+
+[source,json]
+----
+{
+  ...
+  "rating": {
+    "enabled": true
+  }
+}
+----
+
+- On the REST API, change the gravitee.yml like this:
+
+[source,yaml]
+----
+...
+# Allows to rate an API (default value: false)
+rating :
+  enabled: true
+----

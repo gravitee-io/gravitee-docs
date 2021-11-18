@@ -49,9 +49,12 @@ entries:
       - title: Getting started with AM
         output: web
         folderitems:
+          - title: AM Console overview
+            output: web
+            url: /Getstarted/AM/console-overview.html
           - title: Access AM Console
             output: web
-            url: /Getstarted/AM/quickstart-authentication.html
+            url: /Getstarted/AM/quickstart-login.html
           - title: Set up your first application
             output: web
             url: /Getstarted/AM/setup-app.html
@@ -69,7 +72,7 @@ entries:
 
           - title: Add custom claims to tokens
             output: web
-            url: /Getstarted/quickstart-am/tokens-custom-claims.html
+            url: /Getstarted/AM/tokens-custom-claims.html
 
       - title: Getting started with Cockpit
         output: web
@@ -80,26 +83,26 @@ entries:
       - title: Tutorials
         output: web
         folderitems:
-          - title: APIM
+          - title: Tutorials
             subfolders:
               - title: APIM tutorials
                 output: web
                 subfolderitems:
                   - title: Add custom metrics to APIM dashboards
                     output: web
-                    url: /Resources/APIM/add-custom-metrics-dashboards.html
+                    url: /Getstarted/APIM/add-custom-metrics-dashboards.html
                   - title: Configure global API reviewers
                     output: web
-                    url: /Resources/APIM/configure-global-api-reviewers.html
+                    url: /Getstarted/APIM/configure-global-api-reviewers.html
                   - title: Test OpenTracing in Docker
                     output: web
-                    url: /Resources/APIM/opentracing-in-docker.html
+                    url: /Getstarted/APIM/opentracing-in-docker.html
                   - title: Deploy a hybrid architecture in Kubernetes
                     output: web
-                    url: /Resources/APIM/hybrid-deployment-k8s.html
+                    url: /Getstarted/APIM/hybrid-deployment-k8s.html
               - title: AM tutorials
                 output: web
                 subfolderitems:
-                  - title: xxx
+                  - title:
                     output: web
                     url: /

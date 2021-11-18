@@ -1,0 +1,82 @@
+:page-description: Gravitee Enterprise Edition - Versions
+:page-keywords: Gravitee, API Platform, Enterprise Edition, documentation, manual, guide, reference, api
+
+= Gravitee.io Enterprise API Platform
+
+== STS Vs. LTS Support
+
+When you subscribe to support services provided by Gravitee.io, you can choose between two support options:
+
+. Short-Term Support (STS).
+. Long-Term Support (LTS).
+
+LTS applies to versions ending with 0 or 5 (for example: 1.25, 1.30, 1.35).
+STS applies to all non-LTS versions.
+
+An LTS version is supported for around 1 year, whereas a STS version is supported for 3 months.
+
+When moving to an enterprise version, this is not the case: **all** LTS versions are considered to be enterprise versions.
+
+What does this mean for you? Simply that you can be sure that you are running the most well-tested and production-ready versions.
+
+
+== Supported Versions & EOL Date
+
+In the tables below, you'll find information on what versions have been retired and when. Note that the second two tables show a breakdown of individual products, API Management and Access Management (whereas the first table reflects the entire platform).
+
+.Gravitee.io Platform Version 3.0 & Above
+[width="75%",options="header,footer"]
+|====================
+| Version | Release Date | EOL Date
+| 3.0.x - LTS | 2020-05-20 | 2021-06-15
+| 3.1.x | 2020-07-17 | 2020-10-22
+| 3.2.x | 2020-09-22 | 2020-11-15
+| 3.3.x | 2020-10-15 | 2020-12-24
+| 3.4.x | 2020-11-24 | 2021-01-15
+| 3.5.x - LTS | 2020-12-15 | 2021-12-15
+| 3.6.x | 2021-02-16 | 2021-04-16
+| 3.7.x | 2021-03-16 | 2021-05-13
+| 3.8.x | 2021-04-13 | 2021-06-18
+| 3.9.x | 2021-05-18 | 2021-07-15
+| 3.10.x - LTS | 2021-06-15 | 2022-06-15
+|====================
+
+.Gravitee.io API Management Versions Below 3.0
+[width="75%",options="header,footer"]
+|====================
+| Version | Release Date | EOL Date
+| 1.15.x - LTS | 2018-04-04 | 2019-04-18
+| 1.16.x | 2018-05-10 | 2018-07-15
+| 1.17.x | 2018-06-15 | 2018-08-11
+| 1.18.x | 2018-07-11 | 2018-10-11
+| 1.19.x | 2018-09-11 | 2018-11-18
+| 1.20x - LTS | 2018-10-18 | 2019-10-24
+| 1.21.x | 2018-11-28 | 2019-02-16
+| 1.22.x | 2019-01-16 | 2019-03-25
+| 1.23.x | 2019-02-25 | 2019-04-22
+| 1.24.x | 2019-03-22 | 2019-05-24
+| 1.25.x - LTS | 2019-04-24 | 2020-05-17
+| 1.26.x | 2019-05-21 | 2019-07-19
+| 1.27.x | 2019-06-19 | 2019-08-18
+| 1.28.x | 2019-07-18 | 2019-10-18
+| 1.29.x | 2019-09-18 | 2019-12-17
+| 1.30.x - LTS | 2019-11-17 | 2020-11-20
+|====================
+
+
+.Gravitee.io Access Management Versions 2.x0
+[width="75%",options="header,footer"]
+|====================
+| Version | Release Date | EOL Date
+| 2.0.x - LTS | 2018-07-13 | 2019-10-24
+| 2.1.x | 2018-11-28 | 2019-02-24
+| 2.2.x | 2019-01-24 | 2019-03-25
+| 2.3.x | 2019-02-25 | 2019-04-20
+| 2.4.x | 2019-03-20 | 2019-05-24
+| 2.5.x - LTS | 2019-04-24 | 2020-05-05
+| 2.6.x | 2019-05-24 | 2019-07-15
+| 2.7.x | 2019-06-15 | 2019-08-17
+| 2.8.x | 2019-07-17 | 2019-10-18
+| 2.9.x | 2019-09-18 | 2019-12-05
+| 2.10.x - LTS | 2019-11-05 | 2020-11-20
+|====================

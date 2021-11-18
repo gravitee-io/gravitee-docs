@@ -1,0 +1,28 @@
+= Manage members
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_publisherguide_manage_members.html
+:page-folder: apim/user-guide/publisher
+:page-layout: apim1x
+
+When the API is defined as a private API, no one can access it through the portal and, as a consequence, no one can
+subscribe to the API.
+
+Even if the API is private, you can still give access to some users by managing members of the API.
+
+By default, Gravitee.io is defining three roles for membership:
+
+[cols="2*", options="header"]
+|===
+^|Role
+^|Description
+
+.^| *Primary owner*
+.^| When an API is created, the primary owner is the creator of the API. Primary owner can do all possible actions for an API.
+
+.^| *Owner*
+.^| Owner is a lightest version of the primary owner role. Owner is not able to change the context-path of the API and not delete it.
+
+.^| *User*
+.^| A user is a person who can access the API and subscribe to it through a plan.
+
+|===

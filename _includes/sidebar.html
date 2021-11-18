@@ -1,13 +1,6 @@
 {% include custom/sidebarconfigs.html %}
 
-{% if page.sidebar != nil}
-
-<!--  {% assign sidebar = page.sidebar | prepend: 'site.data.sidebars.' | append: '.entries' %} -->
-    {% assign sidebar = site.data.sidebars.[page.sidebar].entries %}
-
-{% endif %}
-
-<div class="custom-links">
+{% if doc_cat == "Guides" %}
 
 <!-- Version dropdown -->
 {% if doc_product == "APIM" %}
@@ -22,7 +15,7 @@
 
     {% for entry in sidebar_versions %}
     {% for folder in entry.folders %}
-      <li class="dropdown-button">
+      <div class="dropdown-button">
         Version<a href="#" class="dropdown-toggle" data-toggle="dropdown"></a>
           <ul class="dropdown-menu">
             {% for folderitem in folder.folderitems %}
@@ -35,11 +28,14 @@
               {% endif %}
             {% endfor %}
         </ul>
-    </li>
+    </div>
     {% endfor %}
     {% endfor %}
 
+{% endif %}
+
 <!-- sidebar -->
+
     <ul id="mysidebar" class="nav navbar-nav">
 
         {% for entry in sidebar %}
@@ -76,6 +72,7 @@
                         {% else %}
                         <li><a href="{{subfolderitem.url}}">{{subfolderitem.title}}</a></li>
                         {% endif %}
+
                         {% for subfolders in subfolderitem.subfolders %}
                         {% if subfolders.output contains "web" %}
                         <li class="subitem">
@@ -115,4 +112,3 @@
                -->
         </li>
     </ul>
-</div>

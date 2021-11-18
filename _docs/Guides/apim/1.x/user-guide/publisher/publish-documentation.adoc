@@ -1,0 +1,129 @@
+= Publish documentation
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_publisherguide_publish_documentation.html
+:page-folder: apim/user-guide/publisher
+:page-layout: apim1x
+
+Gravitee.io provide a way to expose documentation for your portal but also for your APIs.
+
+The portal documentation allows to communicate with your developer community on a single platform. For example this is useful to provide your best practices or simply configure your own homepage.
+
+*Documentation is the key for a successful API.* This is the better way to promote, and provide to the developers all the information necessary to consume your webservices.
+
+At this date, Gravitee.io is supporting two types of document:
+
+* Markdown
+* Swagger (OpenAPI)
+
+
+The base URL of your Swagger descriptor is overridable in the configuration panel and we provide more configuration capabilities for the Swagger documentation pages:
+
+image::apim/1.x/graviteeio-page-documentation-swagger-configuration.png[]
+
+
+== Visibility
+
+Once your documentation page is created, this is not published on the portal for all the users, but only you. You will see this message:
+
+image::apim/1.x/graviteeio-page-documentation-draft.png[]
+
+== External documentation
+
+Gravitee.io provides a way to fetch your documentation from an external source.
+
+There are 5 types of fetchers:
+
+* Github: fetch your documentation from a github repository
+* GitLab: fetch your documentation from a gitlab repository
+* Git: fetch your documentation from a git repository
+* WWW: fetch your documentation from the web
+* Bitbucket: fetch your documentation from a bitbucket repository
+
+__The documentation is fetched and stored locally in the Gravitee.io platform__
+
+== Templating
+
+We will see how to create templates of documentation based on https://freemarker.apache.org[freemarker template engine].
+
+=== Syntax
+
+You can access to your api data on your api's documentation by doing so: ${api.name} or ${api.metadata['foo-bar']}
+
+=== Available API's properties
+
+[width="100%",cols="20%,10%,70%",frame="topbot",options="header"]
+|======================
+|Field name                 |Field type |Example
+|id                         |String     |70e72a24-59ac-4bad-a72a-2459acbbad39
+|name                       |String     |Stores
+|description                |String     |The Stores API blabla...
+|version                    |String     |v1
+|metadata                   |Map        |{"email-support": "support.contact@company.com"}
+|createdAt                  |Date       |12 juil. 2018 14:44:00
+|updatedAt                  |Date       |12 juil. 2018 14:46:00
+|deployedAt                 |Date       |12 juil. 2018 14:49:00
+|picture                    |String     |data:image/png;base64,iVBO...
+|state                      |String     |STARTED/STOPPED
+|visibility                 |String     |PUBLIC/PRIVATE
+|tags                       |Array      |["internal", "sales"]
+|proxy.contextPath          |String     |/stores
+|primaryOwner.displayName   |String     |Firstname Lastname
+|primaryOwner.email         |String     |firstname.lastname@company.com
+|======================
+
+
+=== Concrete example
+
+Here an example of a possible template for your API documentation.
+
+```
+<#if api.picture??>
+<img src="${api.picture}" style="float: right;max-width: 60px;"></img>
+</#if>
+
+# Welcome to the API ${api.name}(${api.version})!
+
+The API is <span style="text-transform: lowercase;color: <#if api.state=='STARTED'>green<#else>red</#if>">${api.state}</span>.
+
+This API has been created on ${api.createdAt?datetime} and updated on ${api.updatedAt?datetime}.
+
+<#if api.deployedAt??>
+This API has been deployed on ${api.deployedAt?datetime}.
+<#else>
+This API has not yet been deployed.
+</#if>
+
+<#if api.visibility=='PUBLIC'>
+This API is publicly exposed.
+<#else>
+This API is not publicly exposed.
+</#if>
+
+<#if api.tags?has_content>
+Sharding tags: ${api.tags?join(", ")}
+</#if>
+
+## Description
+
+${api.description}
+
+## How to access
+
+The API can be accessed through https://api.company.com${api.proxy.contextPath}:
+
+curl https://api.company.com${api.proxy.contextPath}
+
+## Rating
+
+You can rate and put a comment for this API <a href='/#!/apis/${api.id}/ratings'>here</a>.
+
+## Contact
+
+The support contact is <a href="mailto:${api.metadata['email-support']}">${api.metadata['email-support']}</a>.
+
+The API owner is <#if api.primaryOwner.email??><a href="mailto:${api.primaryOwner.email}">${api.primaryOwner.displayName}</a><#else>${api.primaryOwner.displayName}</#if>.
+```
+
+Let's see the result for an API `stores`:
+
+image::apim/1.x/graviteeio-page-documentation.png[]

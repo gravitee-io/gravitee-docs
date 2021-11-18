@@ -1,0 +1,60 @@
+= Create an account
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_consumerguide_create_account.html
+:page-folder: apim/user-guide/consumer
+:page-layout: apim1x
+
+Gravitee.io allows user to register from the portal.
+
+== Prerequisites
+
+In order to work correctly:
+
+- the link:/apim/1.x/apim_installguide_rest_apis_configuration.html#sending_emails[email SMTP configuration] must be done
+
+- and the option enabled from the settings part:
+
+image::apim/1.x/graviteeio-developer-create-account-activate-settings.png[]
+
+== User registration workflow
+
+=== Login form
+
+First of all, the user access to the login form:
+
+image::apim/1.x/graviteeio-developer-create-account-login-form.png[]
+
+=== Sign in
+
+Where he will find a link to sign in, and will be redirected to a registration form:
+
+image::apim/1.x/graviteeio-developer-create-account-signin-form.png[]
+
+Then, after filling his first/last names and email, he will be able to sign in.
+
+=== Email validation
+
+But, the process is not finished as there is still a step used mainly to validate the email.
+
+So the user will receive an email with a link to validate registration as below:
+
+image::apim/1.x/graviteeio-developer-create-account-email-registration.png[]
+
+By default, the link will be available for 24h (86400s), but this can be changed in the gravitee.yml
+
+```yaml
+user:
+   creation:
+      token:
+         expire-after: 86400
+```
+
+If the link expire, the user will see this message:
+
+image::apim/1.x/graviteeio-developer-create-account-link-expire.png[]
+
+=== Confirm registration
+
+Finally, you just have to confirm registration by defining your password, and.... that's it your registration is fully completed!
+
+image::apim/1.x/graviteeio-developer-create-account-confirm-registration.png[]

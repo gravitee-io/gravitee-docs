@@ -1,0 +1,138 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  product: Alert Engine
+  folders:
+
+  - title: Alert Engine
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /Guides/AE/current/introduction.html
+
+  - title: Installation Guide
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /Guides/AE/current/installation-guide/introduction.html
+    - title: Install with .zip
+      output: web
+      url: /Guides/AE/current/installation-guide/engine.html
+    - title: Install on Docker
+      output: web
+      url: /Guides/AE/current/installation-guide/docker.html
+    - title: Install in Kubernetes
+      output: web
+      url: /Guides/AE/current/installation-guide/kubernetes.html
+    - title: Internal API
+      output: web
+      url: /Guides/AE/current/installation-guide/internal-api.html
+    - title: Metrics
+      output: web
+      url: /Guides/AE/current/installation-guide/metrics.html
+    - title: Upgrade Guide
+      output: web
+      url: /Guides/AE/current/installation-guide/upgrade.html
+  - title: Configuration Guide
+    output: web
+    folderitems:
+      - title: Configuring AE
+        output: web
+        url: /Guides/AE/current/configuration-guide/introduction.html
+  - title: User Guide
+    output: web
+    folderitems:
+      - title: Introduction
+        output: web
+        url: /Guides/AE/current/user-guide/definition.html
+      - title: Conditions
+        output: web
+        url: /Guides/AE/current/user-guide/conditions.html
+      - title: Dampening
+        output: web
+        url: /Guides/AE/current/user-guide/dampening.html
+        subfolders:
+        - title: Notifications
+          output: web
+          subfolderitems:
+            - title: What is a notifier?
+              output: web
+              url: /Guides/AE/current/notifiers/introduction.html
+            - title: Email notifier
+              output: web
+              url: /Guides/AE/current/user-guide/notifiers/email-notifier.html
+            - title: System email notifier
+              output: web
+              url: /Guides/AE/current/user-guide/notifiers/system-email-notifier.html
+            - title: Slack notifier
+              output: web
+              url: /Guides/AE/current/user-guide/notifiers/slack-notifier.html
+            - title: Webhook notifier
+              output: web
+              url: /Guides/AE/current/user-guide/notifiers/webhook-notifier.html
+            - title: Create a custom message
+              output: web
+              url: /Guides/AE/current/user-guide/notifiers/message-notifier.html
+            - title: Node lifecycle notification
+              output: web
+              url: /Guides/AE/current/user-guide/notifiers/node-lifecycle.html
+            - title: Node heartbeat notification
+              output: web
+              url: /Guides/AE/current/current/user-guide/notifiers/node-heartbeat.html
+            - title: Node health check notification
+              output: web
+              url: /Guides/AE/current/user-guide/notifiers/node-healthcheck.html
+
+  - title: API Management
+    output: web
+    folderitems:
+      - title: Installation
+        output: web
+        url: /Guides/AE/current/apim/apim_installation.html
+        subfolders:
+        - title: Configuration
+          output: web
+          subfolderitems:
+            - title: Enable alerting in APIM
+              output: web
+              url: /Guides/AE/current/apim/configuration.html
+            - title: Platform alerts
+              output: web
+              url: /Guides/AE/current/apim/platform.html
+            - title: API alerts
+              output: web
+              url: /Guides/AE/current/apim/api.html
+            - title: Consumer alerts
+              output: web
+              url: /Guides/AE/current/apim/consumer.html
+        - title: Notifications
+          output: web
+          subfolderitems:
+           - title: Request notification
+             output: web
+             url: /Guides/AE/current/apim/request-notification.html
+           - title: Health-check notification
+             output: web
+             url: /Guides/AE/current/apim/endpoint-healthcheck-notification.html
+      - title: Alerts dashboard
+        output: web
+        url: /Guides/AE/current/apim/alerts-dashboard.html
+  - title: Access Management
+    output: web
+    folderitems:
+      - title: Installation
+        output: web
+        url: /Guides/AE/current/am/installation.html
+      - title: Configuration
+        output: web
+        url: /Guides/AE/current/am/configuration.html
+
+  - title: Third party products
+    output: web
+    folderitems:
+      - title: Installation
+        output: web
+        url: /Guides/AE/3rdparties/installation.html

@@ -1,10 +1,6 @@
----
-product: Access Management
-toc: true
-title: Set up your first application
----
+= Set up your first application
 
-Before you can interact with the AM Authorization Gateway, you must first create an application in AM Console.
+Before you can interact with AM Gateway, you must first create an application in AM Console.
 
 In this example we will:
 
@@ -66,8 +62,8 @@ In this example, we will create a regular web application.
 +
 image::am/current/quickstart-create-application.png[]
 +
-. Click the *Next* button.
-. Give your application a *Name* and a *Redirect URI* (with https scheme and non localhost) and click the *Create* button.
+. Click *Next*.
+. Give your application a *Name* and a *Redirect URI* (with https scheme and non localhost) and click *Create*.
 +
 image::am/current/quickstart-create-application2.png[]
 
@@ -111,4 +107,4 @@ image::am/current/graviteeio-am-quickstart-client-idp.png[]
 
 == Test your identity provider with OAuth2
 
-You can now test your identity provider by requesting a token, as described in link:am_quickstart_profile_information.html#id_token[ID Token] in the next section.
+You can now test your identity provider by requesting a token, as described in link:./profile-information.html#id_token[ID Token] in the next section.

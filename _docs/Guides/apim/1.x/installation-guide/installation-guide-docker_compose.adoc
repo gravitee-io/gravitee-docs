@@ -1,0 +1,58 @@
+= Docker Compose
+:page-toc: false
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_docker_compose.html
+:page-folder: apim/installation-guide/docker
+:page-layout: apim1x
+:docker-image-src: https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/images
+:github-repo: https://github.com/gravitee-io/gravitee-docker
+:docker-hub: https://hub.docker.com/r/graviteeio
+
+IMPORTANT: We assume that you are familiar with Docker. +
+To run our official images, you must start by installing https://docs.docker.com/installation/[Docker]
+
+Gravitee.io docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
+You could find all https://github.com/gravitee-io/gravitee-docker/[Dockerfiles on GitHub].
+
+== Run Gravitee.io API Management
+
+You can launch a complete Gravitee.io API Management stack using our ready-to-use docker-compose file.
+
+This latest is including Gravitee.io API Management + MongoDB + Elasticsearch.
+
+WARNING: Before running the commands below, make sure you have the minimum vm.max_map_count property set in order to run Elasticsearch properly. https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html[Click here] to see how to check the current value and update if necessary.
+
+[source,shell]
+....
+# Download docker-compose file
+$ curl -L https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/1.x/docker-compose.yml -o "docker-compose.yml"
+
+# (Optional step: pull to ensure that you are running latest images)
+$ docker-compose pull
+
+# And run...
+$ docker-compose up
+....
+
+== Check your platform
+
+When all components are started, you can do a quick test to see if everything is ok by checking these urls:
+
+|===
+|Component |URL| Expected
+
+|API Gateway
+|http://localhost:8082
+|Must return 404 status code, with a `No context-path matches the request URI` payload.
+
+|Management API
+|http://localhost:8083/management/apis
+|Must return a 200 status code, with a `[]` payload.
+
+|Management UI
+|http://localhost:8084
+|Must return a 200 status code, with the Gravitee.io Portal
+
+|===
+
+Once done, you're now ready to play with Gravitee.io API Management, so let's take a look to the link:/apim/1.x/apim_quickstart_publish.html[Quickstart guide].

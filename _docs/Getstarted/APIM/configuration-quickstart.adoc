@@ -12,9 +12,9 @@ While these default settings can be useful for testing your new installation, so
 
 You can configure APIM settings in various ways -- the `gravitee.yml` file, the APIM Console settings and environment and system variables.
 When you configure new settings, it is important to understand how one configuration type overrides another. You can get a good overview of this topic from
-link:/apim/current/apim_installguide_rest_apis_configuration.html[Configure APIM API^].
+link:/Guides/APIM/current/configuration-guide/rest-apis/general-config.html[Configure APIM API^].
 
-NOTE: APIM includes many other configuration options and every environment is unique. We recommend you also read the link:/apim/3.x/apim_configurationguide.html[Configuration Guide^] to make sure you've completed all the configuration you need, before you deploy APIM in production.
+NOTE: APIM includes many other configuration options and every environment is unique. We recommend you also read the link:/Guides/APIM/current/configuration-guide/introduction.html[Configuration Guide^] to make sure you've completed all the configuration you need, before you deploy APIM in production.
 
 == Step 1: Disable the internal APIs
 
@@ -45,8 +45,8 @@ services:
 
 To learn more about the internal APIs, see:
 
-* link:/apim/3.x/apim_installguide_rest_apis_technical_api.html[Configure the APIM API internal API^]
-* link:/apim/3.x/apim_installguide_gateway_technical_api.html[Configure the APIM Gateway internal API^]
+* link:/Guides/APIM/current/configuration-guide/rest-apis/internal-api.html[Configure the APIM API internal API^]
+* link:/Guides/APIM/current/configuration-guide/gateway/internal-api.html[Configure the APIM Gateway internal API^]
 
 == Step 2: Update the default users
 
@@ -115,7 +115,7 @@ security:
 +
 image:apim/3.x/how-tos/configure-apim/admin-pwd.png[]
 
-To learn more about configuring users, see link:/apim/3.x/apim_installguide_authentication.html[Configure authentication^].
+To learn more about configuring users, see link:/Guides/APIM/current/configuration-guide/authentication/introduction.html[Configure authentication^].
 
 == Step 3: Update the JWT secret
 
@@ -155,8 +155,7 @@ The most common settings are described below. Not all of these settings need to 
 
 Perform the following steps in APIM Console:
 
-. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
-. Click *Settings*.
+. In APIM Console, click *Settings*.
 . In the *PORTAL* section:
 .. Click *Settings*.
 .. Update the *Company name*.
@@ -170,7 +169,7 @@ image:apim/3.x/how-tos/configure-apim/portal-management-settings.png[]
 .. Click *Sharding Tags*.
 .. In the *Default configuration* section of the page, update the *Entrypoint* field with your APIM API endpoint.
 +
-NOTE: You can also update this value link:/apim/3.x/apim_installguide_rest_apis_configuration.html#environment_variables[with an environment variable^].
+NOTE: You can also update this value link:/Guides/APIM/current/configuration-guide/introduction.html#environment_variables[with an environment variable^].
 +
 image:apim/3.x/how-tos/configure-apim/gateway-shardingtags-settings.png[]
 +

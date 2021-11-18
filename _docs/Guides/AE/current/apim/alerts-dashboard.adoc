@@ -1,0 +1,16 @@
+= Alerts dashboard
+:page-description: Gravitee Alert Engine - API Management - Platform
+:page-toc: true
+:page-keywords: Gravitee, API Management, APIM, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-liquid:
+
+== Overview
+
+You can find the APIM Alerts dashboard in APIM Console under *Analytics > Alerts*.
+
+It shows alerts for the current API and the selected time period:
+
+- The number of alert events grouped by severity
+- The list of alerts with their event counts sorted by severity, then by decreasing event count. You can click on the alert event to view its history.
+
+image::ae/apim/api_alerts_dashboard.png[API alerts dashboard]

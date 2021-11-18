@@ -4,9 +4,9 @@ toc: true
 title: Get user profile information
 ---
 
-After you have link:/am/current/am_quickstart_app_setup.html[set up your first application^], you can retrieve user profile information with OpenID Connect.
+After you have set up your first application, you can retrieve user profile information with OpenID Connect.
 
-NOTE: For more information on OpenID Connect and OAuth2, see link:/am/current/am_overview_introduction.html#authorization-in-am[Authorization in AM^].
+link:/Guides/AM/current/introduction.html#authorization-in-am[Learn more about authorization with OpenID Connect and OAuth2 in AM^]
 
 In this example, we will use the link:https://tools.ietf.org/html/rfc6749#section-1.3.3[Resource Owner Password Credentials flow^]. You use it to obtain and verify user identities for your applications by issuing link:http://openid.net/specs/openid-connect-core-1_0.html#IDToken[ID Tokens^] or calling the link:http://openid.net/specs/openid-connect-core-1_0.html#UserInfo[UserInfo Endpoint^]. The default flow is the link:https://tools.ietf.org/html/rfc6749#section-1.3.1[Authorization Code flow^] with a login page displayed to the end user.
 
@@ -102,7 +102,7 @@ image::am/current/quickstart-applications-certificates.png[]
 . Retrieve your public key by clicking the key icon image:am/current/graviteeio-am-quickstart-profile-public-key.png[].
 . Copy the signature and use a JWT library to verify it.
 
-NOTE: You can also use link:https://www.gravitee.io/products/api-management[Gravitee.io API Management^] with the link:/apim/3.x/apim_policies_jwt.html[JWT Policy^] to verify and retrieve user profile information.
+NOTE: You can also use link:/Guides/APIM/current/introduction.html[Gravitee API Management^] with the link:/Reference/policy/policy-jwt.html[JWT Policy^] to verify and retrieve user profile information.
 
 == UserInfo Endpoint
 
@@ -147,4 +147,4 @@ image::am/current/graviteeio-am-quickstart-profile-user-mappers.png[]
 +
 . Custom user attributes will be available in the UserInfo Endpoint response.
 
-TIP: You can find more information about User mapping in the link:/am/current/am_userguide_identity_provider_mapping.html[User and role mapping^] section.
+TIP: You can find more information about User mapping in the link:/Guides/AM/current/user-guide/identity-provider/mapping-identity-provider.html[User and role mapping^] section.

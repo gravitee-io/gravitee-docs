@@ -6,7 +6,7 @@ title: Access APIM Portal and Console
 
 == Log in to APIM Portal
 
-You can access APIM Portal as a public user without logging in. You only need to log in to APIM Portal if you want to work with private APIs. For more information, see the link:/apim/3.x/apim_consumerguide_portal.html[API Consumer Guide].
+You can access APIM Portal as a public user without logging in. You only need to log in to APIM Portal if you want to work with private APIs. For more information, see the link:/Guides/APIM/current/consumer-guide/introduction.html[API Consumer Guide^].
 
 You access APIM Portal using the `http://PORTAL_UI_SERVER_DOMAIN` URL created during installation.
 
@@ -23,7 +23,7 @@ image:apim/3.x/quickstart/portal-signin.png[]
 +
 image:apim/3.x/quickstart/portal-login.png[]
 
-You are now ready to link:/apim/3.x/apim_quickstart_consume_ui.html[subscribe to some APIs^].
+You are now ready to link:./api-consumer-ui.html[subscribe to some APIs^].
 
 == Log in to APIM Console
 
@@ -40,7 +40,7 @@ To log in:
 +
 image:apim/3.x/quickstart/console-login.png[]
 
-You are now ready to link:/apim/3.x/apim_quickstart_publish_ui.html[publish your first API^].
+You are now ready to link:./api-publisher-ui.html[publish your first API^].
 
 === Home dashboard
 
@@ -63,7 +63,7 @@ image:apim/3.x/quickstart/home-dashboard-events.png[]
 
 You can view the status of all your APIs or only APIs with health checking enabled, by toggling on and off the *View all APIs* option.
 
-For APIs with health checking enabled, clicking the detail of the API redirects you to the Health check page. For more details, see link:/apim/3.x/apim_publisherguide_backend_services.html[Load balancing, failover and health check^].
+For APIs with health checking enabled, clicking the detail of the API redirects you to the Health check page. For more details, see link:/Guides/APIM/current/publisher-guide/backend-services.html[Load balancing, failover, and health check^].
 
 The APIs can be in three different states:
 
@@ -71,8 +71,10 @@ The APIs can be in three different states:
 * If the uptime is between 80 and 95%, the API is shown as in a warning state (orange)
 * If the uptime is under 80%, the API is shown as in an error state (red)
 
+You can disable this panel in the Console settings.
+
 ==== Customize the dashboard
 
-You can customize the default dashboard view by resizing or removing widgets, or by adding custom metrics, as described in link:/apim/3.x/apim_how_to_add_custom_metrics_in_dashboards.html[How to add custom metrics in dashboards^].
+You can customize the default dashboard view by resizing or removing widgets, or by adding custom metrics, as described in link:./add-custom-metrics-dashboards.html[How to add custom metrics to dashboards^].
 
-To perform more advanced configuration, see link:/apim/3.x/apim_installguide_management_ui_configuration.html#home-dashboard[Home dashboard^] in the Configuration Guide.
+To perform more advanced configuration, see link:/Guides/APIM/current/configuration-guide/console/general-config.html#home-dashboard[Home dashboard^] in the Configuration Guide.

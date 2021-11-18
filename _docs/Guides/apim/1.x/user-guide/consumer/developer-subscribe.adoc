@@ -1,0 +1,108 @@
+= Subscribe to an API
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_consumerguide_subscribe.html
+:page-folder: apim/user-guide/consumer
+:page-layout: apim1x
+
+Gravitee.io API platform exposes an API gallery also known as API catalog to let developers application to browse APIs,
+request access and generate subscriptions to secure access and identify consumers for monitoring and analytics.
+
+To access theses APIs consumers, must subscribe to the link:/apim/1.x/apim_publisherguide_plans_subscriptions.html[APIs' plans] with their registered application to start playing with the APIs.
+
+NOTE: Consumer must have a link:/apim/1.x/apim_consumerguide_create_account.html[user account] to register an application and subscribe to an API.
+
+== Create an application
+
+Consumers who want to use APIs need to register an application that will let API publishers to control and regulate access to their APIs.
+Typically application can be a web application, a native application, bash/job applications and so on which want to access sensitive data.
+
+NOTE: Only users with correct role permission can create an application, see link:/apim/1.x/apim_adminguide_roles_and_permissions.html[roles and permissions]
+
+1. Login to the Gravitee.io APIM portal
+2. Open the user menu (top right) and click `Applications`
+3. From the `Applications` screen, click `(+)` button to create a new application
+4. Enter application's name and description and press `SAVE`
+5. `OPTIONAL` You want to subscribe to an API's OAuth 2.0/JWT plan and you have an OAuth 2.0 client ? Grab your `client_id` and complete the security part
+6. Click `SAVE` to register your application
+
+Your application is created and you can use it to subscribe to an API.
+
+== Subscribe to an API
+
+API's plans allow API publisher to provide and regulate access to their APIs. In order to use APIs you must subscribe to an API's plan, see link:/apim/1.x/apim_publisherguide_plans_subscriptions.html[plans and subscriptions].
+
+To subscribe to an API:
+
+. Go to the API gallery
+. Select the API you want to subscribe
+. Click `subscribe` and choose the right API's plan
+. Select your application
+
+NOTE: Remember, if you choose an OAuth 2.0 plan you must have a `client_id` set in your application
+
+[start=5]
+. Click `SUBSCRIBE` and you are ready to use the API
+
+.Subscribe to an API
+image::apim/1.x/api-consumer-guide/developer-subscribe/subscribe-to-an-api.png[Gravitee.io - subscribe to an api]
+
+Depending on the plan security type (API-Key, OAuth 2.0, JWT), you need to set proper HTTP headers to call the API.
+
+**API Key**
+
+----
+curl -X GET "https://api.company.com/amazing-api" -H "X-Gravitee-Api-Key: xxxx-xxxx-xxxx-xxxx"
+----
+
+**OAuth 2.0/JWT**
+
+You have to get an access_token from the authorization server before being able to consume this API.
+
+----
+curl -X GET "https://api.company.com/amazing-api" -H "Authorization: Bearer xxxx-xxxx-xxxx-xxxx"
+----
+
+NOTE: If the API's publisher choose to manually validate application subscriptions, you must wait his approval to use the API.
+
+== Manage subscriptions
+
+To see your subscriptions and their current status:
+
+1. Go to `Applications` page
+2. Choose an application and go to `Subscriptions` section
+3. You will see all your subscriptions with their status (Accepted, Pending, etc ...)
+4. Click on a specific subscription to see the detail
+
+NOTE: For API-Key plan, you can retrieve the API-Key value and also renew or revoke subscriptions.
+
+== APIs analysis
+
+For each APIs you have subscribed, Gravitee.io APIM provides some analytics to let you know how your application use the APIs.
+
+See below the list of the current analytics
+
+|===
+|Analytics|Description
+
+|Top API
+|Top APIs sort by the number of API calls
+
+|Status
+|HTTP status repartition summary
+
+|Top paths
+|Hits repartition by path
+
+|Top mapped paths
+|Hits repartition by mapped path
+
+|Response status
+|Hits repartition by status
+
+|Response times
+|Average response time
+
+|Hits by API
+|Hits repartition by API
+
+|===

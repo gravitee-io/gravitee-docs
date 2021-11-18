@@ -1,0 +1,62 @@
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_gateway_technical_api.html
+:page-folder: apim/installation-guide/gateway
+:page-description: Gravitee.io API Management - Gateway - Technical API
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-layout: apim1x
+
+[[gravitee-installation-management-api-technical-api]]
+= API Gateway - Technical API
+
+:node_port: 18082
+include::../../../node/partial/technical-api.adoc[leveloffset=+1]
+
+== Specific endpoints
+
+The gateway provides dedicated endpoints to get information about apis deployed.
+
+|===
+|Operation |Description |Example
+
+|`GET /_node/apis`
+|Get the apis deployed on this gateway
+a|
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+[
+    {
+        "id": "5b7a30b5-8feb-4c11-ba30-b58feb6c112f",
+        "name": "Foo API",
+        "version": "1.0.0"
+    },
+    {
+        "id": "5da639b6-a3c7-4cc5-a639-b6a3c75cc5f9",
+        "name": "Bar API",
+        "version": "v1"
+    }
+]
+----
+
+|`GET /_node/apis/{api.id}`
+|Get the api configuration on this gateway
+a|
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "deployedAt": 1552574408611,
+    "enabled": true,
+    "id": "5b7a30b5-8feb-4c11-ba30-b58feb6c112f",
+    "name": "Foo API",
+    "pathMappings": {},
+    "paths": {
+     ...
+}
+----
+
+|===

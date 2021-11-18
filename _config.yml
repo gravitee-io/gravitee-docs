@@ -14,9 +14,8 @@ plugins:
   - jekyll-feed
   - jekyll-paginate-v2
   - jekyll-archives
-  - jekyll-toc
+#  - jekyll-toc
   - jekyll-seo-tag
-
 
 # Site settings
 title: "Gravitee.io API Platform Documentation"
@@ -94,14 +93,14 @@ google_analytics: UA-67690250-1
 
 newsletter_api: 'https://newsletter.gravitee.io/'
 
-toc:
-  min_level: 1
-  max_level: 3
-  no_toc_section_class: no_toc_section
-  list_class: section-nav
-  sublist_class: ''
-  item_class: toc-entry
-  item_prefix: toc-
+# toc:
+#  min_level: 1
+#  max_level: 3
+#  no_toc_section_class: no_toc_section
+#  list_class: section-nav
+#  sublist_class: ''
+#  item_class: toc-entry
+#  item_prefix: toc-
 
 # filter used to process markdown. note that kramdown differs from github-flavored markdown in some subtle ways
 

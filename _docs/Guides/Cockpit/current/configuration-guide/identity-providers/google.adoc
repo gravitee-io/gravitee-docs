@@ -1,0 +1,44 @@
+[[gravitee-cockpit-installation-idp-google]]
+= Configure a Google identity provider
+:page-description: Gravitee.io Cockpit - Identity Provider - Google
+:page-keywords: Gravitee.io, API Platform, API Management, Cockpit, documentation, manual, guide, reference, api, idp, google
+
+This page explains how to configure Cockpit for login with a Google account.
+
+== Create a Google OAuth application
+
+Before you can connect to Cockpit using a Google account, you need to create a Google application to link to Cockpit.
+
+=== Create Google OAuth2 client IDs
+
+. Go to https://console.cloud.google.com/apis/credentials.
+. Click *Create new identifiers*.
+. Enter the application details. Redirection URI should follow this pattern: http://localhost:8063/auth/login/callback?provider=google
++
+WARNING: The `Redirection URI` must exactly match the domain hosting Cockpit.
+. Save client ID and Secret.
+
+== Configure Cockpit
+
+In `gravitee.yml` file, uncomment the following lines
+
+[source,yaml]
+----
+auth:
+  google:
+    userAutorizationUri: https://accounts.google.com/o/oauth2/v2/auth
+    accessTokenUri: https://oauth2.googleapis.com/token
+    userProfileUri: https://openidconnect.googleapis.com/v1/userinfo
+    codeParameter: code
+    responseType: code
+    clientId: <your client ID goes here>
+    clientSecret: <your client secret goes here>
+    redirectUri: http://localhost:8063/auth/login/callback?provider=google
+    scopes: openid,profile,email
+    http:
+      connectionTimeout: 10000
+      maxTotalConnection: 10
+
+----
+
+WARNING: The `redirectUri` must exactly match the domain hosting Cockpit.

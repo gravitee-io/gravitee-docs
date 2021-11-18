@@ -1,0 +1,46 @@
+= Manage APIs
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_publisherguide_manage_apis.html
+:page-folder: apim/user-guide/publisher
+:page-layout: apim1x
+
+This section provides help to manage and configure your APIs, starting from the creation of an API,
+working with technical configuration (endpoint, load-balancing, health-check) and providing documentation
+to developers.
+
+
+As we've seen in the <<apim_quickstart_publish.adoc, quick start>> section, you can easily create a new API from scratch.
+
+By clicking the (+) button at the bottom of the portal page, you may see that there are some other ways to create an API:
+
+.Create API Options
+image::apim/1.x/graviteeio-create-api-options.png[Create API Options]
+
+== Create an empty API
+This option lets you to create an API from scratch, meaning that you have to configure your API correctly (name, version,
+context-path, backend endpoints, ...) before publishing it to developers.
+
+To understand how to create an API from scratch, please follow the <<apim_quickstart_publish.adoc, quick start guide>>.
+
+== Import an existing API definition
+NOTE: To complete
+
+== Import a Swagger descriptor
+One of the amazing feature of Gravitee.io is the ability to import a Swagger descriptor to create an API. By doing so,
+you do not have to complete all the fields required when you're creating a new API from scratch.
+Finally, the only thing you have to do is to specify a context-path to expose the API.
+
+.Step1: Import a Swagger descriptor
+image::apim/1.x/graviteeio-create-api-swagger-1.png[Import Swagger 1]
+
+.Step2: Change values from the Swagger descriptor if required
+image::apim/1.x/graviteeio-create-api-swagger-2.png[Import Swagger 2]
+
+.Step3: Set the context-path
+image::apim/1.x/graviteeio-create-api-swagger-3.png[Import Swagger 3]
+
+Now you can navigate to the policies management view, and you will see that all route declared in the Swagger descriptor
+ are automatically created in Gravitee.io
+
+.Step3: Good job guy !
+image::apim/1.x/graviteeio-create-api-swagger-4.png[Import Swagger 4]

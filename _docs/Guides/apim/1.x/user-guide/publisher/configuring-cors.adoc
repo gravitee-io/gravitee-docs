@@ -1,0 +1,49 @@
+= Configuring CORS
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_publisherguide_configuring_cors.html
+:page-folder: apim/user-guide/publisher
+:page-layout: apim1x
+
+The CORS (Cross-Origin Resource Sharing) is a mechanism that allows resources on a *web page* to be requested from another domain.
+
+To understand well how to deal with CORS, you should first take a look at the https://www.w3.org/TR/cors[specification].
+
+== Configuration
+
+=== Access-Control-Allow-Origin
+
+Allow to specify one or multiples origin(s) that may access the resource.
+If you want to allow all origins, you can put `*` but it's not safe for production.
+
+=== Access-Control-Allow-Methods
+
+Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request.
+
+=== Access-Control-Allow-Headers
+
+Here you specify the headers allowed to be used by your requests.
+Typically, on your request headers you will have a header `Access-Control-Request-Headers` which request CORS to be configured to allow its values.
+
+Let's see a simple use case:
+
+A user make a call with a header `Access-Control-Request-Headers: my-header`.
+
+- if the CORS `Access-Control-Allow-Headers` is not configured with the header `my-header`, the request will get a 400 HTTP status.
+- if the CORS `Access-Control-Allow-Headers` is configured with the header `my-header` at least, the request will get a 200 HTTP status.
+
+**The wildcard (`*`) is not allowed here.**
+
+=== Access-Control-Allow-Credentials
+
+Indicates whether or not the response to the request can be exposed when the credentials flag is true.
+
+=== Access-Control-Allow-Max-Age
+
+This header indicates how long the results of a preflight request can be cached (-1 if disabled).
+
+=== Access-Control-Expose-Headers
+
+This header lets a server whitelist headers that browsers are allowed to access.
+
+
+image::apim/1.x/graviteeio-configuring-cors-configuration.png[]

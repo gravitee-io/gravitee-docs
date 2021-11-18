@@ -2,35 +2,15 @@
 <section class="slider-area bg-cover2">
     <div class="slider-wrapper medium-padding">
         <div class="container">
-<!--
-                     <div class="slider-carousel owl-carousel">
-
-                       {% assign data =  site.data.slider %}
-                         {% for slider in data %}
-                           <div class="slider-content wow fadeIn" data-wow-duration="3s">
-                             <h1 class="heading-1">{{slider.title}}</h1>
-                             <p><a href="{{slider.button_link}}" class="btn-style3 btn wow fadeInDown" data-wow-duration="500ms">{{slider.button_label}}</a></p>
-                           </div>
-                          {% endfor %}
-                             </div>
-                          -->
 
                             <div class="row justify-content-center">
-                              <form action="/search/" method="get" class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
-                                <label class="sr-only" for="st-search-input">Search</label>
-                                <input
-                                  id="st-search-input"
-                                  class="form-control"
-                                  name="q"
-                                  placeholder="Search for docs"
-                                  type="search"
-                                  autocomplete="off"
-                                  spellcheck="false"
-                                  dir="auto"
-                                  autofocus
-                                />
-                                <div id="autocompleteResults"></div>
-                              </form>
+                              <li>
+
+                              <div id="search-demo-container">
+                                  <input class="search-input" type="text" id="search-input" placeholder="{{site.data.strings.search_placeholder_text}}">
+                              </div>
+                            </li>
+
                             </div>
                             </div>
                             </div>

@@ -1,0 +1,39 @@
+= Access Management
+:page-description: Gravitee Alert Engine - Access Management - Configuration
+:page-toc: true
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-liquid:
+
+This section is explaining how to configure the Alert Engine within Gravitee.io Access Management.
+
+- AM comes with an intuitive and easy to use integration of Alert Engine.
+- AM provides a pre-defined and pre-configured list of alerts that only have to be enabled or disabled.
+
+NOTE: If you want to change some advanced settings, you can still update the relevant section of the gravitee.yml of the AM Management API.
+
+```yaml
+alerts:
+  alert-engine:
+    enabled: true
+    ws:
+      discovery: true
+      endpoints:
+        - http://localhost:8072/
+      security:
+        username: admin
+        password: adminadmin
+   too_many_login_failures:
+    name: "Too many login failures detected"
+    description: "More than {threshold}% of logins are in failure over the last {window} second(s)"
+    # the threshold rate in % to reach before notify. Default 10% of login failures.
+    threshold: 10
+    # the minimum sample size. Default 1000 login attempts.
+    sampleSize: 1000
+    # window time in seconds. Default 600s (10 minutes).
+    window: 600
+    # severity of the alert (INFO, WARNING, CRITICAL). Default WARNING.
+    severity: WARNING
+
+```
+
+NOTE: This sample file, give you a glimpse of how you can finely configure the too many login failures alert. You can find more information in the link:/am/current/am_userguide_alerts.html[dedicated section].

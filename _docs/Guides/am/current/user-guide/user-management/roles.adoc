@@ -1,0 +1,22 @@
+= Roles
+
+Roles are used to specify system access to authorized users. Each role provides a set of permissions representing operations that users can perform on specific services.
+
+== Create role
+
+You create roles in a security domain.
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Click *Settings > Scopes*.
+. Click the plus icon image:icons/plus-icon.png[role="icon"] and create a scope called `admin`.
+. Click *Settings > Roles*.
+. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Give your role a name and a description and click *SAVE*.
++
+You will be redirected to the created role's page.
++
+. Select the `admin` scope permission and click *SAVE*.
+
+== Use roles
+
+You can use roles to supplement an access token's claims, for example, to limit the scope of operation of your protected services and APIs. See link:/am/current/am_quickstart_profile_information.html#custom_claims[Custom claims^] for more information.

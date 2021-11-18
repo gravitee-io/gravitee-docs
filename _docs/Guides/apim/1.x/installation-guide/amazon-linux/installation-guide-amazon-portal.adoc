@@ -1,0 +1,72 @@
+= Install Portal on Amazon Linux
+:page-sidebar: apim_1_x_sidebar
+:page-permalink: apim/1.x/apim_installguide_amazon_portal.html
+:page-folder: apim/installation-guide/amazon
+:page-liquid:
+:page-layout: apim1x
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - Portal
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+:gravitee-component-name: Portal
+:gravitee-service-name: graviteeio-apim-management-ui
+
+== Installing Gravitee.io {gravitee-component-name} package
+
+IMPORTANT: We assume that you have configured your package management system by following link:/apim/1.x/apim_installguide_amazon_introduction.html[this documentation].
+
+Nginx must be installed prior to Gravitee.io {gravitee-component-name}:
+
+[source,bash,subs="attributes"]
+----
+sudo amazon-linux-extras install nginx1.12
+----
+
+Then, to install the latest stable version of Gravitee.io {gravitee-component-name}, issue the following command:
+
+[source,bash,subs="attributes"]
+----
+sudo yum install -y {gravitee-service-name}
+----
+
+== Running Gravitee.io {gravitee-component-name}
+
+NOTE: Gravitee.io {gravitee-component-name} is based on Nginx
+
+To configure Gravitee.io {gravitee-component-name} to start automatically when the system boots up, run the following commands:
+
+[source,bash,subs="attributes"]
+----
+sudo systemctl daemon-reload
+sudo systemctl enable nginx
+----
+
+Nginx can be started and stopped as follows:
+
+[source,bash,subs="attributes"]
+----
+sudo systemctl start nginx
+sudo systemctl stop nginx
+----
+
+When `systemd` logging is enabled, the logging information are available using the `journalctl` commands:
+
+To tail the journal:
+
+[source,shell]
+----
+sudo journalctl -f
+----
+
+To list journal entries for the Nginx service:
+
+[source,shell]
+----
+sudo journalctl --unit nginx
+----
+
+To list journal entries for the Nginx service starting from a given time:
+
+[source,shell]
+----
+sudo journalctl --unit nginx --since  "2020-01-30 12:13:14"
+----

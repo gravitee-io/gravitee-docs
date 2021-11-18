@@ -2,11 +2,10 @@
 
 <!-- Guides -->
 {% assign doc_cat = sidebar_url[1] %}
-{% assign doc_product = sidebar_url[2] | %}
+{% assign doc_product = sidebar_url[2] %}
 {% assign doc_version = sidebar_url[3] %}
 {% assign idoc_url = sidebar_url | last %}
 
-<!-- only true for top-level intro -->
 {% if sidebar_url.size > 5 %}
 
   {% assign doc_guide = sidebar_url[4] %}
@@ -24,6 +23,17 @@
 {% capture doc_url %}{{idoc_url}}.html{% endcapture %}
 {% capture page_url %}{{page.url}}.html{% endcapture %}
 
+{% if page.sidebar != nil and page.sidebar != false %}
+
+<!-- this is for earlier versions, e.g. APIM 1.x -->
+
+    {% assign sidebar = site.data.sidebars.[page.sidebar].entries %}
+    {% assign doc_cat = "Guides" %}
+    {% assign doc_product = sidebar_url[1] | upcase %}
+    {% assign doc_version = sidebar_url[2] %}
+
+{% else %}
+
 {% if doc_cat == "Guides" %}
 
   {% capture sidebar_name %}{{doc_product | downcase}}_{{doc_version}}_sidebar{% endcapture %}
@@ -39,47 +49,4 @@
 
 {% endif %}
 
-<!--
-
-{% if page.sidebar == "reference_sidebar" %}
-{% assign sidebar = site.data.sidebars.reference_sidebar.entries %}
-
-{% elsif page.sidebar == "gettingstarted_sidebar" %}
-{% assign sidebar = site.data.sidebars.gettingstarted_sidebar.entries %}
-
-{% elsif page.sidebar == "apim_1_x_sidebar" %}
-{% assign sidebar = site.data.sidebars.apim_1_x_sidebar.entries %}
-
-{% elsif page.sidebar == "apim_3_9_sidebar" %}
-{% assign sidebar = site.data.sidebars.apim_3_11_sidebar.entries %}
-
-{% elsif page.sidebar == "apim_sidebar" %}
-{% assign sidebar = site.data.sidebars.apim_3_x_sidebar.entries %}
-
-{% elsif page.sidebar == "am_3_x_sidebar" %}
-{% assign sidebar = site.data.sidebars.am_3_x_sidebar.entries %}
-
-{% elsif page.sidebar == "cockpit_sidebar" %}
-{% assign sidebar = site.data.sidebars.cockpit_sidebar.entries %}
-
-{% elsif page.sidebar == "am_2_x_sidebar" %}
-{% assign sidebar = site.data.sidebars.am_2_x_sidebar.entries %}
-
-{% elsif page.sidebar == "am_1_x_sidebar" %}
-{% assign sidebar = site.data.sidebars.am_1_x_sidebar.entries %}
-
-{% elsif page.sidebar == "ae_sidebar" %}
-{% assign sidebar = site.data.sidebars.ae_sidebar.entries %}
-
-{% elsif page.sidebar == "cli_sidebar" %}
-{% assign sidebar = site.data.sidebars.cli_sidebar.entries %}
-
-{% elsif page.sidebar == "ee_sidebar" %}
-{% assign sidebar = site.data.sidebars.ee_sidebar.entries %}
-
-{% elsif page.sidebar == "gettingstarted_sidebar" %}
-{% assign sidebar = site.data.sidebars.gettingstarted_sidebar.entries %}
-
 {% endif %}
-
--->
