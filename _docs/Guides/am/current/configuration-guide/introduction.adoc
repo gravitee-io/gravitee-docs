@@ -1,405 +1,106 @@
-= Configuration
+= Configuring AM
 
-Gravitee.io allows you to externalize your configuration via the `gravitee.yml` file that can be found under `GRAVITEE_HOME/config` folder.
+The following sections explain how to configure AM after installation. For a quick guide to configuring a new environment after installation, see link:/Getstarted/quickstart-am/configuration-quickstart.html[How to configure a production-ready AM environment^]
 
-* How to configure <<gravitee-gateway-configuration, Gateway>>
-* How to configure <<gravitee-mgt-api-configuration, Management API>>
-* How to configure <<gravitee-repositories-configuration, Repositories>>
+== Configuring AM Gateway and AM API
 
-[[gravitee-gateway-configuration]]
-== Gateway
+There are three different ways to configure these components:
 
-=== HTTP Server
+ - Environment variables
+ - System properties
+ - `gravitee.yml`
 
-HTTP server configuration.
+The order in which they are listed above corresponds to their order of precedence. In other words, environment variables override the other two configuration types, and system properties override `gravitee.yml`.
 
-[source,yaml]
-----
-http:
-  port: 8092
-  idleTimeout: 0
-  tcpKeepAlive: true
-  compressionSupported: false
-  pool:
-    workers: 100
-  secured: false
-  ssl:
-    clientAuth: false
-    keystore:
-      path:
-      password:
-    truststore:
-      path:
-      password:
-----
+== gravitee.yml
 
-=== Enable HTTPS
+The `gravitee.yml` file, found in `GRAVITEE_HOME/config/`, is the default way to configure the components.
 
-First, you need to provide a keystore. If you don’t have one, you can generate it :
+WARNING: YAML (`yml`) format is very sensitive to indentation. Ensure you include the correct number of spaces and use spaces instead of tabs.
 
-[source,yaml]
-----
-keytool -genkey \
-  -alias test \
-  -keyalg RSA \
-  -keystore server-keystore.jks \
-  -keysize 2048 \
-  -validity 360 \
-  -dname CN=localhost \
-  -keypass secret \
-  -storepass secret
-----
+== Environment variables
 
-After that, you have to enable secure mode in your gravitee.yml :
+You can override the default AM configuration (`gravitee.yml`) and system properties by defining environment variables.
 
-[source,yaml]
-----
-http:
-  port: 8092
-  idleTimeout: 0
-  tcpKeepAlive: true
-  compressionSupported: false
-  instances: 0
-  secured: true
-  ssl:
-    clientAuth: false
-    keystore:
-      path: /path/to/keystore.jks
-      password: secret
-    truststore:
-      path:
-      password:
-----
-
-=== Email configuration
-
-----
-# SMTP configuration used to send mails
-email:
-  enabled: false
-  host: smtp.my.domain
-  subject: "[Gravitee.io] %s"
-  port: 587
-  from: noreply@my.domain
-  username: user@my.domain
-  password: password
-#  properties:
-#    auth: true
-#    starttls.enable: true
-#    ssl.trust: smtp.gmail.com
-
-# Mail templates
-#templates:
-#  path: ${gravitee.home}/templates
-----
-
-=== Plugins repository
-
-Gravitee.io Gateway <<gravitee-plugins,plugins>> directory configuration.
-
-[source,yaml]
-----
-plugins:
-  path: ${gravitee.home}/plugins
-----
-
-=== Management repository
-
-Management repository is used to store global configuration such as security domains, clients, tokens, users, ...
-This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:
-
-https://api.mongodb.com/java/3.0/?com/mongodb/MongoClientOptions.html
+To override this property:
 
 [source,yaml]
 ----
 management:
-  type: mongodb
   mongodb:
-    dbname: ${ds.mongodb.dbname}
-    host: ${ds.mongodb.host}
-    port: ${ds.mongodb.port}
-#    username:
-#    password:
-#    connectionsPerHost: 0
-#    connectTimeout: 500
-#    maxWaitTime: 120000
-#    socketTimeout: 500
-#    socketKeepAlive: false
-#    maxConnectionLifeTime: 0
-#    maxConnectionIdleTime: 0
-#    serverSelectionTimeout: 0
-#    description: gravitee.io
-#    heartbeatFrequency: 10000
-#    minHeartbeatFrequency: 500
-#    heartbeatConnectTimeout: 1000
-#    heartbeatSocketTimeout: 20000
-#    localThreshold: 15
-#    minConnectionsPerHost: 0
-#    sslEnabled: false
-#    threadsAllowedToBlockForConnectionMultiplier: 5
-#    cursorFinalizerEnabled: true
-
-# Management repository: single MongoDB using URI
-# For more information about MongoDB configuration using URI, please have a look to:
-# - http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html
-#management:
-#  type: mongodb
-#  mongodb:
-#    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
-
-# Management repository: clustered MongoDB
-#management:
-#  type: mongodb
-#  mongodb:
-#    servers:
-#      - host: mongo1
-#        port: 27017
-#      - host: mongo2
-#        port: 27017
-#    dbname: ${ds.mongodb.dbname}
-#    connectTimeout: 500
-#    socketTimeout: 250
+    dbname: myDatabase
 ----
 
+Define one of the following variables:
 
-[[gravitee-mgt-api-configuration]]
-== Management API
+----
+GRAVITEE_MANAGEMENT_MONGODB_DBNAME=myDatabase
+GRAVITEE.MANAGEMENT.MONGODB.DBNAME=myDatabase
+gravitee_management_mongodb_dbname=myDatabase
+gravitee.management.mongodb.dbname=myDatabase
+----
 
-=== HTTP Server
+WARNING: Some properties are case sensitive and cannot be written in uppercase (for example,
+`gravitee_security_providers_0_tokenIntrospectionEndpoint`. We advise you to define environment variables in lowercase and use the correct syntax for each property.
 
-HTTP server configuration.
+TIP: In some systems, hyphens are not allowed in variable names. For example, you may need to write `gravitee_policy_apikey_header` as `gravitee_policy_api-key_header`.
 
+=== How to manage arrays?
+
+Some properties are arrays. For example:
 [source,yaml]
 ----
-jetty:
-  port: 8093
-  idleTimeout: 0
-  tcpKeepAlive: true
-  compressionSupported: false
-  pool:
-    workers: 100
-  secured: false
-  ssl:
-    clientAuth: false
-    keystore:
-      path:
-      password:
-    truststore:
-      path:
-      password:
+analytics:
+  elasticsearch:
+    endpoints:
+      - https://my.first.endpoint.com
+      - https://my.second.endpoint.com
+
+security:
+  providers:
+    - type: ldap
+      context-source-username: "cn=Directory Manager"
+      context-source-password: "password"
 ----
 
-=== Enable HTTPS
-
-First, you need to provide a keystore. If you don’t have one, you can generate it :
-
-[source,yaml]
-----
-keytool -genkey \
-  -alias test \
-  -keyalg RSA \
-  -keystore server-keystore.jks \
-  -keysize 2048 \
-  -validity 360 \
-  -dname CN=localhost \
-  -keypass secret \
-  -storepass secret
-----
-
-After that, you have to enable secure mode in your gravitee.yml :
-
-[source,yaml]
-----
-jetty:
-  port: 8093
-  idleTimeout: 0
-  tcpKeepAlive: true
-  compressionSupported: false
-  pool:
-    workers: 100
-  secured: true
-  ssl:
-    clientAuth: false
-    keystore:
-      path: /path/to/keystore.jks
-      password: secret
-    truststore:
-      path:
-      password:
-----
-
-=== Email configuration
+Below are some examples of how to write your environment variables. In case of doubt, we recommend you try both.
 
 ----
-# SMTP configuration used to send mails
-email:
-  enabled: false
-  host: smtp.my.domain
-  subject: "[Gravitee.io] %s"
-  port: 587
-  from: noreply@my.domain
-  username: user@my.domain
-  password: password
-#  properties:
-#    auth: true
-#    starttls.enable: true
-#    ssl.trust: smtp.gmail.com
+gravitee_analytics_elasticsearch_endpoints_0=https://my.first.endpoint.com
+gravitee_analytics_elasticsearch_endpoints_1=https://my.second.endpoint.com
 
-# Mail templates
-#templates:
-#  path: ${gravitee.home}/templates
+gravitee_security_providers_0_type=ldap
+gravitee_security_providers_0_context-source-username=cn=Directory Manager
+gravitee_security_providers_0_context-source-password=password
 ----
 
-=== Plugins repository
+or
 
-Gravitee.io Gateway <<gravitee-plugins,plugins>> directory configuration.
-
-[source,yaml]
 ----
-plugins:
-  path: ${gravitee.home}/plugins
+gravitee.analytics.elasticsearch.endpoints[0]=https://my.first.endpoint.com
+gravitee.analytics.elasticsearch.endpoints[1]=https://my.second.endpoint.com
+
+gravitee.security.providers[0]type=ldap
+gravitee.security.providers[0]context-source-username=cn=Directory Manager
+gravitee.security.providers[0]context-source-password=password
+gravitee.security.providers[0].users[1].password=password
 ----
 
-=== Management repository
+== System properties
 
-Management repository is used to store global configuration such as APIs, applications, apikeys, ...
-This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:
+You can override the default AM configuration (`gravitee.yml`) by defining system properties.
 
-http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html
+To override this property:
 
 [source,yaml]
 ----
 management:
-  type: mongodb
   mongodb:
-    dbname: ${ds.mongodb.dbname}
-    host: ${ds.mongodb.host}
-    port: ${ds.mongodb.port}
-#    username:
-#    password:
-#    connectionsPerHost: 0
-#    connectTimeout: 500
-#    maxWaitTime: 120000
-#    socketTimeout: 500
-#    socketKeepAlive: false
-#    maxConnectionLifeTime: 0
-#    maxConnectionIdleTime: 0
-#    serverSelectionTimeout: 0
-#    description: gravitee.io
-#    heartbeatFrequency: 10000
-#    minHeartbeatFrequency: 500
-#    heartbeatConnectTimeout: 1000
-#    heartbeatSocketTimeout: 20000
-#    localThreshold: 15
-#    minConnectionsPerHost: 0
-#    sslEnabled: false
-#    threadsAllowedToBlockForConnectionMultiplier: 5
-#    cursorFinalizerEnabled: true
-
-# Management repository: single MongoDB using URI
-# For more information about MongoDB configuration using URI, please have a look to:
-# - http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html
-#management:
-#  type: mongodb
-#  mongodb:
-#    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
-
-# Management repository: clustered MongoDB
-#management:
-#  type: mongodb
-#  mongodb:
-#    servers:
-#      - host: mongo1
-#        port: 27017
-#      - host: mongo2
-#        port: 27017
-#    dbname: ${ds.mongodb.dbname}
-#    connectTimeout: 500
-#    socketTimeout: 250
+    dbname: myDatabase
 ----
 
-[[gravitee-repositories-configuration]]
-== Advanced Repositories Settings
+Add this property to the JVM:
 
-[[gravitee-repositories-types]]
-=== Repository types
-
-* Management: All the data to manage the Gravitee.io Access Management platform, including security domains, clients,
-identity providers, ...
-* OAuth2: Tokens generated for OAuth2
-
-**Compatibility Matrix: **
-|===
-|Scope|MongoDB|Redis |Elasticsearch| Cassandra
-
-|Management
-|X
-|-
-|-
-|-
-
-|OAuth2
-|X
-|-
-|-
-|-
-
-|===
-
-[[gravitee-repository-mongodb-configuration]]
-=== MongoDB
-
-Default implementation is based on https://www.mongodb.org/[MongoDB], let's see the configuration options:
-
-[source,yaml]
 ----
-# ===================================================================
-# MINIMUM MONGO REPOSITORY PROPERTIES
-#
-# This is a minimal sample file declared connection to MongoDB
-# ===================================================================
-management:
-  type: mongodb             # repository type
-  mongodb:                  # mongodb repository
-    dbname:                 # mongodb name (default gravitee)
-    host:                   # mongodb host (default localhost)
-    port:                   # mongodb port (default 27017)
+-Dmanagement.mongodb.dbname=myDatabase
 ----
-
-NOTE: This is the minimum sample file to start with a mongo server, number of other properties control the behavior of mongo database, let's jump into it.
-
-[source,yaml]
-----
-# ===================================================================
-# MONGO REPOSITORY PROPERTIES
-#
-# This is a sample file declared all properties for MongoDB Repository
-# ===================================================================
-management:
-  type: mongodb                 # repository type
-  mongodb:                      # mongodb repository
-    dbname:                     # mongodb name (default gravitee)
-    host:                       # mongodb host (default localhost)
-    port:                       # mongodb port (default 27017)
-    username:                   # mongodb username (default null)
-    password:                   # mongodb password (default null)
-    connectionPerHost:          # mongodb connection per host (default 10)
-    connectTimeOut:             # mongodb connection time out (default 0 -> never)
-    maxWaitTime:                # mongodb max wait time (default 120000)
-    socketTimeout:              # mongodb socket time out (default 0 -> never)
-    socketKeepAlive:            # mongodb socket keep alive (default false)
-    maxConnectionLifeTime:      # mongodb max connection life time (default null)
-    maxConnectionIdleTime:      # mongodb max connection idle time (default null)
-    minHeartbeatFrequency:      # mongodb min heartbeat frequency (default null)
-    description:                # mongodb description (default null)
-    heartbeatConnectTimeout:    # mongodb heartbeat connection time out (default null)
-    heartbeatFrequency:         # mongodb heartbeat frequency (default null)
-    heartbeatsocketTimeout:     # mongodb heartbeat socket time out (default null)
-    localThreshold:             # mongodb local threshold (default null)
-    minConnectionsPerHost:      # mongodb min connections per host (default null)
-    sslEnabled:                 # mongodb ssl mode (default false)
-    threadsAllowedToBlockForConnectionMultiplier: # mongodb threads allowed to block for connection multiplier (default null)
-    cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
-----
-
-NOTE: All theses properties allow you to fine tuned your MongoDB connection

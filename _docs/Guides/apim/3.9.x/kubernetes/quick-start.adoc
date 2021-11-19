@@ -1,0 +1,228 @@
+:page-liquid:
+
+= Enable the Controller
+
+This page gives you a step-by-step tutorial to enable the Kubernetes Controller in your Kubernetes environment.
+
+We assume that MongoDB and Elasticsearch are already deployed in your cluster in the namespace `gravitee-ns`.
+
+== Create Custom Resource Definitions (CRDs)
+
+Before deploying APIM Gateway with the plugin, we will create three CRDs.
+
+[source, bash]
+----
+kubectl apply -n gravitee-ns -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes/master/crds/apim/gravitee-plugin-crd.yml
+
+kubectl apply -n gravitee-ns -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes/master/crds/apim/gravitee-gateway-crd.yml
+
+kubectl apply -n gravitee-ns -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes/master/crds/apim/gravitee-service-crd.yml
+----
+
+Check the CRDs are well-defined.
+
+[source, bash]
+----
+$ kubectl get crd -n gravitee-ns
+NAME                            CREATED AT
+gravitee-services.gravitee.io   2021-03-03T14:30:56Z
+gravitee-plugins.gravitee.io    2021-03-03T14:30:53Z
+gravitee-gateways.gravitee.io   2021-03-03T14:28:59Z
+----
+
+== Deploy APIM Gateway
+
+Install (or update) the Gravitee Helm charts.
+
+[source, bash]
+----
+helm repo add graviteeio https://helm.gravitee.io
+helm repo update
+----
+
+To deploy APIM Gateway with the Controller plugin, we will use the following values (replacing the example MongoDB and ElasticSearch settings with your own settings):
+
+[source, yaml]
+----
+gateway:
+  enabled: true
+  type: Deployment
+  name: gateway
+  reloadOnConfigChange: true
+  autoscaling:
+    enabled: false
+  replicaCount: 1
+  ingress:
+    enabled: true
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 200m
+      memory: 256Mi
+  services:
+    kubeController:
+      enabled: true
+      serviceAccount: "gravitee-gateway-sa"
+  additionalPlugins:
+  - https://download.gravitee.io/graviteeio-apim/plugins/services/gravitee-kubernetes-controller/gravitee-kubernetes-controller-0.1.0.zip
+
+mongo:
+  uri: mongodb://_MongoUser_:_MongoPwd_@mongodb:27017/admin?connectTimeoutMS=30000
+  rsEnabled: false
+  auth:
+    enabled: true
+    source: admin
+    username: _MongoUser_
+    password: _MongoPwd_
+
+es:
+  enabled: true
+  endpoints:
+    - http://elastic-elasticsearch-coordinating-only.gravitee-ns.svc.cluster.local:9200
+
+elasticsearch:
+  enabled: false
+
+management:
+  type: mongodb
+
+ratelimit:
+  type: mongodb
+
+api:
+  enabled: false
+
+portal:
+  enabled: false
+ui:
+  enabled: false
+smtp:
+  enabled: false
+
+notifiers:
+  smtp:
+    enabled: false
+----
+
+[source, bash]
+----
+helm install -f custom-values.yaml -n gravitee-ns gravitee graviteeio/apim3
+----
+
+Check the APIM Gateway logs to see if the plugin has loaded:
+
+[source, bash]
+----
+kubectl logs -n gravitee-ns $(kgpo -n gravitee-ns -l app.kubernetes.io/component=gateway -o NAME)
+----
+
+The login entries should look like this:
+
+[source, bash]
+----
+14:50:39.726 [pool-2-thread-1] [] INFO  i.g.g.s.k.m.PluginsResourceManager - Plugins resources loaded!
+14:50:39.750 [pool-2-thread-1] [] INFO  i.g.g.s.k.m.GatewayResourceManager - Gateway resources loading...
+14:50:39.764 [pool-2-thread-1] [] INFO  i.g.g.s.k.m.GatewayResourceManager - Gateway resources loaded!
+14:50:39.777 [pool-2-thread-1] [] INFO  i.g.g.s.k.m.ServicesResourceManager - Services resources loading...
+14:50:39.792 [pool-2-thread-1] [] INFO  i.g.g.s.k.m.ServicesResourceManager - Services resources loaded!
+----
+
+Before we create our first API using a CRD, let's check that the APIM Gateway is reachable through the Ingress:
+
+[source, bash]
+----
+$> kubectl get ingress -n gravitee-ns
+NAME                     CLASS    HOSTS              ADDRESS      PORTS     AGE
+gravitee-apim3-gateway   <none>   apim.example.com   172.20.0.3   80, 443   22m                LoadBalancer   10.43.165.131   172.20.0.3    8882:30431/TCP      19s
+----
+
+[source, bash]
+----
+$> curl -k "https://apim.example.com/gateway"
+No context-path matches the request URI.
+----
+
+== Create your first Gravitee resource
+
+Now we have a working environment, we can create our first GraviteeService resource.
+This resource will create a simple API definition to expose the ElasticSearch service through the APIM Gateway.
+The API will not require authentication (keyless policy) and a `rate-limit` policy will be applied to limit the amount of requests.
+
+[source, bash]
+----
+cat <<EOF | kubectl apply -n gravitee-ns -f -
+apiVersion: "gravitee.io/v1alpha1"
+kind: GraviteeServices
+metadata:
+  name: quickstart-service
+spec:
+  enabled: true
+  services:
+    elastic:
+      type: api
+      authentication:
+        policy: key-less
+      cors:
+        enabled: false
+      vhosts:
+        - path: "/gateway/elastic"
+          enabled: true
+      paths:
+        - prefix: "/*"
+          rules:
+            - policy: rate-limit
+              configuration:
+                rate:
+                  limit: 1
+                  periodTime: 1
+                  periodTimeUnit: "SECONDS"
+      endpoints:
+        default-group:
+          backendServices:
+            - name: elastic-elasticsearch-master
+              port: 9200
+EOF
+----
+
+Once the resource is applied, check its status with the following command:
+
+[source, bash]
+----
+$ kubectl get -n gravitee-ns giosvc
+NAME                 STATE     MESSAGE   ENABLED   SERVICES
+quickstart-service   SUCCESS             1         1
+----
+
+Now you can access the ElasticSearch service through APIM Gateway:
+
+[source, bash]
+----
+$ curl -k "https://apim.example.com/gateway/elastic/"
+{
+  "name" : "elastic-elasticsearch-master-0",
+  "cluster_name" : "elastic",
+  "cluster_uuid" : "AFm2J8PITUGZx4srRdoUzw",
+  "version" : {
+    "number" : "7.10.2",
+    "build_flavor" : "oss",
+    "build_type" : "tar",
+    "build_hash" : "747e1cc71def077253878a59143c1f785afa92b9",
+    "build_date" : "2021-01-13T00:42:12.435326Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.7.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+----
+
+If you send a second request less than 1 second later, you will see an error message due to the rate-limit policy:
+
+[source, bash]
+----
+$ curl -k "https://apim.example.com/gateway/elastic/"
+{"message":"Rate limit exceeded ! You reach the limit of 1 requests per 1 seconds","http_status_code":429}
+----

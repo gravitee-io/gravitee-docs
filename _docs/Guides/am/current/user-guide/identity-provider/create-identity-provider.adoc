@@ -2,17 +2,16 @@
 
 This section gives a general overview of creating identity providers. For more details of connecting your applications with specific identity provider types, see the following sections:
 
-- link:/am/current/am_userguide_enterprise_identity_providers.html[Enterprise identity providers]
-- link:/am/current/am_userguide_social_identity_providers.html[Social identity providers]
-- link:/am/current/am_userguide_database_identity_providers.html[Database identity providers]
+- link:.\corporate\introduction.html[Enterprise identity providers]
+- link:.\social\introduction.html[Social identity providers]
+- link:.\database\introduction.html[Database identity providers]
 
 == Create a new identity provider
 
 In this example, we are creating an inline identity provider.
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Providers*.
-. In the Providers page, click the plus icon image:icons/plus-icon.png[role="icon"].
+. In AM Console, click *Settings > Providers*.
+. In the **Providers** page, click the plus icon image:icons/plus-icon.png[role="icon"].
 . Choose an *Inline* identity provider type and click *Next*.
 +
 image::am/current/graviteeio-am-quickstart-idp-type.png[]
@@ -45,5 +44,5 @@ You can develop your own identity provider using a _plugin_, and provide an auth
 
 == Test an identity provider
 
-The fastest way to test your newly created identity provider is to request an OAuth2 access token, as described in link:/am/current/am_quickstart_profile_information.html#id-token[ID Token^].
+The fastest way to test your newly created identity provider is to request an OAuth2 access token, as described in link:/Getstarted/AM/profile-information.html#id-token[ID Token^].
 If you successfully retrieve an access token, your identity provider is all set.

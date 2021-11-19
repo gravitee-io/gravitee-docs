@@ -4,7 +4,7 @@
 
 == Overview
 
-You can authenticate users in AM with Twitter. Before you begin, you need to sign up for a link:https://developer.twitter.com/en/apply-for-access[Twitter Developer account].
+You can authenticate users in AM with Twitter. Before you begin, you need to sign up for a link:https://developer.twitter.com/en/apply-for-access[Twitter Developer account^].
 
 == Steps
 
@@ -17,7 +17,7 @@ To connect your application to Twitter, you will:
 
 == Register a new application in Twitter
 
-Go to link:https://developer.twitter.com/[+Add App] in the Twitter Developer Portal.
+Go to link:https://developer.twitter.com/[+Add App^] in the Twitter Developer Portal.
 
 . Give your application a name.
 . Click *Complete*.
@@ -26,8 +26,7 @@ NOTE: Twitter will generate an API Key and API Secret Key for your application. 
 
 == Create a Twitter identity provider
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Providers*.
+. In AM Console, click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *Twitter* as your identity provider type and click *Next*.
 +

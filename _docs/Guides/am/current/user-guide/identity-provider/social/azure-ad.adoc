@@ -4,7 +4,7 @@
 
 == Overview
 
-You can authenticate users with Azure Active Directory. Before you begin, you need to sign up for a link:https://azure.microsoft.com/en-us/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio[Azure account] and link:https://azure.microsoft.com/en-us/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio[Set up a tenant].
+You can authenticate users with Azure Active Directory. Before you begin, you need to sign up for a link:https://azure.microsoft.com/en-us/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio[Azure account^] and link:https://azure.microsoft.com/en-us/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio[Set up a tenant^].
 
 == Steps
 
@@ -17,7 +17,7 @@ To connect your application to Azure AD, you will:
 
 == Register a new application in Azure AD
 
-link:https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app[Register an application with the Microsoft identity platform].
+link:https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app[Register an application with the Microsoft identity platform^].
 
 . Sign in to the link:https://portal.azure.com/[Azure portal^].
 . If you have access to multiple tenants, use the *Directory + subscription* filter in the top menu to select the tenant for which you want to register an application.
@@ -40,8 +40,7 @@ NOTE: Record the client secret value for later use, as it is not displayed again
 
 == Create an Azure AD identity provider
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. In AM Console, click the plus icon image:icons/plus-icon.png[role="icon"].
 . Choose the *Azure AD* identity provider type and click *Next*.
 +
 NOTE: Ensure you have the generated Client ID and Client Secret from the Azure AD application to hand.
@@ -67,7 +66,7 @@ NOTE: On the right of the screen, under `1. Configure the Redirect URI`, copy th
 
 You can test the Azure AD connection using a web application created in AM.
 
-. In AM Console, click *Applications* and select your social identity provider.
+. Click *Applications* and select your social identity provider.
 +
 image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 +

@@ -4,12 +4,12 @@
 
 == Overview
 
-You can authenticate users in AM with link:https://franceconnect.gouv.fr/[FranceConnect]. FranceConnect is the French government Identity Provider that connects million of legal accounts.
+You can authenticate users in AM with link:https://franceconnect.gouv.fr/[FranceConnect^]. FranceConnect is the French government Identity Provider that connects million of legal accounts.
 You can connect to it with credentials such as your National Insurance Number, postal address and more.
 
 image::am/current/graviteeio-am-userguide-legal-franceconnect-logo.png[150,150]
 
-Before you begin, you need to sign up for a link:https://partenaires.franceconnect.gouv.fr/[FranceConnect account].
+Before you begin, you need to sign up for a link:https://partenaires.franceconnect.gouv.fr/[FranceConnect account^].
 
 == Steps
 
@@ -22,14 +22,13 @@ To connect your application to FranceConnect, you will:
 
 == Register a new application in FranceConnect
 
-To connect your application to FranceConnect, you must follow all the steps described link:https://franceconnect.gouv.fr/partenaires[here].
+To connect your application to FranceConnect, you must follow all the steps described link:https://franceconnect.gouv.fr/partenaires[here^].
 
 NOTE: FranceConnect will generate a client_ID and client_secret. Make a note of these for later use.
 
 == Create a FranceConnect identity provider
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Providers*.
+. In AM Console, click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *FranceConnect* as your identity provider type and click *Next*.
 +
@@ -53,7 +52,7 @@ NOTE: Copy the URL in *1. Configure the Redirect URI* to the right of the page. 
 
 You can test your FranceConnect connection using a web application created in AM.
 
-. In AM Console, click *Applications* and select your legal identity provider.
+. Click *Applications* and select your legal identity provider.
 +
 image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 +

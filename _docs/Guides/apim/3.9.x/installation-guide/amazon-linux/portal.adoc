@@ -1,0 +1,109 @@
+---
+product: API Management
+toc: true
+title: Install APIM Portal
+guide: Installation Guide
+guide-section: Amazon Linux
+---
+
+:page-liquid:
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - Portal
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+:gravitee-component-name: APIM Portal
+:gravitee-package-name: graviteeio-apim-portal-ui-3x
+:gravitee-service-name: graviteeio-apim-portal-ui
+
+To install Gravitee.io API Management Portal, be sure to check the list of prerequisites and complete the following configuration (both listed below).
+
+== Prerequisites
+
+. [underline]#*APIM API*# must be installed and running (link:./rest-api.html[click here] for instructions on how to install APIM API).
+
+. [underline]#*Nginx*# must be installed.
+
+. [underline]#*YUM package manager*# must be configured (link:./configure-yum.html[click here] for instructions on how to configure `yum`).
+
+=== Install APIM API
+link:./rest-api.html[Click here] for instructions on how to install and test that APIM API is running.
+
+=== Install Nginx
+
+To install Nginx, run the following commands:
+
+[source,bash,subs="attributes"]
+----
+sudo amazon-linux-extras install nginx1.12
+sudo systemctl start nginx
+----
+
+=== Configure YUM package manager
+link:./configure-yum.html[Click here] for instructions on how to configure `yum`.
+
+=== 1. Install the {gravitee-component-name} package
+
+To install the latest stable version of {gravitee-component-name}, run the following command:
+
+[source,bash,subs="attributes"]
+----
+sudo yum install -y {gravitee-service-name}
+----
+
+=== 2. Run {gravitee-component-name}
+
+NOTE: {gravitee-component-name} is based on Nginx.
+
+To configure {gravitee-component-name} to start automatically when the system boots up, run the following commands:
+
+[source,bash,subs="attributes"]
+----
+sudo systemctl daemon-reload
+sudo systemctl enable nginx
+----
+
+To start and stop Nginx, run the following commands:
+
+[source,bash,subs="attributes"]
+----
+sudo systemctl start nginx
+sudo systemctl stop nginx
+----
+
+=== 3. View the logs
+
+*You must check the logs to confirm if APIM Portal has been installed correctly.* When `systemd` logging is enabled, logging information is available using the `journalctl` commands.
+
+To tail the journal, run the following command:
+
+[source,shell]
+----
+sudo journalctl -f
+----
+
+To list journal entries for the Nginx service, run the following command:
+
+[source,shell]
+----
+sudo journalctl --unit nginx
+----
+
+To list journal entries for the Nginx service starting from a given time, run the following command:
+
+[source,shell]
+----
+sudo journalctl --unit nginx --since  "2020-01-30 12:13:14"
+----
+
+
+=== 4. Confirm {gravitee-component-name} Was Installed
+
+To test that {gravitee-component-name} has been installed and has started up properly, check this URL:
+
+|===
+|Component |URL
+
+
+|APIM Portal
+|http://localhost:8085/
+
+|===

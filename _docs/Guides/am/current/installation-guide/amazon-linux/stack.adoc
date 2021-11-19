@@ -9,9 +9,9 @@ This section describes how to install the full AM stack, including all the compo
 
 If you want to install AM components individually, see the following sections:
 
-* link:/am/current/am_installguide_amazon_gateway.html[Install AM Gateway]
-* link:/am/current/am_installguide_amazon_management_api.html[Install AM API]
-* link:/am/current/am_installguide_amazon_management_ui.html[Install AM Console]
+* link:./gateway.html[Install AM Gateway]
+* link:./rest-api.html[Install AM API]
+* link:./console.html[Install AM Console]
 
 == Prerequisites
 
@@ -29,7 +29,7 @@ sudo systemctl start nginx
 
 === Configure the package management system
 
-Ensure you have configured your package management system, as described in link:/am/current/am_installguide_redhat_introduction.html#configure-the-package-management-system-yum[Configure the package management system (yum)^].
+Ensure you have configured your package management system, as described in link:./introduction.html#configure-the-package-management-system-yum[Configure the package management system (yum)^].
 
 == Install the AM package (no dependencies)
 

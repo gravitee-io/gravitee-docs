@@ -1,6 +1,5 @@
 ---
 product: API Management
-permalink: apim/current/apim_publisherguide_audit_trail.html
 toc: true
 guide: Publisher Guide
 title: Audit trail
@@ -9,7 +8,7 @@ title: Audit trail
 You can use the APIM audit trail for monitoring the behaviour of your API and platform over time.
 For example, you can use it in conjunction with the analytics feature to identify a point at which your API behavior changed, view the configuration which caused the change and roll back to an earlier configuration if required.
 
-See also: link:/apim/3.x/apim_publisherguide_logging_analytics.html[Logging and analytics]
+See also: link:./logging-analytics.html[Logging and analytics]
 
 APIM Console provides audit trails at two levels of granularity:
 

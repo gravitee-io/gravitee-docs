@@ -2,7 +2,7 @@
 
 You can bind some identity provider attributes to an AM _user profile_ with attribute mapping. Using this method, AM clients can receive additional attributes through your identity provider.
 
-TIP: We advise you to read link:/am/current/am_quickstart_profile_information.html[Get user profile information^] first.
+TIP: We advise you to read link:/Getstarted/AM/profile-information.html[Get user profile information^] first.
 
 User profile attributes can be retrieved either by calling the *UserInfo* endpoint or, if you specify an `openid` scope for your application, by parsing the claims in the `id_token`.
 
@@ -32,14 +32,13 @@ The same applies when the client starts using scopes other than `openid`.
 
 Let's imagine a client application wants to retrieve the `telephoneNumber` attribute present in the LDAP identity provider. You can do this by configuring the identity provider as follows:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Providers*.
+. In AM Console, click *Settings > Providers*.
 . Select your LDAP identity provider and click the *User mappers* tab.
 . Map your LDAP (raw) attribute `telephoneNumber` to a new user attribute named `telephone_number`.
 +
 image::am/current/graviteeio-am-userguide-idp-user-mappers-phoneno.png[]
 
-. Get the User Profile information via the link:/am/current/am_quickstart_profile_information.html#userinfo-endpoint[UserInfo Endpoint^] and you will see that the new user attribute is present.
+. Get the User Profile information via the link:/Getstarted/AM/profile-information.html#userinfo-endpoint[UserInfo Endpoint^] and you will see that the new user attribute is present.
 +
 [source,bash,subs="verbatim"]
 ----
@@ -86,8 +85,7 @@ In the following example, we will map a role named `administrator` to users who 
 We will then dynamically add the `admin` scope to the `access_token`.
 The client will provide this scope when accessing an API via an API Manager, and the API Manager will check for the scope before granting access to the upstream API.
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Scopes*.
+. In AM Console, click *Settings > Scopes*.
 . Click the plus icon image:icons\plus-icon.png[role="icon"] and create an `admin` scope.
 . Click *Settings > Roles*.
 . Click the plus icon image:icons\plus-icon.png[role="icon"] and create an `administrator` role. Select the `admin` scope permission.
@@ -100,7 +98,7 @@ image::am/current/graviteeio-am-userguide-idp-role-mappers.png[]
 +
 . When the client requests the _Token_ endpoint, the new scope representing the user roles will be used.
 +
-NOTE: Ensure you enable the _"Enhance scopes"_ option for your client (*OAuth* tab).
+NOTE: Ensure you enable the *Enhance scopes* option for your client (*OAuth* tab).
 +
 image::am/current/graviteeio-am-user-guide-mapping-idp-enhance-scopes.png[]
 

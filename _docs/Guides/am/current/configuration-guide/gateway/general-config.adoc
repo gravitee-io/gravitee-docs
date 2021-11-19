@@ -3,11 +3,11 @@
 :page-description: Gravitee.io Access Management - Configuration - Gateway
 :page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-include::../partial/how-to-configure.adoc[leveloffset=+1]
+You can configure AM Gateway using the configuration file, system variables, or environment variables.
 
-== `gravitee.yml` configuration
+link:../introduction.html#configuring_am_gateway_and_am_api[Learn more about the different ways you can configure AM Gateway^]
 
-=== Configure HTTP server
+== Configure HTTP server
 
 You can update the HTTP server configuration in the following section of the `gravitee.yml` file.
 
@@ -31,7 +31,7 @@ http:
       password:
 ----
 
-==== Enable HTTPS support
+=== Enable HTTPS support
 
 First, you need to provide a keystore. If you don’t have one, you can generate it:
 
@@ -69,7 +69,7 @@ http:
       password:
 ----
 
-=== Configure email
+== Configure email
 
 ----
 # SMTP configuration used to send mails
@@ -91,9 +91,9 @@ email:
 #  path: ${gravitee.home}/templates
 ----
 
-=== Configure the Plugins repository
+== Configure the Plugins repository
 
-Gravitee.io Access Gateway <<gravitee-plugins,plugins>> directory configuration.
+Gravitee.io Access Gateway `plugins` directory configuration.
 
 [source,yaml]
 ----

@@ -28,8 +28,7 @@ NOTE: Before you begin, obtain this information from your SAML IdP administrator
 
 == Create a SAML 2.0 connector
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Providers*.
+. In AM Console, click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *SAML 2.0* as your identity provider type and click *Next*.
 . Give your identity provider a name.
@@ -50,7 +49,7 @@ This endpoint can be found at: https://AM_GW_HOST/:domain/saml2/sp/metadata/:pro
 
 You can test your SAML 2.0 connection using a web application created in AM.
 
-. In AM Console, click *Applications > App > Identity Providers* and select your SAML 2.0 connector.
+. Click *Applications > App > Identity Providers* and select your SAML 2.0 connector.
 +
 image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 +

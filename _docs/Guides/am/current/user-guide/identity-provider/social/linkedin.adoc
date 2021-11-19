@@ -4,7 +4,7 @@
 
 == Overview
 
-You can authenticate users in AM with LinkedIn. Before you begin, you need to sign up for a link:https://www.linkedin.com/developers[LinkedIn Developer account].
+You can authenticate users in AM with LinkedIn. Before you begin, you need to sign up for a link:https://www.linkedin.com/developers[LinkedIn Developer account^].
 
 == Steps
 
@@ -17,7 +17,7 @@ To connect your application to LinkedIn, you will:
 
 == Register a new application in LinkedIn
 
-Go to link:https://www.linkedin.com/developers[Create app] in the LinkedIn Developer Portal.
+Go to link:https://www.linkedin.com/developers[Create app^] in the LinkedIn Developer Portal.
 
 . Give your application a name, a LinkedIn page and a logo.
 . Click *Create app*.
@@ -26,8 +26,7 @@ NOTE: LinkedIn will generate a Client ID and Client Secret for your application.
 
 == Create a LinkedIn identity provider
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Providers*.
+. In AM Console, click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *LinkedIn* as your identity provider type and click *Next*.
 +
@@ -53,7 +52,7 @@ Go to your LinkedIn application settings and edit the *Auth* section.
 
 You can test your LinkedIn connection using a web application created in AM.
 
-. In AM Console, click *Applications* and select your social identity provider.
+. Click *Applications* and select your social identity provider.
 +
 image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 +

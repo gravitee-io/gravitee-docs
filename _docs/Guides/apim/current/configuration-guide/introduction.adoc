@@ -1,13 +1,8 @@
----
-toc: true
-title: Configuring APIM
----
-
-[[gravitee-configuration-guide]]
+= Configuring APIM
 :page-description: Gravitee.io API Management - Configuration
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-The following sections explain how to configure APIM after installation. For a quick guide to configuring a new environment after installation, see link:/Getstarted/quickstart-apim/how-to-general-configuration.html[How to configure a production-ready APIM environment^]
+The following sections explain how to configure APIM after installation. For a quick guide to configuring a new environment after installation, see link:/Getstarted/quickstart-apim/configuration-quickstart.html[How to configure a production-ready APIM environment^]
 
 == Configuring APIM Gateway and APIM API
 
@@ -91,23 +86,4 @@ gravitee.security.providers[0]type=ldap
 gravitee.security.providers[0]context-source-username=cn=Directory Manager
 gravitee.security.providers[0]context-source-password=password
 gravitee.security.providers[0].users[1].password=password
-----
-
-== System properties
-You can override the default APIM configuration (`gravitee.yml`) by defining system properties.
-
-To override this property:
-
-[source,yaml]
-----
-management:
-  mongodb:
-    dbname: myDatabase
-----
-
-Add this property to the JVM:
-
-[source,bash]
-----
--Dmanagement.mongodb.dbname=myDatabase
 ----

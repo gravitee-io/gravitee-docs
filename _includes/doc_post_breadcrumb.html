@@ -9,10 +9,10 @@
         <li class="breadcrumb-item">{{doc_product}}</li>
         <li class="breadcrumb-item">{{doc_version}}</li>
         {% if doc_guide != nil %}
-        <li class="breadcrumb-item">{{doc_guide}}</li>
+        <li class="breadcrumb-item">{{doc_guide | replace: '-', ' ' }}</li>
         {% if doc_subguide != nil %}
 
-        <li class="breadcrumb-item">{{doc_subguide}}</li>
+        <li class="breadcrumb-item">{{doc_subguide | replace: '-', ' ' }}</li>
 
         {% endif %}
 

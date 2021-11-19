@@ -3,15 +3,14 @@
 You can authenticate and manage users in AM using remote API calls.
 
 WARNING: For the Identity Provider to work, the user's payload must at least contain the following claims: `_sub_`.
-To obtain more information about your user you can use the link: link:https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims[Standard Claims] of the OpenID Connect protocol.
+To obtain more information about your user you can use the link: link:https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims[Standard Claims^] of the OpenID Connect protocol.
 You can achieve this with the AM User Mapper feature.
 
 image::am/current/graviteeio-am-userguide-http-idp-mapping.png[]
 
 == Create an HTTP identity provider
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Providers*.
+. In AM Console, click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *HTTP* as your identity provider type and click *Next*.
 . Give your identity provider a name.
@@ -224,7 +223,7 @@ NOTE: Only the _username_ attribute is available at this stage.
 
 You can test your http connection using a web application created in AM.
 
-. In AM Console, click *Applications* and select your HTTP identity provider.
+. Click *Applications* and select your HTTP identity provider.
 +
 image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 +

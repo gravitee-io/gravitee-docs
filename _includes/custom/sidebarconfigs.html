@@ -21,7 +21,6 @@
 {% endif %}
 
 {% capture doc_url %}{{idoc_url}}.html{% endcapture %}
-{% capture page_url %}{{page.url}}.html{% endcapture %}
 
 {% if page.sidebar != nil and page.sidebar != false %}
 
@@ -31,12 +30,15 @@
     {% assign doc_cat = "Guides" %}
     {% assign doc_product = sidebar_url[1] | upcase %}
     {% assign doc_version = sidebar_url[2] %}
-
+    {% assign page_url = page.url %}
+    
 {% else %}
+
+{% capture page_url %}{{page.url}}.html{% endcapture %}
 
 {% if doc_cat == "Guides" %}
 
-  {% capture sidebar_name %}{{doc_product | downcase}}_{{doc_version}}_sidebar{% endcapture %}
+  {% capture sidebar_name %}{{doc_product | downcase}}_{{doc_version | replace: '.', '_'}}_sidebar{% endcapture %}
   {% assign sidebar = site.data.sidebars.[sidebar_name].entries %}
 
 {% elsif doc_cat == "Getstarted" %}

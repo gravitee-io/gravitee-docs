@@ -23,11 +23,10 @@ Reset password email to request a new one
 
 You can customize email templates for an entire security domain or for an individual application.
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. To customize email templates:
+. In AM Console, to customize email templates:
 
-* for a security domain, click *Settings*
-* for an application, click *Applications* and select your application, then click the *Design* tab
+* for a security domain, click *Settings*.
+* for an application, click *Applications*, then select your application and click the *Design* tab.
 
 . In the *Emails* section, click the edit icon image:icons/edit-icon.png[role="icon"] of the email template.
 . Update the HTML as required. You can preview the result in the *Preview* tab.

@@ -8,18 +8,16 @@ title: Publishing APIs
 
 :page-liquid:
 
-// out of date with docs.gravitee.io
-
 The following sections describe the different ways you can create an API using APIM Console.
 
-For a quick introduction to creating an API in APIM, see the link:/apim/current/apim_getstarted_publish_ui.html[Quick Start Guide^].
+For a quick introduction to creating an API in APIM, see the link:/Getstarted/quickstart-apim/api-publisher-ui.html[Quick Start Guide^].
 
 NOTE: From APIM 3.5.x, the recommended way to create an API is using the *DESIGN STUDIO* method described in the next section. For APIs created using this method, clicking the *Design* menu option automatically opens Design Studio.
-Old API definitions or APIs created using the *PATH BASED* option must be migrated before you can update them in Design Studio. For more information, see the link:/apim/3.x/apim_publisherguide_design_studio_overview.html[Design Studio Guide^].
+Old API definitions or APIs created using the *PATH BASED* option must be migrated before you can update them in Design Studio. For more information, see the link:../design-studio/introduction.html[Design Studio Guide^].
 
 == Get started
 
-APIM Console provides various ways to create a new API. You can create a new definition from scratch or import an existing definition. You can also create a new API with APIM API, as described in the link:/apim/3.x/apim_quickstart_publish_api.html[Quick Start Guide^].
+APIM Console provides various ways to create a new API. You can create a new definition from scratch or import an existing definition. You can also create a new API with APIM API, as described in the link:/Getstarted/quickstart-apim/api-publisher-api.html[Quick Start Guide^].
 
 To start creating an API:
 
@@ -37,7 +35,7 @@ image::apim/3.x/quickstart/publish/graviteeio-create-api-2.png[]
 When you create an API from scratch, you need to configure it correctly (name, version,
 context-path, backend endpoints and so on) before publishing it for developers.
 
-NOTE: You can choose to define your API plan (which your consumers will need before they can subscribe to your API) later. link:/apim/current/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions^] gives a detailed description of how to configure a plan and the different options available.
+NOTE: You can choose to define your API plan (which your consumers will need before they can subscribe to your API) later. link:./plans-subscriptions.html[Plans and subscriptions^] gives a detailed description of how to configure a plan and the different options available.
 
 ifeval::[{{ site.products.apim._3x.version }} < 3.6.0]
 . Enter the general details of the API: *Name*, *Version*, *Description* and *Context-path* where the API will be exposed on APIM Gateway. Click *NEXT*.
@@ -45,14 +43,13 @@ ifeval::[{{ site.products.apim._3x.version }} < 3.6.0]
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-general.png[]
 endif::[]
 ifeval::[{{ site.products.apim._3x.version }} >= 3.6.0]
-. Enter the general details of the API: *Name*, *Version*, *Description*, the *Context-path* where the API will be exposed on APIM Gateway and one or more groups, if defined (for more details, see link:/apim/3.x/apim_adminguide_users_and_groups.html[Users and groups]). Click *NEXT*.
+. Enter the general details of the API: *Name*, *Version*, *Description*, the *Context-path* where the API will be exposed on APIM Gateway and one or more groups, if defined (for more details, see link:../administration-guide/users-groups.html[Users and groups]). Click *NEXT*.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-general-withgroups.png[]
 endif::[]
 ifeval::[{{ site.products.apim._3x.version }} >= 3.7.0]
-// this seems to be different again in 3.12 - find out which version it changed in
 +
-NOTE: If the link:/apim/3.x/apim_adminguide_users_and_groups.html#primary_owner_mode[Primary owner mode^] is *HYBRID*, you need to click the *Advanced mode* link to load the *Groups* section of the form.
+NOTE: If the link:../administration-guide/users-groups.html#primary_owner_mode[Primary owner mode^] is *HYBRID*, you need to click the *Advanced mode* link to load the *Groups* section of the form.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-api-primaryowner-mode-3.png[]
 
@@ -71,7 +68,7 @@ image::apim/3.x/api-publisher-guide/manage-apis/create-api-gateway.png[]
 .. Enter *Rate limit* and *Quota* details. In this example, we are specifying a rate limit of 1 request every 5 seconds.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-plan1.png[]
-.. Enter *Resource filtering* details, using link:/apim/3.x/apim_policies_overview.html#ant-notation[Ant^] notation and an HTTP method.
+.. Enter *Resource filtering* details, using link:./introduction.html#ant-notation[Ant^] notation and an HTTP method.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-plan-path.png[]
 .. Click *NEXT*.
@@ -287,7 +284,7 @@ You can also choose to activate policies that will be configured using the OpenA
 JSON Validation::
 For each operation, if an `application/json` request body exists, then a JSON schema is computed from this body to configure a JSON Validation policy. +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_json_validation.html[here].
+More information is available link:/Reference/policy/policy-json-validation.html[here].
 
 REST to SOAP transformer::
 For each operation, if the definition contains some specific vendor extensions, a REST to SOAP policy can be configured. +
@@ -296,22 +293,22 @@ These extensions are:
 - `x-graviteeio-soap-action`: contains the SOAP action
 +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_rest2soap.html[here].
+More information is available link:/Reference/policy/policy-rest-to-soap.html[here].
 
 Mock::
 For each operation, a mock policy is configured, based on the `example` field if it exists, or by generating a random value for the type of the attribute to mock. +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_mock.html[here].
+More information is available link:/Reference/policy/policy-mock.html[here].
 
 Validation Request::
 For each operation, `NOT__ __NULL` rules are created with query parameters and headers. +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_request_validation.html[here]-
+More information is available link:/Reference/policy/policy-request-validation.html[here].
 
 XML Validation::
 For each operation, if a `application/xml` request body exists, then a XSD schema is computed from this body to configure an XML Validation policy. +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_xml_validation.html[here].
+More information is available link:/Reference/policy/policy-xml-validation.html[here].
 
 === Import a WSDL
 
@@ -335,7 +332,7 @@ The API is created private, so it is only accessible in APIM Portal to users aft
 * Publish it
 * Make it public or add new members or groups to it
 
-The process for adding new members or groups to the API is explained in link:/apim/3.x/apim_publisherguide_manage_members.html[API users and ownership^].
+The process for adding new members or groups to the API is explained in link:./manage-members.html[API users and ownership^].
 
 You can publish the API or make it public, as well as remove it from APIM Portal or delete it, in the *Danger Zone*:
 

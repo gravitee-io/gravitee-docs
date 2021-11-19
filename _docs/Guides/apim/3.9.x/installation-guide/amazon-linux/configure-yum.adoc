@@ -1,0 +1,48 @@
+---
+product: API Management
+title: Configure YUM
+toc: true
+guide: Installation Guide
+guide-section: Amazon Linux
+---
+
+:page-liquid:
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - Configure Yum Package Manager
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, yum
+
+Amazon Linux instances use the package manager `yum` to manage their software. Since `yum` is a prerequisite
+for the major components of APIM, follow these instructions on how to configure the `yum` package manager before installing Gravitee APIM.
+
+== Configure YUM Package Management System
+. In location `/etc/yum.repos.d/`, create a file called `graviteeio.repo` so you can install APIM directly using `yum`:
++
+[source,bash]
+----
+[graviteeio]
+name=graviteeio
+baseurl=https://packagecloud.io/graviteeio/rpms/el/7/$basearch
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/graviteeio/rpms/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+----
+
+. Enable GPG signature handling (this is required by some of our RPM packages):
++
+[source,bash]
+----
+sudo yum install pygpgme yum-utils
+----
+
+. Before continuing, you may need to refresh your local cache:
+
+[source,bash]
+----
+sudo yum -q makecache -y --disablerepo='*' --enablerepo='graviteeio'
+----
+
+Nicely done! Your repository is now ready to use.
+
+Now, you can link:./stack.html[install all four APIM components as a full stack], or install each component individually.

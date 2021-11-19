@@ -2,7 +2,7 @@
 
 == Overview
 
-You can authenticate users in AM with GitHub. Before you begin, you need to sign up for a link:https://github.com/join[GitHub Developer account].
+You can authenticate users in AM with GitHub. Before you begin, you need to sign up for a link:https://github.com/join[GitHub Developer account^].
 
 == Steps
 
@@ -15,7 +15,7 @@ To connect your application to GitHub, you will:
 
 == Register a new application in GitHub
 
-. link:https://github.com/settings/applications/new[Register a new OAuth application] from *GitHub Developer Settings: OAuth Apps*.
+. link:https://github.com/settings/applications/new[Register a new OAuth application^] from *GitHub Developer Settings: OAuth Apps*.
 . Give your application a name.
 . For *Homepage URL* enter `https://AM_HOST/SECURITY_DOMAIN`.
 . For *Authorization callback URL* enter `https://AM_HOST/SECURITY_DOMAIN/login/callback`
@@ -27,8 +27,7 @@ NOTE: The `Authorization callback URL` is a temporary value that will be updated
 
 == Create a GitHub identity provider
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Providers*.
+. In AM Console, click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Choose the *GitHub* identity provider type and click *Next*.
 +
@@ -51,7 +50,7 @@ NOTE: On the right side of the screen, under *1. Configure the Redirect URI* cop
 
 You can test your GitHub connection using a web application created in AM.
 
-. In AM Console, click *Applications* and select your social identity provider.
+. Click *Applications* and select your social identity provider.
 +
 image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 +

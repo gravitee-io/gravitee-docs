@@ -10,7 +10,7 @@ title: Logging and analytics
 
 You can view metrics and logs for applications and APIs using the *Analytics* menu options in APIM Console.
 
-TIP: From APIM version 3.6.x, you can mask secure data in your logs by adding the Data logging masking policy to your API. For more details, see link:/apim/3.x/apim_policies_data_logging_masking.html[Data logging masking^].
+TIP: From APIM version 3.6.x, you can mask secure data in your logs by adding the Data logging masking policy to your API. For more details, see link:/Reference/policy/policy-data-logging-masking.html[Data logging masking^].
 
 === Metrics
 
@@ -19,7 +19,7 @@ You can then select a time period and view several different types of analytics 
 
 image:apim/3.x/api-publisher-guide/analytics/dashboards.png[]
 
-For more details on creating and configuring dashboards, see link:/apim/3.x/apim_installguide_dashboard_configuration.html[Configure dashboards^].
+For more details on creating and configuring dashboards, see link:../configuration-guide/console/dashboard.html[Configure dashboards^].
 
 === Logs
 
@@ -45,12 +45,11 @@ image:apim/3.x/api-publisher-guide/analytics/logs-simple-view.png[Basic logging 
 == Configure API logging
 
 NOTE: If you configured a maximum logging duration in the global settings, the maximum duration will be applied to the API logging configuration specified here.
-For more details, see link:\apim\3.x\apim_how_to_configuration.html#update-the-default-apim-settings[Update the default APIM settings^].
+For more details, see link:/Getstarted/quickstart-apim/how-to-general-configuration.html#update-the-default-apim-settings[Update the default APIM settings^].
 
 WARNING: Logging configuration changes can have a significant impact on performance. Proceed with caution.
 
-. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
-. Click *APIs* and select the API from the list.
+. In APIM Console, click *APIs* and select the API from the list.
 . Click *Analytics > Logs*.
 . Click the *Configure the logging* link at the top.
 +
@@ -113,7 +112,7 @@ ifeval::[{{ site.products.apim._3x.version }} >= 3.6.0]
 +
 image:apim/3.x/api-publisher-guide/analytics/logs-configure-3-6.png[]
 
-. Specify all logging conditions which apply in link:/apim/3.x/apim_publisherguide_expression_language.html[Gravitee Expression Language^]. You can restrict logging by:
+. Specify all logging conditions which apply in link:./expression-language.html[Gravitee Expression Language^]. You can restrict logging by:
 * application or plan
 * request header or query parameter
 * HTTP method

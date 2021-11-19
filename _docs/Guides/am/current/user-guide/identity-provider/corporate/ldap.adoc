@@ -1,13 +1,10 @@
 = Active Directory / LDAP
 
-== Overview
-
 You can authenticate and manage users in AM using Enterprise Active Directory or LDAP server.
 
 == Create an Active Directory / LDAP identity provider
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Providers*.
+. In AM Console, click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *HTTP* as your identity provider type and click *Next*.
 . Give your identity provider a name.
@@ -33,7 +30,7 @@ curl -H "Authorization: Bearer :accessToken" \
 
 You can test your Active Directory/LDAP connection via your web applications created in AM.
 
-. In AM Console, click *Applications* and select your Active Directory/LDAP identity provider.
+. Click *Applications* and select your Active Directory/LDAP identity provider.
 +
 image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 +

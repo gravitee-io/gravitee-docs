@@ -1,9 +1,9 @@
 ---
-layout: default_docs
+layout: default
 ---
 
 <section class="layout-area bg-color1 content tutorial">
-  <div class="layout-wrapper section-spacing bminus-30">
+  <div class="layout-wrapper section-spacing">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -11,32 +11,32 @@ layout: default_docs
         </div>
       </div>
       <div class="row">
-	  {% if page.sidebar == nil or page.sidebar != false %}
-    <div class="col-md-3">
-      {% include sidebar.html %}
-</div>
-<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
-<script>$("li.active").parents('li').toggleClass("active");</script>
+	       {% if page.sidebar == nil or page.sidebar != false %}
+          <div class="col-md-3">
+            {% include sidebar.html %}
+          </div>
+          <!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+          <script>$("li.active").parents('li').toggleClass("active");</script>
 
-{% endif %}
-		{% assign col = "6" %}
+         {% endif %}
+		     {% assign col = "6" %}
 
-		{% if page.toc == false %}
-		{% assign col1 = "3" %}
-		{% endif %}
+		     {% if page.toc == false %}
+		     {% assign col1 = "3" %}
+		     {% endif %}
 
-		{% if page.sidebar == false %}
-		{% assign col2 = "3" %}
-		{% endif %}
-
+		     {% if page.sidebar == false %}
+		       {% assign col2 = "3" %}
+		     {% endif %}
 
         <div class="col-md-{{ col | plus: col1 | plus: col2 }}">
           <div class="tutorial-content mx-auto">
             <div class="doc-content">
- <h1 class="heading-1">{{page.title}}</h1>
+              <h1 class="heading-1">{{page.title}}</h1>
               {{content}}
             </div>
           </div>
+
         </div>
 
         {% unless page.toc == false %}
@@ -44,9 +44,9 @@ layout: default_docs
           <div class=" doc-sidebar-menu doc-right-sidebar">
 
             <div>
-              <div id="table-of-contents">
-               <h5 class="px-3 pt-3">In this article</h5>
-				{% toc %}
+              <div>
+               <h4>On this page</h4>
+				{% include toc.html html=content id="toc" class="section-nav" h_min=2 h_max=3 %}
               </div>
 
             </div>
@@ -59,6 +59,7 @@ layout: default_docs
   </div>
   </section>
 
+{% include footer_top.html %}
 {% include footer.html %}
 
 <script>
@@ -71,4 +72,29 @@ layout: default_docs
 
     headings[i].appendChild(anchorLink);
   }
+
+
+  var codeBlocks = document.querySelectorAll('pre.highlight');
+
+codeBlocks.forEach(function (codeBlock) {
+  var copyButton = document.createElement('button');
+  copyButton.className = 'copy';
+  copyButton.type = 'button';
+  copyButton.ariaLabel = 'Copy code to clipboard';
+  copyButton.innerText = 'Copy';
+
+  codeBlock.append(copyButton);
+
+  copyButton.addEventListener('click', function () {
+    var code = codeBlock.querySelector('code').innerText.trim();
+    window.navigator.clipboard.writeText(code);
+
+    copyButton.innerText = 'Copied';
+    var fourSeconds = 4000;
+
+    setTimeout(function () {
+      copyButton.innerText = 'Copy';
+    }, fourSeconds);
+  });
+});
 </script>

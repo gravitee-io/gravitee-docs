@@ -1,6 +1,10 @@
 = Security domains
+:page-toc: false
 
-A _security domain_ gives you access to all AM resources such as applications, users and identity providers.
-It exposes authentication and authorization URLs and provides analytics and reporting.
+Security domains give you access to all AM resources such as applications, users, and identity providers.
+They expose authentication and authorization URLs and provides analytics and reporting.
 
-The security domain acts as the container for your applications.
+A security domain acts as the container for your applications.
+
+The first task of setting up new authorization and authentication in AM is to create a security domain for your applications.
+AM comes with a default security domain.

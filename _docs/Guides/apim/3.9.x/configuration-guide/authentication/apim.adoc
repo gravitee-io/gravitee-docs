@@ -1,0 +1,23 @@
+---
+product: API Management
+guide: Configuration Guide
+toc: true
+title: Configure APIM repository authentication
+keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+---
+
+This page describes how to configure APIM to allow users to connect using an APIM data source.
+This is required when you want to allow user registration.
+
+You define new users in APIM Console.
+
+NOTE: Passwords are encoded using the BCrypt strong hashing function.
+
+To activate this provider, all you need to do is declare it. All data source information is then retrieved from the Management Repository configuration.
+
+[source,yaml]
+----
+security:
+  providers:
+    - type: gravitee
+----

@@ -1,4 +1,4 @@
-= Reporters
+= Configuring reporters
 :page-liquid:
 :page-description: Gravitee.io Access Management - Reporters
 :page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
@@ -47,4 +47,4 @@ NOTE: Audit logs will be created in a directory tree that represents the resourc
 
 WARNING: There is currently no retention period for the audit logs, so you need to create a separate process to remove old logs.
 
-For details of how to create a file reporter for a domain, see link:/am/current/am_userguide_audit_log_file[Audit log file^].
+For details of how to create a file reporter for a domain, see link:../user-guide/logs/audit-log-file.html[Audit log file^].

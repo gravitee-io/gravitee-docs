@@ -20,15 +20,13 @@ NOTE: *Gravitee.io Echo API* : In this tutorial we will use the https://api.grav
 image::apim/1.x/graviteeio-create-api.png[]
 
 .. Give your API a name, a version, a description and a context path
-
++
 image::apim/1.x/graviteeio-create-first-api-1.png[]
 
-[start=2]
 .. Make sure that `Backend` is set to `https://api.gravitee.io/echo`
-
++
 image::apim/1.x/graviteeio-create-first-api-2.png[]
 
-[start=3]
 .. Click `CREATE` button and your API is created
 
 image::apim/1.x/graviteeio-first-api.png[]
@@ -51,14 +49,13 @@ NOTE: To subscribe to an API, you must publish one or more Plans. A Plan will al
 To create your API plan, first click on `Plans` menu item and follow these instructions :
 
 . Give your Plan a name, a description, a security type and trigger the `auto-validation` switch.
-
++
 image::apim/1.x/graviteeio-create-plan.png[]
-
++
 NOTE: Make sure to choose link:/apim/1.x/apim_policies_apikey.html[API Key security type]. To go further into the Plan configuration, you can take a look at the link:/apim/1.x/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions Guide]
 
-[start=2]
 . Click `SAVE` button and your Plan is created
-
++
 image::apim/1.x/graviteeio-create-plan-2.png[]
 
 Create Plan request::

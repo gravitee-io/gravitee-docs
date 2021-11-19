@@ -1,0 +1,84 @@
+= Customize portal header and footers
+
+== Overview
+
+You can use the system folders to customize the APIM Portal navigation. You can customize:
+
+* the APIM Portal menu in the header and footer
+* the API side menu
+
+=== Links
+
+You customize the navigation by create link pages in the folders. There are 3 kinds of link:
+
+* External link
+* Link to an existing documentation page
+* Link to a category
+
+=== Access system folders
+
+To access system folders:
+
+* for the APIM Portal, click *Settings > Documentation*
+* for an APIM menu, click *APIs* and select the API, then click *Pages*
+
+System folders are listed with a padlock icon:
+
+image::apim/3.x/api-publisher-guide/documentation/system-folders.png[]
+
+== Manage links
+
+To create a link, go to a system folder and click the plus icon image:icons/plus-icon.png[role="icon"].
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-link-create.png[]
+
+=== External link
+Enter a name and a URL (relative or absolute):
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-link-external.png[,300]
+
+=== Documentation link
+Select an existing page in the documentation:
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-link-documentation.png[,300]
+
+A documentation link is published only if the target documentation page is published.
+
+=== Category link
+Select an existing category in the documentation:
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-link-category.png[,300]
+
+[NOTE]
+====
+Both documentation and category links inherit the name and translation of their target. You can override these values by toggling off the *Inherit* switches:
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-link-override-name.png[]
+
+====
+
+[TIP]
+====
+You can create links from documentation by clicking the following icon:
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-link-fast-create.png[]
+
+====
+
+== System folders
+APIM Portal documentation has 3 system folders: `Header`, `TopFooter` and `Footer`. +
+API documentation has 1 system folder: `Aside`.
+
+Each system folder corresponds to an area of APIM Portal:
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-link-portal-zones.png[]
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-link-api-zones.png[]
+
+[IMPORTANT]
+====
+The APIM Portal `TopFooter` is the only system folder in which you can create standard folders. +
+These folders are used to group links together.
+
+WARNING: For this system folder, only links to folders will be displayed.
+
+====

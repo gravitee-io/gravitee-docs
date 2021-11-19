@@ -1,17 +1,15 @@
-= Repositories
+= Configuring repositories
 :page-liquid:
 :page-description: Gravitee.io Access Management - Repositories
 :page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
-
-== Overview
 
 AM uses repositories to store different types of data (known as _scopes_).
 
 You configure repositories in the `gravitee.yml` configuration file. The configuration can be different for each scope.
 AM supports the following repositories:
 
-- link:am_installguide_repositories_mongodb.html[MongoDB repositories]
-- link:am_installguide_repositories_jdbc.html[JDBC repositories]
+- MongoDB repositories
+- JDBC repositories
 
 For information on how to install and configure the repositories, see the relevant configuration section.
 

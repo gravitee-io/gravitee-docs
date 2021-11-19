@@ -1,7 +1,5 @@
 = Dynamic Client Registration
 
-== Overview
-
 Another way to create applications in AM is to use the OpenID Connect Dynamic Client Registration endpoint. +
 This specification enables Relying Parties (clients) to register applications in the OpenID Provider (OP).
 
@@ -9,8 +7,8 @@ This specification enables Relying Parties (clients) to register applications in
 
 By default this feature is disabled. You can enable it through the domain settings:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings*, then in the *OPENID* section click *Client Registration*.
+. In AM Console, click *Settings*.
+. In the *OPENID* section click *Client Registration*.
 . Click the toggle button to *Enable Dynamic Client Registration*.
 +
 IMPORTANT: There is another parameter called *Enable\Disable Open Dynamic Client Registration*. This parameter is used to allow any unauthenticated requests to register new clients through the registration endpoint. It is part of the OpenID specification, but for security reasons it is disabled by default.
@@ -137,7 +135,7 @@ CAUTION: `response_types` metadata must be set as an empty array in order to ove
 
 ==== Register mobile application example
 
-For a mobile app, the `authorization_code` grant is recommended, in addition to link:https://tools.ietf.org/html/rfc7636[Proof Key for Code Exchange]:
+For a mobile app, the `authorization_code` grant is recommended, in addition to link:https://tools.ietf.org/html/rfc7636[Proof Key for Code Exchange^]:
 
 [source]
 ----

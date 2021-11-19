@@ -5,6 +5,7 @@ body {
 
 .col-md-3{
     width: 25%;
+	float: left;
 }
 
 .navbar-inverse {
@@ -29,6 +30,7 @@ body {
     right: 0;
     padding-top: 0;
 }
+
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus,
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus,
@@ -74,6 +76,13 @@ body {
 
 .bg-color4 {
     background-color: #000535;
+}
+
+.faq-service .faq-content {
+    float: right;
+    width: calc(100% - 20px);
+    padding-left: 0px;
+    color: #1b1464;
 }
 
 .btn-style3 {
@@ -150,9 +159,8 @@ body {
     display: flex;
 }
 
-pre.rouge > button {
-  position: absolute;
-  right: 0;
+nav .breadcrumb-item{
+  text-transform: capitalize;
 }
 
 /* algolia search */
@@ -218,13 +226,16 @@ div.paragraph {
     align-items: flex-end;
     align-content: flex-end;
     margin: 4 rem 4 rem 0 4 rem;
+	font-size: smaller;
 }
 
 .footertop {
     min-height: 60px;
-    background-color: #1ECAD3;
+    background-color: #1ecad3;
     position: relative;
     margin-top: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .footer-links {
@@ -313,7 +324,7 @@ div.paragraph {
 	background-color:#111c4e;
 	box-shadow:0 0 20px 5px rgba(33,107,188,.03)
 }
-	
+
 @media only screen and (max-width: 768px) {
 
     .footer {
@@ -529,7 +540,11 @@ table tr td {
 }
 
 .nav > li li {
-    margin: 2px 0;
+	padding-left: 10px;
+}
+
+.nav > li li a {
+    padding-left:20px;
 }
 
 .nav a {
@@ -556,10 +571,7 @@ table tr td {
 
 ul#mysidebar {
     border-radius:0;
-}
-
-.nav ul li ul li a {
-    padding-left:20px;
+	width: 99%;
 }
 
 
@@ -624,22 +636,45 @@ body.slider-area .hero #autocompleteResults {
 	font-weight: 700;
 }
 
-pre.highlight button {
-  opacity: 0;
-  position: absolute;
-  top: 0; 
-  right: 0;
-}
-
-pre.highlight:hover > button {
-  opacity: 1;
-}
-
-pre.highlight > button:active,
-pre.highlight > button:focus {
-  opacity: 1;
-}
-
 ul > li {
   line-height: 1;
+}
+
+.copy-code-button {
+    color: #272822;
+    background-color: #FFF;
+    border-color: #272822;
+    border: 2px solid;
+    border-radius: 3px 3px 0px 0px;
+
+    /* right-align */
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+
+    margin-bottom: -2px;
+    padding: 3px 8px;
+    font-size: 0.8em;
+}
+
+.copy-code-button:hover {
+    cursor: pointer;
+    background-color: #F2F2F2;
+}
+
+.copy-code-button:focus {
+    /* Avoid an ugly focus outline on click in Chrome,
+       but darken the button for accessibility.
+       See https://stackoverflow.com/a/25298082/1481479 */
+    background-color: #E6E6E6;
+    outline: 0;
+}
+
+.copy-code-button:active {
+    background-color: #D9D9D9;
+}
+
+.highlight pre {
+    /* Avoid pushing up the copy buttons. */
+    margin: 0;
 }

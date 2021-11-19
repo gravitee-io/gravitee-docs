@@ -16,7 +16,7 @@
     {% for entry in sidebar_versions %}
     {% for folder in entry.folders %}
       <div class="dropdown-button">
-        Version<a href="#" class="dropdown-toggle" data-toggle="dropdown"></a>
+        Version <a href="#" class="dropdown-toggle" data-toggle="dropdown"></a>
           <ul class="dropdown-menu">
             {% for folderitem in folder.folderitems %}
               {% if folderitem.external_url %}
@@ -31,11 +31,10 @@
     </div>
     {% endfor %}
     {% endfor %}
-
 {% endif %}
 
 <!-- sidebar -->
-
+<div>
     <ul id="mysidebar" class="nav navbar-nav">
 
         {% for entry in sidebar %}
@@ -45,7 +44,6 @@
             <a href="#">{{ folder.title }}</a>
             <ul class="sub-dropdown">
                 {% for folderitem in folder.folderitems %}
-
                 {% if folderitem.output contains "web" %}
                 {% if folderitem.external_url %}
                 <li><a href="{{folderitem.external_url}}" target="_blank">{{folderitem.title}}</a></li>
@@ -112,3 +110,4 @@
                -->
         </li>
     </ul>
+</div>

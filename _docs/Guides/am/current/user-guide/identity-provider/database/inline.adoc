@@ -6,8 +6,7 @@ Inline identity providers are based on in-memory user directories. They are usef
 
 To create an identity provider:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Providers*.
+. In AM Console, click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *Inline* as your identity provider type and click *Next*.
 . Give your identity provider a name.
@@ -44,7 +43,7 @@ WARNING: If you decide to switch from `bcrypt` to none, you must update all pass
 
 You can test your database connection using a web application created in AM.
 
-. In AM Console, click *Applications* and select your inline identity provider.
+. Click *Applications* and select your inline identity provider.
 +
 image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 +

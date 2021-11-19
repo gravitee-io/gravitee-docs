@@ -4,8 +4,7 @@ You can authenticate users in AM using your own MongoDB database.
 
 == Create a MongoDB identity provider
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Providers*.
+. In AM Console, click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *MongoDB* as your identity provider type and click *Next*.
 . Give your identity provider a name.
@@ -16,7 +15,7 @@ You can authenticate users in AM using your own MongoDB database.
 
 You can test your database connection using a web application created in AM.
 
-. In AM Console, click *Applications* and select your MongoDB identity provider.
+. Click *Applications* and select your MongoDB identity provider.
 +
 image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 +

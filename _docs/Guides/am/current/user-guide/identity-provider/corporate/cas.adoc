@@ -34,8 +34,7 @@ NOTE: Before you begin, obtain this information from your CAS server administrat
 
 == Create a CAS connector
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Providers*.
+. In AM Console, lick *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *CAS* as your identity provider type and click *Next*.
 . Give your identity provider a name.
@@ -48,7 +47,7 @@ NOTE: Make a note of the URL in *1. Configure the Redirect URI* to the right of 
 
 You can test your CAS connection using a web application created in AM.
 
-. In AM Console, click *Applications > App > Identity Providers* and select your CAS connector.
+. Click *Applications > App > Identity Providers* and select your CAS connector.
 +
 image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 +

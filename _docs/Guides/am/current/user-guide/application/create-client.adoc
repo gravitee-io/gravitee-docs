@@ -2,9 +2,7 @@
 
 == Create an application with AM Console
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. If you want to create your application in a different security domain, select the domain from the user menu at the top right.
-. Click *Applications*.
+. In AM Console, click *Applications*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select the application type and click *Next*.
 +
@@ -33,5 +31,5 @@ image::am/current/graviteeio-am-userguide-client-settings.png[]
 
 == Test the application
 
-The quickest way to test your newly created application is to request an OAuth2 access token, as described in link:/am/current/am_quickstart_app_setup.html[Set up your first application^].
+The quickest way to test your newly created application is to request an OAuth2 access token, as described in link:/Getstarted/AM/setup-app.html[Set up your first application^].
 If you manage to retrieve an access token, your application is all set.

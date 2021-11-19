@@ -17,8 +17,7 @@ NOTE: Before you begin, you need to ensure that your database has the appropriat
 
 == Create a SQL database identity provider
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Providers*.
+. In AM Console, click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *JDBC* as your identity provider type and click *Next*.
 . Give your identity provider a name.
@@ -29,7 +28,7 @@ NOTE: Before you begin, you need to ensure that your database has the appropriat
 
 You can test your database connection using a web application created in AM.
 
-. In AM Console, click *Applications* and select your JDBC identity provider.
+. Click *Applications* and select your JDBC identity provider.
 +
 image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 +

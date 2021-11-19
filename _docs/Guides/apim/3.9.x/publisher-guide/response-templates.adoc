@@ -2,7 +2,6 @@
 product: API Management
 toc: true
 guide: Publisher Guide
-sidebar: apim_3_x_sidebar
 title: Response templates
 ---
 
@@ -23,7 +22,7 @@ As well as creating templates associated with a specific error key, you can crea
 
 Before you can define response templates for your API, you need to know:
 
-* which policies are defined in the API plans associated with your API (see link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions^])
+* which policies are defined in the API plans associated with your API (see link:./plans-subscriptions.html[Plans and subscriptions^])
 * which error keys you can override for the policies associated with your API plans (see <<Policy error keys you can override>>)
 
 == Configure a response template
@@ -35,8 +34,7 @@ You can define:
 
 To configure a response template:
 
-. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
-. Click *APIs* and select the API.
+. In APIM Console, click *APIs* and select the API.
 . Click *Proxy > Response Templates*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"] to add a new template.
 . Select the *Template key*. This can be either:
@@ -71,82 +69,82 @@ The next time a call triggering the error associated with your template is sent 
 |Key |Policy
 
 |`API_KEY_MISSING`
-| link:/apim/3.x/apim_policies_apikey.html[API key]
+| link:/Reference/policy/policy-apikey.html[API key]
 
 |`API_KEY_INVALID`
-| link:/apim/3.x/apim_policies_apikey.html[API key]
+| link:/Reference/policy/policy-apikey.html[API key]
 
 |`QUOTA_TOO_MANY_REQUESTS`
-| link:/apim/3.x/apim_policies_rate_limiting.html[Rate limiting]
+| link:/Reference/policy/policy-rate-limiting.html[Rate limiting]
 
 |`RATE_LIMIT_TOO_MANY_REQUESTS`
-| link:/apim/3.x/apim_policies_rate_limiting.html[Rate limiting]
+| link:/Reference/policy/policy-rate-limiting.html[Rate limiting]
 
 |`REQUEST_CONTENT_LIMIT_TOO_LARGE`
-| link:/apim/3.x/apim_policies_request_content_limit.html[Request content limit]
+| link:/Reference/policy/policy-request-content-limit.html[Request content limit]
 
 |`REQUEST_CONTENT_LIMIT_LENGTH_REQUIRED`
-| link:/apim/3.x/apim_policies_request_content_limit.html[Request content limit]
+| link:/Reference/policy/policy-request-content-limit.html[Request content limit]
 
 |`REQUEST_TIMEOUT`
-| link:/apim/3.x/apim_policies_mock.html[Mock], link:/apim/3.x/apim_policies_callout_http.html[Callout HTTP], link:/apim/3.x/apim_policies_request_validation.html[Request validation]
+| link:/Reference/policy/policy-mock.html[Mock], link:/Reference/policy/policy-callout-http.html[Callout HTTP], link:/Reference/policy/policy-request-validation.html[Request validation]
 
 |`REQUEST_VALIDATION_INVALID`
-| link:/apim/3.x/apim_policies_request_validation.html[Request validation]
+| link:/Reference/policy/policy-request-validation.html[Request validation]
 
 |`RESOURCE_FILTERING_METHOD_NOT_ALLOWED`
-| link:/apim/3.x/apim_policies_resource_filtering.html[Resource filtering]
+| link:/Reference/policy/policy-resource-filtering.html[Resource filtering]
 
 |`RBAC_INVALID_USER_ROLES`
-| link:/apim/3.x/apim_policies_role_based_access_control.html[Role-based access control]
+| link:/Reference/policy/policy-role-based-access-control.html[Role-based access control]
 
 |`RESOURCE_FILTERING_FORBIDDEN`
-| link:/apim/3.x/apim_policies_resource_filtering.html[Resource filtering]
+| link:/Reference/policy/policy-resource-filtering.html[Resource filtering]
 
 |`RBAC_FORBIDDEN`
-| link:/apim/3.x/apim_policies_role_based_access_control.html[Role-based access control]
+| link:/Reference/policy/policy-role-based-access-control.html[Role-based access control]
 
 |`RBAC_NO_USER_ROLE`
-| link:/apim/3.x/apim_policies_role_based_access_control.html[Role-based access control]
+| link:/Reference/policy/policy-role-based-access-control.html[Role-based access control]
 
 |`OAUTH2_MISSING_SERVER`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:/Reference/policy/policy-oauth2.html[OAuth2]
 
 |`OAUTH2_MISSING_HEADER`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:/Reference/policy/policy-oauth2.html[OAuth2]
 
 |`OAUTH2_MISSING_ACCESS_TOKEN`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:/Reference/policy/policy-oauth2.html[OAuth2]
 
 |`OAUTH2_INVALID_ACCESS_TOKEN`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:/Reference/policy/policy-oauth2.html[OAuth2]
 
 |`OAUTH2_INSUFFICIENT_SCOPE`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:/Reference/policy/policy-oauth2.html[OAuth2]
 
 |`OAUTH2_INVALID_SERVER_RESPONSE`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:/Reference/policy/policy-oauth2.html[OAuth2]
 
 |`OAUTH2_SERVER_UNAVAILABLE`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:/Reference/policy/policy-oauth2.html[OAuth2]
 
 |`JWT_MISSING_TOKEN`
-| link:/apim/3.x/apim_policies_jwt.html[JWT]
+| link:/Reference/policy/policy-jwt.html[JWT]
 
 |`JWT_INVALID_TOKEN`
-| link:/apim/3.x/apim_policies_jwt.html[JWT]
+| link:/Reference/policy/policy-jwt.html[JWT]
 
 |`JSON_INVALID_PAYLOAD`
-| link:/apim/3.x/apim_policies_json_validation.html[JSON validation]
+| link:/Reference/policy/policy-json-validation.html[JSON validation]
 
 |`JSON_INVALID_FORMAT`
-| link:/apim/3.x/apim_policies_json_validation.html[JSON validation]
+| link:/Reference/policy/policy-json-validation.html[JSON validation]
 
 |`JSON_INVALID_RESPONSE_PAYLOAD`
-| link:/apim/3.x/apim_policies_json_validation.html[JSON validation]
+| link:/Reference/policy/policy-json-validation.html[JSON validation]
 
 |`JSON_INVALID_RESPONSE_FORMAT`
-| link:/apim/3.x/apim_policies_json_validation.html[JSON validation]
+| link:/Reference/policy/policy-json-validation.html[JSON validation]
 
 |`GATEWAY_INVALID_REQUEST`
 | All

@@ -3,11 +3,11 @@
 :page-description: Gravitee.io Access Management - Configuration - API Management
 :page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-include::../partial/how-to-configure.adoc[leveloffset=+1]
+You can configure AM API using the configuration file, system variables, or environment variables.
 
-== `gravitee.yml` configuration
+link:../introduction.html#configuring_am_gateway_and_am_api[Learn more about the different ways you can configure AM API^]
 
-=== Configure HTTP server
+== Configure HTTP server
 
 You can update the HTTP server configuration in the following section of the `gravitee.yml` file.
 
@@ -31,7 +31,7 @@ jetty:
       password:
 ----
 
-==== Enable HTTPS support
+=== Enable HTTPS support
 
 First, you need to provide a keystore. If you don’t have one, you can generate it:
 
@@ -71,7 +71,7 @@ jetty:
 ----
 
 
-=== Security
+== Security
 
 Since  AM 3.10, the security section allows you to define the users available to authenticate to the management console after the first start.
 Until AM 3.9, there was only one user `admin` created in a inline identity provider. In 3.10, this behaviour is preserve by enabling the `security.defaultAdmin` option (default value).
@@ -118,7 +118,7 @@ security:
 ----
 
 
-=== Configure email
+== Configure email
 
 ----
 # SMTP configuration used to send mails
@@ -140,7 +140,7 @@ email:
 #  path: ${gravitee.home}/templates
 ----
 
-=== Configure the Plugins repository
+== Configure the Plugins repository
 
 Gravitee.io Gateway <<gravitee-plugins,plugins>> directory configuration.
 
@@ -150,7 +150,7 @@ plugins:
   path: ${gravitee.home}/plugins
 ----
 
-=== Configure the Management repository
+== Configure the Management repository
 
 Management repository is used to store global configuration such as APIs, applications, apikeys, ...
 This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:
