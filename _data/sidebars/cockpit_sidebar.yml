@@ -44,9 +44,6 @@ entries:
       - title: Deploy in Kubernetes
         output: web
         url: /cockpit/3.x/cockpit_installguide_kubernetes.html
-      - title: Configure
-        output: web
-        url: /cockpit/3.x/cockpit_installguide_configuration.html
       - title: Upgrade guide
         output: web
         url: /cockpit/3.x/cockpit_installguide_migration.html
@@ -54,9 +51,9 @@ entries:
   - title: Configuration Guide
     output: web
     folderitems:
-    - title: Introduction
+    - title: Configuring Cockpit
       output: web
-      url: /cockpit/3.x/cockpit_configurationguide.html
+      url: /cockpit/3.x/cockpit_installguide_configuration.html
       subfolders:
       - title: Configure repositories
         output: web
@@ -86,7 +83,7 @@ entries:
       - title: Installation health check
         output: web
         url: /cockpit/3.x/cockpit_userguide_installation_health_check.html
-      - title: Design APIs
+      - title: Create API models with API Designer
         output: web
         url: /cockpit/3.x/cockpit_userguide_api_designer.html
   - title: Changelog
