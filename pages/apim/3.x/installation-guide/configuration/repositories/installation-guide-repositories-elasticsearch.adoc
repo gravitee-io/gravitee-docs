@@ -8,8 +8,9 @@
 :page-layout: apim3x
 
 The Elasticsearch connector is based on the HTTP API exposed by ES instances.
-This connector supports all versions of ES, from 5.x to 7.x.
-You can find more detail about supported versions of Elasticsearch at https://www.elastic.co/support/eol.
+This connector supports all versions of ES, from 5.x to 7.x, and OpenSearch v1.x.
+
+You can find more detail about supported versions of ElasticSearch at https://www.elastic.co/support/eol.
 
 WARNING: Gravitee.io no longer supports native ES client. Previous connectors provided by us are no longer supported.
 
