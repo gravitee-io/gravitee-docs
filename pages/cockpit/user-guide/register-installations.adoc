@@ -1,4 +1,4 @@
-= Register Installations
+= Register installations
 :page-sidebar: cockpit_sidebar
 :page-permalink: cockpit/3.x/cockpit_userguide_register_installations.html
 :page-folder: cockpit/userguide
@@ -7,19 +7,19 @@
 
 == Overview
 
-Existing on-premise installations of APIM and AM can be registered in Cockpit. This will allow users to create and propagate new organizations and environments to these existing installations.
+Existing on-premise installations of APIM and AM can be registered in Cockpit. This allows users to create and propagate new organizations and environments to these existing installations.
 
 A registered installation communicates with Cockpit via a WebSocket connection, secured with TLS.
 
-== How To Register A New Installation
+== Register a new installation
 
 To register new APIM or AM installations with Cockpit, you need to:
 
-* Have a Cockpit connector in your installation plugins
-* Download the certificate to allow secure connection via Cockpit UI
+* Have a Cockpit connector in your installation plugins.
+* Download the certificate to allow secure connection via Cockpit UI.
 * Install the certificate, and restart your installation.
 
-All the detailed information are available in the *How to register a new installation* link, below *Installations* in the dashboard.
+. Register the installation using the detailed instructions in the *How to register a new installation* link, below *Installations* in the dashboard.
 +
 After registration, the installation is displayed as a pending installation in Cockpit:
 +
@@ -29,9 +29,7 @@ image::cockpit/pending-installations.png[]
 +
 image::cockpit/accept-installation.png[]
 +
-The installation is added to the map with a link to the environment:
-+
-image::cockpit/linked-installations-dashboard.png[]
+The installation is added to the map with a link to the environment.
 
 . You can then link the accepted installation to other environments in Cockpit from the environment settings page.
 +
