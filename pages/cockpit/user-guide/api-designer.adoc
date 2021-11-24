@@ -5,21 +5,24 @@
 
 [label label-version]#New in version 3.15#
 
-Been meaning to switch to Design First APIs for a while? Now's your chance! With API Designer's drag-and-drop, no-code approach, you can produce fully OpenAPI compliant API models in minutes.
+Cockpit's API Designer is a graphical, no-code tool for creating API models using a _Design First_ approach. With API Designer, you can produce fully OpenAPI compliant API models in minutes.
 Then, once you're happy with your design, you can export the model as an OpenAPI spec (OAS) in JSON format, or push the model to one of your linked APIM installations, where you can work with it like any other API.
 
 image:cockpit/api-designer.png[]
 
-API Designer consists of four sections:
+API Designer consists of three main sections:
 
 - The left-hand pane, where you can specify the properties of your model.
 - The central pane, where you can view and update a graphical view of your model.
 - The right-hand pane, where you can view details of the finished model, including the API and OAS versions, Swagger documentation for your endpoints, and your API schema.
-- The top bar, where you can update the API model settings, export the OAS, and deploy the API to APIM.
+
+You can also access some global functions in the top bar: update the API model settings, export the OAS, and deploy the API to APIM.
 
 == Before you begin
 
-Before you deploy an API model, you need to check the default environment in the Organization settings for API Designer, to ensure API Designer will deploy to the correct APIM environment.
+Before you can deploy an API model, you need to check the default API Designer environment is set up in the organization settings, to ensure API Designer will deploy to the correct APIM environment.
+
+link:/cockpit/3.x/cockpit_quickstart_setup.html#update_entity_settings[Learn more about updating the organization settings^]
 
 == Create a new API model
 
@@ -105,6 +108,8 @@ To update these settings, click the settings icon image:icons/api-designer-setti
 
 == Export the OpenAPI spec
 
+TIP: The export feature is also available from your model on the main API Designer page with the same icon.
+
 To export the OAS:
 
 . Click the export icon image:icons/api-designer-export-icon.png[role="icon"] in the top bar.
@@ -114,7 +119,9 @@ image:cockpit/export-oas.png[]
 
 == Deploy the API model
 
-You can choose between three different ways of deploying your model to APIM:
+TIP: The deploy feature is also available from your model on the main API Designer page with the same icon.
+
+You can choose between three different types of APIM deployment:
 
 - Documented: Only the OAS for the API is published to APIM, it is not deployed on APIM Gateway or published in APIM Portal.
 - Mocked: The API is published with a keyless plan and deployed on APIM Gateway with a link:/apim/3.x/apim_policies_mock.html[mock policy^], so consumers can retrieve mock responses from it.

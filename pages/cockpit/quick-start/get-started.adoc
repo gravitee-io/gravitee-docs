@@ -7,33 +7,33 @@
 
 == Overview
 
-Cockpit can be accessed in SaaS mode. To get started with Cockpit, access this link: https://cockpit.gravitee.io.
+You can access Cockpit in SaaS mode or install it on-premise.
 
-First time users can register a new user account. You can also choose to log in with an existing Google or GitHub account.
+- To get started with Cockpit in SaaS mode, access this link: https://cockpit.gravitee.io.
+- To install Cockpit on-premise, follow the instructions in the link:/cockpit/3.x/cockpit_installguide_introduction.html[Installation Guide^].
 
+After installation, you need to register a new user account. You can also choose to log in with an existing Google or GitHub account.
 
-Cockpit can also be installed on-premise. You can find more details in the link:/cockpit/3.x/cockpit_installguide_introduction.html[Cockpit Installation Guide^].
+== Quick tour
 
 === Dashboard
 
-After login, Cockpit opens the dashboard, which displays some analytics about your account organizations, environments, and installations.
+After login, Cockpit opens the dashboard, which displays some analytics about your account organizations, environments, and installations. You can access the dashboard at any time by clicking *Home* in the left-hand menu.
 
 image::cockpit/cockpit-add-organizations-or-environments.png[]
 
-You can create one or more organizations within your account and one or more environments within your organizations. Each environment can then be linked to existing APIM or AM installations.
+In the Dashboard, you can create one or more organizations within your account and one or more environments within your organizations.
+Each environment can then be linked to existing APIM or AM installations.
 
-
-=== Register a new installation
-
-
-You can register any APIM or AM installation from version 3.6.0. You can find details of how to do this in Cockpit by clicking the *How to register a new installation* link under *Installations*.
-
-image::cockpit/installation-how-to.png[]
-
-See also link:/cockpit/3.x/cockpit_userguide_register_installations.html[Register an APIM or AM installation^].
+- link:/cockpit/3.x/cockpit_quickstart_setup.html[Learn more about setting up your Cockpit hierarchy^]
+- link:/cockpit/3.x/cockpit_userguide_register_installations.html[Learn more about registering APIM and AM installations^]
 
 === Hierarchy
 
-You can access an interactive map of the organizational hierarchy associated with your account.
+You can click your organization name in the left-hand menu to access an interactive map of the organizational hierarchy associated with your account.
 
 image::cockpit/cockpit-dashboard.png[]
+
+Click the settings icon image:icons/cockpit-settings-icon.png[role="icon"] of any entity in the map to update its settings.
+
+link:/cockpit/3.x/cockpit_quickstart_setup.html#update_entity_settings[Learn more about updating the settings^]
