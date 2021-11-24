@@ -1,18 +1,19 @@
 = Silent re-authentication
+:page-toc: false
 
 [label label-version]#New in version 3.10#
 
-To lower authentication friction from third parties which can't maintain session with Gravitee.io AM, the use of the OpenID Connect ID Token let you request for new tokens in a silent manner.
+To reduce authentication problems from third parties that can't maintain sessions with AM, you can use the OpenID Connect ID Token to request new tokens silently.
 
-To trigger the silent re-authentication, your application must call the link:/am/current/am_devguide_protocols_oauth2_overview.html#authorization_code[authorization endpoint] with the following parameters :
+To trigger silent re-authentication, your application must call the link:/Guides/AM/current/developer-guide/protocols/oauth2/introduction.html#authorization_code[authorization endpoint^] with the following parameters:
 
-- *id_token_hint* : ID Token previously issued by the Authorization Server being passed as a hint about the End-User’s current or past authenticated session with the application.
-- *prompt* : value must be `none` to disable interactive login flow.
+- *id_token_hint*: ID Token previously issued by the Authorization Server passed as a hint about the end user's current or past authenticated session with the application.
+- *prompt*: the value must be `none` to disable interactive login flow.
 
-If the ID token is valid, the end user will be (re)connected and AM will respond with an authorization code, otherwise `login_required` error will be sent to your application.
+If the ID token is valid, the end user is (re)connected and AM responds with an authorization code, otherwise a `login_required` error is sent to your application.
 
-To enable silent re-authentication feature :
+To enable silent re-authentication:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Select your application and click *Settings > General*.
-. Switch on *Silent re-authentication* and click *SAVE*.
+. In AM Console, click *Applications* and select your application.
+. Click *Settings > General*.
+. Enable *Silent re-authentication* and click *SAVE*.

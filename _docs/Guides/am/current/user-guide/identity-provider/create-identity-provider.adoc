@@ -6,9 +6,9 @@ This section gives a general overview of creating identity providers. For more d
 - link:.\social\introduction.html[Social identity providers]
 - link:.\database\introduction.html[Database identity providers]
 
-== Create a new identity provider
+In the following examples, we will create an inline identity provider.
 
-In this example, we are creating an inline identity provider.
+== Create an identity provider with AM Console
 
 . In AM Console, click *Settings > Providers*.
 . In the **Providers** page, click the plus icon image:icons/plus-icon.png[role="icon"].
@@ -20,7 +20,9 @@ image::am/current/graviteeio-am-quickstart-idp-type.png[]
 . Add as many users as required, by clicking *Add User* for each new user, then click *Create*.
 +
 image::am/current/graviteeio-am-quickstart-create-idp.png[]
-+
+
+== Create an identity provider with AM API
+
 [source]
 ----
 curl -H "Authorization: Bearer :accessToken" \

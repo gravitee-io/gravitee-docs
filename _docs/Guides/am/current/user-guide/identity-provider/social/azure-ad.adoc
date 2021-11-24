@@ -23,7 +23,7 @@ link:https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-
 . If you have access to multiple tenants, use the *Directory + subscription* filter in the top menu to select the tenant for which you want to register an application.
 . Search for and select Azure Active Directory.
 . Under *Manage*, select *App registrations*, then *New registration*.
-. Enter a Name for your application.
+. Enter a name for your application.
 . Specify who can use the application.
 . Do not enter anything for *Redirect URI* at this point, you will be able to configure one in the next section (note that this field is optional).
 . Click *Register* to complete the initial app registration.
@@ -55,7 +55,7 @@ NOTE: Ensure you have the generated Client ID and Client Secret from the Azure A
 +
 image::am/current/graviteeio-am-userguide-social-idp-azure-ad.png[]
 +
-NOTE: On the right of the screen, under `1. Configure the Redirect URI`, copy the value of the URL. You will need to update it in your Azure AD application settings.
+NOTE: On the right of the screen, under *1. Configure the Redirect URI*, copy the value of the URL. You will need to update it in your Azure AD application settings.
 
 == Set up the connection
 
@@ -66,11 +66,11 @@ NOTE: On the right of the screen, under `1. Configure the Redirect URI`, copy th
 
 You can test the Azure AD connection using a web application created in AM.
 
-. Click *Applications* and select your social identity provider.
+. Click *Applications* and select your Azure identity provider.
 +
 image::am/current/graviteeio-am-userguide-social-idp-list.png[]
 +
-. Call the Login Page (i.e `/oauth/authorize` endpoint). If the connection is working you will see the *Sign in with ...* button.
+. Call the Login Page (i.e `/oauth/authorize` endpoint). If the connection is working you will see the *Sign in with* button.
 +
 image::am/current/graviteeio-am-userguide-social-idp-login.png[]
 +

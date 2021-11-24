@@ -21,12 +21,12 @@ A-MFA is often used in the following scenarios:
 
 You can use A-MFA in both cases to prevent account security breaches.
 
-WARNING: To apply location rules, you must first install plugin link:https://download.gravitee.io/plugins/services/gravitee-service-geoip-1.0.0.zip[`gravitee-service-geoip`].
+WARNING: To apply location rules, you must first install plugin link:https://download.gravitee.io/plugins/services/gravitee-service-geoip-1.0.0.zip[`gravitee-service-geoip`^].
 This plugin loads the `geoip` databases in memory, so you need to adjust the JVM Heap settings of your AM Gateways accordingly.
 
-NOTE: In order to use the Geoip features, you can download the link:https://download.gravitee.io/#graviteeio-am/plugins/repositories/gravitee-service-geoip/[Gravitee Geoip Plugin].
+NOTE: If you want to use the GeoIP features, you can download the link:https://download.gravitee.io/#graviteeio-am/plugins/repositories/gravitee-service-geoip/[Gravitee GeoIP Plugin^].
 
-WARNING: The Gravitee Geoip Plugin uses MaxMind, make sure your AM instance is well provisioned in terms of resources.
+WARNING: The Gravitee GeoIP Plugin uses MaxMind. You need to make sure your AM instance is well provisioned in terms of resources.
 
 == Configure A-MFA
 

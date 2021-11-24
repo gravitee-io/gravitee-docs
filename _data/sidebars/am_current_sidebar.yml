@@ -177,22 +177,22 @@ entries:
             subfolderitems:
             - title: Overview
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/corporate/introduction.html
+              url: /Guides/AM/current/user-guide/identity-provider/enterprise/introduction.html
             - title: Active Directory / LDAP
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/corporate/ldap.html
+              url: /Guides/AM/current/user-guide/identity-provider/enterprise/ldap.html
             - title: HTTP (web service)
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/corporate/http.html
+              url: /Guides/AM/current/user-guide/identity-provider/enterprise/http.html
             - title: Kerberos
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/corporate/kerberos.html
+              url: /Guides/AM/current/user-guide/identity-provider/enterprise/kerberos.html
             - title: SAML 2.0
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/corporate/saml2.html
+              url: /Guides/AM/current/user-guide/identity-provider/enterprise/saml2.html
             - title: CAS
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/corporate/cas.html
+              url: /Guides/AM/current/user-guide/identity-provider/enterprise/cas.html
           - title: Social identity providers
             output: web
             subfolderitems:
@@ -271,9 +271,15 @@ entries:
         - title: Overview
           output: web
           url: /Guides/AM/current/user-guide/bot-detection/introduction.html
-        - title: Bot Detection Plugins
+        - title: Bot detection plugins
           output: web
           url: /Guides/AM/current/user-guide/bot-detection/plugins.html
+      - title: Device identifier
+        output: web
+        subfolderitems:
+        - title: Device identifier plugins
+          output: web
+          url: /Guides/AM/current/user-guide/device-identifier/plugins.html
       - title: Login
         output: web
         subfolderitems:
@@ -297,19 +303,19 @@ entries:
           url: /Guides/AM/current/user-guide/login/silent-re-auth.html
         - title: Identifier-first login flow
           output: web
-          url: //Guides/AM/current/user-guide/login/identifier-first.html
+          url: /Guides/AM/current/user-guide/login/identifier-first.html
       - title: Multi-factor authentication
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/am_userguide_mfa.html
+          url: /Guides/AM/current/user-guide/mfa/introduction.html
         - title: Factors
           output: web
-          url: /Guides/AM/current/user-guide/am_userguide_mfa_factors.html
+          url: /Guides/AM/current/user-guide/mfa/factors.html
         - title: Reset MFA
           output: web
-          url: /Guides/AM/current/user-guide/am_userguide_mfa_user_factors.html
+          url: /Guides/AM/current/user-guide/mfa/user-factors.html
       - title: Resources
         output: web
         subfolderitems:

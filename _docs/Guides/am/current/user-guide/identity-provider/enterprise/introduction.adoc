@@ -1,0 +1,12 @@
+= Enterprise identity providers
+:page-toc: false
+
+AM includes the most common corporate/enterprise servers to authenticate your users:
+
+- Active Directory / LDAP
+- Web service (HTTP)
+- Kerberos
+- SAML 2.0
+- CAS
+
+Identity provider definitions apply at link:../../security-domain/introduction.html[security domain^] level.

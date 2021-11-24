@@ -59,16 +59,19 @@ The response will contain some additional fields, including the `client_id` and 
 
 TIP: You will also find the `registration_access_endpoint` and the `registration_client_uri` in the response. These are used to read/update/delete the client id and client secret.
 
-CAUTION: According to the link:https://tools.ietf.org/html/rfc6749#section-10.6[specification^], an Authorization Server MUST require public clients and SHOULD require confidential clients to register their redirection URIs. +
-Confidential clients are clients that can keep their credentials secret, for example: +
- - web applications (using a web server to save their credentials): `authorization_code` +
- - server applications (treating credentials saved on a server as safe): `client_credentials` +
-Unlike confidential clients, public clients are clients than cannot keep their credentials secret, for example: +
- - Single Page Applications: `implicit` +
- - Native mobile application: `authorization_code` +
+[CAUTION]
+====
+According to the link:https://tools.ietf.org/html/rfc6749#section-10.6[specification^], an Authorization Server MUST require public clients and SHOULD require confidential clients to register their redirection URIs. +
+Confidential clients are clients that can keep their credentials secret, for example:
+ - web applications (using a web server to save their credentials): `authorization_code`
+ - server applications (treating credentials saved on a server as safe): `client_credentials`
+Unlike confidential clients, public clients are clients than cannot keep their credentials secret, for example:
+ - Single Page Applications: `implicit`
+ - Native mobile application: `authorization_code`
 **Because mobile and web applications use the same grant, we force `redirect_uri` only for implicit grants.**
+====
 
-==== Register Web application example
+==== Register web application example
 
 The following example creates a web application (`access_token` is kept on a backend server).
 
@@ -109,7 +112,7 @@ curl -X POST \
 ----
 CAUTION: `response_types` metadata must be set to token in order to override the default value.
 
-==== Register Server to Server application example
+==== Register server to server application example
 
 Sometimes you may have a bot/software that needs to be authenticated as an application and not as a user. +
 For this, you need to use a `client_credentials` flow:
@@ -193,7 +196,7 @@ curl -X POST \
   http://GRAVITEEIO-AM-GATEWAY-HOST/::domain/oidc/register/:client_id/renew_secret
 ----
 
-=== Scope Management
+=== Scope management
 
 You can whitelist which scopes can be requested, define some default scopes to apply and force a specific set of scopes.
 

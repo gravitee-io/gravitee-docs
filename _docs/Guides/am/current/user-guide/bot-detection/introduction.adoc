@@ -1,35 +1,31 @@
 = Bot detection
 
-Bot Detection allows to protect your application by detecting requests coming from bots. Currently this protection applies on three pages:
+You can use bot detection to protect your application by detecting requests from bots. Bot detection can be used for three pages:
 
 * Sign-In
 * Sign-Up
 * Forgot Password
 
-AM supports various link:/am/current/am_userguide_bot_detection_plugins.html[Bot Detection] mechanisms for protecting user account out of the box.
+AM supports various bot detection mechanisms for protecting user accounts out of the box.
 
-== Enable Bot Detection
+== Enable bot detection
 
-Once you have created a link:/am/current/am_userguide_bot_detection_plugins.html[Plugin], you have to enable the bot detection.
+Once you have created a link:/Guides/am/current/user-guide/bot-detection/plugins.html[Plugin], you need to enable bot detection.
 
-== Bot Detection at Domain level
+== Bot detection at domain level
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. In AM Console, click *Settings > User Accounts*.
+. In the *Bot Detection* section, enable the protection using the toggle button.
+. Select the plugin to use and click *SAVE*.
+
+This will apply the protection to all your applications, except for any with overrides on the user account settings.
+
+== Bot detection at application level
+
+. In AM Console, click *Applications* and select your application.
 . Click *Settings > User Accounts*.
-. In the *Bot Detection* section.
-. Enable the protection using the toggle button
-. Select the plugin to use and click *Save*.
+. If the application inherits from the domain settings, disable the *Inherit configuration* setting.
+. In the *Bot Detection* section, enable the protection using the toggle button.
+. Select the plugin to use and click *SAVE*.
 
-This will apply the protection to all your applications except if one of them overrides the user account settings.
-
-== Bot Detection at Application level
-
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Select your application
-. Click *Settings > User Accounts*.
-. If the application inherit from the domain settings, switch off the toggle button
-. In the *Bot Detection* section.
-. Enable the protection using the toggle button
-. Select the plugin to use and click *Save*.
-
-NOTE: If initially the application inherited from the domain settings remember to apply at the application level all relevant settings regarding the other sections.
+NOTE: If the application was set up to inherit domain settings, remember to reapply the other settings at application level.

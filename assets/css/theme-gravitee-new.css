@@ -3,10 +3,42 @@ body {
     color: #111c4e;
 }
 
+ol.arabic li{
+    line-height: 20px;
+}
+
+div.ulist li{
+    line-height: 20px;
+}
+
+a[href^="http://"]:after, a[href^="https://"]:after {
+    content: "\f08e";
+    font-family: FontAwesome, "Courier New", monospace;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: none;
+    padding-left: 3px;
+}
+
 .col-md-3{
     width: 25%;
-	float: left;
+    float: left;
 }
+
+.col-md-2{
+    max-width 15%;
+    padding-right: 0px;
+}
+
+.col-md-6{
+    width: 60%;
+}
+
+.doc-sidebar-menu{
+    width: 200px; 
+    float: right;
+};
 
 .navbar-inverse {
     background: rgb(1, 0, 2) linear-gradient(90deg, rgba(1, 0, 2, 1) 0%, rgba(23, 12, 102, 1) 55%, rgba(25, 139, 183, 1) 100%);
@@ -203,12 +235,20 @@ div.results {
     margin: 10px 0;
 }
 
+.imageblock{
+    margin-bottom: 20px;
+}
+
 time {
     margin-right: 10px;
 }
 
 p.post-meta time {
     margin-right: 0;
+}
+
+p.tableblock{
+	hyphens: none;
 }
 
 .layout-breadcrumb > ol.breadcrumb {
@@ -426,6 +466,7 @@ span.icon>.fa {
 table {
     background-color: transparent;
 }
+
 caption {
     padding-top: 8px;
     padding-bottom: 8px;
@@ -435,10 +476,12 @@ caption {
 th {
     text-align: left;
 }
+
 table {
-    max-width: 90%;
+    max-width: 100%;
     margin-bottom: 20px;
     border: 1px solid #dedede;
+    hyphens: none;
 }
 
 table > thead > tr > th,
@@ -633,11 +676,7 @@ body.slider-area .hero #autocompleteResults {
     z-index: 1000;
     padding: 20em;
     background-color: rgba(0,0,0,.85);
-	font-weight: 700;
-}
-
-ul > li {
-  line-height: 1;
+    font-weight: 700;
 }
 
 .copy-code-button {

@@ -2,7 +2,7 @@
 
 AM comes with a list of predefined email templates, used for identity and access-related tasks during the authorization process, which you can override to create custom templates.
 
-=== List of email templates
+== List of email templates
 
 [width="80%",cols="2,10",options="header"]
 |=========================================================
@@ -33,6 +33,6 @@ You can customize email templates for an entire security domain or for an indivi
 +
 image::am/current/graviteeio-am-userguide-um-emails.png[]
 
-NOTE: Each email requires a minimum configuration. You can retrieve contextual documentation on the HTML needed for each type of page by clicking the image:icons/am-info-icon.png[role="icon"] information icon.
+NOTE: Each email requires a minimum configuration. You can retrieve contextual documentation on the HTML needed for each type of page by clicking the information icon image:icons/am-info-icon.png[role="icon"].
 
 image::am/current/graviteeio-am-userguide-um-email-info.png[]

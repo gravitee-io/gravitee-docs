@@ -86,13 +86,12 @@ We will then dynamically add the `admin` scope to the `access_token`.
 The client will provide this scope when accessing an API via an API Manager, and the API Manager will check for the scope before granting access to the upstream API.
 
 . In AM Console, click *Settings > Scopes*.
-. Click the plus icon image:icons\plus-icon.png[role="icon"] and create an `admin` scope.
+. Click the plus icon image:icons\plus-icon.png[role="icon"] and create an *admin* scope.
 . Click *Settings > Roles*.
-. Click the plus icon image:icons\plus-icon.png[role="icon"] and create an `administrator` role. Select the `admin` scope permission.
-. Go to the `Providers` section
+. Click the plus icon image:icons\plus-icon.png[role="icon"] and create an *administrator* role. Select the *admin* scope permission.
 . Click *Settings > Providers* and select your LDAP identity provider.
 . Click the *Role mappers* tab.
-. Set the user's role configuration:
+. Set the users role configuration:
 +
 image::am/current/graviteeio-am-userguide-idp-role-mappers.png[]
 +

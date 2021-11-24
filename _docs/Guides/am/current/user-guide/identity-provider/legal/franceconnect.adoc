@@ -4,8 +4,8 @@
 
 == Overview
 
-You can authenticate users in AM with link:https://franceconnect.gouv.fr/[FranceConnect^]. FranceConnect is the French government Identity Provider that connects million of legal accounts.
-You can connect to it with credentials such as your National Insurance Number, postal address and more.
+You can authenticate users in AM with link:https://franceconnect.gouv.fr/[FranceConnect^]. FranceConnect is the French governmental identity provider that connects million of legal accounts.
+You can connect to it with credentials such as your National Insurance Number, postal address, and more.
 
 image::am/current/graviteeio-am-userguide-legal-franceconnect-logo.png[150,150]
 
@@ -24,7 +24,7 @@ To connect your application to FranceConnect, you will:
 
 To connect your application to FranceConnect, you must follow all the steps described link:https://franceconnect.gouv.fr/partenaires[here^].
 
-NOTE: FranceConnect will generate a client_ID and client_secret. Make a note of these for later use.
+NOTE: FranceConnect will generate a Client ID and a Client Secret. Make a note of these for later use.
 
 == Create a FranceConnect identity provider
 
@@ -62,4 +62,4 @@ image::am/current/graviteeio-am-userguide-social-idp-login.png[]
 +
 If you do not see the button, there may be a problem with the identity provider settings. Check the AM Gateway log for more information.
 
-NOTE: The link:https://partenaires.franceconnect.gouv.fr/faq[FranceConnect frequently asked questions (FAQ)] can help you to set up your connection.
+NOTE: The link:https://partenaires.franceconnect.gouv.fr/faq[FranceConnect frequently asked questions (FAQ)^] can help you to set up your connection.
