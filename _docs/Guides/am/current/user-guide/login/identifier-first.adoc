@@ -4,38 +4,43 @@
 
 == Overview
 
-Identifier-first login authentication enables the login flow to be split into two steps:
+Identifier-first login authentication splits the login flow into two stages:
 
-- The first step consists in a page containing a single form field where you can input your username
+* Step 1: Users enter their username in a window containing a single form field.
++
+image::am/current/graviteeio-am-userguide-login-identifier-first-first-page-flow.png[]
 
-image::am/current/graviteeio-am-userguide-login-identifier-first-first-page-flow.png[alt=Identifier-first login flow first page, width=500,height=438]
+* Step 2: They are redirected to the login form with their username prefilled, where they enter their password.
++
+image::am/current/graviteeio-am-userguide-login-identifier-first-second-page-flow.png[]
++
+If the username is an email address, the user is redirected to an external provider matching the domain, based on a whitelist.
 
-- Regarding the input submitted, the user gets redirected to the login form and are asked to input your password
-- If the username is an email, the user gets redirected to an external provider matching your domain based on a whitelist
+== Enable identifier-first login
 
-image::am/current/graviteeio-am-userguide-login-identifier-first-second-page-flow.png[alt=Identifier-first login flow second page, width=500,height=438]
+To enable an identifier-first login flow:
 
-
-== Activate Identifier-first Login
-
-To activate Identifier-first login Flow:
-
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Go to *Settings > Login* or *Application > "Your app" > Settings > Login*.
-. Switch on *Identifier-first login* and click *SAVE*.
-
-image::am/current/graviteeio-am-userguide-login-identifier-first-settings.png[Identifier-first login flow Settings]
+. In AM Console, to enable identifier-first login:
+* at domain level, click *Settings > Login*.
+* at application level, click *Applications*, then select your application and click *Settings > Login*.
+. Turn on the *Identifier-first login* option and click *SAVE*.
++
+image::am/current/graviteeio-am-userguide-login-identifier-first-settings.png[]
 
 == Identity providers allowed domain list
 
-External Identity providers now enable you to enter domain whitelists so that if the username submitted is an email and
-its domain matches the whitelisted domain during the first step of the flow, the user gets redirected to the provider.
+You can enter domain whitelists for external identity providers, so that if the username submitted is an email address and
+its domain matches a whitelisted domain during the first step of the flow, the user is redirected to the provider.
 
-If you don't input any domain, the user will just get redirected to the second login page.
+If no domain is entered, the user is just redirected to the second login page.
 
-. Go to *Settings > Providers*.
-. Create a new provider or Edit an existing one
-. Enter the domains you wish to allow
+To enter a domain whitelist:
+
+. Click *Settings > Providers*.
+. Create a new provider or edit an existing one.
++
+link:/Guides/AM/current/user-guide/identity-provider/create-identity-provider.html[Learn more about creating identity providers^]
+. In *Domain Whitelist*, enter the domains you want to allow.
 . Complete the provider's form and click *SAVE*.
-
-image::am/current/graviteeio-am-userguide-login-identifier-first-identity-provider-domain-whitelist.png[Identifier-first login flow provider Domain Whitelist]
++
+image::am/current/graviteeio-am-userguide-login-identifier-first-identity-provider-domain-whitelist.png[]

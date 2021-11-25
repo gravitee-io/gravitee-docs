@@ -6,20 +6,20 @@
 
       {% if doc_cat == "Guides" %}
 
-        <li class="breadcrumb-item">{{doc_product}}</li>
-        <li class="breadcrumb-item">{{doc_version}}</li>
+        <li class="breadcrumb-item-nocaps">{{doc_product | upcase}}</li>
+        <li class="breadcrumb-item-nocaps">{{doc_version}}</li>
         {% if doc_guide != nil %}
         <li class="breadcrumb-item">{{doc_guide | replace: '-', ' ' }}</li>
         {% if doc_subguide != nil %}
 
-        <li class="breadcrumb-item">{{doc_subguide | replace: '-', ' ' }}</li>
+        <li class="breadcrumb-item-nocaps">{{doc_subguide | replace: '-', ' ' }}</li>
 
         {% endif %}
 
         {% endif %}
 
       {% elsif doc_cat == "Getstarted" %}
-          <li class="breadcrumb-item">Get started</li>
+          <li class="breadcrumb-item-nocaps">Get started</li>
 
       {% elsif doc_cat == "Reference" %}
 
@@ -27,7 +27,7 @@
 
       {% endif %}
 
-        <li class="breadcrumb-item active" aria-current="page">{{page.title}}</li>
+        <li class="breadcrumb-item-nocaps active" aria-current="page">{{page.title}}</li>
 
     </ol>
 </nav>

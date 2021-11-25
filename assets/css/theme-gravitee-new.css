@@ -11,7 +11,7 @@ div.ulist li{
     line-height: 20px;
 }
 
-a[href^="http://"]:after, a[href^="https://"]:after {
+.sectionbody a[href^="http://"]:after{
     content: "\f08e";
     font-family: FontAwesome, "Courier New", monospace;
     font-weight: normal;
@@ -118,9 +118,9 @@ a[href^="http://"]:after, a[href^="https://"]:after {
 }
 
 .btn-style3 {
-    background-color: #0ff;
+    background-color: #ff9100;
     border-color #0ff;
-    color: #1b1464;
+    color: #fff;
     font-size: 14px;
 }
 

@@ -2,7 +2,7 @@
 
 == Java KeyStore (JKS)
 
-Storage for cryptographic keys and certificates is managed in a (`.jks`) file.
+Storage for cryptographic keys and certificates is managed in a `.jks` file.
 
 NOTE: To generate a new keystore, you can use the Key and Certificate Management Tool `keytool`.
 
@@ -21,8 +21,7 @@ TIP: Default keys are RS256 (SHA256withRSA). For RS512 keys, add the following o
 
 == Create a new certificate with AM Console
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Certificates*.
+. In AM Console, click *Settings > Certificates*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Choose the certificate type and click *Next*.
 . Give your certificate a name, then enter the details of the keystore file.
@@ -49,17 +48,17 @@ curl -H "Authorization: Bearer :accessToken" \
 
 You can use public keys to verify a token payload's integrity. To obtain the public key for your certificate:
 
-. In AM Console, click *Settings > Certificates*.
+. Click *Settings > Certificates*.
 . Next to your certificate, click the key image:am/current/graviteeio-am-quickstart-profile-public-key.png[role="icon"] icon.
 . You can copy/paste the public key to use with third party libraries to verify your tokens.
 +
 image::am/current/graviteeio-am-userguide-public-key.png[]
 
-NOTE: link:https://www.gravitee.io/products/api-management[Gravitee.io API Management] comes with a JWT Policy to verify and decode tokens that can be used for your APIs.
+NOTE: link:https://www.gravitee.io/products/api-management[Gravitee.io API Management^] comes with a JWT Policy to verify and decode tokens that can be used for your APIs.
 
 == Apply the certificate to your application
 
-. In AM Console, click *Applications*.
+. Click *Applications* and select your application.
 . In the *Settings* tab, click *Certificates*.
 . Choose your certificate and click *SAVE*.
 +

@@ -9,495 +9,495 @@ entries:
     folderitems:
     - title: Overview
       output: web
-      url: /Guides/AM/current/introduction.html
+      url: /Guides/am/current/introduction.html
     - title: Technical overview
       output: web
-      url: /Guides/AM/current/technical.html
+      url: /Guides/am/current/technical.html
 
   - title: Installation Guide
     output: web
     folderitems:
     - title: Installing AM
       output: web
-      url: /Guides/AM/current/installation-guide/introduction.html
+      url: /Guides/am/current/installation-guide/introduction.html
       subfolders:
         - title: Install with .zip
           output: web
           subfolderitems:
             - title: AM Gateway
               output: web
-              url: /Guides/AM/current/installation-guide/zip/gateway.html
+              url: /Guides/am/current/installation-guide/zip/gateway.html
             - title: AM API
               output: web
-              url: /Guides/AM/current/installation-guide/zip/rest-api.html
+              url: /Guides/am/current/installation-guide/zip/rest-api.html
             - title: AM Console
               output: web
-              url: /Guides/AM/current/installation-guide/zip/console.html
+              url: /Guides/am/current/installation-guide/zip/console.html
         - title: Install on Red Hat
           output: web
           subfolderitems:
             - title: Introduction
               output: web
-              url: /Guides/AM/current/installation-guide/red-hat/introduction.html
+              url: /Guides/am/current/installation-guide/red-hat/introduction.html
             - title: Install the full AM stack
               output: web
-              url: /Guides/AM/current/installation-guide/red-hat/stack.html
+              url: /Guides/am/current/installation-guide/red-hat/stack.html
             - title: Install AM Gateway
               output: web
-              url: /Guides/AM/current/installation-guide/red-hat/gateway.html
+              url: /Guides/am/current/installation-guide/red-hat/gateway.html
             - title: Install AM API
               output: web
-              url: /Guides/AM/current/installation-guide/red-hat/rest-api.html
+              url: /Guides/am/current/installation-guide/red-hat/rest-api.html
             - title: Install AM Console
               output: web
-              url: /Guides/AM/current/installation-guide/red-hat/console.html
+              url: /Guides/am/current/installation-guide/red-hat/console.html
         - title: Install on Amazon
           output: web
           subfolderitems:
             - title: Introduction
               output: web
-              url: /Guides/AM/current/installation-guide/amazon-linux/introduction.html
+              url: /Guides/am/current/installation-guide/amazon-linux/introduction.html
             - title: Install the full AM stack
               output: web
-              url: /Guides/AM/current/installation-guide/amazon-linux/stack.html
+              url: /Guides/am/current/installation-guide/amazon-linux/stack.html
             - title: Install AM Gateway
               output: web
-              url: /Guides/AM/current/installation-guide/amazon-linux/gateway.html
+              url: /Guides/am/current/installation-guide/amazon-linux/gateway.html
             - title: Install AM API
               output: web
-              url: /Guides/AM/current/installation-guide/amazon-linux/rest-api.html
+              url: /Guides/am/current/installation-guide/amazon-linux/rest-api.html
             - title: Install AM Console
               output: web
-              url: /Guides/AM/current/installation-guide/amazon-linux/console.html
+              url: /Guides/am/current/installation-guide/amazon-linux/console.html
         - title: Run in Docker
           output: web
           subfolderitems:
             - title: Images
               output: web
-              url: /Guides/AM/current/installation-guide/docker/images.html
+              url: /Guides/am/current/installation-guide/docker/images.html
             - title: Compose
               output: web
-              url: /Guides/AM/current/installation-guide/docker/compose.html
+              url: /Guides/am/current/installation-guide/docker/compose.html
         - title: Deploy in Kubernetes
           output: web
           subfolderitems:
             - title: Helm
               output: web
-              url: /Guides/AM/current/installation-guide/kubernetes.html
+              url: /Guides/am/current/installation-guide/kubernetes.html
     - title: Upgrade Guide
       output: web
-      url: /Guides/AM/current/installation-guide/upgrade.html
+      url: /Guides/am/current/installation-guide/upgrade.html
 
   - title: Configuration Guide
     output: web
     folderitems:
     - title: Introduction
       output: web
-      url: /Guides/AM/current/configuration-guide/introduction.html
+      url: /Guides/am/current/configuration-guide/introduction.html
       subfolders:
       - title: Configure AM Gateway
         output: web
         subfolderitems:
         - title: General configuration
           output: web
-          url: /Guides/AM/current/configuration-guide/gateway/general-config.html
+          url: /Guides/am/current/configuration-guide/gateway/general-config.html
         - title: Internal API
           output: web
-          url: /Guides/AM/current/configuration-guide/gateway/internal-api.html
+          url: /Guides/am/current/configuration-guide/gateway/internal-api.html
         - title: Metrics
           output: web
-          url: /Guides/AM/current/configuration-guide/gateway/metrics.html
+          url: /Guides/am/current/configuration-guide/gateway/metrics.html
       - title: Configure AM API
         output: web
         subfolderitems:
         - title: General configuration
           output: web
-          url: /Guides/AM/current/configuration-guide/rest-apis/general-config.html
+          url: /Guides/am/current/configuration-guide/rest-apis/general-config.html
         - title: Internal API
           output: web
-          url: /Guides/AM/current/configuration-guide/rest-apis/internal-api.html
+          url: /Guides/am/current/configuration-guide/rest-apis/internal-api.html
         - title: Metrics
           output: web
-          url: /Guides/AM/current/configuration-guide/rest-apis/metrics.html
+          url: /Guides/am/current/configuration-guide/rest-apis/metrics.html
       - title: Configure AM Console
         output: web
         subfolderitems:
         - title: General configuration
           output: web
-          url: /Guides/AM/current/configuration-guide/console/general-config.html
+          url: /Guides/am/current/configuration-guide/console/general-config.html
       - title: Configure repositories
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/configuration-guide/repositories/introduction.html
+          url: /Guides/am/current/configuration-guide/repositories/introduction.html
         - title: MongoDB
           output: web
-          url: /Guides/AM/current/configuration-guide/repositories/mongodb.html
+          url: /Guides/am/current/configuration-guide/repositories/mongodb.html
         - title: JDBC
           output: web
-          url: /Guides/AM/current/configuration-guide/repositories/jdbc.html
+          url: /Guides/am/current/configuration-guide/repositories/jdbc.html
       - title: Configure reporters
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/configuration-guide/reporters.html
+          url: /Guides/am/current/configuration-guide/reporters.html
   - title: User Guide
     output: web
     folderitems:
     - title: Overview
       output: web
-      url: /Guides/AM/current/user-guide/introduction.html
+      url: /Guides/am/current/user-guide/introduction.html
       subfolders:
       - title: Security domains
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/security-domain/introduction.html
+          url: /Guides/am/current/user-guide/security-domain/introduction.html
         - title: Create a security domain
           output: web
-          url: /Guides/AM/current/user-guide/security-domain/create-domain.html
+          url: /Guides/am/current/user-guide/security-domain/create-domain.html
       - title: Identity providers
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/identity-provider/introduction.html
+          url: /Guides/am/current/user-guide/identity-provider/introduction.html
         - title: Create an identity provider
           output: web
-          url: /Guides/AM/current/user-guide/identity-provider/create-identity-provider.html
+          url: /Guides/am/current/user-guide/identity-provider/create-identity-provider.html
         - title: User and role mapping
           output: web
-          url: /Guides/AM/current/user-guide/identity-provider/mapping-identity-provider.html
+          url: /Guides/am/current/user-guide/identity-provider/mapping-identity-provider.html
           subfolders:
           - title: Enterprise identity providers
             output: web
             subfolderitems:
             - title: Overview
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/enterprise/introduction.html
+              url: /Guides/am/current/user-guide/identity-provider/enterprise/introduction.html
             - title: Active Directory / LDAP
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/enterprise/ldap.html
+              url: /Guides/am/current/user-guide/identity-provider/enterprise/ldap.html
             - title: HTTP (web service)
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/enterprise/http.html
+              url: /Guides/am/current/user-guide/identity-provider/enterprise/http.html
             - title: Kerberos
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/enterprise/kerberos.html
+              url: /Guides/am/current/user-guide/identity-provider/enterprise/kerberos.html
             - title: SAML 2.0
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/enterprise/saml2.html
+              url: /Guides/am/current/user-guide/identity-provider/enterprise/saml2.html
             - title: CAS
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/enterprise/cas.html
+              url: /Guides/am/current/user-guide/identity-provider/enterprise/cas.html
           - title: Social identity providers
             output: web
             subfolderitems:
             - title: Overview
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/social/introduction.html
+              url: /Guides/am/current/user-guide/identity-provider/social/introduction.html
             - title: Azure AD
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/social/azure-ad.html
+              url: /Guides/am/current/user-guide/identity-provider/social/azure-ad.html
             - title: Facebook
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/social/facebook.html
+              url: /Guides/am/current/user-guide/identity-provider/social/facebook.html
             - title: GitHub
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/social/github.html
+              url: /Guides/am/current/user-guide/identity-provider/social/github.html
             - title: Twitter
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/social/twitter.html
+              url: /Guides/am/current/user-guide/identity-provider/social/twitter.html
             - title: LinkedIn
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/social/linkedin.html
+              url: /Guides/am/current/user-guide/identity-provider/social/linkedin.html
             - title: Salesforce
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/social/salesforce.html
+              url: /Guides/am/current/user-guide/identity-provider/social/salesforce.html
           - title: Legal identity providers
             output: web
             subfolderitems:
             - title: Overview
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/legal/introduction.html
+              url: /Guides/am/current/user-guide/identity-provider/legal/introduction.html
             - title: FranceConnect
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/legal/franceconnect.html
+              url: /Guides/am/current/user-guide/identity-provider/legal/franceconnect.html
           - title: Database identity providers
             output: web
             subfolderitems:
             - title: Overview
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/database/introduction.html
+              url: /Guides/am/current/user-guide/identity-provider/database/introduction.html
             - title: JDBC
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/database/jdbc.html
+              url: /Guides/am/current/user-guide/identity-provider/database/jdbc.html
             - title: MongoDB
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/database/mongodb.html
+              url: /Guides/am/current/user-guide/identity-provider/database/mongodb.html
             - title: Inline
               output: web
-              url: /Guides/AM/current/user-guide/identity-provider/database/inline.html
+              url: /Guides/am/current/user-guide/identity-provider/database/inline.html
       - title: Applications
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/application/introduction.html
+          url: /Guides/am/current/user-guide/application/introduction.html
         - title: Create application
           output: web
-          url: /Guides/AM/current/user-guide/application/create-client.html
+          url: /Guides/am/current/user-guide/application/create-client.html
         - title: Dynamic client registration
           output: web
-          url: /Guides/AM/current/user-guide/application/dynamic-client-registration.html
+          url: /Guides/am/current/user-guide/application/dynamic-client-registration.html
       - title: Branding
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/branding/introduction.html
+          url: /Guides/am/current/user-guide/branding/introduction.html
         - title: Custom pages
           output: web
-          url: /Guides/AM/current/user-guide/branding/pages.html
+          url: /Guides/am/current/user-guide/branding/pages.html
         - title: Custom email templates
           output: web
-          url: /Guides/AM/current/user-guide/branding/email-templates.html
+          url: /Guides/am/current/user-guide/branding/email-templates.html
       - title: Bot Detection
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/bot-detection/introduction.html
+          url: /Guides/am/current/user-guide/bot-detection/introduction.html
         - title: Bot detection plugins
           output: web
-          url: /Guides/AM/current/user-guide/bot-detection/plugins.html
+          url: /Guides/am/current/user-guide/bot-detection/plugins.html
       - title: Device identifier
         output: web
         subfolderitems:
         - title: Device identifier plugins
           output: web
-          url: /Guides/AM/current/user-guide/device-identifier/plugins.html
+          url: /Guides/am/current/user-guide/device-identifier/plugins.html
       - title: Login
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/login/introduction.html
+          url: /Guides/am/current/user-guide/login/introduction.html
         - title: Step-up authentication
           output: web
-          url: /Guides/AM/current/user-guide/mfa/step-up.html
+          url: /Guides/am/current/user-guide/MFA/step-up.html
         - title: Adaptive multi-factor authentication
           output: web
-          url: /Guides/AM/current/user-guide/mfa/amfa.html
+          url: /Guides/am/current/user-guide/MFA/amfa.html
         - title: Remember device authentication
           output: web
-          url: /Guides/AM/current/user-guide/mfa/remember-device.html
+          url: /Guides/am/current/user-guide/MFA/remember-device.html
         - title: Passwordless (W3C WebAuthn)
           output: web
-          url: /Guides/AM/current/user-guide/login/passwordless.html
+          url: /Guides/am/current/user-guide/login/passwordless.html
         - title: Silent re-authentication
           output: web
-          url: /Guides/AM/current/user-guide/login/silent-re-auth.html
+          url: /Guides/am/current/user-guide/login/silent-re-auth.html
         - title: Identifier-first login flow
           output: web
-          url: /Guides/AM/current/user-guide/login/identifier-first.html
+          url: /Guides/am/current/user-guide/login/identifier-first.html
       - title: Multi-factor authentication
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/mfa/introduction.html
+          url: /Guides/am/current/user-guide/MFA/introduction.html
         - title: Factors
           output: web
-          url: /Guides/AM/current/user-guide/mfa/factors.html
+          url: /Guides/am/current/user-guide/MFA/factors.html
         - title: Reset MFA
           output: web
-          url: /Guides/AM/current/user-guide/mfa/user-factors.html
+          url: /Guides/am/current/user-guide/MFA/user-factors.html
       - title: Resources
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/resources/introduction.html
+          url: /Guides/am/current/user-guide/resources/introduction.html
         - title: Twilio
           output: web
-          url: /Guides/AM/current/user-guide/resources/twilio.html
+          url: /Guides/am/current/user-guide/resources/twilio.html
       - title: Certificates
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/certificate/introduction.html
+          url: /Guides/am/current/user-guide/certificate/introduction.html
         - title: Create a certificate
           output: web
-          url: /Guides/AM/current/user-guide/certificate/create-certificate.html
+          url: /Guides/am/current/user-guide/certificate/create-certificate.html
       - title: User management
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/user-management/introduction.html
+          url: /Guides/am/current/user-guide/user-management/introduction.html
         - title: Users
           output: web
-          url: /Guides/AM/current/user-guide/user-management/users.html
+          url: /Guides/am/current/user-guide/user-management/users.html
         - title: Groups
           output: web
-          url: /Guides/AM/current/user-guide/user-management/groups.html
+          url: /Guides/am/current/user-guide/user-management/groups.html
         - title: Roles
           output: web
-          url: /Guides/AM/current/user-guide/user-management/roles.html
+          url: /Guides/am/current/user-guide/user-management/roles.html
         - title: User registration
           output: web
-          url: /Guides/AM/current/user-guide/user-management/registration.html
+          url: /Guides/am/current/user-guide/user-management/registration.html
         - title: SCIM 2.0
           output: web
-          url: /Guides/AM/current/user-guide/user-management/scim.html
+          url: /Guides/am/current/user-guide/user-management/scim.html
         - title: User consent
           output: web
-          url: /Guides/AM/current/user-guide/user-management/consent.html
+          url: /Guides/am/current/user-guide/user-management/consent.html
         - title: Password policy
           output: web
-          url: /Guides/AM/current/user-guide/user-management/password_policy.html
+          url: /Guides/am/current/user-guide/user-management/password_policy.html
         - title: Self-Service account mgmt
           output: web
-          url: /Guides/AM/current/user-guide/user-management/self-service-account.html
+          url: /Guides/am/current/user-guide/user-management/self-service-account.html
       - title: Session management
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/session-management/introduction.html
+          url: /Guides/am/current/user-guide/session-management/introduction.html
         - title: Logout
           output: web
-          url: /Guides/AM/current/user-guide/session-management/logout.html
+          url: /Guides/am/current/user-guide/session-management/logout.html
       - title: Audit trail
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/logs/introduction.html
+          url: /Guides/am/current/user-guide/logs/introduction.html
         - title: Audit log
           output: web
-          url: /Guides/AM/current/user-guide/logs/use-audit-log.html
+          url: /Guides/am/current/user-guide/logs/use-audit-log.html
           subfolders:
           - title: Storage
             output: web
             subfolderitems:
             - title: Overview
               output: web
-              url: /Guides/AM/current/user-guide/logs/storage.html
+              url: /Guides/am/current/user-guide/logs/storage.html
             - title: File
               output: web
-              url: /Guides/AM/current/user-guide/logs/audit-log-file.html
+              url: /Guides/am/current/user-guide/logs/audit-log-file.html
       - title: Flows
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/flows/introduction.html
+          url: /Guides/am/current/user-guide/flows/introduction.html
         - title: Flow configuration
           output: web
-          url: /Guides/AM/current/user-guide/flows/extension-points.html
+          url: /Guides/am/current/user-guide/flows/extension-points.html
       - title: Alerts
         output: web
         subfolderitems:
         - title: Overview
           output: web
-          url: /Guides/AM/current/user-guide/alerts/introduction.html
+          url: /Guides/am/current/user-guide/alerts/introduction.html
         - title: Alert Engine
           output: web
-          url: /Guides/AM/current/user-guide/alerts/ae.html
+          url: /Guides/am/current/user-guide/alerts/ae.html
         - title: Manage alerts
           output: web
-          url: /Guides/AM/current/user-guide/alerts/manage.html
+          url: /Guides/am/current/user-guide/alerts/manage.html
           subfolders:
           - title: Notification channels
             output: web
             subfolderitems:
             - title: Overview
               output: web
-              url: /Guides/AM/current/user-guide/alerts/notifications.html
+              url: /Guides/am/current/user-guide/alerts/notifications.html
             - title: Email
               output: web
-              url: /Guides/AM/current/user-guide/alerts/email-notifications.html
+              url: /Guides/am/current/user-guide/alerts/email-notifications.html
             - title: Webhook
               output: web
-              url: /Guides/AM/current/user-guide/alerts/webhook-notifications.html
+              url: /Guides/am/current/user-guide/alerts/webhook-notifications.html
             - title: Slack
               output: web
-              url: /Guides/AM/current/user-guide/alerts/slack-notifications.html
+              url: /Guides/am/current/user-guide/alerts/slack-notifications.html
 
   - title: Administration Guide
     output: web
     folderitems:
     - title: Organizations and environments
       output: web
-      url: /Guides/AM/current/administration-guide/organizations-environments.html
+      url: /Guides/am/current/administration-guide/organizations-environments.html
       type: homepage
     - title: Roles and permissions
       output: web
-      url: /Guides/AM/current/administration-guide/roles-permissions.html
+      url: /Guides/am/current/administration-guide/roles-permissions.html
     - title: Users and groups
       output: web
-      url: /Guides/AM/current/administration-guide/users-groups.html
+      url: /Guides/am/current/administration-guide/users-groups.html
 
   - title: Developer Guide
     output: web
     folderitems:
       - title: Bootstrap your environment
         output: web
-        url: /Guides/AM/current/developer-guide/bootstrap.html
+        url: /Guides/am/current/developer-guide/bootstrap.html
 
   - title: Protocols
     output: web
     folderitems:
       - title: Overview
         output: web
-        url: /Guides/AM/current/developer-guide/protocols/introduction.html
+        url: /Guides/am/current/developer-guide/protocols/introduction.html
         subfolders:
           - title: OAuth 2.0
             output: web
             subfolderitems:
               - title: Overview
                 output: web
-                url: /Guides/AM/current/developer-guide/protocols/oauth2/introduction.html
+                url: /Guides/am/current/developer-guide/protocols/oauth2/introduction.html
               - title: Which flow should I use ?
                 output: web
-                url: /Guides/AM/current/developer-guide/protocols/oauth2/flows.html
+                url: /Guides/am/current/developer-guide/protocols/oauth2/flows.html
               - title: PKCE
                 output: web
-                url: /Guides/AM/current/developer-guide/protocols/oauth2/pkce.html
+                url: /Guides/am/current/developer-guide/protocols/oauth2/pkce.html
               - title: Best practices
                 output: web
-                url: /Guides/AM/current/developer-guide/protocols/oauth2/best-practices.html
+                url: /Guides/am/current/developer-guide/protocols/oauth2/best-practices.html
                 subfolders:
                   - title: Extension grants
                     output: web
                     subfolderitems:
                       - title: Overview
                         output: web
-                        url: /Guides/AM/current/developer-guide/extension-grants/introduction.html
+                        url: /Guides/am/current/developer-guide/extension-grants/introduction.html
                       - title: JWT Bearer
                         output: web
-                        url: /Guides/AM/current/developer-guide/extension-grants/jwt_bearer.html
+                        url: /Guides/am/current/developer-guide/extension-grants/jwt_bearer.html
           - title: OpenID Connect
             output: web
             subfolderitems:
               - title: Overview
                 output: web
-                url: /Guides/AM/current/am_devguide_protocols_oidc_overview.html
+                url: /Guides/am/current/am_devguide_protocols_oidc_overview.html
           - title: UMA 2.0
             output: web
             subfolderitems:
               - title: Overview
                 output: web
-                url: /Guides/AM/current/am_devguide_protocols_uma2_overview.html
+                url: /Guides/am/current/am_devguide_protocols_uma2_overview.html
           - title: SCIM 2.0
             output: web
             subfolderitems:
               - title: Overview
                 output: web
-                url: /Guides/AM/current/am_devguide_protocols_scim_overview.html
+                url: /Guides/am/current/am_devguide_protocols_scim_overview.html

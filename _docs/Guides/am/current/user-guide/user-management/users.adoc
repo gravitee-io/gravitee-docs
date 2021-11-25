@@ -1,19 +1,16 @@
 = Users
 
-== Manage users
+== List users
 
-=== List users
+In AM Console, search for users by clicking *Settings > Users* and entering the username in the search field.
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Search for users by clicking *Settings > Users* and entering the username in the search field.
-+
-image::am/current/graviteeio-am-userguide-um-search-users.png[]
+image::am/current/userguide-um-search-users.png[]
 
 You can also list users with the AM API `/users` endpoint.
 
 NOTE: You can only list users created with AM API or the SCIM protocol and external users who have already logged in.
 
-==== List Users with a query (q)
+=== List users with a query (q)
 
 Finds users who match the specified query (standard search mode).
 
@@ -23,19 +20,19 @@ NOTE: In AM Console, you do not need to specify the `q` parameter, only the quer
 
 NOTE: The list operation performs a `startsWith` match query; you do not need to specify `firstName`, `lastName` or `email` attribute name.
 
-===== Request example
+==== Request example
 
+[source,curl]
 ----
-Request Example :
-
 curl -H "Authorization: Bearer :accessToken" \
      -H "Content-Type:application/json;charset=UTF-8" \
      -X GET \
      http://GRAVITEEIO-AM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEFAULT/:domain/gravitee/users?q=gravitee*&page=0&size=25
 ----
 
-===== Response example
+==== Response example
 
+[source,curl]
 ----
 {
    "data":[
@@ -71,14 +68,14 @@ curl -H "Authorization: Bearer :accessToken" \
 }
 ----
 
-==== List users with a filter (filter)
+=== List users with a filter (filter)
 
 Lists all users that match the filter criteria (advanced search mode).
 
 When searching for users, you can create queries using link:https://tools.ietf.org/html/rfc7644#section-3.4.2.2[SCIM 2.0 query syntax^] to refine your search.
 The search query must contain at least one valid expression with an attribute name followed by an attribute operator and an optional value.
 
-NOTE: Multiple expressions may be combined using the logical operators (`and` / `or`). Operators `[`, `]` and `not` are not supported.
+NOTE: Multiple expressions can be combined using the logical operators (`and` / `or`). Operators `[`, `]` and `not` are not supported.
 
 NOTE: In AM Console, you do not need to specify the `filter` parameter, only the query value (for example `displayName eq "john doe"`).
 
@@ -104,7 +101,7 @@ The following operators are supported :
 |le       |less than or equal to  | If the attribute value is less than or equal to the operator value, there is a match. The actual comparison is dependent on the attribute type. For string attribute types, this is a lexicographical comparison, and for DateTime types, it is a chronological comparison.
 |===
 
-The following examples give guidance on how to use this feature. All the attribute names are based on the user model provided by link:/am/current/management-api/index.html[AM API^].
+The following examples give guidance on how to use this feature. All the attribute names are based on the user model provided by AM API.
 
 ----
 List disabled users
@@ -117,25 +114,24 @@ List users by first name
 -> firstName co "john"
 ----
 
-=== Create a new user
+== Create a new user
 
 You create users in a security domain.
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Users*.
+. In AM Console, slick *Settings > Users*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Give your user a *First name*, a *Last name*, an *Email* and a *Username* and click *SAVE*.
 . (Optional) You can also add/modify specific attributes relating to the user. This user metadata will be available in the user's profile.
 . You will be redirected to the created user's page.
 +
-image::am/current/graviteeio-am-userguide-um-create-user.png[]
+image::am/current/userguide-um-create-user.png[]
 
 NOTE: You can choose to enable `Pre-Registration`, to allow users to finish registering their own account.
 An email will be sent to the user with instructions.
 
-image::am/current/graviteeio-am-userguide-um-pre-registration-mail.png[]
+image::am/current/userguide-um-pre-registration-mail.png[]
 
-=== User roles
+== User roles
 
 You can assign roles directly from the user profile, or from the identity provider role mapping feature.
 
@@ -144,4 +140,4 @@ NOTE: If you are using both user roles and the identity provider role mapper fea
 NOTE: By default, users are stored in the pre-defined `Default Identity Provider`, which is available by default for each security domain.
 You can apply role mapping to your users.
 
-image::am/current/graviteeio-am-userguide-um-user-role-mapping.png[]
+image::am/current/userguide-um-user-role-mapping.png[]

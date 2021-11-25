@@ -1,24 +1,21 @@
 = Groups
 
-== Manage groups
+== List groups
 
-=== List groups
+In AM Console, list groups by clicking *Groups*.
 
-In AM Console, search for groups by clicking *Groups*.
-+
-image::am/current/graviteeio-am-userguide-um-search-groups.png[]
+image::am/current/userguide-um-search-groups.png[]
 
-=== Create a new group
+== Create a new group
 
 You create groups in a security domain.
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Groups*.
+. In AM Console, click *Settings > Groups*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Give your group a *Name* and click *SAVE*.
 . You will be redirected to the new group's page.
 
-=== Manage members
+== Manage members
 
 You can add an new member to your group as follows:
 
@@ -26,10 +23,10 @@ You can add an new member to your group as follows:
 . Select your group, and in the *Members* tab, click *Add members*.
 . Search for users by username, then click *Add*.
 +
-image::am/current/graviteeio-am-userguide-um-add-member.png[]
+image::am/current/userguide-um-add-member.png[]
 
 NOTE: Currently only users created by AM API or the SCIM protocol and external users who have already logged in can be found.
 
-=== Group roles
+== Group roles
 
 You can assign roles to a group in the *Roles* tab. Each member of this group will automatically have these roles after each authentication.
