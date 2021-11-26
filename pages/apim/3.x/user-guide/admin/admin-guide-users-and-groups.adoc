@@ -212,3 +212,27 @@ You can only add one member with the PRIMARY OWNER role to a group.
 +
 Any groups which include a PRIMARY OWNER member will now be available to add to your APIs.
 For more details, see link:/apim/3.x/apim_publisherguide_create_apis.html[Create APIs^].
+
+[[token_management]]
+== Manage user's tokens
+
+[label label-version]#New in version 3.14#
+
+From APIM 3.14, you can manage tokens:
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-admin-token-management.png[]
+
+Simply click on "Generate a token" button, fill the form to indicate the purpose of your token:
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-admin-token-management-form.png[]
+
+And then you can use it:
+
+image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-admin-token-management-example.png[]
+
+[NOTE]
+====
+
+This token is only displayed once, keep it preciously.
+
+====
