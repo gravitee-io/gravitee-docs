@@ -13,7 +13,7 @@ entries:
           - title: Access Management
             output: web
             url: /Reference/API/am-rest-api-doc.html
-      - title: Policy references
+      - title: Policy reference
         output: web
         folderitems:
           - title: API Key
@@ -154,6 +154,13 @@ entries:
           - title: XSLT
             output: web
             url: /Reference/policy/policy-xslt.html
+      - title: Gravitee Expression Language
+        output: web
+        folderitems:
+          - title: Expression Language reference
+            output: web
+            url: /Reference/expression-language.html
+        url: /Reference/expression-language.html
       - title: CLI reference
         output: web
         folderitems:

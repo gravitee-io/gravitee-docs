@@ -441,8 +441,7 @@ NOTE: All the permissions required to use AM API are described in the link:/am/c
 
 To manage roles and permissions:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. From the user menu at the top right, select *Global settings*.
+. In AM Console, from the user menu at the top right, select *Global settings*.
 . Click *Settings > Roles*, then create a role as described in the examples below.
 
 === Create the `REVIEWER_APPLICATION` role
@@ -454,7 +453,7 @@ Let's imagine we want to create a reviewer role, which allows a user to check if
 - Name : `REVIEWER_APPLICATION`
 - Description : `Read-only role`
 +
-image::am/current/graviteeio-am-adminguide-new-role.png[]
+image::am/current/adminguide-new-role.png[]
 
 . Click *CREATE*.
 
@@ -465,10 +464,10 @@ This allows the user to see the whole configuration of your application.
 Click *SAVE* to store the changes.
 
 .Configure
-image::am/current/graviteeio-am-adminguide-role-configure.png[]
+image::am/current/adminguide-role-configure.png[]
 
 === Result
 
 Go to your application *Administrative roles* settings section and add a new member with the `REVIEWER_APPLICATION` role. The user `Reviewer User` now has read access to your application.
 
-image::am/current/graviteeio-am-adminguide-role-member.png[]
+image::am/current/adminguide-role-member.png[]

@@ -1,10 +1,5 @@
----
-toc: true
----
-
-:page-liquid:
-
 = Publishing APIs with APIM
+:page-liquid:
 
 The following sections describe the different ways you can create and configure an API using APIM Console.
 
@@ -44,6 +39,6 @@ APIM frequently uses Ant notation for path matching:
 For details of how policies are defined and used in APIM, see also:
 
 * link:./plans-subscriptions.html[Plans and subscriptions^] to learn how to configure policies for API plans in APIM Console
-* link:./expression-language.html[Expression Language^] to learn more about using the Gravitee Expression Language with policies
+* link:/Reference/expression-language.html[Expression Language^] to learn more about using the Gravitee Expression Language with policies
 * link:../developer-guide/policies.html[Policies^] in the Developer Guide to learn how to create custom policies
 * link:../developer-guide/plugins.html[Plugins^] in the Developer Guide to learn how to deploy plugins (of which policies are one type)

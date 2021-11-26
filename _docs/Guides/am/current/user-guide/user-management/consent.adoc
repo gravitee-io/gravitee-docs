@@ -5,17 +5,16 @@ processes and have the necessary information to make informed decisions.
 
 If you want users to acknowledge and accept that they are giving an app access to their data, you can configure AM to display a consent page during the OAuth 2.0/OIDC authentication flow.
 
-NOTE: You can change the look and feel of the user consent form. See link:/am/current/am_userguide_user_management_forms.html[Custom forms^] for more information.
+NOTE: You can change the look and feel of the user consent form. See link:/Guides/am/current/user-guide/branding/pages.html[Custom forms^] for more information.
 
 == Revoke user consent
 
 You can view a list of applications for which each user has provided consent.
 To revoke access to an application:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Users*.
+. In AM Console, click *Settings > Users*.
 . Select the user and in the *Authorized Apps* tab, revoke the application.
 +
-image::am/current/graviteeio-am-userguide-um-consent.png[]
+image::am/current/userguide-um-consent.png[]
 
 NOTE: Revoking consent can also be done via the link:/am/current/management-api/3.5/index.html#tag/user[AM Management API^] and the link:/am/current/users/index.html#tag/Users[Authorization Gateway Server^].

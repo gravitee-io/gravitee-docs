@@ -1,6 +1,6 @@
 = OAuth 2.0
 
-link:https://tools.ietf.org/html/rfc6749[OAuth 2.0] is the industry-standard protocol for authorization, providing specific authorization flows for web applications, desktop applications, mobile phones and home devices.
+link:https://tools.ietf.org/html/rfc6749[OAuth 2.0^] is the industry-standard protocol for authorization, providing specific authorization flows for web applications, desktop applications, mobile phones and home devices.
 
 OAuth 2.0 specifies standard endpoints to interact with the resource owner (or the client when acting on its own behalf) to grant, introspect and revoke tokens used to access protected resources.
 
@@ -38,16 +38,16 @@ An authorization grant is a flow used by the client to obtain an access token.
 
 The specification defines four grant types:
 
-- link:/am/current/am_devguide_protocols_oauth2_overview.html#authorization_code[Authorization code]
-- link:/am/current/am_devguide_protocols_oauth2_overview.html#implicit[Implicit]
-- link:/am/current/am_devguide_protocols_oauth2_overview.html#resource_owner_password_credentials[Resource owner password credentials]
-- link:/am/current/am_devguide_protocols_oauth2_overview.html#client_credentials[Client credentials]
+- <<Authorization code>>
+- <<Implicit>>
+- <<Resource owner password credentials>>
+- <<Client credentials>>
 
 [NOTE]
 ====
-OAuth 2.0 also supports the use of link:/am/current/am_devguide_protocols_oauth2_overview.html#refresh_token[refresh tokens] to obtain new access tokens.
+OAuth 2.0 also supports the use of <<refresh tokens>> to obtain new access tokens.
 
-AM provides a mechanism for defining additional types. See link:/am/current/am_userguide_extension_grants.html[Extension grants^] for more information.
+AM provides a mechanism for defining additional types. See link:../../extension-grants/introduction.html[Extension grants^] for more information.
 
 How you use grant types mainly depends on your type of application.
 ====
@@ -133,9 +133,9 @@ This is typically used by clients to access resources about themselves rather th
 
 * For more information about this flow, see the link:https://tools.ietf.org/html/rfc6749#section-1.3.4[RFC^].
 
-=== Refresh token
+=== Refresh tokens
 
-A refresh token is used to get a new access token, prompting the client application to renew access to protected resources without displaying a login page to the resource owner.
+Refresh tokens are used to get a new access token, prompting the client application to renew access to protected resources without displaying a login page to the resource owner.
 
 ==== Additional information
 

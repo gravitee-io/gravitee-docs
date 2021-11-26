@@ -4,7 +4,7 @@
 
 When users log in to AM Console, they are listed in the *Users* section of the *Global settings* menu.
 
-image::am/current/graviteeio-am-adminguide-users.png[]
+image::am/current/adminguide-users.png[]
 
 If you select a user, you have access to detailed account information and will be able to manage the user's permissions and groups via with the *Administrative roles* and *Groups* sections.
 
@@ -17,13 +17,12 @@ In the example below, we will create a `FOO Team` group where you can put all me
 
 == Create the `FOO Team` group
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. From the user menu at the top right, select *Global settings*.
+. In AM Console, from the user menu at the top right, select *Global settings*.
 . Click *Settings > Groups*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Enter the details of the group.
 +
-image::am/current/graviteeio-am-adminguide-new-group.png[]
+image::am/current/adminguide-new-group.png[]
 
 . Click *CREATE*.
 
@@ -33,13 +32,13 @@ image::am/current/graviteeio-am-adminguide-new-group.png[]
 . Click the *Members* tab.
 . Add a user by clicking *+ Add members*.
 +
-image::am/current/graviteeio-am-adminguide-new-group-members.png[]
+image::am/current/adminguide-new-group-members.png[]
 
 == Add the group to an application
 
-Go to the Application you want to modify and click *Administrative roles*.
+Go to the application you want to modify and click *Administrative roles*.
 
-image::am/current/graviteeio-am-adminguide-application-group-members.png[]
+image::am/current/adminguide-application-group-members.png[]
 
 Now the members of the group section will have access to the Application with the group role permissions.
 

@@ -38,7 +38,7 @@ Configure the following:
 * Name
 * Path details to filter on: the path syntax for the flow in link:../introduction.html#ant-notation[Ant format^] and whether the path starts with or equals the value entered in *Path*.
 * One or methods to filter on (specify all which apply)
-* One or more conditions to filter on, in link:../expression-language.html[Expression Language format^] -- for example, a condition to filter on query parameters called `X-debug` would be written like this: `#request.params['X-debug'] != null`
+* One or more conditions to filter on, in link:/Reference/expression-language.html[Expression Language format^] -- for example, a condition to filter on query parameters called `X-debug` would be written like this: `#request.params['X-debug'] != null`
 
 . Click *SAVE*.
 
@@ -63,7 +63,7 @@ You can also configure dynamic properties by clicking *CONFIGURE DYNAMIC PROPERT
 
 image:apim/3.x/api-publisher-guide/design-studio/properties-tab.png[]
 
-When you add new policies to your API flows which include link:../expression-language.html#api[Expression Language^] fields as part of their configuration (such as the dynamic routing policy), you can retrieve and query property values with the `#properties` statement. For more details, see the <<example>> below.
+When you add new policies to your API flows which include link:/Reference/expression-language.html#api[Expression Language^] fields as part of their configuration (such as the dynamic routing policy), you can retrieve and query property values with the `#properties` statement. For more details, see the <<example>> below.
 
 ==== Dynamic properties
 

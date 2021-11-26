@@ -2,14 +2,13 @@
 
 == View the audit log
 
-The AM Console Audit log page displays all events which have taken place, including user authentication and administrative actions such as managing clients, identity providers, users, groups, roles and so on.
+The AM Console Audit log page displays all events which have taken place, including user authentication and administrative actions such as managing clients, identity providers, users, groups, and roles.
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Audit Log*.
+To view the audit log, in AM Console, click *Settings > Audit Log*.
 +
 image::am/current/graviteeio-am-userguide-logs-audit.png[]
 
-NOTE: All of this information can also be retrieved with the link:/am/current/management-api/index.html#tag/audit[AM API].
+NOTE: All of this information can also be retrieved with link:/am/current/management-api/index.html#tag/audit[AM API^].
 
 == Event types
 

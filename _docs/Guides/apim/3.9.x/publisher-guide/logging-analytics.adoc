@@ -1,8 +1,4 @@
 ---
-product: API Management
-toc: true
-guide: Publisher Guide
-sidebar: apim_3_x_sidebar
 title: Logging and analytics
 ---
 
@@ -112,7 +108,7 @@ ifeval::[{{ site.products.apim._3x.version }} >= 3.6.0]
 +
 image:apim/3.x/api-publisher-guide/analytics/logs-configure-3-6.png[]
 
-. Specify all logging conditions which apply in link:./expression-language.html[Gravitee Expression Language^]. You can restrict logging by:
+. Specify all logging conditions which apply in link:/Reference/expression-language.html[Gravitee Expression Language^]. You can restrict logging by:
 * application or plan
 * request header or query parameter
 * HTTP method

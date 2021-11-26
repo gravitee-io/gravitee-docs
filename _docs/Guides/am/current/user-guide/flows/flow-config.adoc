@@ -11,9 +11,9 @@ AM includes four flow types:
 * consent
 * register
 
-image::am/current/graviteeio-am-userguide-policies.png[]
+image::am/current/userguide-flows.png[]
 
-NOTE: From version 3.10.0, it is possible to add new flows and apply run conditions to each flow, using Expression Language. If multiple flows have a valid condition (or have an empty one), all these flows are executed.
+NOTE: From version 3.10.0, it is possible to add new flows and apply run conditions to each flow, using link:/Reference/expression-language.html[Gravitee Expression Language^]. If multiple flows have a valid condition (or have an empty one), all these flows are executed.
 
 == All flow
 
@@ -21,7 +21,7 @@ The *ALL* flow is executed on each incoming request for one of the login, consen
 
 == Login flow
 
-The *LOGIN* flow allows you to fetch more information or validate incoming data during the End-User authentication phase.
+The *LOGIN* flow allows you to fetch more information or validate incoming data during the end user authentication phase.
 
 === Pre Login
 
@@ -29,8 +29,8 @@ The Pre step allows you to fetch more information before displaying the Login HT
 
 The following attributes are available while processing the policy chain:
 
-* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
-* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
+* <<Request>>: current HTTP Request
+* <<Client>>: the application
 
 === Post Login
 
@@ -38,13 +38,13 @@ Post End-User Consent happens after the user has given his consent to the proces
 
 The following attributes are available while processing the policy chain :
 
-* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
-* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
-* link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
+* <<Request>>: current HTTP Request
+* <<Client>>: the application
+* <<User>>: the end user
 
 == Consent flow
 
-The *CONSENT* flow allows you to fetch more information or validate incoming data during the End-User consent phase.
+The *CONSENT* flow allows you to fetch more information or validate incoming data during the end user consent phase.
 This flow happens after the user has logged in.
 
 === Pre End-User Consent
@@ -53,9 +53,9 @@ Pre End-User Consent allows you to fetch more information or validate incoming d
 
 The following attributes are available while processing the policy chain:
 
-* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
-* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
-* link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
+* <<Request>>: current HTTP Request
+* <<Client>>: the application
+* <<User>>: the end user
 * link:/am/current/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request[Authorization Request]: OAuth 2.0 Authorization Request
 
 === Post End-User Consent
@@ -64,14 +64,14 @@ Post End-User Consent happens after the user has given his consent to the proces
 
 The following attributes are available while processing the policy chain :
 
-* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request (with form attributes : scope approvals)
-* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
-* link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
-* link:/am/current/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request[Authorization Request]: OAuth 2.0 Authorization Request
+* <<Request>>: current HTTP Request (with form attributes : scope approvals)
+* <<Client>>: the application
+* <<User>>: the end user
+* <<Authorization Request>>: OAuth 2.0 Authorization Request
 
 == Register flow
 
-The *REGISTER* flow allows you to fetch more information or validate incoming data during the End-User registration phase.
+The *REGISTER* flow allows you to fetch more information or validate incoming data during the end user registration phase.
 
 === Pre End-User Registration
 
@@ -79,8 +79,8 @@ Pre End-User Registration step is executed before displaying the User Consent HT
 
 The following attributes are available while processing the policy chain:
 
-* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
-* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
+* <<Request>>: current HTTP Request
+* <<Client>>: the application
 
 === Post End-User Registration
 
@@ -88,9 +88,9 @@ Post End-User Registration step is executed once the user submit the registratio
 
 The following attributes are available while processing the policy chain :
 
-* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
-* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
-* link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
+* <<Request>>: current HTTP Request
+* <<Client>>: the application
+* <<User>>: the end user
 
 == Execution context information
 

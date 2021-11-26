@@ -360,8 +360,8 @@ entries:
           url: /Guides/am/current/user-guide/user-management/consent.html
         - title: Password policy
           output: web
-          url: /Guides/am/current/user-guide/user-management/password_policy.html
-        - title: Self-Service account mgmt
+          url: /Guides/am/current/user-guide/user-management/password-policy.html
+        - title: Self-service account management
           output: web
           url: /Guides/am/current/user-guide/user-management/self-service-account.html
       - title: Session management
@@ -400,7 +400,7 @@ entries:
           url: /Guides/am/current/user-guide/flows/introduction.html
         - title: Flow configuration
           output: web
-          url: /Guides/am/current/user-guide/flows/extension-points.html
+          url: /Guides/am/current/user-guide/flows/flow-config.html
       - title: Alerts
         output: web
         subfolderitems:
@@ -482,22 +482,22 @@ entries:
                         url: /Guides/am/current/developer-guide/extension-grants/introduction.html
                       - title: JWT Bearer
                         output: web
-                        url: /Guides/am/current/developer-guide/extension-grants/jwt_bearer.html
+                        url: /Guides/am/current/developer-guide/extension-grants/jwt-bearer.html
           - title: OpenID Connect
             output: web
             subfolderitems:
               - title: Overview
                 output: web
-                url: /Guides/am/current/am_devguide_protocols_oidc_overview.html
+                url: /Guides/am/current/developer-guide/protocols/oidc.html
           - title: UMA 2.0
             output: web
             subfolderitems:
               - title: Overview
                 output: web
-                url: /Guides/am/current/am_devguide_protocols_uma2_overview.html
+                url: /Guides/am/current/developer-guide/protocols/uma2.html
           - title: SCIM 2.0
             output: web
             subfolderitems:
               - title: Overview
                 output: web
-                url: /Guides/am/current/am_devguide_protocols_scim_overview.html
+                url: /Guides/am/current/developer-guide/protocols/scim.html

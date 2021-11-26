@@ -1,8 +1,4 @@
 = Notification channels
-:page-sidebar: am_3_x_sidebar
-:page-permalink: am/current/am_userguide_alerts_notifications.html
-:page-folder: am/user-guide
-:page-layout: am
 
 AM provides the most common notification channels out of the box, including SMTP, webhooks and Slack.
 These notification channels are called _notifiers_.
@@ -11,14 +7,11 @@ These notification channels are called _notifiers_.
 
 To create a notification channel:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Alerts > Notifiers*.
-. In the Notifiers page, click the plus icon image:icons/plus-icon.png[role="icon"].
+. In AM Console, click *Alerts > Notifiers*.
+. In the *Notifiers* page, click the plus icon image:icons/plus-icon.png[role="icon"].
 . Choose your notifier type and click *Next*.
 . Configure your notifier and click *Save*.
 
 == Notification channel types
 
-- link:/am/current/am_userguide_alerts_notifications_email.html[Managing email notification channels^]
-- link:/am/current/am_userguide_alerts_notifications_webhook.html[Managing webhook notification channels^]
-- link:/am/current/am_userguide_alerts_notifications_slack.html[Managing Slack notification channels^]
+See the following sections for details of the notification channel types.

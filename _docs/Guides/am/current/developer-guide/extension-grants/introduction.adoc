@@ -1,14 +1,11 @@
 = Extension grants
-:page-sidebar: am_3_x_sidebar
-:page-permalink: am/current/am_userguide_extension_grants.html
-:page-folder: am/user-guide
-:page-layout: am
+:page-toc: false
 
 OAuth 2.0 defines standard grant types for token endpoints, such as _password_, _authorization_code_ and _refresh_token_.
 
 Extension grants are a way to add support for non-standard token issuance scenarios like token exchange, delegation or
 custom credentials.
 
-AM allows you to extend available grants for an application by adding custom extension grants.
+AM allows you to extend available grants for an application by adding custom extension grants:
 
-* link:/am/current/am_userguide_extension_grants_jwt_bearer.html[JWT Bearer]
+* link:./jwt-bearer.html[JWT Bearer]

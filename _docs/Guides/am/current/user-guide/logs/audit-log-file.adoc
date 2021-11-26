@@ -12,16 +12,15 @@ AM versions from 3.6 include a file reporter for sending audit logs to a file, w
 
 To create a File reporter for a domain:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Click *Settings > Audit Log*.
+. In AM Console, click *Settings > Audit Log*.
 . Click the settings icon image:icons/am-settings-icon.png[role="icon"].
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 +
-image::am/current/graviteeio-am-adminguide-add-reporter.png[]
+image::am/current/userguide-add-reporter.png[]
 
 . Select *File* as the reporter type and enter the reporter name and file name.
 +
-image::am/current/graviteeio-am-adminguide-file-reporter.png[]
+image::am/current/userguide-file-reporter.png[]
 
 == Example: ingest audit logs into ElasticSearch
 
@@ -186,7 +185,7 @@ output {
 
 NOTE: The variable `gravitee_audit_path` must match the `reporters.file.directory` value defined in the `gravitee.yml` file.
 
-Finally, you can start Logstash:
+Finally, start Logstash:
 
 [source,bash]
 ----

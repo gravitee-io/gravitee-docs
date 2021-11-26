@@ -22,16 +22,14 @@ The following table lists the available alert types.
 | Too many user registrations |too_many_user_registrations| Alert when the number of user registrations is abnormally high.
 |===
 
-NOTE: For each alert type, you can select the link:/am/current/am_userguide_alerts_notifications.html[notification channels^] you want to use to send the events.
+NOTE: For each alert type, you can select the link:/Guides/am/current/user-guide/alerts/notifications.html[notification channels^] you want to use to send the events.
 
 == Configure alerts
 
 You can override the default configuration for each alert in the AM API `gravitee.yml` file.
 
+[source,json]
 ----
-vi GRAVITEE_AM_HOME/am-management-api/config/gravitee.yml
-
-...
 # Gravitee.io AM Alerts managed by the Alert Engine module
 alerts:
   too_many_login_failures:
@@ -45,5 +43,4 @@ alerts:
     window: 600
     # severity of the alert (INFO, WARNING, CRITICAL). Default WARNING.
     severity: WARNING
-...
 ----

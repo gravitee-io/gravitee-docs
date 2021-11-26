@@ -1,8 +1,4 @@
 = OpenID Connect
-:page-sidebar: am_3_x_sidebar
-:page-permalink: am/current/am_devguide_protocols_oidc_overview.html
-:page-folder: am/dev-guide/protocols/oidc
-:page-layout: am
 
 link:https://openid.net/connect[OpenID Connect^] allows clients of all types, including web-based, mobile and JavaScript clients, to request and receive information about authenticated sessions and end users.
 
@@ -40,9 +36,9 @@ The authorization code flow is suitable for clients that can securely maintain a
 === Implicit flow
 
 WARNING: The OAuth standard now discourages the use of an implicit grant to request access tokens from Javascript applications.
-You should consider using the link:/am/current/am_devguide_protocols_oauth2_overview.html#authorization_code[Authorization code^] flow with a PKCE extension for all your applications.
+You should consider using the link:./oauth2/introduction.html#authorization_code[Authorization code^] flow with a PKCE extension for all your applications.
 
-When using the implicit flow, all tokens are returned from the link:/am/current/am_devguide_protocols_oauth2_overview.html#authorization_endpoint[authorization endpoint^]. The link:/am/current/am_devguide_protocols_oauth2_overview.html#token_endpoint[token endpoint^] is not used.
+When using the implicit flow, all tokens are returned from the link:./oauth2/introduction.html#authorization_endpoint[authorization endpoint^]. The link:./oauth2/introduction.htnl#token_endpoint[token endpoint^] is not used.
 
 The implicit flow is mainly used by clients implemented in a browser using a scripting language.
 The access token and ID token are returned directly to the client, which may expose them to the end user and applications that have access to the end user's User Agent.
@@ -52,10 +48,10 @@ The authorization server does not perform client authentication.
 
 === Hybrid flow
 
-When using the Hybrid flow, some tokens are returned from the link:/am/current/am_devguide_protocols_oauth2_overview.html#authorization_endpoint[authorization endpoint^] and others are returned from the link:/am/current/am_devguide_protocols_oauth2_overview.html#token_endpoint[token endpoint^].
+When using the Hybrid flow, some tokens are returned from the link:/am/current/am_devguide_protocols_oauth2_overview.html#authorization_endpoint[authorization endpoint^] and others are returned from the link:./oauth2/introduction.html#token_endpoint[token endpoint^].
 Hybrid is used by clients who want tokens separately from front channel and back channel.
 
-* Hybrid flow URL: `https://am-gateway/{domain}/oauth/authorize?response_type=code+id_token|code+token|code+id_token+token&client_id=web-app&redirect_uri=https://web-app/callback&scope=openid`
+* Hybrid flow URL: `\https://am-gateway/{domain}/oauth/authorize?response_type=code+id_token|code+token|code+id_token+token&client_id=web-app&redirect_uri=https://web-app/callback&scope=openid`
 
 == ID token
 

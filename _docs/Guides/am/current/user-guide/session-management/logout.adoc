@@ -18,17 +18,17 @@ NOTE: You can define list of allowed URLs where the user will be redirected afte
 
 Single logout let your end users sign out of both their Gravitee.io AM session and the social identity provider (configured in your application) with a single action.
 
-To enable single logout feature :
+To enable single logout:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
-. Select your application and click *Settings > General*.
+. In AM Console, click *Applications* and select your application.
+. Click *Settings > General*.
 . Switch on *Single Sign Out* and click *SAVE*.
 
-Call the default logout endpoint and your users will be logout at both places.
+NOTE: If you call the default logout API endpoint, your users will be logged out in both places.
 
 === Limitations
 
-Currently only the following identity providers are compatible with the Single Sign Out feature :
+Currently only the following identity providers are compatible with the *Single Sign Out* feature:
 
 - Certified OpenID Connect provider
 - Azure AD
