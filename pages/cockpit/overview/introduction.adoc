@@ -16,9 +16,9 @@ image::cockpit/cockpit-dashboard.png[]
 
 Cockpit is based on a hierarchy of three entity types:
 
-* *Account*: at the top level, your company. There is only one account.
-* *Organization*: at the second level, a logical part of your company in the way that makes most sense in your particular setup, for example a region or business unit. There can be multiple organizations.
-* *Environment*: at the third level, an environment in an IT infrastructure, such as development or production. There can be multiple environments.
+* *Account*: at the top level, your company. One user can have multiple accounts.
+* *Organization*: at the second level, a logical part of your company in the way that makes most sense in your particular setup, for example a region or business unit. There can be multiple organizations linked to one account.
+* *Environment*: at the third level, an environment in an IT infrastructure, such as development or production. There can be multiple environments linked to one organization.
 
 image::cockpit/entity-hierarchy.png[]
 
