@@ -27,12 +27,6 @@ entries:
     - title: Install in Kubernetes
       output: web
       url: /Guides/ae/current/installation-guide/kubernetes.html
-    - title: Internal API
-      output: web
-      url: /Guides/ae/current/installation-guide/internal-api.html
-    - title: Metrics
-      output: web
-      url: /Guides/ae/current/installation-guide/metrics.html
     - title: Upgrade Guide
       output: web
       url: /Guides/ae/current/installation-guide/upgrade.html
@@ -42,6 +36,12 @@ entries:
       - title: Configuring AE
         output: web
         url: /Guides/ae/current/configuration-guide/introduction.html
+      - title: Internal API
+        output: web
+        url: /Guides/ae/current/configuration-guide/internal-api.html
+      - title: Metrics
+        output: web
+        url: /Guides/ae/current/configuration-guide/metrics.html
   - title: User Guide
     output: web
     folderitems:
