@@ -94,12 +94,6 @@ If you select this option, API Designer updates the Swagger documentation with d
 +
 image:cockpit/api-designer-attributes.png[]
 
-=== Try out your operation
-
-In the right-hand pane, you can expand an operation to view the details of the spec, and click *Try it out* to test the operation.
-
-You need to enter any required attribute values before you execute the operation (such as an ID for `PUT` operations), and you can also enter values for optional parameters, such as pagination values.
-
 == Update the settings
 
 You can specify which type of case to use for paths, schema attributes, and parameters. Cockpit automatically converts names based on the case you specify.
