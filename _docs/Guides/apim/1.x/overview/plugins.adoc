@@ -7,7 +7,7 @@
 _Plugins_ are additional components that can be _plugged into_ the Gateway and / or the Management API.
 _Plugins_ can specialized component's behavior to exactly fit your needs and your technical constraints.
 
-They follow a given directory structure convention, look at the <<apim_devguide_plugins.adoc, Developer Guide>>
+They follow a given directory structure convention, look at the link:/apim/1.x/apim_devguide_plugins.html[Developer Guide^]
 to have more information about it.
 
 When using Gravitee.io, you must be face to multiple types of _plugins_, in particular:
@@ -39,7 +39,7 @@ Policy can be treated like a _proxy controller_ by guaranteeing if a given busin
 
 Good examples for a policy are:
 
-* Authorization using an API key (see the <<apim_policies_apikey, api-key policy>>)
+* Authorization using an API key (see the api-key policy)
 * Applying header/query params transformations
 * Applying rate limiting or quota to avoid API flooding.
 

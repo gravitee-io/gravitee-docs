@@ -1,25 +1,25 @@
 = AM Management
+:page-liquid:
+
+{% assign version = site.products.am.version | split: "." %}
+{% capture current_version %}{{ version[0] }}.{{ version[1] }}{% endcapture %}
 
 == Overview
 
 AM API exposes a complete Restful API accessible to anyone wanting to script some part of the administration.
 
-You can access the online API reference or the OpenAPI specification:
+You can access the online API reference or the OpenAPI specification by version. For the:
 
-* 3.13 -- link:/am/current/management-api/3.13/index.html[online reference] - link:/am/current/management-api/3.13/swagger.json[OpenAPI spec]
-* 3.12 -- link:/am/current/management-api/3.12/index.html[online reference] - link:/am/current/management-api/3.12/swagger.json[OpenAPI spec]
-* 3.11 -- link:/am/current/management-api/3.11/index.html[online reference] - link:/am/current/management-api/3.11/swagger.json[OpenAPI spec]
-* 3.10 -- link:/am/current/management-api/3.10/index.html[online reference] - link:/am/current/management-api/3.10/swagger.json[OpenAPI spec]
-* 3.9 -- link:/am/current/management-api/3.9/index.html[online reference] - link:/am/current/management-api/3.9/swagger.json[OpenAPI spec]
-* 3.8 -- link:/am/current/management-api/3.8/index.html[online reference] - link:/am/current/management-api/3.8/swagger.json[OpenAPI spec]
-* 3.7 -- link:/am/current/management-api/3.7/index.html[online reference] - link:/am/current/management-api/3.7/swagger.json[OpenAPI spec]
-* 3.6 -- link:/am/current/management-api/3.6/index.html[online reference] - link:/am/current/management-api/3.6/swagger.json[OpenAPI spec]
-* 3.5 -- link:/am/current/management-api/3.5/index.html[online reference] - link:/am/current/management-api/3.5/swagger.json[OpenAPI spec]
-* 3.4 -- link:/am/current/management-api/3.4/index.html[online reference] - link:/am/current/management-api/3.4/swagger.json[OpenAPI spec]
-* 3.3 -- link:/am/current/management-api/3.3/index.html[online reference] - link:/am/current/management-api/3.3/swagger.json[OpenAPI spec]
-* 3.2 -- link:/am/current/management-api/3.2/index.html[online reference] - link:/am/current/management-api/3.2/swagger.json[OpenAPI spec]
-* 3.1 -- link:/am/current/management-api/3.1/index.html[online reference] - link:/am/current/management-api/3.1/swagger.json[OpenAPI spec]
-* 3.0 -- link:/am/current/management-api/3.0/index.html[online reference] - link:/am/current/management-api/3.0/swagger.json[OpenAPI spec]
+* Online reference, see https://docs.gravitee.io/am/current/management-api/{{ current_version }}/index.html
+* OpenAPI reference, see https://docs.gravitee.io/am/current/management-api/{{ current_version }}/swagger.json
+
+[TIP]
+====
+To see earlier versions, replace the version number in the URL. For example:
+
+* Online reference for 3.0: https://docs.gravitee.io/am/current/management-api/3.0/index.html
+* OpenAPI spec for 3.0: https://docs.gravitee.io/am/current/management-api/3.0/swagger.json
+====
 
 == Authorization
 

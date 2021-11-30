@@ -5,14 +5,17 @@
         <li class="breadcrumb-item"><a href="{{ "/" | relative_url }}">Home</a></li>
 
       {% if doc_cat == "Guides" %}
-
-        <li class="breadcrumb-item-nocaps">{{doc_product | upcase}}</li>
+       {% if doc_product == "cockpit" %}
+         <li class="breadcrumb-item-nocaps">Cockpit</li>
+       {% else %}
+         <li class="breadcrumb-item-nocaps">{{doc_product | upcase}}</li>
+       {% endif %}
         <li class="breadcrumb-item-nocaps">{{doc_version}}</li>
         {% if doc_guide != nil %}
         <li class="breadcrumb-item">{{doc_guide | replace: '-', ' ' }}</li>
         {% if doc_subguide != nil %}
 
-        <li class="breadcrumb-item-nocaps">{{doc_subguide | replace: '-', ' ' }}</li>
+        <li class="breadcrumb-item">{{doc_subguide | replace: '-', ' '}}</li>
 
         {% endif %}
 

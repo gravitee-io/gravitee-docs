@@ -1,6 +1,7 @@
 body {
     font-family: Libre Franklin, IBM Plex Sans, sans-serif;
     color: #111c4e;
+    background-color: #020634;
 }
 
 ol.arabic li{
@@ -31,9 +32,6 @@ div.ulist li{
     padding-right: 0px;
 }
 
-.col-md-6{
-    width: 60%;
-}
 
 .doc-sidebar-menu{
     padding-left: 40px;
@@ -103,7 +101,7 @@ div.ulist li{
   background: url(../images/headline-img.jpg) repeat; }
 
 .bg-cover3 {
-  background: url(../images/footer-img.jpg) 50% no-repeat, linear-gradient(0deg, #0D65B0, #062e51); }
+  background: url(../images/background-img.jpg) 50% no-repeat, linear-gradient(180deg, rgba(4, 0, 44, 1.0),rgba(0, 255, 255, 1.0)); }
 
 .bg-color4 {
     background-color: #000535;
@@ -128,10 +126,11 @@ div.ulist li{
 }
 
 .search-demo-container .gv-input{
+    display: flex;
     border-radius: 100px;
     font-size: 14px;
     background: #fff;
-    width: 600px;
+    max-width: 400px;
     height: 50px;
     border: none;
 }
@@ -276,7 +275,6 @@ div.paragraph {
     min-height: 60px;
     background-color: #1ecad3;
     position: relative;
-    margin-top: 50px;
     padding-left: 10px;
     padding-right: 10px;
 }

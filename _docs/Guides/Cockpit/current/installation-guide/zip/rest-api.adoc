@@ -36,8 +36,8 @@ NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#pr
 [source,bash]
 [subs="attributes"]
 $ curl -L https://download.gravitee.io/graviteeio-cockpit/components/gravitee-cockpit-management-api/gravitee-cockpit-management-api-{{ site.products.cockpit.version }}.zip -o gravitee-cockpit-management-api-{{ site.products.cockpit.version }}.zip
-+
-Unpack the archive and place the folders in the required location.
+
+. Unpack the archive and place the folders in the required location.
 +
 [source,bash]
 [subs="attributes"]

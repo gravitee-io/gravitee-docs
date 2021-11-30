@@ -20,8 +20,8 @@ Cockpit UI is compatible with the two most recent versions of modern internet br
 [source,bash]
 [subs="attributes"]
 $ curl -L https://download.gravitee.io/graviteeio-cockpit/components/gravitee-cockpit-webui/gravitee-cockpit-webui-{{ site.products.cockpit.version }}.zip -o gravitee-cockpit-webui-{{ site.products.cockpit.version }}.zip
-+
-Unpack the archive and place the folders in the required location.
+
+. Unpack the archive and place the folders in the required location.
 +
 [source,bash]
 [subs="attributes"]
