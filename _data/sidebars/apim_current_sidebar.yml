@@ -218,8 +218,8 @@ entries:
           - title: Create APIs
             output: web
             url: /Guides/apim/current/publisher-guide/create-api.html
-          subfolders:
-              - title: Plans & Subscriptions
+            subfolders:
+              - title: Plans & subscriptions
                 output: web
                 subfolderitems:
                   - title: Introduction
@@ -408,15 +408,15 @@ entries:
           - title: Introduction
             output: web
             url: /Guides/apim/current/kubernetes/introduction.html
-          - title: Quick Start
+          - title: Quick start
             output: web
             url: /Guides/apim/current/kubernetes/quick-start.html
-          - title: How to Install
+          - title: How to install
             output: web
             url: /Guides/apim/current/kubernetes/installation.html
-          - title: Custom Resources
+          - title: Custom resources
             output: web
             url: /Guides/apim/current/kubernetes/custom-resources.html
-          - title: Admission Hook
+          - title: Admission Webhook
             output: web
             url: /Guides/apim/current/kubernetes/admission-hook.html
