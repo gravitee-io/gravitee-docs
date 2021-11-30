@@ -27,7 +27,7 @@ div.ulist li{
 }
 
 .col-md-2{
-    max-width 15%;
+    width 15%;
     padding-right: 0px;
 }
 
@@ -36,8 +36,7 @@ div.ulist li{
 }
 
 .doc-sidebar-menu{
-    width: 200px; 
-    float: right;
+    padding-left: 40px;
 };
 
 .navbar-inverse {
@@ -467,10 +466,6 @@ span.icon>.fa {
     vertical-align: middle;
 }
 
-table {
-    background-color: transparent;
-}
-
 caption {
     padding-top: 8px;
     padding-bottom: 8px;
@@ -482,7 +477,7 @@ th {
 }
 
 table {
-    max-width: 100%;
+    background-color: transparent;
     margin-bottom: 20px;
     border: 1px solid #dedede;
     hyphens: none;

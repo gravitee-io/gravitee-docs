@@ -1,8 +1,4 @@
----
-product: Access Management
-toc: true
-title: Add Custom Claims to Tokens
----
+= Add custom claims to tokens
 
 You can add custom claims to your access tokens or ID tokens.
 
@@ -17,11 +13,11 @@ image::am/current/graviteeio-am-quickstart-tokens-custom-claims.png[]
 +
 You can now request your tokens to retrieve your custom claims.
 
-NOTE: The mapping here uses the link:/Guides/APIM/current/publisher-guide/expression-language.html[Gravitee Expression Language^] to dynamically add custom data. You can also use raw values to add more static information.
+NOTE: The mapping here uses the link:/Reference/expression-language.html[Gravitee Expression Language^] to dynamically add custom data. You can also use raw values to add more static information.
 
 image::am/current/graviteeio-am-quickstart-tokens-custom-claims-info.png[]
 
-To retrieve claims from the link:./profile-information.html[User Profile^], use the following link:/Guides/APIM/current/publisher-guide/expression-language.html[Gravitee Expression Language^] formats: +
+To retrieve claims from the link:./profile-information.html[User Profile^], use the following link:/Reference/expression-language.html[Gravitee Expression Language^] formats: +
 `{#context.attributes['user']['claims']['preferred_username']}` for attributes under the `additionalInformation` dict +
 - or - +
 `{#context.attributes['user']['roles']}` for the `roles` attribute (array) +

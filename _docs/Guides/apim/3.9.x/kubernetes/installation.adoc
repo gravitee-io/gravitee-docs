@@ -1,9 +1,4 @@
----
-product: API Management
-guide: Installation Guide
-title: How to deploy the Kubernetes plugin
----
-
+= How to deploy the Kubernetes plugin
 :page-liquid:
 
 The Kubernetes plugin comes with three CRDs that must be created using `kubectl`:

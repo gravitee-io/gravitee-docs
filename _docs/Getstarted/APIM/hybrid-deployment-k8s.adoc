@@ -1,13 +1,12 @@
 ---
 tags: [APIM Tutorials]
-toc: true
 title: Deploy a hybrid architecture in Kubernetes
 keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 ---
 
 This section describes how to install an APIM hybrid deployment using Kubernetes Helm charts.
 
-NOTE: We assume familiarity with Google Cloud Platform (GCP), Kubernetes (K8s) and Helm. We also recommend you read the link:/apim/curent/apim_installguide_hybrid_deployment.html[Introduction to APIM hybrid deployment^] first.
+NOTE: We assume familiarity with Google Cloud Platform (GCP), Kubernetes (K8s) and Helm. We also recommend you read the link:/Guides/apim/current/installation-guide/hybrid-deployment.html[Introduction to APIM hybrid deployment^] first.
 
 == Target architecture
 
@@ -25,7 +24,7 @@ In this schema, we can see that:
 - Redis is used to manage rate-limit and quota counters within the Gateway cluster
 
 NOTE: Before you continue, keep in mind that the bridge Gateway (the red box in the left-hand region of the schema) is simply an APIM Gateway instance with additional capabilities.
-This is essential to understanding how we are deploying the bridge. For more information, see link:apim_installguide_hybrid_deployment.html[APIM hybrid deployment^].
+This is essential to understanding how we are deploying the bridge. For more information, see link:/Guides/apim/current/installation-guide/hybrid-deployment.html[APIM hybrid deployment^].
 
 == Deploying with Helm
 
@@ -43,6 +42,7 @@ NOTE: The following examples use the names in the illustration above, but you ca
 
 . The first step is to initialize the cluster with some prerequisites:
 +
+[source,bash]
 ----
 > gcloud container clusters get-credentials hybrid-mgmt-eu --zone=europe-west1-b
 
@@ -57,6 +57,7 @@ NOTE: The following examples use the names in the illustration above, but you ca
 ----
 . Deploy the management APIM instance, which includes components APIM Console, APIM Portal, APIM API and the bridge Gateway (which will be used as a bridge between the two clusters):
 +
+[source,bash]
 ----
 > helm install — name graviteeio-apim3 — namespace graviteeio \
  -f values-bridge-http-server.yaml \
@@ -66,6 +67,7 @@ NOTE: The following examples use the names in the illustration above, but you ca
 +
 The `values-hybrid-management-eu.yaml` file looks like this:
 +
+[source,bash]
 ----
 mongo:
     uri: mongodb+srv://xxxxxx:xxxxx@demo.xxxxx.gcp.mongodb.net/gio-apim-hybrid?retryWrites=true&w=majority
@@ -151,13 +153,14 @@ From this file, we can see that:
 
 - the Gateway is not exposed through the ingress controller (it is not accepting API calls for the bridge Gateway)
 - we have enabled the bridge service for the Gateway and declared a new ingress to expose it to remote clusters
-
++
 image::apim/3.x/installation/hybrid/hybrid_deployment_ingress.png[]
 
 === Deploy the Gateway cluster
 
 . Again, we need to initialize the cluster with some prerequisites:
 +
+[source,bash]
 ----
 > gcloud container clusters get-credentials hybrid-gw-eu --zone=europe-west2-b
 // Create namespace
@@ -170,6 +173,7 @@ image::apim/3.x/installation/hybrid/hybrid_deployment_ingress.png[]
 
 . Now we deploy APIM, but only the APIM Gateway component:
 +
+[source,bash]
 ----
 > helm install — name graviteeio-apim3 — namespace graviteeio \
  -f values-bridge-http-client.yaml \
@@ -179,6 +183,7 @@ image::apim/3.x/installation/hybrid/hybrid_deployment_ingress.png[]
 +
 The `values-hybrid-management-gw-eu.yaml` file looks like this:
 +
+[source,bash]
 ----
 mongo:
     uri: mongodb+srv://xxxxxx:xxxxx@demo.xxxxx.gcp.mongodb.net/gio-apim-hybrid?retryWrites=true&w=majority
@@ -219,11 +224,12 @@ From this file, we can see that:
 
 - All the management components have been disabled to prevent their deployment -- APIM API, APIM Console and APIM Portal
 - We have enabled `http` management mode for the Gateway, and we use this link to mount all the required information in the Gateway to be able to process API calls
-
++
 image::apim/3.x/installation/hybrid/hybrid_deployment_http.png[]
 
 If you have a look at the Gateway pod logs, you will see something like this:
 
+[source,bash]
 ----
 08:27:29.394 [graviteeio-node] [] INFO  i.g.g.r.p.RepositoryPluginHandler - Register a new repository plugin: repository-bridge-http-client [io.gravitee.repository.bridge.client.HttpBridgeRepository]
 08:27:29.402 [graviteeio-node] [] INFO  i.g.g.r.p.RepositoryPluginHandler - Repository [MANAGEMENT] loaded by http
@@ -235,4 +241,4 @@ We can now open up APIM Console and see our two Gateways running:
 
 image::apim/3.x/installation/hybrid/hybrid_deployment_gateways.png[]
 
-Success! Your hybrid deployment is now up and running and ready to manage link:apim_quickstart_publish_ui.html[your first API].
+Success! Your hybrid deployment is now up and running and ready to manage link:./api-publisher-ui.html[your first API^].

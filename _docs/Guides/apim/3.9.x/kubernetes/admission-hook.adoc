@@ -1,10 +1,4 @@
-[[apim-kubernetes-admission-hook]]
----
-product: API Management
-guide: Installation Guide
-title: Admission WebHooks
----
-
+= Admission WebHooks
 :page-liquid:
 
 The three custom resources provided with the Kubernetes plugin can be referenced by each other. Because the Kubernetes plugin is notified once the changes are persisted, consistency issues may appear. For example, removing a plugin currently used by a service will prevent the service from being deployed if the Gateway restarts. To avoid this kind of issue, an https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/[admission WebHook] has been included.

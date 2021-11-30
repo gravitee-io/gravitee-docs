@@ -1,0 +1,45 @@
+= Create a plan
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, documentation, manual, guide, reference, api, CGU, GCU
+
+There are two ways to create a plan in APIM.
+
+== Create a plan when you create your API
+
+You can create a plan as part of creating an API.
+
+image::apim/3.10/create-api-plan.png[]
+
+Learn more about creating plans using this method in link:/apim/3.x/apim_publisherguide_create_apis.html[Create APIs^].
+
+TIP: Plans you create as part of the API creation process are more limited in scope than plans created using the method below.
+You can use this method to get up and running quickly, then go back and update the plan later if needed.
+
+== Create or update a plan for an existing API
+
+You can select an existing API and create or update plans for it.
+
+image::apim/3.10/create-existing-plan.png[]
+
+To create or update a plan for an existing API:
+
+. Click **APIs** and select your API.
+. Click *Portal > Plans*.
+. Click the edit icon image:icons/edit-icon.png[role="icon"] on an existing plan, or click the plus icon image:icons/plus-icon.png[role="icon"] at the bottom of the **Plans** page.
+. On the **Define** page, enter the plan definition:
++
+image::apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-define.png[]
+  .. Enter a name and description.
+  .. In **Characteristics**, enter labels you want to use to tag the plan.
+  .. Select a page containing the general conditions of use.
++
+[NOTE]
+====
+You must create the page first.
+Learn more about link:/apim/3.x/apim_publisherguide_plan_general_conditions.html#create_a_general_conditions_page[creating a general conditions of use page]
+====
+  .. If you want subscriptions to be validated without manual intervention, toggle on the **Auto validate subscription** option.
+  .. If you require consumers to provide a comment when subscribing to the plan, toggle on the **Consumer must provide a comment when subscribing to the plan** option.
+  You can also provide a custom message to display to consumers (for example, ask them to provide specific information in their comment).
+  .. In **Deployment**, enter details of sharding tags.
+  .. In **Access Control**, select groups which are not allowed to subscribe to the plan.
+. Click **NEXT** to link:/apim/3.x/apim_publisherguide_plan_security.html#configure_security[configure plan security].

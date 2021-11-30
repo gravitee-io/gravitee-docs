@@ -1,0 +1,30 @@
+= Configure plan flows and policies
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, documentation, manual, guide, reference, api, CGU, GCU
+
+NOTE: From APIM 3.5.x, the recommended method for adding policies to plans is with link:/apim/3.x/apim_publisherguide_design_studio_create.html#flow-policies[Design Studio^].
+
+== Configure flows and policies in Design Studio
+
+. Find your plan in the **Plans** page of the API.
++
+image::apim/3.x/api-publisher-guide/plans-subscriptions/staging-plan.png[]
+. Click the design icon image:icons/design-icon.png[role="icon"].
++
+APIM opens the plan in Design Studio, where you can configure flows and policies, as described in the link:/apim/3.x/apim_publisherguide_design_studio_create.html[Design Studio Guide].
+
+== Configure policies on the Policies page of a plan
+
+In some APIs created in earlier versions of APIM, you configure policies on the **Policies** page of a new or existing plan.
+You can configure a single policy, or a chain of policies. Policy chains can be of the same or different types.
+
+. To edit an existing plan:
+  .. In APIM Console, select your API.
+  .. Click **Portal > Plans**.
+  .. Click the edit icon image:icons/edit-icon.png[role="icon"]. On the **Policies** page:
+.. Choose a policy type from the list and click *ADD*.
++
+image::apim/3.x/api-publisher-guide/plans-subscriptions/add-plan-policies.png[]
++
+.. Depending on the policy type, specify any other required details of the policy.
+.. If you want to create a policy chain, repeat the same steps for each policy in the chain.
+. Click **SAVE** to save your plan.

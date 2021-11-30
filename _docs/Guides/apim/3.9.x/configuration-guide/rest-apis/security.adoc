@@ -1,11 +1,4 @@
----
-product: API Management
-guide: Configuration Guide
-guide-section: APIM API
-toc: true
-title: Configure security
-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
----
+= Configure security
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-
-include::../include/security.adoc[]
+include::../../../../include/security.adoc[leveloffset=+1]
