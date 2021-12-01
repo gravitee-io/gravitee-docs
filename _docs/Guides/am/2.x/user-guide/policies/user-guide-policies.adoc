@@ -8,10 +8,9 @@ NOTE: New in Gravitee.io AM 2.7.x
 
 == Introduction
 
-Extension Points allow you to extend the behavior of the Access Management Server by executing link:/apim_overview_plugins.html#gravitee-plugins-policies[Policy] on selected stages.
+Extension Points allow you to extend the behavior of the Access Management Server by executing policies on selected stages.
 
-NOTE: Unlike Gravitee.io API Management link:/apim_policies_overview.html[Policies] and its API `OnRequest/OnResponse` gateway proxy chain, Gravitee.io Access Management supports only policy with the `OnRequest` step.
-See more information about the policies link:/apim_devguide_policies.html[here].
+NOTE: Unlike Gravitee.io API Management link:/Guides/apim/current/introduction.html#gravitee-plugins-policies[Policies^] and its API `OnRequest/OnResponse` gateway proxy chain, Gravitee.io Access Management supports only policy with the `OnRequest` step.
 
 == Execution Context
 
@@ -19,7 +18,7 @@ Each policy has access to the `Execution Context` to retrieve and set informatio
 
 Those `Execution Context` data will be propagate to the next steps to be used later on (e.g custom HTML forms).
 
-Here is an example to get `Execution Context` data thanks to the link:/apim_publisherguide_expression_language.html[Gravitee.io Expression Language] :
+Here is an example to get `Execution Context` data thanks to the link:/Reference/expression-language.html[Gravitee.io Expression Language^] :
 
 ----
 {#request} : Current HTTP Request with parameters, headers, path, ...
@@ -35,12 +34,7 @@ Policies are executed only against selected steps throughout the request process
 
 The following is a list of the available extension points:
 
-* link:/am/2.x/am_userguide_policies_extension_points.html#pre_end_user_consent[Pre End-User Consent] : happens after the user has logged in. It allows you to fetch more information or validate incoming data before displaying the User Consent HTML Page.
-* link:/am/2.x/am_userguide_policies_extension_points.html#post_end_user_consent[Post End-User Consent] : happens after the user has given his consent to the processing of personal data. It allows you to validate incoming data (user consent) before giving access to the application.
+* link:./am_userguide_policies_extension_points.html#pre_end_user_consent[Pre End-User Consent] : happens after the user has logged in. It allows you to fetch more information or validate incoming data before displaying the User Consent HTML Page.
+* link:./am_userguide_policies_extension_points.html#post_end_user_consent[Post End-User Consent] : happens after the user has given his consent to the processing of personal data. It allows you to validate incoming data (user consent) before giving access to the application.
 
 NOTE: More extension points will be added to the next releases of Gravitee.io AM.
-
-
-
-
-

@@ -12,13 +12,12 @@ This section explains how to configure AE alerts in APIM.
 
 You enable alerting in the APIM *Organization settings*.
 
-.API Management - Enable alerting
 image::ae/apim/settings_enable_alert.png[Enable alerting]
 
 == Define alerts
 
 You can define alerts at three levels:
 
-* For the <</ae/apim_platform.adoc#, platform>>
-* By <</ae/apim_api.adoc#, API>>
+* For the <<platform.adoc, platform>>
+* By <<api.adoc, API>>
 * By application (available soon)

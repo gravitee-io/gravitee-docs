@@ -1,15 +1,15 @@
-= Access Management
+= Configure AM to work with AE
 :page-description: Gravitee Alert Engine - Access Management - Configuration
-:page-toc: true
 :page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-toc: false
 :page-liquid:
 
-This section is explaining how to configure the Alert Engine within Gravitee.io Access Management.
+This page explains how to configure AM to work with AE.
 
-- AM comes with an intuitive and easy to use integration of Alert Engine.
-- AM provides a pre-defined and pre-configured list of alerts that only have to be enabled or disabled.
+- AM comes with an intuitive and easy to use integration with AE.
+- AM provides a pre-defined and pre-configured list of alerts that simply need to be enabled or disabled.
 
-NOTE: If you want to change some advanced settings, you can still update the relevant section of the gravitee.yml of the AM Management API.
+NOTE: If you want to change some advanced settings, you can still update the relevant section of the AM API `gravitee.yml` file.
 
 ```yaml
 alerts:
@@ -36,4 +36,4 @@ alerts:
 
 ```
 
-NOTE: This sample file, give you a glimpse of how you can finely configure the too many login failures alert. You can find more information in the link:/am/current/am_userguide_alerts.html[dedicated section].
+NOTE: This sample file gives an overview of how to fine-tune the too many login failures alert. You can find more information in the link:/Guides/am/current/user-guide/alerts/introduction.html[AM User Guide^].

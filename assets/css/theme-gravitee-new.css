@@ -12,7 +12,7 @@ div.ulist li{
     line-height: 20px;
 }
 
-.sectionbody a[href^="http://"]:after{
+.sectionbody a[href^="http://"][href^="https://"]:after{
     content: "\f08e";
     font-family: FontAwesome, "Courier New", monospace;
     font-weight: normal;

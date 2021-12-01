@@ -12,6 +12,52 @@ There are three different ways to configure AE:
 
 The order in which they are listed above corresponds to their order of precedence. In other words, environment variables override the other two configuration types, and system properties override `gravitee.yml`.
 
+=== Environment variables
+
+You can override the default `gravitee.yml` configuration and system properties by defining environment variables.
+
+To override this property:
+
+[source,yaml]
+----
+management:
+  mongodb:
+    dbname: myDatabase
+----
+
+Define one of the following variables:
+
+----
+GRAVITEE_MANAGEMENT_MONGODB_DBNAME=myDatabase
+GRAVITEE.MANAGEMENT.MONGODB.DBNAME=myDatabase
+gravitee_management_mongodb_dbname=myDatabase
+gravitee.management.mongodb.dbname=myDatabase
+----
+
+WARNING: Some properties are case sensitive and cannot be written in upper case (for example,
+`gravitee_security_providers_0_tokenIntrospectionEndpoint`). We advise you to define environment variables in lower case. Ensure you use the correct syntax for each property.
+
+TIP: In some systems, hyphens are not allowed in variable names. You can replace them with another character such as an underscore (for example, `gravitee_policy_apikey_header` instead of `gravitee_policy_api-key_header`).
+
+=== System properties
+
+You can override the default `gravitee.yml` configuration by defining system properties.
+
+To override this property:
+
+[source,yaml]
+----
+management:
+  mongodb:
+    dbname: myDatabase
+----
+
+Add this property to the JVM:
+
+----
+-Dmanagement.mongodb.dbname=myDatabase
+----
+
 === `gravitee.yml`
 
 The `gravitee.yml` file, found in `GRAVITEE_HOME/config/`, is the default way to configure AE.
@@ -78,50 +124,3 @@ cluster:
     config:
       path: ${gravitee.home}/config/hazelcast.xml
 ```
-
-=== System properties
-
-You can override the default `gravitee.yml` configuration by defining system properties.
-
-To override this property:
-
-[source,yaml]
-----
-management:
-  mongodb:
-    dbname: myDatabase
-----
-
-Add this property to the JVM:
-
-----
--Dmanagement.mongodb.dbname=myDatabase
-----
-
-
-=== Environment variables
-
-You can override the default `gravitee.yml` configuration and system properties by defining environment variables.
-
-To override this property:
-
-[source,yaml]
-----
-management:
-  mongodb:
-    dbname: myDatabase
-----
-
-Define one of the following variables:
-
-----
-GRAVITEE_MANAGEMENT_MONGODB_DBNAME=myDatabase
-GRAVITEE.MANAGEMENT.MONGODB.DBNAME=myDatabase
-gravitee_management_mongodb_dbname=myDatabase
-gravitee.management.mongodb.dbname=myDatabase
-----
-
-WARNING: Some properties are case sensitive and cannot be written in upper case (for example,
-`gravitee_security_providers_0_tokenIntrospectionEndpoint`). We advise you to define environment variables in lower case. Ensure you use the correct syntax for each property.
-
-TIP: In some systems, hyphens are not allowed in variable names. You can replace them with another character such as an underscore (for example, `gravitee_policy_apikey_header` instead of `gravitee_policy_api-key_header`).

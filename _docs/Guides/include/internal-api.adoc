@@ -17,19 +17,29 @@ services:
         users:
           admin: adminadmin
 ----
-enabled:: Whether the service is enabled (default `true`).
-port:: The port the service listens on (default `{node_port}`). You must ensure you use a port which is not already in use by another APIM component.
-host:: The host (default `localhost`).
-authentication.type:: Authentication type for requests: `none` if no authentication is required or `basic` (default `basic`).
-authentication.users:: A list of `user: password` combinations. Only required if authentication type is `basic`.
+
+|===
+| Parameter | Description
+
+| `enabled`
+| Whether the service is enabled (default `true`).
+| `port`
+| The port the service listens on (default `{node_port}`). You must ensure you use a port which is not already in use by another APIM component.
+| `host`
+| The host (default `localhost`).
+| `authentication.type`
+| Authentication type for requests: `none` if no authentication is required or `basic` (default `basic`).
+| `authentication.users`
+| A list of `user: password` combinations. Only required if authentication type is `basic`.
+|===
 
 == Endpoints
+
 |===
 |Description |Example
+| `GET /_node`
 
-|`GET /_node`
-
-Gets generic node information
+Gets generic node information.
 
 a|
 [source,json]
@@ -48,22 +58,27 @@ Content-Type: application/json
     }
 }
 ----
+a| `GET /_node/health?probes=probe1,probe2`
 
-|`GET /_node/health?probes=pb1,pb2`
+Gets the health status of the component. If the return status is 200 then everything is ok, if 500, there is at least one error.
 
-For example: `GET /_node/health?probes=management-api,management-repository`
-
-Gets the health status of the component. Probes can be filtered using the optional `probes` query param. The parameter takes a list of probes, separated by commas (`,`). If no query param, you get the health of all probes. If the return status is 200 then everything is ok, if 500, there is at least one error.
 This endpoint can be used by a load balancer, to determine if a component instance is not in the pool, for example.
 
-Some probes are not displayed by default. You have to explicitly use the query param to retrieve them.
-These probes are:
+Probes can be filtered using an optional `probes` query param. The parameter takes a list of probes, separated by commas (`,`). If no query param is provided, you get the health of all probes.
+
+For example:
+
+`GET /_node/health?probes=management-api,management-repository`
+
+Some probes are not displayed by default. You have to explicitly use the query param to retrieve them:
 
 - *cpu*
+
 - *memory*
+
 - *api-sync*
 
-Those probes are considered healthy if there are under a configurable threshold (default is 80%). To configure it, add the following to your `gravitee.yml` file:
+Probes are considered healthy if they are under a configurable threshold (by default, 80%). To configure the threshold, add the following to your `gravitee.yml` file:
 
 [source,json]
 ----
@@ -73,7 +88,6 @@ services:
       cpu: 80
       memory: 80
 ----
-
 a|
 [source,json]
 ----
@@ -96,9 +110,10 @@ Content-Type: application/json
 }
 ----
 
-|`GET /_node/configuration`
+| `GET /_node/configuration`
 
 Gets the node configuration from the `gravitee.yml` file and/or environment variables.
+
 a|
 [source,json]
 ----
@@ -106,17 +121,17 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "analytics.elasticsearch.endpoints[0]": "http://${ds.elastic.host}:${ds.elastic.port}",
+  "analytics.elasticsearch.endpoints[0]": "http://${host}:${port}",
   "analytics.type": "elasticsearch",
   "ds.elastic.host": "localhost",
   "ds.elastic.port": 9200,
   ...
 }
 ----
-
-|`GET /_node/monitor`
+| `GET /_node/monitor`
 
 Gets monitoring information from the JVM and the server.
+
 a|
 [source,json]
 ----

@@ -3,7 +3,7 @@
 :gravitee-component-name: APIM Gateway
 :node_port: 18082
 
-include::../../../../include/internal-api.adoc[leveloffset=+1]
+include::../../../../include/internal-api.adoc[]
 
 == Component-specific endpoints
 
@@ -13,6 +13,7 @@ In addition to the main endpoints listed above, the API includes dedicated endpo
 |Description |Example
 
 |`GET /_node/apis`
+
 Gets the APIs deployed on this APIM Gateway instance.
 a|
 [source,json]

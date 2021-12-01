@@ -25,10 +25,10 @@ Post End-User Consent happens after the user has given his consent to the proces
 
 The following attributes are available while processing the policy chain :
 
-* link:/am/2.x/am_userguide_policies_extension_points.html#request[Request] : current HTTP Request (with form attributes : scope approvals)
-* link:/am/2.x/am_userguide_policies_extension_points.html#client[Client] : the application
-* link:/am/2.x/am_userguide_policies_extension_points.html#user[User] : the End-User
-* link:/am/2.x/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request[Authorization Request]: OAuth 2.0 Authorization Request
+* link:./am_userguide_policies_extension_points.html#request[Request] : current HTTP Request (with form attributes : scope approvals)
+* link:./am_userguide_policies_extension_points.html#client[Client] : the application
+* link:./am_userguide_policies_extension_points.html#user[User] : the End-User
+* link:./am_userguide_policies_extension_points.html#oauth_2_0_authorization_request[Authorization Request]: OAuth 2.0 Authorization Request
 
 == Objects
 
@@ -183,6 +183,3 @@ The following attributes are available while processing the policy chain :
 
 * Get the value of the first `scopes` param for the OAuth 2.0 authorization request:
 `{#context.attributes['authorizationRequest'].scopes[0]}`
-
-
-
