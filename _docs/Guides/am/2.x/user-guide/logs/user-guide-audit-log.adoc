@@ -17,7 +17,7 @@ NOTE: All these information can be retrieved via the link:/am/2.x/management-api
 
 == Retention log and storage
 
-Audit events are managed (store and fetch) by plugins call link:/apim_overview_plugins.html#gravitee-plugins-reporters[Reporter].
+Audit events are managed (store and fetch) by plugins call link:/Guides/apim/current/introduction.html#gravitee-plugins-reporters[Reporters].
 
 By default a Reporter is created for each security domain and allow you to choose where the audit logs will be stored.
 

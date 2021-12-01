@@ -85,7 +85,7 @@ Finally, make sure that the ID token was signed by Gravitee.io Access Management
 . Retrieve your public key by clicking on image:am/2.x/graviteeio-am-quickstart-profile-public-key.png[] icon
 . Use a JWT library to verify the signature.
 
-NOTE: You can also use the link:https://gravitee.io[Gravitee.io API Management solution^] and the link:/apim_policies_jwt.html[JWT Policy^] to verify and retrieve user profile information.
+NOTE: You can also use the link:https://gravitee.io[Gravitee.io API Management solution^] and the link:/Reference/policy/policy-jwt.html[JWT Policy^] to verify and retrieve user profile information.
 
 == UserInfo Endpoint
 

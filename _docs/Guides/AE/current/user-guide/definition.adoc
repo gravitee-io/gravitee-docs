@@ -11,10 +11,10 @@ An alert is defined in `JSON` format and includes the following elements:
 * Description
 * Source (event source)
 * Severity (info, warning, critical)
-* List of <</ae/userguide_conditions.adoc#, conditions>>
+* List of link:./conditions.html[conditions^]
 * List of filters
-* <</ae/userguide_dampening.adoc#, Dampening>>
-* <</ae/userguide_notifiers.adoc#, Notifications>>
+* link:./dampening.html[Dampening^]
+* link:./notifiers/introduction.html[Notifications^]
 
 == Example
 

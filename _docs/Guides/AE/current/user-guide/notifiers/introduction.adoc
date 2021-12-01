@@ -11,11 +11,11 @@ When you create an alert in AE, you can choose to be notified through your prefe
 Notifiers are a type of plugin used to configure a notification for a recipient.
 AE includes four notifiers:
 
-* link:/ae/userguide_notifier_email.html[Email]
-* link:/ae/userguide_notifier_system_email.html[System email]
-* link:/ae/userguide_notifier_slack.html[Slack]
-* link:/ae/userguide_notifier_webhook.html[Webhook]
+* link:./email-notifier.html[Email]
+* link:./system-email-notifier.html[System email]
+* link:./slack-notifier.html[Slack]
+* link:./webhook-notifier.html[Webhook]
 
 == Notification template properties
 
-For guidance on creating dynamic content for your notifications, see link:/ae/userguide_notifier_message.html[Create a custom message^].
+For guidance on creating dynamic content for your notifications, see link:./message-notifier.html[Create a custom message^].

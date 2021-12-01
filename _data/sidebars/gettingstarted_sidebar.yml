@@ -16,15 +16,9 @@ entries:
           - title: Quick API Management installation
             output: web
             url: /Getstarted/apim/installation-quickstart.html
-          - title: Configure a production-ready APIM environment
-            output: web
-            url: /Getstarted/apim/configuration-quickstart.html
           - title: Quick Access Management installation
             output: web
             url: /Getstarted/am/installation-quickstart.html
-          - title: Configure a production-ready AM environment
-            output: web
-            url: /Getstarted/am/configuration-quickstart.html
       - title: Getting started with APIM
         output: web
         folderitems:
@@ -49,31 +43,27 @@ entries:
       - title: Getting started with AM
         output: web
         folderitems:
-          - title: AM Console overview
-            output: web
-            url: /Getstarted/am/console-overview.html
           - title: Access AM Console
             output: web
             url: /Getstarted/am/quickstart-login.html
+          - title: Update the Access Management settings
+            output: web
+            url: /Getstarted/am/quickstart-setup.html
           - title: Set up your first application
             output: web
             url: /Getstarted/am/setup-app.html
           - title: Get user profile information
             output: web
             url: /Getstarted/am/profile-information.html
-
           - title: Secure your APIM APIs
             output: web
             url: /Getstarted/am/secure-apis.html
-
           - title: Configure a flow
             output: web
             url: /Getstarted/am/flow.html
-
           - title: Add custom claims to tokens
             output: web
             url: /Getstarted/am/tokens-custom-claims.html
-
       - title: Getting started with Cockpit
         output: web
         folderitems:
