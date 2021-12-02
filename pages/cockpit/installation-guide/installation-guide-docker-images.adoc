@@ -64,6 +64,25 @@ $ docker run \
           graviteeio/cockpit-management-api:latest
 ....
 
+Moreover, to run the Cockpit application, you must have a valid license file. We can do it using docker volumes.
+
+[source,shell]
+....
+$ docker container create --name cockpit-certificates -v cockpit-certificates:/root hello-world
+$ docker cp /path-to-certificates/certificates/. cockpit-certificates:/root/certificates/
+$ docker cp /path-to-license/license/.  cockpit-certificates:/root/license/
+$ docker rm cockpit-certificates
+
+$ docker run \
+        --publish 8063:8063 \
+        --name cockpit-management-api \
+        -v cockpit-certificates:/var/opt/gravitee-cockpit-management-api \
+        --env JAVA_OPTS='-Dgravitee.license=/var/opt/gravitee-cockpit-management-api/license/license.key' \
+        --detach  \
+        graviteeio/cockpit-management-api:latest
+
+....
+
 === Cockpit UI (graviteeio/cockpit-management-ui)
 
 The Cockpit UI image provides a set of environment variables which you can use to tune your container.
