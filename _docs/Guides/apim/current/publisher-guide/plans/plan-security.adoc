@@ -27,7 +27,7 @@ You configure security on the **Secure** page of a new or existing plan.
 . On the **Secure** page, configure the type of security you require for your plan, as described in the sections below.
 +
 image::apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-secure.png[]
-. Click *NEXT* to link:/apim/3.x/apim_publisherguide_plan_restrictions.html[configure plan restrictions].
+. Click *NEXT* to link:./plan-restrictions.html[configure plan restrictions].
 
 === Keyless plans
 
@@ -38,7 +38,7 @@ Due to the lack of consumer identifier token (API key), keyless consumers are se
 
 ==== Basic authentication
 
-You can configure basic authentication for keyless plans, by associating a basic authentication policy with either an LDAP or inline resource. For more details, see link:/apim/3.x/apim_policies_basic_authentication.html[Basic authentication policy^].
+You can configure basic authentication for keyless plans, by associating a basic authentication policy with either an LDAP or inline resource. For more details, see link:/Reference/policy/policy-basic-authentication.html[Basic authentication policy^].
 
 === API key plans
 
@@ -61,15 +61,15 @@ When prompted, you can choose to provide your custom API key or let APIM generat
 You can provide a custom API key when:
 
 * creating a subscription:
-
++
 image::apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-1.png[]
 
 * accepting a subscription:
-
++
 image::apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-2.png[]
 
 * renewing a subscription:
-
++
 image::apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-3.png[]
 
 === OAuth 2.0 plans
@@ -84,11 +84,11 @@ To configure an OAuth 2.0 plan for an API, you need to:
 NOTE: The instructions below explain how to create an OAuth 2.0 resource in Design Studio. For APIs not migrated to Design Studio, you can create resources with the *Design > Resources* menu option.
 
 . Open your API in APIM Console and click *Design*.
-. Click the *RESOURCES* tab and create a new *Generic OAuth2 Authorization Server* resource.
+. Click *RESOURCES* and create a new *Generic OAuth2 Authorization Server* resource.
 +
-NOTE: If you use https://gravitee.io/[Gravitee.io Access Management], we provide a dedicated OAuth 2.0 AM resource.
+NOTE: If you use link:/Guides/am/current/introduction.html[Gravitee.io Access Management^], we provide a dedicated OAuth 2.0 AM resource.
 +
-image::apim/3.x/api-publisher-guide/plans-subscriptions/create-oauth2-resource.png[Gravitee.io - Create OAuth 2.0 resource, 873, 530, align=center, title-align=center]
+image::apim/3.10/create-oauth2-resource.png[]
 
 . Enter the *Resource name*.
 . Set the *OAuth 2.0 Authorization server URL*.
@@ -105,14 +105,15 @@ the introspection endpoint must also require some form of authorization to acces
 
 ==== Add OAuth 2.0 security to a plan
 
-NOTE: If you already have a suitable plan defined, you can add your OAuth2 resource to one of the flows defined for it in Design Studio, by following the steps in link:/apim/3.x/apim_publisherguide_design_studio_create.html#flow-policies[Add policies to a flow^].
+NOTE: If you already have a suitable plan defined, you can add your OAuth2 resource to one of the flows defined for it in Design Studio, by following the steps in link:../design-studio/create-flow.html#flow-policies[Add policies to a flow^].
 
-. In APIM Console, select your API and click *Portal > Plans*.
-. On the **Secure** page, choose *OAuth2* as the authorization type.
-. Specify the OAuth2 resource name you created and check any https://tools.ietf.org/html/rfc6749#section-3.3[scopes^] to access the API.
+. Follow the steps in <<Configure security>>.
+. Oh the **Secure** page, select *OAuth2* as the authentication type.
+. Select the OAuth2 resource name you created.
+. Add any https://tools.ietf.org/html/rfc6749#section-3.3[scopes^] to check when accessing the API.
 +
 image::apim/3.x/api-publisher-guide/plans-subscriptions/create-oauth2-plan.png[]
-
++
 Your API is now OAuth 2.0 secured and consumers must call the API with an `Authorization Bearer :token:` HTTP header to access the API resources.
 
 IMPORTANT: Any applications wanting to subscribe to an OAuth 2.0 plan must have an existing client with a valid `client_id` registered in the OAuth 2.0 authorization server.
@@ -136,12 +137,12 @@ The policy searches for a client ID in the payload as follows:
 
 ==== Add JWT security to a plan
 
-. In APIM Console, select your API and click *Portal > Plans*.
-. On the **Secure** page, choose *JWT* as the authorization type.
+. Follow the steps in <<Configure security>>.
+. On the **Secure** page, select *JWT* as the authentication type.
 . Specify the public key used to verify the incoming JWT token.
 +
-NOTE: You can also set the public key in the `gravitee.yml` file. See link:/apim/3.x/apim_policies_jwt.html[JWT policy] for more information. APIM only supports the RSA Public Key format.
+NOTE: You can also set the public key in the `gravitee.yml` file. See link:/Reference/policy/policy-jwt.html[JWT policy] for more information. APIM only supports the RSA Public Key format.
 +
 image::apim/3.x/api-publisher-guide/plans-subscriptions/create-jwt-plan.png[]
-
++
 Your API is now JWT secured and consumers must call the API with an `Authorization Bearer :JWT Token:` HTTP header to access the API resources.

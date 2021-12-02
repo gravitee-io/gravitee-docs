@@ -6,24 +6,24 @@ The following sections describe the different ways you can create and configure 
 For a quick introduction to creating an API in APIM, see link:/Getstarted/APIM/api-publisher-ui.html[Getting started with APIM^].
 
 NOTE: From APIM 3.5.x, the recommended way to create an API is using the *DESIGN STUDIO* method described in the next section. For APIs created using this method, clicking the *Design* menu option automatically opens Design Studio.
-Old API definitions or APIs created using the *PATH BASED* option must be migrated before you can update them in Design Studio. For more information, see the link:/apim/3.x/apim_publisherguide_design_studio_overview.html[Design Studio Guide^].
+Old API definitions or APIs created using the *PATH BASED* option must be migrated before you can update them in Design Studio. For more information, see the link:./design-studio/introduction.html[Design Studio Guide^].
 
 == Policies
 
 APIM is delivered with some default common policies, for standard APIM usage. You can also customize APIM by adding your own policies.
-You can find a list of default APIM policies in the link:/Reference/policy/policy-apikey.html[Policy Reference].
+You can find a list of default APIM policies in the link:/Reference/policy/policy-apikey.html[Policy Reference^].
 
 You can configure these policies in two ways:
 
-    * Using the API *Design* function:
+* Using the API *Design* function:
++
+image::apim/3.10/graviteeio-old-studio-overview.png[]
 
-image::apim/3.x/api-publisher-guide/policies/graviteeio-old-studio-overview.png[]
+* Using Design Studio (available from APIM 3.5.x):
++
+image::apim/3.10/graviteeio-policy-studio-overview.png[]
 
-    * Using Design Studio (available from APIM 3.5.x):
-
-image::apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-overview.png[]
-
-NOTE: You can migrate from the former *Design* function to Design Studio by following link:/apim/3.x/apim_policies_migrate.html[this procedure].
+NOTE: Which method you use depends on whether you have migrated your API design to Design Studio. You can migrate from the former *Design* function to Design Studio by following link:./design-studio/migrate.html[this procedure^].
 
 [[ant-notation]]
 == Ant notation
@@ -38,7 +38,7 @@ APIM frequently uses Ant notation for path matching:
 
 For details of how policies are defined and used in APIM, see also:
 
-* link:./plans-subscriptions.html[Plans and subscriptions^] to learn how to configure policies for API plans in APIM Console
+* link:./plans/plans-subscriptions.html[Plans and subscriptions^] to learn how to configure policies for API plans in APIM Console
 * link:/Reference/expression-language.html[Expression Language^] to learn more about using the Gravitee Expression Language with policies
 * link:../developer-guide/policies.html[Policies^] in the Developer Guide to learn how to create custom policies
 * link:../developer-guide/plugins.html[Plugins^] in the Developer Guide to learn how to deploy plugins (of which policies are one type)

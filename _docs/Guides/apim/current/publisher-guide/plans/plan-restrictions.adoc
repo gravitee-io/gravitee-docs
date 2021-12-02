@@ -21,12 +21,13 @@ You configure restrictions on the **Restrictions** page of a new or existing pla
 NOTE: For some APIs created in earlier versions of APIM, you can click **NEXT** to configure plan policies.
 +
 APIM adds the plan to the list of **Staging** plans.
-
++
 image::apim/3.x/api-publisher-guide/plans-subscriptions/staging-plan.png[]
 
 You can now:
-* link:/apim/3.x/apim_publisherguide_plan_policies.html[Configure flows and policies for your plan].
-* link:/apim/3.x/apim_publisherguide_plan_publish.html[Publish your plan]
+
+* link:./plan-policies.html[Configure flows and policies for your plan]
+* link:./plan-publish.html[Publish your plan]
 
 === Limit request traffic
 
