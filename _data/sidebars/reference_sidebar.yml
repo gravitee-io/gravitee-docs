@@ -34,9 +34,6 @@ entries:
           - title: Cache
             output: web
             url: /Reference/policy/policy-cache.html
-          - title: Callout HTTP
-            output: web
-            url: /Reference/policy/policy-callout-http.html
           - title: Data Logging Masking
             output: web
             url: /Reference/policy/policy-data-logging-masking.html
@@ -55,6 +52,9 @@ entries:
           - title: HTML to JSON
             output: web
             url: /Reference/policy/policy-html-json.html
+          - title: HTTP Callout
+            output: web
+            url: /Reference/policy/policy-callout-http.html
           - title: HTTP Signature
             output: web
             url: /Reference/policy/policy-http-signature.html
