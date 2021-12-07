@@ -6,13 +6,13 @@
 
 There are three different ways to configure AE:
 
-- environment variables
-- system properties
+- Environment variables
+- System properties
 - `gravitee.yml`
 
 The order in which they are listed above corresponds to their order of precedence. In other words, environment variables override the other two configuration types, and system properties override `gravitee.yml`.
 
-=== Environment variables
+== Environment variables
 
 You can override the default `gravitee.yml` configuration and system properties by defining environment variables.
 
@@ -39,7 +39,7 @@ WARNING: Some properties are case sensitive and cannot be written in upper case 
 
 TIP: In some systems, hyphens are not allowed in variable names. You can replace them with another character such as an underscore (for example, `gravitee_policy_apikey_header` instead of `gravitee_policy_api-key_header`).
 
-=== System properties
+== System properties
 
 You can override the default `gravitee.yml` configuration by defining system properties.
 
@@ -58,7 +58,7 @@ Add this property to the JVM:
 -Dmanagement.mongodb.dbname=myDatabase
 ----
 
-=== `gravitee.yml`
+== `gravitee.yml`
 
 The `gravitee.yml` file, found in `GRAVITEE_HOME/config/`, is the default way to configure AE.
 

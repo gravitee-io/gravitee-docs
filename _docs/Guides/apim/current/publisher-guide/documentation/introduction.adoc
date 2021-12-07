@@ -8,12 +8,12 @@ The APIM Portal documentation creates a direct line of communication with your d
 
 *Documentation is the key to a successful API.* It is the best way to promote your web services and give developers all the information they need to consume them successfully.
 
-=== System folders
+== System folders
 
 You can use system folders to customize the APIM Portal menu header, footer and navigation by adding custom links.
 For more information, see link:./system-folders.html[Customize the APIM Portal navigation^].
 
-=== Documentation set
+== Documentation set
 To add some documentation, you can either create new pages or import them from a file or external source.
 
 APIM supports multiple types of documentation:
@@ -24,7 +24,7 @@ APIM supports multiple types of documentation:
 
 You can create folders to organize your documentation.
 
-=== External documentation
+== External documentation
 
 You can fetch your documentation from external sources.
 
@@ -40,14 +40,14 @@ The documentation is fetched and stored locally in APIM when you first create it
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-external-source-auto-fetch.png[]
 
-=== Manage documentation pages and folders
+== Manage documentation pages and folders
 
 To create new pages and folders in APIM Console:
 
 * for an API, click *APIs* and select the API, then click *Pages*
 * for the whole APIM Portal, click *Settings > Documentation*
 
-== Create a new folder
+=== Create a new folder
 
 . Click the plus icon image:icons/plus-icon.png[role="icon"] and select the folder icon.
 +
@@ -60,7 +60,7 @@ APIM adds your folder to a list, where you can select it and:
 * add different language versions of the folder name by clicking *TRANSLATE FOLDER*
 * start creating documentation pages in your folder by clicking the plus icon image:icons/plus-icon.png[role="icon"] and following the steps below
 
-== Create a new page
+=== Create a new page
 
 . Click the plus icon image:icons/plus-icon.png[role="icon"] and choose the documentation type.
 +
@@ -74,13 +74,13 @@ image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-
 
 NOTE: For Markdown pages, you can link:./markdown-template.html[create and use templates].
 
-== Import multiple pages
+=== Import multiple pages
 
 If you have an existing documentation set for your API in a GitHub or GitLab repository, you can configure the GitHub or GitLab fetcher to import the complete documentation structure on a one-off or regular basis. You can import the documentation into APIM in a different structure from the source repository structure.
 
 In order for the fetcher to locate the documentation in your repository structure and create the documentation structure you need in APIM, you first create a JSON file in the repository describing both the source and destination structure. You can then configure a fetcher in APIM to read the JSON file and import the documentation according to the structure defined in the file.
 
-=== Example JSON file
+==== Example JSON file
 
 The following example JSON file describes a documentation set which includes:
 
@@ -109,7 +109,7 @@ The following example JSON file describes a documentation set which includes:
 }
 ----
 
-=== Configure a fetcher
+==== Configure a fetcher
 
 . Click *Import multiple files*.
 . If you want to publish the pages on import, select *Publish all imported pages*.
@@ -128,7 +128,7 @@ APIM adds the files to your documentation set.
 +
 image:apim/3.x/api-publisher-guide/documentation/import-multiple-files-result.png[]
 
-=== Publish your page
+== Publish your page
 
 Once your page is created, you can view it before publishing it. APIM displays the following message:
 
@@ -164,7 +164,7 @@ image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-translations-2.png[]
 
-=== Auto fetch from an external source
+== Auto fetch from an external source
 
 To periodically fetch your documentation from external sources, you can enable the auto-fetch option and specify the fetch frequency. In the *EXTERNAL SOURCE* tab:
 
@@ -179,7 +179,7 @@ For example:
 
 NOTE: If the APIM administrator configured a maximum fetch frequency, the value configured by the APIM administrator will override the frequency you specify.
 
-=== Access control
+== Access control
 
 In the *ACCESS CONTROL* tab, you can mark a page as PRIVATE if you want to deny access to anonymous user.
 
@@ -195,7 +195,7 @@ This example shows how to create documentation templates based on the Apache htt
 
 You can access your API data in your API documentation with the following format: `${api.name} or ${api.metadata['foo-bar']}`
 
-== Available API properties
+==== Available API properties
 
 [width="100%",cols="20%,10%,70%",options="header"]
 |======================
@@ -218,7 +218,7 @@ You can access your API data in your API documentation with the following format
 |======================
 
 
-== Example
+=== Example
 
 The following example shows an API documentation template.
 

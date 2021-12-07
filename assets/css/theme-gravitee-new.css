@@ -1,7 +1,6 @@
 body {
     font-family: Libre Franklin, IBM Plex Sans, sans-serif;
     color: #111c4e;
-    background-color: #020634;
 }
 
 ol.arabic li{
@@ -23,19 +22,12 @@ div.ulist li{
 }
 
 .col-md-3{
+@media (min-width: 992px){
     width: 25%;
     float: left;
+  }
 }
 
-.col-md-2{
-    width 15%;
-    padding-right: 0px;
-}
-
-
-.doc-sidebar-menu{
-    padding-left: 40px;
-};
 
 .navbar-inverse {
     background: rgb(1, 0, 2) linear-gradient(90deg, rgba(1, 0, 2, 1) 0%, rgba(23, 12, 102, 1) 55%, rgba(25, 139, 183, 1) 100%);
@@ -100,8 +92,6 @@ div.ulist li{
 .bg-cover2 {
   background: url(../images/headline-img.jpg) repeat; }
 
-.bg-cover3 {
-  background: url(../images/background-img.jpg) 50% no-repeat, linear-gradient(180deg, rgba(4, 0, 44, 1.0),rgba(0, 255, 255, 1.0)); }
 
 .bg-color4 {
     background-color: #000535;
@@ -113,6 +103,16 @@ div.ulist li{
     padding-left: 0px;
     color: #1b1464;
 }
+
+.layout-wrapper.section-spacing {
+    padding-top: 70px;
+}
+
+.page-title-wrapper.section-spacing {
+    padding-bottom: 150px;
+    padding-top: 100px;
+}
+
 
 .btn-style3 {
     background-color: #ff9100;
@@ -193,6 +193,42 @@ nav .breadcrumb-item{
   text-transform: capitalize;
 }
 
+
+.layout-breadcrumb .breadcrumb > li + li:before {
+  content: "/\00a0";
+  padding: 0 5px;
+  color: #cccccc;
+}
+
+html, body{ 
+  height: 100%;
+}
+
+.body-wrapper {
+  background: url(../images/background-img.jpg) 50% no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-blend-mode: color;
+}
+
+/* linear-gradient(180deg, rgba(4, 0, 44, 1.0),rgba(0, 255, 255, 1.0)); */
+
+.doc-sidebar-menu li a {
+    border-bottom: none;
+}
+
+@media (min-width: 768px)
+.layout-wrapper .col-md-6 {
+    flex: 0 0 58d%;
+    max-width: 60%;
+}
+
+
+@media only screen and (max-width: 768px)
+.layout-wrapper .col-md-2 {
+    display: none !important;
+}
+
 /* algolia search */
 
 .search {
@@ -253,25 +289,21 @@ p.tableblock{
 	hyphens: none;
 }
 
-.layout-breadcrumb > ol.breadcrumb {
-    background-color: none;
-}
-
 div.paragraph {
     line-height: 20px;
 }
 
 /* footer */
-.footer {
+footer.footer {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     align-content: flex-end;
     margin: 4 rem 4 rem 0 4 rem;
-	font-size: smaller;
+    font-size: smaller;
 }
 
-.footertop {
+div.footertop {
     min-height: 60px;
     background-color: #1ecad3;
     position: relative;
@@ -409,15 +441,6 @@ div.paragraph {
 
 .section-title {
     color: #fff;
-}
-
-.layout-wrapper.section-spacing {
-    padding-top: 70px;
-}
-
-.page-title-wrapper.section-spacing {
-    padding-bottom: 150px;
-	padding-top: 100px;
 }
 
 .nav li.active > a {
@@ -565,50 +588,51 @@ table tr td {
 
 
 /* navgoco sidebar styles (customized) */
-.nav, .nav ul, .nav li {
+ul.nav, ul.nav ul, ul.nav li {
     list-style: none;
 }
 
-.nav ul {
+ul.nav ul {
     padding: 0;
     margin:0;
 }
 
-.nav {
+ul.nav {
     padding:0;
     margin: 0;
 }
 
-.nav > li {
+ul.nav > li {
     margin: 1px 0;
 }
 
-.nav > li li {
-	padding-left: 10px;
+ul.nav > li li {
+    padding-left: 10px;
 }
 
-.nav > li li a {
+ul.nav > li li a {
     padding-left:20px;
 }
 
-.nav a {
+ul.nav a {
     color: #333;
     display: block;
     outline: none;
     text-decoration: none;
 }
 
-.nav li > a > span {
+ul.nav li > a > span {
     float: right;
     font-size: 19px;
     font-weight: bolder;
 }
 
 
-.nav li > a > span:after {
+ul.nav li > a > span:after {
     content: '\25be';
 }
-.nav li.open > a > span:after {
+
+ul.nav li.open > a > span:after {
     content: '\25b4';
 }
 
@@ -619,7 +643,7 @@ ul#mysidebar {
 }
 
 
-.nav li a {
+ul.nav li a {
     padding-right:10px;
 }
 
@@ -641,6 +665,27 @@ ul#mysidebar {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+/* version menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding-left: 10px;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 12px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+}
 
 
 /* end sidebar */
@@ -680,41 +725,27 @@ body.slider-area .hero #autocompleteResults {
     font-weight: 700;
 }
 
-.copy-code-button {
-    color: #272822;
-    background-color: #FFF;
-    border-color: #272822;
-    border: 2px solid;
-    border-radius: 3px 3px 0px 0px;
-
-    /* right-align */
-    display: block;
-    margin-left: auto;
-    margin-right: 0;
-
-    margin-bottom: -2px;
-    padding: 3px 8px;
-    font-size: 0.8em;
+.affix {
+    overflow-y: auto;
+    height: 90%;
 }
 
-.copy-code-button:hover {
-    cursor: pointer;
-    background-color: #F2F2F2;
+.affix::-webkit-scrollbar {
+    display: none;
 }
 
-.copy-code-button:focus {
-    /* Avoid an ugly focus outline on click in Chrome,
-       but darken the button for accessibility.
-       See https://stackoverflow.com/a/25298082/1481479 */
-    background-color: #E6E6E6;
-    outline: 0;
+/*.breadcrumb {
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}*/
+
+
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1800px;
+    }
 }
 
-.copy-code-button:active {
-    background-color: #D9D9D9;
-}
-
-.highlight pre {
-    /* Avoid pushing up the copy buttons. */
-    margin: 0;
-}

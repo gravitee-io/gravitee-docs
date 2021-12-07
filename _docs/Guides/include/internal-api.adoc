@@ -1,3 +1,5 @@
+= Internal API
+
 This component comes with its own internal API, for monitoring and retrieving technical information about the component.
 
 == Configuration
@@ -58,17 +60,13 @@ Content-Type: application/json
     }
 }
 ----
-a| `GET /_node/health?probes=probe1,probe2`
+a| `GET /_node/health?probes=pb1,pb2`
 
 Gets the health status of the component. If the return status is 200 then everything is ok, if 500, there is at least one error.
 
 This endpoint can be used by a load balancer, to determine if a component instance is not in the pool, for example.
 
 Probes can be filtered using an optional `probes` query param. The parameter takes a list of probes, separated by commas (`,`). If no query param is provided, you get the health of all probes.
-
-For example:
-
-`GET /_node/health?probes=management-api,management-repository`
 
 Some probes are not displayed by default. You have to explicitly use the query param to retrieve them:
 
@@ -89,6 +87,9 @@ services:
       memory: 80
 ----
 a|
+
+`GET /_node/health?probes=management-api,management-repository`
+
 [source,json]
 ----
 HTTP/1.1 200 OK

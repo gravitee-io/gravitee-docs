@@ -2,11 +2,7 @@
 <section class="topics-area bg-color1">
    <div class="topics-wrapper section-spacing pt-0 bminus-30">
       <div class="container">
-         <div class="section-title">
-            <h2 class="heading-2">Explore Tutorials</h2>
-         </div>
-
-				<div class="topics-service-area">
+      	<div class="topics-service-area">
 				 {% assign my_doc_tags =  site.docs | map: 'tags' | join: ','  | split: ',' | uniq %}
             {% for tag in my_doc_tags %}
 {% if tag contains "Tutorials" %}

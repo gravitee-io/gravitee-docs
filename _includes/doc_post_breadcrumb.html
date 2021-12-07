@@ -2,23 +2,20 @@
 
 <nav class="layout-breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ "/" | relative_url }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ "/" | relative_url }}">Home</a> </li>
 
       {% if doc_cat == "Guides" %}
-       {% if doc_product == "cockpit" %}
-         <li class="breadcrumb-item-nocaps">Cockpit</li>
-       {% else %}
-         <li class="breadcrumb-item-nocaps">{{doc_product | upcase}}</li>
-       {% endif %}
+        {% if doc_product == "cockpit" %}
+          <li class="breadcrumb-item-nocaps">Cockpit</li>
+        {% else %}
+          <li class="breadcrumb-item-nocaps">{{doc_product | upcase}}</li>
+        {% endif %}
         <li class="breadcrumb-item-nocaps">{{doc_version}}</li>
         {% if doc_guide != nil %}
-        <li class="breadcrumb-item">{{doc_guide | replace: '-', ' ' }}</li>
-        {% if doc_subguide != nil %}
-
-        <li class="breadcrumb-item">{{doc_subguide | replace: '-', ' '}}</li>
-
-        {% endif %}
-
+            <li class="breadcrumb-item">{{doc_guide | replace: '-', ' ' }}</li>
+          {% if doc_subguide != nil %}
+            <li class="breadcrumb-item">{{doc_subguide | replace: '-', ' '}}</li>
+          {% endif %}
         {% endif %}
 
       {% elsif doc_cat == "Getstarted" %}
@@ -26,11 +23,20 @@
 
       {% elsif doc_cat == "Reference" %}
 
-          <li class="breadcrumb-item">Reference</li>
+            <li class="breadcrumb-item">Reference</li>
 
       {% endif %}
 
-        <li class="breadcrumb-item-nocaps active" aria-current="page">{{page.title}}</li>
+      {% if doc_cat == "Resources" %}
+
+          <li class="breadcrumb-item">Resources</li>
+          <li class="breadcrumb-item">{{ doc_version | replace: "-", " " }}</li>
+
+      {% else %}
+
+          <li class="breadcrumb-item-nocaps active" aria-current="page">{{page.title}}</li>
+
+      {% endif%}
 
     </ol>
 </nav>

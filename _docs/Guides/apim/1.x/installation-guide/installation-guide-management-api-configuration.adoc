@@ -275,8 +275,3 @@ gateway:
 == Default configuration
 
 Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.yml` file. This section provides the general configuration of Gravitee.IO Management API.
-
-[source,yaml]
-----
-include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/1.30.x/gravitee-management-api-standalone/gravitee-management-api-standalone-distribution/src/main/resources/config/gravitee.yml[]
-----
