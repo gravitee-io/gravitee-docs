@@ -47,3 +47,13 @@ auth:
 ----
 
 WARNING: The `redirectUri` must exactly match the domain hosting Cockpit.
+
+=== Disable the Google identity provider plugin
+
+To disable the plugin you can add the following environment variable in your configuration.
+
+[source,properties]
+----
+gravitee_identity_provider_cockpit-idp-google_enabled=false
+----
+
