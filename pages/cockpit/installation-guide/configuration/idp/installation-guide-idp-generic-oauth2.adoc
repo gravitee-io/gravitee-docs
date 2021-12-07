@@ -99,3 +99,11 @@ auth:
       color:         # CSS color for the button text
 ----
 
+=== Disable the generic OAuth2 identity provider plugin
+
+To disable the plugin you can add the following environment variable in your configuration.
+
+[source,properties]
+----
+gravitee_identity_provider_cockpit-idp-oidc_enabled=false
+----
