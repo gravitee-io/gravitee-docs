@@ -77,6 +77,12 @@ The simplest way is enabling multicast:
 
 NOTE: You can find more information in the https://docs.hazelcast.org/docs[Hazelcast documentation^], also if you need to configure Hazelcast as cluster.
 
+We currently not recommend to enable the distribution mode with Hazelcast unless there are real needs to do so.
+
+We recommend to leave with the default configuration which works in standalone mode.
+
+The distribution mode is not relevant for most of usecases.
+
 == How are cache resources managed in APIM?
 
 API publishers can create cache resources:
