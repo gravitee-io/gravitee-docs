@@ -54,19 +54,12 @@ keytool -genkey \
   -storepass secret
 ----
 
-You then need to enable secure mode in `gravitee.yml`:
+===== File keystore
+
+You then need to enable secure mode in `gravitee.yml` and provide a path pointing to the keystore containing the certificate and the associated private key:
 ----
 http:
-  port: 8082
-  host: 0.0.0.0
-  idleTimeout: 0
-  tcpKeepAlive: true
-  compressionSupported: false
-  maxHeaderSize: 8192
-  maxChunkSize: 8192
-  instances: 0
-  requestTimeout: 30000
-  alpn: false
+  # ... skipped for simplicity
   secured: true
   ssl:
     clientAuth: none # Supports none, request, requires
@@ -77,6 +70,34 @@ http:
       path:
       password:
 ----
+
+NOTE: since APIM v3.13.0, the keystore file is automatically watched for any modifications and reloaded without having to restart the gateway server.
+
+===== Kubernetes Secret/ConfigMap keystore
+
+Since v3.13.0, it is possible to load the keystore directly from Kubernetes secret or configmap by just specifying the appropriate location.
+
+----
+http:
+  # ... skipped for simplicity
+  secured: true
+  ssl:
+    clientAuth: none # Supports none, request, requires
+    keystore:
+      type: pkcs12
+      location: /my-namespace/secrets/my-secret/keystore
+      password: adminadmin
+----
+
+The expected `http.ssl.keystore.location` if structured as follows: `/{namespace}/{type}/{name}/{key}`
+With:
+
+- `namespace`: the name of the targeted Kubernetes namespace
+- `type`: can be either `secrets` either `configmaps`, depending on the type of Kubernetes resources to retrieve
+- `name`: the name of the secret or configmap to retrieve
+- `key`: the name of the key holding the value to retrieve. The `key` is optional when using a standard `kubernetes.io/tls` secret (note: it only supports PEM cert & key). The `key` is mandatory for any `Opaque` secret or configmap (note: they only support JKS & PKC12 keystore type).
+
+NOTE: The keystore (or PEM cert & key) stored in the Kubernetes secret or configmap is automatically watched for any modifications and reloaded without having to restart the gateway server.
 
 ==== Enable HTTP/2 support
 
