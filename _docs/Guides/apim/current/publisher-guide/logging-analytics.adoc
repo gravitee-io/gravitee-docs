@@ -1,13 +1,11 @@
 = Logging and analytics
 :page-liquid:
 
-== Overview
-
 You can view metrics and logs for applications and APIs using the *Analytics* menu options in APIM Console.
 
 TIP: From APIM version 3.6.x, you can mask secure data in your logs by adding the Data logging masking policy to your API. For more details, see link:/Reference/policy/policy-data-logging-masking.html[Data logging masking^].
 
-=== Metrics
+== Metrics
 
 Metrics are presented in one or more _dashboards_. You can select the dashboard with the metrics you want to see from the *Select a dashboard* drop-down menu.
 You can then select a time period and view several different types of analytics -- such as requests received and responses sent, the most frequently called applications and response times, presented in different views and formats -- such as bar charts and maps.
@@ -16,7 +14,7 @@ image:apim/3.x/api-publisher-guide/analytics/dashboards.png[]
 
 For more details on creating and configuring dashboards, see link:../configuration-guide/console/dashboard.html[Configure dashboards^].
 
-=== Logs
+== Logs
 
 You can list the API requests for a single API or for an application by viewing the logs, as follows:
 

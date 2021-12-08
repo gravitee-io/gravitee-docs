@@ -21,7 +21,6 @@ This hierarchy is represented in Cockpit by a visual map on the dashboard.
 .Hierarchy of a Cockpit account
 image::cockpit/entity-hierarchy.png[]
 
-
 NOTE: The organization and environment entities defined in Cockpit are equivalent to the same entities in APIM and AM, including the roles you can define for them (for example, the `ORGNIZATION_OWNER` role exists in both APIM and AM). For more information, see the APIM and AM product documentation.
 
 == Cockpit entities

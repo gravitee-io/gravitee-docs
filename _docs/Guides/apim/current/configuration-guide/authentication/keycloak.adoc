@@ -1,5 +1,6 @@
 = Configure Keycloak authentication
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-liquid:
 
 This page explains how to configure APIM to allow users to connect using https://www.keycloak.org/[Keycloak^].
 
@@ -60,7 +61,7 @@ Docker environment::
       - gravitee_analytics_elasticsearch_endpoints_0=http://demo-elasticsearch:9200
 ----
 
-include::../../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
+include::../../../../include/management-api-configuration-idp-override.adoc[leveloffset=+2]
 
 ==== APIM Console configuration
 

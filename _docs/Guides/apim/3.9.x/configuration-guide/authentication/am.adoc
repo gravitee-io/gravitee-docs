@@ -1,10 +1,5 @@
----
-product: API Management
-guide: Configuration Guide
-toc: true
-title: Configure Access Management authentication
-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
----
+= Configure Access Management authentication
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
 This page explains how to configure APIM authentication using the https://www.gravitee.io/products/access-management[Gravitee.io Access Management^] product.
 
@@ -26,9 +21,9 @@ image::apim/3.x/installation/authentication/graviteeam_client_credentials.png[Ge
 
 == Configure APIM
 
-include::../../partial/management-api-configuration-idp-override.adoc[leveloffset=+2]
+include::../../../../include/management-api-configuration-idp-override.adoc[leveloffset=+2]
 
-==== APIM Console configuration
+=== APIM Console configuration
 
 . Click *Organization Settings > Authentication*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"] and select the *Gravitee.io AM* icon.
@@ -39,7 +34,7 @@ image::apim/3.x/management-api-configuration-idp/new-am.png[Gravitee.io - New Gr
 . Click *CREATE*.
 . Activate the provider for Portal or Console login, as described in link:./introduction.html#activating-providers[Activating providers^].
 
-==== `gravitee.yml` file configuration
+=== `gravitee.yml` file configuration
 
 Update the following section of the file with the AM client credentials.
 

@@ -4,13 +4,13 @@
 
 There are three different ways to configure Cockpit:
 
-- environment variables
-- system properties
+- Environment variables
+- System properties
 - `gravitee.yml`
 
 The order in which they are listed above corresponds to their order of precedence. In other words, environment variables override the other two configuration types, and system properties override `gravitee.yml`.
 
-=== `gravitee.yml`
+== `gravitee.yml`
 
 The `gravitee.yml` file, found in `GRAVITEE_HOME/config/`, is the default way to configure Cockpit.
 
@@ -340,7 +340,7 @@ auth:
 #      maxTotalConnection: 10
 ```
 
-=== System properties
+== System properties
 
 You can override the default `gravitee.yml` configuration by defining system properties.
 
@@ -359,8 +359,7 @@ Add this property to the JVM:
 -Dmanagement.mongodb.dbname=myDatabase
 ----
 
-
-=== Environment variables
+== Environment variables
 
 You can override the default `gravitee.yml` configuration and system properties by defining environment variables.
 

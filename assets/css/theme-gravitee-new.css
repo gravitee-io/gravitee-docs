@@ -21,13 +21,6 @@ div.ulist li{
     padding-left: 3px;
 }
 
-.col-md-3{
-@media (min-width: 992px){
-    width: 25%;
-    float: left;
-  }
-}
-
 
 .navbar-inverse {
     background: rgb(1, 0, 2) linear-gradient(90deg, rgba(1, 0, 2, 1) 0%, rgba(23, 12, 102, 1) 55%, rgba(25, 139, 183, 1) 100%);
@@ -193,6 +186,9 @@ nav .breadcrumb-item{
   text-transform: capitalize;
 }
 
+ol.breadcrumb{
+  padding: 0;
+}
 
 .layout-breadcrumb .breadcrumb > li + li:before {
   content: "/\00a0";
@@ -217,17 +213,6 @@ html, body{
     border-bottom: none;
 }
 
-@media (min-width: 768px)
-.layout-wrapper .col-md-6 {
-    flex: 0 0 58d%;
-    max-width: 60%;
-}
-
-
-@media only screen and (max-width: 768px)
-.layout-wrapper .col-md-2 {
-    display: none !important;
-}
 
 /* algolia search */
 
@@ -297,7 +282,6 @@ div.paragraph {
 footer.footer {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
     align-content: flex-end;
     margin: 4 rem 4 rem 0 4 rem;
     font-size: smaller;
@@ -309,6 +293,7 @@ div.footertop {
     position: relative;
     padding-left: 10px;
     padding-right: 10px;
+    padding-top: 10px;
 }
 
 .footer-links {
@@ -398,7 +383,7 @@ div.footertop {
 	box-shadow:0 0 20px 5px rgba(33,107,188,.03)
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
 
     .footer {
         display: flex;
@@ -443,45 +428,42 @@ div.footertop {
     color: #fff;
 }
 
-.nav li.active > a {
-    background-color: #f2f6fb;
-    border-top-color: #f2f6fb;
-    border-bottom-color: #f2f6fb;
-}
-
-.nav li > a > span:after {
-    content: '\25be';
-}
-
 span.icon>.fa {
     cursor: default;
 }
+
 .admonitionblock td.icon {
     text-align: center;
     width: 80px;
 }
+
 .admonitionblock td.icon [class^="fa icon-"] {
     font-size: 2.5em;
     text-shadow: 1px 1px 2px rgba(0,0,0,.5);
     cursor: default;
 }
+
 .admonitionblock td.icon .icon-note:before {
     content: "\f05a";
     color: #19407c;
 }
+
 .admonitionblock td.icon .icon-tip:before {
     content: "\f0eb";
     text-shadow: 1px 1px 2px rgba(155,155,0,.8);
     color: #111;
 }
+
 .admonitionblock td.icon .icon-warning:before {
     content: "\f071";
     color: #bf6900;
 }
+
 .admonitionblock td.icon .icon-caution:before {
     content: "\f06d";
     color: #bf3400;
 }
+
 .admonitionblock td.icon .icon-important:before {
     content: "\f06a";
     color: #bf0000;
@@ -588,6 +570,17 @@ table tr td {
 
 
 /* navgoco sidebar styles (customized) */
+
+.nav li.active > a {
+    background-color: #f2f6fb;
+    border-top-color: #f2f6fb;
+    border-bottom-color: #f2f6fb;
+}
+
+/*.nav li > a > span:after {
+    content: '\25be';
+}*/
+
 ul.nav, ul.nav ul, ul.nav li {
     list-style: none;
 }
@@ -606,12 +599,12 @@ ul.nav > li {
     margin: 1px 0;
 }
 
-ul.nav > li li {
+ ul.nav > li li {
     padding-left: 10px;
 }
 
 ul.nav > li li a {
-    padding-left:20px;
+    padding-left:10px;
 }
 
 ul.nav a {
@@ -643,9 +636,9 @@ ul#mysidebar {
 }
 
 
-ul.nav li a {
+/* ul.nav li a {
     padding-right:10px;
-}
+} */
 
 .dropdown-button {
 
