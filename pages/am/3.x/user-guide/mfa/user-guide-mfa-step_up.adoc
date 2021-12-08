@@ -30,11 +30,10 @@ Step-up authentication is often used in the following scenarios:
 - Users initiate a payment.
 - Users want to delegate access to third parties.
 
-== Configure step-up authentication
-
-. In AM Console, select your application.
-. Click the **Settings** tab, then click **Multifactor Auth**.
-. Set the *Step up authentication* rule.
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Select your application
+. Click *Settings > Multifactor Auth*.
+. Select your MFA factor and set the *Step up authentication* rule.
 . Click *SAVE*.
 +
 image::am/current/graviteeio-am-userguide-mfa-step-up.png[]
