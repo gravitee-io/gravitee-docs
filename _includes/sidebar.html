@@ -74,7 +74,7 @@
                         {% for subfolders in subfolderitem.subfolders %}
                         {% if subfolders.output contains "web" %}
                         <li class="subitem">
-                            <a href="#">{{ subfolders.title }}</a>
+                            <a href="#">{{ subfolders.title }}</a><i class="fa fa-chevron-down"></i>
                             <ul class="sub-dropdown">
                                 {% for subfolderitem in subfolders.subfolderitems %}
                                 {% if subfolderitem.output contains "web" %}

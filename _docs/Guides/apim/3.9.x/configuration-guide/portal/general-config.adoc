@@ -8,7 +8,7 @@ The configuration file for APIM Portal is `assets\config.json`. You can see the 
 include::https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-portal-webui/src/assets/config.json[]
 ----
 
-=== Mandatory configuration
+== Mandatory configuration
 
 The only mandatory value in the `config.json` file is `baseURL`, which describes where the APIM API Portal endpoint is. You must set this value so that APIM Portal can send requests to it.
 
@@ -28,7 +28,7 @@ To use the live preview, you must first configure a *Portal URL* in the Portal s
 image::apim/3.x/installation/portal-ui/portal-url.png[]
 ====
 
-=== Top menu
+== Top menu
 FULLSCREEN:: This button opens the preview in a new window, making it easier to edit if you have several screens.
 NOTE: This button is only visible if you configure a Portal URL, as described above.
 
@@ -40,7 +40,7 @@ ENABLED:: This switch activates the theme in APIM Portal.
 
 RESTORE TO DEFAULT THEME:: This action overwrites your modifications with the theme provided by default.
 
-=== Basic customization
+== Basic customization
 
 Some basic customization options are:
 
@@ -54,7 +54,7 @@ Colors:: Define your primary, neutral and font colors.
 
 Fonts:: Choose your font family and sizes. Medium sizes are used by default.
 
-=== Advanced customization
+== Advanced customization
 
 If you want to customize further, you can define the graphic properties to expose for each component.
 

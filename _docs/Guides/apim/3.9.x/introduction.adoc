@@ -28,21 +28,21 @@ image::apim/3.x/overview/architecture/new-gravitee-platform-architecture-schema.
 
 == APIM concepts
 
-==== API
+=== API
 
 **API** is the root concept defined and used by APIM. Think of this as the starting point through which services are exposed to the gateway.
 
-==== Publisher
+=== Publisher
 
 In APIM, a **publisher** (**API publisher**) is the role that declares and manages APIs.
 
-==== Consumer
+=== Consumer
 
 In APIM, a **consumer** (**API Consumer**) is the role that consumes APIs.
 
 **PRO-TIP**: Consumer can only consume APIs after subscribing to them.
 
-==== Application
+=== Application
 
 An **application** is an intermediate layer between a consumer and an API. Consumers use an application to subscribe to the API so they can consume it.
 
@@ -56,7 +56,7 @@ APIM is made up of four main components:
 - APIM Portal
 
 [[gravitee-components-gateway]]
-==== APIM Gateway
+=== APIM Gateway
 APIM Gateway is the core component of the APIM platform. You can think of it like a smart proxy.
 
 Unlike a traditional HTTP proxy, APIM Gateway has the capability to apply <<gravitee-plugins-policies, policies>> (or rules) to both HTTP requests and responses. With policies, you can enhance request and response processing by adding transformations, security, and many other exciting features.
@@ -68,19 +68,19 @@ image::apim/3.x/overview/components/new-gravitee-gateway-internal.png[Gravitee.i
 image::apim/3.x/overview/components/new-gravitee-gateway-architecture.png[Gravitee.io -- Gateway Architecture]
 
 [[gravitee-components-rest-api]]
-==== APIM API
+=== APIM API
 This RESTful API exposes services to manage and configure the <<gravitee-components-mgmt-ui, APIM Console>> and <<gravitee-components-portal-ui, APIM Portal>> web UIs.
 All exposed services are restricted by authentication and authorization rules. For more information, see
 the link:/Reference/API/apim-rest-api-doc.html[API Reference] section.
 
 [[gravitee-components-mgmt-ui]]
-==== APIM Console
+=== APIM Console
 This web UI gives easy access to some key <<gravitee-components-rest-api, APIM API>> services.
 <<publisher, API Publishers>> can use it to publish APIs.
 Administrators can also configure global platform settings and specific portal settings.
 
 [[gravitee-components-portal-ui]]
-==== APIM Portal
+=== APIM Portal
 This web UI gives easy access to some key <<gravitee-components-rest-api, APIM API>> services.
 <<consumer, API Consumers>> can use it to search for, view, try out and subscribe to a published API.
 They can also use it to manage their <<application, applications>>.
@@ -120,7 +120,7 @@ APIM Gateway
 |===
 
 [[gravitee-plugins-idp]]
-==== Identity Providers
+=== Identity Providers
 
 An identity provider brokers trust with external user providers, to authenticate and obtain information about your end users.
 
@@ -132,7 +132,7 @@ Out-of-the-box identity providers are:
 - OpenID Connect IdP (Azure AD, Google)
 
 [[gravitee-plugins-policies]]
-==== Policies
+=== Policies
 A *policy* modifies the behavior of the request or response handled by APIM Gateway. It can be chained by a request policy chain or a response policy chain using a logical order.
 Policies can be thought of like a _proxy controller_, guaranteeing that a given business rule is fulfilled during request/response processing.
 
@@ -145,7 +145,7 @@ Examples of a policy are:
 NOTE: Want to know how to create, use, and deploy a custom policy? Check out the link:./developer-guide/policies.html[Policies Developer Guide].
 
 [[gravitee-plugins-reporters]]
-==== Reporters
+=== Reporters
 
 A *reporter* is used by an APIM Gateway instance to report many types of event:
 
@@ -162,12 +162,12 @@ NOTE: As with all plugins, you can create, use, and deploy custom reporters as d
 link:./developer-guide/plugins.html[Plugins Developer Guide].
 
 [[gravitee-plugins-repositories]]
-==== Repositories
+=== Repositories
 A *repository* is a pluggable storage component for API configuration, policy configuration, analytics and so on.
 You can find more information in the link:./configuration-guide/repositories/introduction.html[Repositories] section of the Configuration Guide.
 
 [[gravitee-plugins-resources]]
-==== Resources
+=== Resources
 
 A **resource** can be added to an API for its whole lifecycle. APIM comes with three default resources:
 
@@ -178,13 +178,13 @@ A **resource** can be added to an API for its whole lifecycle. APIM comes with t
 You can find more information in the link:./publisher-guide/resources/introduction.html[Resources] section of the API Publisher Guide.
 
 [[gravitee-plugins-notifiers]]
-==== Notifiers
+=== Notifiers
 
 A *notifier* is used to send notifications.
 Currently, the only notifier available is the *email notifier*, but others including *slack* and *portal* are planned soon.
 
 [[gravitee-plugins-alerts]]
-==== Alerts
+=== Alerts
 
 An *alert* is used to send triggers or events to the Alert Engine, which can be processed to send a notification using the configured plugin notifier.
 Configuring the notifier is the responsibility of the trigger.

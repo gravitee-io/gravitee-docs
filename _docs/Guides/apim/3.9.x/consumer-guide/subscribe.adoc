@@ -1,10 +1,5 @@
----
-product: API Management
-guide: Consumer Guide
-toc: true
-title: Subscribe to an API
-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
----
+= Subscribe to an API
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
 APIM Portal exposes published APIs to developers so they can browse the APIs, request access, generate subscriptions to secure access and identify consumers for monitoring and analytics.
 
@@ -12,7 +7,7 @@ To access the APIs and start interacting with them, consumers must first subscri
 
 NOTE: Consumers must have a link:./create-account.html[user account] to register an application and subscribe to an API.
 
-=== Plan security type
+== Plan security type
 
 Depending on the plan security type (API-Key, OAuth 2.0, JWT), you need to set proper HTTP headers to call the API (for more details, see <<apim_publisherguide_plans_subscriptions.adoc#create-a-plan, Create a plan>>).
 

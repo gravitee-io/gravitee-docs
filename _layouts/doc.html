@@ -6,20 +6,15 @@ layout: default
   <div class="layout-wrapper section-spacing">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-          {% include doc_post_breadcrumb.html %}
-        </div>
-      </div>
-      <div class="row">
 	       {% if page.sidebar == nil or page.sidebar != false %}
-          <div class="col-md-3">
+          <div class="col-md-3 mysidebar">
             {% include sidebar.html %}
           </div>
           <!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
           <script>$("li.active").parents('li').toggleClass("active");</script>
 
          {% endif %}
-		     {% assign col = "6" %}
+		     {% assign col = "7" %}
 
 		     {% if page.toc == false %}
 		     {% assign col1 = "3" %}
@@ -32,7 +27,11 @@ layout: default
         <div class="col-md-{{ col | plus: col1 | plus: col2 }}">
           <div class="tutorial-content mx-auto">
             <div class="doc-content">
+              <div class="col-md-12">
+                {% include doc_post_breadcrumb.html %}
+              </div>
               <h1 class="heading-1">{{page.title}}</h1>
+
               {{content}}
             </div>
           </div>

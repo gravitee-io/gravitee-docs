@@ -1,13 +1,12 @@
-= Gravitee Custom Resource Definitions
-:page-liquid:
+= Gravitee custom resource definitions
 
-The Kubernetes plugin comes with three Custom Resource Definitions:
+The Kubernetes plugin comes with three custom resource definitions:
 
 * GraviteePlugins
 * GraviteeGateway
 * GraviteeServices
 
-=== GraviteePlugins
+== GraviteePlugins
 
 The GraviteePlugins resource defines the policies and the resources that are used with the same configuration by different APIs.
 
@@ -118,9 +117,9 @@ spec:
                 key: HS256
 ----
 
-==== GraviteePlugin Status
+=== GraviteePlugin status
 
-The custom resource GraviteePlugin provides a Status sub-resource to notify about the integration state.
+The custom resource GraviteePlugin provides a `status` sub-resource to notify about the integration state.
 
 [source, bash]
 ----
@@ -131,7 +130,7 @@ plugins-example-error   ERROR     Unable to read key 'key-unknown' in secret 'se
 ----
 
 
-=== GraviteeGateway
+== GraviteeGateway
 
 The GraviteeGateway resource defines the authentication plugin and resources that will be inherited from the GraviteeService.
 
@@ -262,7 +261,7 @@ spec:
       version: HTTP_1_1
 ----
 
-==== GraviteeGateway Status
+=== GraviteeGateway Status
 
 The custom resource GraviteeGateway provides a Status sub-resource to notify about the integration state.
 
@@ -275,7 +274,7 @@ gateway-example-error   ERROR     Reference 'some-plugins' undefined in namespac
 ----
 
 
-=== GraviteeServices
+== GraviteeServices
 
 The GraviteeServices resource allows you to define one or multiple services (or APIs).
 
@@ -434,7 +433,7 @@ In a path definition, a policy may be defined using a reference coming from a Gr
 ----
 
 
-==== GraviteeService Status
+=== GraviteeService Status
 
 The custom resource GraviteeService provides a Status sub-resource to notify about the integration state and the number of services defined by the resource.
 

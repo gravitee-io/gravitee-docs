@@ -164,7 +164,7 @@ image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-translations-2.png[]
 
-== Auto fetch from an external source
+=== Auto fetch from an external source
 
 To periodically fetch your documentation from external sources, you can enable the auto-fetch option and specify the fetch frequency. In the *EXTERNAL SOURCE* tab:
 
@@ -179,7 +179,7 @@ For example:
 
 NOTE: If the APIM administrator configured a maximum fetch frequency, the value configured by the APIM administrator will override the frequency you specify.
 
-== Access control
+=== Access control
 
 In the *ACCESS CONTROL* tab, you can mark a page as PRIVATE if you want to deny access to anonymous user.
 
