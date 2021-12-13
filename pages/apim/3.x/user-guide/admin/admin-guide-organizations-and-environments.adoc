@@ -21,6 +21,10 @@ Some examples of environments you can define are:
 
 An environment belongs to one organization.
 
+=== Updating environment settings
+
+You can update a Gateway's environment settings in APIM Console by clicking **Settings** in the left-hand navigation.
+
 == Organization
 An _organization_ allows users to customize APIM to their own internal organization. It can manage multiple environments by sharing configurations like:
 
@@ -30,6 +34,10 @@ An _organization_ allows users to customize APIM to their own internal organizat
 * Notification templates
 
 It also allows operations across managed environments (like API import/export).
+
+=== Updating organization settings
+
+You can update a Gateway's organization settings in APIM Console by clicking **Organization settings** in the left-hand navigation.
 
 WARNING: The descriptions above may change slightly in future versions. Stay informed by subscribing to our link:https://gravitee.io/[newsletter].
 
