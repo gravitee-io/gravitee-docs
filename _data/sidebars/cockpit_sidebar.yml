@@ -21,6 +21,9 @@ entries:
       - title: Get started with Gravitee Cockpit
         output: web
         url: /cockpit/3.x/cockpit_quickstart_getstarted.html
+      - title: Set up your Cockpit hierarchy
+        output: web
+        url: /cockpit/3.x/cockpit_quickstart_setup.html
 
   - title: Installation Guide
     output: web
@@ -44,9 +47,6 @@ entries:
       - title: Deploy in Kubernetes
         output: web
         url: /cockpit/3.x/cockpit_installguide_kubernetes.html
-      - title: Configure
-        output: web
-        url: /cockpit/3.x/cockpit_installguide_configuration.html
       - title: Upgrade guide
         output: web
         url: /cockpit/3.x/cockpit_installguide_migration.html
@@ -54,9 +54,9 @@ entries:
   - title: Configuration Guide
     output: web
     folderitems:
-    - title: Introduction
+    - title: Configuring Cockpit
       output: web
-      url: /cockpit/3.x/cockpit_configurationguide.html
+      url: /cockpit/3.x/cockpit_installguide_configuration.html
       subfolders:
       - title: Configure repositories
         output: web
@@ -70,7 +70,7 @@ entries:
           - title: Generic OAuth2
             output: web
             url: /cockpit/3.x/cockpit_installguide_idp_generic_oauth2.html
-          - title: Connect with Github
+          - title: Connect with GitHub
             output: web
             url: /cockpit/3.x/cockpit_installguide_idp_github.html
           - title: Connect with Google
