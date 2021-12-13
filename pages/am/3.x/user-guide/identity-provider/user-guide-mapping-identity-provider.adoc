@@ -86,6 +86,9 @@ In addition, when it comes to fine grained authorization management, it is consi
 
 The goal is to dynamically add scopes to the `access_token`, depending on the role associated with the user when authenticating.
 
+WARNING: When the roles are updated via SCIM, the roles already applied via Role Mappers won't be persisted as an assigned role in order
+to safely remove it when the mapper rule does not match anymore. More about SCIM link:/am/current/am_devguide_protocols_scim_overview.html[here^] +
+
 === Example
 
 In the following example, we will map a role named `administrator` to users who are members of the `IT_DEVELOPERS_TEAM` LDAP group. +
