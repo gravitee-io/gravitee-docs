@@ -1,4 +1,4 @@
-= Installation Health Check
+= Monitor and check the health of a node
 :page-sidebar: cockpit_sidebar
 :page-permalink: cockpit/3.x/cockpit_userguide_installation_health_check.html
 :page-folder: cockpit/userguide
@@ -12,13 +12,32 @@ NOTE: This feature is only available with APIM & AM 3.8 or higher
 
 == Overview
 
-Installations that are registered with Cockpit will send valuable information to the dashboard, including configuration of the installation, list of nodes, plugins, and also some regular updates regarding their health status and monitoring.
+Installations that are registered with Cockpit will report valuable information, including configuration of the installation, list of nodes, plugins, and also some regular updates regarding their health status and monitoring.
 
-On the Cockpit UI, you can view all the nodes of an installation on the Organization dashboard.
+== Nodes
+
+Installations are monitored at node level. Nodes can be in a `STARTED` or `STOPPED` state.
+
+You can view all the nodes of an installation which are in a `STARTED` state in the Dashboard.
 
 image:cockpit/installation-node-details-page.png[]
 
-== Installation node details
+You can click on a node to access more details about that node.
+On this page you will find general info regarding the node (such as its name, version, etc.), the list of plugins, and health check and monitoring data.
 
-You can click on an installation node icon to access more details about that node. On this page you will find general info regarding the node (such as its name, version, etc.), the list of plugins, and health check and monitoring data.
+== Health checks
 
+Health check data is gathered every 5 seconds. A node is considered unhealthy if its last health check was unhealthy, or if the last health check was more than five minutes ago.
+Each health check contains different probes, depending on the node type (REST API or Gateway).
+
+== Monitor a node
+
+1. Click the node in the Dashboard.
+2. Click *Monitoring*.
+3. To see historical data, filter by date.
++
+Cockpit reports on the node's performance.
+
+== Check the health of a node
+
+Nodes are either healthy or unhealthy at a given point in time. If your node is currently unhealthy, running a historical health check can help you pinpoint when its status changed.
