@@ -6,13 +6,13 @@
 == Overview
 
 This page lists all migration details required for Cockpit.
-Most of the time, data migration will be handled automatically thanks to a Liquibase script, so no manual work is required.
+Most of the time, data migration will be handled automatically with a Liquibase script, so no manual work is required.
 
 === 3.11
 
-When migrating from 3.10 to 3.11, the Liquibase script can take a long time to run and this is expected (this is because we remove a large chunk of useless data from the DB to improve your experience). 
+When migrating from 3.10 to 3.11, the Liquibase script can take a long time to run and this is expected (this is because we remove a large chunk of useless data from the DB to improve your experience).
 
-For users running Cockpit on K8S, the Liquibase migration may take too much time to execute, and K8S might kill the pod. If this happens, you should purge data using the following script before deploying the new version.
+For users running Cockpit on K8S, the Liquibase migration may take too much time to execute, and K8S might kill the pod. If this happens, purge data using the following script before deploying the new version.
 ```
 db.getCollection('audits').remove({event: {$in: ["HEALTHCHECK_REPORT_CREATED", "HEALTHCHECK_REPORT_UPDATED", "MONITORING_REPORT_CREATED"]}})
 ```

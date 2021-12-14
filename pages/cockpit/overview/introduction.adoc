@@ -19,14 +19,12 @@ Cockpit is based on a hierarchy of the following entity types:
 * *Account*: at the top level, your company. One user can have multiple accounts.
 * *Organization*: at the second level, a logical part of your company in the way that makes most sense in your particular setup, for example a region or business unit. There can be multiple organizations linked to one account.
 * *Environment*: at the third level, an environment in an IT infrastructure, such as development or production. There can be multiple environments linked to one organization.
-* APIM or AM *Installations*, linked to environments in Cockpit.
-* Each linked installation automatically reports its *Nodes* to Cockpit.
+* *Installation*: APIM or AM installations, linked to environments in Cockpit.
+* *Node*: each linked installation automatically reports its REST API and Gateway nodes to Cockpit.
 +
 Learn more about <<nodes>>
 
 image::cockpit/entity-hierarchy.png[]
-
-The Cockpit hierarchy is represented visually in Cockpit in the hierarchy map pictured at the top of the page.
 
 === Entity properties
 
@@ -54,4 +52,4 @@ image::cockpit/apim-am-nodes.png[]
 The organization and environment entities defined in Cockpit are equivalent to the same entities in APIM and AM, including the roles you can define for them (for example, the `ORGNIZATION_OWNER` role exists in both APIM and AM).
 All nodes can belong to multiple environments, but only the Gateway node organization and environments are configurable in APIM and AM.
 
-Learn more about organizations and environments in link:/apim/current/am_adminguide_organizations_and_environments.html[APIM^] and link:/apim/current/am_adminguide_organizations_and_environments.html[AM^].
+Learn more about organizations and environments in link:/apim/3.x/apim_adminguide_organizations_and_environments.html[APIM^] and link:/am/current/am_adminguide_organizations_and_environments.html[AM^].
