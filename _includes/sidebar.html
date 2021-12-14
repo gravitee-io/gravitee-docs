@@ -40,8 +40,8 @@
         {% for entry in sidebar %}
         {% for folder in entry.folders %}
         {% if folder.output contains "web" %}
-        <li class="subitem">
-            <a href="#">{{ folder.title }}</a>
+        <li>
+            <a href="#">{{ folder.title }}<i class="fas fa-chevron-right"></i></a>
             <ul class="sub-dropdown">
                 {% for folderitem in folder.folderitems %}
                 {% if folderitem.output contains "web" %}
@@ -68,7 +68,7 @@
                         {% elsif page_url == subfolderitem.url %}
                         <li class="active"><a href="{{subfolderitem.url}}">{{subfolderitem.title}}</a></li>
                         {% else %}
-                        <li><a href="{{subfolderitem.url}}">{{subfolderitem.title}}</a></li>
+                        <li"><a href="{{subfolderitem.url}}">{{subfolderitem.title}}</a></li>
                         {% endif %}
 
                         {% for subfolders in subfolderitem.subfolders %}

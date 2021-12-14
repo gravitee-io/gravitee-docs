@@ -17,11 +17,11 @@ layout: default
 		     {% assign col = "7" %}
 
 		     {% if page.toc == false %}
-		     {% assign col1 = "3" %}
+		     {% assign col1 = "2" %}
 		     {% endif %}
 
 		     {% if page.sidebar == false %}
-		       {% assign col2 = "3" %}
+		       {% assign col2 = "2" %}
 		     {% endif %}
 
         <div class="col-md-{{ col | plus: col1 | plus: col2 }}">
@@ -55,18 +55,3 @@ layout: default
 
 {% include footer_top.html %}
 {% include footer.html %}
-
-<!--
-
-<script>
-  var headings = document.querySelectorAll("h2[id]");
-  for (var i = 0; i < headings.length; i++) {
-    var anchorLink = document.createElement("a");
-    anchorLink.innerText = "#";
-    anchorLink.href = "#" + headings[i].id;
-    anchorLink.classList.add("header-link");
-
-    headings[i].appendChild(anchorLink);
-  }
-</script>
--->

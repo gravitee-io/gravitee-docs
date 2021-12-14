@@ -120,7 +120,10 @@ div.ulist li{
 }
 
 .btn-style3:hover{
-	border:none;
+    background-color: #ff9100;
+    border-color #0ff;
+    color: #fff;
+    font-size: 14px;
 }
 
 .search-demo-container .gv-input{
@@ -193,11 +196,7 @@ nav .breadcrumb-item{
 
 ol.breadcrumb{
   padding: 0;
-}
-
-.layout-breadcrumb {
-  margin-left: 0;
-  padding-left: 0;
+  margin-left: -10px;
 }
 
 .layout-breadcrumb .breadcrumb > li + li:before {
@@ -582,10 +581,7 @@ table tr td {
 /* navgoco sidebar styles (customized) */
 
 .nav li.active > a {
-    /* background-color: #f2f6fb; */
-    /* border-top-color: #f2f6fb; */
-    /* border-bottom-color: #f2f6fb; */
-    font-weight: bold;
+    color: #0d65b0;
 }
 
 ul.nav, ul.nav ul, ul.nav li {
