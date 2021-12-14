@@ -25,7 +25,6 @@ div.ulist li{
 .mysidebar{
    border-right: 1px solid #ebebeb;
   }
-}
 
 .navbar-inverse {
     background: rgb(1, 0, 2) linear-gradient(90deg, rgba(1, 0, 2, 1) 0%, rgba(23, 12, 102, 1) 55%, rgba(25, 139, 183, 1) 100%);
@@ -74,7 +73,6 @@ div.ulist li{
 .navbar-right, .navbar-header {
     display: flex;
     flex-direction: row;
-    /* align-content: center; */
     align-items: center;
 }
 
@@ -215,8 +213,6 @@ html, body{
   background-position: center center;
   background-blend-mode: color;
 }
-
-/* linear-gradient(180deg, rgba(4, 0, 44, 1.0),rgba(0, 255, 255, 1.0)); */
 
 .doc-sidebar-menu li a {
     border-bottom: none;
@@ -602,7 +598,7 @@ ul.nav > li {
     margin: 1px 0;
 }
 
- ul.nav > li li {
+ul.nav > li li {
     padding-left: 10px;
 }
 
@@ -624,15 +620,15 @@ ul.nav li > a > span {
 }
 
 
-/* ul.nav li > a > span:after {
-    font-family: "Font Awesome 5 Free";
-    content: "\f078";
-} */
+ul.nav li > a > span:after {
+    content: "\f105";
+    font: normal normal normal 14px/1 FontAwesome;
+}
 
-/* ul.nav li.open > a > span:after {
-    font-family: "Font Awesome 5 Free";
-    content: "\f054";
-} */ 
+ul.nav li.active > a > span:after {
+    content: "\f107";
+    font: normal normal normal 14px/1 FontAwesome;
+}
 
 
 

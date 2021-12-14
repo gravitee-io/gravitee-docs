@@ -16,9 +16,6 @@ entries:
           - title: Installing APIM
             output: web
             url: /Guides/apim/current/installation-guide/introduction.html
-          - title: Hybrid deployment
-            output: web
-            url: /Guides/apim/current/installation-guide/hybrid-deployment.html
             subfolders:
               - title: Install on Amazon
                 output: web
@@ -95,10 +92,13 @@ entries:
                   - title: Install APIM Portal
                     output: web
                     url: /Guides/apim/current/installation-guide/zip/portal.html
-
-          - title: Configure a production-ready APIM environment
+          - title: Hybrid deployment
+            output: web
+            url: /Guides/apim/current/installation-guide/hybrid-deployment.html
+          - title: Configure a production-ready environment
             output: web
             url: /Guides/apim/current/installation-guide/production-setup.html
+
           - title: Upgrade Guide
             output: web
             url: /Guides/apim/current/installation-guide/upgrade.html
