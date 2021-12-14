@@ -7,11 +7,11 @@
 
 == Overview
 
-Existing on-premise installations of APIM and AM can be registered in Cockpit. This will allow users to create and propagate new organizations and environments to these existing installations.
+Existing on-premise installations of APIM and AM can be registered in Cockpit. This allows users to create and propagate new organizations and environments to these existing installations.
 
 A registered installation communicates with Cockpit via a WebSocket connection, secured with TLS.
 
-When you register a new installation, to view and receive updates from its nodes, you need to link one or more REST API nodes to Cockpit.
+When you register a new installation, its REST API and Gateway nodes are automatically linked to Cockpit, including any nodes you add to your APIM and AM installations later on.
 
 == How to register a new installation
 
@@ -21,44 +21,39 @@ To register new APIM or AM installations with Cockpit, you need to:
 * Download the certificate to allow secure connection via Cockpit UI
 * Install the certificate, and restart your installation.
 
-All the detailed information are available in the *How to register a new installation* link, below *Installations* in the dashboard.
-+
+These steps are explained in detail when you register the installation.
+
+=== Register the installation
+
+Register the installation using the detailed instructions in the *How to register a new installation* link, below *Installations* in the dashboard.
 After registration, the installation is displayed as a pending installation in Cockpit:
-+
+
 image::cockpit/pending-installations.png[]
 
-. Accept the installation by clicking it, selecting the environment to which to link the installation and clicking *ACCEPT*.
+=== Add the installation to Cockpit
+
+. Accept the installation:
+.. Click the pending installation.
+.. Select the environment to which to link the installation.
+.. Click *ACCEPT*.
 +
 image::cockpit/accept-installation.png[]
 +
-The installation is added to the map with a link to the environment:
-+
-image::cockpit/linked-installations-dashboard.png[]
+The installation is added to the hierarchy map with a link to the environment.
 
-. You can then link the accepted installation to other environments in Cockpit from the environment settings page.
+. Link the accepted installation to other environments in Cockpit as needed, from the link:/cockpit/3.x/cockpit_quickstart_setup.html#update_entity_settings[environment settings^] page.
 +
 image::cockpit/linked-installations.png[]
 
-. You can log in to the installation by clicking the login icon image:icons/cockpit-login-icon.png[role="icon"] on the installation in the dashboard or from the environment settings page:
-+
+== Log in to an installation
+
+There are two ways to log in to an installation in Cockpit:
+
+- Click the login icon image:icons/cockpit-login-icon.png[role="icon"] on the installation in the hierarchy map
+- Click *LOGIN* on the environment settings page of the linked environment:
+
 image::cockpit/linked-installations-login.png[]
-+
-You are redirected to the Console login page of the APIM or AM instance. If multiple APIM or AM instances are linked, the Console login page of the first instance linked to the environment opens.
 
-== Link REST API nodes
+You are redirected to the Console login page of the APIM or AM instance.
 
-You can link one or more REST API nodes for each of your APIM and AM installations.
-The first REST API node you link is considered to be the *primary node* in Cockpit.
-
-The role of the primary node is to gather, consolidate, and share the information from the other registered nodes, including:
-
-- status
-- name
-- version
-- sharding tags
-- JDK version
-- list of plugins
-- monitoring data
-- health checks
-
-If the primary node goes down, another REST API node takes over. If no REST API nodes are left, after 5 minutes the link between the installation and Cockpit is broken and is displayed as `UNHEALTHY`. 
+NOTE: If multiple APIM or AM installations are linked, the Console login page of the first installation linked to the environment opens.
