@@ -15,61 +15,61 @@ entries:
         folderitems:
           - title: Quick API Management installation
             output: web
-            url: /Getstarted/APIM/installation-quickstart.html
+            url: /Getstarted/apim/installation-quickstart.html
           - title: Quick Access Management installation
             output: web
-            url: /Getstarted/AM/installation-quickstart.html
+            url: /Getstarted/am/installation-quickstart.html
       - title: Getting started with APIM
         output: web
         folderitems:
           - title: Access APIM Portal and Console
             output: web
-            url: /Getstarted/APIM/quickstart-login.html
+            url: /Getstarted/apim/quickstart-login.html
           - title: Publish your first API with APIM Console
             output: web
-            url: /Getstarted/APIM/api-publisher-ui.html
+            url: /Getstarted/apim/api-publisher-ui.html
           - title: Publish your first API with APIM API
             output: web
-            url: /Getstarted/APIM/api-publisher-api.html
+            url: /Getstarted/apim/api-publisher-api.html
           - title: Subscribe to an API with APIM Portal
             output: web
-            url: /Getstarted/APIM/api-consumer-ui.html
+            url: /Getstarted/apim/api-consumer-ui.html
           - title: Subscribe to an API with APIM API
             output: web
-            url: /Getstarted/APIM/api-consumer-api.html
+            url: /Getstarted/apim/api-consumer-api.html
           - title: Consume the API
             output: web
-            url: /Getstarted/APIM/api-consumer-test.html
+            url: /Getstarted/apim/api-consumer-test.html
       - title: Getting started with AM
         output: web
         folderitems:
           - title: Access AM Console
             output: web
-            url: /Getstarted/AM/quickstart-login.html
+            url: /Getstarted/am/quickstart-login.html
           - title: Update the Access Management settings
             output: web
-            url: /Getstarted/AM/quickstart-setup.html
+            url: /Getstarted/am/quickstart-setup.html
           - title: Set up your first application
             output: web
-            url: /Getstarted/AM/setup-app.html
+            url: /Getstarted/am/setup-app.html
           - title: Get user profile information
             output: web
-            url: /Getstarted/AM/profile-information.html
+            url: /Getstarted/am/profile-information.html
           - title: Secure your APIM APIs
             output: web
-            url: /Getstarted/AM/secure-apis.html
+            url: /Getstarted/am/secure-apis.html
           - title: Configure a flow
             output: web
-            url: /Getstarted/AM/flow.html
+            url: /Getstarted/am/flow.html
           - title: Add custom claims to tokens
             output: web
-            url: /Getstarted/AM/tokens-custom-claims.html
+            url: /Getstarted/am/tokens-custom-claims.html
       - title: Getting started with Cockpit
         output: web
         folderitems:
           - title: Get started with Cockpit
             output: web
-            url: /Getstarted/Cockpit/get-started.html
+            url: /Getstarted/cockpit/get-started.html
       - title: Tutorials
         output: web
         folderitems:
@@ -80,16 +80,16 @@ entries:
                 subfolderitems:
                   - title: Add custom metrics to APIM dashboards
                     output: web
-                    url: /Getstarted/APIM/add-custom-metrics-dashboards.html
+                    url: /Getstarted/apim/add-custom-metrics-dashboards.html
                   - title: Configure global API reviewers
                     output: web
-                    url: /Getstarted/APIM/configure-global-api-reviewers.html
+                    url: /Getstarted/apim/configure-global-api-reviewers.html
                   - title: Test OpenTracing in Docker
                     output: web
-                    url: /Getstarted/APIM/opentracing-in-docker.html
+                    url: /Getstarted/apim/opentracing-in-docker.html
                   - title: Deploy a hybrid architecture in Kubernetes
                     output: web
-                    url: /Getstarted/APIM/hybrid-deployment-k8s.html
+                    url: /Getstarted/apim/hybrid-deployment-k8s.html
               - title: AM tutorials
                 output: web
                 subfolderitems:
