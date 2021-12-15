@@ -309,7 +309,7 @@ div.footertop {
 
 .footer-links a {
     margin: 0.5rem;
-    color: #86c3d0;
+    color: #111c4e;
 }
 
 .footer-links a[href^="http://"]::after, .footer-links a[href^="https://"]::after {
@@ -738,10 +738,6 @@ body.slider-area .hero #autocompleteResults {
     display: none;
 }
 
-
-.fa-github{
-    background-color: #111c4e;
-}
 
 @media (min-width: 1600px) {
     .container {
