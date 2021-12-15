@@ -12,22 +12,25 @@
                          <header class="faq-logo wow bounceIn" data-wow-duration="1s">
                            <h4 class="heading-4 text-capitalize">API Management</h4>
                          </header>
-                        <footer class="faq-content">
-                        <div class="col-md-1">
+                         <div class="faq-content">
+                          <div class="row">
+<!-- product guides in sets of 3 max for alignment -->
+                        <div class="col-md-5">
                          <ul class="topics-list list-inline">
-                           {% assign prod_list == 1 %}
-                            {% for product in site.data.APIM_products and prod_list >=3 %}
+                            {% for product in site.data.APIM_products %}
                               <li><a href="{{ product.url }}">{{ product.name }} </a></li>
                             {% endfor %}
                          </ul>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-5">
                          <ul class="topics-list list-inline">
-                            <li>test</li>
+                           {% for product in site.data.APIM_products2 %}
+                            <li><a href="{{ product.url }}">{{ product.name }} </a></li>
+                           {% endfor %}
                          </ul>
                        </div>
-
-                         </footer>
+                     </div>
+                    </div>
                      </article>
                   </div>
                   <div class="col-md-6">
