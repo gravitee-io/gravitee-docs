@@ -25,18 +25,21 @@
 
             <li class="breadcrumb-item">Reference</li>
 
-      {% endif %}
-
-      {% if doc_cat == "Resources" %}
+      {% elsif doc_cat == "Resources" %}
 
           <li class="breadcrumb-item">Resources</li>
-          <li class="breadcrumb-item">{{ doc_version | replace: "-", " " }}</li>
 
-      {% else %}
+          {% unless doc_guide == "breaking-changes" %}
+            {% if doc_version == "Cockpit" %}
+              <li class="breadcrumb-item">"Cockpit"</li>
+            {% else %}
+              <li class="breadcrumb-item">{{doc_version | upcase}}</li>
+            {% endif %}
+          {% endunless %}
+
+      {% endif %}
 
           <li class="breadcrumb-item-nocaps active" aria-current="page">{{page.title}}</li>
-
-      {% endif%}
 
     </ol>
 </nav>

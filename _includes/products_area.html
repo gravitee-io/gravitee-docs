@@ -13,11 +13,20 @@
                            <h4 class="heading-4 text-capitalize">API Management</h4>
                          </header>
                         <footer class="faq-content">
+                        <div class="col-md-1">
                          <ul class="topics-list list-inline">
-                            {% for product in site.data.APIM_products %}
+                           {% assign prod_list == 1 %}
+                            {% for product in site.data.APIM_products and prod_list >=3 %}
                               <li><a href="{{ product.url }}">{{ product.name }} </a></li>
                             {% endfor %}
                          </ul>
+                        </div>
+                        <div class="col-md-1">
+                         <ul class="topics-list list-inline">
+                            <li>test</li>
+                         </ul>
+                       </div>
+
                          </footer>
                      </article>
                   </div>
