@@ -307,15 +307,12 @@ entries:
                 - title: Migrate to Design Studio
                   output: web
                   url: /Guides/apim/current/publisher-guide/design-studio/migrate.html
-                - title: Design your API with Design Studio
+                - title: Design your API flows
                   output: web
                   url: /Guides/apim/current/publisher-guide/design-studio/create-flow.html
-                - title: Create and delete an API model
-                  output: web
-                  url: /Guides/apim/current/publisher-guide/design-studio/model.html
                 - title: Try It! mode
                   output: web
-                  url: /Guides/apim/3.11.x/publisher-guide/design-studio/tryit.html
+                  url: /Guides/apim/current/publisher-guide/design-studio/tryit.html
               - title: Documentation
                 output: web
                 subfolderitems:
@@ -327,7 +324,7 @@ entries:
                     url: /Guides/apim/current/publisher-guide/documentation/markdown.html
                   - title: AsciiDoc documentation
                     output: web
-                    url: /Guides/apim/current/publisher-guide/documentationn/asciidoc.html
+                    url: /Guides/apim/current/publisher-guide/documentation/asciidoc.html
                   - title: Markdown template documentation
                     output: web
                     url: /Guides/apim/current/publisher-guide/documentation/markdown-template.html
@@ -355,20 +352,16 @@ entries:
                   - title: Promote APIs
                     output: web
                     url: /Guides/apim/current/publisher-guide/promote-api.html
-          - title: Expression Language
-            output: web
-            url: /Guides/apim/current/publisher-guide/expression-language.html
-
       - title: API Consumer Guide
         output: web
         folderitems:
          - title: Introduction
            output: web
            url: /Guides/apim/current/consumer-guide/introduction.html
-         - title: Create an Account
+         - title: Create an account
            output: web
            url: /Guides/apim/current/consumer-guide/create-account.html
-         - title: Manage Applications
+         - title: Manage applications
            output: web
            url: /Guides/apim/current/consumer-guide/create-application.html
          - title: Subscribe to APIs
@@ -378,14 +371,14 @@ entries:
       - title: Administration Guide
         output: web
         folderitems:
-          - title: Organizations & Environments
+          - title: Organizations & environments
             output: web
             url: /Guides/apim/current/administration-guide/organizations-environments.html
             type: homepage
-          - title: Roles & Permissions
+          - title: Roles & permissions
             output: web
             url: /Guides/apim/current/administration-guide/roles-permissions.html
-          - title: Users & Groups
+          - title: Users & groups
             output: web
             url: /Guides/apim/current/administration-guide/users-groups.html
           - title: Support
@@ -395,7 +388,7 @@ entries:
       - title: Developer Guide
         output: web
         folderitems:
-          - title: Bootstrap Your Dev Environment
+          - title: Bootstrap your dev environment
             output: web
             url: /Guides/apim/current/developer-guide/bootstrap.html
           - title: Plugins
@@ -420,6 +413,6 @@ entries:
           - title: Custom resources
             output: web
             url: /Guides/apim/current/kubernetes/custom-resources.html
-          - title: Admission Webhook
+          - title: Admission webhook
             output: web
             url: /Guides/apim/current/kubernetes/admission-hook.html

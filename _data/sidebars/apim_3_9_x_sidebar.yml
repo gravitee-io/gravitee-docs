@@ -276,7 +276,7 @@ entries:
                 - title: Migrate to Design Studio
                   output: web
                   url: /Guides/apim/3.9.x/publisher-guide/design-studio/migrate.html
-                - title: Design your API with Design Studio
+                - title: Design your API flows
                   output: web
                   url: /Guides/apim/3.9.x/publisher-guide/design-studio/create-flow.html
               - title: Documentation
@@ -290,7 +290,7 @@ entries:
                     url: /Guides/apim/3.9.x/publisher-guide/documentation/markdown.html
                   - title: AsciiDoc documentation
                     output: web
-                    url: /Guides/apim/3.9.x/publisher-guide/documentationn/asciidoc.html
+                    url: /Guides/apim/3.9.x/publisher-guide/documentation/asciidoc.html
                   - title: Markdown template documentation
                     output: web
                     url: /Guides/apim/3.9.x/publisher-guide/documentation/markdown-template.html
@@ -324,10 +324,10 @@ entries:
          - title: Introduction
            output: web
            url: /Guides/apim/3.9.x/consumer-guide/introduction.html
-         - title: Create an Account
+         - title: Create an account
            output: web
            url: /Guides/apim/3.9.x/consumer-guide/create-account.html
-         - title: Manage Applications
+         - title: Manage applications
            output: web
            url: /Guides/apim/3.9.x/consumer-guide/create-application.html
          - title: Subscribe to APIs
@@ -337,14 +337,14 @@ entries:
       - title: Administration Guide
         output: web
         folderitems:
-          - title: Organizations & Environments
+          - title: Organizations & environments
             output: web
             url: /Guides/apim/3.9.x/administration-guide/organizations-environments.html
             type: homepage
-          - title: Roles & Permissions
+          - title: Roles & permissions
             output: web
             url: /Guides/apim/3.9.x/administration-guide/roles-permissions.html
-          - title: Users & Groups
+          - title: Users & groups
             output: web
             url: /Guides/apim/3.9.x/administration-guide/users-groups.html
           - title: Support
@@ -354,7 +354,7 @@ entries:
       - title: Developer Guide
         output: web
         folderitems:
-          - title: Bootstrap Your Dev Environment
+          - title: Bootstrap your dev environment
             output: web
             url: /Guides/apim/3.9.x/developer-guide/bootstrap.html
           - title: Plugins
@@ -370,15 +370,15 @@ entries:
           - title: Introduction
             output: web
             url: /Guides/apim/3.9.x/kubernetes/introduction.html
-          - title: Quick Start
+          - title: Quick start
             output: web
             url: /Guides/apim/3.9.x/kubernetes/quick-start.html
-          - title: How to Install
+          - title: How to install
             output: web
             url: /Guides/apim/3.9.x/kubernetes/installation.html
-          - title: Custom Resources
+          - title: Custom resources
             output: web
             url: /Guides/apim/3.9.x/kubernetes/custom-resources.html
-          - title: Admission Hook
+          - title: Admission hook
             output: web
             url: /Guides/apim/3.9.x/kubernetes/admission-hook.html

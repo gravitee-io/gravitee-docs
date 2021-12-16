@@ -10,15 +10,6 @@ entries:
           - title: Overview
             output: web
             url: /Getstarted/getting-started.html
-      - title: Quick installation
-        output: web
-        folderitems:
-          - title: Quick API Management installation
-            output: web
-            url: /Getstarted/apim/installation-quickstart.html
-          - title: Quick Access Management installation
-            output: web
-            url: /Getstarted/am/installation-quickstart.html
       - title: Getting started with APIM
         output: web
         folderitems:
@@ -43,6 +34,9 @@ entries:
       - title: Getting started with AM
         output: web
         folderitems:
+          - title: Quick Access Management installation
+            output: web
+            url: /Getstarted/am/installation-quickstart.html
           - title: Access AM Console
             output: web
             url: /Getstarted/am/quickstart-login.html

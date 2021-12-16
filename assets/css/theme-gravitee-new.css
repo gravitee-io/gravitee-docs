@@ -22,9 +22,19 @@ div.ulist li{
 }
 
 
+.col-md-5.products{
+   -ms-flex:0 0 41.666667%;
+    flex:0 0 41.666667%;
+    max-width:41.666667%;
+    position:relative;
+    width:100%;
+    padding-right:15px;
+    padding-left:15px;
+}
+
 .mysidebar{
    border-right: 1px solid #ebebeb;
-  }
+ }
 
 .navbar-inverse {
     background: rgb(1, 0, 2) linear-gradient(90deg, rgba(1, 0, 2, 1) 0%, rgba(23, 12, 102, 1) 55%, rgba(25, 139, 183, 1) 100%);

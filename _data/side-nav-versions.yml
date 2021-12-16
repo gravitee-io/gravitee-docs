@@ -1,22 +1,22 @@
 #Sidenav dropdowns
-apim_sidenav_versions:
+apim_versions:
 - title: Sidenav versions
   folders:
-    - default_version: 3.12.x (current)
+    - default_version: 3.13.x (current)
       folderitems:
-        - title: 3.12.x (current)
+        - title: 3.13.x (current)
           url: /Guides/apim/current/introduction.html
-        - title: 3.9.x
+          - title: 3.9.x
           url: /Guides/apim/3.9.x/introduction.html
-        - title: 1.x
+          - title: 1.x
           url: /apim/1.x/apim_overview_introduction.html
 
-am_sidenav_versions:
+am_versions:
   - title: Sidenav versions
     folders:
-      - title: Access Management
+      - default_version: 3.13.x (current)
         folderitems:
-          - title: 3.x (current)
+          - title: 3.13.x (current)
             url: /Guides/am/current/introduction.html
           - title: 2.x
             url: /am/2.x/am_overview_introduction.html

@@ -15,16 +15,16 @@
                          <div class="faq-content">
                           <div class="row">
 <!-- product guides in sets of 3 max for alignment -->
-                        <div class="col-md-5">
+                        <div class="col-md-5 products">
                          <ul class="topics-list list-inline">
-                            {% for product in site.data.APIM_products %}
+                            {% for product in site.data.products.apim %}
                               <li><a href="{{ product.url }}">{{ product.name }} </a></li>
                             {% endfor %}
                          </ul>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-5 products">
                          <ul class="topics-list list-inline">
-                           {% for product in site.data.APIM_products2 %}
+                           {% for product in site.data.products.apim2 %}
                             <li><a href="{{ product.url }}">{{ product.name }} </a></li>
                            {% endfor %}
                          </ul>
@@ -39,13 +39,18 @@
                          <header class="faq-logo wow bounceIn" data-wow-duration="1s">
                            <h4 class="heading-4 text-capitalize">Access Management</h4>
                          </header>
-                         <footer class="faq-content">
+                         <div class="faq-content">
+                           <div class="row">
+ <!-- product guides in sets of 3 max for alignment -->
+                         <div class="col-md-5 products">
                          <ul class="topics-list list-inline">
-                            {% for product in site.data.AM_products %}
+                            {% for product in site.data.products.am %}
                               <li><a href="{{ product.url }}">{{ product.name }} </a></li>
                             {% endfor %}
                          </ul>
-                         </footer>
+                         </div>
+                       </div>
+                      </div>
                      </article>
                     </div>
                     <div class="col-md-6">
@@ -54,13 +59,18 @@
                          <header class="faq-logo wow bounceIn" data-wow-duration="1s">
                            <h4 class="heading-4 text-capitalize">Cockpit</h4>
                          </header>
-                         <footer class="faq-content">
+                         <div class="faq-content">
+                           <div class="row">
+ <!-- product guides in sets of 3 max for alignment -->
+                         <div class="col-md-5 products">
                          <ul class="topics-list list-inline">
-                            {% for product in site.data.Cockpit_products %}
+                            {% for product in site.data.products.cockpit %}
                               <li><a href="{{ product.url }}">{{ product.name }} </a></li>
                             {% endfor %}
                          </ul>
-                         </footer>
+                         </div>
+                       </div>
+                      </div>
                      </article>
                      </div>
 
@@ -70,13 +80,18 @@
                          <header class="faq-logo wow bounceIn" data-wow-duration="1s">
                            <h4 class="heading-4 text-capitalize">Alert Engine</h4>
                          </header>
-                         <footer class="faq-content">
+                         <div class="faq-content">
+                           <div class="row">
+ <!-- product guides in sets of 3 max for alignment -->
+                         <div class="col-md-5 products">
                          <ul class="topics-list list-inline">
-                            {% for product in site.data.AE_products %}
+                            {% for product in site.data.products.ae %}
                               <li><a href="{{ product.url }}">{{ product.name }} </a></li>
                             {% endfor %}
                          </ul>
-                         </footer>
+                         </div>
+                       </div>
+                      </div> 
                      </article>
                      </div>
                </div>
