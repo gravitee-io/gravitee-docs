@@ -10,13 +10,13 @@ SMTP is a resource you can use to send email over SMTP.
 
 Once you have created your SMTP resource, you can reference it in Email factor configuration.
 
-To create a SMTP resource: 
+To create an SMTP resource: 
 
 . link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
 . Click *Settings*.
 . In the *Resources* section, click *Services*.
-. Click to the "+" button
-. Select the SMTP resource and complete the configuration form
+. Click "+".
+. Select your new SMTP resource and complete the configuration form.
 +
 
 image::am/current/graviteeio-am-userguide-resource-smtp.png[]
