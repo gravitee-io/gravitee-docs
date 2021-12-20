@@ -84,9 +84,9 @@ entries:
             - title: Helm
               output: web
               url: /Guides/am/current/installation-guide/kubernetes.html
-    - title: Configure a production-ready AM environment
+    - title: Configure a production-ready environment
       output: web
-      url: /Getstarted/am/current/production-setup.html
+      url: /Guides/am/current/production-setup.html
     - title: Upgrade Guide
       output: web
       url: /Guides/am/current/installation-guide/upgrade.html
@@ -131,7 +131,7 @@ entries:
       - title: Configure repositories
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Configuring repositories
           output: web
           url: /Guides/am/current/configuration-guide/repositories/introduction.html
         - title: MongoDB
@@ -143,20 +143,20 @@ entries:
       - title: Configure reporters
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Configuring reporters
           output: web
           url: /Guides/am/current/configuration-guide/reporters.html
   - title: User Guide
     output: web
     folderitems:
-    - title: Overview
+    - title: Introduction
       output: web
       url: /Guides/am/current/user-guide/introduction.html
       subfolders:
       - title: Security domains
         output: web
         subfolderitems:
-        - title: Overview
+        - title: What is a security domain?
           output: web
           url: /Guides/am/current/user-guide/security-domain/introduction.html
         - title: Create a security domain
@@ -165,20 +165,20 @@ entries:
       - title: Identity providers
         output: web
         subfolderitems:
-        - title: Overview
+        - title: What is an identity provider?
           output: web
           url: /Guides/am/current/user-guide/identity-provider/introduction.html
         - title: Create an identity provider
           output: web
           url: /Guides/am/current/user-guide/identity-provider/create-identity-provider.html
-        - title: User and role mapping
+        - title: Map to a user profile
           output: web
           url: /Guides/am/current/user-guide/identity-provider/mapping-identity-provider.html
           subfolders:
           - title: Enterprise identity providers
             output: web
             subfolderitems:
-            - title: Overview
+            - title: Introduction
               output: web
               url: /Guides/am/current/user-guide/identity-provider/enterprise/introduction.html
             - title: Active Directory / LDAP
@@ -199,7 +199,7 @@ entries:
           - title: Social identity providers
             output: web
             subfolderitems:
-            - title: Overview
+            - title: Introduction
               output: web
               url: /Guides/am/current/user-guide/identity-provider/social/introduction.html
             - title: Azure AD
@@ -223,7 +223,7 @@ entries:
           - title: Legal identity providers
             output: web
             subfolderitems:
-            - title: Overview
+            - title: Introduction
               output: web
               url: /Guides/am/current/user-guide/identity-provider/legal/introduction.html
             - title: FranceConnect
@@ -232,7 +232,7 @@ entries:
           - title: Database identity providers
             output: web
             subfolderitems:
-            - title: Overview
+            - title: Introduction
               output: web
               url: /Guides/am/current/user-guide/identity-provider/database/introduction.html
             - title: JDBC
@@ -247,7 +247,7 @@ entries:
       - title: Applications
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Introduction
           output: web
           url: /Guides/am/current/user-guide/application/introduction.html
         - title: Create application
@@ -259,7 +259,7 @@ entries:
       - title: Branding
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Introduction
           output: web
           url: /Guides/am/current/user-guide/branding/introduction.html
         - title: Custom pages
@@ -271,7 +271,7 @@ entries:
       - title: Bot Detection
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Introduction
           output: web
           url: /Guides/am/current/user-guide/bot-detection/introduction.html
         - title: Bot detection plugins
@@ -286,7 +286,7 @@ entries:
       - title: Login
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Introduction
           output: web
           url: /Guides/am/current/user-guide/login/introduction.html
         - title: Step-up authentication
@@ -310,7 +310,7 @@ entries:
       - title: Multi-factor authentication
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Introduction
           output: web
           url: /Guides/am/current/user-guide/MFA/introduction.html
         - title: Factors
@@ -322,7 +322,7 @@ entries:
       - title: Resources
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Introduction
           output: web
           url: /Guides/am/current/user-guide/resources/introduction.html
         - title: Twilio
@@ -331,7 +331,7 @@ entries:
       - title: Certificates
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Introduction
           output: web
           url: /Guides/am/current/user-guide/certificate/introduction.html
         - title: Create a certificate
@@ -340,7 +340,7 @@ entries:
       - title: User management
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Introduction
           output: web
           url: /Guides/am/current/user-guide/user-management/introduction.html
         - title: Users
@@ -370,7 +370,7 @@ entries:
       - title: Session management
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Introduction
           output: web
           url: /Guides/am/current/user-guide/session-management/introduction.html
         - title: Logout
@@ -379,7 +379,7 @@ entries:
       - title: Audit trail
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Introduction
           output: web
           url: /Guides/am/current/user-guide/logs/introduction.html
         - title: Audit log
@@ -389,7 +389,7 @@ entries:
           - title: Storage
             output: web
             subfolderitems:
-            - title: Overview
+            - title: Introduction
               output: web
               url: /Guides/am/current/user-guide/logs/storage.html
             - title: File
@@ -398,7 +398,7 @@ entries:
       - title: Flows
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Introduction
           output: web
           url: /Guides/am/current/user-guide/flows/introduction.html
         - title: Flow configuration
@@ -407,7 +407,7 @@ entries:
       - title: Alerts
         output: web
         subfolderitems:
-        - title: Overview
+        - title: Introduction
           output: web
           url: /Guides/am/current/user-guide/alerts/introduction.html
         - title: Alert Engine
@@ -420,7 +420,7 @@ entries:
           - title: Notification channels
             output: web
             subfolderitems:
-            - title: Overview
+            - title: Introduction
               output: web
               url: /Guides/am/current/user-guide/alerts/notifications.html
             - title: Email
@@ -457,17 +457,17 @@ entries:
   - title: Protocols
     output: web
     folderitems:
-      - title: Overview
+      - title: Introduction
         output: web
         url: /Guides/am/current/developer-guide/protocols/introduction.html
         subfolders:
           - title: OAuth 2.0
             output: web
             subfolderitems:
-              - title: Overview
+              - title: Introduction
                 output: web
                 url: /Guides/am/current/developer-guide/protocols/oauth2/introduction.html
-              - title: Which flow should I use ?
+              - title: Which flow should I use?
                 output: web
                 url: /Guides/am/current/developer-guide/protocols/oauth2/flows.html
               - title: PKCE
@@ -480,7 +480,7 @@ entries:
                   - title: Extension grants
                     output: web
                     subfolderitems:
-                      - title: Overview
+                      - title: Introduction
                         output: web
                         url: /Guides/am/current/developer-guide/extension-grants/introduction.html
                       - title: JWT Bearer
@@ -489,18 +489,18 @@ entries:
           - title: OpenID Connect
             output: web
             subfolderitems:
-              - title: Overview
+              - title: Introduction
                 output: web
                 url: /Guides/am/current/developer-guide/protocols/oidc.html
           - title: UMA 2.0
             output: web
             subfolderitems:
-              - title: Overview
+              - title: Introduction
                 output: web
                 url: /Guides/am/current/developer-guide/protocols/uma2.html
           - title: SCIM 2.0
             output: web
             subfolderitems:
-              - title: Overview
+              - title: Introduction
                 output: web
                 url: /Guides/am/current/developer-guide/protocols/scim.html

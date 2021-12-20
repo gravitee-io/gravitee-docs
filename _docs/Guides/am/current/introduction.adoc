@@ -1,4 +1,4 @@
-= Access Management overview
+= Introduction
 
 Gravitee.io Access Management (AM) is a flexible, lightweight and easy to use open source Identity and Access Management solution. It offers a centralized authentication and authorization service to deliver secure access for authorized users to your applications and APIs from any device.
 
@@ -36,19 +36,19 @@ Here are some common AM use cases:
 
 The main AM concepts are described below.
 
-=== Organization
+Organization::
 
 NOTE: As of AM version 3.6, the open source version of AM comes with a single default organization.
 
 An organization is internal data space AM provisions for you, to hold all the resources to handle user authentication.
 
-=== Environment
+Environment::
 
 NOTE: As of AM version 3.6, the open source version of AM comes with a single default environment.
 
 An environment is a logical workspace in which administrative users can manage security domains.
 
-=== Security domain
+Security domain::
 
 Security domains in AM have the following characteristics:
 
@@ -56,7 +56,7 @@ Security domains in AM have the following characteristics:
 - Exposes authentication and authorization URLs
 - Gathers analytics and reporting
 
-=== Application
+Application::
 
 Applications in AM have the following characteristics:
 
@@ -70,7 +70,7 @@ Applications in AM have the following characteristics:
 - Applications use AM to sign in and make requests to the Gateway Authorization Server
 - Applications can be used by end users (B2C) or be autonomous (B2B)
 
-=== Identity provider
+Identity provider::
 
 An identity provider in AM:
 
@@ -86,7 +86,7 @@ An identity provider in AM:
 
 - Is used during the login process to verify user credentials and retrieve profile information
 
-=== Extension point
+Extension point::
 
 NOTE: Extension points are deprecated in version 3.5.x and replaced by the flow concept described below.
 
@@ -98,7 +98,7 @@ An extension point:
   - Adding extra actions after the login form process
   - Adding extra actions before and after the user consent process
 
-=== Flow
+Flow::
 
 NOTE: New in AM 3.5.x
 

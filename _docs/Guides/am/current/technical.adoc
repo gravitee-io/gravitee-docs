@@ -1,7 +1,4 @@
----
-toc: true
-title: Access Management technical overview
----
+= Technical overview
 
 == AM architecture
 
@@ -16,14 +13,15 @@ AM is made up of the following components:
   - AM APIs
   - AM Console
 
-=== AM Gateway
+AM Gateway::
 
 AM Gateway is the core component of the AM platform. It acts as a trust broker with your identity providers and provides an authentication and authorization flow for your users.
 
 .Gravitee.io AM - Internal Gateway
 image::am/current/graviteeio-am-overview-components-gateway.png[Gravitee.io AM - Internal Gateway]
 
-== AM APIs
+AM APIs::
+
 These RESTful APIs expose services to:
 
 * Manage and configure the AM platform
@@ -32,15 +30,14 @@ These RESTful APIs expose services to:
 
 All exposed services are restricted by authentication and authorization rules. You can find more information in the link:am_devguide_protocols_overview.html[API Reference^] section.
 
-== AM Console
+AM Console::
+
 This web UI acts as a graphical interface to the AM API functionality.
 
-=== Plugins
+== Plugins
 
 Plugins are additional components that can be _plugged into_ AM Gateway or AM API.
 They can customize the component's behavior to exactly fit your needs and technical constraints.
-
-==== Types of plugins
 
 The table below lists the different types of plugins you can use with APIM, with the component(s) they can be plugged into and some examples. For more details of what each plugin type does, see the sections below.
 
@@ -55,7 +52,8 @@ The table below lists the different types of plugins you can use with APIM, with
 |===
 
 [[gravitee-plugins-idp]]
-===== Identity providers
+Identity providers::
+
 An *identity provider* brokers trust with external user providers, to authenticate and obtain information about your end users.
 
 Out-of-the-box identity providers are:
@@ -66,7 +64,7 @@ Out-of-the-box identity providers are:
 * SAML 2.0 IdP
 
 [[gravitee-plugins-policies]]
-===== Policies
+Policies::
 A *policy* modifies the behavior of a request or response handled by AM Gateway. It can be chained by a request policy chain or a response policy chain using a logical order.
 Policies are used by extension points to guarantee a given business rule is fulfilled during request processing.
 
@@ -75,7 +73,7 @@ An example of a policy is:
 * Call external web services during Login Flow (HTTP Callout policy)
 
 [[gravitee-plugins-reporters]]
-===== Reporters
+Reporters::
 
 A *reporter* is used by an AM API or AM Management instance to report many types of event:
 
@@ -87,7 +85,7 @@ Out-of-the-box reporters are:
 * MongoDB Reporter
 
 [[gravitee-plugins-repositories]]
-===== Repositories
+Repositories::
 A *repository* is a storage component for AM platform configuration.
 
 Out-of-the-box repositories are:
@@ -95,7 +93,7 @@ Out-of-the-box repositories are:
 * MongoDB Repository
 
 [[gravitee-plugins-alerts]]
-===== Alerts
+Alerts::
 
 An *alert* allows AM to send triggers or events to the Alert Engine, which can be processed to send a notification using the configured plugin notifier.
 Configuring the notifier is the responsibility of the trigger.

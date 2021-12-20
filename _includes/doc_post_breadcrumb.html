@@ -26,14 +26,13 @@
             <li class="breadcrumb-item">Reference</li>
 
       {% elsif doc_cat == "Resources" %}
-
           <li class="breadcrumb-item">Resources</li>
 
           {% unless doc_guide == "breaking-changes" %}
-            {% if doc_version == "Cockpit" %}
-              <li class="breadcrumb-item">"Cockpit"</li>
+            {% if doc_version == "cockpit" %}
+              <li class="breadcrumb-item-no-caps">Cockpit</li>
             {% else %}
-              <li class="breadcrumb-item">{{doc_version | upcase}}</li>
+              <li class="breadcrumb-item-no-caps">{{doc_version | upcase}}</li>
             {% endif %}
           {% endunless %}
 

@@ -203,10 +203,6 @@ nav .breadcrumb-item{
   text-transform: capitalize;
 }
 
-ol.breadcrumb{
-  padding: 0;
-  margin-left: -10px;
-}
 
 .layout-breadcrumb .breadcrumb > li + li:before {
   content: "/";
