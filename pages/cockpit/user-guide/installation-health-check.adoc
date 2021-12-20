@@ -28,7 +28,7 @@ The role of the primary node is to gather, consolidate, and share the informatio
 - monitoring data
 - health checks
 
-If the primary node goes down, another REST API node takes over as primary node. If no REST API nodes are left, after 5 minutes the link between the installation and Cockpit is broken and is displayed as *UNHEALTHY*.
+If the primary node goes down, another REST API node takes over as primary node. If no REST API nodes are left, after 5 minutes all nodes are considered unhealthy, since Cockpit is no longer able to retrieve health information from the installation.
 
 Nodes can be in a `STARTED` or `STOPPED` state.
 
