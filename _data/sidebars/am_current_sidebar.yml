@@ -247,7 +247,7 @@ entries:
       - title: Applications
         output: web
         subfolderitems:
-        - title: Introduction
+        - title: What is an application?
           output: web
           url: /Guides/am/current/user-guide/application/introduction.html
         - title: Create application
@@ -259,7 +259,7 @@ entries:
       - title: Branding
         output: web
         subfolderitems:
-        - title: Introduction
+        - title: Applying custom branding to AM
           output: web
           url: /Guides/am/current/user-guide/branding/introduction.html
         - title: Custom pages
@@ -268,10 +268,10 @@ entries:
         - title: Custom email templates
           output: web
           url: /Guides/am/current/user-guide/branding/email-templates.html
-      - title: Bot Detection
+      - title: Bot detection
         output: web
         subfolderitems:
-        - title: Introduction
+        - title: Enabling bot detection
           output: web
           url: /Guides/am/current/user-guide/bot-detection/introduction.html
         - title: Bot detection plugins
@@ -286,18 +286,18 @@ entries:
       - title: Login
         output: web
         subfolderitems:
-        - title: Introduction
+        - title: Configuring login flows
           output: web
           url: /Guides/am/current/user-guide/login/introduction.html
         - title: Step-up authentication
           output: web
-          url: /Guides/am/current/user-guide/MFA/step-up.html
+          url: /Guides/am/current/user-guide/mfa/step-up.html
         - title: Adaptive multi-factor authentication
           output: web
-          url: /Guides/am/current/user-guide/MFA/amfa.html
+          url: /Guides/am/current/user-guide/mfa/amfa.html
         - title: Remember device authentication
           output: web
-          url: /Guides/am/current/user-guide/MFA/remember-device.html
+          url: /Guides/am/current/user-guide/mfa/remember-device.html
         - title: Passwordless (W3C WebAuthn)
           output: web
           url: /Guides/am/current/user-guide/login/passwordless.html
@@ -310,22 +310,25 @@ entries:
       - title: Multi-factor authentication
         output: web
         subfolderitems:
-        - title: Introduction
+        - title: What is multi-factor authentication?
           output: web
-          url: /Guides/am/current/user-guide/MFA/introduction.html
-        - title: Factors
+          url: /Guides/am/current/user-guide/mfa/introduction.html
+        - title: MFA factors
           output: web
-          url: /Guides/am/current/user-guide/MFA/factors.html
+          url: /Guides/am/current/user-guide/mfa/factors.html
+        - title: MFA alternative method
+          output: web
+          url: /Guides/am/current/user-guide/mfa/alternatives.html
         - title: Reset MFA
           output: web
-          url: /Guides/am/current/user-guide/MFA/user-factors.html
+          url: /Guides/am/current/user-guide/mfa/reset.html
       - title: Resources
         output: web
         subfolderitems:
-        - title: Introduction
+        - title: Creating resources
           output: web
           url: /Guides/am/current/user-guide/resources/introduction.html
-        - title: Twilio
+        - title: Twilio Verify
           output: web
           url: /Guides/am/current/user-guide/resources/twilio.html
       - title: Certificates
@@ -340,7 +343,7 @@ entries:
       - title: User management
         output: web
         subfolderitems:
-        - title: Introduction
+        - title: Managing users
           output: web
           url: /Guides/am/current/user-guide/user-management/introduction.html
         - title: Users
@@ -381,46 +384,39 @@ entries:
         subfolderitems:
         - title: Introduction
           output: web
-          url: /Guides/am/current/user-guide/logs/introduction.html
-        - title: Audit log
+          url: /Guides/am/current/user-guide/logs/audit-trail.html
+        - title: Log file storage
           output: web
-          url: /Guides/am/current/user-guide/logs/use-audit-log.html
-          subfolders:
-          - title: Storage
-            output: web
-            subfolderitems:
-            - title: Introduction
-              output: web
-              url: /Guides/am/current/user-guide/logs/storage.html
-            - title: File
-              output: web
-              url: /Guides/am/current/user-guide/logs/audit-log-file.html
+          url: /Guides/am/current/user-guide/logs/storage.html
+        - title: Configure a log file reporter
+          output: web
+          url: /Guides/am/current/user-guide/logs/audit-log-file.html
       - title: Flows
         output: web
         subfolderitems:
         - title: Introduction
           output: web
           url: /Guides/am/current/user-guide/flows/introduction.html
-        - title: Flow configuration
+        - title: Configure flows
           output: web
           url: /Guides/am/current/user-guide/flows/flow-config.html
       - title: Alerts
         output: web
         subfolderitems:
-        - title: Introduction
+        - title: Managing alerts
           output: web
           url: /Guides/am/current/user-guide/alerts/introduction.html
         - title: Alert Engine
           output: web
           url: /Guides/am/current/user-guide/alerts/ae.html
-        - title: Manage alerts
+        - title: Configure alerts
           output: web
           url: /Guides/am/current/user-guide/alerts/manage.html
           subfolders:
           - title: Notification channels
             output: web
             subfolderitems:
-            - title: Introduction
+            - title: Creating notification channels
               output: web
               url: /Guides/am/current/user-guide/alerts/notifications.html
             - title: Email
@@ -454,53 +450,47 @@ entries:
         output: web
         url: /Guides/am/current/developer-guide/bootstrap.html
 
-  - title: Protocols
+  - title: Protocols Guide
     output: web
     folderitems:
       - title: Introduction
         output: web
-        url: /Guides/am/current/developer-guide/protocols/introduction.html
+        url: /Guides/am/current/protocols-guide/introduction.html
         subfolders:
           - title: OAuth 2.0
             output: web
             subfolderitems:
               - title: Introduction
                 output: web
-                url: /Guides/am/current/developer-guide/protocols/oauth2/introduction.html
+                url: /Guides/am/current/protocols-guide/oauth2/introduction.html
               - title: Which flow should I use?
                 output: web
-                url: /Guides/am/current/developer-guide/protocols/oauth2/flows.html
+                url: /Guides/am/current/protocols-guide/oauth2/flows.html
               - title: PKCE
                 output: web
-                url: /Guides/am/current/developer-guide/protocols/oauth2/pkce.html
+                url: /Guides/am/current/protocols-guide/oauth2/pkce.html
               - title: Best practices
                 output: web
-                url: /Guides/am/current/developer-guide/protocols/oauth2/best-practices.html
+                url: /Guides/am/current/protocols-guide/oauth2/best-practices.html
                 subfolders:
                   - title: Extension grants
                     output: web
                     subfolderitems:
                       - title: Introduction
                         output: web
-                        url: /Guides/am/current/developer-guide/extension-grants/introduction.html
+                        url: /Guides/am/current/protocols-guide/extension-grants/introduction.html
                       - title: JWT Bearer
                         output: web
-                        url: /Guides/am/current/developer-guide/extension-grants/jwt-bearer.html
-          - title: OpenID Connect
-            output: web
-            subfolderitems:
-              - title: Introduction
-                output: web
-                url: /Guides/am/current/developer-guide/protocols/oidc.html
-          - title: UMA 2.0
-            output: web
-            subfolderitems:
-              - title: Introduction
-                output: web
-                url: /Guides/am/current/developer-guide/protocols/uma2.html
-          - title: SCIM 2.0
-            output: web
-            subfolderitems:
-              - title: Introduction
-                output: web
-                url: /Guides/am/current/developer-guide/protocols/scim.html
+                        url: /Guides/am/current/protocols-guide/extension-grants/jwt-bearer.html
+      - title: OpenID Connect
+        output: web
+        url: /Guides/am/current/protocols-guide/oidc.html
+      - title: UMA 2.0
+        output: web
+        url: /Guides/am/current/protocols-guide/uma2.html
+      - title: SCIM 2.0
+        output: web
+        url: /Guides/am/current/protocols-guide/scim.html
+      - title: Open Banking
+        output: web
+        url: /Guides/am/current/protocols-guide/fapi.html

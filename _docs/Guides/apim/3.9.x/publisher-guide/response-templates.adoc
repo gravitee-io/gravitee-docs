@@ -1,7 +1,5 @@
 = Response templates
 
-== Overview
-
 You can use response templates to override the default values sent in response to consumer calls to an API.
 
 Response template overrides are triggered by _error keys_, which are specific to policies. Each response template defines the new values to be returned for one or more status codes when the template is triggered.

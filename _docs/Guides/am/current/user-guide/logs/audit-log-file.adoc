@@ -1,16 +1,14 @@
-= Audit log file
+= Configure an audit log file reporter
 
 [label label-version]#New in version 3.6#
-
-== Overview
 
 By default, the AM Console Audit log page displays all events which have taken place, including user authentication and administrative actions such as managing clients, identity providers, users, groups, roles and so on through a MongoDB reporter plugin (or a JDBC plugin, according to your deployment).
 
 AM versions from 3.6 include a file reporter for sending audit logs to a file, which you can use to ingest your logs into a third party system like ElasticSearch or Splunk.
 
-== Create a File reporter
+== Create a file reporter
 
-To create a File reporter for a domain:
+To create a file reporter for a domain:
 
 . In AM Console, click *Settings > Audit Log*.
 . Click the settings icon image:icons/am-settings-icon.png[role="icon"].

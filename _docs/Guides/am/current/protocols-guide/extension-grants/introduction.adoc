@@ -1,7 +1,7 @@
 = Extension grants
 :page-toc: false
 
-OAuth 2.0 defines standard grant types for token endpoints, such as _password_, _authorization_code_ and _refresh_token_.
+OAuth 2.0 defines standard grant types for token endpoints, such as `password`, `authorization_code`, and `refresh_token`.
 
 Extension grants are a way to add support for non-standard token issuance scenarios like token exchange, delegation or
 custom credentials.

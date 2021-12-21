@@ -18,5 +18,7 @@ image::am/current/graviteeio-am-userguide-bot-detection-snippet.png[Code Snippet
 You can enable link:https://developers.google.com/recaptcha/docs/v3[Google reCAPTCHA v3^] to verify if an interaction is legitimate, without any user interaction.
 
 You first need to create a site in the Google reCAPTCHA link:https://www.google.com/recaptcha/admin/create[administration interface^].
-Create the site using the on-screen instructions, selecting *reCAPTCHA version 3* as the reCAPTCHA type.
-Once you have finished, copy the site key and secret key and add them to the AM plugin configuration.
+
+1. Create the site using the on-screen instructions, selecting *reCAPTCHA version 3* as the reCAPTCHA type.
+2. Copy the site key and secret key.
+3. Add the site key and secret key to the AM plugin configuration.

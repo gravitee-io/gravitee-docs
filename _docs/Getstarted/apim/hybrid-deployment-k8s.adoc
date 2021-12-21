@@ -2,6 +2,8 @@
 tags: [APIM Tutorials]
 title: Deploy a hybrid architecture in Kubernetes
 keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+redirect_from:
+  - /apim/3.x/apim_installguide_hybrid_kubernetes.html
 ---
 
 This section describes how to install an APIM hybrid deployment using Kubernetes Helm charts.
@@ -241,4 +243,4 @@ We can now open up APIM Console and see our two Gateways running:
 
 image::apim/3.x/installation/hybrid/hybrid_deployment_gateways.png[]
 
-Success! Your hybrid deployment is now up and running and ready to manage link:./api-publisher-ui.html[your first API^].
+Success! Your hybrid deployment is now up and running and ready to manage link:./api-publish-ui.html[your first API^].

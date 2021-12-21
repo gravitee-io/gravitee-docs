@@ -14,7 +14,11 @@
         {% if doc_guide != nil %}
             <li class="breadcrumb-item">{{doc_guide | replace: '-', ' ' }}</li>
           {% if doc_subguide != nil %}
-            <li class="breadcrumb-item">{{doc_subguide | replace: '-', ' '}}</li>
+            {% if doc_subguide == "mfa" %}
+              <li class="breadcrumb-item">MFA</li>
+            {% else %}
+              <li class="breadcrumb-item">{{doc_subguide | replace: '-', ' '}}</li>
+            {% endif %}
           {% endif %}
         {% endif %}
 

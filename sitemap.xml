@@ -21,4 +21,13 @@ search: exclude
   </url>
   {% endunless %}
   {% endfor %}
+
+  {% for doc in site.docs %}
+  {% unless doc.search == "exclude" %}
+  <url>
+    <loc>{{site.url}}{{ page.url}}</loc>
+  </url>
+  {% endunless %}
+  {% endfor %}
+
 </urlset>

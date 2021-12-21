@@ -1,17 +1,8 @@
-= Login
+= Configuring login flows
+:page-toc: false
 
-Login flows are the key process used in Gravitee.io Access Management for confirming a user's identity before providing access (with tokens).
+Login flows are the key process used in Gravitee.io Access Management to confirm a user's identity before providing access (with tokens).
 
-More than a simple username/password experience, AM gives you the power to design your authentication flows to reflect your authorization business rules.
+More than a simple username/password experience, AM gives you the power to design your authentication flows to reflect your business authorization rules.
 
-Out of the box, Gravitee AM comes with several features, such as social login, MFA, passwordless, custom pages, and more, to effortlessly tailor your user experience.
-
-To learn more about our login experience, have a look through the following pages:
-
-- link:/Guides/am/current/user-guide/identity-provider/introduction.html[Link your users to your application^]
-- link:/Guides/am/current/user-guide/branding/introduction.html[Login page branding^]
-- link:/Guides/am/current/user-guide/mfa/introduction.html[Enable MFA^]
-- link:/Guides/am/current/user-guide/mfa/step-up.html[Step-up authentication^]
-- link:/Guides/am/current/user-guide/login/passwordless.html[What about passwordless authentication?^]
-- link:/Guides/am/current/user-guide/login/silent-re-auth.html[Silent re-authentication^]
-- link:/Guides/am/current/user-guide/login/identifier-first.html[Identifier-first login flow^]
+Out of the box, Gravitee AM comes with several features for configuring the login experience, such as social login, MFA, passwordless, custom pages, and more, to effortlessly tailor your user experience.

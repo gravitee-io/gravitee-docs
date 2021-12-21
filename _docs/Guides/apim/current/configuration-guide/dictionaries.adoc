@@ -1,7 +1,9 @@
 ---
-title: Configure dictionaries
-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, dictionary
+redirect_from:
+  - /apim/3.x/apim_installguide_configuration_dictionaries.html
 ---
+= Configure dictionaries
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, dictionary
 
 You can define dictionaries in APIM to reuse sets of properties in APIs. While API Publishers can create properties for their own APIs, dictionaries provide a way to manage properties independently of individual APIs, making it possible to apply them across APIs and maintain them globally by a different user profile, such as an administrator.
 

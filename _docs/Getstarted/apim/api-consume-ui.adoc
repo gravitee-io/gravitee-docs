@@ -1,3 +1,7 @@
+---
+redirect_from:
+  - /apim/3.x/apim_quickstart_consume_ui.html
+---
 = Subscribe to an API with APIM Portal
 
 These steps walk you through creating your first application and subscribing to your first API with APIM Portal. For a brief overview of how to set up your first API, see the **Publish your first API** sections of **Getting started with APIM**.
@@ -5,7 +9,7 @@ These steps walk you through creating your first application and subscribing to 
 NOTE: APIM includes several ways to access and secure an API, as described in (link:/Guides/APIM/current/publisher-guide/plans-subscriptions.html[Plans & subscriptions^]).
 In this example, we will access an API using an link:/Reference/policy/policy-apikey.html[API Key^].
 Only trusted applications can access the API data by requesting an API Key.
-Let's see how to create the application and subscription. We'll generate the API key when we link:./api-consumer-test.html[consume the API^] later.
+Let's see how to create the application and subscription. We'll generate the API key when we link:./api-consume-test.html[consume the API^] later.
 
 == Subscribe to an API
 

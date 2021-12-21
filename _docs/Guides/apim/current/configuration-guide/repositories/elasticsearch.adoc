@@ -1,10 +1,9 @@
 ---
-product: API Management
-guide: Configuration Guide
-toc: true
-title: Configure the Elasticsearch repository connector
-page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, elastic, es, elasticsearch
+redirect_from:
+  - /apim/3.x/apim_installguide_repositories_elasticsearch.html
 ---
+= Configure the Elasticsearch repository connector
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, elastic, es, elasticsearch
 
 The Elasticsearch connector is based on the HTTP API exposed by ES instances.
 This connector supports all versions of ES, from 5.x to 7.x.

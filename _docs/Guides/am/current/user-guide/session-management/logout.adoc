@@ -12,13 +12,13 @@ You can specify the `post_logout_redirect_uri=http://myApp/logoutCallback` or `t
 
 NOTE: You can define list of allowed URLs where the user will be redirected after being sign out. It prevents some vulnerabilities like being redirected to unsafe websites.
 
-== Single logout
+== Single sign out
 
 [label label-version]#New in version 3.10#
 
-Single logout let your end users sign out of both their Gravitee.io AM session and the social identity provider (configured in your application) with a single action.
+With single sign out, your end users can sign out of both their AM session and the social identity provider (configured in your application) in one action.
 
-To enable single logout:
+To enable single sign out:
 
 . In AM Console, click *Applications* and select your application.
 . Click *Settings > General*.

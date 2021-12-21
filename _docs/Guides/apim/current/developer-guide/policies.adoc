@@ -1,10 +1,9 @@
 ---
-product: API Management
-guide: Developer Guide
-toc: true
-title: Policies
-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+redirect_from:
+  - /apim/3.x/apim_devguide_policies.html
 ---
+= Policies
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
 Policies are steps in the Request/Response _gateway_ proxy chain. A _policy_ acts as a _proxy controller_ by guaranteeing if a given business rule is fulfilled during Request/Response processing.
 

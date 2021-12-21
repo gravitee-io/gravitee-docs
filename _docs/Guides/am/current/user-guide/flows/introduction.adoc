@@ -2,8 +2,6 @@
 
 [label label-version]#New in version 3.5#
 
-== Overview
-
 You can use _flows_ to extend the standard AM behavior by executing policies during the `OnRequest` step of selected stages. Flows can be configured at security domain level or application level.
 
 == Execution context
@@ -12,7 +10,7 @@ Each policy has access to the `Execution Context` to retrieve and set informatio
 
 The `Execution Context` data will be propagated to the next steps to be used later on (e.g custom HTML forms).
 
-In this example we are getting `Execution Context` data using the link:/Reference/expression-language.html[Gravitee.io Expression Language^]:
+In this example we are getting `Execution Context` data using link:/Reference/expression-language.html[Gravitee.io Expression Language^]:
 
 ----
 {#request} : Current HTTP Request with parameters, headers, path, ...
@@ -20,13 +18,13 @@ In this example we are getting `Execution Context` data using the link:/Referenc
 {#context.attributes['user']} : Authenticated User (if available) with username, firstName, lastName, email, roles, ...
 ----
 
-image::am/current/graviteeio-am-userguide-policies.png[]
+image::am/current/userguide-flows.png[]
 
-== Flows
+== Flow steps
 
 Policies are executed only against selected steps throughout the flow.
 
-The following is a list of the available Flows:
+The following is a list of the available flows:
 
 * link:./flow-config.html#all_flow[All Flow]: takes place for each request.
 * link:./flow-config.html#login_flow[Login Flow]: takes place during the user login phase. It allows you to execute policies before displaying the login form or after user authentication.

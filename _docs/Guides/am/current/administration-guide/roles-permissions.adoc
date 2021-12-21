@@ -1,11 +1,9 @@
 = Roles and permissions
 
-== Overview
-
 You can create administrator roles in AM to grant access to specific areas of a resource (Organization (Platform), Security Domain, Application).
 Depending on the role permissions, administrators can have full access to this resource. Administrator accounts represent users that can access the administration portal.
 
-=== Assignable type
+== Assignable type
 
 When you log in AM, you are redirected to the portal with at least one `ORGANIZATION` role to be able to see some screens of the platform.
 
@@ -22,20 +20,20 @@ In order to limit the scope of the roles, scopes are bound to what we call an `a
 
 image::am/current/graviteeio-am-adminguide-roles-permissions.png[]
 
-=== Role
+== Role
 A role is a functional group of permissions.
 There is no limit on the number of roles you are allowed to create.
 
 Some roles are special: they are tagged as `System` or `Default`.
 
-==== System role
+=== System role
 A System role is a read-only role (i.e. you cannot change its permissions) used by AM. For example `ORGANIZATION_PRIMARY_OWNER` gives the user all permissions.
 
-==== Default role
+=== Default role
 A Default role is a role used by AM when a role is not specified.
 For example, new registered users are assigned the default `ORGANIZATION_USER` role.
 
-=== Permission
+== Permission
 A permission is a list of actions allowed on a resource. The actions are `Create`, `Read`, `List`, `Update` and `Delete`.
 Some permissions can be assigned to multiple types of resources. For instance, the `DOMAIN READ` permission has a different meaning depending on whether it is assigned:
 
@@ -397,7 +395,7 @@ NOTE: All the permissions required to use AM API are described in the link:/am/c
 
 |===
 
-.Permissions `APPLICATION`
+.`APPLICATION` permissions
 [cols="1,3"]
 |===
 |Name |Description
