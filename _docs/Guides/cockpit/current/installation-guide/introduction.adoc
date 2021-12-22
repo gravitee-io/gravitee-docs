@@ -1,12 +1,16 @@
+---
+redirect_from:
+  - /cockpit/3.x/cockpit_installguide_introduction.html
+---
 = Installing Cockpit
 :page-toc: false
 
-Gravitee.io Cockpit is split into two main components:
+Gravitee.io Cockpit consists of two main components:
 
 * link:/cockpit/3.x/cockpit_installguide_management_api_install_zip.html[Cockpit API]
 * link:/cockpit/3.x/cockpit_installguide_management_ui_install_zip.html[Cockpit Console]
 
-The following sections explain how to prepare, install and configure your Cockpit environment.
+The following sections explain how to prepare, install, and configure your Cockpit environment.
 
 NOTE: This Installation Guide provides information about how to install Gravitee.io components. For external components, such as
 MongoDB, see the relevant product documentation.

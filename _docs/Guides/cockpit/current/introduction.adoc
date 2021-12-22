@@ -1,35 +1,59 @@
-= Cockpit overview
+---
+redirect_from:
+  - /cockpit/3.x/cockpit_overview_introduction.html
+---
 
-Gravitee Cockpit is a centralized, multi-environment tool for managing all your Gravitee API Management and Access Management installations in one handy, interactive dashboard.
+Gravitee Cockpit is a centralized, multi-environment tool for managing all your Gravitee API Management and Access Management installations in a single place.
 
-.Cockpit dashboard
 image::cockpit/cockpit-dashboard.png[]
 
 [[organizational-hierarchy]]
 == Cockpit hierarchy
 
-Cockpit is based on a hierarchy of three entity types:
+Cockpit is based on a hierarchy of the following entity types:
 
-* The top level is an _account_ (corresponding to a company)
-* The next level is an _organization_ (corresponding to a logical part of the company in the particular company context, such as a region or business unit)
-* The lowest level is an _environment_ (corresponding to an environment in an IT infrastructure, such as a development or production environment)
-
-You can link your APIM or AM _installations_ at the environment level in Cockpit. Each registered installation will then automatically reports its _nodes_ to Cockpit (a node being either a management-api node or a gateway node).
-
-This hierarchy is represented in Cockpit by a visual map on the dashboard.
-
-.Hierarchy of a Cockpit account
 image::cockpit/entity-hierarchy.png[]
 
-NOTE: The organization and environment entities defined in Cockpit are equivalent to the same entities in APIM and AM, including the roles you can define for them (for example, the `ORGNIZATION_OWNER` role exists in both APIM and AM). For more information, see the APIM and AM product documentation.
+|===
+|Entity | Description | Additional information
 
-== Cockpit entities
+|Account
+|The top level entity, your company. One user can have multiple accounts.
+|
 
-Each entity managed in Cockpit have some common properties:
+|Organization
+|A logical part of your company in the way that makes most sense in your setup, for example a region or business unit. There can be multiple organizations linked to one account.
+.2+|The organization and environment entities defined in Cockpit are equivalent to the same entities in APIM and AM, including the roles you can define for them (for example, the `ORGNIZATION_OWNER` role exists in both APIM and AM).
 
-* ID: a technical ID that is never shown on the UI, but that you can find if you look at the API responses
-* HRID: a human readable ID of the entity. This ID is unique (2 environments of the same organization can not have the same HRID), and they are used to provide readable URLs.
-* Name: the name of the entity
+Learn more about organizations and environments in link:/apim/3.x/apim_adminguide_organizations_and_environments.html[APIM^] and link:/am/current/am_adminguide_organizations_and_environments.html[AM^].
+
+|Environment
+|An environment in an IT infrastructure, such as development or production. There can be multiple environments linked to one organization.
+
+|Installation
+
+Node
+|APIM and AM installations, linked to environments in Cockpit.
+Each linked APIM and AM installation automatically reports its REST API and Gateway nodes to Cockpit.
+|Nodes can belong to multiple environments. You can configure the organizations and environments associated with Gateway nodes in APIM and AM, by updating the Gateway configuration files.
+
+Only Gateway nodes are configurable in this way, not REST API nodes.
+
+Learn more about updating a Gateway configuration in the `gravitee.yml` file in link:/apim/3.x/apim_installguide_gateway_configuration.html[APIM^] and link:/am/current/am_installguide_gateway_configuration.html[AM^].
+|===
+
+Each entity managed in Cockpit has some common properties:
+
+* ID: an internal ID that is never shown in the Cockpit UI, but that you can find if you look at the API responses.
+* HRID: a human readable ID of the entity. This ID is unique (no two environments in the same organization can have the same HRID), and they are used to provide readable URLs.
+* Name: the name of the entity.
 * Description: a description of the entity.
 
-Each entity provides a page to update the settings. You can access it by clicking on the image:icons/cockpit-settings-icon.png[role="icon"] of each element.
+== Example hierarchy
+
+The Cockpit hierarchy pictured below has the following setup:
+
+- One APIM installation, with two Gateway nodes and one REST API node.
+- One AM installation, with one Gateway node and one REST API node.
+
+image::cockpit/apim-am-nodes.png[]

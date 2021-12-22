@@ -49,6 +49,13 @@
                             {% endfor %}
                          </ul>
                          </div>
+                         <div class="col-md-5 products">
+                         <ul class="topics-list list-inline">
+                            {% for product in site.data.products.am2 %}
+                              <li><a href="{{ product.url }}">{{ product.name }} </a></li>
+                            {% endfor %}
+                         </ul>
+                         </div>
                        </div>
                       </div>
                      </article>
@@ -91,7 +98,7 @@
                          </ul>
                          </div>
                        </div>
-                      </div> 
+                      </div>
                      </article>
                      </div>
                </div>

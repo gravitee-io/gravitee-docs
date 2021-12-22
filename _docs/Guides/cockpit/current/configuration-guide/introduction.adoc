@@ -1,11 +1,14 @@
-= Configuring Cockpit
-:page-description: Gravitee Cockpit - Configuration
+---
+redirect_from:
+  - /cockpit/3.x/cockpit_configurationguide.html
+---
+= Configure Cockpit
 :page-keywords: Gravitee.io, API Platform, API Management, Cockpit, documentation, manual, guide, reference, api
 
 There are three different ways to configure Cockpit:
 
-- Environment variables
-- System properties
+- environment variables
+- system properties
 - `gravitee.yml`
 
 The order in which they are listed above corresponds to their order of precedence. In other words, environment variables override the other two configuration types, and system properties override `gravitee.yml`.
@@ -358,6 +361,7 @@ Add this property to the JVM:
 ----
 -Dmanagement.mongodb.dbname=myDatabase
 ----
+
 
 == Environment variables
 
