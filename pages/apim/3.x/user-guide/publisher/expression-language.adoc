@@ -272,6 +272,22 @@ register other attributes in the context. See the documentation for the policies
 * Get the status of an HTTP response:
 `{#response.status}`
 
+== Node
+The properties you can access for node are listed below.
+
+=== Properties
+|===
+.^|Property |Description   ^.^|Type            |Example
+
+.^|id       |Node id       ^.^|string          |975de338-90ff-41ab-9de3-3890ff41ab62
+.^|version  |Node version  ^.^|string          |3.14.0
+.^|tenant   |Node tenant   ^.^|string          |Europe
+|===
+
+=== Example
+
+* Get the version of a node : `{#node.version}`
+
 == Policies
 You can use the EL to update some aspects of policy configuration.
 The policy specifies if it supports EL or not.
