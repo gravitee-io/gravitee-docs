@@ -11,7 +11,7 @@ image::am/current/graviteeio-am-quickstart-secure-apis-overview.png[]
 
 == Before you begin
 
-We assume that you have link:../APIM/installation-quickstart.html[installed Gravitee.io API Management^] and have a fully operational environment which can interact with your published APIs.
+We assume that you have link:/Guides/apim/current/installation-guide/introduction.html[installed Gravitee.io API Management^] and have a fully operational environment which can interact with your published APIs.
 Ensure you have link:./setup-app.html[set up a new application^] and have your client ID, client Secret and security domain information to hand.
 
 == Protect your API with OAuth 2
@@ -34,17 +34,17 @@ image::am/current/graviteeio-am-quickstart-secure-apis-resource.png[]
 image::am/current/graviteeio-am-quickstart-quickstart-secure-apis-policy.png[]
 
 . Deploy your API.
-
++
 You can test that your API is OAuth2 secured by calling it through APIM Gateway.
-
-[source]
++
+[source,curl]
 ----
 curl -X GET http://GRAVITEEIO-APIM-GATEWAY-HOST/echo
 ----
-
++
 If OAuth2 security is correctly configured, you will receive the following response:
-
-[source]
++
+[source,json]
 ----
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer realm=gravitee.io - No OAuth authorization header was supplied
@@ -58,11 +58,9 @@ WWW-Authenticate: Bearer realm=gravitee.io - No OAuth authorization header was s
 
 To access your protected API, you must acquire an access token from AM by using OAuth2.
 
-. Get your *Client ID*, *Client Secret* and *Security Domain* values and request an access token.
+Get your *Client ID*, *Client Secret* and *Security Domain* values and request an access token with the following command:
 
-Request a token::
-
-[source]
+[source,curl]
 ----
 curl -X POST \
   'http://GRAVITEEIO-AM-GATEWAY-HOST/:domainPath/oauth/token \
@@ -74,17 +72,17 @@ curl -X POST \
 [width="100%",cols="2,8",frame="topbot",options="header,footer"]
 |==========================
 |Parameter       |Description
-|grant_type      |*REQUIRED.* Set the value to `client_credentials`.
-|client_id       |*REQUIRED.* Client's ID.
-|client_secret   |*REQUIRED.* Client's secret.
-|scope           |*OPTIONAL.* The scopes of the access token.
+|grant_type      |Required -- set the value to `client_credentials`.
+|client_id       |Required -- client ID.
+|client_secret   |Required -- client secret.
+|scope           |Optional -- tThe scopes of the access token.
 |==========================
 
 NOTE: In this example we are using server-to-server interactions with the Client Credentials grant type that does not involve user registration.
 
 If it is working correctly, you will receive the following response:
 
-[source]
+[source,json]
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
@@ -110,10 +108,10 @@ curl -X GET http://GRAVITEEIO-APIM-GATEWAY-HOST/echo -H 'Authorization: Bearer :
 ----
 +
 NOTE: See link:/Reference/policy/policy-oauth2.html[the APIM OAuth2 Policy^] for more information about how to supply the access token while making the API call.
-
++
 If it is working correctly, you will see the data from the selected API operation:
-
-[source]
++
+[source,json]
 ----
 {
     "headers": {
