@@ -15,12 +15,12 @@ entries:
   - title: Installation Guide
     output: web
     folderitems:
-    - title: Introduction
+    - title: Installing Alert Engine
       output: web
       url: /Guides/ae/current/installation-guide/introduction.html
     - title: Install with .zip
       output: web
-      url: /Guides/ae/current/installation-guide/engine.html
+      url: /Guides/ae/current/installation-guide/zip.html
     - title: Install on Docker
       output: web
       url: /Guides/ae/current/installation-guide/docker.html
@@ -47,7 +47,7 @@ entries:
     folderitems:
       - title: Introduction
         output: web
-        url: /Guides/ae/current/user-guide/definition.html
+        url: /Guides/ae/current/user-guide/introduction.html
       - title: Conditions
         output: web
         url: /Guides/ae/current/user-guide/conditions.html

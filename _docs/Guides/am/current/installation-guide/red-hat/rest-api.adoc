@@ -1,3 +1,7 @@
+---
+redirect_from:
+  - /am/current/am_installguide_redhat_management_api.html
+---
 = Install AM API
 :page-liquid:
 :page-description: Gravitee.io Access Management - Installation Guide - Red Hat or CentOS - Management API
@@ -6,8 +10,6 @@
 :gravitee-component-name: AM API
 :gravitee-package-name: graviteeio-am-management-api-3x
 :gravitee-service-name: graviteeio-am-management-api
-
-== Overview
 
 AM API is required to run AM Console. You must install AM API first before you can use AM Console.
 

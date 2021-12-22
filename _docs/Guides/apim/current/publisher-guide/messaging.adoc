@@ -15,7 +15,7 @@ There are three types of platform-wide and API notifications:
 You define the audience for your notifications in terms of roles, as described in the section below.
 For a detailed explanation of roles in APIM, see link:../administration-guide/roles-permissions.html[Roles and permissions^].
 
-=== Platform-wide notifications
+== Platform-wide notifications
 
 You send APIM platform-wide notifications with the *Messages* menu option:
 
@@ -27,7 +27,7 @@ You can send platform-wide notifications to users defined with the following lin
 * API_PUBLISHER
 * USER
 
-=== API notifications
+== API notifications
 
 NOTE: You can only send API notifications to consumers with a valid subscription to your API applications.
 
