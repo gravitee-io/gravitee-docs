@@ -224,7 +224,7 @@ image::apim/3.x/installation/notification/graviteeio-installation-configuration-
 
 
 === Attributes
-You can use http://freemarker.org[Freemarker template engine] to add specific information to your templates (e.g. ${user.name} or ${api.metadata['foo-bar']}.
+You can use the http://freemarker.org[Freemarker template engine] to add specific information to your templates (for example `${user.name}` or `${api.metadata['foo-bar']`}.
 
 Available attributes::
 [width="100%",cols="20%,20%,20%,20%,20%,20%",frame="topbot",options="header"]

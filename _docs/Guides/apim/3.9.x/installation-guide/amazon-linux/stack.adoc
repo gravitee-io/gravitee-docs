@@ -37,7 +37,7 @@ sudo systemctl start nginx
 link:./configure-yum.html[Click here] for instructions on how to configure `yum`.
 
 == Install the APIM package with dependencies
-With almost every Amazon install, you'll need to set up the required dependencies *__before__* attempting to install APIM.
+With almost every Amazon install, you'll need to set up the required dependencies before attempting to install APIM.
 
 Already have all dependencies installed? Skip to link:./stack.html#install_apim_package_no_dependencies[this section.]
 
@@ -131,7 +131,7 @@ For example (see screenshot below), the extra URL at the start: http://localhost
 +
 image::apim/3.x/installation/amazon-known-issues/amazon-install-deveportalui-known-issue-fix-config-file2.png[Developer Portal Amazon Config File Incorrect URL]
 
-6. Now, you can use `sudo vi config.JSON` and edit the config file, removing any additional URL information that is inaccurate. In our example, *the correct URL (after editing) is this: http://3.142.146.114:8083/environment/DEFAULT*
+6. Now, you can use `sudo vi config.JSON` and edit the config file, removing any additional URL information that is inaccurate. In our example, the correct URL (after editing) is this: `http://3.142.146.114:8083/environment/DEFAULT`
 
 
 === 5. Run APIM with Systemd

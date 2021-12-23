@@ -33,4 +33,4 @@ ratelimit:
     timeout:                # redis timeout (default -1)
 ----
 
-IMPORTANT: If the Redis Rate Limit repository is not accessible, the call to API will pass successfully. Don't forget to monitor your probe healthcheck to check the Redis repository is healthy. You can find the health endpoints link:../rest-apis/internal-api.html#endpoints[here^].
+IMPORTANT: If the Redis Rate Limit repository is not accessible, the call to API will pass successfully. Don't forget to monitor your probe healthcheck to check the Redis repository is healthy. You can find the health endpoints link:../api/internal-api.html#endpoints[here^].

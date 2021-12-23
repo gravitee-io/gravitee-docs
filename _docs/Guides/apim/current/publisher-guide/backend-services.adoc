@@ -138,7 +138,7 @@ endif::[]
 
 . Enter the *HTTP Method* which triggers the health check.
 . Add the path which triggers the health check. Select *From root path* to apply the path specified at root URL level. For example, if your endpoint URL is `www.test.com/api`, this option removes `/api` before appending the path.
-. Specify headers which trigger the health check, if any. You can use link:/Reference/expression-language.html[Gravitee Expression Language^] to configure a header. Available variables are link:./expression-language.html#dictionaries[dictionaries^] and link:./expression-language.html#properties[api properties^] access.
+. Specify headers which trigger the health check, if any. You can use link:/Reference/expression-language.html[Gravitee Expression Language^] to configure a header. Available variables are link:/Reference/expression-language.html#dictionaries[dictionaries^] and link:/Reference/expression-language.html#properties[api properties^] access.
 . In *Assertions*, specify any conditions to test for in the API response in order to trigger the health check. Assertions are written in Gravitee Expression Language. An assertion can be a simple 200 response (`#response.status == 200`) but you can also test for specific content.
 . Click *SAVE*.
 +

@@ -1,11 +1,4 @@
----
-product: API Management
-title: Configure YUM
-toc: true
-guide: Installation Guide
-guide-section: Amazon Linux
----
-
+= Configure YUM
 :page-liquid:
 :page-description: Gravitee.io API Management - Installation Guide - Amazon - Configure Yum Package Manager
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api, yum
@@ -37,7 +30,7 @@ sudo yum install pygpgme yum-utils
 ----
 
 . Before continuing, you may need to refresh your local cache:
-
++
 [source,bash]
 ----
 sudo yum -q makecache -y --disablerepo='*' --enablerepo='graviteeio'

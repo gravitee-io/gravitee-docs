@@ -5,8 +5,6 @@ redirect_from:
 = Configure plan restrictions
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, documentation, manual, guide, reference, api, CGU, GCU
 
-== Overview
-
 You can configure some more advanced features to restrict plans.
 
 image::apim/3.x/api-publisher-guide/plans-subscriptions/add-plan-restrictions.png[]
@@ -18,7 +16,7 @@ You configure restrictions on the **Restrictions** page of a new or existing pla
 . To edit an existing plan:
   .. In APIM Console, select your API.
   .. Click **Portal > Plans**.
-  .. Click the edit icon image::icons/edit-icon.png[role="icon"]
+  .. Click the edit icon image:icons/edit-icon.png[role="icon"].
 . On the **Restrictions** page, configure the restrictions for the plan, as described in the sections below.
 . Click **SAVE** to save your plan.
 +

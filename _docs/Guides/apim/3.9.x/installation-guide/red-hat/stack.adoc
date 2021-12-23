@@ -1,11 +1,4 @@
----
-product: API Management
-toc: true
-title: Install the full APIM stack
-guide: Installation Guide
-guide-section: RedHat, CentOS, or Oracle Linux
----
-
+= Install the full APIM stack
 :page-liquid:
 :page-description: Gravitee.io API Management - Installation Guide - Red Hat or CentOS - API Management
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
@@ -30,7 +23,7 @@ sudo yum install nginx
 
 === Configure your package management system
 
-Ensure you have configured your package management system, as described in link:../amazon-linux/configure-yum.html[Configure YUM].
+Ensure you have configured your package management system, as described in link:./introduction.html#configure-the-package-management-system-yum[Configure the package management system (yum)].
 
 == Install the APIM package with dependencies
 

@@ -56,6 +56,7 @@ This example shows how to switch from MongoDB (the default connector) to a JDBC-
 
 NOTE: You must ensure that the JDBC connector version corresponds to the API Management version and that you have the correct JDBC driver for your RDBMS.
 
+[source,shell]
 ....
 $ docker run  \
         --publish 8082:8082  \
@@ -78,6 +79,7 @@ NOTE: You must ensure you have the correct JDBC driver for your RDBMS. The examp
 
 The driver needs to be in the same directory hierarchy as the JDBC plugin, so the volume must be mounted under the default `/plugin` directory. The `plugin-ext` directory from the example above is not needed.
 
+[source,shell]
 ....
 $ docker run  \
         --publish 8082:8082  \

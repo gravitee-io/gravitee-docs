@@ -1,11 +1,4 @@
----
-product: API Management
-toc: true
-title: Install APIM Gateway
-guide: Installation Guide
-guide-section: RedHat, CentOS, or Oracle Linux
----
-
+= Install APIM API
 :page-liquid:
 :page-description: Gravitee.io API Management - Installation Guide - Red Hat or CentOS - Management API
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
@@ -16,7 +9,7 @@ guide-section: RedHat, CentOS, or Oracle Linux
 
 == Prerequisites
 
-The following steps assume you have configured your package management system as described in <<apim_installguide_redhat_introduction.adoc#configure-the-package-management-system-yum, Configure the package management system (yum)>>.
+The following steps assume you have configured your package management system as described in link:./introduction.html#configure-the-package-management-system-yum[Configure the package management system (yum)].
 
 === 1. Install the {gravitee-component-name} package
 

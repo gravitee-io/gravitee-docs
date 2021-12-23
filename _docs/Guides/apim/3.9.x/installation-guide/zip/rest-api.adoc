@@ -65,7 +65,7 @@ $ ./bin/gravitee
 By default, APIM API runs in the foreground, prints its logs to standard output (stdout), and can be stopped
 by pressing **Ctrl-C**.
 
-NOTE: Both APIM API nodes run by default. You can configure APIM to run only one or the other, as described in the link:../../configuration-guide/rest-apis/general-configuration.html[APIM API configuration] section.
+NOTE: Both APIM API nodes run by default. You can configure APIM to run only one or the other, as described in the link:../../configuration-guide/api/general-configuration.html[APIM API configuration] section.
 
 Once APIM API is running, you will see a log such as this one:
 

@@ -21,7 +21,7 @@ As well as creating templates associated with a specific error key, you can crea
 
 Before you can define response templates for your API, you need to know:
 
-* which policies are defined in the API plans associated with your API (see link:./plans-subscriptions.html[Plans and subscriptions^])
+* which policies are defined in the API plans associated with your API (see link:./plans/plans-subscriptions.html[Plans and subscriptions^])
 * which error keys you can override for the policies associated with your API plans (see <<Policy error keys you can override>>)
 
 == Configure a response template

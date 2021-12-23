@@ -111,9 +111,9 @@ the introspection endpoint must also require some form of authorization to acces
 
 NOTE: If you already have a suitable plan defined, you can add your OAuth2 resource to one of the flows defined for it in Design Studio, by following the steps in link:../design-studio/create-flow.html#flow-policies[Add policies to a flow^].
 
-. Follow the steps in <<Configure security>>.
+. In APIM Console, select your API and click **Portal > Plans**.
 . Oh the **Secure** page, select *OAuth2* as the authentication type.
-. Select the OAuth2 resource name you created.
+. Specify the OAuth2 resource name you created.
 . Add any https://tools.ietf.org/html/rfc6749#section-3.3[scopes^] to check when accessing the API.
 +
 image::apim/3.x/api-publisher-guide/plans-subscriptions/create-oauth2-plan.png[]
@@ -141,11 +141,11 @@ The policy searches for a client ID in the payload as follows:
 
 ==== Add JWT security to a plan
 
-. Follow the steps in <<Configure security>>.
-. On the **Secure** page, select *JWT* as the authentication type.
+. In APIM Console, select your API and click **Portal > Plans**.
+. On the **Secure** page, choose *JWT* as the authentication type.
 . Specify the public key used to verify the incoming JWT token.
 +
-NOTE: You can also set the public key in the `gravitee.yml` file. See link:/Reference/policy/policy-jwt.html[JWT policy] for more information. APIM only supports the RSA Public Key format.
+NOTE: You can also set the public key in the `gravitee.yml` file. See link:/Reference/policy/policy-jwt.html[JWT policy^] for more information. APIM only supports the RSA Public Key format.
 +
 image::apim/3.x/api-publisher-guide/plans-subscriptions/create-jwt-plan.png[]
 +

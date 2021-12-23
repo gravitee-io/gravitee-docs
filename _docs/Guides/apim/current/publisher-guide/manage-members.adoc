@@ -8,7 +8,7 @@ WWhen you first create an API, it is created as a private API by default, so use
 
 You can grant specific users or groups access to a private API by managing its members.
 
-NOTE: Only users with the required permissions can manage an application's members. For more details, see link:../administration-guide/roles-permissions.html[Roles and permissions].
+NOTE: Only users with the required permissions can manage an application's members. For more details, see link:../administration-guide/roles-permissions.html[Roles and permissions^].
 
 == Roles
 
@@ -56,8 +56,9 @@ image::apim/3.x/api-publisher-guide/members/manage-members-add.png[Gravitee.io -
 
 To remove users:
 
-Navigate to the *Members* page for the API or application as described above, then click the delete icon next to the user.
-
+. Navigate to the *Members* page for the API or application as described above.
+. Click the delete icon next to the user.
++
 image::apim/3.x/api-publisher-guide/members/manage-members-remove.png[Gravitee.io - remove member]
 
 == Transfer ownership

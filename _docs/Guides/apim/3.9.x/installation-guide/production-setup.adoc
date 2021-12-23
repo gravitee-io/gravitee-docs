@@ -1,10 +1,3 @@
----
-product: API Management
-tags: [APIM]
-toc: true
-title: Configure a production-ready APIM environment
----
-
 = Configure a production-ready APIM environment
 
 During APIM installation some default settings are created.
@@ -12,7 +5,7 @@ While these default settings can be useful for testing your new installation, so
 
 You can configure APIM settings in various ways -- the `gravitee.yml` file, the APIM Console settings and environment and system variables.
 When you configure new settings, it is important to understand how one configuration type overrides another. You can get a good overview of this topic from
-link:/Guides/APIM/current/configuration-guide/rest-apis/general-config.html[Configure APIM API^].
+link:/Guides/APIM/current/configuration-guide/api/general-config.html[Configure APIM API^].
 
 NOTE: APIM includes many other configuration options and every environment is unique. We recommend you also read the link:/Guides/APIM/current/configuration-guide/introduction.html[Configuration Guide^] to make sure you've completed all the configuration you need, before you deploy APIM in production.
 
@@ -45,7 +38,7 @@ services:
 
 To learn more about the internal APIs, see:
 
-* link:/Guides/APIM/current/configuration-guide/rest-apis/internal-api.html[Configure the APIM API internal API^]
+* link:/Guides/APIM/current/configuration-guide/api/internal-api.html[Configure the APIM API internal API^]
 * link:/Guides/APIM/current/configuration-guide/gateway/internal-api.html[Configure the APIM Gateway internal API^]
 
 == Step 2: Update the default users

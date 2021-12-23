@@ -11,9 +11,6 @@ First, select an API, then click on the **Design** tab. Once this tab is open, s
 === Step 2
 Now, add a property by creating your key and value.
 
-image:apim/3.x/api-publisher-guide/api-property-encryption/api-properties-encryption1.png[Create an API property.]
-
-
 NOTE: Values are **not** encrypted by default. If the value is not encrypted, you can edit the value contents at any time.
 
 === Step 3
@@ -21,14 +18,11 @@ Choose whether or not to encrypt the API property.
 
 * To encrypt the property, turn the slide button on before clicking the **+** button. **PRO-TIP:** The value will remain unencrypted and editable until you save your changes.
 * If you do not want the property to be encrypted, do not turn on this slide button.
-image:apim/3.x/api-publisher-guide/api-property-encryption/encrypted-vs-unencrypted.png[Encrypted vs. unencrypted toggle button.]
 
 === Step 4
 Click the **+** sign to add your property, then click **Save** in the lower left corner of the page so the system retains your changes. **If you do not click save, no changes will be retained.**
 
 Now, you can redeploy your API.
-
-image:apim/3.x/api-publisher-guide/api-property-encryption/api-properties-encryption3.png[Save your encrypted API property.]
 
 The value remains unencrypted and editable until you click **Save.** Once you click save, you can no longer edit, modify, or view the value.
 

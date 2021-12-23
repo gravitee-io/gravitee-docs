@@ -1,11 +1,5 @@
----
-product: API Management
-guide: Configuration Guide
-guide-section: APIM Console
-toc: true
-title: Configure dashboards
-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
----
+= Configure dashboards
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
 You can configure dashboards in APIM Console to display different types of analytics in various formats.
 For each dashboard, you can choose the type of data displayed and the format of the display, such as a chart, map or table. You can also specify a filter, to display analytics only for the queries you want.
@@ -45,9 +39,9 @@ image:apim/3.x/installation/configuration/configure-dashboards-preview.png[]
 
 [TIP]
 ====
-By using the link:/Reference/policy/policy-assign-metrics.html[Assign Metrics policy] in one of your APIs, you can use a custom field in the widget.
+By using the link:/Reference/policy/policy-assign-metrics.html[Assign Metrics policy^] in one of your APIs, you can use a custom field in the widget.
 
-See link:/Resources/tutorials/add-custom-metrics-dashboards.html[How to add custom metrics in dashboards].
+See link:/Getstarted/apim/add-custom-metrics-dashboards.html[How to add custom metrics to dashboards^].
 ====
 
 == Update a dashboard

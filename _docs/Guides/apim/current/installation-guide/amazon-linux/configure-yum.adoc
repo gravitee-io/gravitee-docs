@@ -34,7 +34,7 @@ sudo yum install pygpgme yum-utils
 ----
 
 . Before continuing, you may need to refresh your local cache:
-
++
 [source,bash]
 ----
 sudo yum -q makecache -y --disablerepo='*' --enablerepo='graviteeio'

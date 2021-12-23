@@ -9,7 +9,7 @@ NOTE: Consumers must have a link:./create-account.html[user account] to register
 
 == Plan security type
 
-Depending on the plan security type (API-Key, OAuth 2.0, JWT), you need to set proper HTTP headers to call the API (for more details, see <<apim_publisherguide_plans_subscriptions.adoc#create-a-plan, Create a plan>>).
+Depending on the plan security type (API-Key, OAuth 2.0, JWT), you need to set proper HTTP headers to call the API (for more details, see ../publisher-guide/plans-subscriptions.html#create-a-plan[Create a plan^]).
 
 **API Key**
 
@@ -30,7 +30,7 @@ curl -X GET "https://api.company.com/amazing-api" -H "Authorization: Bearer xxxx
 Consumers wanting to subscribe to APIs need to register an application first, so that API publishers can control and regulate access to their APIs.
 Applications can be web applications, native application, bash/job applications and other applications needing to access sensitive data.
 
-For more information, see <<apim_quickstart_consume_ui.adoc#create-your-application-with-apim-portal, Create your application with APIM Portal>>.
+For more information, see link:/Getstarted/apim/api-consume-ui.html[Subscribe to an API with APIM Portal^].
 
 == Subscribe to an API
 
@@ -88,4 +88,4 @@ NOTE: For API-Key plans, you can retrieve the API-Key value and also renew or re
 
 == Analytics
 
-For each API you are subscribed to, APIM provides some analytics to show API usage in your application. For a list of the analytics available, see <<apim_consumerguide_manage_applications.adoc#analytics, Analytics>>.
+For each API you are subscribed to, APIM provides some analytics to show API usage in your application. For a list of the analytics available, see link:../publisher-guide/logging-analytics.html[Analytics^].

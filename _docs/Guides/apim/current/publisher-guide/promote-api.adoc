@@ -9,7 +9,7 @@ The following sections describe how you can promote an API from one environment 
 
 For a quick introduction on how to create an API in APIM, see link:./create-api.html[Create an API^].
 
-NOTE: This feature is available starting in version APIM 3.10.0 and requires that your installation is linked to Cockpit. For more information about Cockpit, see link:/Guides/cockpit/current/introduction.html[Cockpit].
+NOTE: This feature is available starting in version APIM 3.10.0 and requires that your installation is linked to Cockpit. For more information about Cockpit, see link:/Guides/cockpit/current/introduction.html[Cockpit^].
 
 *APIs can only be promoted to environments belonging to the same organization.*
 
@@ -28,7 +28,7 @@ Here, we will see how to promote our API from environment `DEV` to environment `
 
 To request a promotion, you only need to have *API-DEFINITION* link:../administration-guide/roles-permissions.html[permissions^].
 
-Promotion requests are logged in link:./audit.html[Audits trail^].
+Promotion requests are logged in the link:./audit-trail.html[Audit trail^].
 
 The following actions must be done with an API Publisher on `DEV` environment.
 
@@ -40,7 +40,7 @@ image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-
 +
 image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-2.png[Target environments list]
 +
-NOTE: If a promotion request already exists for your API on an environment, you cannot do another request until the previous one is rejected or accepted.
+NOTE: If a promotion request already exists for your API in an environment, you cannot create another request until the previous one is rejected or accepted.
 +
 image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-2-bis.png[Target environments list]
 +

@@ -35,7 +35,7 @@ You can confirm Jaeger has been enabled and is running by checking Docker.
 
 === 2. Install The .ZIP File For The Jaeger Tracer Plugin
 Since the Jaeger tracer is not bundled by default,
-https://download.gravitee.io/#graviteeio-apim/plugins/tracers/gravitee-tracer-jaeger/[click here] and add the plugin for the Gravitee Jaeger Tracer .ZIP file to the configuration of your APIM Gateway instance.
+https://download.gravitee.io/#graviteeio-apim/plugins/tracers/gravitee-tracer-jaeger/[click here^] and add the plugin for the Gravitee Jaeger Tracer .ZIP file to the configuration of your APIM Gateway instance.
 
 === 3. Test OpenTracing
 
@@ -52,9 +52,10 @@ In these examples, you’ll also notice that each policy traversed is listed on 
 image:apim/3.x/installation/configuration/tracing-info-detailed.png[Detailed tracing info from JaegerUI.]
 
 
-== Configure Environment Variables
-You can configure the environment variables as needed in the Jaeger Gateway. For example,
+=== 4. Configure Environment Variables
+You can configure the environment variables as needed in the Jaeger Gateway. For example:
 
+[source,shell]
 ----
 gravitee_service_tracing_enabled: true
 gravitee_services_tracing_jaegar_host: localhost
@@ -63,11 +64,11 @@ gravitee_services_tracing_jaeger_port: 14250
 
 == How To Enable OpenTracing Via Docker Compose
 
-You can also enable OpenTracing using Jaeger as a tracer with this Docker Compose. link:/https://github.com/gravitee-io/gravitee-api-management/tree/master/docker/quick-setup/opentracing-jaeger[Click here] to access the `docker-compose.yml`.
+You can also enable OpenTracing using Jaeger as a tracer with this Docker Compose. https://github.com/gravitee-io/gravitee-api-management/tree/master/docker/quick-setup/opentracing-jaeger[Click here^] to access the `docker-compose.yml`.
 
 With this option enabled, you can continue to call your APIs through your gateway with the usual host: `http://localhost:8082/myapi`.
 
-=== 1. How To Run OpenTracing With Jaeger
+=== Run OpenTracing With Jaeger
 
 1. Since the Jaeger tracer is not bundled by default, **you must download the .ZIP file** for the version you want to run (https://download.gravitee.io/#graviteeio-apim/plugins/tracers/gravitee-tracer-jaeger/[click here] to download the .ZIP).
 

@@ -16,13 +16,13 @@ Dictionaries need to be deployed to APIM Gateway before you can use them. You ca
 
 image:apim/3.x/installation/configuration/configure-dict-list.png[]
 
-You can access dictionary properties using the link:../publisher-guide/expression-language.html[Expression Language^] `#dictionaries` statement.
+You can access dictionary properties using the link:/Reference/expression-language.html[Expression Language^] `#dictionaries` statement.
 
 See also: link:../publisher-guide/design-studio/create-flow.html#api-properties[Define properties for your API flows^].
 
 == How are dictionaries used?
 
-You can use dictionaries anywhere in APIM where link:../publisher-guide/expression-language.html[Gravitee Expression Language^] is supported, such as when defining policies for API flows. You can access dictionary properties with the Expression Language statement `#dictionaries`.
+You can use dictionaries anywhere in APIM where link:/Reference/expression-language.html[Gravitee Expression Language^] is supported, such as when defining policies for API flows. You can access dictionary properties with the Expression Language statement `#dictionaries`.
 
 == Create a new dictionary
 

@@ -36,20 +36,24 @@ image::apim/3.x/overview/architecture/new-gravitee-platform-architecture-schema.
 
 == APIM concepts
 
+[[api]]
 API::
 
 **API** is the root concept defined and used by APIM. Think of this as the starting point through which services are exposed to the gateway.
 
+[[publisher]]
 Publisher::
 
 In APIM, a **publisher** (**API publisher**) is the role that declares and manages APIs.
 
+[[consumer]]
 Consumer::
 
 In APIM, a **consumer** (**API Consumer**) is the role that consumes APIs.
 
 **PRO-TIP**: Consumer can only consume APIs after subscribing to them.
 
+[[application]]
 Application::
 
 An **application** is an intermediate layer between a consumer and an API. Consumers use an application to subscribe to the API so they can consume it.
@@ -77,20 +81,20 @@ image::apim/3.x/overview/components/new-gravitee-gateway-architecture.png[Gravit
 
 [[gravitee-components-rest-api]]
 APIM API::
-This RESTful API exposes services to manage and configure the <<gravitee-components-mgmt-ui, APIM Console>> and <<gravitee-components-portal-ui, APIM Portal>> web UIs.
+This RESTful API exposes services to manage and configure the APIM Console and APIM Portal web UIs.
 All exposed services are restricted by authentication and authorization rules. For more information, see
-the link:/Reference/API/apim-rest-api-doc.html[API Reference] section.
+the link:/Reference/API/apim-rest-api-doc.html[API Reference^].
 
 [[gravitee-components-mgmt-ui]]
 APIM Console::
-This web UI gives easy access to some key <<gravitee-components-rest-api, APIM API>> services.
-<<publisher, API Publishers>> can use it to publish APIs.
+This web UI gives easy access to some key APIM API services.
+API publishers can use it to publish APIs.
 Administrators can also configure global platform settings and specific portal settings.
 
 [[gravitee-components-portal-ui]]
 APIM Portal::
-This web UI gives easy access to some key <<gravitee-components-rest-api, APIM API>> services.
-<<consumer, API Consumers>> can use it to search for, view, try out and subscribe to a published API.
+This web UI gives easy access to some key APIM API services.
+API consumers can use it to search for, view, try out and subscribe to a published API.
 They can also use it to manage their <<application, applications>>.
 
 == Plugins
@@ -98,7 +102,7 @@ They can also use it to manage their <<application, applications>>.
 Plugins are additional components that can be _plugged in_ to <<gravitee-components-gateway, API Gateway>> or <<gravitee-components-rest-api, APIM API>>.
 They can customize the component's behavior to exactly fit your needs and technical constraints.
 
-For more information about plugins, including how to deploy them and details of their directory structure, see the link:../dev-guide/dev-guide-plugins.html[Plugins] section of the Developer Guide.
+For more information about plugins, including how to deploy them and details of their directory structure, see the link:../developer-guide/plugins.html[Plugins^] section of the Developer Guide.
 
 The table below lists the different types of plugins you can use with APIM, with the component(s) they can be plugged into and some examples. For more details of what each plugin type does, see the sections below.
 
@@ -145,11 +149,11 @@ Policies can be thought of like a _proxy controller_, guaranteeing that a given 
 
 Examples of a policy are:
 
-* Authorization using an API key (see the link:/Reference/policy/policy-apikey.html[api-key policy])
+* Authorization using an API key (see the link:/Reference/policy/policy-apikey.html[api-key policy^])
 * Applying header or query parameter transformations
 * Applying rate limiting or quotas to avoid API flooding
 
-NOTE: Want to know how to create, use, and deploy a custom policy? Check out the link:./developer-guide/policies.html[Policies Developer Guide].
+NOTE: Want to know how to create, use, and deploy a custom policy? Check out the link:./developer-guide/policies.html[Policies Developer Guide^].
 
 [[gravitee-plugins-reporters]]
 Reporters::
@@ -166,12 +170,12 @@ Out-of-the-box reporters are:
 * File Reporter
 
 NOTE: As with all plugins, you can create, use, and deploy custom reporters as described in the
-link:./developer-guide/plugins.html[Plugins Developer Guide].
+link:./developer-guide/plugins.html[Plugins Developer Guide^].
 
 [[gravitee-plugins-repositories]]
 Repositories::
 A *repository* is a pluggable storage component for API configuration, policy configuration, analytics and so on.
-You can find more information in the link:./configuration-guide/repositories/introduction.html[Repositories] section of the Configuration Guide.
+You can find more information in the link:./configuration-guide/repositories/introduction.html[Repositories^] section of the Configuration Guide.
 
 [[gravitee-plugins-resources]]
 Resources::
@@ -182,7 +186,7 @@ A **resource** can be added to an API for its whole lifecycle. APIM comes with t
 - OAuth2 - Gravitee Access Management
 - OAuth2 - Generic Authorization Server
 
-You can find more information in the link:./publisher-guide/resources/introduction.html[Resources] section of the API Publisher Guide.
+You can find more information in the link:./publisher-guide/resources/introduction.html[Resources^] section of the API Publisher Guide.
 
 [[gravitee-plugins-notifiers]]
 Notifiers::
