@@ -15,17 +15,21 @@ Only trusted applications can access the API data by requesting an API Key.
 == Create your application and subscribe to an API
 
 Create application request::
-[source]
+[source,curl]
 ----
-curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+curl -ki -H "Authorization: Basic $lmA_AUTH" \
      -H "Content-Type:application/json;charset=UTF-8" \
      -X POST \
-     -d '{"name":"My first Application","type":"Web","description":"Web client for Gravitee.io Echo API"}' \
-     http://MANAGEMENT_API_SERVER_DOMAIN/portal/environments/DEFAULT/applications
+     -d '
+        {"name":"app3","description": "My app3",
+         "settings": { "app": { "type": "web" } }
+        }
+        ' \
+     https://apim.****.aws.local/portal/environments/DEFAULT/applications
 ----
 
 Subscribe to API request::
-[source]
+[source,curl]
 ----
 curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
      -X POST \
