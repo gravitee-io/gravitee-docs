@@ -75,7 +75,7 @@ NOTE: since APIM v3.13.0, the keystore file is automatically watched for any mod
 
 ===== Kubernetes Secret/ConfigMap keystore
 
-Since v3.13.0, it is possible to load the keystore directly from Kubernetes secret or configmap by just specifying the appropriate location.
+Since v3.14.0, it is possible to load the keystore directly from Kubernetes secret or configmap by just specifying the appropriate kubernetes location.
 
 ----
 http:
@@ -85,11 +85,11 @@ http:
     clientAuth: none # Supports none, request, requires
     keystore:
       type: pkcs12
-      location: /my-namespace/secrets/my-secret/keystore
+      kubernetes: /my-namespace/secrets/my-secret/keystore
       password: adminadmin
 ----
 
-The expected `http.ssl.keystore.location` if structured as follows: `/{namespace}/{type}/{name}/{key}`
+The expected `http.ssl.keystore.kubernetes` is structured as follows: `/{namespace}/{type}/{name}/{key}`
 With:
 
 - `namespace`: the name of the targeted Kubernetes namespace
