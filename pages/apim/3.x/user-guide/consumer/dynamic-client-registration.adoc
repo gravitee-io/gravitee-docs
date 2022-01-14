@@ -1,0 +1,339 @@
+= Dynamic Client Registration
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_consumerguide_dynamic_client_registration.html
+:page-folder: apim/user-guide/consumer
+:page-layout: apim3x
+
+== Overview
+
+Another way to create applications in APIM is to use the OpenID Connect Dynamic Client Registration endpoint. +
+This specification enables Relying Parties (clients) to register applications in the OpenID Provider (OP).
+
+== Enable Dynamic Client Registration with APIM Console
+
+By default this feature is disabled. You can enable it through the domain settings:
+
+. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
+. Click *Settings*, then in the *PORTAL* section click *Client Registration*.
+. Select *Client registration for applications*.
++
+image::apim/3.x/api-consumer-guide/settings-dcr.png[]
+
+== Enable Dynamic Client Registration with APIM API
+
+[source]
+----
+# enable Dynamic Client Registration
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "isDynamicClientRegistrationEnabled": true,
+            "isOpenDynamicClientRegistrationEnabled": false
+      }}}' \
+   http://MANAGEMENT_API_SERVER_DOMAIN/management/domains/:domainId
+----
+
+== Register a new client
+
+=== Obtain an access token
+
+Unless you enabled open dynamic registration, you need to obtain an access token via the `client_credentials` flow, with a `dcr_admin` scope.
+
+CAUTION: The `dcr_admin` scope grants CRUD access to any clients in your domain.
+You must only allow this scope for trusted RPs (clients).
+
+[source]
+----
+#Request a token
+curl -X POST \
+  'http://MANAGEMENT_API_SERVER_DOMAIN/:domain/oauth/token?grant_type=client_credentials&scope=dcr_admin&client_id=:clientId&client_secret=:clientSecret'
+----
+
+=== Register new RP (client)
+
+Once you obtain the access token, you can call AM Gateway through the registration endpoint.
+You can specify many client properties, such as `client_name`, but only the `redirect_uris` property is mandatory.
+See the link:https://openid.net/specs/openid-connect-registration-1_0.html[Openid Connect Dynamic Client Registration^] specification for more details.
+
+The endpoint used to register an application is available in the link:http://GRAVITEEIO-AM-GATEWAY-HOST/:domain/oidc/.well-known/openid-configuration[openid discovery endpoint^] under the `registration_endpoint` property.
+
+The response will contain some additional fields, including the `client_id` and `client_secret` information.
+
+TIP: You will also find the `registration_access_endpoint` and the `registration_client_uri` in the response. These are used to read/update/delete the client id and client secret.
+
+CAUTION: According to the link:https://tools.ietf.org/html/rfc6749#section-10.6[specification^], an Authorization Server MUST require public clients and SHOULD require confidential clients to register their redirection URIs. +
+Confidential clients are clients that can keep their credentials secret, for example: +
+ - web applications (using a web server to save their credentials): `authorization_code` +
+ - server applications (treating credentials saved on a server as safe): `client_credentials` +
+Unlike confidential clients, public clients are clients than cannot keep their credentials secret, for example: +
+ - Single Page Applications: `implicit` +
+ - Native mobile application: `authorization_code` +
+**Because mobile and web applications use the same grant, we force `redirect_uri` only for implicit grants.**
+
+==== Register Web application example
+
+The following example creates a web application (`access_token` is kept on a backend server).
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "redirect_uris": ["https://myDomain/callback"], \
+        "client_name": "my web application", \
+        "grant_types": [ "authorization_code","refresh_token"], \
+        "scope":"openid" \
+      }' \
+  http://APIM_API_SERVER_DOMAIN/::domain/oidc/register
+----
+NOTE: `response_types` metadata is not required here as the default value (code) corresponds to the `authorization_code` grant type.
+
+==== Register Single Page Application (SPA) example
+
+As a SPA does not use a backend, we recommend you use the following implicit flow:
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "redirect_uris": ["https://myDomain/callback"], \
+        "client_name": "my single page application", \
+        "grant_types": [ "implicit" ], \
+        "response_types": [ "token" ], \
+        "scope":"openid" \
+      }' \
+  http://APIM_GATEWAY_HOST/::domain/oidc/register
+----
+CAUTION: `response_types` metadata must be set to token in order to override the default value.
+
+==== Register Server to Server application example
+
+Sometimes you may have a bot/software that needs to be authenticated as an application and not as a user. +
+For this, you need to use a `client_credentials` flow:
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "redirect_uris": [], \
+        "application_type": "server", \
+        "client_name": "my server application", \
+        "grant_types": [ "client_credentials" ], \
+        "response_types": [ ] \
+      }' \
+  http://APIM_GATEWAY_HOST/::domain/oidc/register
+----
+CAUTION: `response_types` metadata must be set as an empty array in order to override the default value. +
+`redirect_uris` is not needed, but this metadata is required in the link:https://openid.net/specs/openid-connect-registration-1_0.html[specification^], so it must be set as an empty array. +
+**We strongly discourage you from using this flow in addition to a real user authentication flow. The recommended approach is to create multiple clients instead.**
+
+==== Register mobile application example
+
+For a mobile app, the `authorization_code` grant is recommended, in addition to link:https://tools.ietf.org/html/rfc7636[Proof Key for Code Exchange]:
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "redirect_uris": ["com.mycompany.app://callback"], \
+        "application_type": "native", \
+        "client_name": "my mobile application", \
+        "grant_types": [ "authorization_code","refresh_token" ], \
+        "response_types": [ "code" ] \
+      }' \
+  http://APIM_GATEWAY_HOST/::domain/oidc/register
+----
+
+
+=== Read/update/delete client information
+
+The `register` endpoint also allows you to GET/UPDATE/PATCH/DELETE actions on a `client_id` that has been registered through the `registration` endpoint. +
+To do this, you need the access token generated during the client registration process, provided in the response in the `registration_access_token` field.
+
+TIP: The UPDATE http verb will act as a full overwrite, whereas the PATCH http verb will act as a partial update.
+
+NOTE: This access token contains a `dcr` scope which can not be obtained, even if you enable the `client_credentials` flow.
+In addition, rather than using the OpenID registration endpoint together with the `client_id`, the DCR specifications recommend you use the `registration_client_uri` given in the register response instead.
+
+CAUTION: A new registration access token is generated each time the client is updated through the Dynamic Client Registration URI endpoint, which will revoke the previous value.
+
+[source]
+----
+# Update a registered Relying Party (client)
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "client_name": "myNewApplicationName"}' \
+  http://APIM-GATEWAY-HOST/::domain/oidc/register/:client_id
+----
+
+=== Renew client secret
+
+To renew the `client_secret`, you need to concatenate `client_id` and `/renew_secret` to the registration endpoint and use the POST http verb.
+
+TIP: The `renew_secret` endpoint can also be retrieved through the https://am_gateway/:domainId/oidc/.well-known/openid-configuration[openid discovery endpoint^] `registration_renew_secret_endpoint` property. You will then need to replace the `client_id` with your own. +
+The `renew_secret` endpoint does not need a body.
+
+CAUTION: When you update a client, a new registration access token is generated each time you renew the client secret.
+
+[source]
+----
+# Renew the client secret of a registered Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  http://APIM-GATEWAY-HOST/::domain/oidc/register/:client_id/renew_secret
+----
+
+=== Scope Management
+
+You can whitelist which scopes can be requested, define some default scopes to apply and force a specific set of scopes.
+
+==== Allowed scopes (scope list restriction)
+
+By default, no scope restrictions are applied when you register a new application. +
+However, it is possible to define a list of allowed scopes through the *Allowed scopes* tab. +
+To achieve this, you need to first enable the feature and then select the allowed scopes.
+
+You can also enable this feature using AM API:
+
+[source]
+----
+# Enable Allowed Scopes feature.
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "isAllowedScopesEnabled": true,
+            "allowedScopes": ['your','scope','list','...']
+      }}}' \
+  http://APIM_API_SERVER_DOMAIN/management/domains/:domainId
+----
+
+==== Default scopes
+
+The link:https://tools.ietf.org/html/rfc7591#section-2[specification^] states that if scopes are omitted while registering an application, the authorization server may set a default list of scopes. +
+To enable this feature, you simply select which scopes you want to be automatically set.
+
+You can also enable this feature using AM API:
+
+[source]
+----
+# Enable Default Scopes feature
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "defaultScopes": ['your','scope','list','...']
+      }}}' \
+  http://APIM_API_SERVER_DOMAIN/management/domains/:domainId
+----
+
+==== Force the same set of scopes for all client registrations
+
+If you want to force all clients to have the same set of scopes, you can enable the allowed scopes feature with an empty list and then select some default scopes.
+
+NOTE: Enabling the allowed scopes feature with an empty list will remove all requested scopes from the client registration request. +
+Since there is no longer a requested scope in the request, the default scopes will be applied.
+
+You can also enable this feature using AM API:
+
+[source]
+----
+# Force set of scopes on each client registration
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "isAllowedScopesEnabled": true,
+            "allowedScopes": [],
+            "defaultScopes": ['your','scope','list','...']
+      }}}' \
+  http://APIM_API_SERVER_DOMAIN/management/domains/:domainId
+----
+
+== Register new client using templates
+
+You can create a client and define it as a template.
+Registering a new application with a template allows you to specify which identity providers to use, apply template forms (such as login, password management and error forms) or emails (such as registration confirmation and password reset emails).
+
+=== Enable Dynamic Client Registration templates
+
+You can enable the template feature in the AM Dynamic Client Registration *Settings* tab:
+
+image::am/current/graviteeio-am-userguide-domain-enable-dcr-templates.png[]
+
+You can also enable this feature using APIM API:
+
+[source]
+----
+# enable Dynamic Client Registration
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ "oidc": {
+        "clientRegistrationSettings": { \
+            "isDynamicClientRegistrationEnabled": true,
+            "isClientTemplateEnabled": true
+      }}}' \
+  http://APIM_API_SERVER_DOMAIN/management/domains/:domainId
+----
+
+=== Define which client must be used as a template
+
+In the Dynamic Client Registration *Client templates* tab, enable this feature to be used as a template in the client:
+
+image::am/current/graviteeio-am-userguide-domain-define-dcr-templates.png[]
+
+You can also enable this feature using AM API:
+
+[source]
+----
+# enable Dynamic Client Registration
+curl -X PATCH \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{"template":true}' \
+  http://APIM_API_SERVER_DOMAIN/management/domains/:domainId/clients/:clientId
+----
+
+IMPORTANT: Once a client is set up as a template, it can no longer be used for authentication purposes.
+
+image::am/current/graviteeio-am-userguide-domain-dcr-templates.png[]
+
+=== Register call with template example
+
+NOTE: You need to retrieve the `software_id` of the template, which is available under the `registration_templates_endpoint` provided by the https://am_gateway/:domainId/oidc/.well-known/openid-configuration[openid discovery service^].
+
+[source]
+----
+# Register a new Relying Party (client)
+curl -X POST \
+  -H 'Authorization: Bearer :acccessToken' \
+  -H 'Content-Type: application/json' \
+  -d '{ \
+        "software_id": "{{templateSoftwareId}}", \
+        "redirect_uris": ["https://myDomain/callback"], \
+        "client_name": "my single page application from a template" \
+      }' \
+  http://APIM_GATEWAY_HOST/::domain/oidc/register
+----
+
+TIP: You can override some properties of the template by filling in some metadata, such as `client_name` in the example above.
+
+IMPORTANT: Some critical information is not copied from the template (e.g. `client_secret` and `redirect_uris`). This is why in the example above, we need to provide valid `redirect_uris` metadata, since in the example, the template we are using is a Single Page Application.
