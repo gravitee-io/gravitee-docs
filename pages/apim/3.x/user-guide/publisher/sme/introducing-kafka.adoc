@@ -30,8 +30,21 @@ This guide will take you through creating a kafka endpoint, describe how to prod
 You have the two following options when creating a Kafka endpoint:
 
 * You can import an API definition using the Gravitee console, or
-* You can create it via API Management.
+* You can create it via a `curl` command in API Management.
 
 ==== Importing an API Definition using the Console
 
+==== Creating a Kafka endpoint using API Management
+
+Use standard API Management fucntionality to create an API endpoint (see here for more detail on creating APIs)
+
+[source,json]
+----
+curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '"proxy": {"virtual_hosts": [{"path": "/kafka"}],"strip_context_path": false,"preserve_host":false,"groups": [{"name": "default-group","endpoints": [{"backup": false,"inherit": true,"name": "default","weight": 1,"type": "kafka","target": "[YOUR_KAFKA_HOST]]"}],"load_balancing": {"type": "ROUND_ROBIN"},"http": {"connectTimeout": 5000,"idleTimeout": 60000,"keepAlive": true,"readTimeout": 10000,"pipelining": false,"maxConcurrentConnections": 100,"useCompression": true,"followRedirects": false}}]},' \
+     http://MANAGEMENT_API_SERVER_DOMAIN/management/organizations/DEFAULT/environments/DEFAULT/apis
+----
+For more details on the parameters defined in this call, refer to the advanced configuration section below. 
 
