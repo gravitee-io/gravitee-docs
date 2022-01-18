@@ -1,0 +1,21 @@
+= Breaking changes in 3.15
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_3.15.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+NOTE: To take advantage of these new features and incorporate these breaking changes, **use the migration guide available link:/am/current/am_installguide_migration.html[here]**.
+
+== OAuth2/OpenID
+
+Until now, the scope `openid` alone implied also the scope `full_profile`. This changes in this version, you will have
+to specify the scope `full_profile` to get the full profile information of the user.
+
+== Identity Provider / RoleMappers
+
+RoleMappers attached to an identity provider allow the attribution of a role dynamically based on a matching rule.
+Until now, these dynamic roles were stored at the same place as the manually assigned ones, and we could not determine whether a Role was attributed via RoleMapper or manually via the portal.
+
+We've introduced in this version the notion of `dynamic roles` which are separated from the manually assigned roles.
+
+WARNING: Since we cannot tell apart from the two types of roles before 3.15 and how they were assigned, we cannot automate the migration of roles.
