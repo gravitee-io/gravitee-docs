@@ -143,7 +143,10 @@ image::am/current/graviteeio-am-userguide-um-pre-registration-mail.png[]
 
 You can assign roles directly from the user profile, or from the identity provider role mapping feature.
 
-NOTE: If you are using both user roles and the identity provider role mapper feature, both role definitions will be merged.
+NOTE: If you are using both user roles and the identity provider role mapper feature, the two roles will be in two different
+places, you can see the different roles in  *Settings > Users > "Your User" > Roles*.
+
+image::am/current/graviteeio-am-userguide-um-user-assigned-dynamic-roles.png[]
 
 NOTE: By default, users are stored in the pre-defined `Default Identity Provider`, which is available by default for each security domain.
 You can apply role mapping to your users.
