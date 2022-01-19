@@ -17,14 +17,14 @@ Only trusted applications can access the API data by requesting an API Key.
 Create application request::
 [source,curl]
 ----
-curl -ki -H "Authorization: Basic $lmA_AUTH" \
-     -H "Content-Type:application/json;charset=UTF-8" \
-     -X POST \
-     -d '
-        {"name":"app3","description": "My app3",
-         "settings": { "app": { "type": "web" } }
-        }
-        ' \
+curl    -ki -H "Authorization: Basic $lmA_AUTH"
+        -H "Content-Type:application/json;charset=UTF-8"
+        -X POST
+        -d '
+          { "name": "app3","description": "My app3",
+            "settings": { "app": { "type": "web" } }
+          }
+          '
         https://apim.****.aws.local/portal/environments/DEFAULT/applications
 ----
 
