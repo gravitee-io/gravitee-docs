@@ -8,8 +8,12 @@ NOTE: To take advantage of these new features and incorporate these breaking cha
 
 == OAuth2/OpenID
 
-Until now, the scope `openid` alone implied also the scope `full_profile`. This changes in this version, you will have
-to specify the scope `full_profile` to get the full profile information of the user.
+Until now, whenever a user consented to the `openid` scope:
+
+* If no requested claim was provided, the `full_profile` scope was implicit
+* Otherwise only the requested claims were provided
+
+From now on, you will have to explicitly request the `full_profile` scope claim to get the entire user profile information.
 
 == Identity Provider / RoleMappers
 
