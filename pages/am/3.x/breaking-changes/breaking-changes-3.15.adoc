@@ -4,9 +4,11 @@
 :page-folder: am/installation-guide
 :page-layout: am
 
+
 NOTE: To take advantage of these new features and incorporate these breaking changes, **use the migration guide available link:/am/current/am_installguide_migration.html[here]**.
 
 == OAuth2/OpenID
+
 
 Until now, whenever a user consented to the `openid` scope:
 
@@ -22,4 +24,4 @@ Until now, these dynamic roles were stored at the same place as the manually ass
 
 We've introduced in this version the notion of `dynamic roles` which are separated from the manually assigned roles.
 
-WARNING: Since we cannot tell apart from the two types of roles before 3.15 and how they were assigned, we cannot automate the migration of roles.
+WARNING: Since we cannot tell apart from the two types of roles before 3.15 and how they were assigned, we cannot automate the migration of roles
