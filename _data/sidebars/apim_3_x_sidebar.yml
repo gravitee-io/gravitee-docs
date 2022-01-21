@@ -277,6 +277,19 @@ entries:
             output: web
             url: /apim/3.x/apim_publisherguide_create_apis.html
             subfolders:
+              - title: Service Managment Ecosystem
+                output: web
+                subfolderitems:
+                  - title: Introducing SME
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_introducing_sme.html
+                  - title: Introducing the Kafka Controller
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_introducing_kafka.html
+                  - title: Using the Kafka Controller
+                    output: web
+                    url: apim/3.x/apim_publisherguide_using_kafka.html
+            subfolders:
               - title: Plans & Subscriptions
                 output: web
                 subfolderitems:
