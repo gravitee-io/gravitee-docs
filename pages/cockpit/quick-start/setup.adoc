@@ -1,0 +1,32 @@
+= Set up your Cockpit hierarchy
+:page-sidebar: cockpit_sidebar
+:page-permalink: cockpit/3.x/cockpit_quickstart_setup.html
+:page-folder: cockpit/userguide
+:page-description: Gravitee.io Cockpit - Register installation
+:page-keywords: Gravitee.io, API Platform, API Management, Cockpit, documentation, manual, guide
+
+== Create your Cockpit hierarchy
+
+You create your hierarchy from the Cockpit dashboard, accessed by clicking *Home* in the left-hand menu.
+
+To create your hierarchy:
+
+. If you have multiple accounts, select the account from the drop-down in the breadcrumb navigation.
++
+image:cockpit/dashboard-account-select.png[]
+
+. Create an organization with *NEW ORGANIZATION*.
+. Create the environments with *NEW ENVIRONMENT*. You will need to select the organization the environments belong to.
+
+You can now link:/cockpit/3.x/cockpit_userguide_register_installations.html[link installations to your environments^].
+
+== Update entity settings
+
+You can update the settings of any entity within your hierarchy from the hierarchy map, accessed by clicking your organization name in the left-hand menu.
+
+You can update the general details of entities, delete entities, and manage users. You can also update specific settings such as API Designer settings for organizations.
+
+To update settings for an entity in your organization:
+
+. Click the organization name in the left-hand menu.
+. Click the settings icon image:icons/cockpit-settings-icon.png[role="icon"] of the entity.

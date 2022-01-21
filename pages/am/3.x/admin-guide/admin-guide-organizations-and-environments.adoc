@@ -24,8 +24,8 @@ An environment belongs to one organization.
 == Organization
 An _organization_ allows users to customize AM to their own internal organization. It can manage multiple environments by sharing configurations like:
 
-* Users allows to access the AM Console
+* User permissions to access AM Console
 * Roles
-* Identity providers to access the AM Console
+* Identity providers to access AM Console
 
 NOTE: By default, the OSS version of AM comes with a default organization and a default environment. For a multi-environment setup, you need an integration with link:https://www.gravitee.io/products/cockpit[Cockpit].

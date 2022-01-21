@@ -65,3 +65,8 @@ If the button is not visible, there may be a problem with the identity provider 
 . Click *Sign in with SAML 2.0*. You will be redirected your SAML 2.0 IdP login page to authenticate your user.
 +
 If your user is already connected (SSO session), the user will be automatically redirected to your application with an OAuth 2.0 access token and Open ID Connect ID token, if requested.
+
+[NOTE]
+====
+As the size of a SAML Response may be important you may have an error message in the Gateway logs like: *Size exceed allowed maximum capacity*. In such case, you have to adapt the *http.maxFormAttributeSize* value in the gravitee.yaml file (-1 for infinite)
+====

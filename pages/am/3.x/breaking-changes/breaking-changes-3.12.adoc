@@ -31,7 +31,7 @@ Because more and more settings related to a scope exist, the OAuth settings for 
 
 * **scope**: the scope name.
 * **defautlScope**: boolean to defined this scope as a default one if the authorize request doesn't specify a list of scopes.
-* **scopeApproval**: the amount of time (in seconds) that a scope is considered as accepted per the enduser.
+* **scopeApproval**: the amount of time (in seconds) that a scope is considered as accepted per the end user.
 
 [source,json]
 ----
@@ -47,4 +47,4 @@ Because more and more settings related to a scope exist, the OAuth settings for 
 ----
 
 
-If you are using the Management REST API directly, please make this change and adapt your application or scipts.
+If you are using the Management REST API directly, please make this change and adapt your application or scripts.

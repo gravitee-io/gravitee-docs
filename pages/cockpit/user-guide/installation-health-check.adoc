@@ -1,4 +1,4 @@
-= Installation health check
+= Monitor and check the health of your installations
 :page-sidebar: cockpit_sidebar
 :page-permalink: cockpit/3.x/cockpit_userguide_installation_health_check.html
 :page-folder: cockpit/userguide
@@ -12,11 +12,49 @@ NOTE: This feature is only available with APIM & AM 3.8 or higher.
 
 == Overview
 
-Installations that are registered with Cockpit will send valuable information to the dashboard, including configuration of the installation, list of nodes, plugins, and also some regular updates regarding their health status and monitoring.
-In the Cockpit UI, you can view all the nodes of an installation in the Organization dashboard.
+Installations that are registered with Cockpit will report valuable information, including configuration of the installation, list of nodes, plugins, and also some regular updates regarding their health status and monitoring.
+
+=== Nodes
+
+Installations are monitored at node level. The first REST API node connected when you registered the installation acts as the *primary node*.
+The role of the primary node is to gather, consolidate, and share the information from the other registered nodes, including:
+
+- status
+- name
+- version
+- sharding tags
+- JDK version
+- list of plugins
+- monitoring data
+- health checks
+
+If the primary node goes down, another REST API node takes over as primary node. If no REST API nodes are left, after 5 minutes all nodes are considered unhealthy, since Cockpit is no longer able to retrieve health information from the installation.
+
+Nodes can be in a `STARTED` or `STOPPED` state.
+
+You can view all the nodes of an installation which are in a `STARTED` state in the Dashboard, with a color indicating the state of their health.
+You can click on a node to access more details about that node, including general details about the node (for example, name and version), the list of plugins, and health check and monitoring data.
 
 image:cockpit/installation-node-details-page.png[]
 
-== Installation node details
+=== Health checks
 
-You can click on an installation node icon to access more details about that node. On this page you will find general info regarding the node (such as its name and version), the list of plugins, and health check and monitoring data.
+Health check data is gathered every 5 seconds. A node is considered unhealthy if its last health check was unhealthy, or if the last health check was more than five minutes ago.
+Each health check contains different probes, depending on the node type (REST API or Gateway).
+
+== View monitoring data for a node
+
+1. Click the node in the Dashboard.
+2. Click *Monitoring*.
+3. To see historical data, filter by date.
+4. Enable *Show only status transition* to limit the list of health check reports to reports where the status of the node changed.
++
+Cockpit lists the health check reports for the node. You can click on a report to expand the report details.
+
+== Check the health of a node
+
+Nodes are either healthy or unhealthy at a given point in time. If your node is currently unhealthy, running a historical health check can help you pinpoint when its status changed.
+
+1. Click the node in the Dashboard.
+2. Click *Health-check*.
+3. To see historical data, filter by date.

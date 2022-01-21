@@ -11,9 +11,6 @@ entries:
     - title: Introduction
       output: web
       url: /cockpit/3.x/cockpit_overview_introduction.html
-    - title: Compatibility
-      output: web
-      url: /cockpit/3.x/cockpit_overview_compatibility.html
 
   - title: Quick Start Guide
     output: web
@@ -24,12 +21,16 @@ entries:
       - title: Set up your Cockpit hierarchy
         output: web
         url: /cockpit/3.x/cockpit_quickstart_setup.html
+
   - title: Installation Guide
     output: web
     folderitems:
       - title: Introduction
         output: web
         url: /cockpit/3.x/cockpit_installguide_introduction.html
+      - title: Compatibility
+        output: web
+        url: /cockpit/3.x/cockpit_overview_compatibility.html
         subfolders:
           - title: Install with .zip
             output: web
@@ -37,7 +38,7 @@ entries:
               - title: Cockpit API
                 output: web
                 url: /cockpit/3.x/cockpit_installguide_management_api_install_zip.html
-              - title: Cockpit UI
+              - title: Cockpit Console
                 output: web
                 url: /cockpit/3.x/cockpit_installguide_management_ui_install_zip.html
       - title: Run in Docker
@@ -69,7 +70,7 @@ entries:
           - title: Generic OAuth2
             output: web
             url: /cockpit/3.x/cockpit_installguide_idp_generic_oauth2.html
-          - title: Connect with Github
+          - title: Connect with GitHub
             output: web
             url: /cockpit/3.x/cockpit_installguide_idp_github.html
           - title: Connect with Google
@@ -82,7 +83,7 @@ entries:
       - title: Register installations
         output: web
         url: /cockpit/3.x/cockpit_userguide_register_installations.html
-      - title: Installation health check
+      - title: Monitor and check the health of installations
         output: web
         url: /cockpit/3.x/cockpit_userguide_installation_health_check.html
       - title: Create API models with API Designer

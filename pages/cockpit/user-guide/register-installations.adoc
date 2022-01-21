@@ -11,7 +11,9 @@ Existing on-premise installations of APIM and AM can be registered in Cockpit. T
 
 A registered installation communicates with Cockpit via a WebSocket connection, secured with TLS.
 
-== Register a new installation
+When you register a new installation, its REST API and Gateway nodes are automatically linked to Cockpit, including any nodes you add to your APIM and AM installations later on.
+
+== How to register a new installation
 
 To register new APIM or AM installations with Cockpit, you need to:
 
