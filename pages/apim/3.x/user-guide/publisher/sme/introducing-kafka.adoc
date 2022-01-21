@@ -34,6 +34,18 @@ You have the two following options when creating a Kafka endpoint:
 
 ==== Importing an API Definition using the Console
 
+Open the Kafka plugin in the console.
+
+image:apim/3.x/api-publisher-guide/sme/kafka-console1.png[]
+
+On the Configuration tab, configure your settings, referring to the Advanced Configuration section below for any required information.
+
+image:apim/3.x/api-publisher-guide/sme/kafka-console2.png[]
+
+Add Kafka to the default group
+
+image:apim/3.x/api-publisher-guide/sme/kafka-console3.png[]
+
 ==== Creating a Kafka endpoint using API Management
 
 Use standard API Management fucntionality to create an API endpoint (see here for more detail on creating APIs)
