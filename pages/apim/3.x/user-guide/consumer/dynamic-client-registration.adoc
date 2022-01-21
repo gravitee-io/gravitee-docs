@@ -6,12 +6,12 @@
 
 == Overview
 
-Another way to create applications in APIM is to use the OpenID Connect Dynamic Client Registration endpoint. +
+Another way to create applications in APIM is to use the OpenID Connect Dynamic Client Registration endpoint.
 This specification enables Relying Parties (clients) to register applications in the OpenID Provider (OP).
 
 == Enable Dynamic Client Registration with APIM Console
 
-By default this feature is disabled. You can enable it through the domain settings:
+By default this feature is disabled. You can enable it in the Portal settings in APIM Console.
 
 . link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
 . Click *Settings*, then in the *PORTAL* section click *Client Registration*.
@@ -53,7 +53,7 @@ curl -X POST \
 
 === Register new RP (client)
 
-Once you obtain the access token, you can call AM Gateway through the registration endpoint.
+Once you obtain the access token, you can call APIM Gateway through the registration endpoint.
 You can specify many client properties, such as `client_name`, but only the `redirect_uris` property is mandatory.
 See the link:https://openid.net/specs/openid-connect-registration-1_0.html[Openid Connect Dynamic Client Registration^] specification for more details.
 
@@ -177,7 +177,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer :acccessToken' \
   -H 'Content-Type: application/json' \
   -d '{ "client_name": "myNewApplicationName"}' \
-  http://APIM-GATEWAY-HOST/::domain/oidc/register/:client_id
+  http://APIM_GATEWAY_HOST/::domain/oidc/register/:client_id
 ----
 
 === Renew client secret
@@ -194,7 +194,7 @@ CAUTION: When you update a client, a new registration access token is generated 
 # Renew the client secret of a registered Relying Party (client)
 curl -X POST \
   -H 'Authorization: Bearer :acccessToken' \
-  http://APIM-GATEWAY-HOST/::domain/oidc/register/:client_id/renew_secret
+  http://APIM_GATEWAY_HOST/::domain/oidc/register/:client_id/renew_secret
 ----
 
 === Scope Management
