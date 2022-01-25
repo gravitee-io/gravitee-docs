@@ -68,5 +68,9 @@ If your user is already connected (SSO session), the user will be automatically 
 
 [NOTE]
 ====
-As the size of a SAML Response may be important you may have an error message in the Gateway logs like: *Size exceed allowed maximum capacity*. In such case, you have to adapt the *http.maxFormAttributeSize* value in the gravitee.yaml file (-1 for infinite)
+SAML responses can be very large. If you see an error message in the Gateway logs like this one: `Size exceeds allowed maximum capacity`
+
+update the `http.maxFormAttributeSize` value in the `gravitee.yml` config file (set it to `-1` for infinite).
+
+link:/am/current/am_installguide_gateway_configuration.html[Learn more about updating the Gateway configuration file^]
 ====
