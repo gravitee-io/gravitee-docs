@@ -1,6 +1,6 @@
 = Using the Kafka controller
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_publishersme_using_kafka.html
+:page-permalink: apim/3.x/apim_publisherguide_using_kafka.html
 :page-folder: apim/user-guide/publisher
 :page-layout: apim3x
 
@@ -10,11 +10,11 @@ This section describes the basic usage of the Kafka controller - producing and c
 
 === Producing messages
 
-Using the HTTP `POST` command to the example endpoint `https://apim-3-x-x-gateway.cloud.gravitee.io/kafka/messages`, you can send a message with the followig structure:
+Using the HTTP `POST` command to the example endpoint `https://api.company.com/kafka/messages`, you can send a message with the followig structure:
 
 [source,json]
 ----
-https://apim-3-13-x-gateway.cloud.gravitee.io/kafka/messages
+https://api.company.com/kafka/messages
 {
   "messages": [
     {
@@ -29,4 +29,4 @@ https://apim-3-13-x-gateway.cloud.gravitee.io/kafka/messages
 
 === Consuming messages
 
-Using the HTTP `GET` command to the example endpoint `https://apim-3-x-x-gateway.cloud.gravitee.io/kafka/messages`, you can receive any available messages.
+Using the HTTP `GET` command to the example endpoint `https://api.company.com/kafka/messages`, you can receive any available messages.
