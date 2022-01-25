@@ -6,11 +6,11 @@
 :page-layout: apim3x
 :page-liquid:
 
-[label label-version]#New in version 3.13#
+[label label-version]#New in version 3.7#
 
 == Overview
 
-APIM 3.13 introduces a Kubernetes plugin for APIM Gateway allowing the deployment of APIs using https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/[Custom Resource Definitions (CRDs)^].
+APIM 3.7 introduces a Kubernetes plugin for APIM Gateway allowing the deployment of APIs using https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/[Custom Resource Definitions (CRDs)^].
 
 APIs deployed using CRDs are not visible through APIM Console.
 
