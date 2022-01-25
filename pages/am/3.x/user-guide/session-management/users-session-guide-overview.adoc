@@ -14,17 +14,17 @@ NOTE: By default the session last 30 minutes, you can change this value via the 
 
 There are three-session layers you need to consider specially when you want to sign-out your users :
 
-1. *Application session* : this layer lies in your application after your users have been authenticated from AM.
+. *Application session* : this layer lies in your application after your users have been authenticated from AM.
 For traditional web applications this session is stored via HTTP cookies (JSESSIONID, PHPSESSID, ASP.NET_SessionId). For SPA applications this information can be stored in memory or via storage.
 It's up to you to clean everything if you want log out your users.
 
-2. *Gravitee.io AM session* : a session is created for every authenticated user and this information inside a HTTP cookie.
+. *Gravitee.io AM session* : a session is created for every authenticated user and this information inside a HTTP cookie.
 This cookie acts as Single Sign-on (SSO) cookie and let you remember your users and automatically silently authenticate your users across applications.
 
 NOTE: To automatically authenticate your user across applications (SSO), your applications must share the same identity provider.
 
 [start=3]
-3. *Identity Provider session* : if you application is configured to use a link:/am/current/am_userguide_social_identity_providers.html[social identity provider] to authenticate a user, the identity provider will create a session in addition of the AM one.
+. *Identity Provider session* : if you application is configured to use a link:/am/current/am_userguide_social_identity_providers.html[social identity provider] to authenticate a user, the identity provider will create a session in addition of the AM one.
 When users attempt to sign in with any of these providers and they are already signed into the provider, they will not be prompted again to sign in.
 
 == Invalidate session
