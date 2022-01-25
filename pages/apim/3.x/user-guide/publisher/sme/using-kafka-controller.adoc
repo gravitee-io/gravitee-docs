@@ -10,7 +10,7 @@ This section describes the basic usage of the Kafka controller - producing and c
 
 === Producing messages
 
-Using the HTTP `POST` command to the example endpoint `https://api.company.com/kafka/messages`, you can send a message with the followig structure:
+Using the HTTP `POST` command to the example endpoint `https://api.company.com/kafka/messages`, you can send a message with the following structure:
 
 [source,json]
 ----
