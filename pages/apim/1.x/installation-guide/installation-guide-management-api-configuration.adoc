@@ -4,6 +4,7 @@
 :page-folder: apim/installation-guide/management-api
 :page-description: Gravitee.io API Management - Configuration - Management API
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-liquid:
 :page-layout: apim1x
 
 include::partial/how-to-configure.adoc[leveloffset=+1]
@@ -278,5 +279,5 @@ Various properties can be specified inside your `GRAVITEE_HOME/config/gravitee.y
 
 [source,yaml]
 ----
-include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/1.30.x/gravitee-management-api-standalone/gravitee-management-api-standalone-distribution/src/main/resources/config/gravitee.yml[]
+include::https://raw.githubusercontent.com/gravitee-io/gravitee-management-rest-api/{{ site.products.apim._1x.version }}/gravitee-management-api-standalone/gravitee-management-api-standalone-distribution/src/main/resources/config/gravitee.yml
 ----
