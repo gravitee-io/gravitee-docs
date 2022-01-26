@@ -43,14 +43,14 @@ services:
 
 The list of available labels can be found here: https://vertx.io/docs/apidocs/io/vertx/micrometer/Label.html[Label]
 
-WARNING: Enabling labels may result in a high cardinality in values, which can cause troubles on the metrics backend (i.e. the gateway) and affect performances. +
+WARNING: Enabling labels may result in a high cardinality in values, which can cause issues on the metrics backend (i.e. the gateway) and affect performance. +
 So it must be used with care. +
 In general, it is fine to enable labels when the set of possible values is bounded.
 
 Default values are `local`, `http_method` and `http_code`.
 
-Starting from APIM 3.10, the labels of the metrics has been renamed.
-So we have introduced a new field in prometheus configuration to tell it to use old Vert.X 3 label names.
+Starting from APIM 3.10, the metrics labels have been renamed.
+We have introduced a new field in prometheus configuration where you can configure it to use old Vert.X 3 label names.
 Set it to 3.10, to use old labels.
 
 [source,yaml]
