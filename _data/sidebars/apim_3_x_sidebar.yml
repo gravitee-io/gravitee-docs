@@ -116,6 +116,9 @@ entries:
           - title: Configure a Production-Ready APIM Environment
             output: web
             url: /apim/3.x/apim_how_to_configuration.html
+          - title: Configure HTTP reverse proxy
+            output: web
+            url: /apim/3.x/apim_how_to_configure_reverse_proxy.html
           - title: Upgrade Guide
             output: web
             url: /apim/3.x/apim_installguide_migration.html
@@ -275,7 +278,7 @@ entries:
             url: /apim/3.x/apim_publisherguide_manage_apis.html
           - title: Create APIs
             output: web
-            url: /apim/3.x/apim_publisherguide_create_apis.html            
+            url: /apim/3.x/apim_publisherguide_create_apis.html
             subfolders:
               - title: Service Managment Ecosystem
                 output: web
