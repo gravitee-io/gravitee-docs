@@ -49,9 +49,11 @@ In general, it is fine to enable labels when the set of possible values is bound
 
 Default values are `local`, `http_method` and `http_code`.
 
-Starting from APIM 3.10, the metrics labels have been renamed.
-We have introduced a new field in prometheus configuration where you can configure it to use old Vert.X 3 label names.
+Starting from APIM 3.10.0, Vert.x 4 is used and the metrics labels have been renamed.
+We have introduced a new field in prometheus configuration that you can configure to use old Vert.x 3 label names.
 Set it to 3.10, to use old labels.
+
+NOTE: "3.10" in the configuration is related to Vert.x version and not APIM version.
 
 [source,yaml]
 ----
