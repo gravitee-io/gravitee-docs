@@ -48,6 +48,9 @@ Make a note of the URL in *1. Configure the Redirect URI* on the right-hand side
 
 From AM version 3.7, SAML IdP servers may ask you to share the SAML SP Metadata endpoint to register your AM instance.
 This endpoint can be found at: https://AM_GW_HOST/:domain/saml2/sp/metadata/:providerId
+
+From SAML IdP plugin v1.4.0, encrypted assertion responses can be handled and decrypted.
+We decided to only publish KeyDescriptor with use="encryption" if the 'wantAssertionsEncrypted' option is enabled.
 ====
 
 == Test the connection
