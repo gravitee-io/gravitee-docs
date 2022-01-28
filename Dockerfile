@@ -10,7 +10,7 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 #-------------------------------------------------------------------------------
-FROM ruby:2.7-slim-bullseye as builder
+FROM ruby:3.1-slim-bullseye as builder
 LABEL maintainer="Gravitee Team <http://gravitee.io>"
 
 ENV RUBYOPT=-KU
