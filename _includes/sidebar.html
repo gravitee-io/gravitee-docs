@@ -20,7 +20,16 @@
               {% elsif doc_url == folderitem.url %}
               <li class="dropdownActive"><a href="{{folderitem.url}}">{{folderitem.title}}</a></li>
               {% else %}
-              <li><a href="{{folderitem.url}}">{{folderitem.title}}</a></li>
+                {% if folderitem.version != nil %}
+                  {% assign contextdoc_url = page_url | replace: {{doc_version}}, {{folderitem.version}} %}
+                  {% if page.content != '' %}
+                  <li><a href="{{contextdoc_url}}">{{folderitem.title}}</a></li>
+                  {% else %}
+                  <li><a href="{{folderitem.url}}">{{folderitem.title}}</a></li>
+                  {% endif %}
+                {% else %}
+                  <li><a href="{{folderitem.url}}">{{folderitem.title}}</a></li>
+                {% endif %}
               {% endif %}
             {% endfor %}
         </ul>

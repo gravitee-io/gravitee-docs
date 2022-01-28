@@ -5,8 +5,10 @@ apim_versions:
   - default_version: 3.13.x (current)
     folderitems:
     - title: 3.13.x (current)
+      version: current
       url: /Guides/apim/current/introduction.html
     - title: 3.9.x
+      version: 3.9.x
       url: /Guides/apim/3.9.x/introduction.html
     - title: 1.x
       url: /apim/1.x/apim_overview_introduction.html
