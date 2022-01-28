@@ -17,10 +17,13 @@ Only trusted applications can access the API data by requesting an API Key.
 Create application request::
 [source]
 ----
-curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+curl -ki -H "Authorization: Basic $lmA_AUTH" \
      -H "Content-Type:application/json;charset=UTF-8" \
      -X POST \
-     -d '{"name":"My first Application","type":"Web","description":"Web client for Gravitee.io Echo API"}' \
+     -d '{"name":"app3","description":"Web client for Gravitee.io Echo API",
+          "settings": {"app": {"type": "web"}}
+         }
+     ' \
      http://MANAGEMENT_API_SERVER_DOMAIN/portal/environments/DEFAULT/applications
 ----
 
