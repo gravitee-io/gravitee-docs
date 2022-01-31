@@ -1,98 +1,75 @@
-= Install APIM Gateway
+= APIM Component - Install Gateway
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_installguide_amazon_gateway.html
+:page-permalink: apim/3.x/apim_installation_guide_amazon_gateway.html
 :page-folder: apim/installation-guide/amazon
 :page-liquid:
 :page-layout: apim3x
-:page-description: Gravitee.io API Management - Installation Guide - Amazon - API Gateway
-:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - Gateway
+:page-keywords: Gravitee.io, API Management, apim, guide, package, amazon, linux, aws, component, gateway
 :page-toc: true
 
-:gravitee-component-name: APIM Gateway
-:gravitee-package-name: graviteeio-apim-gateway-3x
-:gravitee-service-name: graviteeio-apim-gateway
-
-
+// author: Tom Geudens
 == Prerequisites
+* Machine up and running
+* Gravitee YUM repository added
+* Java 11 jre installed
+* MongoDB installed and running
+* Elasticsearch installed and running
 
-. *YUM package manager* must be configured (link:/apim/3.x/apim_installguide_amazon_configure_yum.html[click here] for instructions on how to configure yum).
-. You must have access to a *t2.medium instance* size in AWS.
+== Security group
+* open port 8082
 
-=== 1. Configure Your Amazon Instance
-In your AWS settings, choose the following:
-
-* *[underline]#For Instance Type/Size#*. Select a **t.2medium** instance.
-
-* *[underline]#For IP Address#*. Choose to **auto-assign a public IP** for this option.
-
-* *[underline]#For Storage#*. Generally, **40GB** is a good amount.
-
-* *[underline]#For Security Groups#*. Open port *8082* so that after you complete the installation, you can check the necessary URLs to ensure that APIM Gateway has been installed properly.
-
-
-=== 2. Install The {gravitee-component-name} Package
-
-To install the last stable version of {gravitee-component-name}, run the following command:
-
-[source,bash,subs="attributes"]
+== Instructions
+. Install Gateway:
++
+[source,bash]
 ----
-sudo yum install -y {gravitee-package-name}
+sudo yum install graviteeio-apim-gateway-3x -y
 ----
 
-=== 3. Run {gravitee-component-name}
-
-These steps assume that you are using the default settings.
-
-To configure {gravitee-component-name} to start automatically when the system boots up, run the following commands:
-
-[source,bash,subs="attributes"]
+. Enable Gateway on startup:
++
+[source,bash]
 ----
 sudo systemctl daemon-reload
-sudo systemctl enable {gravitee-service-name}
+sudo systemctl enable graviteeio-apim-gateway
 ----
 
-To start and stop {gravitee-component-name}, run the following commands:
-
-[source,bash,subs="attributes"]
+. Start Gateway:
++
+[source,bash]
 ----
-sudo systemctl start {gravitee-service-name}
-sudo systemctl stop {gravitee-service-name}
+sudo systemctl start graviteeio-apim-gateway
 ----
 
-NOTE: These commands provide no feedback as to whether {gravitee-component-name} started successfully. This information is written to the log files located in `/opt/graviteeio/apim/gateway/logs/`.
-
-=== 4. View The Logs
-
-*You must check the logs to confirm if {gravitee-component-name} has been installed correctly.* When `systemd` logging is enabled, logging information is available using the `journalctl` commands.
-
-To tail the journal, run the following command:
-
-[source,bash,subs="attributes"]
+. Verify:
++
+[source,bash]
 ----
 sudo journalctl -f
 ----
++
+Follow along with the startup process. If any of the prerequisites is missing, this is were you'll get error messages.
++
+**NOTE:** You can also see the same in `/opt/graviteeio/apim/gateway/logs/gravitee.log`
 
-To list journal entries for the {gravitee-component-name} service, run the following command:
-
-[source,bash,subs="attributes"]
+. Verify some more:
++
+[source,bash]
 ----
-sudo journalctl --unit {gravitee-service-name}
+sudo ss -lntp '( sport = 8082 )'
 ----
++
+You should see that there's a process listening on that port.
 
-To list journal entries for the {gravitee-component-name} service starting from a given time, run the following command:
-
-[source,bash,subs="attributes"]
+. Verify some more still:
++
+[source,bash]
 ----
-sudo journalctl --unit {gravitee-service-name} --since  "2020-01-30 12:13:14"
+curl -X GET http://localhost:8082/
 ----
++
+If the installation is successful this returns: **No context-path matches the request URI.**
 
-=== 5. Confirm {gravitee-component-name} Was Installed (Optional)
-
-You can also confirm that {gravitee-component-name} has been installed and has started up properly by checking this URL:
-
-|===
-|Component |URL
-
-|APIM Gateway
-|http://localhost:8082/
-|===
+== Next
+Next is link:/apim/3.x/apim_installation_guide_amazon_rest_api.html[installing the Gravitee APIM REST API].

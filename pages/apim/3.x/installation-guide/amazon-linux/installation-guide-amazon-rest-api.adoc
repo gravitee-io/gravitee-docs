@@ -1,0 +1,76 @@
+= APIM Component - Install REST API
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installation_guide_amazon_rest_api.html
+:page-folder: apim/installation-guide/amazon
+:page-liquid:
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - REST API
+:page-keywords: Gravitee.io, API Management, apim, guide, package, amazon, linux, aws, component, restapi, rest, api
+:page-toc: true
+
+// author: Tom Geudens
+== Prerequisites
+* Machine up and running
+* Gravitee YUM repository added
+* Java 11 jre installed
+* MongoDB installed and running
+* Elasticsearch installed and running
+
+== Security group
+* open port 8083
+
+== Instructions
+. Install REST API:
++
+[source,bash]
+----
+sudo yum install graviteeio-apim-rest-api-3x -y
+----
+
+. Enable REST API on startup:
++
+[source,bash]
+----
+sudo systemctl daemon-reload
+sudo systemctl enable graviteeio-apim-rest-api
+----
+
+. Start REST API:
++
+[source,bash]
+----
+sudo systemctl start graviteeio-apim-rest-api
+----
+
+. Verify:
++
+[source,bash]
+----
+sudo journalctl -f
+----
++
+Follow along with the startup process. If any of the prerequisites is missing, this is were you'll get error messages.
++
+**NOTE:** You can also see the same in `/opt/graviteeio/apim/rest-api/logs/gravitee.log`
+
+. Verify some more:
++
+[source,bash]
+----
+sudo ss -lntp '( sport = 8083 )'
+----
++
+You should see that there's a process listening on that port.
+
+. Verify some more still:
++
+[source,bash]
+----
+curl -X GET http://localhost:8083/management/organizations/DEFAULT/console
+curl -X GET http://localhost:8083/portal/environments/DEFAULT/apis
+----
++
+If the installation is successful both of these return a json document.
+
+== Next
+Next is link:/apim/3.x/apim_installation_guide_amazon_management_ui.html[installing the Gravitee APIM Management UI].

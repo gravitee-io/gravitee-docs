@@ -32,24 +32,45 @@ entries:
               - title: Install on Amazon
                 output: web
                 subfolderitems:
-                  - title: Configure YUM
+                  - title: Introduction
                     output: web
-                    url: /apim/3.x/apim_installguide_amazon_configure_yum.html
-                  - title: Install Full APIM Stack
+                    url: /apim/3.x/apim_installation_guide_amazon_introduction.html
+                  - title: Prerequisite - Machine
                     output: web
-                    url: /apim/3.x/apim_installguide_amazon_stack.html
-                  - title: Install APIM Gateway
+                    url: /apim/3.x/apim_installation_guide_amazon_prerequisite_machine.html                  
+                  - title: Prerequisite - Setup Gravitee YUM repository
                     output: web
-                    url: /apim/3.x/apim_installguide_amazon_gateway.html
-                  - title: Install APIM API
+                    url: /apim/3.x/apim_installation_guide_amazon_prerequisite_yum_repository.html
+                  - title: Prerequisite - Install Java
                     output: web
-                    url: /apim/3.x/apim_installguide_amazon_management_api.html
-                  - title: Install APIM Console
+                    url: /apim/3.x/apim_installation_guide_amazon_prerequisite_java.html
+                  - title: Prerequisite - Install MongoDB
                     output: web
-                    url: /apim/3.x/apim_installguide_amazon_management_ui.html
-                  - title: Install APIM Portal
+                    url: /apim/3.x/apim_installation_guide_amazon_prerequisite_mongodb.html
+                  - title: Prerequisite - Install Elasticsearch
                     output: web
-                    url: /apim/3.x/apim_installguide_amazon_portal.html
+                    url: /apim/3.x/apim_installation_guide_amazon_prerequisite_elasticsearch.html
+                  - title: Prerequisite - Install Nginx
+                    output: web
+                    url: /apim/3.x/apim_installation_guide_amazon_prerequisite_nginx.html
+                  - title: Component - Install Gateway
+                    output: web
+                    url: /apim/3.x/apim_installation_guide_amazon_gateway.html
+                  - title: Component - REST API
+                    output: web
+                    url: /apim/3.x/apim_installation_guide_amazon_rest_api.html
+                  - title: Component - Management UI
+                    output: web
+                    url: /apim/3.x/apim_installation_guide_amazon_management_ui.html
+                  - title: Component - Portal UI
+                    output: web
+                    url: /apim/3.x/apim_installation_guide_amazon_portal_ui.html
+                  - title: Component - All
+                    output: web
+                    url: /apim/3.x/apim_installation_guide_amazon_all.html
+                  - title: Full stack
+                    output: web
+                    url: /apim/3.x/apim_installation_guide_amazon_stack.html                    
               - title: Install on Docker
                 output: web
                 subfolderitems:

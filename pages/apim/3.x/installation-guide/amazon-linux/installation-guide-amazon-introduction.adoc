@@ -1,0 +1,38 @@
+= Introduction
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installation_guide_amazon_introduction.html
+:page-folder: apim/installation-guide/amazon
+:page-liquid:
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - Introduction
+:page-keywords: Gravitee.io, API Management, apim, guide, manual, amazon, linux
+:page-toc: false
+
+// author: Tom Geudens
+== Options
+There are three ways to go about this:
+
+* **Step by step**
++
+Excellent choice! The path for you is:
+
+** Install the prerequisites one by one, start link:/apim/3.x/apim_installation_guide_amazon_prerequisite_machine.html[here]
+
+** Install the Gravitee APIM components one by one, start link:/apim/3.x/apim_installation_guide_amazon_gateway.html[here]
+
+* **Gravitee APIM fast track**
++
+Great choice! The path for you is:
+
+** Install the prerequisites one by one, start link:/apim/3.x/apim_installation_guide_amazon_prerequisite_machine.html[here]
+
+** Install all of the Gravitee APIM components link:/apim/3.x/apim_installation_guide_amazon_all.html[in one go]
+
+
+* **Full stack**
++
+Fantastic choice! The path for you is:
+
+** Provision a machine (check link:/apim/3.x/apim_installation_guide_amazon_prerequisite_machine.html[here] for the specifications)
+
+** Install prerequisites and the Gravitee APIM components link:/apim/3.x/apim_installation_guide_amazon_stack.html[in one go]

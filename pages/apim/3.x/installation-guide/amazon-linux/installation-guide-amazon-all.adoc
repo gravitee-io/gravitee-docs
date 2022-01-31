@@ -1,0 +1,97 @@
+= APIM Component - All
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installation_guide_amazon_all.html
+:page-folder: apim/installation-guide/amazon
+:page-liquid:
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - All
+:page-keywords: Gravitee.io, API Management, apim, guide, package, amazon, linux, aws, component, gateway, restapi, management, portal, ui
+:page-toc: true
+
+// author: Tom Geudens
+== Prerequisites
+* Machine up and running
+* Gravitee YUM repository added
+* Java 11 jre installed
+* MongoDB installed and running
+* Elasticsearch installed and running
+* Nginx installed
+
+== Security group
+* open port 8082
+* open port 8083
+* open port 8084
+* open port 8085
+
+== Instructions
+. Install all Gravitee APIM components:
++
+[source,bash]
+----
+sudo yum install graviteeio-apim-3x -y
+----
+
+. Enable Gateway and REST API on startup:
++
+[source,bash]
+----
+sudo systemctl daemon-reload
+sudo systemctl enable graviteeio-apim-gateway
+sudo systemctl enable graviteeio-apim-rest-api
+----
+
+. Start Gateway and REST API:
++
+[source,bash]
+----
+sudo systemctl start graviteeio-apim-gateway
+sudo systemctl start graviteeio-apim-rest-api
+----
+
+. Restart Nginx:
++
+[source,bash]
+----
+sudo systemctl restart nginx
+----
+
+. Fix an issue
++
+There is a known issue with the Portal UI configuration. You can find a fix link:/apim/3.x/apim_installation_guide_amazon_issue.html[here].
+
+. Verify:
++
+[source,bash]
+----
+sudo journalctl -f
+----
++
+Follow along with the startup process. If any of the prerequisites is missing, this is were you'll get error messages.
++
+**NOTE:** You can also see the same in `/opt/graviteeio/apim/gateway/logs/gravitee.log` and `/opt/graviteeio/apim/rest-api/logs/gravitee.log`
+
+. Verify some more:
++
+[source,bash]
+----
+sudo ss -lntp '( sport = 8082 )'
+sudo ss -lntp '( sport = 8083 )'
+sudo ss -lntp '( sport = 8084 )'
+sudo ss -lntp '( sport = 8085 )'
+----
++
+You should see that there are processes listening on those ports.
+
+. Verify some more still:
++
+[source,bash]
+----
+curl -X GET http://localhost:8082/
+curl -X GET http://localhost:8083/management/organizations/DEFAULT/console
+curl -X GET http://localhost:8083/portal/environments/DEFAULT/apis
+----
++
+If the installation is successful the first one returns: **No context-path matches the request URI.** The others return a json structure.
+
+
+**Congratulations**, you have a fully functional Gravitee APIM!

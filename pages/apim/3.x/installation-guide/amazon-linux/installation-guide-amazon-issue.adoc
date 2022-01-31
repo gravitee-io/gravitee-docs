@@ -1,0 +1,32 @@
+= Known Issue - Portal UI configuration
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installation_guide_amazon_issue.html
+:page-folder: apim/installation-guide/amazon
+:page-liquid:
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - Known Issue
+:page-keywords: Gravitee.io, API Management, apim, guide, package, amazon, linux, aws, component, portal, ui, issue
+:page-toc: true
+
+// author: Tom Geudens
+== Overview
+There is currently a known issue in the Portal UI configuration. After installation the `baseURL` in `/opt/graviteeio/apim/portal-ui/assets/config.json` is incorrect, as shown here
+
+image::apim/3.x/installation/amazon-known-issues/portal-ui-known-issue.png[incorrect baseURL in Portal UI configuration]
+
+**NOTE:** Obviously your actual IP will differ from the one shown in this example.
+
+== Fix
+. Remove the http://localhost:8083 from the baseURL
++
+[source,bash]
+----
+sudo perl -pi -e 's/"baseURL": "http:\/\/localhost:8083/"baseURL": "/g' /opt/graviteeio/apim/portal-ui/assets/config.json
+----
+
+. Restart Nginx:
++
+[source,bash]
+----
+sudo systemctl restart nginx
+----

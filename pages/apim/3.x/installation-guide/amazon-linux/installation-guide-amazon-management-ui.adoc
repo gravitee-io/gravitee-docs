@@ -1,110 +1,53 @@
-= Install APIM Console
+= APIM Component - Install Management UI
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_installguide_amazon_management_ui.html
+:page-permalink: apim/3.x/apim_installation_guide_amazon_management_ui.html
 :page-folder: apim/installation-guide/amazon
 :page-liquid:
 :page-layout: apim3x
 :page-description: Gravitee.io API Management - Installation Guide - Amazon - Management UI
-:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-keywords: Gravitee.io, API Management, apim, guide, package, amazon, linux, aws, component, management, ui
 :page-toc: true
 
-:gravitee-component-name: APIM Console
-:gravitee-package-name: graviteeio-apim-management-ui-3x
-:gravitee-service-name: graviteeio-apim-management-ui
-:page-toc: false
-
-
-To install Gravitee.io API Management Console, be sure to check the list of prerequisites and complete the following configuration (both listed below).
-
+// author: Tom Geudens
 == Prerequisites
+* Machine up and running
+* Gravitee YUM repository added
+* Gravitee APIM REST API installed and running
+* Nginx installed
 
-. [underline]#*APIM API*# must be installed and running (link:/apim/3.x/apim_installguide_amazon_management_api.html[click here] for instructions on how to install APIM API).
+== Security group
+* open port 8084
 
-. [underline]#*Nginx*# must be installed.
-
-. [underline]#*YUM package manager*# must be configured (link:/apim/3.x/apim_installguide_amazon_configure_yum.html[click here] for instructions on how to configure `yum`).
-
-=== Install APIM API
-link:/apim/3.x/apim_installguide_amazon_management_api.html[Click here] for instructions on how to install and test that APIM API is running.
-
-=== Install Nginx
-
-To install Nginx, run the following commands:
-
-[source,bash,subs="attributes"]
+== Instructions
+. Install Management UI:
++
+[source,bash]
 ----
-sudo amazon-linux-extras install nginx1.12
-sudo systemctl start nginx
+sudo yum install graviteeio-apim-management-ui-3x -y
 ----
 
-=== Configure YUM Package Manager
-link:/apim/3.x/apim_installguide_amazon_configure_yum.html[Click here] for instructions on how to configure `yum`.
-
-=== 1. Install the {gravitee-component-name} Package
-
-To install the last stable version of {gravitee-component-name}, run the following command:
-
-[source,bash,subs="attributes"]
+. Restart Nginx:
++
+[source,bash]
 ----
-sudo yum install -y {gravitee-service-name}
+sudo systemctl restart nginx
 ----
 
-=== 2. Run {gravitee-component-name}
-
-NOTE: {gravitee-component-name} is based on Nginx.
-
-To configure {gravitee-component-name} to start automatically when the system boots up, run the following commands:
-
-[source,bash,subs="attributes"]
+. Verify:
++
+[source,bash]
 ----
-sudo systemctl daemon-reload
-sudo systemctl enable nginx
+sudo ss -lntp '( sport = 8084 )'
 ----
-
-To start and stop Nginx, run the following commands:
-
-[source,bash,subs="attributes"]
-----
-sudo systemctl start nginx
-sudo systemctl stop nginx
-----
-
-=== 3. View The Logs
-
-*You must check the logs to confirm if APIM Console has been installed correctly.* When `systemd` logging is enabled, logging information is available using the `journalctl` commands.
-
-To tail the journal, run the following command:
-
-[source,shell]
-----
-sudo journalctl -f
-----
-
-To list journal entries for the Nginx service, run the following command:
-
-[source,shell]
-----
-sudo journalctl --unit nginx
-----
-
-To list journal entries for the Nginx service starting from a given time, run the following command:
-
-[source,shell]
-----
-sudo journalctl --unit nginx --since  "2020-01-30 12:13:14"
-----
++
+You should see that there's a process listening on that port.
 
 
-=== 4. Confirm {gravitee-component-name} Was Installed
+**NOTE:** The Management UI package does not provide it's own service. It provides:
 
-To test that {gravitee-component-name} has been installed and has started up properly, check this URL:
+* a javascript application that can be found at `/opt/graviteeio/apim/management-ui` 
 
-|===
-|Component |URL
+* an Nginx configuration that can be found at `/etc/nginx/conf.d/graviteeio-apim-management-ui.conf`
 
-
-|APIM Console
-|http://localhost:8084/
-
-
-|===
+== Next
+Next is link:/apim/3.x/apim_installation_guide_amazon_portal_ui.html[installing the Gravitee APIM Portal UI].

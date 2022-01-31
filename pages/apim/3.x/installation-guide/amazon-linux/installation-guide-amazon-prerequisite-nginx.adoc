@@ -1,0 +1,64 @@
+= Prerequisite - Install Nginx
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installation_guide_amazon_prerequisite_nginx.html
+:page-folder: apim/installation-guide/amazon
+:page-liquid:
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - Prerequisite - Nginx
+:page-keywords: Gravitee.io, API Management, apim, guide, package, amazon, linux, aws, ui, nginx
+:page-toc: true
+
+// author: Tom Geudens
+== Overview
+Both Gravitee APIM user interfaces (console and developer portal) use Nginx as their webserver. Follow below instructions to set up Nginx. More information on that can be found in the link:https://nginx.org/en/linux_packages.html#Amazon-Linux[Nginx Installation documentation., window=\"_blank\"].
+
+== Instructions
+. Create a file called `/etc/yum.repos.d/nginx.repo`:
++
+[source,bash]
+----
+sudo tee -a /etc/yum.repos.d/nginx.repo <<EOF
+[nginx-stable]
+name=nginx stable repo
+baseurl=http://nginx.org/packages/amzn2/\$releasever/\$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=https://nginx.org/keys/nginx_signing.key
+module_hotfixes=true
+EOF
+----
+
+. Install Nginx:
++
+[source,bash]
+----
+sudo yum install nginx -y
+----
+
+. Enable Nginx on startup:
++
+[source,bash]
+----
+sudo systemctl daemon-reload
+sudo systemctl enable nginx
+----
+
+. Start Nginx:
++
+[source,bash]
+----
+sudo systemctl start nginx
+----
+
+. Verify:
++
+[source,bash]
+----
+sudo ss -lntp '( sport = 80 )'
+----
++
+You should see that there's a process listening on that port.
+
+== Next
+You are done with the prerequisistes!
+Next is link:/apim/3.x/apim_installation_guide_amazon_gateway.html[installing the Gravitee APIM Gateway] or link:/apim/3.x/apim_installation_guide_amazon_all.html[installing all the Gravitee APIM components].

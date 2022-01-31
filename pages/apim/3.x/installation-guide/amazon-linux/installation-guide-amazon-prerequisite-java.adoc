@@ -1,0 +1,40 @@
+= Prerequisite - Install Java 11
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installation_guide_amazon_prerequisite_java.html
+:page-folder: apim/installation-guide/amazon
+:page-liquid:
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - Prerequisite - Java
+:page-keywords: Gravitee.io, API Management, apim, guide, package, amazon, linux, aws, java, jre
+:page-toc: true
+
+// author: Tom Geudens
+== Overview
+Running the Gravitee APIM components requires a Java 11 jre. Follow below instructions to provide such.
+
+== Instructions
+. Enable the repository that contains java:
++
+[source,bash]
+----
+sudo amazon-linux-extras enable java-openjdk11
+----
+
+. Install Java:
++
+[source,bash]
+----
+sudo yum install java-11-openjdk -y
+----
+
+. Verify:
++
+[source,bash]
+----
+java -version
+----
+
+**NOTE:** You don't **have** to go for this particular implementation of openjdk, as long as you have a decent uncrippled Java 11 jre it's fine!
+
+== Next
+Next is link:/apim/3.x/apim_installation_guide_amazon_prerequisite_mongodb.html[installing MongoDB].
