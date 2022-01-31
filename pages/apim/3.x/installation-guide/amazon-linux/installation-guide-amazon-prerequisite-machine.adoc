@@ -1,0 +1,18 @@
+= Prerequisite - Machine
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installation_guide_amazon_prerequisite_machine.html
+:page-folder: apim/installation-guide/amazon
+:page-liquid:
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - Prerequisite - Machine
+:page-keywords: Gravitee.io, API Management, apim, guide, package, amazon, linux, aws, infrastructure, instance, machine
+:page-toc: true
+
+== Amazon instance specification
+* Instance Type : **t2.medium**
+* Storage : Increase the root volume size to **40GB**
+* Security Groups : **SSH** access is sufficient for now
+
+== Next
+Next is link:/apim/3.x/apim_installation_guide_amazon_prerequisite_yum_repository.html[setting up the Gravitee YUM repository]
+or link:/apim/3.x/apim_installation_guide_amazon_stack.html[installing the Gravitee APIM full stack].

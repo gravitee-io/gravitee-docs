@@ -1,0 +1,51 @@
+= APIM Component - Install Portal UI
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installation_guide_amazon_portal_ui.html
+:page-folder: apim/installation-guide/amazon
+:page-liquid:
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - Portal UI
+:page-keywords: Gravitee.io, API Management, apim, guide, package, amazon, linux, aws, component, portal, ui
+:page-toc: true
+
+== Prerequisites
+* Machine up and running
+* Gravitee YUM repository added
+* Gravitee APIM REST API installed and running
+* Nginx installed
+
+== Security group
+* open port 8085
+
+== Instructions
+. Install Portal UI:
++
+[source,bash]
+----
+sudo yum install graviteeio-apim-portal-ui-3x -y
+----
+
+. Restart Nginx:
++
+[source,bash]
+----
+sudo systemctl restart nginx
+----
+
+. Verify:
++
+[source,bash]
+----
+sudo ss -lntp '( sport = 8085 )'
+----
++
+You should see that there's a process listening on that port.
+
+
+**NOTE:** The Portal UI package does not provide it's own service. It provides:
+
+* a javascript application that can be found at `/opt/graviteeio/apim/portal-ui` 
+
+* an Nginx configuration that can be found at `/etc/nginx/conf.d/graviteeio-apim-portal-ui.conf`
+
+**Congratulations**, you have a fully functional Gravitee APIM!

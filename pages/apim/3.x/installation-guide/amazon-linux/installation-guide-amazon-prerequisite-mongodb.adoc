@@ -1,0 +1,62 @@
+= Prerequisite - Install MongoDB
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installation_guide_amazon_prerequisite_mongodb.html
+:page-folder: apim/installation-guide/amazon
+:page-liquid:
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - Prerequisite - MongoDB
+:page-keywords: Gravitee.io, API Management, apim, guide, package, amazon, linux, aws, mongodb
+:page-toc: true
+
+== Overview
+
+Gravitee APIM uses MongoDB as it's default repository to store global configurations. Follow below instructions to set up MongoDB. More information on that can be found in the link:https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-amazon/[MongoDB Installation documentation., window=\"_blank\"].
+
+== Instructions
+. Create a file called `/etc/yum.repos.d/mongodb-org-3.6.repo`:
++
+[source,bash]
+----
+sudo tee -a /etc/yum.repos.d/graviteeio.repo <<EOF
+[mongodb-org-3.6]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/3.6/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
+EOF
+----
+
+. Install MongoDB:
++
+[source,bash]
+----
+sudo yum install mongodb-org -y
+----
+
+. Enable MongoDB on startup:
++
+[source,bash]
+----
+sudo systemctl daemon-reload
+sudo systemctl enable mongod
+----
+
+. Start MongoDB:
++
+[source,bash]
+----
+sudo systemctl start mongod
+----
+
+. Verify:
++
+[source,bash]
+----
+sudo ss -lntp '( sport = 27017 )'
+----
++
+You should see that there's a process listening on that port.
+
+== Next
+Next is link:/apim/3.x/apim_installation_guide_amazon_prerequisite_elasticsearch.html[installing Elasticsearch].

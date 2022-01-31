@@ -1,178 +1,54 @@
-= Install Full APIM Stack
+= APIM Full stack
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_installguide_amazon_stack.html
+:page-permalink: apim/3.x/apim_installation_guide_amazon_stack.html
 :page-folder: apim/installation-guide/amazon
 :page-liquid:
 :page-layout: apim3x
-:page-description: Gravitee.io API Management - Installation Guide - Amazon - API Management
-:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - All
+:page-keywords: Gravitee.io, API Management, apim, guide, package, amazon, linux, aws, stack, full
 :page-toc: true
 
-:gravitee-package-name: graviteeio-apim-3x
-== Overview
-
-Ready to install APIM? Excellent! In this section, you'll learn how to install the full APIM stack (including all components), along with optional dependencies (MongoDB, Elasticsearch).
-
-To install APIM components individually, see the respective documentation for link:/apim/3.x/apim_installguide_hybrid_deployment.html#architecture[APIM Gateway], link:/apim/3.x/apim_installguide_amazon_management_api.html[APIM API], link:/apim/3.x/apim_installguide_amazon_management_ui.html[APIM Console], and link:/apim/3.x/apim_installguide_amazon_portal.html[APIM Portal].
-
 == Prerequisites
+* Machine up and running
 
-. [underline]#*Nginx*# must be installed.
+== Security group
+* open port 8082
+* open port 8083
+* open port 8084
+* open port 8085
 
-. [underline]#*YUM package manager*# must be configured (link:/apim/3.x/apim_installguide_amazon_configure_yum.html[click here] for instructions on how to configure `yum`).
-
-. You must have access to a **t2.medium instance** size in AWS.
-
-=== Install Nginx
-
-To install Nginx, run the following commands:
-
-[source,bash,subs="attributes"]
-----
-sudo amazon-linux-extras install nginx1.12
-sudo systemctl start nginx
-----
-
-=== Configure YUM Package Manager
-link:/apim/3.x/apim_installguide_amazon_configure_yum.html[Click here] for instructions on how to configure `yum`.
-
-== Install APIM Package With Dependencies
-With almost every Amazon install, you'll need to set up the required dependencies *__before__* attempting to install APIM.
-
-Already have all dependencies installed? Skip to link:/apim/3.x/apim_installguide_amazon_stack.html#install_apim_package_no_dependencies[this section.]
-
-
-=== 1. Configure Your Amazon Instance
-In your AWS settings, choose the following:
-
-* *[underline]#For Instance Type/Size#*. Select a **t.2medium** instance.
-
-* *[underline]#For IP Address#*. Choose to **auto-assign a public IP** for this option.
-
-* *[underline]#For Storage#*. Generally, **40GB** is a good amount.
-
-* *[underline]#For Security Groups#*. Open the ports listed below so that after you complete the installation, you can check the necessary URLs to ensure that APIM has been installed properly:
-
-** 8082 (for APIM).
-** 8083 (for APIM API).
-** 8084 (for APIM Console).
-** 8085 (for APIM Portal).
-
-=== 2. Configure Dependency Repositories
-
-Before you install the APIM package, you may need to add third-party repositories:
-
-==== *[underline]#MongoDB#*
-
-NOTE: For guidance on installing and configuring MongoDB, see the link:https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-amazon/[MongoDB Installation documentation., window=\"_blank\"]
-
+== Instructions
+. Install all the prerequisites and Gravitee APIM components:
++
 [source,bash]
 ----
-echo "[mongodb-org-3.6]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/3.6/x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc" | sudo tee /etc/yum.repos.d/mongodb-org-3.6.repo > /dev/null
-
-sudo yum install -y mongodb-org
-sudo systemctl start mongod
+curl -L https://bit.ly/install-apim-3x | sudo bash
 ----
 
-==== *[underline]#Elasticsearch 7.x#*
-
-NOTE: For guidance on installing and configuring Elasticsearch, see the link:https://www.elastic.co/guide/en/elasticsearch/reference/7.6/rpm.html#rpm-repo[Elasticsearch installation documentation, window=\"_blank\"].
-
+. Verify:
++
 [source,bash]
 ----
-echo "[elasticsearch-7.x]
-name=Elasticsearch repository for 7.x packages
-baseurl=https://artifacts.elastic.co/packages/7.x/yum
-gpgcheck=1
-gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-enabled=1
-autorefresh=1
-type=rpm-md" | sudo tee /etc/yum.repos.d/elasticsearch.repo > /dev/null
-sudo yum install -y elasticsearch
-sudo systemctl start elasticsearch
+sudo ss -lntp '( sport = 9200 )'
+sudo ss -lntp '( sport = 27017 )'
+sudo ss -lntp '( sport = 8082 )'
+sudo ss -lntp '( sport = 8083 )'
+sudo ss -lntp '( sport = 8084 )'
+sudo ss -lntp '( sport = 8085 )'
 ----
-
-
-=== 3. Install APIM
-
-[source,bash,subs="attributes"]
-----
-curl -L https://bit.ly/install-apim-3x | bash
-----
-
-=== 4. Modify The Config File
-
-==== Known Issue
-Due to our current install scripting, you must modify the *Developer Portal config.JSON file* before attempting to login to the Developer Portal.
-
-If you attempt to open and run the Developer Portal before modifying the config file, you'll see an error similar to this:
-
-image::apim/3.x/installation/amazon-known-issues/amazon-install-deveportalui-known-issue-fix-config-file1.png[Developer Portal Amazon Config File Known Issue]
-
-Follow these steps to modify the Developer Portal config.JSON file.
-
-1. On your favorite terminal, drill into the APIM directory using `cd apim`.
-
-2. Then, cd into portalui using `cd portal-ui/`.
-
-3. Drill into the assets folder using `cd assets/`.
-
-4. Then, view the config file with `vi config.JSON`.
-
-5. Initially, the config file will show an additional prefix on the `baseURL` which must be removed (URL: http://localhost:8083http://your-IP-address:8083/environment/DEFAULT
-).
 +
-For example (see screenshot below), the extra URL at the start: http://localhost:8083 *must be deleted.*
+You should see that there are processes listening on those ports.
+
+. Verify some more:
 +
-image::apim/3.x/installation/amazon-known-issues/amazon-install-deveportalui-known-issue-fix-config-file2.png[Developer Portal Amazon Config File Incorrect URL]
-
-6. Now, you can use `sudo vi config.JSON` and edit the config file, removing any additional URL information that is inaccurate. In our example, *the correct URL (after editing) is this: http://3.142.146.114:8083/environment/DEFAULT*
-
-
-=== 5. Run APIM with Systemd
-
-To start up the APIM components using systemd, run the following commands:
-
-[source,bash,subs="attributes"]
+[source,bash]
 ----
-sudo systemctl daemon-reload
-sudo systemctl start {gravitee-package-name}-gateway {gravitee-package-name}-management-api
-sudo systemctl restart nginx
+curl -X GET http://localhost:8082/
+curl -X GET http://localhost:8083/management/organizations/DEFAULT/console
+curl -X GET http://localhost:8083/portal/environments/DEFAULT/apis
 ----
++
+If the installation is successful the first one returns: **No context-path matches the request URI.** The others return a json structure.
 
-=== 6. Confirm APIM Components Were Installed
 
-To test that all components have been installed and started up properly, check these URLs:
-
-|===
-|Component |URL
-
-|APIM Gateway
-|http://localhost:8082/
-
-|APIM API
-|http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/apis
-
-|APIM Console
-|http://localhost:8084/ (credentials: admin / admin)
-
-|APIM Portal
-|http://localhost:8085/
-
-|===
-
-== Install APIM Package (No Dependencies)
-
-Already have all required dependencies installed? Lucky you! You can install APIM by running the following command on your favorite terminal:
-
-[source,bash,subs="attributes"]
-----
-sudo yum install {gravitee-package-name}
-----
-
-Now, run APIM using systemd and then confirm that all APIM components were installed, as described above.
+**Congratulations**, you have a fully functional Gravitee APIM!

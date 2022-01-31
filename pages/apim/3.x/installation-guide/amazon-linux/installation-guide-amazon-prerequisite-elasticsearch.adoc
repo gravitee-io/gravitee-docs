@@ -1,0 +1,64 @@
+= Prerequisite - Install Elasticsearch
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installation_guide_amazon_prerequisite_elasticsearch.html
+:page-folder: apim/installation-guide/amazon
+:page-liquid:
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Installation Guide - Amazon - Prerequisite - Elasticsearch
+:page-keywords: Gravitee.io, API Management, apim, guide, package, amazon, linux, aws, search, reporting, elastic, elasticsearch
+:page-toc: true
+
+== Overview
+
+Gravitee APIM uses Elasticsearch as default reporting and analytics repository. Follow below instructions to set up Elasticsearch. More information on that can be found in the link:https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html#rpm-repo[Elasticsearch installation documentation, window=\"_blank\"]. 
+
+== Instructions
+. Create a file called `/etc/yum.repos.d/elasticsearch.repo`:
++
+[source,bash]
+----
+sudo tee -a /etc/yum.repos.d/elasticsearch.repo <<EOF
+[elasticsearch]
+name=Elasticsearch repository for 7.x packages
+baseurl=https://artifacts.elastic.co/packages/7.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=0
+autorefresh=1
+type=rpm-md
+EOF
+----
+
+. Install Elasticsearch:
++
+[source,bash]
+----
+sudo yum install --enablerepo=elasticsearch elasticsearch -y
+----
+
+. Enable Elasticsearch on startup:
++
+[source,bash]
+----
+sudo systemctl daemon-reload
+sudo systemctl enable elasticsearch.service
+----
+
+. Start Elasticsearch:
++
+[source,bash]
+----
+sudo systemctl start elasticsearch.service
+----
+
+. Verify:
++
+[source,bash]
+----
+sudo ss -lntp '( sport = 9200 )'
+----
++
+You should see that there's a process listening on that port.
+
+== Next
+Next is link:/apim/3.x/apim_installation_guide_amazon_prerequisite_nginx.html[installing Nginx].
