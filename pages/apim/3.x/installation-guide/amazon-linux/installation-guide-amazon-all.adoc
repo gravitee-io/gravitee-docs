@@ -54,6 +54,10 @@ sudo systemctl start graviteeio-apim-rest-api
 sudo systemctl restart nginx
 ----
 
+. Fix an issue
++
+There is a known issue with the Portal UI configuration. You can find a fix link:/apim/3.x/apim_installation_guide_amazon_issue.html[here].
+
 . Verify:
 +
 [source,bash]
