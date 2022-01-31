@@ -8,6 +8,7 @@
 :page-keywords: Gravitee.io, API Management, apim, guide, package, amazon, linux, aws, component, portal, ui, issue
 :page-toc: true
 
+// author: Tom Geudens
 == Overview
 There is currently a known issue in the Portal UI configuration. After installation the `baseURL` in `/opt/graviteeio/apim/portal-ui/assets/config.json` is incorrect, as shown here
 
