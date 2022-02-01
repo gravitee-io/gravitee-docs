@@ -14,6 +14,20 @@ WARNING: Be sure to run scripts on the correct database since `gravitee-am` is n
 
 NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.15.html' | relative_url }}[Breaking changes in 3.15]
 
+=== Repository
+
+==== Mongodb
+
+Before you run any scripts, create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.15.0/mongodb/1-add-authdevice-notifier-permissions.js[upgrades/3.x/3.15.0/mongodb/1-add-authdevice-notifier-permissions.js]::
+
+This script will create the DOMAIN_AUTHDEVICE_NOTIFIER permission.
+
+==== JDBC
+
+The liquibase scripts will update data automatically on the REST API startup.
+
 == Upgrade to 3.14.5
 
 NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.14.5.html' | relative_url }}[Breaking changes in 3.14.5]
@@ -27,6 +41,26 @@ This has been fixed in 3.14.6.
 We apologize for this inconvenience.
 
 GitHub issue: link:https://github.com/gravitee-io/issues/issues/7080[7080]
+
+== Upgrade to 3.13
+
+=== Repository
+
+==== Mongodb
+
+Before you run any scripts, create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.13.0/mongodb/1-add-device-identifier-permissions.js[upgrades/3.x/3.13.0/mongodb/1-add-device-identifier-permissions.js]::
+
+This script will create the DOMAIN_DEVICE_IDENTIFIER permission.
+
+https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.13.0/mongodb/1-add-device-permissions.js[upgrades/3.x/3.13.0/mongodb/1-add-device-permissions.js]::
+
+This script will create the DOMAIN_USER_DEVICE permission.
+
+==== JDBC
+
+The liquibase scripts will update data automatically on the REST API startup.
 
 == Upgrade to 3.12
 
