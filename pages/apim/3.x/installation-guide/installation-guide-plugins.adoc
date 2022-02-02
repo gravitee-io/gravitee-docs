@@ -15,22 +15,22 @@ Plugins bring Gravitee APIM to life. They provide functionality ranging from con
 A lot of plugins are part of the Gravitee APIM installation. Ones that aren't generally applicable can be added. You can even write your own! This document explains how you can install and upgrade additional plugins.
 
 == In a nutshell - Option I
-. Get your plugin zip file ready.
+. Get your plugin zip-file ready.
 +
 The supported plugins for Gravitee APIM can be found link:https://download.gravitee.io/#graviteeio-apim/plugins/[here, window=\"_blank\"].
 
-. Put the plugin zip file in the plugins-folder of the relevant component. This could be the APIM REST API, the APIM Gateway or both!
+. Drop the plugin zip-file in the plugins-folder of the relevant component. This could be the APIM REST API, the APIM Gateway or both!
 
 . Restart the component.
 
 NOTE: At this time installing and updating plugins requires a restart of the component.
 
 == In a nutshell - Option II
-. Get your plugin zip file ready.
+. Get your plugin zip-file ready.
 +
 The supported plugins for Gravitee APIM can be found link:https://download.gravitee.io/#graviteeio-apim/plugins/[here, window=\"_blank\"].
 
-. Put the plugin zip file in a plugins-folder of your own choosing.
+. Drop the plugin zip-file in a plugins-folder of your own choosing.
 
 . Modify the `gravitee.yml` configuration file of the relevant component (APIM REST API / APIM Gateway / both) to take the additional folder into account
 
@@ -59,7 +59,7 @@ mkdir /customlocation/plugins
 +
 NOTE: This is an example location, yours can differ.
 
-. Drop the plugin zip file into that folder
+. Drop the plugin zip-file into that folder
 
 . Modify the `gravitee.yml` configuration file of the component
 +
@@ -85,7 +85,7 @@ plugins:
 * APIM REST API - /opt/graviteeio/apim/rest-api/plugins
 * APIM Gateway - /opt/graviteeio/apim/gateway/plugins
 
-. Drop the plugin zip file into the folder
+. Drop the plugin zip-file into the folder
 
 . Restart the component
 
@@ -99,7 +99,7 @@ mkdir /customlocation/plugins
 +
 NOTE: This is an example location, yours can differ.
 
-. Drop the plugin zip file into that folder
+. Drop the plugin zip-file into that folder
 
 . Modify the `gravitee.yml` configuration file of the component
 +
@@ -131,7 +131,7 @@ mkdir /customlocation/plugins
 +
 NOTE: This is an example location, yours can differ.
 
-. Drop the plugin zip file into that folder
+. Drop the plugin zip-file into that folder
 
 . Customize the Docker command to provide:
 ** the custom location as a `volume` that overrides the internal `/opt/graviteeio-management-api/plugins-ext` folder
@@ -161,5 +161,27 @@ docker run --publish 8082:8082 \
   --name gravitee-apim-gateway \
   --detach graviteeio/apim-gateway:latest
 ----
+NOTE: This is an example, your ports and URLs may differ.
 
 == Details for Kubernetes installations
+NOTE: **Option I** is not available for Kubernetes installations as there is no direct access to the inside of the pods.
+
+=== Option II
+. Provide an URL to the plugin zip-file.
+
+. Modify the `value.yaml` file that you pass in with the Helm chart.
+
++
+[source,yaml]
+----
+api:
+  additionalPlugins:
+    - https://download.gravitee.io/graviteeio-apim/plugins/policies/gravitee-policy-javascript/gravitee-policy-javascript-1.1.0.zip
+    - https://download.gravitee.io/graviteeio-apim/plugins/services/gravitee-kubernetes-controller/gravitee-kubernetes-controller-0.1.0.zip
+
+gateway:
+  additionalPlugins:
+    - https://download.gravitee.io/graviteeio-apim/plugins/policies/gravitee-policy-javascript/gravitee-policy-javascript-1.1.0.zip
+----
+NOTE: This is an example, your plugins may differ.
+
