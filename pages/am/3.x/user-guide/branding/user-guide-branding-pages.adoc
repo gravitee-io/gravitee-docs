@@ -47,6 +47,9 @@ Multi-factor authentication enrolment page
 |MFA Challenge |
 Multi-factor authentication verification page
 
+|MFA Challenge alternatives |
+Multi-factor authentication alternative page
+
 |Error |
 Error page to display a message describing the problem
 
@@ -70,3 +73,123 @@ image::am/current/graviteeio-am-userguide-um-forms.png[]
 NOTE: Each form requires a minimum configuration. You can retrieve contextual documentation on the HTML needed for each type of page by clicking the image:icons/am-info-icon.png[role="icon"] information icon.
 
 image::am/current/graviteeio-am-userguide-um-form-info.png[]
+
+=== Template parameters
+
+AM uses link:https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html[thymeleaf] as template engine to customize the page based on parameters.
+In following section, you will find for each page the list of parameters available to render the page.
+
+==== Common parameters
+
+Parameters defined in this section are available for all template pages.
+
+[width="80%", cols="2,1,7" options="header"]
+|=========================================================
+|Parameter | Type| Description
+
+|domain 
+|object 
+|The security domain that handles the request.
+
+|client
+|object
+|The client that performs the request. 
+
+|user
+|object
+|The profile of the authenticated user (only on template that are display after the authentication step)
+
+|param 
+|map   
+|The request parameters
+
+|error 
+|string
+|The error code if the AM gateway return an error
+
+|error_description 
+|string
+|The error description if the AM gateway return an error
+
+|_csrf.parameterName
+|string
+|The parameter name for CRSF token
+
+|_csrf.token
+|string
+|The CSRF token
+
+|action
+|string
+|URL on which the form action has to be posted
+
+|=========================================================
+
+==== Login
+
+
+[width="80%", cols="2,1,7" options="header"]
+|=========================================================
+|Parameter | Type| Description
+
+|hideLoginForm
+|boolean
+|If true then hide the login form to only display the social identity provider buttons
+
+|identifierFirstLoginEnabled
+|boolean
+|true if the Identifier First Login is enabled
+
+|backToLoginIdentifierAction
+|string
+|URL to use to go back the Identifier First Login page
+
+|allowForgotPassword
+|boolean
+|true if the forgot password link can be displayed
+
+|forgotPasswordAction
+|string
+|URL to reach the forgot password page
+
+|allowRegister
+|boolean
+|true if the registration link can be displayed
+
+|registerAction
+|string
+|URL to reach the user registration page
+
+|allowPasswordless
+|boolean
+|true if passwordless is enable
+
+|passwordlessAction
+|string
+|URL to diplay the passwordless authentication page
+
+|socialProviders
+|array
+|Array of SocialProvider objects, each object has the following attributes: id, name, type
+
+|authorizeUrls
+|map
+|URLs to start the authentication flow on  each social identity provider. The url is entified by the SocialProvide id.
+
+|bot_detection_plugin
+|string
+|The type of bot detection plugin 
+
+|bot_detection_configuration
+|map
+|Map with the bot detection configuration
+
+|rememberDeviceIsActive
+|boolean
+|true if the remember device feature is enabled
+
+|deviceIdentifierProvider
+|string
+|The type of device identifier provider plugin
+
+|=========================================================
