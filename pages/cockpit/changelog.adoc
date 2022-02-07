@@ -4,6 +4,26 @@
 :page-folder: cockpit
 :page-toc: false
 
+== 3.15.0
+
+=== Bug fixes
+
+- Improve permission management
+- Improve login navigation and invitation process
+- Better handling of liquibase URLs for multiple servers of replicaset
+- Improve quota management
+- Fix improper neutralization of CRLF sequences
+- Sanitize baseUrl content to prevent SSRF
+- Sanitize certificate content to prevent XSS
+- Secure CSRF cookie
+- Fix parsing of accountId from certificate
+- Propagate members with ORGANIZATION_USER role to installations
+
+=== Features
+
+- Allow to delete installation (and fully remove it from database)
+- Show only started node in AccountHierarchy and purge all crashed nodes after 1 day
+
 == 3.14.0
 === Bugfixes
 - Fix some permissions
