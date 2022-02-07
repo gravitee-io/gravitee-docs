@@ -29,8 +29,18 @@ layout: default
 {% endif %}
 
 <div class="post-content">
+    <div class="admonitionblock">
+      <table>
+        <tr>
+          <td class="icon">
+          <i class="fa icon-warning" title="Warning"></i>
+          </td>
 
-    <div class="summary">{{site.products.apim._1x.version}}</div>
+          <td class="content">You are looking at the version {{site.products.apim._1x.version}} documentation, the current version is {{site.products.apim._3x.version}} and can be found <a href="/apim/3.x/apim_overview_introduction.html">here</a>.</td>
+        </tr>
+      </table>
+    </div>
+
 
     {% unless page.toc == false %}
     {% include toc.html %}
