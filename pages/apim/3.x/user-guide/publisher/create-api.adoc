@@ -103,30 +103,7 @@ image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-definition-fil
 
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-definition-link.png[Import from definition link, 300]
 
-Example Gravitee API definition::
-[source,json]
-----
-{
-  "name": "My first API",
-  "version": "1",
-  "description": "Gravitee.io Echo API Proxy",
-  "visibility": "private",
-  "paths": {
-    "/": []
-  },
-  "resources": [],
-  "members": [
-    {
-      "source": "memory",
-      "sourceId": "admin",
-      "roles": [
-        "2eb2dc44-5cc9-48fa-b2dc-445cc978fa66"
-      ]
-    }
-  ],
-  ...
-}
-----
+Learn more about API definition import process link:/apim/3.x/apim_publisherguide_import_apis.html[here].
 
 === Import an OpenAPI specification
 One of the most powerful features of APIM is its ability to import an OpenAPI specification to create an API. When you import an existing specification you do not have to complete all the fields required when you create a new API.
