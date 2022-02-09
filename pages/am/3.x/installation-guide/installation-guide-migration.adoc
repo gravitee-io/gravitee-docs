@@ -14,9 +14,37 @@ WARNING: Be sure to run scripts on the correct database since `gravitee-am` is n
 
 NOTE: For more information about the breaking changes of this version, see link:/am/current/am_breaking_changes_3.15.html[Breaking changes in 3.15]
 
+== Upgrade to 3.14.5
+
+NOTE: For more information about the breaking changes of this version, see link:/am/current/am_breaking_changes_3.14.5.html[Breaking changes in 3.14.5]
+
+=== Warning
+
+For JDBC users, we strongly advise to not upgrade to 3.14.5 since we detected a critical bug which can block the AM management API (the AM gateway is not impacted).
+
+This has been fixed in 3.14.6.
+
+We apologize for this inconvenience.
+
+GitHub issue: link:https://github.com/gravitee-io/issues/issues/7080[7080]
+
 == Upgrade to 3.12
 
 NOTE: For more information about the breaking changes of this version, see link:/am/current/am_breaking_changes_3.12.html[Breaking changes in 3.12]
+
+== Upgrade to 3.10.14
+
+NOTE: For more information about the breaking changes of this version, see link:/am/current/am_breaking_changes_3.10.14.html[Breaking changes in 3.10.14]
+
+=== Warning
+
+For JDBC users, we strongly advise to not upgrade to 3.10.14 since we detected a critical bug which can block the AM management API (the AM gateway is not impacted).
+
+This has been fixed in 3.10.15.
+
+We apologize for this inconvenience.
+
+GitHub issue: link:https://github.com/gravitee-io/issues/issues/7080[7080]
 
 == Upgrade to 3.10.7
 
