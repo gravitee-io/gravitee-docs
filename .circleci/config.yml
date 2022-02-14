@@ -1,5 +1,18 @@
 version: 2.1
 
+orbs:
+  secrethub: secrethub/cli@1.1
+  gh: circleci/github-cli@1.0.5
+
+commands:
+  compute-sanitized-branch-name:
+    steps:
+      - run:
+          name: Compute a sanitized version of branch name
+          command: |
+            export BRANCH_ID=$(echo "$CIRCLE_BRANCH" | sed -E 's/[~^]+//g' | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+|-+$//g' | tr "[:upper:]" "[:lower:]" | cut -c -60)
+            echo "export BRANCH_ID=$BRANCH_ID" >> $BASH_ENV
+
 jobs:
   build:
     docker:
@@ -19,14 +32,102 @@ jobs:
           key: rubygems-v1-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+      - compute-sanitized-branch-name
       - run:
           name: Jekyll build
-          command: bundle exec jekyll build
+          command: bundle exec jekyll build --baseurl $BRANCH_ID
       - persist_to_workspace:
           root: ./
           paths:
             - _site
+
+  deploy-on-azure-storage:
+    docker:
+      - image: mcr.microsoft.com/azure-cli:latest
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: .
+      - compute-sanitized-branch-name
+      - run:
+          name: Login into Azure Storage and upload dist
+          command: |
+            az login --service-principal -u $AZURE_APPLICATION_ID --tenant $AZURE_TENANT -p $AZURE_APPLICATION_SECRET
+            az storage container create -n $BRANCH_ID --public-access blob
+            az storage blob upload-batch -s _site -d $BRANCH_ID
+
+  comment-pr-after-deployment:
+    docker:
+      - image: cimg/node:14.18
+    resource_class: small
+    steps:
+      - checkout
+      - gh/setup
+      - compute-sanitized-branch-name
+      - run:
+          name: Edit Pull Request Description
+          command: |
+            # First check there is an associated pull request, otherwise just stop the job here
+            if ! gh pr view --json title;
+            then
+              echo "No PR found for this branch, stopping the job here."
+              exit 0
+            fi
+
+            # If PR state is different from OPEN
+            if [ "$(gh pr view --json state --jq .state)" != "OPEN" ];
+            then
+              echo "PR is not opened, stopping the job here."
+              exit 0
+            fi
+
+            export PR_BODY_UI_SECTION="
+            <!-- UI placeholder -->
+            🚀 CI was able to deploy the build of this PR, so you can now try it directly [here](https://graviteedocs.blob.core.windows.net/${BRANCH_ID}/index.html)
+            <!-- UI placeholder end -->
+            "
+
+            export CLEAN_BODY=$(gh pr view --json body --jq .body | sed '/UI placeholder -->/,/UI placeholder end -->/d')
+
+            gh pr edit --body "$CLEAN_BODY$PR_BODY_UI_SECTION"
+
 workflows:
   test:
     jobs:
       - build
+      - deploy-on-azure-storage:
+          filters:
+            branches:
+              ignore:
+                - master
+            tags:
+              ignore:
+                - /.*/
+          context: cicd-orchestrator
+          pre-steps:
+            - secrethub/env-export:
+                secret-path: graviteeio/cicd/azure/application-id
+                var-name: AZURE_APPLICATION_ID
+            - secrethub/env-export:
+                secret-path: graviteeio/cicd/azure/tenant
+                var-name: AZURE_TENANT
+            - secrethub/env-export:
+                secret-path: graviteeio/cicd/azure/application-secret
+                var-name: AZURE_APPLICATION_SECRET
+          requires:
+            - build
+      - comment-pr-after-deployment:
+          filters:
+            branches:
+              ignore:
+                - master
+            tags:
+              ignore:
+                - /.*/
+          context: cicd-orchestrator
+          pre-steps:
+            - secrethub/env-export:
+                secret-path: graviteeio/cicd/graviteebot/github_personal_access_token
+                var-name: GITHUB_TOKEN
+          requires:
+            - deploy-on-azure-storage
