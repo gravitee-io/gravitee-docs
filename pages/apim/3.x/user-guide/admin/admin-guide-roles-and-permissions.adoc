@@ -281,7 +281,7 @@ In this example, we will create a writer role which allows a user to create API 
 . link:{{ '/apim/3.x/apim_quickstart_console_login.html' | relative_url }}[Log in to APIM Console].
 . In the *Organization Settings > Roles* page, click *ADD A NEW ROLE*.
 +
-image::apim/3.x/adminguide/newrole-create.png[Gravitee.io - Create a New Role]
+image::{% link images/apim/3.x/adminguide/newrole-create.png %}[Gravitee.io - Create a New Role]
 
 === Configure the `WRITER` role
 
@@ -290,11 +290,11 @@ Assign the following permissions to the writer role:
 * `READ` permissions on `DEFINITION` and `GATEWAY_DEFINITION` -- this allows the user to see the API in the API list
 * `CRUD` permissions on `DOCUMENTATION`
 
-image::apim/3.x/adminguide/newrole-configure.png[Gravitee.io - Configure a New Role]
+image::{% link images/apim/3.x/adminguide/newrole-configure.png %}[Gravitee.io - Configure a New Role]
 
 === Result
 Users with this role can now only see the documentation menu.
 
-image::apim/3.x/adminguide/newrole-menu.png[Gravitee.io - Menu, 200]
+image::{% link images/apim/3.x/adminguide/newrole-menu.png %}[Gravitee.io - Menu, 200]
 
 NOTE: Granting `GROUP` permissions to the `MANAGEMENT` role also requires the `READ` operation for the `ROLE` permission in order to see which roles are provided by a group.

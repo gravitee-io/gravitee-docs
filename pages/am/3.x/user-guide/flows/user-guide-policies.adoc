@@ -24,7 +24,7 @@ In this example we are getting `Execution Context` data using the link:{{ '/apim
 {#context.attributes['user']} : Authenticated User (if available) with username, firstName, lastName, email, roles, ...
 ----
 
-image::am/current/graviteeio-am-userguide-policies.png[]
+image::{% link images/am/current/graviteeio-am-userguide-policies.png %}[]
 
 == Flows
 

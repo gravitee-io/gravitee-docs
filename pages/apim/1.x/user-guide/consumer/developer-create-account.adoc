@@ -14,7 +14,7 @@ In order to work correctly:
 
 - and the option enabled from the settings part:
 
-image::apim/1.x/graviteeio-developer-create-account-activate-settings.png[]
+image::{% link images/apim/1.x/graviteeio-developer-create-account-activate-settings.png %}[]
 
 == User registration workflow
 
@@ -22,13 +22,13 @@ image::apim/1.x/graviteeio-developer-create-account-activate-settings.png[]
 
 First of all, the user access to the login form:
 
-image::apim/1.x/graviteeio-developer-create-account-login-form.png[]
+image::{% link images/apim/1.x/graviteeio-developer-create-account-login-form.png %}[]
 
 === Sign in
 
 Where he will find a link to sign in, and will be redirected to a registration form:
 
-image::apim/1.x/graviteeio-developer-create-account-signin-form.png[]
+image::{% link images/apim/1.x/graviteeio-developer-create-account-signin-form.png %}[]
 
 Then, after filling his first/last names and email, he will be able to sign in.
 
@@ -38,7 +38,7 @@ But, the process is not finished as there is still a step used mainly to validat
 
 So the user will receive an email with a link to validate registration as below:
 
-image::apim/1.x/graviteeio-developer-create-account-email-registration.png[]
+image::{% link images/apim/1.x/graviteeio-developer-create-account-email-registration.png %}[]
 
 By default, the link will be available for 24h (86400s), but this can be changed in the gravitee.yml
 
@@ -51,10 +51,10 @@ user:
 
 If the link expire, the user will see this message:
 
-image::apim/1.x/graviteeio-developer-create-account-link-expire.png[]
+image::{% link images/apim/1.x/graviteeio-developer-create-account-link-expire.png %}[]
 
 === Confirm registration
 
 Finally, you just have to confirm registration by defining your password, and.... that's it your registration is fully completed!
 
-image::apim/1.x/graviteeio-developer-create-account-confirm-registration.png[]
+image::{% link images/apim/1.x/graviteeio-developer-create-account-confirm-registration.png %}[]

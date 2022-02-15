@@ -18,14 +18,14 @@ To create a File reporter for a domain:
 
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Audit Log*.
-. Click the settings icon image:icons/am-settings-icon.png[role="icon"].
-. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Click the settings icon image:{% link images/icons/am-settings-icon.png %}[role="icon"].
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 +
-image::am/current/graviteeio-am-adminguide-add-reporter.png[]
+image::{% link images/am/current/graviteeio-am-adminguide-add-reporter.png %}[]
 
 . Select *File* as the reporter type and enter the reporter name and file name.
 +
-image::am/current/graviteeio-am-adminguide-file-reporter.png[]
+image::{% link images/am/current/graviteeio-am-adminguide-file-reporter.png %}[]
 
 == Example: ingest audit logs into ElasticSearch
 

@@ -9,14 +9,14 @@
 
 Gravitee Cockpit is a centralized, multi-environment tool for managing all your Gravitee API Management and Access Management installations in a single place.
 
-image::cockpit/cockpit-dashboard.png[]
+image::{% link images/cockpit/cockpit-dashboard.png %}[]
 
 [[organizational-hierarchy]]
 == Cockpit hierarchy
 
 Cockpit is based on a hierarchy of the following entity types:
 
-image::cockpit/entity-hierarchy.png[]
+image::{% link images/cockpit/entity-hierarchy.png %}[]
 
 |===
 |Entity | Description | Additional information
@@ -60,4 +60,4 @@ The Cockpit hierarchy pictured below has the following setup:
 - One APIM installation, with two Gateway nodes and one REST API node.
 - One AM installation, with one Gateway node and one REST API node.
 
-image::cockpit/apim-am-nodes.png[]
+image::{% link images/cockpit/apim-am-nodes.png %}[]

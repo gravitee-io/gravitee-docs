@@ -11,11 +11,11 @@ You can provide general conditions of use for a plan. These conditions must be a
 
 To associate general conditions of use with a plan, you need to specify a markdown page where these conditions are specified.
 
-image::apim/3.x/api-publisher-guide/plans-subscriptions/add-general-conditions.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/add-general-conditions.png %}[]
 
 Plans with general conditions are identified by a `With general conditions` label.
 
-image::apim/3.x/api-publisher-guide/plans-subscriptions/general-conditions-plans.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/general-conditions-plans.png %}[]
 
 NOTE: Users can only subscribe to plans with general conditions through APIM Portal.
 
@@ -24,10 +24,10 @@ NOTE: Users can only subscribe to plans with general conditions through APIM Por
 . In APIM Console, select your API and click **Pages**.
 . Create a Markdown page with the required general conditions content.
 +
-image::apim/3.x/api-publisher-guide/plans-subscriptions/gcu-page.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/gcu-page.png %}[]
 +
 link:{{ '/apim/3.x/apim_publisherguide_publish_documentation.html#create_a_new_page' | relative_url }}[Learn more about creating Markdown pages]
 +
 The page is available when you create the plan:
 +
-image::apim/3.x/api-publisher-guide/plans-subscriptions/plan-gcu-page.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/plan-gcu-page.png %}[]

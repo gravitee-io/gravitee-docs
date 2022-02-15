@@ -45,27 +45,27 @@ NOTE: APIM comes with a default `REVIEWER` role that includes all these conditio
 
 == Configuration
 
-. In APIM Console, click *Settings > Groups* and click the plus icon image:icons\plus-icon.png[role="icon"] to create a new group.
+. In APIM Console, click *Settings > Groups* and click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"] to create a new group.
 +
-image:apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-1.png[Create a group]
+image:{% link images/apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-1.png %}[Create a group]
 
 . Give it a name (e.g. *Global Reviewers*).
 . Select the *Associate automatically to every new API* option.
 . Click *CREATE*.
 +
-image:apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-2.png[Give a name to the group]
+image:{% link images/apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-2.png %}[Give a name to the group]
 . Select a reviewer role in the *Default API role* dropdown list (e.g. `REVIEWER`).
 . Click *UPDATE*.
 +
-image:apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-3.png[Choose default API role]
+image:{% link images/apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-3.png %}[Choose default API role]
 . Click *ASSOCIATE TO EXISTING APIS*.
 +
-image:apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-4.png[Associate group to existing APIs]
+image:{% link images/apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-4.png %}[Associate group to existing APIs]
 . In the *Dependents* section, click the plus icon followed by the users icon to add users to the group, checking that their API role is correct.
 +
-image:apim/3.x/how-tos/configure-global-API-reviewers/add-users.png[Add users]
+image:{% link images/apim/3.x/how-tos/configure-global-API-reviewers/add-users.png %}[Add users]
 +
-image:apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-5.png[Add users]
+image:{% link images/apim/3.x/how-tos/configure-global-API-reviewers/graviteeio-how-to-configure-global-api-reviewers-configuration-5.png %}[Add users]
 . Click *UPDATE*.
 
 == Result

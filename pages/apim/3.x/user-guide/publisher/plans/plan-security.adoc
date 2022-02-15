@@ -27,10 +27,10 @@ You configure security on the **Secure** page of a new or existing plan.
 . To edit an existing plan:
   .. In APIM Console, select your API.
   .. Click **Portal > Plans**.
-  .. Click the edit icon image:icons/edit-icon.png[role="icon"]
+  .. Click the edit icon image:{% link images/icons/edit-icon.png %}[role="icon"]
 . On the **Secure** page, configure the type of security you require for your plan, as described in the sections below.
 +
-image::apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-secure.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-secure.png %}[]
 . Click *NEXT* to link:{{ '/apim/3.x/apim_publisherguide_plan_restrictions.html' | relative_url }}[configure plan restrictions].
 
 === Keyless plans
@@ -66,15 +66,15 @@ You can provide a custom API key when:
 
 * creating a subscription:
 
-image::apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-1.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-1.png %}[]
 
 * accepting a subscription:
 
-image::apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-2.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-2.png %}[]
 
 * renewing a subscription:
 
-image::apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-3.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-3.png %}[]
 
 === OAuth 2.0 plans
 
@@ -92,7 +92,7 @@ NOTE: The instructions below explain how to create an OAuth 2.0 resource in Desi
 +
 NOTE: If you use https://gravitee.io/[Gravitee.io Access Management], we provide a dedicated OAuth 2.0 AM resource.
 +
-image::apim/3.x/api-publisher-guide/plans-subscriptions/create-oauth2-resource.png[Gravitee.io - Create OAuth 2.0 resource, 873, 530, align=center, title-align=center]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/create-oauth2-resource.png %}[Gravitee.io - Create OAuth 2.0 resource, 873, 530, align=center, title-align=center]
 
 . Enter the *Resource name*.
 . Set the *OAuth 2.0 Authorization server URL*.
@@ -104,7 +104,7 @@ image::apim/3.x/api-publisher-guide/plans-subscriptions/create-oauth2-resource.p
 NOTE: Why do I need this? As defined in https://tools.ietf.org/html/rfc7662#section-2.1[RFC 7662^], to prevent token scanning attacks,
 the introspection endpoint must also require some form of authorization to access this endpoint, such as client authentication.
 
-. Enter any other required information, then click the tick icon image:icons/tick-icon.png[role="icon"].
+. Enter any other required information, then click the tick icon image:{% link images/icons/tick-icon.png %}[role="icon"].
 . Click *SAVE* to save the resource.
 
 ==== Add OAuth 2.0 security to a plan
@@ -115,7 +115,7 @@ NOTE: If you already have a suitable plan defined, you can add your OAuth2 resou
 . On the **Secure** page, choose *OAuth2* as the authorization type.
 . Specify the OAuth2 resource name you created and check any https://tools.ietf.org/html/rfc6749#section-3.3[scopes^] to access the API.
 +
-image::apim/3.x/api-publisher-guide/plans-subscriptions/create-oauth2-plan.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/create-oauth2-plan.png %}[]
 
 Your API is now OAuth 2.0 secured and consumers must call the API with an `Authorization Bearer :token:` HTTP header to access the API resources.
 
@@ -146,6 +146,6 @@ The policy searches for a client ID in the payload as follows:
 +
 NOTE: You can also set the public key in the `gravitee.yml` file. See link:{{ '/apim/3.x/apim_policies_jwt.html' | relative_url }}[JWT policy] for more information. APIM only supports the RSA Public Key format.
 +
-image::apim/3.x/api-publisher-guide/plans-subscriptions/create-jwt-plan.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/create-jwt-plan.png %}[]
 
 Your API is now JWT secured and consumers must call the API with an `Authorization Bearer :JWT Token:` HTTP header to access the API resources.

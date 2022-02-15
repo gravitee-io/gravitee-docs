@@ -82,7 +82,7 @@ ID token must contain at least the following link:http://openid.net/specs/openid
 Finally, make sure that the ID token was signed by Gravitee.io Access Management.
 
 . Go to the `Certificates` section of your security domain
-. Retrieve your public key by clicking on image:am/2.x/graviteeio-am-quickstart-profile-public-key.png[] icon
+. Retrieve your public key by clicking on image:{% link images/am/2.x/graviteeio-am-quickstart-profile-public-key.png %}[] icon
 . Use a JWT library to verify the signature.
 
 NOTE: You can also use the link:https://gravitee.io[Gravitee.io API Management solution^] and the link:{{ '/apim_policies_jwt.html' | relative_url }}[JWT Policy^] to verify and retrieve user profile information.
@@ -123,7 +123,7 @@ Identity provider serves default claims such as the user's `username`, `given_na
 . Select your Identity Provider and click on `User Mappers` tab
 . Map new custom claims with user attributes contained in your user data store
 
-image::am/2.x/graviteeio-am-quickstart-profile-user-mappers.png[]
+image::{% link images/am/2.x/graviteeio-am-quickstart-profile-user-mappers.png %}[]
 
 [start=4]
 . Custom user attributes will be available in the UserInfo Endpoint response.

@@ -11,7 +11,7 @@
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Search for users by clicking *Settings > Users* and entering the username in the search field.
 +
-image::am/current/graviteeio-am-userguide-um-search-users.png[]
+image::{% link images/am/current/graviteeio-am-userguide-um-search-users.png %}[]
 
 You can also list users with the AM API `/users` endpoint.
 
@@ -127,17 +127,17 @@ You create users in a security domain.
 
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Users*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Give your user a *First name*, a *Last name*, an *Email* and a *Username* and click *SAVE*.
 . (Optional) You can also add/modify specific attributes relating to the user. This user metadata will be available in the user's profile.
 . You will be redirected to the created user's page.
 +
-image::am/current/graviteeio-am-userguide-um-create-user.png[]
+image::{% link images/am/current/graviteeio-am-userguide-um-create-user.png %}[]
 
 NOTE: You can choose to enable `Pre-Registration`, to allow users to finish registering their own account.
 An email will be sent to the user with instructions.
 
-image::am/current/graviteeio-am-userguide-um-pre-registration-mail.png[]
+image::{% link images/am/current/graviteeio-am-userguide-um-pre-registration-mail.png %}[]
 
 === User roles
 
@@ -146,9 +146,9 @@ You can assign roles directly from the user profile, or from the identity provid
 NOTE: If you are using both user roles and the identity provider role mapper feature, the two roles will be in two different
 places, you can see the different roles in  *Settings > Users > "Your User" > Roles*.
 
-image::am/current/graviteeio-am-userguide-um-user-assigned-dynamic-roles.png[]
+image::{% link images/am/current/graviteeio-am-userguide-um-user-assigned-dynamic-roles.png %}[]
 
 NOTE: By default, users are stored in the pre-defined `Default Identity Provider`, which is available by default for each security domain.
 You can apply role mapping to your users.
 
-image::am/current/graviteeio-am-userguide-um-user-role-mapping.png[]
+image::{% link images/am/current/graviteeio-am-userguide-um-user-role-mapping.png %}[]

@@ -22,6 +22,6 @@ To revoke access to an application :
 . From the homepage, go to your security domain's settings page and go to `Users` section
 . Select the user and go to the `Authorized Apps` tab and revoke the appropriate application.
 
-image::am/2.x/graviteeio-am-userguide-um-consent.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-um-consent.png %}[]
 
 NOTE: Revoking consent can also be done via the link:{{ '/am/2.x/management-api/index.html#tag/user' | relative_url }}[AM Management API] and the link:{{ '/am/2.x/users/index.html#tag/Users' | relative_url }}[Authorization Gateway Server].

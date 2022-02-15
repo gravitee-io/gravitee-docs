@@ -14,7 +14,7 @@ AM Gateway is the core component of the AM platform.
 It acts as a trust broker with your identity providers and provides an authentication and authorization flow for your users.
 
 .Gravitee.io AM - Internal Gateway
-image::am/current/graviteeio-am-overview-components-gateway.png[Gravitee.io AM - Internal Gateway]
+image::{% link images/am/current/graviteeio-am-overview-components-gateway.png %}[Gravitee.io AM - Internal Gateway]
 
 == AM APIs
 These RESTful APIs expose services to:

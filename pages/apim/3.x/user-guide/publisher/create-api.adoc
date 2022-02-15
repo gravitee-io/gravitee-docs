@@ -22,13 +22,13 @@ NOTE: You can also create APIs using APIM API. For more details, see the link:{{
 To start creating an API:
 
 . In APIM Console, click *APIs*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"] at the bottom right of the page.
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"] at the bottom right of the page.
 +
-image::apim/3.10/apim-console-create-api.png[Create API]
+image::{% link images/apim/3.10/apim-console-create-api.png %}[Create API]
 +
 APIM presents you with two options for creating APIs. The recommended option is **DESIGN STUDIO**.
 +
-image::apim/3.x/quickstart/publish/graviteeio-create-api-2.png[]
+image::{% link images/apim/3.x/quickstart/publish/graviteeio-create-api-2.png %}[]
 
 . Under *DESIGN STUDIO*, click:
 
@@ -51,20 +51,20 @@ NOTE: You need to create a plan before you can accept user subscriptions to your
   * A **Name**, **Version**, and **Description**.
   * The **Context-path** where the API will be exposed on APIM Gateway, starting from **/**.
 +
-image::apim/3.x/api-publisher-guide/manage-apis/create-api-general-withgroups.png[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/create-api-general-withgroups.png %}[]
 
 . (Optional) Associate a group with the API, if any are defined (see link:{{ '/apim/3.x/apim_adminguide_users_and_groups.html' | relative_url }}[Users and Groups] for more details):
       * Select a group which can access the API in **Groups**.
       * If the link:{{ '/apim/3.x/apim_adminguide_users_and_groups.html#primary_owner_mode' | relative_url }}[Primary owner mode^] is *HYBRID*, click the *Advanced mode* link to associate a primary owner group.
 +
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-api-primaryowner-mode-3.png[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-api-primaryowner-mode-3.png %}[]
 
 . Click *NEXT*.
 . Enter the details of the gateway:
   * A backend URL for receiving API calls.
   * (Optional) Click the **Advanced mode** link to specify details of tenants and sharding tags.
 +
-image::apim/3.x/api-publisher-guide/manage-apis/create-api-gateway.png[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/create-api-gateway.png %}[]
 
 . Click *NEXT*.
 . (Optional) If you want to create a plan for the API, enter the following details and click **NEXT**, otherwise click *SKIP*:
@@ -73,17 +73,17 @@ image::apim/3.x/api-publisher-guide/manage-apis/create-api-gateway.png[]
   * The *Characteristics*.
   * *Rate limit* and *Quota* details. In this example, we are specifying a rate limit of 1 request every 5 seconds.
 +
-image::apim/3.x/api-publisher-guide/manage-apis/create-api-plan1.png[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/create-api-plan1.png %}[]
   * *Resource filtering* details, using link:{{ '/apim/3.x/apim_policies_overview.html#ant-notation' | relative_url }}[Ant^] notation and an HTTP method.
 +
-image::apim/3.x/api-publisher-guide/manage-apis/create-api-plan-path.png[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/create-api-plan-path.png %}[]
 
 . (Optional) Import a documentation specification file, otherwise click *SKIP*.
 . Review the details of the API, then click one of the following options, depending on whether you want to create and deploy the API or simply create it:
   * *CREATE THE API WITHOUT DEPLOYING IT*
   * *CREATE AND START THE API*
 +
-image::apim/3.x/api-publisher-guide/manage-apis/create-api-confirm.png[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/create-api-confirm.png %}[]
 
 == Import an API definition
 
@@ -96,11 +96,11 @@ To import an API from an API definition:
 
 * If the definition is a file, select *IMPORT FILE* and browse your file system to select it.
 
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-definition-file.png[Import from definition file, 300]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-definition-file.png %}[Import from definition file, 300]
 
 * If the definition is a link, select *IMPORT FROM LINK*, then choose *API Definition* and enter the definition URL.
 
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-definition-link.png[Import from definition link, 300]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-definition-link.png %}[Import from definition link, 300]
 
 Example Gravitee API definition::
 [source,json]
@@ -134,11 +134,11 @@ To import an API from OpenAPI:
 
 * If the OpenAPI specification is a file, select *IMPORT FILE* and browse your file system to select it.
 
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-file.png[Import from definition file, 300]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-file.png %}[Import from definition file, 300]
 
 * If the OpenAPI specification is a link, select *IMPORT FROM LINK*, choose *Swagger / OpenAPI* and enter the definition URL.
 
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-link.png[Import from definition link, 300]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-link.png %}[Import from definition link, 300]
 
 ==== How the context-path is determined
 
@@ -284,7 +284,7 @@ When importing an OpenAPI definition, you can select the option *Create policies
 This specifies that all routes declared in the OpenAPI specification are to be automatically created in APIM.
 You can navigate to the policy management view to check.
 
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-policies-path.png[Policies view - all routes imported]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-openapi-policies-path.png %}[Policies view - all routes imported]
 
 You can also choose to activate policies that will be configured using the OpenAPI specification.
 
@@ -326,11 +326,11 @@ To import an API from a WSDL:
 * If the WSDL is a file, select *IMPORT FILE* and browse your file system to select it.
 * If the WSDL is a link, select *IMPORT FROM LINK*, choose *WSDL* and enter the definition URL.
 
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-wsdl-rest-to-soap-options.png[Import from WSDL link]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-wsdl-rest-to-soap-options.png %}[Import from WSDL link]
 
 If you select the option *Apply REST to SOAP Transformer policy* in addition to the option *Create policies on path* in the import form, a REST-To-SOAP policy will be generated for each path. These policies provide a SOAP envelope for each method with sample data that you can change using expression language. An XML-to-JSON policy will also be generated to convert the entire SOAP response to JSON format.
 
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-wsdl-rest-to-soap-policy.png[WSDL REST to SOAP policy]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-import-wsdl-rest-to-soap-policy.png %}[WSDL REST to SOAP policy]
 
 == Manage your API
 
@@ -343,12 +343,12 @@ The process for adding new members or groups to the API is explained in link:{{ 
 
 You can publish the API or make it public, as well as remove it from APIM Portal or delete it, in the *Danger Zone*:
 
-image::apim/3.x/api-publisher-guide/manage-apis/danger-zone.png[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/danger-zone.png %}[]
 
 == Organize your APIs into categories
 You can create _categories_ to group APIs. The purpose of categories is to group APIs so consumers can easily find the APIs they need in APIM Portal.
 
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-1.png[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-1.png %}[]
 
 You can describe a category with the following characteristics:
 
@@ -357,20 +357,20 @@ You can describe a category with the following characteristics:
 - Picture
 - Markdown page as documentation
 
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-2.png[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-2.png %}[]
 
 Once you have finished describing the category, you select the APIs you want to include in it.
 
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-3.png[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-3.png %}[]
 
 You can also choose to highlight a particular API. This API will be shown at the top of the category page.
 
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-4.png[]
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-4.png[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-4.png %}[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-categories-4.png %}[]
 The next time you enter labels for an API, APIM Console makes suggestions based on your registered labels.
 
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-labels-2.png[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-labels-2.png %}[]
 
 You can search for APIs by label.
 
-image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-labels-3.png[]
+image::{% link images/apim/3.x/api-publisher-guide/manage-apis/graviteeio-manage-apis-labels-3.png %}[]

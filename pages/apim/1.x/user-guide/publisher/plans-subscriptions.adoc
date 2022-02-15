@@ -12,7 +12,7 @@ Managing subscriptions and plans is a key feature in Gravitee.io and allows the 
 A plan provides a service and access layer on your API for the consumer link:{{ '/apim/1.x/apim_overview_concepts.html#gravitee-concepts-application' | relative_url }}[applications].
 A plan specifies access limits, subscription validation mode and other configurations to meet the specific applications needs.
 
-image::apim/1.x/api-publisher-guide/plans-subscriptions/plan-diagram.png[Gravitee.io - Plan diagram, 873, 530, align=center, title-align=center]
+image::{% link images/apim/1.x/api-publisher-guide/plans-subscriptions/plan-diagram.png %}[Gravitee.io - Plan diagram, 873, 530, align=center, title-align=center]
 
 In API Strategy, we see `API as a Product` concept which helps us to understand the needs of the customers and make the product compelling to them.
 Instead of providing only pure technical API resources, API's plans will offer a business/service perspective to the consumers and in the meantime leverage your API product line.
@@ -34,10 +34,10 @@ That will create a subscription associate with the application. This subscriptio
 API plans can be manage during API creation process or in the `Portal/Plans` section of the API.
 
 .Create plan
-image::apim/1.x/api-publisher-guide/plans-subscriptions/create-plan.png[Gravitee.io - Create plan, 873, 530, align=center, title-align=center]
+image::{% link images/apim/1.x/api-publisher-guide/plans-subscriptions/create-plan.png %}[Gravitee.io - Create plan, 873, 530, align=center, title-align=center]
 
 .Manage plan
-image::apim/1.x/api-publisher-guide/plans-subscriptions/create-plan-2.png[Gravitee.io - Manage plan, 873, 530, align=center, title-align=center]
+image::{% link images/apim/1.x/api-publisher-guide/plans-subscriptions/create-plan-2.png %}[Gravitee.io - Manage plan, 873, 530, align=center, title-align=center]
 
 When creating plans in Gravitee.io, 4 security types are supported to restrict access to an API. The security types are as follows :
 
@@ -76,7 +76,7 @@ Go to `Design/Resources` section of your API and create a new `Generic OAuth 2.0
 NOTE: If you use https://gravitee.io/[Gravitee.io Access Management], we provide a dedicated OAuth 2.0 AM resource.
 
 .Create OAuth 2.0 resource
-image::apim/1.x/api-publisher-guide/plans-subscriptions/create-oauth2-resource.png[Gravitee.io - Create OAuth 2.0 resource, 873, 530, align=center, title-align=center]
+image::{% link images/apim/1.x/api-publisher-guide/plans-subscriptions/create-oauth2-resource.png %}[Gravitee.io - Create OAuth 2.0 resource, 873, 530, align=center, title-align=center]
 
 * Set the OAuth 2.0 Authorization server URL
 * Set the https://tools.ietf.org/html/rfc7662[Token introspection endpoint] URI with the correct HTTP method and https://tools.ietf.org/html/rfc6749#section-3.3[scope] delimiter.
@@ -92,7 +92,7 @@ Once the OAuth2 resource is set up you can create an OAuth 2.0 plan. Go to `Port
 On the secure section (second step) choose `OAuth2` Authorization type,  write down the OAuth2 resource's name previously created and choose if you want to check specific https://tools.ietf.org/html/rfc6749#section-3.3[scopes] to access the API.
 
 .Create OAuth 2.0 plan
-image::apim/1.x/api-publisher-guide/plans-subscriptions/create-oauth2-plan.png[Gravitee.io - Create OAuth 2.0 plan, 873, 530, align=center, title-align=center]
+image::{% link images/apim/1.x/api-publisher-guide/plans-subscriptions/create-oauth2-plan.png %}[Gravitee.io - Create OAuth 2.0 plan, 873, 530, align=center, title-align=center]
 
 * Click `NEXT` and create your plan by clicking on the `SAVE` button.
 
@@ -126,7 +126,7 @@ On the secure section (second step) choose `JWT` Authorization type and set up t
 NOTE: Public key can also be set in the `gravitee.yml` file. See link:{{ '/apim/1.x/apim_policies_jwt.html' | relative_url }}[JWT policy] for more information. Currently Gravitee.io only support RSA Public Key format.
 
 .Create JWT plan
-image::apim/1.x/api-publisher-guide/plans-subscriptions/create-jwt-plan.png[Gravitee.io - Create JWT plan, 873, 530, align=center, title-align=center]
+image::{% link images/apim/1.x/api-publisher-guide/plans-subscriptions/create-jwt-plan.png %}[Gravitee.io - Create JWT plan, 873, 530, align=center, title-align=center]
 
 * Click `NEXT` and create your plan by clicking on the `SAVE` button.
 
@@ -147,7 +147,7 @@ Plan provide tools to maintain and optimize traffic management and protect API b
 Rate limit how many HTTP requests an application can make in a given period of seconds or minutes.
 
 .Enforces limit of 1 000 requests per minute
-image::apim/1.x/api-publisher-guide/plans-subscriptions/create-plan-rate-limit.png[Gravitee.io - Create plan - Rate-Limit , 873, 530, align=center, title-align=center]
+image::{% link images/apim/1.x/api-publisher-guide/plans-subscriptions/create-plan-rate-limit.png %}[Gravitee.io - Create plan - Rate-Limit , 873, 530, align=center, title-align=center]
 
 
 NOTE: Rate-limit will help you limit the sudden increase in the number of requests at any point in time.
@@ -157,7 +157,7 @@ NOTE: Rate-limit will help you limit the sudden increase in the number of reques
 Quota specifies the number of requests allow to call API backends in the given time interval.
 
 .Enforces limit of 100 000 requests per day
-image::apim/1.x/api-publisher-guide/plans-subscriptions/create-plan-quota.png[Gravitee.io - Create plan - Rate-Limit , 873, 530, align=center, title-align=center]
+image::{% link images/apim/1.x/api-publisher-guide/plans-subscriptions/create-plan-quota.png %}[Gravitee.io - Create plan - Rate-Limit , 873, 530, align=center, title-align=center]
 
 NOTE: Quota can be use to business/financial requirements where you decide the limit of how many calls partner/third-party apps can do in a period of time.
 
@@ -166,7 +166,7 @@ NOTE: Quota can be use to business/financial requirements where you decide the l
 Path authorization allows you to constraint access to a subset of the API resources.
 
 .Allow only GET requests
-image::apim/1.x/api-publisher-guide/plans-subscriptions/create-plan-path-authorization.png[Gravitee.io - Create plan - Path Authorization , 873, 530, align=center, title-align=center]
+image::{% link images/apim/1.x/api-publisher-guide/plans-subscriptions/create-plan-path-authorization.png %}[Gravitee.io - Create plan - Path Authorization , 873, 530, align=center, title-align=center]
 
 NOTE: With Path Authorization it's possible to make an readonly API for public members and give access to more resource for premium members.
 
@@ -175,7 +175,7 @@ NOTE: With Path Authorization it's possible to make an readonly API for public m
 Plans will let consumers to request for subscription and begin to play with your API.
 
 .API Plans from consumers' perspective
-image::apim/1.x/api-publisher-guide/plans-subscriptions/plans-subscriptions.png[Gravitee.io - API plans , 873, 530, align=center, title-align=center]
+image::{% link images/apim/1.x/api-publisher-guide/plans-subscriptions/plans-subscriptions.png %}[Gravitee.io - API plans , 873, 530, align=center, title-align=center]
 
 === Approving subscriptions
 
@@ -189,12 +189,12 @@ NOTE: If you enable mail or portal notification, you will see that a task requir
 3. Click `ACCEPT`, enter the start date and end date (no end date means forever) to approve the subscription
 
 .Approve subscription
-image::apim/1.x/api-publisher-guide/plans-subscriptions/approve-subscription.png[Gravitee.io - approve subscription , 873, 530, align=center, title-align=center]
+image::{% link images/apim/1.x/api-publisher-guide/plans-subscriptions/approve-subscription.png %}[Gravitee.io - approve subscription , 873, 530, align=center, title-align=center]
 
 === Revoking subscriptions
 
 Every subscriptions can be revoked to invalidate access to the APIs. Go to `Portal/Subscriptions` of your API, select the subscription you want to cancel and click `CLOSE`
 
 .Revoke subscription
-image::apim/1.x/api-publisher-guide/plans-subscriptions/revoke-subscription.png[Gravitee.io - revoke subscription , 873, 530, align=center, title-align=center]
+image::{% link images/apim/1.x/api-publisher-guide/plans-subscriptions/revoke-subscription.png %}[Gravitee.io - revoke subscription , 873, 530, align=center, title-align=center]
 

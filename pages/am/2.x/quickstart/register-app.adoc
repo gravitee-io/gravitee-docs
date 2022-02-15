@@ -66,7 +66,7 @@ curl -H "Authorization: Bearer :accessToken" \
 [start=5]
 . From the resulting OAuth client create form, you can copy the Client ID and the Client Secret to start interacting with Gravitee.io AM endpoints and APIs.
 
-image::am/2.x/graviteeio-am-oauth-client.png[]
+image::{% link images/am/2.x/graviteeio-am-oauth-client.png %}[]
 
 == Test your application with OAuth2
 

@@ -20,6 +20,6 @@ Service Management Ecosystem (SME) enables you to go beyond REST API and embrace
 
 The SME is composed of a Connector API which provides a framework to allow for any backend protocol to be proxied through the Gravitee API Gateway. The Gravitee.io gateway can now be used as a protocol mediation layer between consumers of service and backend services.
 
-image:apim/3.x/api-publisher-guide/sme/what-is-sme.png[]
+image:{% link images/apim/3.x/api-publisher-guide/sme/what-is-sme.png %}[]
 
 In addition, the SME will also provide a set of connectors implementing the Connector API in the form of plugins. A plugin consists of a single unit of code/package that can be deployed onto the platform (e.g Kafka, HTTP, MQTT, JDBC) giving you the flexibility to only deploy the connector(s) needed for your use case(s).

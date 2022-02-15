@@ -18,7 +18,7 @@ which is used by AM to create a bridge between your applications and a SAML 2.0 
 
 NOTE: In this scenario, the AM SAML 2.0 identity provider acts as the Service Provider (SP) via the SP-Initiated SSO flow.
 
-image::am/current/graviteeio-am-userguide-social-idp-saml2.png[]
+image::{% link images/am/current/graviteeio-am-userguide-social-idp-saml2.png %}[]
 
 == Get your SAML 2.0 identity provider (IdP) metadata
 
@@ -34,7 +34,7 @@ NOTE: Before you begin, obtain this information from your SAML IdP administrator
 
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Providers*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Select *SAML 2.0* as your identity provider type and click *Next*.
 . Give your identity provider a name.
 . Configure the settings (EntityID, Sign In URL, Sign Out URL, Signing certificate).
@@ -59,7 +59,7 @@ You can test your SAML 2.0 connection using a web application created in AM.
 
 . In AM Console, click *Applications > App > Identity Providers* and select your SAML 2.0 connector.
 +
-image::am/current/graviteeio-am-userguide-social-idp-list.png[]
+image::{% link images/am/current/graviteeio-am-userguide-social-idp-list.png %}[]
 +
 . Call the Login page (the `/oauth/authorize` endpoint). If the connection is working you will see a *Sign in with SAML 2.0* button.
 +

@@ -32,7 +32,7 @@ TIP: Default key are RS256 (SHA256withRSA), for RS512 key add those following op
 
 . Give your certificate a *name* and create a certificate by filling out the configuration form and press `CREATE`
 
-image::am/2.x/graviteeio-am-userguide-create-certificate.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-create-certificate.png %}[]
 
 You can also create a certificate via the Gravitee.io AM API
 
@@ -53,16 +53,16 @@ curl -H "Authorization: Bearer :accessToken" \
 
 Public keys will allow you to verify the token's payload integrity. To get public key of your certificate, follow these steps :
 
-. From `Certificates` list page, click image:am/2.x/graviteeio-am-quickstart-profile-public-key.png[] button.
+. From `Certificates` list page, click image:{% link images/am/2.x/graviteeio-am-quickstart-profile-public-key.png %}[] button.
 . You can copy/paste the public to use them with third party library to verify your tokens
 
-image::am/2.x/graviteeio-am-userguide-public-key.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-public-key.png %}[]
 
 NOTE: link:https://gravitee.io[Gravitee.io API Management] comes with a JWT Policy use to verify and decode tokens that can be used for your APIs.
 
 == Custom certificate
 
-image::am/2.x/graviteeio-am-userguide-custom-certificate.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-custom-certificate.png %}[]
 
 Gravitee.io Access Management is a flexible and extensible solution based on pluggable modules architecture.
 You can develop your own certificate and provide a sign method for tokens.

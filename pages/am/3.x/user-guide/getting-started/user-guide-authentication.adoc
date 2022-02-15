@@ -22,7 +22,7 @@ To log in:
 
 . Open AM Console.
 +
-image::am/current/graviteeio-am-userguide-login-page.png[]
+image::{% link images/am/current/graviteeio-am-userguide-login-page.png %}[]
 +
 . Log in with the administrator credentials. You are redirected to the AM Console dashboard for your default security domain.
 +
@@ -42,7 +42,7 @@ It gives the ability to sign your users in by selecting multiple identity provid
 your own custom authentication and authorization journey to match your brand requirements and identity.
 
 .Gravitee.io AM - Security domain dashboard
-image::am/current/graviteeio-am-userguide-domain-dashboard.png[]
+image::{% link images/am/current/graviteeio-am-userguide-domain-dashboard.png %}[]
 
 The security domain settings includes several sections that you can navigate using the sidebar menu on your left.
 
@@ -128,7 +128,7 @@ The security domains overview display all the domains available for the current 
 To access one specific security domain, click on its name.
 
 .Gravitee.io AM - Security Domains overview
-image::am/current/graviteeio-am-userguide-list-domains.png[]
+image::{% link images/am/current/graviteeio-am-userguide-list-domains.png %}[]
 
 === Environments
 
@@ -145,7 +145,7 @@ Here you can configure several aspects of your organization such as :
 * Deployment configuration : set up entrypoints and sharding tags for your AM gateway.
 
 .Gravitee.io AM - Organization Settings
-image::am/current/graviteeio-am-userguide-organization-settings.png[]
+image::{% link images/am/current/graviteeio-am-userguide-organization-settings.png %}[]
 
 The organization settings includes several sections that you can navigate using the sidebar menu on your left.
 

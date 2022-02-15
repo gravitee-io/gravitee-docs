@@ -18,15 +18,15 @@ In this example, we are creating an inline identity provider.
 
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Providers*.
-. In the Providers page, click the plus icon image:icons/plus-icon.png[role="icon"].
+. In the Providers page, click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Choose an *Inline* identity provider type and click *Next*.
 +
-image::am/current/graviteeio-am-quickstart-idp-type.png[]
+image::{% link images/am/current/graviteeio-am-quickstart-idp-type.png %}[]
 +
 . Give your identity provider a *Name*.
 . Add as many users as required, by clicking *Add User* for each new user, then click *Create*.
 +
-image::am/current/graviteeio-am-quickstart-create-idp.png[]
+image::{% link images/am/current/graviteeio-am-quickstart-create-idp.png %}[]
 +
 [source]
 ----
@@ -44,7 +44,7 @@ curl -H "Authorization: Bearer :accessToken" \
 
 == Custom identity provider
 
-image::am/current/graviteeio-am-userguide-custom-idp.png[]
+image::{% link images/am/current/graviteeio-am-userguide-custom-idp.png %}[]
 
 AM is designed to be extended based on a pluggable module architecture.
 You can develop your own identity provider using a _plugin_, and provide an authentication method to register your users so they can use AM.

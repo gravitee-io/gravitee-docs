@@ -22,7 +22,7 @@ To update the configuration for these services:
 +
 The backend service configuration options are in the *BACKEND SERVICES* section.
 +
-image:apim/3.x/api-publisher-guide/backend-services/api-backend-services.png[]
+image:{% link images/apim/3.x/api-publisher-guide/backend-services/api-backend-services.png %}[]
 
 WARNING: You must redeploy your API with the *deploy the API* link after each new configuration.
 
@@ -69,21 +69,21 @@ Endpoint 1 is selected 9 times out of 10, whereas Endpoint 2 is selected only 1 
 
 Your group is added to the list. You can now perform any of the following actions on the group by clicking the corresponding icon in the group header:
 
-* Add endpoints to your group by clicking the plus icon image:icons/lb-plus-icon.png[role="icon"]
-* Update the group configuration by clicking the settings icon image:icons/settings-icon.png[role="icon"]
-* Delete the group by clicking the delete icon image:icons/delete-icon.png[role="icon"]
-* Change the display order of the endpoints from ascending to descending and vice versa, by clicking the arrow icon image:icons/up-arrow-icon.png[role="icon"] next to the *Name*, *Type* or *Weight* header
+* Add endpoints to your group by clicking the plus icon image:{% link images/icons/lb-plus-icon.png %}[role="icon"]
+* Update the group configuration by clicking the settings icon image:{% link images/icons/settings-icon.png %}[role="icon"]
+* Delete the group by clicking the delete icon image:{% link images/icons/delete-icon.png %}[role="icon"]
+* Change the display order of the endpoints from ascending to descending and vice versa, by clicking the arrow icon image:{% link images/icons/up-arrow-icon.png %}[role="icon"] next to the *Name*, *Type* or *Weight* header
 
 === Add endpoints to your group
 
-. Click the plus icon image:icons/lb-plus-icon.png[role="icon"] to add new endpoints to your group.
+. Click the plus icon image:{% link images/icons/lb-plus-icon.png %}[role="icon"] to add new endpoints to your group.
 . In the *GENERAL* tab, specify the endpoint details as follows:
 
 * The *Type* and *Name* of the endpoint
 * The endpoint URL in the *Target* field
 * A number in the *Weight* field (only if the endpoint is in a group configured with *Weighted Round-Robin* or *Weighted Random* load balancing), representing the weight the endpoint has in terms of selecting it for
 *Weighted* load balancing
-* If a global health check configuration exists, it is automatically applied to this endpoint. If you want to change the health check behavior for your endpoint, click the settings icon image:icons/settings-icon.png[role="icon"]in the *Health-check* section, then:
+* If a global health check configuration exists, it is automatically applied to this endpoint. If you want to change the health check behavior for your endpoint, click the settings icon image:{% link images/icons/settings-icon.png %}[role="icon"]in the *Health-check* section, then:
 ** Uncheck *Enable health-check* to disable health checking for your endpoint
 ** Uncheck *Inherit configuration* and specify a different health check configuration, as described in <<Configure health check>> from step 4
 * Check the *Secondary endpoint* option to define this endpoint outside the main load balancing pool, to be used for load balancing only if all the primary endpoints are marked as down by the health check
@@ -93,12 +93,12 @@ Your group is added to the list. You can now perform any of the following action
 +
 Your new endpoint is added to the list. Endpoints with inherited configuration are denoted by a right-angled arrow and endpoints with health checking configured are denoted by a heart:
 +
-image:apim/3.x/api-publisher-guide/backend-services/api-backend-inherited-config.png[]
+image:{% link images/apim/3.x/api-publisher-guide/backend-services/api-backend-inherited-config.png %}[]
 
 You can now perform any of the following actions on the endpoint:
 
-* Update the endpoint configuration by clicking the settings icon image:icons/settings-icon.png[role="icon"] next to the endpoint
-* Delete one or more of the endpoints in the group by selecting the relevant checkboxes and clicking the delete icon image:icons/delete-icon.png[role="icon"] in the header row
+* Update the endpoint configuration by clicking the settings icon image:{% link images/icons/settings-icon.png %}[role="icon"] next to the endpoint
+* Delete one or more of the endpoints in the group by selecting the relevant checkboxes and clicking the delete icon image:{% link images/icons/delete-icon.png %}[role="icon"] in the header row
 
 == Configure failover
 
@@ -107,7 +107,7 @@ Once you have configured your endpoints, as described in <<Configure load balanc
 . Click *Failover*.
 . Select *Enabled* to enable failover.
 +
-image:apim/3.x/api-publisher-guide/backend-services/api-backend-failover.png[]
+image:{% link images/apim/3.x/api-publisher-guide/backend-services/api-backend-failover.png %}[]
 
 . Enter a *Max attempts* number, for the number of times APIM Gateway attempts to find a suitable endpoint, according to the load balancing algorithm, before returning an error.
 . Enter a *Timeout*, for the number of milliseconds between each attempt.
@@ -121,7 +121,7 @@ To create an endpoint-specific health check configuration or disable health chec
 
 From APIM version 3.6, you can view the health of your APIs in *Dashboard*, by clicking the *APIS STATUS* tab:
 
-image:apim/3.x/api-publisher-guide/backend-services/api-status-dashboard.png[]
+image:{% link images/apim/3.x/api-publisher-guide/backend-services/api-status-dashboard.png %}[]
 
 To configure health checking:
 
@@ -129,7 +129,7 @@ To configure health checking:
 . Click the *Configure Health-check* link at the top of the page.
 . Select *Enable health-check*.
 +
-image:apim/3.x/api-publisher-guide/backend-services/api-backend-health-check.png[]
+image:{% link images/apim/3.x/api-publisher-guide/backend-services/api-backend-health-check.png %}[]
 
 ifeval::[{{ site.products.apim._3x.version }} < 3.6.0]
 . Enter the interval between each health check as an *Interval* number and a *Time Unit*. Note that this interval is applied for each gateway in your APIM environment.

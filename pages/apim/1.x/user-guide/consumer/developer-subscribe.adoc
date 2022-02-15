@@ -44,7 +44,7 @@ NOTE: Remember, if you choose an OAuth 2.0 plan you must have a `client_id` set 
 . Click `SUBSCRIBE` and you are ready to use the API
 
 .Subscribe to an API
-image::apim/1.x/api-consumer-guide/developer-subscribe/subscribe-to-an-api.png[Gravitee.io - subscribe to an api]
+image::{% link images/apim/1.x/api-consumer-guide/developer-subscribe/subscribe-to-an-api.png %}[Gravitee.io - subscribe to an api]
 
 Depending on the plan security type (API-Key, OAuth 2.0, JWT), you need to set proper HTTP headers to call the API.
 

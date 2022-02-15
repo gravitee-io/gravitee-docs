@@ -24,7 +24,7 @@ In order to limit the scope of the roles, scopes are bound to what we call an `a
 - `DOMAIN` -- role for a security domain
 - `APPLICATION` -- role for an application
 
-image::am/current/graviteeio-am-adminguide-roles-permissions.png[]
+image::{% link images/am/current/graviteeio-am-adminguide-roles-permissions.png %}[]
 
 === Role
 A role is a functional group of permissions.
@@ -452,13 +452,13 @@ To manage roles and permissions:
 === Create the `REVIEWER_APPLICATION` role
 Let's imagine we want to create a reviewer role, which allows a user to check if your application configuration is valid.
 
-. Click the plus icon image:icons\plus-icon.png[role="icon"] and enter the following values:
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"] and enter the following values:
 
 - Assignable type : `APPLICATION`
 - Name : `REVIEWER_APPLICATION`
 - Description : `Read-only role`
 +
-image::am/current/graviteeio-am-adminguide-new-role.png[]
+image::{% link images/am/current/graviteeio-am-adminguide-new-role.png %}[]
 
 . Click *CREATE*.
 
@@ -469,10 +469,10 @@ This allows the user to see the whole configuration of your application.
 Click *SAVE* to store the changes.
 
 .Configure
-image::am/current/graviteeio-am-adminguide-role-configure.png[]
+image::{% link images/am/current/graviteeio-am-adminguide-role-configure.png %}[]
 
 === Result
 
 Go to your application *Administrative roles* settings section and add a new member with the `REVIEWER_APPLICATION` role. The user `Reviewer User` now has read access to your application.
 
-image::am/current/graviteeio-am-adminguide-role-member.png[]
+image::{% link images/am/current/graviteeio-am-adminguide-role-member.png %}[]

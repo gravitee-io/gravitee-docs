@@ -9,7 +9,7 @@ Now that you have created your application, you can go ahead and obtain your API
 . Click *Applications* in the top menu.
 . Click *My subscriptions* in the sub-menu.
 +
-image::apim/3.x/quickstart/consume/graviteeio-create-first-app-9.png[]
+image::{% link images/apim/3.x/quickstart/consume/graviteeio-create-first-app-9.png %}[]
 
 . Select your application in the list on the left.
 . Select the API in the list on the right.
@@ -19,7 +19,7 @@ image::apim/3.x/quickstart/consume/graviteeio-create-first-app-9.png[]
 ====
 By default, the host in the command is `https://api.company.com`. You need to change this value in the *Sharding Tags* section of the Management UI settings.
 
-image::apim/3.x/quickstart/consume/graviteeio-settings-sharding-tags.png[]
+image::{% link images/apim/3.x/quickstart/consume/graviteeio-settings-sharding-tags.png %}[]
 ====
 +
 You can use your API Key by setting the HTTP Header `X-Gravitee-Api-Key` or using the request query parameter `api-key`.

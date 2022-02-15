@@ -62,11 +62,11 @@ You can customize pages for an entire security domain or for an individual appli
 * for a security domain, click *Settings*
 * for an application, click *Applications* and select your application, then click the *Design* tab
 
-. In the *Forms* section, click the edit icon image:icons/edit-icon.png[role="icon"] of the page template.
+. In the *Forms* section, click the edit icon image:{% link images/icons/edit-icon.png %}[role="icon"] of the page template.
 . Update the HTML as required. You can preview the result in the *Preview* tab.
 +
-image::am/current/graviteeio-am-userguide-um-forms.png[]
+image::{% link images/am/current/graviteeio-am-userguide-um-forms.png %}[]
 
-NOTE: Each form requires a minimum configuration. You can retrieve contextual documentation on the HTML needed for each type of page by clicking the image:icons/am-info-icon.png[role="icon"] information icon.
+NOTE: Each form requires a minimum configuration. You can retrieve contextual documentation on the HTML needed for each type of page by clicking the image:{% link images/icons/am-info-icon.png %}[role="icon"] information icon.
 
-image::am/current/graviteeio-am-userguide-um-form-info.png[]
+image::{% link images/am/current/graviteeio-am-userguide-um-form-info.png %}[]

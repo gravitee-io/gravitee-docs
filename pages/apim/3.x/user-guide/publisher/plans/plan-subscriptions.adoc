@@ -9,7 +9,7 @@
 
 Consumers use plans to request subscriptions and access your APIs. They subscribe to plans in APIM Portal:
 
-image::apim/3.x/api-publisher-guide/plans-subscriptions/plans-subscriptions.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/plans-subscriptions.png %}[]
 
 The following sections describe how to manage subscription requests from consumers.
 
@@ -24,7 +24,7 @@ NOTE: You can enable mail or portal notifications so you can be notified when a 
 . Select the *Pending* subscription.
 . Click *ACCEPT*, then enter the start and end dates (no end date means forever) of subscription approval.
 +
-image::apim/3.x/api-publisher-guide/plans-subscriptions/approve-subscription.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/approve-subscription.png %}[]
 
 === Revoke a subscription
 
@@ -33,4 +33,4 @@ You can revoke a subscription to remove access to APIs.
 . Go to your API in APIM Management and click *Portal > Subscriptions*.
 . Select the subscription you want to revoke and click *CLOSE*.
 +
-image::apim/3.x/api-publisher-guide/plans-subscriptions/revoke-subscription.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/revoke-subscription.png %}[]

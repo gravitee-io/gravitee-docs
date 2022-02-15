@@ -58,13 +58,13 @@ NOTE: Only users with correct role permission can manage application's members, 
 NOTE: You can also transfer ownership to an other user, that can be useful when the current primary owner leave the project.
 
 .Manage members
-image::apim/1.x/api-consumer-guide/developer-manage/manage-members.png[Gravitee.io - manage members]
+image::{% link images/apim/1.x/api-consumer-guide/developer-manage/manage-members.png %}[Gravitee.io - manage members]
 
 == Manage subscriptions
 
 Subscription represents the plans the application has subscribed to. Subscriptions page will let application's members to see if their access to the APIs are still valid, not revoked or under API publisher approval process.
 
-image::apim/1.x/api-consumer-guide/developer-manage/app-subscriptions.png[Gravitee.io - application subscriptions]
+image::{% link images/apim/1.x/api-consumer-guide/developer-manage/app-subscriptions.png %}[Gravitee.io - application subscriptions]
 .Application subscriptions
 
 == Analytics

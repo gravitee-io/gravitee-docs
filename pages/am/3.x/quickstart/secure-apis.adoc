@@ -9,7 +9,7 @@
 In this section we will demonstrate how to use link:https://www.gravitee.io/products/api-management[Gravitee.io API Management^] to secure your APIs.
 
 .Gravitee.io - Platform
-image::am/current/graviteeio-am-quickstart-secure-apis-overview.png[]
+image::{% link images/am/current/graviteeio-am-quickstart-secure-apis-overview.png %}[]
 
 === Before you begin
 
@@ -25,16 +25,16 @@ Start by configuring the API security policy in the Gravitee.io API Management P
 . Click *My APIs* in the navigation bar (or *Administration* if you are an admin user).
 . Click *APIs* and select the API you want to secure.
 . Link your API with AM:
-.. Click *Resources* and the plus icon image:icons/plus-icon.png[role="icon"].
+.. Click *Resources* and the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 .. Enter a new resource name and select *Gravitee.io AM Authorization Server Resource* as the resource type.
 .. In the *Configuration* section, specify the *Gravitee.io AM Server URL*, your *Security domain*, your *Client ID* and your *Client Secret*, then click *SAVE*.
 +
-image::am/current/graviteeio-am-quickstart-secure-apis-resource.png[]
+image::{% link images/am/current/graviteeio-am-quickstart-secure-apis-resource.png %}[]
 
 . Click *Policies* and drag and drop the `OAuth2` policy to the selected API's path.
 . Specify the resource name you created for your API and click *SAVE*.
 +
-image::am/current/graviteeio-am-quickstart-quickstart-secure-apis-policy.png[]
+image::{% link images/am/current/graviteeio-am-quickstart-quickstart-secure-apis-policy.png %}[]
 
 . Deploy your API.
 

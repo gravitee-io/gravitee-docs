@@ -11,7 +11,7 @@
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Search for groups by clicking *Groups*.
 +
-image::am/current/graviteeio-am-userguide-um-search-groups.png[]
+image::{% link images/am/current/graviteeio-am-userguide-um-search-groups.png %}[]
 
 === Create a new group
 
@@ -19,7 +19,7 @@ You create groups in a security domain.
 
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Groups*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Give your group a *Name* and click *SAVE*.
 . You will be redirected to the new group's page.
 
@@ -31,7 +31,7 @@ You can add an new member to your group as follows:
 . Select your group, and in the *Members* tab, click *Add members*.
 . Search for users by username, then click *Add*.
 +
-image::am/current/graviteeio-am-userguide-um-add-member.png[]
+image::{% link images/am/current/graviteeio-am-userguide-um-add-member.png %}[]
 
 NOTE: Currently only users created by AM API or the SCIM protocol and external users who have already logged in can be found.
 

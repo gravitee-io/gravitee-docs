@@ -239,11 +239,11 @@ You configure CORS in the *CORS* section of the APIM Console and APIM Portal *Se
 
 * For APIM Portal, go to *Settings > Settings*
 
-image::apim/3.x/installation/configuration/graviteeio-installation-environment-configuration-cors.png[]
+image::{% link images/apim/3.x/installation/configuration/graviteeio-installation-environment-configuration-cors.png %}[]
 
 * For APIM Console, go to *Organization Settings > Settings*
 
-image::apim/3.x/installation/configuration/graviteeio-installation-organization-configuration-cors.png[]
+image::{% link images/apim/3.x/installation/configuration/graviteeio-installation-organization-configuration-cors.png %}[]
 
 WARNING: There is no inheritance between the two configurations.
 
@@ -273,11 +273,11 @@ You configure SMTP in the *SMTP* section of the APIM Console and APIM Portal *Se
 
 * For APIM Portal, go to *Settings > Settings*
 
-image::apim/3.x/installation/configuration/graviteeio-installation-environment-configuration-smtp.png[]
+image::{% link images/apim/3.x/installation/configuration/graviteeio-installation-environment-configuration-smtp.png %}[]
 
 * For APIM Console, go to *Organization Settings > Settings*
 
-image::apim/3.x/installation/configuration/graviteeio-installation-organization-configuration-smtp.png[]
+image::{% link images/apim/3.x/installation/configuration/graviteeio-installation-organization-configuration-smtp.png %}[]
 
 [NOTE]
 ====

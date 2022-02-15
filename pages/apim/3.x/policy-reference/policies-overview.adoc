@@ -13,11 +13,11 @@ You can configure these policies in two ways:
 
     * Using the API *Design* function:
 
-image::apim/3.x/api-publisher-guide/policies/graviteeio-old-studio-overview.png[]
+image::{% link images/apim/3.x/api-publisher-guide/policies/graviteeio-old-studio-overview.png %}[]
 
     * Using Design Studio (available from APIM 3.5.x):
 
-image::apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-overview.png[]
+image::{% link images/apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-overview.png %}[]
 
 NOTE: You can migrate from the former *Design* function to Design Studio by following link:{{ '/apim/3.x/apim_policies_migrate.html' | relative_url }}[this procedure].
 

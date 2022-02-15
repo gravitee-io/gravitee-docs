@@ -26,15 +26,15 @@ NOTE: You only need to create a new security domain for an application when you 
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . From the user menu at the top right, click *Create domain*.
 +
-image::am/current/quickstart-create-domain.png[]
+image::{% link images/am/current/quickstart-create-domain.png %}[]
 +
 . Give your security domain a *Name* and a *Description* and click *CREATE*.
 +
-image::am/current/quickstart-create-domain2.png[]
+image::{% link images/am/current/quickstart-create-domain2.png %}[]
 +
 . Click on the banner *click here* link to enable the domain.
 +
-image::am/current/quickstart-enable-domain.png[]
+image::{% link images/am/current/quickstart-enable-domain.png %}[]
 
 === Create a domain with AM API
 
@@ -64,15 +64,15 @@ The application can be a native mobile app, a single page front-end web applicat
 In this example, we will create a regular web application.
 
 . Click *Applications*.
-. In the Applications page, click the plus icon image:icons/plus-icon.png[role="icon"].
+. In the Applications page, click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Choose a *Web* application type.
 +
-image::am/current/quickstart-create-application.png[]
+image::{% link images/am/current/quickstart-create-application.png %}[]
 +
 . Click the *Next* button.
 . Give your application a *Name* and a *Redirect URI* (with https scheme and non localhost) and click the *Create* button.
 +
-image::am/current/quickstart-create-application2.png[]
+image::{% link images/am/current/quickstart-create-application2.png %}[]
 
 NOTE: This application will be used by end users, so we need to bind them with an identity provider.
 
@@ -84,14 +84,14 @@ It can be a social provider like Facebook, Google or Twitter, an enterprise prov
 In this example, we will create an In-memory identity provider with an inline user configuration.
 
 . Click *Settings > Providers*.
-. In the Identity Providers page, click the plus icon image:icons/plus-icon.png[].
+. In the Identity Providers page, click the plus icon image:{% link images/icons/plus-icon.png %}[].
 . Choose *Inline* and click *Next*.
 +
-image::am/current/graviteeio-am-quickstart-idp-type.png[]
+image::{% link images/am/current/graviteeio-am-quickstart-idp-type.png %}[]
 +
 . Give your identity provider a *Name* and enter the user details, then click *Create*.
 +
-image::am/current/graviteeio-am-quickstart-create-idp.png[]
+image::{% link images/am/current/graviteeio-am-quickstart-create-idp.png %}[]
 +
 [source]
 ----
@@ -110,7 +110,7 @@ curl -H "Authorization: Bearer :accessToken" \
 . Click *Applications* and select your web application.
 . In the *Identity Providers* tab, select *Inline identity provider* and click *SAVE*.
 +
-image::am/current/graviteeio-am-quickstart-client-idp.png[]
+image::{% link images/am/current/graviteeio-am-quickstart-client-idp.png %}[]
 
 == Test your identity provider with OAuth2
 

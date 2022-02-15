@@ -27,12 +27,12 @@ TIP: Default keys are RS256 (SHA256withRSA). For RS512 keys, add the following o
 
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Certificates*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Choose the certificate type and click *Next*.
 . Give your certificate a name, then enter the details of the keystore file.
 . Click *Create*.
 +
-image::am/current/graviteeio-am-userguide-create-certificate.png[]
+image::{% link images/am/current/graviteeio-am-userguide-create-certificate.png %}[]
 
 == Create a new certificate with AM API
 
@@ -54,10 +54,10 @@ curl -H "Authorization: Bearer :accessToken" \
 You can use public keys to verify a token payload's integrity. To obtain the public key for your certificate:
 
 . In AM Console, click *Settings > Certificates*.
-. Next to your certificate, click the key image:am/current/graviteeio-am-quickstart-profile-public-key.png[role="icon"] icon.
+. Next to your certificate, click the key image:{% link images/am/current/graviteeio-am-quickstart-profile-public-key.png %}[role="icon"] icon.
 . You can copy/paste the public key to use with third party libraries to verify your tokens.
 +
-image::am/current/graviteeio-am-userguide-public-key.png[]
+image::{% link images/am/current/graviteeio-am-userguide-public-key.png %}[]
 
 NOTE: link:https://www.gravitee.io/products/api-management[Gravitee.io API Management] comes with a JWT Policy to verify and decode tokens that can be used for your APIs.
 
@@ -67,11 +67,11 @@ NOTE: link:https://www.gravitee.io/products/api-management[Gravitee.io API Manag
 . In the *Settings* tab, click *Certificates*.
 . Choose your certificate and click *SAVE*.
 +
-image::am/current/graviteeio-am-userguide-certificate-app.png[]
+image::{% link images/am/current/graviteeio-am-userguide-certificate-app.png %}[]
 
 == Custom certificates
 
-image::am/current/graviteeio-am-userguide-custom-certificate.png[]
+image::{% link images/am/current/graviteeio-am-userguide-custom-certificate.png %}[]
 
 AM is designed to be extended based on a pluggable modules architecture.
 You can develop your own certificate and provide a sign method for tokens.

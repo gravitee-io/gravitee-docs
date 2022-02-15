@@ -18,14 +18,14 @@ At this date, Gravitee.io is supporting two types of document:
 
 The base URL of your Swagger descriptor is overridable in the configuration panel and we provide more configuration capabilities for the Swagger documentation pages:
 
-image::apim/1.x/graviteeio-page-documentation-swagger-configuration.png[]
+image::{% link images/apim/1.x/graviteeio-page-documentation-swagger-configuration.png %}[]
 
 
 == Visibility
 
 Once your documentation page is created, this is not published on the portal for all the users, but only you. You will see this message:
 
-image::apim/1.x/graviteeio-page-documentation-draft.png[]
+image::{% link images/apim/1.x/graviteeio-page-documentation-draft.png %}[]
 
 == External documentation
 
@@ -126,4 +126,4 @@ The API owner is <#if api.primaryOwner.email??><a href="mailto:${api.primaryOwne
 
 Let's see the result for an API `stores`:
 
-image::apim/1.x/graviteeio-page-documentation.png[]
+image::{% link images/apim/1.x/graviteeio-page-documentation.png %}[]

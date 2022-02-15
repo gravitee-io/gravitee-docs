@@ -13,7 +13,7 @@ To create your hierarchy:
 
 . If you have multiple accounts, select the account from the drop-down in the breadcrumb navigation.
 +
-image:cockpit/dashboard-account-select.png[]
+image:{% link images/cockpit/dashboard-account-select.png %}[]
 
 . Create an organization with *NEW ORGANIZATION*.
 . Create the environments with *NEW ENVIRONMENT*. You will need to select the organization the environments belong to.
@@ -29,4 +29,4 @@ You can update the general details of entities, delete entities, and manage user
 To update settings for an entity in your organization:
 
 . Click the organization name in the left-hand menu.
-. Click the settings icon image:icons/cockpit-settings-icon.png[role="icon"] of the entity.
+. Click the settings icon image:{% link images/icons/cockpit-settings-icon.png %}[role="icon"] of the entity.

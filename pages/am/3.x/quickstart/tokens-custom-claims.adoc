@@ -16,13 +16,13 @@ You can add custom claims to your Access Tokens or ID Tokens.
 . Scroll down to the *Custom claims* section.
 . Configure details of the custom claim and click *SAVE*.
 +
-image::am/current/graviteeio-am-quickstart-tokens-custom-claims.png[]
+image::{% link images/am/current/graviteeio-am-quickstart-tokens-custom-claims.png %}[]
 +
 You can now request your tokens to retrieve your custom claims.
 
 NOTE: The mapping here uses the link:{{ '/apim/3.x/apim_publisherguide_expression_language.html' | relative_url }}[Gravitee Expression Language^] to dynamically add custom data. You can also use raw values to add more static information.
 
-image::am/current/graviteeio-am-quickstart-tokens-custom-claims-info.png[]
+image::{% link images/am/current/graviteeio-am-quickstart-tokens-custom-claims-info.png %}[]
 
 To retrieve claims from the link:{{ '/am/current/am_quickstart_profile_information.html' | relative_url }}[User Profile^], use the following link:{{ '/apim/3.x/apim_publisherguide_expression_language.html' | relative_url }}[Gravitee Expression Language^] formats: +
 `{#context.attributes['user']['claims']['preferred_username']}` for attributes under the `additionalInformation` dict +

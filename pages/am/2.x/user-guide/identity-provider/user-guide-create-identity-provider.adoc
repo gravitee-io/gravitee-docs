@@ -17,7 +17,7 @@ In memory user directory, useful for testing purpose or setting default accounts
 
 . Give your identity provider a *name* and create a identity provider by filling out the configuration form and press `CREATE`
 
-image::am/2.x/graviteeio-am-quickstart-create-idp.png[]
+image::{% link images/am/2.x/graviteeio-am-quickstart-create-idp.png %}[]
 
 You can also create a security domain via the Gravitee.io AM API
 
@@ -40,7 +40,7 @@ LDAP and Active Directory user/groups directory mainly used inside organizations
 
 . Give your identity provider a *name* and create a identity provider by filling out the configuration form and press `CREATE`
 
-image::am/2.x/graviteeio-am-userguide-ldap-idp.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-ldap-idp.png %}[]
 
 You can also create a security domain via the Gravitee.io AM API
 
@@ -67,7 +67,7 @@ HTTP Identity Provider let you authenticate and manage your users thanks to remo
 
 * Give your identity provider a *name* and create a identity provider by filling out the configuration form and press `CREATE`
 
-image::am/2.x/graviteeio-am-userguide-http-idp.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-http-idp.png %}[]
 
 [source]
 ----
@@ -82,7 +82,7 @@ WARNING: For the Identity Provider to work, the user's payload must at least con
 To have a more information about your user you can rely on the link:https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims[Standard Claims] of the OpenID Connect protocol.
 To achieve this you can use the User Mapper feature of Gravitee.io AM.
 
-image::am/2.x/graviteeio-am-userguide-http-idp-mapping.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-http-idp-mapping.png %}[]
 
 === Configuration
 
@@ -288,7 +288,7 @@ NOTE: Only the _username_ attribute is available at this stage.
 
 == Custom identity provider
 
-image::am/2.x/graviteeio-am-userguide-custom-idp.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-custom-idp.png %}[]
 
 Gravitee.io Access Management is a flexible and extensible solution based on pluggable modules architecture.
 You can develop your own identity provider and provide an authenticate method to register your users to use them with Gravitee.io AM.

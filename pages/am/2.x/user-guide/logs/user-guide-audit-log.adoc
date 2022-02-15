@@ -11,7 +11,7 @@ The Audit Log page of the Portal UI displays all events that occur, including us
 . Go to http://GRAVITEEIO-AM-UI-HOST
 . From the homepage, go to your security domain's settings page and go to `Audit Log` section
 
-image::am/2.x/graviteeio-am-userguide-logs-audit.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-logs-audit.png %}[]
 
 NOTE: All these information can be retrieved via the link:{{ '/am/2.x/management-api/index.html#tag/audit' | relative_url }}[AM Management API].
 
@@ -27,7 +27,7 @@ NOTE: Currently only a MongoDB reporter is available but the Gravitee.io plugins
 . From the homepage, go to your security domain's settings page and go to `Audit Log` section
 . Click on the "settings" icon and configure the reporter
 
-image::am/2.x/graviteeio-am-userguide-logs-audit-reporter.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-logs-audit-reporter.png %}[]
 
 NOTE: There is no log retention, is up to you define a retention window and periodically clear older data.
 

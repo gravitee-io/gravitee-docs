@@ -13,7 +13,7 @@ AM includes various device identifier mechanisms for remembering the devices you
 == Create a new device identifier
 
 . In AM Console, click *Settings > Device Identifier*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Select the device identifier type and click *Next*.
 . Enter the configuration details and click *Create*.
 
@@ -22,11 +22,11 @@ AM includes various device identifier mechanisms for remembering the devices you
 
 You don't need to configure anything extra for FingerprintJS v3 Community device identifiers. Just create the configuration and enable the link:{{ '/am/current/am_userguide_mfa_remember_device.html' | relative_url }}[Remember device^] feature.
 
-image::am/current/graviteeio-am-userguide-device-identifier-fpjsv3community.png[Code Snippets]
+image::{% link images/am/current/graviteeio-am-userguide-device-identifier-fpjsv3community.png %}[Code Snippets]
 
 == FingerprintJs v3 Pro
 
 For FingerprintJs v3 Pro device identifiers, you need to create an account and enter your **Browser token** and **Registration region** (this field is optional for non-European
 accounts).
 
-image::am/current/graviteeio-am-userguide-device-identifier-fpjsv3pro.png[Code Snippets]
+image::{% link images/am/current/graviteeio-am-userguide-device-identifier-fpjsv3pro.png %}[Code Snippets]

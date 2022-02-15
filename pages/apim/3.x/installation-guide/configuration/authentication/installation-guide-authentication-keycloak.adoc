@@ -19,11 +19,11 @@ Before you can connect to the Gravitee.io portal using Keycloak, you need to cre
 
 . In Keycloak, create a new client.
 +
-image::apim/3.x/installation/authentication/keycloak_create_client.png[Create a new client]
+image::{% link images/apim/3.x/installation/authentication/keycloak_create_client.png %}[Create a new client]
 
 . Enter the client details.
 +
-image::apim/3.x/installation/authentication/keycloak_configure_client.png[Fill the form]
+image::{% link images/apim/3.x/installation/authentication/keycloak_configure_client.png %}[Fill the form]
 
 WARNING: The `Valid Redirect URIs` value must exactly match the domain which is hosting APIM Portal.
 
@@ -31,7 +31,7 @@ WARNING: The `Valid Redirect URIs` value must exactly match the domain which is 
 
 After you create the client, you can retrieve its details for authentication configuration.
 
-image::apim/3.x/installation/authentication/keycloak_client_credentials.png[Get Client credentials]
+image::{% link images/apim/3.x/installation/authentication/keycloak_client_credentials.png %}[Get Client credentials]
 
 == Configure APIM
 
@@ -73,11 +73,11 @@ include::../../partial/management-api-configuration-idp-override.adoc[leveloffse
 ==== APIM Console configuration
 
 . Click *Organization Settings > Authentication*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"] and select the *OpenID Connect* icon.
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"] and select the *OpenID Connect* icon.
 . If you want to use this provider to log in to APIM Portal, ensure that *Allow portal authentication to use this identity provider* is checked. To use it only for APIM Console, uncheck this option.
 . Enter the details of the provider, including the credentials created in the AM client.
 +
-image::apim/3.x/management-api-configuration-idp/new-oidc.png[Gravitee.io - New OIDC IDP]
+image::{% link images/apim/3.x/management-api-configuration-idp/new-oidc.png %}[Gravitee.io - New OIDC IDP]
 . Click *CREATE*.
 . Activate the provider for Portal or Console login, as described in link:{{ '/apim/3.x/apim_installguide_authentication.html#activating-providers' | relative_url }}[Activating providers^].
 
@@ -129,28 +129,28 @@ security:
 
 . Create your new user.
 +
-image::apim/3.x/installation/authentication/keycloak_users.png[Create a user]
+image::{% link images/apim/3.x/installation/authentication/keycloak_users.png %}[Create a user]
 +
 . Enter the user details.
 +
-image::apim/3.x/installation/authentication/keycloak_create_user.png[Fill the user form]
+image::{% link images/apim/3.x/installation/authentication/keycloak_create_user.png %}[Fill the user form]
 
 . Define the user credentials.
 +
-image::apim/3.x/installation/authentication/keycloak_create_user_credentials.png[Define user credentials]
+image::{% link images/apim/3.x/installation/authentication/keycloak_create_user_credentials.png %}[Define user credentials]
 
 === Log in to APIM Portal
 . Click *Sign in with Keycloak*.
 +
-image::apim/3.x/installation/authentication/keycloak_login_form.png[Login Form]
+image::{% link images/apim/3.x/installation/authentication/keycloak_login_form.png %}[Login Form]
 
 . Enter the Keycloak credentials and click *Log In*.
 +
-image::apim/3.x/installation/authentication/keycloak_login_form2.png[Keycloak Login Form]
+image::{% link images/apim/3.x/installation/authentication/keycloak_login_form2.png %}[Keycloak Login Form]
 +
 You have successfully logged in:
 +
-image::apim/3.x/installation/authentication/keycloak_login_success.png[Here we are !]
+image::{% link images/apim/3.x/installation/authentication/keycloak_login_success.png %}[Here we are !]
 
 == Managing roles with keycloak
 
@@ -160,33 +160,33 @@ Configure Keycloak and Gravitee to map your own organization with available buil
 
 . Consider built-in or create custom Gravitee roles.
 +
-image::apim/3.x/installation/authentication/keycloak_mng-00-gravitee-default_roles.png[Gravitee console - roles page]
+image::{% link images/apim/3.x/installation/authentication/keycloak_mng-00-gravitee-default_roles.png %}[Gravitee console - roles page]
 
 === Create and configure Keycloak Client scope
 . In your realm, go to the `Client scopes` page.
 
 . Set a special gravitee-client-groups https://oauth.net/2/scope/[Scope] that will contain users' roles.
 +
-image::apim/3.x/installation/authentication/keycloak_mng-01-client_scopes-roles_add_client_scope.png[Keycloak console - Create scope]
+image::{% link images/apim/3.x/installation/authentication/keycloak_mng-01-client_scopes-roles_add_client_scope.png %}[Keycloak console - Create scope]
 
 .  In the new client scope, set a mapper with Claim name "groups".
 +
-image::apim/3.x/installation/authentication/keycloak_mng-02-client_scopes-mapper.png[Keycloak console - Add mapper to scope]
+image::{% link images/apim/3.x/installation/authentication/keycloak_mng-02-client_scopes-mapper.png %}[Keycloak console - Add mapper to scope]
 
 . In your realm, go to the `Client` page, and select your Client.
 . Add the new configured scope in the `Client Scopes` tab.
 +
-image::apim/3.x/installation/authentication/keycloak_mng-03-client-add_scope.png[Keycloak console - Add scope to client]
+image::{% link images/apim/3.x/installation/authentication/keycloak_mng-03-client-add_scope.png %}[Keycloak console - Add scope to client]
 
 === Create Keycloak Client roles 
 
 . In your client, create roles as needed by organization.
 +
-image::apim/3.x/installation/authentication/keycloak_mng-04-client-add_roles.png[Keycloak console - Create client roles ]
+image::{% link images/apim/3.x/installation/authentication/keycloak_mng-04-client-add_roles.png %}[Keycloak console - Create client roles ]
 
 === Configure Keycloack users with appropiate roles
 
-image::apim/3.x/installation/authentication/keycloak_mng-roles-05-users-add_user_client_roles.png[Keycloak console - Add roles to user]
+image::{% link images/apim/3.x/installation/authentication/keycloak_mng-roles-05-users-add_user_client_roles.png %}[Keycloak console - Add roles to user]
 
 === Configure Gravitee role mappings
 

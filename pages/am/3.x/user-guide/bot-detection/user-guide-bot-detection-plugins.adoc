@@ -12,13 +12,13 @@ AM supports various Bot Detection mechanisms for protecting user account out of 
 
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Bot Detection*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Select the bot detection type and click *Next*.
 . Enter the configuration details and click *Create*.
 
 Once created, the details page of the plugin instance will display some code snippet to help you in the integration with your custom application pages if any.
 
-image::am/current/graviteeio-am-userguide-bot-detection-snippet.png[Code Snippets]
+image::{% link images/am/current/graviteeio-am-userguide-bot-detection-snippet.png %}[Code Snippets]
 
 == Google reCAPTCHA v3
 

@@ -33,7 +33,7 @@ NOTE: The `Authorization callback URL` is a temporary value that will be updated
 
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Providers*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Choose the *GitHub* identity provider type and click *Next*.
 +
 NOTE: Ensure you have the GitHub application generated Client ID and Client Secret to hand.
@@ -42,7 +42,7 @@ NOTE: Ensure you have the GitHub application generated Client ID and Client Secr
 . Enter your GitHub application Client ID and Client Secret.
 . Click *Create*.
 +
-image::am/current/graviteeio-am-userguide-social-idp-github.png[]
+image::{% link images/am/current/graviteeio-am-userguide-social-idp-github.png %}[]
 +
 NOTE: On the right side of the screen, under *1. Configure the Redirect URI* copy the value of the URL. You will use it to update your GitHub application settings.
 
@@ -57,10 +57,10 @@ You can test your GitHub connection using a web application created in AM.
 
 . In AM Console, click *Applications* and select your social identity provider.
 +
-image::am/current/graviteeio-am-userguide-social-idp-list.png[]
+image::{% link images/am/current/graviteeio-am-userguide-social-idp-list.png %}[]
 +
 . Call the Login Page (i.e the `/oauth/authorize` endpoint). If the connection is working you will see a *Sign in with ...* button.
 +
-image::am/current/graviteeio-am-userguide-social-idp-login.png[]
+image::{% link images/am/current/graviteeio-am-userguide-social-idp-login.png %}[]
 +
 If the button is not visible, something may be wrong with the identity provider settings. Check the AM Gateway log for more information.

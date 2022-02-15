@@ -18,14 +18,14 @@ To create applications, you need to enable the correct options in the *Settings 
 
 To create a simple application, enable the *Simple* option in the *Allowed application types* section:
 
-image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-application-settings-1.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-application-settings-1.png %}[]
 
 To create browser, web, native or backend-to-backend applications:
 
 * define at least one client registration provider
 * enable the following options:
 +
-image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-application-settings-2.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-application-settings-2.png %}[]
 
 == Create an application
 
@@ -35,29 +35,29 @@ NOTE: Only users with the required permissions can create an application. For mo
 . Click *Dashboard* in the top menu.
 . Click the *CREATE AN APPLICATION* button.
 +
-image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-1.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-1.png %}[]
 
 . Enter the application name and description, and upload an image, if required. Click *NEXT*.
 +
-image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-2.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-2.png %}[]
 
 . (Optional) If you want to subscribe to an API's OAuth 2.0/JWT plan and you have an OAuth 2.0 client, make a note of your *client_id* and complete the security part.
 . Select the type of application and complete the details. Click *NEXT*.
 +
-image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-3.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-3.png %}[]
 
 . (Optional) Search for an API and request a subscription (see link:{{ '/apim/3.x/apim_quickstart_consume_ui.html' | relative_url }}[Consume an API with APIM Portal]) in the Quick Start Guide. Click *NEXT*.
 . Check your application information in the summary, then click *CREATE THE APP*.
 +
-image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-4.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-4.png %}[]
 +
 NOTE:  If the selected plan requires the acceptance of general conditions, these will be displayed on the right.
 +
-image::apim/3.x/api-consumer-guide/developer-manage/app-subscribe-general-conditions.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/app-subscribe-general-conditions.png %}[]
 +
 Congratulations! Your new application has been created.
 +
-image::apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-5.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/graviteeio-create-app-5.png %}[]
 
 == Manage members
 
@@ -90,27 +90,27 @@ To manage members:
 . Click *Applications* in the top menu.
 . In the *Applications* screen, select your application and go to the *Members* page.
 +
-image::apim/3.x/api-consumer-guide/developer-manage/manage-members.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/manage-members.png %}[]
 
 === Add and remove users
 You can add new users by searching for them:
 
-image::apim/3.x/api-consumer-guide/developer-manage/manage-members-add.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/manage-members-add.png %}[]
 
 You can remove users by clicking the trash icon:
 
-image::apim/3.x/api-consumer-guide/developer-manage/manage-members-remove.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/manage-members-remove.png %}[]
 
 === Transfer ownership
 You can transfer ownership to another user, when the current primary owner leaves the project, for example.
 
-image::apim/3.x/api-consumer-guide/developer-manage/manage-members-transfer-ownership.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/manage-members-transfer-ownership.png %}[]
 
 == Manage subscriptions
 
 Subscriptions represent the plans the application has subscribed to. In the Subscriptions page, application members can see if their access to the APIs is still valid, has not been revoked or is in the API publisher approval process.
 
-image::apim/3.x/api-consumer-guide/developer-manage/app-subscriptions.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/app-subscriptions.png %}[]
 
 == Analytics
 
@@ -163,4 +163,4 @@ The `ADMIN` user will become the primary owner of the application.
 
 NOTE: Every application's subscriptions will be restored in `PENDING` status. The API publisher will have to reactivate manually the needed subscriptions.
 
-image::apim/3.x/api-consumer-guide/developer-manage/app-restore.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-manage/app-restore.png %}[]

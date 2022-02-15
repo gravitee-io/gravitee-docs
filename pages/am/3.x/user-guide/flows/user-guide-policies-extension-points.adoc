@@ -15,7 +15,7 @@ AM includes four flow types:
 * consent
 * register
 
-image::am/current/graviteeio-am-userguide-policies.png[]
+image::{% link images/am/current/graviteeio-am-userguide-policies.png %}[]
 
 NOTE: Since version 3.10.0, it is possible to add new flows and apply condition execution on each flow using Expression Language. If multiple flows have a valid condition (or have an empty one), all these flows are executed.
 

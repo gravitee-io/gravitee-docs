@@ -17,7 +17,7 @@ Dictionary properties are based on key-value pairs. You can create two types of 
 
 Dictionaries need to be deployed to APIM Gateway before you can use them. You can see the date and time the dictionary was last deployed in the dictionary list:
 
-image:apim/3.x/installation/configuration/configure-dict-list.png[]
+image:{% link images/apim/3.x/installation/configuration/configure-dict-list.png %}[]
 
 You can access dictionary properties using the link:{{ '/apim/3.x/apim_publisherguide_expression_language.html' | relative_url }}[Expression Language^] `#dictionaries` statement.
 
@@ -64,8 +64,8 @@ APIM retrieves the properties at the interval defined and lists them in the *Pro
 
 The following example creates a list of properties based on extracting the names and versions from the JSON at the defined URL and assigning them to the property keys and values:
 
-image:apim/3.x/installation/configuration/configure-dict-dynamic-property-def.png[]
+image:{% link images/apim/3.x/installation/configuration/configure-dict-dynamic-property-def.png %}[]
 
 When you click *START*, the properties are added to the list according to the defined schedule:
 
-image:apim/3.x/installation/configuration/configure-dict-dynamic-property-list.png[]
+image:{% link images/apim/3.x/installation/configuration/configure-dict-dynamic-property-list.png %}[]

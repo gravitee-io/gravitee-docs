@@ -35,11 +35,11 @@ You can customize email templates for an entire security domain or for an indivi
 * for a security domain, click *Settings*
 * for an application, click *Applications* and select your application, then click the *Design* tab
 
-. In the *Emails* section, click the edit icon image:icons/edit-icon.png[role="icon"] of the email template.
+. In the *Emails* section, click the edit icon image:{% link images/icons/edit-icon.png %}[role="icon"] of the email template.
 . Update the HTML as required. You can preview the result in the *Preview* tab.
 +
-image::am/current/graviteeio-am-userguide-um-emails.png[]
+image::{% link images/am/current/graviteeio-am-userguide-um-emails.png %}[]
 
-NOTE: Each email requires a minimum configuration. You can retrieve contextual documentation on the HTML needed for each type of page by clicking the image:icons/am-info-icon.png[role="icon"] information icon.
+NOTE: Each email requires a minimum configuration. You can retrieve contextual documentation on the HTML needed for each type of page by clicking the image:{% link images/icons/am-info-icon.png %}[role="icon"] information icon.
 
-image::am/current/graviteeio-am-userguide-um-email-info.png[]
+image::{% link images/am/current/graviteeio-am-userguide-um-email-info.png %}[]

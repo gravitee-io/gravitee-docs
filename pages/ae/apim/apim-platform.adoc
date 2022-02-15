@@ -12,7 +12,7 @@
 This section explains how to configure alerts for the entire APIM platform.
 
 .API Management - Platform alerts
-image::ae/apim/platform_alerts.png[Platform alerts]
+image::{% link images/ae/apim/platform_alerts.png %}[Platform alerts]
 
 == Rules
 
@@ -26,11 +26,11 @@ These conditions mainly apply to the node status and all the information emanati
 In the following example configuration, an alert is sent when the CPU of an API Gateway reaches a threshold of 60%:
 
 .API Management - API Gateway CPU > 60%
-image::ae/apim/api_gateway_alert_threshold_60.png[API Gateway CPU > 60%]
+image::{% link images/ae/apim/api_gateway_alert_threshold_60.png %}[API Gateway CPU > 60%]
 
 === API Gateway is stopped
 
 The following configuration alerts when an APIM Gateway is stopped:
 
 .API Management - API Gateway stopped
-image::ae/apim/api_gateway_alert_lifecycle_stopped.png[API Gateway stopped]
+image::{% link images/ae/apim/api_gateway_alert_lifecycle_stopped.png %}[API Gateway stopped]

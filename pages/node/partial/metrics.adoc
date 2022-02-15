@@ -70,9 +70,9 @@ scrape_configs:
 By default when running Prometheus, the UI is exposed at \http://localhost:9090/graph
 
 .Show `http_client_connections` metrics
-image::apim/3.x/installation/metrics/prometheus/metrics_prometheus_graph.png[Show `http_client_connections` metrics]
+image::{% link images/apim/3.x/installation/metrics/prometheus/metrics_prometheus_graph.png %}[Show `http_client_connections` metrics]
 
 The following example shows the memory consumed by the Gateway instance:
 
 .Show `jvm_memory_used_bytes` metrics
-image::apim/3.x/installation/metrics/prometheus/metrics_prometheus_graph_memory.png[Show `jvm_memory_used_bytes` metrics]
+image::{% link images/apim/3.x/installation/metrics/prometheus/metrics_prometheus_graph_memory.png %}[Show `jvm_memory_used_bytes` metrics]
