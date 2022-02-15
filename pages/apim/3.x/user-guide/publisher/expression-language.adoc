@@ -239,7 +239,7 @@ automatically created. These attributes are:
 ^.^|X (for no api-key plan)
 |===
 
-Additionally, some policies (like the link:/apim/3.x/apim_policies_oauth2.html#attributes[OAuth2 policy])
+Additionally, some policies (like the link:{{ '/apim/3.x/apim_policies_oauth2.html#attributes' | relative_url }}[OAuth2 policy])
 register other attributes in the context. See the documentation for the policies you are using for more information.
 
 === Example

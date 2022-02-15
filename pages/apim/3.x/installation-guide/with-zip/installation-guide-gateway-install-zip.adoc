@@ -24,7 +24,7 @@ NOTE: You can download the latest OpenJDK from the https://jdk.java.net/archive/
 
 === MongoDB and Elasticsearch
 
-The default APIM Gateway distribution requires link:/apim/3.x/apim_installguide_repositories_mongodb.html[MongoDB, window=\"_blank\"] to poll environment configuration and link:/apim/3.x/apim_installguide_repositories_elasticsearch.html[Elasticsearch, window=\"_blank\"] for
+The default APIM Gateway distribution requires link:{{ '/apim/3.x/apim_installguide_repositories_mongodb.html' | relative_url }}[MongoDB, window=\"_blank\"] to poll environment configuration and link:{{ '/apim/3.x/apim_installguide_repositories_elasticsearch.html' | relative_url }}[Elasticsearch, window=\"_blank\"] for
 reporting and analytics. See the vendor documentation for supported versions.
 
 NOTE: You can download MongoDB from https://www.mongodb.org/downloads#production[MongoDB Download Site, window=\"_blank\"]

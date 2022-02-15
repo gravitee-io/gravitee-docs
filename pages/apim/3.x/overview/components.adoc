@@ -8,10 +8,10 @@
 == Overview
 Gravitee.io APIM is separated into four main components: 
 
-1. link:/apim/3.x/apim_overview_components.html#gravitee-components-gateway[APIM Gateway].  
-2. link:/apim/3.x/apim_overview_components.html#gravitee-components-rest-api[APIM API]. 
-3. link:/apim/3.x/apim_overview_components.html#gravitee-components-mgmt-ui[APIM Console]. 
-4. link:/apim/3.x/apim_overview_components.html#gravitee-components-portal-ui[APIM Portal]. 
+1. link:{{ '/apim/3.x/apim_overview_components.html#gravitee-components-gateway' | relative_url }}[APIM Gateway].
+2. link:{{ '/apim/3.x/apim_overview_components.html#gravitee-components-rest-api' | relative_url }}[APIM API].
+3. link:{{ '/apim/3.x/apim_overview_components.html#gravitee-components-mgmt-ui' | relative_url }}[APIM Console].
+4. link:{{ '/apim/3.x/apim_overview_components.html#gravitee-components-portal-ui' | relative_url }}[APIM Portal].
 
 [[gravitee-components-gateway]]
 == APIM Gateway
@@ -26,7 +26,7 @@ image::apim/3.x/overview/components/new-components-apim-gateway-internal-gateway
 == APIM API
 This RESTful API exposes services to manage and configure the <<gravitee-components-mgmt-ui, APIM Console>> and <<gravitee-components-portal-ui, APIM Portal>> web UIs.
 All exposed services are restricted by authentication and authorization rules. For more information, see 
-the link:/apim/3.x/apim_installguide_rest_apis_documentation.html[API Reference] section.
+the link:{{ '/apim/3.x/apim_installguide_rest_apis_documentation.html' | relative_url }}[API Reference] section.
 
 [[gravitee-components-mgmt-ui]]
 == APIM Console

@@ -14,7 +14,7 @@ device is known.
 
 == Configure AM to remember an authentication device
 
-. Configure a link:/am/current/am_userguide_device_identifier_plugins.html[device identifier^].
+. Configure a link:{{ '/am/current/am_userguide_device_identifier_plugins.html' | relative_url }}[device identifier^].
 . In AM Console, select your application.
 . Click the **Settings** tab, then click **Multifactor Auth**.
 . Toggle on **Enable Remember Device**.

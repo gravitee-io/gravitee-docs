@@ -46,4 +46,4 @@ sudo yum -q makecache -y --disablerepo='*' --enablerepo='graviteeio'
 ---- 
 
 == Next
-Next is link:/apim/3.x/apim_installation_guide_amazon_prerequisite_java.html[installing a Java 11 jre].
+Next is link:{{ '/apim/3.x/apim_installation_guide_amazon_prerequisite_java.html' | relative_url }}[installing a Java 11 jre].

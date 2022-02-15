@@ -21,11 +21,11 @@ NOTE: By default these actions are possible only during the login process, but i
 
 You can access the online API reference or the OpenAPI specification :
 
-* 3.14 -- link:/am/current/account/3.14/index.html[online reference] - link:/am/current/account/3.14/swagger.yml[OpenAPI spec]
-* 3.13 -- link:/am/current/account/3.13/index.html[online reference] - link:/am/current/account/3.13/swagger.yml[OpenAPI spec]
-* 3.12 -- link:/am/current/account/3.12/index.html[online reference] - link:/am/current/account/3.12/swagger.yml[OpenAPI spec]
-* 3.11 -- link:/am/current/account/3.11/index.html[online reference] - link:/am/current/account/3.11/swagger.yml[OpenAPI spec]
-* 3.10 -- link:/am/current/account/3.10/index.html[online reference] - link:/am/current/account/3.10/swagger.yml[OpenAPI spec]
+* 3.14 -- link:{{ '/am/current/account/3.14/index.html' | relative_url }}[online reference] - link:{% link /am/current/account/3.14/swagger.yml %}[OpenAPI spec]
+* 3.13 -- link:{{ '/am/current/account/3.13/index.html' | relative_url }}[online reference] - link:{% link /am/current/account/3.13/swagger.yml %}[OpenAPI spec]
+* 3.12 -- link:{{ '/am/current/account/3.12/index.html' | relative_url }}[online reference] - link:{% link /am/current/account/3.12/swagger.yml %}[OpenAPI spec]
+* 3.11 -- link:{{ '/am/current/account/3.11/index.html' | relative_url }}[online reference] - link:{% link /am/current/account/3.11/swagger.yml %}[OpenAPI spec]
+* 3.10 -- link:{{ '/am/current/account/3.10/index.html' | relative_url }}[online reference] - link:{% link /am/current/account/3.10/swagger.yml %}[OpenAPI spec]
 
 
 == Configure the self-service account management
@@ -36,7 +36,7 @@ NOTE: Self-service account API is deployed at http(s)://AM_GW_HOST/{domain}/acco
 
 To configure the self-service account settings :
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Select your security domain and click *Settings > Self-service account*.
 . Configure your settings and click *SAVE*.
 

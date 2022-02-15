@@ -6,7 +6,7 @@
 
 == Overview
 
-This section walks you through creating and publishing your first API with APIM Console. To learn more about creating and publishing APIs, see the link:/apim/3.x/apim_publisherguide_manage_api.html[API Publisher Guide].
+This section walks you through creating and publishing your first API with APIM Console. To learn more about creating and publishing APIs, see the link:{{ '/apim/3.x/apim_publisherguide_manage_api.html' | relative_url }}[API Publisher Guide].
 
 == Create your API with APIM Console
 
@@ -33,7 +33,7 @@ NOTE: Before consumers can subscribe to your API, you must publish one or more _
 +
 image::apim/3.x/quickstart/publish/graviteeio-create-first-api-3.png[]
 +
-NOTE: Ensure you set the link:/apim/3.x/apim_policies_apikey.html[API Key] **security type**. For more information about plan configuration, see the link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[API Publisher Plans and subscriptions Guide].
+NOTE: Ensure you set the link:{{ '/apim/3.x/apim_policies_apikey.html' | relative_url }}[API Key] **security type**. For more information about plan configuration, see the link:{{ '/apim/3.x/apim_publisherguide_plans_subscriptions.html' | relative_url }}[API Publisher Plans and subscriptions Guide].
 
 . In the **Doc** step, you can add some Markdown and OpenAPI files. You can skip this step for now. Click **SKIP**.
 +

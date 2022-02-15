@@ -2,12 +2,12 @@
 <head>
     {% include head.html %}
 
-    <script src="{{ '/js/init-default.js' | relative_url }}"></script>
+    <script src="{% link /js/init-default.js %}"></script>
 
     {% if page.datatable == true %}
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js"></script>
-    <script src="{{ '/js/init-table.js' | relative_url }}"></script>
+    <script src="{% link /js/init-table.js %}"></script>
     {% endif %}
 
     {% include GoogleTagManager_head.liquid %}

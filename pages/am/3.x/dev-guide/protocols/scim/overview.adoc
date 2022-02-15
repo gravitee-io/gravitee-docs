@@ -11,7 +11,7 @@ SCIM enables to automate the provisioning/deprovisioning process and manage user
 
 SCIM protocol endpoints exposed by AM API are as follows:
 
-* link:/am/current/scim/index.html[SCIM 2.0 Console^] - link:/am/current/scim/swagger.yml[Swagger spec^]
+* link:{{ '/am/current/scim/index.html' | relative_url }}[SCIM 2.0 Console^] - link:{% link /am/current/scim/swagger.yml %}[Swagger spec^]
 
 == Protocol
 

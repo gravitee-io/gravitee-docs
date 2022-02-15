@@ -4,15 +4,15 @@
 :page-folder: am/installation-guide
 :page-layout: am
 
-NOTE: For all these breaking changes, the Migration Guide can be found link:/am/current/am_installguide_migration.html[here^s].
+NOTE: For all these breaking changes, the Migration Guide can be found link:{{ '/am/current/am_installguide_migration.html' | relative_url }}[here^s].
 
 == AM Flows introduced
 
-AM link:/am/current/am_overview_concepts.html#gravitee-am-concepts-flow[flows] are the new way to build your own authentication and authorization journey. They replace the old concept of link:/am/current/am_overview_concepts.html#gravitee-am-concepts-extension-point[Extension Point].
+AM link:{{ '/am/current/am_overview_concepts.html#gravitee-am-concepts-flow' | relative_url }}[flows] are the new way to build your own authentication and authorization journey. They replace the old concept of link:{{ '/am/current/am_overview_concepts.html#gravitee-am-concepts-extension-point' | relative_url }}[Extension Point].
 
 To provide this new feature, the AM Management API has been changed to reflect these changes.
 
-NOTE: All `/domains/:domainId/policies/**` routes have been removed for this version. See the new link:/am/current/management-api/3.5/index.html[AM v3 OpenAPI descriptor] for more information.
+NOTE: All `/domains/:domainId/policies/**` routes have been removed for this version. See the new link:{{ '/am/current/management-api/3.5/index.html' | relative_url }}[AM v3 OpenAPI descriptor] for more information.
 
 NOTE: If you are using the AM Management API directly (not via the Portal) please update your configuration.
 

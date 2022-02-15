@@ -29,7 +29,7 @@ NOTE: You can also configure a LDAP server to fetch additional information on th
 
 == Create a Kerberos connector
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *Kerberos* as your identity provider type and click *Next*.

@@ -87,15 +87,15 @@ The distribution mode is not relevant for most of usecases.
 
 API publishers can create cache resources:
 
-- to cache upstream of a response with the link:/apim/3.x/apim_policies_cache.html[Cache policy^].
-- to cache access tokens with the link:/apim/3.x/apim_policies_oauth2.html[OAuth2 policy^].
+- to cache upstream of a response with the link:{{ '/apim/3.x/apim_policies_cache.html' | relative_url }}[Cache policy^].
+- to cache access tokens with the link:{{ '/apim/3.x/apim_policies_oauth2.html' | relative_url }}[OAuth2 policy^].
 
-Default distribution comes with link:/apim/3.x/apim_resources_cache.html[Gravitee Resource Cache].
+Default distribution comes with link:{{ '/apim/3.x/apim_resources_cache.html' | relative_url }}[Gravitee Resource Cache].
 This plugin stores content in memory and is locally managed on each gateway node of the installation.
 
-Configuration of cache resources cannot be managed using the `hazelcast.xml` file. The configuration is directly defined on the cache resource. See link:/apim/3.x/apim_resources_cache.html[Resource Cache^].
+Configuration of cache resources cannot be managed using the `hazelcast.xml` file. The configuration is directly defined on the cache resource. See link:{{ '/apim/3.x/apim_resources_cache.html' | relative_url }}[Resource Cache^].
 
 === Need a persistent cache ?
 
-Since 3.10, we provide a new link:/apim/3.x/apim_resources_cache_redis.html[Gravitee Resource Cache Redis] based on https://redis.io/documentation[Redis].
-This plugin is not in distribution by default, but you can https://download.gravitee.io/#graviteeio-apim/plugins/resources/gravitee-resource-cache-redis/[download] plugin and follow link:/apim/3.x/apim_installguide_docker_customize.html#install_an_additional_plugin[instructions] to install it.
+Since 3.10, we provide a new link:{{ '/apim/3.x/apim_resources_cache_redis.html' | relative_url }}[Gravitee Resource Cache Redis] based on https://redis.io/documentation[Redis].
+This plugin is not in distribution by default, but you can https://download.gravitee.io/#graviteeio-apim/plugins/resources/gravitee-resource-cache-redis/[download] plugin and follow link:{{ '/apim/3.x/apim_installguide_docker_customize.html#install_an_additional_plugin' | relative_url }}[instructions] to install it.

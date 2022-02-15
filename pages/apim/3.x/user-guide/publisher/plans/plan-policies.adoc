@@ -5,7 +5,7 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, documentation, manual, guide, reference, api, CGU, GCU
 :page-layout: apim3x
 
-NOTE: From APIM 3.5.x, the recommended method for adding policies to plans is with link:/apim/3.x/apim_publisherguide_design_studio_create.html#flow-policies[Design Studio^].
+NOTE: From APIM 3.5.x, the recommended method for adding policies to plans is with link:{{ '/apim/3.x/apim_publisherguide_design_studio_create.html#flow-policies' | relative_url }}[Design Studio^].
 
 == Configure flows and policies in Design Studio
 
@@ -14,7 +14,7 @@ NOTE: From APIM 3.5.x, the recommended method for adding policies to plans is wi
 image::apim/3.x/api-publisher-guide/plans-subscriptions/staging-plan.png[]
 . Click the design icon image:icons/design-icon.png[role="icon"].
 +
-APIM opens the plan in Design Studio, where you can configure flows and policies, as described in the link:/apim/3.x/apim_publisherguide_design_studio_create.html[Design Studio Guide].
+APIM opens the plan in Design Studio, where you can configure flows and policies, as described in the link:{{ '/apim/3.x/apim_publisherguide_design_studio_create.html' | relative_url }}[Design Studio Guide].
 
 == Configure policies on the Policies page of a plan
 

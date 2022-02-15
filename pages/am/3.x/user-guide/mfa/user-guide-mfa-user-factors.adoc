@@ -11,7 +11,7 @@ The MFA factors associated with their user will be removed and MFA configuration
 
 == Remove a user's MFA factors
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Users*.
 . Select the user and click the *Multi-Factor Authentication* tab.
 . Select the MFA factor you want to remove and click the remove icon image:icons/remove-icon.png[role="icon"].

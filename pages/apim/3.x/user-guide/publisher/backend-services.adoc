@@ -16,7 +16,7 @@ APIM includes a number of backend services for managing your APIs. This page exp
 
 To update the configuration for these services:
 
-. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
+. link:{{ '/apim/3.x/apim_quickstart_console_login.html' | relative_url }}[Log in to APIM Console^].
 . Click *APIs* and select an API.
 . Click *Proxy*.
 +
@@ -37,8 +37,8 @@ You configure load balancing by creating a logical grouping of endpoints and spe
 
 APIM always uses the first group defined for load balancing. Any additional groups you define are for use in policies:
 
-* redirection rules including named groups in the link:/apim/3.x/apim_policies_dynamic_routing.html#regular_expressions[Dynamic routing^] policy
-* traffic shadowing using endpoints in these groups link:/apim/3.x/apim_policies_traffic_shadowing.html[Traffic shadowing^] policy
+* redirection rules including named groups in the link:{{ '/apim/3.x/apim_policies_dynamic_routing.html#regular_expressions' | relative_url }}[Dynamic routing^] policy
+* traffic shadowing using endpoints in these groups link:{{ '/apim/3.x/apim_policies_traffic_shadowing.html' | relative_url }}[Traffic shadowing^] policy
 
 === Load balancing types
 
@@ -64,7 +64,7 @@ Endpoint 1 is selected 9 times out of 10, whereas Endpoint 2 is selected only 1 
 . Click *ADD A NEW GROUP*.
 . In the *GENERAL* tab, enter a *Name* for the group and the type of load balancing algorithm to use.
 . In the *CONFIGURATION* tab, configure any additional HTTP details for the group, such as proxy and SSL details.
-. In the *SERVICE DISCOVERY* tab, enable *Enabled service discovery* if you want external endpoints to be dynamically added or removed to or from the group, then specify the type of service discovery. For more details of service discovery in APIM, see link:/apim/3.x/apim_service_discovery_overview.html[Service discovery^]).
+. In the *SERVICE DISCOVERY* tab, enable *Enabled service discovery* if you want external endpoints to be dynamically added or removed to or from the group, then specify the type of service discovery. For more details of service discovery in APIM, see link:{{ '/apim/3.x/apim_service_discovery_overview.html' | relative_url }}[Service discovery^]).
 . Click *SAVE*.
 
 Your group is added to the list. You can now perform any of the following actions on the group by clicking the corresponding icon in the group header:
@@ -140,8 +140,8 @@ endif::[]
 
 . Enter the *HTTP Method* which triggers the health check.
 . Add the path which triggers the health check. Select *From root path* to apply the path specified at root URL level. For example, if your endpoint URL is `www.test.com/api`, this option removes `/api` before appending the path.
-. Specify headers which trigger the health check, if any. You can use link:/apim/3.x/apim_publisherguide_expression_language.html[Gravitee Expression Language^] to configure a header. Available variables are link:/apim/3.x/apim_publisherguide_expression_language.html#dictionaries[dictionaries^] and link:/apim/3.x/apim_publisherguide_expression_language.html#properties[api's properties^] access.
-. In *Assertions*, specify any conditions to test for in the API response in order to trigger the health check. Assertions are written in link:/apim/3.x/apim_publisherguide_expression_language.html[Gravitee Expression Language^]. An assertion can be a simple 200 response (`#response.status == 200`) but you can also test for specific content.
+. Specify headers which trigger the health check, if any. You can use link:{{ '/apim/3.x/apim_publisherguide_expression_language.html' | relative_url }}[Gravitee Expression Language^] to configure a header. Available variables are link:{{ '/apim/3.x/apim_publisherguide_expression_language.html#dictionaries' | relative_url }}[dictionaries^] and link:{{ '/apim/3.x/apim_publisherguide_expression_language.html#properties' | relative_url }}[api's properties^] access.
+. In *Assertions*, specify any conditions to test for in the API response in order to trigger the health check. Assertions are written in link:{{ '/apim/3.x/apim_publisherguide_expression_language.html' | relative_url }}[Gravitee Expression Language^]. An assertion can be a simple 200 response (`#response.status == 200`) but you can also test for specific content.
 . Click *SAVE*.
 +
 You can see a visual summary of the health check configuration you specified on the right.

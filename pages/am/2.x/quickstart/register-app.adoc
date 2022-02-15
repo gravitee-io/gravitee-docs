@@ -7,9 +7,9 @@
 This guide walks you through the process of creating your first client by using the Gravitee.io AM Management UI.
 
 NOTE: Gravitee.io Access Management UI can be accessed using the following URL :
-http://GRAVITEEIO-AM-UI-HOST (see link:/am/2.x/am_installguide_portal.html[Gravitee.io AM Management UI installation^] for more information)
+http://GRAVITEEIO-AM-UI-HOST (see link:{{ '/am/2.x/am_installguide_portal.html' | relative_url }}[Gravitee.io AM Management UI installation^] for more information)
 
-NOTE: If you are running Gravitee.io AM thanks to our link:/am/2.x/am_installguide_docker.html#docker_compose[Docker Compose], the http://GRAVITEEIO-AM-UI-HOST must be https://localhost/am/ui
+NOTE: If you are running Gravitee.io AM thanks to our link:{{ '/am/2.x/am_installguide_docker.html#docker_compose' | relative_url }}[Docker Compose], the http://GRAVITEEIO-AM-UI-HOST must be https://localhost/am/ui
 
 == Create a security domain
 

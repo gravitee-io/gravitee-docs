@@ -5,51 +5,51 @@
 
 = Gravitee.io API Platform
 
-== link:/apim/3.x/apim_overview_introduction.html[API Management] {{ site.products.apim._3x.version }}
+== link:{{ '/apim/3.x/apim_overview_introduction.html' | relative_url}}[API Management] {{ site.products.apim._3x.version }}
 
- * link:/apim/3.x/apim_overview_introduction.html[Overview]
- * link:/apim/3.x/apim_quickstart_publish.html[Quick Start Guide]
- * link:/apim/3.x/apim_installguide.html[Installation Guide]
- * link:/apim/3.x/apim_configurationguide.html[Configuration Guide]
- * link:/apim/3.x/apim_publisherguide_manage_apis.html[API Publisher Guide]
- * link:/apim/3.x/apim_consumerguide_portal.html[API Consumer Guide]
- * link:/apim/3.x/apim_adminguide_organizations_and_environments.html[Administration Guide]
- * link:/apim/3.x/apim_how_to_introduction.html[How To]
- * link:/apim/3.x/apim_devguide_bootstrap.html[Developer Guide]
- * link:/apim/3.x/apim_policies_overview.html[Policy Reference]
- * link:/apim/3.x/apim_kubernetes_overview.html[Kubernetes Controller]
- * link:/apim/3.x/apim_installguide_rest_apis_documentation.html[API Reference]
- * link:/apim/3.x/apim_changelog.html[Changelog]
- * link:/apim/3.x/apim_installguide_migration.html[Migration: from 1.x to 3.x]
+ * link:{{ '/apim/3.x/apim_overview_introduction.html' | relative_url}}[Overview]
+ * link:{{ '/apim/3.x/apim_quickstart_publish.html' | relative_url}}[Quick Start Guide]
+ * link:{{ '/apim/3.x/apim_installguide.html' | relative_url}}[Installation Guide]
+ * link:{{ '/apim/3.x/apim_configurationguide.html' | relative_url}}[Configuration Guide]
+ * link:{{ '/apim/3.x/apim_publisherguide_manage_apis.html' | relative_url}}[API Publisher Guide]
+ * link:{{ '/apim/3.x/apim_consumerguide_portal.html' | relative_url}}[API Consumer Guide]
+ * link:{{ '/apim/3.x/apim_adminguide_organizations_and_environments.html' | relative_url}}[Administration Guide]
+ * link:{{ '/apim/3.x/apim_how_to_introduction.html' | relative_url}}[How To]
+ * link:{{ '/apim/3.x/apim_devguide_bootstrap.html' | relative_url}}[Developer Guide]
+ * link:{{ '/apim/3.x/apim_policies_overview.html' | relative_url}}[Policy Reference]
+ * link:{{ '/apim/3.x/apim_kubernetes_overview.html' | relative_url}}[Kubernetes Controller]
+ * link:{{ '/apim/3.x/apim_installguide_rest_apis_documentation.html' | relative_url}}[API Reference]
+ * link:{{ '/apim/3.x/apim_changelog.html' | relative_url}}[Changelog]
+ * link:{{ '/apim/3.x/apim_installguide_migration.html' | relative_url}}[Migration: from 1.x to 3.x]
 
-== link:/am/current/am_overview_introduction.html[Access Management] {{ site.products.am.version }}
+== link:{{ '/am/current/am_overview_introduction.html' | relative_url}}[Access Management] {{ site.products.am.version }}
 
- * link:/am/current/am_overview_introduction.html[Overview]
- * link:/am/current/am_userguide_authentication.html[Quick Start Guide]
- * link:/am/current/am_installguide_introduction.html[Installation Guide]
- * link:/am/current/am_configurationguide.html[Configuration Guide]
- * link:/am/current/am_userguide_overview.html[User Guide]
- * link:/am/current/am_adminguide_organizations_and_environments.html[Administration Guide]
- * link:/am/current/am_devguide_bootstrap.html[Developer Guide]
- * link:/am/current/am_devguide_protocols_overview.html[Protocols]
- * link:/am/current/am_devguide_management_api_documentation.html[API Reference]
- * link:/am/current/am_changelog.html[Changelog]
- * link:/am/current/am_installguide_migration.html[Migration: from 2.x to 3.x]
+ * link:{{ '/am/current/am_overview_introduction.html' | relative_url}}[Overview]
+ * link:{{ '/am/current/am_userguide_authentication.html' | relative_url}}[Quick Start Guide]
+ * link:{{ '/am/current/am_installguide_introduction.html' | relative_url}}[Installation Guide]
+ * link:{{ '/am/current/am_configurationguide.html' | relative_url}}[Configuration Guide]
+ * link:{{ '/am/current/am_userguide_overview.html' | relative_url}}[User Guide]
+ * link:{{ '/am/current/am_adminguide_organizations_and_environments.html' | relative_url}}[Administration Guide]
+ * link:{{ '/am/current/am_devguide_bootstrap.html' | relative_url}}[Developer Guide]
+ * link:{{ '/am/current/am_devguide_protocols_overview.html' | relative_url}}[Protocols]
+ * link:{{ '/am/current/am_devguide_management_api_documentation.html' | relative_url}}[API Reference]
+ * link:{{ '/am/current/am_changelog.html' | relative_url}}[Changelog]
+ * link:{{ '/am/current/am_installguide_migration.html' | relative_url}}[Migration: from 2.x to 3.x]
 
-== link:/ae/overview_introduction.html[Alert Engine] {{ site.products.ae.version }}
+== link:{{ '/ae/overview_introduction.html' | relative_url}}[Alert Engine] {{ site.products.ae.version }}
 
- * link:/ae/overview_introduction.html[Overview]
- * link:/ae/installguide_introduction.html[Installation Guide]
- * link:/ae/userguide_definition.html[User Guide]
- * link:/ae/apim_installation.html[API Management Integration]
- * link:/ae/am_installation.html[Access Management Integration]
- * link:/ae/ae_changelog.html[Changelog]
+ * link:{{ '/ae/overview_introduction.html' | relative_url}}[Overview]
+ * link:{{ '/ae/installguide_introduction.html' | relative_url}}[Installation Guide]
+ * link:{{ '/ae/userguide_definition.html' | relative_url}}[User Guide]
+ * link:{{ '/ae/apim_installation.html' | relative_url}}[API Management Integration]
+ * link:{{ '/ae/am_installation.html' | relative_url}}[Access Management Integration]
+ * link:{{ '/ae/ae_changelog.html' | relative_url}}[Changelog]
 
-== link:/cockpit/3.x/cockpit_overview_introduction.html[Cockpit] {{ site.products.cockpit.version }}
+== link:{{ '/cockpit/3.x/cockpit_overview_introduction.html' | relative_url}}[Cockpit] {{ site.products.cockpit.version }}
 
-* link:/cockpit/3.x/cockpit_overview_introduction.html[Overview]
-* link:/cockpit/3.x/cockpit_quickstart_getstarted.html[Quick Start Guide]
-* link:/cockpit/3.x/cockpit_installguide_introduction.html[Installation Guide]
-* link:/cockpit/3.x/cockpit_configurationguide.html[Configuration Guide]
-* link:/cockpit/3.x/cockpit_userguide_register_installations.html[User Guide]
-* link:/cockpit/3.x/cockpit_changelog.html[Changelog]
+* link:{{ '/cockpit/3.x/cockpit_overview_introduction.html' | relative_url}}[Overview]
+* link:{{ '/cockpit/3.x/cockpit_quickstart_getstarted.html' | relative_url}}[Quick Start Guide]
+* link:{{ '/cockpit/3.x/cockpit_installguide_introduction.html' | relative_url}}[Installation Guide]
+* link:{{ '/cockpit/3.x/cockpit_configurationguide.html' | relative_url}}[Configuration Guide]
+* link:{{ '/cockpit/3.x/cockpit_userguide_register_installations.html' | relative_url}}[User Guide]
+* link:{{ '/cockpit/3.x/cockpit_changelog.html' | relative_url}}[Changelog]

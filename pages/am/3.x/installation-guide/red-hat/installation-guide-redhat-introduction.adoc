@@ -11,7 +11,7 @@
 This section explains how to install AM on Red Hat Enterprise Linux, CentOS Linux or Oracle Linux
 using the `yum` package manager.
 
-NOTE: RPM installation is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. If you are running one of these versions, you need to link:/am/current/am_installguide_gateway_install_zip.html[Install Access Management with .zip^] instead.
+NOTE: RPM installation is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. If you are running one of these versions, you need to link:{{ '/am/current/am_installguide_gateway_install_zip.html' | relative_url }}[Install Access Management with .zip^] instead.
 
 == Configure the package management system (`yum`)
 
@@ -50,7 +50,7 @@ Your repository is now ready to use.
 
 You can choose to install the full AM stack or install components one by one:
 
-* link:/am/current/am_installguide_redhat_stack.html[Install the full AM stack] (includes all components below)
-* link:/am/current/am_installguide_redhat_gateway.html[Install AM Gateway]
-* link:/am/current/am_installguide_redhat_management_api.html[Install AM API]
-* link:/am/current/am_installguide_redhat_management_ui.html[Install AM Console]
+* link:{{ '/am/current/am_installguide_redhat_stack.html' | relative_url }}[Install the full AM stack] (includes all components below)
+* link:{{ '/am/current/am_installguide_redhat_gateway.html' | relative_url }}[Install AM Gateway]
+* link:{{ '/am/current/am_installguide_redhat_management_api.html' | relative_url }}[Install AM API]
+* link:{{ '/am/current/am_installguide_redhat_management_ui.html' | relative_url }}[Install AM Console]

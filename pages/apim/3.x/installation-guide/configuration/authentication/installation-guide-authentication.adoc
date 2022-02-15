@@ -38,7 +38,7 @@ security:
 
 == Configuring authentication in APIM
 
-NOTE: In this section, the _organization_ scope roughly corresponds to APIM Console, and the _environment_ scope roughly corresponds to APIM Portal. For a better understanding of the scope of application of identity providers, we recommend you read the link:/apim/3.x/apim_adminguide_organizations_and_environments.html[Organizations and environments] section of the Administration Guide.
+NOTE: In this section, the _organization_ scope roughly corresponds to APIM Console, and the _environment_ scope roughly corresponds to APIM Portal. For a better understanding of the scope of application of identity providers, we recommend you read the link:{{ '/apim/3.x/apim_adminguide_organizations_and_environments.html' | relative_url }}[Organizations and environments] section of the Administration Guide.
 
 You can configure Social providers and define custom OAuth2 / OpenID authorization servers in APIM Console.
 All identity providers are defined at organization level. You can then choose whether to make each provider available at environment level as well.

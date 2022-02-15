@@ -10,7 +10,7 @@ When you first create your API, by default it is defined as a private API and ca
 
 If you want to grant specific users or groups access to a private API, the way to do this is by managing its members.
 
-NOTE: Only users with the required permissions can manage an application's members. For more details, see link:/apim/3.x/apim_adminguide_roles_and_permissions.html[Roles and permissions].
+NOTE: Only users with the required permissions can manage an application's members. For more details, see link:{{ '/apim/3.x/apim_adminguide_roles_and_permissions.html' | relative_url }}[Roles and permissions].
 
 == Roles
 
@@ -36,13 +36,13 @@ By default, APIM includes three membership roles:
 
 [label label-version]#New in version 3.7#
 
-From APIM 3.7, APIM Console provides a configurable mode to define how you manage the primary owners of your API. For more details, see link:/apim/3.x/apim_adminguide_users_and_groups.html#primary_owner_mode[Configure primary owners as groups^].
+From APIM 3.7, APIM Console provides a configurable mode to define how you manage the primary owners of your API. For more details, see link:{{ '/apim/3.x/apim_adminguide_users_and_groups.html#primary_owner_mode' | relative_url }}[Configure primary owners as groups^].
 
 == Add and remove users
 
 You can manage users for APIs and applications.
 
-. link:/apim/3.x/apim_quickstart_portal_login.html[Log in to APIM Console^].
+. link:{{ '/apim/3.x/apim_quickstart_portal_login.html' | relative_url }}[Log in to APIM Console^].
 . If you want to manage users for an:
 ** application, click *Applications* in the menu, then select your application and click *Members*.
 ** API, click *APIs* in the menu, then select your API and click *Portal > Members*.
@@ -66,7 +66,7 @@ image::apim/3.x/api-publisher-guide/members/manage-members-remove.png[Gravitee.i
 
 You can transfer ownership of an API or application from one user to another. You do this when the current Primary Owner leaves a project, for example.
 
-NOTE: From APIM 3.7, you can also transfer ownership to a group, depending on your configuration. For more details, see link:/apim/3.x/apim_adminguide_users_and_groups.html#primary_owner_mode[Configure primary owners as groups^].
+NOTE: From APIM 3.7, you can also transfer ownership to a group, depending on your configuration. For more details, see link:{{ '/apim/3.x/apim_adminguide_users_and_groups.html#primary_owner_mode' | relative_url }}[Configure primary owners as groups^].
 
 . In APIM Console, click *APIs* or *Applications* in the left menu.
 . If you want to transfer ownership for an:

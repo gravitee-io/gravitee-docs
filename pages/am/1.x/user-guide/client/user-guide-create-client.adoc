@@ -45,12 +45,12 @@ After you have created the new client, you will be redirected to this client's s
 
 === OpenID Connect
 
-Client can request for an access token to access protected resources. It can also request for an link:/am_userguide_concepts.html#id_token[ID Token] that contains profile information of the current authenticated user.
+Client can request for an access token to access protected resources. It can also request for an link:{{ '/am_userguide_concepts.html#id_token' | relative_url }}[ID Token] that contains profile information of the current authenticated user.
 ID Token contains claims which are statements about the user, these claims can be overridden to include specific users attributes defined in the related identity provider.
 
 image::am/1.x/graviteeio-am-userguide-client-oidc.png[]
 
 == Testing client
 
-The fastest way to test your fresh created client is to request for an OAuth2 access token by following the link:/am_quickstart_register_app.html[Register your first client] tutorial.
+The fastest way to test your fresh created client is to request for an OAuth2 access token by following the link:{{ '/am_quickstart_register_app.html' | relative_url }}[Register your first client] tutorial.
 If you succeed to get an access token, your client is all set.

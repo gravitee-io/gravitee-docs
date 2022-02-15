@@ -33,8 +33,8 @@ The Pre step allows you to fetch more information before displaying the Login HT
 
 The following attributes are available while processing the policy chain:
 
-* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
-* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#request' | relative_url }}[Request]: current HTTP Request
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#client' | relative_url }}[Client]: the application
 
 === Post Login
 
@@ -42,9 +42,9 @@ Post End-User Consent happens after the user has given his consent to the proces
 
 The following attributes are available while processing the policy chain :
 
-* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
-* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
-* link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#request' | relative_url }}[Request]: current HTTP Request
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#client' | relative_url }}[Client]: the application
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#user' | relative_url }}[User]: the End-User
 
 == Consent flow
 
@@ -57,10 +57,10 @@ Pre End-User Consent allows you to fetch more information or validate incoming d
 
 The following attributes are available while processing the policy chain:
 
-* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
-* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
-* link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
-* link:/am/current/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request[Authorization Request]: OAuth 2.0 Authorization Request
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#request' | relative_url }}[Request]: current HTTP Request
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#client' | relative_url }}[Client]: the application
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#user' | relative_url }}[User]: the End-User
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request' | relative_url }}[Authorization Request]: OAuth 2.0 Authorization Request
 
 === Post End-User Consent
 
@@ -68,10 +68,10 @@ Post End-User Consent happens after the user has given his consent to the proces
 
 The following attributes are available while processing the policy chain :
 
-* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request (with form attributes : scope approvals)
-* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
-* link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
-* link:/am/current/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request[Authorization Request]: OAuth 2.0 Authorization Request
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#request' | relative_url }}[Request]: current HTTP Request (with form attributes : scope approvals)
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#client' | relative_url }}[Client]: the application
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#user' | relative_url }}[User]: the End-User
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request' | relative_url }}[Authorization Request]: OAuth 2.0 Authorization Request
 
 == Register flow
 
@@ -83,8 +83,8 @@ Pre End-User Registration step is executed before displaying the User Consent HT
 
 The following attributes are available while processing the policy chain:
 
-* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
-* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#request' | relative_url }}[Request]: current HTTP Request
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#client' | relative_url }}[Client]: the application
 
 === Post End-User Registration
 
@@ -92,9 +92,9 @@ Post End-User Registration step is executed once the user submit the registratio
 
 The following attributes are available while processing the policy chain :
 
-* link:/am/current/am_userguide_policies_extension_points.html#request[Request]: current HTTP Request
-* link:/am/current/am_userguide_policies_extension_points.html#client[Client]: the application
-* link:/am/current/am_userguide_policies_extension_points.html#user[User]: the End-User
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#request' | relative_url }}[Request]: current HTTP Request
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#client' | relative_url }}[Client]: the application
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#user' | relative_url }}[User]: the End-User
 
 == Execution context information
 

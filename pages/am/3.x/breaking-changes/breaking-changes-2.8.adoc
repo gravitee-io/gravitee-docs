@@ -40,4 +40,4 @@ $ mongo localhost:27017/gravitee-am users-xxx-migration.js
 
 Gravitee.io homemade token introspection which was deprecated since several versions has been removed.
 
-Please use the link:https://tools.ietf.org/html/rfc7662[RFC] compliant `/oauth/introspect` link:/am/current/oauth2/index.html#tag/OAuth-2.0%2Fpaths%2F~1introspect%2Fpost[endpoint] to determine the active state of an OAuth 2.0 token.
+Please use the link:https://tools.ietf.org/html/rfc7662[RFC] compliant `/oauth/introspect` link:{{ '/am/current/oauth2/index.html#tag/OAuth-2.0%2Fpaths%2F~1introspect%2Fpost' | relative_url }}[endpoint] to determine the active state of an OAuth 2.0 token.

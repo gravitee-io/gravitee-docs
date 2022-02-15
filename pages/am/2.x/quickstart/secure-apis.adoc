@@ -7,9 +7,9 @@
 image::am/2.x/graviteeio-am-quickstart-secure-apis-overview.png[]
 
 NOTE: In this quick start we will use the link:https://gravitee.io[Gravitee.io API Management solution^] to protect our APIs.
-We assume that you have completed the installation of link:apim_installguide.html[Gravitee.io API Management^] and have a fully operational environment capable of interacting with your APIs (see link:/apim/1.x/apim_quickstart_publish.html[Publish your first API^])
+We assume that you have completed the installation of link:apim_installguide.html[Gravitee.io API Management^] and have a fully operational environment capable of interacting with your APIs (see link:{{ '/apim/1.x/apim_quickstart_publish.html' | relative_url }}[Publish your first API^])
 
-NOTE: Make sure you have completed the link:/am/2.x/am_quickstart_register_app.html[Register a new client^] quick start and grab your Client ID, Client Secret and Security Domain information.
+NOTE: Make sure you have completed the link:{{ '/am/2.x/am_quickstart_register_app.html' | relative_url }}[Register a new client^] quick start and grab your Client ID, Client Secret and Security Domain information.
 
 == Protect your API with OAuth 2
 
@@ -110,7 +110,7 @@ With the access token obtained at previous section, you can use it to make API c
 curl -X GET http://GRAVITEEIO-APIM-GATEWAY-HOST/echo -H 'Authorization: Bearer :access_token'
 ----
 
-NOTE: See link:/apim/1.x/apim_policies_oauth2.html[OAuth2 Policy^] for more information about how to supply the access token while making the API call.
+NOTE: See link:{{ '/apim/1.x/apim_policies_oauth2.html' | relative_url }}[OAuth2 Policy^] for more information about how to supply the access token while making the API call.
 
 If everything goes well, you should see the data from the selecting API operation :
 

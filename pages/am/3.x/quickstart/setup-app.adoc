@@ -6,7 +6,7 @@
 
 == Overview
 
-This section walks you through creating your first application. For more detailed instructions, see the link:/am/current/am_userguide_overview.html[User Guide].
+This section walks you through creating your first application. For more detailed instructions, see the link:{{ '/am/current/am_userguide_overview.html' | relative_url }}[User Guide].
 
 In this example we will:
 
@@ -23,7 +23,7 @@ NOTE: You only need to create a new security domain for an application when you 
 
 === Create a domain with AM Console
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . From the user menu at the top right, click *Create domain*.
 +
 image::am/current/quickstart-create-domain.png[]

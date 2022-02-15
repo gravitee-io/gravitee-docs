@@ -8,16 +8,16 @@
 
 The following sections describe the different ways you can create an API using APIM Console.
 
-For a quick introduction to creating an API in APIM, see the link:/apim/3.x/apim_quickstart_publish_ui.html[Quick Start Guide^].
+For a quick introduction to creating an API in APIM, see the link:{{ '/apim/3.x/apim_quickstart_publish_ui.html' | relative_url }}[Quick Start Guide^].
 
 NOTE: From APIM 3.5.x, the recommended way to create an API is using the *DESIGN STUDIO* method described in the next section. For APIs created using this method, clicking the *Design* menu option automatically opens Design Studio.
-Old API definitions or APIs created using the *PATH BASED* option must be migrated before you can update them in Design Studio. For more information, see the link:/apim/3.x/apim_publisherguide_design_studio_overview.html[Design Studio Guide^].
+Old API definitions or APIs created using the *PATH BASED* option must be migrated before you can update them in Design Studio. For more information, see the link:{{ '/apim/3.x/apim_publisherguide_design_studio_overview.html' | relative_url }}[Design Studio Guide^].
 
 == Get started
 
 Using APIM Console, you can create new API definitions from scratch, or import existing definitions.
 
-NOTE: You can also create APIs using APIM API. For more details, see the link:/apim/3.x/apim_quickstart_publish_api.html[Quick Start Guide^].
+NOTE: You can also create APIs using APIM API. For more details, see the link:{{ '/apim/3.x/apim_quickstart_publish_api.html' | relative_url }}[Quick Start Guide^].
 
 To start creating an API:
 
@@ -45,7 +45,7 @@ Learn how to <<import_an_api_definition>>
 These steps describe how to create all of the basic API configuration your developers need to call your API.
 If a short TTFAC (time to first API call) is your goal, configure only the mandatory parts and a basic plan now -- you can always update these later on.
 
-NOTE: You need to create a plan before you can accept user subscriptions to your API. You can do that now or when you get to the link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions^] section, but the plan options available to you now are more limited.
+NOTE: You need to create a plan before you can accept user subscriptions to your API. You can do that now or when you get to the link:{{ '/apim/3.x/apim_publisherguide_plans_subscriptions.html' | relative_url }}[Plans and subscriptions^] section, but the plan options available to you now are more limited.
 
 . Enter the general details of the API:
   * A **Name**, **Version**, and **Description**.
@@ -53,9 +53,9 @@ NOTE: You need to create a plan before you can accept user subscriptions to your
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-general-withgroups.png[]
 
-. (Optional) Associate a group with the API, if any are defined (see link:/apim/3.x/apim_adminguide_users_and_groups.html[Users and Groups] for more details):
+. (Optional) Associate a group with the API, if any are defined (see link:{{ '/apim/3.x/apim_adminguide_users_and_groups.html' | relative_url }}[Users and Groups] for more details):
       * Select a group which can access the API in **Groups**.
-      * If the link:/apim/3.x/apim_adminguide_users_and_groups.html#primary_owner_mode[Primary owner mode^] is *HYBRID*, click the *Advanced mode* link to associate a primary owner group.
+      * If the link:{{ '/apim/3.x/apim_adminguide_users_and_groups.html#primary_owner_mode' | relative_url }}[Primary owner mode^] is *HYBRID*, click the *Advanced mode* link to associate a primary owner group.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/graviteeio-api-primaryowner-mode-3.png[]
 
@@ -74,7 +74,7 @@ image::apim/3.x/api-publisher-guide/manage-apis/create-api-gateway.png[]
   * *Rate limit* and *Quota* details. In this example, we are specifying a rate limit of 1 request every 5 seconds.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-plan1.png[]
-  * *Resource filtering* details, using link:/apim/3.x/apim_policies_overview.html#ant-notation[Ant^] notation and an HTTP method.
+  * *Resource filtering* details, using link:{{ '/apim/3.x/apim_policies_overview.html#ant-notation' | relative_url }}[Ant^] notation and an HTTP method.
 +
 image::apim/3.x/api-publisher-guide/manage-apis/create-api-plan-path.png[]
 
@@ -291,7 +291,7 @@ You can also choose to activate policies that will be configured using the OpenA
 JSON Validation::
 For each operation, if an `application/json` request body exists, then a JSON schema is computed from this body to configure a JSON Validation policy. +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_json_validation.html[here].
+More information is available link:{{ '/apim/3.x/apim_policies_json_validation.html' | relative_url }}[here].
 
 REST to SOAP transformer::
 For each operation, if the definition contains some specific vendor extensions, a REST to SOAP policy can be configured. +
@@ -300,22 +300,22 @@ These extensions are:
 - `x-graviteeio-soap-action`: contains the SOAP action
 +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_rest2soap.html[here].
+More information is available link:{{ '/apim/3.x/apim_policies_rest2soap.html' | relative_url }}[here].
 
 Mock::
 For each operation, a mock policy is configured, based on the `example` field if it exists, or by generating a random value for the type of the attribute to mock. +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_mock.html[here].
+More information is available link:{{ '/apim/3.x/apim_policies_mock.html' | relative_url }}[here].
 
 Validation Request::
 For each operation, `NOT__ __NULL` rules are created with query parameters and headers. +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_request_validation.html[here]-
+More information is available link:{{ '/apim/3.x/apim_policies_request_validation.html' | relative_url }}[here]-
 
 XML Validation::
 For each operation, if a `application/xml` request body exists, then a XSD schema is computed from this body to configure an XML Validation policy. +
 REQUEST only +
-More information is available link:/apim/3.x/apim_policies_xml_validation.html[here].
+More information is available link:{{ '/apim/3.x/apim_policies_xml_validation.html' | relative_url }}[here].
 
 === Import a WSDL
 
@@ -339,7 +339,7 @@ The API is created private, so it is only accessible in APIM Portal to users aft
 * Publish it
 * Make it public or add new members or groups to it
 
-The process for adding new members or groups to the API is explained in link:/apim/3.x/apim_publisherguide_manage_members.html[API users and ownership^].
+The process for adding new members or groups to the API is explained in link:{{ '/apim/3.x/apim_publisherguide_manage_members.html' | relative_url }}[API users and ownership^].
 
 You can publish the API or make it public, as well as remove it from APIM Portal or delete it, in the *Danger Zone*:
 

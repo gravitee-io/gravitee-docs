@@ -16,7 +16,7 @@ This tutorial assumes you are starting fresh and have no existing Gravitee.io AP
 $ curl -sSL https://bit.ly/install-apim-1x | bash
 ....
 
-Check the link:/apim/1.x/apim_installguide_redhat_stack.html[documentation]
+Check the link:{{ '/apim/1.x/apim_installguide_redhat_stack.html' | relative_url }}[documentation]
 
 == Using Docker
 
@@ -32,7 +32,7 @@ $ docker-compose pull
 $ docker-compose up
 ....
 
-Check the link:/apim/1.x/apim_installguide_docker_compose.html[documentation]
+Check the link:{{ '/apim/1.x/apim_installguide_docker_compose.html' | relative_url }}[documentation]
 
 == Using Kubernetes
 
@@ -45,4 +45,4 @@ $ helm repo add graviteeio https://helm.gravitee.io
 $ helm install --name graviteeio-apim graviteeio/apim
 ....
 
-Check the link:/apim/1.x/apim_installguide_kubernetes.html[documentation]
+Check the link:{{ '/apim/1.x/apim_installguide_kubernetes.html' | relative_url }}[documentation]

@@ -30,7 +30,7 @@ NOTE: Twitter will generate an API Key and API Secret Key for your application. 
 
 == Create a Twitter identity provider
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *Twitter* as your identity provider type and click *Next*.

@@ -22,7 +22,7 @@ You can also access some global functions in the top bar: update the API model s
 
 Before you can deploy an API model, you need to check that an APIM installation is set up in the organization settings for API Designer.
 
-link:/cockpit/3.x/cockpit_quickstart_setup.html#update_entity_settings[Learn more about updating the organization settings^]
+link:{{ '/cockpit/3.x/cockpit_quickstart_setup.html#update_entity_settings' | relative_url }}[Learn more about updating the organization settings^]
 
 == Create a new API model
 
@@ -128,9 +128,9 @@ Published::
 
 Same as *Mocked*, plus the API is deployed with a keyless plan on APIM Gateway, and published in APIM Portal so consumers can subscribe to it.
 
-link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[Learn more about plans in APIM^]
+link:{{ '/apim/3.x/apim_publisherguide_plans_subscriptions.html' | relative_url }}[Learn more about plans in APIM^]
 
-link:/apim/3.x/apim_policies_mock.html[Learn more about the APIM mock policy^]
+link:{{ '/apim/3.x/apim_policies_mock.html' | relative_url }}[Learn more about the APIM mock policy^]
 
 To deploy the API model:
 

@@ -26,7 +26,7 @@ $ openssl rsa -in rsa_private.pem -pubout -out rsa_public.pem
 
 == Create a new JWT bearer extension grant
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings*, then in the *OAUTH 2.0* section, click *Extension Grants*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 +

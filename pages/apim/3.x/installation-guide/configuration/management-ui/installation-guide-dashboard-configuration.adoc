@@ -21,7 +21,7 @@ You can create multiple dashboards of each type with different configurations, a
 
 Dashboards are configured by adding and removing _widgets_, which are containers for different types and views of data.
 
-. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
+. link:{{ '/apim/3.x/apim_quickstart_console_login.html' | relative_url }}[Log in to APIM Console^].
 . Click *Settings > Analytics*.
 +
 image:apim/3.x/installation/configuration/configure-dashboards.png[]
@@ -45,9 +45,9 @@ image:apim/3.x/installation/configuration/configure-dashboards-preview.png[]
 
 [TIP]
 ====
-By using the link:/apim/3.x/apim_policies_assign_metrics.html[Assign Metrics policy] in one of your APIs, you can use a custom field in the widget.
+By using the link:{{ '/apim/3.x/apim_policies_assign_metrics.html' | relative_url }}[Assign Metrics policy] in one of your APIs, you can use a custom field in the widget.
 
-See link:/apim/3.x/apim_how_to_add_custom_metrics_in_dashboards.html[How to add custom metrics in dashboards].
+See link:{{ '/apim/3.x/apim_how_to_add_custom_metrics_in_dashboards.html' | relative_url }}[How to add custom metrics in dashboards].
 ====
 
 == Update a dashboard

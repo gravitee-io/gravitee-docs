@@ -13,6 +13,6 @@ The Gravitee.io AM Users API provides operations to manage users in your organiz
 
 You can find Users API endpoints exposed by Gravitee.io Access Management :
 
-* link:/am/2.x/users/index.html[Users API Console, window="_blank"] - link:/am/2.x/users/swagger.yml[Swagger spec, window="_blank"]
+* link:{{ '/am/2.x/users/index.html' | relative_url }}[Users API Console, window="_blank"] - link:{% link /am/2.x/users/swagger.yml %}[Swagger spec, window="_blank"]
 
 

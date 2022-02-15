@@ -13,7 +13,7 @@ This specification enables Relying Parties (clients) to register applications in
 
 By default this feature is disabled. You can enable it through the domain settings:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings*, then in the *OPENID* section click *Client Registration*.
 . Click the toggle button to *Enable Dynamic Client Registration*.
 +

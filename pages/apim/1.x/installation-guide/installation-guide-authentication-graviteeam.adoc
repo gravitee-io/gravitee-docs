@@ -11,7 +11,7 @@ NOTE: For this guide, Gravitee.io AM 2.x (>= 2.0.4) is used.
 
 Before being able to connect to the Gravitee.io portal using Gravitee.io Access Management, you need to create a new client.
 
-Please refer to link:/am/2.x/am_quickstart_register_app.html[Register your first client, window="_blank"] quickstart to set up your first security domain and client application.
+Please refer to link:{{ '/am/2.x/am_quickstart_register_app.html' | relative_url }}[Register your first client, window="_blank"] quickstart to set up your first security domain and client application.
 
 WARNING: Be careful, the `Valid Redirect URIs` must match exactly to the domain which is hosting the portal.
 
@@ -70,7 +70,7 @@ security:
 
 === Create a user in Gravitee.io AM
 
-Please refer to link:/am/2.x/am_quickstart_register_app.html[Authenticate users with Identity Provider, window="_blank"] quickstart to set up your identity provider and create your first users.
+Please refer to link:{{ '/am/2.x/am_quickstart_register_app.html' | relative_url }}[Authenticate users with Identity Provider, window="_blank"] quickstart to set up your identity provider and create your first users.
 
 NOTE: Gravitee.io API Management requires a profile `email` information to enable the portal authentication. If you create an `Inline identity provider`, please set an email for the `username` field.
 

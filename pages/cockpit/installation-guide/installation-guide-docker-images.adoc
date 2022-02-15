@@ -50,7 +50,7 @@ $ docker run \
 
 ==== Configure The Container
 To override the default configuration for MongoDB or any other properties included in the `gravitee.yml` file,
-you must to use environment variables. For more information, see the Cockpit API link:/cockpit/3.x/cockpit_installguide_configuration.html#environment_variables[Configuration^].
+you must to use environment variables. For more information, see the Cockpit API link:{{ '/cockpit/3.x/cockpit_installguide_configuration.html#environment_variables' | relative_url }}[Configuration^].
 
 The following example changes the MongoDB connection:
 

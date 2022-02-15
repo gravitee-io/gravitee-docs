@@ -10,7 +10,7 @@
 You can access Cockpit in SaaS mode or install it on-premise.
 
 - To get started with Cockpit in SaaS mode, access this link: https://cockpit.gravitee.io.
-- To install Cockpit on-premise, follow the instructions in the link:/cockpit/3.x/cockpit_installguide_introduction.html[Installation Guide^].
+- To install Cockpit on-premise, follow the instructions in the link:{{ '/cockpit/3.x/cockpit_installguide_introduction.html' | relative_url }}[Installation Guide^].
 
 After installation, you need to register a new user account. You can also choose to log in with an existing Google or GitHub account.
 
@@ -25,8 +25,8 @@ image::cockpit/cockpit-add-organizations-or-environments.png[]
 In the Dashboard, you can create one or more organizations within your account and one or more environments within your organizations.
 Each environment can then be linked to existing APIM or AM installations.
 
-- link:/cockpit/3.x/cockpit_quickstart_setup.html[Learn more about setting up your Cockpit hierarchy^]
-- link:/cockpit/3.x/cockpit_userguide_register_installations.html[Learn more about registering APIM and AM installations^]
+- link:{{ '/cockpit/3.x/cockpit_quickstart_setup.html' | relative_url }}[Learn more about setting up your Cockpit hierarchy^]
+- link:{{ '/cockpit/3.x/cockpit_userguide_register_installations.html' | relative_url }}[Learn more about registering APIM and AM installations^]
 
 === Hierarchy
 
@@ -36,4 +36,4 @@ image::cockpit/cockpit-dashboard.png[]
 
 Click the settings icon image:icons/cockpit-settings-icon.png[role="icon"] of any entity in the map to update its settings.
 
-link:/cockpit/3.x/cockpit_quickstart_setup.html#update_entity_settings[Learn more about updating the settings^]
+link:{{ '/cockpit/3.x/cockpit_quickstart_setup.html#update_entity_settings' | relative_url }}[Learn more about updating the settings^]

@@ -6,12 +6,12 @@
 
 This guide walks you through the process of using your first Extension Point to extend the behavior of the Gravitee.io AM Server.
 
-NOTE: Gravitee.io Access Management link:/am/2.x/am_userguide_policies.html[Policies] are available since the 2.7 version
+NOTE: Gravitee.io Access Management link:{{ '/am/2.x/am_userguide_policies.html' | relative_url }}[Policies] are available since the 2.7 version
 
 In this tutorial we will enhance the information display in the link:am/2.x/am_userguide_user_management_consent.html[End-User consent] by calling a remote service before rendering the HTML page.
 
 
-NOTE: Be sure to complete the link:/am/2.x/am_quickstart_register_app.html[Register your first client] and the link:/am/2.x/am_quickstart_authenticate_users.html[Authenticate users with Identity Provider] quick-starts before doing this walkthrough guide.
+NOTE: Be sure to complete the link:{{ '/am/2.x/am_quickstart_register_app.html' | relative_url }}[Register your first client] and the link:{{ '/am/2.x/am_quickstart_authenticate_users.html' | relative_url }}[Authenticate users with Identity Provider] quick-starts before doing this walkthrough guide.
 
 == Use the HTTP Callout Policy
 
@@ -48,7 +48,7 @@ curl -H "Authorization: Bearer :accessToken" \
 
 == Display the End-User Consent Page
 
-For this quick start guide part, we will create a custom End-User consent page (see link:/am/2.x/am_userguide_user_management_forms.html[Custom forms] for more information).
+For this quick start guide part, we will create a custom End-User consent page (see link:{{ '/am/2.x/am_userguide_user_management_forms.html' | relative_url }}[Custom forms] for more information).
 
 . From the domain's settings page, go to `Forms`
 . Edit `User consent` form

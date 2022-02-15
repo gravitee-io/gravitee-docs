@@ -9,19 +9,19 @@
 
 You can use flows to extend AM's standard functionality.
 
-This section walks you through using flows to enhance the information displayed in the link:/am/current/am_userguide_user_management_consent.html[End user agreement^] by calling a remote service before rendering the HTML page. The example in this section uses the Gravitee.io Echo API.
+This section walks you through using flows to enhance the information displayed in the link:{{ '/am/current/am_userguide_user_management_consent.html' | relative_url }}[End user agreement^] by calling a remote service before rendering the HTML page. The example in this section uses the Gravitee.io Echo API.
 
-For more information about flows, see link:/am/current/am_userguide_policies.html[Flows] in the User Guide.
+For more information about flows, see link:{{ '/am/current/am_userguide_policies.html' | relative_url }}[Flows] in the User Guide.
 
 NOTE: AM flows are available from version 3.5 and replace extension points.
 
 == Before you begin
 
-You must link:/am/current/am_quickstart_app_setup.html[Set up your first application^] before performing these steps.
+You must link:{{ '/am/current/am_quickstart_app_setup.html' | relative_url }}[Set up your first application^] before performing these steps.
 
 == Use the HTTP Callout Policy
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Flows*.
 . Select the *CONSENT* flow and drag the *HTTP Callout* policy to the *Pre Consent* step.
 . Give your policy a *Name* and the following configuration:

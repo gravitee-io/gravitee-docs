@@ -8,7 +8,7 @@
 
 === List groups
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Search for groups by clicking *Groups*.
 +
 image::am/current/graviteeio-am-userguide-um-search-groups.png[]
@@ -17,7 +17,7 @@ image::am/current/graviteeio-am-userguide-um-search-groups.png[]
 
 You create groups in a security domain.
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Groups*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Give your group a *Name* and click *SAVE*.

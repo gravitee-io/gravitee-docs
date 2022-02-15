@@ -11,7 +11,7 @@ These notification channels are called _notifiers_.
 
 To create a notification channel:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Alerts > Notifiers*.
 . In the Notifiers page, click the plus icon image:icons/plus-icon.png[role="icon"].
 . Choose your notifier type and click *Next*.
@@ -19,6 +19,6 @@ To create a notification channel:
 
 == Notification channel types
 
-- link:/am/current/am_userguide_alerts_notifications_email.html[Managing email notification channels^]
-- link:/am/current/am_userguide_alerts_notifications_webhook.html[Managing webhook notification channels^]
-- link:/am/current/am_userguide_alerts_notifications_slack.html[Managing Slack notification channels^]
+- link:{{ '/am/current/am_userguide_alerts_notifications_email.html' | relative_url }}[Managing email notification channels^]
+- link:{{ '/am/current/am_userguide_alerts_notifications_webhook.html' | relative_url }}[Managing webhook notification channels^]
+- link:{{ '/am/current/am_userguide_alerts_notifications_slack.html' | relative_url }}[Managing Slack notification channels^]

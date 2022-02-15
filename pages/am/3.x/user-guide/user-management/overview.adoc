@@ -8,8 +8,8 @@ You can manage users, groups and roles to ensure the proper information and auth
 
 Tools like user/group provisioning, user registration, role mapping and custom HTML templates can help you implement end-to-end identity management flows.
 
-* link:/am/current/am_userguide_user_management_users.html[Manage users]
-* link:/am/current/am_userguide_user_management_groups.html[Manage groups]
-* link:/am/current/am_userguide_user_management_roles.html[Manage roles]
-* link:/am/current/am_userguide_user_management_registration.html[User registration]
-* link:/am/current/am_userguide_user_management_forms.html[Custom forms]
+* link:{{ '/am/current/am_userguide_user_management_users.html' | relative_url }}[Manage users]
+* link:{{ '/am/current/am_userguide_user_management_groups.html' | relative_url }}[Manage groups]
+* link:{{ '/am/current/am_userguide_user_management_roles.html' | relative_url }}[Manage roles]
+* link:{{ '/am/current/am_userguide_user_management_registration.html' | relative_url }}[User registration]
+* link:{{ '/am/current/am_userguide_user_management_forms.html' | relative_url }}[Custom forms]

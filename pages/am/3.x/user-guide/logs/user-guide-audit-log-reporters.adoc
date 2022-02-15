@@ -6,11 +6,11 @@
 
 == Storage and retention log
 
-Audit events are managed (store and fetch) by plugins called link:/apim_overview_plugins.html#gravitee-plugins-reporters[Reporters^].
+Audit events are managed (store and fetch) by plugins called link:{{ '/apim_overview_plugins.html#gravitee-plugins-reporters' | relative_url }}[Reporters^].
 
 By default, a reporter is created for each security domain and allows you to choose where the audit logs will be stored.
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Audit Log*.
 . Click the settings icon and configure the reporter.
 +
@@ -22,4 +22,4 @@ NOTE: AM includes by default database reporters based on your AM distribution su
 
 AM also provides the following reporters :
 
-- link:/am/current/am_userguide_audit_log_file.html[File^]
+- link:{{ '/am/current/am_userguide_audit_log_file.html' | relative_url }}[File^]

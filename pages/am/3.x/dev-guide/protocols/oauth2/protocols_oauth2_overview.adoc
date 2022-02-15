@@ -12,7 +12,7 @@ OAuth 2.0 specifies standard endpoints to interact with the resource owner (or t
 
 You can see which OAuth 2.0 protocol endpoints are exposed by AM in the online API reference or the OpenAPI specification:
 
-* link:/am/current/oauth2/index.html[OAuth 2.0 API Console, window="_blank"] - link:/am/current/oauth2/swagger.yml[OpenAPI spec, window="_blank"]
+* link:{{ '/am/current/oauth2/index.html' | relative_url }}[OAuth 2.0 API Console, window="_blank"] - link:{% link /am/current/oauth2/swagger.yml %}[OpenAPI spec, window="_blank"]
 
 == Roles
 
@@ -44,16 +44,16 @@ An authorization grant is a flow used by the client to obtain an access token.
 
 The specification defines four grant types:
 
-- link:/am/current/am_devguide_protocols_oauth2_overview.html#authorization_code[Authorization code]
-- link:/am/current/am_devguide_protocols_oauth2_overview.html#implicit[Implicit]
-- link:/am/current/am_devguide_protocols_oauth2_overview.html#resource_owner_password_credentials[Resource owner password credentials]
-- link:/am/current/am_devguide_protocols_oauth2_overview.html#client_credentials[Client credentials]
+- link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#authorization_code' | relative_url }}[Authorization code]
+- link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#implicit' | relative_url }}[Implicit]
+- link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#resource_owner_password_credentials' | relative_url }}[Resource owner password credentials]
+- link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#client_credentials' | relative_url }}[Client credentials]
 
 [NOTE]
 ====
-OAuth 2.0 also supports the use of link:/am/current/am_devguide_protocols_oauth2_overview.html#refresh_token[refresh tokens] to obtain new access tokens.
+OAuth 2.0 also supports the use of link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#refresh_token' | relative_url }}[refresh tokens] to obtain new access tokens.
 
-AM provides a mechanism for defining additional types. See link:/am/current/am_userguide_extension_grants.html[Extension grants^] for more information.
+AM provides a mechanism for defining additional types. See link:{{ '/am/current/am_userguide_extension_grants.html' | relative_url }}[Extension grants^] for more information.
 
 How you use grant types mainly depends on your type of application.
 ====
@@ -85,7 +85,7 @@ The authorization code is used by applications to obtain a temporary code after 
 === Implicit
 
 WARNING: The OAuth standard now discourages the use of an implicit grant to request access tokens from Javascript applications.
-You should consider using the link:/am/current/am_devguide_protocols_oauth2_overview.html#authorization_code[Authorization code] grant with a PKCE extension for all your applications.
+You should consider using the link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#authorization_code' | relative_url }}[Authorization code] grant with a PKCE extension for all your applications.
 
 The implicit grant is a simplified authorization code flow. Instead of getting a temporary code first, you can retrieve an access token directly from web browser redirection.
 

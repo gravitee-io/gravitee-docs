@@ -6,31 +6,31 @@
 <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
 <meta name="keywords" content="{{page.tags}}{% if page.tags %}, {% endif %} {{page.keywords}}">
 <title>{{ page.title }} | {{ site.site_title }}</title>
-<link rel="stylesheet" href="{{ "/css/syntax.css" | relative_url }}">
+<link rel="stylesheet" href="{% link /css/syntax.css %}">
 
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
-<link rel="stylesheet" href="{{ "/css/modern-business.css" | relative_url }}">
-<link rel="stylesheet" href="{{ "/css/lavish-bootstrap.css" | relative_url }}">
-<link rel="stylesheet" href="{{ "/css/rouge_github.css" | relative_url }}">
-<link rel="stylesheet" href="{{ "/css/customstyles.css" | relative_url }}">
-<link rel="stylesheet" href="{{ "/css/theme-gravitee_new.css" | relative_url }}">
-<link rel="stylesheet" href="{{ "/css/gravitee.css" | relative_url }}">
+<link rel="stylesheet" href="{% link /css/modern-business.css %}">
+<link rel="stylesheet" href="{% link /css/lavish-bootstrap.css %}">
+<link rel="stylesheet" href="{% link /css/rouge_github.css %}">
+<link rel="stylesheet" href="{% link /css/customstyles.css %}">
+<link rel="stylesheet" href="{% link /css/theme-gravitee_new.css %}">
+<link rel="stylesheet" href="{% link /css/gravitee.css %}">
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Libre%20Franklin" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<script src="{{ "/js/jquery.navgoco.min.js" | relative_url }}"></script>
+<script src="{% link /js/jquery.navgoco.min.js %}"></script>
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
-<script src="{{ "/js/toc.js" | relative_url }}"></script>
-<script src="{{ "/js/customscripts.js" | relative_url }}"></script>
+<script src="{% link /js/toc.js %}"></script>
+<script src="{% link /js/customscripts.js %}"></script>
 
-<link rel="shortcut icon" href="{{ "/images/favicon.ico" | relative_url }}" />
-<link rel="icon" type="image/png" href="{{ "/images/favicon.png" | relative_url }}" sizes="96x96" />
+<link rel="shortcut icon" href="{% link /images/favicon.ico %}" />
+<link rel="icon" type="image/png" href="{% link /images/favicon.png %}" sizes="96x96" />
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,6 +39,6 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "feed.xml" | prepend: site.url }}">
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ 'feed.xml' | absolute_url }}">
 <!-- Algolia search -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />

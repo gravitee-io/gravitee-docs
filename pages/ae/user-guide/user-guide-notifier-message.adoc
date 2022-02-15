@@ -35,7 +35,7 @@ These properties are available regardless of the alert type.
 
 |`alert.conditions[]`
 |Array of conditions. Each condition contains specific fields. +
-See link:/ae/userguide_conditions.html[Conditions]
+See link:{{ '/ae/userguide_conditions.html' | relative_url }}[Conditions]
 
 |`notification.timestamp`
 |Timestamp (long value) of the trigger
@@ -65,28 +65,28 @@ You can access these properties using the following syntax: `${notification.prop
 |Platform
 |Node
 a|
-* link:/ae/userguide_properties_node_lifecycle.html[Alert when the lifecycle status of a node has changed]
-* link:/ae/userguide_properties_node_heartbeat.html[Alert when a metric of the node validates a condition]
-* link:/ae/userguide_properties_node_heartbeat.html[Alert when the aggregated value of a node metric passes a threshold]
-* link:/ae/userguide_properties_node_heartbeat.html[Alert when the rate of a given condition passes a threshold]
-* link:/ae/userguide_properties_node_healthcheck.html[Alert on the health status of the node]
+* link:{{ '/ae/userguide_properties_node_lifecycle.html' | relative_url }}[Alert when the lifecycle status of a node has changed]
+* link:{{ '/ae/userguide_properties_node_heartbeat.html' | relative_url }}[Alert when a metric of the node validates a condition]
+* link:{{ '/ae/userguide_properties_node_heartbeat.html' | relative_url }}[Alert when the aggregated value of a node metric passes a threshold]
+* link:{{ '/ae/userguide_properties_node_heartbeat.html' | relative_url }}[Alert when the rate of a given condition passes a threshold]
+* link:{{ '/ae/userguide_properties_node_healthcheck.html' | relative_url }}[Alert on the health status of the node]
 
 |Platform
 |API Metrics
 a|
-* link:/ae/apim_notification_request.html[Alert when a metric of the request validates a condition]
-* link:/ae/apim_notification_request.html[Alert when the aggregated value of a request metric passes a threshold]
-* link:/ae/apim_notification_request.html[Alert when the rate of a given condition passes a threshold]
+* link:{{ '/ae/apim_notification_request.html' | relative_url }}[Alert when a metric of the request validates a condition]
+* link:{{ '/ae/apim_notification_request.html' | relative_url }}[Alert when the aggregated value of a request metric passes a threshold]
+* link:{{ '/ae/apim_notification_request.html' | relative_url }}[Alert when the rate of a given condition passes a threshold]
 
 |API
 |API Metrics
 a|
-* link:/ae/apim_notification_request.html[Alert when a metric of the request validates a condition]
-* link:/ae/apim_notification_request.html[Alert when the aggregated value of a request metric passes a threshold]
-* link:/ae/apim_notification_request.html[Alert when the rate of a given condition passes a threshold]
+* link:{{ '/ae/apim_notification_request.html' | relative_url }}[Alert when a metric of the request validates a condition]
+* link:{{ '/ae/apim_notification_request.html' | relative_url }}[Alert when the aggregated value of a request metric passes a threshold]
+* link:{{ '/ae/apim_notification_request.html' | relative_url }}[Alert when the rate of a given condition passes a threshold]
 
 |API
 |Health Check
 a|
-* link:/ae/apim_notification_endpoint_healthcheck.html[Alert when the health status of an endpoint has changed]
+* link:{{ '/ae/apim_notification_endpoint_healthcheck.html' | relative_url }}[Alert when the health status of an endpoint has changed]
 |===

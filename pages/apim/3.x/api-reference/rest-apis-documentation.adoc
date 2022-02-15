@@ -19,15 +19,15 @@ APIM API exposes a complete set of endpoints for developers wanting to script so
 
 You can access the online endpoint reference or the OpenAPI specification by version. For the:
 
-* Online reference, see https://docs.gravitee.io/apim/3.x/management-api/{{ current_version }}
-* OpenAPI spec, see https://docs.gravitee.io/apim/3.x/management-api/{{ current_version }}/swagger.json
+* Online reference, see link:{{site.url}}{% link apim/3.x/management-api/{{ current_version }}/index.html %}[]
+* OpenAPI spec, see link:{{site.url}}{% link apim/3.x/management-api/{{ current_version }}/swagger.json %}[]
 
 [TIP]
 ====
 To see earlier versions, replace the version number in the URL. For example:
 
-* Online reference for 3.0: https://docs.gravitee.io/apim/3.x/management-api/3.0
-* OpenAPI spec for 3.0: https://docs.gravitee.io/apim/3.x/management-api/3.0/swagger.json
+* Online reference for 3.0: link:{{site.url}}{% link apim/3.x/management-api/3.0/index.html %}[]
+* OpenAPI spec for 3.0: link:{{site.url}}{% link apim/3.x/management-api/3.0/swagger.json %}[]
 ====
 
 == APIM Portal API reference
@@ -36,13 +36,13 @@ APIM API exposes a complete set of endpoints for developers wanting to script so
 
 You can access the online endpoint reference or the OpenAPI specification by version. For the:
 
-* Online reference, see https://docs.gravitee.io/apim/3.x/portal-api/{{ current_version }}
-* OpenAPI spec, see https://docs.gravitee.io/apim/3.x/portal-api/{{ current_version }}/openapi.yaml
+* Online reference, see link:{{site.url}}{% link apim/3.x/portal-api/{{ current_version }}/index.html %}[]
+* OpenAPI spec, see link:{{site.url}}{% link apim/3.x/portal-api/{{ current_version }}/openapi.yaml %}[]
 
 [TIP]
 ====
 To see earlier versions, replace the version number in the URL. For example:
 
-* Online reference for 3.0: https://docs.gravitee.io/apim/3.x/portal-api/3.0
-* OpenAPI spec for 3.0: https://docs.gravitee.io/apim/3.x/portal-api/3.0/openapi.yaml
+* Online reference for 3.0: link:{{site.url}}{% link apim/3.x/portal-api/3.0/index.html %}[]
+* OpenAPI spec for 3.0: link:{{site.url}}{% link apim/3.x/portal-api/3.0/openapi.yaml %}[]
 ====

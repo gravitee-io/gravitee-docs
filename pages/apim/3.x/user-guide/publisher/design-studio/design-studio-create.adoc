@@ -13,10 +13,10 @@ Creating different flows for a plan allows you to apply different policies by pa
 
 == Get started with Design Studio
 
-. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
+. link:{{ '/apim/3.x/apim_quickstart_console_login.html' | relative_url }}[Log in to APIM Console^].
 . Click *APIs* and select your API in the list.
 . Click *Design*.
-. If your API was created in an earlier version of APIM, migrate it to Design Studio as described in link:/apim/3.x/apim_publisherguide_design_studio_migrate.html[Migrate to Design Studio^].
+. If your API was created in an earlier version of APIM, migrate it to Design Studio as described in link:{{ '/apim/3.x/apim_publisherguide_design_studio_migrate.html' | relative_url }}[Migrate to Design Studio^].
 
 == Create and configure an API flow
 
@@ -37,9 +37,9 @@ image:apim/3.x/api-publisher-guide/design-studio/flow-configuration.png[]
 Configure the following:
 
 * Name
-* Path details to filter on: the path syntax for the flow in link:/apim/3.x/apim_policies_overview.html#ant-notation[Ant format^] and whether the path starts with or equals the value entered in *Path*.
+* Path details to filter on: the path syntax for the flow in link:{{ '/apim/3.x/apim_policies_overview.html#ant-notation' | relative_url }}[Ant format^] and whether the path starts with or equals the value entered in *Path*.
 * One or methods to filter on (specify all which apply)
-* One or more conditions to filter on, in link:/apim/3.x/apim_publisherguide_expression_language.html[Expression Language format^] -- for example, a condition to filter on query parameters called `X-debug` would be written like this: `#request.params['X-debug'] != null`
+* One or more conditions to filter on, in link:{{ '/apim/3.x/apim_publisherguide_expression_language.html' | relative_url }}[Expression Language format^] -- for example, a condition to filter on query parameters called `X-debug` would be written like this: `#request.params['X-debug'] != null`
 
 . Click *SAVE*.
 
@@ -64,7 +64,7 @@ You can also configure dynamic properties by clicking *CONFIGURE DYNAMIC PROPERT
 
 image:apim/3.x/api-publisher-guide/design-studio/properties-tab.png[]
 
-When you add new policies to your API flows which include link:/apim/3.x/apim_publisherguide_expression_language.html#api[Expression Language^] fields as part of their configuration (such as the dynamic routing policy), you can retrieve and query property values with the `#properties` statement. For more details, see the <<example>> below.
+When you add new policies to your API flows which include link:{{ '/apim/3.x/apim_publisherguide_expression_language.html#api' | relative_url }}[Expression Language^] fields as part of their configuration (such as the dynamic routing policy), you can retrieve and query property values with the `#properties` statement. For more details, see the <<example>> below.
 
 ==== Dynamic properties
 
@@ -109,7 +109,7 @@ image:apim/3.x/api-publisher-guide/design-studio/cache-resource.png[]
 
 You can add as many policies as you want to a flow.
 
-TIP: You can find out more about a specific policy by selecting it to view the in-product reference documentation, or you can view the online Policy Reference link:/apim/3.x/apim_policies_overview.html[here^].
+TIP: You can find out more about a specific policy by selecting it to view the in-product reference documentation, or you can view the online Policy Reference link:{{ '/apim/3.x/apim_policies_overview.html' | relative_url }}[here^].
 
 . Click the *DESIGN* tab.
 . Click on a plan to expand it.
@@ -137,7 +137,7 @@ image::apim\3.x\api-publisher-guide\design-studio\dynamic-routing-properties.png
 
 If the ID in the request header matches the key of one of the properties, it is replaced with the URL. The dynamic routing policy then reroutes the API call to the URL.
 
-TIP: The list of shop IDs and URLs could also be maintained using a dictionary, for example, in organizations where the administrator maintains this information independently of the API creation process or if the list needs to be available to multiple APIs. For more details, see link:/apim/3.x/apim_installguide_configuration_dictionaries.html[Configure dictionaries^] in the Configuration Guide.
+TIP: The list of shop IDs and URLs could also be maintained using a dictionary, for example, in organizations where the administrator maintains this information independently of the API creation process or if the list needs to be available to multiple APIs. For more details, see link:{{ '/apim/3.x/apim_installguide_configuration_dictionaries.html' | relative_url }}[Configure dictionaries^] in the Configuration Guide.
 
 == Deploy your API and view it in the audit history
 
