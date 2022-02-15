@@ -140,6 +140,7 @@ asciidoctor:
   base_dir: :docdir
   safe: unsafe
   attributes:
+    - page-liquid
     - doctype=book
     - idseparator=_
     - icons=font
