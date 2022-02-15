@@ -46,11 +46,11 @@ https://download.gravitee.io/#graviteeio-apim/plugins/tracers/gravitee-tracer-ja
 
 3. To see your calls, open the helpful, user-friendly JaegerUI by visiting http://localhost:16686  (note that JaegerUI was automatically installed earlier in the process). Click *Search* and find the API you called.
 
-image:apim/3.x/installation/configuration/tracing-info-general.png[General tracing info from JaegerUI.]
+image:{% link images/apim/3.x/installation/configuration/tracing-info-general.png %}[General tracing info from JaegerUI.]
 
 In these examples, you’ll also notice that each policy traversed is listed on a different line to provide greater visibility and assist with debugging. You can even see timestamp info on the detailed view.
 
-image:apim/3.x/installation/configuration/tracing-info-detailed.png[Detailed tracing info from JaegerUI.]
+image:{% link images/apim/3.x/installation/configuration/tracing-info-detailed.png %}[Detailed tracing info from JaegerUI.]
 
 
 == Configure Environment Variables
@@ -88,4 +88,4 @@ Jaeger comes with a helpful, user-friendly UI that allows you to see your calls.
 
 Then, select **gio_apim_gateway** in the _Service_ list and click the _Find Traces_ button.
 
-image:apim/3.x/installation/configuration/jaeger-search.png[Jaeger search console and results.]
+image:{% link images/apim/3.x/installation/configuration/jaeger-search.png %}[Jaeger search console and results.]

@@ -38,14 +38,14 @@ To configure a response template:
 . link:{{ '/apim/3.x/apim_quickstart_console_login.html' | relative_url }}[Log in to APIM Console^].
 . Click *APIs* and select the API.
 . Click *Proxy > Response Templates*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"] to add a new template.
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"] to add a new template.
 . Select the *Template key*. This can be either:
 
 ** one of the error keys associated with the policy (see the <<Policy error keys you can override>> table below for more details)
 ** `DEFAULT`, applying to all errors returned (as long as they correspond to the content type specified in the next step)
 ** one of the global error keys (keys described as applying to all policies in the <<Policy error keys you can override>> table)
 +
-image:apim/3.x/api-publisher-guide/response-templates/template-key.png[]
+image:{% link images/apim/3.x/api-publisher-guide/response-templates/template-key.png %}[]
 
 . To send the template override values only for JSON or XML requests, specify `JSON` or `XML` as the *Content type*. The default value `\*/*` applies to all content types.
 . Specify the status code for which the new values are sent.
@@ -55,13 +55,13 @@ image:apim/3.x/api-publisher-guide/response-templates/template-key.png[]
 ** body of the response
 
 +
-image:apim/3.x/api-publisher-guide/response-templates/template-vals.png[]
+image:{% link images/apim/3.x/api-publisher-guide/response-templates/template-vals.png %}[]
 
 . Click *ADD A NEW REPONSE TEMPLATE* to add more templates for the same error key, then repeat the previous three steps.
 . Click *SAVE*.
 . Click the *deploy your API* link with the changes.
 +
-image:apim/3.x/api-publisher-guide/response-templates/template-deploy.png[]
+image:{% link images/apim/3.x/api-publisher-guide/response-templates/template-deploy.png %}[]
 
 The next time a call triggering the error associated with your template is sent to the API, the consumer will see the override values.
 

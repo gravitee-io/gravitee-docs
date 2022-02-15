@@ -11,7 +11,7 @@ There are two ways to create a plan in APIM.
 
 You can create a plan as part of creating an API.
 
-image::apim/3.10/create-api-plan.png[]
+image::{% link images/apim/3.10/create-api-plan.png %}[]
 
 Learn more about creating plans using this method in link:{{ '/apim/3.x/apim_publisherguide_create_apis.html' | relative_url }}[Create APIs^].
 
@@ -22,16 +22,16 @@ You can use this method to get up and running quickly, then go back and update t
 
 You can select an existing API and create or update plans for it.
 
-image::apim/3.10/create-existing-plan.png[]
+image::{% link images/apim/3.10/create-existing-plan.png %}[]
 
 To create or update a plan for an existing API:
 
 . Click **APIs** and select your API.
 . Click *Portal > Plans*.
-. Click the edit icon image:icons/edit-icon.png[role="icon"] on an existing plan, or click the plus icon image:icons/plus-icon.png[role="icon"] at the bottom of the **Plans** page.
+. Click the edit icon image:{% link images/icons/edit-icon.png %}[role="icon"] on an existing plan, or click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"] at the bottom of the **Plans** page.
 . On the **Define** page, enter the plan definition:
 +
-image::apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-define.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-define.png %}[]
   .. Enter a name and description.
   .. In **Characteristics**, enter labels you want to use to tag the plan.
   .. Select a page containing the general conditions of use.

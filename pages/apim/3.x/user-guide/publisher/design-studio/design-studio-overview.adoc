@@ -36,7 +36,7 @@ By default, the selection of a flow is based on the operator defined in the flow
 You can use the operator either to select a flow with a path which matches exactly, or when the start of the path matches.
 You can then use the *Best match* option to select the flow from the path that is closest.
 
-image:apim/3.x/api-publisher-guide/design-studio/graviteeio-design-studio-best-match.png[]
+image:{% link images/apim/3.x/api-publisher-guide/design-studio/graviteeio-design-studio-best-match.png %}[]
 
 == Quick tour
 
@@ -44,7 +44,7 @@ Design Studio shows a visual representation of a plan's flows horizontally, with
 
 Each plan can have more than one set of request and response flows, each with its own definition (for example, HTTP method).
 
-image:apim/3.x/api-publisher-guide/design-studio/quick-tour.png[Design Studio]
+image:{% link images/apim/3.x/api-publisher-guide/design-studio/quick-tour.png %}[Design Studio]
 
 * The list on the left shows the plans associated with the API, which you can expand to see the different flows defined
 * The central pane shows the currently selected flows with their associated policies

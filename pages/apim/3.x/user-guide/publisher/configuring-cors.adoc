@@ -13,7 +13,7 @@ For background information on CORS, take a look at the https://www.w3.org/TR/cor
 == Configuration
 You can configure CORS for an API in APIM Console with the *Proxy > CORS* menu option. The sections below detail the values you can specify.
 
-image::apim/3.x/api-publisher-guide/cors/graviteeio-configuring-cors-configuration-1.png[]
+image::{% link images/apim/3.x/api-publisher-guide/cors/graviteeio-configuring-cors-configuration-1.png %}[]
 
 === Access-Control-Allow-Origin
 
@@ -50,10 +50,10 @@ indicates how long the results of a preflight request can be cached (`-1` if dis
 
 Provides a server whitelist headers that browsers are allowed to access.
 
-image::apim/3.x/api-publisher-guide/cors/graviteeio-configuring-cors-configuration-2.png[]
+image::{% link images/apim/3.x/api-publisher-guide/cors/graviteeio-configuring-cors-configuration-2.png %}[]
 
 == Troubleshooting CORS
 
 All requests rejected because of CORS issues will generate some logs that you can view in the `Analytics` section of your API logs.
 
-image::apim/3.x/api-publisher-guide/cors/graviteeio-troubleshooting-cors.png[]
+image::{% link images/apim/3.x/api-publisher-guide/cors/graviteeio-troubleshooting-cors.png %}[]

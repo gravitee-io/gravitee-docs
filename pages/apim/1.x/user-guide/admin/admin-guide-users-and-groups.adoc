@@ -14,7 +14,7 @@ In the installation guide, you have learnt how to configure different identity p
 
 Users are listed in the `Users` section of the `Settings` menu.
 
-image::apim/1.x/adminguide/usersgroups-users.png[Gravitee.io - List users]
+image::{% link images/apim/1.x/adminguide/usersgroups-users.png %}[Gravitee.io - List users]
 
 Here you can :
 
@@ -23,7 +23,7 @@ Here you can :
 
 If you select a user, you have access to a detailed information about its account and permissions and the ability to manage its groups.
 
-image::apim/1.x/adminguide/usersgroups-user.png[Gravitee.io - User]
+image::{% link images/apim/1.x/adminguide/usersgroups-user.png %}[Gravitee.io - User]
 
 == Groups
 
@@ -35,7 +35,7 @@ Let use groups to create a `FOO Team` group where you can put all members of you
 === How to manage groups
 ==== Create the `FOO Team` group
 
-image::apim/1.x/adminguide/usersgroups-newgroup.png[Gravitee.io - New Group]
+image::{% link images/apim/1.x/adminguide/usersgroups-newgroup.png %}[Gravitee.io - New Group]
 
 You can see that in addition to the group name, you have two other input :
 
@@ -51,12 +51,12 @@ Those checkbox can be useful if the group is transverse (an helpdesk group for e
 
 Select the new group and clic on the (+) button to add users
 
-image::apim/1.x/adminguide/usersgroups-groupmembers.png[Gravitee.io - Group member]
+image::{% link images/apim/1.x/adminguide/usersgroups-groupmembers.png %}[Gravitee.io - Group member]
 
 ==== Add the group to an API or an application
 
 Go to the API/Application you want to modify and select the `groups` section.
 
-image::apim/1.x/adminguide/usersgroups-apigroups.png[Gravitee.io - Api Group]
+image::{% link images/apim/1.x/adminguide/usersgroups-apigroups.png %}[Gravitee.io - Api Group]
 
 Now you can go to the `memberships` section to find that members of the `FOO Team` are members of the API with the role you have set globally.

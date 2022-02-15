@@ -10,11 +10,11 @@ The Kafka connector implements the SME Connector API in order to provide native 
 
 * Ingest data by exposing an endpoint that transforms requests into messages that are published into an Apache Kafka topic.
 
-image:apim/3.x/api-publisher-guide/sme/kafka-controller.png[]
+image:{% link images/apim/3.x/api-publisher-guide/sme/kafka-controller.png %}[]
 
 * Stream your Kafka events to consumers thanks to web-friendly protocols such as HTTP or Websocket, and provide real-time integration capability to your ecosystem.
 
-image:apim/3.x/api-publisher-guide/sme/kafka-controller2.png[]
+image:{% link images/apim/3.x/api-publisher-guide/sme/kafka-controller2.png %}[]
 
 == Getting started
 
@@ -47,15 +47,15 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
 
 Once created, you can access the Kafka connector configuration via the console, go to your API > Proxy > Endpoints.
 
-image:apim/3.x/api-publisher-guide/sme/kafka-console1.png[]
+image:{% link images/apim/3.x/api-publisher-guide/sme/kafka-console1.png %}[]
 
 On the Configuration tab, configure your settings, referring to the link:{{ '/apim/3.x/apim_publisherguide_configuring_kafka.html' | relative_url }}[configuration section] for any required information.
 
-image:apim/3.x/api-publisher-guide/sme/kafka-console2.png[]
+image:{% link images/apim/3.x/api-publisher-guide/sme/kafka-console2.png %}[]
 
 Add Kafka to the default group
 
-image:apim/3.x/api-publisher-guide/sme/kafka-console3.png[]
+image:{% link images/apim/3.x/api-publisher-guide/sme/kafka-console3.png %}[]
 
 
 For more details on the parameters defined in this call, refer to the link:{{ '/apim/3.x/apim_publisherguide_configuring_kafka.html' | relative_url }}[configuring Kafka section].

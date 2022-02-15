@@ -19,4 +19,4 @@ This service must follow the requirements here after :
 * Implement the link:{{ '/am/current/ciba_external_service/index.html' | relative_url }}[notification endpoint, window="_blank"] to receive notification request
 * Call the AM link:{{ '/am/current/ciba/index.html' | relative_url }}[callback endpoint] to update the authentication request status
 
-image::am/current/graviteeio-am-CIBA-Flow.png[]
+image::{% link images/am/current/graviteeio-am-CIBA-Flow.png %}[]

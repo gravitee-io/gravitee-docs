@@ -27,11 +27,11 @@ You can retrieve an ID Token by requesting an access token with a specific `open
 . Click the application, then click the *Settings* tab.
 . Click *OAuth 2.0 / OIDC*.
 +
-image::am/current/quickstart-applications-oauth2.png[]
+image::{% link images/am/current/quickstart-applications-oauth2.png %}[]
 +
 . In the *Scopes* section, select *openid* from the *Scope* drop-down menu and click *+ADD*.
 +
-image::am/current/quickstart-applications-openid.png[]
+image::{% link images/am/current/quickstart-applications-openid.png %}[]
 +
 . Scroll to the bottom of the page and click *SAVE*.
 
@@ -100,9 +100,9 @@ Finally, you need to have the ID Token signed by AM.
 . In AM Console, click *Settings*.
 . In the *Security* section, click *Certificates*.
 +
-image::am/current/quickstart-applications-certificates.png[]
+image::{% link images/am/current/quickstart-applications-certificates.png %}[]
 +
-. Retrieve your public key by clicking the key icon image:am/current/graviteeio-am-quickstart-profile-public-key.png[].
+. Retrieve your public key by clicking the key icon image:{% link images/am/current/graviteeio-am-quickstart-profile-public-key.png %}[].
 . Copy the signature and use a JWT library to verify it.
 
 NOTE: You can also use link:https://www.gravitee.io/products/api-management[Gravitee.io API Management^] with the link:{{ '/apim/3.x/apim_policies_jwt.html' | relative_url }}[JWT Policy^] to verify and retrieve user profile information.
@@ -146,7 +146,7 @@ The identity provider serves default claims such as the user's `username`, `give
 . Select your identity provider settings, the click the *User mappers* tab.
 . Map new custom claims with user attributes contained in your user data store.
 +
-image::am/current/graviteeio-am-quickstart-profile-user-mappers.png[]
+image::{% link images/am/current/graviteeio-am-quickstart-profile-user-mappers.png %}[]
 +
 . Custom user attributes will be available in the UserInfo Endpoint response.
 

@@ -15,11 +15,11 @@ APIM Console provides audit trails at two levels of granularity:
 
 * A platform-wide audit trail, which you can view with the *Audit* menu option:
 +
-image:apim/3.x/api-publisher-guide/audit/global-audit.png[]
+image:{% link images/apim/3.x/api-publisher-guide/audit/global-audit.png %}[]
 
 * An API-specific audit trail, which you can view with the API *Audit* menu option in APIM Console:
 +
-image:apim/3.x/api-publisher-guide/audit/api-audit.png[]
+image:{% link images/apim/3.x/api-publisher-guide/audit/api-audit.png %}[]
 
 The sections below focus on the API audit trail.
 
@@ -37,7 +37,7 @@ You can use the history feature of the audit trail to view the different stages 
 
 Each stage corresponds to a new deployment of the API, with a number and a label (if specified at deployment time) identifying the deployment:
 
-image:apim/3.x/api-publisher-guide/audit/history-overview.png[]
+image:{% link images/apim/3.x/api-publisher-guide/audit/history-overview.png %}[]
 
 === View the details of an API deployment
 
@@ -45,16 +45,16 @@ image:apim/3.x/api-publisher-guide/audit/history-overview.png[]
 . Select the API deployment to see more details.
 . Select a flow and click through the tabs to see its configuration details. In the *DESIGN* tab, you can select a policy to view details of the policy configuration.
 +
-image:apim/3.x/api-publisher-guide/audit/audit-history-details.png[]
+image:{% link images/apim/3.x/api-publisher-guide/audit/audit-history-details.png %}[]
 
 . To view the deployment configuration in JSON format, toggle *Mode* to *Definition*.
 +
-image:apim/3.x/api-publisher-guide/audit/audit-definition-mode.png[]
+image:{% link images/apim/3.x/api-publisher-guide/audit/audit-definition-mode.png %}[]
 
 . To copy the deployment configuration in JSON format, click *COPY TO CLIPBOARD*. You can do this in either definition or design mode.
 . To view a diff of the deployment configuration, click *DIFF* and select another deployment stage to view the difference between the two deployments. If this is not the latest deployment, you can also click *DIFF WITH PUBLISHED API* to view the difference with the latest deployment. The numbers in green and red at the top indicate the number of additions to and subtractions from the definition.
 +
-image:apim/3.x/api-publisher-guide/audit/audit-history-diff.png[]
+image:{% link images/apim/3.x/api-publisher-guide/audit/audit-history-diff.png %}[]
 
 === Roll back your API to an earlier deployment
 
@@ -65,16 +65,16 @@ You can roll back to an earlier deployment of your API. This does not remove the
 . Click *ROLLBACK* and confirm in the prompt.
 . To complete the rollback, select the new rollback deployment and click *DEPLOY*.
 +
-image:apim/3.x/api-publisher-guide/audit/audit-history-rollback.png[]
+image:{% link images/apim/3.x/api-publisher-guide/audit/audit-history-rollback.png %}[]
 +
 TIP: To view a diff of the deployment before deploying, you can use the diff feature as described above.
 
 . (Optional) Add a deployment label to identify to the new deployment.
 +
-image:apim/3.x/api-publisher-guide/audit/audit-history-rollback-deployment-label.png[]
+image:{% link images/apim/3.x/api-publisher-guide/audit/audit-history-rollback-deployment-label.png %}[]
 
 . Click *OK*.
 +
 APIM adds a new deployment to the history.
 +
-image:apim/3.x/api-publisher-guide/audit/audit-history-rollback-deployment.png[]
+image:{% link images/apim/3.x/api-publisher-guide/audit/audit-history-rollback-deployment.png %}[]

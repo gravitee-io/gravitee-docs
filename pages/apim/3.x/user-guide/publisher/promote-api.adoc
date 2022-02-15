@@ -21,7 +21,7 @@ NOTE: This feature is available starting in version APIM 3.10.0 and requires tha
 ** Another one linked to Dev and QA environments.
 ** An API to promote.
 +
-image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-cockpit-graph.png[Map of installations in Cockpit]
+image::{% link images/apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-cockpit-graph.png %}[Map of installations in Cockpit]
 
 == Request Promotion For An API
 
@@ -33,17 +33,17 @@ Promotion requests are logged in link:{{ '/apim/3.x/apim_publisherguide_audit.ht
 
 The following actions must be done with an API Publisher on `DEV` environment.
 
-. Go to the API to promote and click the image:icons/promote-button.png[role="icon"] button.
+. Go to the API to promote and click the image:{% link images/icons/promote-button.png %}[role="icon"] button.
 +
-image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-1.png[Promote button]
+image::{% link images/apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-1.png %}[Promote button]
 +
 . A window listing the available environments for the API promotion will pop up
 +
-image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-2.png[Target environments list]
+image::{% link images/apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-2.png %}[Target environments list]
 +
 NOTE: If a promotion request already exists for your API on an environment, you cannot do another request until the previous one is rejected or accepted.
 +
-image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-2-bis.png[Target environments list]
+image::{% link images/apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-2-bis.png %}[Target environments list]
 +
 . Choose the environment you want to promote the API on, then click on *PROMOTE* button
 
@@ -59,7 +59,7 @@ As a user of `QA` environment, promotion requests are visible in the *Tasks* sec
 
 . Go to the *Tasks* section.
 +
-image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-3.png[Promotion tasks]
+image::{% link images/apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-promote-3.png %}[Promotion tasks]
 +
 . You can choose to accept or reject the promotion.
 ** Rejecting the promotion will Remove the task.

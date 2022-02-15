@@ -28,7 +28,7 @@ To subscribe to Portal notifications:
 
 . In APIM Console, click *Settings > Notifications*.
 +
-image:apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-subscriptions-portal.png[Subscribe to portal notifications]
+image:{% link images/apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-subscriptions-portal.png %}[Subscribe to portal notifications]
 
 . Select the required notifications. For details, see <<portal-notifications,Portal notifications>>.
 . Click *SAVE*.
@@ -40,7 +40,7 @@ To subscribe to notifications about a specific API:
 . In APIM Console, click *APIs*.
 . Select the API and click *Notifications*.
 +
-image:apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-subscriptions-api.png[Subscribe to API notifications]
+image:{% link images/apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-subscriptions-api.png %}[Subscribe to API notifications]
 
 . Select the required notifications. For details, see <<api-notifications, API notifications>>.
 . Click *SAVE*.
@@ -52,7 +52,7 @@ To subscribe to notifications about a specific application:
 . In APIM Console, click *Applications*.
 . Select the application and click *Notifications*.
 +
-image:apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-subscriptions-application.png[Subscribe to application notifications]
+image:{% link images/apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-subscriptions-application.png %}[Subscribe to application notifications]
 
 . Select the required notifications. For details, see <<application-notifications, Application notifications>>.
 . Click *SAVE*.
@@ -122,11 +122,11 @@ image:apim/3.x/installation/notification/graviteeio-installation-configuration-n
 The Portal notifier sends messages to logged in users.
 Notifications can be displayed by clicking the bell icon in the top menu of APIM Console.
 
-image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-portal-notifier-console.png[Notifications in the APIM Administration console, 300]
+image::{% link images/apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-portal-notifier-console.png %}[Notifications in the APIM Administration console, 300]
 
 In APIM Portal, notifications are displayed in a specific page, accessible from the user menu.
 
-image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-portal-notifier-portal.png[Notifications in the developer portal]
+image::{% link images/apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-portal-notifier-portal.png %}[Notifications in the developer portal]
 
 The templates of portal notifications can be customized in *Settings*. For more information, see <<Templates>>.
 
@@ -134,7 +134,7 @@ The templates of portal notifications can be customized in *Settings*. For more 
 Email notifiers send an email to a specific list of email addresses.
 To create a new email notifier:
 
-. Click the plus icon image:icons/plus-icon.png[role="icon"] .
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"] .
 . Choose the *Default Email Notifier* type and give your notifier a name.
 . Add one or more email addresses.
 . Subscribe to the notifications you want.
@@ -143,7 +143,7 @@ To create a new email notifier:
 ====
 When you create an API, a default email notifier is created. All notifications are selected and email are send to the primary owner.
 
-image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-email-notifier-api.png[Default configuration of an email notifier]
+image::{% link images/apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-email-notifier-api.png %}[Default configuration of an email notifier]
 ====
 
 The templates of email notifications can be customized in *Settings*. See <<Templates>>
@@ -190,7 +190,7 @@ The JSON body looks like this (depending on the category of the notification, so
 
 To create a new webhook notifier:
 
-. Click the plus icon image:icons/plus-icon.png[role="icon"] .
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"] .
 . Choose the *Default Webhook Notifier* type and give your notifier a name.
 . Add the URL which APIM will call to send notifications.
 . Subscribe to the notifications you want.
@@ -208,22 +208,22 @@ templates:
 
 Starting from APIM version 3.4.0, you can override these templates in APIM Console.
 
-image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-templates-1.png[Templates edition in the settings]
+image::{% link images/apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-templates-1.png %}[Templates edition in the settings]
 
 You can also customize:
 
 - Email templates that are sent for specific actions and not related to a notification. Most of the time, these emails are for specific users.
 - The `header.html` file that is included by default in all email templates.
 
-image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-templates-2.png[Specific templates]
+image::{% link images/apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-templates-2.png %}[Specific templates]
 
 === Customize a template
 For almost all notifications, you can configure both Portal and email notifications.
 
 To customize a template, toggle the switch *Override default template* and update the title and/or the content.
 
-image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-templates-edition-1.png[Portal template edition]
-image::apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-templates-edition-2.png[Email template edition]
+image::{% link images/apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-templates-edition-1.png %}[Portal template edition]
+image::{% link images/apim/3.x/installation/notification/graviteeio-installation-configuration-notifications-templates-edition-2.png %}[Email template edition]
 
 
 === Attributes

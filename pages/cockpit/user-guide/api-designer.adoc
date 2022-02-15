@@ -8,7 +8,7 @@
 Cockpit's API Designer is a graphical, no-code tool for creating API models using a _Design First_ approach. With API Designer, you can produce fully OpenAPI compliant API models in minutes.
 Then, once you're happy with your design, you can export the model as an OpenAPI spec (OAS) in JSON format, or push the model to one of your linked APIM installations, where you can work with it like any other API.
 
-image:cockpit/api-designer.png[]
+image:{% link images/cockpit/api-designer.png %}[]
 
 API Designer consists of three main sections:
 
@@ -29,11 +29,11 @@ link:{{ '/cockpit/3.x/cockpit_quickstart_setup.html#update_entity_settings' | re
 . Click *API Designer*.
 . On the *New model* tile, click the plus icon.
 +
-image:cockpit/new-model.png[Create a new model with API Designer from Gravitee]
+image:{% link images/cockpit/new-model.png %}[Create a new model with API Designer from Gravitee]
 
 . Select the organization from the list.
 +
-image:cockpit/model-test.png[Test API model in Gravitee Cockpit]
+image:{% link images/cockpit/model-test.png %}[Test API model in Gravitee Cockpit]
 
 . Give your model a name. The context path is automatically created with the proper hyphenated naming convention. The context path must be unique for the organization.
 . (Optional) Add a description for your API model.
@@ -41,7 +41,7 @@ image:cockpit/model-test.png[Test API model in Gravitee Cockpit]
 +
 The drag-and-drop interface is loaded with some initial default attributes, for you to start adding the details of your model.
 +
-image:cockpit/api-designer-initial.png[]
+image:{% link images/cockpit/api-designer-initial.png %}[]
 
 === Add API operations
 
@@ -62,7 +62,7 @@ To add an API operation:
 
 API Designer adds the related CRUD operation to the right-hand pane as Swagger documentation. Each new operation includes the currently defined attributes by default, as well as pagination query parameters if you enabled pagination, and any other optional query parameters you specified.
 +
-image:cockpit/api-designer-operations.png[]
+image:{% link images/cockpit/api-designer-operations.png %}[]
 
 === Define API attributes
 
@@ -74,7 +74,7 @@ To add a new attribute:
 
 . Hover over the node where you want to add the attribute, until you see a plus icon on one or both sides of the node.
 +
-image:cockpit/api-designer-add-att.png[]
+image:{% link images/cockpit/api-designer-add-att.png %}[]
 +
 . If the node is:
 
@@ -93,24 +93,24 @@ image:cockpit/api-designer-add-att.png[]
 +
 If you select this option, API Designer updates the Swagger documentation with details of the new attribute:
 +
-image:cockpit/api-designer-attributes.png[]
+image:{% link images/cockpit/api-designer-attributes.png %}[]
 
 == Update the settings
 
 You can specify which type of case to use for paths, schema attributes, and parameters. Cockpit automatically converts names based on the case you specify.
 
-To update these settings, click the settings icon image:icons/api-designer-settings-icon.png[role="icon"] in the top bar.
+To update these settings, click the settings icon image:{% link images/icons/api-designer-settings-icon.png %}[role="icon"] in the top bar.
 
 == Export the OpenAPI spec
 
 To export the OAS:
 
-. Click the export icon image:icons/api-designer-export-icon.png[role="icon"] in the top bar.
+. Click the export icon image:{% link images/icons/api-designer-export-icon.png %}[role="icon"] in the top bar.
 +
 TIP: The export icon is also available on your model definition on the main API Designer page.
 . Open or save the file.
 +
-image:cockpit/export-oas.png[]
+image:{% link images/cockpit/export-oas.png %}[]
 
 == Deploy the API model
 
@@ -134,7 +134,7 @@ link:{{ '/apim/3.x/apim_policies_mock.html' | relative_url }}[Learn more about t
 
 To deploy the API model:
 
-. Click the deploy icon image:icons/api-designer-deploy-icon.png[role="icon"] in the top bar.
+. Click the deploy icon image:{% link images/icons/api-designer-deploy-icon.png %}[role="icon"] in the top bar.
 +
 TIP: The deploy icon is also available on your model definition on the main API Designer page.
 

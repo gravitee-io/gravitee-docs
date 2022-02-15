@@ -19,35 +19,35 @@ Let's see how to create an application and generate an API Key.
 . Click **Applications** in the top menu.
 . Click **CREATE AN APP**  in the sub-menu.
 +
-image::apim/3.x/quickstart/consume/graviteeio-create-first-app-1.png[]
+image::{% link images/apim/3.x/quickstart/consume/graviteeio-create-first-app-1.png %}[]
 
 . Give your application a name and a description. Click **NEXT**.
 +
-image::apim/3.x/quickstart/consume/graviteeio-create-first-app-2.png[]
+image::{% link images/apim/3.x/quickstart/consume/graviteeio-create-first-app-2.png %}[]
 
 . Specify the type of application. Click **NEXT**.
 +
 NOTE: Because you are subscribing to an *API Key* plan, you do not need to specify a Client ID.
 +
-image::apim/3.x/quickstart/consume/graviteeio-create-first-app-3.png[]
+image::{% link images/apim/3.x/quickstart/consume/graviteeio-create-first-app-3.png %}[]
 
 . Search for your API and select it.
 +
-image::apim/3.x/quickstart/consume/graviteeio-create-first-app-4.png[]
+image::{% link images/apim/3.x/quickstart/consume/graviteeio-create-first-app-4.png %}[]
 +
 The API plan is displayed.
 +
-image::apim/3.x/quickstart/consume/graviteeio-create-first-app-5.png[]
+image::{% link images/apim/3.x/quickstart/consume/graviteeio-create-first-app-5.png %}[]
 
 . Click **SUBSCRIBE**.
 +
-image::apim/3.x/quickstart/consume/graviteeio-create-first-app-6.png[]
+image::{% link images/apim/3.x/quickstart/consume/graviteeio-create-first-app-6.png %}[]
 
 . Click **NEXT**.
 . You can check your application information in this summary. When you are ready, click **CREATE THE APP**.
 +
-image::apim/3.x/quickstart/consume/graviteeio-create-first-app-7.png[]
+image::{% link images/apim/3.x/quickstart/consume/graviteeio-create-first-app-7.png %}[]
 +
 Congratulations! Your new application and subscription to the Echo API have been created.
 +
-image::apim/3.x/quickstart/consume/graviteeio-create-first-app-8.png[]
+image::{% link images/apim/3.x/quickstart/consume/graviteeio-create-first-app-8.png %}[]

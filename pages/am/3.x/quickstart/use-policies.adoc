@@ -34,7 +34,7 @@ You must link:{{ '/am/current/am_quickstart_app_setup.html' | relative_url }}[Se
 NOTE: In this example, we will retrieve the username from the execution context `{#context.attributes['user'].username}` and pass it to our remote service which responds with new information *X-Custom-Variable* (`{#jsonPath(#calloutResponse.content, '$.headers.X-Custom-Header')}`).
 We will be using this *X-Custom-Variable* in the End User consent HTML page.
 +
-image::am/current/graviteeio-am-quickstart-policies.png[]
+image::{% link images/am/current/graviteeio-am-quickstart-policies.png %}[]
 +
 [source]
 ----
@@ -99,7 +99,7 @@ curl -H "Authorization: Bearer :accessToken" \
 == Display the End User consent page
 
 . Click *Settings > Forms*.
-. Click the edit icon image:icons/edit-icon.png[role="icon"] next to the *User consent* form.
+. Click the edit icon image:{% link images/icons/edit-icon.png %}[role="icon"] next to the *User consent* form.
 . Toggle on the *Enable custom oauth2 user consent form* button and add the following content:
 +
 [source]
@@ -148,7 +148,7 @@ NOTE: Notice the `<p th:text="'Hi ' + ${#ctx.getVariable('X-Custom-Variable')} +
 . Initiate the login flow by calling the OpenID Connect Authorization Code or Implicit Flow https://AM_GW_HOST:8092/your-domain/oauth/authorize?client_id=your-client&response_type=token&redirect_uri=http://localhost:4001/login/callback&scope=openid&state=1234
 . After login you will be redirected to the consent page with your custom code.
 +
-image::am/current/graviteeio-am-quickstart-policies-consent-page.png[]
+image::{% link images/am/current/graviteeio-am-quickstart-policies-consent-page.png %}[]
 +
 [source]
 ----

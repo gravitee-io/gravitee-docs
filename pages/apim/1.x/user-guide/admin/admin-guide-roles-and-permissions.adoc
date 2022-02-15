@@ -209,7 +209,7 @@ Let say that we want to create a writer role which allow a user to create docume
 To do that, click on the (+) icon in the table header and fill a the name and the description of the new role
 
 .Create
-image::apim/1.x/adminguide/newrole-create.png[Gravitee.io - Create a New Role]
+image::{% link images/apim/1.x/adminguide/newrole-create.png %}[Gravitee.io - Create a New Role]
 
 === Configure the `WRITER` role
 You must give `READ` permission on the `DEFINITION` and `GATEWAY_DEFINITION`.
@@ -217,12 +217,12 @@ This allow the user to see the API in the api list.
 Next, you have to give `CRUD` permission on the DOCUMENTATION.
 
 .Configure
-image::apim/1.x/adminguide/newrole-configure.png[Gravitee.io - Configure a New Role]
+image::{% link images/apim/1.x/adminguide/newrole-configure.png %}[Gravitee.io - Configure a New Role]
 
 === Result
 As expected, the user with this role can now only see the documentation menu.
 
 .Menu
-image::apim/1.x/adminguide/newrole-menu.png[Gravitee.io - Menu, 200]
+image::{% link images/apim/1.x/adminguide/newrole-menu.png %}[Gravitee.io - Menu, 200]
 
 NOTE: Granting a GROUP permission for MANAGEMENT role will also require the READ operation for the ROLE permission in order to see which roles are provided by a group.  

@@ -42,41 +42,41 @@ For more information, see <<apim_quickstart_consume_ui.adoc#create-your-applicat
 . Click *Catalog* in the top menu.
 . Browse the API categories or search for an API using keywords.
 +
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-search-an-api.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-search-an-api.png %}[]
 
 . Select the API you want to subscribe to.
 +
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-select-an-api.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-select-an-api.png %}[]
 
 . Click *SUBSCRIBE* in the sub-menu and choose the API plan.
 +
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-to-an-api.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-to-an-api.png %}[]
 
 . Select your application.
 +
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-select-an-application.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-select-an-application.png %}[]
 +
 NOTE: Remember, if you choose an OAuth 2.0 plan, the application must have a `client_id` set.
 
 . Click *NEXT*. You can check your information before validating the request.
 . When you are ready, click *VALIDATE THE REQUEST*.
 +
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-confirmation-before-validation.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-confirmation-before-validation.png %}[]
 +
 [NOTE]
 ====
 If there are general conditions for the selected plan, you need to accept them before validating the subscription.
 
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-general-conditions-acceptance.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-general-conditions-acceptance.png %}[]
 ====
 +
 If validation is automatic, the following message is displayed:
 +
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-validation.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-validation.png %}[]
 +
 If the API publisher chose to manually validate application subscriptions, you must await approval to use the API.
 +
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-wait-for-validation.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-wait-for-validation.png %}[]
 
 == Manage subscriptions
 
@@ -86,7 +86,7 @@ To view your subscriptions and their current status:
 . Choose an application. In the *Subscriptions* section you will see all your subscriptions with their status (for example, *Accepted* or *Pending*).
 . Click on a specific subscription to see the details.
 +
-image::apim/3.x/api-consumer-guide/developer-subscribe/subscribe-manage-subscriptions.png[]
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-manage-subscriptions.png %}[]
 +
 NOTE: For API-Key plans, you can retrieve the API-Key value and also renew or revoke subscriptions.
 

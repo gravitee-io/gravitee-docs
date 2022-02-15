@@ -145,21 +145,21 @@ To use the UMA 2.0 protocol you must enable it at security domain level.
 
 ==== Create a resource owner
 
-. Click *Settings > Users* and click the plus icon image:icons\plus-icon.png[role="icon"].
+. Click *Settings > Users* and click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Complete the details of the resource owner (Alice) and click *CREATE*.
 
 NOTE: The resource owner needs to use the same identity provider as the provider to be used for the resource server application.
 
 ==== Create a requesting party
 
-. In *Settings > Users*, click the plus icon image:icons\plus-icon.png[role="icon"].
+. In *Settings > Users*, click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Complete the details of the requesting party (Bob) and click *CREATE*.
 
 NOTE: The requesting party needs to use the same identity provider as the provider to be used for the client application.
 
 ==== Create the client application
 
-. Click *Applications* and click the plus icon image:icons\plus-icon.png[role="icon"].
+. Click *Applications* and click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Select the *Web* application type and click *Next*.
 . Complete the application details and click *Create*.
 . Click the *Identity Providers* tab and select the identity provider you set for your requesting party user (Bob).
@@ -168,7 +168,7 @@ NOTE: The requesting party needs to use the same identity provider as the provid
 
 ==== Create the resource server application
 
-. In *Applications*, click the plus icon image:icons\plus-icon.png[role="icon"].
+. In *Applications*, click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Select *Resource Server* as the application type and click *Next*.
 . Complete the application details and click *Create*.
 . Click the *Identity Providers* tab and select the identity provider you set for your resource owner (Alice).

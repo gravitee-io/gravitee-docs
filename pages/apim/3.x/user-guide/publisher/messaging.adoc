@@ -23,7 +23,7 @@ For a detailed explanation of roles in APIM, see link:{{ '/apim/3.x/apim_admingu
 
 You send APIM platform-wide notifications with the *Messages* menu option:
 
-image:apim/3.x/api-publisher-guide/messaging/message-platform-level.png[]
+image:{% link images/apim/3.x/api-publisher-guide/messaging/message-platform-level.png %}[]
 
 You can send platform-wide notifications to users defined with the following link:{{ '/apim/3.x/apim_adminguide_roles_and_permissions.html#scope' | relative_url }}[environment scope^] roles:
 
@@ -37,7 +37,7 @@ NOTE: You can only send API notifications to consumers with a valid subscription
 
 You send API notifications with the API *Messages* menu option:
 
-image:apim/3.x/api-publisher-guide/messaging/message-api-level.png[]
+image:{% link images/apim/3.x/api-publisher-guide/messaging/message-api-level.png %}[]
 
 You can send API notifications to users defined with the following link:{{ '/apim/3.x/apim_adminguide_roles_and_permissions.html#scope' | relative_url }}[application scope^] roles:
 
@@ -57,11 +57,11 @@ When sending *Portal* notifications, you need to specify:
 
 When you click *SEND*, APIM sends the notification to all users belonging to the specified role (as long as they have a valid application subscription, in the case of API level subscriptions). They can access the notification in APIM Console, by clicking the bell in the top bar.
 
-image:apim/3.x/api-publisher-guide/messaging/message-notifications.png[]
+image:{% link images/apim/3.x/api-publisher-guide/messaging/message-notifications.png %}[]
 
 The notification is also visible in the notifications area of the system, if enabled for the browser:
 
-image:apim/3.x/api-publisher-guide/messaging/message-notifications-system.png[]
+image:{% link images/apim/3.x/api-publisher-guide/messaging/message-notifications-system.png %}[]
 
 === Email notification
 
@@ -80,7 +80,7 @@ When sending *POST HTTP message* notifications, you need to specify:
 * the URL to use for the HTTP message
 * the text of the message
 
-image:apim/3.x/api-publisher-guide/messaging/message-post-http.png[]
+image:{% link images/apim/3.x/api-publisher-guide/messaging/message-post-http.png %}[]
 
 When you click *SEND*, APIM sends the message to the URL, including any HTTP headers specified.
 
@@ -94,14 +94,14 @@ In this example we will see how to send a notification to all platform administr
 . Choose the *ENVIRONMENT* role to notify as *ADMIN*.
 . Give the message a *Title* and enter the detail of the message in *Text*.
 +
-image:apim/3.x/api-publisher-guide/messaging/message-portal-example.png[]
+image:{% link images/apim/3.x/api-publisher-guide/messaging/message-portal-example.png %}[]
 +
 . Click *SEND*.
 +
 All users with the ADMIN role are notified of new messages by a number on the bell in the top bar:
 +
-image:apim/3.x/api-publisher-guide/messaging/message-notifications.png[]
+image:{% link images/apim/3.x/api-publisher-guide/messaging/message-notifications.png %}[]
 +
 Clicking on the bell shows the content of the message:
 +
-image:apim/3.x/api-publisher-guide/messaging/message-portal-example-notification.png[]
+image:{% link images/apim/3.x/api-publisher-guide/messaging/message-portal-example-notification.png %}[]

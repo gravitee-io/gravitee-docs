@@ -25,7 +25,7 @@ which is used by AM to create a bridge between your applications and a CAS Serve
 
 NOTE: In this scenario the AM CAS identity provider acts as a CAS service between your application and the CAS server.
 
-image::am/current/graviteeio-am-userguide-social-idp-cas.png[]
+image::{% link images/am/current/graviteeio-am-userguide-social-idp-cas.png %}[]
 
 == Get your CAS Server metadata
 
@@ -40,7 +40,7 @@ NOTE: Before you begin, obtain this information from your CAS server administrat
 
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Providers*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Select *CAS* as your identity provider type and click *Next*.
 . Give your identity provider a name.
 . Configure the settings (Login URL, Service Validate URL)
@@ -54,7 +54,7 @@ You can test your CAS connection using a web application created in AM.
 
 . In AM Console, click *Applications > App > Identity Providers* and select your CAS connector.
 +
-image::am/current/graviteeio-am-userguide-social-idp-list.png[]
+image::{% link images/am/current/graviteeio-am-userguide-social-idp-list.png %}[]
 +
 . Call the Login page (the `/oauth/authorize` endpoint). If the connection is working you will see a *Sign in with CAS* button.
 +

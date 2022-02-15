@@ -14,7 +14,7 @@ Once an API is registered and made public, you can manage subscriptions to it th
 A plan provides a service and access layer on top of your APIs for consumer link:{{ '/apim/3.x/apim_overview_concepts.html#gravitee-concepts-application' | relative_url }}[applications].
 A plan specifies access limits, subscription validation modes and other configuration to tailor it to a specific application.
 
-image::apim/3.x/api-publisher-guide/plans-subscriptions/plan-diagram.png[Gravitee.io - Plan diagram, 873, 530, align=center, title-align=center]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/plan-diagram.png %}[Gravitee.io - Plan diagram, 873, 530, align=center, title-align=center]
 
 [TIP]
 ====

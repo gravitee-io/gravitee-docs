@@ -11,12 +11,12 @@ link:{{ '/apim/3.x/apim_consumerguide_subscribe.html' | relative_url }}[Learn mo
 
 . On the **Plans** page, go to the **Staging** tab.
 +
-image::apim/3.x/api-publisher-guide/plans-subscriptions/staging-plan.png[]
-. Click the publish icon image:icons/publish-icon.png[role="icon"].
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/staging-plan.png %}[]
+. Click the publish icon image:{% link images/icons/publish-icon.png %}[role="icon"].
 . Click **PUBLISH**.
 +
-image::apim/3.x/api-publisher-guide/plans-subscriptions/plan-publish-confirm.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/plan-publish-confirm.png %}[]
 +
 APIM publishes the plan. Published plans can be viewed in the **Published** tab:
 
-image::apim/3.x/api-publisher-guide/plans-subscriptions/plan-published.png[]
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/plan-published.png %}[]

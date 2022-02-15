@@ -42,7 +42,7 @@ As an example, let's say a Client application wants to retrieve the `telephoneNu
 . From the security domain's providers page, select your LDAP identity provider and go to `User mappers` tab
 . Map your LDAP (raw) attribute `telephoneNumber` to a new user attribute named `telephone_number`:
 
-image::am/2.x/graviteeio-am-userguide-idp-user-mappers.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-idp-user-mappers.png %}[]
 
 [start=5]
 . Get the _User Profile_ information via the UserInfo Endpoint and you will see that the new user attribute is present
@@ -105,11 +105,11 @@ Let's do that together: +
 . From the security domain's providers page, select your LDAP Identity Provider and go to the `Role mappers` tab
 . Set the user's roles configuration:
 
-image::am/2.x/graviteeio-am-userguide-idp-role-mappers.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-idp-role-mappers.png %}[]
 
 [start=7]
 . When the Client requests the _Token_ endpoint, it will benefit of that new scope representing the user roles permissions values. Just make sure you enabled the _"Enhance scopes"_ option for your Client (OAuth tab).
 
-image::am/2.x/graviteeio-am-user-guide-mapping-idp-enhance-scopes.png[]
+image::{% link images/am/2.x/graviteeio-am-user-guide-mapping-idp-enhance-scopes.png %}[]
 
 The same principle applies for any Identity Provider.

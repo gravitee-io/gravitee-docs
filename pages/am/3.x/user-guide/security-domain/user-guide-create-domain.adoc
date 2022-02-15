@@ -14,12 +14,12 @@ AM comes with a default security domain.
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . From the user menu at the top right, click *Create domain*.
 +
-image::am/current/quickstart-create-domain.png[]
+image::{% link images/am/current/quickstart-create-domain.png %}[]
 +
 . Give your security domain a *Name* and a *Description* and click *CREATE*.
 . Click on the banner *click here* link to enable the domain.
 +
-image::am/current/quickstart-enable-domain.png[]
+image::{% link images/am/current/quickstart-enable-domain.png %}[]
 
 == Create a security domain with AM API
 

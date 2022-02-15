@@ -21,7 +21,7 @@ WARNING: Be careful, the `Valid Redirect URIs` must match exactly to the domain 
 Once your client created, you will be able to get its credentials.
 
 .Retrieve Client credentials
-image::apim/1.x/installation/authentication/graviteeam_client_credentials.png[Get Client credentials]
+image::{% link images/apim/1.x/installation/authentication/graviteeam_client_credentials.png %}[Get Client credentials]
 
 == Configure Gravitee.io
 
@@ -31,7 +31,7 @@ include::./partial/management-api-configuration-idp-override.adoc[leveloffset=+2
 
 Got to Settings > Authentication > New provider (the `+` button) > select Gravitee.io AM
 
-image::apim/1.x/management-api-configuration-idp/new-am.png[Gravitee.io - New Gravitee.io AM IDP]
+image::{% link images/apim/1.x/management-api-configuration-idp/new-am.png %}[Gravitee.io - New Gravitee.io AM IDP]
 
 === Via the `gravitee.yml`
 [source,yaml]
@@ -75,17 +75,17 @@ Please refer to link:{{ '/am/2.x/am_quickstart_register_app.html' | relative_url
 NOTE: Gravitee.io API Management requires a profile `email` information to enable the portal authentication. If you create an `Inline identity provider`, please set an email for the `username` field.
 
 .Create a user
-image::apim/1.x/installation/authentication/graviteeam_create_user.png[Fill the user form]
+image::{% link images/apim/1.x/installation/authentication/graviteeam_create_user.png %}[Fill the user form]
 
 === Login into the portal
 .Login Form
-image::apim/1.x/installation/authentication/graviteeam_login_form.png[Login Form]
+image::{% link images/apim/1.x/installation/authentication/graviteeam_login_form.png %}[Login Form]
 
 .Gravitee.io AM Login Form
-image::apim/1.x/installation/authentication/graviteeam_login_form2.png[Gravitee.io Login Form]
+image::{% link images/apim/1.x/installation/authentication/graviteeam_login_form2.png %}[Gravitee.io Login Form]
 
 .OPTIONAL : Gravitee.io AM Approval page
-image::apim/1.x/installation/authentication/graviteeam_login_form3.png[Gravitee.io Approval Page]
+image::{% link images/apim/1.x/installation/authentication/graviteeam_login_form3.png %}[Gravitee.io Approval Page]
 
 .Login Success
-image::apim/1.x/installation/authentication/graviteeam_login_success.png[Here we are !]
+image::{% link images/apim/1.x/installation/authentication/graviteeam_login_success.png %}[Here we are !]

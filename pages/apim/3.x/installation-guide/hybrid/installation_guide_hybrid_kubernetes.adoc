@@ -20,7 +20,7 @@ In this example, we will demonstrate how to deploy APIM in two different GCP reg
 - A *Management cluster* (pictured on the left) -- running APIM API, the two APIM UI components, and a bridge Gateway
 - A *Gateway cluster* (pictured on the right) -- running APIM Gateway
 
-image::apim/3.x/installation/hybrid/hybrid_deployment_k8s.png[]
+image::{% link images/apim/3.x/installation/hybrid/hybrid_deployment_k8s.png %}[]
 
 In this schema, we can see that:
 
@@ -39,7 +39,7 @@ You can find everything you need to deploy this hybrid architecture at link:http
 
 Before you deploy APIM, ensure the two GCP clusters exist and that Helm is installed on both clusters:
 
-image::apim/3.x/installation/hybrid/hybrid_k8s_clusters.png[]
+image::{% link images/apim/3.x/installation/hybrid/hybrid_k8s_clusters.png %}[]
 
 NOTE: The following examples use the names in the illustration above, but you can name your clusters whatever you like and replace the names with your own.
 
@@ -156,7 +156,7 @@ From this file, we can see that:
 - the Gateway is not exposed through the ingress controller (it is not accepting API calls for the bridge Gateway)
 - we have enabled the bridge service for the Gateway and declared a new ingress to expose it to remote clusters
 
-image::apim/3.x/installation/hybrid/hybrid_deployment_ingress.png[]
+image::{% link images/apim/3.x/installation/hybrid/hybrid_deployment_ingress.png %}[]
 
 === Deploy the Gateway cluster
 
@@ -224,7 +224,7 @@ From this file, we can see that:
 - All the management components have been disabled to prevent their deployment -- APIM API, APIM Console and APIM Portal
 - We have enabled `http` management mode for the Gateway, and we use this link to mount all the required information in the Gateway to be able to process API calls
 
-image::apim/3.x/installation/hybrid/hybrid_deployment_http.png[]
+image::{% link images/apim/3.x/installation/hybrid/hybrid_deployment_http.png %}[]
 
 If you have a look at the Gateway pod logs, you will see something like this:
 
@@ -237,6 +237,6 @@ If you have a look at the Gateway pod logs, you will see something like this:
 
 We can now open up APIM Console and see our two Gateways running:
 
-image::apim/3.x/installation/hybrid/hybrid_deployment_gateways.png[]
+image::{% link images/apim/3.x/installation/hybrid/hybrid_deployment_gateways.png %}[]
 
 Success! Your hybrid deployment is now up and running and ready to manage link:apim_quickstart_publish_ui.html[your first API].

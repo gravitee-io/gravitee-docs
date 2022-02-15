@@ -28,12 +28,12 @@ $ openssl rsa -in rsa_private.pem -pubout -out rsa_public.pem
 
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings*, then in the *OAUTH 2.0* section, click *Extension Grants*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 +
-image::am/current/graviteeio-am-userguide-extension-grants-jwt-bearer-create1.png[]
+image::{% link images/am/current/graviteeio-am-userguide-extension-grants-jwt-bearer-create1.png %}[]
 . Select *Extension Grant JWT Bearer* and click *Next*.
 +
-image::am/current/graviteeio-am-userguide-extension-grants-jwt-bearer-create2.png[]
+image::{% link images/am/current/graviteeio-am-userguide-extension-grants-jwt-bearer-create2.png %}[]
 +
 . Complete the grant flow configuration and click *Create*.
 +
@@ -50,7 +50,7 @@ If you have an existing public key in `pem` format, you can use the following co
 $ ssh-keygen -i -m PKCS8 -f rsa_public.pem
 ....
 
-image::am/current/graviteeio-am-userguide-extension-grants-jwt-bearer-create3.png[]
+image::{% link images/am/current/graviteeio-am-userguide-extension-grants-jwt-bearer-create3.png %}[]
 
 If you want to copy claims from the incoming token to the final access token, you can use the *Claims mapper*.
 The *Claims mapper* will copy the incoming token claims as additional information about the user profile under the `claims` entry. This will allow you to add these claims using token customization.
@@ -62,7 +62,7 @@ The *Claims mapper* will copy the incoming token claims as additional informatio
 . Select your application and in the *Settings* tab, click *OAuth 2.0 / OIDC*.
 . In the *Grant flows* section, select your extension grant.
 +
-image::am/current/graviteeio-am-userguide-extension-grants-jwt-bearer-associate.png[]
+image::{% link images/am/current/graviteeio-am-userguide-extension-grants-jwt-bearer-associate.png %}[]
 +
 . Click *SAVE*.
 +

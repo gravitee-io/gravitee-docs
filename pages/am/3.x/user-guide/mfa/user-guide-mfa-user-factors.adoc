@@ -14,9 +14,9 @@ The MFA factors associated with their user will be removed and MFA configuration
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Users*.
 . Select the user and click the *Multi-Factor Authentication* tab.
-. Select the MFA factor you want to remove and click the remove icon image:icons/remove-icon.png[role="icon"].
+. Select the MFA factor you want to remove and click the remove icon image:{% link images/icons/remove-icon.png %}[role="icon"].
 +
-image::am/current/graviteeio-am-userguide-mfa-factor-reset.png[]
+image::{% link images/am/current/graviteeio-am-userguide-mfa-factor-reset.png %}[]
 
 You can also reset a user's MFA with AM API:
 

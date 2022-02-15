@@ -22,7 +22,7 @@ WARNING: The `Valid Redirect URIs` value must exactly match the domain hosting A
 
 After you create the client, you can retrieve its credentials for authentication configuration.
 
-image::apim/3.x/installation/authentication/graviteeam_client_credentials.png[Get client credentials]
+image::{% link images/apim/3.x/installation/authentication/graviteeam_client_credentials.png %}[Get client credentials]
 
 == Configure APIM
 
@@ -31,11 +31,11 @@ include::../../partial/management-api-configuration-idp-override.adoc[leveloffse
 ==== APIM Console configuration
 
 . Click *Organization Settings > Authentication*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"] and select the *Gravitee.io AM* icon.
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"] and select the *Gravitee.io AM* icon.
 . If you want to use this provider to log in to APIM Portal, ensure that *Allow portal authentication to use this identity provider* is checked. To use it only for APIM Console, uncheck this option.
 . Enter the details of the provider, including the credentials created in the AM client.
 +
-image::apim/3.x/management-api-configuration-idp/new-am.png[Gravitee.io - New Gravitee.io AM IDP]
+image::{% link images/apim/3.x/management-api-configuration-idp/new-am.png %}[Gravitee.io - New Gravitee.io AM IDP]
 . Click *CREATE*.
 . Activate the provider for Portal or Console login, as described in link:{{ '/apim/3.x/apim_installguide_authentication.html#activating-providers' | relative_url }}[Activating providers^].
 
@@ -85,22 +85,22 @@ See link:{{ '/am/current/am_quickstart_app_setup.html' | relative_url }}[Set up 
 
 NOTE: APIM requires an `email` profile to enable portal authentication. If you create an Inline identity provider in AM, you need to specify an email address in the *Username* field.
 
-image::apim/3.x/installation/authentication/graviteeam_create_user.png[]
+image::{% link images/apim/3.x/installation/authentication/graviteeam_create_user.png %}[]
 
 === Log in to APIM Portal
 
 . Click *Sign in with Gravitee.io AM*.
 +
-image::apim/3.x/installation/authentication/graviteeam_login_form.png[]
+image::{% link images/apim/3.x/installation/authentication/graviteeam_login_form.png %}[]
 
 . Enter your user credentials and click *LOG IN*.
 +
-image::apim/3.x/installation/authentication/graviteeam_login_form2.png[]
+image::{% link images/apim/3.x/installation/authentication/graviteeam_login_form2.png %}[]
 +
 . Click *AUTHORIZE* on the approval page.
 +
-image::apim/3.x/installation/authentication/graviteeam_login_form3.png[]
+image::{% link images/apim/3.x/installation/authentication/graviteeam_login_form3.png %}[]
 +
 You have successfully logged in:
 +
-image::apim/3.x/installation/authentication/graviteeam_login_success.png[]
+image::{% link images/apim/3.x/installation/authentication/graviteeam_login_success.png %}[]

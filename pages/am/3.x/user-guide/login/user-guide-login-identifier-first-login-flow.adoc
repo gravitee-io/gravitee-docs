@@ -12,12 +12,12 @@ Identifier-first login authentication enables the login flow to be split into tw
 
 - The first step consists in a page containing a single form field where you can input your username
 
-image::am/current/graviteeio-am-userguide-login-identifier-first-first-page-flow.png[alt=Identifier-first login flow first page, width=500,height=438]
+image::{% link images/am/current/graviteeio-am-userguide-login-identifier-first-first-page-flow.png %}[alt=Identifier-first login flow first page, width=500,height=438]
 
 - Regarding the input submitted, the user gets redirected to the login form and are asked to input your password
 - If the username is an email, the user gets redirected to an external provider matching your domain based on a whitelist
 
-image::am/current/graviteeio-am-userguide-login-identifier-first-second-page-flow.png[alt=Identifier-first login flow second page, width=500,height=438]
+image::{% link images/am/current/graviteeio-am-userguide-login-identifier-first-second-page-flow.png %}[alt=Identifier-first login flow second page, width=500,height=438]
 
 
 == Activate Identifier-first Login
@@ -28,7 +28,7 @@ To activate Identifier-first login Flow:
 . Go to *Settings > Login* or *Application > "Your app" > Settings > Login*.
 . Switch on *Identifier-first login* and click *SAVE*.
 
-image::am/current/graviteeio-am-userguide-login-identifier-first-settings.png[Identifier-first login flow Settings]
+image::{% link images/am/current/graviteeio-am-userguide-login-identifier-first-settings.png %}[Identifier-first login flow Settings]
 
 == Identity providers allowed domain list
 
@@ -42,4 +42,4 @@ If you don't input any domain, the user will just get redirected to the second l
 . Enter the domains you wish to allow
 . Complete the provider's form and click *SAVE*.
 
-image::am/current/graviteeio-am-userguide-login-identifier-first-identity-provider-domain-whitelist.png[Identifier-first login flow provider Domain Whitelist]
+image::{% link images/am/current/graviteeio-am-userguide-login-identifier-first-identity-provider-domain-whitelist.png %}[Identifier-first login flow provider Domain Whitelist]

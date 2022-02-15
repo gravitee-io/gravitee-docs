@@ -12,53 +12,53 @@
 This section explains how to configure alerts for an API in APIM.
 
 .API Management - API Alerts
-image::ae/apim/api_alerts.png[API alerts]
+image::{% link images/ae/apim/api_alerts.png %}[API alerts]
 
 === Response time greater than X ms
 
 This example configures an alert for response times to requests exceeding a threshold of 1500ms:
 
 .API Management - Response time > 1500ms
-image::ae/apim/api_alert_response_time_threshold.png[Response time > 1500ms]
+image::{% link images/ae/apim/api_alert_response_time_threshold.png %}[Response time > 1500ms]
 
 === Invalid API key
 
 This example configures an alert for invalid API keys:
 
 .API Management - Invalid API key
-image::ae/apim/api_alert_api_key_invalid.png[Invalid API-KEY]
+image::{% link images/ae/apim/api_alert_api_key_invalid.png %}[Invalid API-KEY]
 
 === 50th percentile of response time greater than X ms
 
 This example configures an alert for the 50th percentile of response times exceeding a threshold of 200 ms in the last 5 minutes:
 
 .API Management - Percentile 50 for response time greater than X ms
-image::ae/apim/api_alert_50percentile.png[Percentile 50 for response-time greater than X ms]
+image::{% link images/ae/apim/api_alert_50percentile.png %}[Percentile 50 for response-time greater than X ms]
 
 === No API requests in the last minute
 
 The following example configures an alert for no requests made to the API during the last minute:
 
 .API Management - No api request during last minute
-image::ae/apim/api_alert_api_no_request_last_minute.png[No api request during last minute]
+image::{% link images/ae/apim/api_alert_api_no_request_last_minute.png %}[No api request during last minute]
 
 === No API requests from my-application in the last minute
 
 The following example is the same as above, but filters on `my-application`:
 
 .API Management - No API request during last minute
-image::ae/apim/api_alert_application_no_request_last_minute.png[No api request from my-application during last minute]
+image::{% link images/ae/apim/api_alert_application_no_request_last_minute.png %}[No api request from my-application during last minute]
 
 === Quota too many requests
 
 This example configures an alert for reaching the quota limit on requests:
 
 .API Management - Quota too many requests
-image::ae/apim/api_alert_quota_too_many_requests.png[Quota too many requests]
+image::{% link images/ae/apim/api_alert_quota_too_many_requests.png %}[Quota too many requests]
 
 === Too many errors in the last 5 minutes
 
 This example configures an alert for the number of 5xx errors reaching a threshold of 10 in the last 5 minutes:
 
 .API Management - Api too many errors
-image::ae/apim/api_alert_api_too_many_errors.png[Api too many errors]
+image::{% link images/ae/apim/api_alert_api_too_many_errors.png %}[Api too many errors]

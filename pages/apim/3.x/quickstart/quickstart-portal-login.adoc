@@ -14,7 +14,7 @@ There are two ways to access APIM Portal:
 
 * If you are logged into APIM Console already, with the **DEVELOPERS PORTAL** button:
 +
-image:apim/3.10/apim-console-devportal.png[]
+image:{% link images/apim/3.10/apim-console-devportal.png %}[]
 * Directly in your browser, with the `http://PORTAL_UI_SERVER_DOMAIN` URL created during installation.
 
 During the APIM installation process a default administrator account is created. By default, the login details for the APIM Portal administrator account are `admin / admin`.
@@ -24,10 +24,10 @@ To log in:
 
 . Open APIM Portal and click *Sign in*.
 +
-image:apim/3.x/quickstart/portal-signin.png[]
+image:{% link images/apim/3.x/quickstart/portal-signin.png %}[]
 +
 . Enter your user credentials and click *SIGN IN*.
 +
-image:apim/3.x/quickstart/portal-login.png[]
+image:{% link images/apim/3.x/quickstart/portal-login.png %}[]
 
 You are now ready to link:{{ '/apim/3.x/apim_quickstart_consume_ui.html' | relative_url }}[subscribe to some APIs^].

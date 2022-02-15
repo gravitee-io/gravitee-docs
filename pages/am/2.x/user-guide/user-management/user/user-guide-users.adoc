@@ -10,7 +10,7 @@
 
 To search users, navigate to `Users` section of your domain's settings. The input search box will let you find user by its username.
 
-image::am/2.x/graviteeio-am-userguide-um-search-users.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-um-search-users.png %}[]
 
 NOTE: Currently only users created by the AM management API or the SCIM protocol and external users who have been already logged can be found.
 
@@ -24,17 +24,17 @@ Users are created for each security domain, to create a user, follow these steps
 . Optional : You can also add/modify specific attributes relating to the user. These user metadata will be available in the user's profile.
 . You will be redirected to the created user's page
 
-image::am/2.x/graviteeio-am-userguide-um-create-user.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-um-create-user.png %}[]
 
 NOTE: You can choose to enable "Pre-Registration", to let the End-user complete his account.
 An email will be sent with the corresponding instructions.
 
-image::am/2.x/graviteeio-am-userguide-um-pre-registration-mail.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-um-pre-registration-mail.png %}[]
 
 === User roles
 
 Note: By default, users are stored in the pre-defined `Default Identity Provider` which is available out of the box for each security domain.
 You can apply role mapping with your users.
 
-image::am/2.x/graviteeio-am-userguide-um-user-role-mapping.png[]
+image::{% link images/am/2.x/graviteeio-am-userguide-um-user-role-mapping.png %}[]
 

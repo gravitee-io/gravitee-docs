@@ -113,7 +113,7 @@ security:
 +
 . Update the default administrator password:
 +
-image:apim/3.x/how-tos/configure-apim/admin-pwd.png[]
+image:{% link images/apim/3.x/how-tos/configure-apim/admin-pwd.png %}[]
 
 To learn more about configuring users, see link:{{ '/apim/3.x/apim_installguide_authentication.html' | relative_url }}[Configure authentication^].
 
@@ -163,7 +163,7 @@ Perform the following steps in APIM Console:
 - Update the *Title* of APIM Console to make it more appropriate for your own environment.
 - Update the *Management URL* to your APIM Console URL.
 +
-image:apim/3.x/how-tos/configure-apim/portal-management-settings.png[]
+image:{% link images/apim/3.x/how-tos/configure-apim/portal-management-settings.png %}[]
 +
 . In the *GATEWAY* section:
 .. Click *Sharding Tags*.
@@ -171,11 +171,11 @@ image:apim/3.x/how-tos/configure-apim/portal-management-settings.png[]
 +
 NOTE: You can also update this value link:{{ '/apim/3.x/apim_installguide_rest_apis_configuration.html#environment_variables' | relative_url }}[with an environment variable^].
 +
-image:apim/3.x/how-tos/configure-apim/gateway-shardingtags-settings.png[]
+image:{% link images/apim/3.x/how-tos/configure-apim/gateway-shardingtags-settings.png %}[]
 +
 .. Click *API Logging*.
 .. Update the maximum logging duration for APIM API logging to avoid flooding. In this example, we have configured a logging duration of 15 minutes:
 +
-image:apim/3.x/how-tos/configure-apim/gateway-api-logging-settings.png[]
+image:{% link images/apim/3.x/how-tos/configure-apim/gateway-api-logging-settings.png %}[]
 +
 The recommended value depends on the type of logging you have enabled: the more information you log, the lower the value needs to be (although the value must be above zero to be taken into account).

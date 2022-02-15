@@ -19,7 +19,7 @@ By default this feature is disabled. You can enable it through the domain settin
 +
 IMPORTANT: There is another parameter called *Enable\Disable Open Dynamic Client Registration*. This parameter is used to allow any unauthenticated requests to register new clients through the registration endpoint. It is part of the OpenID specification, but for security reasons it is disabled by default.
 +
-image::am/current/graviteeio-am-userguide-domain-enable-dcr.png[]
+image::{% link images/am/current/graviteeio-am-userguide-domain-enable-dcr.png %}[]
 
 == Enable Dynamic Client Registration with AM API
 
@@ -278,7 +278,7 @@ Registering a new application with a template allows you to specify which identi
 
 You can enable the template feature in the AM Dynamic Client Registration *Settings* tab:
 
-image::am/current/graviteeio-am-userguide-domain-enable-dcr-templates.png[]
+image::{% link images/am/current/graviteeio-am-userguide-domain-enable-dcr-templates.png %}[]
 
 You can also enable this feature using AM API:
 
@@ -300,7 +300,7 @@ curl -X PATCH \
 
 In the Dynamic Client Registration *Client templates* tab, enable this feature to be used as a template in the client:
 
-image::am/current/graviteeio-am-userguide-domain-define-dcr-templates.png[]
+image::{% link images/am/current/graviteeio-am-userguide-domain-define-dcr-templates.png %}[]
 
 You can also enable this feature using AM API:
 
@@ -316,7 +316,7 @@ curl -X PATCH \
 
 IMPORTANT: Once a client is set up as a template, it can no longer be used for authentication purposes.
 
-image::am/current/graviteeio-am-userguide-domain-dcr-templates.png[]
+image::{% link images/am/current/graviteeio-am-userguide-domain-dcr-templates.png %}[]
 
 === Register call with template example
 

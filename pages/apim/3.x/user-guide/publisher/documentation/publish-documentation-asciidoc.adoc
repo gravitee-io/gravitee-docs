@@ -15,19 +15,19 @@ The sections below describe specific configuration for AsciiDoc pages.
 
 You can use the *PAGE* editor to edit a AsciiDoc page's content and preview it:
 
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-asciidoc-editor.png[]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-asciidoc-editor.png %}[]
 
 == Attached resources
 The *ATTACHED RESOURCES* tab is also available for link:{{ '/apim/3.x/apim_publisherguide_publish_documentation_markdown.html' | relative_url }}[Markdown] pages. In this tab, you can import files and attach them to the page. +
 Imported files size must not exceed the size defined in the settings.
 
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-attached-resources-1.png[]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-attached-resources-1.png %}[]
 
 You can add files by clicking the *ADD A NEW RESOURCE* button, and remove them by clicking the trash icon.
 
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-attached-resources-2.png[]
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-attached-resources-3.png[,300]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-attached-resources-2.png %}[]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-attached-resources-3.png %}[,300]
 
 In APIM Portal attached files are displayed at the bottom on the page as download links.
 
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-attached-resources-4.png[]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-attached-resources-4.png %}[]

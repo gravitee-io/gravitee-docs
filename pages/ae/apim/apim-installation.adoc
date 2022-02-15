@@ -57,7 +57,7 @@ You can have as many endpoints as you need. The node will select one of them usi
 You can use discovery mode when running an AE cluster to automatically register other nodes in the cluster from a single node reference.
 
 .Alert Engine - Auto-discovery
-image::ae/howitworks/discovery.png[Discovery mode]
+image::{% link images/ae/howitworks/discovery.png %}[Discovery mode]
 
 === Event sending mode
 Starting from v1.5.0 of the alert engine connector, it is possible to configure the connection to send events either over WebSocket (default), either over Http.

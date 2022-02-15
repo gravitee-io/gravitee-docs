@@ -14,7 +14,7 @@ By default, a reporter is created for each security domain and allows you to cho
 . Click *Settings > Audit Log*.
 . Click the settings icon and configure the reporter.
 +
-image::am/current/graviteeio-am-userguide-logs-audit-reporter.png[]
+image::{% link images/am/current/graviteeio-am-userguide-logs-audit-reporter.png %}[]
 
 NOTE: There is no log retention. It is up to you define a retention window and periodically clear old data.
 

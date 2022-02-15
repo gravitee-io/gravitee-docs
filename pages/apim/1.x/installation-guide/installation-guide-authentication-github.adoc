@@ -21,12 +21,12 @@ You can access the `GitHub OAuth Apps` from https://github.com/settings/develope
 === Register a new application
 
 .Register a new app
-image::apim/1.x/installation/authentication/github_register_new_app.png[Register a new GitHub OAuth apps]
+image::{% link images/apim/1.x/installation/authentication/github_register_new_app.png %}[Register a new GitHub OAuth apps]
 
 === Create the application
 
 .Fill the form
-image::apim/1.x/installation/authentication/github_fill_app_form.png[Fill the form]
+image::{% link images/apim/1.x/installation/authentication/github_fill_app_form.png %}[Fill the form]
 
 
 WARNING: Be careful, the `Authorization callback URL` must match exactly to the domain which is hosting the portal.
@@ -34,7 +34,7 @@ WARNING: Be careful, the `Authorization callback URL` must match exactly to the 
 [[gravitee-installation-authentication-github-credentials]]
 === Get application's OAuth2 credentials
 .Retrieve Oauth2 credentials
-image::apim/1.x/installation/authentication/github_oauth_credentials.png[Get Oauth2 credentials]
+image::{% link images/apim/1.x/installation/authentication/github_oauth_credentials.png %}[Get Oauth2 credentials]
 
 == Configure Gravitee.io
 
@@ -44,7 +44,7 @@ include::./partial/management-api-configuration-idp-override.adoc[leveloffset=+2
 
 Got to Settings > Authentication > New provider (the `+` button) > select Github
 
-image::apim/1.x/management-api-configuration-idp/new-github.png[Gravitee.io - New Github IDP]
+image::{% link images/apim/1.x/management-api-configuration-idp/new-github.png %}[Gravitee.io - New Github IDP]
 
 === Via the `gravitee.yml`
 [source,yaml]
@@ -59,10 +59,10 @@ security:
 == It's time to play
 
 .Login Form
-image::apim/1.x/installation/authentication/github_login_form.png[Login Form]
+image::{% link images/apim/1.x/installation/authentication/github_login_form.png %}[Login Form]
 
 .Allow access to user account
-image::apim/1.x/installation/authentication/github_access_account.png[Login Form]
+image::{% link images/apim/1.x/installation/authentication/github_access_account.png %}[Login Form]
 
 .Login Success
-image::apim/1.x/installation/authentication/github_login_success.png[Here we are !]
+image::{% link images/apim/1.x/installation/authentication/github_login_success.png %}[Here we are !]

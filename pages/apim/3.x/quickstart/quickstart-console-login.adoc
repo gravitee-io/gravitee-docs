@@ -17,7 +17,7 @@ To log in:
 . Open APIM Console.
 . Enter the administrator credentials and click *SIGN IN*.
 +
-image:apim/3.x/quickstart/console-login.png[]
+image:{% link images/apim/3.x/quickstart/console-login.png %}[]
 
 You are now ready to link:{{ '/apim/3.x/apim_quickstart_publish_ui.html' | relative_url }}[publish your first API^].
 
@@ -25,7 +25,7 @@ You are now ready to link:{{ '/apim/3.x/apim_quickstart_publish_ui.html' | relat
 
 After login you are directed to your home dashboard, where you can access  information and statistics relating to your APIs:
 
-image:apim/3.x/quickstart/home-dashboard.png[]
+image:{% link images/apim/3.x/quickstart/home-dashboard.png %}[]
 
 NOTE: The dashboard view may vary according to your APIM version.
 
@@ -36,7 +36,7 @@ You can:
 * view the other dashboards and logs in the *ANALYTICS* tab
 * drill down to the details of a specific API event by clicking it in the list at the bottom of the page
 +
-image:apim/3.x/quickstart/home-dashboard-events.png[]
+image:{% link images/apim/3.x/quickstart/home-dashboard-events.png %}[]
 
 === API status
 

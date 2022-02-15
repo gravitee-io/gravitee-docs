@@ -57,7 +57,7 @@ Discovery mode is very useful when running a cluster of Alert Engine. By using i
 AE node and the other nodes from the cluster will be automatically registered.
 
 .Alert Engine - Auto-discovery
-image::ae/howitworks/discovery.png[Discovery mode]
+image::{% link images/ae/howitworks/discovery.png %}[Discovery mode]
 
 === Event sending mode
 Starting from v1.5.0 of the alert engine connector, it is possible to configure the connection to send events either over WebSocket (default), either over Http.

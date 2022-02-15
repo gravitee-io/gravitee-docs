@@ -35,7 +35,7 @@ Nodes can be in a `STARTED` or `STOPPED` state.
 You can view all the nodes of an installation which are in a `STARTED` state in the Dashboard, with a color indicating the state of their health.
 You can click on a node to access more details about that node, including general details about the node (for example, name and version), the list of plugins, and health check and monitoring data.
 
-image:cockpit/installation-node-details-page.png[]
+image:{% link images/cockpit/installation-node-details-page.png %}[]
 
 === Health checks
 

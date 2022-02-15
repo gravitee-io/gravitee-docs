@@ -28,7 +28,7 @@ These steps are explained in detail when you register the installation.
 Register the installation using the detailed instructions in the *How to register a new installation* link, below *Installations* in the dashboard.
 After registration, the installation is displayed as a pending installation in Cockpit:
 
-image::cockpit/pending-installations.png[]
+image::{% link images/cockpit/pending-installations.png %}[]
 
 === Add the installation to Cockpit
 
@@ -37,22 +37,22 @@ image::cockpit/pending-installations.png[]
 .. Select the environment to which to link the installation.
 .. Click *ACCEPT*.
 +
-image::cockpit/accept-installation.png[]
+image::{% link images/cockpit/accept-installation.png %}[]
 +
 The installation is added to the hierarchy map with a link to the environment.
 
 . Link the accepted installation to other environments in Cockpit as needed, from the link:{{ '/cockpit/3.x/cockpit_quickstart_setup.html#update_entity_settings' | relative_url }}[environment settings^] page.
 +
-image::cockpit/linked-installations.png[]
+image::{% link images/cockpit/linked-installations.png %}[]
 
 == Log in to an installation
 
 There are two ways to log in to an installation in Cockpit:
 
-- Click the login icon image:icons/cockpit-login-icon.png[role="icon"] on the installation in the hierarchy map
+- Click the login icon image:{% link images/icons/cockpit-login-icon.png %}[role="icon"] on the installation in the hierarchy map
 - Click *LOGIN* on the environment settings page of the linked environment:
 
-image::cockpit/linked-installations-login.png[]
+image::{% link images/cockpit/linked-installations-login.png %}[]
 
 You are redirected to the Console login page of the APIM or AM instance.
 

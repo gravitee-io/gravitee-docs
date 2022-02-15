@@ -42,7 +42,7 @@ APIM includes 5 types of fetchers:
 
 The documentation is fetched and stored locally in APIM when you first create it, and at regular intervals if you configure auto-fetch.
 
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-external-source-auto-fetch.png[]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-external-source-auto-fetch.png %}[]
 
 === Manage documentation pages and folders
 
@@ -53,22 +53,22 @@ To create new pages and folders in APIM Console:
 
 == Create a new folder
 
-. Click the plus icon image:icons/plus-icon.png[role="icon"] and select the folder icon.
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"] and select the folder icon.
 +
-image:apim/3.x/api-publisher-guide/documentation/create-folder.png[]
+image:{% link images/apim/3.x/api-publisher-guide/documentation/create-folder.png %}[]
 
 . Specify your folder name and click *SAVE*.
 +
 APIM adds your folder to a list, where you can select it and:
 
 * add different language versions of the folder name by clicking *TRANSLATE FOLDER*
-* start creating documentation pages in your folder by clicking the plus icon image:icons/plus-icon.png[role="icon"] and following the steps below
+* start creating documentation pages in your folder by clicking the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"] and following the steps below
 
 == Create a new page
 
-. Click the plus icon image:icons/plus-icon.png[role="icon"] and choose the documentation type.
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"] and choose the documentation type.
 +
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-creation.png[]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-creation.png %}[]
 
 . (Optional) Set the page as your API Portal home page by selecting the *Set as homepage* option.
 . Choose whether to import the documentation or create it directly in the editor. If importing, specify the file details or the external documentation source.
@@ -118,11 +118,11 @@ The following example JSON file describes a documentation set which includes:
 . Click *Import multiple files*.
 . If you want to publish the pages on import, select *Publish all imported pages*.
 +
-image:apim/3.x/api-publisher-guide/documentation/import-multiple-files.png[]
+image:{% link images/apim/3.x/api-publisher-guide/documentation/import-multiple-files.png %}[]
 . Click the GitHub or GitLab fetcher.
 . Specify the details of the external source, such as the URL of the external API, name of the repository and the branch. The fields vary slightly depending on the fetcher.
 +
-image:apim/3.x/api-publisher-guide/documentation/import-multiple-file-dets.png[]
+image:{% link images/apim/3.x/api-publisher-guide/documentation/import-multiple-file-dets.png %}[]
 . In *Filepath*, enter the path to your JSON documentation specification file.
 . Enter an access token, which you need to generate in your GitHub or GitLab user profile.
 . Select *Auto Fetch* and specify the `crontab` update frequency, if you want the pages to be updated dynamically.
@@ -130,25 +130,25 @@ image:apim/3.x/api-publisher-guide/documentation/import-multiple-file-dets.png[]
 +
 APIM adds the files to your documentation set.
 +
-image:apim/3.x/api-publisher-guide/documentation/import-multiple-files-result.png[]
+image:{% link images/apim/3.x/api-publisher-guide/documentation/import-multiple-files-result.png %}[]
 
 === Publish your page
 
 Once your page is created, you can view it before publishing it. APIM displays the following message:
 
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-draft.png[]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-draft.png %}[]
 
 You can publish a page in one of the following ways:
 
 * Check the *Publish this page* option in the *CONFIGURATION* tab:
 +
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-publish-1.png[]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-publish-1.png %}[]
 +
 When you publish the page in this way, you can enable the option *Allow access to anonymous user* to display the page to users browsing APIM Portal without logging in. The option is checked by default.
 
 * Click the cloud icon in the documentation list:
 
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-publish-2.png[]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-publish-2.png %}[]
 
 == Configure a page
 
@@ -164,9 +164,9 @@ You can add translations for your pages. In the *TRANSLATIONS* tab:
 . (Optional) You can edit the content to add translated content by toggling on the switch.
 . Click *SAVE TRANSLATION* at the bottom of the page.
 
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-translations-1.png[]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-translations-1.png %}[]
 
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-translations-2.png[]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-translations-2.png %}[]
 
 === Auto fetch from an external source
 
@@ -189,7 +189,7 @@ In the *ACCESS CONTROL* tab, you can mark a page as PRIVATE if you want to deny 
 
 For private pages, you can configure access lists by required or to be excluded roles/groups.
 
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-access-control.png[]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-access-control.png %}[]
 
 == Templating
 
@@ -277,4 +277,4 @@ The API owner is <#if api.primaryOwner.email??><a href="mailto:${api.primaryOwne
 
 Let's see the result in APIM Portal:
 
-image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-template.png[]
+image::{% link images/apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-template.png %}[]

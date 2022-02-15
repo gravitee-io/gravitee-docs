@@ -47,20 +47,20 @@ You can manage users for APIs and applications.
 ** application, click *Applications* in the menu, then select your application and click *Members*.
 ** API, click *APIs* in the menu, then select your API and click *Portal > Members*.
 +
-image::apim/3.x/api-publisher-guide/members/manage-members.png[Gravitee.io - manage members]
+image::{% link images/apim/3.x/api-publisher-guide/members/manage-members.png %}[Gravitee.io - manage members]
 
 To add new users:
 
-. Click the plus icon image:icons/plus-icon.png[role="icon"] at the bottom right of the page.
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"] at the bottom right of the page.
 . Search for the user with the form, then select the user.
 +
-image::apim/3.x/api-publisher-guide/members/manage-members-add.png[Gravitee.io - add member,300]
+image::{% link images/apim/3.x/api-publisher-guide/members/manage-members-add.png %}[Gravitee.io - add member,300]
 
 To remove users:
 
 Navigate to the *Members* page for the API or application as described above, then click the delete icon next to the user.
 
-image::apim/3.x/api-publisher-guide/members/manage-members-remove.png[Gravitee.io - remove member]
+image::{% link images/apim/3.x/api-publisher-guide/members/manage-members-remove.png %}[Gravitee.io - remove member]
 
 == Transfer ownership
 
@@ -84,4 +84,4 @@ If your Primary owner mode is configured as *GROUP*, you can only select a Prima
 . Choose the new role of the current Primary Owner, if the current Primary Owner is a user.
 . Click *TRANSFER*.
 +
-image::apim/3.x/api-publisher-guide/members/manage-members-transfer-ownership.png[Gravitee.io - transfer ownership]
+image::{% link images/apim/3.x/api-publisher-guide/members/manage-members-transfer-ownership.png %}[Gravitee.io - transfer ownership]

@@ -32,7 +32,7 @@ NOTE: Facebook will generate an App ID and App Secret for your application. Make
 
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Providers*.
-. Click the plus icon image:icons/plus-icon.png[role="icon"].
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
 . Choose the Facebook identity provider type and click *Next*.
 +
 NOTE: Ensure you have the generated App ID and App Secret from Facebook the application to hand.
@@ -41,7 +41,7 @@ NOTE: Ensure you have the generated App ID and App Secret from Facebook the appl
 . Enter your Facebook application App ID and App Secret.
 . Click *Create*.
 +
-image::am/current/graviteeio-am-userguide-social-idp-facebook.png[]
+image::{% link images/am/current/graviteeio-am-userguide-social-idp-facebook.png %}[]
 +
 NOTE: On the right side of the screen, under *1. Configure the Redirect URI*, copy the value of the URL. You will use it to update your Facebook application settings.
 
@@ -62,10 +62,10 @@ You can test your Facebook connection using a web application created in AM.
 
 . In AM Console, click *Applications* and select your social identity provider.
 +
-image::am/current/graviteeio-am-userguide-social-idp-list.png[]
+image::{% link images/am/current/graviteeio-am-userguide-social-idp-list.png %}[]
 +
 . Call the Login Page (i.e `/oauth/authorize` endpoint). If the connection is working you will see a *Sign in with ...* button.
 +
-image::am/current/graviteeio-am-userguide-social-idp-login.png[]
+image::{% link images/am/current/graviteeio-am-userguide-social-idp-login.png %}[]
 +
 If the button is not visible, there may be a problem with the identity provider settings. Check the AM Gateway log for more information.

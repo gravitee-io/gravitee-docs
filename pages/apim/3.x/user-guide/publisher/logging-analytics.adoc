@@ -15,7 +15,7 @@ TIP: From APIM version 3.6.x, you can mask secure data in your logs by adding th
 Metrics are presented in one or more _dashboards_. You can select the dashboard with the metrics you want to see from the *Select a dashboard* drop-down menu.
 You can then select a time period and view several different types of analytics -- such as requests received and responses sent, the most frequently called applications and response times, presented in different views and formats -- such as bar charts and maps.
 
-image:apim/3.x/api-publisher-guide/analytics/dashboards.png[]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/dashboards.png %}[]
 
 For more details on creating and configuring dashboards, see link:{{ '/apim/3.x/apim_installguide_dashboard_configuration.html' | relative_url }}[Configure dashboards^].
 
@@ -29,7 +29,7 @@ You can list the API requests for a single API or for an application by viewing 
 This lists all the API requests in date and time order.
 You can filter by date or search term and click on an individual entry to view more details.
 
-image:apim/3.x/api-publisher-guide/analytics/logs.png[]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/logs.png %}[]
 
 Log entries include details such as:
 
@@ -38,7 +38,7 @@ Log entries include details such as:
 
 By default, the request header and payload are not logged in APIM, to save space, as shown in the basic logging detail page below. You specify how much detail to log in the logging configuration.
 
-image:apim/3.x/api-publisher-guide/analytics/logs-simple-view.png[Basic logging detail]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/logs-simple-view.png %}[Basic logging detail]
 
 == Configure API logging
 
@@ -52,11 +52,11 @@ WARNING: Logging configuration changes can have a significant impact on performa
 . Click *Analytics > Logs*.
 . Click the *Configure the logging* link at the top.
 +
-image:apim/3.x/api-publisher-guide/analytics/logs-configure.png[]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/logs-configure.png %}[]
 
 +
 If you configured a maximum logging duration in the global settings, APIM displays a message to remind you:
-image:apim/3.x/api-publisher-guide/analytics/logs-configure-max-duration.png[]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/logs-configure-max-duration.png %}[]
 
 ifeval::[{{ site.products.apim._3x.version }} < 3.6.0]
 
@@ -82,34 +82,34 @@ We need to specify it as a combined condition in two parts.
 
 . Click *SHOW EDITOR* and in the condition editor, select *Condition type* as *HTTP Method*. Click *ADD*.
 +
-image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step1.png[]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/logs-configure-example-step1.png %}[]
 
 . Select *GET* as the HTTP method.
 +
-image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step2.png[]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/logs-configure-example-step2.png %}[]
 
 . Click *SAVE*. The new condition is added. Note that you need to take a copy the syntax of the condition, as it will be overwritten when you specify the next one.
 +
-image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step3.png[]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/logs-configure-example-step3.png %}[]
 
 . Now click *SHOW EDITOR* again to specify the second part of the condition.
 . Select *Request query-parameter* as the *Condition type*. Click *ADD*.
 +
-image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step4.png[]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/logs-configure-example-step4.png %}[]
 
 . Enter *X-debug* as the *Query parameter name* and *true* as the value.
 +
-image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step5.png[]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/logs-configure-example-step5.png %}[]
 
 . Click *SAVE*. We can see that the second condition has been added. To add back in the first condition, go to the end of the condition line and type *&&*, then paste it at the end.
 +
-image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step6.png[]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/logs-configure-example-step6.png %}[]
 endif::[]
 ifeval::[{{ site.products.apim._3x.version }} >= 3.6.0]
 . Toggle on the *Enabled* option.
 . Select the level of logging required for the mode, content and scope.
 +
-image:apim/3.x/api-publisher-guide/analytics/logs-configure-3-6.png[]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/logs-configure-3-6.png %}[]
 
 . Specify all logging conditions which apply in link:{{ '/apim/3.x/apim_publisherguide_expression_language.html' | relative_url }}[Gravitee Expression Language^]. You can restrict logging by:
 * application or plan
@@ -121,11 +121,11 @@ image:apim/3.x/api-publisher-guide/analytics/logs-configure-3-6.png[]
 +
 You can combine conditions, as in the example below:
 +
-image:apim/3.x/api-publisher-guide/analytics/logs-configure-example-step6.png[]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/logs-configure-example-step6.png %}[]
 endif::[]
 
 . Click *SAVE* to save the new logging configuration. Don't forget to redeploy your API.
 +
 We can now return to the logging screen and see the logging detail when we click on a log entry, as in the image below:
 +
-image:apim/3.x/api-publisher-guide/analytics/logs-detailed-view2.png[]
+image:{% link images/apim/3.x/api-publisher-guide/analytics/logs-detailed-view2.png %}[]

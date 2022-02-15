@@ -15,15 +15,15 @@ It also summarizes the differences between the APIM Console *Design* function an
 . Click *APIs*.
 . Select your API and click *Design*.
 +
-image::apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-before-migration.png[]
+image::{% link images/apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-before-migration.png %}[]
 
 . Click the migrate button.
 +
-image::apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-migration-button.png[]
+image::{% link images/apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-migration-button.png %}[]
 +
 You are redirected to Design Studio.
 +
-image::apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-migrated.png[]
+image::{% link images/apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-migrated.png %}[]
 
 == Differences between Design function and new Design Studio
 
@@ -35,4 +35,4 @@ By default, the selection of a flow is based on the operator defined in the flow
 You can use the operator either to select a flow with a path which matches exactly, or when the start of the path matches.
 You can then use the *Best match* option to select the flow from the path that is closest.
 
-image::apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-best-match.png[]
+image::{% link images/apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-best-match.png %}[]

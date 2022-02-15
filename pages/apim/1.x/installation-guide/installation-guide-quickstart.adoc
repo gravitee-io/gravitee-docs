@@ -17,15 +17,13 @@ NOTE: *SWAPI API* : In this tutorial we will use the https://swapi.co/[SWAPI API
 
 2) Click "Create your First API"
 
-image::apim/1.x/graviteeio-create-first-api.png[]
-
 3) Give your API a name, a version, a description and a context path
 
 4) Make sure that "Endpoint" is set to "http://swapi.co/api"
 
 5) Click the "CREATE" button and your API is created
 
-image::apim/1.x/graviteeio-first-api.png[]
+image::{% link images/apim/1.x/graviteeio-first-api.png %}[]
 
 Create API request::
 
@@ -68,13 +66,13 @@ All incoming request to the Gravitee.io Gateway must have an API Key. Only trust
 
 2) Click "CREATE APPLICATIONS"
 
-image::apim/1.x/graviteeio-create-first-app.png[]
+image::{% link images/apim/1.x/graviteeio-create-first-app.png %}[]
 
 3) Give your Application a name, a type and a description
 
 4) Click the "CREATE" button and your Application is created
 
-image::apim/1.x/graviteeio-first-app.png[]
+image::{% link images/apim/1.x/graviteeio-first-app.png %}[]
 
 Create Application request::
 
@@ -91,7 +89,7 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
 
 7) Search your first API and click "SUBSCRIBE"
 
-image::apim/1.x/graviteeio-subscribe-api.png[]
+image::{% link images/apim/1.x/graviteeio-subscribe-api.png %}[]
 
 Subscribe API request :
 
@@ -104,7 +102,7 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
 
 8) Get your API Key and you are ready to use your API
 
-image::apim/1.x/graviteeio-app-keys.png[]
+image::{% link images/apim/1.x/graviteeio-app-keys.png %}[]
 
 ==== Step 3 - Use the API Key and Test your API
 

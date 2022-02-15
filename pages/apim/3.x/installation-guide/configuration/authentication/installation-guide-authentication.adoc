@@ -53,14 +53,14 @@ You can see which identity providers are defined in APIM Console as follows:
 You define new providers in APIM Console with the *Organization settings > Authentication* menu entry.
 If you want the identity provider to be available at environment level as well, you can enable it for APIM Portal authentication when you specify its details.
 
-image::apim/3.x/installation/authentication/provider-activation-portal-enablement.png[]
+image::{% link images/apim/3.x/installation/authentication/provider-activation-portal-enablement.png %}[]
 
 [[activating-providers]]
 === Activating providers
 
 Once a new provider is defined, you need to activate it in the organization and/or environment-level list by checking the *Activated* checkbox, to make it available to the relevant login window:
 
-image::apim/3.x/installation/authentication/provider-organization-list-activate.png[]
+image::{% link images/apim/3.x/installation/authentication/provider-organization-list-activate.png %}[]
 
 === Example
 In this example, three providers have been defined -- Google, GitHub and GraviteeIO AM.
@@ -68,16 +68,16 @@ In this example, three providers have been defined -- Google, GitHub and Gravite
 * Only GitHub and GraviteeIO AM are *activated* for APIM Console authentication (in the organization-level list).
 * Only Google and GraviteeIO AM are *enabled* for APIM Portal authentication.
 
-image::apim/3.x/installation/authentication/provider-organization-list.png[]
+image::{% link images/apim/3.x/installation/authentication/provider-organization-list.png %}[]
 
 You can see that *GitHub* and *GraviteeIO AM* are visible on the APIM Console login screen:
 
-image::apim/3.x/installation/authentication/console-login-screen.png[]
+image::{% link images/apim/3.x/installation/authentication/console-login-screen.png %}[]
 
 In the environment-level list, only Google and GraviteeIO AM appear, and only GraviteeIO AM is *activated*.
 
-image::apim/3.x/installation/authentication/provider-environment-list.png[]
+image::{% link images/apim/3.x/installation/authentication/provider-environment-list.png %}[]
 
 As a result, you can only see *GraviteeIO AM* on the APIM Portal login screen:
 
-image::apim/3.x/installation/authentication/portal-login-screen.png[]
+image::{% link images/apim/3.x/installation/authentication/portal-login-screen.png %}[]
