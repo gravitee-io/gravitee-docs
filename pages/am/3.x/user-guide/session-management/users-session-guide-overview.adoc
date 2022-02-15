@@ -8,7 +8,7 @@ When a user is signing in, AM stores the fact that the user is authenticated for
 
 This mechanism avoid for the user to re-authenticate every time he wants to perform some actions. The same principle applies for your application or when you use an external identity provider such as Facebook, Twitter ... .
 
-NOTE: By default the session last 30 minutes, you can change this value via the gravitee.yml of the gateway, see link:/am/current/am_installguide_gateway_configuration.html[configuration section].
+NOTE: By default the session last 30 minutes, you can change this value via the gravitee.yml of the gateway, see link:{{ '/am/current/am_installguide_gateway_configuration.html' | relative_url }}[configuration section].
 
 == Session layers
 
@@ -24,11 +24,11 @@ This cookie acts as Single Sign-on (SSO) cookie and let you remember your users 
 NOTE: To automatically authenticate your user across applications (SSO), your applications must share the same identity provider.
 
 [start=3]
-. *Identity Provider session* : if you application is configured to use a link:/am/current/am_userguide_social_identity_providers.html[social identity provider] to authenticate a user, the identity provider will create a session in addition of the AM one.
+. *Identity Provider session* : if you application is configured to use a link:{{ '/am/current/am_userguide_social_identity_providers.html' | relative_url }}[social identity provider] to authenticate a user, the identity provider will create a session in addition of the AM one.
 When users attempt to sign in with any of these providers and they are already signed into the provider, they will not be prompted again to sign in.
 
 == Invalidate session
 
 For application session layer, it is up to you to clean everything if you want log out your users.
 
-For the Gravitee.io AM and identity provider sessions, you can read the link:/am/current/am_userguide_user_session_management_logout.html[logout section] to invalidate them.
+For the Gravitee.io AM and identity provider sessions, you can read the link:{{ '/am/current/am_userguide_user_session_management_logout.html' | relative_url }}[logout section] to invalidate them.

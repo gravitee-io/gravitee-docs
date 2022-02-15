@@ -65,5 +65,5 @@ You can develop your own identity provider and provide an authenticate method to
 
 == Testing identity provider
 
-The fastest way to test your fresh created identity provider is to request for an OAuth2 access token by following the link:/am/1.x/am_quickstart_authenticate_users.html[Authenticate users with Identity Provider] tutorial.
+The fastest way to test your fresh created identity provider is to request for an OAuth2 access token by following the link:{{ '/am/1.x/am_quickstart_authenticate_users.html' | relative_url }}[Authenticate users with Identity Provider] tutorial.
 If you succeed to get an access token, your identity provider is all set.

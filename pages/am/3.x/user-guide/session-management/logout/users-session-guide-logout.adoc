@@ -24,7 +24,7 @@ Single logout let your end users sign out of both their Gravitee.io AM session a
 
 To enable single logout feature :
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Select your application and click *Settings > General*.
 . Switch on *Single Sign Out* and click *SAVE*.
 

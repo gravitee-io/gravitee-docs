@@ -25,7 +25,7 @@ TIP: Default keys are RS256 (SHA256withRSA). For RS512 keys, add the following o
 
 == Create a new certificate with AM Console
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Certificates*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Choose the certificate type and click *Next*.

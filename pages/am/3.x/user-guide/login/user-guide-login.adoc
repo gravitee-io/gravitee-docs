@@ -12,10 +12,10 @@ Out of the box, Gravitee AM comes with several features, such as social login, M
 
 To learn more about our login experience, have a look through the following pages:
 
-- link:/am/current/am_userguide_identity_providers.html[Link your users to your application]
-- link:/am/current/am_userguide_branding.html[Login page branding]
-- link:/am/current/am_userguide_mfa.html[Enable MFA]
-- link:/am/current/am_userguide_mfa_step_up.html[Step-up authentication]
-- link:/am/current/am_userguide_passwordless.html[What about passwordless authentication?]
-- link:/am/current/am_userguide_login_silent_re_auth.html[Silent re-authentication]
-- link:/am/current/am_userguide_login_identifier_first_login_flow.html[Identifier-first login flow]
+- link:{{ '/am/current/am_userguide_identity_providers.html' | relative_url }}[Link your users to your application]
+- link:{{ '/am/current/am_userguide_branding.html' | relative_url }}[Login page branding]
+- link:{{ '/am/current/am_userguide_mfa.html' | relative_url }}[Enable MFA]
+- link:{{ '/am/current/am_userguide_mfa_step_up.html' | relative_url }}[Step-up authentication]
+- link:{{ '/am/current/am_userguide_passwordless.html' | relative_url }}[What about passwordless authentication?]
+- link:{{ '/am/current/am_userguide_login_silent_re_auth.html' | relative_url }}[Silent re-authentication]
+- link:{{ '/am/current/am_userguide_login_identifier_first_login_flow.html' | relative_url }}[Identifier-first login flow]

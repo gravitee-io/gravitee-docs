@@ -31,7 +31,7 @@ You configure security on the **Secure** page of a new or existing plan.
 . On the **Secure** page, configure the type of security you require for your plan, as described in the sections below.
 +
 image::apim/3.x/api-publisher-guide/plans-subscriptions/create-plan-secure.png[]
-. Click *NEXT* to link:/apim/3.x/apim_publisherguide_plan_restrictions.html[configure plan restrictions].
+. Click *NEXT* to link:{{ '/apim/3.x/apim_publisherguide_plan_restrictions.html' | relative_url }}[configure plan restrictions].
 
 === Keyless plans
 
@@ -42,7 +42,7 @@ Due to the lack of consumer identifier token (API key), keyless consumers are se
 
 ==== Basic authentication
 
-You can configure basic authentication for keyless plans, by associating a basic authentication policy with either an LDAP or inline resource. For more details, see link:/apim/3.x/apim_policies_basic_authentication.html[Basic authentication policy^].
+You can configure basic authentication for keyless plans, by associating a basic authentication policy with either an LDAP or inline resource. For more details, see link:{{ '/apim/3.x/apim_policies_basic_authentication.html' | relative_url }}[Basic authentication policy^].
 
 === API key plans
 
@@ -109,7 +109,7 @@ the introspection endpoint must also require some form of authorization to acces
 
 ==== Add OAuth 2.0 security to a plan
 
-NOTE: If you already have a suitable plan defined, you can add your OAuth2 resource to one of the flows defined for it in Design Studio, by following the steps in link:/apim/3.x/apim_publisherguide_design_studio_create.html#flow-policies[Add policies to a flow^].
+NOTE: If you already have a suitable plan defined, you can add your OAuth2 resource to one of the flows defined for it in Design Studio, by following the steps in link:{{ '/apim/3.x/apim_publisherguide_design_studio_create.html#flow-policies' | relative_url }}[Add policies to a flow^].
 
 . In APIM Console, select your API and click *Portal > Plans*.
 . On the **Secure** page, choose *OAuth2* as the authorization type.
@@ -144,7 +144,7 @@ The policy searches for a client ID in the payload as follows:
 . On the **Secure** page, choose *JWT* as the authorization type.
 . Specify the public key used to verify the incoming JWT token.
 +
-NOTE: You can also set the public key in the `gravitee.yml` file. See link:/apim/3.x/apim_policies_jwt.html[JWT policy] for more information. APIM only supports the RSA Public Key format.
+NOTE: You can also set the public key in the `gravitee.yml` file. See link:{{ '/apim/3.x/apim_policies_jwt.html' | relative_url }}[JWT policy] for more information. APIM only supports the RSA Public Key format.
 +
 image::apim/3.x/api-publisher-guide/plans-subscriptions/create-jwt-plan.png[]
 

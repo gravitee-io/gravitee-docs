@@ -9,7 +9,7 @@ Managing subscriptions and plans is a key feature in Gravitee.io and allows the 
 
 == What is a plan ?
 
-A plan provides a service and access layer on your API for the consumer link:/apim/1.x/apim_overview_concepts.html#gravitee-concepts-application[applications].
+A plan provides a service and access layer on your API for the consumer link:{{ '/apim/1.x/apim_overview_concepts.html#gravitee-concepts-application' | relative_url }}[applications].
 A plan specifies access limits, subscription validation mode and other configurations to meet the specific applications needs.
 
 image::apim/1.x/api-publisher-guide/plans-subscriptions/plan-diagram.png[Gravitee.io - Plan diagram, 873, 530, align=center, title-align=center]
@@ -25,7 +25,7 @@ You can imagine the following scenarios :
 
 All these notions can be hard to code in your API and should be manage in external tool such as an Plan.
 
-To subscribe to a Plan, developers must create an link:/apim/1.x/apim_overview_concepts.html#gravitee-concepts-application[application] and choose the Plan they want to subscribe.
+To subscribe to a Plan, developers must create an link:{{ '/apim/1.x/apim_overview_concepts.html#gravitee-concepts-application' | relative_url }}[application] and choose the Plan they want to subscribe.
 That will create a subscription associate with the application. This subscription will be verify in order to accept or deny the incoming request.
 
 
@@ -123,7 +123,7 @@ To create an JWT plan, go to `Portal/Plans` section of your API and create a new
 
 On the secure section (second step) choose `JWT` Authorization type and set up the public key used to verify the incoming JWT token.
 
-NOTE: Public key can also be set in the `gravitee.yml` file. See link:/apim/1.x/apim_policies_jwt.html[JWT policy] for more information. Currently Gravitee.io only support RSA Public Key format.
+NOTE: Public key can also be set in the `gravitee.yml` file. See link:{{ '/apim/1.x/apim_policies_jwt.html' | relative_url }}[JWT policy] for more information. Currently Gravitee.io only support RSA Public Key format.
 
 .Create JWT plan
 image::apim/1.x/api-publisher-guide/plans-subscriptions/create-jwt-plan.png[Gravitee.io - Create JWT plan, 873, 530, align=center, title-align=center]

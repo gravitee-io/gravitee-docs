@@ -60,4 +60,4 @@ sudo ss -lntp '( sport = 9200 )'
 You should see that there's a process listening on that port.
 
 == Next
-Next is link:/apim/3.x/apim_installation_guide_amazon_prerequisite_nginx.html[installing Nginx].
+Next is link:{{ '/apim/3.x/apim_installation_guide_amazon_prerequisite_nginx.html' | relative_url }}[installing Nginx].

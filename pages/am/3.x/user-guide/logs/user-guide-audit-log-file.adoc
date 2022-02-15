@@ -16,7 +16,7 @@ AM versions from 3.6 include a file reporter for sending audit logs to a file, w
 
 To create a File reporter for a domain:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Audit Log*.
 . Click the settings icon image:icons/am-settings-icon.png[role="icon"].
 . Click the plus icon image:icons/plus-icon.png[role="icon"].

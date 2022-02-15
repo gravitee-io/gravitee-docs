@@ -9,7 +9,7 @@ The Management API exposes a complete Restful API accessible to anyone who wants
 
 You can access API console or the OpenAPI descriptor (formerly Swagger) :
 
-* link:/am/2.x/management-api/index.html[API Console] - link:/am/2.x/management-api/swagger.json[OpenAPI spec]
+* link:{{ '/am/2.x/management-api/index.html' | relative_url }}[API Console] - link:{% link /am/2.x/management-api/swagger.json %}[OpenAPI spec]
 
 == Available authorizations
 

@@ -30,7 +30,7 @@ Step-up authentication is often used in the following scenarios:
 - Users initiate a payment.
 - Users want to delegate access to third parties.
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Select your application
 . Click *Settings > Multifactor Auth*.
 . Select your MFA factor and set the *Step up authentication* rule.

@@ -7,16 +7,16 @@
 Gravitee.io API platform exposes an API gallery also known as API catalog to let developers application to browse APIs,
 request access and generate subscriptions to secure access and identify consumers for monitoring and analytics.
 
-To access theses APIs consumers, must subscribe to the link:/apim/1.x/apim_publisherguide_plans_subscriptions.html[APIs' plans] with their registered application to start playing with the APIs.
+To access theses APIs consumers, must subscribe to the link:{{ '/apim/1.x/apim_publisherguide_plans_subscriptions.html' | relative_url }}[APIs' plans] with their registered application to start playing with the APIs.
 
-NOTE: Consumer must have a link:/apim/1.x/apim_consumerguide_create_account.html[user account] to register an application and subscribe to an API.
+NOTE: Consumer must have a link:{{ '/apim/1.x/apim_consumerguide_create_account.html' | relative_url }}[user account] to register an application and subscribe to an API.
 
 == Create an application
 
 Consumers who want to use APIs need to register an application that will let API publishers to control and regulate access to their APIs.
 Typically application can be a web application, a native application, bash/job applications and so on which want to access sensitive data.
 
-NOTE: Only users with correct role permission can create an application, see link:/apim/1.x/apim_adminguide_roles_and_permissions.html[roles and permissions]
+NOTE: Only users with correct role permission can create an application, see link:{{ '/apim/1.x/apim_adminguide_roles_and_permissions.html' | relative_url }}[roles and permissions]
 
 1. Login to the Gravitee.io APIM portal
 2. Open the user menu (top right) and click `Applications`
@@ -29,7 +29,7 @@ Your application is created and you can use it to subscribe to an API.
 
 == Subscribe to an API
 
-API's plans allow API publisher to provide and regulate access to their APIs. In order to use APIs you must subscribe to an API's plan, see link:/apim/1.x/apim_publisherguide_plans_subscriptions.html[plans and subscriptions].
+API's plans allow API publisher to provide and regulate access to their APIs. In order to use APIs you must subscribe to an API's plan, see link:{{ '/apim/1.x/apim_publisherguide_plans_subscriptions.html' | relative_url }}[plans and subscriptions].
 
 To subscribe to an API:
 

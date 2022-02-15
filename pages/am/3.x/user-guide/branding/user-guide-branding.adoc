@@ -13,5 +13,5 @@ NOTE: AM uses link:https://www.thymeleaf.org/[Thymeleaf^] syntax to dynamically 
 
 For more information on customizing templates, see the following sections:
 
-* link:/am/current/am_userguide_user_management_forms.html[Custom pages]
-* link:/am/current/am_userguide_branding_email_templates.html[Custom email templates]
+* link:{{ '/am/current/am_userguide_user_management_forms.html' | relative_url }}[Custom pages]
+* link:{{ '/am/current/am_userguide_branding_email_templates.html' | relative_url }}[Custom email templates]

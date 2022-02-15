@@ -53,7 +53,7 @@ Your repository is ready to use, now it's time to install Gravitee.io API Manage
 
 You can choose to install the complete Gravitee.io API Management stack or install components one by one:
 
-* link:/apim/1.x/apim_installguide_amazon_stack.html[Install API Management] (includes all components below)
-* link:/apim/1.x/apim_installguide_amazon_gateway.html[Install API Gateway]
-* link:/apim/1.x/apim_installguide_amazon_management_api.html[Install Management API]
-* link:/apim/1.x/apim_installguide_amazon_portal.html[Install Portal]
+* link:{{ '/apim/1.x/apim_installguide_amazon_stack.html' | relative_url }}[Install API Management] (includes all components below)
+* link:{{ '/apim/1.x/apim_installguide_amazon_gateway.html' | relative_url }}[Install API Gateway]
+* link:{{ '/apim/1.x/apim_installguide_amazon_management_api.html' | relative_url }}[Install Management API]
+* link:{{ '/apim/1.x/apim_installguide_amazon_portal.html' | relative_url }}[Install Portal]

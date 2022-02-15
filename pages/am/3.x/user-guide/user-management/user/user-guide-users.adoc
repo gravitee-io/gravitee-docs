@@ -8,7 +8,7 @@
 
 === List users
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Search for users by clicking *Settings > Users* and entering the username in the search field.
 +
 image::am/current/graviteeio-am-userguide-um-search-users.png[]
@@ -108,7 +108,7 @@ The following operators are supported :
 |le       |less than or equal to  | If the attribute value is less than or equal to the operator value, there is a match. The actual comparison is dependent on the attribute type. For string attribute types, this is a lexicographical comparison, and for DateTime types, it is a chronological comparison.
 |===
 
-The following examples give guidance on how to use this feature. All the attribute names are based on the user model provided by link:/am/current/management-api/index.html[AM API^].
+The following examples give guidance on how to use this feature. All the attribute names are based on the user model provided by link:{{ '/am/current/management-api/index.html' | relative_url }}[AM API^].
 
 ----
 List disabled users
@@ -125,7 +125,7 @@ List users by first name
 
 You create users in a security domain.
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Users*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Give your user a *First name*, a *Last name*, an *Email* and a *Username* and click *SAVE*.

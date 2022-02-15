@@ -16,7 +16,7 @@ image::am/current/graviteeio-am-userguide-http-idp-mapping.png[]
 
 == Create an HTTP identity provider
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *HTTP* as your identity provider type and click *Next*.

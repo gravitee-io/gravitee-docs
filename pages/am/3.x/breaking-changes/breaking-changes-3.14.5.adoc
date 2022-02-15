@@ -4,6 +4,6 @@
 :page-folder: am/installation-guide
 :page-layout: am
 
-NOTE: For all these breaking changes, the Migration Guide can be found link:/am/current/am_installguide_migration.html[here].
+NOTE: For all these breaking changes, the Migration Guide can be found link:{{ '/am/current/am_installguide_migration.html' | relative_url }}[here].
 
-WARNING: For JDBC users only please upgrade directly to the 3.14.6 minimum. See link:/am/current/am_installguide_migration.html#upgrade_to_3_14_5[here] for more details.
+WARNING: For JDBC users only please upgrade directly to the 3.14.6 minimum. See link:{{ '/am/current/am_installguide_migration.html#upgrade_to_3_14_5' | relative_url }}[here] for more details.

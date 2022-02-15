@@ -9,7 +9,7 @@
 The RPM for Gravitee.io Management API can be downloaded from our link:#installing_from_the_rpm_repository[RPM repository].
 It can be used to install Gravitee.io Management API on any RPM-based system such as OpenSuSE, SLES, CentOS, Red Hat, and Oracle Enterprise.
 
-NOTE: RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Please see link:/am/2.x/am_installguide_management_api_install_zip.html[Install Gravitee.io Management API with .zip] instead.
+NOTE: RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Please see link:{{ '/am/2.x/am_installguide_management_api_install_zip.html' | relative_url }}[Install Gravitee.io Management API with .zip] instead.
 
 == Installing from the RPM repository
 Create a file called graviteeio.repo in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:

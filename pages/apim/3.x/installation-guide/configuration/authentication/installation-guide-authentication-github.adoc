@@ -51,7 +51,7 @@ include::../../partial/management-api-configuration-idp-override.adoc[leveloffse
 +
 image::apim/3.x/management-api-configuration-idp/new-github.png[Gravitee.io - New Github IDP]
 . Click *CREATE*.
-. Activate the provider for Portal or Console login, as described in link:/apim/3.x/apim_installguide_authentication.html#activating-providers[Activating providers^].
+. Activate the provider for Portal or Console login, as described in link:{{ '/apim/3.x/apim_installguide_authentication.html#activating-providers' | relative_url }}[Activating providers^].
 
 ==== `gravitee.yml` file configuration
 

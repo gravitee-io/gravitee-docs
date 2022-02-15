@@ -12,7 +12,7 @@
 
 From APIM 3.5, you can use Design Studio to design your APIs with an intuitive drag and drop interface.
 
-You design your APIs by adding and configuring new _flows_ at both API and plan level. You can then customize your flows with link:/apim/3.x/apim_policies_overview.html[Policies^] and link:/apim/3.x/apim_resources_overview.html[Resources^].
+You design your APIs by adding and configuring new _flows_ at both API and plan level. You can then customize your flows with link:{{ '/apim/3.x/apim_policies_overview.html' | relative_url }}[Policies^] and link:{{ '/apim/3.x/apim_resources_overview.html' | relative_url }}[Resources^].
 
 You can also migrate existing API definitions to Design Studio.
 
@@ -20,8 +20,8 @@ You can also migrate existing API definitions to Design Studio.
 
 APIM Console opens Design Studio automatically when you click the *Design* menu option for an API, as long as one of the following conditions is met:
 
-* Your API was created in APIM 3.5 or above using the *DESIGN STUDIO* API creation method (see link:/apim/3.x/apim_publisherguide_create_apis.html[Create APIs^] for more details)
-* Your API design was previously migrated to Design Studio (see link:/apim/3.x/apim_publisherguide_design_studio_migrate.html[Migrate to Design Studio^] for more details)
+* Your API was created in APIM 3.5 or above using the *DESIGN STUDIO* API creation method (see link:{{ '/apim/3.x/apim_publisherguide_create_apis.html' | relative_url }}[Create APIs^] for more details)
+* Your API design was previously migrated to Design Studio (see link:{{ '/apim/3.x/apim_publisherguide_design_studio_migrate.html' | relative_url }}[Migrate to Design Studio^] for more details)
 
 Otherwise, the *Design* function is available as in earlier APIM versions.
 

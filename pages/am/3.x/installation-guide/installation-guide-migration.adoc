@@ -12,11 +12,11 @@ WARNING: Be sure to run scripts on the correct database since `gravitee-am` is n
 
 == Upgrade to 3.15
 
-NOTE: For more information about the breaking changes of this version, see link:/am/current/am_breaking_changes_3.15.html[Breaking changes in 3.15]
+NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.15.html' | relative_url }}[Breaking changes in 3.15]
 
 == Upgrade to 3.14.5
 
-NOTE: For more information about the breaking changes of this version, see link:/am/current/am_breaking_changes_3.14.5.html[Breaking changes in 3.14.5]
+NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.14.5.html' | relative_url }}[Breaking changes in 3.14.5]
 
 === Warning
 
@@ -30,11 +30,11 @@ GitHub issue: link:https://github.com/gravitee-io/issues/issues/7080[7080]
 
 == Upgrade to 3.12
 
-NOTE: For more information about the breaking changes of this version, see link:/am/current/am_breaking_changes_3.12.html[Breaking changes in 3.12]
+NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.12.html' | relative_url }}[Breaking changes in 3.12]
 
 == Upgrade to 3.10.14
 
-NOTE: For more information about the breaking changes of this version, see link:/am/current/am_breaking_changes_3.10.14.html[Breaking changes in 3.10.14]
+NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.10.14.html' | relative_url }}[Breaking changes in 3.10.14]
 
 === Warning
 
@@ -48,7 +48,7 @@ GitHub issue: link:https://github.com/gravitee-io/issues/issues/7080[7080]
 
 == Upgrade to 3.10.7
 
-NOTE: For more information about the breaking changes of this version, see link:/am/current/am_breaking_changes_3.10.7.html[Breaking changes in 3.10.7]
+NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.10.7.html' | relative_url }}[Breaking changes in 3.10.7]
 
 === Warning
 
@@ -62,15 +62,15 @@ GitHub issue: link:https://github.com/gravitee-io/issues/issues/6504[6504]
 
 == Upgrade to 3.10.6
 
-NOTE: For more information about the breaking changes of this version, see link:/am/current/am_breaking_changes_3.10.6.html[Breaking changes in 3.10.6]
+NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.10.6.html' | relative_url }}[Breaking changes in 3.10.6]
 
 == Upgrade to 3.10.4
 
-NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.10.4.html[Breaking changes in 3.10.4]
+NOTE: For more information about the breaking changes of this version please visit link:{{ '/am/current/am_breaking_changes_3.10.4.html' | relative_url }}[Breaking changes in 3.10.4]
 
 == Upgrade to 3.10.0
 
-NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.10.html[Breaking changes in 3.10]
+NOTE: For more information about the breaking changes of this version please visit link:{{ '/am/current/am_breaking_changes_3.10.html' | relative_url }}[Breaking changes in 3.10]
 
 === Warning
 
@@ -87,7 +87,7 @@ GitHub issue: link:https://github.com/gravitee-io/issues/issues/5957[5957]
 
 `Clients` endpoints have been removed since there are deprecated from 3.0.0.
 
-With previous versions the administrator user for the Management API was created on startup using hard coded values for username and password. Starting from 3.10.0 it is possible to define your own values thanks to the link:/am/current/am_installguide_management_api_configuration.html#security[security] section of the `gravitee.yml` file. By default, this configuration section use the same behaviour as AM 3.9 and earlier.
+With previous versions the administrator user for the Management API was created on startup using hard coded values for username and password. Starting from 3.10.0 it is possible to define your own values thanks to the link:{{ '/am/current/am_installguide_management_api_configuration.html#security' | relative_url }}[security] section of the `gravitee.yml` file. By default, this configuration section use the same behaviour as AM 3.9 and earlier.
 
 === Repository
 
@@ -119,11 +119,11 @@ If you disabled the liquibase execution using the `liquibase.enabled` option, pl
 
 == Upgrade to 3.9.2
 
-NOTE: For users of Gravitee Enterprise Edition with Alert Engine, please check your gravitee configuration to ensure that the alert engine feature is explicitly enabled. Starting from this version, the alert engine connector is disabled by default if the option `alerts.alert-engine-enabled` is missing from the `gravitee.yml` file. (see https://docs.gravitee.io/ae/am_configuration.html)
+NOTE: For users of Gravitee Enterprise Edition with Alert Engine, please check your gravitee configuration to ensure that the alert engine feature is explicitly enabled. Starting from this version, the alert engine connector is disabled by default if the option `alerts.alert-engine-enabled` is missing from the `gravitee.yml` file. (see link:{% link pages/ae/am/am-configuration.adoc %}[AM configuration for AE])
 
 == Upgrade to 3.9.0
 
-NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.9.html[Breaking changes in 3.9]
+NOTE: For more information about the breaking changes of this version please visit link:{{ '/am/current/am_breaking_changes_3.9.html' | relative_url }}[Breaking changes in 3.9]
 
 === REST API
 
@@ -135,11 +135,11 @@ Starting from this new version, the default Xms and Xmx parameters has been fixe
 
 == Upgrade to 3.8.6
 
-NOTE: For users of Gravitee Enterprise Edition with Alert Engine, please check your gravitee configuration to ensure that the alert engine feature is explicitly enabled. Starting from this version, the alert engine connector is disabled by default if the option `alerts.alert-engine-enabled` is missing from the `gravitee.yml` file. (see https://docs.gravitee.io/ae/am_configuration.html)
+NOTE: For users of Gravitee Enterprise Edition with Alert Engine, please check your gravitee configuration to ensure that the alert engine feature is explicitly enabled. Starting from this version, the alert engine connector is disabled by default if the option `alerts.alert-engine-enabled` is missing from the `gravitee.yml` file. (see link:{% link pages/ae/am/am-configuration.adoc %}[AM configuration for AE])
 
 == Upgrade to 3.8.0
 
-NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.8.html[Breaking changes in 3.8]
+NOTE: For more information about the breaking changes of this version please visit link:{{ '/am/current/am_breaking_changes_3.8.html' | relative_url }}[Breaking changes in 3.8]
 
 === Repository
 
@@ -167,7 +167,7 @@ This script updates the database to reflect the following changes :
 
 == Upgrade to 3.6.0
 
-NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.6.html[Breaking changes in 3.6]
+NOTE: For more information about the breaking changes of this version please visit link:{{ '/am/current/am_breaking_changes_3.6.html' | relative_url }}[Breaking changes in 3.6]
 
 === Repository
 
@@ -193,7 +193,7 @@ These script are executed automatically on startup of AM gateway and AM manageme
 
 == Upgrade to 3.4.0
 
-NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.4.html[Breaking changes in 3.4]
+NOTE: For more information about the breaking changes of this version please visit link:{{ '/am/current/am_breaking_changes_3.4.html' | relative_url }}[Breaking changes in 3.4]
 
 === Repository
 
@@ -208,7 +208,7 @@ This script updates the database to reflect the following changes :
 
 == Upgrade to 3.1.0
 
-NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.1.html[Breaking changes in 3.1]
+NOTE: For more information about the breaking changes of this version please visit link:{{ '/am/current/am_breaking_changes_3.1.html' | relative_url }}[Breaking changes in 3.1]
 
 === Repository
 
@@ -223,7 +223,7 @@ This script updates the database to reflect the following changes :
 
 == Upgrade to 3.0.0
 
-NOTE: For more information about the breaking changes of this version please visit link:/am/current/am_breaking_changes_3.0.html[Breaking changes in 3.0]
+NOTE: For more information about the breaking changes of this version please visit link:{{ '/am/current/am_breaking_changes_3.0.html' | relative_url }}[Breaking changes in 3.0]
 
 WARNING: We highly recommend that you run the MongoDB database script before starting the Management API.
 

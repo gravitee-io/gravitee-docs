@@ -32,7 +32,7 @@ NOTE: FranceConnect will generate a client_ID and client_secret. Make a note of 
 
 == Create a FranceConnect identity provider
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *FranceConnect* as your identity provider type and click *Next*.

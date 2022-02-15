@@ -22,7 +22,7 @@ NOTE: link:https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-08.html
 AM exposes an endpoint for discovering information about the UMA provider configuration.
 
 * Discovery endpoint URL: `\https://am-gateway/{domain}/uma/.well-known/uma2-configuration`
-* UMA 2.0 protocol endpoints exposed by AM API: link:/am/current/uma2/index.html[UMA 2.0 API Console^] - link:/am/current/uma2/swagger.yml[Swagger spec^]
+* UMA 2.0 protocol endpoints exposed by AM API: link:{{ '/am/current/uma2/index.html' | relative_url }}[UMA 2.0 API Console^] - link:{% link /am/current/uma2/swagger.yml %}[Swagger spec^]
 
 == Roles
 
@@ -90,7 +90,7 @@ The link:https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-federated-authz
 * Access policies endpoint URL: `\https://am-gateway/{domain}/uma/protection/resource_set/:resourceId/policies`
 * Only the resource owner can create a policy to protect a resource; administrator users cannot create policies on behalf of a resource owner
 
-The policies can be written with the Groovy language using the link:/apim/3.x/apim_policies_groovy.html[Groovy policy^].
+The policies can be written with the Groovy language using the link:{{ '/apim/3.x/apim_policies_groovy.html' | relative_url }}[Groovy policy^].
 
 When the authorization server handles an incoming UMA 2 grant request, some attributes are automatically created.
 
@@ -139,7 +139,7 @@ The personal bank account data is exposed through an API (the resource server) s
 
 To use the UMA 2.0 protocol you must enable it at security domain level.
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^] as administrator of your security domain.
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^] as administrator of your security domain.
 . Click *Settings > UMA*.
 . On the UMA page, enable *User-Managed Access (UMA) 2.0 support* and click *SAVE*.
 
@@ -178,9 +178,9 @@ NOTE: The requesting party needs to use the same identity provider as the provid
 ==== Get a Protection API Token (PAT)
 
 The resource owner must acquire a PAT to register a resource and create authorization grant rules.
-To obtain the PAT the resource owner must log in to the application using any link:/am/current/am_devguide_protocols_oauth2_overview.html#authorization_grant[OAuth 2.0 flow^].
+To obtain the PAT the resource owner must log in to the application using any link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#authorization_grant' | relative_url }}[OAuth 2.0 flow^].
 
-In this example we are using the link:/am/current/am_devguide_protocols_oauth2_overview.html#resource_owner_password_credentials[Resource owner password flow^]:
+In this example we are using the link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#resource_owner_password_credentials' | relative_url }}[Resource owner password flow^]:
 
 ----
 $ curl \
@@ -287,7 +287,7 @@ https://am-gateway/{domain}/uma/protection/resource_set/62dcf5d7-baa6-4e01-9cf5-
 ====
 The PAT Bearer Token is used via the Authorization HTTP header.
 
-In this example we want to share access with our requesting party Bob. See link:/am/current/am_devguide_protocols_uma2_overview.html#access_policies_endpoint[Access policies endpoint] for more information.
+In this example we want to share access with our requesting party Bob. See link:{{ '/am/current/am_devguide_protocols_uma2_overview.html#access_policies_endpoint' | relative_url }}[Access policies endpoint] for more information.
 ====
 
 === Request access to the resource owner resources
@@ -319,7 +319,7 @@ https://am-gateway/{domain}/uma/protection/permission
 
 [NOTE]
 ====
-The PAT Bearer Token which is used via the Authorization HTTP header must be obtained by the resource server via the link:/am/current/am_devguide_protocols_oauth2_overview.html#client_credentials[OAuth 2.0 client credentials flow^].
+The PAT Bearer Token which is used via the Authorization HTTP header must be obtained by the resource server via the link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#client_credentials' | relative_url }}[OAuth 2.0 client credentials flow^].
 
 The `ticket` property in the response is the permission ticket, which will be used to obtain the Requesting Party Token.
 ====
@@ -328,7 +328,7 @@ The `ticket` property in the response is the permission ticket, which will be us
 
 In order to get an RPT, the requesting party must be authenticated, so the first step is to log in the requesting party.
 
-In this example we are using the link:/am/current/am_devguide_protocols_oauth2_overview.html#resource_owner_password_credentials[Resource owner password flow]:
+In this example we are using the link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#resource_owner_password_credentials' | relative_url }}[Resource owner password flow]:
 +
 ----
 $ curl \
@@ -396,7 +396,7 @@ NOTE: The RPT Bearer Token is used via the Authorization HTTP header.
 
 The Bank API must check the incoming token to determine the active state of the access token and decide to accept or deny the request.
 
-You can use the link:/am/current/am_devguide_protocols_oauth2_overview.html#introspection_endpoint[Introspect endpoint^] to inspect the properties of the RPT.
+You can use the link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#introspection_endpoint' | relative_url }}[Introspect endpoint^] to inspect the properties of the RPT.
 
 [source]
 ----

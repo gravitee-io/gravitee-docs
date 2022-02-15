@@ -19,15 +19,15 @@ This will ensure that mandatory libraries and plugins are all well deployed.
 
 === Docker installation
 To use the official Gravitee.io Docker images, we recommend you to use the images with a tag ending in `-ee`.
-Please have a look to the link:/ee/installguide_docker.html[dedicated documentation].
+Please have a look to the link:{{ '/ee/installguide_docker.html' | relative_url }}[dedicated documentation].
 
 == Migration from an existing platform
 
-Before going further please ensure, as per our link:/ee/ee_version.html[versioning], that you're running a LTS version.
+Before going further please ensure, as per our link:{{ '/ee/ee_version.html' | relative_url }}[versioning], that you're running a LTS version.
 
 === Manual installation
 This option is only available if you're running a plain installation using the zip file distribution.
 
 === Docker installation
 If you're running Docker, we recommend you to update your docker images to use the `-ee` tags.
-See the link:/ee/installguide_docker.html[Docker installation documentation].
+See the link:{{ '/ee/installguide_docker.html' | relative_url }}[Docker installation documentation].

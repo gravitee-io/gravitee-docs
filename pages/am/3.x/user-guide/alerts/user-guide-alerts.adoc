@@ -12,7 +12,7 @@ AM comes with some pre-defined alerts to notify you of suspicious end-user activ
 
 To manage alerts:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Alerts*.
 . Switch on *Enable Alerts*.
 . Enable the alerts you are interested in.
@@ -31,7 +31,7 @@ The following table lists the available alert types.
 | Too many user registrations |too_many_user_registrations| Alert when the number of user registrations is abnormally high.
 |===
 
-NOTE: For each alert type, you can select the link:/am/current/am_userguide_alerts_notifications.html[notification channels^] you want to use to send the events.
+NOTE: For each alert type, you can select the link:{{ '/am/current/am_userguide_alerts_notifications.html' | relative_url }}[notification channels^] you want to use to send the events.
 
 == Configure alerts
 

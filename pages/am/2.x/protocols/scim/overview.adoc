@@ -15,7 +15,7 @@ SCIM enables to automate the provisioning/deprovisioning process and manage user
 
 You can find SCIM 2.0 endpoints exposed by Gravitee.io Access Management :
 
-* link:/am/2.x/scim/index.html[SCIM 2.0 Console, window="_blank"] - link:/am/2.x/scim/swagger.yml[Swagger spec, window="_blank"]
+* link:{{ '/am/2.x/scim/index.html' | relative_url }}[SCIM 2.0 Console, window="_blank"] - link:{% link /am/2.x/scim/swagger.yml %}[Swagger spec, window="_blank"]
 
 == Protocol
 

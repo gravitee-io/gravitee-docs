@@ -10,13 +10,13 @@ During AM installation some default settings are created.
 While these default settings can be useful for testing your new installation, some of them may not be suitable for a production environment, where security is more of a consideration.
 
 NOTE: This how to gives some tips on important settings to check in AM when preparing to move to a production environment.
-AM includes many other configuration options and every environment is unique. We recommend you also read the link:/am/current/am_configurationguide.html[Configuration Guide^] to determine if you have completed all the configuration you need before you deploy AM in production.
+AM includes many other configuration options and every environment is unique. We recommend you also read the link:{{ '/am/current/am_configurationguide.html' | relative_url }}[Configuration Guide^] to determine if you have completed all the configuration you need before you deploy AM in production.
 
-NOTE: You can also read the link:/am/current/am_devguide_protocols_oauth2_best_practices.html[OAuth 2.0 Best practices] for more details about configuring your AM environment.
+NOTE: You can also read the link:{{ '/am/current/am_devguide_protocols_oauth2_best_practices.html' | relative_url }}[OAuth 2.0 Best practices] for more details about configuring your AM environment.
 
 You can configure AM settings in various ways -- the `gravitee.yml` file, the AM Console settings and environment and system variables.
 When you configure new settings, it is important to understand that one configuration type can override another.
-link:/am/current/am_installguide_management_api_configuration.html[Configure AM API^] gives a good overview of this topic.
+link:{{ '/am/current/am_installguide_management_api_configuration.html' | relative_url }}[Configure AM API^] gives a good overview of this topic.
 
 == Step 1: Disable the internal APIs
 
@@ -46,8 +46,8 @@ services:
 
 To learn more about the internal APIs, see:
 
-* link:/am/current/am_installguide_management_api_technical_api.html[Configure the AM API internal API^]
-* link:/am/current/am_installguide_gateway_technical_api.html[Configure the AM Gateway internal API^]
+* link:{{ '/am/current/am_installguide_management_api_technical_api.html' | relative_url }}[Configure the AM API internal API^]
+* link:{{ '/am/current/am_installguide_gateway_technical_api.html' | relative_url }}[Configure the AM Gateway internal API^]
 
 == Step 2: Update the default users
 

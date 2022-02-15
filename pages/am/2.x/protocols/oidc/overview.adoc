@@ -14,7 +14,7 @@ OpenID Connect provides endpoints and some tools, such as link:https://tools.iet
 
 You can find OpenID Connect endpoints exposed by Gravitee.io Access Management :
 
-* link:/am/2.x/oidc/index.html[OpenID Connect API Console, window="_blank"] - link:/am/2.x/oidc/swagger.yml[Swagger spec, window="_blank"]
+* link:{{ '/am/2.x/oidc/index.html' | relative_url }}[OpenID Connect API Console, window="_blank"] - link:{% link /am/2.x/oidc/swagger.yml %}[Swagger spec, window="_blank"]
 
 
 == Protocol
@@ -42,7 +42,7 @@ NOTE: Authorization Code Flow URL : https://am-gateway/{domain}/oauth/authorize?
 
 === Implicit Flow
 
-When using the Implicit Flow, all tokens are returned from the link:/am/2.x/am_protocols_oauth2_overview.html#authorization_endpoint[Authorization Endpoint]; the link:/am/2.x/am_protocols_oauth2_overview.html#token_endpoint[Token Endpoint] is not used.
+When using the Implicit Flow, all tokens are returned from the link:{{ '/am/2.x/am_protocols_oauth2_overview.html#authorization_endpoint' | relative_url }}[Authorization Endpoint]; the link:{{ '/am/2.x/am_protocols_oauth2_overview.html#token_endpoint' | relative_url }}[Token Endpoint] is not used.
 
 The Implicit Flow is mainly used by Clients implemented in a browser using a scripting language.
 The Access Token and ID Token are returned directly to the Client, which may expose them to the End-User and applications that have access to the End-User's User Agent.
@@ -52,7 +52,7 @@ NOTE: Implicit Flow URL : https://am-gateway/{domain}/oauth/authorize?response_t
 
 === Hybrid Flow
 
-When using the Hybrid Flow, some tokens are returned from the link:/am/2.x/am_protocols_oauth2_overview.html#authorization_endpoint[Authorization Endpoint] and others are returned from the link:/am/2.x/am_protocols_oauth2_overview.html#token_endpoint[Token Endpoint].
+When using the Hybrid Flow, some tokens are returned from the link:{{ '/am/2.x/am_protocols_oauth2_overview.html#authorization_endpoint' | relative_url }}[Authorization Endpoint] and others are returned from the link:{{ '/am/2.x/am_protocols_oauth2_overview.html#token_endpoint' | relative_url }}[Token Endpoint].
 Hybrid is used by Clients who want tokens separately from front channel and back channel
 
 NOTE: Hybrid Flow URL : https://am-gateway/{domain}/oauth/authorize?response_type=code+id_token|code+token|code+id_token+token&client_id=web-app&redirect_uri=https://web-app/callback&scope=openid
@@ -63,7 +63,7 @@ The ID Token is a security token that contains Claims about the Authentication o
 The ID Token is represented as a JSON Web Token (JWT) and contains user information like username, mail, name, address and so on.
 ID Tokens are digitally signed to create secure exchanges between two parties.
 
-NOTE: In order to get an ID Token, Client must use Authorization Code Flow or link:/am/2.x/am_protocols_oauth2_overview.html#implicit[Implicit Grant] with scope `openid` or use Implicit/Hybrid Flow.
+NOTE: In order to get an ID Token, Client must use Authorization Code Flow or link:{{ '/am/2.x/am_protocols_oauth2_overview.html#implicit' | relative_url }}[Implicit Grant] with scope `openid` or use Implicit/Hybrid Flow.
 
 == Dynamic Client Registration
 

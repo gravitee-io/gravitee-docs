@@ -4,7 +4,7 @@
 :page-folder: am/installation-guide
 :page-layout: am
 
-NOTE: For all these breaking changes the Migration Guide can be found link:/am/current/am_installguide_migration.html[here].
+NOTE: For all these breaking changes the Migration Guide can be found link:{{ '/am/current/am_installguide_migration.html' | relative_url }}[here].
 
 == Gateway Cookie Session
 
@@ -17,7 +17,7 @@ To avoid this problem, the simplest solution was to configure a sticky on the lo
 *The server session has been replaced with a minimalist Cookie Session in the 3.4 version.*
 To make sure the user's context is well propagated between each step of the authentication flow, most of the *form's actions and links must be updated*.
 
-NOTE: If you are using custom form templates do not forget to run the link:/am/current/am_installguide_migration.html#upgrade_to_3_4_0[3.4 upgrade guide].
+NOTE: If you are using custom form templates do not forget to run the link:{{ '/am/current/am_installguide_migration.html#upgrade_to_3_4_0' | relative_url }}[3.4 upgrade guide].
 
 == provider_id managed into the state parameter
 

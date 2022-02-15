@@ -114,6 +114,6 @@ NOTE: Naturally, the plugin identifier has to be unique to be correctly loaded b
 == Deployment
 
 Deploying a plugin is as easy as copying the plugin archive (zip) into the dedicated directory. By default, you need to
-deploy the archives in ${GRAVITEE_HOME/plugins}. Refer to the link:/apim/3.x/apim_installguide_gateway_configuration.html#configure_the_plugins_repository[configuration documentation] for more information.
+deploy the archives in ${GRAVITEE_HOME/plugins}. Refer to the link:{{ '/apim/3.x/apim_installguide_gateway_configuration.html#configure_the_plugins_repository' | relative_url }}[configuration documentation] for more information.
 
 IMPORTANT: You must restart APIM nodes when applying new or updated plugins!

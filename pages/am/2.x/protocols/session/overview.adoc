@@ -10,4 +10,4 @@ The Gravitee.io AM User Session API provides operations to manage users sessions
 
 You can find User Session API endpoints exposed by Gravitee.io Access Management :
 
-* link:/am/2.x/session/index.html[User Session API Console, window="_blank"] - link:/am/2.x/session/swagger.yml[Swagger spec, window="_blank"]
+* link:{{ '/am/2.x/session/index.html' | relative_url }}[User Session API Console, window="_blank"] - link:{% link /am/2.x/session/swagger.yml %}[Swagger spec, window="_blank"]

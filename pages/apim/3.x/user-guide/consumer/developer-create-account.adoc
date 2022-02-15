@@ -12,7 +12,7 @@ New user accounts can be registered in either APIM Console or APIM Portal.
 
 To work correctly, new user accounts require the following configuration:
 
-* email link:/apim/3.x/apim_installguide_rest_apis_configuration.html#smtp-configuration[SMTP configuration^]
+* email link:{{ '/apim/3.x/apim_installguide_rest_apis_configuration.html#smtp-configuration' | relative_url }}[SMTP configuration^]
 
 * the *Allow User Registration* option enabled in *Settings*:
 +
@@ -91,6 +91,6 @@ image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-ac
 Click *Back to registration* to return to the registration page and send a new registration request.
 
 == Password validation
-If the password does not respect some security rules (see link:/apim/3.x/apim_consumerguide_create_account.html#prerequisites[Prerequisites]), you will see this message:
+If the password does not respect some security rules (see link:{{ '/apim/3.x/apim_consumerguide_create_account.html#prerequisites' | relative_url }}[Prerequisites]), you will see this message:
 
 image::apim/3.x/api-consumer-guide/create-account/graviteeio-developer-create-account-unsecure-password.png[]

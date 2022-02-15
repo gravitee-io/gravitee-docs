@@ -13,9 +13,9 @@ and, optionally, install dependencies (MongoDB, Elasticsearch).
 
 If you are looking to install Gravitee.io API Management individually, please go to their respective documentation:
 
-* link:/apim/1.x/apim_installguide_amazon_gateway.html[Install API Gateway]
-* link:/apim/1.x/apim_installguide_amazon_management_api.html[Install Management API]
-* link:/apim/1.x/apim_installguide_amazon_portal.html[Install Portal]
+* link:{{ '/apim/1.x/apim_installguide_amazon_gateway.html' | relative_url }}[Install API Gateway]
+* link:{{ '/apim/1.x/apim_installguide_amazon_management_api.html' | relative_url }}[Install Management API]
+* link:{{ '/apim/1.x/apim_installguide_amazon_portal.html' | relative_url }}[Install Portal]
 
 == Install Nginx
 
@@ -29,7 +29,7 @@ sudo systemctl start nginx
 
 == Installing Gravitee.io API Management package
 
-IMPORTANT: We assume that you have configured your package management system by following link:/apim/1.x/apim_installguide_amazon_introduction.html[this documentation].
+IMPORTANT: We assume that you have configured your package management system by following link:{{ '/apim/1.x/apim_installguide_amazon_introduction.html' | relative_url }}[this documentation].
 
 If you are looking to install all the Gravitee.io API Management components, you can do it with one of the following commands (depending on your system):
 

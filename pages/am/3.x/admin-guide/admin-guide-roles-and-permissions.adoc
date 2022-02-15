@@ -48,7 +48,7 @@ Some permissions can be assigned to multiple types of resources. For instance, t
 
 The following tables list the permissions by assignable type.
 
-NOTE: All the permissions required to use AM API are described in the link:/am/current/management-api/index.html[AM V3 OpenAPI descriptor^].
+NOTE: All the permissions required to use AM API are described in the link:{{ '/am/current/management-api/index.html' | relative_url }}[AM V3 OpenAPI descriptor^].
 
 .`ORGANIZATION` permissions
 [cols="1,3"]
@@ -445,7 +445,7 @@ NOTE: All the permissions required to use AM API are described in the link:/am/c
 
 To manage roles and permissions:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . From the user menu at the top right, select *Global settings*.
 . Click *Settings > Roles*, then create a role as described in the examples below.
 

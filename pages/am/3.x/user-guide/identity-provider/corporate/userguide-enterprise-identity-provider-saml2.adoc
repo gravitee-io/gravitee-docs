@@ -32,7 +32,7 @@ NOTE: Before you begin, obtain this information from your SAML IdP administrator
 
 == Create a SAML 2.0 connector
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *SAML 2.0* as your identity provider type and click *Next*.
@@ -75,5 +75,5 @@ SAML responses can be very large. If you see an error message in the Gateway log
 
 update the `http.maxFormAttributeSize` value in the `gravitee.yml` config file (set it to `-1` for infinite).
 
-link:/am/current/am_installguide_gateway_configuration.html[Learn more about updating the Gateway configuration file^]
+link:{{ '/am/current/am_installguide_gateway_configuration.html' | relative_url }}[Learn more about updating the Gateway configuration file^]
 ====

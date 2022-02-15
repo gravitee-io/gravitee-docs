@@ -10,7 +10,7 @@
 
 == Users
 
-In the installation guide, you have learnt how to configure different identity providers (see link:/apim/1.x/apim_installguide_management_api_configuration.html#authentication_type[how to configure authentication]).
+In the installation guide, you have learnt how to configure different identity providers (see link:{{ '/apim/1.x/apim_installguide_management_api_configuration.html#authentication_type' | relative_url }}[how to configure authentication]).
 
 Users are listed in the `Users` section of the `Settings` menu.
 
@@ -27,7 +27,7 @@ image::apim/1.x/adminguide/usersgroups-user.png[Gravitee.io - User]
 
 == Groups
 
-Groups represent users groups where you put members of the same team/partner and set their role for the `API` scope and/or `APPLICATION` scope (see link:/apim/1.x/apim_adminguide_roles_and_permissions.html[Roles and Permissions] for details).
+Groups represent users groups where you put members of the same team/partner and set their role for the `API` scope and/or `APPLICATION` scope (see link:{{ '/apim/1.x/apim_adminguide_roles_and_permissions.html' | relative_url }}[Roles and Permissions] for details).
 Once a group is created, you can associate it to an API and/or an application and users with role on this scope become members of the API/Application.
 
 Let use groups to create a `FOO Team` group where you can put all members of your FOO team.

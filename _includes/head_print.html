@@ -6,15 +6,15 @@
 <title>{% if page.homepage == true %} {{site.homepage_title}} {% elsif page.title %}{{ page.title }}{% endif %}  | {{ site.site_title }}</title>
 
 
-<link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl | prepend: site.url }}">
-<link rel="stylesheet" href="{{ "/css/font-awesome.min.css" | prepend: site.baseurl | prepend: site.url }}">
-<link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl | prepend: site.url }}">
-<link rel="stylesheet" href="{{ "/css/modern-business.css" | prepend: site.baseurl | prepend: site.url }}">
-<link rel="stylesheet" href="{{ "/css/lavish-bootstrap.css" | prepend: site.baseurl | prepend: site.url }}">
-<link rel="stylesheet" href="{{ "/css/customstyles.css" | prepend: site.baseurl | prepend: site.url }}">
-<link rel="stylesheet" href="{{ "/css/theme-green.css" | prepend: site.baseurl | prepend: site.url }}">
-<link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl | prepend: site.url }}">
-<link rel="stylesheet" href="{{ "/css/printstyles.css" | prepend: site.baseurl }}">
+<link rel="stylesheet" href="{{ '/css/syntax.css' | absolute_url }}">
+<link rel="stylesheet" href="{{ '/css/font-awesome.min.css' | absolute_url }}">
+<link rel="stylesheet" href="{{ '/css/bootstrap.min.css' | absolute_url }}">
+<link rel="stylesheet" href="{{ '/css/modern-business.css' | absolute_url }}">
+<link rel="stylesheet" href="{{ '/css/lavish-bootstrap.css' | absolute_url }}">
+<link rel="stylesheet" href="{{ '/css/customstyles.css' | absolute_url }}">
+<link rel="stylesheet" href="{{ '/css/theme-green.css' | absolute_url }}">
+<link rel="stylesheet" href="{{ '/css/syntax.css' | absolute_url }}">
+<link rel="stylesheet" href="{{ '/css/printstyles.css' | absolute_url }}">
 
 <script>
     Prince.addScriptFunc("datestamp", function() {

@@ -11,7 +11,7 @@
 Use this tutorial to install Gravitee.io API Management on Red Hat Enterprise Linux, CentOS Linux, or Oracle Linux
 using the yum package manager.
 
-NOTE: RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Please see link:/apim/1.x/apim_installguide_gateway_install_zip.html[Install Gravitee.io API Management with .zip] instead.
+NOTE: RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Please see link:{{ '/apim/1.x/apim_installguide_gateway_install_zip.html' | relative_url }}[Install Gravitee.io API Management with .zip] instead.
 
 === Gravitee.io API Management Version
 
@@ -56,7 +56,7 @@ Your repository is ready to use, now it's time to install Gravitee.io API Manage
 
 You can choose to install the complete Gravitee.io API Management stack or install components one by one:
 
-* link:/apim/1.x/apim_installguide_redhat_stack.html[Install API Management] (includes all components below)
-* link:/apim/1.x/apim_installguide_redhat_gateway.html[Install API Gateway]
-* link:/apim/1.x/apim_installguide_redhat_management_api.html[Install Management API]
-* link:/apim/1.x/apim_installguide_redhat_portal.html[Install Portal]
+* link:{{ '/apim/1.x/apim_installguide_redhat_stack.html' | relative_url }}[Install API Management] (includes all components below)
+* link:{{ '/apim/1.x/apim_installguide_redhat_gateway.html' | relative_url }}[Install API Gateway]
+* link:{{ '/apim/1.x/apim_installguide_redhat_management_api.html' | relative_url }}[Install Management API]
+* link:{{ '/apim/1.x/apim_installguide_redhat_portal.html' | relative_url }}[Install Portal]

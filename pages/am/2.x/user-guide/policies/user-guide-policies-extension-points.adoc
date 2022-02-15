@@ -12,10 +12,10 @@ Pre End-User Consent happens after the user has logged in. It allows you to fetc
 
 The following attributes are available while processing the policy chain :
 
-* link:/[Request] : current HTTP Request
-* link:/[Client] : the application
-* link:/[User] : the End-User
-* link:/[Authorization Request]: OAuth 2.0 Authorization Request
+* link:{{ '/' | relative_url }}[Request] : current HTTP Request
+* link:{{ '/' | relative_url }}[Client] : the application
+* link:{{ '/' | relative_url }}[User] : the End-User
+* link:{{ '/' | relative_url }}[Authorization Request]: OAuth 2.0 Authorization Request
 
 
 
@@ -25,10 +25,10 @@ Post End-User Consent happens after the user has given his consent to the proces
 
 The following attributes are available while processing the policy chain :
 
-* link:/am/2.x/am_userguide_policies_extension_points.html#request[Request] : current HTTP Request (with form attributes : scope approvals)
-* link:/am/2.x/am_userguide_policies_extension_points.html#client[Client] : the application
-* link:/am/2.x/am_userguide_policies_extension_points.html#user[User] : the End-User
-* link:/am/2.x/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request[Authorization Request]: OAuth 2.0 Authorization Request
+* link:{{ '/am/2.x/am_userguide_policies_extension_points.html#request' | relative_url }}[Request] : current HTTP Request (with form attributes : scope approvals)
+* link:{{ '/am/2.x/am_userguide_policies_extension_points.html#client' | relative_url }}[Client] : the application
+* link:{{ '/am/2.x/am_userguide_policies_extension_points.html#user' | relative_url }}[User] : the End-User
+* link:{{ '/am/2.x/am_userguide_policies_extension_points.html#oauth_2_0_authorization_request' | relative_url }}[Authorization Request]: OAuth 2.0 Authorization Request
 
 == Objects
 

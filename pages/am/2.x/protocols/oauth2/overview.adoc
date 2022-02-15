@@ -12,7 +12,7 @@ OAuth 2.0 specifies standard endpoints to interact with the resource owner (or t
 
 You can find OAuth 2.0 protocol endpoints exposed by Gravitee.io Access Management :
 
-* link:/am/2.x/oauth2/index.html[OAuth 2.0 API Console, window="_blank"] - link:/am/2.x/oauth2/swagger.yml[Swagger spec, window="_blank"]
+* link:{{ '/am/2.x/oauth2/index.html' | relative_url }}[OAuth 2.0 API Console, window="_blank"] - link:{% link /am/2.x/oauth2/swagger.yml %}[Swagger spec, window="_blank"]
 
 == Roles
 

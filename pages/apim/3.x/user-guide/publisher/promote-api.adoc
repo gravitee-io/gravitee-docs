@@ -8,9 +8,9 @@
 
 The following sections describe how you can promote an API from one environment to another.
 
-For a quick introduction on how to create an API in APIM, see link:/apim/3.x/apim_publisherguide_create_apis.html[Create an API^].
+For a quick introduction on how to create an API in APIM, see link:{{ '/apim/3.x/apim_publisherguide_create_apis.html' | relative_url }}[Create an API^].
 
-NOTE: This feature is available starting in version APIM 3.10.0 and requires that your installation is linked to Cockpit. For more information about Cockpit, see link:/cockpit/3.x/cockpit_overview_introduction.html[Cockpit].
+NOTE: This feature is available starting in version APIM 3.10.0 and requires that your installation is linked to Cockpit. For more information about Cockpit, see link:{{ '/cockpit/3.x/cockpit_overview_introduction.html' | relative_url }}[Cockpit].
 
 *APIs can only be promoted to environments belonging to the same organization.*
 
@@ -27,9 +27,9 @@ image::apim/3.x/api-publisher-guide/promote-apis/graviteeio-promote-api-cockpit-
 
 Here, we will see how to promote our API from environment `DEV` to environment `QA`.
 
-To request a promotion, you only need to have *API-DEFINITION* link:/apim/3.x/apim_adminguide_roles_and_permissions.html[permissions^].
+To request a promotion, you only need to have *API-DEFINITION* link:{{ '/apim/3.x/apim_adminguide_roles_and_permissions.html' | relative_url }}[permissions^].
 
-Promotion requests are logged in link:/apim/3.x/apim_publisherguide_audit.html[Audits trail^].
+Promotion requests are logged in link:{{ '/apim/3.x/apim_publisherguide_audit.html' | relative_url }}[Audits trail^].
 
 The following actions must be done with an API Publisher on `DEV` environment.
 
@@ -53,7 +53,7 @@ NOTE: If a promotion has already been accepted for an API, you can request a new
 
 == Accepting Or Rejecting A Promotion
 
-To be able to accept or reject a promotion, you need to have *ENVIRONMENT-API* link:/apim/3.x/apim_adminguide_roles_and_permissions.html[permissions^].
+To be able to accept or reject a promotion, you need to have *ENVIRONMENT-API* link:{{ '/apim/3.x/apim_adminguide_roles_and_permissions.html' | relative_url }}[permissions^].
 
 As a user of `QA` environment, promotion requests are visible in the *Tasks* section.
 

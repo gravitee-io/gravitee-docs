@@ -4,7 +4,7 @@
 :page-folder: am/quickstart
 :page-layout: am
 
-After you have authenticated your first users (see link:/am/2.x/am_quickstart_authenticate_users.html[Authenticate users with Identity provider^]) you can retrieve the user's profile information by using OpenID Connect.
+After you have authenticated your first users (see link:{{ '/am/2.x/am_quickstart_authenticate_users.html' | relative_url }}[Authenticate users with Identity provider^]) you can retrieve the user's profile information by using OpenID Connect.
 
 NOTE: OpenID Connect is an identity layer on top of the OAuth 2.0 protocol.
 It enables Clients to verify the identity of the End-User based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the End-User.
@@ -85,7 +85,7 @@ Finally, make sure that the ID token was signed by Gravitee.io Access Management
 . Retrieve your public key by clicking on image:am/2.x/graviteeio-am-quickstart-profile-public-key.png[] icon
 . Use a JWT library to verify the signature.
 
-NOTE: You can also use the link:https://gravitee.io[Gravitee.io API Management solution^] and the link:/apim_policies_jwt.html[JWT Policy^] to verify and retrieve user profile information.
+NOTE: You can also use the link:https://gravitee.io[Gravitee.io API Management solution^] and the link:{{ '/apim_policies_jwt.html' | relative_url }}[JWT Policy^] to verify and retrieve user profile information.
 
 == UserInfo Endpoint
 
@@ -128,4 +128,4 @@ image::am/2.x/graviteeio-am-quickstart-profile-user-mappers.png[]
 [start=4]
 . Custom user attributes will be available in the UserInfo Endpoint response.
 
-TIP: more information about User mapping to be found in the dedicated section: link:/am/2.x/am_userguide_identity_provider_mapping.html[User and role mapping^].
+TIP: more information about User mapping to be found in the dedicated section: link:{{ '/am/2.x/am_userguide_identity_provider_mapping.html' | relative_url }}[User and role mapping^].

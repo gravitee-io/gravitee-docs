@@ -43,10 +43,10 @@ NOTE: The authentication process will loop through the three providers to attemp
 
 You can find documentations on how to configure for:
 
-* link:/apim/1.x/apim_installguide_authentication_inmemory.html[in-memory]
-* link:/apim/1.x/apim_installguide_authentication_ldap.html[LDAP / Active Directory]
-* link:/apim/1.x/apim_installguide_authentication_apim.html[Gravitee.io APIM Repository]
-* link:/apim/1.x/apim_installguide_authentication_graviteeam.html[Gravitee.io Access Management]
-* link:/apim/1.x/apim_installguide_authentication_github.html[GitHub]
-* link:/apim/1.x/apim_installguide_authentication_google.html[Google]
-* link:/apim/1.x/apim_installguide_authentication_keycloak.html[Keycloak / generic OAuth2 server]
+* link:{{ '/apim/1.x/apim_installguide_authentication_inmemory.html' | relative_url }}[in-memory]
+* link:{{ '/apim/1.x/apim_installguide_authentication_ldap.html' | relative_url }}[LDAP / Active Directory]
+* link:{{ '/apim/1.x/apim_installguide_authentication_apim.html' | relative_url }}[Gravitee.io APIM Repository]
+* link:{{ '/apim/1.x/apim_installguide_authentication_graviteeam.html' | relative_url }}[Gravitee.io Access Management]
+* link:{{ '/apim/1.x/apim_installguide_authentication_github.html' | relative_url }}[GitHub]
+* link:{{ '/apim/1.x/apim_installguide_authentication_google.html' | relative_url }}[Google]
+* link:{{ '/apim/1.x/apim_installguide_authentication_keycloak.html' | relative_url }}[Keycloak / generic OAuth2 server]

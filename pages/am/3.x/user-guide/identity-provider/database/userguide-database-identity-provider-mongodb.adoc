@@ -10,7 +10,7 @@ You can authenticate users in AM using your own MongoDB database.
 
 == Create a MongoDB identity provider
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Providers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *MongoDB* as your identity provider type and click *Next*.

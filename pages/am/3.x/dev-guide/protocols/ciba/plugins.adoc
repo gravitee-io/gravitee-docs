@@ -16,7 +16,7 @@ The *External HTTP Service* plugin brings you the freedom of implementing the no
 This service must follow the requirements here after : 
 
 * Be registered as an application on AM in order to provide client ID and client Secret on the AM callback endpoint
-* Implement the link:/am/current/ciba_external_service/index.html[notification endpoint, window="_blank"] to receive notification request
-* Call the AM link:/am/current/ciba/index.html[callback endpoint] to update the authentication request status
+* Implement the link:{{ '/am/current/ciba_external_service/index.html' | relative_url }}[notification endpoint, window="_blank"] to receive notification request
+* Call the AM link:{{ '/am/current/ciba/index.html' | relative_url }}[callback endpoint] to update the authentication request status
 
 image::am/current/graviteeio-am-CIBA-Flow.png[]

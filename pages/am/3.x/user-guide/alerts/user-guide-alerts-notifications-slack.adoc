@@ -18,11 +18,11 @@ link:https://slack.com/help/articles/215770388-Create-and-regenerate-API-tokens[
 
 NOTE: Slack generates a token. Make a note of it for later use.
 
-NOTE: For more information about Slack integration, see the link:/ae/userguide_notifier_slack.html[Alert Engine Slack notifier documentation^].
+NOTE: For more information about Slack integration, see the link:{{ '/ae/userguide_notifier_slack.html' | relative_url }}[Alert Engine Slack notifier documentation^].
 
 == Create a Slack notification channel
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Alerts > Notifiers*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"].
 . Select *Slack* as your notifier type and click *Next*.

@@ -72,4 +72,4 @@ curl -X GET http://localhost:8083/portal/environments/DEFAULT/apis
 If the installation is successful both of these return a json document.
 
 == Next
-Next is link:/apim/3.x/apim_installation_guide_amazon_management_ui.html[installing the Gravitee APIM Management UI].
+Next is link:{{ '/apim/3.x/apim_installation_guide_amazon_management_ui.html' | relative_url }}[installing the Gravitee APIM Management UI].

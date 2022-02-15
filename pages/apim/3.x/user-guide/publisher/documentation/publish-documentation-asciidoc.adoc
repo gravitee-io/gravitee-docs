@@ -7,7 +7,7 @@
 == Overview
 
 AsciiDoc pages can be translated or come from an external source, and their access can be restricted. +
-See link:/apim/3.x/apim_publisherguide_publish_documentation.html#manage_pages[Publish documentation] for more information on creating AsciiDoc pages.
+See link:{{ '/apim/3.x/apim_publisherguide_publish_documentation.html#manage_pages' | relative_url }}[Publish documentation] for more information on creating AsciiDoc pages.
 
 The sections below describe specific configuration for AsciiDoc pages.
 
@@ -18,7 +18,7 @@ You can use the *PAGE* editor to edit a AsciiDoc page's content and preview it:
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-asciidoc-editor.png[]
 
 == Attached resources
-The *ATTACHED RESOURCES* tab is also available for link:/apim/3.x/apim_publisherguide_publish_documentation_markdown.html[Markdown] pages. In this tab, you can import files and attach them to the page. +
+The *ATTACHED RESOURCES* tab is also available for link:{{ '/apim/3.x/apim_publisherguide_publish_documentation_markdown.html' | relative_url }}[Markdown] pages. In this tab, you can import files and attach them to the page. +
 Imported files size must not exceed the size defined in the settings.
 
 image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-markdown-attached-resources-1.png[]

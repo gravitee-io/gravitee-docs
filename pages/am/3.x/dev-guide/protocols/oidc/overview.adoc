@@ -12,7 +12,7 @@ OpenID Connect provides endpoints and some tools, such as link:https://tools.iet
 
 See the AM API reference for OpenID Connect endpoints exposed by AM:
 
-* link:/am/current/oidc/index.html[OpenID Connect API Console, window="_blank"] - link:/am/current/oidc/swagger.yml[Swagger spec, window="_blank"]
+* link:{{ '/am/current/oidc/index.html' | relative_url }}[OpenID Connect API Console, window="_blank"] - link:{% link /am/current/oidc/swagger.yml %}[Swagger spec, window="_blank"]
 
 == Protocol
 
@@ -40,9 +40,9 @@ The authorization code flow is suitable for clients that can securely maintain a
 === Implicit flow
 
 WARNING: The OAuth standard now discourages the use of an implicit grant to request access tokens from Javascript applications.
-You should consider using the link:/am/current/am_devguide_protocols_oauth2_overview.html#authorization_code[Authorization code^] flow with a PKCE extension for all your applications.
+You should consider using the link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#authorization_code' | relative_url }}[Authorization code^] flow with a PKCE extension for all your applications.
 
-When using the implicit flow, all tokens are returned from the link:/am/current/am_devguide_protocols_oauth2_overview.html#authorization_endpoint[authorization endpoint^]. The link:/am/current/am_devguide_protocols_oauth2_overview.html#token_endpoint[token endpoint^] is not used.
+When using the implicit flow, all tokens are returned from the link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#authorization_endpoint' | relative_url }}[authorization endpoint^]. The link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#token_endpoint' | relative_url }}[token endpoint^] is not used.
 
 The implicit flow is mainly used by clients implemented in a browser using a scripting language.
 The access token and ID token are returned directly to the client, which may expose them to the end user and applications that have access to the end user's User Agent.
@@ -52,7 +52,7 @@ The authorization server does not perform client authentication.
 
 === Hybrid flow
 
-When using the Hybrid flow, some tokens are returned from the link:/am/current/am_devguide_protocols_oauth2_overview.html#authorization_endpoint[authorization endpoint^] and others are returned from the link:/am/current/am_devguide_protocols_oauth2_overview.html#token_endpoint[token endpoint^].
+When using the Hybrid flow, some tokens are returned from the link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#authorization_endpoint' | relative_url }}[authorization endpoint^] and others are returned from the link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#token_endpoint' | relative_url }}[token endpoint^].
 Hybrid is used by clients who want tokens separately from front channel and back channel.
 
 * Hybrid flow URL: `https://am-gateway/{domain}/oauth/authorize?response_type=code+id_token|code+token|code+id_token+token&client_id=web-app&redirect_uri=https://web-app/callback&scope=openid`
@@ -63,7 +63,7 @@ The ID token is a security token that contains claims about the authentication o
 The ID token is represented as a JSON Web Token (JWT) and contains user information like username, email address, name, address and so on.
 ID tokens are digitally signed to create secure exchanges between two parties.
 
-NOTE: In order to get an ID Token, the client must use an authorization code flow or link:/am/current/am_devguide_protocols_oauth2_overview.html#implicit[implicit grant^] with scope `openid` or use an implicit/hybrid flow.
+NOTE: In order to get an ID Token, the client must use an authorization code flow or link:{{ '/am/current/am_devguide_protocols_oauth2_overview.html#implicit' | relative_url }}[implicit grant^] with scope `openid` or use an implicit/hybrid flow.
 
 == Dynamic client registration
 

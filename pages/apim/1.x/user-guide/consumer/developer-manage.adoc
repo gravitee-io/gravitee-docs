@@ -11,7 +11,7 @@ Typically application can be a web application, a native application, bash/job a
 
 == Create an application
 
-NOTE: Only users with correct role permission can create an application, see link:/apim/1.x/apim_adminguide_roles_and_permissions.html[roles and permissions]
+NOTE: Only users with correct role permission can create an application, see link:{{ '/apim/1.x/apim_adminguide_roles_and_permissions.html' | relative_url }}[roles and permissions]
 
 1. Login to the Gravitee.io APIM portal
 2. Open the user menu (top right) and click `Applications`
@@ -48,7 +48,7 @@ By default, Gravitee.io is defining three roles for membership:
 
 **To manage members : **
 
-NOTE: Only users with correct role permission can manage application's members, see link:/apim/1.x/apim_adminguide_roles_and_permissions.html[roles and permissions]
+NOTE: Only users with correct role permission can manage application's members, see link:{{ '/apim/1.x/apim_adminguide_roles_and_permissions.html' | relative_url }}[roles and permissions]
 
 1. Login to the Gravitee.io APIM portal
 2. Open the user menu (top right) and click `Applications`

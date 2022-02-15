@@ -16,7 +16,7 @@ Each policy has access to the `Execution Context` to retrieve and set informatio
 
 The `Execution Context` data will be propagated to the next steps to be used later on (e.g custom HTML forms).
 
-In this example we are getting `Execution Context` data using the link:/apim/3.x/apim_publisherguide_expression_language.html[Gravitee.io Expression Language]:
+In this example we are getting `Execution Context` data using the link:{{ '/apim/3.x/apim_publisherguide_expression_language.html' | relative_url }}[Gravitee.io Expression Language]:
 
 ----
 {#request} : Current HTTP Request with parameters, headers, path, ...
@@ -32,7 +32,7 @@ Policies are executed only against selected steps throughout the flow.
 
 The following is a list of the available Flows:
 
-* link:/am/current/am_userguide_policies_extension_points.html#all_flow[All Flow]: happens for each request.
-* link:/am/current/am_userguide_policies_extension_points.html#login_flow[Login Flow]: happens during the user login phase. It allows you to execute policies before displaying the login form or after the user authentication.
-* link:/am/current/am_userguide_policies_extension_points.html#consent_flow[Consent Flow]: happens during the user consent phase. It allows you to execute policies before displaying the User Consent HTML Page or after the user has given his consent to the processing of personal data.
-* link:/am/current/am_userguide_policies_extension_points.html#registration_flow[Registration Flow]: happens during the user registration phase. It allows you to execute policies before displaying the User Regsitration HTML Page or after the user data has been processed.
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#all_flow' | relative_url }}[All Flow]: happens for each request.
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#login_flow' | relative_url }}[Login Flow]: happens during the user login phase. It allows you to execute policies before displaying the login form or after the user authentication.
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#consent_flow' | relative_url }}[Consent Flow]: happens during the user consent phase. It allows you to execute policies before displaying the User Consent HTML Page or after the user has given his consent to the processing of personal data.
+* link:{{ '/am/current/am_userguide_policies_extension_points.html#registration_flow' | relative_url }}[Registration Flow]: happens during the user registration phase. It allows you to execute policies before displaying the User Regsitration HTML Page or after the user data has been processed.

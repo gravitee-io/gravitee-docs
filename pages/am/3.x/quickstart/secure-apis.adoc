@@ -13,15 +13,15 @@ image::am/current/graviteeio-am-quickstart-secure-apis-overview.png[]
 
 === Before you begin
 
-We assume that you have link:/apim/3.x/apim_installguide.html[installed Gravitee.io API Management^] and have a fully operational environment which can interact with your published APIs (see link:/apim/3.x/apim_quickstart_publish.html[Publish your first API^]).
+We assume that you have link:{{ '/apim/3.x/apim_installguide.html' | relative_url }}[installed Gravitee.io API Management^] and have a fully operational environment which can interact with your published APIs (see link:{{ '/apim/3.x/apim_quickstart_publish.html' | relative_url }}[Publish your first API^]).
 
-Ensure you have link:/am/current/am_quickstart_app_setup.html[set up a new application^] and have your Client ID, Client Secret and Security Domain information to hand.
+Ensure you have link:{{ '/am/current/am_quickstart_app_setup.html' | relative_url }}[set up a new application^] and have your Client ID, Client Secret and Security Domain information to hand.
 
 == Protect your API with OAuth 2
 
 Start by configuring the API security policy in the Gravitee.io API Management Portal.
 
-. link:/apim/3.x/apim_quickstart_portal_login.html[Log in to APIM Portal^].
+. link:{{ '/apim/3.x/apim_quickstart_portal_login.html' | relative_url }}[Log in to APIM Portal^].
 . Click *My APIs* in the navigation bar (or *Administration* if you are an admin user).
 . Click *APIs* and select the API you want to secure.
 . Link your API with AM:
@@ -112,7 +112,7 @@ You can use the access token obtained in the previous section to make API calls.
 curl -X GET http://GRAVITEEIO-APIM-GATEWAY-HOST/echo -H 'Authorization: Bearer :access_token'
 ----
 +
-NOTE: See link:/apim/3.x/apim_policies_oauth2.html[the APIM OAuth2 Policy^] for more information about how to supply the access token while making the API call.
+NOTE: See link:{{ '/apim/3.x/apim_policies_oauth2.html' | relative_url }}[the APIM OAuth2 Policy^] for more information about how to supply the access token while making the API call.
 
 If it is working correctly, you will see the data from the selected API operation:
 

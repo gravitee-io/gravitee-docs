@@ -15,16 +15,16 @@ The APIM Portal documentation creates a direct line of communication with your d
 === System folders
 
 You can use system folders to customize the APIM Portal menu header, footer and navigation by adding custom links.
-For more information, see link:/apim/3.x/apim_publisherguide_publish_documentation_system_folders.html[Customize the APIM Portal navigation^].
+For more information, see link:{{ '/apim/3.x/apim_publisherguide_publish_documentation_system_folders.html' | relative_url }}[Customize the APIM Portal navigation^].
 
 === Documentation set
 To add some documentation, you can either create new pages or import them from a file or external source.
 
 APIM supports multiple types of documentation:
 
-* Markdown (for more information, see link:/apim/3.x/apim_publisherguide_publish_documentation_markdown.html[Markdown documentation] and link:/apim/3.x/apim_publisherguide_publish_documentation_markdown_template.html[Markdown templates])
-* AsciiDoc (for more information, see link:/apim/3.x/apim_publisherguide_publish_documentation_asciidoc.html[AsciiDoc documentation])
-* OpenAPI (Swagger) (for more information, see link:/apim/3.x/apim_publisherguide_publish_documentation_openapi.html[OpenAPI documentation])
+* Markdown (for more information, see link:{{ '/apim/3.x/apim_publisherguide_publish_documentation_markdown.html' | relative_url }}[Markdown documentation] and link:{{ '/apim/3.x/apim_publisherguide_publish_documentation_markdown_template.html' | relative_url }}[Markdown templates])
+* AsciiDoc (for more information, see link:{{ '/apim/3.x/apim_publisherguide_publish_documentation_asciidoc.html' | relative_url }}[AsciiDoc documentation])
+* OpenAPI (Swagger) (for more information, see link:{{ '/apim/3.x/apim_publisherguide_publish_documentation_openapi.html' | relative_url }}[OpenAPI documentation])
 
 You can create folders to organize your documentation.
 
@@ -76,7 +76,7 @@ image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-
 . If the page is ready to publish, select *Publish this page*. The page will not be visible until this option is selected. You can also publish it later from the documentation list.
 . Click *SAVE*.
 
-NOTE: For Markdown pages, you can link:/apim/3.x/apim_publisherguide_publish_documentation_markdown_template.html[create and use templates].
+NOTE: For Markdown pages, you can link:{{ '/apim/3.x/apim_publisherguide_publish_documentation_markdown_template.html' | relative_url }}[create and use templates].
 
 == Import multiple pages
 

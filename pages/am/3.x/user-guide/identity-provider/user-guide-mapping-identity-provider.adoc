@@ -8,7 +8,7 @@
 
 You can bind some identity provider attributes to an AM _user profile_ with attribute mapping. Using this method, AM clients can receive additional attributes through your identity provider.
 
-TIP: We advise you to read link:/am/current/am_quickstart_profile_information.html[Get user profile information^] first.
+TIP: We advise you to read link:{{ '/am/current/am_quickstart_profile_information.html' | relative_url }}[Get user profile information^] first.
 
 User profile attributes can be retrieved either by calling the *UserInfo* endpoint or, if you specify an `openid` scope for your application, by parsing the claims in the `id_token`.
 
@@ -38,14 +38,14 @@ The same applies when the client starts using scopes other than `openid`.
 
 Let's imagine a client application wants to retrieve the `telephoneNumber` attribute present in the LDAP identity provider. You can do this by configuring the identity provider as follows:
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Providers*.
 . Select your LDAP identity provider and click the *User mappers* tab.
 . Map your LDAP (raw) attribute `telephoneNumber` to a new user attribute named `telephone_number`.
 +
 image::am/current/graviteeio-am-userguide-idp-user-mappers-phoneno.png[]
 
-. Get the User Profile information via the link:/am/current/am_quickstart_profile_information.html#userinfo-endpoint[UserInfo Endpoint^] and you will see that the new user attribute is present.
+. Get the User Profile information via the link:{{ '/am/current/am_quickstart_profile_information.html#userinfo-endpoint' | relative_url }}[UserInfo Endpoint^] and you will see that the new user attribute is present.
 +
 [source,bash,subs="verbatim"]
 ----
@@ -86,7 +86,7 @@ In addition, when it comes to fine grained authorization management, it is consi
 
 The goal is to dynamically add scopes to the `access_token`, depending on the role associated with the user when authenticating.
 
-WARNING: When the roles are updated via SCIM, the roles already applied via Role Mappers won't be persisted as an assigned role. This ensures that it can be safely removed when the mapper rule does not match anymore. For more about SCIM, click link:/am/current/am_devguide_protocols_scim_overview.html[here^] +
+WARNING: When the roles are updated via SCIM, the roles already applied via Role Mappers won't be persisted as an assigned role. This ensures that it can be safely removed when the mapper rule does not match anymore. For more about SCIM, click link:{{ '/am/current/am_devguide_protocols_scim_overview.html' | relative_url }}[here^] +
 
 === Example
 
@@ -94,7 +94,7 @@ In the following example, we will map a role named `administrator` to users who 
 We will then dynamically add the `admin` scope to the `access_token`.
 The client will provide this scope when accessing an API via an API Manager, and the API Manager will check for the scope before granting access to the upstream API.
 
-. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Scopes*.
 . Click the plus icon image:icons\plus-icon.png[role="icon"] and create an `admin` scope.
 . Click *Settings > Roles*.

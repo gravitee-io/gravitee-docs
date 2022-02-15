@@ -23,7 +23,7 @@ As well as creating templates associated with a specific error key, you can crea
 
 Before you can define response templates for your API, you need to know:
 
-* which policies are defined in the API plans associated with your API (see link:/apim/3.x/apim_publisherguide_plans_subscriptions.html[Plans and subscriptions^])
+* which policies are defined in the API plans associated with your API (see link:{{ '/apim/3.x/apim_publisherguide_plans_subscriptions.html' | relative_url }}[Plans and subscriptions^])
 * which error keys you can override for the policies associated with your API plans (see <<Policy error keys you can override>>)
 
 == Configure a response template
@@ -35,7 +35,7 @@ You can define:
 
 To configure a response template:
 
-. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
+. link:{{ '/apim/3.x/apim_quickstart_console_login.html' | relative_url }}[Log in to APIM Console^].
 . Click *APIs* and select the API.
 . Click *Proxy > Response Templates*.
 . Click the plus icon image:icons/plus-icon.png[role="icon"] to add a new template.
@@ -71,85 +71,85 @@ The next time a call triggering the error associated with your template is sent 
 |Key |Policy
 
 |`API_KEY_MISSING`
-| link:/apim/3.x/apim_policies_apikey.html[API key]
+| link:{{ '/apim/3.x/apim_policies_apikey.html' | relative_url }}[API key]
 
 |`API_KEY_INVALID`
-| link:/apim/3.x/apim_policies_apikey.html[API key]
+| link:{{ '/apim/3.x/apim_policies_apikey.html' | relative_url }}[API key]
 
 |`QUOTA_TOO_MANY_REQUESTS`
-| link:/apim/3.x/apim_policies_rate_limiting.html[Rate limiting]
+| link:{{ '/apim/3.x/apim_policies_rate_limiting.html' | relative_url }}[Rate limiting]
 
 |`RATE_LIMIT_TOO_MANY_REQUESTS`
-| link:/apim/3.x/apim_policies_rate_limiting.html[Rate limiting]
+| link:{{ '/apim/3.x/apim_policies_rate_limiting.html' | relative_url }}[Rate limiting]
 
 |`REQUEST_CONTENT_LIMIT_TOO_LARGE`
-| link:/apim/3.x/apim_policies_request_content_limit.html[Request content limit]
+| link:{{ '/apim/3.x/apim_policies_request_content_limit.html' | relative_url }}[Request content limit]
 
 |`REQUEST_CONTENT_LIMIT_LENGTH_REQUIRED`
-| link:/apim/3.x/apim_policies_request_content_limit.html[Request content limit]
+| link:{{ '/apim/3.x/apim_policies_request_content_limit.html' | relative_url }}[Request content limit]
 
 |`REQUEST_TIMEOUT`
-| link:/apim/3.x/apim_policies_mock.html[Mock], link:/apim/3.x/apim_policies_callout_http.html[Callout HTTP], link:/apim/3.x/apim_policies_request_validation.html[Request validation]
+| link:{{ '/apim/3.x/apim_policies_mock.html' | relative_url }}[Mock], link:{{ '/apim/3.x/apim_policies_callout_http.html' | relative_url }}[Callout HTTP], link:{{ '/apim/3.x/apim_policies_request_validation.html' | relative_url }}[Request validation]
 
 |`REQUEST_VALIDATION_INVALID`
-| link:/apim/3.x/apim_policies_request_validation.html[Request validation]
+| link:{{ '/apim/3.x/apim_policies_request_validation.html' | relative_url }}[Request validation]
 
 |`RESOURCE_FILTERING_METHOD_NOT_ALLOWED`
-| link:/apim/3.x/apim_policies_resource_filtering.html[Resource filtering]
+| link:{{ '/apim/3.x/apim_policies_resource_filtering.html' | relative_url }}[Resource filtering]
 
 |`RBAC_INVALID_USER_ROLES`
-| link:/apim/3.x/apim_policies_role_based_access_control.html[Role-based access control]
+| link:{{ '/apim/3.x/apim_policies_role_based_access_control.html' | relative_url }}[Role-based access control]
 
 |`RESOURCE_FILTERING_FORBIDDEN`
-| link:/apim/3.x/apim_policies_resource_filtering.html[Resource filtering]
+| link:{{ '/apim/3.x/apim_policies_resource_filtering.html' | relative_url }}[Resource filtering]
 
 |`RBAC_FORBIDDEN`
-| link:/apim/3.x/apim_policies_role_based_access_control.html[Role-based access control]
+| link:{{ '/apim/3.x/apim_policies_role_based_access_control.html' | relative_url }}[Role-based access control]
 
 |`RBAC_NO_USER_ROLE`
-| link:/apim/3.x/apim_policies_role_based_access_control.html[Role-based access control]
+| link:{{ '/apim/3.x/apim_policies_role_based_access_control.html' | relative_url }}[Role-based access control]
 
 |`OAUTH2_MISSING_SERVER`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:{{ '/apim/3.x/apim_policies_oauth2.html' | relative_url }}[OAuth2]
 
 |`OAUTH2_MISSING_HEADER`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:{{ '/apim/3.x/apim_policies_oauth2.html' | relative_url }}[OAuth2]
 
 |`OAUTH2_MISSING_ACCESS_TOKEN`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:{{ '/apim/3.x/apim_policies_oauth2.html' | relative_url }}[OAuth2]
 
 |`OAUTH2_INVALID_ACCESS_TOKEN`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:{{ '/apim/3.x/apim_policies_oauth2.html' | relative_url }}[OAuth2]
 
 |`OAUTH2_INSUFFICIENT_SCOPE`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:{{ '/apim/3.x/apim_policies_oauth2.html' | relative_url }}[OAuth2]
 
 |`OAUTH2_INVALID_SERVER_RESPONSE`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:{{ '/apim/3.x/apim_policies_oauth2.html' | relative_url }}[OAuth2]
 
 |`OAUTH2_SERVER_UNAVAILABLE`
-| link:/apim/3.x/apim_policies_oauth2.html[OAuth2]
+| link:{{ '/apim/3.x/apim_policies_oauth2.html' | relative_url }}[OAuth2]
 
 |`HTTP_SIGNATURE_INVALID_SIGNATURE`
-| link:/apim/3.x/apim_policies_http_signature.html[HTTP Signature]
+| link:{{ '/apim/3.x/apim_policies_http_signature.html' | relative_url }}[HTTP Signature]
 
 |`JWT_MISSING_TOKEN`
-| link:/apim/3.x/apim_policies_jwt.html[JWT]
+| link:{{ '/apim/3.x/apim_policies_jwt.html' | relative_url }}[JWT]
 
 |`JWT_INVALID_TOKEN`
-| link:/apim/3.x/apim_policies_jwt.html[JWT]
+| link:{{ '/apim/3.x/apim_policies_jwt.html' | relative_url }}[JWT]
 
 |`JSON_INVALID_PAYLOAD`
-| link:/apim/3.x/apim_policies_json_validation.html[JSON validation]
+| link:{{ '/apim/3.x/apim_policies_json_validation.html' | relative_url }}[JSON validation]
 
 |`JSON_INVALID_FORMAT`
-| link:/apim/3.x/apim_policies_json_validation.html[JSON validation]
+| link:{{ '/apim/3.x/apim_policies_json_validation.html' | relative_url }}[JSON validation]
 
 |`JSON_INVALID_RESPONSE_PAYLOAD`
-| link:/apim/3.x/apim_policies_json_validation.html[JSON validation]
+| link:{{ '/apim/3.x/apim_policies_json_validation.html' | relative_url }}[JSON validation]
 
 |`JSON_INVALID_RESPONSE_FORMAT`
-| link:/apim/3.x/apim_policies_json_validation.html[JSON validation]
+| link:{{ '/apim/3.x/apim_policies_json_validation.html' | relative_url }}[JSON validation]
 
 |`GATEWAY_INVALID_REQUEST`
 | All

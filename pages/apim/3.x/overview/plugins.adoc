@@ -9,7 +9,7 @@
 Plugins are additional components that can be _plugged into_ <<apim_overview_components.adoc#gravitee-components-gateway, APIM Gateway>> or <<apim_overview_components.adoc#gravitee-components-rest-api, APIM API>>.
 They can customize the component's behavior to exactly fit your needs and technical constraints.
 
-For more information about plugins, including how to deploy them and details of their directory structure, see the link:/apim/3.x/apim_devguide_plugins.html[Plugins Developer Guide].
+For more information about plugins, including how to deploy them and details of their directory structure, see the link:{{ '/apim/3.x/apim_devguide_plugins.html' | relative_url }}[Plugins Developer Guide].
 
 == Types of Plugins
 
@@ -59,11 +59,11 @@ Policies can be considered like a _proxy controller_, guaranteeing that a given 
 
 Examples of a policy are:
 
-* Authorization using an API key (see the link:/apim/3.x/apim_policies_apikey.html[api-key policy])
+* Authorization using an API key (see the link:{{ '/apim/3.x/apim_policies_apikey.html' | relative_url }}[api-key policy])
 * Applying header or query parameter transformations
 * Applying rate limiting or quotas to avoid API flooding
 
-NOTE: Want to know how to create, use and deploy a custom policy? Check out the link:/apim/3.x/apim_devguide_policies.html[Policies Developer Guide].
+NOTE: Want to know how to create, use and deploy a custom policy? Check out the link:{{ '/apim/3.x/apim_devguide_policies.html' | relative_url }}[Policies Developer Guide].
 
 [[gravitee-plugins-reporters]]
 === Reporters
@@ -80,12 +80,12 @@ _Out of the box_ reporters are :
 * File Reporter
 
 NOTE: As with all plugins, you can create, use and deploy custom reporters as described in the
-link:/apim/3.x/apim_devguide_plugins.html[Plugins Developer Guide].
+link:{{ '/apim/3.x/apim_devguide_plugins.html' | relative_url }}[Plugins Developer Guide].
 
 [[gravitee-plugins-repositories]]
 === Repositories
 A *repository* is a pluggable storage component for API configuration, policy configuration, analytics and so on.
-You can find more information in the link:/apim/3.x/apim_installguide_repositories.html[Repositories^] section of the Installation Guide.
+You can find more information in the link:{{ '/apim/3.x/apim_installguide_repositories.html' | relative_url }}[Repositories^] section of the Installation Guide.
 
 [[gravitee-plugins-resources]]
 === Resources
@@ -96,7 +96,7 @@ A *resource* can be added to an API for its whole lifecycle. APIM comes with thr
 * OAuth2 - Gravitee Access Management
 * OAuth2 - Generic Authorization Server
 
-You can find more information in the link:/apim/3.x/apim_resources_overview.html[Resources^] section of the API Publisher Guide.
+You can find more information in the link:{{ '/apim/3.x/apim_resources_overview.html' | relative_url }}[Resources^] section of the API Publisher Guide.
 
 [[gravitee-plugins-services]]
 

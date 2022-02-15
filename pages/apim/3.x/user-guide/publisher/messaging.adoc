@@ -17,7 +17,7 @@ There are three types of platform-wide and API notifications:
 * POST HTTP message notifications
 
 You define the audience for your notifications in terms of roles, as described in the section below.
-For a detailed explanation of roles in APIM, see link:/apim/3.x/apim_adminguide_roles_and_permissions.html[Roles and permissions^].
+For a detailed explanation of roles in APIM, see link:{{ '/apim/3.x/apim_adminguide_roles_and_permissions.html' | relative_url }}[Roles and permissions^].
 
 === Platform-wide notifications
 
@@ -25,7 +25,7 @@ You send APIM platform-wide notifications with the *Messages* menu option:
 
 image:apim/3.x/api-publisher-guide/messaging/message-platform-level.png[]
 
-You can send platform-wide notifications to users defined with the following link:/apim/3.x/apim_adminguide_roles_and_permissions.html#scope[environment scope^] roles:
+You can send platform-wide notifications to users defined with the following link:{{ '/apim/3.x/apim_adminguide_roles_and_permissions.html#scope' | relative_url }}[environment scope^] roles:
 
 * ADMIN
 * API_PUBLISHER
@@ -39,7 +39,7 @@ You send API notifications with the API *Messages* menu option:
 
 image:apim/3.x/api-publisher-guide/messaging/message-api-level.png[]
 
-You can send API notifications to users defined with the following link:/apim/3.x/apim_adminguide_roles_and_permissions.html#scope[application scope^] roles:
+You can send API notifications to users defined with the following link:{{ '/apim/3.x/apim_adminguide_roles_and_permissions.html#scope' | relative_url }}[application scope^] roles:
 
 * OWNER
 * PRIMARY_OWNER
@@ -69,7 +69,7 @@ When sending *Email* notifications, you specify the same information as for port
 
 When you click *SEND*, APIM sends an email to all the users with the specified role who have an email address configured for their profile (as long as they have a valid application subscription, in the case of API level subscriptions).
 
-TIP: For more details on configuring user profiles, see link:/apim/3.x/apim_adminguide_users_and_groups[Users and groups^].
+TIP: For more details on configuring user profiles, see link:{{ '/apim/3.x/apim_adminguide_users_and_groups' | relative_url }}[Users and groups^].
 
 === HTTP POST notification
 
@@ -88,7 +88,7 @@ When you click *SEND*, APIM sends the message to the URL, including any HTTP hea
 
 In this example we will see how to send a notification to all platform administrators.
 
-. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console^].
+. link:{{ '/apim/3.x/apim_quickstart_console_login.html' | relative_url }}[Log in to APIM Console^].
 . Click *Messages*.
 . Select *Portal Notifications*.
 . Choose the *ENVIRONMENT* role to notify as *ADMIN*.

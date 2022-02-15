@@ -22,7 +22,7 @@ NOTE: You can download the latest OpenJDK from https://jdk.java.net/archive/[Ope
 
 === Repository
 
-Default API Gateway distribution requires link:/apim/1.x/apim_installguide_repositories_mongodb.html[MongoDB] to poll environment configuration and link:/apim/1.x/apim_installguide_repositories_elasticsearch.html[Elasticsearch] for
+Default API Gateway distribution requires link:{{ '/apim/1.x/apim_installguide_repositories_mongodb.html' | relative_url }}[MongoDB] to poll environment configuration and link:{{ '/apim/1.x/apim_installguide_repositories_elasticsearch.html' | relative_url }}[Elasticsearch] for
 reporting / analytics. Please refer to the respective documentation page for supported versions.
 
 NOTE: You can download MongoDB from https://www.mongodb.org/downloads#production[MongoDB Download Site]

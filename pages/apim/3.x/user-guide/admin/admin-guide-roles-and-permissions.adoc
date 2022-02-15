@@ -17,14 +17,14 @@ In APIM, a role:
 - has a scope
 - defines what you can do with the APIM UI components and APIM API
 
-Before defining some key concepts, we recommend you first take a look at the new link:/apim/3.x/apim_adminguide_organizations_and_environments.html[Gravitee.io Platform design^].
+Before defining some key concepts, we recommend you first take a look at the new link:{{ '/apim/3.x/apim_adminguide_organizations_and_environments.html' | relative_url }}[Gravitee.io Platform design^].
 
 NOTE: Any changes to a role may take a short time to be applied to a user.
 
 [[scope]]
 === Scopes
 
-Roles are defined in terms of _scopes_. As described in the link:/apim/3.x/apim_adminguide_organizations_and_environments.html[Organizations and environments] page, an _environment_ corresponds roughly to what you can find in APIM Portal.
+Roles are defined in terms of _scopes_. As described in the link:{{ '/apim/3.x/apim_adminguide_organizations_and_environments.html' | relative_url }}[Organizations and environments] page, an _environment_ corresponds roughly to what you can find in APIM Portal.
 More precisely, an environment's scope is all of the actions that can be performed in the specific context, whether in APIM Portal or APIM Console.
 
 For example:
@@ -278,7 +278,7 @@ In this example, we will create a writer role which allows a user to create API 
 
 === Create the `WRITER` role
 
-. link:/apim/3.x/apim_quickstart_console_login.html[Log in to APIM Console].
+. link:{{ '/apim/3.x/apim_quickstart_console_login.html' | relative_url }}[Log in to APIM Console].
 . In the *Organization Settings > Roles* page, click *ADD A NEW ROLE*.
 +
 image::apim/3.x/adminguide/newrole-create.png[Gravitee.io - Create a New Role]

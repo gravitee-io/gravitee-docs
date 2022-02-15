@@ -30,7 +30,7 @@ NOTE: You can download the latest OpenJDK from https://jdk.java.net/archive/[Ope
 
 === MongoDB and Elasticsearch
 
-The default APIM API distribution requires link:/apim/3.x/apim_installguide_repositories_mongodb.html[MongoDB] to store mandatory data and link:/apim/3.x/apim_installguide_repositories_elasticsearch.html[Elasticsearch] to store reporting data.
+The default APIM API distribution requires link:{{ '/apim/3.x/apim_installguide_repositories_mongodb.html' | relative_url }}[MongoDB] to store mandatory data and link:{{ '/apim/3.x/apim_installguide_repositories_elasticsearch.html' | relative_url }}[Elasticsearch] to store reporting data.
 
 NOTE: You can download MongoDB from the https://www.mongodb.org/downloads#production[MongoDB download site, window=\"_blank\"]
 and Elasticsearch from the https://www.elastic.co/downloads/elasticsearch[Elasticsearch download site, window=\"_blank\"].
@@ -67,7 +67,7 @@ $ ./bin/gravitee
 By default, APIM API runs in the foreground, prints its logs to standard output (stdout), and can be stopped
 by pressing **Ctrl-C**.
 
-NOTE: Both APIM API nodes run by default. You can configure APIM to run only one or the other, as described in the link:/apim/3.x/apim_installguide_rest_apis_configuration.html[APIM API configuration] section.
+NOTE: Both APIM API nodes run by default. You can configure APIM to run only one or the other, as described in the link:{{ '/apim/3.x/apim_installguide_rest_apis_configuration.html' | relative_url }}[APIM API configuration] section.
 
 Once APIM API is running, you will see a log such as this one:
 
