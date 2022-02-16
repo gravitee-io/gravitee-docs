@@ -1,0 +1,26 @@
+= Force MFA Enroll step
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_mfa_force_enroll.html
+:page-folder: am/user-guide
+:page-layout: am
+
+[label label-version]#New in version 3.16#
+
+== Overview
+
+You can configure AM to allow end-users to skip enroll for a certain amount of time or enforce it.
+
+After a successful login attempt, AM will keep the last time the end-user skipped the MFA enroll step.
+
+WARNING: If the feature is disabled, the end-user will be forced to enroll
+
+== Configure AM to remember an authentication device
+
+. link:/am/current/am_userguide_authentication.html[Log in to AM Console^].
+. Select your application.
+. Click the **Settings** tab, then click **Multifactor Auth**.
+. Toggle on **Enable Force Enroll** to force enrollement.
+. Otherwise, enter the details of the skip enroll and the amount of time it will be skipped (10 hours by default).
+. Click *SAVE*.
+
+image::am/current/graviteeio-am-userguide-mfa-force-enroll.png[]
