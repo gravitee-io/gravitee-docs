@@ -50,22 +50,21 @@ NOTE: At this time installing and updating plugins requires a restart of the com
 . Restart the component
 
 === Option II
-. Create a custom location for plugins
+. Create custom locations for plugins
 +
 [source,bash]
 ----
-mkdir /customlocation/plugins
+mkdir /customlocation/gateway/plugins
+mkdir /customlocation/rest-api/plugins
 ----
 +
-NOTE: This is an example location, yours can differ.
+NOTE: This are example locations, yours can differ.
 
-. Drop the plugin zip-file into that folder
+. Drop the plugin zip-file into the relevant folder(s).
 
 . Modify the `gravitee.yml` configuration file of the component
 +
 *  APIM REST API - <your installation folder>/graviteeio-apim-rest-api-{{ site.products.apim._3x.version }}/config
-*  APIM Gateway - <your installation folder>/graviteeio-apim-gateway-{{ site.products.apim._3x.version }}/config
-
 +
 [source,yaml]
 ----
@@ -73,7 +72,17 @@ NOTE: This is an example location, yours can differ.
 plugins:
   path:
     - ${gravitee.home}/plugins
-    - /customlocation/plugins
+    - /customlocation/rest-api/plugins
+----
+*  APIM Gateway - <your installation folder>/graviteeio-apim-gateway-{{ site.products.apim._3x.version }}/config
++
+[source,yaml]
+----
+# Plugins repository
+plugins:
+  path:
+    - ${gravitee.home}/plugins
+    - /customlocation/gateway/plugins
 ----
 
 . Restart the component
@@ -90,22 +99,21 @@ plugins:
 . Restart the component
 
 === Option II
-. Create a custom location for plugins
+. Create custom locations for plugins
 +
 [source,bash]
 ----
-mkdir /customlocation/plugins
+mkdir /customlocation/gateway/plugins
+mkdir /customlocation/rest-api/plugins
 ----
 +
-NOTE: This is an example location, yours can differ.
+NOTE: This are example locations, yours can differ.
 
-. Drop the plugin zip-file into that folder
+. Drop the plugin zip-file into the relevant folder(s).
 
 . Modify the `gravitee.yml` configuration file of the component
 +
 *  APIM REST API - /opt/graviteeio/apim/rest-api/config
-*  APIM Gateway - /opt/graviteeio/apim/gateway/config
-
 +
 [source,yaml]
 ----
@@ -113,7 +121,17 @@ NOTE: This is an example location, yours can differ.
 plugins:
   path:
     - ${gravitee.home}/plugins
-    - /customlocation/plugins
+    - /customlocation/rest-api/plugins
+----
+*  APIM Gateway - /opt/graviteeio/apim/gateway/config
++
+[source,yaml]
+----
+# Plugins repository
+plugins:
+  path:
+    - ${gravitee.home}/plugins
+    - /customlocation/gateway/plugins
 ----
 
 . Restart the component
@@ -122,16 +140,17 @@ plugins:
 NOTE: **Option I** is not available for Docker installations as there is no direct access to the inside of the container.
 
 === Option II
-. Create a custom location for plugins
+. Create custom locations for plugins
 +
 [source,bash]
 ----
-mkdir /customlocation/plugins
+mkdir /customlocation/gateway/plugins
+mkdir /customlocation/rest-api/plugins
 ----
 +
-NOTE: This is an example location, yours can differ.
+NOTE: This are example locations, yours can differ.
 
-. Drop the plugin zip-file into that folder
+. Drop the plugin zip-file into the relevant folder(s)
 
 . Customize the Docker command to provide:
 ** the custom location as a `volume` that overrides the internal `/opt/graviteeio-management-api/plugins-ext` folder
@@ -142,7 +161,7 @@ NOTE: This is an example location, yours can differ.
 ----
 # APIM REST API
 docker run --publish 8083:8083 \
-  --volume /customlocation/plugins:/opt/graviteeio-management-api/plugins-ext \
+  --volume /customlocation/rest-api/plugins:/opt/graviteeio-management-api/plugins-ext \
   --env gravitee_management_mongodb_uri="mongodb://gravitee-mongo:27017/gravitee-apim" \
   --env gravitee_analytics_elasticsearch_endpoints_0="http://gravitee-elasticsearch:9200" \
   --env gravitee_plugins_path_0=/opt/graviteeio-management-api/plugins \
@@ -152,7 +171,7 @@ docker run --publish 8083:8083 \
 
 # APIM Gateway
 docker run --publish 8082:8082 \
-  --volume /gravitee/plugins:/opt/graviteeio-gateway/plugins-ext \ 
+  --volume /customlocation/gateway/plugins:/opt/graviteeio-gateway/plugins-ext \ 
   --env gravitee_management_mongodb_uri="mongodb://gravitee-mongo:27017/gravitee-apim" \
   --env gravitee_ratelimit_mongodb_uri="mongodb://gravitee-mongo:27017/gravitee-apim" \ 
   --env gravitee_reporters_elasticsearch_endpoints_0="http://gravitee-elasticsearch:9200" \
