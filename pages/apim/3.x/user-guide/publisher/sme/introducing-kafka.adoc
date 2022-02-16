@@ -22,8 +22,8 @@ This guide will take you through creating a Kafka endpoint, describe how to prod
 
 === Prerequisites
 
-* You must have installed the Kafka plugin, following the standard procedure for installing plugins detailed link:{{ '/apim/3.x/apim_installguide.html' | relative_url }}[here]
-* A basic understanding of Kafka is required, this link:https://kafka.apache.org/documentation/[link] is a good resource to get you started.
+* You must have installed the link:https://download.gravitee.io/#graviteeio-apim/plugins/connectors/gravitee-connector-kafka/[Kafka plugin^]. More information on installing a plugin can be found link:/apim/3.x/apim_installation_guide_plugins.html[here].
+* A basic understanding of Kafka is required, this link:https://kafka.apache.org/documentation/[link^] is a good resource to get you started.
 
 === Creating a Kafka endpoint
 
