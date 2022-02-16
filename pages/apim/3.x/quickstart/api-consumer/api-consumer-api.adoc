@@ -15,21 +15,28 @@ Only trusted applications can access the API data by requesting an API Key.
 == Create your application and subscribe to an API
 
 Create application request::
-[source]
+[source,curl]
 ----
-curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
-     -H "Content-Type:application/json;charset=UTF-8" \
-     -X POST \
-     -d '{"name":"My first Application","type":"Web","description":"Web client for Gravitee.io Echo API"}' \
-     http://MANAGEMENT_API_SERVER_DOMAIN/portal/environments/DEFAULT/applications
+curl    -ki -H "Authorization: Basic $lmA_AUTH"
+        -H "Content-Type:application/json;charset=UTF-8"
+        -X POST
+        -d '
+          { "name": "app3","description": "My app3",
+            "settings": { "app": { "type": "web" } }
+          }
+          '
+        https://apim.****.aws.local/portal/environments/DEFAULT/applications
 ----
 
 Subscribe to API request::
-[source]
+[source,curl]
 ----
-curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
-     -X POST \
-     http://MANAGEMENT_API_SERVER_DOMAIN/portal/environments/DEFAULT/applications/|application-id|/subscriptions/?plan=|plan-id|
+curl ki -H "Authorization: Basic $lmA_AUTH"
+     -H "Content-Type:application/json;charset=UTF-8"
+     -X POST
+     -d '
+     {
+     "application": "72615af6-ff49-4605-a15a-f6ff49c60532",
 ----
 
 For more information, see the complete link:/apim/3.x/apim_installguide_rest_apis_documentation.html[Rest API documentation].
