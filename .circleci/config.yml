@@ -91,8 +91,34 @@ jobs:
 
             gh pr edit --body "$CLEAN_BODY$PR_BODY_UI_SECTION"
 
+  remove-old-containers:
+    docker:
+      - image: mcr.microsoft.com/azure-cli:latest
+    resource_class: small
+    steps:
+      - run:
+          name: install coreutils to manipulate dates
+          command: |
+            apk add coreutils
+      - run:
+          name: Login into Azure Storage and purge containers older than 30days
+          command: |
+            az login --service-principal -u $AZURE_APPLICATION_ID --tenant $AZURE_TENANT -p $AZURE_APPLICATION_SECRET
+
+            lowerRange=date -d 'now - 30 days'
+
+            for containerName in $(az storage container list  | jq -r '.[] | .name'); do
+              lastModifiedDateString=$(az storage blob list -c $containerName --num-results 1 | jq -r '.[] | .properties.lastModified')
+              lastModifiedDate=date -d $lastModifiedDateString
+              if [ $lowerRange -g $lastModifiedDate ];
+              then
+                echo "Deleting container: $containerName"
+                az storage container delete -n $containerName
+              fi
+            done
+
 workflows:
-  test:
+  build:
     jobs:
       - build
       - deploy-on-azure-storage:
@@ -131,3 +157,26 @@ workflows:
                 var-name: GITHUB_TOKEN
           requires:
             - deploy-on-azure-storage
+
+  purge-storage-containers:
+    triggers:
+      - schedule:
+          filters:
+            branches:
+              only:
+                - master
+          # Every Sunday, at 05:00am
+          cron: "0 5 * * 0"
+    jobs:
+      - remove-old-containers:
+          context: cicd-orchestrator
+          pre-steps:
+            - secrethub/env-export:
+                secret-path: graviteeio/cicd/azure/application-id
+                var-name: AZURE_APPLICATION_ID
+            - secrethub/env-export:
+                secret-path: graviteeio/cicd/azure/tenant
+                var-name: AZURE_TENANT
+            - secrethub/env-export:
+                secret-path: graviteeio/cicd/azure/application-secret
+                var-name: AZURE_APPLICATION_SECRET
