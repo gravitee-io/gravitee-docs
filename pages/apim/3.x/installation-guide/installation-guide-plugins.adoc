@@ -1,0 +1,206 @@
+= Installing and updating Plugins
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installation_guide_plugins.html
+:page-folder: apim/overview
+:page-layout: apim3x
+:page-liquid:
+:page-description: Gravitee.io API Management - Installation Guide - Plugins
+:page-keywords: Gravitee.io, API Management, apim, guide, installation, upgrade, plugins
+:page-toc: true
+
+// author: Tom Geudens
+== Overview
+Plugins bring Gravitee APIM to life. They provide functionality ranging from connectors (eg. Kafka) to tracers (eg. Jaeger) and everything in between. A special mention goes to policies, plugins that provide you with options to shape and control the flow of your APIs.
+
+A lot of plugins are part of the Gravitee APIM installation. Ones that aren't generally applicable can be added. You can even write your own! This document explains how you can install and upgrade additional plugins.
+
+== In a nutshell - Option I
+. Get your plugin zip-file ready.
++
+The supported plugins for Gravitee APIM can be found link:https://download.gravitee.io/#graviteeio-apim/plugins/[here, window=\"_blank\"].
+
+. Drop the plugin zip-file in the plugins-folder of the relevant component. This could be the APIM REST API, the APIM Gateway or both!
+
+. Restart the component.
+
+NOTE: At this time installing and updating plugins requires a restart of the component.
+
+== In a nutshell - Option II
+. Get your plugin zip-file ready.
++
+The supported plugins for Gravitee APIM can be found link:https://download.gravitee.io/#graviteeio-apim/plugins/[here, window=\"_blank\"].
+
+. Drop the plugin zip-file in a plugins-folder of your own choosing.
+
+. Modify the `gravitee.yml` configuration file of the relevant component (APIM REST API / APIM Gateway / both) to take the additional folder into account
+
+. Restart the component.
+
+NOTE: At this time installing and updating plugins requires a restart of the component.
+
+== Details for .ZIP installations
+=== Option I
+. Locate the plugins folder of the component
++
+*  APIM REST API - <your installation folder>/graviteeio-apim-rest-api-{{ site.products.apim._3x.version }}/plugins
+*  APIM Gateway - <your installation folder>/graviteeio-apim-gateway-{{ site.products.apim._3x.version }}/plugins
+
+. Drop the plugin zip file into the folder
+
+. Restart the component
+
+=== Option II
+. Create custom locations for plugins
++
+[source,bash]
+----
+mkdir /customlocation/gateway/plugins
+mkdir /customlocation/rest-api/plugins
+----
++
+NOTE: This are example locations, yours can differ.
+
+. Drop the plugin zip-file into the relevant folder(s).
+
+. Modify the `gravitee.yml` configuration file of the component
++
+*  APIM REST API - <your installation folder>/graviteeio-apim-rest-api-{{ site.products.apim._3x.version }}/config
++
+[source,yaml]
+----
+# Plugins repository
+plugins:
+  path:
+    - ${gravitee.home}/plugins
+    - /customlocation/rest-api/plugins
+----
+*  APIM Gateway - <your installation folder>/graviteeio-apim-gateway-{{ site.products.apim._3x.version }}/config
++
+[source,yaml]
+----
+# Plugins repository
+plugins:
+  path:
+    - ${gravitee.home}/plugins
+    - /customlocation/gateway/plugins
+----
+
+. Restart the component
+
+== Details for package installations (Amazon Linux, RHEL, CentOS)
+=== Option I
+. Locate the plugins folder of the component
++
+* APIM REST API - /opt/graviteeio/apim/rest-api/plugins
+* APIM Gateway - /opt/graviteeio/apim/gateway/plugins
+
+. Drop the plugin zip-file into the folder
+
+. Restart the component
+
+=== Option II
+. Create custom locations for plugins
++
+[source,bash]
+----
+mkdir /customlocation/gateway/plugins
+mkdir /customlocation/rest-api/plugins
+----
++
+NOTE: This are example locations, yours can differ.
+
+. Drop the plugin zip-file into the relevant folder(s).
+
+. Modify the `gravitee.yml` configuration file of the component
++
+*  APIM REST API - /opt/graviteeio/apim/rest-api/config
++
+[source,yaml]
+----
+# Plugins repository
+plugins:
+  path:
+    - ${gravitee.home}/plugins
+    - /customlocation/rest-api/plugins
+----
+*  APIM Gateway - /opt/graviteeio/apim/gateway/config
++
+[source,yaml]
+----
+# Plugins repository
+plugins:
+  path:
+    - ${gravitee.home}/plugins
+    - /customlocation/gateway/plugins
+----
+
+. Restart the component
+
+== Details for Docker installations
+NOTE: **Option I** is not available for Docker installations as there is no direct access to the inside of the container.
+
+=== Option II
+. Create custom locations for plugins
++
+[source,bash]
+----
+mkdir /customlocation/gateway/plugins
+mkdir /customlocation/rest-api/plugins
+----
++
+NOTE: This are example locations, yours can differ.
+
+. Drop the plugin zip-file into the relevant folder(s)
+
+. Customize the Docker command to provide:
+** the custom location as a `volume` that overrides the internal `/opt/graviteeio-management-api/plugins-ext` folder
+** two environment variables (`gravitee_plugins_path_0` and `gravitee_plugins_path_1`) that specify both plugin folders (by default only one is used)
+
++
+[source,bash]
+----
+# APIM REST API
+docker run --publish 8083:8083 \
+  --volume /customlocation/rest-api/plugins:/opt/graviteeio-management-api/plugins-ext \
+  --env gravitee_management_mongodb_uri="mongodb://gravitee-mongo:27017/gravitee-apim" \
+  --env gravitee_analytics_elasticsearch_endpoints_0="http://gravitee-elasticsearch:9200" \
+  --env gravitee_plugins_path_0=/opt/graviteeio-management-api/plugins \
+  --env gravitee_plugins_path_1=/opt/graviteeio-management-api/plugins-ext \
+  --name gravitee-apim-rest-api  \
+  --detach graviteeio/apim-management-api:latest
+
+# APIM Gateway
+docker run --publish 8082:8082 \
+  --volume /customlocation/gateway/plugins:/opt/graviteeio-gateway/plugins-ext \ 
+  --env gravitee_management_mongodb_uri="mongodb://gravitee-mongo:27017/gravitee-apim" \
+  --env gravitee_ratelimit_mongodb_uri="mongodb://gravitee-mongo:27017/gravitee-apim" \ 
+  --env gravitee_reporters_elasticsearch_endpoints_0="http://gravitee-elasticsearch:9200" \
+  --env gravitee_plugins_path_0=/opt/graviteeio-gateway/plugins \
+  --env gravitee_plugins_path_1=/opt/graviteeio-gateway/plugins-ext \
+  --name gravitee-apim-gateway \
+  --detach graviteeio/apim-gateway:latest
+----
+NOTE: This is an example, your ports and URLs may differ.
+
+== Details for Kubernetes installations
+NOTE: **Option I** is not available for Kubernetes installations as there is no direct access to the inside of the pods.
+
+=== Option II
+. Provide an URL to the plugin zip-file.
+
+. Modify the `value.yaml` file that you pass in with the Helm chart.
+
++
+[source,yaml]
+----
+api:
+  additionalPlugins:
+    - https://download.gravitee.io/graviteeio-apim/plugins/policies/gravitee-policy-javascript/gravitee-policy-javascript-1.1.0.zip
+    - https://download.gravitee.io/graviteeio-apim/plugins/services/gravitee-kubernetes-controller/gravitee-kubernetes-controller-0.1.0.zip
+
+gateway:
+  additionalPlugins:
+    - https://download.gravitee.io/graviteeio-apim/plugins/policies/gravitee-policy-javascript/gravitee-policy-javascript-1.1.0.zip
+----
+NOTE: This is an example, your plugins may differ.
+
