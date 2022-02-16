@@ -11,7 +11,7 @@
 // author: Tom Geudens
 // based on but NOT including https://gh.gravitee.io/gravitee-io/gravitee-policy-javascript/master/README.adoc
 
-WARNING: The JavaScript policy is not included by default. To use this policy, you must download and manually install it.
+WARNING: The JavaScript policy is not included by default. To use this policy, you must download and install the plugin.
 
 == Phases
 |===
@@ -90,7 +90,7 @@ As an example, assuming the following request body:
 ]
 ----
 
-Then in this phase you can do the following:
+Then you can do the following:
 [source, javascript]
 ----
 var content = JSON.parse(request.content);
