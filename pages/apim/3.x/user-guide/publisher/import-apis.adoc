@@ -1,0 +1,154 @@
+= Import APIs
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_publisherguide_import_apis.html
+:page-folder: apim/user-guide/publisher
+:page-layout: apim3x
+:page-liquid:
+
+== Overview
+
+The following sections describe the process of importing an API from its JSON definition.
+
+== API definition
+
+=== What is an API definition ?
+
+An API definition is a JSON representation of your API and its content, eg. plans, pages, metadata, etc.
+
+=== How to get an API definition ?
+
+You can get the API definition by exporting it from the APIM console.
+Or, by using the export endpoint
+`**GET /apis/{api.id}/export**`
+(link:/apim/3.x/management-api/3.16/#operation/exportApiDefinition[API reference^]).
+
+=== What does it contain ?
+
+In this definition each entity (API, plan or page) has :
+
+- A **crossId** :
+Uniquely identifies an entity (an API, a plan or a page) across environments :
+The same entity will keep the same crossId from one environment to another
+
+- A technical **id** :
+Uniquely identifies an entity in one environment only:
+The same entity will have a different technical id from one environment to another
+
+NOTE: The API import process uses the **crossId** to match entities in the API defintion with existing ones.
+The technical **id** is not used during the import process unless the **crossId** isn't defined. For example in case of an old exported API definition.
+
+== Import endpoints
+
+Import endpoints allow you to import an API from a definition.
+The HTTP request body can contain :
+
+* the JSON API definition
+* **OR** an HTTP link to the JSON API definition
+
+They require the target organization and environment in the prefix :
+_/organizations/**{organization.id}**/environments/**{environment.id}**/_
+
+=== Creating a new API from an API definition
+
+`**POST /api/import**`
+(link:/apim/3.x/management-api/3.16/#operation/importApiDefinition[API reference^]).
+
+NOTE: Will raise an error if there is already an existing API on the target environment with the same **crossId**.
+
+=== Updating an existing API from an API definition
+
+`**PUT /api/import**`
+(link:/apim/3.x/management-api/3.16/#operation/updateWithDefinition[API reference^])
+
+Using the technical **id** in the URL is not mandatory as it will use the **crossId** in your API definition to find the target API.
+
+This allows you to use the same URL to update your API across all environments.
+
+NOTE: You can also use the URL containing API technical **id** if you want :
+`**PUT /api/{api.id}/import**`
+(link:/apim/3.x/management-api/3.15/#operation/updateWithDefinitionPUT[API reference^])
+Raise an error if the **crossId** of your definition matches another API on target environment.
+
+== API content behavior
+
+This sections describes how API contents behave during import.
+
+=== Plans
+
+* Plans in API definition that already exist in the target API will be _updated_  (will not change the existing plan's status)
+* Plans in API definition that do not exist in the target API will be _created_
+* Plans in target API that are not present in the API definition will be _deleted_
+
+=== Pages
+
+* Pages in API definition that already exist in the target API will be _updated_
+* Pages in API definition that do not exist in the target API will be _created_
+* Pages in target API that are not present in the API definition _won't change_
+
+=== Groups, Members and roles
+
+Depending on your installation setup, group, members and roles will not be imported the same way.
+
+* When using the import feature to update or create an API on the same environment members, groups and roles can be edited, and group memberships are preserved.
+
+* When importing on another environment groups that are unknown to the target environment will be created, but their memberships will not be preserved.
+
+* When importing on another environment that runs on the same APIM instance (same database), direct members will be preserved on the target environment.
+
+* When importing on another environment that runs on a separate APIM instance, direct members will not be preserved and group that are unknown to the target environment will
+be created without preserving their memberships.
+
+
+== CI/CD use cases examples
+
+=== Create your API on development environment
+
+Create your API in development environment, using the APIM console.
+
+=== Push your API to the production environment
+
+* Get your API definition by exporting it from APIM console, or using the export endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X GET \
+     https://GRAVITEEIO-APIM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEVELOPMENT/apis/35a1b7d4-b644-43d1-a1b7-d4b64493d134/export
+----
+
+* On each environment you want to create your API, call the POST endpoint. For example
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{
+            "name": "my-api",
+            "crossId": "3e645da6-039c-4cc0-a45d-a6039c1cc0d3",
+            "version": "1",
+            [....]
+        }' \
+     https://GRAVITEEIO-APIM-MGT-API-HOST/management/organizations/DEFAULT/environments/PRODUCTION/apis/import
+----
+
+=== Update your API on production environment
+
+* Update your API definition. Manually, or by re-exporting the source API from development environment.
+
+* On each environment you want to update your API, call the PUT endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PUT \
+     -d '{
+            "name": "my-updated-api",
+            "crossId": "3e645da6-039c-4cc0-a45d-a6039c1cc0d3",
+            "version": "1",
+            [....]
+        }' \
+     https://GRAVITEEIO-APIM-MGT-API-HOST/management/organizations/DEFAULT/environments/PRODUCTION/apis/import
+----
