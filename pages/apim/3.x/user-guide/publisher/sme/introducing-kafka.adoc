@@ -22,7 +22,7 @@ This guide will take you through creating a Kafka endpoint, describe how to prod
 
 === Prerequisites
 
-* You must have installed the link:https://download.gravitee.io/#graviteeio-apim/plugins/connectors/gravitee-connector-kafka/[Kafka plugin^]. More information on installing a plugin can be found link:/apim/3.x/apim_installation_guide_plugins.html[here].
+* You must have installed the link:https://download.gravitee.io/#graviteeio-apim/plugins/connectors/gravitee-connector-kafka/[Kafka plugin^]. More information on installing a plugin can be found link:{% link pages/apim/3.x/installation-guide/installation-guide-plugins.adoc %}[here].
 * A basic understanding of Kafka is required, this link:https://kafka.apache.org/documentation/[link^] is a good resource to get you started.
 
 === Creating a Kafka endpoint
@@ -34,7 +34,7 @@ You have the two following options when creating a Kafka endpoint:
 
 ==== Creating a Kafka endpoint using API Management
 
-Use standard API Management functionality to create an API endpoint (see link:{{ '/apim/3.x/apim_publisherguide_create_apis.html' | relative_url }}[here] for more detail on creating APIs)
+Use standard API Management functionality to create an API endpoint (see link:{% link pages/apim/3.x/user-guide/publisher/create-api.adoc %}[here] for more detail on creating APIs)
 
 [source,json]
 ----
@@ -49,7 +49,7 @@ Once created, you can access the Kafka connector configuration via the console, 
 
 image:{% link images/apim/3.x/api-publisher-guide/sme/kafka-console1.png %}[]
 
-On the Configuration tab, configure your settings, referring to the link:{{ '/apim/3.x/apim_publisherguide_configuring_kafka.html' | relative_url }}[configuration section] for any required information.
+On the Configuration tab, configure your settings, referring to the link:{% link pages/apim/3.x/user-guide/publisher/sme/kafka-connector-configuration.adoc %}[configuration section] for any required information.
 
 image:{% link images/apim/3.x/api-publisher-guide/sme/kafka-console2.png %}[]
 
@@ -58,5 +58,5 @@ Add Kafka to the default group
 image:{% link images/apim/3.x/api-publisher-guide/sme/kafka-console3.png %}[]
 
 
-For more details on the parameters defined in this call, refer to the link:{{ '/apim/3.x/apim_publisherguide_configuring_kafka.html' | relative_url }}[configuring Kafka section].
+For more details on the parameters defined in this call, refer to the link:{% link pages/apim/3.x/user-guide/publisher/sme/kafka-connector-configuration.adoc %}[configuring Kafka section].
 

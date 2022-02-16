@@ -156,7 +156,7 @@ And the reponse message would be:
 ----
 
 == Reference - Metrics [[metricsobject]]
-It is highly advisable to use the link:/apim/3.x/apim_policies_metrics_reporter.html[Metrics Reporter] in order to manage the metrics. However, the request object does contain a **metrics** object.
+It is highly advisable to use the link:{% link pages/apim/3.x/policy-reference/policy-metrics-reporter.adoc %}[Metrics Reporter] in order to manage the metrics. However, the request object does contain a **metrics** object.
 
 |===
 |Object | Property | Type | Description
