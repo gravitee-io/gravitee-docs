@@ -114,7 +114,7 @@ Create your API in development environment, using the APIM console.
 curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
      -H "Content-Type:application/json;charset=UTF-8" \
      -X GET \
-     https://GRAVITEEIO-APIM-MGT-API-HOST/management/organizations/DEFAULT/environments/DEVELOPMENT/apis/35a1b7d4-b644-43d1-a1b7-d4b64493d134/export
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/35a1b7d4-b644-43d1-a1b7-d4b64493d134/export
 ----
 
 * On each environment you want to create your API, call the POST endpoint. For example
@@ -130,7 +130,7 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
             "version": "1",
             [....]
         }' \
-     https://GRAVITEEIO-APIM-MGT-API-HOST/management/organizations/DEFAULT/environments/PRODUCTION/apis/import
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/import
 ----
 
 === Update your API on production environment
@@ -150,5 +150,5 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
             "version": "1",
             [....]
         }' \
-     https://GRAVITEEIO-APIM-MGT-API-HOST/management/organizations/DEFAULT/environments/PRODUCTION/apis/import
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]//management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/import
 ----
