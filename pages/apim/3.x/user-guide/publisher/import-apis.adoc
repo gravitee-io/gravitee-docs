@@ -5,6 +5,9 @@
 :page-layout: apim3x
 :page-liquid:
 
+{% assign version = site.products.apim._3x.version | split: "." %}
+{% capture current_version %}{{ version[0] }}.{{ version[1] }}{% endcapture %}
+
 == Overview
 
 The following sections describe the process of importing an API from its JSON definition.
@@ -20,7 +23,7 @@ An API definition is a JSON representation of your API and its content, eg. plan
 You can get the API definition by exporting it from the APIM console.
 Or, by using the export endpoint
 `**GET /apis/{api.id}/export**`
-(link:/apim/3.x/management-api/3.16/#operation/exportApiDefinition[API reference^]).
+(link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html/#operation/exportApiDefinition' }}[API reference^]).
 
 === What does it contain ?
 
@@ -51,14 +54,14 @@ _/organizations/**{organization.id}**/environments/**{environment.id}**/_
 === Creating a new API from an API definition
 
 `**POST /api/import**`
-(link:/apim/3.x/management-api/3.16/#operation/importApiDefinition[API reference^]).
+(link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/importApiDefinition' }}[API reference^]).
 
 NOTE: Will raise an error if there is already an existing API on the target environment with the same **crossId**.
 
 === Updating an existing API from an API definition
 
 `**PUT /api/import**`
-(link:/apim/3.x/management-api/3.16/#operation/updateWithDefinition[API reference^])
+(link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/updateWithDefinition' }}[API reference^])
 
 Using the technical **id** in the URL is not mandatory as it will use the **crossId** in your API definition to find the target API.
 
@@ -66,7 +69,7 @@ This allows you to use the same URL to update your API across all environments.
 
 NOTE: You can also use the URL containing API technical **id** if you want :
 `**PUT /api/{api.id}/import**`
-(link:/apim/3.x/management-api/3.15/#operation/updateWithDefinitionPUT[API reference^])
+(link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/updateWithDefinitionPUT' }}[API reference^])
 Raise an error if the **crossId** of your definition matches another API on target environment.
 
 == API content behavior
