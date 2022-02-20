@@ -109,7 +109,7 @@ jobs:
 
             for containerName in $(az storage container list  | jq -r '.[] | .name'); do
               lastModifiedDateString=$(az storage blob list -c $containerName --num-results 1 | jq -r '.[] | .properties.lastModified')
-              lastModifiedDate=date -d $lastModifiedDateString
+              lastModifiedDate=$(date -d $lastModifiedDateString)
               if [ $lowerRange -g $lastModifiedDate ];
               then
                 echo "Deleting container: $containerName"
