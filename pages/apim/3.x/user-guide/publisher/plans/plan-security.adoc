@@ -76,6 +76,22 @@ image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/custom-ap
 
 image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-3.png %}[]
 
+==== Use the shared API key
+
+The shared API key mode makes consumers reuse the same API key across all API subscriptions of an application.
+
+This mode can be enabled in environment settings :
+
+**TODO : SCREENSHOT**
+
+With this mode enabled, consumers will be asked on their second subscription to choose between reusing their key across all subscriptions or generate one different API key for each subscription (which is the default mode).
+
+**TODO : SCREENSHOT**
+
+This choice is permanent and consumers will not be able to switch back to one key per subscription for their application.
+
+When disabling the shared API key mode in environment settings, applications that have already been configured to use a shared key will continue to work this way, but consumers will stop being asked to choose between one mode or the other on their second subscription.
+
 === OAuth 2.0 plans
 
 To configure an OAuth 2.0 plan for an API, you need to:
