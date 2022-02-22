@@ -3,31 +3,29 @@
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_adminguide_platform_policies.html
 :page-folder: apim/user-guide/admin
-:page-description: Gravitee.io API Management - Admin Guide - Platform policies
-:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+:page-liquid:
 :page-layout: apim3x
+:page-description: Gravitee.io API Management - Admin Guide - Platform policies
+:page-keywords: Gravitee.io, API Management, apim, gateway, platform, flow, policy
 
 == Overview
 
-Platform flows are executed before and after any API Flow of the organization. They can be defined in organization settings and are automatically deployed on every change.
+Platform flows are executed before and after any API Flow of the organization. They can be defined in the organization settings and are automatically deployed on every change.
 
-image::{% link images/apim/3.x/adminguide/platform-policies.png %}[]
+image:{% link images/apim/3.x/adminguide/platform-flows.png %}[]
 
-=== Execution flow
+== Execution flow
+Platform flows are encapsulating API flows as follows:
 
-Platform policies are embracing API flow policies as follow :
+- Platform flow request policies are executed *before* API flow request policies
+- Platform flow response policies are executed *after* API flow response policies
 
-- Platform request policies are executed *before* API request policies
-- Platform response policies are executed *after* API response policies
+== Typical use cases
+You can use platform flows to enforce policies at the organization level such as:
 
-=== Typical use cases
-
-You can use platform policies to mutualize some policies around :
-
-- reporting - Metrics Reporter policy for example
-- security - IPFiltering for example
+- reporting - e.g. Metrics Reporter
+- security - e.g. IPFiltering
 
 
-=== Known limitations
-
-Platform flows doesn't support conditional policies yet.
+== Known limitations
+Platform flows do currently not support conditional policies.
