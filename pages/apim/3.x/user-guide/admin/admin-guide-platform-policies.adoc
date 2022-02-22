@@ -1,0 +1,31 @@
+[[gravitee-admin-guide-orgs-and-envs]]
+= Platform policies
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_adminguide_platform_policies.html
+:page-folder: apim/user-guide/admin
+:page-liquid:
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Admin Guide - Platform policies
+:page-keywords: Gravitee.io, API Management, apim, gateway, platform, flow, policy
+
+== Overview
+
+Platform flows are executed before and after any API flows of the organization. They can be defined in the organization settings and are automatically deployed on every change.
+
+image:{% link images/apim/3.x/adminguide/platform-flows.png %}[]
+
+== Execution flow
+Platform flows are encapsulating API flows as follows:
+
+- Platform flow request policies are executed *before* API flow request policies
+- Platform flow response policies are executed *after* API flow response policies
+
+== Typical use cases
+You can use platform flows to enforce policies at the organization level such as:
+
+- reporting - e.g. Metrics Reporter
+- security - e.g. IPFiltering
+
+
+== Known limitations
+Platform flows do currently not support conditional policies.
