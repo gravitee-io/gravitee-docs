@@ -8,25 +8,10 @@
 :page-layout: apim3x
 
 == Overview
-In preparation for the upcoming Cockpit product offering (see link:https://www.gravitee.io/products/roadmap[Roadmap > Cockpit]), we have introduced two concepts:
-
-== Environment
-An _environment_ is roughly equivalent to what you can find in APIM Portal. In an environment, users can manage their APIs, applications and subscriptions. +
-An environment handles its own categories, groups, documentation pages and quality rules. +
-
-Some examples of environments you can define are:
-
-* technical environments, such as DEV / TEST / PRODUCTION
-* functional environments, such as PRIVATE APIS / PUBLIC APIS / PARTNERSHIP
-
-An environment belongs to one organization.
-
-=== Updating environment settings
-
-You can update a Gateway's environment settings in APIM Console by clicking **Settings** in the left-hand navigation.
+Two concepts apply to the setup of *Gravitee.io API Management* (APIM) installation. Organization and environment.
 
 == Organization
-An _organization_ allows users to customize APIM to their own internal organization. It can manage multiple environments by sharing configurations like:
+A logical part of your company in the way that makes most sense in your setup, for example a region or business unit. In the context of an APIM installation it is the level at which shared configurations for environments are managed, such as:
 
 * Users
 * Roles
@@ -35,10 +20,21 @@ An _organization_ allows users to customize APIM to their own internal organizat
 
 It also allows operations across managed environments (like API import/export).
 
-=== Updating organization settings
+You can update a gateway's organization settings in APIM Console by clicking **Organization settings** in the left-hand navigation.
 
-You can update a Gateway's organization settings in APIM Console by clicking **Organization settings** in the left-hand navigation.
 
-WARNING: The descriptions above may change slightly in future versions. Stay informed by subscribing to our link:https://gravitee.io/[newsletter].
+== Environment
+An environment in an IT infrastructure, such as development or production. There can be multiple environments linked to one organization. In the context of an APIM installation, it is the workspace in which users can manage their APIs, applications and subscriptions
+An environment handles its own categories, groups, documentation pages and quality rules.
 
-NOTE: By default, the OSS version of APIM comes with a default organization and a default environment. For a multi-environment setup, you need APIM link:{{ '/ee/ee_introduction.html' | relative_url }}[Enterprise Edition].
+Examples of environments:
+
+* technical environments such as DEV / TEST / PRODUCTION
+* functional environments such as PRIVATE APIS / PUBLIC APIS / PARTNERSHIP
+
+An environment belongs to one organization.
+
+You can update a gateway's environment settings in APIM Console by clicking **Settings** in the left-hand navigation
+
+
+NOTE: By default, the OSS version of APIM comes with a default organization and a default environment. For a multi-environment setup, you need an integration with link:{% link pages/cockpit/overview/introduction.adoc %}[Cockpit].
