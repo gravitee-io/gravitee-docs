@@ -1,0 +1,31 @@
+= Upgrade to 3.11.0
+
+== Breaking changes
+
+From with this version, the name of the APIM Rest APIs component changes.
+As a consequence:
+
+1. The APIM Rest API component available on https://download.gravitee.io is now `gravitee-*apim*-rest-api-x.y.z.zip` instead of `gravitee-management-rest-api-x.y.z.zip`
+
+2. The name of the APIM Rest API folder within the full distribution zip file (graviteeio-full-x.y.z.zip) is now `graviteeio-*apim*-rest-api-x.y.z` instead of `graviteeio-rest-api-x.y.z`
+
+
+WARNING: In future versions, others plugins & components might be renamed. Stay tuned!
+
+== Security update
+
+From this version, API properties can be encrypted.
+
+Encryption key is located in gravitee.yml of Rest APIs and gateway.
+
+WARNING: You should not use this default key, and set your own custom 32 bytes length secret.
+
+
+```ỳml
+# Encrypt API properties using this secret
+api:
+  properties:
+    encryption:
+      secret: vvLJ4Q8Khvv9tm2tIPdkGEdmgKUruAL6
+```
+

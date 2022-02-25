@@ -1,0 +1,27 @@
+= Upgrade to 3.5.19
+
+== Breaking changes
+
+=== Threat protection policies
+From this version, configuration form for JSON Threat Protection Policy and XML Threat Protection Policy changes:
+`null` is no longer authorized, only `-1` is accepted for a 'no limit' setting.
+
+==== Impacts
+
+- If some fields are set to `null` in your db, and if you want to edit this policy configuration through *APIM Console*, then the form will replace them by the default value. Please, be careful when updating your policy if you do not want the default values to be applied.
+- If some fields are set to `null` in your db, and if you want to edit this policy configuration through *REST API*, an error message will appear if you do not set an explicit value for those fields in your request payload.
+
+=== Management Rest API
+From with this version, the name of the APIM Rest APIs component changes.
+As a consequence:
+
+1. The APIM Rest API component available on https://download.gravitee.io is now `gravitee-*apim*-rest-api-x.y.z.zip` instead of `gravitee-management-rest-api-x.y.z.zip`
+
+2. The name of the APIM Rest API folder within the full distribution zip file (graviteeio-full-x.y.z.zip) is now `graviteeio-*apim*-rest-api-x.y.z` instead of `graviteeio-rest-api-x.y.z`
+
+WARNING: In future versions, others plugins & components might be renamed. Stay tuned!
+
+
+== Improvements
+Some performance improvements have been made (https://github.com/gravitee-io/issues/issues/6066[#6066]).
+As a consequence, the scheduled service used to automatically close expired subscriptions now runs every hour instead of every 5 seconds

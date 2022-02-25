@@ -1,0 +1,22 @@
+= Upgrade to 3.10.1
+
+== Breaking changes
+
+From with this version, the name of the APIM Rest APIs component changes.
+As a consequence:
+
+1. The APIM Rest API component available on https://download.gravitee.io is now `gravitee-*apim*-rest-api-x.y.z.zip` instead of `gravitee-management-rest-api-x.y.z.zip`
+
+2. The name of the APIM Rest API folder within the full distribution zip file (graviteeio-full-x.y.z.zip) is now `graviteeio-*apim*-rest-api-x.y.z` instead of `graviteeio-rest-api-x.y.z`
+
+
+WARNING: In future versions, others plugins & components might be renamed. Stay tuned!
+
+== Repository
+
+=== Mongodb
+
+Before running any script, please create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.10.1/mongodb/1-upgrade-parameters-for-theme-console.js[upgrades/3.x/3.10.1/mongodb/1-upgrade-parameters-for-theme-console.js]::
+This script upgrade default value of `theme.logo` in parameters

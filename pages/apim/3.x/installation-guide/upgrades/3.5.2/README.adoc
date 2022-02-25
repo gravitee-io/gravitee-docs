@@ -1,0 +1,11 @@
+= Upgrade to 3.5.2
+
+== Repository
+
+=== Mongodb
+
+Before running any script, please create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/release/3.5.x/upgrades/3.x/3.5.2/mongodb/1-add-DEFAULT-referenceId-in-memberships.js[upgrades/3.x/3.5.2/mongodb/1-add-DEFAULT-referenceId-in-memberships.js]::
+This script add the "DEFAULT" `referenceId` for memberships with `null` one. This bug impacts users created when using social authentication since version 3.5.0.
+

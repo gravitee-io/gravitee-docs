@@ -1,0 +1,13 @@
+= Upgrade to 3.4.0
+
+== Repository
+
+=== Mongodb
+
+Before running any script, please create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.4.0/mongodb/1-update-audit-to-replace-PORTAL-with_ORGANIZATION-and-ENVIRONMENT.js[upgrades/3.x/3.4.0/mongodb/1-update-audit-to-replace-PORTAL-with_ORGANIZATION-and-ENVIRONMENT.js]::
+This script convert PORTAL audit into ENVIRONMENT audits or ORGANIZATION audits regarding some conditions.
+
+https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.4.0/mongodb/2-update-default-role-REVIEWER.js[upgrades/3.x/3.4.0/mongodb/2-update-default-role-REVIEWER.js]::
+This script add new permissions to the default REVIEWER role.

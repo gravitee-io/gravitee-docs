@@ -1,0 +1,11 @@
+= Upgrade to 1.14.3
+
+== Web UI
+
+Replace 'home.title' translation by a 'company.name' constant on constants.json file.
+
+```json
+"company": {
+    "name": "Gravitee.io"
+}
+```

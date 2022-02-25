@@ -1,0 +1,12 @@
+= Upgrade to 1.11.x
+
+NOTE: If you are coming from Gravitee.io APIM 1.10.x, there is no migration script to apply.
+You just have to download and install new binaries and go ahead with Gravitee.io API Management.
+
+NOTE: For MongoDB users, please check that your database indices are up-to-date with https://github.com/gravitee-io/gravitee-repository-mongodb/blob/master/src/main/resources/scripts/create-index.js[latest]
+
+== Deprecated features
+=== Logging Policy
+
+Logging policy is now deprecated (and will be removed in a future version) and has been replaced by an integrated `logging` feature.
+To apply logging, you must have to configure it at the API level from `proxy` screen.

@@ -1,0 +1,15 @@
+= Upgrade to 1.14.0
+
+== Repository
+=== Mongodb
+
+Before running any script, please create a dump of your existing database.
+
+upgrades/1.14.0/mongodb/1-users-migration.js::
+This script remove plain username reference and prefer UUID.
+
+upgrades/1.14.0/mongodb/2-init-email-notifications ::
+This script create a default email notifier for each Application and API Primary Owner.
+
+*This script is not mandatory !*
+If you don't need/want email notification on your existing APIs/Applications, just ignore it.

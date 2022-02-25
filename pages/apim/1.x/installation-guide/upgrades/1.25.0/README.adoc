@@ -1,0 +1,18 @@
+= Upgrade to 1.25.0
+
+== Application management
+
+Starting with Gravitee.io 1.25, users are now able to manage automatically the OpenID Connect client registration
+for their applications. This means that each application created from Gravitee.io APIM may now be associated to an OAuth client
+using the OpenID Connect Dynamic Client Registration.
+
+To follow that new feature, the Rest Management API has been updated to reflect those changes.
+
+== Repository
+=== Mongodb
+
+https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/1.x/1.25.0/mongodb/1-applications-migration.js[upgrades/1.25.0/mongodb/1-applications-migration.js]::
+This script update applications according to the new way Gravitee.io is managing them.
+
+https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/1.x/1.25.0/mongodb/2-users-archived-upgrade.js[upgrades/1.25.0/mongodb/2-users-archived-upgrade.js]::
+This script update the sourceId of all archived users.

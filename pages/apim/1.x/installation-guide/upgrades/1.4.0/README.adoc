@@ -1,0 +1,20 @@
+= Upgrade to 1.4.0
+
+== Portal
+Portal configuration file as been replaced by a new json file named `constants.json` (see https://github.com/gravitee-io/gravitee-management-webui/blob/1.4.0/constants.json). 
+
+This new configuration has exactly the same content as the previous one, minus the platform `version` which is now handle automatically by the portal during the build phase.
+
+
+== Repository
+=== Mongodb
+
+Before running any script, please create a dump of your existing database.
+
+upgrades/1.4.0/mongodb/1-update-application.js::
+This script creates the new `status` attribute on all applications with the default value `ACTIVE`.
+
+upgrades/1.4.0/mongodb/2-create-archived-app.js::
+This script creates deleted apps with `status=ARCHIVED` for each subscriptions where there is no application associated.
+
+WARNING: edit the script before running it. You have to choose the user owner of the ARCHIVED applications.

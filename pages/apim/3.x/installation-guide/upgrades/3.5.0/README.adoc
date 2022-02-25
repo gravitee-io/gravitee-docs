@@ -1,0 +1,77 @@
+= Upgrade to 3.5.0
+
+== Breaking Changes
+
+=== Environment variables
+
+Some environment variables have been doubled for the portal and the console, see correspondence table:
+
+[cols="1,1,1"]
+|===
+|before 3.5.0|after 3.5.0 (for portal)| after 3.5.0 (for console)
+
+|authentication.localLogin.enabled
+|portal.authentication.localLogin.enabled
+|console.authentication.localLogin.enabled
+
+|scheduler.tasks
+|portal.scheduler.tasks
+|console.scheduler.tasks
+
+|scheduler.notifications
+|portal.scheduler.notifications
+|console.scheduler.notifications
+
+|reCaptcha.enabled
+|portal.reCaptcha.enabled
+|console.reCaptcha.enabled
+
+|reCaptcha.siteKey
+|portal.reCaptcha.siteKey
+|console.reCaptcha.siteKey
+
+|portal.support.enabled
+|portal.support.enabled
+|console.support.enabled
+
+|portal.userCreation.enabled
+|portal.userCreation.enabled
+|console.userCreation.enabled
+
+|portal.userCreation.automaticValidation.enabled
+|portal.userCreation.automaticValidation.enabled
+|console.userCreation.automaticValidation.enabled
+
+|http.cors.allow-origin
+|portal.http.cors.allow-origin
+|console.http.cors.allow-origin
+
+|http.cors.allow-headers
+|portal.http.cors.allow-headers
+|console.http.cors.allow-headers
+
+|http.cors.allow-methods
+|portal.http.cors.allow-methods
+|console.http.cors.allow-methods
+
+|http.cors.exposed-headers
+|portal.http.cors.exposed-headers
+|console.http.cors.exposed-headers
+
+|http.cors.max-age
+|portal.http.cors.max-age
+|console.http.cors.max-age
+|===
+
+== Distribution
+From this version, Gravitee.IO APIM is distributed with MongoDB and JDBC plugins, as well as Hybrid HTTP plugin (gateway-bridge-http), in the `full` ZIP. +
+You no longer have to choose between the "full" or "full-jdbc" ZIP file.
+
+== Repository
+
+=== Mongodb
+
+Before running any script, please create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.5.0/mongodb/1-duplicate-some-parameters-for-console.js[upgrades/3.x/3.5.0/mongodb/1-duplicate-some-parameters-for-console.js]::
+This script duplicates some parameters for the console to have different behaviors between portal and console. It also modifies the _id of each mongo document to add referenceId and referenceType.

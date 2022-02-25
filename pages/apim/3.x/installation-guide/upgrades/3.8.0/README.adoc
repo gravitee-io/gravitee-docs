@@ -1,0 +1,10 @@
+= Upgrade to 3.8.0
+
+== Repository
+
+=== Mongodb
+
+Before running any script, please create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.8.0/mongodb/1-page-acl-migration.js[upgrades/3.x/3.8.0/mongodb/1-page-acl-migration.js]::
+This script replaces *excluded_groups* by *visibility*, *excludedAccessControls* and *accessControls* collection.
