@@ -1,3 +1,7 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/3.x/mongodb
+endif::[]
+
 = Upgrade to 3.5.0
 
 == Breaking Changes
@@ -73,5 +77,5 @@ You no longer have to choose between the "full" or "full-jdbc" ZIP file.
 
 Before running any script, please create a dump of your existing database.
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.5.0/mongodb/1-duplicate-some-parameters-for-console.js[upgrades/3.x/3.5.0/mongodb/1-duplicate-some-parameters-for-console.js]::
+link:{mongodb-scripts-dir}/3.5.0/1-duplicate-some-parameters-for-console.js[/apim/3.x/mongodb/3.5.01-duplicate-some-parameters-for-console.js]::
 This script duplicates some parameters for the console to have different behaviors between portal and console. It also modifies the _id of each mongo document to add referenceId and referenceType.

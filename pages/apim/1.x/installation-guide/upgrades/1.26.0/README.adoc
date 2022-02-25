@@ -1,3 +1,7 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/1.x/mongodb
+endif::[]
+
 = Upgrade to 1.26.0
 
 == API lifecycle
@@ -9,5 +13,5 @@ To follow that new feature, the Rest Management API has been updated to reflect 
 == Repository
 === Mongodb
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/1.x/1.26.0/mongodb/1-apis-migration.js[upgrades/1.26.0/mongodb/1-apis-migration.js]::
+link:{mongodb-scripts-dir}/1.26.0/1-apis-migration.js[/apim/1.x/mongodb/1.26.0/1-apis-migration.js]::
 This script update apis according to the new way Gravitee.io is managing them.

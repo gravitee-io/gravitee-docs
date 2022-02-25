@@ -1,3 +1,7 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/1.x/mongodb
+endif::[]
+
 = Upgrade to 1.5.0
 
 == Repository
@@ -5,9 +9,9 @@
 
 Before running any script, please create a dump of your existing database.
 
-upgrades/1.5.0/mongodb/1-remove-event-picture.js::
+link:{mongodb-scripts-dir}/1.5.0/1-remove-event-picture.js[/apim/1.x/mongodb/1.5.0/1-remove-event-picture.js]::
 This script delete the picture from all API relative events because picture is useless and is disk consuming.
 
 
-upgrades/1.5.0/mongodb/2-update-pages.js::
+link:{mongodb-scripts-dir}/1.5.0/2-update-pages.js[/apim/1.x/mongodb/1.5.0/2-update-pages.js]::
 This script set the homepage flag of all existing pages to false.

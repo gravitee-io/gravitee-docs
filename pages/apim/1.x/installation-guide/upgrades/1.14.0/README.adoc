@@ -1,3 +1,7 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/1.x/mongodb
+endif::[]
+
 = Upgrade to 1.14.0
 
 == Repository
@@ -5,10 +9,10 @@
 
 Before running any script, please create a dump of your existing database.
 
-upgrades/1.14.0/mongodb/1-users-migration.js::
+link:{mongodb-scripts-dir}/1.14.0/1-users-migration.js[/apim/1.x/mongodb/1.14.0/1-users-migration.js]::
 This script remove plain username reference and prefer UUID.
 
-upgrades/1.14.0/mongodb/2-init-email-notifications ::
+link:{mongodb-scripts-dir}/1.14.0/mongodb/2-init-email-notifications.js[/apim/1.x/mongodb/1.14.0/2-init-email-notifications.js]::
 This script create a default email notifier for each Application and API Primary Owner.
 
 *This script is not mandatory !*

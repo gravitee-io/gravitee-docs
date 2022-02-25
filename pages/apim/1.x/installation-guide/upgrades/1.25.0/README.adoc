@@ -1,3 +1,7 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/1.x/mongodb
+endif::[]
+
 = Upgrade to 1.25.0
 
 == Application management
@@ -11,8 +15,8 @@ To follow that new feature, the Rest Management API has been updated to reflect 
 == Repository
 === Mongodb
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/1.x/1.25.0/mongodb/1-applications-migration.js[upgrades/1.25.0/mongodb/1-applications-migration.js]::
+link:{mongodb-scripts-dir}/1.25.0/1-applications-migration.js[/apim/1.x/mongodb/1.25.0/1-applications-migration.js]::
 This script update applications according to the new way Gravitee.io is managing them.
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/1.x/1.25.0/mongodb/2-users-archived-upgrade.js[upgrades/1.25.0/mongodb/2-users-archived-upgrade.js]::
+link:{mongodb-scripts-dir}/1.25.0/2-users-archived-upgrade.js[/apim/1.x/mongodb/1.25.0/mongodb/2-users-archived-upgrade.js]::
 This script update the sourceId of all archived users.

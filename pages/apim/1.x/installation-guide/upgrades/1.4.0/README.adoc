@@ -1,3 +1,7 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/1.x/mongodb
+endif::[]
+
 = Upgrade to 1.4.0
 
 == Portal
@@ -11,10 +15,10 @@ This new configuration has exactly the same content as the previous one, minus t
 
 Before running any script, please create a dump of your existing database.
 
-upgrades/1.4.0/mongodb/1-update-application.js::
+link:{mongodb-scripts-dir}/1.4.0/1-update-application.js[/apim/1.x/mongodb/1-update-application.js]::
 This script creates the new `status` attribute on all applications with the default value `ACTIVE`.
 
-upgrades/1.4.0/mongodb/2-create-archived-app.js::
+link:{mongodb-scripts-dir}/1.4.0/2-create-archived-app.js[/apim/1.x/mongodb/2-create-archived-app.js]::
 This script creates deleted apps with `status=ARCHIVED` for each subscriptions where there is no application associated.
 
 WARNING: edit the script before running it. You have to choose the user owner of the ARCHIVED applications.

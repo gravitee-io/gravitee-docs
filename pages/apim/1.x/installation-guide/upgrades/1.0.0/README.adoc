@@ -1,7 +1,13 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/1.x/mongodb
+endif::[]
+
 = Upgrade to 1.0.0
 
 == Repository
+
 === Mongodb
+
 We have refactored how Gravitee.io manages memberships.
 If you have a 0.x.x version of Gravitee.io using the Mongodb Repository, you have to run following scripts to migrate your datas.
 
@@ -9,40 +15,40 @@ Before running any script, please create a dump of your existing database:
 
 > mongodump --host "localhost:27017" --archive=/path/to/your/archive/gravitee.dump.archive --db gravitee
 
-upgrades/1.0.0/mongodb/1-copy-members-to-memberships.js::
+link:{mongodb-scripts-dir}/1.0.0/1-copy-members-to-memberships.js[/apim/1.x/mongodb/1-copy-members-to-memberships.js]::
 This script creates the new `memberships` collection in MongoDB and add all api/application members.
 It does not remove old values from the `apis` and `applications` collections.
 
 > mongo gravitee < 1-copy-members-to-memberships.js
 
 
-upgrades/1.0.0/mongodb/2-remove-members.js::
+link:{mongodb-scripts-dir}/1.0.0/2-remove-members.js[/apim/1.x/mongodb/1.0.0/2-remove-members.js]::
 This script removes old datas. **It must be run after** `1-copy-members-to-memberships.js`
 **This operation is irreversible**.
 
 > mongo gravitee < 2-remove-members.js
 
-upgrades/1.0.0/mongodb/3-endpoint-configuration.js::
+link:{mongodb-scripts-dir}/1.0.0/3-endpoint-configuration.js[/apim/1.x/mongodb/1.0.0/3-endpoint-configuration.js]::
 **This operation is irreversible**.
 
 > mongo gravitee < 3-endpoint-configuration.js
 
-upgrades/1.0.0/mongodb/4-remove-api-key-policy.js::
+link:{mongodb-scripts-dir}/1.0.0/4-remove-api-key-policy.js[/apim/1.x/mongodb/1.0.0/4-remove-api-key-policy.js]::
 **This operation is irreversible**.
 
 > mongo gravitee < 4-remove-api-key-policy.js
 
-upgrades/1.0.0/mongodb/5-update-published-api.js::
+link:{mongodb-scripts-dir}/1.0.0/5-update-published-api.js[/apim/1.x/mongodb/1.0.0/5-update-published-api.js]::
 **This operation is irreversible**.
 
 > mongo gravitee < 5-update-published-api.js
 
-upgrades/1.0.0/mongodb/6-default-plan-with-existing-apikeys.js::
+link:{mongodb-scripts-dir}/1.0.0/6-default-plan-with-existing-apikeys.js[/apim/1.x/mongodb/1.0.0/6-default-plan-with-existing-apikeys.js]::
 **This operation is irreversible**.
 
 > mongo gravitee < 6-default-plan-with-existing-apikeys.js
 
-upgrades/1.0.0/mongodb/7-copy-views-to-api.js::
+link:{mongodb-scripts-dir}/1.0.0/7-copy-views-to-api.js[/apim/1.x/mongodb/1.0.0/7-copy-views-to-api.js]::
 **This operation is irreversible**.
 
 > mongo gravitee < 7-copy-views-to-api.js

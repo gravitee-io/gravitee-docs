@@ -1,6 +1,11 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/1.x/mongodb
+endif::[]
+
 = Upgrade to 1.9.0
 
 == Breaking Changes
+
 === Expression language
 
 In this new version (and thanks to issue https://github.com/gravitee-io/issues/issues/720[#720]),
@@ -36,13 +41,14 @@ is still valid and is equivalent to:
 ```
 
 == Repository
+
 === Mongodb
 
 Before running any script, please create a dump of your existing database.
 
-upgrades/1.9.0/mongodb/1-convert-groups.js::
+link:{mongodb-scripts-dir}/1.9.0/1-convert-groups.js[/apim/1.x/mongodb/1.9.0/1-convert-groups.js]::
 This script convert old group system to the new one.
 
-upgrades/1.9.0/mongodb/2-remove-old-attributes.js::
+link:{mongodb-scripts-dir}/1.9.0/2-remove-old-attributes.js[/apim/1.x/mongodb/1.9.0/2-remove-old-attributes.js]::
 This script remove all non requisite attributes.
 

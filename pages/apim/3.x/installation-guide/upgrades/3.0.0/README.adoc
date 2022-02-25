@@ -1,3 +1,7 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/3.x/mongodb
+endif::[]
+
 = Upgrade to 3.0.0
 
 == Important
@@ -88,29 +92,29 @@ Here's a correlation table of permissions before and after migration :
 
 Before running any script, please create a dump of your existing database.
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.0/mongodb/1-collections-linked-to-environment-or-organization.js[upgrades/3.x/3.0.0/mongodb/1-collections-linked-to-environment-or-organization.js]::
+link:{mongodb-scripts-dir}/3.0.0/1-collections-linked-to-environment-or-organization.js[/apim/3.x/mongodb/3.0.0/1-collections-linked-to-environment-or-organization.js]::
 This script adds new fields that refer the default environment or the default organization.
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.0/mongodb/2-roles-groups-and-memberships-migration.js[upgrades/3.x/3.0.0/mongodb/2-roles-groups-and-memberships-migration.js]::
+link:{mongodb-scripts-dir}/3.0.0/2-roles-groups-and-memberships-migration.js[/apim/3.x/mongodb/3.0.0/2-roles-groups-and-memberships-migration.js]::
 This script migrates permission values in roles since MANAGEMENT roles and PORTAL roles have been merged and dispatched into new ENVIRONMENT and ORGANIZATION roles.
 It also updates memberships and groups by adding or removing columns.
 All previous indexes for *roles* and *memberships* will be deleted and replaced by new indexes.
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.0/mongodb/3-replace-apiArray-by-unique-api.js[upgrades/3.x/3.0.0/mongodb/3-replace-apiArray-by-unique-api.js]::
+link:{mongodb-scripts-dir}/3.0.0/3-replace-apiArray-by-unique-api.js[/apim/3.x/mongodb/3.0.0/3-replace-apiArray-by-unique-api.js]::
 This script adds a new field that refers the api and remove the api array.
 All previous indexes for *plans* will be deleted and replaced by new indexes.
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.0/mongodb/4-remove-devMode.js[upgrades/3.x/3.0.0/mongodb/4-remove-devMode.js]::
+link:{mongodb-scripts-dir}/3.0.0/4-remove-devMode.js[/apim/3.x/mongodb/3.0.0/4-remove-devMode.js]::
 This script removes the 'devMode' parameter, since the legacy portal has been replaced.
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.0/mongodb/5-remove-orphan-documentation-pages.js[upgrades/3.x/3.0.0/mongodb/5-remove-orphan-documentation-pages.js]::
+link:{mongodb-scripts-dir}/3.0.0/5-remove-orphan-documentation-pages.js[/apim/3.x/mongodb/3.0.0/5-remove-orphan-documentation-pages.js]::
 Due to a bug in a previous version of gravitee when importing APIs, orphan pages may have been created. Orphan pages are all pages with a parentId but no page with such id exists.
 In some situation, this can lead to errors when accessing portal or apis documentation.
 You may use this script to find and remove orphan pages.
 
 _Note: You can make a 'dry run' by commenting line 6 and uncommenting line 5._
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.0/mongodb/6-remove-ALL-view-and-defaultView-field.js[upgrades/3.x/3.0.0/mongodb/6-remove-ALL-view-and-defaultView-field.js]::
+link:{mongodb-scripts-dir}/3.0.0/6-remove-ALL-view-and-defaultView-field.js[/apim/3.x/mongodb/3.0.0/6-remove-ALL-view-and-defaultView-field.js]::
 This script removes the 'All' *view*, since the legacy portal has been replaced and the new portal does not need this default view anymore. The script also updates existing views to remove *defaultView* field.
 
 == Upgrader

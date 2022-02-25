@@ -5,4 +5,3 @@ db.apis.find({ definition: /"json-validation" : {"scope":"REQUEST"|"json-validat
         .replace(/"json-validation" : {"scope":"RESPONSE"/, "\"json-validation\" : {\"scope\":\"RESPONSE_CONTENT\"");
     db.apis.save(api);
 });
-

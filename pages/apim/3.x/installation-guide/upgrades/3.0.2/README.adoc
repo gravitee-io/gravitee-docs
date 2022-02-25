@@ -1,3 +1,7 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/3.x/mongodb
+endif::[]
+
 = Upgrade to 3.0.2
 
 == 'View' renamed to 'Categories'
@@ -10,5 +14,5 @@ Linked to this issue: https://github.com/gravitee-io/issues/issues/3843[#3843]
 
 Before running any script, please create a dump of your existing database.
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.2/mongodb/1-rename-view-in-category.js[upgrades/3.x/3.0.2/mongodb/1-rename-view-in-category.js]::
+link:{mongodb-scripts-dir}/3.0.2/1-rename-view-in-category.js[upgrades/3.x/3.0.2/mongodb/1-rename-view-in-category.js]::
 This script renames a field in 'apis' collection, rename 'views' collection, change 3 parameters, replace 'view' by 'category' in 'audits' collection and convert documentation view LINK to ctagory LINK

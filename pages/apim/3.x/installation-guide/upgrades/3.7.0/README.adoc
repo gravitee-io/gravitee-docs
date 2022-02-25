@@ -1,3 +1,7 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/3.x/mongodb
+endif::[]
+
 = Upgrade to 3.7.0
 
 == Repository
@@ -29,7 +33,7 @@ This script rename all the collections adding the `prefix` and `rateLimitPrefix`
 For the following steps, we admit you choose this prefix: prefix_
 
 1. Modify `gravitee.yml` to configure `management.mongodb.prefix` and `ratelimit.mongodb.prefix` if needed.
-2. Run the following script to rename your collections: https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.7.0/mongodb/1-rename-collections-with-prefix.js[upgrades/3.x/3.7.0/mongodb/1-rename-collections-with-prefix.js]::
+2. Run the following script to rename your collections: link:{mongodb-scripts-dir}/3.7.0/1-rename-collections-with-prefix.js[]
 3. Run your instances!
 
 === JDBC

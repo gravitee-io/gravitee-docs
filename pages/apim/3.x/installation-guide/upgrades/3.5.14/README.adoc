@@ -1,3 +1,7 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/3.x/mongodb
+endif::[]
+
 = Upgrade to 3.5.14
 
 == Repository
@@ -6,7 +10,7 @@
 
 Before running any script, please create a dump of your existing database.
 
-https://raw.githubusercontent.com/gravitee-io/release/3.5.x/upgrades/3.x/3.5.14/1-fix-cors-env-vars.js[upgrades/3.x/3.5.14/1-fix-cors-env-vars.js]::
+link:{mongodb-scripts-dir}/3.5.14/1-fix-cors-env-vars.js[/apim/3.x/mongodb/3.5.14/1-fix-cors-env-vars.js]::
 This script migrate CORS environment variables for portal and console. (See below).
 
 == Breaking Changes

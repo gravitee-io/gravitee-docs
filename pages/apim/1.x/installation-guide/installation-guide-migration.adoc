@@ -3,5 +3,66 @@
 :page-folder: apim/installation-guide
 :page-toc: true
 :page-layout: apim1x
+:mongodb-scripts-dir: {{ '/apim/1.x/mongodb' | relative_url }}
 
-include::https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/1.x/README.adoc[]
+ifndef::env-github[]
+
+NOTE: Files specified in this guide can be found at https://github.com/gravitee-io/release/tree/master/upgrades/1.x
+
+WARNING: If you plan to skip versions when you upgrade, ensure that you read the version-specific upgrade notes for each intermediate version. You may be required to perform manual actions as part of the upgrade.
+
+WARNING: Be sure to run scripts on the correct database since `gravitee` is not always the default database! Check your db name by running `show dbs;`
+
+endif::[]
+
+include::upgrades/1.30.24/README.adoc[leveloffset=+1]
+
+include::upgrades/1.26.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.25.23/README.adoc[leveloffset=+1]
+
+include::upgrades/1.25.11/README.adoc[leveloffset=+1]
+
+include::upgrades/1.25.5/README.adoc[leveloffset=+1]
+
+include::upgrades/1.25.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.24.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.23.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.22.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.21.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.20.13/README.adoc[leveloffset=+1]
+
+include::upgrades/1.20.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.19.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.16.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.14.3/README.adoc[leveloffset=+1]
+
+include::upgrades/1.14.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.13.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.12.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.11.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.10.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.9.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.8.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.5.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.4.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.1.0/README.adoc[leveloffset=+1]
+
+include::upgrades/1.0.0/README.adoc[leveloffset=+1]

@@ -1,7 +1,11 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/1.x/mongodb
+endif::[]
+
 = Upgrade to 1.25.23
 
 == Repository
 === Mongodb
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/1.x/1.25.23/mongodb/1-memberships-archived-apps-migration.js[upgrades/1.25.23/mongodb/1-memberships-archived-apps-migration.js]::
+link:{mongodb-scripts-dir}/1.25.23/1-memberships-archived-apps-migration.js[/apim/1.x/mongodb/1.25.23/1-memberships-archived-apps-migration.js]::
 This script remove memberships of archived applications.

@@ -1,3 +1,7 @@
+ifdef::env-github[]
+:mongodb-scripts-dir: /apim/3.x/mongodb
+endif::[]
+
 = Upgrade to 3.9.0
 
 == Warning
@@ -38,8 +42,8 @@ If you are using these permissions, please update them for the scope `ORGANIZATI
 
 Before running any script, please create a dump of your existing database.
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.9.0/mongodb/1-tags-and-tenants-migration.js[upgrades/3.x/3.9.0/mongodb/1-tags-and-tenants-migration.js]::
+link:{mongodb-scripts-dir}/3.9.0/1-tags-and-tenants-migration.js[/apim/3.x/mongodb/3.9.0/1-tags-and-tenants-migration.js]::
 This script adds referenceId set to 'DEFAULT' and referenceType set to 'ORGANIZATION' to tags, tenants and entrypoint collections.
 
-https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.9.0/mongodb/2-events-migration.js[upgrades/3.x/3.9.0/mongodb/2-events-migration.js]::
+link:{mongodb-scripts-dir}/3.9.0/2-events-migration.js[/apim/3.x/mongodb/3.9.0/2-events-migration.js]::
 This script modifies events, so an event can be linked to more than one environment.
