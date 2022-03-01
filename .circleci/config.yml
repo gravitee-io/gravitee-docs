@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   secrethub: secrethub/cli@1.1
-  gh: circleci/github-cli@1.0.5
+  gh: circleci/github-cli@1.1.0
 
 commands:
   compute-sanitized-branch-name:
