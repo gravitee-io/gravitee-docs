@@ -105,7 +105,7 @@ jobs:
           command: |
             az login --service-principal -u $AZURE_APPLICATION_ID --tenant $AZURE_TENANT -p $AZURE_APPLICATION_SECRET
 
-            lowerRange=date -d 'now - 30 days'
+            lowerRange=$(date -d 'now - 30 days')
 
             for containerName in $(az storage container list  | jq -r '.[] | .name'); do
               lastModifiedDateString=$(az storage blob list -c $containerName --num-results 1 | jq -r '.[] | .properties.lastModified')
