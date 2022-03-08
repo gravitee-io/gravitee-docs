@@ -211,6 +211,49 @@ management:
 #    socketTimeout: 250
 ----
 
+=== Configure notifications on certificates expiry
+
+[label label-version]#New in version 3.17#
+
+Gravitee AM provides a notification mechanism to inform about certificates expiry. When enabled, domain primary owners and domain owners will receive a notification using the configured channel (UI or Email). These notifications will be triggered based on several conditions: 
+
+* the frequence on which the certificates expiry dates are evaluate
+* the number of days before the certificate expiry
+* the number of days to wait before a notification is going to be resent
+
+All the settings here after have to be defined into the `services` section of the `gravitee.yaml` file.
+
+NOTE: settings for the email smtp server are based on the link:#configure_email[Configure email] section.
+
+[source,yaml]
+----
+  notifier:
+    enabled: false
+    # when multiple Managemet REST API instances are deployed, 
+    # enable this settings will introduce random number of seconds 
+    # before each evaluation of a notification to try to avoid duplicates
+    tryAvoidDuplicateNotification: false
+    # frequency on which the notifier mechanism will test
+    # if new notifications need to be send
+    # default: 0 0 5 * * * (every day at 5am)
+    cronExpression: 0 0 5 * * *
+    # Settings for Domain Certificate Expiry notifications
+    certificates:
+      # send notification if certificate is going to expire in less than 14 days
+      expiryThreshold: 14
+      # resend notification after 2 days
+      resendAfter: 2
+    email:
+      enabled: true
+      sslTrustAll: false
+      sslKeyStore: /path/to/keystore
+      sslKeyStorePassword: changeme
+    ui:
+      enabled: true
+----
+
+
+
 == Configure load balancing
 
 If you are planning to use multiple instances, you need to implement sticky sessions in your load balancer, until https://github.com/gravitee-io/issues/issues/2523[this issue] is closed.
