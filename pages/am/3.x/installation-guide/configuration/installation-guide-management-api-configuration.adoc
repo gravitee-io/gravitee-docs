@@ -223,36 +223,53 @@ Gravitee AM provides a notification mechanism to inform about certificates expir
 
 All the settings here after have to be defined into the `services` section of the `gravitee.yaml` file.
 
-NOTE: settings for the email smtp server are based on the link:#configure_email[Configure email] section.
-
 [source,yaml]
 ----
+services:
+  # platform notifier service
   notifier:
-    enabled: false
-    # when multiple Managemet REST API instances are deployed, 
-    # enable this settings will introduce random number of seconds 
-    # before each evaluation of a notification to try to avoid duplicates
+    enabled: true
     tryAvoidDuplicateNotification: false
+
+  # Rules about certificate expiry notifications.
+  # Require the platform notifier service.
+  certificate:
+    enabled: true
     # frequency on which the notifier mechanism will test
     # if new notifications need to be send
     # default: 0 0 5 * * * (every day at 5am)
     cronExpression: 0 0 5 * * *
-    # Settings for Domain Certificate Expiry notifications
-    certificates:
-      # send notification if certificate is going to expire in less than 14 days
-      expiryThreshold: 14
-      # resend notification after 2 days
-      resendAfter: 2
-    email:
-      enabled: true
-      sslTrustAll: false
-      sslKeyStore: /path/to/keystore
-      sslKeyStorePassword: changeme
-    ui:
-      enabled: true
+    # send notification if certificate is going to expire in less than 20 days,
+    # then send again the notification 15 days before the expiry, then 10...
+    expiryThresholds: 20,15,10,5,1
+    # Subject of the email send by the email notifier
+    expiryEmailSubject: Certificate will expire soon
 ----
 
+In addition of the configuration for services, the notification channels have to be defined. Currently, there are two channel :
 
+* email: If enable, a notification will be sent by email using the smtp settings defined in this section.
+* ui: If enable, a notification icon will be available on top of the console UI to inform about new notifications.
+
+[source,yaml]
+----
+notifiers:
+  email:
+    enabled: false
+    host: smtp.my.domain
+    port: 587
+    username: user@my.domain
+    password: password
+    from: noreply@my.domain
+    startTLSEnabled: false
+    sslTrustAll: false
+    #sslKeyStore: /path/to/keystore
+    #sslKeyStorePassword: changeme
+  ui:
+    enabled: true
+----
+
+image::{% link images/am/current/graviteeio-am-installationguide-certificates-ui.png %}[]
 
 == Configure load balancing
 
