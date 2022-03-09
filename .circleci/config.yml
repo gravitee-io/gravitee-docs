@@ -43,7 +43,9 @@ jobs:
 
   deploy-on-azure-storage:
     docker:
-      - image: mcr.microsoft.com/azure-cli:latest
+      # Version can be found here https://docs.microsoft.com/en-us/cli/azure/release-notes-azure-cli
+      # be careful when updating the version as it looks it is not following semver
+      - image: mcr.microsoft.com/azure-cli:2.34.1
     resource_class: small
     steps:
       - attach_workspace:
@@ -53,8 +55,12 @@ jobs:
           name: Login into Azure Storage and upload dist
           command: |
             az login --service-principal -u $AZURE_APPLICATION_ID --tenant $AZURE_TENANT -p $AZURE_APPLICATION_SECRET
-            az storage container create -n $BRANCH_ID --public-access blob
-            az storage blob upload-batch -s _site -d $BRANCH_ID
+            CONTAINER_EXISTS=$(az storage container exists -n $BRANCH_ID | jq .exists)
+            if [ "$CONTAINER_EXISTS" = false ] ; then
+              echo "Creating container $BRANCH_ID"
+              az storage container create -n $BRANCH_ID --public-access blob
+            fi   
+            az storage blob upload-batch -s _site -d $BRANCH_ID --overwrite true
 
   comment-pr-after-deployment:
     docker:
