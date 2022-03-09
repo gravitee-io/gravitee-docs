@@ -1,0 +1,61 @@
+= Application Identity Providers
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_client_identity_providers.html
+:page-folder: am/user-guide
+:page-layout: am
+
+== Overview
+
+AM allows your application to use different identity providers. If you haven't configured your providers yet,
+visit the link:{{ '/am/current/am_userguide_create_identity_provider.html' | relative_url }}[Identity Provider^] guide.
+
+The application identity providers are separated into two sections:
+
+- The regular Identity Providers (called also *internal*) that operate inside and AM without redirecting to another provider
+- The Social/Enterprise Identity Providers that require an external service to perform authentication (usually via SSO)
+
+image::{% link images/am/current/graviteeio-am-userguide-application-identity-providers.png %}[]
+
+You can enable/disable them to include them within your authentication flow.
+
+== Priority
+
+[label label-version]#New in version 3.17#
+
+Identity provider priority enables processing authentication in a certain order. It gives more control over the authentication flow by deciding which provider should evaluate credentials
+first.
+
+In order to change the priority of the providers:
+
+ - Make sure your provider is *selected*
+ - Simply *drag-and-drop* the providers
+ - Save your settings
+
+== Selection rules
+
+[label label-version]#New in version 3.17#
+
+Identity provider selection rules also give you more control over the authentication via link:{{ '/am/current/am_userguide_expression_language.html' | relative_url }}[Expression Language^]
+
+When coupled with link:{{ '/am/current/am_userguide_policies_extension_points.html' | relative_url }}[Flows^] you can decide which provider will be used to authenticate your end users.
+
+image::{% link images/am/current/graviteeio-am-userguide-application-identity-providers-selection-rule.png %}[]
+
+To apply a selection rule:
+
+- Click on the *Selection rule* icon
+- Enter your expression language rule
+- Validate and save your settings
+
+When applying rules on *regular* Identity Providers:
+
+- If the rule is empty, the provider *will be* taken into account (this is to be retro-compatible when migrating from a previous version)
+- Otherwise, AM will authenticate with the first identity provider where the rule matches.
+
+If you are not using link:{{ 'am/current/am_userguide_login_identifier_first_login_flow.html' | relative_url }}[Identifier First Login] the rule won't
+be effective on Social/Enterprise providers
+
+However, if you are using Identifier First Login:
+
+- If the rule is empty, the provider *WILL NOT BE* taken into account (this is to be retro-compatible when migrating from a previous version)
+- Otherwise, AM will authenticate with the first identity provider where the rule matches.
