@@ -83,3 +83,24 @@ image::{% link images/am/current/graviteeio-am-userguide-mfa-email-enroll.png %}
 image::{% link images/am/current/graviteeio-am-userguide-mfa-email-challenge.png %}[Email Challenge]
 
 NOTE: You can design forms using link:{{ '/am/current/am_userguide_user_management_forms.html' | relative_url }}[Custom forms^]. The enrollment form must send the email address using the `email` parameter.
+
+== Recovery Code
+
+Recovery code factor generates a set of recovery codes which the user can use to authenticate in case the other options such as SMS or email verification is not available.
+The recovery code is generated and shown only once to the user during the enrollment or logging process. Hence, it is advisable to download and keep the recovery code in a safe place.
+
+NOTE: The generated recovery code is alphanumeric and each recovery code can be used once to ensure greater security.
+
+The image below shows an example recovery code factor configuration.
+The configuration is flexible and it allows to set the number of recovery codes and the number of digits for each recovery code according to the customer requirements.
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-recovery-code-config.png %}[Recovery Code Configuration]
+
+Here is an example of how it looks like when the recovery codes are generated during the enrollment process.
+The download option allows users to download the recovery codes in pdf format.
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-recovery-code-sample.png %}[Recovery Code]
+
+And the image below shows the option when an application is configured with an active recovery code factor:
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-recovery-code-option.png %}[Recovery Code]
