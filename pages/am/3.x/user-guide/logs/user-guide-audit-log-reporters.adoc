@@ -6,7 +6,7 @@
 
 == Storage and retention log
 
-Audit events are managed (store and fetch) by plugins called link:{{ '/apim_overview_plugins.html#gravitee-plugins-reporters' | relative_url }}[Reporters^].
+Audit events are managed (store and fetch) by plugins called link:{{ 'am/current/am_installguide_reporters.html' | relative_url }}[Reporters^].
 
 By default, a reporter is created for each security domain and allows you to choose where the audit logs will be stored.
 
