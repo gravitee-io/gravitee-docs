@@ -69,7 +69,7 @@ When sending *Email* notifications, you specify the same information as for port
 
 When you click *SEND*, APIM sends an email to all the users with the specified role who have an email address configured for their profile (as long as they have a valid application subscription, in the case of API level subscriptions).
 
-TIP: For more details on configuring user profiles, see link:{{ '/apim/3.x/apim_adminguide_users_and_groups' | relative_url }}[Users and groups^].
+TIP: For more details on configuring user profiles, see link:{{ '/apim/3.x/apim_adminguide_users_and_groups.html' | relative_url }}[Users and groups^].
 
 === HTTP POST notification
 
