@@ -95,7 +95,7 @@ $ docker run \
 ==== Configure The Container
 
 If you want to override the default configuration for MongoDB, Elasticsearch and any other properties included in the `gravitee.yml` file,
-you have to use environment variables. For more information, see the APIM API link:{{ '/apim/3.X/apim_installguide_rest_apis_configuration.html#environment_variables' | relative_url }}[configuration] section.
+you have to use environment variables. For more information, see the APIM API link:{{ '/apim/3.x/apim_installguide_rest_apis_configuration.html#environment_variables' | relative_url }}[configuration] section.
 
 The following example changes the MongoDB connection:
 [source,shell]
