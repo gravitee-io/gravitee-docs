@@ -43,7 +43,7 @@ image:{% link images/apim/3.x/api-publisher-guide/analytics/logs-simple-view.png
 == Configure API logging
 
 NOTE: If you configured a maximum logging duration in the global settings, the maximum duration will be applied to the API logging configuration specified here.
-For more details, see link:\apim\3.x\apim_how_to_configuration.html#update-the-default-apim-settings[Update the default APIM settings^].
+For more details, see link:{{ '/apim/3.x/apim_how_to_configuration.html#update-the-default-apim-settings' | relative_url }}[Update the default APIM settings^].
 
 WARNING: Logging configuration changes can have a significant impact on performance. Proceed with caution.
 
