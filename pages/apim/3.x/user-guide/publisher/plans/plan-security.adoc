@@ -99,8 +99,7 @@ Because they may be used to call APIs that are owned by another group of publish
 
 image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-api-key-3.png %}[]
 
-Instead, it is the responsability of the API owner to perform such operations, and for this reason, shared API key can only
-be revoked from the application owner subscription view.
+Instead, it is the responsability of the application owner to perform such operations, and for this reason, shared API keys can only be revoked from the application owner subscription view.
 
 image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-api-key-4.png %}[]
 
