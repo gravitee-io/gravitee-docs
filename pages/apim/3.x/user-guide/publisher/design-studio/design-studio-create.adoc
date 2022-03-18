@@ -55,6 +55,18 @@ In the *CONFIGURATION* tab, select *Best match* if you want APIM to match your f
 
 image:{% link images/apim/3.x/api-publisher-guide/design-studio/configuration-tab.png %}[]
 
+Best match flow is chosen if the request matches the flow. A plain text part of the path will take precedence over a path parameter.
+
+It means, reading from left to right, each part of the path is compared, keeping the better matching. Strict equality between part of request path and flow path prevails over a path parameter.
+
+For example, with those flows configured:
+
+- `/test/:id`
+- `/test/subtest`
+
+If the request is `/test/55`, the resulting flow will be `/test/:id`.
+If the request is `/test/subtest`, the resulting flow will be `/test/subtest`.
+
 [[api-properties]]
 === Define properties for your API flows
 
