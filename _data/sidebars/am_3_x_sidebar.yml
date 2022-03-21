@@ -473,7 +473,13 @@ entries:
                           - title: Slack
                             output: web
                             url: /am/current/am_userguide_alerts_notifications_slack.html
-
+              - title: Expression Language
+                output: web
+                subfolderitems:
+                  - title: Overview
+                    output: web
+                    url: /am/current/am_userguide_expression_language.html
+                    
       - title: Administration Guide
         output: web
         folderitems:
