@@ -1,0 +1,17 @@
+= Upgrade to 3.10.9
+
+== Elastic Search reporter plugins configuration
+
+Before Gravitee 3.10.9 :
+
+- For ES>=7, GeoIp and UserAgent plugins are enabled by default in Gravitee, and can't be disabled
+- For ES<7, those plugins are disabled by default and can be enabled in Gravitee configuration.
+
+Since Gravitee 3.10.9, it behave the same way for all ES versions :
+GeoIp and UserAgent plugins are be enabled by default, and can be disabled by overriding default `reporters.elasticsearch.pipeline.plugins.ingest` configuration.
+
+If your Gravitee configuration enables a plugin which is not available on your ES instance, you will get this kind of error message on gateway startup :
+
+`Unable to create ES pipeline 'gravitee_pipeline': status[400] response[{"error":{"root_cause":[{"reason":"No processor type exists with name [geoip]","processor_type":"geoip"}]`
+
+And then, you have to override `reporters.elasticsearch.pipeline.plugins.ingest` default configuration, to remove unrelevant plugin.

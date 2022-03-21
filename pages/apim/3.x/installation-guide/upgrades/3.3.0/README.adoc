@@ -1,0 +1,56 @@
+= Upgrade to 3.3.0
+
+== Repository
+
+=== Mongodb
+
+Before running any script, please create a dump of your existing database.
+
+link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/3.3.0/1-update-users-and-identityProviders.js[/apim/3.x/mongodb/3.3.0/1-update-users-and-identityProviders.js]::
+This script replaces *referenceId* and *referenceType* with *organizationId* for `users` and `identity_providers` collections.
+
+link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/3.3.0/2-update-json-validation-policy-scopes.js[/apim/3.x/mongodb/3.3.0/2-update-json-validation-policy-scopes.js]::
+This script replaces *REQUEST* and *RESPONSE* with *REQUEST_CONTENT* and *RESPONSE_CONTENT* for json-validation policy configuration in `apis` collections.
+
+
+== Deprecation
+
+=== Management API
+Starting with this version, `User` and `IdentityProvider` are now linked to an organization and not to an environment.
+As a consequence, the Management REST API has been updated.
+If you are using the REST API directly, please note that you should adapt your URL for these resources as they will no longer be accessible from version 4.x
+In the meantime, these resources will be tagged as `Deprecated`.
+
+[options="header"]
+|=============
+|Deprecated in 3.3.0, deleted in 4.x                                                                         |Since 3.3.0
+|/organizations/DEFAULT/environments/DEFAULT/auth/oauth2/{identity}                                          |/organizations/DEFAULT/auth/oauth2/{identity}
+|/organizations/DEFAULT/environments/DEFAULT/configuration/identities                                        |/organizations/DEFAULT/configuration/identities
+|/organizations/DEFAULT/environments/DEFAULT/configuration/identities/{identityProvider}                     |/organizations/DEFAULT/configuration/identities/{identityProvider}
+|/organizations/DEFAULT/environments/DEFAULT/configuration/rolescopes                                        |/organizations/DEFAULT/configuration/rolescopes
+|/organizations/DEFAULT/environments/DEFAULT/configuration/rolescopes/{scope}/roles                          |/organizations/DEFAULT/configuration/rolescopes/{scope}/roles
+|/organizations/DEFAULT/environments/DEFAULT/configuration/rolescopes/{scope}/roles/{role}                   |/organizations/DEFAULT/configuration/rolescopes/{scope}/roles/{role}
+|/organizations/DEFAULT/environments/DEFAULT/configuration/rolescopes/{scope}/roles/{role}/users             |/organizations/DEFAULT/configuration/rolescopes/{scope}/roles/{role}/users
+|/organizations/DEFAULT/environments/DEFAULT/configuration/rolescopes/{scope}/roles/{role}/users/{userId}    |/organizations/DEFAULT/configuration/rolescopes/{scope}/roles/{role}/users/{userId
+|/organizations/DEFAULT/environments/DEFAULT/search/users                                                    |/organizations/DEFAULT/search/users
+|/organizations/DEFAULT/environments/DEFAULT/user                                                            |/organizations/DEFAULT/user
+|/organizations/DEFAULT/environments/DEFAULT/user/subscribeNewsletter                                        |/organizations/DEFAULT/user/subscribeNewsletter
+|/organizations/DEFAULT/environments/DEFAULT/user/avatar                                                     |/organizations/DEFAULT/user/avatar
+|/organizations/DEFAULT/environments/DEFAULT/user/login                                                      |/organizations/DEFAULT/user/login
+|/organizations/DEFAULT/environments/DEFAULT/user/logout                                                     |/organizations/DEFAULT/user/logout
+|/organizations/DEFAULT/environments/DEFAULT/user/tasks                                                      |/organizations/DEFAULT/user/tasks
+|/organizations/DEFAULT/environments/DEFAULT/user/tags                                                       |/organizations/DEFAULT/user/tags
+|/organizations/DEFAULT/environments/DEFAULT/user/notifications                                              |/organizations/DEFAULT/user/notifications
+|/organizations/DEFAULT/environments/DEFAULT/user/tokens                                                     |/organizations/DEFAULT/user/tokens
+|/organizations/DEFAULT/environments/DEFAULT/user/tokens/{token}                                             |/organizations/DEFAULT/user/tokens/{token}
+|/organizations/DEFAULT/environments/DEFAULT/users                                                           |/organizations/DEFAULT/users
+|/organizations/DEFAULT/environments/DEFAULT/users/{id}                                                      |/organizations/DEFAULT/users/{id}
+|/organizations/DEFAULT/environments/DEFAULT/users/{id}/groups                                               |/organizations/DEFAULT/users/{id}/groups
+|/organizations/DEFAULT/environments/DEFAULT/users/{id}/memberships                                          |/organizations/DEFAULT/users/{id}/memberships
+|/organizations/DEFAULT/environments/DEFAULT/users/{id}/resetPassword                                        |/organizations/DEFAULT/users/{id}/resetPassword
+|/organizations/DEFAULT/environments/DEFAULT/users/{id}/avatar                                               |/organizations/DEFAULT/users/{id}/avatar
+|/organizations/DEFAULT/environments/DEFAULT/users/{id}/roles                                                |/organizations/DEFAULT/users/{id}/roles
+|/organizations/DEFAULT/environments/DEFAULT/users/{id}/_process                                             |/organizations/DEFAULT/users/{id}/_process
+|/organizations/DEFAULT/environments/DEFAULT/users/registration                                              |/organizations/DEFAULT/users/registration
+|/organizations/DEFAULT/environments/DEFAULT/users/registration/finalize                                     |/organizations/DEFAULT/users/registration/finalize
+|=============

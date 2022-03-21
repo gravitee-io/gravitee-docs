@@ -1,0 +1,11 @@
+= Upgrade to 1.25.5
+
+== New Rule to deploy an endpoint
+
+This release is more strict on how an endpoint could be deployed.
+Now, if an endpoint does not have a scheme (http or https) or not have a host (not at all or an invalid ip adress for example), the endpoint will not be created.
+
+The consequence is in the usage of the dynamic-routing policy. Before release 1.25.5, you can have an endpoint configured with this url: `http://999.999.999.999` and use the dynamic routing policy with as a target `https://api.mycompany.com`.
+And it worked.
+
+Now, because the endpoint uri is invalid, the endpoint will not be deployed and the request will failed. To fix that, change the url endpoint to `http://999`.

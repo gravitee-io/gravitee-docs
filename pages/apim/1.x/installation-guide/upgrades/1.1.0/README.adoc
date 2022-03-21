@@ -1,0 +1,10 @@
+= Upgrade to 1.1.0
+
+== Repository
+=== Mongodb
+
+Before running any script, please create a dump of your existing database.
+
+link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.1.0/1-update-plan.js[/apim/1.x/mongodb/1.1.0/1-update-plan.js]::
+This script move existing plans to the `PUBLISHED` state for backward compatibility
+

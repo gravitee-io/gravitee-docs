@@ -1,0 +1,26 @@
+= Upgrade to 1.20.13
+
+== Endpoints name restrictions
+
+WARNING: Issues https://github.com/gravitee-io/issues/issues/1578[#1578] and https://github.com/gravitee-io/issues/issues/1939[#1939] introduce a constraint in the endpoint name and endpoint group name.
+They must be unique in the all API and cannot contain `:`.
+
+=== Mongodb
+
+link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.20.13/Find.Endpoints.duplicated.js[/apim/1.x/mongodb/1.20.13/Find.Endpoints.duplicated.js]::
+This script find APIs where the uniqueness of endpoints name is not respected as the presence of the character `:` in the name.
+
+Example:
+```
+$ mongo graviteedb ~/Find.Endpoints.duplicated.js
+
+api.id:  00f8c9e7-78fc-4907-b8c9-e778fc790750
+api.name:  My API
+api.endpoints: [ foo,foo,bar ]
+
+api.id:  02e27174-e7b2-4ad8-a271-74e7b22ad8a0
+api.name:  My API 2
+api.endpoints: [ defa:ult ]
+
+```
+The first API contains 2 endpoints with the same name (`foo`)  and the second API has an endpoint with `:` in its name.
