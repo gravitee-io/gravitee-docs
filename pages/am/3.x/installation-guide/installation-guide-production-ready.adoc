@@ -120,6 +120,7 @@ jwt:
 . You can also update other values, such as:
 - the `expire-after` value, to change the validity period from the default value of one week
 - the `cookie-path` and `cookie-domain` values, to adapt them to your own environment; the values you define must be specific to the domain and path where the API is running and not apply to any another environment (for example, `.gravitee.io` could apply to any domain called `xxx.gravitee.io`, such as `dev.gravitee.io` or `qa.gravitee.io`)
+- the `cookie-secure` to adapt the Secure flag for the Session Cookie (should be set to true).
 
 == Step 4: Update CORS policy
 
@@ -152,7 +153,7 @@ Perform the following steps on the AM API component:
 #    enabled: true
 ----
 
-== Step 4: Update URL Redirects policy
+== Step 5: Update URL Redirects policy
 
 During login and logout operations AM API uses callback URLs to redirect the end-user back to the AM Console.
 
@@ -190,3 +191,41 @@ Perform the following steps on the AM API component:
 #      '*' is a valid value but is considered as a security risk as it will be opened to open redirection issues.
 #    allow-redirect-urls: https://am-console.mycompany.com/logout/callback
 ----
+
+== Step 6: Enable Secure Cookies
+
+Cookies are used by AM API and AM Gateway to keep minimal information about user session. The "Secure" flag instructs a user's browser to only send the cookie along with requests over HTTPS to in-scope addresses. 
+
+Perform the following steps on the AM API component:
+
+. Open your `gravitee.yml` file.
+. In the `jwt` section, update the `cookie-secure` value:
++
+----
+# JWT used to generate signed token for management security mechanism (Bearer Token) and to verify emails
+jwt:
+  secret: s3cR3t4grAv1t3310AMS1g1ingDftK3y # jwt secret used to sign JWT tokens (HMAC algorithm)
+  #kid: default-gravitee-AM-key # kid (key ID) Header Parameter is a hint indicating which key was used to secure the JWT
+  #expire-after: 604800 # the end of validity of the token in seconds (default 604800 = a week)
+  #issuer: https://gravitee.am # the principal that issued the JWT (default https://gravitee.am)
+  #cookie-path: / # cookie context path (default /)
+  #cookie-domain: .gravitee.io # cookie domain (default "")
+  #cookie-secure: true # cookie secure flag (default false)
+----
+
+Perform the following steps on the AM Gateway component:
+
+. Open your `gravitee.yml` file.
+. In the `http.cookie` section, update the `secure` value:
++
+----
+#http
+##  cookie:
+#    secure: false # Default is false for demonstration purpose but we highly recommend you to enable cookie secure.
+#    sameSite: Lax
+#    session:
+#      name: session-name
+#      timeout: 1800000 # (in milliseconds)
+----
+
+. You can also consider updating the `sameSite` to link:https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#syntax[Strict^]  and adapt the session timeout:
