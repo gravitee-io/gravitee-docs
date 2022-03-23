@@ -22,20 +22,3 @@ $ vi constants.json
 ```
 
 It describes where AM API is, so that it can send requests to it.
-
-=== Certicficate expiry
-
-[label label-version]#New in version 3.17#
-
-A setting is available to highligth certificate that are going to expire: `certificates.expiry_threshold` (in days)
-
-```
-{
-  "baseURL": "gravitee_am_management_api_url",
-  "certificates" : {
-    "expiry_threshold": 14
-  }
-}
-```
-
-image::{% link images/am/current/graviteeio-am-installationguide-certificates-ui.png %}[]
