@@ -10,45 +10,117 @@ AM comes with a list of predefined page templates, used for identity and access-
 
 === List of page templates
 
-[width="80%",cols="2,10",options="header"]
+[width="80%",cols="2,4,8",options="header"]
 |=========================================================
-|Form |Description
+|Form |Description |Context data
 
-|Login |
-Login page to authenticate users
+|Login
+|Login page to authenticate users
+|<</am/current/am_userguide_user_management_forms.html#request',Request>>
 
-|Identifier-first Login |
-First page of the Identifier-first login flow page to authenticate users
+<</am/current/am_userguide_user_management_forms.html#domain',Domain>>
 
-|WebAuthn Login |
-Passwordless page to authenticate users
+<</am/current/am_userguide_user_management_forms.html#client',Client>>
 
-|WebAuthn Register |
-Passwordless page to register authenticators (devices)
+|Identifier-first Login
+|First page of the Identifier-first login flow page to authenticate users
+|<</am/current/am_userguide_user_management_forms.html#request',Request>>
 
-|Registration |
-Registration page to create a user account
+<</am/current/am_userguide_user_management_forms.html#domain',Domain>>
 
-|Registration confirmation |
-Registration page to confirm an account
+<</am/current/am_userguide_user_management_forms.html#client',Client>>
 
-|Forgot password |
-Forgot password page to recover an account
+|WebAuthn Login
+|Passwordless page to authenticate users
+|<</am/current/am_userguide_user_management_forms.html#request',Request>>
 
-|Reset password |
-Reset password page to create a new password
+<</am/current/am_userguide_user_management_forms.html#domain',Domain>>
 
-|User consent |
-User consent page to acknowledge and accept data access
+<</am/current/am_userguide_user_management_forms.html#client',Client>>
 
-|MFA Enroll |
-Multi-factor authentication enrolment page
+|WebAuthn Register
+|Passwordless page to register authenticators (devices)
+|<</am/current/am_userguide_user_management_forms.html#request',Request>>
 
-|MFA Challenge |
-Multi-factor authentication verification page
+<</am/current/am_userguide_user_management_forms.html#domain',Domain>>
 
-|Error |
-Error page to display a message describing the problem
+<</am/current/am_userguide_user_management_forms.html#client',Client>>
+
+<</am/current/am_userguide_user_management_forms.html#user',User>>
+
+|Registration
+|Registration page to create a user account
+|<</am/current/am_userguide_user_management_forms.html#request',Request>>
+
+<</am/current/am_userguide_user_management_forms.html#domain',Domain>>
+
+<</am/current/am_userguide_user_management_forms.html#client',Client>>
+
+|Registration confirmation
+|Registration page to confirm an account
+|<</am/current/am_userguide_user_management_forms.html#request',Request>>
+
+<</am/current/am_userguide_user_management_forms.html#domain',Domain>>
+
+<</am/current/am_userguide_user_management_forms.html#client',Client>>
+
+<</am/current/am_userguide_user_management_forms.html#user',User>>
+
+|Forgot password
+|Forgot password page to recover an account
+|<</am/current/am_userguide_user_management_forms.html#request',Request>>
+
+<</am/current/am_userguide_user_management_forms.html#domain',Domain>>
+
+<</am/current/am_userguide_user_management_forms.html#client',Client>>
+
+|Reset password
+|Reset password page to create a new password
+|<</am/current/am_userguide_user_management_forms.html#request',Request>>
+
+<</am/current/am_userguide_user_management_forms.html#domain',Domain>>
+
+<</am/current/am_userguide_user_management_forms.html#client',Client>>
+
+<</am/current/am_userguide_user_management_forms.html#user',User>>
+
+|User consent
+|User consent page to acknowledge and accept data access
+|<</am/current/am_userguide_user_management_forms.html#request',Request>>
+
+<</am/current/am_userguide_user_management_forms.html#domain',Domain>>
+
+<</am/current/am_userguide_user_management_forms.html#client',Client>>
+
+<</am/current/am_userguide_user_management_forms.html#user',User>>
+
+|MFA Enroll
+|Multi-factor authentication enrolment page
+|<</am/current/am_userguide_user_management_forms.html#request',Request>>
+
+<</am/current/am_userguide_user_management_forms.html#domain',Domain>>
+
+<</am/current/am_userguide_user_management_forms.html#client',Client>>
+
+<</am/current/am_userguide_user_management_forms.html#user',User>>
+
+|MFA Challenge
+|Multi-factor authentication verification page
+|<</am/current/am_userguide_user_management_forms.html#request',Request>>
+
+<</am/current/am_userguide_user_management_forms.html#domain',Domain>>
+
+<</am/current/am_userguide_user_management_forms.html#client',Client>>
+
+<</am/current/am_userguide_user_management_forms.html#user',User>>
+
+|Error
+|Error page to display a message describing the problem
+|<</am/current/am_userguide_user_management_forms.html#request',Request>>
+
+<</am/current/am_userguide_user_management_forms.html#domain',Domain>>
+
+<</am/current/am_userguide_user_management_forms.html#client',Client>>
 
 |=========================================================
 
@@ -69,4 +141,141 @@ image::{% link images/am/current/graviteeio-am-userguide-um-forms.png %}[]
 
 NOTE: Each form requires a minimum configuration. You can retrieve contextual documentation on the HTML needed for each type of page by clicking the image:{% link images/icons/am-info-icon.png %}[role="icon"] information icon.
 
-image::{% link images/am/current/graviteeio-am-userguide-um-form-info.png %}[]
+== Execution context
+
+Each HTML template has access to the `Execution Context`, this means you can render the template based on anything in the context including the request or context data.
+
+Here are some examples:
+
+----
+<p th:text="${request.getParams().getFirst('param1')}"></p>
+<p th:text="${domain.getName()}"></p>
+<p th:text="${client.getClientName()}"></p>
+<p th:text="${user.getUsername()}"></p>
+----
+
+Please consult the link:http://www.thymeleaf.org/[Thymeleaf documentation] for how to write Thymeleaf templates.
+
+This section describes the objects provided by the execution context.
+
+NOTE: Some policies like the `HTTP Callout` one, can add values into the execution context which you can access by searching by attribute name (e.g `${attribute-name}`).
+
+NOTE: You can access the policy `Enrich Auth Flow` context data by using the following syntax `${authFlow.get('attribute-name'}`.
+
+=== Request
+==== Properties
+|===
+|Property |Description |Type |Always present
+
+.^|id
+|Request identifier
+^.^|string
+^.^|X
+
+.^|headers
+|Request headers
+^.^|key / value
+^.^|X
+
+.^|params
+|Request query parameters + Form attributes
+^.^|key / value
+^.^|X
+
+.^|path
+|Request path
+^.^| string
+^.^|X
+
+.^|paths
+|Request path parts
+^.^|array of string
+^.^|X
+
+|===
+
+=== Domain
+==== Properties
+|===
+|Property |Description |Type |Always present
+
+.^|id
+|Client technical identifier
+^.^|string
+^.^|X
+
+.^|clientId
+|Client OAuth 2.0 client_id headers
+^.^|string
+^.^|X
+
+.^|clientName
+|Client's name
+^.^|string
+^.^|
+
+|===
+
+=== Client
+==== Properties
+|===
+|Property |Description |Type |Always present
+
+.^|id
+|Client technical identifier
+^.^|string
+^.^|X
+
+.^|clientId
+|Client OAuth 2.0 client_id headers
+^.^|string
+^.^|X
+
+.^|clientName
+|Client's name
+^.^|string
+^.^|
+
+|===
+
+=== User
+==== Properties
+|===
+|Property |Description |Type |Always present
+
+.^|id
+|User technical identifier
+^.^|string
+^.^|X
+
+.^|username
+|User's username
+^.^|string
+^.^|X
+
+.^|email
+|User's email
+^.^|string
+^.^|
+
+.^|firstName
+|User's first name
+^.^|string
+^.^|
+
+.^|lastName
+|User's last name
+^.^|string
+^.^|
+
+.^|displayName
+|User's display name
+^.^|string
+^.^|
+
+.^|additionalInformation
+|User additional attributes
+^.^|key / value
+^.^|X
+
+|===
