@@ -1,0 +1,36 @@
+= Upgrade to 3.5.18
+
+== Breaking changes
+
+From with this version, the name of some components of Gravitee.io APIM changes.
+As a consequence, the following plugins are renamed :
+
+[cols="1,1"]
+|===
+|before 3.5.18|after 3.5.18
+
+|gravitee.repository.mongodb-3.5.x.zip
+|gravitee.*apim*.repository.mongodb-3.5.x.zip
+
+|gravitee.repository.jdbc-3.5.x.zip
+|gravitee.*apim*.repository.jdbc-3.5.x.zip
+
+|gravitee.repository.redis-3.5.x.zip
+|gravitee.*apim*.repository.redis-3.5.x.zip
+
+|gravitee.repository.hazelcast-3.5.x.zip
+|gravitee.*apim*.repository.hazelcast-3.5.x.zip
+
+|gravitee.repository.gateway.bridge.http.client-3.5.x.zip
+|gravitee.*apim*.repository.gateway.bridge.http.client-3.5.x.zip
+
+|gravitee.repository.gateway.bridge.http.server-3.5.x.zip
+|gravitee.*apim*.repository.gateway.bridge.http.server-3.5.x.zip
+|===
+
+These plugins have also been moved in another folder on https://download.gravitee.io.
+For instance, the MongoDB plugin is now available using this link:
+
+https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-apim-repository-mongodb/gravitee-apim-repository-mongodb-3.5.18.zip
+
+WARNING: In future versions, others plugins will be renamed. Stay tuned!

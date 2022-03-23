@@ -1,0 +1,139 @@
+= Upgrade to 3.10.8
+
+== Breaking changes
+
+=== Gateway
+From with this version, the name of the APIM Gateway component changes.
+As a consequence:
+
+1. The APIM Gateway component available on https://download.gravitee.io is now `gravitee-*apim-gateway*-x.y.z.zip` instead of `gravitee-gateway-x.y.z.zip`
+
+2. The name of the APIM Gateway folder within the full distribution zip file (graviteeio-full-x.y.z.zip) is now `graviteeio-*apim-gateway*-x.y.z` instead of `graviteeio-gateway-x.y.z`
+
+== Plans anomalies in database
+
+=== TLDR
+
+In Gravitee < 3.10.8, some processes have caused database inconsistencies, regarding plans and flows.
+
+Gravitee 3.10.8, introduces an automated process to detect and fix those anomalies.
+
+By default, this process will run in dry mode and won't do any database modification.
+Check the `gravitee-upgraders.log` file to see if any of your API is concerned, and how it will be fixed.
+
+After check, fix those database anomalies by disabling the dry mode.
+
+=== What are those database anomalies ?
+
+In Gravitee < 3.10.8, some processes have caused inconsistencies in database, regarding plans and flows.
+
+Concerned processes are :
+
+* import an API
+* promote an API
+* duplicate an API
+* rollback an API
+
+For concerned APIs, plans and flows displayed in console doesn't reflect the ones runned by gateway.
+
+=== How to fix it ?
+
+Gravitee 3.10.8, introduces an automated process to detect and fix those anomalies.
+
+This process will run on management API startup. By default, it will run in 'dry' mode, to detect and list anomalies without fixing them in database.
+
+After you checked those anomalies have to be fixed, you can disable the 'dry' mode, and restart your API to update your database.
+
+=== My APIs are concerned ?
+
+On management API startup, you will see this trace in the console, or the dedicated `gravitee-upgraders.log` log file.
+
+If no anomaly was detected :
+
+....
+14:19:43.171 [main] INFO  i.g.r.a.s.i.u.PlansDataFixUpgrader - Starting PlansDataFixUpgrader execution with dry-run enabled
+14:19:43.352 [main] INFO  i.g.r.a.s.i.u.PlansDataFixUpgrader - No plan data anomaly found
+14:19:43.360 [main] INFO  i.g.r.a.s.i.u.PlansDataFixUpgrader - Finishing PlansDataFixUpgrader execution
+....
+
+If anomalies were detected :
+....
+14:51:50.890 [main] INFO  i.g.r.a.s.i.u.PlansDataFixUpgrader - Starting PlansDataFixUpgrader execution with dry-run enabled
+14:51:50.979 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - 
+14:51:50.980 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - ##############################################################
+14:51:50.980 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - #                           WARNING                          #
+14:51:50.980 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - ##############################################################
+14:51:50.980 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - 
+14:51:50.980 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - We detected database anomalies in your plans data.
+14:51:50.980 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - 
+14:51:50.980 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - THIS IS A DRY RUN. DATABASE WON'T BE UPDATED.
+14:51:50.980 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - To fix anomalies, disable the dry run mode.
+14:51:50.980 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - Below, a list of changes that would happen without dry run
+14:51:50.980 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - See related documentation : https://docs.gravitee.io/apim/3.x/apim_installguide_migration.html#upgrade_to_3_10_8
+14:51:50.980 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - 
+14:51:50.980 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - ##############################################################
+14:51:50.980 [main] WARN  i.g.r.a.s.i.u.PlansDataFixUpgrader - 
+14:51:50.980 [main] INFO  i.g.r.a.s.i.u.PlansDataFixUpgrader - Plans anomalies found for API "Movies" (99999999-6595-9999-8a7e-796595985132) :
+14:51:50.981 [main] INFO  i.g.r.a.s.i.u.PlansDataFixUpgrader - - Will create plan "Gold-Recreated" for API "Movies" (99999999-6595-9999-8a7e-796595985132), which is missing in plans table
+14:51:50.982 [main] INFO  i.g.r.a.s.i.u.PlansDataFixUpgrader - - Will create plan "Free-Recreated" for API "Movies" (99999999-6595-9999-8a7e-796595985132), which is missing in plans table
+14:51:50.982 [main] INFO  i.g.r.a.s.i.u.PlansDataFixUpgrader - - Will close plan "Free" (66664545-1234-1234-1234-1234567891425), cause it's absent from api definition
+14:51:51.019 [main] INFO  i.g.r.a.s.i.u.PlansDataFixUpgrader - Plans anomalies found for API "Horses" (0456455556-5465-5465-4894955554) :
+14:51:51.019 [main] INFO  i.g.r.a.s.i.u.PlansDataFixUpgrader - - Will create plan "LimitedUsage-Recreated" for API "Horses" (0456455556-5465-5465-4894955554), which is missing in plans table 
+14:51:51.025 [main] INFO  i.g.r.a.s.i.u.PlansDataFixUpgrader - Plans anomalies found for API "Petstore" (121112-1211-1111-121121211) :
+14:51:51.025 [main] INFO  i.g.r.a.s.i.u.PlansDataFixUpgrader - - Will create plan "Silver-Recreated" for API "Petstore" (121112-1211-1111-121121211), which is missing in plans table
+14:51:51.058 [main] INFO  i.g.r.a.s.i.u.PlansDataFixUpgrader - Finishing PlansDataFixUpgrader execution
+....
+
+=== How anomalies are fixed ?
+
+This process will fix your API plans data.
+
+But it won't change the runtime behavior of your APIs in the gateway, until you redeploy them manually from console.
+
+==== Some plans were considered by gateway, but were not visible in console :
+
+They will be recreated in console, and you will see new plans appear :
+
+* with name suffixed by "-Recreated"
+* with description "This plan has been recreated during a data fix process. See documentation : ..."
+
+Those plans will be in `deprecated` state, without any subscription.
+It will allow you to check those plans and their flows, and close them if relevant.
+
+==== Some plans visible in console were not considered by gateway :
+
+Those plans will be closed, as they were not actually used during API runtime.
+
+=== I'm ready. How to disable the dry mode and fix data ?
+
+To fix data in your database, turn off the dry-mode, setting the `services.plans-data-fix-upgrader.dryRun` parameter to false.
+Then, restart the management API.
+
+=== Further configuration ?
+
+You can configure this process in gravitee.yml, for example :
+....
+services:
+  plans-data-fix-upgrader:
+    enabled: true
+    dryRun: true
+    notifyApiOwner: false
+....
+
+Possible configuration keys are :
+|===
+|Key|Description|Default value
+
+|enabled
+|If set to false, the process won't execute
+|true
+
+|dryRun
+|If set to true, the process won't make any database change, but only list changes.
+|true
+
+|notifyApiOwner
+|If set to true, an email notification will be send to the api owner for each fixed API.
+|false
+|===
+

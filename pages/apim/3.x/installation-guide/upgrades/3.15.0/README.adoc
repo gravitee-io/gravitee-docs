@@ -1,0 +1,99 @@
+= Upgrade to 3.15.0
+
+== Breaking Change
+
+=== Management API
+
+Since they were deprecated since version 3.12.0, the Rest API endpoints listed below have been removed.
+
+|===
+|Removed Endpoint| Replace With
+
+|PUT /apis/{api.id}/keys/{apiKey.key}
+|PUT /apis/{api.id}/subscriptions/{subscription.id}/apikeys/{apiKey.id}
+
+|DELETE /apis/{api.id}/keys/{apiKey.key}
+|DELETE /apis/{api.id}/subscriptions/{subscription.id}/apikeys/{apiKey.id}
+
+|POST /apis/{api.id}/keys/_verify?apiKey={apiKey.key}
+|GET /apis/{api.id}/subscriptions/_canCreate?application={application.id}&key={apiKey.key}
+
+|DELETE /apis/{api.id}/subscriptions/{subscription.id}/keys/{apiKey.key}
+|DELETE /apis/{api.id}/subscriptions/{subscription.id}/apikeys/{apiKey.id}
+
+|GET /apis/{api.id}/subscriptions/{subscription.id}/keys
+|GET /apis/{api.id}/subscriptions/{subscription.id}/apikeys
+
+|POST /apis/{api.id}/subscriptions/{subscription.id}
+|POST /apis/{api.id}/subscriptions/{subscription.id}/apikeys/_renew
+
+|POST /apis/{api.id}/subscriptions/{subscription.id}/keys/{apiKey.key}/_reactivate
+|POST /apis/{api.id}/subscriptions/{subscription.id}/apikeys/{apiKey.id}/_reactivate
+
+|GET /applications/{application.id}/subscriptions/{subscription.id}/keys
+|GET /applications/{application.id}/subscriptions/{subscription.id}/apikeys
+
+|POST /applications/{application.id}/subscriptions/{subscription.id}
+|POST /applications/{application.id}/subscriptions/{subscription.id}/apikeys/_renew
+
+|DELETE /applications/{application.id}/subscriptions/{subscription.id}/keys/{apiKey.key}
+|DELETE /applications/{application.id}/subscriptions/{subscription.id}/apikeys/{apiKey.id}
+|===
+
+=== Deprecation of path-based API creation
+
+The path-based approach to create APIs will be removed in our next LTS and has been deprecated. From now on, this mode is disabled by default
+but can still be re-activated from your organization settings.
+
+=== Gateway
+
+==== Custom policy breaking changes
+
+We've made huge improvements on the v3.15.0 in order to considerably decrease the memory and cpu resources required to serve the traffic on the gateway.
+For that, we rework some parts of the gateway which have impacts on few policies we maintain and could have impact on your custom policies you may have developed.
+
+To summarize, here is the short list of the possible breaking changes that could impact you:
+
+. Rework the way request and response headers are internally managed
+. Policy class loading
+
+NOTE: Details on each breaking changes are given below.
+
+All policies maintained by Gravitee's teams are already ready to work with APIM v3.15.0. You may consider upgrading your custom policies if they match one of the following cases:
+
+* Your policy relies on a static object instance that was previously instantiated per api and will become shared starting from the v3.15.0 of APIM
+* Your policy manipulate request or response headers and should move to new way to manage headers.
+
+For each of these cases, please find the appropriate actions below.
+
+===== Http headers
+
+Starting from 3.15.0 we rework the way the request and response headers are manage to make them even performant than ever.
+
+For that reason, if your custom policy relies on headers make sure to upgrade it by replacing `io.gravitee.common.http.HttpHeaders` with the new headers class `io.gravitee.gateway.api.http.HttpHeaders` and migrate the few methods where name changed a bit:
+
+* `new HttpHeaders()` -> `HttpHeaders.create()`
+* `headers.containsKey("key")` -> `headers.contains("key")`
+* `headers.get("key")` -> `headers.getAll("key")` (previous get returned a list)
+
+===== Policy class loading
+
+We've made huge improvements on the v3.15.0 by reworking the way policies are loaded when deploying an api on the APIM gateway.
+While previously, one ClassLoader were instantiated per deployed api, we decided to shift to a single ClassLoader instance to avoid memory pressure, especially when deploying a lot of apis.
+Also, policy instances are now reused across all the requests instead of re-instantiate them on each call.
+
+For that, we had to adapt some policies we support in order to make sure they work with the new class loading and policy instantiation mechanisms.
+Basically, policy instances are now considered as fully stateless and must get rid of any state which cannot be shared across the whole platform.
+
+All the policies we support were already stateless. However, few changes have been made on some of them to move from static maps to cache instances that can be safely accessed and revoked concurrently.
+
+*For all custom policies* you may have developed, we strongly recommend adopting the same strategy by *avoiding usage of static instances in your policies*.
+If you are unable to adapt your policy before the migration to v3.15.0, there is still the possibility to explicitly switch back to the previous class loading behavior by setting the following configuration:
+
+```yaml
+classloader:
+  legacy:
+    enabled: true
+```
+
+WARNING: We highly recommend adopting the new class loading strategy as soon as possible as it may not be maintained in the future versions.

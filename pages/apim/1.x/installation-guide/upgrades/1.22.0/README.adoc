@@ -1,0 +1,9 @@
+= Upgrade to 1.22.0
+
+== SSL compatibility
+
+Starting from this version, the API Gateway is less permissive for HTTPS requests whereas, with previous versions, the
+`Trust All` server certificates was enabled by default, it isn't the case anymore and it's now the responsibility of
+the API publisher to ask for `Trust All`. Otherwise, the API publisher must have to configure finely endpoint's trustore.
+
+If you did not configure SSL support for your API's backends, you may probably have to to do it to make them work again.

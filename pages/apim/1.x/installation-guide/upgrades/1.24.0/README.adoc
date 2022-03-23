@@ -1,0 +1,62 @@
+= Upgrade to 1.24.0
+
+== User creation REST API
+
+We have added the possibility to create users from the UI.
+Previously the POST on `/management/users` was used to register a user.
+Now this is used to create a user on the platform and the registration service has been moved under `/management/users/registration` and `/management/users/registration/finalize`.
+
+== LDAP configuration changes
+WARNING: BREAKING CHANGE !
+
+Issue https://github.com/gravitee-io/issues/issues/2026[#2026] introduce a breaking change in the way we configure the LDAP identity provider.
+Here is a "before/after" configuration :
+
+.Before
+----
+- type: ldap
+  context-source-username: "myContextUsername"
+  context-source-password: "myContextPassword"
+  context-source-url: "myContextURL"
+  context-source-base: "myContextBase"
+  user-dn-pattern: "myUserDN"
+  user-search-base: "myUserSearchBase"
+  user-search-filter: "myUserSearchFilter"
+  user-search-objectclass: "myObjectClass"
+  group-search-base: "myGroupSearchBase"
+  group-search-filter: "myGroupSearchFilter"
+  group-role-attribute: "myGroupRoleAttribute"
+  role-mapper: {
+    k1: v1,
+    k2: v2
+  }
+----
+
+.After
+----
+- type: ldap
+  context:
+    username: "myContextUsername"
+    password: "myContextPassword"
+    url: "myContextURL"
+    base: "myContextBase"
+  authentication:
+    user:
+      base: "myUserSearchBase"
+      filter: "myUserSearchFilter"
+    group:
+      base: "myGroupSearchBase"
+      filter: "myGroupSearchFilter"
+      role:
+        attribute: "myGroupRoleAttribute"
+        mapper: {
+          k1: v1,
+          k2: v2
+        }
+  lookup:
+    user:
+      base: "myUserSearchBase"
+      filter: "(&(objectClass=myObjectClass)(|(cn=*{0}*)(uid={0})))"
+----
+
+Read the documentation to learn how every attribute is used and what is their default values.

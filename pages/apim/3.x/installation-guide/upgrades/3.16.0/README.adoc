@@ -1,0 +1,26 @@
+= Upgrade to 3.16.0
+
+== API definition import process changes
+
+Gravitee 3.16.0 introduces a new **crossId** in API definition, which identifies entities across environments.
+This improves the API import and promotion processes reliability.
+
+If you are using the _API import from JSON definition_ feature,
+we **highly recommend** updating your API definitions by re-exporting your API.
+
+Otherwise, if you import an API definition which doesn't contain **crossId**,
+Gravitee will do the best-effort to import your API definition without it.
+
+== Deprecations
+
+The Rest API endpoints listed below are deprecated since Gravitee v3.0.9, and will be removed in a future version.
+
+|===
+|Deprecated Endpoint| Replace With
+
+|POST /apis/{api.id}/import
+|POST /apis/import
+
+|POST /apis/{api.id}/import/swagger
+|PUT /apis/{api.id}/import/swagger
+|===
