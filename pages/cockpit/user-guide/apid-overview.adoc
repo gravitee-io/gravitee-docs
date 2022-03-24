@@ -1,0 +1,21 @@
+= API Designer
+:page-sidebar: cockpit_sidebar
+:page-permalink: cockpit/3.x/cockpit_userguide_apid_overview.html
+:page-folder: cockpit/user-guide
+:page-description: Gravitee.io Cockpit - User Guide - API Designer (APID) - Overview
+:page-keywords: Gravitee.io, Cockpit, API Designer, apid, user guide, user, guide, overview
+:page-toc: false
+:page-liquid:
+
+== Overview
+The *Gravitee.io API Designer*, part of the *Gravitee.io Cockpit*, is a graphical no-code tool for creating APIs. Using the https://www.gravitee.io/blog/why-design-first-when-building-apis[Design First] approach you can produce fully https://swagger.io/specification/[OpenAPI] compliant APIs in minutes.
+
+When you're happy with your design, you can export it as an OpenAPI Specification (OAS) or push it to one of your linked *Gravitee.io API Management* installations.
+
+From a business perspective, the *Gravitee.io API Designer*:
+
+* Allows you to focus on the future needs of your customers rather than on the technical aspects
+* Empowers business users to design the APIs they own
+* Embraces the quick feedback loop to improve the quality of your APIs
+
+Your journey starts -> link:{{ '/cockpit/3.x/cockpit_userguide_apid_workspace.html' | relative_url }}[image:{% link images/cockpit/apid_palette.png %}[Palette,50]]

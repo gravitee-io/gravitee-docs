@@ -1,0 +1,48 @@
+= Workspace
+:page-sidebar: cockpit_sidebar
+:page-permalink: cockpit/3.x/cockpit_userguide_apid_workspace.html
+:page-folder: cockpit/user-guide
+:page-description: Gravitee.io Cockpit - User Guide - API Designer (APID) - Workspace
+:page-keywords: Gravitee.io, Cockpit, API Designer, apid, user guide, user, guide, workspace
+:page-toc: false
+:page-liquid:
+
+This is the administrative interface of the API Designer. Here you can manage your existing API designs, create new ones and control the settings.
+
+image::{% link images/cockpit/apid_workspace.png %}[Workspace]
+
+NOTE: The workspace is organization centered. API designs and settings are within the context of the selected organization.
+
+*Workspace* actions
+--
+. API Designs
+.. <<createapi,*Create an API*>>
+.. <<manageapi,*Manage an API*>>
+
+. Settings
+.. Case
++
+Indicate how case needs to be applied to paths, objects and parameters.
+.. Target Environment
++
+Select the enviroment to which the API designs will be deployed.
++
+IMPORTANT: Only environments that have active API Management installations linked to them will be shown.
+.. Legend
++
+Define the visual cues to distinguish attributes in your design.
+--
+
+== Create an API[[createapi]]
+
+You'll be asked to provide a *name* and a *description*. The name will also be used as the context path following the *case* rules you indicated in the settings.
+
+== Manage an API[[manageapi]]
+
+image:{% link images/cockpit/apid_click_api.svg %}[design,19,role=thumb] takes you to link:{{ '/cockpit/3.x/cockpit_userguide_apid_design.html' | relative_url }}[design] interface.
+
+image:{% link images/cockpit/apid_push_api.svg %}[push,role=thumb] takes you to the link:{{ '/cockpit/3.x/cockpit_userguide_apid_push.html' | relative_url }}[push] interface.
+
+image:{% link images/cockpit/apid_export_api.svg %}[export,14,role=thumb] allows you to export the API definition.
+
+image:{% link images/cockpit/apid_options_api.svg %}[options,14,role=thumb] push, export or *delete*.

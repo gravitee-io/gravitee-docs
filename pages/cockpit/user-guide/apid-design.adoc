@@ -1,0 +1,68 @@
+= Design
+:page-sidebar: cockpit_sidebar
+:page-permalink: cockpit/3.x/cockpit_userguide_apid_design.html
+:page-folder: cockpit/user-guide
+:page-description: Gravitee.io Cockpit - User Guide - API Designer (APID) - Design
+:page-keywords: Gravitee.io, Cockpit, API Designer, apid, user guide, user, guide, Design
+:page-toc: false
+:page-liquid:
+
+This is the core part of the API Designer because this is where you ... design APIs!
+
+image::{% link images/cockpit/apid_design_default.png %}[Mindmap]
+
+You start out with some defaults in an intuitive mindmap-like interface and add details as needed for your API.
+
+Three elements are visible:
+
+root:: The starting point of your design that holds the settings. You can add resources to it using the (+) buttons branching away to left or right (whatever your visual preference is).
+resource:: The anchorpoints of your API, they are a conceptual mapping to a set of entities.
+attribute:: The data carriers of your API.
+
+Each element can be expanded (+). If you want to remove an element, right-click it and select delete.
+
+NOTE: If you delete an element, all underlying elements will also be deleted.
+
+You can distinguish between three phases. <<define,*Define*>>, <<expose,*Expose*>> and <<refine,*Refine*>>. First you *define* your attributes and resources with broad brushstrokes. How you *expose* them depends on your use case. Last but not least you *refine* the attributes.
+
+
+== Define[[define]]
+The key part of a *resource* definition is the name as that will show up in the request path.
+
+For the *attribute* definition what matters mostly is the datatype. It can be an *Integer*, *Number*, *String*, *Boolean* or a list of one of these.
+
+Both *resources* and *attributes* can be exposed in the API's documentation.
+
+== Expose[[expose]]
+For a *resource* you can specify which <<operations,operations>> are allowed on it. You can also specify whether or not the resource is searchable with query parameters.
+
+For an *attribute* you can
+
+* Determine its visibility in requests and responses
+* Add it as a filter and/or result of searches
++
+NOTE: An attribute can only be added if the parent resource or attribute is added.
+
+An *attribute* can be expanded. This will automatically change its type to *Object*. If you want to turn it into a *resource*, it has to be a list.
+
+== Refine[[refine]]
+
+For an *attribute* you can
+
+* Provide an example value which will be used in mock responses
+* Determine whether or not it's required
+* Provide an extra description
+
+
+== Operations mapping[[operations]]
+
+|===
+|Operation|Description|Triggered by
+
+|GET|retrieves all the entities of the requested resource|resource is searchable
+|GET|retrieves one entity of the requested resource by id|resource is readable
+|DELETE|deletes one entity of the requested resource by id|resource is deletable
+|POST|creates an entity of the requested resource|resource is creatable
+|PUT|updates one entity of the requested resource by id|resource is updatable
+|PATCH|updates specific attributes of one entity of the requested resource by id|resource is partially updatable
+|===
