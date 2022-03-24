@@ -86,7 +86,11 @@ image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-ap
 
 With this mode enabled, consumers will be asked on their second subscription to choose between reusing their key across all subscriptions or generate one different API key for each subscription (which is the default mode).
 
+.When subscribing in the console
 image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-api-key-2.png %}[]
+.When subscribing in the portal
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-api-key-2-portal.png %}[]
+--
 
 This choice is permanent and consumers will not be able to switch back to one key per subscription for their application.
 
@@ -101,7 +105,10 @@ image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-ap
 
 Instead, it is the responsability of the application owner to perform such operations, and for this reason, shared API keys can only be revoked from the application owner subscription view.
 
+.Manage your shared API in the console
 image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-api-key-4.png %}[]
+.Manage your shared API in the portal
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-api-key-4-portal.png %}[]
 
 === OAuth 2.0 plans
 
