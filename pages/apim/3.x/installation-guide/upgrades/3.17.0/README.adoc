@@ -1,0 +1,33 @@
+= Upgrade to 3.17.0
+
+== Breaking Changes
+
+=== Management API Documentation
+
+From this version, APIM's Management API documentation is now using OpenAPI v3 format, instead of the old Swagger v2 format.
+
+As a consequence, the specification of this API is now accessible from:
+
+* `{host:port}/management/openapi.yaml`
+* `{host:port}/management/openapi.json`
+
+To allow a smooth transition, the old URL (`{host:port}/management/swagger.json`) will remain available until 3.18.0.
+
+== Upgrade Order
+
+In order to achieve a 0 downtime upgrade, APIM has to be upgraded before upgrading the gateways.
+
+On hybrid architectures where gateway bridge feature is enabled, gateways have to be upgraded in this order :
+
+. The bridge server gateway
+. The bridge client gateway
+
+== Deprecated Bridge Endpoints
+
+Since bridge client rely on their own internals to fulfil API key requests, the ``/apis/{api.id}/keys/{api.key}`` endpoint
+has been deprecated on the bridge server and will be removed in a future version.
+
+The ``/keys/_search`` endpoint has been deprecated and replaced with ``/keys/_findByCriteria`` endpoint. It will be removed in a future version.
+
+More information on the gateway bridge feature can be found link:https://docs.gravitee.io/apim/3.x/apim_installguide_hybrid_deployment.html#apim_gateway_http_bridge_server[here].
+
