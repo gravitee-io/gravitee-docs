@@ -1,0 +1,29 @@
+= Push
+:page-sidebar: cockpit_sidebar
+:page-permalink: cockpit/3.x/cockpit_userguide_apid_push.html
+:page-folder: cockpit/user-guide
+:page-description: Gravitee.io Cockpit - User Guide - API Designer (APID) - Push
+:page-keywords: Gravitee.io, Cockpit, API Designer, apid, user guide, user, guide, Push
+:page-toc: false
+:page-liquid:
+
+You designed your API and now you want to use that design. And that is what this interface is about!
+
+There a two panes ... *API Settings* and *Push API*
+
+== API Settings
+Here you can see and edit (if needed) the basic parameters of the API (name, version, description). You can also download the API design in json format. Last but not least you get to see the documentation.
+
+image::{% link images/cockpit/apid_documentation.png %}[documentation]
+
+== Push API
+
+image::{% link images/cockpit/apid_push.png %}push]
+
+You can push your API to your linked API Management installation in three different ways:
+
+Documented:: The API documentation (OAS) is created. The API is not deployed on the gateway nor published on the portal.
+
+Mocked:: Same as *Documented* (documentation created) *plus* the API is deployed with a keyless plan on the gateway with a `mock` policy. Consumers can retrieve mock responses from it. The body of the mock response is based on the examples defined in the design interface.
+
+Published:: Same as *Mocked* (documentation created, deployed, keyless plan, mock policy) *plus* it is published on the portal. Consumers can subscribe to it.
