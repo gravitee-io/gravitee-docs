@@ -16,27 +16,27 @@ AM comes with a list of predefined email templates, used for identity and access
 
 |Registration confirmation
 |Registration email to confirm user account
-|<</am/current/am_userguide_branding_email_templates.html#domain',Domain>>
+|<</am/current/am_userguide_branding_email_templates.html#domain,Domain>>
 
-<</am/current/am_userguide_branding_email_templates.html#client',Client>>
+<</am/current/am_userguide_branding_email_templates.html#client,Client>>
 
-<</am/current/am_userguide_branding_email_templates.html#user',User>>
+<</am/current/am_userguide_branding_email_templates.html#user,User>>
 
 |Blocked account
 |Recover account after it has been blocked
-|<</am/current/am_userguide_branding_email_templates.html#domain',Domain>>
+|<</am/current/am_userguide_branding_email_templates.html#domain,Domain>>
 
-<</am/current/am_userguide_branding_email_templates.html#client',Client>>
+<</am/current/am_userguide_branding_email_templates.html#client,Client>>
 
-<</am/current/am_userguide_branding_email_templates.html#user',User>>
+<</am/current/am_userguide_branding_email_templates.html#user,User>>
 
 |Reset password
 |Reset password email to request a new one
-|<</am/current/am_userguide_branding_email_templates.html#domain',Domain>>
+|<</am/current/am_userguide_branding_email_templates.html#domain,Domain>>
 
-<</am/current/am_userguide_branding_email_templates.html#client',Client>>
+<</am/current/am_userguide_branding_email_templates.html#client,Client>>
 
-<</am/current/am_userguide_branding_email_templates.html#user',User>>
+<</am/current/am_userguide_branding_email_templates.html#user,User>>
 
 
 
@@ -83,17 +83,17 @@ NOTE: Execution context also provides both `${url}` and `${token}` data to redir
 |Property |Description |Type |Always present
 
 .^|id
-|Client technical identifier
+|Domain technical identifier
 ^.^|string
 ^.^|X
 
-.^|clientId
-|Client OAuth 2.0 client_id headers
+.^|name
+|Domain's name
 ^.^|string
 ^.^|X
 
-.^|clientName
-|Client's name
+.^|path
+|Domain's path
 ^.^|string
 ^.^|
 
