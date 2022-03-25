@@ -23,7 +23,7 @@ An API definition is a JSON representation of your API and its content, eg. plan
 You can get the API definition by exporting it from the APIM console.
 Or, by using the export endpoint
 `**GET /apis/{api.id}/export**`
-(link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html/#operation/exportApiDefinition' }}[API reference^]).
+(link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/exportApiDefinition' }}[API reference^]).
 
 === What does it contain ?
 
