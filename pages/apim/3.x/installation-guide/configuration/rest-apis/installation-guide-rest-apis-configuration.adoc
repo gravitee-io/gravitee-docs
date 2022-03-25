@@ -179,6 +179,9 @@ management:
 #    sslEnabled: false
 #    threadsAllowedToBlockForConnectionMultiplier: 5
 #    cursorFinalizerEnabled: true
+#    keystore:
+#    keystorePassword:
+#    keyPassword
 
 # Management repository: single MongoDB using URI
 # For more information about MongoDB configuration using URI, please have a look to:

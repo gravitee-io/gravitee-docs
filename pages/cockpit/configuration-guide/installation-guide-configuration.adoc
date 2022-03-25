@@ -177,6 +177,9 @@ management:
 #    writeConcern: 1
 #    wtimeout: 0
 #    journal: true
+#    keystore:
+#    keystorePassword:
+#    keyPassword
 ds:
   mongodb:
     dbname: gravitee-cockpit
