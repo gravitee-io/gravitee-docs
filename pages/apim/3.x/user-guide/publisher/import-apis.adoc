@@ -33,6 +33,10 @@ In this definition each entity (API, plan or page) has :
 Uniquely identifies an entity (an API, a plan or a page) across environments :
 The same entity will keep the same crossId from one environment to another
 
+TIP: You can find an API by its crossId, using the `getApis` endpoint with the `crossId` query param
+`**GET /apis?crossId=my-cross-id**`
+(link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/getApis' }}[API reference^]).
+
 - A technical **id** :
 Uniquely identifies an entity in one environment only:
 The same entity will have a different technical id from one environment to another
