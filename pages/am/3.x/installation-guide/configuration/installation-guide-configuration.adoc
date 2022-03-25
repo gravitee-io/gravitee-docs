@@ -142,6 +142,9 @@ management:
 #    sslEnabled: false
 #    threadsAllowedToBlockForConnectionMultiplier: 5
 #    cursorFinalizerEnabled: true
+#    keystore:
+#    keystorePassword:
+#    keyPassword
 
 # Management repository: single MongoDB using URI
 # For more information about MongoDB configuration using URI, please have a look to:
@@ -299,6 +302,9 @@ management:
 #    sslEnabled: false
 #    threadsAllowedToBlockForConnectionMultiplier: 5
 #    cursorFinalizerEnabled: true
+#    keystore:
+#    keystorePassword:
+#    keyPassword
 
 # Management repository: single MongoDB using URI
 # For more information about MongoDB configuration using URI, please have a look to:
@@ -404,6 +410,9 @@ management:
     sslEnabled:                 # mongodb ssl mode (default false)
     threadsAllowedToBlockForConnectionMultiplier: # mongodb threads allowed to block for connection multiplier (default null)
     cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
+    keystore                    # path to KeyStore (when sslEnabled is true, default null)
+    keystorePassword            # KeyStore password (when sslEnabled is true, default null)
+    keyPassword                 # password for recovering keys in the KeyStore (when sslEnabled is true, default null)
 ----
 
 NOTE: All theses properties allow you to fine tuned your MongoDB connection
