@@ -21,4 +21,6 @@ Its intent is to reduce the cost and complexity of user management operations by
 
 - link:{{ '/am/current/am_devguide_protocols_fapi_overview.html' | relative_url }}[FAPI 1.0]: The Financial-grade API (FAPI) is a highly secured OAuth profile that aims to provide specific implementation guidelines for security and interoperability.
 
-- link:{{ '/am/current/am_devguide_protocols_ciba_overview.html' | relative_url }}[CIBA 1.0]: The Client-Initiated Backchannel Authentication Flow - Core 1.0 (CIBA) is an authentication flow where the Relying Party communicates with OpenID Provider without redirects through the user's browser.
+- link:{{ '/am/current/am_devguide_protocols_ciba_overview.html' | relative_url }}[CIBA 1.0]: The Client-Initiated Backchannel Authentication Flow - Core 1.0 (CIBA) is an authentication flow where the Relying Party communicates with an OpenID Provider without redirects through the user's browser.
+
+- link:{{ '/am/current/am_devguide_protocols_saml2_overview.html' | relative_url }}[SAML 2.0]: SAML 2.0 is an XML-based protocol that uses security tokens containing assertions to pass information about a principal (usually an end user) between a SAML authority, named an Identity Provider, and a SAML consumer, named a Service Provider.
