@@ -10,18 +10,35 @@ AM comes with a list of predefined email templates, used for identity and access
 
 === List of email templates
 
-[width="80%",cols="2,10",options="header"]
+[width="80%",cols="2,4,8",options="header"]
 |=========================================================
-|Email |Description
+|Email |Description| Context data
 
-|Registration confirmation |
-Registration email to confirm user account
+|Registration confirmation
+|Registration email to confirm user account
+|<</am/current/am_userguide_branding_email_templates#domain,Domain>>
 
-|Blocked account |
-Recover account after it has been blocked
+<</am/current/am_userguide_branding_email_templates#client,Client>>
 
-|Reset password |
-Reset password email to request a new one
+<</am/current/am_userguide_branding_email_templates#user,User>>
+
+|Blocked account
+|Recover account after it has been blocked
+|<</am/current/am_userguide_branding_email_templates#domain,Domain>>
+
+<</am/current/am_userguide_branding_email_templates#client,Client>>
+
+<</am/current/am_userguide_branding_email_templates#user,User>>
+
+|Reset password
+|Reset password email to request a new one
+|<</am/current/am_userguide_branding_email_templates#domain,Domain>>
+
+<</am/current/am_userguide_branding_email_templates#client,Client>>
+
+<</am/current/am_userguide_branding_email_templates#user,User>>
+
+
 
 |=========================================================
 
@@ -42,4 +59,106 @@ image::{% link images/am/current/graviteeio-am-userguide-um-emails.png %}[]
 
 NOTE: Each email requires a minimum configuration. You can retrieve contextual documentation on the HTML needed for each type of page by clicking the image:{% link images/icons/am-info-icon.png %}[role="icon"] information icon.
 
-image::{% link images/am/current/graviteeio-am-userguide-um-email-info.png %}[]
+== Execution context
+
+Each email template has access to the `Execution Context`, this means you can render the template based on anything in the context including the request or context data.
+
+Here are some examples:
+
+----
+<p>${domain.name}</p>
+<p>${client.clientName}</p>
+<p>${user.username}</p>
+----
+
+Please consult the link:https://freemarker.apache.org/[Apache FreeMarker documentation] for how to write Apache FreeMarker templates.
+
+This section describes the objects provided by the execution context.
+
+NOTE: Execution context also provides both `${url}` and `${token}` data to redirect your users back to the Access Management server.
+
+=== Domain
+==== Properties
+|===
+|Property |Description |Type |Always present
+
+.^|id
+|Domain technical identifier
+^.^|string
+^.^|X
+
+.^|name
+|Domain's name
+^.^|string
+^.^|X
+
+.^|path
+|Domain's path
+^.^|string
+^.^|
+
+|===
+
+=== Client
+==== Properties
+|===
+|Property |Description |Type |Always present
+
+.^|id
+|Client technical identifier
+^.^|string
+^.^|X
+
+.^|clientId
+|Client OAuth 2.0 client_id headers
+^.^|string
+^.^|X
+
+.^|clientName
+|Client's name
+^.^|string
+^.^|
+
+|===
+
+=== User
+==== Properties
+|===
+|Property |Description |Type |Always present
+
+.^|id
+|User technical identifier
+^.^|string
+^.^|X
+
+.^|username
+|User's username
+^.^|string
+^.^|X
+
+.^|email
+|User's email
+^.^|string
+^.^|
+
+.^|firstName
+|User's first name
+^.^|string
+^.^|
+
+.^|lastName
+|User's last name
+^.^|string
+^.^|
+
+.^|displayName
+|User's display name
+^.^|string
+^.^|
+
+.^|additionalInformation
+|User additional attributes
+^.^|key / value
+^.^|X
+
+|===

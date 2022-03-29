@@ -9,8 +9,6 @@ AM branding gives you a consistent user experience when navigating between custo
 
 You can create customized templates for individual applications or across all applications in a security domain.
 
-NOTE: AM uses link:https://www.thymeleaf.org/[Thymeleaf^] syntax to dynamically customize your templates with execution context values such as the current application, the current end user and the current HTTP request.
-
 For more information on customizing templates, see the following sections:
 
 * link:{{ '/am/current/am_userguide_user_management_forms.html' | relative_url }}[Custom pages]
