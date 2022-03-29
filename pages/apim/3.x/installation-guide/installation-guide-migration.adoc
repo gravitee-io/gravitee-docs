@@ -7,19 +7,19 @@
 
 == Upgrade Notes
 
-ifndef::env-github[]
-
 WARNING: If you plan to skip versions when you upgrade, ensure that you read the version-specific upgrade notes for each intermediate version.
 You may be required to perform manual actions as part of the upgrade.
 
 WARNING: Be sure to run scripts on the correct database since `gravitee` is not always the default database!
 Check your db name by running `show dbs;`
 
-endif::[]
-
 include::upgrades/3.17.0/README.adoc[leveloffset=+1]
 
+include::upgrades/3.16.2/README.adoc[leveloffset=+1]
+
 include::upgrades/3.16.0/README.adoc[leveloffset=+1]
+
+include::upgrades/3.15.6/README.adoc[leveloffset=+1]
 
 include::upgrades/3.15.0/README.adoc[leveloffset=+1]
 

@@ -13,6 +13,14 @@ As a consequence, the specification of this API is now accessible from:
 
 To allow a smooth transition, the old URL (`{host:port}/management/swagger.json`) will remain available until 3.18.0.
 
+=== Docker Images - Enterprise Edition
+
+To reduce the number of security vulnerabilities and ensure a better maintenance in the future, the base Docker images used for the Enterprise Edition have changed.
+
+As of 3.17.0, APIM Gateway EE and Management API EE base Docker images are moving from **Ubuntu** to **Alpine** with JDK 17. It means users creating their own Docker images based on the one provided by Gravitee.io might need to update their Dockerfile to make them compatible with the Alpine distribution.
+
+_Notes_: Community Edition users will not be affected as the base images were already **Alpine** ones.
+
 == Upgrade Order
 
 In order to achieve a 0 downtime upgrade, APIM has to be upgraded before upgrading the gateways.
