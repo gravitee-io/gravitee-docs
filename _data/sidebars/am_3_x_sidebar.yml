@@ -479,7 +479,7 @@ entries:
                   - title: Overview
                     output: web
                     url: /am/current/am_userguide_expression_language.html
-                    
+
       - title: Administration Guide
         output: web
         folderitems:
@@ -563,6 +563,15 @@ entries:
                   - title: Overview
                     output: web
                     url: /am/current/am_devguide_protocols_ciba_overview.html
+              - title: SAML 2.0
+                output: web
+                subfolderitems:
+                  - title: Overview
+                    output: web
+                    url: /am/current/am_devguide_protocols_saml2_overview.html
+                  - title: Enable SAML 2.0 Idp support
+                    output: web
+                    url: /am/current/am_devguide_protocols_saml2_configuration.html
       - title: API Reference
         output: web
         folderitems:

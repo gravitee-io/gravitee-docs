@@ -1,0 +1,27 @@
+= SAML 2.0 Protocol
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_devguide_protocols_saml2_overview.html
+:page-folder: am/dev-guide/protocols/saml2
+:page-layout: am
+
+== Overview
+
+link:http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html[The Security Assertion Markup Language (SAML)] standard defines an XML-based framework for describing and exchanging security information between on-line business partners.
+
+Gravitee.io AM supports the SAML protocol and can serve both as Identity Provider (IdP) and Service Provider (SP) :
+
+* link:{{ '/am/current/am_userguide_enterprise_identity_provider_saml2.html' | relative_url }}[Configure Gravitee.io AM as SAML Service Provider]
+* link:{{ '/am/current/am_devguide_protocols_saml2_configuration.html' | relative_url }}[Configure Gravitee.io AM as SAML Identity Provider]
+
+== Participants
+
+At a minimum, SAML exchanges take place between system entities referred to as a SAML asserting party and a SAML relying party.
+In many SAML use cases, a user, perhaps running a web browser or executing a SAML-enabled application, is also a participant, and may even be the asserting party.
+
+Service provider (SP)::
+A relying party that uses assertions it has received from the Identity Provider (IdP) to grant the principal access to local resources.
+
+Identity provider (IdP)::
+Entity that authenticates users and provides to service providers (SP) an authentication assertion that indicates a principal has been authenticated.
+
+image::{% link images/am/current/graviteeio-am-devguide-protocols-saml-overview.png %}[]
