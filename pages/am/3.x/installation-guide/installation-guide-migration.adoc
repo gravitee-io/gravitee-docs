@@ -10,6 +10,28 @@ WARNING: If you plan to skip versions when you upgrade, ensure that you read the
 
 WARNING: Be sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs;`
 
+== Upgrade to 3.17
+
+NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.17.html' | relative_url }}[Breaking changes in 3.17]
+
+=== Repository
+
+==== Mongodb
+
+Before you run any scripts, create a dump of your existing database.
+
+https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.17.0/mongodb/1-migrate-application-identities.js[upgrades/3.x/3.17.0/mongodb/1-migrate-application-identities.js]::
+
+This script will migrate data structure of the application settings to manage the selection rules and ordering of the identity providers.
+
+https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.17.0/mongodb/1-add-saml2-permissions.js[upgrades/3.x/3.17.0/mongodb/1-add-saml2-permissions.js]::
+
+This script will create the DOMAIN_SAML and APPLICATION_SAML permission.
+
+==== JDBC
+
+The liquibase scripts will update data automatically on the REST API startup.
+
 == Upgrade to 3.15
 
 NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.15.html' | relative_url }}[Breaking changes in 3.15]
