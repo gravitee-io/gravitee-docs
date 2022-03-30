@@ -1,0 +1,23 @@
+= Upgrade to 1.30.24
+
+== Change the default time range in analytics dashboard
+
+Issue https://github.com/gravitee-io/issues/issues/4463[#4463].
+
+The default time range is now set to 5 minutes in order to avoid resource consumption.
+
+== Resource Filtering policy now returns two HTTP status
+
+Issue https://github.com/gravitee-io/issues/issues/4454[#4454]
+
+Before this release, the resource filtering policy returned a 403 status if the request mismatched the rules defined by the policy.
+Now there are a distinction between a mismatch on the resource path that leads to a 403 status and a mismatch on the method that leads to a 405 status.
+
+TIP: By creating a response template using the key `RESOURCE_FILTERING_METHOD_NOT_ALLOWED`, you can change the response status in case of method mismatch in order to retrieve the previous behaviour.
+
+== List applications
+
+Issue https://github.com/gravitee-io/issues/issues/4469[#4469]
+
+Before this release, we were inconsistent on the `settings` field returned for a single application and for a list of applications.
+So it is just about adding a level in the settings field: app or oauth (whether it is a simple app or OAuth2 app)

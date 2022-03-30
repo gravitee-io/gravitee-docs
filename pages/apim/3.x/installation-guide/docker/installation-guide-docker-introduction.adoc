@@ -1,0 +1,22 @@
+= Docker
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installation_guide_docker_introduction.html
+:page-folder: apim/installation-guide/docker
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Installation Guide - Docker - Introduction
+:page-keywords: Gravitee.io, API Management, apim, guide, manual, docker, linux
+:page-toc: false
+:page-liquid:
+
+// author: Tom Geudens
+
+Installation using Docker requires some familiarity with, you guessed it, https://docs.docker.com[Docker^]. The below options will set up *Gravitee.io API Management* (APIM) with all its prerequisites on a single machine. Your desired architecture may look different!
+
+image::{% link images/apim/3.x/installation/docker/apim_simple_docker_architecture.png %}[APIM simple docker architecture]
+
+Four options are provided:
+
+* link:{{ '/apim/3.x/apim_installation_guide_docker_images.html' | relative_url }}[Install with the images]
+* link:{{ '/apim/3.x/apim_installation_guide_docker_images_ee.html' | relative_url }}[Install with the images (APIM enterprise edition)]
+//* link:{{ '/apim/3.x/apim_installation_guide_docker_compose.html' | relative_url }}[Install with docker compose]
+//* link:{{ '/apim/3.x/apim_installation_guide_docker_compose_ee.html' | relative_url }}[Install with docker compose (APIM enterprise edition)]

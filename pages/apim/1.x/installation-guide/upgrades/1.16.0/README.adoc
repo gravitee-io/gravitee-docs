@@ -1,0 +1,10 @@
+= Upgrade to 1.16.0
+
+== Web UI
+
+This release introduces the ability to configure the portal through the UI (and store the configuration in database), instead of using constants.json file.
+The use of the config file is still available but the JSON format has changed.
+
+_**If you use your own `constants.json` file, please read the documentation to adpat it to the new format.**_
+
+See https://docs.gravitee.io/apim/1.x/apim_installguide_portal_configuration.html

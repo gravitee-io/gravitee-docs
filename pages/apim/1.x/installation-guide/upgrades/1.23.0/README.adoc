@@ -1,0 +1,19 @@
+= Upgrade to 1.23.0
+
+== Groups of users
+
+This version comes with an improvement on how to manage groups of users (see https://github.com/gravitee-io/issues/issues/1818[#1818]).
+On previous releases, the group administrator could add members from the user search only.
+
+From now, it will be able to add members not only from this search but also by email.
+By default neither of them is available, so in this case only the administrator of the platform will be able to add some.
+
+So for the existing groups, you will have to enable the search mode to allow group administrators to add members.
+If you want to allow all existing groups by default, run the following scripts
+
+
+== Repository
+=== Mongodb
+
+link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.23.0/1-set-groups-invitation-mode.js[/apim/1.x/mongodb/1.23.0/1-set-groups-invitation-mode.js]::
+(optional) This script updates invitation setting on every groups to make them working like before.

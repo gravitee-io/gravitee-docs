@@ -1,0 +1,61 @@
+= Upgrade to 3.5.14
+
+== Repository
+
+=== Mongodb
+
+Before running any script, please create a dump of your existing database.
+
+link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/3.5.14/1-fix-cors-env-vars.js[/apim/3.x/mongodb/3.5.14/1-fix-cors-env-vars.js]::
+This script migrate CORS environment variables for portal and console. (See below).
+
+== Breaking Changes
+
+=== Environment variables
+
+Some environment variables have been doubled for the portal and the console, see correspondence table:
+
+[cols="1,1,1"]
+|===
+|before 3.5.14|after 3.5.14 (for portal)| after 3.5.14 (for console)
+
+|portal.http.cors.allow-origin
+|http.api.portal.cors.allow-origin
+|X
+
+|console.http.cors.allow-origin
+|X
+|http.api.management.cors.allow-origin
+
+|portal.http.cors.allow-headers
+|http.api.portal.cors.allow-headers
+|X
+
+|console.http.cors.allow-headers
+|X
+|http.api.management.cors.allow-header
+
+|portal.http.cors.allow-methods
+|http.api.portal.cors.allow-methods
+|X
+
+|console.http.cors.allow-methods
+|X
+|http.api.management.cors.allow-methods
+
+|portal.http.cors.exposed-headers
+|http.api.portal.cors.exposed-headers
+|X
+
+|console.http.cors.exposed-headers
+|X
+|http.api.management.cors.exposed-headers
+
+|portal.http.cors.max-age
+|http.api.portal.cors.max-age
+|X
+
+|console.http.cors.max-age
+|X
+|http.api.management.cors.max-age
+|===

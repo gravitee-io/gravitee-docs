@@ -74,15 +74,24 @@ entries:
               - title: Install on Docker
                 output: web
                 subfolderitems:
+                  - title: Introduction
+                    output: web
+                    url: /apim/3.x/apim_installation_guide_amazon_introduction.html                  
                   - title: Images
                     output: web
-                    url: /apim/3.x/apim_installguide_docker_images.html
+                    url: /apim/3.x/apim_installation_guide_docker_images.html
+                  - title: Images (EE)
+                    output: web
+                    url: /apim/3.x/apim_installation_guide_docker_images_ee.html
                   - title: Compose
                     output: web
-                    url: /apim/3.x/apim_installguide_docker_compose.html
+                    url: /apim/3.x/apim_installation_guide_docker_compose.html
+                  - title: Compose (EE)
+                    output: web
+                    url: /apim/3.x/apim_installation_guide_docker_compose_ee.html
                   - title: Customize
                     output: web
-                    url: /apim/3.x/apim_installguide_docker_customize.html
+                    url: /apim/3.x/apim_installation_guide_docker_customize.html             
               - title: Install on Kubernetes
                 output: web
                 subfolderitems:

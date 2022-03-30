@@ -1,0 +1,35 @@
+= Upgrade to 1.12.x
+
+NOTE: If you are coming from Gravitee.io APIM 1.11.x, there is no migration script to apply.
+You just have to download and install new binaries and go ahead with Gravitee.io API Management.
+
+NOTE: For MongoDB users, please check that your database indices are up-to-date with https://github.com/gravitee-io/gravitee-repository-mongodb/blob/master/src/main/resources/scripts/create-index.js[latest]
+
+== Elasticsearch
+
+Starting from 1.12.x, the default connector for Elasticsearch has been updated from a native ES 2.x client to an HTTP connector.
+
+=== Elasticsearch 2.x
+
+Elasticsearch 2.x will become obsolete and no more supported by Elastic company in few weeks, according to this
+https://www.elastic.co/support/eol[page].
+
+In consequence of this, we have decided to not support anymore the Elasticsearch 2.x connector for Gravitee.io and this
+one will be deprecated soon (march 2018). It is highly advisable to move forward and upgrade to Elasticsearch 5.x which
+will be supported til 2019-03-11.
+
+=== Elasticsearch 5.x
+
+Native Elasticsearch 5.x connector remains supported by the community.
+
+NOTE: At the time of writing, Elasticsearch 6.x is not supported by Gravitee.io
+
+=== Elasticsearch HTTP
+
+This new connector is now able to manage multiple versions of Elasticsearch over the HTTP endpoint.
+
+For existing users, be careful about port mapping, firewall rules, ... since the port for HTTP endpoint is now `9200`
+instead of `9300` used by the native client.
+
+Configuration for both API Gateway and Management API have been updated to reflect the new Elasticsearch connector.
+You can have a look to https://docs.gravitee.io/apim/1.x/apim_installguide_repositories_elasticsearch.html[configuration page].

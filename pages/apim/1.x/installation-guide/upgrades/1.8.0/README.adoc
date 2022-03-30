@@ -1,0 +1,25 @@
+= Upgrade to 1.8.0
+
+== Repository
+=== Mongodb
+
+Before running any script, please create a dump of your existing database.
+
+link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.8.0/1-convert-roles.js[/apim/1.x/mongodb/1.8.0/1-convert-roles.js]::
+This script convert old permission system to the new customized roles system.
+
+=== AWS DynamoDB
+Before running any script, please create a dump of your existing database.
+
+A new table is needed. Please run the following script to create it:
+```
+$ wget https://raw.githubusercontent.com/gravitee-io/gravitee-repository-dynamodb/master/scripts/16-createtable-role.json
+$ aws dynamodb create-table --cli-input-json file://16-createtable-role.json
+```
+
+To run the migration script you need node + npm (https://nodejs.org/en/download/).
+To execute the script, edit the `config.json`file with your AWS credentials, then:
+```
+$ npm install
+$ node script.js
+```

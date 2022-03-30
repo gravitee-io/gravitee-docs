@@ -1,0 +1,12 @@
+= Upgrade to 1.20.0
+
+== SSL compatibility
+
+This release introduces a better support of HTTPS over SSL.
+
+To avoid incompatibilities on this version, the `Trust All` server certificates is enabled by default on existing endpoint defined without ssl trust all configuration.
+
+=== Mongodb
+
+link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.20.0/Migration.120.SSL.js[/apim/1.x/mongodb/1.20.0/Migration.120.SSL.js]::
+This script update ssl endpoints to store the default configuration if not present.

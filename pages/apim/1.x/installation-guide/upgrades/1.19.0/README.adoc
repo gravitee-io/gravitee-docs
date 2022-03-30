@@ -1,0 +1,20 @@
+= Upgrade to 1.19.0
+
+== Web UI
+
+This release introduces the ability to use markdown editor to write pages with a new execution engine which is more strict and can cause incompatibility with previous versions.
+
+For example, on the previous versions the following syntax was both accepted:
+```
+###Title
+```
+and
+```
+### Title
+```
+
+Now with the new execution engine, the correct syntax is the one with a space:
+```
+### Title
+```
+The other one will be displayed as is.

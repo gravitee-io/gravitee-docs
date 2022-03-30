@@ -1,0 +1,10 @@
+= Upgrade to 1.10.x
+
+NOTE: If you are coming from Gravitee.io APIM 1.9.x, there is no migration script to apply.
+You just have to download and install new binaries and go ahead.
+
+== Deprecated features
+=== CORS Policy
+
+CORS policy is now deprecated (and will be removed in a future version) and has been replaced by an integrated feature. To apply CORS, you must
+have to configure it at the API level from `proxy` screen.

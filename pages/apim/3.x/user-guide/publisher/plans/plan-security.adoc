@@ -76,6 +76,40 @@ image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/custom-ap
 
 image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/custom-api-key-3.png %}[]
 
+==== Use a shared API key
+
+The shared API key mode makes consumers reuse the same API key across all API subscriptions of an application.
+
+This mode can be enabled in environment settings:
+
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-api-key-1.png %}[]
+
+With this mode enabled, consumers will be asked on their second subscription to choose between reusing their key across all subscriptions or generate one different API key for each subscription (which is the default mode).
+
+.When subscribing in the console
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-api-key-2.png %}[]
+.When subscribing in the portal
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-api-key-2-portal.png %}[]
+--
+
+This choice is permanent and consumers will not be able to switch back to one key per subscription for their application.
+
+NOTE: When disabling the shared API key mode in environment settings, applications that have already been configured to use a shared key will continue to work this way, but consumers will stop being asked to choose between one mode or the other on their second subscription.
+
+NOTE: For technical reasons, in shared mode, API keys can only be shared across API key plans that belong to distinct APIs. This means that if subscribing to two API key plans on the same API while creating an application, no prompt will be made to
+choose for a mode and the default mode will be used automatically.
+
+Because they may be used to call APIs that are owned by another group of publishers, shared API keys cannot be edited from the API publisher subscription view. This means that while they are still readable, renewal and revocation of shared API keys cannot be performed by the API publisher when a subscription has been made in shared mode.
+
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-api-key-3.png %}[]
+
+Instead, it is the responsability of the application owner to perform such operations, and for this reason, shared API keys can only be revoked from the application owner subscription view.
+
+.Manage your shared API in the console
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-api-key-4.png %}[]
+.Manage your shared API in the portal
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/shared-api-key-4-portal.png %}[]
+
 === OAuth 2.0 plans
 
 To configure an OAuth 2.0 plan for an API, you need to:
