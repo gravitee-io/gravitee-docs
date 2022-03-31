@@ -33,9 +33,9 @@ image::{% link images/am/current/graviteeio-am-userguide-login-identifier-first-
 == Identity providers allowed domain list
 
 External Identity providers now enable you to enter domain whitelists so that if the username submitted is an email and
-its domain matches the whitelisted domain during the first step of the flow, the user gets redirected to the provider.
+its domain does not match the whitelisted domains after a login attempt, they won't be allowed to login.
 
-If you don't input any domain, the user will just get redirected to the second login page.
+If you don't input any domain however, everyone will be able to login.
 
 . Go to *Settings > Providers*.
 . Create a new provider or Edit an existing one

@@ -1,0 +1,67 @@
+= Enable SAML 2.0 Identity Provider support
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_devguide_protocols_saml2_configuration.html
+:page-folder: am/dev-guide/protocols/saml2
+:page-layout: am
+
+[label label-enterprise]#Enterprise feature#
+
+[label label-version]#Early stage#
+
+[label label-version]#New in 3.17.0#
+
+== Supported SAML bindings and options
+
+Currently AM supports the following SAML bindings :
+
+- HTTP-Redirect
+
+NOTE: HTTP-POST binding is planned for a future version of the SAML 2.0 IdP protocol plugin.
+
+and the following options :
+
+- Web Browser SSO Profile
+- Single Logout Profile
+- SP-Initiated flow
+- Support for signed SAML assertions (SAML Request and SAML Response)
+
+NOTE: Support for encrypted SAML assertions will be provided in a future version of the SAML 2.0 IdP protocol plugin.
+
+== Activate SAML 2.0 IdP
+
+NOTE: Be sure to have your SAML 2.0 IdP protocol plugin and your license key installed in your environment before configuring the connection.
+
+. Log in to AM Console.
+. Click *Settings > SAML 2.0*.
+. Enable *SAML 2.0 IdP support*.
+. Enter your IdP Entity ID.
+. Select your certificate to sign the SAML Response assertion.
+. Click *Save*.
+
+NOTE: If you choose to not use a certificate, the SAML Response assertion will not be signed.
+
+== Test the connection
+
+To connect your applications to the AM SAML 2.0 IdP, you need at least the following information:
+
+- *SingleSignOnService*, the SAML IdP Sign In URL : https://AM_GATEWAY/{domain}/saml2/idp/SSO
+- *SingleLogoutService*, the SAML IdP Sign Out URL : https://AM_GATEWAY/{domain}/saml2/idp/logout
+- *Signing certificate*, the public signing certificate (encoded in PEM)
+
+NOTE: SAML IdP metadata information can be found here : https://AM_GATEWAY/{domain}/saml2/idp/metadata
+
+You can test your SAML 2.0 connection using a web application created in AM.
+
+. In AM Console, create a new web application.
+. Click *Settings > SAML 2.0*.
+. Verify / update the SAML 2.0 application settings.
+. Select an identity provider to connect your users.
+. Call the Login page (the /saml/idp/SSO?SAMLRequest=... endpoint).
+. Enter username/password and click *Sign in*.
+. If everything us OK, your user will be redirected to the application *attribute consume service URL* with the SAML Response assertion as a parameter.
+
+NOTE: SAML 2.0 IdP protocol is compatible out of the box with all the existing features of AM just like the OAuth 2.0/OpenId Connect protocol,
+such as : passwordless, MFA, social login, ...
+
+
+

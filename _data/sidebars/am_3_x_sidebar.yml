@@ -291,6 +291,9 @@ entries:
                   - title: Create application
                     output: web
                     url: /am/current/am_userguide_create_client.html
+                  - title: Application identity providers
+                    output: web
+                    url: /am/current/am_userguide_client_identity_providers.html
                   - title: Dynamic client registration
                     output: web
                     url: /am/current/am_userguide_dynamic_client_registration.html
@@ -473,6 +476,12 @@ entries:
                           - title: Slack
                             output: web
                             url: /am/current/am_userguide_alerts_notifications_slack.html
+              - title: Expression Language
+                output: web
+                subfolderitems:
+                  - title: Overview
+                    output: web
+                    url: /am/current/am_userguide_expression_language.html
 
       - title: Administration Guide
         output: web
@@ -557,6 +566,15 @@ entries:
                   - title: Overview
                     output: web
                     url: /am/current/am_devguide_protocols_ciba_overview.html
+              - title: SAML 2.0
+                output: web
+                subfolderitems:
+                  - title: Overview
+                    output: web
+                    url: /am/current/am_devguide_protocols_saml2_overview.html
+                  - title: Enable SAML 2.0 Idp support
+                    output: web
+                    url: /am/current/am_devguide_protocols_saml2_configuration.html
       - title: API Reference
         output: web
         folderitems:
@@ -571,6 +589,9 @@ entries:
             output: web
             url: /am/current/am_breaking_changes.html
             type: homepage
+          - title: Breaking changes in 3.17
+            output: web
+            url: /am/current/am_breaking_changes_3.17.html
           - title: Breaking changes in 3.15
             output: web
             url: /am/current/am_breaking_changes_3.15.html
