@@ -80,12 +80,25 @@ entries:
   - title: User Guide
     output: web
     folderitems:
-      - title: API Designer
-        output: web
-        url: /cockpit/3.x/cockpit_userguide_apid_overview.html        
       - title: Register installations
         output: web
         url: /cockpit/3.x/cockpit_userguide_register_installations.html
+        subfolders:
+          - title: API Designer
+            output: web
+            subfolderitems:
+              - title: Overview
+                output: web
+                url: /cockpit/3.x/cockpit_userguide_apid_overview.html
+              - title: Workspace
+                output: web
+                url: /cockpit/3.x/cockpit_userguide_apid_workspace.html
+              - title: Design
+                output: web
+                url: /cockpit/3.x/cockpit_userguide_apid_design.html
+              - title: Push
+                output: web
+                url: /cockpit/3.x/cockpit_userguide_apid_push.html
       - title: Monitor and check the health of installations
         output: web
         url: /cockpit/3.x/cockpit_userguide_installation_health_check.html
