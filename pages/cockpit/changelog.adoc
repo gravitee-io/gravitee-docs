@@ -4,12 +4,23 @@
 :page-folder: cockpit
 :page-toc: false
 
+== 3.17.0
+
+=== Features
+
+- Add Cockpit API Designer
+- Renew certificate if not exist
+- Remove jdbc repositories
+
+=== Bug fixes
+
+- Avoid concurrent modification exception when updating installation
+
 == 3.16.0
 
 === Features
 
 -  update gravitee design system ([a6c6125](https://github.com/gravitee-io/gravitee-cockpit/commit/a6c612535b0c79ab55c4e5c499b5b5b3d35776e7))
-
 
 == 3.15.0
 
