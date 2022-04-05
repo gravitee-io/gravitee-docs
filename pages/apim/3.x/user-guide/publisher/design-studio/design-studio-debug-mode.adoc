@@ -1,0 +1,109 @@
+= Debug Mode
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_publisherguide_design_studio_debug_mode.html
+:page-folder: apim/user-guide/publisher/design-studio
+:page-layout: apim3x
+
+
+[label label-version]#New in version 3.16#
+
+== Overview
+
+From 3.16, we've updated the try it mode to offer new capabilities and view what's happening on each policy executed, now called Debug mode.
+
+Debug mode is a tool for troubleshooting your API proxies running on APIM. It provides detailed information about the behavior of each policy in your flows as well as the overall execution order at runtime. With debug, you can:
+
+* Understand which flows are triggered by a specific request (including Platform-level policies).
+* Visualise which exact Policies are executed or skipped (conditional policy).
+* Understand the order of execution of your policies.
+* Trace transformations and changes made to headers, body and execution context.
+* Easily troubleshoot and find root cause of errors, misbehaviors or performance issues.
+
+== How to Get Started With Debug Mode
+
+. link:{{ '/apim/3.x/apim_publisherguide_design_studio_create.html' | relative_url }}[Design your API^].
+. Click *Debug* tab.
+. Configure your request.
+. Click *Send* button.
+
+== How To Test Your API Concept with Debug Mode
+
+You can test your *API* through the HTTP client available in the *Debug* tab.
+
+You don't need to save or deploy the API to test your changes in the Debug Mode.
+
+image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-example-empty.png %}[Debug Mode empty example]
+
+With this client, you can call your *API*, and test and experiment with the following:
+
+* *HTTP method* lets you select the HTTP verb.
+* *Path* (and additional query parameters). _Note: The context-path of the API your are debugging is already taken into account. Path refers here to the subpath (e.g., myapi-context-path/subpath?queryparam=value)_
+* *Headers*
+* *Request body*
+
+Since the debug mode is emulating an external call to your API, it would resolve the flow as the gateway would do, you need to pass the proper path, headers and fit all conditions in order to test a specific flow.
+
+image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-example.png %}[Debug Mode example]
+
+The debug mode displays all policies in a vertical timeline so you can easily visualize the exact order in which they are executed.
+
+=== Different state for policies :
+
+image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-legend.png %}[Debug Mode legend]
+
+* *executed* - the policy has been executed properly
+* *skipped* - the policy was conditional and hasn't been executed, you can see the condition evaluation in the policy information panel
+* *error* - an error occurred during policy execution, you can see more information in policy panel
+
+By clicking on a specific policy in the timeline, you can see information for input/output for :
+
+* header
+* context attributes
+* body
+
+There is three colors in inspector :
+* red stands for deletion
+* orange stands for edition
+* green stands for addition
+
+image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-inspector.png %}[Debug Mode inspector]
+
+=== Timeline
+
+==== How to interpret ?
+
+Regarding the policy timeline, the order may not be the same than what's been designed in policy studio.
+
+In order to optimize performances during the execution of the policy chain, the gateway will execute all policies interacting with the HTTP Header part of the request (onRequest, onResponse) before policies interacting with the body part of the request (onRequestContent, onResponseContent).
+
+This may alter the actual order of execution vs the order in which the policy have been place in the Design studio.
+
+The debug mode displays the order in which policies are executed by the gateway at runtime.
+
+_Note: A policy may appear twice if it implies work on both head and body parts of the request._
+
+image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-policy-chain.png %}[Policies execution chain order]
+
+
+==== How to navigate ?
+
+You can scroll through the list of policies via the timeline. You can also quickly access a specific policy by clicking on a specific policy in the quick access timeline.
+
+image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-timeline.png %}[Debug Mode timeline]
+
+By clicking *Request Input* or *Request Output*, you can view the global transformation on your request and difference between what's have been received by the gateway and what's sent to your backend.
+
+By clicking *Response Input* or *Response Output*, you can view the global transformation on your response and difference between what's been received from the backend and what's sent back to your client app.
+
+image:{% link images/apim/3.x/api-publisher-guide/design-studio/try-it/try-it-example.png %}[Try it example]
+
+== Limitations
+
+Some features are not testable with Debug Mode:
+
+* *Rate Limit & quota policies*
+* *Spike arrest*
+* *Cache* - cache policy will not be testable through debug mode with in memory cache since it is created and destroyed with the api
+* *IPFiltering* - Since calls are being executed by the gateway, you won't be able to IPFiltering your IPs directly in the debug session (IP used for the call would be 127.0.0.1 if you want to validate behavior)
+* *Health-check*
+* *Virtual hosts* - the first host is selected
