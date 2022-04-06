@@ -229,3 +229,22 @@ Perform the following steps on the AM Gateway component:
 ----
 
 . You can also consider updating the `sameSite` to link:https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#syntax[Strict^]  and adapt the session timeout:
+
+== Step 7: Mitigate Cross Site Scripting (XSS) and Cross Site Framing
+
+The AM Gateway implementes link:https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy[Content-Security-Policy] and link:https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options[X-Frame-Options].
+
+It is recommended to use these two mechanisms to have a better control on the resources the user agent is allowed to load for a given page.
+
+For example if you don't want to render a page in an `<iframe>` element, you can define the `X-Frame-Options` to `DENY` or use the `frame-ancestors` directive of CSP.
+
+----
+http:
+  # define the X-Frame-Options
+  xframe:
+    action: DENY
+  # define CSP directives
+  csp:
+    directives:
+    - frame-ancestors 'none';
+----
