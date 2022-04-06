@@ -13,8 +13,8 @@ From 3.16, we've updated the try it mode to offer new capabilities and view what
 
 Debug mode is a tool for troubleshooting your API proxies running on APIM. It provides detailed information about the behavior of each policy in your flows as well as the overall execution order at runtime. With debug, you can:
 
-* Understand which flows are triggered by a specific request (including Platform-level policies).
-* Visualise which exact Policies are executed or skipped (conditional policy).
+* Understand which policies are triggered by a specific request (including Platform-level policies).
+* Visualise which policies are executed or skipped (conditional policy).
 * Understand the order of execution of your policies.
 * Trace transformations and changes made to headers, body and execution context.
 * Easily troubleshoot and find root cause of errors, misbehaviors or performance issues.
@@ -22,49 +22,53 @@ Debug mode is a tool for troubleshooting your API proxies running on APIM. It pr
 == How to Get Started With Debug Mode
 
 . link:{{ '/apim/3.x/apim_publisherguide_design_studio_create.html' | relative_url }}[Design your API^].
-. Click *Debug* tab.
+. Select *Debug* tab.
 . Configure your request.
-. Click *Send* button.
+. Select *Send*.
 
 == How To Test Your API Concept with Debug Mode
 
-You can test your *API* through the HTTP client available in the *Debug* tab.
+You can send a request to your *API* endpoint through the embedded HTTP client available under the *Debug* tab.
 
-You don't need to save or deploy the API to test your changes in the Debug Mode.
+NOTE: You don't need to save or redeploy the API to test your changes when using the Debug Mode.
 
 image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-example-empty.png %}[Debug Mode empty example]
 
-With this client, you can call your *API*, and test and experiment with the following:
+The embedded HTTP client, let's you can configure different attributes of your request:
 
-* *HTTP method* lets you select the HTTP verb.
-* *Path* (and additional query parameters). _Note: The context-path of the API your are debugging is already taken into account. Path refers here to the subpath (e.g., myapi-context-path/subpath?queryparam=value)_
-* *Headers*
-* *Request body*
+* *HTTP method* to select the HTTP verb (e.g., `GET`, `POST`, `PUT`, etc.).
+* *Path* to test a specific subpath and provide query parameters. 
 
-Since the debug mode is emulating an external call to your API, it would resolve the flow as the gateway would do, you need to pass the proper path, headers and fit all conditions in order to test a specific flow.
+NOTE: The context-path of the API your are debugging is already taken into account. Path refers to the subpath: myapi-context-path/*path*?queryparam=value
+
+* *Headers* to provide a custom list of HTTP request headers.
+* *Request body* to configure a custom request body. 
+
+Since debug mode emulates an external call to your API, it will resolve the flow as the gateway would do, so if you want to debug a specific flow you must configure your request (path, headers) to replicate the conditions at which the flow is triggered.
 
 image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-example.png %}[Debug Mode example]
 
-The debug mode displays all policies in a vertical timeline so you can easily visualize the exact order in which they are executed.
+The debug mode displays all policies in a vertical timeline so you can easily visualize the exact order of execution.
 
 === Different state for policies :
 
 image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-legend.png %}[Debug Mode legend]
 
 * *executed* - the policy has been executed properly
-* *skipped* - the policy was conditional and hasn't been executed, you can see the condition evaluation in the policy information panel
-* *error* - an error occurred during policy execution, you can see more information in policy panel
+* *skipped* - the policy is contains a condition that has been fulfilled. Refer to the information panel for more details on the evaluation of the condition.
+* *error* - an error occurred during policy execution. Refer to the information panel for more details on the error.
 
-By clicking on a specific policy in the timeline, you can see information for input/output for :
+By selecting a specific policy in the timeline, you have access to additional information regarding the input/output of the policy:
 
 * header
 * context attributes
 * body
 
-There is three colors in inspector :
-* red stands for deletion
-* orange stands for edition
-* green stands for addition
+The inspector relies on 3 colors to indicate the nature of the change:
+
+* *green* color indicates a addition
+* *orange* color indicates a edition
+* *red* color indicates a deletion
 
 image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-inspector.png %}[Debug Mode inspector]
 
@@ -72,15 +76,13 @@ image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug
 
 ==== How to interpret ?
 
-Regarding the policy timeline, the order may not be the same than what's been designed in policy studio.
+The order in which the policies appear in the timeline reflects the exact order in which they have been executed by the gatewau at runtime. 
 
-In order to optimize performances during the execution of the policy chain, the gateway will execute all policies interacting with the HTTP Header part of the request (onRequest, onResponse) before policies interacting with the body part of the request (onRequestContent, onResponseContent).
+Note that *this order may differ* from the order in which policies where placed in the Policy Studio during the design phase. 
 
-This may alter the actual order of execution vs the order in which the policy have been place in the Design studio.
+This is due to a performance optimization applied at runtime on the the policy chain. The gateway always executes policies interacting with the HTTP Header part of the request (onRequest, onResponse) before policies interacting with the body part of the request (onRequestContent, onResponseContent).
 
-The debug mode displays the order in which policies are executed by the gateway at runtime.
-
-_Note: A policy may appear twice if it implies work on both head and body parts of the request._
+Also, a policy may appear twice in the timeline if it interacts with both the head and the body part of the request.
 
 image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-policy-chain.png %}[Policies execution chain order]
 
@@ -104,6 +106,6 @@ Some features are not testable with Debug Mode:
 * *Rate Limit & quota policies*
 * *Spike arrest*
 * *Cache* - cache policy will not be testable through debug mode with in memory cache since it is created and destroyed with the api
-* *IPFiltering* - Since calls are being executed by the gateway, you won't be able to IPFiltering your IPs directly in the debug session (IP used for the call would be 127.0.0.1 if you want to validate behavior)
+* *IPFiltering* - Since calls are emited by the gateway itself, you will not be able to emulate a call from another IP with the debug mode (IP used to issue requests is 127.0.0.1)
 * *Health-check*
-* *Virtual hosts* - the first host is selected
+* *Virtual hosts* - the first host is always selected
