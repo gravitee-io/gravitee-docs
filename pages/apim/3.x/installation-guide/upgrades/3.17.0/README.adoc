@@ -39,3 +39,9 @@ The ``/keys/_search`` endpoint has been deprecated and replaced with ``/keys/_fi
 
 More information on the gateway bridge feature can be found link:https://docs.gravitee.io/apim/3.x/apim_installguide_hybrid_deployment.html#apim_gateway_http_bridge_server[here].
 
+== The mongodb upgrade scripts have been moved
+
+For the sake of improving our documentation management process, we have started decommissioning our link:https://github.com/gravitee-io/release[release] repository (which contained among other things this guide).
+
+As a part of this change, our mongodb upgrade scripts are not hosted inside the release repository anymore and
+have been moved to the link:https://github.com/gravitee-io/gravitee-api-management/tree/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts[gravitee-api-management] repository.
