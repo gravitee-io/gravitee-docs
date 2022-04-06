@@ -1,0 +1,12 @@
+= Upgrade to 3.18.0
+
+=== Platform alerts on multi-environments APIM
+
+Before this version, platform alerts were common to all environments.
+That led to inconsistencies while handling platform alerts on multi-environments APIM.
+
+From this version, platform alerts are scoped to the environment.
+For example, if you create an alert on your `production` environment, it is related only to this environment.
+
+Old platform alerts existing before Gravitee upgrade will be linked to the default environment.
+You will see them disappear from your others (non-default) environments, and will have to recreate them manually if relevant.
