@@ -34,7 +34,7 @@ NOTE: You don't need to save or redeploy the API to test your changes when using
 
 image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-example-empty.png %}[Debug Mode empty example]
 
-The embedded HTTP client let's you configure different attributes of your request:
+The embedded HTTP client, let's you can configure different attributes of your request:
 
 * *HTTP method* to select the HTTP verb (e.g., `GET`, `POST`, `PUT`, etc.).
 * *Path* to test a specific subpath and provide query parameters. 
@@ -55,8 +55,8 @@ The debug mode displays all policies in a vertical timeline so you can easily vi
 image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-legend.png %}[Debug Mode legend]
 
 * *executed* - the policy has been executed properly
-* *skipped* - the policy contains a condition that has been fulfilled. Refer to the input/output inspector for more details on the evaluation of the condition.
-* *error* - an error occurred during policy execution. Refer to the input/output inspector for more details on the error.
+* *skipped* - the policy is contains a condition that has been fulfilled. Refer to the information panel for more details on the evaluation of the condition.
+* *error* - an error occurred during policy execution. Refer to the information panel for more details on the error.
 
 By selecting a specific policy in the timeline, you have access to additional information regarding the input/output of the policy:
 
