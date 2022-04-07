@@ -34,7 +34,7 @@ NOTE: You don't need to save or redeploy the API to test your changes when using
 
 image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-example-empty.png %}[Debug Mode empty example]
 
-The embedded HTTP client let you configure different attributes of your request:
+The embedded HTTP client let's you configure different attributes of your request:
 
 * *HTTP method* to select the HTTP verb (e.g., `GET`, `POST`, `PUT`, etc.).
 * *Path* to test a specific subpath and provide query parameters. 
@@ -44,7 +44,7 @@ NOTE: The context-path of the API your are debugging is already taken into accou
 * *Headers* to provide a custom list of HTTP request headers.
 * *Request body* to configure a custom request body. 
 
-Since debug mode emulates an external call to your API, it will resolve the flow as the gateway would do, so if you want to debug a specific flow you must configure your request (path, headers) to replicate the conditions on which the flow is triggered.
+Since debug mode emulates an external call to your API, it will resolve the flow as the gateway would do, so if you want to debug a specific flow you must configure your request (path, headers) to replicate the conditions at which the flow is triggered.
 
 image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-example.png %}[Debug Mode example]
 
@@ -55,7 +55,7 @@ The debug mode displays all policies in a vertical timeline so you can easily vi
 image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-legend.png %}[Debug Mode legend]
 
 * *executed* - the policy has been executed properly
-* *skipped* - the policy contains a condition that has not been fulfilled. Refer to the input/output inspector for more details on the evaluation of the condition.
+* *skipped* - the policy contains a condition that has been fulfilled. Refer to the input/output inspector for more details on the evaluation of the condition.
 * *error* - an error occurred during policy execution. Refer to the input/output inspector for more details on the error.
 
 By selecting a specific policy in the timeline, you have access to additional information regarding the input/output of the policy:
@@ -76,9 +76,9 @@ image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug
 
 ==== How to interpret ?
 
-The order in which the policies appear in the timeline reflects the exact order in which they have been executed by the gateway at runtime.
+The order in which the policies appear in the timeline reflects the exact order in which they have been executed by the gatewau at runtime. 
 
-Note that this order *may* differ from the order in which policies where placed in the Policy Studio during the design phase.
+Note that *this order may differ* from the order in which policies where placed in the Policy Studio during the design phase. 
 
 This is due to a performance optimization applied at runtime on the the policy chain. The gateway always executes policies interacting with the HTTP Header part of the request (onRequest, onResponse) before policies interacting with the body part of the request (onRequestContent, onResponseContent).
 
@@ -89,13 +89,13 @@ image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug
 
 ==== How to navigate ?
 
-You can scroll through the list of policies via the timeline. You can also quickly access a specific policy by clicking on it in the quick access timeline.
+You can scroll through the list of policies via the timeline. You can also quickly access a specific policy by clicking on a specific policy in the quick access timeline.
 
 image:{% link images/apim/3.x/api-publisher-guide/design-studio/debug-mode/debug-mode-timeline.png %}[Debug Mode timeline]
 
-By clicking *Request Input* or *Request Output*, you can view the global transformation on your request and difference between what has been received by the gateway and what has been sent to your backend.
+By clicking *Request Input* or *Request Output*, you can view the global transformation on your request and difference between what's have been received by the gateway and what's sent to your backend.
 
-By clicking *Response Input* or *Response Output*, you can view the global transformation on your response and difference between what has been received from the backend and what has been sent back to your client app.
+By clicking *Response Input* or *Response Output*, you can view the global transformation on your response and difference between what's been received from the backend and what's sent back to your client app.
 
 image:{% link images/apim/3.x/api-publisher-guide/design-studio/try-it/try-it-example.png %}[Try it example]
 
