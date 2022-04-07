@@ -1,7 +1,132 @@
+= Consul.io Service Discovery
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_service_discovery_consul.html
 :page-folder: apim/user-guide/publisher/service-discovery
 :page-layout: apim3x
 :page-title: Consul.io service discovery
 
-include::https://raw.githubusercontent.com/gravitee-io/gravitee-service-discovery-consul/master/README.adoc[]
+// include::https://raw.githubusercontent.com/gravitee-io/gravitee-service-discovery-consul/master/README.adoc[]
+
+== Introduction
+
+https://www.consul.io[Consul^] is a service mesh solution providing a full featured control plane with service discovery, configuration, and segmentation functionality.
+
+. *Service Discovery*: One of the main goals of service discovery is to provide a catalog of available services and to potentially associate it with a health check. Clients of Consul can register a service, such as an backend api, and other clients can use Consul to discover providers of a given service. Using either DNS or HTTP, applications can easily find the services they depend upon.
+
+. *Health Checking*: Consul clients can provide any number of health checks, either associated with a given service ("is the webserver returning 200 OK"), or with the local node ("is memory utilization below 90%"). This information is used by the service discovery components to route traffic away from unhealthy hosts.
+
+*Gravitee.io Service discovery for Consul.io allows you to bind the backend endpoints of your API to a service managed by Consul so that API requests are always routed to the proper, healthy backend service dynamically managed by Consul.*
+
+== Getting started
+
+=== How to enable Service Discovery with Consul.io for your APIs?
+
+==== Prerequisites
+
+. Basic knowledge of Consul. If you are completely new to Consul, we strongly encourage you to follow this https://learn.hashicorp.com/tutorials/consul/get-started-service-discovery[get started guide^].
+. A running Consul server and agent.
+
+==== How to register a service in Consul
+
+An easy way to register a service in consul is to request `/v1/agent/service/register` endpoint of Consul's https://www.consul.io/api-docs/agent/service#service-agent-http-api[Agent HTTP API^].
+
+Consul does not allow you to directly specify an extra path of your service when registering it. 
+
+To overcome this limitation, Gravitee.io supports extra `Meta` attributes in addition to the standard `Address` attribute.
+
+Meta attributes must be provided as part of the definition of your service:
+
+* `gravitee_path` to specify on which path your service is reachable.
+* `gravitee_ssl` to specify whether your service should be called with `http://` or `https://` scheme.
+
+Below an cURL command example to register a service in Consul with extra attributes supported by Gravitee.io: 
+
+[source]
+----
+curl -X PUT -d '{"Name": "whattimeisit", "Address": "api.gravitee.io", "Meta": {"gravitee_path":"/whattimeisit", "gravitee_ssl":"true"}, "Port": 443}' http://localhost:8500/v1/agent/service/register
+----
+
+You can verify that your service was successfully registered in Consul with the following cURL command assuming you assigned `whattimeisit` as the `Name` of the service.
+
+[source]
+----
+curl "http://localhost:8500/v1/agent/service/whattimeisit"
+----
+
+You should get a response as follows:
+[source,json]
+----
+{
+   "ID":"whattimeisit",
+   "Service":"whattimeisit",
+   "Tags":[
+      
+   ],
+   "Meta":{
+      "gravitee_path":"/whattimeisit",
+      "gravitee_ssl":"true"
+   },
+   "Port":443,
+   "Address":"api.gravitee.io",
+   "Weights":{
+      "Passing":1,
+      "Warning":1
+   },
+   "EnableTagOverride":false,
+   "ContentHash":"d43a25497735099",
+   "Datacenter":"dc1"
+}
+----
+
+Now that your service is registered in Consul, go to APIM console:
+
+* Create or select an existing API.
+* Under API's submenu, click *Proxy*.
+* Under *Backend Service*, select *Endpoints*.
+
+image::{% link images/apim/3.x/api-publisher-guide/service-discovery/service-discovery-consul-endpoints.png %}[]
+
+* Click on the *Edit Group* icon.
+* Select *SERVICE DISCOVERY* tab.
+* Check *Enabled service discovery* checkbox.
+* For *Type* dropdown list, select *Consul.io Service Discovery*. 
+
+image::{% link images/apim/3.x/api-publisher-guide/service-discovery/service-discovery-consul-configuration.png %}[]
+
+* *Consul.io URL*: Enter the URL on which your Consul.io agent is deployed (make sure it is reacheable from the Gravitee APIM gateway).
+* *Service*: Enter the name of the service registered in Consul's agent.
+* *DC*:  The consul datacenter is an optional part of the Fully Qualified Domain Name (FQDN). if not provided, it defaults to the datacenter of the agent. Refer to this https://www.consul.io/docs/architecture[documentation^] for more details.
+* *ACL*: Provide the ACL token if you've secured the access to Consul. For more information on how to setup ACLs, check this https://learn.hashicorp.com/tutorials/consul/access-control-setup-production[ACL tutorial^]
+
+* *Truststore Type*: Allows to select the type of truststore (Java KeyStore or PKCS#12) storing the certificates that will be presented Consul Agent to Gravitee during the secure connection handshake (SSL/TLS). When selecting `None (Trust All)` you configure Gravitee.io to trust all certificates presented by Consul.io during connection handshake. You can either copy/paste the content of your Truststore directly under *Truststore content* field or provide the path to you external Truststore under *Truststore path*. At least one of the two must be provided.
+
+* *KeyStore Type* allows to select the type of keystore (Java KeyStore or PKCS#12) storing certificates that will be presented by Gravitee.io to Consul.io Agent during the secure connection handshake (SSL/TLS). You can either copy/paste the content of your keystore directly under *KeyStore content* field or provide the path to you external Keystore under *KeyStore path*. At least one of the two must be provided.
+* Click *SAVE*.
+
+Your API should now appear out of sync in the top banner. Be sure to click *deploy your API*.
+
+image::{% link images/apim/3.x/api-publisher-guide/service-discovery/service-discovery-consul-redeploy.png %}[]
+
+NOTE: Endpoints configured through the APIM console before service discovery was enabled are not removed. The Gravitee.io gateway will continue to consider those endpoints in addition to the ones discovered through Consul integration. The endpoints dynamically discovered through Consul are not displayed in APIM console. You can remove the endpoints define through the APIM console. However, we encourage you to keep at least one endpoint declared as secondary. Secondary endpoints are not included in the load-balancer pool and are only selected to handle requests if Consul is no longer responding.
+
+To declare an endpoint as secondary:
+
+* Click on the *Edit* icon.
+* Check Secondary endpoint checkbox.
+* Select *SAVE*.
+
+image::{% link images/apim/3.x/api-publisher-guide/service-discovery/service-discovery-consul-secondary-endpoint.png %}[]
+
+==== How to enable Health Check to monitor endpoints managed by Consul
+
+You can optionally enable health checks for your API. You will then be able to view the status of all endpoints under *Per-endpoint availability* section, including the ones managed by Consul.
+
+image::{% link images/apim/3.x/api-publisher-guide/service-discovery/service-discovery-consul-healthcheck.png %}[]
+
+For more details on how to enable Health Check, refer tot this link:{{'/apim/3.x/apim_publisherguide_backend_services.html#configure_health_check' | relative_url}}[section].
+
+==== Verify that the service discovery is properly configured for your API?
+
+Now that your backend endpoint is configure with Consul.io, you can try to call your API to make sure that client request are properly routed to the backend service declared in Consul.io.
+
+If you encounter any issues, enable logs in order to troubleshoot. Refer to the link:{{'/apim/3.x/apim_publisherguide_logging_analytics.html#logs' | relative_url}}[Logging and analytics] to learn how to configure logging on your API.
