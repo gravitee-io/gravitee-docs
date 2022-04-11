@@ -21,6 +21,8 @@ Repeat these steps on each component (APIM Gateway and APIM API) where the SQL d
 . Place the zip file in the plugin directory for each component (`$GRAVITEE_HOME/plugins`).
 . Configure your `gravitee.yml` files, as described in the next section.
 
+== Configure the Rate Limit repository plugin
+
 [source,yaml]
 ----
 # ===================================================================
@@ -35,6 +37,25 @@ ratelimit:
     port:                   # redis port (default 6379)
     password:               # redis password (default null)
     timeout:                # redis timeout (default -1)
+
+    # Following properties are REQUIRED ONLY when running Redis in sentinel mode
+    sentinel:
+      master:               # redis sentinel master host
+      password:             # redis sentinel master password
+      nodes: [              # redis sentinel node(s) list 
+        {
+          host : localhost, # redis sentinel node host
+          port : 26379      # redis sentinel node port
+        },
+        {
+          host : localhost,
+          port : 26380
+        },
+        {
+          host : localhost,
+          port : 26381
+        }
+      ]
 ----
 
 == Point of interest
