@@ -37,7 +37,7 @@ entries:
                     url: /apim/3.x/apim_installation_guide_amazon_introduction.html
                   - title: Prerequisite - Machine
                     output: web
-                    url: /apim/3.x/apim_installation_guide_amazon_prerequisite_machine.html                  
+                    url: /apim/3.x/apim_installation_guide_amazon_prerequisite_machine.html
                   - title: Prerequisite - Setup Gravitee YUM repository
                     output: web
                     url: /apim/3.x/apim_installation_guide_amazon_prerequisite_yum_repository.html
@@ -70,13 +70,13 @@ entries:
                     url: /apim/3.x/apim_installation_guide_amazon_all.html
                   - title: Full stack
                     output: web
-                    url: /apim/3.x/apim_installation_guide_amazon_stack.html                    
+                    url: /apim/3.x/apim_installation_guide_amazon_stack.html
               - title: Install on Docker
                 output: web
                 subfolderitems:
                   - title: Introduction
                     output: web
-                    url: /apim/3.x/apim_installation_guide_amazon_introduction.html                  
+                    url: /apim/3.x/apim_installation_guide_amazon_introduction.html
                   - title: Images
                     output: web
                     url: /apim/3.x/apim_installation_guide_docker_images.html
@@ -91,7 +91,7 @@ entries:
                     url: /apim/3.x/apim_installation_guide_docker_compose_ee.html
                   - title: Customize
                     output: web
-                    url: /apim/3.x/apim_installation_guide_docker_customize.html             
+                    url: /apim/3.x/apim_installation_guide_docker_customize.html
               - title: Install on Kubernetes
                 output: web
                 subfolderitems:
@@ -312,6 +312,9 @@ entries:
           - title: Import APIs
             output: web
             url: /apim/3.x/apim_publisherguide_import_apis.html
+          - title: Partial update APIs
+            output: web
+            url: /apim/3.x/apim_publisherguide_partial_update_apis.html
             subfolders:
               - title: Service Managment Ecosystem
                 output: web
