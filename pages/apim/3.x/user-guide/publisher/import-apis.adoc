@@ -88,7 +88,7 @@ This sections describes how API contents behave during import.
 
 * Plans in API definition that already exist in the target API will be _updated_  (will not change the existing plan's status)
 * Plans in API definition that do not exist in the target API will be _created_
-* Plans in target API that are not present in the API definition will be _deleted_
+* Plans in target API without subscriptions that are not present in the API definition will be _deleted_ (an error would be raised if plan got subscriptions)
 
 === Pages
 
