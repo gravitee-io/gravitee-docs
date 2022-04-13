@@ -94,6 +94,7 @@ management:
     keystore:                   # path to KeyStore (when sslEnabled is true, default null)
     keystorePassword:           # KeyStore password (when sslEnabled is true, default null)
     keyPassword:                # password for recovering keys in the KeyStore (when sslEnabled is true, default null)
+    tlsProtocol:                # protocol to use when connecting to the mongodb instance (when sslEnabled is true, default 'TLSv1.2')
 ----
 
 [WARNING]

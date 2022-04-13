@@ -12,9 +12,8 @@ Before this version, the Management API allowed getting all audits of all enviro
 As of 3.18.0, a GET request will return the audits of the environment specified in the url and no longer return organization audits.
 To get organization audits you need to use the following endpoint: `[GET] management/organizations/{orgId}/audit`.
 
-The query params `envLog:boolean` & `orgLog:boolean` are removed. 
+The query params `envLog:boolean` & `orgLog:boolean` are removed.
 Now to get only environment or organization audit you have to use the query params `referenceType:string` with `ENVIRONMENT` or `ORGANIZATION`. You can also filter by environment id with `environment:string` query params.
-
 
 === Platform alerts on multi-environments APIM
 
@@ -36,3 +35,11 @@ To provide more flexibility in the way roles are managed, some system roles have
 . The Application Primary Owner Role
 
 The Organization Admin Role remains a read-only role. If any accidental loss of access happened to one of the roles listed above, the Organization Admin Role will be the only one able to revert the changes.
+
+=== MongoDB with TLS/SSL
+
+Prior to 3.18.0, the Management API and Gateway were using `TLS` protocol to communicate with MongoDB without any options to configure the version of TLS to use (`TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`).
+
+This version introduces a new configuration key `tlsProtocol` to configure the version of TLS to use, the default value is the one provided by the JVM used to run APIM.
+
+To **keep the behavior of the previous version**, the value of `tlsProtocol` should be **set to `TLS`**. We also strongly recommend you to use `TLSv1.2` or `TLSv1.3` protocol. Keeping an older version could lead to security vulnerabilities where a user with access to the network could intercept the connection and modify the requested  protocol to downgrade to a less secure version.
