@@ -1,4 +1,4 @@
-= Partial update APIs
+= Partially update an API
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_publisherguide_partial_update_apis.html
 :page-folder: apim/user-guide/publisher
@@ -10,56 +10,74 @@
 
 == Overview
 
-The following sections describe the process of partial updating an API from its JSON definition.
+This method lets you update only a part of an existing API definition and/or its sub-resources (e.g., plans, pages, metadata), either by adding updating or removing attributes. It provides more flexbility in case of small updates as you are not required to provide the full API definition like when using the `**PUT /api/import**` endpoint.
 
-The API content behavior is identical to the import.
+NOTE: The business rules that apply during a partial update are identical to those used for the `**PUT /api/import**` endpoint.
 
-== HTTP PATCH Method and JSON Patch Format
+== HTTP PATCH and format
 
-You can use HTTP PATCH to apply partial updates to API definition and only send what you want to update (instead of full API definition using Import endpoint).
+To partially update your API use the HTTP `PATCH` verb on the `**/api/import**` enpdoint. 
 
-The HTTP PATCH request body describes how the API definition should be modified.
+The expected format of the request body is a JSON document containing the list of operations describing the changes you want to apply to the API definition.
 
-The format used to describe the changes is our JSON Patch implementation which uses JsonPath instead of JSON POINTER.
+The format used to describe these changes is based on https://datatracker.ietf.org/doc/html/rfc6902[JSON Patch] but uses https://github.com/json-path/JsonPath[JSON Path] instead of JSON Pointer.
 
-Simply put, the JSON Patch format uses a "series of operations" to describe how the API should be modified.
 
-A JSON Patch document is an array of JSON objects. Each object in the array represents exactly one JSON Patch operation.
+=== JSON Patch format
 
-=== Available operations
+A JSON Patch document is an **array** of JSON objects, each object representing exactly one JSON Patch operation.
 
-==== REPLACE (default)
-The replace operation updates the value at the targeted location with a new value.
+Each patch operation takes the following fields:
 
-==== ADD
-The add operation adds a new property to an object.
+* `operation`: defines the type of operation (e.g., ADD, REMOVE, REPLACE, TEST)
+* `jsonPath`: defines where the operation applies in the document through a JSON Path expression. Check <<JsonPath syntax>> section for more details.
+* `value`: defines the value to apply (e.g., a raw JSON literal, object, or array), optional for `REMOVE` operation.
 
-It can be leverage to insert a new item into an array.
+==== Example
 
-==== REMOVE
-The remove operation removes a value at the targeted location.
+The below example would update the API version and remove an API property:
 
-==== TEST
+[source,json]
+----
+[
+  {
+    "jsonPath": "$.version",
+    "value": "3.2.0",
+    "operation": "REPLACE"
+  },
+  {
+    "jsonPath": "$.properties[?(@.key == 'properties_1')]",
+    "operation": "REMOVE"
+  }
+]
+----
 
-The test operation tests that the value at the "path" is equal to the "value".
+=== JSON Patch operations
 
-Because the PATCH operation is atomic, the PATCH should be discarded if any of its operations fail.
+[cols="20,80"]
+|===
+| Operation | Description
 
-The test operation can be used to validate that the preconditions and post-conditions have been met.
+| REPLACE (default) | Updates the value at the targeted location with a new value.
+| ADD               | Adds a new property to an object or inserts a new item into an array.
+| REMOVE            | Removes a value at the defined location
+| TEST              | Tests that the value at the defined "path" is equal to the `value`. Because the PATCH operation is atomic, the PATCH should be discarded if any of its operations fail. The test operation can be used to validate that the preconditions and post-conditions have been met. In case the condition fails the API will return an `HTTP 204 No Content`.
+|===
 
-In case the condition fails the API will return an `HTTP 204 No Content`.
+== JSONPath syntax
 
-== JsonPath syntax
-JsonPath is a query language for JSON, similar to XPath for XML.
+A JSONPath expression must be provided in the `jsonPath` attribute of each JSON Patch operation.
 
-JsonPath expressions always refer to a JSON structure.
+Note that:
 
-The "root member object" in JsonPath is always referred to as $ regardless if it is an object or array.
-
-JsonPath expressions, including property names and values, are case-sensitive.
+* JSONPath is a **query language** for JSON, similar to XPath for XML.
+* JSONPath expressions always refer to a **JSON structure**.
+* The _root member object_ in JSONPath is always referred to as `$` regardless if it is an object or array.
+* JSONPath expressions, including property names and values, are **case-sensitive**.
 
 === Operators
 
+[cols="20,80"]
 |===
 | Operator                  | Description
 
@@ -76,14 +94,14 @@ JsonPath expressions, including property names and values, are case-sensitive.
 
 === Filters
 
-Filters are logical expressions used to filter arrays.
+Filters are logical expressions used to filter arrays:
 
-A typical filter would be `[?(@.age > 18)]` where `@` represents the current item being processed.
+* A typical filter would be `[?(@.age > 18)]` where `@` represents the current item being processed.
+* More complex filters can be created with logical operators `&&` and `||`.
+* String literals must be enclosed by single or double quotes (`[?(@.color == 'blue')]` or `[?(@.color == "blue")]`).
 
-More complex filters can be created with logical operators `&&` and `||`.
 
-String literals must be enclosed by single or double quotes (`[?(@.color == 'blue')]` or `[?(@.color == "blue")]`).
-
+[%autowidth]
 |===
 | Operator                 | Description                                                           |
 
@@ -103,12 +121,24 @@ String literals must be enclosed by single or double quotes (`[?(@.color == 'blu
 | empty                    | left (array or string) should be empty                                |
 |===
 
-== CI/CD use cases examples
+== Dry run mode
 
-=== Update your API version
+A good way to test your request before actually applying the changes on your API definition is to execute a _dry run_ of your request. 
 
-* On an API you want to update the version, call the PATCH endpoint. For example :
-+
+When executing a _dry run_, no changes will be commited to database and the targeted API definition will not be affacted.
+
+Instead, a simulation of your changes will be executed and the resulting API definition will be provided in response.
+
+Set `dryRun` query parameter to `true` to enable _dry run_ mode:
+
+`PATCH /api/{api.id}/definition?dryRun=true`
+
+== Partial update examples
+
+Below a list of examples that you might find useful when managing your APIs through an automated CI/CD process:
+
+=== Update an API version
+
 [source,bash]
 ----
 curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
@@ -124,10 +154,25 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
      https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
 ----
 
-=== Update the weight of specific backend
+=== Update an API version in dry run mode
 
-* On an API you want to update the weight of specific backend, call the PATCH endpoint. For example :
-+
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '[
+           {
+             "jsonPath": "$.version",
+             "value": "3.2.0",
+             "operation": "REPLACE"
+           }
+         ]' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition?dryRun=true
+----
+
+=== Update the weight of a specific backend
+
 [source,bash]
 ----
 curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
@@ -143,10 +188,8 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
      https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
 ----
 
-=== Switch endpoint backup
+=== Switch backup endpoint
 
-* On an API you want to switch endpoint backup, call the PATCH endpoint. For example :
-+
 [source,bash]
 ----
 curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
@@ -169,8 +212,6 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
 
 === Update the target of an endpoint
 
-* On an API you want to update the target of an endpoint, call the PATCH endpoint. For example :
-+
 [source,bash]
 ----
 curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
@@ -186,11 +227,8 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
      https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
 ----
 
+=== Create a new policy flow
 
-=== Create policy flow
-
-* On an API you want to create a policy flow, call the PATCH endpoint. For example :
-+
 [source,bash]
 ----
 curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
@@ -210,10 +248,8 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
      https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
 ----
 
-=== Add policy to flow
+=== Add a policy to an existing flow
 
-* On an API you want to add policy to flow, call the PATCH endpoint. For example :
-+
 [source,bash]
 ----
 curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
@@ -238,8 +274,6 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
 
 === Update a policy configuration
 
-* On an API you want to update a policy configuration, call the PATCH endpoint. For example :
-+
 [source,bash]
 ----
 curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
@@ -260,8 +294,6 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
 
 === Add a resource
 
-* On an API you want to add a resource, call the PATCH endpoint. For example :
-+
 [source,bash]
 ----
 curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
@@ -289,8 +321,6 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
 
 === Update a resource configuration
 
-* On an API you want to update a resource configuration, call the PATCH endpoint. For example :
-+
 [source,bash]
 ----
 curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
@@ -309,10 +339,8 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
      https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
 ----
 
-=== Set properties if not exist
+=== Set properties if don't already exist
 
-* On an API you want to set all properties if not exist, call the PATCH endpoint. For example :
-+
 [source,bash]
 ----
 curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
@@ -336,10 +364,8 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
      https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
 ----
 
-=== Remove a property with key
+=== Remove a property by key
 
-* On an API you want to remove a property, call the PATCH endpoint. For example :
-+
 [source,bash]
 ----
 curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
@@ -352,29 +378,4 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
            }
          ]' \
      https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
-----
-
-
-== Check mode "Dry run"
-
-When the PATCH endpoint is called with `dryRun=true` query parameter, it will not make any changes on database.
-Instead, the endpoint will just run a simulation and return the modified definition.
-
-=== Check the update of version
-
-* On an API you want to check the update of version, call the PATCH endpoint. For example :
-+
-[source,bash]
-----
-curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
-     -H "Content-Type:application/json;charset=UTF-8" \
-     -X PATCH \
-     -d '[
-           {
-             "jsonPath": "$.version",
-             "value": "3.2.0",
-             "operation": "REPLACE"
-           }
-         ]' \
-     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition?dryRun=true
 ----
