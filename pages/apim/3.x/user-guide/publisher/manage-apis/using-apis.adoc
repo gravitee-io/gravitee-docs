@@ -1,0 +1,531 @@
+= Using our APIs
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_publisherguide_manage_apis_using_our_apis.html
+:page-folder: apim/user-guide/publisher/manage-apis
+:page-layout: apim3x
+
+{% assign version = site.products.apim._3x.version | split: "." %}
+{% capture current_version %}{{ version[0] }}.{{ version[1] }}{% endcapture %}
+
+== Overview
+
+The following sections describes the process of creating and updating your API through our API and provide some examples of how to integrate this kind of behaviors into a CI/CD workflow.
+
+== API definition
+
+=== What is an API definition ?
+
+An API definition is a JSON representation of your API and its content, eg. plans, pages, metadata, etc.
+
+=== How to get an API definition ?
+
+You can get the API definition by exporting it from the APIM console.
+Or, by using the export endpoint
+`**GET /apis/{api.id}/export**`
+(link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/exportApiDefinition' }}[API reference^]).
+
+=== What does it contain ?
+
+In this definition each entity (API, plan or page) has :
+
+- A **crossId** :
+Uniquely identifies an entity (an API, a plan or a page) across environments :
+the same entity will keep the same crossId from one environment to another
+
+TIP: You can find an API by its crossId, using the `getApis` endpoint with the `crossId` query param
+`**GET /apis?crossId=my-cross-id**`
+(link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/getApis' }}[API reference^]).
+
+- A technical **id** :
+Uniquely identifies an entity in one environment only:
+The same entity will have a different technical id from one environment to another
+
+NOTE: The API import process uses the **crossId** to match entities in the API defintion with existing ones.
+The technical **id** is not used during the import process unless the **crossId** isn't defined. For example in case of an old exported API definition.
+
+
+== API content behavior
+
+This sections describes how API contents behave during import and update.
+
+=== Plans
+
+* Plans in API definition that already exist in the target API will be _updated_  (will not change the existing plan's status)
+* Plans in API definition that do not exist in the target API will be _created_
+* Plans in target API without subscriptions that are not present in the API definition will be _deleted_
+
+=== Pages
+
+* Pages in API definition that already exist in the target API will be _updated_
+* Pages in API definition that do not exist in the target API will be _created_
+* Pages in target API that are not present in the API definition _won't change_
+
+=== Groups, Members and roles
+
+Depending on your installation setup, group, members and roles will not be imported the same way.
+
+* When using the import feature to update or create an API on the same environment members, groups and roles can be edited, and group memberships are preserved.
+
+* When importing on another environment groups that are unknown to the target environment will be created, but their memberships will not be preserved.
+
+* When importing on another environment that runs on the same APIM instance (same database), direct members will be preserved on the target environment.
+
+* When importing on another environment that runs on a separate APIM instance, direct members will not be preserved and group that are unknown to the target environment will
+be created without preserving their memberships.
+
+
+== Endpoints for each usage
+
+This section describes the several endpoints can be leverage to manage your APIs.
+
+They require the target organization and environment in the prefix :
+_/organizations/**{organization.id}**/environments/**{environment.id}**/_
+
+=== Creating a new API from an API definition
+
+`**POST /api/import**`
+(link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/importApiDefinition' }}[API reference^]).
+
+The HTTP request body can contain :
+
+* the JSON API definition
+* **OR** an HTTP link to the JSON API definition
+
+NOTE: Will raise an error if there is already an existing API on the target environment with the same **crossId**.
+
+=== Exporting an existing API
+
+`**GET /api/{api.id}/export**`
+(link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/exportApiDefinition' }}[API reference^])
+
+
+=== Updating an existing API from an API definition
+
+`**PUT /api/import**`
+(link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/updateWithDefinition' }}[API reference^])
+
+Using the technical **id** in the URL is not mandatory as it will use the **crossId** in your API definition to find the target API.
+
+This allows you to use the same URL to update your API across all environments.
+
+NOTE: You can also use the URL containing API technical **id** if you want :
+`**PUT /api/{api.id}/import**`
+(link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/updateWithDefinitionPUT' }}[API reference^])
+Raise an error if the **crossId** of your definition matches another API on target environment.
+
+=== Updating partially an API
+
+`**PATCH /api/{api.id}/definition**`
+
+You can use HTTP PATCH to apply partial updates to API definition. With this way you can send only what you want to update.
+The HTTP PATCH request body describes how the API definition should be modified.
+The format used to describe the changes is our JSON Patch implementation which uses https://github.com/json-path/JsonPath[JSON PATH] instead of JSON POINTER.
+
+Simply put, the JSON Patch format uses a "series of operations" to describe how the API should be modified.
+A JSON Patch document is an array of JSON objects. Each object in the array represents exactly one JSON Patch operation.
+
+==== Available operations
+
+===== REPLACE (default)
+The replace operation updates the value at the target location with a new value.
+
+===== ADD
+The add operation adds a new property to an object.
+Also, we can use it to insert a new item into an array.
+
+===== REMOVE
+The remove operation removes a value at the target location.
+
+===== TEST
+
+The test operation tests that the value at the "path" is equal to the "value".
+Because the PATCH operation is atomic, the PATCH should be discarded if any of its operations fail.
+The test operation can be used to validate that the preconditions and post-conditions have been met.
+
+In case the condition fails the API will return an `HTTP 204 No Content`.
+
+==== JsonPath syntax
+JsonPath is a query language for JSON, similar to XPath for XML.
+
+JsonPath expressions always refer to a JSON structure.
+
+The "root member object" in JsonPath is always referred to as $ regardless if it is an object or array.
+
+JsonPath expressions, including property names and values, are case-sensitive.
+
+===== Operators
+
+|===
+| Operator                  | Description
+
+| `$`                       | The root element to query. This starts all path expressions.
+| `@`                       | The current node being processed by a filter predicate.
+| `*`                       | Wildcard. Available anywhere a name or numeric are required.
+| `..`                      | Deep scan. Available anywhere a name is required.
+| `.<name>`                 | Dot-notated child
+| `['<name>' (, '<name>')]` | Bracket-notated child or children
+| `[<number> (, <number>)]` | Array index or indexes
+| `[start:end]`             | Array slice operator
+| `[?(<expression>)]`       | Filter expression. Expression must evaluate to a boolean value.
+|===
+
+===== Filters
+
+Filters are logical expressions used to filter arrays.
+
+A typical filter would be `[?(@.age > 18)]` where `@` represents the current item being processed.
+
+More complex filters can be created with logical operators `&&` and `||`.
+
+String literals must be enclosed by single or double quotes (`[?(@.color == 'blue')]` or `[?(@.color == "blue")]`).
+
+|===
+| Operator                 | Description                                                           |
+
+| ==                       | left is equal to right (note that 1 is not equal to '1')              |
+| !=                       | left is not equal to right                                            |
+| <                        | left is less than right                                               |
+| <=                       | left is less or equal to right                                        |
+| >                        | left is greater than right                                            |
+| >=                       | left is greater than or equal to right                                |
+| =~                       | left matches regular expression  [?(@.name =~ /foo.*?/i)]             |
+| in                       | left exists in right [?(@.size in ['S', 'M'])]                        |
+| nin                      | left does not exists in right                                         |
+| subsetof                 | left is a subset of right [?(@.sizes subsetof ['S', 'M', 'L'])]       |
+| anyof                    | left has an intersection with right [?(@.sizes anyof ['M', 'L'])]     |
+| noneof                   | left has no intersection with right [?(@.sizes noneof ['M', 'L'])]    |
+| size                     | size of left (array or string) should match right                     |
+| empty                    | left (array or string) should be empty                                |
+|===
+
+
+==== Check mode "Dry run"
+
+`**PATCH /api/{api.id}/definition?dryRun=true**`
+
+When the PATCH endpoint is called with `dryRun=true` query parameter, it will not make any changes on database.
+Instead, the endpoint will just run a simulation and return the modified definition.
+
+
+== CI/CD use cases examples
+
+=== Create your API on development environment
+
+Create your API in development environment, using the APIM console.
+
+=== Push your API to the production environment
+
+* Get your API definition by exporting it from APIM console, or using the export endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X GET \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/35a1b7d4-b644-43d1-a1b7-d4b64493d134/export
+----
+
+* On each environment you want to create your API, call the POST endpoint. For example
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X POST \
+     -d '{
+            "name": "my-api",
+            "crossId": "3e645da6-039c-4cc0-a45d-a6039c1cc0d3",
+            "version": "1",
+            [....]
+        }' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/import
+----
+
+=== Update your API on production environment
+
+* Update your API definition. Manually, or by re-exporting the source API from development environment.
+
+* On each environment you want to update your API, call the PUT endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PUT \
+     -d '{
+            "name": "my-updated-api",
+            "crossId": "3e645da6-039c-4cc0-a45d-a6039c1cc0d3",
+            "version": "1",
+            [....]
+        }' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]//management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/import
+----
+
+
+=== Update your API version
+
+* On an API you want to update the version, call the PATCH endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '[
+           {
+             "jsonPath": "$.version",
+             "value": "3.2.0",
+             "operation": "REPLACE"
+           }
+         ]' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
+----
+
+=== Update the weight of specific backend
+
+* On an API you want to update the weight of specific backend, call the PATCH endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '[
+           {
+             "jsonPath": "$.proxy.groups[?(@.name == 'my-group')].endpoints[?(@.name == 'my-endpoint')].weight",
+             "value": "10",
+             "operation": "REPLACE"
+           }
+         ]' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
+----
+
+=== Switch endpoint backup
+
+* On an API you want to switch endpoint backup, call the PATCH endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '[
+           {
+             "jsonPath": "$.proxy.groups[?(@.name == 'my-group')].endpoints[?(@.name == 'my-endpoint')].backup",
+             "value": true,
+             "operation": "REPLACE"
+           },
+          {
+             "jsonPath": "$.proxy.groups[?(@.name == 'my-group')].endpoints[?(@.name == 'my-endpoint-backup')].backup",
+             "value": false,
+             "operation": "REPLACE"
+          }
+         ]' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
+----
+
+=== Update the target of an endpoint
+
+* On an API you want to update the target of an endpoint, call the PATCH endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '[
+           {
+             "jsonPath": "$.proxy.groups[?(@.name == 'default-group')].endpoints[?(@.name == 'my-endpoint')].target",
+             "value": "https://api.gravitee.io/echo",
+             "operation": "REPLACE"
+           }
+         ]' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
+----
+
+
+=== Create policy flow
+
+* On an API you want to create a policy flow, call the PATCH endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '[
+           {
+             name: 'ALL',
+             methods: ['GET', 'POST', 'PUT'],
+             'path-operator': {
+               path: '/',
+             },
+             pre: [],
+             post: []
+           },
+         ]' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
+----
+
+=== Add policy to flow
+
+* On an API you want to add policy to flow, call the PATCH endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '[
+           {
+             "jsonPath": "$.flows[?(@.path-operator.path == '/')].post",
+             "value": {
+               policy: 'mock',
+               name: 'A mock',
+               configuration: {
+                 status: '200',
+                 content: '{ "message": "This is a mock" }',
+               },
+              },
+             "operation": "ADD"
+           }
+         ]' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
+----
+
+=== Update a policy configuration
+
+* On an API you want to update a policy configuration, call the PATCH endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '[
+           {
+             "jsonPath": "$.flows[?(@.path-operator.path == '/')].pre[?(@.name == 'A mock')].configuration",
+             "value": {
+               "status": "500",
+               "content": "{#request.attributes.application}",
+             },
+             "operation": "REPLACE"
+           }
+         ]' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
+----
+
+=== Add a resource
+
+* On an API you want to add a resource, call the PATCH endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '[
+           {
+             "jsonPath": "$.resources",
+             "value": {
+               "name": "cache_name",
+               "type": "cache",
+               "enabled": false,
+               "configuration": {
+                 "name": "my-cache",
+                 "timeToIdleSeconds": 100,
+                 "timeToLiveSeconds": 200,
+                 "maxEntriesLocalHeap": 1000
+               }
+             },
+             "operation": "ADD"
+            }
+         ]' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
+----
+
+=== Update a resource configuration
+
+* On an API you want to update a resource configuration, call the PATCH endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '[
+           {
+             "jsonPath": "$.resources[?(@.name == 'cache_name')].enabled",
+             "value": false
+           },
+           {
+             "jsonPath": "$.resources[?(@.name == 'cache_name')].configuration.timeToIdleSeconds",
+             "value": 1000
+           }
+         ]' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
+----
+
+=== Set properties if not exist
+
+* On an API you want to set all properties if not exist, call the PATCH endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '[
+           {
+             "jsonPath": "$.properties",
+             "value": "null",
+             "operation": "TEST"
+           },
+           {
+             "jsonPath": "$.properties",
+             "value": [
+                { key: 'properties_1', value: 'my_property_value_1' },
+                { key: 'properties_2', value: 'my_property_value_2' },
+             ],
+             "operation": "REPLACE"
+           }
+         ]' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
+----
+
+=== Remove a property with key
+
+* On an API you want to remove a property, call the PATCH endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '[
+           {
+             "jsonPath": "$.properties[?(@.key == 'properties_1')]",
+             "operation": "REMOVE"
+           }
+         ]' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
+----
+
+
+=== Check the update of version
+
+* On an API you want to check the update of version, call the PATCH endpoint. For example :
++
+[source,bash]
+----
+curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
+     -H "Content-Type:application/json;charset=UTF-8" \
+     -X PATCH \
+     -d '[
+           {
+             "jsonPath": "$.version",
+             "value": "3.2.0",
+             "operation": "REPLACE"
+           }
+         ]' \
+     https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition?dryRun=true

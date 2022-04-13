@@ -309,16 +309,16 @@ entries:
           - title: Introduction
             output: web
             url: /apim/3.x/apim_publisherguide_manage_apis.html
-          - title: Create APIs
-            output: web
-            url: /apim/3.x/apim_publisherguide_create_apis.html
-          - title: Import APIs
-            output: web
-            url: /apim/3.x/apim_publisherguide_import_apis.html
-          - title: Partial update APIs
-            output: web
-            url: /apim/3.x/apim_publisherguide_partial_update_apis.html
             subfolders:
+              - title: Manage APIs
+                output: web
+                subfolderitems:
+                  - title: Using our console
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_manage_apis_using_our_console.html
+                  - title: Using our APIs
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_manage_apis_using_our_apis.html
               - title: Service Managment Ecosystem
                 output: web
                 subfolderitems:
