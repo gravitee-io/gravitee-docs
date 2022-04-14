@@ -16,7 +16,7 @@ NOTE: The business rules that apply during a partial update are identical to tho
 
 == HTTP PATCH and format
 
-To partially update your API use the HTTP `PATCH` verb on the `**/api/import**` enpdoint. 
+To partially update your API use the HTTP `PATCH` verb on the `**/api/import**` enpdoint.
 
 The expected format of the request body is a JSON document containing the list of operations describing the changes you want to apply to the API definition.
 
@@ -123,7 +123,7 @@ Filters are logical expressions used to filter arrays:
 
 == Dry run mode
 
-A good way to test your request before actually applying the changes on your API definition is to execute a _dry run_ of your request. 
+A good way to test your request before actually applying the changes on your API definition is to execute a _dry run_ of your request.
 
 When executing a _dry run_, no changes will be commited to database and the targeted API definition will not be affacted.
 
@@ -131,7 +131,7 @@ Instead, a simulation of your changes will be executed and the resulting API def
 
 Set `dryRun` query parameter to `true` to enable _dry run_ mode:
 
-`PATCH /api/{api.id}/definition?dryRun=true`
+`PATCH /apis/{api.id}/definition?dryRun=true`
 
 == Partial update examples
 
