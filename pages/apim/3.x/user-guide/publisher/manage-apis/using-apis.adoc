@@ -97,7 +97,7 @@ NOTE: An error is raised if an API with same **crossId** already exists on the t
 
 Use the following endpoint to export an API definition:
 
-`**GET /api/{api.id}/export**`
+`**GET /apis/{api.id}/export**`
 (link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/exportApiDefinition' }}[API reference^])
 
 
@@ -106,18 +106,18 @@ Use the following endpoint to export an API definition:
 `**PUT /api/import**`
 (link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/updateWithDefinition' }}[API reference^])
 
-This method relies on the **crossId** provided as part of the Imported API definition to eventually match your API to an existing API in the target environment. 
+This method relies on the **crossId** provided as part of the Imported API definition to eventually match your API to an existing API in the target environment.
 
 NOTE: An error is raised if the **crossId** of the Imported API matches with an existing API on the target environment.
 
-WARNING: Endpoint  `**PUT /api/{api.id}/import**`
+WARNING: Endpoint  `**PUT /apis/{api.id}/import**`
 (link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/updateWithDefinitionPUT' }}[API reference^]) based on the technical **id** (passed as a path parameter) can still be used, but is no longer the recommended option.
 
 === Partially update an API
 
 This endpoint lets you update only a part of an existing API definition and its sub-resources.
 
-`**PATCH /api/{api.id}/definition**`
+`**PATCH /apis/{api.id}/definition**`
 
 Refer to this link:{{ '/apim/3.x/apim_publisherguide_partial_update_apis.html' | relative_url}}[section^] for more details.
 
