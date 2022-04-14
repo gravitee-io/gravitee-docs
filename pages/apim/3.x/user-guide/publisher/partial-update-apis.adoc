@@ -235,15 +235,21 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
      -H "Content-Type:application/json;charset=UTF-8" \
      -X PATCH \
      -d '[
-           {
-             name: 'ALL',
-             methods: ['GET', 'POST', 'PUT'],
-             'path-operator': {
-               path: '/',
-             },
-             pre: [],
-             post: []
-           },
+            {
+              "jsonPath": "$.flows",
+              "value": [
+                 {
+                   "name": "ALL",
+                   "methods": ["GET", "POST", "PUT"],
+                   "path-operator": {
+                     "path": "/"
+                   },
+                  "pre": [],
+                  "post": []
+                }
+              ],
+              "operation": "REPLACE"
+            }
          ]' \
      https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition
 ----
@@ -259,13 +265,13 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
            {
              "jsonPath": "$.flows[?(@.path-operator.path == '/')].post",
              "value": {
-               policy: 'mock',
-               name: 'A mock',
-               configuration: {
-                 status: '200',
-                 content: '{ "message": "This is a mock" }',
-               },
-              },
+               "policy": "mock",
+               "name": "A mock",
+               "configuration": {
+                 "status": "200",
+                 "content": "{ \"message\": \"This is a mock\" }"
+               }
+             },
              "operation": "ADD"
            }
          ]' \
@@ -281,10 +287,10 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
      -X PATCH \
      -d '[
            {
-             "jsonPath": "$.flows[?(@.path-operator.path == '/')].pre[?(@.name == 'A mock')].configuration",
+             "jsonPath": "$.flows[?(@.path-operator.path == '/')].post[?(@.name == 'A mock')].configuration",
              "value": {
                "status": "500",
-               "content": "{#request.attributes.application}",
+               "content": "{#request.attributes.api}"
              },
              "operation": "REPLACE"
            }
@@ -355,8 +361,8 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
            {
              "jsonPath": "$.properties",
              "value": [
-                { key: 'properties_1', value: 'my_property_value_1' },
-                { key: 'properties_2', value: 'my_property_value_2' },
+                { key: "properties_1", value: "my_property_value_1" },
+                { key: "properties_2", value: "my_property_value_2" }
              ],
              "operation": "REPLACE"
            }
