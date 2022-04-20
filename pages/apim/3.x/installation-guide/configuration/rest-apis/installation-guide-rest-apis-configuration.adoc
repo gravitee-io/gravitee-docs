@@ -176,12 +176,24 @@ management:
 #    heartbeatSocketTimeout: 20000
 #    localThreshold: 15
 #    minConnectionsPerHost: 0
-#    sslEnabled: false
 #    threadsAllowedToBlockForConnectionMultiplier: 5
 #    cursorFinalizerEnabled: true
+## SSL settings (Available in APIM 3.10.14+, 3.15.8+, 3.16.4+, 3.17.2+, 3.18+)
+#    sslEnabled:
+#    keystore:
+#      path:
+#      type:
+#      password:
+#      keyPassword:
+#    truststore:
+#      path:
+#      type:
+#      password:
+## Deprecated SSL settings that will be removed in 3.19.0
+#    sslEnabled:
 #    keystore:
 #    keystorePassword:
-#    keyPassword
+#    keyPassword:
 
 # Management repository: single MongoDB using URI
 # For more information about MongoDB configuration using URI, please have a look to:

@@ -89,7 +89,18 @@ management:
     heartbeatFrequency:         # mongodb heartbeat frequency (default 10000)
     minHeartbeatFrequency:      # mongodb min heartbeat frequency (default 500)
 
-## SSL settings
+## SSL settings (Available in APIM 3.10.14+, 3.15.8+, 3.16.4+, 3.17.2+, 3.18+)
+    sslEnabled:                 # mongodb ssl mode (default false)
+    keystore:
+      path:                     # Path to the keystore (when sslEnabled is true, default null)
+      type:                     # Type of the keystore, supports jks, pem, pkcs12 (when sslEnabled is true, default null)
+      password:                 # KeyStore password (when sslEnabled is true, default null)
+      keyPassword:              # Password for recovering keys in the KeyStore (when sslEnabled is true, default null)
+    truststore:
+      path:                     # Path to the truststore (when sslEnabled is true, default null)
+      type:                     # Type of the truststore, supports jks, pem, pkcs12 (when sslEnabled is true, default null)
+      password:                 # Truststore password (when sslEnabled is true, default null)
+## Deprecated SSL settings that will be removed in 3.19.0
     sslEnabled:                 # mongodb ssl mode (default false)
     keystore:                   # path to KeyStore (when sslEnabled is true, default null)
     keystorePassword:           # KeyStore password (when sslEnabled is true, default null)
