@@ -52,11 +52,21 @@ They all need to be administered, however.
 Some roles are special. The are tagged as `System` or `Default`.
 
 ==== System role
-The System role is a read-only role (i.e. you cannot change its permissions) used by APIM.
-It is both an `ADMIN` role with an `ENVIRONMENT` and `ORGANIZATION` scope, and a `PRIMARY_OWNER` role with an `API` and `APPLICATION` scope.
-The System role gives the user all permissions.
+
+The Organization Admin role is a read-only role (i.e. you cannot change its permissions) used by APIM.
+
+This role gives the user all permissions. If any accidental loss of access happened to another role, a user
+with this role will still be able to perform the action or restore required privileges.
+
+Historically, the roles listed bellow were also created as read-only system roles and are still tagged as such, but they
+have been made editable for the sake of administration flexibility.
+
+. The Environment Admin role
+. The API Primary Owner role
+. The Application Primary Owner role
 
 ==== Default role
+
 The Default role is the role used by APIM when a role is not specified.
 For example, new registered users are assigned the default `ENVIRONMENT` and `ORGANIZATION`.
 The Default role gives the user limited permissions.

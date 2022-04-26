@@ -10,3 +10,13 @@ For example, if you create an alert on your `production` environment, it is rela
 
 Old platform alerts existing before Gravitee upgrade will be linked to the default environment.
 You will see them disappear from your others (non-default) environments, and will have to recreate them manually if relevant.
+
+=== System Roles Edition
+
+To provide more flexibility in the way roles are managed, some system roles have been made editable. From now on, the permissions of the following roles can be edited:
+
+. The Environment Admin Role.
+. The API Primary Owner Role
+. The Application Primary Owner Role
+
+The Organization Admin Role remains a read-only role. If any accidental loss of access happened to one of the roles listed above, the Organization Admin Role will be the only one able to revert the changes.
