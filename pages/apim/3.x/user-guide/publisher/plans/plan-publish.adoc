@@ -5,9 +5,26 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, documentation, manual, guide, reference, api, CGU, GCU
 :page-layout: apim3x
 
-You can publish any of your API plans which are in **Staging** status. Once the plan is published, users can view and subscribe to the API plan in APIM Portal.
+== Plan states
 
-link:{{ '/apim/3.x/apim_consumerguide_subscribe.html' | relative_url }}[Learn more about subscribing to APIs]
+* **Staging** - It's the first state of a plan, it is a draft mode. You can configure your plan but it won't be accessible to users.
+
+* **Published** - Once your plan is ready, you can publish it (view section below to learn how to publish a plan) to let API consumers view and subscribe on the APIM Portal and consume API through it. A published plan can still be edited.
+
+* **Deprecated** - You can deprecate a plan so it won't be available on the APIM portal and API Consumers won't be able to subscribe to it. Existing subscriptions remains so it doesn't impact your existing API consumers.
+
+* **Closed** - Once a plan is closed, all associated subscriptions are closed too. This can not be undone. API consumers subscribed to this plan won't be able to use your API.
+
+
+== Plan lifecycle
+
+image::{% link images/apim/3.x/api-publisher-guide/plans-subscriptions/plan-lifecycle.png %}[]
+
+A plan can not be moved back to a previous state.
+
+WARNING: You need to close all published or deprecated plans before deleting an API.
+
+== Publish a plan
 
 . On the **Plans** page, go to the **Staging** tab.
 +
