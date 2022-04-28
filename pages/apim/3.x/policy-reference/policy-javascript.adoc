@@ -113,6 +113,8 @@ And the request body being passed to the API would be:
 ]
 ----
 
+WARNING: When working with scripts on onRequestContent phase, the last instruction of the script **must be** the new body content that would be returned by the policy.
+
 == Phase - onResponse
 In the **onResponse** phase you have access to the **request**, the **response** and the **context** object.
 |===
@@ -154,6 +156,9 @@ And the reponse message would be:
     }
 ]
 ----
+
+WARNING: When working with scripts on onResponseContent phase, the last instruction of the script **must be** the new body content that would be returned by the policy.
+
 
 == Reference - Metrics [[metricsobject]]
 It is highly advisable to use the link:{% link pages/apim/3.x/policy-reference/policy-metrics-reporter.adoc %}[Metrics Reporter] in order to manage the metrics. However, the request object does contain a **metrics** object.
