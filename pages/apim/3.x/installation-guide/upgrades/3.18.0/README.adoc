@@ -1,5 +1,21 @@
 = Upgrade to 3.18.0
 
+
+== Breaking changes
+
+=== Environment Audits
+
+Endpoint: `[GET] management/organizations/{orgId}/environments/{envId}/apis/{api}/audit` (link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/getApiAudits' }}[API audits^]).
+
+Before this version, the Management API allowed getting all audits of all environments and organizations with this endpoint.
+
+As of 3.18.0, a GET request will return the audits of the environment specified in the url and no longer return organization audits.
+To get organization audits you need to use the following endpoint: `[GET] management/organizations/{orgId}/audit`.
+
+The query params `envLog:boolean` & `orgLog:boolean` are removed. 
+Now to get only environment or organization audit you have to use the query params `referenceType:string` with `ENVIRONMENT` or `ORGANIZATION`. You can also filter by environment id with `environment:string` query params.
+
+
 === Platform alerts on multi-environments APIM
 
 Before this version, platform alerts were common to all environments.
