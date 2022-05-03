@@ -33,7 +33,7 @@ The following matrix shows scope and storage compatibility.
 |X
 |X
 |-
-|X
+|X footnote:[Using JDBC as a rate limit repository is not recommended. It can lead to inaccuracies in limit calculation, as counter is not shared across concurrent threads.]
 
 |Analytics
 |-
