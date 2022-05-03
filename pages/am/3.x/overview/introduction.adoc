@@ -12,7 +12,7 @@ It offers a centralized authentication and authorization service to deliver secu
 
 == Authorization in AM
 
-AM is based on OAuth2/OpenID Connect protocols and acts as an identity provider broker.
+AM is based on OAuth2/OpenID Connect and SAML 2.0 protocols and acts as an identity provider broker
 
 === OAuth2
 
@@ -29,4 +29,12 @@ For further information about OAuth2, view the link:https://tools.ietf.org/html/
 OpenID Connect is an identity layer on top of the OAuth 2.0 protocol.
 It enables clients to verify the identity of the end user by using an Authorization Server to authenticate and obtain basic profile information about the end user.
 
-For further information about OpenID Connect, see the link:http://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect specifications^].
+For further information about OpenID Connect, view the link:http://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect specifications^].
+
+=== SAML 2.0
+
+The Security Assertion Markup Language (SAML) protocol is an open-standard, XML-based framework for authentication and authorization of users.
+
+Gravitee AM can act as both SAML IdP for applications as well as federate with SAML based Identity Providers for protocol mediation.
+
+For further information about SAML 2.0, view the link:http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html[SAML Tech Overview 2.0]
