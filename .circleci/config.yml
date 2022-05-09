@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  secrethub: secrethub/cli@1.1.0
+  keeper: gravitee-io/keeper@0.6.2
   gh: circleci/github-cli@2.1.0
 
 commands:
@@ -48,6 +48,15 @@ jobs:
       - image: mcr.microsoft.com/azure-cli:2.34.1
     resource_class: small
     steps:
+      - keeper/env-export:
+          secret-url: keeper://UryantA7MvZe8fkWwcUt8g/field/login
+          var-name: AZURE_APPLICATION_ID
+      - keeper/env-export:
+          secret-url: keeper://UryantA7MvZe8fkWwcUt8g/custom_field/tenant
+          var-name: AZURE_TENANT
+      - keeper/env-export:
+          secret-url: keeper://UryantA7MvZe8fkWwcUt8g/field/password
+          var-name: AZURE_APPLICATION_SECRET
       - attach_workspace:
           at: .
       - compute-sanitized-branch-name
@@ -67,6 +76,9 @@ jobs:
       - image: cimg/node:17.7
     resource_class: small
     steps:
+      - keeper/env-export:
+          secret-url: keeper://TIlcGPFq4rN5GvgnZb9hng/field/password
+          var-name: GITHUB_TOKEN
       - checkout
       - gh/setup
       - compute-sanitized-branch-name
@@ -102,6 +114,15 @@ jobs:
       - image: mcr.microsoft.com/azure-cli:latest
     resource_class: small
     steps:
+      - keeper/env-export:
+          secret-url: keeper://UryantA7MvZe8fkWwcUt8g/field/login
+          var-name: AZURE_APPLICATION_ID
+      - keeper/env-export:
+          secret-url: keeper://UryantA7MvZe8fkWwcUt8g/custom_field/tenant
+          var-name: AZURE_TENANT
+      - keeper/env-export:
+          secret-url: keeper://UryantA7MvZe8fkWwcUt8g/field/password
+          var-name: AZURE_APPLICATION_SECRET
       - run:
           name: install coreutils to manipulate dates
           command: |
@@ -136,16 +157,6 @@ workflows:
               ignore:
                 - /.*/
           context: cicd-orchestrator
-          pre-steps:
-            - secrethub/env-export:
-                secret-path: graviteeio/cicd/azure/application-id
-                var-name: AZURE_APPLICATION_ID
-            - secrethub/env-export:
-                secret-path: graviteeio/cicd/azure/tenant
-                var-name: AZURE_TENANT
-            - secrethub/env-export:
-                secret-path: graviteeio/cicd/azure/application-secret
-                var-name: AZURE_APPLICATION_SECRET
           requires:
             - build
       - comment-pr-after-deployment:
@@ -157,10 +168,6 @@ workflows:
               ignore:
                 - /.*/
           context: cicd-orchestrator
-          pre-steps:
-            - secrethub/env-export:
-                secret-path: graviteeio/cicd/graviteebot/github_personal_access_token
-                var-name: GITHUB_TOKEN
           requires:
             - deploy-on-azure-storage
 
@@ -176,13 +183,3 @@ workflows:
     jobs:
       - remove-old-containers:
           context: cicd-orchestrator
-          pre-steps:
-            - secrethub/env-export:
-                secret-path: graviteeio/cicd/azure/application-id
-                var-name: AZURE_APPLICATION_ID
-            - secrethub/env-export:
-                secret-path: graviteeio/cicd/azure/tenant
-                var-name: AZURE_TENANT
-            - secrethub/env-export:
-                secret-path: graviteeio/cicd/azure/application-secret
-                var-name: AZURE_APPLICATION_SECRET
