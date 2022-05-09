@@ -15,4 +15,46 @@ in application identity providers.
 More info:
 
 -  link:{{ '/am/current/am_userguide_login_identifier_first_login_flow.html' | relative_url }}[Identifier-first Login Flow^]
+
+== Application Identity Providers
+
+Identity providers at application level now support the following:
+
+- Priority: When the end user tries to login, the application will first try to login with the highest priority identity provider.
+- Selection rule: When the end user tries to login, the application will try to login with the identity provider that matches the rule.
+
+More info:
+
 -  link:{{ '/am/current/am_userguide_client_identity_providers.html' | relative_url }}[Application Identity Providers^]
+
+This also means that schema at management-api level changes to save the new application configuration:
+
+-  Prior to 3.17:
+
+```json
+{
+    ...
+    "identities": [
+      "idp-id-1", "idp-id-2", "idp-id-3"
+    ],
+    ...
+}
+```
+
+-  Since 3.17:
+
+```json
+{
+    ...
+    "identityProviders":[
+      { "identity" : "idp-id-1", "selectionRule" : "", "priority": 0 },
+      { "identity" : "idp-id-2", "selectionRule": "{#request.params['username'] matches '.+gravitee.+'}", "priority":1 },
+      { "identity" : "idp-id-3", "selectionRule": "", "priority":2 }
+  ],
+    ...
+}
+```
+
+You can also check the the API reference:
+
+-  link:{{ '/am/current/am_devguide_management_api_documentation.html' | relative_url }}[Mangement API reference^]
