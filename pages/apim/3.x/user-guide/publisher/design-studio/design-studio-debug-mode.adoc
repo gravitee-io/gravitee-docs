@@ -109,4 +109,4 @@ Some features are not testable with Debug Mode:
 * *IPFiltering* - Since calls are emited by the gateway itself, you will not be able to emulate a call from another IP with the debug mode (IP used to issue requests is 127.0.0.1)
 * *Health-check*
 * *Virtual hosts* - the first host is always selected
-* *Encrypted properties* - For security reasons, you won't be able to cleared encrypted properties in debug mode (it could have impact if you want to use them in condition for example).
+* *Encrypted properties* - For security reasons, you won't be able to clear encrypted properties in debug mode (it could have an impact if you want to use them in a condition for example).
