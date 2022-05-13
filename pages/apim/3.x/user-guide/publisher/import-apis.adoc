@@ -60,6 +60,10 @@ _/organizations/**{organization.id}**/environments/**{environment.id}**/_
 `**POST /api/import**`
 (link:{{ '/apim/3.x/management-api/' | relative_url | append: current_version | append: '/index.html#operation/importApiDefinition' }}[API reference^]).
 
+In the API definition, set the **crossId** that will identify your API (and related entities) across environments. You can assign any string to this **crossId**.
+
+Don't put any technical **id** in your API definition : the server will automatically generate a new **id** for the created API. Even if you provide one, it won't be used.
+
 NOTE: Will raise an error if there is already an existing API on the target environment with the same **crossId**.
 
 === Updating an existing API from an API definition
