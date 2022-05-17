@@ -70,9 +70,9 @@ The properties you can access for API requests are listed below.
 .^|pathInfo      |Path info              ^.^|string          |/store/MyStore
 .^|pathInfos     |Path info parts        ^.^|array of string |[,store,MyStore]
 .^|contextPath   |Context path           ^.^|string          |/v2/
-.^|params        |Query parameters       ^.^|key / value     |order -> 100 (Both syntax works : `{#request.params.my-params}` and `{#request.params["my-params"]}`))
+.^|params        |Query parameters       ^.^|key / value     |order -> 100
 .^|pathParams    |Path parameters        ^.^|key / value     |storeId -> MyStore (__see Warning for details__)
-.^|headers       |Headers                ^.^|key / value     |X-Custom -> myvalue (Both syntax works : `{#request.content.my-header}` and `{#request.content["my-header"]}`))
+.^|headers       |Headers                ^.^|key / value     |X-Custom -> myvalue
 .^|method        |HTTP method            ^.^|string          |GET
 .^|scheme        |HTTP scheme            ^.^|string          |http
 .^|version       |HTTP version           ^.^|string          |HTTP_1_1
@@ -87,6 +87,8 @@ WARNING: `{#request.content}` is only available for policies bound to an `on-req
 
 Accessing specific element of the content payload, you can use the JsonPath for example :
 `{#jsonPath(#request.content, "level.level-1.value")}`
+
+Alternative syntax can be used `{#request.headers.myheader}`, please note that it won't work with special characters -> `{#request.headers.my-header}` won't be interpretated due to `-`.
 
 === SSL Object
 The properties you can access in SSL Session object are listed below.
