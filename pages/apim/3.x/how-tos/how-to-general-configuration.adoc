@@ -179,3 +179,18 @@ image:{% link images/apim/3.x/how-tos/configure-apim/gateway-shardingtags-settin
 image:{% link images/apim/3.x/how-tos/configure-apim/gateway-api-logging-settings.png %}[]
 +
 The recommended value depends on the type of logging you have enabled: the more information you log, the lower the value needs to be (although the value must be above zero to be taken into account).
+
+
+== STEP 5: Mitigate Cross Site Framing
+
+Default configuration for NGinx
+
+```
+add_header X-Frame-Options "SAMEORIGIN" always;
+```
+
+In order to allow specific origin, you can add this header
+
+```
+add_header X-Frame-Options "ALLOW-FROM my-domain.com"
+```
