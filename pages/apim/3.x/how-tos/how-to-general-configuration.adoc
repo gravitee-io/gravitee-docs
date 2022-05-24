@@ -183,7 +183,13 @@ The recommended value depends on the type of logging you have enabled: the more 
 
 == STEP 5: Mitigate Cross Site Framing
 
-Default configuration for NGinx
+The AM Gateway implementes link:https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy[Content-Security-Policy] and link:https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options[X-Frame-Options].
+
+It is recommended to use these two mechanisms to have a better control on the resources the user agent is allowed to load for a given page.
+
+For example if you don't want to render a page in an `<iframe>` element, you can define the `X-Frame-Options` to `DENY` or use the `frame-ancestors` directive of CSP.
+
+By default, the configuration use
 
 ```
 add_header X-Frame-Options "SAMEORIGIN" always;
