@@ -181,22 +181,31 @@ image:{% link images/apim/3.x/how-tos/configure-apim/gateway-api-logging-setting
 The recommended value depends on the type of logging you have enabled: the more information you log, the lower the value needs to be (although the value must be above zero to be taken into account).
 
 
-== STEP 5: Mitigate Cross Site Framing
+== STEP 5: Portal & Console default nginx security config
 
-The AM Gateway implementes link:https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy[Content-Security-Policy] and link:https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options[X-Frame-Options].
-
-It is recommended to use these two mechanisms to have a better control on the resources the user agent is allowed to load for a given page.
-
-For example if you don't want to render a page in an `<iframe>` element, you can define the `X-Frame-Options` to `DENY` or use the `frame-ancestors` directive of CSP.
-
-By default, the configuration use
-
+The APIM Console use this default config :
 ```
-add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Content-Type-Options nosniff;
+    add_header X-Permitted-Cross-Domain-Policies none;
+```
+The APIM Portal use this default config :
+```
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Content-Type-Options nosniff;
+    add_header X-Permitted-Cross-Domain-Policies none;
 ```
 
-In order to allow specific origin, you can add this header
+It is recommended to complete this mechanisms to have a better control on the resources the user agent is allowed to load for a given page.
+
+
+For portal you can improve security to allow specific origin, with this header :
 
 ```
 add_header X-Frame-Options "ALLOW-FROM my-domain.com"
 ```
+NOTE: APIM console uses an iframe to preview the portal theme configuration, so it is necessary to add the console in ALLOW-FROM domains in Portal config.
+
+
+It is recommended to configure this header too : link:{{'https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy'}}[ Content-Security-Policy]
