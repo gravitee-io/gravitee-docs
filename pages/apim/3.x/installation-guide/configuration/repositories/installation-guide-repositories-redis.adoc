@@ -13,8 +13,6 @@ This repository plugin is for connecting to Redis databases for Rate Limit featu
 
 == Install the Rate Limit repository plugin
 
-NOTE: Because the plugin is part of the default distribution from APIM version 3.5, you only need to complete these steps for version 3.4 or earlier.
-
 Repeat these steps on each component (APIM Gateway and APIM API) where the SQL database is used.
 
 . Download the plugin corresponding to your APIM version (take the latest maintenance release).
