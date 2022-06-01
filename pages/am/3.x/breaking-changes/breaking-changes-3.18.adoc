@@ -1,0 +1,75 @@
+= Breaking changes in 3.18
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_3.18.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+
+NOTE: To take advantage of these new features and incorporate these breaking changes, **use the migration guide available link:{{ '/am/current/am_installguide_migration.html' | relative_url }}[here]**.
+
+== Bundle CE & EE
+
+Starting from the version 3.18.0, Gravitee will provide a single bundle for AM Community and Enterprise Edition. By default, this bundle (or docker image) will provide CE features and will not contains EE plugins. If you want to start AM EE with plugins you paid for, you will have to deploy the license key and EE plugin you need.
+
+
+=== Start AM EE with Docker
+
+If you are using docker to start AM, you will find here after a docker-compose snipet that mount two volumes :
+
+* to deploy enterprise plugins in an additional plugin directory
+* to deploy the license file
+
+[source,yaml]
+----
+  management:
+    image: graviteeio/am-management-api:3.18.0
+    container_name: gio_am_management
+    volumes:
+      - /path/to/plugins-dir:/opt/graviteeio-am-management-api/plugins-ee
+      - /path/to/license-dir/license.key:/opt/graviteeio-am-management-api/license/license.key
+    environment:
+      - GRAVITEE_PLUGINS_PATH_0=/opt/graviteeio-am-management-api/plugins
+      - GRAVITEE_PLUGINS_PATH_1=/opt/graviteeio-am-management-api/plugins-ee
+
+  gateway:
+    image: graviteeio/am-gateway:3.18.0
+    container_name: gio_am_gateway
+    restart: always
+    volumes:
+      - /path/to/plugins-dir:/opt/graviteeio-am-gateway/plugins-ee
+      - /path/to/license/license.key:/opt/graviteeio-am-gateway/license/license.key
+    environment:
+      - GRAVITEE_PLUGINS_PATH_0=/opt/graviteeio-am-gateway/plugins
+      - GRAVITEE_PLUGINS_PATH_1=/opt/graviteeio-am-gateway/plugins-ee
+----
+
+=== Deploy AM EE with Helm
+
+If you are using helm, you will have to mount the license file using a secret and specify which EE plugin to download in the `additionalPlugins` section for the gateway and the api.
+
+[source,yaml]
+----
+gateway:
+  additionalPlugins:
+  - https://download.gravitee.io/graviteeio-ee/am/plugins/idps/gravitee-am-identityprovider-saml2-generic/gravitee-am-identityprovider-saml2-generic-<version>.zip
+  extraVolumeMounts: |
+    - name: graviteeio-license
+      mountPath: /opt/graviteeio-am-gateway/license
+      readOnly: true
+  extraVolumes: |
+    - name: graviteeio-license
+      secret:
+        secretName: graviteeio-license
+        
+api:
+  additionalPlugins:
+  - https://download.gravitee.io/graviteeio-ee/am/plugins/idps/gravitee-am-identityprovider-saml2-generic/gravitee-am-identityprovider-saml2-generic-<version>.zip
+  extraVolumeMounts: |
+    - name: graviteeio-license
+      mountPath: /opt/graviteeio-am-management-api/license
+      readOnly: true
+  extraVolumes: |
+    - name: graviteeio-license
+      secret:
+        secretName: graviteeio-license
+----
