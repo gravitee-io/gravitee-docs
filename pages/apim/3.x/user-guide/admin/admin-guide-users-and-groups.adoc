@@ -54,9 +54,11 @@ image::{% link images/apim/3.14/admin-create-regular-user.png %}[Gravitee.io - P
 
 [label label-version]#New in version 3.14#
 
-If you enter an email address, an email will be sent to the user asking them to complete the registration.
+You can add an email to your service account to be able to subscribe to notifications.
 
 image::{% link images/apim/3.14/admin-create-service-account.png %}[Gravitee.io - Pre-Register Service Account]
+
+WARNING: You won't be able to connect to APIM Console with this user.
 
 === Create a user with the registration form
 
