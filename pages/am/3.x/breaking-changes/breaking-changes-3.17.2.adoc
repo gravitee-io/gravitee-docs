@@ -1,0 +1,9 @@
+= Breaking changes in 3.17.2
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_3.17.2.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+== Automatic redirection to External IDP
+
+AM 3.17.0 introduced the selection rules on application identity providers. These rules are used in accordance with the identifier-first login feature to redirect to the identity provider based on the defined rule and the user input. Starting from 3.17.2, the rules on external identity providers will be evaluated also during the get login page in order to redirect as soon as possible to the relevant provider and save a user interaction.
