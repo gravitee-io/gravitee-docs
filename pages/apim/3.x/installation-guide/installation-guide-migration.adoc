@@ -13,11 +13,15 @@ You may be required to perform manual actions as part of the upgrade.
 WARNING: Be sure to run scripts on the correct database since `gravitee` is not always the default database!
 Check your db name by running `show dbs;`
 
+include::upgrades/3.17.3/README.adoc[leveloffset=+1]
+
 include::upgrades/3.17.0/README.adoc[leveloffset=+1]
 
 include::upgrades/3.16.2/README.adoc[leveloffset=+1]
 
 include::upgrades/3.16.0/README.adoc[leveloffset=+1]
+
+include::upgrades/3.15.9/README.adoc[leveloffset=+1]
 
 include::upgrades/3.15.6/README.adoc[leveloffset=+1]
 
@@ -40,6 +44,8 @@ include::upgrades/3.11.2/README.adoc[leveloffset=+1]
 include::upgrades/3.11.1/README.adoc[leveloffset=+1]
 
 include::upgrades/3.11.0/README.adoc[leveloffset=+1]
+
+include::upgrades/3.10.15/README.adoc[leveloffset=+1]
 
 include::upgrades/3.10.13/README.adoc[leveloffset=+1]
 

@@ -76,7 +76,7 @@ entries:
                 subfolderitems:
                   - title: Introduction
                     output: web
-                    url: /apim/3.x/apim_installation_guide_amazon_introduction.html                  
+                    url: /apim/3.x/apim_installation_guide_docker_introduction.html                  
                   - title: Images
                     output: web
                     url: /apim/3.x/apim_installation_guide_docker_images.html
@@ -419,6 +419,9 @@ entries:
                 - title: Try it! Mode
                   output: web
                   url: /apim/3.x/apim_publisherguide_design_studio_try_it.html
+                - title: Debug Mode
+                  output: web
+                  url: /apim/3.x/apim_publisherguide_design_studio_debug_mode.html
               - title: Documentation
                 output: web
                 subfolderitems:
@@ -449,7 +452,7 @@ entries:
                   - title: Eureka
                     output: web
                     url: /apim/3.x/apim_service_discovery_eureka.html
-                  - title: Consul.io
+                  - title: HashiCorp Consul
                     output: web
                     url: /apim/3.x/apim_service_discovery_consul.html
               - title: Cockpit Features

@@ -10,6 +10,10 @@ WARNING: If you plan to skip versions when you upgrade, ensure that you read the
 
 WARNING: Be sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs;`
 
+== Upgrade to 3.15.6
+
+WARNING: For security reason, default values for the duration of the email mfaChallenge code and the resetPassword token have been reduced to 5 minutes. If you want to restore previous values, please update the gravitee.yaml file for the management and gateway service for these two values "`user.resetPassword.token`" and "`user.mfaChallenge.token`".
+
 == Upgrade to 3.17
 
 NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.17.html' | relative_url }}[Breaking changes in 3.17]

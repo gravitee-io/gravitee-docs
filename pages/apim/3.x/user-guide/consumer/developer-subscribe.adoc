@@ -78,6 +78,37 @@ If the API publisher chose to manually validate application subscriptions, you m
 +
 image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-wait-for-validation.png %}[]
 
+=== Sharing key across API subscriptions 
+
+Since 3.17, an option can be activated to enable API consumers to subscribe to multiple APIs with the same API key.
+
+Refer to link:{{ '/apim/3.x/apim_publisherguide_plan_security.html#use_a_shared_api_key' }}[this section] to learn how to enable this feature.
+
+NOTE: This option is only offered during the second subscription to an API (via an API Key plan).
+If activated the second subscription will share the same key generated during subscription to the 1st API.
+
+. Go to the *API Catalog* and select an API (that can be subscribed through an API key plan).
+. Click *SUBSCRIBE*.
+. Select a plan (with *Personal Key* as attribute).
++
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-shared-key-choose-plan.png %}[]
++
+. Select an Application (already subscribed once to an API through an API Key plan).
++
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-shared-key-select-app.png %}[]
++
+. You are now prompted to select the API key mode you want to use.
++
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-shared-key-confirm-key-mode.png %}[]
++
+. Select *Shared API Key* and click *NEXT*.
++
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-shared-key-validate-subscription-request.png %}[]
++
+. Click *VALIDATE THE REQUEST*.
+
+IMPORTANT: Once the API key mode is chosen for an application, it cannot be changed. All subsequent subscriptions to APIs will be reusing the same key shared across all subscriptions.
+
 == Manage subscriptions
 
 To view your subscriptions and their current status:
@@ -89,6 +120,12 @@ To view your subscriptions and their current status:
 image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-manage-subscriptions.png %}[]
 +
 NOTE: For API-Key plans, you can retrieve the API-Key value and also renew or revoke subscriptions.
+
+=== Manage subscriptions with Shared key
+
+When an application uses a Shared API key, all subscripitions sharing the API Key are identifiable by a *SHARED* tag:
+
+image::{% link images/apim/3.x/api-consumer-guide/developer-subscribe/subscribe-shared-key-subscription-list.png %}[]
 
 == Analytics
 

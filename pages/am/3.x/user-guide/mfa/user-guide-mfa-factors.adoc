@@ -42,6 +42,8 @@ With SMS verification, you can receive a verification code on your mobile phone 
 
 NOTE: SMS MFA requires a compatible link:{{ '/am/current/am_userguide_resources.html' | relative_url }}[resource^].
 
+TIP: Some providers allow you to define the duration of the code sent by SMS. If possible we advise you to set a duration of 2 minutes.
+
 If you enable an SMS type factor for your application, next time your users log in they will see the following screens:
 
 image::{% link images/am/current/graviteeio-am-userguide-mfa-sms-enroll.png %}[SMS Enroll]
