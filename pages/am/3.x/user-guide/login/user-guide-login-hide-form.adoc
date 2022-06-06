@@ -1,0 +1,32 @@
+= Hide login form
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_login_hide_form.html
+:page-folder: am/user-guide
+:page-layout: am
+
+== Overview
+
+Hide Login Form enables you to hide the default Gravitee login form and only display upstream Identity Provider(s) configured and enabled for the application.
+
+.A login form where Hide Login Form is not enabled
+image::{% link images/am/current/graviteeio-am-userguide-hide-login-form-false.png %}[alt=Hide Login Form not enabled, width=500,height=438]
+
+If you have one Identity provider configured for the application Gravitee AM will direct the user directly to the Identity Provider.
+
+
+If you have multiple Identity Providers configured for the application Gravitee AM will display the Identity Providers to the user.
+
+.A login form where Hide Login Form is enabled and with multiple IdP:s configured
+image::{% link images/am/current/graviteeio-am-userguide-hide-login-form-multiple-idp.png %}[alt=Hide login form multiple IdP, width=500,height=438]
+
+== Enable Hide Login Form
+
+To enable Hide Login Form:
+
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
+. link:{{ '/am/current/am_quickstart_app_setup.html' | relative_url }}[Make sure you have configured at least one Identity Provider for the application^].
+. Go to *Settings > Login* or *Application > "Your app" > Settings > Login*.
+. Switch on *Hide login form* and click *SAVE*.
+
+.Settings page for an application with Hide Login Form enabled
+image::{% link images/am/current/graviteeio-am-userguide-hide-login-form-settings.png %}[Hide login form settings]
