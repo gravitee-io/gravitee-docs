@@ -73,7 +73,7 @@ jobs:
 
   comment-pr-after-deployment:
     docker:
-      - image: cimg/node:17.7
+      - image: cimg/node:18.3
     resource_class: small
     steps:
       - keeper/env-export:
