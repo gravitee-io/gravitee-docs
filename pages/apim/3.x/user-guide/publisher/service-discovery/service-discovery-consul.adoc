@@ -153,7 +153,7 @@ Now that your service instances are registered in Consul, go to APIM console:
 * Under API's submenu, click *Proxy*.
 * Under *Backend Service*, select *Endpoints*.
 
-image::{% link images/apim/3.x/api-publisher-guide/service-discovery/service-discovery-consul-endpoints.png %}[]
+image::{% link images/apim/3.x/api-publisher-guide/service-discovery/service-discovery-endpoints.png %}[]
 
 * Click on the *Edit Group* icon.
 * Select *SERVICE DISCOVERY* tab.
@@ -174,7 +174,7 @@ image::{% link images/apim/3.x/api-publisher-guide/service-discovery/service-dis
 
 Your API should now appear out of sync in the top banner. Be sure to click *deploy your API*.
 
-image::{% link images/apim/3.x/api-publisher-guide/service-discovery/service-discovery-consul-redeploy.png %}[]
+image::{% link images/apim/3.x/api-publisher-guide/service-discovery/service-discovery-redeploy.png %}[]
 
 NOTE: Endpoints configured through the APIM console before service discovery was enabled are not removed. The Gravitee.io gateway will continue to consider those endpoints in addition to the ones discovered through Consul integration. The endpoints dynamically discovered through Consul are not displayed in APIM console. You can remove the endpoints define through the APIM console. However, we encourage you to keep at least one endpoint declared as secondary. Secondary endpoints are not included in the load-balancer pool and are only selected to handle requests if Consul is no longer responding.
 
@@ -184,7 +184,7 @@ To declare an endpoint as secondary:
 * Check Secondary endpoint checkbox.
 * Select *SAVE*.
 
-image::{% link images/apim/3.x/api-publisher-guide/service-discovery/service-discovery-consul-secondary-endpoint.png %}[]
+image::{% link images/apim/3.x/api-publisher-guide/service-discovery/service-discovery-secondary-endpoint.png %}[]
 
 == Verify that your service is properly discovered by APIM gateway
 
