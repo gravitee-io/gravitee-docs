@@ -78,7 +78,26 @@ These variables can be used to check whether the API calls have failed. The sect
 |URL invoked by the HTTP client (supports EL)
 ^.^|URL
 ^.^|
+
+.^|identifierAttribute
+^.^|X
+|Field used to retrieve user identifier into the JSON object provided into the HTTP response body.
+^.^|String
+^.^|
+
+.^|usernameAttribute
+^.^|X
+|Field used to retrieve username into the JSON object provided into the HTTP response body.
+^.^|String
+^.^|
+
 |===
+
+[label label-version]#New in 3.17.2# 
+
+NOTE: In previous versions the link:{{ '/am/current/am_userguide_identity_provider_mapping.html#user_mappers' | relative_url }}[User Mapper^] wasn't applied on User resource responses, since the version 3.17.2, a new checkbox has been introduced to apply User Mapper on User resource responses.
+
+image::{% link images/am/current/graviteeio-am-userguide-idp-http-user-mappers.png %}[]
 
 ===== Create
 
