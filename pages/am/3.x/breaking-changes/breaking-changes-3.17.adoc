@@ -5,6 +5,8 @@
 :page-layout: am
 
 
+WARNING: An issue in the migration process has been raised for 3.17 & 3.17.1 that may prevent the Managment API to restart, please do not install these versions.
+
 NOTE: To take advantage of these new features and incorporate these breaking changes, **use the migration guide available link:{{ '/am/current/am_installguide_migration.html' | relative_url }}[here]**.
 
 == Allowed domain lists
