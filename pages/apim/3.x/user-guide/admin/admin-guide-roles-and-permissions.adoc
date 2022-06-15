@@ -65,6 +65,16 @@ have been made editable for the sake of administration flexibility.
 . The API Primary Owner role
 . The Application Primary Owner role
 
+In order to edit this roles, you need to activate this mode in `gravitee.yml`
+
+----
+console:
+  systemRoleEdition:
+    enabled: true
+----
+
+WARNING: Updating permissions for system roles should be done carefully to avoid any unexpected behavior.
+
 ==== Default role
 
 The Default role is the role used by APIM when a role is not specified.
