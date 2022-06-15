@@ -52,6 +52,11 @@ https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-apim
 You can download directly the Elasticsearch repository using this link: +
 https://download.gravitee.io/graviteeio-apim/plugins/repositories/gravitee-apim-repository-elasticsearch/gravitee-apim-repository-elasticsearch-3.18.0.zip
 
+=== MySQL
+
+In 3.18.0, the MySQL Java driver has been updated to 8.0.29. As a consequence, TLS 1.0 and 1.1 are no longer supported.
+
+
 == Plans data
 
 Since this version, APIM improves plans data storage, and uses the `plans` database collection as the unique source of plans data.
