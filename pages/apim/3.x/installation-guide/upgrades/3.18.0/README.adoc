@@ -37,6 +37,16 @@ To provide more flexibility in the way roles are managed, some system roles have
 
 The Organization Admin Role remains a read-only role. If any accidental loss of access happened to one of the roles listed above, the Organization Admin Role will be the only one able to revert the changes.
 
+This mode is deactivated by default, you can toggle it on via `gravitee.yml` :
+
+----
+console:
+  systemRoleEdition:
+    enabled: true
+----
+
+WARNING: Updating permissions for system roles should be done carefully to avoid any unexpected behavior.
+
 === Plugin renaming
 
 From this version, and for the next 3.18.x versions and greater, the name of the Elasticsearch repository component changes. +
