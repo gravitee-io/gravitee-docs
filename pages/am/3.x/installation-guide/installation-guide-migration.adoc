@@ -63,6 +63,10 @@ WebAuthn Login
 +++ <script th:src="@{../assets/js/webauthn-login-v2.js}"></script>
 ----
 
+== Upgrade to 3.15.10
+
+WARNING: If you are using `HTTPIdentityProvider`, make sure to consult the breaking changes documentation for this version as soon as possible link:{{ '/am/current/am_breaking_changes_3.15.10.html' | relative_url }}[Breaking changes in 3.15.10].
+
 == Upgrade to 3.15.6
 
 WARNING: For security reason, default values for the duration of the email mfaChallenge code and the resetPassword token have been reduced to 5 minutes. If you want to restore previous values, please update the gravitee.yaml file for the management and gateway service for these two values "`user.resetPassword.token`" and "`user.mfaChallenge.token`".
