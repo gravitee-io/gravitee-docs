@@ -13,5 +13,11 @@ Access Management (AM) is split into three main components:
 
 The following sections explain how to prepare, install and configure your AM environment.
 
+* link:{{ 'am/current/am_installguide_amazon_introduction.html' | relative_url }}[Install on Amazon]
+* link:{{ 'am/current/am_installguide_docker_introduction.html' | relative_url }}[Install on Docker]
+* link:{{ 'am/current/am_installguide_redhat_introduction.html' | relative_url }}[Install on Red Hat and CentOS (Linux)]
+* link:{{ 'am/current/am_installguide_kubernetes_introduction.html' | relative_url }}[Install on Kubernetes]
+* link:{{ 'am/current/am_installguide_zip_introduction.html' | relative_url }}[Install with .ZIP]
+
 NOTE: This Installation Guide provides information about how to install Gravitee.io components. For external components, such as
 MongoDB, see the relevant product documentation.

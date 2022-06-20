@@ -1,50 +1,35 @@
 = Install AM API
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_installguide_management_api_install_zip.html
-:page-folder: am/installation-guide
+:page-folder: am/installation-guide/zip
 :page-layout: am
 :page-description: Gravitee.io Access Management - Management API - Installation with .zip
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
 == Overview
 
-AM API is required to run AM Console. You must install AM API first before you can use AM Console.
+AM API is required to run AM Console UI. You must install AM API first before you can use AM Console.
 
 == Prerequisites
 
-Your environment must meet the requirements listed below before you install AM API.
-
-=== JDK
-
-AM API supports Java from version 8 to version 11. Before you install it, check your Java version as follows:
-
-[source,bash]
-----
-java -version
-echo $JAVA_HOME
-----
-
-NOTE: You can download the latest OpenJDK from the https://jdk.java.net/archive/[OpenJDK download site^].
-
-=== MongoDB
-
-The default AM API distribution requires MongoDB 3.x to store data.
-
-NOTE: You can download MongoDB 3.x from the https://www.mongodb.org/downloads#production[MongoDB download site^].
+Requirements to install the AM API are available on link:{{ '/am/current/am_installguide_zip_prerequisites.html' | relative_url }}[this page].
 
 == Download and extract the `.zip` archive
 
 . Download the binaries https://download.gravitee.io/graviteeio-am/components/gravitee-am-management-api/gravitee-am-management-api-standalone-{{ site.products.am.version }}.zip[here^] or from the https://gravitee.io/downloads/access-management[Gravitee download site^].
-+
+
 [source,bash]
 [subs="attributes"]
 $ curl -L https://download.gravitee.io/graviteeio-am/components/gravitee-am-management-api/gravitee-am-management-api-standalone-{{ site.products.am.version }}.zip -o gravitee-am-management-api-standalone-{{ site.products.am.version }}.zip
-+
-Unpack the archive and place the folders in the required location.
-+
+
+[start=2]
+. Unpack the archive and place the folders in the required location.
+
 [source,bash]
 [subs="attributes"]
 $ unzip gravitee-am-management-api-standalone-{{ site.products.am.version }}.zip
+
+NOTE: A full .zip distribution with all the components can also be found https://download.gravitee.io/graviteeio-am/distributions/graviteeio-am-full-{{ site.products.am.version }}.zip[here^]
 
 == Check the installation
 

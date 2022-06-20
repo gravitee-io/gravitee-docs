@@ -22,7 +22,7 @@ To run our images, you must start by installing https://docs.docker.com/installa
 The AM Docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub^].
 You can find all the https://github.com/gravitee-io/graviteeio-access-management/tree/master/docker/[Dockerfiles on GitHub^].
 
-== Run AM API
+== Run AM
 
 You can run a complete AM environment using our `docker-compose` file. It includes all the AM components and MongoDB.
 
@@ -40,6 +40,41 @@ $ docker-compose pull
 # And run...
 $ docker-compose up
 ....
+
+== EE deployment
+
+To turn on the enterprise edition mode of Access Management, you have to provide a license key to the containers and additional plugins.
+
+You can find below a docker-compose configuration snippet that mount two volumes for both AM Management API and AM Gateway :
+
+* to deploy enterprise plugins in an additional plugin directory
+* to deploy the license file
+
+[source,yaml]
+----
+  management:
+    image: graviteeio/am-management-api:3.18.0
+    container_name: gio_am_management
+    volumes:
+      - /path/to/plugins-dir:/opt/graviteeio-am-management-api/plugins-ee
+      - /path/to/license-dir/license.key:/opt/graviteeio-am-management-api/license/license.key
+    environment:
+      - GRAVITEE_PLUGINS_PATH_0=/opt/graviteeio-am-management-api/plugins
+      - GRAVITEE_PLUGINS_PATH_1=/opt/graviteeio-am-management-api/plugins-ee
+
+  gateway:
+    image: graviteeio/am-gateway:3.18.0
+    container_name: gio_am_gateway
+    restart: always
+    volumes:
+      - /path/to/plugins-dir:/opt/graviteeio-am-gateway/plugins-ee
+      - /path/to/license/license.key:/opt/graviteeio-am-gateway/license/license.key
+    environment:
+      - GRAVITEE_PLUGINS_PATH_0=/opt/graviteeio-am-gateway/plugins
+      - GRAVITEE_PLUGINS_PATH_1=/opt/graviteeio-am-gateway/plugins-ee
+----
+
+NOTE: For versions prior to version 3.18, please use explicitly a version tagged EE like `3.15.0-ee`.
 
 == Check AM is running
 

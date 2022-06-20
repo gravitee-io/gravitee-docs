@@ -1,0 +1,36 @@
+= Prerequisites
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_zip_prerequisites.html
+:page-folder: am/installation-guide/zip
+:page-layout: am
+:page-description: Gravitee.io Access Management - Installation with .zip - Prerequisites
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
+
+Your environment must meet the requirements listed below before you install AM distribution.
+
+== JDK
+
+AM Gateway & AM Management are supporting Java version 11. You can check your Java version as follows:
+
+[source,bash]
+----
+java -version
+echo $JAVA_HOME
+----
+
+NOTE: You can download the latest OpenJDK from the https://jdk.java.net/archive/[OpenJDK download site^] or by using the package management system of your operating system.
+
+== Database
+
+Default AM distribution requires *MongoDB* to store data.
+
+NOTE: You can download MongoDB from the https://www.mongodb.org/downloads#production[MongoDB download site^].
+
+NOTE: SQL database such as PostgreSQL, MySQL, MariaDB, Microsoft SQL Server can also be used to run your AM distribution.
+Please refer to this link:{{ '/am/current/am_installguide_management_ui_install_zip.html' | relative_url }}[documentation] to switch from MongoDB to your preferred SQL RDBMS database.
+
+== HTTP Server
+
+AM Console UI is a client-side Angular application that can be deployed on any HTTP server, such as https://httpd.apache.org/[Apache^] or http://nginx.org/[Nginx^].
+
+NOTE: See this link:{{ '/am/current/am_installguide_management_ui_install_zip.html#deploy_or_run_am_console' | relative_url }}[documentation] to deploy and run the AM Console UI behind your HTTP Server reverse proxy.
