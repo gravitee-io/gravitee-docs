@@ -62,6 +62,12 @@ entries:
               - title: Install with .zip
                 output: web
                 subfolderitems:
+                  - title: Introduction
+                    output: web
+                    url: /am/current/am_installguide_zip_introduction.html
+                  - title: Prerequisites
+                    output: web
+                    url: /am/current/am_installguide_zip_prerequisites.html
                   - title: AM Gateway
                     output: web
                     url: /am/current/am_installguide_gateway_install_zip.html
@@ -110,6 +116,9 @@ entries:
               - title: Run in Docker
                 output: web
                 subfolderitems:
+                  - title: Introduction
+                    output: web
+                    url: /am/current/am_installguide_docker_introduction.html
                   - title: Images
                     output: web
                     url: /am/current/am_installguide_docker_images.html
@@ -119,9 +128,21 @@ entries:
               - title: Deploy in Kubernetes
                 output: web
                 subfolderitems:
-                  - title: Helm
+                  - title: Introduction
+                    output: web
+                    url: /am/current/am_installguide_kubernetes_introduction.html
+                  - title: Install with Helm
                     output: web
                     url: /am/current/am_installguide_kubernetes.html
+                  - title: Configure Backend
+                    output: web
+                    url: /am/current/am_installguide_kubernetes_backends.html
+                  - title: Install EE with Helm
+                    output: web
+                    url: /am/current/am_installguide_kubernetes_ee.html
+                  - title: Production Ready Helm Values
+                    output: web
+                    url: /am/current/am_installguide_helm_prod_deployment.html
           - title: Configure a production-ready AM environment
             output: web
             url: /am/current/am_installguide_how_to_configuration.html

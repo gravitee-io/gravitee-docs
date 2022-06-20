@@ -17,23 +17,23 @@ To run our official images, you must first install https://docs.docker.com/insta
 
 == Images
 
-You can find the complete set of AM images on https://hub.docker.com/u/graviteeio/[on Docker Hub].
+You can find the complete set of AM images on https://hub.docker.com/u/graviteeio/[Docker Hub].
 
 NOTE: You can also find all the https://github.com/gravitee-io/graviteeio-access-management/tree/master/docker/[Docker files on GitHub^].
+Starting from the version 3.18.0, Gravitee will provide a single bundle for AM Community and Enterprise Edition (EE).
 
-== Images
 |===
 |Image name |Source |Version |Base
 
 |{docker-hub}/am-gateway/[graviteeio/am-gateway]
 |{github-repo}/gateway/[images/am-gateway]
 |latest
-|https://hub.docker.com/_/eclipse-temurin?tab=tags&name=11-jre-focal[eclipse-temurin:11-jre-focal]
+|https://hub.docker.com/_/eclipse-temurin?tab=tags&name=17-jre-alpine[eclipse-temurin:17-jre-alpine]
 
 |{docker-hub}/am-management-api/[graviteeio/am-management-api]
 |{github-repo}/management-api/[images/am-management-api]
 |latest
-|https://hub.docker.com/_/eclipse-temurin?tab=tags&name=11-jre-focal[eclipse-temurin:11-jre-focal]
+|https://hub.docker.com/_/eclipse-temurin?tab=tags&name=17-jre-alpine[eclipse-temurin:17-jre-alpine]
 
 |{docker-hub}/am-management-ui/[graviteeio/am-management-ui]
 |{github-repo}/management-ui/[images/am-webui]
@@ -59,6 +59,7 @@ $ docker run  \
 ....
 
 ==== Configure the container
+
 If you want to override the default configuration for MongoDB and any other properties included in the `gravitee.yml` file,
 you need to use environment variables. For more information, see the AM Gateway <<am_installguide_gateway_configuration.adoc#environment_variables, configuration>> section.
 
@@ -70,6 +71,28 @@ $ docker run  \
         --publish 8092:8092  \
         --name am-gateway  \
         --env GRAVITEE_MANAGEMENT_MONGODB_URI=mongodb://username:password@mongohost:27017/dbname
+        --detach  \
+        graviteeio/am-gateway:latest
+....
+
+==== Configure EE feature
+
+NOTE: For versions prior to version 3.18, please use explicitly a version tagged EE like `3.15.0-ee`.
+
+NOTE: If you want to start AM EE distribution, you will have to deploy a license key and install the https://download.gravitee.io/#graviteeio-ee/am/plugins/[EE plugins^] attached to your license key.
+
+The following example enable show how to provide a license key to the container and additional plugins :
+
+[source,shell]
+....
+$ docker run  \
+        --publish 8092:8092  \
+        --name am-gateway  \
+        --env GRAVITEE_MANAGEMENT_MONGODB_URI=mongodb://username:password@mongohost:27017/dbname
+        --env GRAVITEE_PLUGINS_PATH_0=/opt/graviteeio-am-gateway/plugins
+        --env GRAVITEE_PLUGINS_PATH_1=/opt/graviteeio-am-gateway/plugins-ee
+        -v license.key:/opt/graviteeio-gateway/license
+        -v plugins-dir-ee:/opt/graviteeio-gateway/plugins-ee
         --detach  \
         graviteeio/am-gateway:latest
 ....
@@ -105,12 +128,33 @@ $ docker run \
           graviteeio/am-management-api:latest
 ....
 
+==== Configure EE feature
+
+NOTE: For versions prior to version 3.18, please use explictly a version tagged EE like `3.15.0-ee`.
+
+The following example enable show how to provide a license key to the container and additional plugins:
+
+[source,shell]
+....
+$ docker run  \
+        --publish 8093:8093 \
+        --name am-management-api \
+        --env GRAVITEE_MANAGEMENT_MONGODB_URI=mongodb://username:password@mongohost:27017/dbname
+        --env GRAVITEE_PLUGINS_PATH_0=/opt/graviteeio-am-management-api/plugins
+        --env GRAVITEE_PLUGINS_PATH_1=/opt/graviteeio-am-management-api/plugins-ee
+        -v license.key:/opt/graviteeio-am-management-api/license
+        -v plugins-dir-ee:/opt/graviteeio-am-management-api/plugins-ee
+        --detach  \
+        graviteeio/am-management-api:latest
+....
+
 === graviteeio/am-management-ui
 
 The AM Console image provides a set of environment variables which you can use to tune your container.
 AM Console needs AM API to run, so you need to update `MGMT_API_URL` to specify where `management-api` is running.
 
 ==== Run the image
+
 [source,shell]
 ....
 $ docker run \

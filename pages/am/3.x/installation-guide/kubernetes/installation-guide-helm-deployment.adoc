@@ -1,0 +1,288 @@
+= Helm: Production Ready Configuration
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_helm_prod_deployment.html
+:page-folder: am/installation-guide/kubernetes
+:page-layout: am
+
+In this section, you will find an example for values.yaml file based on the **link:{{ '/am/current/am_installguide_how_to_configuration.html' | relative_url }}[How to configure a production-ready AM environment]** page.
+
+== Disable the internal APIs
+
+If not used, the recommendation is to disable the internal APIs on the AM API and AM Gateway components. This can be done by defining environment variables to both components.
+
+.Disable AM API internal APIs
+[source, yaml]
+----
+api:
+  env:
+    - name: gravitee_services_core_http_enabled
+      value: "false"
+----
+
+.Disable AM Gateway internal APIs
+[source, yaml]
+----
+gateway:
+  env:
+    - name: gravitee_services_core_http_enabled
+      value: "false"
+----
+
+NOTE: The AM gateway provides a readyness probe that takes into account the number of domains sync at startup. If you want to use this probe, then you  shouldn't disable the internal APIs. Instead, we use the following configuration on the gateway:
+
+.AM Gateway readyness probe
+[source, yaml]
+----
+gateway:
+  services:
+    core:
+      http:
+        host: 0.0.0.0
+  readinessProbe:
+    domainSync: true
+----
+
+== Update the default users
+
+By default, the Management API create an admin user during the first service start-up. For security reason, it is strongly recommended to disable this user definition and define your own users.
+
+.Disable the default inline provider with user admin and create your own admin user
+[source, yaml]
+----
+api:
+  env:
+		# Disable the default inline provider
+    - name: gravitee_security_defaultAdmin
+      value: "false"
+		# Create your own admin user
+    - name: gravitee_security_providers_0_type
+      value: memory
+    - name: gravitee_security_providers_0_enabled
+      value: "true"
+    - name: gravitee_security_providers_0_passwordencodingalgo
+      value: "BCrypt"
+    - name: gravitee_security_providers_0_users_0_username
+      value: "admin"
+    - name: gravitee_security_providers_0_users_0_firstname
+      value: "Administrator"
+    - name: gravitee_security_providers_0_users_0_lastname
+      value: "Administrator"
+    - name: gravitee_security_providers_0_users_0_role
+      value: "ORGANIZATION_OWNER"
+    - name: gravitee_security_providers_0_users_0_password
+      value: "$2a$..." #(BCrypt encoded password) 
+----
+
+== Update the JWT secret & enable secured cookies
+
+The "Secure" flag instructs a user’s browser to only send the cookie along with requests over HTTPS to in-scope addresses. The recommendation is to set the "Secure" flag to true on AM API and AM Gateway components. In addition the default JWT secret for both AM API and AM Gateway components need to be updated to guaranty the integrity of JWT signed by AM for some actions (ex: reset password link).
+
+.Update the JWT secret on AM API
+[source, yaml]
+----
+api:
+  jwt:
+    secret: super_secret_JWT_string
+    cookie:
+      domain: .yourdomain.com
+      secure: true
+----
+
+.Update the JWT secret on AM Gateway
+[source, yaml]
+----
+gateway:
+  jwt:
+    secret: super_secret_JWT_string
+    cookie:
+      domain: .yourdomain.com
+      secure: true
+  http:
+    cookie:
+      secure: true
+----
+
+== Update CORS policies & URL Redirects on AM Management API
+
+Only selected and trusted domains should access AM (e.g the AM console). 
+
+.CORS and allowed redirections
+[source, yaml]
+----
+api:
+  env:
+    - name: GRAVITEE_HTTP_CORS_ALLOWORIGIN
+      value: https://am.console.yourdomain.com
+    - name: gravitee_http_login_allowredirecturls
+      value: https://am.console.yourdomain.com/login/callback
+    - name: gravitee_http_logout_allowredirecturls
+      value: https://am.console.yourdomain.com/logout/callback
+----
+
+== Mitigate Cross Site Scripting (XSS) and Cross Site Framing
+
+The AM Gateway implements Content-Security-Policy and X-Frame-Options. It is recommended to use these two mechanisms to have a better control on the resources the user agent is allowed to load for a given page and the CSRF secret must be updated.
+
+[source, yaml]
+----
+gateway:
+  http:
+    csrf:
+      secret: super_secret_CSRF_string
+    xframe:
+      action: DENY
+    csp:
+      script-inline-nonce: true
+      directives:
+        - "default-src 'self';"
+        - "script-src *.yourdomain.com https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro@3/dist/fp.min.js https://www.google.com/recaptcha/api.js;"
+        - "img-src *.yourdomain.com data: 'unsafe-inline';"
+        - "style-src *.yourdomain.com 'unsafe-inline';"
+        - "frame-ancestors 'none';"
+----
+
+== Values
+
+This section regroupes in a single place all the settings previously described in this page.
+
+[source, yaml]
+----
+api:
+  env:
+    - name: gravitee_services_core_http_enabled
+      value: "false"
+    - name: GRAVITEE_HTTP_CORS_ALLOWORIGIN
+      value: https://am.console.yourdomain.com
+    - name: gravitee_security_defaultAdmin
+      value: "false"
+    - name: gravitee_security_providers_0_type
+      value: memory
+    - name: gravitee_security_providers_0_enabled
+      value: "true"
+    - name: gravitee_security_providers_0_passwordencodingalgo
+      value: "BCrypt"
+    - name: gravitee_security_providers_0_users_0_username
+      value: "admin"
+    - name: gravitee_security_providers_0_users_0_firstname
+      value: "Administrator"
+    - name: gravitee_security_providers_0_users_0_lastname
+      value: "Administrator"
+    - name: gravitee_security_providers_0_users_0_role
+      value: "ORGANIZATION_OWNER"
+    - name: gravitee_security_providers_0_users_0_password
+      value: "$2a$..."
+    - name: gravitee_http_login_allowredirecturls
+      value: https://am.console.yourdomain.com/login/callback
+    - name: gravitee_http_logout_allowredirecturls
+      value: https://am.console.yourdomain.com/logout/callback
+  jwt:
+    secret: super_secret_JWT_string
+    cookie:
+      domain: .yourdomain.com
+      secure: true
+  image:
+    tag: 3.18.0
+  autoscaling:
+    enabled: false
+  replicaCount: 1
+  deployment:
+    strategy:
+      rollingUpdate:
+        maxUnavailable: 0
+  ingress:
+    path: /management
+    hosts:
+      - am.api.yourdomain.com
+    tls:
+      - hosts:
+          - am.api.yourdomain.com
+        secretName: am-api-cert
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+  extraVolumeMounts: |
+    - name: gravitee-license
+      mountPath: /opt/graviteeio-am-management-api/license
+      readOnly: true
+  extraVolumes: |
+    - name: gravitee-license
+      secret:
+        secretName: gravitee-license
+
+gateway:
+  enabled: true
+  env:
+    - name: gravitee_services_core_http_enabled
+      value: "false"
+  http:
+    cookie:
+      secure: true
+    csrf:
+      secret: super_secret_CSRF_string
+    xframe:
+      action: DENY
+    csp:
+      script-inline-nonce: true
+      directives:
+        - "default-src 'self';"
+        - "script-src *.yourdomain.com https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro@3/dist/fp.min.js https://www.google.com/recaptcha/api.js;"
+        - "img-src *.yourdomain.com data: 'unsafe-inline';"
+        - "style-src *.yourdomain.com 'unsafe-inline';"
+        - "frame-ancestors 'none';"
+  jwt:
+    secret: super_secret_JWT_string
+    cookie:
+      domain: .yourdomain.com
+      secure: true
+  image:
+    tag: 3.18.0
+  autoscaling:
+    enabled: false
+  replicaCount: 1
+  deployment:
+    strategy:
+      rollingUpdate:
+        maxUnavailable: 0
+  resources:
+    limits:
+      memory: 1024Mi
+    requests:
+      memory: 768Mi
+  ingress:
+    path: /
+    hosts:
+      - am.gateway.yourdomain.com
+    tls:
+      - hosts:
+          - am.gateway.yourdomain.com
+        secretName: am-gateway-cert
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      nginx.ingress.kubernetes.io/proxy-buffer-size: "64k"
+      nginx.ingress.kubernetes.io/proxy-buffers-number: "8"
+      nginx.ingress.kubernetes.io/proxy-body-size: "5m"
+  extraVolumeMounts: |
+    - name: gravitee-license
+      mountPath: /opt/graviteeio-am-gateway/license
+      readOnly: true
+  extraVolumes: |
+    - name: gravitee-license
+      secret:
+        secretName: gravitee-license
+
+ui:
+  image:
+    tag: 3.18.0
+  autoscaling:
+    enabled: false
+  replicaCount: 1
+  ingress:
+    path: /
+    hosts:
+      - am.console.yourdomain.com
+    tls:
+      - hosts:
+          - am.console.yourdomain.com
+        secretName: am-console-cert
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+----
