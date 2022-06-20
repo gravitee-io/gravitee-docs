@@ -49,16 +49,16 @@ sudo yum install {gravitee-package-name}
 
 Before you install the AM package, you may need to add third-party repositories.
 
-NOTE: For guidance on installing and configuring MongoDB, see the link:https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-red-hat/[MongoDB installation documentation^].
+NOTE: For guidance on installing and configuring MongoDB, see the link:https://www.mongodb.com/docs/v4.4/tutorial/install-mongodb-on-red-hat/[MongoDB installation documentation^].
 
 [source,bash]
 ----
-echo "[mongodb-org-3.6]
+echo "[mongodb-org-4.4]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/3.6/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.4/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc" | sudo tee /etc/yum.repos.d/mongodb-org-3.6.repo > /dev/null
+gpgkey=https://www.mongodb.org/static/pgp/server-4.4.asc" | sudo tee /etc/yum.repos.d/mongodb-org-4.4.repo > /dev/null
 
 sudo yum install -y mongodb-org
 sudo systemctl start mongod
