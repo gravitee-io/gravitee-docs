@@ -1,0 +1,174 @@
+= Helm : Configure backends
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_kubernetes_backends.html
+:page-folder: am/installation-guide/kubernetes
+:page-layout: am
+
+== Overview 
+
+AM can rely on different backends to prersist data. By default AM comes with MongoDB configuration but RDMS such as Postgres, MySQL, MariaDB and SQLServer are also supported. This section will provide samples to configure the AM backend using the AM Helm Chart.
+
+=== MongoDB
+
+If you are using a managed MongoDB like MongoDB Atlas, you can simply define the mongo uri.
+
+.MongoDB Altas
+[source,yaml]
+----
+mongo:
+  uri: mongodb+srv://<username>:<password>@<instance>.mongodb.net/<dbname>?retryWrites=true&w=majority&connectTimeoutMS=10000&maxIdleTimeMS=30000
+
+management:
+  type: mongodb
+
+oauth2:
+  type: mongodb
+----
+If you want to deploy a MongoDB ReplicaSet using the Helm Chart dependency, you simply have to enable it. 
+
+NOTE: The **dbhost** has to be defined using the name of the helm installation (in this example **am**) followed by **-mongodb-replicaset**.
+
+WARNING: This is not recommended for production environments.
+
+.MongoDB ReplicaSet
+[source,yaml]
+----
+mongodb-replicaset:
+  enabled: true
+  startupProbe:
+    successThreshold	: 1
+
+mongo:
+  dbhost: am-mongodb-replicaset
+  dbname: gravitee-am
+----
+
+NOTE: Please refer to link:{{ 'am/current/am_installguide_kubernetes.html' | relative_url }}[this page] to considere other parameters.
+
+=== RDBMS: Postgres
+
+.PostgresSQL configuration
+[source, yaml]
+----
+jdbc:
+  driver: postgresql
+  host: <host>
+  port: <port>
+  database: <dbname>
+  username: <username>
+  password: <password>
+  # URLs to download the drivers
+  drivers:
+    - https://jdbc.postgresql.org/download/postgresql-42.2.20.jar
+    - https://repo1.maven.org/maven2/io/r2dbc/r2dbc-postgresql/0.8.9.RELEASE/r2dbc-postgresql-0.8.9.RELEASE.jar
+  pool:
+    acquireRetry:  1
+    initialSize: 0
+    maxSize: 10
+    maxIdleTime: 30000
+    maxLifeTime: 30000
+    maxAcquireTime: 0
+    maxCreateConnectionTime: 0
+
+management:
+  type: jdbc
+
+oauth2:
+  type: jdbc
+----
+
+=== RDBMS: MySQL
+
+.MySQL configuration
+[source, yaml]
+----
+jdbc:
+  driver: mysql
+  host: <host>
+  port: <port>
+  database: <dbname>
+  username: <username>
+  password: <password>
+  # URLs to download the drivers
+  drivers:
+    - https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.21/mysql-connector-java-8.0.21.jar
+    - https://repo1.maven.org/maven2/dev/miku/r2dbc-mysql/0.8.2.RELEASE/r2dbc-mysql-0.8.2.RELEASE.jar
+  pool:
+    acquireRetry:  1
+    initialSize: 0
+    maxSize: 10
+    maxIdleTime: 30000
+    maxLifeTime: 30000
+    maxAcquireTime: 0
+    maxCreateConnectionTime: 0
+
+management:
+  type: jdbc
+
+oauth2:
+  type: jdbc
+----
+
+=== RDBMS: MariaDB
+
+.MariaDB configuration
+[source, yaml]
+----
+jdbc:
+  driver: mariadb
+  host: <host>
+  port: <port>
+  database: <dbname>
+  username: <username>
+  password: <password>
+  # URLs to download the drivers
+  drivers:
+    - https://downloads.mariadb.com/Connectors/java/connector-java-2.7.3/mariadb-java-client-2.7.3.jar
+    - https://repo1.maven.org/maven2/org/mariadb/r2dbc-mariadb/1.0.3/r2dbc-mariadb-1.0.3.jar
+  pool:
+    acquireRetry:  1
+    initialSize: 0
+    maxSize: 10
+    maxIdleTime: 30000
+    maxLifeTime: 30000
+    maxAcquireTime: 0
+    maxCreateConnectionTime: 0
+
+management:
+  type: jdbc
+
+oauth2:
+  type: jdbc
+----
+
+=== RDBMS: SQLServer
+
+.SQLServer configuration
+[source, yaml]
+----
+jdbc:
+  driver: sqlserver
+  host: <host>
+  port: <port>
+  database: <dbname>
+  username: <username>
+  password: <password>
+  # URLs to download the drivers
+  drivers:
+    - https://repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/8.4.1.jre11/mssql-jdbc-8.4.1.jre11.jar
+    - https://repo1.maven.org/maven2/io/r2dbc/r2dbc-mssql/0.8.4.RELEASE/r2dbc-mssql-0.8.4.RELEASE.jar
+  pool:
+    acquireRetry:  1
+    initialSize: 0
+    maxSize: 10
+    maxIdleTime: 30000
+    maxLifeTime: 30000
+    maxAcquireTime: 0
+    maxCreateConnectionTime: 0
+
+management:
+  type: jdbc
+
+oauth2:
+  type: jdbc
+----
