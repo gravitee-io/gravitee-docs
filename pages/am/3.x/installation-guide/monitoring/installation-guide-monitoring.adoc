@@ -1,0 +1,12 @@
+= Monitoring
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_installguide_monitoring.html
+:page-folder: am/installation-guide/monitoring
+:page-toc: false
+:page-layout: am
+
+Gravitee offers multiple ways to monitor and check the status and the availability of your AM installations.
+
+* link:{{ '/am/current/am_installguide_gateway_technical_api.html' | relative_url }}[Internal APIs] to monitor your AM components health.
+* link:{{ '/am/current/am_installguide_monitoring_prometheus.html' | relative_url }}[External tool like Prometheus] to monitor, visualize and alert.
+* link:{{ '/am/current/am_userguide_logs.html' | relative_url }}[Audit logs] to analyze your business activity.
