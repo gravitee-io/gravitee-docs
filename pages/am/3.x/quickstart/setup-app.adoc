@@ -115,3 +115,22 @@ image::{% link images/am/current/graviteeio-am-quickstart-client-idp.png %}[]
 == Test your identity provider with OAuth2
 
 You can now test your identity provider by requesting a token, as described in link:am_quickstart_profile_information.html#id_token[ID Token] in the next section.
+
+== Initiate the login flow
+
+In the case of a *Web Application*, *Single Page Application* or *Native Application*, you can decide also to
+redirect your end users to an AM login page:
+
+. Click *Applications* and select your web application.
+. In the *Overview* tab, get to the *Initiate the Login flow* section and copy the given URL
+
+image::{% link images/am/current/graviteeio-am-quickstart-client-initiate-the-login-flow.png %}[]
+
+You will be redirected to the Login page where you can enter the credentials configured in the Identity Provider.
+
+image::{% link images/am/current/graviteeio-am-quickstart-client-login-page.png %}[]
+
+Once logged in you will be redirected to the configured `redirect_uri` with the correct parameters regarding
+your OAuth2 configuration.
+
+To fine-grain tune your application, you can check in detail the link:am_userguide_overview.html#user_guide[User Guide]

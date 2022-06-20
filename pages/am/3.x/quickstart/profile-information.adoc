@@ -102,7 +102,7 @@ Finally, you need to have the ID Token signed by AM.
 +
 image::{% link images/am/current/quickstart-applications-certificates.png %}[]
 +
-. Retrieve your public key by clicking the key icon image:{% link images/am/current/graviteeio-am-quickstart-profile-public-key.png %}[].
+. Retrieve your public key by clicking the key icon.
 . Copy the signature and use a JWT library to verify it.
 
 NOTE: You can also use link:https://www.gravitee.io/products/api-management[Gravitee.io API Management^] with the link:{{ '/apim/3.x/apim_policies_jwt.html' | relative_url }}[JWT Policy^] to verify and retrieve user profile information.
