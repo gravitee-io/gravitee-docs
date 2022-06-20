@@ -1,0 +1,91 @@
+= Risk-based MFA
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_mfa_risk_based.html
+:page-folder: am/user-guide
+:page-layout: am
+
+[label label-version]#New in version 3.18#
+
+== Overview
+
+Since 3.18, Access Management brings up a new way to configure Multi-Factor authentication.
+
+It is composed of four steps:
+
+- The first step allows you to select your link:{{ '/am/current/am_userguide_mfa_factors.html' | relative_url }}[Application Factors^]
+- The second step allows you to configure the way end users will be prompted MFA
+- The third step allows you to configure link:{{ '/am/current/am_userguide_mfa_remember_device.html' | relative_url }}[Remember device^]
+- The last steps allows you to configure  link:{{ '/am/current/am_userguide_mfa_step_up.html' | relative_url }}[Step-Up Authentication^]
+
+While step 1,3,4 are similar prior v3.18, the second step differs.
+
+== Activate MFA
+
+Adaptive access allows you to choose between 4 MFA strategies:
+
+- **OPTIONAL**: The end user can skip MFA for a give amount of time (default is 10 hours)
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-risk-based-optional.png %}[]
+
+- **REQUIRED**: The end user will be required to enroll. They will also be challenged at every login.
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-risk-based-required.png %}[]
+
+- **CONDITIONAL**: The end user will be prompted enroll and challenge in regard to link:{{ '/am/current/am_userguide_mfa_amfa.html' | relative_url }}[Adaptive MFA^]
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-risk-based-conditional.png %}[]
+
+- **INTELLIGENT**: [label label-enterprise]#Enterprise feature# The end user will be intelligently prompted MFA based on risk assessments
+
+. `Devices`: Will check the if device of the User across the security domain (Remember Device needs to be activated to collect the user device)
+. `Ip Reputation score`: Will prompt MFA based on the severity of the IP score (LOW, MEDIUM, HIGH
+. `Geolocation Velocity`: Will prompt MFA based on the speed between the 2 last logins
+
+NOTE: If device assessment is enabled, we won't prompt MFA with `Remember Device` as it would be redundant
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-risk-based-intelligent.png %}[]
+
+In order to have the GeoVelocity working, you will need:
+
+- The link:https://download.gravitee.io/#plugins/services/gravitee-service-geoip/[Gravitee Geoip Plugin] installed in your gateway
+- The link:https://download.gravitee.io/#graviteeio-ee/plugins/services/risk-assessment/gravitee-risk-assessment-core/[Risk Assessment Plugin] installed in your gateway
+- You will need to activate User activity on both your Gateway and Management API in the `gravitee.yml`
+
+```yml
+user:
+   activity:
+      enabled: true # default is false
+      anon: #used to anonymize the user activity
+         algorithm: SHA256|SHA512|NONE #default SHA256
+         salt: some-salt # default is null meaning the key generated will change every time and data won't be exploitable
+      retention:
+         time: 3
+         unit: MONTHS
+      geolocation:
+         variation:
+            latitude: 0.07 # default to have a geolocation randomised, 0 will give the exact position
+            longitude: 0.07 # default to have a geolocation randomised, 0 will give the exact position
+```
+
+NOTE: If you enable Brute Force Detection, we will also capture the user login attempts.
+
+WARNING: User activity won't be captured with Social login now due to security reasons.
+
+=== User activity and consent
+
+To capture user activity, the user will have to consent to store the geolocation extracted from the IP
+as well as the user_agent.
+
+- `uc_geoip` : consent for IP and geolocation
+- `uc_ua` : consent for User Agent
+
+```html
+    <input class="mdl-checkbox__input" type="checkbox" th:checked="${uc_geoip}" id="uc_geoip" name="uc_geoip">
+    <input class="mdl-checkbox__input" type="checkbox" th:checked="${uc_ua}" id="uc_ua" name="uc_ua">
+```
+
+If they already have consented to these, you can simply add those inputs as `hidden` form fields
+```html
+    <input class="mdl-checkbox__input" type="hidden" value="on" id="uc_geoip" name="uc_geoip">
+    <input class="mdl-checkbox__input" type="hidden" value="on" id="uc_ua" name="uc_ua">
+```
