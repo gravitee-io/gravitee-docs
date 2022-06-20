@@ -145,9 +145,6 @@ entries:
                   - title: Internal API
                     output: web
                     url: /am/current/am_installguide_gateway_technical_api.html
-                  - title: Metrics
-                    output: web
-                    url: /am/current/am_installguide_gateway_metrics.html
               - title: Configure AM API
                 output: web
                 subfolderitems:
@@ -157,9 +154,6 @@ entries:
                   - title: Internal API
                     output: web
                     url: /am/current/am_installguide_management_api_technical_api.html
-                  - title: Metrics
-                    output: web
-                    url: /am/current/am_installguide_management_api_metrics.html
               - title: Configure AM Console
                 output: web
                 subfolderitems:
@@ -184,6 +178,15 @@ entries:
                   - title: Overview
                     output: web
                     url: /am/current/am_installguide_reporters.html
+              - title: Monitoring
+                output: web
+                subfolderitems:
+                  - title: Overview
+                    output: web
+                    url: /am/current/am_installguide_monitoring.html
+                  - title: Monitor using Prometheus
+                    output: web
+                    url: /am/current/am_installguide_monitoring_prometheus.html
       - title: User Guide
         output: web
         folderitems:
