@@ -10,6 +10,19 @@
 Gravitee.io Access Management (AM) is a flexible, lightweight and easy to use open source Identity and Access Management solution.
 It offers a centralized authentication and authorization service to deliver secure access for authorized users to your applications and APIs from any device.
 
+== Authentication and Authorization
+
+Authentication and Authorization are key terms of Identity and Access Management (IAM) that describe similar, yet quite distinct, concepts.
+
+=== Authentication
+
+Authentication in IAM is all about proving *who we are*. With AM we want to be certain that our APIs can only be accessed by users
+that are known to us and who have proven their _identity_.
+
+=== Authorization
+
+We may not want *all* of our _authenticated_ users to access to *all* of our APIs. If we want to control *who* has access to *what*, we need _authorization_.
+
 == Authorization in AM
 
 AM is based on OAuth2/OpenID Connect and SAML 2.0 protocols and acts as an identity provider broker
