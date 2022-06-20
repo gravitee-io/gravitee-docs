@@ -100,3 +100,25 @@ WebAuthn Login
 +++ <script th:src="@{../assets/js/webauthn.auth-v2.js"></script>
 +++ <script th:src="@{../assets/js/webauthn-login-v2.js}"></script>
 ----
+
+
+== IP, User Agent and User consent
+
+The User IP and User-Agent used for audit logs require the user to consent to exploit the information.
+
+- `uc_geoip` : consent for IP and geolocation
+- `uc_ua` : consent for User Agent
+
+You can use
+```html
+    <input class="mdl-checkbox__input" type="checkbox" th:checked="${uc_geoip}" id="uc_geoip" name="uc_geoip">
+    <input class="mdl-checkbox__input" type="checkbox" th:checked="${uc_ua}" id="uc_ua" name="uc_ua">
+```
+
+If they already have consented to these, you can simply add those inputs as `hidden` form fields
+```html
+    <input class="mdl-checkbox__input" type="hidden" th:value="${my-param}"  id="uc_geoip" name="uc_geoip">
+    <input class="mdl-checkbox__input" type="hidden" th:value="${my-param}"  id="uc_ua" name="uc_ua">
+```
+
+More information about this topic:  link:{{ '/am/current/am_userguide_mfa_risk_based.html#user_activity_and_consent' | relative_url }}[Risk-based MFA]
