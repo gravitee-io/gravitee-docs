@@ -1,0 +1,24 @@
+= Recovery codes
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_mfa_recovery_codes.html
+:page-folder: am/user-guide
+:page-layout: am
+
+The *recovery code* factor generates a set of recovery codes which the user can use to authenticate in case the other options are not available.
+The recovery codes are generated and shown only once to the user during the enrollment or login process. It is thus advisable to download and keep the recovery codes in a safe place.
+
+NOTE: The generated recovery codes are alphanumeric and each recovery code can only be used once to ensure greater security.
+
+The image below shows an example recovery code factor configuration.
+The configuration is flexible and allows to set the number of recovery codes and the number of digits for each recovery code as per the customer's requirements.
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-recovery-code-config.png %}[Recovery Code Configuration]
+
+This is an example of what it looks like when the recovery codes are generated during the enrollment process.
+The download option allows users to download the recovery codes in pdf format.
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-recovery-code-sample.png %}[Recovery Code]
+
+The image below shows the option when an application is configured with an active recovery code factor:
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-recovery-code-option.png %}[Recovery Code]

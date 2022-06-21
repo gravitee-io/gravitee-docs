@@ -1,0 +1,40 @@
+= Email factor
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_mfa_factors_email.html
+:page-folder: am/user-guide
+:page-layout: am
+
+== Overview
+
+With Email verification, you can receive a verification code on your email address to be used as the second factor to validate a user’s account.
+
+NOTE: Email MFA requires a compatible link:{{ '/am/current/am_userguide_resources.html' | relative_url }}[resource^].
+
+Using the `email-am-factor` plugin configuration form, you can define the number of digits used to generate the verification code. The configured resource must be a link:{{ '/am/current/am_userguide_resources_smtp.html' | relative_url }}[SMTP Resource]. The email template used by this plugin is defined in the design section of the domain or application.
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-email-config.png %}[Email Configuration]
+
+*Subject* and *Template* fields use the freemarker syntax to customize the message content. The generated *code* is available using the expression `${code}`. The user profile and the application are accessible using the expressions `${user}` and  `${client}` (ex: `${client.clientName}` will return the application name and `${user.firstName}` will return the first name of the user.)
+
+If you enable an Email type factor for your application, next time your users log in they will see the following screens:
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-email-enroll.png %}[Email Enroll]
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-email-challenge.png %}[Email Challenge]
+
+NOTE: You can design forms using link:{{ '/am/current/am_userguide_user_management_forms.html' | relative_url }}[Custom forms^]. The enrollment form must send the email address using the `email` parameter.
+
+== Create a new MFA factor
+
+. In AM Console, click *Settings > Multifactor Auth*.
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
+. Select the factor type and click *Next*.
++
+image::{% link images/am/current/graviteeio-am-userguide-mfa-factor-types.png %}[]
++
+. Enter the factor details and click *Create*.
+. Click *Applications* and select your application.
+. Click the *Settings* tab, then click *Multifactor Auth*.
+. Enable MFA by selecting an available factor.
++
+image::{% link images/am/current/graviteeio-am-userguide-mfa-application-factor.png %}[]

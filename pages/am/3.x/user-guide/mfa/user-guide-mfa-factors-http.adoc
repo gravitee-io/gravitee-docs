@@ -1,0 +1,45 @@
+= HTTP factor
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_mfa_factors_http.html
+:page-folder: am/user-guide
+:page-layout: am
+
+[label label-enterprise]#Enterprise feature#
+
+== Overview
+
+NOTE: HTTP MFA requires a compatible link:{{ '/am/current/am_userguide_resources.html' | relative_url }}[resource^].
+
+Multi-factor authentication (MFA) can take several forms such as :
+
+* Security key
+* FIDO 2 (biometrics)
+* Mobile application (TOTP based)
+* SMS
+* and more
+
+Most of the time, these MFA methods are backed with 3rd party vendors, which each come with pros and cons.
+While we recommend that you explore Gravitee Identity and Access Management, we understand that some teams already have a vendor that they are happy with, and we want to make sure that we support those use cases as well.
+
+Our Gravitee MFA HTTP plugin makes that a possibility. With our new Gravitee MFA HTTP plugin you can :
+
+* Easily integrate your existing MFA solution into your Gravitee IAM and APIM strategies
+* Bring some customization and offer a better user experience
+* Facilitate solution migration
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-factor-http.png %}[]
+
+== Create a new MFA factor
+
+. In AM Console, click *Settings > Multifactor Auth*.
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
+. Select the factor type and click *Next*.
++
+image::{% link images/am/current/graviteeio-am-userguide-mfa-factor-types.png %}[]
++
+. Enter the factor details and click *Create*.
+. Click *Applications* and select your application.
+. Click the *Settings* tab, then click *Multifactor Auth*.
+. Enable MFA by selecting an available factor.
++
+image::{% link images/am/current/graviteeio-am-userguide-mfa-application-factor.png %}[]
