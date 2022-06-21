@@ -1,0 +1,19 @@
+= Upgrade to 3.19.0
+
+== Breaking changes
+
+=== Custom policies
+
+For users who developed their own policy using `ApiKeyRepository` or `SubscriptionRepository` to retrieve API keys or subscriptions.
+
+In previous versions, those repositories were overridden with a cached implementation, which was returning active API keys and subscriptions only, in an optimized way.
+
+From this version, `ApiKeyRepository` and `SubscriptionRepository` query the database directly without any cache.
+Using them in policies is strongly discouraged.
+
+We recommend to update your dependency settings on `gravitee-gateway-api` to version 1.44.1 and then use those new components to access the active API keys or subscriptions:
+
+* `io.gravitee.gateway.api.service.ApiKeyService` : _getByApiAndKey_
+* `io.gravitee.gateway.api.service.SubscriptionService` : _getByApiAndClientId_ and _getById_
+
+
