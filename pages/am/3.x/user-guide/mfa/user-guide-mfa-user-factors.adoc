@@ -1,4 +1,4 @@
-= Reset a user's MFA
+= Reset user MFA
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_userguide_mfa_user_factors.html
 :page-folder: am/user-guide
@@ -9,7 +9,7 @@
 If users lose their mobile device or can't use their authenticator application for any reason, they can ask the security domain administrator to reset their multi-factor authentication (MFA) devices.
 The MFA factors associated with their user will be removed and MFA configuration screens (Enroll and Challenge) will be displayed during the next login attempt.
 
-== Remove a user's MFA factors
+== Remove user MFA factors
 
 . link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
 . Click *Settings > Users*.

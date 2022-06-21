@@ -1,0 +1,34 @@
+= Voice call factor
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_mfa_factors_voice_call.html
+:page-folder: am/user-guide
+:page-layout: am
+
+== Overview
+
+With Phone call verification, you can receive a verification code via a phone call to be used as the second factor to validate a user’s account.
+
+NOTE: Phone call MFA requires a compatible link:{{ '/am/current/am_userguide_resources.html' | relative_url }}[resource^].
+
+If you enable a *Call* type factor for your application, next time your users log in they will see the following screens:
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-call-enroll.png %}[Call Enroll]
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-call-challenge.png %}[Call Challenge]
+
+NOTE: You can change the look and feel of forms using link:{{ '/am/current/am_userguide_user_management_forms.html' | relative_url }}[Custom forms^]. The enrollment form must send the phone number using the `phone` parameter in E.164 notation.
+
+== Create a new MFA factor
+
+. In AM Console, click *Settings > Multifactor Auth*.
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
+. Select the factor type and click *Next*.
++
+image::{% link images/am/current/graviteeio-am-userguide-mfa-factor-types.png %}[]
++
+. Enter the factor details and click *Create*.
+. Click *Applications* and select your application.
+. Click the *Settings* tab, then click *Multifactor Auth*.
+. Enable MFA by selecting an available factor.
++
+image::{% link images/am/current/graviteeio-am-userguide-mfa-application-factor.png %}[]

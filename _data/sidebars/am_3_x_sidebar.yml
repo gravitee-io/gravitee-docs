@@ -357,12 +357,34 @@ entries:
                   - title: Overview
                     output: web
                     url: /am/current/am_userguide_mfa.html
-                  - title: Factors
-                    output: web
-                    url: /am/current/am_userguide_mfa_factors.html
+                    subfolders:
+                      - title: Factors
+                        output: web
+                        subfolderitems:
+                          - title: Overview
+                            output: web
+                            url: /am/current/am_userguide_mfa_factors.html
+                          - title: OTP
+                            output: web
+                            url: /am/current/am_userguide_mfa_factors_otp.html
+                          - title: SMS
+                            output: web
+                            url: /am/current/am_userguide_mfa_factors_sms.html
+                          - title: Phone call
+                            output: web
+                            url: /am/current/am_userguide_mfa_factors_voice_call.html
+                          - title: Email
+                            output: web
+                            url: /am/current/am_userguide_mfa_factors_email.html
+                          - title: HTTP
+                            output: web
+                            url: /am/current/am_userguide_mfa_factors_http.html
                   - title: Alternative methods
                     output: web
                     url: /am/current/am_userguide_mfa_alternatives.html
+                  - title: Recovery codes
+                    output: web
+                    url: /am/current/am_userguide_mfa_recovery_codes.html
                   - title: Reset MFA
                     output: web
                     url: /am/current/am_userguide_mfa_user_factors.html

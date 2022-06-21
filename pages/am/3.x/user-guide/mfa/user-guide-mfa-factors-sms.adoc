@@ -1,0 +1,36 @@
+= SMS factor
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_mfa_factors_sms.html
+:page-folder: am/user-guide
+:page-layout: am
+
+== Overview
+
+With SMS verification, you can receive a verification code on your mobile phone to be used as the second factor to validate a user’s account.
+
+NOTE: SMS MFA requires a compatible link:{{ '/am/current/am_userguide_resources.html' | relative_url }}[resource^].
+
+TIP: Some providers allow you to define the duration of the code sent by SMS. If possible we advise you to set a duration of 2 minutes.
+
+If you enable an SMS type factor for your application, next time your users log in they will see the following screens:
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-sms-enroll.png %}[SMS Enroll]
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-sms-challenge.png %}[SMS Challenge]
+
+NOTE: You can change the look and feel of forms using link:{{ '/am/current/am_userguide_user_management_forms.html' | relative_url }}[Custom forms^]. The enrollment form must send the phone number using the `phone` parameter in E.164 notation.
+
+== Create a new MFA factor
+
+. In AM Console, click *Settings > Multifactor Auth*.
+. Click the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
+. Select the factor type and click *Next*.
++
+image::{% link images/am/current/graviteeio-am-userguide-mfa-factor-types.png %}[]
++
+. Enter the factor details and click *Create*.
+. Click *Applications* and select your application.
+. Click the *Settings* tab, then click *Multifactor Auth*.
+. Enable MFA by selecting an available factor.
++
+image::{% link images/am/current/graviteeio-am-userguide-mfa-application-factor.png %}[]
