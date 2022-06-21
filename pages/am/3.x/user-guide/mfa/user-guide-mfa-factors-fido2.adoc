@@ -1,0 +1,64 @@
+= MFA with FIDO2
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_mfa_factors_fido2.html
+:page-folder: am/user-guide
+:page-layout: am
+
+[label label-enterprise]#Enterprise feature#
+
+== Overview
+
+FIDO2 plugin implements the functionalities so that passwordless authentication flow can be used during the multi-factor authentication process.
+This plugin does not have its own configuration rather uses existing *WebAuthn* configuration.
+
+NOTE: Please configure *WebAuthn* under the *Security* section so that the plugin works as expected.
+Check the link:{{ '/am/current/am_userguide_passwordless.html' | relative_url }}[Passwordless (W3C WebAuthn)] section for details.
+
+== Create FIDO2 factor
+
+Creating a FIDO2 factor is straightforward as the plugin uses *WebAuthn* configuration. Please follow the steps to create the factor plugin.
+
+. Select *Security > Multifactor Auth*.
+. Select the plus icon image:{% link images/icons/plus-icon.png %}[role="icon"].
+. Select *FIDO2 Factor* and click *Next*. Here is a screenshot of the plugin you should see:
++
+image::{% link images/am/current/graviteeio-am-userguide-mfa-fido2.png %}[FIDO2,400,380]
++
+. Provide a suitable a name.
+. Click *Create*.
+
+== Configure application with FIDO2 plugin
+
+. In AM Console, select *Applications > Settings > Multifactor Auth*.
+. Toggle to enable the FIDO2 factor plugin.
+. Click *Save*.
+
+Here is an example of an application which has the FIDO2 factor along with other factors.
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-fido2-app-settings.png %}[FIDO2-App,650,500]
+
+== Enrollment scenarios for FIDO2 factor plugin
+
+The enrollment behavior for the FIDO2 plugin depends on a couple of things.
+First, the way the user decides to log on and secondly whether the user already has a passwordless device registered or not.
+The plugin considers the following scenarios during enrollment:
+
+. The user provides username and password during the login process and the user does not have a passwordless device registered.
+. The user provides username and password during the login process. The user does not have a passwordless device registered and decides to execute the passwordless registration process after log on.
+. The user provides username and password during the login process and the user already has the device registered for passwordless login.
+. The user selects passwordless login options instead of providing username and password.
+
+== Enrollment step
+
+The following diagram shows how enrollment occurs for the scenarios mentioned in the previous section.
+For simplicity the diagram assumes the application has FIDO2 multi-factor enabled.
+Notice that this plugin ignores the *MFA  challenge* step during the enrollment process in certain cases.
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-fido2-enrollment-flow.png %}[FIDO2-enrollment,650,500]
+
+== Challenge step
+
+The following diagram shows only the challenge step.
+For simplicity the diagram assumes the user has already enrolled to FID2 factor plugin.
+
+image::{% link images/am/current/graviteeio-am-userguide-mfa-fido2-challenge-flow.png %}[FIDO2-challenge,480,350]
