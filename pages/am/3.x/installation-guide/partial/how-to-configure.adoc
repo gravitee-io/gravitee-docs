@@ -1,6 +1,6 @@
 = How to configure
 
-There are three different ways to configure this component:
+There are three different ways to configure AM Gateway components. These are:
 
  - environment variables
  - system properties
@@ -59,18 +59,18 @@ gravitee.management.mongodb.dbname=myDatabase
 WARNING: Some properties are case sensitive and cannot be written in uppercase (for example,
 `gravitee_security_providers_0_tokenIntrospectionEndpoint`. We advise you to define environment variables in lowercase and use the correct syntax for each property.
 
-TIP: In some systems, hyphens are not allowed in variable names. For example, you may need to write `gravitee_policy_apikey_header` as `gravitee_policy_api-key_header`.
+TIP: In some systems, hyphens are not allowed in variable names. For example, you may need to write `gravitee_http_cookie_allow-credentials` as `gravitee_http_cookie_allowcredentials` .
 
 === How to manage arrays?
 
 Some properties are arrays. For example:
 [source,yaml]
 ----
-analytics:
-  elasticsearch:
+http:
+  ssl:
     endpoints:
-      - https://my.first.endpoint.com
-      - https://my.second.endpoint.com
+      - token_endpoint
+      - registration_endpoint
 
 security:
   providers:
@@ -82,8 +82,8 @@ security:
 Below are some examples of how to write your environment variables. In case of doubt, we recommend you try both.
 
 ----
-gravitee_analytics_elasticsearch_endpoints_0=https://my.first.endpoint.com
-gravitee_analytics_elasticsearch_endpoints_1=https://my.second.endpoint.com
+gravitee_http_ssl_endpoints_0=token_endpoint
+gravitee_http_ssl_endpoints_1=registration_endpoint
 
 gravitee_security_providers_0_type=ldap
 gravitee_security_providers_0_context-source-username=cn=Directory Manager
@@ -93,8 +93,8 @@ gravitee_security_providers_0_context-source-password=password
 or
 
 ----
-gravitee.analytics.elasticsearch.endpoints[0]=https://my.first.endpoint.com
-gravitee.analytics.elasticsearch.endpoints[1]=https://my.second.endpoint.com
+gravitee.http.ssl.endpoints[0]=token_endpoint
+gravitee.http.ssl.endpoints[1]=registration_endpoint
 
 gravitee.security.providers[0]type=ldap
 gravitee.security.providers[0]context-source-username=cn=Directory Manager

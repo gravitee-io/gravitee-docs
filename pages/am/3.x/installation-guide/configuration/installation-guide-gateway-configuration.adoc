@@ -88,10 +88,59 @@ email:
 #    auth: true
 #    starttls.enable: true
 #    ssl.trust: smtp.gmail.com
+#    ssl.protocols: TLSv1.2
 
 # Mail templates
 #templates:
 #  path: ${gravitee.home}/templates
+----
+
+TIP: In order to enforce TLS 1.2 uncomment the properties in the above example and change according to your requirements.
+
+
+==== Email password and name complexity
+
+You can configure the complexities as per your organizational requirements. The default settings is shown below:
+
+----
+user:
+  email:
+    policy:
+      pattern: ^[a-zA-Z0-9_+-]+(?:\.[a-zA-Z0-9_+-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$
+  # Password complexity validation policy
+  # Applications should enforce password complexity rules to discourage easy to guess passwords.
+  # Passwords should require a minimum level of complexity that makes sense for the application and its user population.
+  password:
+    policy:
+      # Regex pattern for password validation (default to OWASP recommendations).
+      # 8 to 32 characters, no more than 2 consecutive equal characters, min 1 special characters (@ & # ...), min 1 upper case character.
+      pattern: ^(?:(?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))(?!.*(.)\1{2,})[A-Za-z0-9!~<>,;:_\-=?*+#."'&§`£€%°()\\\|\[\]\-\$\^\@\/]{8,32}$
+        # Example : ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$
+        # ^                # start-of-string
+        #(?=.*[0-9])       # a digit must occur at least once
+        #(?=.*[a-z])       # a lower case letter must occur at least once
+        #(?=.*[A-Z])       # an upper case letter must occur at least once
+        #(?=.*[@#$%^&+=])  # a special character must occur at least once
+        #(?=\S+$)          # no whitespace allowed in the entire string
+        #.{8,}             # anything, at least eight places though
+        #$                 # end-of-string
+
+      ## Password dictionary to exclude most commons passwords
+      ## You need to enable the feature in the AM management console
+
+      #dictionary:
+      #  filename: /path/to/dictionary  # if null `resources/dictionaries/10k-most-common.txt` will be loaded
+      #  watch: true #if true, watches periodically for any changes in the file
+  name:
+    strict:
+      policy:
+        pattern: ^[^±!@£$%^&*_+§¡€#¢¶•ªº«»\\/<>?:;|=.,]{0,100}$
+    lax:
+      policy:
+        pattern: ^[^±!£$%^&*§¡€¢¶•ªº«»\\/<>?|=]{0,100}$
+  username:
+    policy:
+      pattern: ^[^±!£$%^&*§¡€¢¶•ªº«»\\/<>?:;|=,]{1,100}$
 ----
 
 === Configure the Plugins repository
