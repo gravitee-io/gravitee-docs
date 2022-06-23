@@ -33,7 +33,7 @@ RUN bundle install
 ADD . /src
 RUN bundle exec jekyll build
 
-FROM nginx:1.21-alpine
+FROM nginx:1.22.0-alpine
 LABEL maintainer="Gravitee Team <http://gravitee.io>"
 
 WORKDIR /usr/share/nginx/html
