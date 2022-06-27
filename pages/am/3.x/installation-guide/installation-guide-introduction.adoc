@@ -4,6 +4,9 @@
 :page-folder: amm/installation-guide
 :page-layout: am
 
+:gravitee-product-name: AM
+include::../../../partial/bundle/single-bundle.adoc[]
+
 As described in the link:{{ '/am/current/am_overview_architecture.html' | relative_url }}[architecture overview] page, Gravitee.io
 Access Management (AM) is split into three main components:
 

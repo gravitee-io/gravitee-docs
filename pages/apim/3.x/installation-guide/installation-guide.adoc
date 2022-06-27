@@ -7,6 +7,9 @@
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 :page-layout: apim3x
 
+:gravitee-product-name: APIM
+include::../../../partial/bundle/single-bundle.adoc[]
+
 As described in the link:{{ '/apim/3.x/apim_overview_introduction.html#gravitee-overview' | relative_url }}[Overview], Gravitee.io API Management (APIM) is split into four main components:
 
 * link:{{ '/apim/3.x/apim_installguide_gateway_install_zip.html' | relative_url }}[APIM Gateway]
@@ -14,21 +17,14 @@ As described in the link:{{ '/apim/3.x/apim_overview_introduction.html#gravitee-
 * link:{{ '/apim/3.x/apim_installguide_management_ui_install_zip.html' | relative_url }}[APIM Console]
 * link:{{ '/apim/3.x/apim_installguide_portal_ui_install_zip.html' | relative_url }}[APIM Portal]
 
-The links below provide information on how you can prepare, install, and configure your APIM environment. You can install APIM in a variety of ways, including: 
+The links below provide information on how you can prepare, install, and configure your APIM environment. You can install APIM in a variety of ways, including:
 
 * link:{{ '/apim/3.x/apim_installation_guide_amazon_introduction.html' | relative_url }}[Install on Amazon]
-
 * link:{{ '/apim/3.x/apim_installation_guide_docker_introduction.html' | relative_url }}[Install on Docker]
-
 * link:{{ '/apim/3.x/apim_installguide_redhat_introduction.html' | relative_url }}[Install on Red Hat and CentOS (Linux)]
-
 * link:{{ '/apim/3.x/apim_installguide_kubernetes.html' | relative_url }}[Install on Kubernetes]
-
 * link:{{ '/apim/3.x/apim_installguide_gateway_install_zip.html' | relative_url }}[Install with .ZIP]
-
 * link:{{ '/apim/3.x/apim_installguide_hybrid_deployment.html#architecture' | relative_url }}[Install a Hybrid Deployment]
-
-
 
 NOTE: The Gravitee.io installation guide provides information on how to install Gravitee.io components. For prerequisite documentation on third-party products such as link:https://docs.mongodb.com/[MongoDB^], link:https://www.elastic.co/guide/index.html[Elasticsearch^] or others, please visit their respective websites.
 
