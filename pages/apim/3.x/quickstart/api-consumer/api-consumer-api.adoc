@@ -27,9 +27,11 @@ curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
 Subscribe to API request::
 [source]
 ----
-curl -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+curl -H "Authorization: Basic $lmA_AUTH" \
+     -H "Content-Type:application/json;charset=UTF-8" \
      -X POST \
-     http://MANAGEMENT_API_SERVER_DOMAIN/portal/environments/DEFAULT/applications/|application-id|/subscriptions/?plan=|plan-id|
+     -d '{"application":"[APPLICATION_ID]","plan":"[PLAN_ID]"' \
+     http://MANAGEMENT_API_SERVER_DOMAIN/portal/environments/DEFAULT/subscriptions
 ----
 
 For more information, see the complete link:{{ '/apim/3.x/apim_installguide_rest_apis_documentation.html' | relative_url }}[Rest API documentation].
