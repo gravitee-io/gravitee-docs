@@ -1,0 +1,199 @@
+= Reporters
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_installguide_reporters.html
+:page-folder: apim/installation-guide/reporters
+:page-description: Gravitee.io API Management - Reporters
+:page-keywords: Gravitee.io, API Platform, API Management, API Gateway, reporters, events, elasticsearch, json, message_pack, tcp
+:page-layout: apim3x
+
+
+Reporters are designed to record a variety of events occurring in the gateway, to a variety of outputs and formats, in their order of occurrence. This enables you to manage this data using a solution of your choice.
+
+The following event types are supported.
+
+== Event types
+
+[cols="1,1"]
+|===
+|Type|Description
+
+|`request`
+|This event type provides common request and response metrics, such as response time, application, request ID, and more.
+
+|`log`
+|This event type provides more detailed request and response metrics. It is reported when logging has been enabled at the API level. 
+
+|`healthcheck`
+|This event type allows for healthcheck events to be reported when a healthcheck endpoint has been configured and enabled on an API.
+
+|`node`
+|This event type provides some system and JVM metrics for the node Gravitee is running on.
+|===
+
+== Available Reporters
+
+[cols="1,1,1"]
+|===
+|Type|Bundled|Default 
+
+|Elasticsearch
+|✓
+|✓
+
+|File
+|✓
+|×
+
+|TCP
+|✓
+|×
+|===
+
+== Configuring Reporters
+
+=== Elasticsearch Reporter
+
+Configuration details for the elasticsearch reporter are available in the link:{{ '/apim/3.x/apim_installguide_repositories_elasticsearch.html' | relative_url }}[Elasticsearch Repository] documentation.
+
+=== File Reporter
+
+==== Configuration Parameters
+[cols="1,1,1"]
+|===
+| Parameter name
+| Description
+| Default value
+
+| `enabled`
+| This setting determines whether the file reporter should be started or not. The default value is `false`.
+| false
+
+| `fileName`
+| The path events should be written to. Use the `%s-yyyy_mm_dd` pattern to create one file per event type on a daily basis.
+| *#{systemProperties['gravitee.home']}/metrics/%s-yyyy_mm_dd}*
+
+| `output`
+| Output file type - json, message_pack, elasticsearch, csv.
+| *json*
+
+| `flushInterval`
+| File flush interval (in ms).
+| *1000*
+
+| `retainDays`
+| The number of days to retain files before deleting one.
+| *0 (to retain forever)*
+
+| `<EVENT_TYPE>.exclude`
+| Fields to exclude from the output. Available for `json` and `message_pack` outputs only.
+| *none*
+
+| `<EVENT_TYPE>.include`
+| Fields to include in the output. Available for `json` and `message_pack` outputs and only if excludes have been defined.
+| *none*
+
+| `<EVENT_TYPE>.rename`
+| Fields to rename when writing the output. Available for `json` and `message_pack` outputs only.
+| *none*
+|===
+
+NOTE: <EVENT_TYPE> refers to the kind of event reported by the gateway and can be either `request`, `log`, `node` or `healthcheck`. Fields referenced as `exclude`, `include` and `rename` items all support link:https://github.com/json-path/JsonPath[jsonPath] for accessing nested elements.
+
+==== Example
+
+The configuration example below excludes all fields from the request JSON file except the `api` and
+`application` fields, renames the `application` field to `app`, and excludes `log`, `node`, and `healthcheck` events from being reported.
+
+[source,yaml]
+----
+reporters:
+  file:
+    enabled: true 
+    fileName: ${gravitee.home}/metrics/%s-yyyy_mm_dd
+    output: json 
+    request: 
+      exclude: 
+        - "*"
+      include: 
+        - api
+        - application
+      rename: 
+        application: app
+    log:
+      exclude: *
+    node:
+      exclude: *
+    healthcheck:
+      exclude: *
+----
+
+=== TCP Reporter
+
+==== Configuration Parameters
+[cols="1,1,1"]
+|===
+| Parameter name
+| Description
+| Default value
+
+| `enabled`
+| This setting determines whether the TCP reporter should be started or not. The default value is `false`.
+| false
+
+| `output`
+| Format of the data written to the TCP socket - json, message_pack, elasticsearch, csv.
+| *json*
+
+| `host`
+| The TCP host where the event should be published. This can be a valid host name or an IP address.
+| *localhost*
+
+| `port`
+| The TCP port used to connect to the host.
+| *8123*
+
+| `connectTimeout`
+| Maximum time allowed to establish the TCP connection in milliseconds.
+| *10000*
+
+| `reconnectAttempts`
+| This setting determines how many times the socket should try to establish a connection in case of failure.
+| *10*
+
+| `reconnectInterval`
+| Time (in milliseconds) between socket connection attempts.
+| *500*
+
+| `retryTimeout`
+| If the max reconnect attempts have been reached, this setting determines how long (in milliseconds) the reporter should wait before trying to connect again.
+| *5000*
+
+|===
+
+==== Example
+
+The following example uses the same configuration as the previous example above, however it writes the events to a TCP socket instead of a file.
+
+[source,yaml]
+----
+reporters:
+  tcp:
+    enabled: true 
+    host: localhost
+    port: 9001
+    output: json 
+    request: 
+      exclude: 
+        - "*"
+      include: 
+        - api
+        - application
+      rename: 
+        application: app
+    log:
+      exclude: *
+    node:
+      exclude: *
+    healthcheck:
+      exclude: *
+----
