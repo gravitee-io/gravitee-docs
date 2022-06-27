@@ -98,9 +98,17 @@ image:{% link images/apim/3.x/how-tos/configure-apim/admin-pwd.png %}[]
 
 == Step 3: Update the JWT secret
 
-The JWT secret is used for signing session cookies in the AM UI components. Any users with this secret can log in to AM and update their permissions.
+The JWT secret is used for multiple purposes :
 
-Perform the following steps on the AM API component:
+- Sign session cookies in the AM API component
+- Sign tokens used for the email verification process in the AM API and AM Gateway components
+- Sign access and refresh tokens in the AM Gateway component if no certificate has been selected for your application (HMAC256)
+
+Any users with this secret can tampered AM sessions and tokens. For security reason, we strongly advise you to change the default value when using AM.
+
+NOTE: As the secret is used between AM API and AM Gateway, be sure to set the same value for both components.
+
+Perform the following steps on the AM API and Gateway components:
 
 . Open your `gravitee.yml` file.
 . In the `jwt` section, update the `secret` value:
@@ -194,7 +202,7 @@ Perform the following steps on the AM API component:
 
 == Step 6: Enable Secure Cookies
 
-Cookies are used by AM API and AM Gateway to keep minimal information about user session. The "Secure" flag instructs a user's browser to only send the cookie along with requests over HTTPS to in-scope addresses. 
+Cookies are used by AM API and AM Gateway to keep minimal information about user session. The "Secure" flag instructs a user's browser to only send the cookie along with requests over HTTPS to in-scope addresses.
 
 Perform the following steps on the AM API component:
 
