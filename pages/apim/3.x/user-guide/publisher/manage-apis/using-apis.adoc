@@ -443,3 +443,4 @@ curl -H "Authorization: Bearer MY-ACCESS-TOKEN" \
            }
          ]' \
      https://[GRAVITEEIO-APIM-MGT-API-HOST]/management/organizations/[ORGANIZATION_ID]/environments/[ENVIRONMENT_ID]/apis/[API_ID]/definition?dryRun=true
+----
