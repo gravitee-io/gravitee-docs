@@ -36,8 +36,8 @@ services:
       host: localhost
       authentication:
         # authentication type to be used for the core services
-        # - none : to disable authentication
-        # - basic : to use basic authentication
+        # - none: to disable authentication
+        # - basic: to use basic authentication
         # default is "basic"
         type: basic
         users:
@@ -70,8 +70,8 @@ security:
       # allow search results to display the user email. Be careful, It may be contrary to the user privacy.
 #      allow-email-in-search-results: true
       # password encoding/hashing algorithm. One of:
-      # - bcrypt : passwords are hashed with bcrypt (supports only $2a$ algorithm)
-      # - none : passwords are not hashed/encrypted
+      # - bcrypt: passwords are hashed with bcrypt (supports only $2a$ algorithm)
+      # - none: passwords are not hashed/encrypted
       # default value is bcrypt
       password-encoding-algo: bcrypt
       users:
@@ -183,29 +183,35 @@ The recommended value depends on the type of logging you have enabled: the more 
 
 == STEP 5: Portal & Console default nginx security config
 
-The APIM Console use this default config :
-```
+The APIM Console use this default config:
+
+[source]
+----
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-XSS-Protection "1; mode=block";
     add_header X-Content-Type-Options nosniff;
     add_header X-Permitted-Cross-Domain-Policies none;
-```
-The APIM Portal use this default config :
-```
+----
+The APIM Portal use this default config:
+
+[source]
+----
     add_header X-XSS-Protection "1; mode=block";
     add_header X-Content-Type-Options nosniff;
     add_header X-Permitted-Cross-Domain-Policies none;
-```
+----
 
 It is recommended to complete this mechanisms to have a better control on the resources the user agent is allowed to load for a given page.
 
 
-For portal you can improve security to allow specific origin, with this header :
+For portal you can improve security to allow specific origin, with this header:
 
-```
+[source]
+----
 add_header X-Frame-Options "ALLOW-FROM my-domain.com"
-```
+----
+
 NOTE: APIM console uses an iframe to preview the portal theme configuration, so it is necessary to add the console in ALLOW-FROM domains in Portal config.
 
 
-It is recommended to configure this header too : link:{{'https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy'}}[ Content-Security-Policy]
+It is recommended to configure this header too: link:{{'https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy'}}[ Content-Security-Policy]
