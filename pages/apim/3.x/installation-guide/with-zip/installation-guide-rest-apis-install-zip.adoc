@@ -35,24 +35,9 @@ The default APIM API distribution requires link:{{ '/apim/3.x/apim_installguide_
 NOTE: You can download MongoDB from the https://www.mongodb.org/downloads#production[MongoDB download site, window=\"_blank\"]
 and Elasticsearch from the https://www.elastic.co/downloads/elasticsearch[Elasticsearch download site, window=\"_blank\"].
 
-== Download and extract the `.zip` archive
-
-Note that the archive includes the binaries for all the APIM components, so if you previously downloaded it to install another component, you do not need to download it again.
-
-. Download the binaries https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip[here] or from the https://gravitee.io/downloads/api-management[Gravitee downloads page].
-
-[source,bash]
-----
-$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip -o gravitee-standalone-distribution-{{ site.products.apim._3x.version }}.zip
-----
-
-[start=2]
-. Extract the `graviteeio-apim-rest-api-xxx` directory from the archive and place it in the required location.
-
-[source,bash]
-----
-$ unzip gravitee-standalone-distribution-{{ site.products.apim._3x.version }}.zip
-----
+:gravitee-apim-component: graviteeio-apim-rest-api
+:gravitee-apim-version: {{ site.products.apim._3x.version }}
+include::partial/download-and-extract-zip-file.adoc[]
 
 == Run APIM API from the command line
 
@@ -60,7 +45,7 @@ You start APIM API from the command line as follows:
 
 [source,bash]
 ----
-$ cd graviteeio-apim-rest-api-{{ site.products.apim._3x.version }}
+$ cd [DESTINATION_FOLDER]/graviteeio-apim-rest-api-{{ site.products.apim._3x.version }}
 $ ./bin/gravitee
 ----
 
@@ -71,11 +56,12 @@ NOTE: Both APIM API nodes run by default. You can configure APIM to run only one
 
 Once APIM API is running, you will see a log such as this one:
 
-[source,bash]
-[subs="attributes"]
+[source,bash,subs="attributes"]
+----
 ...
 11:01:53.162 [main] INFO  i.g.r.a.s.node.GraviteeApisNode - Gravitee.io - Rest APIs id[2e05c0fa-8e48-4ddc-85c0-fa8e48bddc11] version[{{ site.products.apim._3x.version }}] pid[24930] build[175] jvm[AdoptOpenJDK/OpenJDK 64-Bit Server VM/12.0.1+12] started in 8042 ms.
 ...
+----
 
 == Check Management API is running
 

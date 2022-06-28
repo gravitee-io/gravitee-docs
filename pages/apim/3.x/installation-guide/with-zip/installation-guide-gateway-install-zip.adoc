@@ -30,46 +30,31 @@ reporting and analytics. See the vendor documentation for supported versions.
 NOTE: You can download MongoDB from https://www.mongodb.org/downloads#production[MongoDB Download Site, window=\"_blank\"]
 and Elasticsearch from https://www.elastic.co/downloads/elasticsearch[Elastic Download Site, window=\"_blank\"]
 
-== Download and extract the `.zip` archive
-
-Note that the archive includes the binaries for all the APIM components, so if you previously downloaded it to install another component, you do not need to download it again.
-
-. Download the binaries https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip[here, window=\"_blank\"] or from the https://gravitee.io/downloads/api-management[Gravitee downloads page, window=\"_blank\"].
-
-[source,bash]
-----
-$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip -o gravitee-standalone-distribution-{{ site.products.apim._3x.version }}.zip
-----
-
-[start=2]
-. Extract the `graviteeio-gateway-xxx` directory from the archive and place it in the required location.
-
-[source,bash]
-----
-$ unzip gravitee-standalone-distribution-{{ site.products.apim._3x.version }}.zip
-----
+:gravitee-apim-component: graviteeio-apim-gateway
+:gravitee-apim-version: {{ site.products.apim._3x.version }}
+include::partial/download-and-extract-zip-file.adoc[]
 
 == Check the installation
 === Run APIM Gateway from the command line
 
-By default, APIM Gateway runs in the foreground, prints its logs to standard output (stdout), and can be stopped
-by pressing **Ctrl-C**.
+By default, APIM Gateway runs in the foreground, prints its logs to standard output (stdout), and can be stopped by pressing **Ctrl-C**.
 
 Run APIM Gateway from the command line as follows:
 
 [source,bash]
 ----
-$ cd graviteeio-gateway-{{ site.products.apim._3x.version }}
+$ cd [DESTINATION_FOLDER]/graviteeio-apim-gateway-{{ site.products.apim._3x.version }}
 $ ./bin/gravitee
 ----
 
 Once APIM Gateway is running, you will see this log:
 
-[source,bash]
-[subs="attributes"]
+[source,bash,subs="attributes"]
+----
 ...
 11:01:53.162 [gravitee] [] INFO  i.g.g.standalone.node.GatewayNode - Gravitee.io - Gateway id[2e05c0fa-8e48-4ddc-85c0-fa8e48bddc11] version[{{ site.products.apim._3x.version }}] pid[24930] build[175] jvm[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/25.121-b13] started in 15837 ms.
 ...
+----
 
 === Check APIM Gateway is running
 

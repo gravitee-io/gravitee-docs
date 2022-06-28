@@ -1,0 +1,19 @@
+== Download and extract the `.zip` archive
+
+Note that the archive includes the binaries for all the APIM components, so if you previously downloaded it to install another component, you do not need to download it again.
+
+. Download the binaries https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{gravitee-apim-version}.zip[here, window=\"_blank\"] or from the https://gravitee.io/downloads/api-management[Gravitee downloads page, window=\"_blank\"].
+
+[source,bash,subs="attributes"]
+----
+$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{gravitee-apim-version}.zip -o gravitee-standalone-distribution-{gravitee-apim-version}.zip
+----
+
+[start=2]
+. Extract the `{gravitee-apim-component}-{gravitee-apim-version}` directory from the archive and place it in the required location.
+
+[source,bash,subs="attributes"]
+----
+$ unzip gravitee-standalone-distribution-{gravitee-apim-version}.zip
+$ cp -r graviteeio-full-{gravitee-apim-version}/{gravitee-apim-component}-{gravitee-apim-version} [DESTINATION_FOLDER]/
+----

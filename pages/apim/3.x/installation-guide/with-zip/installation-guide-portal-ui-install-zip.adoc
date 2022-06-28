@@ -16,19 +16,9 @@ NOTE: Before you begin, ensure APIM API is installed and running.
 
 APIM Portal is supported with the two most recent versions of all modern internet browsers.
 
-== Download and extract the `.zip` archive
-
-The binaries are available from https://gravitee.io/downloads/api-management[Downloads page] or via https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip[Download].
-
-[source,bash]
-[subs="attributes"]
-$ curl -L https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-{{ site.products.apim._3x.version }}.zip -o gravitee-standalone-distribution-{{ site.products.apim._3x.version }}.zip
-
-Once file has been downloaded, you just have to unpack it in the right place
-
-[source,bash]
-[subs="attributes"]
-$ unzip gravitee-standalone-distribution-{{ site.products.apim._3x.version }}.zip
+:gravitee-apim-component: graviteeio-apim-portal-ui
+:gravitee-apim-version: {{ site.products.apim._3x.version }}
+include::partial/download-and-extract-zip-file.adoc[]
 
 === Deploy
 
@@ -36,9 +26,10 @@ The portal is a client-side only Angular application and can be deployed on any 
 
 === Run with Node.js
 
-[source,bash]
-[subs="attributes"]
+[source,bash,subs="attributes"]
+----
 $ npm install angular-http-server -g
-$ cd graviteeio-apim-portal-ui-{{ site.products.apim._3x.version }}
+$ cd [DESTINATION_FOLDER]/graviteeio-apim-portal-ui-{{ site.products.apim._3x.version }}
 $ angular-http-server
 $ Listening on 8080
+----
