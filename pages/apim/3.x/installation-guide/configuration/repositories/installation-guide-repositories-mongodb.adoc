@@ -143,7 +143,7 @@ By default, these values are empty.
 
 NOTE: Before running any scripts, you must create a dump of your existing database. You need to repeat these steps on both APIM Gateway and APIM API.
 
-. To prefix your collections, you need to rename them. You can use following https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.7.0/mongodb/1-rename-collections-with-prefix.js[this script^], which renames all the collections by adding a prefix and rateLimitPrefix of your choice.
+. To prefix your collections, you need to rename them. You can use following https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/3.7.0/1-rename-collections-with-prefix.js[this script^], which renames all the collections by adding a prefix and rateLimitPrefix of your choice.
 . Update values `management.mongodb.prefix` and `ratelimit.mongodb.prefix` in the `gravitee.yml` file.
 
 == Index
