@@ -19,8 +19,7 @@ These properties are available for all alert types.
 
 |`alert.severity`
 |The severity of the alert. Values: `info`, `warning`, `critical`.
-
-|`alert.source`
+= |`alert.source`
 |The source of the alert. Values: `NODE_HEARTBEAT`, `NODE_HEALTHCHECK`, `ENDPOINT_HEALTH_CHECK`, `REQUEST`.
 
 |`alert.description`
@@ -30,7 +29,7 @@ These properties are available for all alert types.
 |The timestamp (long value) of the trigger.
 
 |`notification.message`
-|A human readable message in relation to the alert condition.
+|When defining an aggregation-based condition (such as rate or aggregation), displays a human readable message in relation to the alert condition.
 
 |`notification.result.value`
 |When defining an aggregation-based condition (such as rate or aggregation), you can retrieve the computed value using this property.
@@ -50,7 +49,19 @@ These properties vary depending on the rules configured and the type of event be
 |===
 |Key |Description
 
+|`environment`| Current environment with property `id`.
+
+|`organization`| Current organization with property `id`.
+
 |`domain`| Current security domain with properties `id` and `name`.
 
 |`application`| Current application with properties `id` and `name`.
+
+|`user`| Current user principal `username`
+
+|`risk_assessment.unknownDevices`| Current assessment returned when a device is unknown.
+
+|`risk_assessment.ipReputation`| Current assessment for the IP reputation.
+
+|`risk_assessment.geoVelocity`| Current assessment for the geo velocity.
 |===
