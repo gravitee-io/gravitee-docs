@@ -60,7 +60,7 @@ gateway:
     - name: graviteeio-license
       secret:
         secretName: graviteeio-license
-        
+
 api:
   additionalPlugins:
   - https://download.gravitee.io/graviteeio-ee/am/plugins/idps/gravitee-am-identityprovider-saml2-generic/gravitee-am-identityprovider-saml2-generic-<version>.zip
@@ -72,4 +72,31 @@ api:
     - name: graviteeio-license
       secret:
         secretName: graviteeio-license
+----
+
+== WebAuthn (passwordless) V2 JavaScript files
+
+To better match the link:https://bugs.webkit.org/show_bug.cgi?id=213595[recommendation] asked by Apple to use biometric devices for WebAuthn (passwordless) feature,
+backend APIs and JavaScript scripts have been updated to reflect that change.
+
+If you are using webauthn JavaScript scripts in your custom HTML templates, we strongly advise you to use the v2 version started from the 3.18.0 version.
+
+----
+WebAuthn Register
+
+--- <script th:src="@{../assets/js/webauthn.auth.js"></script>
+--- <script th:src="@{../assets/js/webauthn-register.js}"></script>
+
++++ <script th:src="@{../assets/js/webauthn.auth-v2.js"></script>
++++ <script th:src="@{../assets/js/webauthn-register-v2.js}"></script>
+----
+
+----
+WebAuthn Login
+
+--- <script th:src="@{../assets/js/webauthn.auth.js"></script>
+--- <script th:src="@{../assets/js/webauthn-login.js}"></script>
+
++++ <script th:src="@{../assets/js/webauthn.auth-v2.js"></script>
++++ <script th:src="@{../assets/js/webauthn-login-v2.js}"></script>
 ----
