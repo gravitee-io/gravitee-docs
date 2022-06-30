@@ -18,6 +18,30 @@ NOTE: For more information about the breaking changes of this version, see link:
 
 Starting from AM 3.18, there are no more distinction between CE and EE bundle. To take benefit of the Enterprise Edition, you will have to deploy by yourself your EE plugins in addition of the license key. See the link:{{ '/am/current/am_breaking_changes_3.18.html' | relative_url }}[Breaking changes in 3.18] for more details
 
+=== Webauthn (passwordless) V2 JavaScript files
+
+If you are using webauthn JavaScript scripts in your custom HTML templates, we strongly advise you to use the v2 version started from the 3.18.0 version. See the link:{{ '/am/current/am_breaking_changes_3.18.html' | relative_url }}[Breaking changes in 3.18] for more details.
+
+----
+WebAuthn Register
+
+--- <script th:src="@{../assets/js/webauthn.auth.js"></script>
+--- <script th:src="@{../assets/js/webauthn-register.js}"></script>
+
++++ <script th:src="@{../assets/js/webauthn.auth-v2.js"></script>
++++ <script th:src="@{../assets/js/webauthn-register-v2.js}"></script>
+----
+
+----
+WebAuthn Login
+
+--- <script th:src="@{../assets/js/webauthn.auth.js"></script>
+--- <script th:src="@{../assets/js/webauthn-login.js}"></script>
+
++++ <script th:src="@{../assets/js/webauthn.auth-v2.js"></script>
++++ <script th:src="@{../assets/js/webauthn-login-v2.js}"></script>
+----
+
 == Upgrade to 3.15.6
 
 WARNING: For security reason, default values for the duration of the email mfaChallenge code and the resetPassword token have been reduced to 5 minutes. If you want to restore previous values, please update the gravitee.yaml file for the management and gateway service for these two values "`user.resetPassword.token`" and "`user.mfaChallenge.token`".
