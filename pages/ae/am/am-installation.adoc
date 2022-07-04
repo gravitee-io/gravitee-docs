@@ -18,6 +18,8 @@ be an link:{{ '/ee/ee_introduction.html' | relative_url }}[Enterprise version].
 
 == Installation
 
+NOTE: Starting from 3.18, the AE connector comes bundled with Access Management, you don't need to download and install it.
+
 === Download connector
 
 [source,bash]
@@ -26,11 +28,12 @@ $ curl -L https://download.gravitee.io/graviteeio-ae/plugins/connectors/gravitee
 
 === Install connector
 
-In the command below, ${GRAVITEEIO_HOME} refers to the root directory of both the APIM Gateway and APIM API.
+In the command below, ${GRAVITEEIO_HOME} refers to the root directory of both the AM Gateway and Management API.
 
 [source,bash]
 [subs="attributes"]
 $ cp gravitee-ae-connectors-ws-{{site.products.ae.version}}.zip ${GRAVITEEIO_HOME}/plugins/
+
 
 == Configuration
 

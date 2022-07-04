@@ -35,11 +35,11 @@ image::{% link images/am/current/graviteeio-am-userguide-mfa-risk-based-required
 
 image::{% link images/am/current/graviteeio-am-userguide-mfa-risk-based-conditional.png %}[]
 
-- **INTELLIGENT**: [label label-enterprise]#Enterprise feature# The end user will be intelligently prompted MFA based on risk assessments
+- **RISK-BASED**: [label label-enterprise]#Enterprise feature# The end user will be intelligently prompted MFA based on risk assessments
 
-. `Devices`: Will check the if device of the User across the security domain (Remember Device needs to be activated to collect the user device)
-. `Ip Reputation score`: Will prompt MFA based on the severity of the IP score (LOW, MEDIUM, HIGH
-. `Geolocation Velocity`: Will prompt MFA based on the speed between the 2 last logins
+. `Devices`: Will check the if device of the User across the security domain (Remember Device needs to be activated to collect the user's device)
+. `Ip Reputation score`: Will prompt MFA based on the severity of the IP score (LOW, MEDIUM, HIGH)
+. `Geolocation Velocity`: Will prompt MFA based on the speed between the 2 last login locations (LOW, MEDIUM, HIGH)
 
 NOTE: If device assessment is enabled, we won't prompt MFA with `Remember Device` as it would be redundant
 
