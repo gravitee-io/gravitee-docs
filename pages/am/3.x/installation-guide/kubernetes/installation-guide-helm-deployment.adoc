@@ -135,10 +135,11 @@ gateway:
       script-inline-nonce: true
       directives:
         - "default-src 'self';"
-        - "script-src *.yourdomain.com https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro@3/dist/fp.min.js https://www.google.com/recaptcha/api.js;"
+        - "script-src *.yourdomain.com https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro@3/dist/fp.min.js *.gstatic.com *.google.com;"
         - "img-src *.yourdomain.com data: 'unsafe-inline';"
         - "style-src *.yourdomain.com 'unsafe-inline';"
         - "frame-ancestors 'none';"
+        - "frame-src 'self' https://www.google.com;"
 ----
 
 == Values
@@ -224,10 +225,11 @@ gateway:
       script-inline-nonce: true
       directives:
         - "default-src 'self';"
-        - "script-src *.yourdomain.com https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro@3/dist/fp.min.js https://www.google.com/recaptcha/api.js;"
+        - "script-src *.yourdomain.com https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro@3/dist/fp.min.js *.gstatic.com *.google.com;"
         - "img-src *.yourdomain.com data: 'unsafe-inline';"
         - "style-src *.yourdomain.com 'unsafe-inline';"
         - "frame-ancestors 'none';"
+        - "frame-src 'self' https://www.google.com;"
   jwt:
     secret: super_secret_JWT_string
     cookie:
