@@ -87,7 +87,7 @@ NOTE: Multiple expressions may be combined using the logical operators (`and` / 
 NOTE: In AM Console, you do not need to specify the `filter` parameter, only the query value (for example `displayName eq "john doe"`).
 
 WARNING: By default only the `id`, `externalId`, `username`, `email`, `displayName`, `firstName` and `lastName` fields are indexed in the database.
-This operation also supports searching the `additionalInformation` attributes of your users, but you need to create the correct indexes first.
+This operation also supports searching the `additionalInformation` attributes of your users, but you need to create the correct indexes first. If you are using RDBMS backends, please refer to the underlying section `Add new filter fields for RDBMS backends` for more details.
 
 The following operators are supported :
 
@@ -120,6 +120,42 @@ List users updated after 06/01/2019 but before 01/01/2020
 List users by first name
 -> firstName co "john"
 ----
+
+==== Add new filter field for RDBMS backends
+
+When you are using a RDBMS backend, you will have to execute additional SQL statements to allow searching on `additionalInformation` fields that are not managed by default by AM.
+
+For PostgreSQL, as `additionalInformation` is a JSON field you may have to create additional indexes.
+
+[source, sql]
+----
+CREATE INDEX idx_users_additional_info_custom ON users USING BTREE (reference_id, reference_type, ((additional_information->>'custom_field')))
+----
+
+For MySQL, MariaDB and SQLServer, you will have to create a new column with the value coming from the user `additionalInformation` and create an index.
+
+.MySQL
+[source, sql]
+----
+ALTER TABLE users ADD additional_information_custom VARCHAR(320) AS (JSON_UNQUOTE(additional_information->"$.custom"));
+CREATE INDEX idx_users_additional_information_custom ON users(reference_id, reference_type, additional_information_custom);
+----
+
+.MariaDB
+[source, sql]
+----
+ALTER TABLE users ADD additional_information_custom VARCHAR(320) AS (JSON_VALUE(additional_information, "$.custom_field"));
+CREATE INDEX idx_users_additional_information_custom ON users(reference_id, reference_type, additional_information_custom);
+----
+
+.SQLServer
+[source, sql]
+----
+ALTER TABLE users ADD additional_information_custom AS JSON_VALUE(additional_information, '$.custom_field');
+CREATE INDEX idx_users_additional_information_custom ON users(reference_id, reference_type, additional_information_custom);
+----
+
+
 
 === Create a new user
 
