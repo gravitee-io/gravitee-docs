@@ -153,7 +153,7 @@ If the principal is not defined, all values are empty.
 === Examples
 
 * Get the value of the `Content-Type` header for an incoming HTTP request:
-`{#request.headers['content-type']}`
+`{#request.headers['content-type'][0]}`
 
 * Get the second part of the request path:
 `{#request.paths[1]}`
