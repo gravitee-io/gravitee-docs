@@ -99,6 +99,63 @@ management:
     maxAcquireTime:             # Maximum time to acquire connection from pool in millis (default: 0)
     maxCreateConnectionTime:    # Maximum time to create a new connection in millis (default: 0)
     validationQuery:            # Query that will be executed to validate that a connection to the database is still alive.
+    sslEnabled:                 # Enable SSL/TLS 
+    sslMode:                    # SSL Requirements
+    sslServerCert:              # Path to Server Certificate or CA certiticate (pem format)
+    tlsProtocol:                # version of TLS Protocole (TLSv1.2 or TLSv1.3)
+    truststore:                 # 
+      path:                     # path to the truststore file (PCKS12 format)
+      password:                 # password to access the truststore
+----
+
+=== Secured Connections
+
+NOTE: AM doesn't support client authentication using SSL Certificates
+
+According to the RDBMS, some SSL settings are useless or have different possible values. In this section we will describe what parameters are possible based on the RDBMS.
+
+.Postgres
+----
+    sslEnabled: true                    # Enable SSL/TLS 
+    sslMode: verify-ca                  # SSL Requirements:
+                                        # require: Encryption, but no certificate and hostname validation
+                                        # verify-ca: Encryption, certificates validation, BUT no hostname validation
+                                        # verify-full: Encryption, certificate validation and hostname validation
+    sslServerCert: /path/to/cert.pem    # Path to Server Certificate or CA certiticate (pem format)
+----
+
+.MySQL
+----
+    sslEnabled: true                    # Enable SSL/TLS 
+    sslMode: REQUIRED                   # SSL Requirements:
+                                        # REQUIRED: Encryption, but no certificate and hostname validation
+                                        # VERIFY_CA: Encryption, certificates validation, BUT no hostname validation
+                                        # VERIFY_IDENTITY: Encryption, certificate validation and hostname validation
+    sslServerCert: /path/to/cert.pem    # Path to Server Certificate or CA certiticate (pem format)
+    tlsProtocol: TLSv1.2                # version of TLS Protocole (TLSv1.2 or TLSv1.3)
+    truststore:                         #  
+      path: /path/to/ca.p12             # path to the truststore file (PCKS12 format)
+      password: ******                  # password to access the truststore
+----
+
+.MariaDB
+----
+    sslEnabled: true                    # Enable SSL/TLS 
+    sslMode: ENABLE_TRUST               # SSL Requirements:
+                                        # ENABLE_TRUST: Encryption, but no certificate and hostname validation
+                                        # ENABLE_WITHOUT_HOSTNAME_VERIFICATION: Encryption, certificates validation, BUT no hostname validation
+                                        # ENABLE: Encryption, certificate validation and hostname validation
+    sslServerCert: /path/to/cert.pem    # Path to Server Certificate or CA certiticate (pem format)
+    tlsProtocol: TLSv1.2                # version of TLS Protocole (TLSv1.2 or TLSv1.3)
+----
+
+.SQLServer
+----
+    sslEnabled: true                    # Enable SSL/TLS 
+    trustServerCertificate: false       # 
+    truststore:                         #  
+      path: /path/to/ca.p12             # path to the truststore file (PCKS12 format)
+      password: ******                  # password to access the truststore
 ----
 
 === Expired Data
