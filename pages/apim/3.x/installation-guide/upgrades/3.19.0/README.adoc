@@ -16,4 +16,12 @@ We recommend using those new components to access the active API keys or subscri
 * `io.gravitee.gateway.api.service.ApiKeyService` : _getByApiAndKey_
 * `io.gravitee.gateway.api.service.SubscriptionService` : _getByApiAndClientId_ and _getById_
 
+=== HTTP Request Timeout
+
+Gateway's `http.requestTimeout` property is now set to 30000 (ms) if not set in `gravitee.yml` (both in V3 and Jupiter mode).
+
+You can continue to use a `http.requestTimeout` set to 0 in V3 mode to disable the request timeout, but we strongly suggest to set it. Recommended value is 30000ms.
+
+In Jupiter mode, 0 or less is not valid anymore and will be automatically set to default 30000ms value.
+
 
