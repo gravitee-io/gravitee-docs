@@ -1,0 +1,13 @@
+= Upgrade to 3.18.5
+
+== Breaking changes
+
+=== Portal API
+
+Endpoint: `[GET] portal/environments/{envId}/applications`.
+
+For performance reasons, calling `/applications?size=-1` will no longer return the number of subscribers and the only information available in the owner of each application will be:
+
+- id
+- displayName
+- email
