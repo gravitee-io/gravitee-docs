@@ -10,6 +10,27 @@ WARNING: If you plan to skip versions when you upgrade, ensure that you read the
 
 WARNING: Be sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs;`
 
+== Upgrade to 3.17.2 - 3.17.3 - 3.17.4 - 3.18.0 - 3.18.1 - 3.18.2 - 3.18.3
+
+NOTE: For more information about the breaking changes of this version, see
+- link:{{ '/am/current/am_breaking_changes_3.17.2.html' | relative_url }}[Breaking changes in 3.17.2]
+- link:{{ '/am/current/am_breaking_changes_3.17.3.html' | relative_url }}[Breaking changes in 3.17.3]
+- link:{{ '/am/current/am_breaking_changes_3.17.4.html' | relative_url }}[Breaking changes in 3.17.4]
+- link:{{ '/am/current/am_breaking_changes_3.18.html' | relative_url }}[Breaking changes in 3.18.0]
+- link:{{ '/am/current/am_breaking_changes_3.18.1.html' | relative_url }}[Breaking changes in 3.18.1]
+- link:{{ '/am/current/am_breaking_changes_3.18.2.html' | relative_url }}[Breaking changes in 3.18.2]
+- link:{{ '/am/current/am_breaking_changes_3.18.3.html' | relative_url }}[Breaking changes in 3.18.3]
+
+=== Warning
+
+We strongly advise to not upgrade to 3.17.2, 3.17.3, 3.17.4, 3.18.0, 3.18.1, 3.18.2 and 3.18.3 since we detected a critical bug which impact the reset password feature of AM.
+
+This has been fixed in 3.17.5 and 3.18.4 versions of AM.
+
+We apologize for this inconvenience.
+
+GitHub issue: link:https://github.com/gravitee-io/issues/issues/8391[8391]
+
 == Upgrade to 3.18
 
 NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.18.html' | relative_url }}[Breaking changes in 3.18]
