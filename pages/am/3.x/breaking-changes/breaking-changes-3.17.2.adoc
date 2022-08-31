@@ -4,6 +4,9 @@
 :page-folder: am/installation-guide
 :page-layout: am
 
+WARNING: AM versions from 3.17.2 to 3.17.4 haven been impacted by a regression introduced in the 3.17.2 version of AM, we strongly advise you to upgrade directly to the 3.17.5 or 3.18.4 minimum.
+See link:{{ '/am/current/am_installguide_migration.html#upgrade_to_3_17_2_3_17_3_3_17_4_3_18_0_3_18_1_3_18_2_3_18_3' | relative_url }}[here] for more detail.
+
 == Automatic redirection to External IDP
 
 AM 3.17.0 introduced the selection rules on application identity providers. These rules are used in accordance with the identifier-first login feature to redirect to the identity provider based on the defined rule and the user input. Starting from 3.17.2, the rules on external identity providers will be evaluated also during the get login page in order to redirect as soon as possible to the relevant provider and save a user interaction.
