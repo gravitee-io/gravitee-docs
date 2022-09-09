@@ -10,13 +10,15 @@ To run a Gravitee.io Enterprise node, you must have a valid license file.
 [[ask-license]]
 == Get a license
 
+You can get an EE license in the following ways:
+
 * Send an email to contact@graviteesource.com requesting a license
 * Download a trial version from the Gravitee.io website (coming soon)
 
 == Apply the license
 Depending on how you want to run the Gravitee Enterprise nodes, the following options are available to you for pushing the license file to the nodes:
 
-* Manual installation (coming soon)
+* link:{{ '/ee/installguide_manual.html' | relative_url }}[Manual installation^]
 * link:{{ '/ee/installguide_docker.html#license_support' | relative_url }}[Docker images^]
 
 == My license is ending
