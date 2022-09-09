@@ -76,7 +76,7 @@ entries:
                 subfolderitems:
                   - title: Introduction
                     output: web
-                    url: /apim/3.x/apim_installation_guide_docker_introduction.html                  
+                    url: /apim/3.x/apim_installation_guide_docker_introduction.html
                   - title: Images
                     output: web
                     url: /apim/3.x/apim_installation_guide_docker_images.html
@@ -556,6 +556,9 @@ entries:
           - title: Callout HTTP
             output: web
             url: /apim/3.x/apim_policies_callout_http.html
+          - title: Circuit Breaker
+            output: web
+            url: /apim/3.x/apim_policies_circuit_breaker.html
           - title: Data Logging Masking
             output: web
             url: /apim/3.x/apim_policies_data_logging_masking.html
