@@ -1,0 +1,9 @@
+= Upgrade to 3.15.17
+
+== Breaking changes
+
+In previous versions, it was possible to remove a Primary Owner role member from an API using the `**DELETE /apis/{api.id}/members` endpoint.
+From this version, the endpoint will reject such updates with a `HTTP 400 Bad Request status` code.
+
+NOTE: To fix APIs that have been corrupted by such updates, you can define a user or group ID under the `services.api-primary-owner-default` property of your gravitee.yml configuration file to be used at startup to set the respective user or group as a Primary Owner role member for the API.
+If no configuration has been defined to run the fix, a warning log will be issued at startup, listing any API without a Primary Owner role member.
