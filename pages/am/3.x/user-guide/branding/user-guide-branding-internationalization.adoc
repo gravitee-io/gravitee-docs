@@ -1,0 +1,60 @@
+= Internationalization
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_branding_internationalization.html
+:page-folder: am/user-guide
+:page-layout: am
+
+[label label-version]#New in version 3.19#
+
+== Overview
+
+AM supports internationalization in multiple languages so that end users can benefit from a great user experience.
+
+The internationalization option is available under the domain `*Design -> Texts*` section
+
+NOTE: Under the hood all the templates uses Thymeleaf and Freemarker engines to support translation.
+
+image::{% link images/am/current/graviteeio-am-userguide-branding-theme-builder-texts.png %}[Texts example,650,500]
+
+== Customize translation
+
+NOTE: The *3.19.0* release supports English and French languages out of the box.
+
+To create a new language or customize texts for a default supported language:
+
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
+. Click *Settings > Texts*.
+. Click `*ADD A NEW LANGUAGE*` button in the `*Languages*` section.
+
+image::{% link images/am/current/graviteeio-am-userguide-branding-theme-builder-add-language.png %}[Theme builder,250,100]
+
+[start=4]
+. Select a language code from the dropdown menu and click the `*ADD*` button.
+. Click the `*SAVE CHANGES*` button.
+. Select the language from the dropdown menu in the `*Translations*` section.
+. Click `*ADD A NEW TRANSLATION*`.
+
+image::{% link images/am/current/graviteeio-am-userguide-branding-theme-builder-new-translation.png %}[Theme builder,250,100]
+
+[start=8]
+. Provide a valid property key name and value that you want to customize.
+. Click `*ADD*` and then `*SAVE CHANGES*`.
+
+NOTE: You should be able to view the change immediately in the `*Theme*` preview section for the template.
+
+== Limitations
+
+* The default locale is based on the end user's web browser - the requested language cannot be overridden with a query parameter such as *ui_locales*.
+
+== Out-of-the-box translated properties
+
+The default forms and email templates contain a set of translated properties, which are listed below.
+
+NOTE: For example, if you want to support Spanish and translate the Login page title,
+you can create a new Spanish Language and fill in the `login.title` property key translation.
+
+=== 3.19.0
+
+* link:{{ '/am/current/am_userguide_branding_theme_language_properties.html' | relative_url }}[Default language properties]
+
+

@@ -327,6 +327,12 @@ entries:
                   - title: Overview
                     output: web
                     url: /am/current/am_userguide_branding.html
+                  - title: Theme builder
+                    output: web
+                    url: /am/current/am_userguide_branding_theme_builder.html
+                  - title: Internationalization
+                    output: web
+                    url: /am/current/am_userguide_branding_internationalization.html
                   - title: Custom pages
                     output: web
                     url: /am/current/am_userguide_user_management_forms.html
@@ -647,6 +653,9 @@ entries:
             output: web
             url: /am/current/am_breaking_changes.html
             type: homepage
+          - title: Breaking changes in 3.19
+            output: web
+            url: /am/current/am_breaking_changes_3.19.html
           - title: Breaking changes in 3.18.3
             output: web
             url: /am/current/am_breaking_changes_3.18.3.html

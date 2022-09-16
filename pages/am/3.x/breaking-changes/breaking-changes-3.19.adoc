@@ -1,0 +1,63 @@
+= Breaking changes in 3.19
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_3.19.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+NOTE: To take advantage of these new features and incorporate these breaking changes, **use the migration guide available link:{{ '/am/current/am_installguide_migration.html' | relative_url }}[here]**.
+
+== Theme / Branding
+
+Version 3.19.0 has introduced the **link:{{ '/am/current/am_userguide_branding_theme_builder.html' | relative_url }}[theme builder]** which enables AM users to create a unique look and feel for their AM templates.
+The theme builder comes with new assets that are now used by the default forms and emails of Access Management.
+All the assets provided before AM 3.19 are still served by the Gateway in order to be able to render the old form templates.
+Those assets are therefore deprecated and will be removed in a future version, as per the list below.
+
+List of deprecated assets:
+
+* css/access_confirmation.css
+* css/forgot_password.css
+* css/login.css
+* css/mfa_challenge_alternatives.css
+* css/mfa_challenge.css
+* css/mfa_enroll.css
+* css/mfa_recover_code.css
+* css/password_validation.css
+* css/register.css
+* css/registration_confirmation.css
+* css/reset_password.css
+* css/webauthn_login.css
+* css/webauthn_register.css
+* js/password-validation.js
+
+== Mitigate Cross Site Scripting (XSS) and Cross Site Framing
+
+WARNING: To improve security on default installations of AccessManagement, CSP directives, X-XSS-Protection header and X-Frame-Options header will be enabled by default in AM 3.20. Please analyze your deployment needs to adapt the default values that we will put in place.
+
+.Gateway CSP:
+[source, yaml]
+----
+  csp:
+    script-inline-nonce: true
+    directives:
+      - "default-src 'self';"
+      - "script-src 'self' https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro@3/dist/fp.min.js *.gstatic.com *.google.com;"
+      - "img-src 'self' data: 'unsafe-inline';"
+      - "style-src 'self' 'unsafe-inline';"
+      - "frame-ancestors 'none';"
+      - "frame-src 'self' https://www.google.com;"
+----
+
+.Gateway XSS-Protection:
+[source, yaml]
+----
+  xss:
+    action: 1; mode=block
+----
+
+.Gateway X-Frame-Option:
+[source, yaml]
+----
+  xframe:
+    action: DENY
+----

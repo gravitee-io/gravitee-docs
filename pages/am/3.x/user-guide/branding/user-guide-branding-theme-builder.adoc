@@ -1,0 +1,59 @@
+= Theme builder
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_branding_theme_builder.html
+:page-folder: am/user-guide
+:page-layout: am
+
+[label label-version]#New in version 3.19#
+
+== Overview
+
+The Theme Builder enables you to create a unique look and feel for your AM templates so they are aligned with your brand requirements.
+The Theme Builder makes it easier to add custom CSS and the organization's logo in the templates, and to preview the changes - all in one place.
+
+image::{% link images/am/current/graviteeio-am-userguide-branding-theme-builder.png %}[Theme builder,650,500]
+
+The Theme Builder is available in the domain `*Design*` section. A brief description of the builder follows below:
+
+* The `*Settings*` include the following sections:
+    ** `*General*`: inputs for logo, favicon URL, and theme color palette.
+    ** `*Custom CSS*`: a place to add custom CSS (suitable for more advanced users).
+* The `*Preview*` section on the right-hand side of `*Settings*` lets you switch between preview mode and HTML mode - suitable for more advanced customizations.
+* `*PUBLISH*` button: saves the custom theme and templates.
+* `*RESET THE THEME*` button: deletes the custom theme settings and resets the builder to the default theme.
+
+
+== Updating the brand logo and the theme color
+
+It is straightforward to update the brand logo and the theme color. All changes are immediately visible in the preview section.
+
+NOTE: Logo, favicon, and theme color are applied for all the default pages provided by AM.
+If you want to customize a specific page, you must select your page and switch to the HTML mode to enable and publish custom HTML templates - for example, if third-party logo URLs have been used for logo and favicon and a theme color has been selected to preview the login page.
+
+
+NOTE: The content Security Policy (CSP) will prevent third-party URL access unless it has been set as permitted.
+For more information on how to allow cross-domain URL access, please see 
+link:{{ '/am/current/am_installguide_how_to_configuration.html#step_7_mitigate_cross_site_scripting_xss_and_cross_site_framing' | relative_url }}[Mitigate XSS CSF in AM environment^] and
+link:{{ '/am/current//am_installguide_helm_prod_deployment.html' | relative_url }}[Mitigate XSS CSF in Helm^].
+
+image::{% link images/am/current/graviteeio-am-userguide-branding-theme-builder-custom-preview.png %}[Theme builder example,650,500]
+
+== Custom CSS
+
+Customising CSS is an option for more advanced users who want a more granular custom look and feel for the HTML forms.
+To add custom CSS, follow the example below. All changes will be instantly viewable in the preview section.
+[source,css]
+----
+:root {
+ --variable-one-name: value;
+ --variable-two-name: value;
+}
+----
+
+image::{% link images/am/current/graviteeio-am-userguide-branding-theme-builder-custom-css.png %}[custom CSS,650,350]
+
+Check the following documentation for information about all available CSS properties and their default values.
+
+* link:{{ '/am/current/am_userguide_branding_theme_custom_css_properties.html' | relative_url }}[CSS properties]
+
+
