@@ -4,7 +4,7 @@
 :page-folder: am/user-guide
 :page-layout: am
 
-== Overview 
+== Overview
 
 The AM Expression Language (EL for short) is one of the key features that can be used to configure various aspects of an AM domain.
 
@@ -64,7 +64,7 @@ It is sometime useful to access to the request information through the EL. As an
 
 ==== Application information
 
-You can access to the client/app properties using this EL `{#context.attributes['client']}`. 
+You can access to the client/app properties using this EL `{#context.attributes['client']}`.
 This expression will return a ClientProperties object with following attributes:
 
 .`Application` information
@@ -73,7 +73,7 @@ This expression will return a ClientProperties object with following attributes:
 |Attribute |Description |Syntax
 
 | id
-| Client/App Internal identifier 
+| Client/App Internal identifier
 | {#context.attributes['client']['id']}
 
 | domain
@@ -100,7 +100,7 @@ This expression will return a ClientProperties object with following attributes:
 
 ==== User Profile information
 
-You can access to the User information using this EL `{#context.attributes['user']}`. 
+You can access to the User information using this EL `{#context.attributes['user']}`.
 This expression will return a UserProperties object with following attributes:
 
 .`User` information
@@ -109,7 +109,7 @@ This expression will return a UserProperties object with following attributes:
 |Attribute |Description |Syntax
 
 | id
-| User Internal identifier 
+| User Internal identifier
 | {#context.attributes['user']['id']}
 
 | externalId
@@ -133,7 +133,7 @@ This expression will return a UserProperties object with following attributes:
 | {#context.attributes['user']['lastname']}
 
 | email
-| email address 
+| email address
 | {#context.attributes['user']['email']}
 
 | source
@@ -162,9 +162,11 @@ This expression will return a UserProperties object with following attributes:
 
 |===
 
+NOTE: As you may have noticed, `claims` and `additionalInformation` contain the same data. Depending on the place where the Expression Language is defined, the `claims` attribute may not be accessible whereas the `additionalInformation` attribute will always be present.
+
 === Add information into the EL context
 
-Thanks to the flows and policies, you can add attributes to the context. 
+Thanks to the flows and policies, you can add attributes to the context.
 For example using the CalloutHttpPolicy, you can create an attribute using the response of the callout :
 
 Attr Key : `callout-attribute`
@@ -177,10 +179,10 @@ After the CalloutHttpPolicy execution, this attribute is available with the expr
 
 === How to add token claims using external data ?
 
-For some use cases the access_token or id_token must contains claims coming from external data source. 
+For some use cases the access_token or id_token must contains claims coming from external data source.
 To do so, the Login flow must contains the Callout HTTP Policy to request the Data to an external service and the Enrich Authentication Flow Policy to preserve the data until the token generation.
 
-In the Callout HTTP Policy, configure a variable : 
+In the Callout HTTP Policy, configure a variable :
 
 Attr Key : `callout-attribute`
 
@@ -188,7 +190,7 @@ Attr Value: `{#jsonPath(#calloutResponse.content, '$.field')}`
 
 image::{% link images/am/current/graviteeio-am-userguide-el-callout.png %}[]
 
-In the Enrich Authentication Flow Policy, configure a variable : 
+In the Enrich Authentication Flow Policy, configure a variable :
 
 Attr Key: `authflow-attribute`
 
