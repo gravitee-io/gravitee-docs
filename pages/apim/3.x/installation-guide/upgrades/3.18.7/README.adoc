@@ -2,7 +2,7 @@
 
 == Breaking changes
 
-WARNING: To prevent potential incorrect behavior in the flow selection for multiple JWT / OAuth2 / API Key plans, a breaking change has been introduced in this APIM version that allows for the execution of a keyless plan (if one is applicable) instead of returning an HTTP 401 status code for unauthorized OAuth2 / JWT / API Key plans. The change is described in detail below. An imminent APIM release will introduce an improvement to this behaviour ensuring that an HTTP 401 status code is sent for unauthorized API Key plans instead of evaluating other plans and potentially executing a keyless plan.
+WARNING: As part of a future major APIM release, the breaking change described below will be reverted in a subsequent link:{{ '/apim/3.x/apim_changelog.html' | relative_url }}[3.18.x version^] in order to avoid potential issues on existing plan implementations.
 
 === API key and JWT plans
 
