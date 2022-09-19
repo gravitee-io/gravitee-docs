@@ -76,3 +76,12 @@ Before trusting data in `plans` collection, we have to ensure their reliability.
 In 3.10, an upgrader was introduced to fix data, but was running in dry-run mode per default.
 
 This upgrader will run once again during APIM 3.18 startup, with dry-run mode disabled : if relevant, it will fix plans data in your database as it's explained in https://docs.gravitee.io/pages/apim/3.x/installation-guide/upgrades/3.10.8/README.html#plans_anomalies_in_database[this documentation]
+
+== MongoDB
+
+Before running any script, please create a dump of your existing database.
+
+link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/3.18.0/audit-set-environmentId-organizationId.js[/apim/3.x/mongodb/3.18.0/audit-set-environmentId-organizationId.js]::
+This script add 'environmentId' and 'organizationId' columns in 'audits' table so audits can be associated to the right target. Creates also new indices.
+link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/3.18.0/clientRegistrationProvider-set-environmentId.js[/apim/3.x/mongodb/3.18.0/clientRegistrationProvider-set-environmentId.js]::
+This script add 'environmentId' columns in 'client_registration_providers' table they can be associated to the right environment.
