@@ -24,3 +24,17 @@ Depending on how you want to run the Gravitee Enterprise nodes, the following op
 == My license is ending
 Thirty days before the end of the license, a daily `WARN` log is print in the log file of the node to inform you that the license is ending.
 To keep the nodes running, you need to provide an updated license file. This file will be reloaded silently by the node.
+
+== License support
+
+When running an enterprise node, a license file must be supplied to bootstrap the node. When running the node within Docker
+the license file must be passed with a volume:
+
+[source,shell]
+....
+$ docker run  \
+        -v license.key:/opt/graviteeio-gateway/license \
+        --name api-gateway  \
+        --detach  \
+        graviteeio/apim-gateway:{{ site.products.apim.ee.version }}-ee
+....

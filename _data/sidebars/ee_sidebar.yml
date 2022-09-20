@@ -2,7 +2,7 @@
 
 entries:
 - title: Sidebar
-  product: Enterprise
+  product: Enterprise Support
   folders:
 
   - title: Overview
@@ -24,6 +24,9 @@ entries:
       - title: Introduction
         output: web
         url: /ee/installguide_introduction.html
+      - title: Manual
+        output: web
+        url: /ee/installguide_manual.html
       - title: Docker
         output: web
         url: /ee/installguide_docker.html
