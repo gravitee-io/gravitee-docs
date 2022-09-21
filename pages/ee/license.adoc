@@ -10,7 +10,7 @@ To run a Gravitee Enterprise Edition (EE) node, you must have a valid license fi
 [[ask-license]]
 == Getting an EE license
 
-To get an EE license, send an email to contact@graviteesource.com requesting a license.
+To get an EE license, email contact@graviteesource.com requesting a license.
 
 == Applying an EE license
 
@@ -46,7 +46,7 @@ key: license.key
 optional: false # same as default; "mysecret" must exist
 ....
 
-For more informartion, see the link:https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container[Kubernetes documentation^].
+For more information, see the link:https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container[Kubernetes documentation^].
 
 === Applying an EE license using a file
 
