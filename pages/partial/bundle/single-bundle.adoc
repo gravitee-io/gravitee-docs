@@ -1,6 +1,10 @@
-[IMPORTANT]
+[NOTE]
 ====
-Version 3.18.0 of the Gravitee platform has introduced a unified, single distribution bundle for all features available in the Community Edition (CE) and the Enterprise Edition (EE) of Gravitee.io {gravitee-product-name}, which used to be distributed as separate bundles. This change allows for a smooth transition from CE to EE functionality, and enables you to trial EE features without the need for a migration or a standalone EE installation.
+Version 3.18.0 of the Gravitee Platform (released on 7th July 2022) has introduced a unified, single distribution bundle for all features available in the Community Edition (CE) and the link:https://docs.gravitee.io/ee/ee_overview.html[Enterprise Edition (EE)^] of Gravitee.io {gravitee-product-name}. Previously, the two editions used to be distributed as separate bundles per product (APIM and AM).
 
-If you are a Community user and you want to try out Enterprise Edition features, just install the unified bundle, request a license, add it to the installation, and restart. You no longer need to download a new EE version of {gravitee-product-name} !
+This change allows for a smooth transition from CE to EE functionality, and enables you to trial EE features without the need for a migration or a standalone EE installation.
+
+If you are a Gravitee CE user and you want to try out EE features, just install the unified bundle, link:https://docs.gravitee.io/ee/ee_license.html[request an EE license^], link:https://docs.gravitee.io/ee/ee_license.html[apply it^] to the installation, and restart. You no longer need to download a new EE version of {gravitee-product-name}!
+
+In addition, you can now link:https://cockpit.gravitee.io/register[register for a free time-limited Cockpit trial directly on the web^], enabling you to also access your free API Management trial (if applicable), manage Gravitee environments and installations, and design APIs using the API Designer.
 ====

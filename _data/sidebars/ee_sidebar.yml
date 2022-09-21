@@ -4,29 +4,23 @@ entries:
 - title: Sidebar
   product: Enterprise Support
   folders:
-
+    
   - title: Overview
     output: web
     folderitems:
-    - title: Introduction
+    - title: Overview
       output: web
-      url: /ee/ee_introduction.html
-    - title: License
-      output: web
-      url: /ee/ee_license.html
+      url: /ee/ee_overview.html
     - title: Versioning
       output: web
-      url: /ee/ee_version.html
+      url: /ee/ee_versioning.html
 
   - title: Installation Guide
     output: web
     folderitems:
-      - title: Introduction
+      - title: Installation
         output: web
-        url: /ee/installguide_introduction.html
-      - title: Manual
+        url: /ee/ee_installation.html
+      - title: Licensing
         output: web
-        url: /ee/installguide_manual.html
-      - title: Docker
-        output: web
-        url: /ee/installguide_docker.html
+        url: /ee/ee_licensing.html

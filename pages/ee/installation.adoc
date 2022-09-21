@@ -1,0 +1,49 @@
+= EE Installation
+:page-sidebar: ee_sidebar
+:page-permalink: ee/ee_installation.html
+:page-folder: ee
+:page-description: Gravitee Enterprise Edition - Installation - License
+:page-keywords: Gravitee, API Platform, Enterprise Edition, documentation, manual, guide, reference, api
+
+
+== API Management (APIM) and Access Management (AM)
+
+Version 3.18.x of the Gravitee Platform (APIM and AM 3.18.0 were released at the beginning of July 2022) has introduced a unified, single distribution bundles for all features available in the Community Edition (CE) and the Enterprise Edition (EE) of Gravitee.io for the APIM and AM products respectively.
+
+Previously, the two editions used to be distributed as separate bundles (CE and EE) per product, and any migration to EE required full re-installation. This change allows for a smooth transition from CE to EE functionality, and enables you to trial EE features in APIM and AM without the need for a standalone EE installation when migrating from CE.
+
+If you are a Gravitee CE user and you want to try out EE features, just install the unified bundle, request an EE license, add it to the installation, and restart. You no longer need to download and install a new, standalone EE version of APIM or AM!
+
+NOTE: You can now sign up for a free API Management trial (if applicable) by link:https://cockpit.gravitee.io/register[registering for a free time-limited Cockpit trial^].
+
+== Alert Engine (AE)
+
+AE is not part of the Community Edition - it is an Enterprise product and requires a paid license. It is link:https://www.gravitee.io/downloads[distributed separately^] and can be installed via Docker, Kubernetes, or manually using a Zip File.
+
+== Installation steps for APIM, AM, and AE
+
+=== Installing as a new instance
+
+To perform a new EE installation:
+
+1. Download the full bundles of the desired products (APIM, AM, AE) from link:https://www.gravitee.io/downloads[the Gravitee platform downloads page^].
+2. Install the relevant product bundles by following the link:https://docs.gravitee.io/apim/3.x/apim_installguide.html[APIM^], link:https://docs.gravitee.io/am/current/am_installguide_introduction.html[AM^], and link:https://docs.gravitee.io/ae/installguide_introduction.html[AE^] installation guides respectively.
+3. Request an EE license, apply it to the installations, and restart. See link:{{ '/ee/ee_license.html' | relative_url }}[the EE License page^] for more information.
+
+NOTE: We have removed the option to install EE bundles and EE licenses using Docker as we have simplified the installation process for EE through the use of unified platform distribution bundles for each product, as described below. The process for EE license requests, installation, and support is described in link:{{ '/ee/ee_license.html' | relative_url }}[the EE Licensing page^].
+
+=== Migrating from an existing CE installation
+
+NOTE: Before you proceed, please ensure that you are running a link:{{ '/ee/ee_version.html' | relative_url }}[long-term support (LTS) version] of the respective product(s).
+
+To migrate from an existing Community Edition (CE) installation to EE, just link:{{ '/ee/ee_license.html#ask-license' | relative_url }}[request^] an EE license, link:{{ '/ee/ee_license.html#apply_the_license' | relative_url }}[apply it^] to the relevant existing product instances, and restart.
+
+== Cockpit
+
+Cockpit is not part of the Community Edition - it is an Enterprise product and requires a paid license.
+
+After version 3.15.0, Cockpit beceme a SaaS product, meaning that you do not need to install it as a self-hosted solution anymore. Instead, you can sign up for a Cockpit account on the web from the link:https://cockpit.gravitee.io/login[Cockpit sign in page^].
+
+You can now also link:https://cockpit.gravitee.io/register[register for a free time-limited Cockpit trial directly on the web^], enabling you to also access your free API Management trial (if applicable), manage Gravitee environments and installations, and design APIs using the API Designer.
+
+NOTE: While this is not recommended, you can still install an older version of Cockpit (3.15.0 and below) as a self-hosted instance - see the legacy link:https://docs.gravitee.io/cockpit/3.x/cockpit_installguide_introduction.html[Cockpit installation guide^] for details.

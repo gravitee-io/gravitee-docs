@@ -1,0 +1,18 @@
+[[gravitee-enterprise-api-platform]]
+= Enterprise Support
+:page-sidebar: ee_sidebar
+:page-permalink: ee/ee_overview.html
+:page-folder: ee
+:page-toc: false
+:page-description: Gravitee Enterprise Edition support, installation, licensing, and versioning - overview
+:page-keywords: Gravitee, API Platform, Enterprise Edition, documentation, manual, guide, reference, api
+
+The Enterprise Edition (EE) of Gravitee.io offers additional modules, functionalities, and plugins on top of the fantastic open source Community Edition of the platform, bringing many new benefits and exciting features to help you enable effortless control over every aspect of your organization's API ecosystem.
+
+* Gravittee link:https://docs.gravitee.io/am/current/am_overview_introduction.html[Alert Engine^] (AE) is an EE module you can use to monitor, analyze, and prevent incidents such as SLA breaches or spikes in traffic happening in the future.
+* Also an EE product, Gravitee link:https://cockpit.gravitee.io/register[Cockpit^] is a centralized, multi-environment tool for managing all your Gravitee API Management and Access Management installations in a single place.
+* Other EE components include APIM Gateway EE and Management API EE, as well as some additional plugins (SAML support, social connectors, and others).
+
+Learn more about EE link:{{ '/ee/ee_version.html' | relative_url }}[versioning], link:{{ '/ee/ee_installation.html' | relative_url }}[installation], and link:{{ '/ee/ee_license.html' | relative_url }}[licensing].
+
+link:https://www.gravitee.io/demo[Get in touch^] with us to learn more!
