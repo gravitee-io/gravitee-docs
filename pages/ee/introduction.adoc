@@ -1,5 +1,5 @@
 [[gravitee-enterprise-api-platform]]
-= Enterprise Support
+= Enterprise Edition
 :page-sidebar: ee_sidebar
 :page-permalink: ee/ee_overview.html
 :page-folder: ee
@@ -7,10 +7,13 @@
 :page-description: Gravitee Enterprise Edition support, installation, licensing, and versioning - overview
 :page-keywords: Gravitee, API Platform, Enterprise Edition, documentation, manual, guide, reference, api
 
-The Enterprise Edition (EE) of Gravitee.io offers additional modules, functionalities, and plugins on top of the fantastic open source Community Edition of the platform, bringing many new benefits and exciting features to help you enable effortless control over every aspect of your organization's API ecosystem.
+The Enterprise Edition (EE) of Gravitee.io offers additional features on top of the fantastic open source Community Edition of the platform, bringing many new benefits and exciting features to help you enable effortless control over every aspect of your organization's API ecosystem.
 
-* Gravittee link:https://docs.gravitee.io/am/current/am_overview_introduction.html[Alert Engine^] (AE) is an EE module you can use to monitor, analyze, and prevent incidents such as SLA breaches or spikes in traffic happening in the future. To activate AE in APIM, you need to apply an EE license in your APIM installation.
-* Also an EE product, Gravitee link:https://cockpit.gravitee.io/register[Cockpit^] is a centralized, multi-environment tool for managing all your Gravitee API Management and Access Management installations in a single place.
+== EE components
+
+The Enterprise Edition offers the following additional modules and plugins:
+
+* Gravitee link:https://docs.gravitee.io/am/current/am_overview_introduction.html[Alert Engine^] (AE) is an EE module you can use to monitor, analyze, and prevent incidents such as SLA breaches or spikes in traffic happening in the future. To activate AE in APIM, you need to apply an EE license in your APIM installation.
 * Other EE components include some additional policies and plugins shipped with APIM and AM, as follows:
 +
 --
@@ -22,15 +25,23 @@ EE features for APIM that require an EE license:
 EE features for AM that require an EE license:
 
 * link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_http.html[HTTP Flow Identity Provider]
-* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_cas.html[CAS Identity Provider^] - now shipped separately
-* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_kerberos.html[Kerberos Identity Provider^] - now shipped separately
+* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_cas.html[CAS Identity Provider^] (now shipped separately like all other EE plugins)
+* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_kerberos.html[Kerberos Identity Provider^] (now shipped separately like all other EE plugins)
 * link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_saml2.html[SAML 2.0 Identity Provider^]
 * link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_fido2.html[MFA with FIDO2^]
 * link:https://docs.gravitee.io/am/current/am_userguide_mfa_risk_based.html[Risk-based MFA^]
 * link:https://docs.gravitee.io/am/current/am_userguide_alerts_overview.html[Alerts^]
 --
 
+NOTE: All features that require an EE license must be downloaded separately as they are not part of the main distribution bundles for APIM and AM. See the link:{{ '/ee/ee_installation.html' | relative_url }}[EE Installation page] for details.
+
 NOTE: APIM and AM documentation pages describing EE features are marked with an orange "Enterprise feature" label at the top of the page.
+
+== Other tools to consider
+
+Gravitee link:https://www.gravitee.io/platform/cockpit[Cockpit^] is a centralized, multi-environment tool for managing all your Gravitee API Management and Access Management installations in a single place. You can link:https://cockpit.gravitee.io/register[register^] and use Cockpit for free as part of the Community Edition, with a limitation of up to two environments per user. However, you can link:https://www.gravitee.io/contact-us[upgrade^] to a link:https://www.gravitee.io/pricing[paid Enterprise Edition plan^] to unlock more environments and use Cockpit as an Enterprise-grade tool for production.
+
+Similarly, Gravitee link:https://www.gravitee.io/platform/api-designer[API Designer^] - our no-code graphical drag-and-drop tool that enables you to build scalable API designs quickly and elegantly with a design-first approach that reduces time spent translating business requirements into high-quality API definitions - is free to use with the Community Edition, with a limitation of one active design at any given time. link:https://www.gravitee.io/contact-us[Contact us^] if you need to remove this limitation by upgrading to a link:https://www.gravitee.io/pricing[paid Enterprise Edition plan^].
 
 Learn more about EE link:{{ '/ee/ee_version.html' | relative_url }}[versioning], link:{{ '/ee/ee_installation.html' | relative_url }}[installation], and link:{{ '/ee/ee_license.html' | relative_url }}[licensing].
 
