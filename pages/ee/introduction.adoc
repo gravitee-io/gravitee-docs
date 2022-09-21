@@ -17,12 +17,12 @@ The Enterprise Edition offers the following additional modules and plugins:
 * Other EE components include some additional policies and plugins shipped with APIM and AM, as follows:
 +
 --
-EE features for APIM that require an EE license:
+EE plugins for APIM that require an EE license:
 
 * link:https://docs.gravitee.io/apim/3.x/apim_policies_data_logging_masking.html[Data Logging Masking Policy^]
 * link:https://docs.gravitee.io/apim/3.x/apim_policies_assign_metrics.html[Assign Metrics Policy^]
 
-EE features for AM that require an EE license:
+EE plugins for AM that require an EE license:
 
 * link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_http.html[HTTP Flow Identity Provider]
 * link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_cas.html[CAS Identity Provider^] (now shipped separately like all other EE plugins)
@@ -33,7 +33,7 @@ EE features for AM that require an EE license:
 * link:https://docs.gravitee.io/am/current/am_userguide_alerts_overview.html[Alerts^]
 --
 
-NOTE: All features that require an EE license must be downloaded separately as they are not part of the main distribution bundles for APIM and AM. See the link:{{ '/ee/ee_installation.html' | relative_url }}[EE Installation page] for details.
+NOTE: Any EE modules and plugins that require an EE license must be downloaded separately as they are not part of the main distribution bundles for APIM and AM. See the link:{{ '/ee/ee_installation.html' | relative_url }}[EE Installation page] for details.
 
 NOTE: APIM and AM documentation pages describing EE features are marked with an orange "Enterprise feature" label at the top of the page.
 
