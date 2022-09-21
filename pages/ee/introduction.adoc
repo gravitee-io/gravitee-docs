@@ -14,16 +14,16 @@ The Enterprise Edition (EE) of Gravitee.io offers additional modules, functional
 * Other EE components include some additional policies and plugins shipped with APIM and AM, as follows:
 +
 --
-EE features available in APIM:
+EE features for APIM that require an EE license:
 
 * link:https://docs.gravitee.io/apim/3.x/apim_policies_data_logging_masking.html[Data Logging Masking Policy^]
 * link:https://docs.gravitee.io/apim/3.x/apim_policies_assign_metrics.html[Assign Metrics Policy^]
 
-EE features available in AM:
+EE features for AM that require an EE license:
 
 * link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_http.html[HTTP Flow Identity Provider]
-* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_cas.html[CAS Identity Provider^]
-* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_kerberos.html[Kerberos Identity Provider^]
+* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_cas.html[CAS Identity Provider^] - now shipped separately
+* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_kerberos.html[Kerberos Identity Provider^] - now shipped separately
 * link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_saml2.html[SAML 2.0 Identity Provider^]
 * link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_fido2.html[MFA with FIDO2^]
 * link:https://docs.gravitee.io/am/current/am_userguide_mfa_risk_based.html[Risk-based MFA^]
