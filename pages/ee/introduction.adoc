@@ -14,21 +14,20 @@ The Enterprise Edition (EE) of Gravitee.io offers additional modules, functional
 * Other EE components include some additional policies and plugins shipped with APIM and AM, as follows:
 +
 --
-EE policies in APIM:
+EE features available in APIM:
 
-* link:https://docs.gravitee.io/apim/3.x/apim_policies_assign_metrics.html[Assign Metrics Policy^]
 * link:https://docs.gravitee.io/apim/3.x/apim_policies_data_logging_masking.html[Data Logging Masking Policy^]
+* link:https://docs.gravitee.io/apim/3.x/apim_policies_assign_metrics.html[Assign Metrics Policy^]
 
-EE plugins and features in AM:
+EE features available in AM:
 
-* link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_http.html[HTTP MFA]
+* link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_http.html[HTTP Flow Identity Provider]
+* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_cas.html[CAS Identity Provider^]
+* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_kerberos.html[Kerberos Identity Provider^]
+* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_saml2.html[SAML 2.0 Identity Provider^]
 * link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_fido2.html[MFA with FIDO2^]
 * link:https://docs.gravitee.io/am/current/am_userguide_mfa_risk_based.html[Risk-based MFA^]
 * link:https://docs.gravitee.io/am/current/am_userguide_alerts_overview.html[Alerts^]
-* link:https://docs.gravitee.io/am/current/am_devguide_protocols_saml2_configuration.html[SAML 2.0 Identigy Provider Support^]
-* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_cas.html[Identigy Providers - CAS Protocol^]
-* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_kerberos.html[Identigy Providers - Kerberos Protocol^]
-* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_saml2.html[SAML 2.0^]
 --
 
 NOTE: APIM and AM documentation pages describing EE features are marked with an orange "Enterprise feature" label at the top of the page.
