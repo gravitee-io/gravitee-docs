@@ -9,9 +9,9 @@
 
 The Enterprise Edition (EE) of Gravitee.io offers additional modules, functionalities, and plugins on top of the fantastic open source Community Edition of the platform, bringing many new benefits and exciting features to help you enable effortless control over every aspect of your organization's API ecosystem.
 
-* Gravittee link:https://docs.gravitee.io/am/current/am_overview_introduction.html[Alert Engine^] (AE) is an EE module you can use to monitor, analyze, and prevent incidents such as SLA breaches or spikes in traffic happening in the future.
+* Gravittee link:https://docs.gravitee.io/am/current/am_overview_introduction.html[Alert Engine^] (AE) is an EE module you can use to monitor, analyze, and prevent incidents such as SLA breaches or spikes in traffic happening in the future. To activate AE in APIM, you need to apply an EE license in your APIM installation.
 * Also an EE product, Gravitee link:https://cockpit.gravitee.io/register[Cockpit^] is a centralized, multi-environment tool for managing all your Gravitee API Management and Access Management installations in a single place.
-* Other EE components include APIM Gateway EE and Management API EE, as well as some additional plugins (SAML support, social connectors, and others).
+* Other EE components include some additional policies and plugins (for example - link:https://docs.gravitee.io/apim/3.x/apim_policies_assign_metrics.html[the Assign Metrics Policy^] and link:https://docs.gravitee.io/apim/3.x/apim_policies_data_logging_masking.html[Data Logging Masking policy^] in APIM).
 
 Learn more about EE link:{{ '/ee/ee_version.html' | relative_url }}[versioning], link:{{ '/ee/ee_installation.html' | relative_url }}[installation], and link:{{ '/ee/ee_license.html' | relative_url }}[licensing].
 
