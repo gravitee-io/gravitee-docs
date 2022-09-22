@@ -13,7 +13,7 @@ The Enterprise Edition (EE) of Gravitee.io offers additional features on top of 
 
 The Enterprise Edition offers the following additional modules and plugins:
 
-* Gravitee link:https://docs.gravitee.io/am/current/am_overview_introduction.html[Alert Engine^] (AE) is an EE module you can use to monitor, analyze, and prevent incidents such as SLA breaches or spikes in traffic happening in the future. To activate AE in APIM, you need to apply an EE license in your APIM installation.
+* Gravitee link:https://docs.gravitee.io/am/current/am_overview_introduction.html[Alert Engine^] (AE) is an EE module you can use to monitor, analyze, and prevent incidents such as SLA breaches or spikes in traffic happening in the future. To activate AE in APIM and/or AM, you need to apply an link:{{ '/ee/ee_license.html' | relative_url }}[EE license] to your APIM/AM installation.
 * Other EE components include some additional policies and plugins shipped with APIM and AM, as follows:
 +
 --
@@ -22,7 +22,7 @@ EE plugins for APIM that require an EE license:
 * link:https://docs.gravitee.io/apim/3.x/apim_policies_data_logging_masking.html[Data Logging Masking Policy^]
 * link:https://docs.gravitee.io/apim/3.x/apim_policies_assign_metrics.html[Assign Metrics Policy^]
 
-EE plugins for AM that require an EE license:
+EE plugins and features for AM that require an EE license:
 
 * link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_http.html[HTTP Flow Identity Provider]
 * link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_cas.html[CAS Identity Provider^] (now shipped separately like all other EE plugins)
@@ -30,7 +30,7 @@ EE plugins for AM that require an EE license:
 * link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_saml2.html[SAML 2.0 Identity Provider^]
 * link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_fido2.html[MFA with FIDO2^]
 * link:https://docs.gravitee.io/am/current/am_userguide_mfa_risk_based.html[Risk-based MFA^]
-* link:https://docs.gravitee.io/am/current/am_userguide_alerts_overview.html[Alerts^]
+* link:https://docs.gravitee.io/am/current/am_userguide_alerts_overview.html[Alerts^] (de facto the option to integrate the link:https://docs.gravitee.io/am/current/am_overview_introduction.html[Alert Engine^] EE module in AM)
 --
 
 NOTE: Any EE modules and plugins that require an EE license must be downloaded separately as they are not part of the main distribution bundles for APIM and AM. See the link:{{ '/ee/ee_installation.html' | relative_url }}[EE Installation page] for details.
