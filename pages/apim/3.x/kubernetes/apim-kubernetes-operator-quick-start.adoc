@@ -1,0 +1,74 @@
+[[apim-kubernetes-operator-quick-start]]
+= Gravitee Kubernetes Operator Quick Start Guide
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_kubernetes_operator_quick_start.html
+:page-folder: apim/kubernetes
+:page-layout: apim3x
+
+== Overview
+
+
+To set up and deploy the Gravitee Kubernetes Operator (GKO) in your Kubernetes environment, you can take the following two approaches:
+
+  * Deploy the GKO to a cluster with an existing APIM
+  * Set up and deploy the GKO locally - this is only suitable for for testing purposes and cannot be used for production.
+
+We assume that MongoDB and Elasticsearch are already deployed in your cluster in the namespace gravitee-ns.
+
+
+
+You can set up the GKO locally (for testing purposes only), or deploy it to a cluster for production.
+
+
+== Deploying GKO to a cluster
+
+You can deploy the GKO as a k3d deployment to an existing Kubernetes cluster
+
+This will publish your docker image to the k3d cluster registry and deploy the operator
+in a dedicated `gko-system` namespace
+
+[source,shell]
+----
+make k3d-gko-build k3d-gko-push k3d-gko-deploy
+----
+
+
+=== Prerequisites
+
+=== Deploy
+
+=== Run
+
+
+
+
+
+
+== Local setup
+
+
+=== Prerequisites
+
+=== Install
+
+Create Custom Resource Definitions (CRDs)
+Deploy
+Create your first Gravitee resource
+
+
+=== Run
+
+To run the GKO locally, execute the following command:
+
+....
+make run
+....
+
+
+NOTE: If you have made some changes to the * link:{{ '/apim/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[Custom Resource Definitions (CRDs)], you must run `make install` first (to ensure that Kubernetes "knows" about the latest changes).
+
+
+
+
+
+== More info

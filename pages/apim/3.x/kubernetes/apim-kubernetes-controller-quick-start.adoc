@@ -1,7 +1,7 @@
-[[apim-kubernetes-quick-start]]
-= Introduction
+[[apim-kubernetes-controller-quick-start]]
+= Quick Start Guide
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_kubernetes_quick_start.html
+:page-permalink: apim/3.x/apim_kubernetes_controller_quick_start.html
 :page-folder: apim/kubernetes
 :page-layout: apim3x
 
@@ -138,7 +138,7 @@ Before we create our first API using a CRD, let's check that the APIM Gateway is
 
 [source, bash]
 ----
-$> kubectl get ingress -n gravitee-ns 
+$> kubectl get ingress -n gravitee-ns
 NAME                     CLASS    HOSTS              ADDRESS      PORTS     AGE
 gravitee-apim3-gateway   <none>   apim.example.com   172.20.0.3   80, 443   22m                LoadBalancer   10.43.165.131   172.20.0.3    8882:30431/TCP      19s
 ----

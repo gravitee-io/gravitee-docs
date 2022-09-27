@@ -1,0 +1,44 @@
+[[apim-kubernetes-operator-architecture]]
+= Architecture
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_kubernetes_operator_architecture.html
+:page-folder: apim/kubernetes
+:page-layout: apim3x
+
+== About Kubernetes Operators
+
+A link:https://kubernetes.io/docs/concepts/extend-kubernetes/operator/[Kubernetes operator^] is a method of packaging, deploying, and managing a Kubernetes application. A Kubernetes application is both deployed on Kubernetes and managed using the Kubernetes API and `kubectl` tooling.
+
+In this context, a Kubernetes operator is an application-specific controller that extends the functionality of the Kubernetes API to create, configure, and manage application instances.
+
+== Architecture overview
+
+The current functionality of the Gravitee Kubernetes Operator (GKO) allows for three main deployment scenarios, as described below.
+
+=== Standard deployment
+
+In the standard deployment scenario, the Management API and the API Gateway are deployed in the same Kubernetes cluster.
+
+With this workflow, the GKO listens for link:{{ '/apim/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[Custom Resource Definitions (CRDs] and for each custom resource, a linkhttps://kubernetes.io/docs/concepts/configuration/configmap/[ConfigMap^] is created and the API is pushed to the Management API using the import endpoint.
+
+The API Gateway uses the link:https://github.com/gravitee-io/gravitee-kubernetes/tree/master/gravitee-kubernetes-client[Kubernetes Client^] to listen for `ConfigMap`s (with a custom label), and deploys the APIs accordingly.
+
+The following diagram illustrates the standard deployment architectural approach:
+
+image:{% link /images/apim/3.x/kubernetes/gko-architecture-1-standard.png %}[]
+
+=== Deployment on multiple clusters
+
+For that scenario, we are considering that the user / customer is managing multiple Kubernetes clusters with different set of APIs for each. GKO would have to be installed into the different clusters to make it works as usual.
+
+The following diagram illustrates the multi-cluster deployment architectural approach:
+
+image:{% link /images/apim/3.x/kubernetes/gko-architecture-2-multi-cluster.png %}[]
+
+=== Deployment on multiple environments
+
+For that scenario, we have a single GKO which can publish APIs to different environments (logical or physical). This is managed directly from the API definition which is referring to what we are calling a Management Context.
+
+The following diagram illustrates the multi-environment deployment architectural approach:
+
+image:{% link /images/apim/3.x/kubernetes/gko-architecture-3-multi-env.png %}[]
