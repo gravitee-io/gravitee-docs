@@ -1,0 +1,54 @@
+[[apim-kubernetes-operator-user-guide-management-context]]
+= How to use the Management Context
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_kubernetes_operator_user_guide_management_context.html
+:page-folder: apim/kubernetes
+:page-layout: apim3x
+
+== How to use the Management Context (`ManagementContext`) resource
+
+To enable synchronization of CRDs with a remote link:https://docs.gravitee.io/apim/3.x/apim_overview_architecture.html[management API^], you need to create a Management Context referring to an existing link:https://docs.gravitee.io/am/current/am_adminguide_organizations_and_environments.html[organization and environment^].
+
+You can create multiple Management Contexts, each targeting a specific environment and defined in a specific organization of a management API instance.
+
+A Management Context can authenticate to your management API instance by using either basic authentication or a bearer token.
+
+NOTE: If both credentials and a bearer token are defined in your custom resource, the basic auth credentials will take precedence.
+
+== Examples
+
+The custom resource in the example below refers to a Management API instance exposed at `+https://gravitee-api.acme.com+`, and targets the `dev` environment of the `acme` organization, with the `admin` account, using basic auth:
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ManagementContext
+metadata:
+  name: apim-blue-context
+spec:
+  baseUrl: https://gravitee-api.acme.com
+  environmentId: dev
+  organizationId: acme
+  auth:
+    credentials:
+      username: admin
+      password: 406185a0-9adb-4097-b0bd-eb5cf13a7c6e
+----
+
+NOTE: To target another environment on the same API instance, add another Management Context targeting that environment.
+
+The example below uses a `bearerToken` to authenticate the requests. Note that the token must have been generated beforehand for the admin account:
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ManagementContext
+metadata:
+  name: apim-blue-context
+spec:
+  baseUrl: https://gravitee-api.acme.com
+  environmentId: staging
+  organizationId: acme
+  auth:
+    bearerToken: d70db517-a7fc-4fd5-924c-74ce1bfcf253
+----

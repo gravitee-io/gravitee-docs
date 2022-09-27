@@ -7,3 +7,7 @@
 IMPORTANT: To make the most of this guide, you should be familiar with Kubernetes and its terms. +
 
 include::https://raw.githubusercontent.com/gravitee-io/helm-charts/master/apim/3.x/README.adoc[]
+
+== Gravitee Kubernetes Operator (GKO)
+
+As of APIM version 3.19.0, you can also use deploy APIM using the link:{{ '/apim/3.x/apim_kubernetes_operator_overview.html' | relative_url }}[Gravitee Kubernetes Operator (GKO)].
