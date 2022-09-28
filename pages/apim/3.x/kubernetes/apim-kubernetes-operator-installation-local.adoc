@@ -1,15 +1,247 @@
 [[apim-kubernetes-operator-installation-local]]
 = GKO local setup and deployment
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_kubernetes_operator_installation-local.html
+:page-permalink: apim/3.x/apim_kubernetes_operator_installation_local.html
 :page-folder: apim/kubernetes
 :page-layout: apim3x
 
+== Overview
+
+You can try out the Gravitee Kubernetes Operator on your local machine by running the operator locally against an APIM-ready link:https://k3d.io/[k3d^] cluster. This setup involves the following stages:
+
+  1. Set up your environment (prerequisite step).
+  2. Create a local APIM-ready k3d Kubernetes cluster.
+  3: Check if the Gravitee CRDs are available on your cluster.
+  4. Monitor the APIM pods startup until they are ready.
+  5: Check if the console is up and running.
+  6. Deploy the GKO on the new cluster.
+  7. Create a Management Context custom resource.
+  8. Create an API Definition custom resource - this creates a new API on the cluster.
+  9. Test the new API by calling it through the APIM Gateway.
+
+WARNING: Local GKO deployment should only be used for testing purposes - do not use this approach in production.
 
 == Prerequisites
 
+Before you start, you need to have the following set up and running on your machine:
 
-== Installation and setup
+* link:https://www.docker.com/[Docker^]
+* link:https://kubernetes.io/docs/tasks/tools/#kubectl[kubectl^]
+* link:https://helm.sh/docs/intro/install/[Helm^]
+* link:https://curl.se/[curl^] in case you do not have it already - to check, type `curl -V` in your command-line tool
+* link:https://k3d.io/#installation[k3d^]
+* A standard command-line tool of your choice
+* Optionally, link:https://k9scli.io/topics/install/[k9s^] for monitoring and managing your k8s cluster and pods
+
+NOTE: The GKO GitHub repository is public and available link:https://github.com/gravitee-io/gravitee-kubernetes-operator[here^]. Cloning it is not a requirement for this deployment scenario so this is just for your reference.
 
 
-== 
+== STEP 1: Create a local cluster
+
+To create a local APIM-ready k3d Kubernetes cluster, run the following command:
+
+....
+curl -i https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/chore-inline-k3d-script/scripts/k3d.sh | bash
+....
+
+NOTE: This operation may take a few minutes to complete.
+
+Make note of the endpoints listed at the end of the console output:
+
+....
+(...)
+
+Available endpoints are:
+
+    Gateway       http://localhost:9000/gateway
+    Management    http://localhost:9000/management
+    Console       http://localhost:9000/console/#!/login
+
+To update APIM components (e.g. APIM Gateway) to use a new docker image run:
+
+> docker tag <image> k3d-graviteeio.docker.localhost:12345/graviteeio/apim-gateway:3.19
+> docker push k3d-graviteeio.docker.localhost:12345/graviteeio/apim-gateway:3.19
+> kubectl rollout restart deployment apim-apim3-gateway
+....
+
+
+== STEP 2: Check if the Gravitee CRDs are available on your cluster
+
+Run the following command:
+
+....
+kubectl get crd
+....
+
+The console output should include `apidefinitions.gravitee.io` and `managementcontexts.gravitee.io`, as shown in the example below:
+
+....
+NAME                              CREATED AT
+addons.k3s.cattle.io              2022-09-28T10:25:02Z
+helmcharts.helm.cattle.io         2022-09-28T10:25:02Z
+helmchartconfigs.helm.cattle.io   2022-09-28T10:25:02Z
+apidefinitions.gravitee.io        2022-09-28T10:34:38Z
+managementcontexts.gravitee.io    2022-09-28T10:34:38Z
+....
+
+== STEP 3: Monitor the APIM pods startup until they are ready
+
+The pods will take some time to start and must become ready before you can deploy the GKO (described in the next step).
+
+To monitor from the command line, run the following command:
+
+....
+kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=apim3 --timeout 360s
+....
+
+After some time, the console output should look similar to the example below:
+
+....
+pod/apim-apim3-api-7b8b85d79-b7hkh condition met
+pod/apim-apim3-ui-5997c5d5c7-r9xdj condition met
+pod/apim-apim3-gateway-66cbd5c9d9-tv5jz condition met
+....
+
+You can increase the timeout if your machine is slower. If you encounter an error, you will not be able to proceed to the next steps - please contact Gravitee for assistance with this.
+
+NOTE: Alternatively, you can monitor your cluster and pods using link:https://k9scli.io/[K9s].
+
+
+== STEP 4: Check if the console is up and running
+
+As noted in step 1 above, you can use your console endpoint created with the cluster to check if the console is up and running.
+
+To do so, open the console endpoint URL in your browser - for example:
+
+http://localhost:9000/console/#!/login
+
+Log in the console - the default local login credentials are `admin`/`admin`:
+
+image:{% link /images/apim/3.x/kubernetes/gko-deployment-local-console-login.png %}[]
+
+The console dashboard should show one application running in the "Number of Applications" section of the console dashboard:
+
+image:{% link /images/apim/3.x/kubernetes/gko-deployment-local-console-1.png %}[]
+
+
+=== STEP 5: Deploy the GKO on the cluster
+
+Run the following command in your command-line tool (the working directory does not matter) to deploy the GKO on the cluster of your current Kubernetes context:
+
+....
+kubectl apply -f https://github.com/gravitee-io/gravitee-kubernetes-operator/releases/download/0.1.0-alpha.2/bundle.yml
+....
+
+The operation is quick and the successful command-line output should be similar to one in the example below:
+
+....
+namespace/gko-system created
+customresourcedefinition.apiextensions.k8s.io/apidefinitions.gravitee.io created
+customresourcedefinition.apiextensions.k8s.io/managementcontexts.gravitee.io created
+serviceaccount/gko-controller-manager created
+role.rbac.authorization.k8s.io/gko-leader-election-role created
+clusterrole.rbac.authorization.k8s.io/gko-manager-role created
+clusterrole.rbac.authorization.k8s.io/gko-metrics-reader created
+clusterrole.rbac.authorization.k8s.io/gko-proxy-role created
+rolebinding.rbac.authorization.k8s.io/gko-leader-election-rolebinding created
+clusterrolebinding.rbac.authorization.k8s.io/gko-manager-rolebinding created
+clusterrolebinding.rbac.authorization.k8s.io/gko-proxy-rolebinding created
+configmap/gko-manager-config created
+service/gko-controller-manager-metrics-service created
+deployment.apps/gko-controller-manager created
+....
+
+The GKO has now been deployed on your local cluster.
+
+
+=== STEP 6: Create a Management Context custom resource
+
+The next step is to create a Management Context custom resource for your APIM instance.
+
+NOTE: Read more about the Management Context custom resource link:{{ '/apim/3.x/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[here] and link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_management_context.html' | relative_url }}[here].
+
+To create the Management Context resource, run the following command:
+
+....
+kubectl apply -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/config/samples/context/k3d/managementcontext_credentials.yaml
+....
+
+If the operation is successful, you should see the following line in the command-line output:
+
+....
+managementcontext.gravitee.io/dev-mgmt-ctx created
+....
+
+The Management Context resource has now been created.
+
+NOTE: If you prefer to tweak the configuration of the resource, you can use the link:https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/alpha/config/samples/context/k3d/managementcontext_credentials.yaml[sample YAML file^] from Gravitee used in this example deployment as a template to base your configuration on. In your copy, modify the `spec:` section by providing the desired URL of your APIM instance and the user credentials that match with the relevant user configuration.
+
+
+=== STEP 7: Create an API Definition custom resource
+
+The next deployment step is to create an API Definition (`ApiDefinition`) custom resource.
+
+NOTE: Read more about the API Definition custom resource link:{{ '/apim/3.x/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[here] and link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html' | relative_url }}[here].
+
+
+To create the API Definition resource, run the following command:
+
+....
+kubectl apply -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/config/samples/apim/basic-example-with-ctx.yml
+....
+
+If the operation is successful, you should see the following line in the command-line output:
+
+....
+apidefinition.gravitee.io/basic-api-example created
+....
+
+The API Definition resource has now been created and a new API has been added in your console. You can check it out in your console URL:
+
+http://localhost:9000/console/#!/environments/default/
+
+The new API will be listed in the "Number of APIs" section of the console dashboard:
+
+image:{% link /images/apim/3.x/kubernetes/gko-deployment-cluster-console.png %}[]
+
+NOTE: If you prefer to tweak the configuration of the resource, you can use the link:https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/alpha/config/samples/apim/basic-example-with-ctx.yml[sample YAML file^] from Gravitee used in this example deployment as a template to base your configuration on.
+
+If you want to list the API(s) you have created, run the following command:
+
+....
+kubectl get graviteeapis -o wide -n default
+...
+
+The output will be similar to the example below:
+
+....
+username@Admins-MacBook-Pro gravitee-kubernetes-operator % kubectl get graviteeapis -o wide -n default
+NAME                STATE     ENTRYPOINT            ENDPOINT                       VERSION   MANAGEMENT CONTEXT   PROCESSING STATUS
+basic-api-example   STARTED   /k8s-basic-with-ctx   https://api.gravitee.io/echo   1.1       dev-mgmt-ctx         Completed
+....
+
+
+STEP 8: Call the API through the APIM Gateway
+
+To test the API, you can call it through the APIM Gateway by running the following command using your APIM Gateway URL:
+
+....
+curl -i http://localhost:9000/gateway/k8s-basic-with-ctx
+....
+
+If the API call is successful, you should see the command-line output similar to the one in the example below:
+
+....
+HTTP/1.1 200 OK
+Date: Wed, 28 Sep 2022 10:57:18 GMT
+Content-Type: application/json
+Content-Length: 418
+Connection: keep-alive
+X-Gravitee-Transaction-Id: ff2caf47-eeb5-4653-acaf-47eeb56653e3
+X-Gravitee-Request-Id: ff2caf47-eeb5-4653-acaf-47eeb56653e3
+X-Gravitee-Request-Id: b03cfd76-b5ac-447a-bcfd-76b5ac647a4a
+X-Gravitee-Transaction-Id: ff2caf47-eeb5-4653-acaf-47eeb56653e3
+Sozu-Id: 01GE1VWSZVQ3RY76R0BFZGGE8J
+
+{"headers":{"Accept":"*/*","Host":"api.gravitee.io","User-Agent":"curl/7.79.1","X-Forwarded-Host":"localhost:9000","X-Forwarded-Scheme":"http","X-Gravitee-Request-Id":"b03cfd76-b5ac-447a-bcfd-76b5ac647a4a","X-Gravitee-Transaction-Id":"ff2caf47-eeb5-4653-acaf-47eeb56653e3","X-Real-IP":"10.42.1.0","X-Request-ID":"07c4a8231606d6f47c14c2f305fb8047","X-Scheme":"http","accept-encoding":"deflate, gzip"},"query_params":{}}%
+....
