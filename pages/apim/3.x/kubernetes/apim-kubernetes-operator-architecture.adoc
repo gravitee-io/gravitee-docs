@@ -1,11 +1,11 @@
 [[apim-kubernetes-operator-architecture]]
-= Architecture
+= GKO Architecture
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_kubernetes_operator_architecture.html
 :page-folder: apim/kubernetes
 :page-layout: apim3x
 
-== About Kubernetes Operators
+== About Gravitee Kubernetes Operators
 
 A link:https://kubernetes.io/docs/concepts/extend-kubernetes/operator/[Kubernetes operator^] is a method of packaging, deploying, and managing a Kubernetes application. A Kubernetes application is both deployed on Kubernetes and managed using the Kubernetes API and `kubectl` tooling.
 

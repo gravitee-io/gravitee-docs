@@ -1,16 +1,16 @@
 [[apim-kubernetes-operator-definitions]]
-= Custom Resource Definitions (CRDs)
+= Custom Resource Definitions (CRDs) reference
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_kubernetes_operator_definitions.html
 :page-folder: apim/kubernetes
 :page-layout: apim3x
 
 
-== Custom Resource Definitions (CRDs) reference
+== Overview
 
 The Gravitee Kubernetes Operator comes with two Custom Resource Definitions (CRDs) - `ApiDefinition` and `ManagementContext`.
 
-=== `ApiDefinition`
+== `ApiDefinition`
 
 The `APIDefinition` custom resource represents the configuration for a single proxied API and its versions. It is similar to a YAML representation of an API Definition in JSON format.
 
@@ -20,7 +20,7 @@ Resources:
   * The `ApiDefinition` CRD API reference is documented link:{{ '/apim/3.x/apim_kubernetes_operator_api_reference.html#apidefinition' | relative_url }}[here].
   * You can learn how to use the `ApiDefinition` resource in link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html' | relative_url }}[this section].
 
-==== Workflow
+=== Workflow
 
 The following workflow is applied when a new `ApiDefinition` resource is added to the cluster:
 
@@ -31,7 +31,7 @@ The following workflow is applied when a new `ApiDefinition` resource is added t
   5. The API Gateway listens for `ConfigMap`s with a specific label.
   6. The GKO deploys the API to the API Gateway.
 
-==== Examples
+=== Examples
 
 A basic example of an `ApiDefinition` resource is shown below:
 
@@ -88,7 +88,7 @@ spec:
             target: "https://api.gravitee.io/echo"
 ....
 
-=== `ManagementContext`
+== `ManagementContext`
 
 The `ManagementContext` custom resource represents the configuration for a Management API.
 
@@ -100,7 +100,7 @@ Resources:
 
 The `ManagementContext` refers to a remote Management API. You can have as many `ManagementContext` resources as you want, however you need to reference the relevant `ManagementContext` from the API Definition in order to indicate to the GKO where the API should be published.
 
-==== Examples
+=== Examples
 
 A basic example of an `ManagementContext` resource is shown below:
 

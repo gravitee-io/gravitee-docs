@@ -177,11 +177,11 @@ If the operation is successful, you should see the following line in the command
 apidefinition.gravitee.io/basic-api-example created
 ....
 
-The API Definition resource has now been created and a new API has been added in your console. You can check it out in your console URL:
+The API Definition resource has now been created and a new API has been added in your Console. You can check it out in your Console URL:
 
 http://<YOUR_CONSOLE_URL>/console/#!/environments/default/
 
-The new API will be listed in the "Number of APIs" section of the console dashboard:
+The new API will be listed in the "Number of APIs" section of the Console dashboard:
 
 image:{% link /images/apim/3.x/kubernetes/gko-deployment-cluster-console.png %}[]
 

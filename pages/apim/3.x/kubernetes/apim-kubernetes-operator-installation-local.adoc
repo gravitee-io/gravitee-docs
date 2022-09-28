@@ -1,5 +1,5 @@
 [[apim-kubernetes-operator-installation-local]]
-= GKO local setup and deployment
+= Deploying GKO on a local cluster
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_kubernetes_operator_installation_local.html
 :page-folder: apim/kubernetes
@@ -13,7 +13,7 @@ You can try out the Gravitee Kubernetes Operator on your local machine by runnin
 2. Create a local APIM-ready k3d Kubernetes cluster.
 3. Check if the Gravitee CRDs are available on your cluster.
 4. Monitor the APIM pods startup until they are ready.
-5. Check if the console is up and running.
+5. Check if the Console is up and running.
 6. Deploy the GKO on the new cluster.
 7. Create a Management Context custom resource.
 8. Create an API Definition custom resource - this creates a new API on the cluster.
@@ -46,7 +46,7 @@ curl -i https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operat
 
 NOTE: This operation may take a few minutes to complete.
 
-Make note of the endpoints listed at the end of the console output:
+Make note of the endpoints listed at the end of the command-line output:
 
 ....
 (...)
@@ -73,7 +73,7 @@ Run the following command:
 kubectl get crd
 ....
 
-The console output should include `apidefinitions.gravitee.io` and `managementcontexts.gravitee.io`, as shown in the example below:
+The command-line output should include `apidefinitions.gravitee.io` and `managementcontexts.gravitee.io`, as shown in the example below:
 
 ....
 NAME                              CREATED AT
@@ -94,7 +94,7 @@ To monitor from the command line, run the following command:
 kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=apim3 --timeout 360s
 ....
 
-After some time, the console output should look similar to the example below:
+After some time, the command-line output should look similar to the example below:
 
 ....
 pod/apim-apim3-api-7b8b85d79-b7hkh condition met
@@ -107,19 +107,19 @@ You can increase the timeout if your machine is slower. If you encounter an erro
 NOTE: Alternatively, you can monitor your cluster and pods using link:https://k9scli.io/[K9s].
 
 
-== STEP 4: Check if the console is up and running
+== STEP 4: Check if the Console is up and running
 
-As noted in step 1 above, you can use your console endpoint created with the cluster to check if the console is up and running.
+As noted in step 1 above, you can use your Console endpoint created with the cluster to check if the Console is up and running.
 
-To do so, open the console endpoint URL in your browser - for example:
+To do so, open the Console endpoint URL in your browser - for example:
 
 http://localhost:9000/console/#!/login
 
-Log in the console - the default local login credentials are `admin`/`admin`:
+Log in the Console - the default local login credentials are `admin`/`admin`:
 
 image:{% link /images/apim/3.x/kubernetes/gko-deployment-local-console-login.png %}[]
 
-The console dashboard should show one application running in the "Number of Applications" section of the console dashboard:
+The Console dashboard should show one application running in the "Number of Applications" section of the Console dashboard:
 
 image:{% link /images/apim/3.x/kubernetes/gko-deployment-local-console-1.png %}[]
 
@@ -196,11 +196,11 @@ If the operation is successful, you should see the following line in the command
 apidefinition.gravitee.io/basic-api-example created
 ....
 
-The API Definition resource has now been created and a new API has been added in your console. You can check it out in your console URL:
+The API Definition resource has now been created and a new API has been added in your Console. You can check it out in your Console URL:
 
 http://localhost:9000/console/#!/environments/default/
 
-The new API will be listed in the "Number of APIs" section of the console dashboard:
+The new API will be listed in the "Number of APIs" section of the Console dashboard:
 
 image:{% link /images/apim/3.x/kubernetes/gko-deployment-cluster-console.png %}[]
 

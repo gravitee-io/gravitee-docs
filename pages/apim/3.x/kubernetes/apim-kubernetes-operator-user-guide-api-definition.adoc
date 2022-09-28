@@ -5,7 +5,7 @@
 :page-folder: apim/kubernetes
 :page-layout: apim3x
 
-== How to use the API Definition (`ApiDefinition`) resource
+== How to use the API Definition (`ApiDefinition`) custom resource
 
 The `APIDefinition` custom resource represents the configuration for a single proxied API and its versions. It is similar to a YAML representation of an API Definition in JSON format.
 
