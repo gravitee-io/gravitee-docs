@@ -18,7 +18,7 @@ echo """
 apiVersion: gravitee.io/v1alpha1
 kind: ManagementContext
 metadata:
-  name: apim-blue-context
+  name: apim-example-context
   namespace: apim-blue
 spec:
   baseUrl: http://apim-blue-apim3-api.apim-blue.svc:83
@@ -44,7 +44,7 @@ metadata:
 spec:
   name: gko-example
   contextRef:
-    name: apim-blue-context
+    name: apim-example-context
     namespace: apim-blue
   version: "1.0.0"
   description: "Basic api managed by Gravitee Kubernetes Operator"
@@ -84,7 +84,7 @@ metadata:
 spec:
   name: gko-example
   contextRef:
-    name: apim-blue-context
+    name: apim-example-context
     namespace: apim-blue
   version: "1.0.0"
   description: "Basic api managed by Gravitee Kubernetes Operator"
@@ -119,7 +119,7 @@ metadata:
 spec:
   name: gko-example-updated
   contextRef:
-    name: apim-blue-context
+    name: apim-example-context
     namespace: apim-blue
   version: "1.0.0"
   description: "Basic api managed by Gravitee Kubernetes Operator"
