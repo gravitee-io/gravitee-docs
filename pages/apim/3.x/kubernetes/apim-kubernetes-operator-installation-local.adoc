@@ -124,7 +124,7 @@ The console dashboard should show one application running in the "Number of Appl
 image:{% link /images/apim/3.x/kubernetes/gko-deployment-local-console-1.png %}[]
 
 
-=== STEP 5: Deploy the GKO on the cluster
+== STEP 5: Deploy the GKO on the cluster
 
 Run the following command in your command-line tool (the working directory does not matter) to deploy the GKO on the cluster of your current Kubernetes context:
 
@@ -154,7 +154,7 @@ deployment.apps/gko-controller-manager created
 The GKO has now been deployed on your local cluster.
 
 
-=== STEP 6: Create a Management Context custom resource
+== STEP 6: Create a Management Context custom resource
 
 The next step is to create a Management Context custom resource for your APIM instance.
 
@@ -177,7 +177,7 @@ The Management Context resource has now been created.
 NOTE: If you prefer to tweak the configuration of the resource, you can use the link:https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/alpha/config/samples/context/k3d/managementcontext_credentials.yaml[sample YAML file^] from Gravitee used in this example deployment as a template to base your configuration on. In your copy, modify the `spec:` section by providing the desired URL of your APIM instance and the user credentials that match with the relevant user configuration.
 
 
-=== STEP 7: Create an API Definition custom resource
+== STEP 7: Create an API Definition custom resource
 
 The next deployment step is to create an API Definition (`ApiDefinition`) custom resource.
 
@@ -210,7 +210,7 @@ If you want to list the API(s) you have created, run the following command:
 
 ....
 kubectl get graviteeapis -o wide -n default
-...
+....
 
 The output will be similar to the example below:
 
@@ -221,7 +221,7 @@ basic-api-example   STARTED   /k8s-basic-with-ctx   https://api.gravitee.io/echo
 ....
 
 
-STEP 8: Call the API through the APIM Gateway
+== STEP 8: Call the API through the APIM Gateway
 
 To test the API, you can call it through the APIM Gateway by running the following command using your APIM Gateway URL:
 
