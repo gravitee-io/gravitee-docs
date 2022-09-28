@@ -24,7 +24,7 @@ The custom resource in the example below refers to a Management API instance exp
 apiVersion: gravitee.io/v1alpha1
 kind: ManagementContext
 metadata:
-  name: apim-blue-context
+  name: apim-example-context
 spec:
   baseUrl: https://gravitee-api.acme.com
   environmentId: dev
@@ -44,7 +44,7 @@ The example below uses a `bearerToken` to authenticate the requests. Note that t
 apiVersion: gravitee.io/v1alpha1
 kind: ManagementContext
 metadata:
-  name: apim-blue-context
+  name: apim-example-context
 spec:
   baseUrl: https://gravitee-api.acme.com
   environmentId: staging
