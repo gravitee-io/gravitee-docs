@@ -16,7 +16,7 @@ The deployment involves the following stages:
   3. Create an API Definition custom resource - this creates a new API on the cluster.
   4. Test the new API by calling it through the APIM Gateway.
 
-=== Prerequisites
+== Prerequisites
 
 Before you start the deployment process, ensure that you have access to a remote / cloud-based Kubernetes cluster.
 
@@ -28,7 +28,7 @@ kubectl config current-context
 
 NOTE: See the link:https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-context-and-configuration[Kubernetes documentation^] for more information on displaying a list of contexts and setting your current context.
 
-=== STEP 1: Deploy the GKO on the cluster
+== STEP 1: Deploy the GKO on the cluster
 
 Run the following command in your command-line tool (the working directory does not matter) to deploy the GKO on the cluster of your current Kubernetes context:
 
@@ -57,7 +57,7 @@ deployment.apps/gko-controller-manager created
 
 The GKO has now been deployed on your cluster.
 
-=== STEP 2: Create a Management Context custom resource
+== STEP 2: Create a Management Context custom resource
 
 The next step is to create a Management Context custom resource for your APIM instance.
 
@@ -116,7 +116,7 @@ managementcontext.gravitee.io/dev-mgmt-ctx created
 
 The Management Context resource has now been created.
 
-=== STEP 3: Create an API Definition custom resource
+== STEP 3: Create an API Definition custom resource
 
 The next deployment step is to create an API Definition (`ApiDefinition`) custom resource.
 
@@ -186,7 +186,7 @@ The new API will be listed in the "Number of APIs" section of the console dashbo
 image:{% link /images/apim/3.x/kubernetes/gko-deployment-cluster-console.png %}[]
 
 
-STEP 4: Call the API through the APIM Gateway
+== STEP 4: Call the API through the APIM Gateway
 
 To test the API, you can call it through the APIM Gateway by running the following command using your APIM Gateway URL:
 
