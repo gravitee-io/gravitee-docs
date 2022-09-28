@@ -71,7 +71,7 @@ curl -s -H "Authorization: Bearer $TOKEN" "https://apim-blue-api.team-gko.gravit
 
 === Starting and stopping your API
 
-By dafault the API will start automatically. If you want to stop it later (or just create an API definition in "stop mode"), set the `state` property value to `STOPPED`, as shown in the example below:
+By default the API will start automatically. If you want to stop it later (or just create an API definition in "stop mode"), set the `state` property value to `STOPPED`, as shown in the example below:
 
 [,shell]
 ----
