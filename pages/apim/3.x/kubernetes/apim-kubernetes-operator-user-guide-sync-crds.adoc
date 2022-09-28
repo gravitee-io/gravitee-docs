@@ -21,7 +21,7 @@ metadata:
   name: apim-example-context
   namespace: apim-blue
 spec:
-  baseUrl: http://apim-blue-apim3-api.apim-blue.svc:83
+  baseUrl: http://acme-apim3-api.apim-example.svc:83
   environmentId: DEFAULT
   organizationId: DEFAULT
   auth:
