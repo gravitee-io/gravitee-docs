@@ -19,7 +19,7 @@ The current functionality of the Gravitee Kubernetes Operator (GKO) allows for t
 
 In the standard deployment scenario, the Management API and the API Gateway are deployed in the same Kubernetes cluster.
 
-With this workflow, the GKO listens for link:{{ '/apim/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[Custom Resource Definitions (CRDs] and for each custom resource, a linkhttps://kubernetes.io/docs/concepts/configuration/configmap/[ConfigMap^] is created and the API is pushed to the Management API using the import endpoint.
+With this workflow, the GKO listens for link:{{ '/apim/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[Custom Resource Definitions (CRDs] and for each custom resource, a link:https://kubernetes.io/docs/concepts/configuration/configmap/[ConfigMap^] is created and the API is pushed to the Management API using the import endpoint.
 
 The API Gateway uses the link:https://github.com/gravitee-io/gravitee-kubernetes/tree/master/gravitee-kubernetes-client[Kubernetes Client^] to listen for `ConfigMap`s (with a custom label), and deploys the APIs accordingly.
 
