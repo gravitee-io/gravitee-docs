@@ -15,6 +15,8 @@ In this context, a Kubernetes operator is an application-specific controller tha
 
 The current functionality of the Gravitee Kubernetes Operator (GKO) allows for three main deployment scenarios, as described below.
 
+NOTE: To learn how to deploy GKO on a production cluster, see the link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[production deployment] section. 
+
 === Standard deployment
 
 In the standard deployment scenario, the Management API and the API Gateway are deployed in the same Kubernetes cluster.
@@ -29,7 +31,7 @@ image:{% link /images/apim/3.x/kubernetes/gko-architecture-1-standard.png %}[]
 
 === Deployment on multiple clusters
 
-For that scenario, we are considering that the user / customer is managing multiple Kubernetes clusters with different set of APIs for each. GKO would have to be installed into the different clusters to make it works as usual.
+In this scenario, the assimption is that the user manages multiple Kubernetes clusters with a different set of APIs for each cluster. To make this work with GKO, it should be installed on all the required clusters.
 
 The following diagram illustrates the multi-cluster deployment architectural approach:
 
@@ -37,7 +39,7 @@ image:{% link /images/apim/3.x/kubernetes/gko-architecture-2-multi-cluster.png %
 
 === Deployment on multiple environments
 
-For that scenario, we have a single GKO which can publish APIs to different environments (logical or physical). This is managed directly from the API definition which is referring to what we are calling a Management Context.
+In this scenario, a single GKO is deployed that can publish APIs to different environments (logical or physical). This is managed directly from the link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html' | relative_url }}[API Definition] custom resource, which refers a link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_management_context.html' | relative_url }}[Management Context] custom resource.
 
 The following diagram illustrates the multi-environment deployment architectural approach:
 

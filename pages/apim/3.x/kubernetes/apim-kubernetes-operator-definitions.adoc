@@ -88,6 +88,10 @@ spec:
             target: "https://api.gravitee.io/echo"
 ....
 
+
+NOTE: Read more about `ApiDefinition` link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html' | relative_url }}[here].
+
+
 == `ManagementContext`
 
 The `ManagementContext` custom resource represents the configuration for a Management API.
@@ -153,6 +157,8 @@ spec:
           - name: "Default"
             target: "https://api.gravitee.io/echo"
 ....
+
+NOTE: Read more about `ManagementContext` link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_management_context.html' | relative_url }}[here].
 
 == CRD dependencies
 
