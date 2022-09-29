@@ -7,10 +7,10 @@
 
 == Overview
 
-You can try out the Gravitee Kubernetes Operator on your local machine by running the operator locally against an APIM-ready link:https://k3d.io/[k3d^] cluster. This setup involves the following stages:
+You can try out the Gravitee Kubernetes Operator on your local machine by running the operator locally against an APIM-ready cluster. This setup involves the following stages:
 
 1. Set up your environment (prerequisite step).
-2. Create a local APIM-ready k3d Kubernetes cluster.
+2. Create a local APIM-ready Kubernetes cluster.
 3. Monitor the APIM pods startup until they are ready.
 4. Check if the Console is up and running.
 5. Deploy the GKO on the new cluster.
@@ -29,7 +29,6 @@ Before you start, you need to have the following set up and running on your mach
 * link:https://kubernetes.io/docs/tasks/tools/#kubectl[kubectl^]
 * link:https://helm.sh/docs/intro/install/[Helm^]
 * link:https://curl.se/[curl^] in case you do not have it already - to check, type `curl -V` in your command-line tool
-* link:https://k3d.io/#installation[k3d^]
 * A standard command-line tool of your choice
 
 NOTE: The GKO GitHub repository is public and available link:https://github.com/gravitee-io/gravitee-kubernetes-operator[here^]. Cloning it is not a requirement for this deployment scenario so this is just for your reference.
@@ -37,7 +36,7 @@ NOTE: The GKO GitHub repository is public and available link:https://github.com/
 
 == STEP 1: Create a local cluster
 
-To create a local APIM-ready k3d Kubernetes cluster, run the following command:
+To create a local APIM-ready Kubernetes cluster, run the following command:
 
 ....
 curl -i https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/chore-inline-k3d-script/scripts/k3d.sh | bash

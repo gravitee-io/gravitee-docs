@@ -18,7 +18,7 @@ To do that, you should deploy the GKO on a Kubernetes cluster. The current GKO d
 
 === Prepare your cluster
 
-As a prerequisite, you should have an APIM-ready link:https://k3d.io/[k3d^] cluster up and running, and it should be the one defined as your current/active Kubernetes context.
+As a prerequisite, you should have an APIM-ready cluster up and running, and it should be the one defined as your current/active Kubernetes context.
 
 === Deploy the GKO on your cluster
 
