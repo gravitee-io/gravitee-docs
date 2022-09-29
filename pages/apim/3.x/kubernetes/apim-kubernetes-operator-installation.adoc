@@ -10,7 +10,7 @@ The current GKO deployment process is mostly identical for both possible scenari
 1. In a typical deployment scenario, you can deploy the GKO on an existing, APIM-ready remote / cloud-based cluster.
 2. For testing purposes, you can also set up a local cluster and deploy the GKO on it.
 
-== Deploying GKO on an existing remote cluster
+== Deploying GKO on an existing cluster
 
 Deploying the Gravitee Kubernetes Operator (GKO) on an existing remote / cloud-based APIM-ready Kubernetes cluster involves the following stages:
 
@@ -21,20 +21,23 @@ Deploying the Gravitee Kubernetes Operator (GKO) on an existing remote / cloud-b
 
 Read all about it link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[here].
 
-== Setting up a local cluster and deploying GKO locally for testing
 
-You can try out the Gravitee Kubernetes Operator on your local machine by running the operator locally against an APIM-ready cluster. This setup involves the following stages:
+== Setting up a new local cluster for GKO deployment
+
+If you do not have an existing APIM-ready Kubernetes cluster you can deploy the GKO on, you can create and set up a local cluster on your machine.
+
+This setup involves the following stages:
 
 1. Set up your environment (prerequisite step).
 2. Create a local APIM-ready Kubernetes cluster.
 3. Monitor the APIM pods startup until they are ready.
 4. Check if the console is up and running.
-5. Deploy the GKO on the new cluster.
-6. Check if the Gravitee CRDs are available on your cluster.
-7. Create a Management Context custom resource.
-8. Create an API Definition custom resource - this creates a new API on the cluster.
-9. Test the new API by calling it through the APIM Gateway.
 
-WARNING: Local GKO deployment should only be used for testing purposes - do not use this approach in production.
+After the local cluster setup, the next steps are to:
 
-Learn all about local deployment link:{{ '/apim/3.x/apim_kubernetes_operator_installation_local.html' | relative_url }}[here].
+1. link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[Deploy the GKO on the cluster]
+2. link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html' | relative_url }}[Try out the GKO functionality]
+
+NOTE: It is strongly recommended to only use local GKO cluster deployments for testing purposes - never in production.
+
+Learn all about local cluster installation and setup link:{{ '/apim/3.x/apim_kubernetes_operator_installation_local.html' | relative_url }}[here].
