@@ -95,9 +95,7 @@ To do so, open the Console endpoint URL in your browser - for example:
 
 http://localhost:9000/console/#!/login
 
-Log in the Console - the default local login credentials are `admin`/`admin`:
-
-image:{% link /images/apim/3.x/kubernetes/gko-deployment-local-console-login.png %}[]
+Log in the Console - the default local login credentials are `admin`/`admin`.
 
 The Console dashboard should show one application running in the "Number of Applications" section of the Console dashboard:
 
