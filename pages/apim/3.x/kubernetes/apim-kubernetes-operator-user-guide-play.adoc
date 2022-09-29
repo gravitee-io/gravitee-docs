@@ -27,7 +27,7 @@ The first step is to create a Management Context custom resource for your APIM i
 
 NOTE: Read more about the Management Context custom resource link:{{ '/apim/3.x/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[here] and link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_management_context.html' | relative_url }}[here].
 
-To do so, first you need to create a YAML file with the correct Management Context configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:
+To do so, you need a YAML file with the correct Management Context configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:
 
 https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/alpha/config/samples/context/k3d/managementcontext_credentials.yaml
 
@@ -92,7 +92,7 @@ The next step is to create an API Definition (`ApiDefinition`) custom resource.
 
 NOTE: Read more about the API Definition custom resource link:{{ '/apim/3.x/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[here] and link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html' | relative_url }}[here].
 
-To do so, first you need to create a YAML file with the desired API Definition configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:
+To do so, you need a YAML file with the desired API Definition configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:
 
 https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/alpha/config/samples/apim/basic-example-with-ctx.yml
 

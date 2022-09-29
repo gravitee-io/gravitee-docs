@@ -54,12 +54,35 @@ The process involves the following stages:
 
 NOTE: For full details, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html' | relative_url }}[How to try out the GKO after deployment].
 
+
 === STEP 1: Create a Management Context custom resource
+
+The `ManagementContext` custom resource represents the configuration for a Management API.
+
+NOTE: Read more about the Management Context custom resource link:{{ '/apim/3.x/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[here] and link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_management_context.html' | relative_url }}[here].
+
+To create a Management Context custom resource, you need a YAML file with the correct Management Context configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:
+
+https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/alpha/config/samples/context/k3d/managementcontext_credentials.yaml
+
+To create the Management Context resource using the ready Gravitee sample file, run the following command:
+
+....
+kubectl apply -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/config/samples/context/k3d/managementcontext_credentials.yaml
+....
+
+NOTE: For full details on creating a Management Context custom resource, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html#step_1_create_a_management_context_custom_resource' | relative_url }}[STEP 1: Create a Management Context custom resource] in the User Guide section.
 
 
 
 === STEP 2: Create an API Definition custom resource
 
 
+NOTE: For full details, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html#step_2_create_an_api_definition_custom_resource' | relative_url }}[STEP 1: Create a Management Context custom resource] in the User Guide section.
+
+
 
 === STEP 3: Test the new API by calling it through the APIM Gateway
+
+
+NOTE: For full details, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html#step_3_call_the_api_through_the_apim_gateway' | relative_url }}[STEP 1: Create a Management Context custom resource] in the User Guide section.
