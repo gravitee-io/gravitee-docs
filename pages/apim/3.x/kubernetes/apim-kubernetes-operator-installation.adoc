@@ -5,13 +5,12 @@
 :page-folder: apim/kubernetes
 :page-layout: apim3x
 
-You can deploy the Gravitee Kubernetes Operator [GKO] in two ways:
+The current GKO deployment process is mostly identical for both possible scenarios, as follows:
 
-1. On a remote Kubernetes cluster.
-2. On a local Kubernetes cluster (for testing purposes only).
+1. In a typical deployment scenario, you can deploy the GKO on an existing, APIM-ready remote / cloud-based cluster.
+2. For testing purposes, you can also set up a local cluster and deploy the GKO on it.
 
-
-== Deploying GKO on a remote cluster
+== Deploying GKO on an existing remote cluster
 
 Deploying the Gravitee Kubernetes Operator (GKO) on an existing remote / cloud-based APIM-ready link:https://k3d.io/[k3d^] Kubernetes cluster involves the following stages:
 
@@ -22,16 +21,16 @@ Deploying the Gravitee Kubernetes Operator (GKO) on an existing remote / cloud-b
 
 Read all about it link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[here].
 
-== Local setup and deployment for testing purposes
+== Setting up a local cluster and deploying GKO locally for testing
 
 You can try out the Gravitee Kubernetes Operator on your local machine by running the operator locally against an APIM-ready link:https://k3d.io/[k3d^] cluster. This setup involves the following stages:
 
 1. Set up your environment (prerequisite step).
 2. Create a local APIM-ready k3d Kubernetes cluster.
-3. Check if the Gravitee CRDs are available on your cluster.
-4. Monitor the APIM pods startup until they are ready.
-5. Check if the console is up and running.
-6. Deploy the GKO on the new cluster.
+3. Monitor the APIM pods startup until they are ready.
+4. Check if the console is up and running.
+5. Deploy the GKO on the new cluster.
+6. Check if the Gravitee CRDs are available on your cluster.
 7. Create a Management Context custom resource.
 8. Create an API Definition custom resource - this creates a new API on the cluster.
 9. Test the new API by calling it through the APIM Gateway.
