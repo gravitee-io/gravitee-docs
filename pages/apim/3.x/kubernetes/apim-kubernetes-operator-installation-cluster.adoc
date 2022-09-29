@@ -16,6 +16,8 @@ The deployment involves the following stages:
 3. Create an API Definition custom resource - this creates a new API on the cluster.
 4. Test the new API by calling it through the APIM Gateway.
 
+NOTE: If your architecture requires the management of multiple Kubernetes clusters with a different set of APIs for each cluster, you should deploy the GKO separately on each cluster. Follow the process described below for each cluster deployment.
+
 == Prerequisites
 
 Before you start the deployment process, ensure that you have access to a remote / cloud-based Kubernetes cluster.
