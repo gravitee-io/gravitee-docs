@@ -5,4 +5,33 @@
 :page-folder: apim/kubernetes
 :page-layout: apim3x
 
-<WIP>
+== Overview
+
+The main purpose of the Gravitee Kubernetes Operator (GKO) is to define, deploy, and publish APIs on your API Portal, Gateway, and Console with Custom Resource Definitions (CRDs).
+
+To do that, you should deploy the GKO on a Kubernetes cluster. The current GKO deployment process is mostly identical for both possible scenarios, as follows:
+
+* In a typical deployment scenario, you can deploy the GKO on an existing, APIM-ready remote / cloud-based cluster.
+* For testing purposes, you can also set up a local cluster and deploy the GKO on it.
+
+== Deploying GKO on an existing remote cluster
+
+=== Prepare your cluster
+
+As a prerequisite, you should have an APIM-ready link:https://k3d.io/[k3d^] cluster up and running, and it should be the one defined as your current/active Kubernetes context.
+
+=== Deploy the GKO on your cluster
+
+
+
+=== Create a Management Context custom resource
+
+
+=== Create an API Definition custom resource
+
+
+=== Test the new API by calling it through the APIM Gateway
+
+
+
+== Setting up a local cluster and deploying GKO locally for testing
