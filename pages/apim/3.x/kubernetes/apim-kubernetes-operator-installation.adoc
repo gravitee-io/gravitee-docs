@@ -7,11 +7,11 @@
 
 You can deploy the Gravitee Kubernetes Operator [GKO] in two ways:
 
-1. On a production Kubernetes cluster.
+1. On a remote Kubernetes cluster.
 2. On a local Kubernetes cluster (for testing purposes only).
 
 
-== Deploying GKO on a production cluster
+== Deploying GKO on a remote cluster
 
 Deploying the Gravitee Kubernetes Operator (GKO) on an existing remote / cloud-based APIM-ready link:https://k3d.io/[k3d^] Kubernetes cluster involves the following stages:
 

@@ -15,7 +15,7 @@ In this context, a Kubernetes operator is an application-specific controller tha
 
 The current functionality of the Gravitee Kubernetes Operator (GKO) allows for three main deployment scenarios, as described below.
 
-NOTE: To learn how to deploy GKO on a production cluster, see the link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[production deployment] section.
+NOTE: To learn how to deploy GKO on a remote cluster, see the link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[Remote cluster deployment] section.
 
 === Standard deployment
 
