@@ -27,9 +27,8 @@ The following workflow is applied when a new `ApiDefinition` resource is added t
   1. The GKO listens for `ApiDefinition` resources.
   2. The GKO performs some required changes, such as computing automatically IDs or CrossIDs (for API or Plan).
   3. The GKO converts the definition to JSON format.
-  4. The GKO compares the definition to the existing definition (via a local check from `ConfigMap`). If something has changed, the GKO updates the `ConfigMap` and pushes the definition to the Management API (if a `ManagementContext` is provided).
-  5. The API Gateway listens for `ConfigMap`s with a specific label.
-  6. The GKO deploys the API to the API Gateway.
+  4. The GKO compares the definition to the existing definition. If something has changed, the GKO pushes the definition to the Management API (if a `ManagementContext` is provided).
+  5. The GKO deploys the API to the API Gateway.
 
 === Examples
 
