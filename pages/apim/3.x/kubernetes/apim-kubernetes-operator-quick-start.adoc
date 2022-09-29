@@ -9,42 +9,39 @@
 
 The main purpose of the Gravitee Kubernetes Operator (GKO) is to define, deploy, and publish APIs on your API Portal, Gateway, and Console with Custom Resource Definitions (CRDs).
 
-To do that, you should deploy the GKO on a Kubernetes cluster.
+To enable that, you should deploy the GKO on a Kubernetes cluster.
 
-In a typical deployment scenario, you can deploy the GKO on an existing, APIM-ready cluster. That cluster could be remote / cloud-based, or local (for testing purposes only - do not use for production).
+You can deploy the GKO on an existing, APIM-ready cluster. That cluster could be remote (cloud-based), or local (only recommended for testing purposes). There are additional steps to perform in case you do not have a suitable existing cluster and you need to link:{{ '/apim/3.x/apim_kubernetes_operator_installation_local.html' | relative_url }}[set up a new local cluster] prior to deployment.
 
-NOTE: There are additional steps to perform if you need to set up a local cluster before you can deploy the GKO on it.
-
-After deployment, you can try out the GKO functionality by creating CRDs and testing your API by calling it from the API Gateway.
+After a successful GKO deployment, you can try out the GKO functionality by creating CRDs and testing your API by calling it from the API Gateway. This process is documented link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html' | relative_url }}[here].
 
 
 == Deploying the GKO on your cluster
 
-=== STEP 1: Set up your cluster
+=== STEP 1: Prepare your cluster
 
-As a prerequisite, you should have an APIM-ready cluster up and running before you deploy the GKO. The cluster you want to deploy to should be the one defined as your current/active Kubernetes context.
+As a prerequisite, you should have an APIM-ready cluster up and running before you deploy the GKO. You should have user access to the cluster you want to deploy to, and it should be the one defined as your current/active Kubernetes context.
 
-If you already have a remote cluster that meets the requirements above, you can skip this step and proceed to the deployment.
-
-To set up a local cluster,
-
-link:https://k3d.io/[k3d^]
-
-
-
-
+NOTE: If you need to set up a local cluster first, follow the steps in the link:{{ '/apim/3.x/apim_kubernetes_operator_installation_local.html' | relative_url }}[local cluster installation] section, and then proceed to the link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[GKO deployment steps].
 
 === STEP 2: Deploy the GKO on your cluster
 
-The GKO deployment process is the same for both remote and local clusters.
+The GKO deployment process is simple and is the same for both remote and local Kubernetes clusters.
 
-To deploy the GKO on your cluster of your current Kubernetes context, run the following command in your command-line tool (the working directory does not matter):
+To deploy the GKO on the cluster of your current Kubernetes context, run the following command in your command-line tool (the working directory does not matter):
 
 ....
 kubectl apply -f https://github.com/gravitee-io/gravitee-kubernetes-operator/releases/download/0.1.0-alpha.2/bundle.yml
 ....
 
+As an optional but recommended next step, you should check if the Gravitee CRDs are available on your cluster. To do so, run the following command:
+
+....
+kubectl get crd
+....
+
 Read more link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[here].
+
 
 == Trying out the deployed GKO
 
