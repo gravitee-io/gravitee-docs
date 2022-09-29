@@ -46,6 +46,8 @@ image:{% link /images/apim/3.x/kubernetes/gko-architecture-2-multi-cluster.png %
 
 In this scenario, a single GKO is deployed that can publish APIs to different environments (logical or physical). This is managed directly from the link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html' | relative_url }}[API Definition] custom resource, which refers a link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_management_context.html' | relative_url }}[Management Context] custom resource.
 
+NOTE: Note that in this case different APIs are published on each of the environments. This is because APIs use the `ManagementContext` CRD, which can reference any Management API, however an `ApiDefinition` CRD can only have one Management Context.
+
 The following diagram illustrates the multi-environment deployment architectural approach:
 
 image:{% link /images/apim/3.x/kubernetes/gko-architecture-3-multi-env.png %}[]
