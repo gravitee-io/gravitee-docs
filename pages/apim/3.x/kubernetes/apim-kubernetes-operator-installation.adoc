@@ -12,7 +12,7 @@ The current GKO deployment process is mostly identical for both possible scenari
 
 == Deploying GKO on an existing remote cluster
 
-Deploying the Gravitee Kubernetes Operator (GKO) on an existing remote / cloud-based APIM-ready link:https://k3d.io/[k3d^] Kubernetes cluster involves the following stages:
+Deploying the Gravitee Kubernetes Operator (GKO) on an existing remote / cloud-based APIM-ready Kubernetes cluster involves the following stages:
 
 1. Deploy the GKO on your cluster.
 2. Create a Management Context custom resource.
@@ -23,10 +23,10 @@ Read all about it link:{{ '/apim/3.x/apim_kubernetes_operator_installation_clust
 
 == Setting up a local cluster and deploying GKO locally for testing
 
-You can try out the Gravitee Kubernetes Operator on your local machine by running the operator locally against an APIM-ready link:https://k3d.io/[k3d^] cluster. This setup involves the following stages:
+You can try out the Gravitee Kubernetes Operator on your local machine by running the operator locally against an APIM-ready cluster. This setup involves the following stages:
 
 1. Set up your environment (prerequisite step).
-2. Create a local APIM-ready k3d Kubernetes cluster.
+2. Create a local APIM-ready Kubernetes cluster.
 3. Monitor the APIM pods startup until they are ready.
 4. Check if the console is up and running.
 5. Deploy the GKO on the new cluster.
