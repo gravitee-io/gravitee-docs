@@ -43,7 +43,9 @@ To create a local APIM-ready k3d Kubernetes cluster, run the following command:
 curl -i https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/chore-inline-k3d-script/scripts/k3d.sh | bash
 ....
 
-NOTE: This operation may take a few minutes to complete.
+This operation may take a few minutes to complete.
+
+NOTE: This script has only been tested on Mac machines.
 
 Make note of the endpoints listed at the end of the command-line output:
 
