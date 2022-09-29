@@ -71,18 +71,37 @@ To create the Management Context resource using the ready Gravitee sample file, 
 kubectl apply -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/config/samples/context/k3d/managementcontext_credentials.yaml
 ....
 
-NOTE: For full details on creating a Management Context custom resource, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html#step_1_create_a_management_context_custom_resource' | relative_url }}[STEP 1: Create a Management Context custom resource] in the User Guide section.
-
+For full details on creating a Management Context custom resource, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html#step_1_create_a_management_context_custom_resource' | relative_url }}[STEP 1: Create a Management Context custom resource] in the User Guide section.
 
 
 === STEP 2: Create an API Definition custom resource
 
+The APIDefinition custom resource represents the configuration for a single proxied API and its versions. It is similar to a YAML representation of an API Definition in JSON format.
 
-NOTE: For full details, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html#step_2_create_an_api_definition_custom_resource' | relative_url }}[STEP 1: Create a Management Context custom resource] in the User Guide section.
+NOTE: Read more about the API Definition custom resource link:{{ '/apim/3.x/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[here] and link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html' | relative_url }}[here].
 
+
+To create an API Definition custom resource, you need a YAML file with the desired API Definition configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:
+
+https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/alpha/config/samples/apim/basic-example-with-ctx.yml
+
+To create the API Definition resource using the ready Gravitee sample file, run the following command:
+
+....
+kubectl apply -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/config/samples/apim/basic-example-with-ctx.yml
+....
+
+For full details on creating an API Definition custom resource, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html#step_2_create_an_api_definition_custom_resource' | relative_url }}[STEP 2: Create an API Definition custom resource] in the User Guide section.
 
 
 === STEP 3: Test the new API by calling it through the APIM Gateway
 
+To test the API, you can call it through the APIM Gateway by running the following command using your APIM Gateway URL:
 
-NOTE: For full details, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html#step_3_call_the_api_through_the_apim_gateway' | relative_url }}[STEP 1: Create a Management Context custom resource] in the User Guide section.
+....
+curl -i http://localhost:9000/gateway/k8s-basic-with-ctx
+....
+
+NOTE: The entrypoint used in the Gateway URL may differ depending on your deployment. The example above shows the typical Gateway URL generated when using a local cluster created through the link:{{ '/apim/3.x/apim_kubernetes_operator_installation_local.html' | relative_url }}[local cluster installation] process.
+
+For full details on trying out the GKO functionality after deployment, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html#step_3_call_the_api_through_the_apim_gateway' | relative_url }}[STEP 3: Call the API through the APIM Gateway] in the User Guide section.
