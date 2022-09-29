@@ -15,8 +15,9 @@ You can deploy the GKO on an existing, APIM-ready cluster. That cluster could be
 
 After a successful GKO deployment, you can try out the GKO functionality by creating CRDs and testing your API by calling it from the API Gateway. This process is documented link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html' | relative_url }}[here].
 
-
 == Deploying the GKO on your cluster
+
+NOTE: For full details, see the link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[GKO deployment guide] section.
 
 === STEP 1: Prepare your cluster
 
@@ -40,13 +41,21 @@ As an optional but recommended next step, you should check if the Gravitee CRDs 
 kubectl get crd
 ....
 
-Read more link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[here].
-
 
 == Trying out the deployed GKO
 
+After GKO deployment, it is time to try out the GKO functionality by creating CRDs and testing your API via and API call from the API Gateway.
+
+The process involves the following stages:
+
+1. Create a Management Context custom resource.
+2. Create an API Definition custom resource - this creates a new API on the cluster.
+3. Test the new API by calling it through the APIM Gateway.
+
+NOTE: For full details, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html' | relative_url }}[How to try out the GKO after deployment].
 
 === STEP 1: Create a Management Context custom resource
+
 
 
 === STEP 2: Create an API Definition custom resource
