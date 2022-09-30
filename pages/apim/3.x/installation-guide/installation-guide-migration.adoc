@@ -1697,8 +1697,8 @@ For instance, to access the _Platform Overview_ page, you should use `https://ho
 ==== Memberships, roles and role mappings
 One major breaking change in this new version is the replacement of *MANAGEMENT* and *PORTAL* scopes by *ENVIRONNMENT* and *ORGANIZATION* scopes. It's not just a renaming but a dispatch of permissions among these 2 news scopes. As a consequence, all existing memberships, roles, groups and Identity Providers role mappings should be updated.
 
-* Memberhips, roles and groups have to be updated with migration scripts <<mongodb, here>>
-* Role Mappings for Identity Providers stored in database will be updated with a specific upgrader. See <<upgrader, Upgrader>>
+* Memberhips, roles and groups have to be updated with migration scripts <<Mongodb-3_0_0, here>>
+* Role Mappings for Identity Providers stored in database will be updated with a specific upgrader. See <<Upgrader-3_0_0, Upgrader>>
 * Role mappings defined in the *gravitee.yml* file have to be updated with these new scopes.
 
 Here's a correlation table of permissions before and after migration :
@@ -1735,6 +1735,7 @@ Here's a correlation table of permissions before and after migration :
 |=============
 
 === Repository
+[#Mongodb-3_0_0]
 ==== Mongodb
 Before running any script, please create a dump of your existing database.
 
@@ -1763,6 +1764,7 @@ _Note: You can make a 'dry run' by commenting line 6 and uncommenting line 5._
 link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/3.0.0/6-remove-ALL-view-and-defaultView-field.js[/apim/3.x/mongodb/3.0.0/6-remove-ALL-view-and-defaultView-field.js]::
 This script removes the 'All' *view*, since the legacy portal has been replaced and the new portal does not need this default view anymore. The script also updates existing views to remove *defaultView* field.
 
+[#Upgrader-3_0_0]
 === Upgrader
 ==== Identity providers
 Because of the evolution of the roles and their scope, role mappings in *Identity Providers* must be updated. To achieve this, a specific service has been created and will be launched at APIM startup. As this is not necessary to launch this service more than once, it can be disabled with some configuration.
