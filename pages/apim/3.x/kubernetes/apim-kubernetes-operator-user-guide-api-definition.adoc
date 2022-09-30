@@ -1,0 +1,75 @@
+[[apim-kubernetes-operator-user-guide-api-definition]]
+= How to use the API Definition custom resource
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html
+:page-folder: apim/kubernetes
+:page-layout: apim3x
+
+== How to use the API Definition (`ApiDefinition`) custom resource
+
+The `APIDefinition` custom resource represents the configuration for a single proxied API and its versions. It is similar to a YAML representation of an API Definition in JSON format.
+
+The example below shows a simple `ApiDefinition` custom resource definition:
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: basic-api-example
+spec:
+  name: "GKO Basic"
+  version: "1.1"
+  description: "Basic api managed by Gravitee Kubernetes Operator"
+  proxy:
+    virtual_hosts:
+      - path: "/k8s-basic"
+    groups:
+      - endpoints:
+          - name: "Default"
+            target: "https://api.gravitee.io/echo"
+----
+
+== The `ApiDefinition` lifecycle
+
+The `ApiDefiniton` resource has a `Processing Status` field that makes it possible to view the status of the resource in the cluster. The following `Processing Status` field values are possible:
+
+|===
+| Status | Description
+
+| [None]
+| The API definition has been created but not processed yet.
+
+| Completed
+| The API definition has been created or updated successfully.
+
+| Reconciling
+| The operator has encountered a recoverable error. A retry will be performed every 5 seconds until the cluster retry limit is reached.
+
+| Failed
+| The operator has encountered an unrecoverable error. These are errors that require manual action to correct. No retry will be performed.
+|===
+
+Events are added to the resource as part of each action performed by the operator. To view these events, ensure that the CRD creation steps described above are completed and then run the following command:
+
+____
+
+[,shell]
+----
+k describe -n default apidefinitions.gravitee.io basic-api-example
+----
+____
+
+== Example
+
+----
+Name:         basic-api-example
+Namespace:    default
+[...]
+Events:
+  Type    Reason          Age   From                      Message
+  ----    ------          ----  ----                      -------
+  Normal  AddedFinalizer  73s   apidefinition-controller  Added Finalizer for the API definition
+  Normal  Creating        73s   apidefinition-controller  Creating API definition
+  Normal  Created         72s   apidefinition-controller  Created API definition
+----

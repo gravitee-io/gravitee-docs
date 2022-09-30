@@ -1,0 +1,10 @@
+[[apim-kubernetes-operator-user-guide]]
+= GKO User Guide
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_kubernetes_operator_user_guide.html
+:page-folder: apim/kubernetes
+:page-layout: apim3x
+
+In this section you can learn how to work with CRDs and how to synchronize your API CRDs with an existing management API, including how to start, stop, update, and delete your APIs - all this with examples.
+
+The Gravitee Kubernetes Operator comes with two Custom Resource Definitions (CRDs) - `ApiDefinition` and `ManagementContext`. They are described in detail further in this section.

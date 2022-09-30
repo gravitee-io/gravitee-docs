@@ -1,0 +1,31 @@
+[[apim-kubernetes-operator-overview]]
+= Gravitee Kubernetes Operator (GKO)
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_kubernetes_operator_overview.html
+:page-folder: apim/kubernetes
+:page-layout: apim3x
+
+[label label-version]#New in version 3.19.0#
+
+== Overview
+
+APIM 3.19.0 has introduced the Gravitee Kubernetes Operator (GKO) - a new technical component designed to be deployed on an existing APIM-ready Kubernetes Cluster. It can also be deployed on a local cluster for testing purposes.
+
+You can use the GKO to define, deploy, and publish APIs to your API Portal and API Gateway and to manage Custom Resource Definitions (CRDs) as part of the process.
+
+In future releases, the GKO will support additional functionality to enable the following:
+
+  * Using the GKO as an Ingress Controller for deploying Ingresses to an API Gateway.
+  * Deploying Gravitee products (API Management, Access Management, Alert Engine).
+  * Improving automation processes through covering CICD aspects when using Kubernetes with APIM.
+  * Managing most API Management resources without directly relying on the Console or on the Management API.
+
+== Learn more
+
+You can find more detailed information about the Gravitee Kubernetes Operator in the following sections:
+
+* link:{{ '/apim/3.x/apim_kubernetes_operator_architecture.html' | relative_url }}[Architecture]
+* link:{{ '/apim/3.x/apim_kubernetes_operator_quick_start.html' | relative_url }}[Quick Start]
+* link:{{ '/apim/3.x/apim_kubernetes_operator_installation.html' | relative_url }}[Installation and deployment]
+* link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide.html' | relative_url }}[User Guide]
+* link:{{ '/apim/3.x/apim_kubernetes_operator_api_reference.html' | relative_url }}[API reference]
