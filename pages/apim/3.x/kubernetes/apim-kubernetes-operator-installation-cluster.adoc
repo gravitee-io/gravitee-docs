@@ -32,7 +32,7 @@ NOTE: See the link:https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kube
 Run the following command in your command-line tool (the working directory does not matter) to deploy the GKO on the cluster of your current Kubernetes context:
 
 ....
-kubectl apply -f https://github.com/gravitee-io/gravitee-kubernetes-operator/releases/download/0.1.0-alpha.2/bundle.yml
+kubectl apply -f https://github.com/gravitee-io/gravitee-kubernetes-operator/releases/download/latest/bundle.yml
 ....
 
 The operation is quick and the successful command-line output should be similar to one in the example below:
