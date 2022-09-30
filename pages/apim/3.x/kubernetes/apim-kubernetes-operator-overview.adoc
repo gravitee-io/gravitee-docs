@@ -11,12 +11,14 @@
 
 APIM 3.19.0 has introduced the Gravitee Kubernetes Operator (GKO) - a new technical component designed to be deployed on an existing APIM-ready Kubernetes Cluster. It can also be deployed on a local cluster for testing purposes.
 
-You can use the GKO in the following ways:
+You can use the GKO to define, deploy, and publish APIs to your API Portal and API Gateway and to manage Custom Resource Definitions (CRDs) as part of the process.
 
-  * To define, deploy, and publish APIs on your API Portal, Gateway, and Console with Custom Resource Definitions (CRDs).
-  * To use the GKO as an Ingress Controller for deploying Ingresses to your API Gateway.
-  * To improve automation processes through covering CICD aspects when using Kubernetes with APIM.
-  * To manage most API Management resources without directly relying on the Console or on the Management API. API Definition CRDs also allow for an infrastructure-as-code approach in this context, which in turn allows for versioning like any other K8s configuration.
+In future releases, the GKO will support additional functionality to enable the following:
+
+  * Using the GKO as an Ingress Controller for deploying Ingresses to an API Gateway.
+  * Deploying Gravitee products (API Management, Access Management, Alert Engine).
+  * Improving automation processes through covering CICD aspects when using Kubernetes with APIM.
+  * Managing most API Management resources without directly relying on the Console or on the Management API.
 
 == Learn more
 
