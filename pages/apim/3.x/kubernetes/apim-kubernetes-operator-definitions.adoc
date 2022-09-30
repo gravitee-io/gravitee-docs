@@ -16,7 +16,7 @@ The `APIDefinition` custom resource represents the configuration for a single pr
 
 Resources:
 
-  * The `ApiDefinition` CRD code is available on link:https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/alpha/api/v1alpha1/apidefinition_types.go[GitHub^].
+  * The `ApiDefinition` CRD code is available on link:https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/api/v1alpha1/apidefinition_types.go[GitHub^].
   * The `ApiDefinition` CRD API reference is documented link:{{ '/apim/3.x/apim_kubernetes_operator_api_reference.html#apidefinition' | relative_url }}[here].
   * You can learn how to use the `ApiDefinition` resource in link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html' | relative_url }}[this section].
 
@@ -97,7 +97,7 @@ The `ManagementContext` custom resource represents the configuration for a Manag
 
 Resources:
 
-  * The `ManagementContext` CRD code is available on link:https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/alpha/api/v1alpha1/managementcontext_types.go[GitHub^].
+  * The `ManagementContext` CRD code is available on link:https://github.com/gravitee-io/gravitee-kubernetes-operator/blob//api/v1master1/managementcontext_types.go[GitHub^].
   * The `ManagementContext` CRD API reference is documented link:{{ '/apim/3.x/apim_kubernetes_operator_api_reference.html#managementcontext' | relative_url }}[here].
   * You can learn how to use the `ManagementContext` resource in link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_management_context.html' | relative_url }}[this section].
 
@@ -165,4 +165,4 @@ Since an `ApiDefinition` can rely on a `ManagementContext`, resource deletion is
 
 == CRD samples
 
-Check out some sample CRDs in the link:https://github.com/gravitee-io/gravitee-kubernetes-operator/tree/alpha/config/samples/apim[GKO GitHub repository^].
+Check out some sample CRDs in the link:https://github.com/gravitee-io/gravitee-kubernetes-operator/tree//config/samples/apim[GKO GitHub repository^].

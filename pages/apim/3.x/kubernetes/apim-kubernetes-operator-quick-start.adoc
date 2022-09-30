@@ -34,7 +34,7 @@ The GKO deployment process is simple and is the same for both remote and local K
 To deploy the GKO on the cluster of your current Kubernetes context, run the following command in your command-line tool (the working directory does not matter):
 
 ....
-kubectl apply -f https://github.com/gravitee-io/gravitee-kubernetes-operator/releases/download/0.1.0-alpha.2/bundle.yml
+kubectl apply -f https://github.com/gravitee-io/gravitee-kubernetes-operator/releases/download/latest/bundle.yml
 ....
 
 As an optional but recommended next step, you should check if the Gravitee CRDs are available on your cluster. To do so, run the following command:
@@ -67,7 +67,7 @@ NOTE: Read more about the Management Context custom resource link:{{ '/apim/3.x/
 
 To create a Management Context custom resource, you need a YAML file with the correct Management Context configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:
 
-https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/alpha/config/samples/context/k3d/managementcontext_credentials.yaml
+https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/config/samples/context/k3d/managementcontext_credentials.yaml
 
 To create the Management Context resource using the ready Gravitee sample file, run the following command:
 
@@ -87,7 +87,7 @@ NOTE: Read more about the API Definition custom resource link:{{ '/apim/3.x/3.x/
 
 To create an API Definition custom resource, you need a YAML file with the desired API Definition configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:
 
-https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/alpha/config/samples/apim/basic-example-with-ctx.yml
+https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/config/samples/apim/basic-example-with-ctx.yml
 
 To create the API Definition resource using the ready Gravitee sample file, run the following command:
 
