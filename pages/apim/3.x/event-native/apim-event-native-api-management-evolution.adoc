@@ -53,7 +53,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-logging-
 
 === Event-native mode
 
-In the new mode:
+In the new event-native execution mode:
 
 * When a connectivity error occurs during a connection attempt to the backend endpoint, the Gateway response displays an HTTP status code 0 and no headers. This makes it clear that no response has been received from the backend endpoint due to the connectivity error.
 * Consumer response headers are now displayed more clearly.
@@ -74,7 +74,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-conditio
 
 === Event-native mode
 
-In the new mode, when a valid EL expression is evaluated as `true`, the policy (or flow) is executed. Otherwise, it is skipped.
+In the new event-native execution mode, when a valid EL expression is evaluated as `true`, the policy (or flow) is executed. Otherwise, it is skipped.
 
 The policy is now skipped when:
 * The EL expression is evaluated as `false`.
@@ -129,7 +129,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-con
 
 === Event-native mode
 
-In the new execution mode, the flow condition will be applied once for the whole flow - if the condition is evaluated as `true`, then both the `REQUEST` and the `RESPONSE` phases will be executed.
+In the new event-native execution mode, the flow condition will be applied once for the whole flow - if the condition is evaluated as `true`, then both the `REQUEST` and the `RESPONSE` phases will be executed.
 
 The example below shows the new behavour:
 
@@ -140,3 +140,85 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-con
 If you expect the `RESPONSE` phase to be skipped in the scenario described above, you must refactor your flows since both the `REQUEST` and `RESPONSE` phases will be executed as long as the condition is evaluated as `true`.
 
 To mimic the V3 behavior while executing in event-native mode, you can create a new flow and add a condition directly on the policies.
+
+== Flow interruption
+
+=== V3 mode
+
+In V3 mode, when a policy fails, the execution flow is interrupted and the response is returned to the client application. As a result, the platform flow response is also skipped. This leads to unexpected behavior, especially when POST actions are expected (for example, for a custom metrics reporter).
+
+The example below shows this behavour:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-interruption-1.png %}[]
+
+=== Event-native mode
+
+The new event-native execution mode ensures that platform flows are always executed (except in case of an unrecoverable error). This allows the API to fail without skipping important steps in the flow occurring at a higher level.
+
+The example below shows the new behavour:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-interruption-2.png %}[]
+
+== Access-Control-Allowed-Origin
+
+=== V3 mode
+
+In V3 mode, when configuring CORS to allow some origin, the Gateway properly validates the origin but returns `Access-Control-Allowed-Origin: *` in the response header.
+
+=== Event-native mode
+
+In the new event-native execution mode, the allowed origin is returned instead of `*` - for example, `Access-Control-Allowed-Origin: https://test.gravitee.io`.
+
+The example below shows the new behavour:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-cors.png %}[]
+
+== EL expression parsing
+
+=== V3 mode
+
+In V3 mode, the EL expression are parsed each time it is evaluated.
+
+=== Event-native mode
+
+In the new event-native execution mode, a new caching mechanism allows to cache the parsed EL expression for later reuse and therefore to avoid useless parsing of the same expression miltiple times.
+
+=== Potential impact
+
+The cache of parsed EL expressions provides for enhanced performance.
+
+== EL expression based on the body
+
+=== V3 mode
+
+In V3 mode, using an EL expression such as `{#request.content == 'something'}` is limited to a few policies working at `REQUEST_CONTENT` or `RESPONSE_CONTENT` - for example, assign metrics, assign content, request validation.
+
+Defining a policy or a flow condition based on request or response body is not supported.
+
+=== Event-native mode
+
+When the new event-native execution mode is enabled on an API, it is possible to define a condition based on the body.
+
+It is now possible to execute a complete flow or a policy by applying a condition on the body such as `{#request.content == 'something'}`.
+
+Depending on the expected content type, it is also possible to define a condition based on JSON or XML content such as `{#request.jsonContent.foo.bar == 'something'}` where the request content looks like this:
+
+....
+{
+	"foo": {
+      "bar": "something"
+    }
+}
+....
+
+The same applies for XML content using `{#request.xmlContent.foo.bar == 'something'}`:
+
+....
+<foo>
+  <bar>something</bar>
+</foo>
+....
+
+=== Potential impact
+
+Use with caution - using an EL body-based expression is resource-heavy and should be avoided as much as possible. Working with request or response content can significantly degrade performance and consumes substantially more memory on the Gateway.
