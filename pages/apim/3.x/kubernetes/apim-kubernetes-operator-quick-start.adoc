@@ -5,6 +5,8 @@
 :page-folder: apim/kubernetes
 :page-layout: apim3x
 
+[label label-version]#New in version 3.19.0#
+
 == Overview
 
 The main purpose of the Gravitee Kubernetes Operator (GKO) is to define, deploy, and publish APIs on your API Portal, Gateway, and Console with Custom Resource Definitions (CRDs).
@@ -16,6 +18,8 @@ You can deploy the GKO on an existing, APIM-ready cluster. That cluster could be
 NOTE: As described in the next section, there are additional steps to perform in case you do not have a suitable existing cluster and you need to link:{{ '/apim/3.x/apim_kubernetes_operator_installation_local.html' | relative_url }}[set up a new local cluster] prior to deployment.
 
 After a successful GKO deployment, you can try out the GKO functionality by creating CRDs and testing your API by calling it from the API Gateway. This process is documented link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html' | relative_url }}[here].
+
+NOTE: The GKO only works with APIM version 3.19.0 (and above).
 
 == Deploying the GKO on your cluster
 
