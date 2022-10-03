@@ -752,6 +752,19 @@ entries:
                     output: web
                     url: /apim/3.x/apim_kubernetes_controller_admission_hook.html
 
+      - title: Event-native API Management [BETA]
+        output: web
+        folderitems:
+          - title: Overview
+            output: web
+            url: /apim/3.x/apim_event_native_api_management_overview.html
+          - title: Evolution from the existing V3 execution engine mode
+            output: web
+            url: /apim/3.x/apim_event_native_api_management_evolution.html
+          - title: Activating/deactivating the new execution engine mode
+            output: web
+            url: /apim/3.x/apim_event_native_api_management_activate_mode.html
+            
       - title: API Reference
         output: web
         folderitems:

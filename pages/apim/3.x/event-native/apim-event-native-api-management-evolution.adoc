@@ -1,0 +1,117 @@
+[[apim-event-native-api-management-evolution]]
+= Evolution from the existing V3 execution engine mode
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_event_native_api_management_evolution.html
+:page-folder: apim/event-native
+:page-layout: apim3x
+
+[label label-version]#New in version 3.19.0#
+
+In this section you can learn about all the differences between the new event-native execution engine mode and the existing V3 execution engine mode, as well as guidance on managing changes in system behavior and potential design and operational impact when switching to the new mode. The information is grouped by functional area.
+
+== Policy execution phases/scopes and execution order
+
+=== V3 mode
+
+In V3 mode, different execution scopes are required in order to indicate at which level a policy will work, as follows:
+
+* `REQUEST`: The policy only works on request headers. It never accesses the request body.
+* `REQUEST_CONTENT`: The policy works at request content level and can access the request body.
+* `RESPONSE`: The policy only works on response headers. It never accesses the response body.
+* `RESPONSE_CONTENT`: The policy works at response content level and can access the response body.
+
+As a result, all policies working on the body content are postponed to be executed after the policies working on headers. This leads to a different execution order than the one originally designed. This is shown in the following diagram:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-execution-scopes-1.png %}[]
+
+=== Event-native mode
+
+In the new event-native execution mode, the `REQUEST_CONTENT` and `RESPONSE_CONTENT` scopes (which we now call 'phases') are no longer considered - all policies are executed in the exact order of design, regardless of whether they work on the content or not. This is shown in the following diagram:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-execution-scopes-2.png %}[]
+
+=== Potential impact
+
+If you have designed your APIs with V3 execution engine mode ordering in mind and you link:{{ '/apim/3.x/apim_event_native_api_management_activate_mode.html' | relative_url }}[switch] from V3 to event-driven mode, there may be execution behavior changes because the policy execution will be reordered to match the original design policy order.
+
+To smooth the transition process to the new mode, you can use the debug mode to test the new behavior and adapt your APIs, so they can be safely redeployed in the new mode. For example, you can extract some information from the payload to assign it to a header.
+
+In case of any issues or unexpected behavior, you can switch back to V3 execution mode at any time.
+
+== Logging
+
+=== V3 mode
+
+In V3 mode, the following issues exist with logging:
+
+* A 502 status code would normally indicate that the server has responded with a 502 status code, however this is not possible if the connection has failed.
+* Consumer response headers were not displayed clearly.
+
+For example:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-logging-1.png %}[]
+
+=== Event-native mode
+
+In the new mode:
+
+* When a connectivity error occurs during a connection attempt to the backend endpoint, the Gateway response displays an HTTP status code 0 and no headers. This makes it clear that no response has been received from the backend endpoint due to the connectivity error.
+* Consumer response headers are now displayed more clearly.
+
+For example:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-logging-2.png %}[]
+
+== Condition evaluation
+
+=== V3 mode
+
+In V3 mode, when the Gateway provides a valid EL expression that fails to be evaluated because it is trying to access missing data, the Gateway returns a 500 error with an obscure message.
+
+For example:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-condition-evaluation-1.png %}[]
+
+=== Event-native mode
+
+In the new mode, when a valid EL expression is evaluated as `true`, the policy (or flow) is executed. Otherwise, it is skipped.
+
+The policy is now skipped when:
+* The EL expression is evaluated as `false`.
+* The EL expression evaluation fails because the expected data tested is missing.
+
+This is shown in the example below:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-condition-evaluation-2.png %}[]
+
+Mastering EL expressions can be difficult, so the new mode ensures that if an EL expression fails because it is trying to access missing data, the condition is evaluated as `false`. This makes the use of EL expressions much simpler and easier.
+
+For example, `{#request.headers['X-Test'][0] == 'something'}` will just skip the execution even if the request header `X-Test` is not specified.
+
+The execution still fails and throws an error if the provided EL expression cannot be parsed (for example, if it is syntactically invalid).
+
+The example below shows the new behavour:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-condition-evaluation-3.png %}[]
+
+=== Potential impact
+
+Conditions evaluated as errors now skip the policy or flow execution instead of returning a 500 error.
+
+As a result, the number of 500 errors should decrease after link:{{ '/apim/3.x/apim_event_native_api_management_activate_mode.html' | relative_url }}[activation] of the new event-native execution mode.
+
+== Connection: close
+
+=== V3 mode
+
+In V3 mode, when a bad request is sent to the Gateway, the Gateway indicates a `Connection: close` response header and effectively closes the connection. The next same call from a client application will then end with the same 400 bad request code and that connection will be closed too. This could happen over again as long as the client application sends requests to the Gateway with the same invalid data. The same behavior is in place for 404 not found errors.
+
+Creating a connection is costly for the Gateway and such issues can dramatically impact performance - especially if the consumer intensively makes a lot of bad requests.
+
+=== Event-native mode
+
+The new execution engine considers that a bad request does not require to close the connection as it is a client-side error. The engine will only close the connection in case of a server-side error.
+
+=== Potential impact
+
+You can expect decreased CPU consumption in the new mode, especially when a lot of requests end with 4xx errors.
