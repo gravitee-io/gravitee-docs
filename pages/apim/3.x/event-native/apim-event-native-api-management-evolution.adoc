@@ -90,7 +90,7 @@ For example, `{#request.headers['X-Test'][0] == 'something'}` will just skip the
 
 The execution still fails and throws an error if the provided EL expression cannot be parsed (for example, if it is syntactically invalid).
 
-The example below shows the new behavour:
+The example below shows the new behavior:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-condition-evaluation-3.png %}[]
 
@@ -123,7 +123,7 @@ You can expect decreased CPU consumption in the new mode, especially when a lot 
 
 In V3 mode, a condition can be defined once for the whole flow but it is evaluated before executing each phase of the flow (`REQUEST` and `RESPONSE` phases). This could lead to a partial flow execution - for instance, when trying to define a condition based on a request header and this same header is removed during the `REQUEST` phase (for example, the user does not want it to be transmitted to the backend). In such cases, the condition is re-evaluated and the `RESPONSE` phase is skipped completely. The same scenario could happen with a platform flow for the same reasons.
 
-The example below shows this behavour:
+The example below shows this behavior:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-condition-1.png %}[]
 
@@ -131,7 +131,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-con
 
 In the new event-native execution mode, the flow condition will be applied once for the whole flow - if the condition is evaluated as `true`, then both the `REQUEST` and the `RESPONSE` phases will be executed.
 
-The example below shows the new behavour:
+The example below shows the new behavior:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-condition-2.png %}[]
 
@@ -147,7 +147,7 @@ To mimic the V3 behavior while executing in event-native mode, you can create a 
 
 In V3 mode, when a policy fails, the execution flow is interrupted and the response is returned to the client application. As a result, the platform flow response is also skipped. This leads to unexpected behavior, especially when POST actions are expected (for example, for a custom metrics reporter).
 
-The example below shows this behavour:
+The example below shows this behavior:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-interruption-1.png %}[]
 
@@ -155,7 +155,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-int
 
 The new event-native execution mode ensures that platform flows are always executed (except in case of an unrecoverable error). This allows the API to fail without skipping important steps in the flow occurring at a higher level.
 
-The example below shows the new behavour:
+The example below shows the new behavior:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-interruption-2.png %}[]
 
@@ -169,7 +169,7 @@ In V3 mode, when configuring CORS to allow some origin, the Gateway properly val
 
 In the new event-native execution mode, the allowed origin is returned instead of `*` - for example, `Access-Control-Allowed-Origin: https://test.gravitee.io`.
 
-The example below shows the new behavour:
+The example below shows the new behavior:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-cors.png %}[]
 
@@ -181,7 +181,7 @@ In V3 mode, the EL expression are parsed each time it is evaluated.
 
 === Event-native mode
 
-In the new event-native execution mode, a new caching mechanism allows to cache the parsed EL expression for later reuse and therefore to avoid useless parsing of the same expression miltiple times.
+In the new event-native execution mode, a new caching mechanism allows to cache the parsed EL expression for later reuse and therefore to avoid useless parsing of the same expression multiple times.
 
 === Potential impact
 
@@ -298,7 +298,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-timeout.
 
 The plan selection workflow parses all the published plans in the following order: JWT, Oauth2, ApiKey, Keyless.
 
-The parsed plan is selected for execution if all of the following conditions are met:
+The parsed plan is selected for execution if all the following conditions are met:
 * The request contains a token corresponding to this plan type (api-key header, authorization header).
 * The plan condition rule is either not set or set but not truthy.
 * There is an active subscription matching the incoming request.
@@ -315,8 +315,8 @@ If there are multiple Oauth2 plans, that would lead to the selection of an irrel
 
 In event-native execution mode, Oauth2 plan *is not selected* if the incoming request does not match a subscription.
 
-During the Oauth2 plan selection, a token introspection is released in order to retrieve the `client_id`, which allows to search for a subscription.
+During the Oauth2 plan selection, a token introspection is released in order to retrieve the `client_id`, which allows searching for a subscription.
 
-Due to concerns about performance, a cache system is available to avoid doing the same token introspection mutliple times.
+Due to concerns about performance, a cache system is available to avoid doing the same token introspection multiple times.
 
-If possible, we encourage using selection rules if there are mutliple Oauth2 plans, in order to avoid any unnecessary token introspection.
+If possible, we encourage using selection rules if there are multiple Oauth2 plans, in order to avoid any unnecessary token introspection.
