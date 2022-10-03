@@ -115,3 +115,28 @@ The new execution engine considers that a bad request does not require to close 
 === Potential impact
 
 You can expect decreased CPU consumption in the new mode, especially when a lot of requests end with 4xx errors.
+
+
+== Flow condition
+
+=== V3 mode
+
+In V3 mode, a condition can be defined once for the whole flow but it is evaluated before executing each phase of the flow (`REQUEST` and `RESPONSE` phases). This could lead to a partial flow execution - for instance, when trying to define a condition based on a request header and this same header is removed during the `REQUEST` phase (for example, the user does not want it to be transmitted to the backend). In such cases, the condition is re-evaluated and the `RESPONSE` phase is skipped completely. The same scenario could happen with a platform flow for the same reasons.
+
+The example below shows this behavour:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-condition-1.png %}[]
+
+=== Event-native mode
+
+In the new execution mode, the flow condition will be applied once for the whole flow - if the condition is evaluated as `true`, then both the `REQUEST` and the `RESPONSE` phases will be executed.
+
+The example below shows the new behavour:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-condition-2.png %}[]
+
+=== Potential impact
+
+If you expect the `RESPONSE` phase to be skipped in the scenario described above, you must refactor your flows since both the `REQUEST` and `RESPONSE` phases will be executed as long as the condition is evaluated as `true`.
+
+To mimic the V3 behavior while executing in event-native mode, you can create a new flow and add a condition directly on the policies.
