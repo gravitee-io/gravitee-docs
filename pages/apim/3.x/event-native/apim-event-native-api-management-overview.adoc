@@ -36,6 +36,10 @@ With this workflow, a client application running on HTTP can post content to the
 
 NOTE: The backend that you can post your content to via an HTTP POST entrypoint depends on the backend connectors that you have enabled via the link:{{ '/apim/3.x/apim_publisherguide_introducing_sme.html#what_is_sme' | relative_url }}[Service Management Ecosystem (SME)]. The BETA release uses the link:{{ '/apim/3.x/apim_publisherguide_introducing_kafka.html' | relative_url }}[Gravitee Community Edition / OSS Kafka connector]. In future releases we are planning to provide an advanced Kafka connector (as an Enterprise Edition feature) as well as support for more backend connectors such as MQTT, Kinesis, and others.
 
+The diagram below shows the workflow for this use case:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-http-post.png %}[]
+
 === Websocket and SSE entrypoints
 
 Support for Websocket (Community Edition/OSS) and Server-Sent Events (Enterprise Edition only) entrypoints are provided as separate plugins.
