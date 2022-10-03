@@ -5,6 +5,8 @@
 :page-folder: apim/kubernetes
 :page-layout: apim3x
 
+[label label-version]#New in version 3.19.0#
+
 == About Gravitee Kubernetes Operators
 
 A link:https://kubernetes.io/docs/concepts/extend-kubernetes/operator/[Kubernetes operator^] is a method of packaging, deploying, and managing a Kubernetes application. A Kubernetes application is both deployed on Kubernetes and managed using the Kubernetes API and `kubectl` tooling.

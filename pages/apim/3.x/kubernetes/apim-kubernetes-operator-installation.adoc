@@ -5,6 +5,8 @@
 :page-folder: apim/kubernetes
 :page-layout: apim3x
 
+[label label-version]#New in version 3.19.0#
+
 The current GKO deployment process is mostly identical for both possible scenarios, as follows:
 
 1. In a typical deployment scenario, you can deploy the GKO on an existing, APIM-ready remote / cloud-based cluster.
