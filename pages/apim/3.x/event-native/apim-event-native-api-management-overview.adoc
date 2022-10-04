@@ -7,9 +7,9 @@
 
 [label label-version]#New in version 3.19.0#
 
-== Event-native API Management via the new V4 policy execution mode (BETA)
+== Event-native API Management foundations via the new V4 policy execution mode (BETA)
 
-Gravitee Platform release 3.19.0 has introduced the first version (BETA) of a new type of Gateway and API definition - a new policy execution engine for an evented Gateway that lays the foundations for enabling event-native API management.
+Release 3.19.0 of the Gravitee API Management platform has introduced the first version (BETA) of a new type of Gateway and API definition - a new policy execution engine lays the foundation for an evented Gateway to enable event-native API management.
 
 The new V4 policy execution engine enables a new execution flow for Sync APIs and supports the event-driven execution for Async APIs.
 
@@ -87,7 +87,7 @@ A dual execution mode enables users to smoothly transition their APIs to the new
 
 == Future planned features
 
-The GA release of the new evented Gateway providing the new policy execution engine will provide the following additional features:
+The GA release of the V4 policy execution engine will provide the following additional features:
 
 * Advanced Kafka connector (as an EE feature).
 * Support for more backend connector types, such as MQTT and Kinesis.
