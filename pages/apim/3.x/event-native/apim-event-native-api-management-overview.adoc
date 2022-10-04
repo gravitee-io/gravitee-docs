@@ -7,11 +7,13 @@
 
 [label label-version]#New in version 3.19.0#
 
-== Event-native API Management via the new evented Gateway (BETA)
+== Event-native API Management via the new V4 policy execution mode (BETA)
 
-Gravitee Platform release 3.19.0 has introduced the first version (BETA) of a new type of Gateway and API definition - an evented Gateway that enables event-native API management.
+Gravitee Platform release 3.19.0 has introduced the first version (BETA) of a new type of Gateway and API definition - a new policy execution engine for an evented Gateway that lays the foundations for enabling event-native API management.
 
-The new event-native policy execution engine is based on a modern and fully reactive architecture designed to address a number of challenges users have been facing with the existing v3 engine, and to build the foundation of Gravitee's event-native platform by adding features such as native support for Pub/Sub (Publish-Subscribe) design and enabling policies at message level. The new API definition makes it possible for the Gateway to “know” what is necessary in order for it to handle asynchronous API use cases.
+The new V4 policy execution engine enables a new execution flow for Sync APIs and supports the event-driven execution for Async APIs.
+
+It is based on a modern and fully reactive architecture designed to address a number of challenges users have been facing with the existing v3 engine, and to build the foundation of Gravitee's event-native platform by adding features such as native support for Pub/Sub (Publish-Subscribe) design and enabling policies at message level. The new API definition makes it possible for the Gateway to “know” what is necessary in order for it to handle asynchronous API use cases.
 
 The new policy execution engine mode provides the following capabilities:
 
@@ -22,7 +24,7 @@ The new policy execution engine mode provides the following capabilities:
 
 The BETA release does not provide UI support for these capabilities.
 
-NOTE: The event-native policy execution engine mode has been released as a BETA version - it is not recommended using it in production until it is released as a GA version at the end of 2022. The GA release will come with additional features - contact us if you want to know more about it and what new features we are bringing to API Management regarding Sync & Async APIs.
+NOTE: The new V4 policy execution engine mode has been released as a BETA version - it is not recommended using it in production until it is released as a GA version at the end of 2022. The GA release will come with additional features - contact us if you want to know more about it and what new features we are bringing to API Management regarding Sync & Async APIs.
 
 == BETA Features
 

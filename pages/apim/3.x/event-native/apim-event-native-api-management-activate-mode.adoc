@@ -7,7 +7,7 @@
 
 [label label-version]#New in version 3.19.0#
 
-To activate the new event-native policy execution mode, you must enable it in the `gravitee.yml` file using the following new keys:
+To activate the new policy execution engine mode, you must enable it in the `gravitee.yml` file using the following new keys:
 
-* `JUPITER_MODE_ENABLED`. This option enables you to activate or deactivate the new event-driven execution engine mode on the Gateway. The key values can be `true` or `false`, respectively.
+* `JUPITER_MODE_ENABLED`. This option enables you to activate or deactivate the new execution engine mode on the Gateway. The key values can be `true` or `false`, respectively.
 * `JUPITER_MODE_DEFAULT`. This option let you define if the new mode will be the default one in which your new APIs will be created. The key values can be `never` or `always`. To make the new mode the default one, set the value to `always`. If you set to `never`, you will need to activate the new mode for each new API if you want to use it.
