@@ -183,17 +183,17 @@ The recommended value depends on the type of logging you have enabled: the more 
 
 == STEP 5: Portal & Console default nginx security config
 
-The APIM Console use this default config:
-
+The APIM Console uses this default config:
 [source]
 ----
     add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header Content-Security-Policy "frame-ancestors 'self';" always;
     add_header X-XSS-Protection "1; mode=block";
     add_header X-Content-Type-Options nosniff;
     add_header X-Permitted-Cross-Domain-Policies none;
 ----
-The APIM Portal use this default config:
 
+The APIM Portal uses this default config:
 [source]
 ----
     add_header X-XSS-Protection "1; mode=block";
@@ -201,17 +201,20 @@ The APIM Portal use this default config:
     add_header X-Permitted-Cross-Domain-Policies none;
 ----
 
-It is recommended to complete this mechanisms to have a better control on the resources the user agent is allowed to load for a given page.
+It is recommended to complete these mechanisms to have a better control on the resources the user agent is allowed to load for a given page.
 
-
-For portal you can improve security to allow specific origin, with this header:
-
+For APIM Portal you can improve security to allow specific origin, with these headers:
 [source]
 ----
-add_header X-Frame-Options "ALLOW-FROM my-domain.com"
+add_header X-Frame-Options "ALLOW-FROM=my-domain.com" always;
+add_header Content-Security-Policy "frame-ancestors my-domain.com;" always;
 ----
 
-NOTE: APIM console uses an iframe to preview the portal theme configuration, so it is necessary to add the console in ALLOW-FROM domains in Portal config.
+[NOTE]
+====
+APIM Console uses an iframe to preview the portal theme configuration, so it is necessary to add the Console in Portal nginx config.
+You can learn more about:
 
-
-It is recommended to configure this header too: link:{{'https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy'}}[ Content-Security-Policy]
+- Content-Security_policy and framing https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors[here^]
+- X-Frame-Options https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options[here^]
+====
