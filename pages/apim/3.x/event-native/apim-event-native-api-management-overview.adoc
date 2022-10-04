@@ -68,6 +68,15 @@ The diagram below shows the workflow for this use case:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-event-consumption-webhook.png %}[]
 
+=== Security policies
+
+The following security policies have been implemented in version 3.19.0:
+
+* API Key - enforces API key checks during request processing (for security).
+* Keyless policy - does not block any requests as it considers them as valid by default.
+* JWT - generates a signed JWT with a configurable set of claims; this JWT can subsequently be forwarded to backend targets, or used in some other context.
+* OAuth - checks access token validity during request processing using token introspection (for security).
+
 
 == Future planned features
 
@@ -80,10 +89,7 @@ The GA release of the new evented Gateway providing the new policy execution eng
 * UI support for the new execution mode.
 * Subscription message filtering for Kafka use cases.
 * GRAVITEE API security enhancements, including advanced anomaly detection (OpenAPI spec compliance), API inventory and lineage, and support for security ratings.
-* Full support for policy application at the message level for asynchronous APIs and event-driven APIs will enable the application of transformation logic at message level - for example, transforming the payload of each frame transiting on a Websocket connection. The following policies are currently planned for:
+* Support for policy application at the message level for asynchronous APIs and event-driven APIs will enable the application of transformation logic at message level - for example, transforming the payload of each frame transiting on a Websocket connection. The following policies are currently planned for:
 ** XML to JSON: transform XML content to JSON content.
-** Security policies:
-*** API Key - enforces API key checks during request processing (for security).
-*** Keyless policy - does not block any requests as it considers them as valid by default.
-*** JWT - generates a signed JWT with a configurable set of claims; this JWT can subsequently be forwarded to backend targets, or used in some other context.
-*** OAuth - checks access token validity during request processing using token introspection (for security).
+** XML/JSON and JSON/JSON message transformation.
+** Serialization and deserialization capabilities for Avro and Protobuff.
