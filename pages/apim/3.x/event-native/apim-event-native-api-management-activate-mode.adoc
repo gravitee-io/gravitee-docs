@@ -12,17 +12,4 @@ To activate the new event-native policy execution mode, you must enable it in th
 * `JUPITER_MODE_ENABLED`. This option enables you to activate or deactivate the new event-driven execution engine mode on the Gateway. The key values can be `true` or `false`, respectively.
 * `JUPITER_MODE_DEFAULT`. This option let you define if the new mode will be the default one in which your new APIs will be created. The key values can be `never` or `always`. To make the new mode the default one, set the value to `always`. If you set to `never`, you will need to activate the new mode for each new API if you want to use it.
 
-You could switch this value individually per API by setting the `execution_mode` to "jupiter" or "v3" in your `API_Definition`, as shown in the example below.
-
-....
-{
-"name": "Example API",
-"version": "1.0",
-"execution_mode": "jupiter", # can be switched to v3
-"description": "This API is executed with new gateway engine",
-"visibility": "PUBLIC",
-"gravitee": "2.0.0",
-"flow_mode": "DEFAULT",
-...
-}
-....
+You can also enable the new execution mode in the Console - go to "Your API" > "Design" > "Configuration" tab > "Enable Jupiter mode".
