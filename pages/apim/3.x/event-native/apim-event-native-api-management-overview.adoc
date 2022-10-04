@@ -40,9 +40,11 @@ The diagram below shows the workflow for this use case:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-http-post.png %}[]
 
-=== Websocket and SSE entrypoints
+=== Support for Websocket and SSE entrypoints
 
-Support for Websocket (Community Edition/OSS) and Server-Sent Events (Enterprise Edition only) entrypoints are provided as separate plugins.
+Support for Server-Sent Events is already embedded as an entrypoint in APIM version 3.19.0 of the Community Edition.
+
+Support for Server-Sent Events (Enterprise Edition) and Websocket (Community Edition/OSS) entrypoints are provided as separate plugins.
 
 NOTE: These plugins are expected shortly after the main 3.19 release and will be announced here when available.
 
