@@ -32,7 +32,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-executio
 
 === Potential impact
 
-If you have designed your APIs with V3 execution engine mode ordering in mind and you link:{{ '/apim/3.x/apim_event_native_api_management_activate_mode.html' | relative_url }}[switch] from V3 to the new execution mode, there may be execution behavior changes because the policy execution will be reordered to match the original design policy order.
+If you have designed your APIs with V3 execution engine mode ordering in mind and you link:{{ '/apim/3.x/apim_event_native_api_management_activate_mode.html' | relative_url }}[switch] from V3 to the new V4 execution engine mode, there may be execution behavior changes because the policy execution will be reordered to match the original design policy order.
 
 To smooth the transition process to the new mode, you can use the debug mode to test the new behavior and adapt your APIs, so they can be safely redeployed in the new mode. For example, you can extract some information from the payload to assign it to a header.
 

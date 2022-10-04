@@ -36,8 +36,6 @@ The HTTP POST entrypoint is an Community Edition / OSS feature that enables exte
 
 With this workflow, a client application running on HTTP can post content to the Gravitee Gateway. The Gateway can then take that content and push it over to Kafka as a message that Kafka can ingest. The Gravitee Gateway acts as a protocol mediation layer in this context. This enables API owners to quickly set up a sync-to-async integration.
 
-NOTE: The backend that you can post your content to via an HTTP POST entrypoint depends on the backend connectors that you have enabled via the link:{{ '/apim/3.x/apim_publisherguide_introducing_sme.html#what_is_sme' | relative_url }}[Service Management Ecosystem (SME)]. The BETA release uses the link:{{ '/apim/3.x/apim_publisherguide_introducing_kafka.html' | relative_url }}[Gravitee Community Edition / OSS Kafka connector]. In future releases we are planning to provide an advanced Kafka connector (as an Enterprise Edition feature) as well as support for more backend connectors such as MQTT, Kinesis, and others.
-
 The diagram below shows the workflow for this use case:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-http-post.png %}[]
@@ -48,7 +46,7 @@ Support for Server-Sent Events (Enterprise Edition only) and Websocket (Communit
 
 NOTE: These plugins are expected shortly after the main 3.19 release and will be announced here when available.
 
-This feature enables you to front your event-driven backend - currently only using Kafka via the link:{{ '/apim/3.x/apim_publisherguide_introducing_kafka.html' | relative_url }}[Gravitee Community Edition / OSS Kafka connector] - with Websocket or Server-Sent Events so that API consumers can access events from the Kafka backend via one of these more consumer-friendly protocols.
+This feature enables you to front your event-driven backend - currently only using Kafka via the Gravitee Community Edition / OSS Kafka connector - with Websocket or Server-Sent Events so that API consumers can access events from the Kafka backend via one of these more consumer-friendly protocols.
 
 If an API consumer cannot connect to a native Kafka instance due to technical limitations (for example, if they cannot implement a Kafka client themselves), you can make Kafka topics available to that consumer via another, more consumer-friendly protocol such as SSE or Websocket.
 
