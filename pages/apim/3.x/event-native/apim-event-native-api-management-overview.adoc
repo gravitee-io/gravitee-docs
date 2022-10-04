@@ -78,16 +78,21 @@ The following security policies have been implemented in version 3.19.0:
 * OAuth - checks access token validity during request processing using token introspection (for security).
 
 
+=== Dual execution mode for the new execution engine
+
+A dual execution mode enables users to smoothly transition their APIs to the new execution engine, and to configure a default behavior at platform level and override it for each API level.
+
+
 == Future planned features
 
 The GA release of the new evented Gateway providing the new policy execution engine will provide the following additional features:
 
 * Advanced Kafka connector (as an EE feature).
 * Support for more backend connector types, such as MQTT and Kinesis.
-* A dual execution mode enabling users to smoothly transition their APIs to the new execution engine, and to configure a default behavior at platform level and override it for each API level.
+* A dual execution mode for SME.
 * A new wrapper mechanism to make all V3 mode policies executable on the new engine.
 * UI support for the new execution mode.
-* Subscription message filtering for Kafka use cases.
+* Subscription message filtering, designed to filter messages when building an Async API. This feature can be used for Kafka and other use cases.
 * GRAVITEE API security enhancements, including advanced anomaly detection (OpenAPI spec compliance), API inventory and lineage, and support for security ratings.
 * Support for policy application at the message level for asynchronous APIs and event-driven APIs will enable the application of transformation logic at message level - for example, transforming the payload of each frame transiting on a Websocket connection. The following policies are currently planned for:
 ** XML to JSON: transform XML content to JSON content.
