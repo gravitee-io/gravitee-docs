@@ -3,7 +3,6 @@
 == Breaking changes
 
 === Custom policies
-
 For users who developed their own policy using `ApiKeyRepository` or `SubscriptionRepository` to retrieve API keys or subscriptions.
 
 In previous versions, those repositories were overridden with a cached implementation, which was returning active API keys and subscriptions only, in an optimized way.
@@ -17,3 +16,23 @@ We recommend to update your dependency settings on `gravitee-gateway-api` to ver
 * `io.gravitee.gateway.api.service.SubscriptionService` : _getByApiAndClientId_ and _getById_
 
 
+=== Docker: Portal nginx configuration
+In order to provide a better security, the default nginx configuration of the portal docker image has been updated to add by default a Content-Security-Policies header for framing.
+After upgrading, the nginx configuration will be updated with this new line:
+```
+add_header Content-Security-Policy "frame-ancestors 'self';" always;
+```
+But as APIM Portal is embedded in APIM Console for the theme customisation, this new header may block the portal from being displayed in the console.
+
+There are 2 ways to manage this change:
+
+1. *Not recommended*. You can disable this security header by setting the environment variable `FRAME_PROTECTION_ENABLED` to `false` when starting the docker container.
+2. You can configure the `frame-ancestors` directive to allow the console to display the portal. To do this set the environment variable `ALLOWED_FRAME_ANCESTOR_URLS` with the list of allowed URLs.
+For example:
+```
+ALLOWED_FRAME_ANCESTOR_URLS="https://mydomain.com https://mydomain2.com"
+ALLOWED_FRAME_ANCESTOR_URLS="https://mydomain.com 'self'"
+ALLOWED_FRAME_ANCESTOR_URLS="mydomain.com"
+```
+
+See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors[here^] for more information about the Content-Security-Policy header.
