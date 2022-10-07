@@ -38,7 +38,7 @@ The GKO deployment process is simple and is the same for both remote and local K
 To deploy the GKO on the cluster of your current Kubernetes context, run the following command in your command-line tool (the working directory does not matter):
 
 ....
-kubectl apply -f https://github.com/gravitee-io/gravitee-kubernetes-operator/releases/download/latest/bundle.yml
+kubectl apply -f https://github.com/gravitee-io/gravitee-kubernetes-operator/releases/latest/download/bundle.yml
 ....
 
 As an optional but recommended next step, you should check if the Gravitee CRDs are available on your cluster. To do so, run the following command:
