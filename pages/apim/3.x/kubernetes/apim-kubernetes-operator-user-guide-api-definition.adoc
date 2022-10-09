@@ -11,6 +11,8 @@
 
 The `APIDefinition` custom resource represents the configuration for a single proxied API and its versions. It is similar to a YAML representation of an API Definition in JSON format.
 
+WARNING: Due to a known issue, you should not create an `ApiDefinition` before you define the relevant `ManagementContext` resource. Gravitee engineers are working to fix this issue soon in a future GKO release so that this dependency is removed.
+
 The example below shows a simple `ApiDefinition` custom resource definition:
 
 [,yaml]

@@ -9,7 +9,7 @@
 
 == How to synchronize your API CRDs with an existing Management API
 
-The following examples for creating a Management Context and creating an API referecing that context are based on the assumption that a Management API has already been deployed in a namespace called `apim-example`. The connection to that Management API uses the default in-memory credentials.
+The following examples for creating a Management Context and creating an API referencing that context are based on the assumption that a Management API has already been deployed in a namespace called `apim-example`. The connection to that Management API uses the default in-memory credentials.
 
 === Example - creating a Management Context for an existing Management API
 
