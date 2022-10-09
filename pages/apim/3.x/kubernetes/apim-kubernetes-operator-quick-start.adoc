@@ -52,8 +52,6 @@ kubectl get crd
 
 After GKO deployment, it is time to try out the GKO functionality by creating CRDs and testing your API via and API call from the API Gateway.
 
-NOTE: You can skip this section if you already have a cluster you can deploy to.
-
 The process involves the following stages:
 
 1. Create a Management Context custom resource.
@@ -88,6 +86,7 @@ The APIDefinition custom resource represents the configuration for a single prox
 
 NOTE: Read more about the API Definition custom resource link:{{ '/apim/3.x/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[here] and link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html' | relative_url }}[here].
 
+WARNING: Due to a known issue, you should not create an `ApiDefinition` before you define the relevant `ManagementContext` resource. Gravitee engineers are working to fix this issue soon in a future GKO release so that this dependency is removed.
 
 To create an API Definition custom resource, you need a YAML file with the desired API Definition configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:
 
