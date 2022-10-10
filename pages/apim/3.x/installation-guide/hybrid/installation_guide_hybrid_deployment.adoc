@@ -97,9 +97,9 @@ services:
           password:
 ----
 
-==== Check the APIM Gateway node is running
+==== Check the APIM Gateway (HTTP bridge server) node is running
 
-You can test that your APIM Gateway node is running by sending an HTTP request to port `8082` on `localhost`:
+You can test that your APIM Gateway (HTTP bridge server) node is running by sending an HTTP request to port `18092` on `localhost`:
 
 [source,bash]
 ----
