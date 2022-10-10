@@ -9,14 +9,15 @@
 
 Gravitee provides two Kubernetes tools:
 
-  * The Gravitee Kubernetes Operator (GKO)
+  * The Gravitee Kubernetes Operator (GKO) - BETA release
   * The Gravitee Kubernetes Controller (plugin)
 
 == Gravitee Kubernetes Operator
 
 [label label-version]#New in version 3.19.0#
+[label label-version]#BETA release#
 
-APIM 3.19.0 has introduced the Gravitee Kubernetes Operator (GKO) - a new technical component designed to be deployed on an existing APIM-ready Kubernetes Cluster. It can also be deployed on a local cluster for testing purposes.
+APIM 3.19.0 has introduced the BETA release of the Gravitee Kubernetes Operator (GKO) - a new technical component designed to be deployed on an existing APIM-ready Kubernetes Cluster. It can also be deployed on a local cluster for testing purposes.
 
 You can use the GKO to define, deploy, and publish APIs to your API Portal and API Gateway and to manage Custom Resource Definitions (CRDs) as part of the process.
 
