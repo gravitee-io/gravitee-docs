@@ -42,7 +42,7 @@ NOTE: The GKO GitHub repository is public and available link:https://github.com/
 To create a local APIM-ready Kubernetes cluster, run the following command:
 
 ....
-curl -i https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/chore-inline-k3d-script/scripts/k3d.sh | bash
+curl -i https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/scripts/k3d.sh | bash
 ....
 
 This operation may take a few minutes to complete.
