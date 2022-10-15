@@ -19,7 +19,7 @@ The capability matrix below outlines the differences between the CE and the EE i
 
 The Gravitee Enterprise Edition includes everything from the Community Edition plus additional modules, plugins, capabilities, and unlocked use options, as indicated below.
 
-[width="100%",cols="^20,^20,^5,^10",options="header"]
+[width="100%",cols="^20,^20,^10,^10",options="header"]
 |===
 |Functional area|Capability|Community Edition|Enterprise Edition
 |GRAVITEE API MANAGEMENT|Gravitee API Gateway|Yes|Yes
@@ -32,13 +32,13 @@ The Gravitee Enterprise Edition includes everything from the Community Edition p
 |GRAVITEE API MANAGEMENT|Environments per installation|Limited to one environment per installation|Multiple depending on plan
 |GRAVITEE API MANAGEMENT|Support for API Management|Community support for API Management|Enterprise-grade 24/7 API Management support
 |GRAVITEE API MANAGEMENT|Basic Kafka connector|Yes|Yes
-|GRAVITEE API MANAGEMENT|Advanced Kafka connector (coming in v3.20)|No|Yes
-|GRAVITEE API MANAGEMENT|Subscription message filtering for Kafka use cases (coming in v3.20)|No|Yes
+|GRAVITEE API MANAGEMENT|Advanced Kafka connector (coming in v3.20)|No|Yes (coming in v3.20)
+|GRAVITEE API MANAGEMENT|Subscription message filtering for Kafka use cases (coming in v3.20)|No|Yes (coming in v3.20)
 |GRAVITEE API MANAGEMENT|Engineer-to-engineer support for production and non-production Gateways|No|Yes
 |GRAVITEE API MANAGEMENT|The ability to mask data captured in logs via the Data masking plugin and policy|No|Yes
 |GRAVITEE API MANAGEMENT|The ability to push extra metrics in addition to the natively provided request metrics using the Assign metrics policy|No|Yes
 |GRAVITEE API MANAGEMENT|Full future support for asynchronous APIs and protocols and event-driven APIs, which includes (but may not be limited to) support for MQTT (coming in v3.20), Webhook, Websocket, and SSE|No|Yes
-|GRAVITEE API MANAGEMENT|Support for policy application at the message level for asynchronous APIs and event-driven APIs (coming in v3.20)|No|Yes
+|GRAVITEE API MANAGEMENT|Support for policy application at the message level for asynchronous APIs and event-driven APIs (coming in v3.20)|No|Yes (some features coming in v3.20)
 |GRAVITEE API MANAGEMENT|Customer Success Services|No|Yes
 |GRAVITEE ACCESS MANAGEMENT|Gravitee Access Management (AM)|Yes|Yes
 |GRAVITEE ACCESS MANAGEMENT|A large set of Gravitee AM plugins|Yes|Yes
@@ -60,10 +60,10 @@ The Gravitee Enterprise Edition includes everything from the Community Edition p
 |GRAVITEE ADVANCED ENVIRONMENT MANAGEMENT|Connect unlimited Gravitee APIM environments and installations under one umbrella|No|Yes
 |GRAVITEE ADVANCED ENVIRONMENT MANAGEMENT|Promote APIs across various environments|No|Yes
 |GRAVITEE ADVANCED ENVIRONMENT MANAGEMENT|Keep oversight around availability and health of Gravitee deployments and Gateways|No|Yes
-|GRAVITEE API SECURITY|Advanced anomaly detection (coming in v3.20)|No|Yes
-|GRAVITEE API SECURITY|OpenAPI spec compliance (coming in v3.20)|No|Yes
-|GRAVITEE API SECURITY|API inventory and lineage (coming in v3.20)|No|Yes
-|GRAVITEE API SECURITY|Security ratings (coming in v3.20)|No|Yes
+|GRAVITEE API SECURITY|Advanced anomaly detection (coming in v3.20)|No|Yes (coming in v3.20)
+|GRAVITEE API SECURITY|OpenAPI spec compliance (coming in v3.20)|No|Yes (coming in v3.20)
+|GRAVITEE API SECURITY|API inventory and lineage (coming in v3.20)|No|Yes (coming in v3.20)
+|GRAVITEE API SECURITY|Security ratings (coming in v3.20)|No|Yes (coming in v3.20)
 |EE PLUGINS FOR APIM|link:https://docs.gravitee.io/apim/3.x/apim_policies_data_logging_masking.html[Data Logging Masking Policy^]|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
 |EE PLUGINS FOR APIM|link:https://docs.gravitee.io/apim/3.x/apim_policies_assign_metrics.html[Assign Metrics Policy^]|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
 
