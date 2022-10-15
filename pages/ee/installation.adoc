@@ -1,0 +1,65 @@
+= EE Installation
+:page-sidebar: ee_sidebar
+:page-permalink: ee/ee_installation.html
+:page-folder: ee
+:page-description: Gravitee Enterprise Edition - Installation - License
+:page-keywords: Gravitee, API Platform, Enterprise Edition, documentation, manual, guide, reference, api
+
+
+== API Management (APIM) and Access Management (AM)
+
+Version 3.18.x of the Gravitee Platform (APIM and AM 3.18.0 were released at the beginning of July 2022) has introduced a unified, single distribution bundles for all features available in the Community Edition (CE) and the Enterprise Edition (EE) of Gravitee.io for the APIM and AM products respectively.
+
+Previously, the two editions used to be distributed as separate bundles (CE and EE) per product, and any migration to EE required full re-installation. This change allows for a smooth transition from CE to EE functionality, and enables you to trial EE features in APIM and AM without the need for a standalone EE installation when migrating from CE.
+
+If you are a Gravitee CE user and you want to try out EE features, just install the unified bundle, request an EE license, add it to the installation, and restart. You no longer need to download and install a new, standalone EE version of APIM or AM!
+
+NOTE: You can now sign up for a free, time-limited, full EE-grade API Management trial with included Alert Engine, as part of the link:https://cockpit.gravitee.io/register[free Cockpit trial registration^]. The Cockpit trial also allows you to try Gravitee API Designer.
+
+== Alert Engine (AE)
+
+AE is not part of the Community Edition - it is an Enterprise feature and requires an EE license. It is link:https://www.gravitee.io/downloads[distributed separately^] and can be installed via Docker, Kubernetes, or manually using a Zip File.
+
+== Installation steps for APIM, AM, AE, and other EE modules
+
+=== Installing as a new instance
+
+To perform a new EE installation:
+
+1. Download the full bundles of the desired products (APIM, AM, AE) from link:https://www.gravitee.io/downloads[the Gravitee platform downloads page^].
+2. Install the relevant product bundles by following the link:https://docs.gravitee.io/apim/3.x/apim_installguide.html[APIM^] and link:https://docs.gravitee.io/am/current/am_installguide_introduction.html[AM^] installation guides respectively.
+3. Download/install the link:{{ '/ee/ee_overview.html#ee_components' | relative_url }}[desired EE modules^].
+3.1. To install AE, consult the Alert Engine section on the link:https://www.gravitee.io/downloads[Gravitee downloads web page] and/or follow link:https://docs.gravitee.io/ae/installguide_introduction.html[AE^] installation guide.
+3.2. EE plugins are installed from their respective repositories in GitHub. Gravitee's EE plugin repositories are private and their names are prefixed as `gravitee-io/gravitee-policy-<plugin-name>`. For example, the link:https://docs.gravitee.io/apim/3.x/apim_policies_data_logging_masking.html[Data Logging Masking Policy^] repository is at link:https://github.com/gravitee-io/gravitee-policy-data-logging-masking[https://github.com/gravitee-io/gravitee-policy-data-logging-masking^]. To request access to private EE plugin repositories, email contact@graviteesource.com in case you have not been granted such access already as part of your EE license request process.
+4. link:{{ '/ee/ee_license.html#ask-license' | relative_url }}[Request^] an EE license.
+5. link:{{ '/ee/ee_license.html#apply_the_license' | relative_url }}[Apply the EE license^] to the relevant existing product instances.
+6. Restart.
+
+NOTE: We have removed the option to install EE bundles and EE licenses using Docker as we have simplified the installation process for EE through the use of unified platform distribution bundles for each product, as described below. The process for EE license requests, installation, and support is described in link:{{ '/ee/ee_license.html' | relative_url }}[the EE Licensing section^].
+
+=== Migrating from an existing CE installation
+
+NOTE: Before you proceed, please ensure that you are running a link:{{ '/ee/ee_version.html' | relative_url }}[long-term support (LTS) version] of the respective product(s).
+
+To migrate from an existing Community Edition (CE) installation to EE:
+
+1. Download/install the link:{{ '/ee/ee_overview.html#ee_components' | relative_url }}[desired EE modules^].
+2. link:{{ '/ee/ee_license.html#ask-license' | relative_url }}[Request^] an EE license.
+3. link:{{ '/ee/ee_license.html#apply_the_license' | relative_url }}[Apply the EE license^] to the relevant existing product instances.
+4. Restart.
+
+== Cockpit
+
+Gravitee link:https://www.gravitee.io/platform/cockpit[Cockpit^] is a centralized, multi-environment tool for managing all your Gravitee API Management and Access Management installations in a single place.
+
+After version 3.15.0, Cockpit became a SaaS product, meaning that you do not need to install it as a self-hosted solution anymore. You can link:https://cockpit.gravitee.io/register[register^] and use Cockpit for free as part of the Community Edition, enabling you to also access a full, time-limited, EE-grade API Management trial (with Alert Engine included), manage Gravitee environments and installations, and design APIs with the Gravitee API Designer also included in the trial.
+
+When used for free, Cockpit has a limitation of up to two environments per user. However, you can link:https://www.gravitee.io/contact-us[upgrade^] to a link:https://www.gravitee.io/pricing[paid Enterprise Edition plan^] to unlock more environments and use Cockpit as an Enterprise-grade tool for production.
+
+NOTE: While this is not recommended, you can still install an older version of Cockpit (3.15.0 and below) as a self-hosted instance - see the legacy link:https://docs.gravitee.io/cockpit/3.x/cockpit_installguide_introduction.html[Cockpit installation guide^] for details.
+
+== API Designer
+
+Gravitee link:https://www.gravitee.io/platform/api-designer[API Designer^] is free to use with the Community Edition, with a limitation of one active design at any given time. link:https://www.gravitee.io/contact-us[Contact us^] if you need to remove this limitation by upgrading to a link:https://www.gravitee.io/pricing[paid Enterprise Edition plan^].
+
+To try Gravitee API Designer, sign up for a Cockpit trial link:https://cockpit.gravitee.io/register[here^] - API Designer is part of the trial.
