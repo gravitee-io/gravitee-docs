@@ -1,5 +1,5 @@
 [[gravitee-enterprise-api-platform]]
-= Enterprise Edition
+= Gravitee Platform Enterprise Edition
 :page-sidebar: ee_sidebar
 :page-permalink: ee/ee_overview.html
 :page-folder: ee
@@ -7,42 +7,80 @@
 :page-description: Gravitee Enterprise Edition support, installation, licensing, and versioning - overview
 :page-keywords: Gravitee, API Platform, Enterprise Edition, documentation, manual, guide, reference, api
 
-The Enterprise Edition (EE) of Gravitee.io offers additional features on top of the fantastic open source Community Edition of the platform, bringing many new benefits and exciting features to help you enable effortless control over every aspect of your organization's API ecosystem.
+Gravitee's open source roots are what make us great - we own our entire stack, and we believe that our code powers the best open source API Management and API Access Management products on the market.
 
-== EE components
+The Community Edition (CE) of the Gravitee API Management platform is built on these open source foundations.
 
-The Enterprise Edition offers the following additional modules and plugins:
+The Enterprise Edition (EE) of the platform builds on top of that to enable organizations to fully manage, secure, monitor, and govern their entire API ecosystem. The EE includes everything from the CE, and offers additional features that bring many new benefits and exciting features to help you enable effortless control over every aspect of your organization's API ecosystem.
 
-* Gravitee link:https://docs.gravitee.io/am/current/am_overview_introduction.html[Alert Engine^] (AE) is an EE module you can use to monitor, analyze, and prevent incidents such as SLA breaches or spikes in traffic happening in the future. To activate AE in APIM and/or AM, you need to apply an link:{{ '/ee/ee_license.html' | relative_url }}[EE license] to your APIM/AM installation.
-* Other EE components include some additional policies and plugins shipped with APIM and AM, as follows:
-+
---
-EE plugins for APIM that require an EE license:
+The feature comparison section below outlines the differences between the CE and the EE in order to help clients to make the most educated buying decision.
 
-* link:https://docs.gravitee.io/apim/3.x/apim_policies_data_logging_masking.html[Data Logging Masking Policy^]
-* link:https://docs.gravitee.io/apim/3.x/apim_policies_assign_metrics.html[Assign Metrics Policy^]
+== Community Edition vs Enterprise Edition - feature comparison
 
-EE plugins and features for AM that require an EE license:
+The Enterprise Edition includes everything in the Community Edition plus additional modules, plugins, and unlimited use options as indicated in the table below.
 
-* link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_http.html[HTTP Flow Identity Provider]
-* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_cas.html[CAS Identity Provider^] (now shipped separately like all other EE plugins)
-* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_kerberos.html[Kerberos Identity Provider^] (now shipped separately like all other EE plugins)
-* link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_saml2.html[SAML 2.0 Identity Provider^]
-* link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_fido2.html[MFA with FIDO2^]
-* link:https://docs.gravitee.io/am/current/am_userguide_mfa_risk_based.html[Risk-based MFA^]
-* link:https://docs.gravitee.io/am/current/am_userguide_alerts_overview.html[Alerts^] (de facto the option to integrate the link:https://docs.gravitee.io/am/current/am_overview_introduction.html[Alert Engine^] EE module in AM)
---
+[width="100%",cols="^20,^20,^5,^10",options="header"]
+|===
+|Functional area|Capability|Community Edition|Enterprise Edition
+|GRAVITEE API MANAGEMENT|Gravitee API Gateway|Yes|Yes
+|GRAVITEE API MANAGEMENT|Gravitee API Management UI|Yes|Yes
+|GRAVITEE API MANAGEMENT|Gravitee Service Management Ecosystem|Yes - with limited future AsyncAPI connectors|Yes - with unlimited future AsyncAPI connectors
+|GRAVITEE API MANAGEMENT|Protocol mediation|Limited|Unlimited
+|GRAVITEE API MANAGEMENT|A large set of baked-in policies|Yes|Yes
+|GRAVITEE API MANAGEMENT|A large set of Gravitee plugins|Yes|Yes
+|GRAVITEE API MANAGEMENT|Gravitee Developer Portal|Yes|Yes
+|GRAVITEE API MANAGEMENT|Environments per installation|Limited to one environment per installation|Multiple depending on plan
+|GRAVITEE API MANAGEMENT|Support for API Management|Community support for API Management|Enterprise-grade 24/7 API Management support
+|GRAVITEE API MANAGEMENT|Basic Kafka connector|Yes|Yes
+|GRAVITEE API MANAGEMENT|Advanced Kafka connector (coming in v3.20)|No|Yes
+|GRAVITEE API MANAGEMENT|Subscription message filtering for Kafka use cases (coming in v3.20)|No|Yes
+|GRAVITEE API MANAGEMENT|Engineer-to-engineer support for production and non-production Gateways|No|Yes
+|GRAVITEE API MANAGEMENT|The ability to mask data captured in logs via the Data masking plugin and policy|No|Yes
+|GRAVITEE API MANAGEMENT|The ability to push extra metrics in addition to the natively provided request metrics using the Assign metrics policy|No|Yes
+|GRAVITEE API MANAGEMENT|Full future support for asynchronous APIs and protocols and event-driven APIs, which includes (but may not be limited to) support for MQTT (coming in v3.20), Webhook, Websocket, and SSE|No|Yes
+|GRAVITEE API MANAGEMENT|Support for policy application at the message level for asynchronous APIs and event-driven APIs (coming in v3.20)|No|Yes
+|GRAVITEE API MANAGEMENT|Customer Success Services|No|Yes
+|GRAVITEE ACCESS MANAGEMENT|Gravitee Access Management (AM)|Yes|Yes
+|GRAVITEE ACCESS MANAGEMENT|A large set of Gravitee AM plugins|Yes|Yes
+|GRAVITEE ACCESS MANAGEMENT|Basic MFA|Yes|Yes
+|GRAVITEE ACCESS MANAGEMENT|MFA with FIDO2|No|Yes
+|GRAVITEE ACCESS MANAGEMENT|Adaptive, risk-based MFA|No|Yes
+|GRAVITEE ACCESS MANAGEMENT|Support|Community AM support|Enterprise-grade 24/7 AM support
+|GRAVITEE ACCESS MANAGEMENT|The ability to authenticate users and retrieve their information from your Enterprise CAS server via the CAS Identity Provider plugin|No|Yes
+|GRAVITEE ACCESS MANAGEMENT|The ability to identify a user using a Kerberos login/password form or using the SPENGO protocol via the Kerberos Identity plugin|No|Yes
+|GRAVITEE ACCESS MANAGEMENT|Full support for SAML 2.0 via the SAML 2.0 Identity Provider plugin|No|Yes
+|GRAVITEE link:https://docs.gravitee.io/am/current/am_overview_introduction.html[ALERT ENGINE^] - an EE module you can use to monitor, analyze, and prevent incidents such as SLA breaches or spikes in traffic happening in the future|Implement true, API-level observability and monitoring|No|Yes (to activate AE in APIM and/or AM, you need to apply an link:{{ '/ee/ee_license.html' | relative_url }}[EE license] to your APIM/AM installation)
+|GRAVITEE link:https://docs.gravitee.io/am/current/am_overview_introduction.html[ALERT ENGINE^]|Configure custom alerting mechanisms|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|GRAVITEE link:https://docs.gravitee.io/am/current/am_overview_introduction.html[ALERT ENGINE^]|Adaptive alerting that is triggered whenever|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|GRAVITEE link:https://docs.gravitee.io/am/current/am_overview_introduction.html[ALERT ENGINE^]|Adaptive MFA (an EE AM feature) is triggered for more pin-point alerting|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|GRAVITEE link:https://www.gravitee.io/platform/api-designer[API DESIGNER^] - our no-code graphical drag-and-drop tool that enables you to build scalable API designs quickly and elegantly with a design-first approach that reduces time spent translating business requirements into high-quality API definitions|Drag-and-drop API Design tool|Free to use with CE, with a limitation of one active design at any given time|Options to remove the one-design limitation with EE - link:https://www.gravitee.io/contact-us[contact us^] for more info
+|GRAVITEE link:https://www.gravitee.io/platform/api-designer[API DESIGNER^]|One-click publishing|Free to use with CE, with a limitation of one active design at any given time|Options to remove the one-design limitation with EE - link:https://www.gravitee.io/contact-us[contact us^] for more info
+|GRAVITEE link:https://www.gravitee.io/platform/cockpit[COCKPIT^]|Cockpit is a centralized, multi-environment tool for managing all your Gravitee API Management and Access Management installations in a single place|Free to trial with CE, with a limitation of up to two environments per user|Options to remove the two-environments limitation with EE - link:https://www.gravitee.io/contact-us[contact us^] for more info
+|GRAVITEE ADVANCED ENVIRONMENT MANAGEMENT|The ability to connect unlimited Gravitee APIM environments and installations under one umbrella|No|Yes
+|GRAVITEE ADVANCED ENVIRONMENT MANAGEMENT|Connect unlimited Gravitee APIM environments and installations under one umbrella|No|Yes
+|GRAVITEE ADVANCED ENVIRONMENT MANAGEMENT|Promote APIs across various environments|No|Yes
+|GRAVITEE ADVANCED ENVIRONMENT MANAGEMENT|Keep oversight around availability and health of Gravitee deployments and Gateways|No|Yes
+|GRAVITEE API SECURITY|Advanced anomaly detection (coming in v3.20)|No|Yes
+|GRAVITEE API SECURITY|OpenAPI spec compliance (coming in v3.20)|No|Yes
+|GRAVITEE API SECURITY|API inventory and lineage (coming in v3.20)|No|Yes
+|GRAVITEE API SECURITY|Security ratings (coming in v3.20)|No|Yes
+|EE PLUGINS FOR APIM|link:https://docs.gravitee.io/apim/3.x/apim_policies_data_logging_masking.html[Data Logging Masking Policy^]|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|EE PLUGINS FOR APIM|link:https://docs.gravitee.io/apim/3.x/apim_policies_assign_metrics.html[Assign Metrics Policy^]|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
 
-NOTE: Any EE modules and plugins that require an EE license must be downloaded separately as they are not part of the main distribution bundles for APIM and AM. See the link:{{ '/ee/ee_installation.html' | relative_url }}[EE Installation page] for details.
+|EE PLUGINS FOR AM|link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_http.html[HTTP Flow Identity Provider]|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|EE PLUGINS FOR AM|link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_cas.html[CAS Identity Provider^] (now shipped separately like all other EE plugins)|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|EE PLUGINS FOR AM|link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_kerberos.html[Kerberos Identity Provider^] (now shipped separately like all other EE plugins)|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|EE PLUGINS FOR AM|link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_saml2.html[SAML 2.0 Identity Provider^]|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|EE PLUGINS FOR AM|link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_fido2.html[MFA with FIDO2^]|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|EE PLUGINS FOR AM|link:https://docs.gravitee.io/am/current/am_userguide_mfa_risk_based.html[Risk-based MFA^]|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|EE PLUGINS FOR AM|link:https://docs.gravitee.io/am/current/am_userguide_alerts_overview.html[Alerts^] (de facto the option to integrate the link:https://docs.gravitee.io/am/current/am_overview_introduction.html[Alert Engine^] EE module in AM)|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|===
+
+
+NOTE: Any EE capabilities, modules, and plugins that require an EE license must be downloaded separately as they are not part of the main distribution bundles for APIM and AM. See the link:{{ '/ee/ee_installation.html' | relative_url }}[EE Installation page] for details.
 
 NOTE: APIM and AM documentation pages describing EE features are marked with an orange "Enterprise feature" label at the top of the page.
 
-== Other tools to consider
-
-Gravitee link:https://www.gravitee.io/platform/cockpit[Cockpit^] is a centralized, multi-environment tool for managing all your Gravitee API Management and Access Management installations in a single place. You can link:https://cockpit.gravitee.io/register[register^] and use Cockpit for free as part of the Community Edition, with a limitation of up to two environments per user. However, you can link:https://www.gravitee.io/contact-us[upgrade^] to a link:https://www.gravitee.io/pricing[paid Enterprise Edition plan^] to unlock more environments and use Cockpit as an Enterprise-grade tool for production.
-
-Similarly, Gravitee link:https://www.gravitee.io/platform/api-designer[API Designer^] - our no-code graphical drag-and-drop tool that enables you to build scalable API designs quickly and elegantly with a design-first approach that reduces time spent translating business requirements into high-quality API definitions - is free to use with the Community Edition, with a limitation of one active design at any given time. link:https://www.gravitee.io/contact-us[Contact us^] if you need to remove this limitation by upgrading to a link:https://www.gravitee.io/pricing[paid Enterprise Edition plan^].
-
-Learn more about EE link:{{ '/ee/ee_version.html' | relative_url }}[versioning], link:{{ '/ee/ee_installation.html' | relative_url }}[installation], and link:{{ '/ee/ee_license.html' | relative_url }}[licensing].
+Read more about EE link:{{ '/ee/ee_version.html' | relative_url }}[versioning], link:{{ '/ee/ee_installation.html' | relative_url }}[installation], and link:{{ '/ee/ee_license.html' | relative_url }}[licensing].
 
 link:https://www.gravitee.io/demo[Get in touch^] with us to learn more!
