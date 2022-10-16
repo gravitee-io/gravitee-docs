@@ -53,6 +53,8 @@ kubectl get crd
 
 After GKO deployment, it is time to try out the GKO functionality by creating CRDs and testing your API via and API call from the API Gateway.
 
+NOTE: Before you start, ensure that the `services.sync.kubernetes` property is enabled (set to `true`) in the link:https://github.com/gravitee-io/gravitee-api-management/blob/master/gravitee-apim-gateway/gravitee-apim-gateway-standalone/gravitee-apim-gateway-standalone-distribution/src/main/resources/config/gravitee.yml#L264[`gravitee.yml`^] file. For more information, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html#prerequisites' | relative_url }}[How to try out the GKO after deployment].
+
 The process involves the following stages:
 
 1. Create a Management Context custom resource.
@@ -103,6 +105,8 @@ For full details on creating an API Definition custom resource, see link:{{ '/ap
 
 
 === STEP 3: Test the new API by calling it through the APIM Gateway
+
+NOTE: For the Gateway to work with the GKO, ensure that the `services.sync.kubernetes` property is enabled (set to `true`) in the link:https://github.com/gravitee-io/gravitee-api-management/blob/master/gravitee-apim-gateway/gravitee-apim-gateway-standalone/gravitee-apim-gateway-standalone-distribution/src/main/resources/config/gravitee.yml#L264[`gravitee.yml`^] file. For more information, see the prerequisites section in link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html#prerequisites' | relative_url }}[How to try out the GKO after deployment].
 
 To test the API, you can call it through the APIM Gateway by running the following command using your APIM Gateway URL:
 
