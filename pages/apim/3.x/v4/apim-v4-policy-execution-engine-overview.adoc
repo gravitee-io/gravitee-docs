@@ -1,11 +1,12 @@
-[[apim-event-native-api-management-overview]]
-= Gravitee Event-native API Management (BETA)
+[[apim-v4-policy-execution-engine-overview]]
+= V4 Policy Execution Engine [BETA]
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_event_native_api_management_overview.html
-:page-folder: apim/event-native
+:page-permalink: apim/3.x/apim_v4_policy_execution_engine_overview.html
+:page-folder: apim/v4
 :page-layout: apim3x
 
 [label label-version]#New in version 3.19.0#
+[label label-version]#BETA release#
 
 == New V4 policy execution mode (BETA)
 
@@ -82,6 +83,13 @@ The following security policies have been implemented in version 3.19.0:
 
 A dual execution mode enables users to smoothly transition their APIs to the new execution engine, and to configure a default behavior at platform level and override it for each API level.
 
+== No UI yet
+
+<to do>
+
+== Use cases
+
+<to do>
 
 == Future planned features
 
@@ -98,3 +106,9 @@ The GA release of the V4 policy execution engine will provide the following addi
 ** XML to JSON: transform XML content to JSON content.
 ** XML/JSON and JSON/JSON message transformation.
 ** Serialization and deserialization capabilities for Avro and Protobuff.
+
+== Read next
+
+* link:{{ '/apim/3.x/apim_v4_policy_execution_engine_evolution.html' | relative_url }}[Evolution from the existing V3 policy execution engine]
+* link:{{ '/apim/3.x/apim_v4_policy_execution_engine_activate_mode.html' | relative_url }}[Activating/deactivating the new V4 policy execution engine mode]
+* link:{{ '/apim/3.x/apim_event_native_api_management_introduction.html' | relative_url }}[Introduction to Event-native API Management]

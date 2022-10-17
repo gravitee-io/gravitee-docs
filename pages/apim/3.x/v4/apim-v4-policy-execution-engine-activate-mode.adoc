@@ -1,11 +1,12 @@
-[[apim-event-native-api-management-activate-mode]]
-= Activating/deactivating the new execution engine mode
+[[apim-v4-policy-execution-engine-activate-mode]]
+= Activating/deactivating the new V4 policy execution engine mode
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/apim_event_native_api_management_activate_mode.html
-:page-folder: apim/event-native
+:page-permalink: apim/3.x/apim_v4_policy_execution_engine_activate_mode.html
+:page-folder: apim/v4
 :page-layout: apim3x
 
 [label label-version]#New in version 3.19.0#
+[label label-version]#BETA release#
 
 To activate the new policy execution engine mode, you must enable it in the `gravitee.yml` file using the following new keys:
 

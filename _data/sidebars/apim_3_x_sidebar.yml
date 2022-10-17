@@ -752,18 +752,21 @@ entries:
                     output: web
                     url: /apim/3.x/apim_kubernetes_controller_admission_hook.html
 
-      - title: Event-native API Management [BETA]
+      - title: V4 Policy Execution Engine [BETA]
         output: web
         folderitems:
-          - title: Overview
+          - title: V4 policy execution engine overview
             output: web
-            url: /apim/3.x/apim_event_native_api_management_overview.html
-          - title: Evolution from the existing V3 execution engine mode
+            url: /apim/3.x/apim_v4_policy_execution_engine_overview.html
+          - title: Evolution from the existing V3 policy execution engine
             output: web
-            url: /apim/3.x/apim_event_native_api_management_evolution.html
-          - title: Activating/deactivating the new execution engine mode
+            url: /apim/3.x/apim_v4_policy_execution_engine_evolution.html
+          - title: Activating/deactivating the new V4 policy execution engine mode
             output: web
-            url: /apim/3.x/apim_event_native_api_management_activate_mode.html
+            url: /apim/3.x/apim_v4_policy_execution_engine_activate_mode.html
+          - title: Introduction to Event-native API Management
+            output: web
+            url: /apim/3.x/apim_event_native_api_management_introduction.html
 
       - title: API Reference
         output: web
