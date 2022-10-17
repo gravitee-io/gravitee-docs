@@ -20,7 +20,26 @@ The process involves the following stages:
 
 == Prerequisites
 
-Before you start, ensure that the GKO has been successfully link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[deployed] on your Kubernetes cluster.
+Before you start:
+
+. Ensure that the GKO has been successfully link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[deployed] on your Kubernetes cluster.
+. Ensure that the `services.sync.kubernetes` property is enabled (set to `true`) in the link:https://github.com/gravitee-io/gravitee-api-management/blob/master/gravitee-apim-gateway/gravitee-apim-gateway-standalone/gravitee-apim-gateway-standalone-distribution/src/main/resources/config/gravitee.yml#L264[`gravitee.yml`^] file. This setting is disabled by default. This step is required for the Gateway to be enabled to work with a Kubernetes Operator. The configuration depends on how the Gateway is deployed:
+* If your Gateway is deployed via a helm chart, you can enable the kubernetes operator option link:{{ '/apim/3.x/apim_installguide_kubernetes.html#gravitee_gateway' | relative_url }}[through helm values].
+* For link:{{ '/apim/3.x/apim_installguide.html' | relative_url }}[other deployment strategies] (for example, deployment via a VM), you can update the configuration directly in the `gravitee.yml` file or by using an environment variable: `GRAVITEE_SERVICES_SYNC_KUBERNETES=true`.
++
+The `gravitee.yml` file value is listed below:
++
+https://github.com/gravitee-io/gravitee-api-management/blob/master/gravitee-apim-gateway/gravitee-apim-gateway-standalone/gravitee-apim-gateway-standalone-distribution/src/main/resources/config/gravitee.yml#L264
++
+----
+# [Alpha] Enable Kubernetes Synchronization
+# This sync service requires to install Gravitee Kubernetes Operator
+#    kubernetes:
+#      enabled: false
+----
++
+See the link:https://docs.gravitee.io/apim/3.x/apim_installguide_gateway_configuration.html[Configure APIM Gateway] section for more information on using environment variables in Gateway configurations.
+
 
 == Trying out the GKO functionality
 
