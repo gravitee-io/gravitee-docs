@@ -130,8 +130,6 @@ products:
   ae:
     version: 1.6.1
     name: Gravitee.io Alert Engine (AE)
-  cli:
-    version: 0.3
 
 asciidoc: {}
 asciidoctor:
@@ -146,4 +144,3 @@ asciidoctor:
     - source-highlighter=rouge
     - rouge-css=class
     - stylesdir=css
-
