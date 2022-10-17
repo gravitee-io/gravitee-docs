@@ -71,10 +71,12 @@ The Gravitee Enterprise Edition includes everything from the Community Edition p
 |EE PLUGINS FOR AM|link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_cas.html[CAS Identity Provider^] (now shipped separately like all other EE plugins)|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
 |EE PLUGINS FOR AM|link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_kerberos.html[Kerberos Identity Provider^] (now shipped separately like all other EE plugins)|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
 |EE PLUGINS FOR AM|link:https://docs.gravitee.io/am/current/am_userguide_enterprise_identity_provider_saml2.html[SAML 2.0 Identity Provider^]|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|EE PLUGINS FOR AM|link:https://docs.gravitee.io/am/current/am_devguide_protocols_saml2_configuration.html[Gateway Handler SAML IDP - Enable SAML 2.0 Identity Provider support^]|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
 |EE PLUGINS FOR AM|link:https://docs.gravitee.io/am/current/am_userguide_mfa_factors_fido2.html[MFA with FIDO2^]|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
 |EE PLUGINS FOR AM|link:https://docs.gravitee.io/am/current/am_userguide_mfa_risk_based.html[Risk-based MFA^]|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|EE PLUGINS FOR AM|https://github.com/gravitee-io/gravitee-am-resource-http-factor[Resource HTTP Factor^] (no public documentation available yet - you need an link:{{ '/ee/ee_license.html' | relative_url }}[EE license] to access this private repository)|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
+|EE PLUGINS FOR AM|https://github.com/gravitee-io/gravitee-am-factor-otp-sender[Factor OTP Sender^] (no public documentation available yet - you need an link:{{ '/ee/ee_license.html' | relative_url }}[EE license] to access this private repository)|No|Yes (requires an link:{{ '/ee/ee_license.html' | relative_url }}[EE license])
 |===
-
 
 NOTE: Any EE capabilities, modules, and plugins that require an EE license must be downloaded separately as they are not part of the main distribution bundles for APIM and AM. See the link:{{ '/ee/ee_installation.html' | relative_url }}[EE Installation page] for details.
 
