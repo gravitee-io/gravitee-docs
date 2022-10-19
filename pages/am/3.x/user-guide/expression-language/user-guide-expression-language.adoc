@@ -164,6 +164,28 @@ This expression will return a UserProperties object with following attributes:
 
 NOTE: As you may have noticed, `claims` and `additionalInformation` contain the same data. Depending on the place where the Expression Language is defined, the `claims` attribute may not be accessible whereas the `additionalInformation` attribute will always be present.
 
+==== Context attributes
+
+The Context attributes contain all the information you can add to AM Flows using policies. 
+
+* You can use the `authFlow` attribute to accumulate information across the authentication flow thanks to the Enrich Authentication Flow Policy. 
+* The `authFlow.requestParameters` attribute contains the request parameters defined using the link:https://datatracker.ietf.org/doc/html/rfc9126[PAR specification].  
+
+.`Context attributes` information
+[cols="1,2,2"]
+|===
+|Attribute |Description |Syntax
+
+| authFlow
+| Map of data managed by the Enrich Authentication Flow.
+| {#context.attributes['authFlow']['my-data']}
+
+| authFlow.requestParameters
+| Parameters provided through PAR specification
+| {#context.attributes['authFlow']['requestParameters']['scope']}
+
+|===
+
 === Add information into the EL context
 
 Thanks to the flows and policies, you can add attributes to the context.
