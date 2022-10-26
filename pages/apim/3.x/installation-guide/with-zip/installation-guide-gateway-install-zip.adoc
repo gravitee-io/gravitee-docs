@@ -30,6 +30,17 @@ reporting and analytics. See the vendor documentation for supported versions.
 NOTE: You can download MongoDB from https://www.mongodb.org/downloads#production[MongoDB Download Site, window=\"_blank\"]
 and Elasticsearch from https://www.elastic.co/downloads/elasticsearch[Elastic Download Site, window=\"_blank\"]
 
+=== Gateway / Control Plane version compatibility matrix
+
+The table below shows which Control Plane and Gateway versions are compatible based on the APIM version used:
+
+[width="100%",cols="30%,30%,30%",frame="topbot",options="header"]
+|======================
+|Component |Only identical CP & GW versions in range are compatible |Any CP & GW versions in range are compatible
+|Control Plane (CP) version |prior to 3.15.16 |from 3.15.16 to 3.19.1
+|Gateway (GW) version |prior to 3.15.16 |from 3.15.16 to 3.19.1
+|======================
+
 == Download and extract the `.zip` archive
 
 Note that the archive includes the binaries for all the APIM components, so if you previously downloaded it to install another component, you do not need to download it again.

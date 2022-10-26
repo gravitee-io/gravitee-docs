@@ -20,6 +20,17 @@ The following diagram shows a typical hybrid APIM architecture:
 .Deployment architecture
 image::{% link images/apim/3.x/installation/hybrid/hybrid_deployment_architecture.png %}[Hybrid deployment architecture]
 
+== Gateway / Control Plane version compatibility matrix
+
+The table below shows which Control Plane and Gateway versions are compatible based on the APIM version used:
+
+[width="100%",cols="30%,30%,30%",frame="topbot",options="header"]
+|======================
+|Component |Only identical CP & GW versions in range are compatible |Any CP & GW versions in range are compatible
+|Control Plane (CP) version |prior to 3.15.16 |from 3.15.16 to 3.19.1
+|Gateway (GW) version |prior to 3.15.16 |from 3.15.16 to 3.19.1
+|======================
+
 == Configuration
 
 For APIM Gateway to work in this setup, you need two components:
