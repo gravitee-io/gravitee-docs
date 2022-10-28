@@ -16,7 +16,7 @@ You can create multiple Management Contexts, each targeting a specific environme
 
 A Management Context can authenticate to your management API instance by using either basic authentication or a bearer token.
 
-NOTE: If both credentials and a bearer token are defined in your custom resource, the basic auth credentials will take precedence.
+NOTE: If both credentials and a bearer token are defined in your custom resource, the bearer token will take precedence.
 
 == Examples
 
