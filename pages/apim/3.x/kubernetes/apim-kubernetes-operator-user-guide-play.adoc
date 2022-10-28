@@ -112,8 +112,6 @@ The Management Context resource has now been created.
 
 The next step is to create an API Definition (`ApiDefinition`) custom resource.
 
-WARNING: Due to a known issue, you should not create an `ApiDefinition` before you define the relevant `ManagementContext` resource. Gravitee engineers are working to fix this issue soon in a future GKO release so that this dependency is removed.
-
 NOTE: Read more about the API Definition custom resource link:{{ '/apim/3.x/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[here] and link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html' | relative_url }}[here].
 
 To do so, you need a YAML file with the desired API Definition configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:

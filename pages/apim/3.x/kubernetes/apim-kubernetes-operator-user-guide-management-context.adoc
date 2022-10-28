@@ -16,8 +16,6 @@ You can create multiple Management Contexts, each targeting a specific environme
 
 A Management Context can authenticate to your management API instance by using either basic authentication or a bearer token.
 
-WARNING: Due to a known issue, you should not create an `ApiDefinition` before you define the relevant `ManagementContext` resource. Gravitee engineers are working to fix this issue soon in a future GKO release so that this dependency is removed.
-
 NOTE: If both credentials and a bearer token are defined in your custom resource, the basic auth credentials will take precedence.
 
 == Examples
