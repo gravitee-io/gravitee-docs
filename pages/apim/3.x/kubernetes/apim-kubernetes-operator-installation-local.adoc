@@ -31,6 +31,7 @@ Before you start, you need to have the following software set up and running on 
 * link:https://www.docker.com/[Docker^]
 * link:https://kubernetes.io/docs/tasks/tools/#kubectl[kubectl^]
 * link:https://helm.sh/docs/intro/install/[Helm^]
+* link:https://nodejs.org/en/download/[Node.js^]
 * link:https://curl.se/[curl^] in case you do not have it already - to check, type `curl -V` in your command-line tool
 * A standard command-line tool of your choice
 
@@ -42,7 +43,7 @@ NOTE: The GKO GitHub repository is public and available link:https://github.com/
 To create a local APIM-ready Kubernetes cluster, run the following command:
 
 ....
-curl -i https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/scripts/k3d.sh | bash
+curl -s https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/scripts/k3d.mjs | npx zx
 ....
 
 This operation may take a few minutes to complete.
