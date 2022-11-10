@@ -4,10 +4,22 @@
 :page-folder: am/user-guide
 :page-layout: am
 
-AM can be customized to suit your organization's brand requirements and user expectations.
-AM branding gives you a consistent user experience when navigating between customer applications and AM server.
+== Overview
 
-You can create customized templates for individual applications or across all applications in a security domain.
+Since the dawn of centralized IAM, modern apps have moved away from logins directly in the app, so it is critically important to offer a consistent user experience when redirecting users to the login scenarios in AM. Users should feel confindent and secure and an inconsistent or unclear user experience might affect your organization's customer retention and reputation
+
+AM enables you to customize the look and feel of the end-user forms displayed in the various flows - such as login, password reset, and user registration. AM also allows you to customize the look and feel of emails that are sent out to end users, giving you full flexibility to apply the relevant graphical user experience.
+
+Extending the branding AM also enables you to leverage context variables and use these in your forms. You can find more information on how to unleash this power in the 'Execution context' sections listed below.
+
+* link:{{ '/am/current/am_userguide_user_management_forms.html#execution_context' | relative_url }}[Execution context for Custom pages]
+* link:{{ '/am/current/am_userguide_branding_email_templates.html#execution_context' | relative_url }}[Execution context for Custom email templates]
+
+== Branding on different levels
+
+To fully tend to your application branding and user experience, AM enables you to customize forms either on link:{{ '/am/current/am_userguide_security_domains.html' | relative_url }}[Security domain level] or on link:{{ '/am/current/am_userguide_clients.html' | relative_url }}[Application level]. This addresses cases where some applications can be fine with relying on your overall company branding but others may be in need of a more custom branding touch.
+
+== How to customize?
 
 For more information on customizing templates, see the following sections:
 
