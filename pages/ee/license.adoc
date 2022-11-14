@@ -30,20 +30,16 @@ Provide the content of the license file directly in `Base64` format using an env
 
 ....
 spec:
-
-containers:
-
-name: ONE_OF_GRAVITEE_EE_PRODUCTS
-image: GRAVITEE_IMAGE
-
-env:
-
-name: license.key
-valueFrom:
-secretKeyRef:
-name: graviteeio-license
-key: license.key
-optional: false # same as default; "mysecret" must exist
+  containers:
+  - name: ONE_OF_GRAVITEE_EE_PRODUCTS
+    image: GRAVITEE_IMAGE
+    env:
+    - name: license.key
+      valueFrom:
+        secretKeyRef:
+          name: graviteeio-license
+          key: license.key
+          optional: false # same as default; "mysecret" must exist
 ....
 
 For more information, see the link:https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container[Kubernetes documentation^].
@@ -87,18 +83,19 @@ For example:
 
 ....
 spec:
-containers:
-...
-volumeMounts:
-- name: graviteeio-license
-mountPath: "/opt/graviteeio-am-management-api/license"
-readOnly: true
-volumes:
+  containers:
 
-name: graviteeio-license
-secret:
-secretName: graviteeio-license
-optional: false # default setting; "mysecret" must exist
+# ...
+
+    volumeMounts:
+    - name: graviteeio-license
+      mountPath: "/opt/graviteeio-am-management-api/license"
+      readOnly: true
+  volumes:
+  - name: graviteeio-license
+    secret:
+      secretName: graviteeio-license
+      optional: false # default setting; "mysecret" must exist
 ....
 
 ==== Using Helm
@@ -110,37 +107,41 @@ The example below shows the contents of a simple `values.yaml` file that you can
 ....
 
 api:
-...
-env:
-- name: gravitee_services_notifier_enabled
-value: "true"
-...
 
-extraVolumeMounts: |
-- name: graviteeio-license
-mountPath: /opt/graviteeio-am-management-api/license
-readOnly: true
-extraVolumes: |
-- name: graviteeio-license
-secret:
-secretName: graviteeio-license
+# ...
+
+    env:
+    - name: gravitee_services_notifier_enabled
+      value: "true"
+# ...
+
+    extraVolumeMounts: |
+      - name: graviteeio-license
+        mountPath: /opt/graviteeio-am-management-api/license
+        readOnly: true
+        extraVolumes: |
+      - name: graviteeio-license
+        secret:
+          secretName: graviteeio-license
 
 gateway:
-...
 
-env:
-- name: GIO_MIN_MEM
-value: 256m
-.....
-extraVolumeMounts: |
-- name: graviteeio-license
-mountPath: /opt/graviteeio-am-gateway/license
-readOnly: true
-extraVolumes: |
-- name: graviteeio-license
-secret:
-secretName: graviteeio-license
+# ...
 
+    env:
+    - name: GIO_MIN_MEM
+      value: 256m
+
+# ...
+
+    extraVolumeMounts: |
+      - name: graviteeio-license
+        mountPath: /opt/graviteeio-am-gateway/license
+        readOnly: true
+        extraVolumes: |
+      - name: graviteeio-license
+        secret:
+          secretName: graviteeio-license
 ....
 
 
