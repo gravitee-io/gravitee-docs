@@ -318,7 +318,7 @@ You can also use the Expression Language to set a condition of execution (see 'c
 
 WARNING: Using this construct in a mock policy where the header is not available returns a `500` error because of a header `null` value.
 
-TIP: An alternative method is to use `equals` instead of `==` - for example, if you are using an older version of APIM that may throw an error with a construction as shown in the example above. When you use `equals`, ensure that you put the string first - for example: `'my-value'.equals(#request.headers['my-header'][0])`.
+TIP: An alternative method is to use `equals` instead of `==` - for example, if you are using an older version of APIM that may throw an error with a construct like in the example above. When you use `equals`, ensure that you put the string first - for example: `'my-value'.equals(#request.headers['my-header'][0])`.
 
 
 == Template evaluation error
