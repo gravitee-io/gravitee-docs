@@ -312,9 +312,14 @@ is based on an API property named `my-property`:
 
 == Conditions
 
-Expression language can also be used to set condition of execution [see conditional policies & flows conditions] and it is possible use logical operator as `&&` or `||` :
+You can also use the Expression Language to set a condition of execution (see 'conditional policies and flows conditions') and it is possible to use logical operators such as `&&` or `||`, as shown in the example below:
 
-`{#request.headers['my-header'] != null && #request.headers['my-header'][0].equals("my-value")}`
+`{#request.headers['my-header'] != null && #request.headers['my-header'][0] == "my-value"}`
+
+WARNING: Using this construct in a mock policy where the header is not available returns a `500` error because of a header `null` value.
+
+TIP: An alternative method is to use `equals` instead of `==` - for example, if you are using an older version of APIM that may throw an error with a construction as shown in the example above. When you use `equals`, ensure that you put the string first - for example: `'my-value'.equals(#request.headers['my-header'][0])`.
+
 
 == Template evaluation error
 
