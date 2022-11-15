@@ -89,3 +89,14 @@ If they already have consented to these, you can simply add those inputs as `hid
     <input class="mdl-checkbox__input" type="hidden" value="on" id="uc_geoip" name="uc_geoip">
     <input class="mdl-checkbox__input" type="hidden" value="on" id="uc_ua" name="uc_ua">
 ```
+
+From **3.18.6** implicit user consent can be activated via **gravitee.yml** file in the gateway side.
+In the **consent** section of the yml file variable **ip** and **user-agent** is introduced for collecting user consent implicitly.
+Here is an example of how the variables can be set in the **gravitee.yml** file:
+
+[source,yaml]
+----
+consent:
+  ip: true
+  user-agent: true
+----
