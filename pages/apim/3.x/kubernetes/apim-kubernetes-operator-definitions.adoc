@@ -10,7 +10,7 @@
 
 == Overview
 
-The Gravitee Kubernetes Operator comes with two Custom Resource Definitions (CRDs) - `ManagementContext` and `ApiDefinition`.
+The Gravitee Kubernetes Operator comes with three Custom Resource Definitions (CRDs) - `ManagementContext`, `ApiDefinition`, and `ApiResource`.
 
 
 == `ManagementContext`
@@ -163,7 +163,7 @@ NOTE: Read more about `ApiDefinition` link:{{ '/apim/3.x/apim_kubernetes_operato
 
 == `ApiResource`
 
-You can use the GKO to create reusable link:{{ '/apim/3.x/apim_resources_overview.html' | relative_url }}[API resources] by applying the `ApiResource` custom resource definition. This enables you to define resources such as cache or authentication providers once only and maintain them in a single place, and then reuse them in multiple APIs - any further updates to such a resource will be automatically propagated to all APIs containing a reference to that resource.
+The `ApiResource` custom resource allows you to use the GKO to create reusable link:{{ '/apim/3.x/apim_resources_overview.html' | relative_url }}[API resources] by applying the `ApiResource` custom resource definition. This enables you to define resources such as cache or authentication providers once only and maintain them in a single place, and then reuse them in multiple APIs - any further updates to such a resource will be automatically propagated to all APIs containing a reference to that resource.
 
 NOTE: Read more about `ApiResource` link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_reusable_resources.html' | relative_url }}[here].
 
