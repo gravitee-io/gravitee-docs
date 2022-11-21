@@ -10,7 +10,7 @@
 
 == Creating a reusable API resource
 
-The Kubernetes Operator can be used to create reusable link:https://docs.gravitee.io/apim/3.x/apim_resources_overview.html[API resources^] by applying the link:https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/docs/api/reference.md#apidefinitionspecresourcesindex[ApiResource CRD^] . This way, resources such as cache or authentication providers can be defined once and then reused in multiple APIs. Resources can then be updated in a single place and the changes will be propagated to all APIs holding a reference to them.
+You can use the GKO to create reusable link:{{ '/apim/3.x/apim_resources_overview.html' | relative_url }}[API resources] by applying the link:https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/docs/api/reference.md#apidefinitionspecresourcesindex[ApiResource CRD^]. This enables you to define resources such as cache or authentication providers once only and maintain them in a single place, and then reuse them in multiple APIs - any further resource changes will be automatically propagated to all APIs containing a reference to the updated resource(s).
 
 The example below shows a link:https://docs.gravitee.io/apim/3.x/apim_resources_cache_redis.html[redis cache resource^] that can be applied using the `ApiResource` CRD:
 
@@ -93,7 +93,7 @@ spec:
     enabled: true
 ----
 
-Resources can also be defined inline in your API definitions. The following API reuses the redis cache resource defined above, and defines an inlined in memory authentication provider:
+You can also define resources inline in your API definitions. The following API reuses the redis cache resource defined above, and defines inline an in-memory authentication provider:
 
 [,yaml]
 ----
@@ -127,4 +127,4 @@ spec:
   # ...
 ----
 
-NOTE: If an inlined resource contains a reference to a reusable resource (using the `ref` property), the reusable resource will take precedence over the inlined configuration.
+NOTE: If a resource defined inline contains a reference to a reusable resource (using the `ref` property), the reusable resource will take precedence over the inline configuration.
