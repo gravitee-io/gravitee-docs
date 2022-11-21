@@ -1,0 +1,12 @@
+= Breaking changes in 3.15.10
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_3.15.10.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+
+NOTE: To take advantage of these new features and incorporate these breaking changes, **use the migration guide available link:{{ '/am/current/am_installguide_migration.html' | relative_url }}[here]**.
+
+== ResetPassword HTTP Identity Provider
+
+If you are using `HTTPIdentityProvider` with `UserProvider` enabled, please note that this version introduces a new user password update method that is different from the existing `UpdateUser` one. As a result, to avoid errors during password updates, ensure that this endpoint is configured correctly.

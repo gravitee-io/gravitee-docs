@@ -119,8 +119,11 @@ You can use
 
 If they already have consented to these, you can simply add those inputs as `hidden` form fields
 ```html
-    <input class="mdl-checkbox__input" type="hidden" th:value="${my-param}"  id="uc_geoip" name="uc_geoip">
-    <input class="mdl-checkbox__input" type="hidden" th:value="${my-param}"  id="uc_ua" name="uc_ua">
+    <input class="mdl-checkbox__input" type="hidden" th:value="on"  id="uc_geoip" name="uc_geoip">
+    <input class="mdl-checkbox__input" type="hidden" th:value="on"  id="uc_ua" name="uc_ua">
 ```
 
 More information about this topic:  link:{{ '/am/current/am_userguide_mfa_risk_based.html#user_activity_and_consent' | relative_url }}[Risk-based MFA]
+
+NOTE: From **3.18.6** implicit user consent can be activated via **gravitee.yml** file in the gateway side.
+In the **consent** section of the yml file variable **ip** and **user-agent** is introduced for collecting user consent implicitly.

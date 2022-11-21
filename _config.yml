@@ -124,14 +124,12 @@ products:
     ee:
       version: 3.19.0
   am:
-    version: 3.19.0
+    version: 3.19.2
     ee:
-      version: 3.19.0
+      version: 3.19.2
   ae:
-    version: 1.6.1
+    version: 1.6.6
     name: Gravitee.io Alert Engine (AE)
-  cli:
-    version: 0.3
 
 asciidoc: {}
 asciidoctor:
@@ -146,4 +144,3 @@ asciidoctor:
     - source-highlighter=rouge
     - rouge-css=class
     - stylesdir=css
-

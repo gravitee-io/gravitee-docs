@@ -677,80 +677,59 @@ entries:
             output: web
             url: /apim/3.x/apim_policies_xslt.html
 
-      - title: Kubernetes Tools
+
+      - title: Kubernetes Operator [BETA]
         output: web
         folderitems:
-          - title: Overview
+          - title: Introduction
             output: web
-            url: /apim/3.x/apim_kubernetes_tools.html
+            url: /apim/3.x/apim_kubernetes_operator_overview.html
+          - title: Architecture
+            output: web
+            url: /apim/3.x/apim_kubernetes_operator_architecture.html
+          - title: Quick Start
+            output: web
+            url: /apim/3.x/apim_kubernetes_operator_quick_start.html
             subfolders:
-              - title: Kubernetes Operator [BETA]
+              - title: Installation and deployment
                 output: web
                 subfolderitems:
                   - title: Introduction
                     output: web
-                    url: /apim/3.x/apim_kubernetes_operator_overview.html
-                  - title: Architecture
+                    url: /apim/3.x/apim_kubernetes_operator_installation.html
+                  - title: Deploying GKO
                     output: web
-                    url: /apim/3.x/apim_kubernetes_operator_architecture.html
-                  - title: Quick Start
+                    url: /apim/3.x/apim_kubernetes_operator_installation_cluster.html
+                  - title: Setting up a local cluster for deployment
                     output: web
-                    url: /apim/3.x/apim_kubernetes_operator_quick_start.html
-                    subfolders:
-                      - title: Installation and deployment
-                        output: web
-                        subfolderitems:
-                          - title: Introduction
-                            output: web
-                            url: /apim/3.x/apim_kubernetes_operator_installation.html
-                          - title: Deploying GKO
-                            output: web
-                            url: /apim/3.x/apim_kubernetes_operator_installation_cluster.html
-                          - title: Setting up a local cluster for deployment
-                            output: web
-                            url: /apim/3.x/apim_kubernetes_operator_installation_local.html
-                      - title: User Guide
-                        output: web
-                        subfolderitems:
-                          - title: Introduction
-                            output: web
-                            url: /apim/3.x/apim_kubernetes_operator_user_guide.html
-                          - title: About custom resources (CRDs)
-                            output: web
-                            url: /apim/3.x/apim_kubernetes_operator_definitions.html
-                          - title: How to use the ManagementContext resource
-                            output: web
-                            url: /apim/3.x/apim_kubernetes_operator_user_guide_management_context.html
-                          - title: How to use the ApiDefinition resource
-                            output: web
-                            url: /apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html
-                          - title: How to sync CRDs with a Management API
-                            output: web
-                            url: /apim/3.x/apim_kubernetes_operator_user_guide_sync_crds.html
-                          - title: How to try out the GKO after deployment
-                            output: web
-                            url: /apim/3.x/apim_kubernetes_operator_user_guide_play.html
-                  - title: API reference
-                    output: web
-                    url: /apim/3.x/apim_kubernetes_operator_api_reference.html
-              - title: Kubernetes Controller
+                    url: /apim/3.x/apim_kubernetes_operator_installation_local.html
+              - title: User Guide
                 output: web
                 subfolderitems:
                   - title: Introduction
                     output: web
-                    url: /apim/3.x/apim_kubernetes_controller_overview.html
-                  - title: Quick Start
+                    url: /apim/3.x/apim_kubernetes_operator_user_guide.html
+                  - title: About custom resources (CRDs)
                     output: web
-                    url: /apim/3.x/apim_kubernetes_controller_quick_start.html
-                  - title: How to Install
+                    url: /apim/3.x/apim_kubernetes_operator_definitions.html
+                  - title: How to use the ManagementContext resource
                     output: web
-                    url: /apim/3.x/apim_kubernetes_controller_installation.html
-                  - title: Custom Resources
+                    url: /apim/3.x/apim_kubernetes_operator_user_guide_management_context.html
+                  - title: How to use the ApiDefinition resource
                     output: web
-                    url: /apim/3.x/apim_kubernetes_controller_custom_resources.html
-                  - title: Admission Hook
+                    url: /apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html
+                  - title: How to sync CRDs with a Management API
                     output: web
-                    url: /apim/3.x/apim_kubernetes_controller_admission_hook.html
+                    url: /apim/3.x/apim_kubernetes_operator_user_guide_sync_crds.html
+                  - title: How to try out the GKO after deployment
+                    output: web
+                    url: /apim/3.x/apim_kubernetes_operator_user_guide_play.html
+          - title: API reference
+            output: web
+            url: /apim/3.x/apim_kubernetes_operator_api_reference.html
+          - title: GKO changelog
+            output: web
+            url: apim/3.x/apim_kubernetes_operator_changelog.html
 
       - title: V4 Policy Execution Engine [BETA]
         output: web

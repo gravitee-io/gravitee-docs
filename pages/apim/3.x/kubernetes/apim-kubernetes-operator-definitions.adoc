@@ -12,8 +12,6 @@
 
 The Gravitee Kubernetes Operator comes with two Custom Resource Definitions (CRDs) - `ManagementContext` and `ApiDefinition`.
 
-WARNING: Due to a known issue, you should not create an `ApiDefinition` before you define the relevant `ManagementContext` resource. Gravitee engineers are working to fix this issue soon in a future GKO release so that this dependency is removed.
-
 
 == `ManagementContext`
 
@@ -164,10 +162,6 @@ spec:
 NOTE: Read more about `ApiDefinition` link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html' | relative_url }}[here].
 
 == CRD dependencies
-
-=== Order of CRD creation
-
-Due to a known issue, you should not create an `ApiDefinition` before you define the relevant `ManagementContext` resource. Gravitee engineers are working to fix this issue soon in a future GKO release so that this dependency is removed.
 
 === Resource deletion
 
