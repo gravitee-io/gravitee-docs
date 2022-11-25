@@ -731,6 +731,16 @@ entries:
             output: web
             url: apim/3.x/apim_kubernetes_operator_changelog.html
 
+      - title: Event-native API Management [BETA]
+        output: web
+        folderitems:
+          - title: Introduction
+            output: web
+            url: /apim/3.x/event_native_apim_overview.html
+          - title: Using Event-native API Management
+            output: web
+            url: /apim/3.x/event_native_apim_using.html
+
       - title: API Reference
         output: web
         folderitems:
