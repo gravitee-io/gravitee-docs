@@ -529,6 +529,95 @@ entries:
             output: web
             url: /apim/3.x/apim_devguide_policies.html
 
+      - title: Kubernetes Operator (BETA)
+        output: web
+        folderitems:
+          - title: Introduction
+            output: web
+            url: /apim/3.x/apim_kubernetes_operator_overview.html
+          - title: Architecture
+            output: web
+            url: /apim/3.x/apim_kubernetes_operator_architecture.html
+          - title: Quick Start
+            output: web
+            url: /apim/3.x/apim_kubernetes_operator_quick_start.html
+            subfolders:
+              - title: Installation and deployment
+                output: web
+                subfolderitems:
+                  - title: Introduction
+                    output: web
+                    url: /apim/3.x/apim_kubernetes_operator_installation.html
+                  - title: Deploying GKO
+                    output: web
+                    url: /apim/3.x/apim_kubernetes_operator_installation_cluster.html
+                  - title: Setting up a local cluster for deployment
+                    output: web
+                    url: /apim/3.x/apim_kubernetes_operator_installation_local.html
+              - title: User Guide
+                output: web
+                subfolderitems:
+                  - title: Introduction
+                    output: web
+                    url: /apim/3.x/apim_kubernetes_operator_user_guide.html
+                  - title: About custom resources (CRDs)
+                    output: web
+                    url: /apim/3.x/apim_kubernetes_operator_definitions.html
+                  - title: How to use the ManagementContext resource
+                    output: web
+                    url: /apim/3.x/apim_kubernetes_operator_user_guide_management_context.html
+                  - title: How to use the ApiDefinition resource
+                    output: web
+                    url: /apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html
+                  - title: How to sync CRDs with a Management API
+                    output: web
+                    url: /apim/3.x/apim_kubernetes_operator_user_guide_sync_crds.html
+                  - title: How to try out the GKO after deployment
+                    output: web
+                    url: /apim/3.x/apim_kubernetes_operator_user_guide_play.html
+          - title: API reference
+            output: web
+            url: /apim/3.x/apim_kubernetes_operator_api_reference.html
+          - title: GKO changelog
+            output: web
+            url: apim/3.x/apim_kubernetes_operator_changelog.html
+
+
+
+
+
+      - title: New Policy Execution Engine (V4 BETA)
+        output: web
+        folderitems:
+          - title: New policy execution engine overview (V4 BETA)
+            output: web
+            url: /apim/3.x/apim_v4_beta_new_policy_execution_engine_overview.html
+          - title: Evolution from the existing V3 policy execution engine (V4 BETA)
+            output: web
+            url: /apim/3.x/apim_v4_beta_new_policy_execution_engine_evolution.html
+          - title: How to activate/deactivate the new policy execution engine mode (V4 BETA)
+            output: web
+            url: /apim/3.x/apim_v4_beta_new_policy_execution_engine_activation.html
+          - title: New policy execution engine mode example (V4 BETA)
+            output: web
+            url: /apim/3.x/apim_v4_beta_new_policy_execution_engine_example.html
+
+
+
+
+      - title: Introduction to Event-native API Management (V4 BETA)
+        output: web
+        folderitems:
+          - title: Introduction to Event-native API Management (V4 BETA)
+            output: web
+            url: /apim/3.x/apim_v4_beta_event_native_api_management_introduction.html
+          - title: SME use case examples using a Postman collection (V4 BETA)
+            output: web
+            url: /apim/3.x/apim_v4_beta_event_native_api_management_sme_use_case_examples_postman.html
+
+
+
+
       - title: Policy Reference
         output: web
         folderitems:
@@ -676,76 +765,6 @@ entries:
           - title: XSLT
             output: web
             url: /apim/3.x/apim_policies_xslt.html
-
-
-      - title: Kubernetes Operator [BETA]
-        output: web
-        folderitems:
-          - title: Introduction
-            output: web
-            url: /apim/3.x/apim_kubernetes_operator_overview.html
-          - title: Architecture
-            output: web
-            url: /apim/3.x/apim_kubernetes_operator_architecture.html
-          - title: Quick Start
-            output: web
-            url: /apim/3.x/apim_kubernetes_operator_quick_start.html
-            subfolders:
-              - title: Installation and deployment
-                output: web
-                subfolderitems:
-                  - title: Introduction
-                    output: web
-                    url: /apim/3.x/apim_kubernetes_operator_installation.html
-                  - title: Deploying GKO
-                    output: web
-                    url: /apim/3.x/apim_kubernetes_operator_installation_cluster.html
-                  - title: Setting up a local cluster for deployment
-                    output: web
-                    url: /apim/3.x/apim_kubernetes_operator_installation_local.html
-              - title: User Guide
-                output: web
-                subfolderitems:
-                  - title: Introduction
-                    output: web
-                    url: /apim/3.x/apim_kubernetes_operator_user_guide.html
-                  - title: About custom resources (CRDs)
-                    output: web
-                    url: /apim/3.x/apim_kubernetes_operator_definitions.html
-                  - title: How to use the ManagementContext resource
-                    output: web
-                    url: /apim/3.x/apim_kubernetes_operator_user_guide_management_context.html
-                  - title: How to use the ApiDefinition resource
-                    output: web
-                    url: /apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html
-                  - title: How to sync CRDs with a Management API
-                    output: web
-                    url: /apim/3.x/apim_kubernetes_operator_user_guide_sync_crds.html
-                  - title: How to try out the GKO after deployment
-                    output: web
-                    url: /apim/3.x/apim_kubernetes_operator_user_guide_play.html
-          - title: API reference
-            output: web
-            url: /apim/3.x/apim_kubernetes_operator_api_reference.html
-          - title: GKO changelog
-            output: web
-            url: apim/3.x/apim_kubernetes_operator_changelog.html
-
-      - title: V4 Policy Execution Engine [BETA]
-        output: web
-        folderitems:
-          - title: V4 policy execution engine overview
-            output: web
-            url: /apim/3.x/apim_v4_policy_execution_engine_overview.html
-          - title: Evolution from the existing V3 policy execution engine
-            output: web
-            url: /apim/3.x/apim_v4_policy_execution_engine_evolution.html
-          - title: Activating/deactivating the new V4 policy execution engine mode
-            output: web
-            url: /apim/3.x/apim_v4_policy_execution_engine_activate_mode.html
-          - title: Introduction to Event-native API Management
-            output: web
-            url: /apim/3.x/apim_event_native_api_management_introduction.html
 
       - title: API Reference
         output: web

@@ -1,0 +1,116 @@
+[[apim-v4-beta-new-policy-execution-engine-overview]]
+= New Policy Execution Engine (V4 BETA)
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_v4_beta_new_policy_execution_engine_overview.html
+:page-folder: apim/v4-beta
+:page-layout: apim3x
+
+[label label-version]#New in version 3.19.0#
+[label label-version]#BETA release#
+
+== New policy execution mode (V4 BETA)
+
+Release 3.19.0 of the Gravitee API Management platform has introduced the first version (BETA) of a new policy execution engine that enables an improved execution flow for Sync APIs and supports event-driven policy execution for Async APIs. It is based on a modern and fully reactive architecture designed to address a number of challenges Gravitee users have been facing with the existing policy execution engine, available with the Gravitee's V3 API definition specification used in versions prior to APIM 3.19.x.
+
+The new policy execution engine builds on the new V4 BETA API definition foundation of Gravitee's event-native platform, which adds features such as native support for Pub/Sub (Publish-Subscribe) design and enabling policies at message level. The new V4 BETA event-native API definition makes it possible for the Gateway to “know” what is necessary in order for it to handle asynchronous API use cases (read more link:{{ '/apim/3.x/apim_v4_beta_event_native_api_management_introduction.html' | relative_url }}[here]).
+
+The new engine provides the following capabilities:
+
+* The ability to execute policies in the exact order in which they have been placed in Policy Studio. This addreses some issues experienced by users related to the order in which policies are executed by the V3 engine where policies interacting with the Head part of the request are always executed first, even when placed in a different order in the Policy Studio during the design phase. With the new execution engine, it is possible to apply logic on a head policy based on the payload of the request - for example, to apply dynamic routing based on the request payload.
+* Proper isolation between platform-level policies and API-level policies during policy execution. This ensures that platform-level policies are always executed prior to any API-level policies during the request stage, and after any API-level policies during the response stage.
+* Removal of the need to define a scope for policies (`onRequest`, `onRequestContent`, `onResponse`, `onResponseContent`).
+* The introduction of new API types to better differentiate REST APIs from Async APIs (Websocket, SSE, Webhook), as a foundation to fully support the execution of Async APIs.
+
+NOTE: This BETA release does not provide UI support for these capabilities. You can check out the new engine behaviour in this link:{{ '/apim/3.x/apim_v4_beta_new_policy_execution_engine_example.html' | relative_url }}[example page]. Going forward, some SME Async API use case examples using the V4 BETA event-native API management definition are available link:{{ '/apim/3.x/apim_v4_beta_event_native_api_management_sme_use_case_examples_postman.html' | relative_url }}[here].
+
+WARNING: The new policy execution engine mode has been released as a BETA version - it is not recommended using it in production until it is released as a GA version at the end of March 2023. The GA release will come with additional features - link:https://www.gravitee.io/contact-us[contact us] if you want to know more about it and what new features we are bringing to event-native API Management regarding Sync & Async APIs.
+
+== BETA Features
+
+The following features are available in the BETA release shipped with APIM 3.19.0.
+
+=== HTTP POST entrypoint
+
+The HTTP POST entrypoint is a Community Edition / OSS feature that enables external clients to publish data via standard HTTP POST requests and ease the ingestion of data into evented backends like Kafka.
+
+With this workflow, a client application running on HTTP can post content to the Gravitee Gateway. The Gateway can then take that content and push it over to Kafka as a message that Kafka can ingest. The Gravitee Gateway acts as a protocol mediation layer in this context. This enables API owners to quickly set up a sync-to-async integration.
+
+The diagram below shows the workflow for this use case:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-http-post.png %}[]
+
+The HTTP POST entrypoint can be used in combination with specific Async API endpoints in different ways, depending on what publish and subscribe mode actions are possible between the two when using a connector. This is demonstrated in the compatibility matrix table below:
+
+
+
+=== Support for Websocket and SSE entrypoints
+
+Support for Server-Sent Events (Enterprise Edition only) and Websocket (Community Edition/OSS) entrypoints are provided as separate plugins.
+
+NOTE: These plugins are expected shortly after the main 3.19 release and will be announced here when available.
+
+This feature enables you to front your event-driven backend - currently only using Kafka via the Gravitee Community Edition / OSS Kafka connector - with Websocket or Server-Sent Events (SSE) so that API consumers can access events from the Kafka backend via one of these more consumer-friendly protocols.
+
+For example, if an API consumer cannot connect to a native Kafka instance due to technical limitations (for example, if they cannot implement a Kafka client themselves), Kafka topics can be made available to that consumer via a more consumer-friendly protocol such as SSE or Websocket.
+
+The diagram below shows the workflow for this use case:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-event-consumption-streaming.png %}[]
+
+This feature enables you to potentially cover use cases in the fields of Event-Driven Architecture (EDA) and Internet of Things (IoT) without the Gateway and API Management components becoming a bottleneck.
+
+NOTE: In comparison to the link:{{ '#http_post_entrypoint' | relative_url }}[HTTP POST entrypoint use case] using Kafka (where the HTTP POST method is just about sending information from the client app to Kafka), with SSE and Websocket it is possible for the client app to receive information from Kafka as well.
+
+=== Webhook entrypoint
+
+This is an Enterprise Edition feature that enables you to front your backend with a link:https://en.wikipedia.org/wiki/Webhook[Webhook^].
+
+With Webhook support, an API consumer subscribes to the Webhook API, which basically indicates to the Gateway to listen for specific Kafka messages and then call the consumer to let them know that an expected event has occurred. This communication is performed via Webhook, however it is always up to the Gateway to push the events or messages to the consumer.
+
+The diagram below shows the workflow for this use case:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-event-consumption-webhook.png %}[]
+
+=== Security policies
+
+The following security policies have been implemented in version 3.19.0:
+
+* API Key - enforces API key checks during request processing (for security).
+* Keyless policy - does not block any requests as it considers them as valid by default.
+* JWT - generates a signed JWT with a configurable set of claims; this JWT can subsequently be forwarded to backend targets, or used in some other context.
+* OAuth - checks access token validity during request processing using token introspection (for security).
+
+
+=== Dual execution mode for the new execution engine
+
+A dual execution mode enables users to smoothly transition their APIs to the new execution engine, and to configure a default behavior at platform level and override it for each API level.
+
+== No UI yet
+
+<to do>
+
+== Use cases
+
+<to do>
+
+== Future planned features
+
+The GA release of the V4 policy execution engine will provide the following additional features:
+
+* Advanced Kafka connector (as an EE feature).
+* Support for more backend connector types, such as MQTT and Kinesis.
+* A dual execution mode for SME.
+* A new wrapper mechanism to make all V3 mode policies executable on the new engine.
+* UI support for the new execution mode.
+* Subscription message filtering, designed to filter messages when building an Async API. This feature can be used for Kafka and other use cases.
+* GRAVITEE API security enhancements, including advanced anomaly detection (OpenAPI spec compliance), API inventory and lineage, and support for security ratings.
+* Support for policy application at the message level for asynchronous APIs and event-driven APIs will enable the application of transformation logic at message level - for example, transforming the payload of each frame transiting on a Websocket connection. The following policies are currently planned for:
+** XML to JSON: transform XML content to JSON content.
+** XML/JSON and JSON/JSON message transformation.
+** Serialization and deserialization capabilities for Avro and Protobuff.
+
+== Read next
+
+* link:{{ '/apim/3.x/apim_v4_policy_execution_engine_evolution.html' | relative_url }}[Evolution from the existing V3 policy execution engine]
+* link:{{ '/apim/3.x/apim_v4_policy_execution_engine_activate_mode.html' | relative_url }}[Activating/deactivating the new V4 policy execution engine mode]
+* link:{{ '/apim/3.x/apim_event_native_api_management_introduction.html' | relative_url }}[Introduction to Event-native API Management]
