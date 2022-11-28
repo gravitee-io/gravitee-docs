@@ -92,12 +92,12 @@ NOTE: Read more about the API Definition custom resource link:{{ '/apim/3.x/3.x/
 
 To create an API Definition custom resource, you need a YAML file with the desired API Definition configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:
 
-https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/config/samples/apim/basic-example-with-ctx.yml
+https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/config/samples/apim/api-with-context.yml
 
 To create the API Definition resource using the ready Gravitee sample file, run the following command:
 
 ....
-kubectl apply -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/config/samples/apim/basic-example-with-ctx.yml
+kubectl apply -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/config/samples/apim/api-with-context.yml
 ....
 
 For full details on creating an API Definition custom resource, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html#step_2_create_an_api_definition_custom_resource' | relative_url }}[STEP 2: Create an API Definition custom resource] in the User Guide section.
