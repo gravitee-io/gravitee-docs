@@ -10,6 +10,31 @@ WARNING: If you plan to skip versions when you upgrade, ensure that you read the
 
 WARNING: Be sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs;`
 
+== Upgrade to 3.19.3
+
+=== User Registration and ResetPassword
+
+From AM version 3.19.3, when a custom callback URL is defined for registration or password reset, the query parameters provided during the form post will be propagated to the custom callback URL.
+
+You can disable this behaviour by defining this settings into the gravitee.yaml:
+
+[source yaml]
+----
+legacy:
+  registration:
+    keepParams: false
+  resetPassword:
+    keepParams: false
+----
+
+Another option is to disable it using environment variables, as shown below:
+
+[source bash]
+----
+export gravitee_legacy_registration_keepParams = false
+export gravitee_legacy_resetPassword_keepParams = false
+----
+
 == Upgrade to 3.17.2 - 3.17.3 - 3.17.4 - 3.18.0 - 3.18.1 - 3.18.2 - 3.18.3
 
 NOTE: For more information about the breaking changes of this version, see
