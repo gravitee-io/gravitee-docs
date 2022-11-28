@@ -47,7 +47,7 @@ See the link:https://docs.gravitee.io/apim/3.x/apim_installguide_gateway_configu
 
 The first step is to create a Management Context custom resource for your APIM instance.
 
-NOTE: Read more about the Management Context custom resource link:{{ '/apim/3.x/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[here] and link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_management_context.html' | relative_url }}[here].
+NOTE: Read more about the Management Context custom resource link:{{ '/apim/3.x/apim_kubernetes_operator_definitions.html' | relative_url }}[here] and link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_management_context.html' | relative_url }}[here].
 
 To do so, you need a YAML file with the correct Management Context configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:
 
