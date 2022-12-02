@@ -1,0 +1,98 @@
+[[apim-kubernetes-operator-monitoring]]
+= Monitoring the Gravitee Kubernetes Operator
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim-kubernetes-operator-monitoring.html
+:page-folder: apim/kubernetes
+:page-layout: apim3x
+
+[label label-version]#New in version 3.20.0#
+[label label-version]#BETA release#
+
+== Overview
+
+In this document section you can learn how to set up and deploy monitoring capabilities for a Gravitee Kubernetes Operator (GKO) on an existing APIM-ready Kubernetes cluster.
+
+NOTE: If you do not have an existing Gravitee Kubernetes Operator deployment, you can easily set up a new one - see link:{{ '/apim/3.x/apim-kubernetes-operator-installation-cluster.html' | relative_url }}[Deploying GKO on a Kubernetes cluster] for details. Once you have the operator set up and running, return to this page to deploy GKO monitoring.
+
+== Prerequisites
+
+Before you start the monitoring deployment process, ensure that you have access to the following libraries:
+
+- The kubectl command-line tool installed on your local machine, configured to connect to your cluster. Learn more about installing kubectl in the link:https://kubernetes.io/docs/tasks/tools/[official Kubernetes documentation].
+
+- The Helm package manager installed on your local machine. Learn more about installing Helm in the link:https://helm.sh/docs/intro/install/[official Helm documentation].
+
+== Deploying the Prometheus Stack
+
+The link:https://github.com/prometheus-operator/kube-prometheus[kube-prometheus repository] is a collection of Kubernetes manifests, link:https://grafana.com/[Grafana] dashboards, and link:https://prometheus.io/[Prometheus rules], combined with documentation and scripts to provide easy-to-operate, end-to-end Kubernetes cluster monitoring with Prometheus using the Prometheus Operator.
+
+=== STEP 1: Run the deployment script
+
+Run the following command in your command-line tool (the working directory does not matter) to create the namespace to be used to deploy the Prometheus stack:
+
+....
+kubectl create namespace monitoring
+kubectl config set-context --current --namespace=monitoring
+....
+
+Then run the following command to deploy the Prometheus stack:
+
+....
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install prometheus prometheus-community/kube-prometheus-stack --debug
+....
+
+Check if Prometheus and Grafana have been installed correctly:
+....
+kubectl get svc -n monitoring
+....
+
+The command-line output should include `prometheus-grafana` and `prometheus-kube-prometheus-prometheus`, as shown in the example below:
+
+....
+NAME                                      TYPE        EXTERNAL-IP   PORT(S)                      AGE
+prometheus-kube-state-metrics             ClusterIP   <none>        8080/TCP                     3m9s
+prometheus-prometheus-node-exporter       ClusterIP   <none>        9100/TCP                     3m9s
+prometheus-grafana                        ClusterIP   <none>        80/TCP                       3m9s
+prometheus-kube-prometheus-prometheus     ClusterIP   <none>        9090/TCP                     3m9s
+prometheus-kube-prometheus-operator       ClusterIP   <none>        443/TCP                      3m9s
+prometheus-kube-prometheus-alertmanager   ClusterIP   <none>        9093/TCP                     3m9s
+alertmanager-operated                     ClusterIP   <none>        9093/TCP,9094/TCP,9094/UDP   2m52s
+prometheus-operated                       ClusterIP   <none>        9090/TCP                     2m51s
+....
+
+To access the Grafana dashboard, run the following command:
+
+....
+kubectl port-forward -n monitoring svc/prometheus-grafana 8000:80
+....
+
+Grafana is now available at http://localhost:8000. An admin user is created by default. To find out the password for that user, run the following command:
+
+....
+kubectl get secrets prometheus-grafana -n monitoring -o jsonpath='{.data.admin-password}'|base64 -d
+....
+
+=== STEP 2: Link the Prometheus stack to the GKO
+
+The Prometheus resource declaratively describes the desired state of a Prometheus deployment, while `ServiceMonitor` resources describe the targets to be monitored by Prometheus. The Gravitee Kubernetes Operator (GKO) provides a basic `ServiceMonitor` resource that can be discovered by Prometheus. To enable this, run the following command:
+
+....
+kubectl apply -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/alpha/config/prometheus/monitor.yaml
+....
+
+To check if the `ServiceMonitor` resource has been created, run the following command:
+
+....
+kubectl get servicemonitors -n gko-system
+....
+
+The command-line output should include `controller-manager-metrics-monitor`, as shown in the example below:
+
+....
+NAME                                 AGE
+controller-manager-metrics-monitor   21s
+....
+
+NOTE: Most of the actions described above are not persistent and should mainly be used for development/test purposes and not in production.
