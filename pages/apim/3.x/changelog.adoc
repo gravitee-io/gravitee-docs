@@ -1,7 +1,12 @@
+= Changelog
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_changelog.html
 :page-folder: apim
 :page-toc: false
 :page-layout: apim3x
 
-include::https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/release/changelog/CHANGELOG-v3.adoc[]
+For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim_installguide_migration.html[APIM Migration Guide]
+
+*Important:* If you plan to skip versions when you upgrade, ensure that you read the version-specific upgrade notes for each intermediate version. You may be required to perform manual actions as part of the upgrade.
+
+Select your version in left menu to see dedicated changelog.
