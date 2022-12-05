@@ -1,0 +1,353 @@
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/release-notes/release-notes-3.18.adoc
+:page-folder: apim
+:page-toc: false
+:page-layout: apim3x
+
+= APIM 3.18 release notes
+
+For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim_installguide_migration.html[APIM Migration Guide]
+
+*Important:* If you plan to skip versions when you upgrade, ensure that you read the version-specific upgrade notes for each intermediate version. You may be required to perform manual actions as part of the upgrade.
+
+// NOTE: Global 3.18 release info here
+
+// <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
+
+== https://github.com/gravitee-io/issues/milestone/615?closed=1[APIM - 3.18.13 (2022-11-25)]
+
+=== Bug fixes
+
+*_Console_*
+
+- Design studio's debug mode is not working in gateway bridge configuration https://github.com/gravitee-io/issues/issues/8486[#8486]
+
+*_General_*
+
+- Merge 3.15.18 into 3.18.x https://github.com/gravitee-io/issues/issues/8658[#8658]
+
+*_Management_*
+
+- Api subscribers resource should return nothing when there is no subscriptions. https://github.com/gravitee-io/issues/issues/8630[#8630]
+- Duplicate users on login when special characters https://github.com/gravitee-io/issues/issues/8672[#8672]
+
+=== Improvements
+
+*_Gateway_*
+
+- API Keys Synchronization - Lazy loading mechanism implementation https://github.com/gravitee-io/issues/issues/8680[#8680]
+
+
+
+
+=== Features
+
+*_Management_*
+
+- Possibility to override the default background image of the APIM Developer Portal from the theme customisation page
+
+
+=== Improvements
+
+*_General_*
+
+- Support Inline lists in Expression Language https://github.com/gravitee-io/issues/issues/7894[#7894]
+- Clearly explain how to have the Portal on a dynamic base url https://github.com/gravitee-io/issues/issues/8518[#8518]. +
+More information https://docs.gravitee.io/apim/3.x/apim_installguide_migration.html#console_with_a_custom_base_url[here]
+
+
+== https://github.com/gravitee-io/issues/milestone/610?closed=1[APIM - 3.18.12 (2022-11-04)]
+
+=== Bug fixes
+
+*_Management_*
+
+- Max clause count set to 1024 error when searching for apis https://github.com/gravitee-io/issues/issues/8568[#8568]
+- Error when trying get the subscribers to an api https://github.com/gravitee-io/issues/issues/8567[#8567]
+- Issue when trying to promote API through Cockpit https://github.com/gravitee-io/issues/issues/8598[#8598]
+
+*_Gateway_*
+
+- Accept-Encoding headers should not be deleted from the gateway https://github.com/gravitee-io/issues/issues/7935[#7935]
+- Incorrect Status Code description when using Response Template https://github.com/gravitee-io/issues/issues/8613[#8613]
+
+
+*_Policy_*
+
+- [Cache] Query parameters should be part of the default cache key https://github.com/gravitee-io/issues/issues/8366[#8366]
+
+=== Features
+
+*_Management_*
+
+- Possibility to override the default background image of the APIM Developer Portal from the theme customisation page
+
+=== Improvements
+
+*_General_*
+
+- Clearly explain how to have the Portal on a dynamic base url https://github.com/gravitee-io/issues/issues/8518[#8518]. +
+More information https://docs.gravitee.io/apim/3.x/apim_installguide_migration.html#console_with_a_custom_base_url[here]
+
+
+== https://github.com/gravitee-io/issues/milestone/603?closed=1[APIM - 3.18.11 (2022-10-13)]
+
+=== Bug fixes
+
+*_Gateway_*
+
+- Api key synchronization process consumes too much database resources https://github.com/gravitee-io/issues/issues/8565[#8565]
+
+*_General_*
+
+- DELETE user throw errors when user is member of an API https://github.com/gravitee-io/issues/issues/8566[#8566]
+- Allow nested EL expressions https://github.com/gravitee-io/issues/issues/8564[#8564]
+ 
+
+== https://github.com/gravitee-io/issues/milestone/600?closed=1[APIM - 3.18.10 (2022-09-23)]
+
+=== Bug fixes
+
+*_Gateway_*
+
+- Dedicated implementation for hybrid deployment standalone mode https://github.com/gravitee-io/issues/issues/8482[#8482]
+
+*_Management_*
+
+- Server unreachable when trying to subscribe to APIs https://github.com/gravitee-io/issues/issues/8496[#8496]
+- Status codes in the dashboard are not sorted in order https://github.com/gravitee-io/issues/issues/8497[#8497]
+ 
+
+== https://github.com/gravitee-io/issues/milestone/598?closed=1[APIM - 3.18.9 (2022-09-16)]
+
+=== Bug fixes
+
+*_Console_*
+
+- Design studio's debug mode is not working in gateway bridge configuration https://github.com/gravitee-io/issues/issues/8373[#8373]
+- Subscription Page can not be displayed when having a lot of applications (more than 10k) https://github.com/gravitee-io/issues/issues/8421[#8421]
+
+*_Gateway_*
+
+- Plan selector should throw 401 on wrong API-Key even if a keyless plan is available https://github.com/gravitee-io/issues/issues/8452[#8452]
+
+*_General_*
+
+- Regex quantifier wrongly interpreted causing matching issues https://github.com/gravitee-io/issues/issues/8367[#8367]
+
+*_Management_*
+
+- Health check not properly reported as unhealthy if timeout occurs when reaching the backend https://github.com/gravitee-io/issues/issues/8429[#8429]
+- Restore plan selection behavior with multi OAuth plans without selection rule https://github.com/gravitee-io/issues/issues/8460[#8460]
+
+*_Portal_*
+
+- Validate button does not work when trying to subscribe to an API with general conditions set https://github.com/gravitee-io/issues/issues/8442[#8442]
+
+=== Improvements
+
+*_General_*
+
+- Support Inline lists in Expression Language  https://github.com/gravitee-io/issues/issues/7894[#7894]
+
+
+== https://github.com/gravitee-io/issues/milestone/595?closed=1[APIM - 3.18.8 (2022-09-07)]
+
+=== Bug fixes
+
+*_General_*
+
+- Api key repository search method causing OOM error on DocumentDB https://github.com/gravitee-io/issues/issues/8419[#8419]
+
+*_Management_*
+
+- Exported paths based APIs can not be imported https://github.com/gravitee-io/issues/issues/8365[#8365]
+- [Debug Mode] Query params are not well displayed https://github.com/gravitee-io/issues/issues/7779[#7779]
+
+
+== https://github.com/gravitee-io/issues/milestone/592?closed=1[APIM - 3.18.7 (2022-08-31)]
+
+=== Bug fixes
+
+*_Console_*
+
+- Inconsistent behavior for API out of sync banner https://github.com/gravitee-io/issues/issues/8343[#8343]
+- User's list of APIs doesn't display properly https://github.com/gravitee-io/issues/issues/8344[#8344]
+
+*_Gateway_*
+
+- Improve plan selection based on subscription https://github.com/gravitee-io/issues/issues/8167[#8167]
+
+*_Policy_*
+
+- [XSLT transformation] parameter get cached depending on the number of gateways https://github.com/gravitee-io/issues/issues/8387[#8387]
+
+*_General_*
+
+- Merge 3.15.14 in 3.18.x https://github.com/gravitee-io/issues/issues/8355[#8355]
+- Merge 3.15.15 in 3.18.x https://github.com/gravitee-io/issues/issues/8371[#8371]
+
+
+== https://github.com/gravitee-io/issues/milestone/585?closed=1[APIM - 3.18.6 (2022-08-23)]
+
+=== Improvements
+
+*_General_*
+
+- Improve application search in subscription process - https://github.com/gravitee-io/issues/issues/8329[#8329]
+
+
+== https://github.com/gravitee-io/issues/milestone/582?closed=1[APIM - 3.18.5 (2022-08-17)]
+
+=== Bug fixes
+
+*_Console_*
+
+- Use correct path in constants.json https://github.com/gravitee-io/issues/issues/8283[#8283]
+- When dragging Json to XML policy in Design Studio, Save button is not displayed https://github.com/gravitee-io/issues/issues/8227[#8227]
+
+*_Management_*
+
+- Application client_id update is ignored https://github.com/gravitee-io/issues/issues/8278[#8278]
+- NullPointerException when deleting a group https://github.com/gravitee-io/issues/issues/8320[#8320]
+- Platform alerts never triggered https://github.com/gravitee-io/issues/issues/8269[#8269]
+- Temporary allow `null` value for host in virtual-hosts https://github.com/gravitee-io/issues/issues/8300[#8300]
+
+*_Portal_*
+
+- Unable to refresh a page when deploying with Docker https://github.com/gravitee-io/issues/issues/8317[#8317]
+
+*_Reporters_*
+
+- File and TCP reporters - filtering feature not fully implemented for headers https://github.com/gravitee-io/issues/issues/8226[#8226]
+
+=== Features
+
+*_Console_*
+
+- Disable in-app documentation when Pendo is activated https://github.com/gravitee-io/issues/issues/8292[#8292]
+
+=== Improvements
+
+*_Management_*
+
+- Global performances improvement of GET /applications https://github.com/gravitee-io/issues/issues/7836[#7836]
+
+
+== https://github.com/gravitee-io/issues/milestone/578?closed=1[APIM - 3.18.4 (2022-08-02)]
+
+=== Bug fixes
+
+*_General_*
+
+- Error while trying to connect using IDP with group mapping https://github.com/gravitee-io/issues/issues/8205[#8205]
+- Merge APIM `3.17.5` into `3.18.x` https://github.com/gravitee-io/issues/issues/8265[#8265]
+
+=== Features
+
+*_General_*
+
+- Add `gateway-bridge-http-server` to the APIM REST API bundle https://github.com/gravitee-io/issues/issues/8133[#8133]
+
+
+== https://github.com/gravitee-io/issues/milestone/574?closed=1[APIM - 3.18.3 (2022-07-20)]
+
+=== Bug fixes
+
+*_Management_*
+
+- Handle Pendo ApiKey with correct attribute in `gravitee.yaml` https://github.com/gravitee-io/issues/issues/8155[#8155]
+- Mongodb migrations scripts fails https://github.com/gravitee-io/issues/issues/8147[#8147]
+- Management API fails to start if API without primary https://github.com/gravitee-io/issues/issues/8130[#8130]
+
+
+
+== https://github.com/gravitee-io/issues/milestone/571?closed=1[APIM - 3.18.2 (2022-07-15)]
+
+=== Bug fixes
+
+*_Management_*
+
+- Can't login when using JDBC database https://github.com/gravitee-io/issues/issues/8110[#8110]
+
+
+
+
+== https://github.com/gravitee-io/issues/milestone/564?closed=1[APIM - 3.18.1 (2022-07-08)]
+
+=== Bug fixes
+
+*_Gateway_*
+
+- file reporter log files are not created https://github.com/gravitee-io/issues/issues/8065[#8065]
+
+*_General_*
+
+- Update build version number of Console and Portal https://github.com/gravitee-io/issues/issues/8072[#8072]
+
+*_Portal_*
+
+- OpenAPI specification of the Portal API not available https://github.com/gravitee-io/issues/issues/8074[#8074]
+
+
+== https://github.com/gravitee-io/issues/milestone/519?closed=1[APIM - 3.18.0 (2022-07-07)]
+
+=== Bug fixes
+
+*_Console_*
+
+- Remove the horizontal scroll bar in the markdown creation page https://github.com/gravitee-io/issues/issues/5119[#5119]
+- Wrong example when generating Personal Access Token https://github.com/gravitee-io/issues/issues/5271[#5271]
+- Not_equals alert filter displays an empty list https://github.com/gravitee-io/issues/issues/7489[#7489]
+- Icons not rendering with custom nginx configuration https://github.com/gravitee-io/issues/issues/7569[#7569]
+
+*_General_*
+
+- Merge 3.17.2 into master https://github.com/gravitee-io/issues/issues/7617[#7617]
+
+*_Management_*
+
+- DCR providers should be scoped by org https://github.com/gravitee-io/issues/issues/6604[#6604]
+- One shot upgraders run on each APIM startup with cockpit https://github.com/gravitee-io/issues/issues/7450[#7450]
+- OpenApi files are never updated https://github.com/gravitee-io/issues/issues/7631[#7631]
+
+*_Policies_*
+
+- Retry Policy: cancel timeout response, manage lastResponse counter and tests https://github.com/gravitee-io/issues/issues/7747[#7747]
+- Data Logging Masking: fix some bugs https://github.com/gravitee-io/issues/issues/7758[#7758]
+
+=== Features
+
+*_Console_*
+
+- Promote API Designer https://github.com/gravitee-io/issues/issues/7645[#7645]
+- Add Pendo analytics tool https://github.com/gravitee-io/issues/issues/7781[#7781]
+
+*_General_*
+
+- Support of RHEL8 https://github.com/gravitee-io/issues/issues/7208[#7208]
+
+*_Management_*
+
+- Partial update - PATCH method on Import API https://github.com/gravitee-io/issues/issues/7443[#7443]
+- Add page to display organization Audit https://github.com/gravitee-io/issues/issues/7536[#7536]
+
+*_Policies_*
+
+- Transform-Header: Define headers based on the request or on the response payload https://github.com/gravitee-io/issues/issues/7359[#7359]
+- Circuit Breaker: Write documentation for policy https://github.com/gravitee-io/issues/issues/7756[#7756]
+
+=== Improvements
+
+*_Console_*
+
+- API properties header title change https://github.com/gravitee-io/issues/issues/6065[#6065]
+- Add Conditional icon in legend https://github.com/gravitee-io/issues/issues/7457[#7457]
+
+*_General_*
+
+- Mutualize System proxy configuration https://github.com/gravitee-io/issues/issues/7739[#7739]
+
+*_Portal_*
+
+- Migrate to last Angular version https://github.com/gravitee-io/issues/issues/6666[#6666]
