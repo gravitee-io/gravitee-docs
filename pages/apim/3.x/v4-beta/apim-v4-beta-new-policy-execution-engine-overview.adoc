@@ -29,11 +29,11 @@ WARNING: The new policy execution engine mode has been released as a BETA versio
 
 The following features are available in the BETA release shipped with APIM 3.19.0.
 
-=== HTTP POST entrypoint
+=== HTTP POST and HTTP GET entrypoints
 
-The HTTP POST entrypoint is a Community Edition / OSS feature that enables external clients to publish data via standard HTTP POST requests and ease the ingestion of data into evented backends like Kafka.
+The HTTP POST and HTTP GET entrypoints are Community Edition / OSS plugins that enable external clients to publish and receive data via standard HTTP POST / HTTP GET requests, and ease the ingestion of data into evented backends like Kafka.
 
-With this workflow, a client application running on HTTP can post content to the Gravitee Gateway. The Gateway can then take that content and push it over to Kafka as a message that Kafka can ingest. The Gravitee Gateway acts as a protocol mediation layer in this context. This enables API owners to quickly set up a sync-to-async integration.
+With the HTTP POST workflow, a client application running on HTTP can post content to the Gravitee Gateway. The Gateway can then take that content and push it over to Kafka as a message that Kafka can ingest. The Gravitee Gateway acts as a protocol mediation layer in this context. This enables API owners to quickly set up a sync-to-async integration.
 
 The diagram below shows the workflow for this use case:
 
@@ -41,13 +41,46 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case
 
 The HTTP POST entrypoint can be used in combination with specific Async API endpoints in different ways, depending on what publish and subscribe mode actions are possible between the two when using a connector. This is demonstrated in the compatibility matrix table below:
 
+|===
+|Entrypoint|Request message (publish mode)|Response message (subscribe mode)|Endpoint
+
+|HTTP POST
+|Supported
+|Not supported
+|Mock
+
+|HTTP POST
+|Supported
+|Not supported
+|Kafka
+
+|HTTP POST
+|Not supported
+|Not supported
+|SSE
+
+|HTTP POST
+|Supported
+|Not supported
+|Websocket
+
+|===
 
 
 === Support for Websocket and SSE entrypoints
 
 Support for Server-Sent Events (Enterprise Edition only) and Websocket (Community Edition/OSS) entrypoints are provided as separate plugins.
 
-NOTE: These plugins are expected shortly after the main 3.19 release and will be announced here when available.
+
+
+
+
+https://download.gravitee.io/#graviteeio-apim/plugins/entrypoints/
+
+
+
+
+
 
 This feature enables you to front your event-driven backend - currently only using Kafka via the Gravitee Community Edition / OSS Kafka connector - with Websocket or Server-Sent Events (SSE) so that API consumers can access events from the Kafka backend via one of these more consumer-friendly protocols.
 
