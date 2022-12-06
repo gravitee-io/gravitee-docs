@@ -20,6 +20,8 @@ NOTE: If your architecture requires the management of multiple Kubernetes cluste
 
 Before you start the deployment process, ensure that you have access to an APIM-ready Kubernetes cluster.
 
+By default the Kubernetes synchronizer is configured to look for API definitions in the API Gateway namespace. To watch all namespaces you must set the property `services.sync.kubernetes.namespaces` to `all` in the Gateway configuration. You can also provide a specific list of namespaces to watch.
+
 It is also recommended to check the current Kubernetes context to ensure that it is set to the correct cluster. To do this, run the following command:
 
 ....
