@@ -1,0 +1,86 @@
+= Sizing Requirements
+:page-sidebar: ae_sidebar
+:page-permalink: ae/userguide_sizing_requirements.html
+:page-folder: ae/installation-guide
+:page-description: Gravitee Alert Engine - Introduction
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, best practices, sizing requirements
+:page-layout: ae
+
+== Overview
+
+The following sections gives installation advice, particularly resource planning and system optimizations.
+
+[cols="1,1,1,1"]
+|===
+|Number of triggers  |Compute |Memory |Events/second
+
+|10
+|2 (v)CPU
+|256m
+|10000
+
+|100
+|2 (v)CPU
+|256m
+|8000
+
+|500
+|2 (v)CPU
+|256m
+|5000
+
+|500
+|2 (v)CPU
+|512m
+|6000
+
+|1000
+|2 (v)CPU
+|512m
+|4000
+
+|===
+
+== Best practices
+
+=== Moderate your notifications
+
+Ingesting and processing events requires computation resources, therefore you want to make sure that all this
+processing power does not overcome by firing too many notifications.
+
+==== Dampenings
+
+Dampenings are a good way to reduce the frequency of your notifications.
+Click link:/ae/userguide_dampening.html[here] to check out different dampening strategies.
+
+==== Time-based conditions
+
+link:/ae/userguide_conditions.html#aggregation[Aggregation] and link:/ae/userguide_conditions.html#rate[Rate] condition
+rely on `duration` and `timeUnit`, so they can be evaluated in a given period of time.
+
+=== Redundancy
+
+Alert Engine allows you to deploy a cluster of several gateways in order to ingest events, triggers
+but also to avoid having a single point of failure in case one of the node goes down.
+
+=== Tune your JVM
+
+- We made our tests by enforcing *Garbage-First Collector*. While this garbage collector is the default one since Java 9, under certain conditions (like very low resource allocation)
+the JVM enforces the *Serial Garbage Collector* (SerialGC) as the default one.
+
+Make sure to have in your JVM arguments `JAVA_OPTS="$JAVA_OPTS -XX:+UseG1GC"` to enforce it.
+
+=== Make your events small
+
+- Your events should contain only the necessary data, which means:
+    - Remove extra unnecessary data
+    - Keep the name/values of your JSON objects as small as possible
+
+This allows better performance for data serialization.
+
+=== More compute, more power
+
+Would you need more processing power to ingest events or execute rules, increase the number of (v)CPUs.
+Increasing the memory can be useful if you are dealing with large data or as a buffer if the computation power
+is occupied.
+
