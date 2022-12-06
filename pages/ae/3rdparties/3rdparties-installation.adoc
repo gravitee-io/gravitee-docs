@@ -4,10 +4,192 @@
 :page-folder: ae/3rdparties
 :page-description: Gravitee Alert Engine - Third Parties - Installation
 :page-toc: true
-:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api
+:page-keywords: Gravitee, API Platform, Alert, Alert Engine, documentation, manual, guide, reference, api, third-party
 :page-layout: ae
 
-AE works both within and outside the Gravitee.io ecosystem. You can plug in your own backends and benefit
-from all of the same features.
+AE works both within and outside the Gravitee.io ecosystem.
+You can plug in your own backends and benefit from all the same features.
 
-NOTE: This section will be updated soon.
+== Websocket connection
+
+You can send a Triggers through websocket
+
+Make sure you `npm install ws` before trying.
+
+[source,javascript]
+----
+const WebSocket = require('ws');
+const wsTrigger = new WebSocket("ws://localhost:8072/ws/triggers", {
+    headers : {
+        "Authorization": "Basic base64(username:password)"
+    }
+});
+
+wsTrigger.onopen = () => {
+  console.log("Trigger connection opened");
+};
+
+wsTrigger.onmessage = (event) => {
+    const response = JSON.parse(event.data.toString());
+    if (response.type === 'ALERT_'){
+
+    }
+    console.log("Received message:", event.data.toString());
+};
+
+wsTrigger.onerror = (error) => {
+  console.log("An error has occurred:", error);
+};
+
+wsTrigger.onclose = (event) => {
+  console.log("Trigger websocket connection closed:", event.code, event.reason);
+};
+
+//Later in code
+// A trigger example with a webhook notifier
+const trigger = {
+      "id": "response-time-threshold-id",
+      "name" : "Response time Threshold",
+      "source" : "my-source", // source of the event to handle
+      "enabled" : true,
+      "conditions" : [{
+        "type" : "THRESHOLD",
+        "property" : "response.response_time",
+        "operator" : "LT",
+        "threshold" : 1500.0
+      }],
+      "dampening" : {
+        "mode" : "STRICT_COUNT",
+        "trueEvaluations" : 1
+      },
+      "notifications": [
+          {
+              "type" : "webhook-notifier",
+              "configuration" : {
+                    "url":  "http://localhost:8080/alert/webhook",
+                    "method":"POST",
+                    "useSystemProxy":false,
+                    "body": "${alert.id} - ${alert.name} - ${alert.source} - ${alert.description} - ${alert.severity} - ${notification.message}"
+              }
+          }
+      ]
+ };
+
+if (wsTrigger.readyState === WebSocket.OPEN) {
+    // You can send a single trigger
+    wsTrigger.send(JSON.stringify(trigger));
+
+    // Or an array of triggers
+    // ws.send(JSON.stringify([...trigger]));
+}
+
+----
+
+Same goes with Events
+
+[source,javascript]
+----
+const WebSocket = require('ws');
+
+const wsEvent = new WebSocket("ws://localhost:8072/ws/events", {
+    headers : {
+        "Authorization": "Basic base64(username:password)"
+    }
+});
+
+wsEvent.onopen = () => {
+  console.log("Trigger connection opened");
+};
+
+wsEvent.onerror = (error) => {
+  console.log("An error has occurred:", error);
+};
+
+wsEvent.onclose = (event) => {
+  console.log("Trigger websocket connection closed:", event.code, event.reason);
+};
+
+// Later in code
+
+const event = {
+  "id": "event-id",
+  "timestamp": Date.now(),
+  "type": "my-source", // Same value as the Trigger `source` property
+  "context": { // context of your event, can be re-used in the notifier
+      "node.host": "my-host",
+      "node.environment": "my-env"
+  },
+  "properties": { // What will be evaluated by the condition in the trigger
+      "response.response_time" : 500
+  }
+}
+
+if (wsEvent.readyState === WebSocket.OPEN) {
+    // You can send a single trigger
+    wsEvent.send(JSON.stringify(event));
+
+    // Or an array of events
+    // ws.send(JSON.stringify([...event]));
+}
+
+----
+
+== Http Endpoint
+
+You can also submit triggers via HTTP
+
+```bash
+$ curl \
+    -H "Authorization: Basic base64(username:password)" \
+    -XPOST http://localhost:8072/http/triggers -d '{
+      "id": "response-time-threshold-id",
+      "name" : "Response time Threshold",
+      "source" : "my-source",
+       "enabled" : true,
+      "conditions" : [{
+        "type" : "THRESHOLD",
+        "property" : "response.response_time",
+        "operator" : "LT",
+        "threshold" : 1500.0
+      }],
+      "dampening" : {
+        "mode" : "STRICT_COUNT",
+        "trueEvaluations" : 1
+      },
+      "notifications": [
+          {
+              "type" : "webhook-notifier",
+              "configuration" : {
+                    "url":  "http://localhost:8080/alert/webhook",
+                    "method":"POST",
+                    "useSystemProxy":false,
+                    "body": "${alert.id} - ${alert.name} - ${alert.source} - ${alert.description} - ${alert.severity} - ${notification.message}"
+              }
+          }
+      ]
+ }'
+```
+
+Same with events:
+
+```bash
+$ curl \
+    -H "Authorization: Basic base64(username:password)" \
+    -XPOST http://localhost:8072/http/events -d '{
+      "id": "event-id",
+      "timestamp": 1670343913325,
+      "type": "my-source",
+      "context": {
+          "node.host": "my-host",
+          "node.environment": "my-env"
+      },
+      "properties": {
+          "response.response_time" : 500
+      }
+    }'
+```
+
+Similarly, you can send arrays of triggers and events like with Websockets.
+Checkout the OpenAPI specification here:
+
+* 2.0 -- link:{{ '/ae/spec/2.0/index.html' | relative_url }}[online reference] - link:{% link /ae/spec/2.0/alert-engine-spec.yml  %}[OpenAPI spec]
