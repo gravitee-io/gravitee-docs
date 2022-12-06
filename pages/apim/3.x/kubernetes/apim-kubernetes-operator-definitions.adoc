@@ -10,7 +10,7 @@
 
 == Overview
 
-The Gravitee Kubernetes Operator comes with two Custom Resource Definitions (CRDs) - `ManagementContext` and `ApiDefinition`.
+The Gravitee Kubernetes Operator comes with three Custom Resource Definitions (CRDs) - `ManagementContext`, `ApiDefinition`, and `ApiResource`.
 
 
 == `ManagementContext`
@@ -160,6 +160,58 @@ spec:
 
 
 NOTE: Read more about `ApiDefinition` link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_definition.html' | relative_url }}[here].
+
+== `ApiResource`
+
+The `ApiResource` custom resource allows you to use the GKO to create reusable link:{{ '/apim/3.x/apim_resources_overview.html' | relative_url }}[API resources] by applying the `ApiResource` custom resource definition. This enables you to define resources such as cache or authentication providers once only and maintain them in a single place, and then reuse them in multiple APIs - any further updates to such a resource will be automatically propagated to all APIs containing a reference to that resource.
+
+NOTE: Read more about `ApiResource` link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_reusable_resources.html' | relative_url }}[here].
+
+
+=== Examples
+
+Here is an example of an `ApiResource` cache resource:
+
+....
+apiVersion: gravitee.io/v1alpha1
+kind: ApiResource
+metadata:
+  name: reusable-resource-cache
+  namespace: default
+spec:
+  name: "cache-resource"
+  type: "cache"
+  enabled: true
+  configuration:
+      timeToIdleSeconds: 0
+      timeToLiveSeconds: 0
+      maxEntriesLocalHeap: 1000
+....
+
+This reusable resource can then be later referenced in any `ApiDefinition` resource using a reference to its namespaced name in the `resources` field:
+
+....
+apiVersion: gravitee.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: resource-ref-example
+  namespace: default
+spec:
+  name: "Resource reference example"
+  version: "1.0"
+  description: "An API with a reference to a reusable resource"
+  resources:
+    - ref:
+        name: reusable-resource-cache
+        namespace: default
+  proxy:
+    virtual_hosts:
+      - path: "/resource-ref-sample"
+    groups:
+      - endpoints:
+          - name: "Default"
+            target: "https://api.gravitee.io/echo"
+....
 
 == CRD dependencies
 

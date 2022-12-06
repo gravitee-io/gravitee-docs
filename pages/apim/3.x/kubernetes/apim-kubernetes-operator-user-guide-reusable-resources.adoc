@@ -1,0 +1,130 @@
+[[apim-kubernetes-operator-user-guide-reusable-resources]]
+= How to reuse API resources with the GKO
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_kubernetes_operator_user_guide_reusable_resources.html
+:page-folder: apim/kubernetes
+:page-layout: apim3x
+
+[label label-version]#New in version 3.19.0#
+[label label-version]#BETA release#
+
+== Creating a reusable API resource
+
+You can use the GKO to create reusable link:{{ '/apim/3.x/apim_resources_overview.html' | relative_url }}[API resources] by applying the link:https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/docs/api/reference.md#apidefinitionspecresourcesindex[ApiResource CRD^]. This enables you to define resources such as cache or authentication providers once only and maintain them in a single place, and then reuse them in multiple APIs - any further resource changes will be automatically propagated to all APIs containing a reference to the updated resource(s).
+
+The example below shows a link:https://docs.gravitee.io/apim/3.x/apim_resources_cache_redis.html[redis cache resource^] that can be applied using the `ApiResource` CRD:
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ApiResource
+metadata:
+  name: reusable-resource-cache-redis
+  namespace: default
+spec:
+  name: "redis-cache"
+  type: "cache-redis"
+  enabled: true
+  configuration:
+      releaseCache: false
+      maxTotal: 8
+      timeToLiveSeconds: 0
+      timeout: 2000
+      useSsl: true
+      standalone:
+          enabled: true
+          host: "redis-cache.default.svc.cluster.local"
+          port: 6379
+      sentinel:
+          enabled: false
+          masterId: "sentinel-master"
+      password: "change_me!"
+----
+
+== Referencing API resources in your API definitions
+
+Once an API resource has been created, it can be used as a reference in one or more API definitions. The example below shows how to use the `reusable-resource-cache-redis` resource in an API definition, using a reference to the resource name and namespace:
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: reusable-resource-example
+  namespace: default
+spec:
+  name: "Reusable Resource Example"
+  version: "1.0"
+  description: "A simple API reusing a redis cache resource"
+  proxy:
+    virtual_hosts:
+      - path: "/cached-with-redis"
+    groups:
+      - endpoints:
+          - name: "Default"
+            target: "https://api.gravitee.io/echo"
+  resources:
+    - ref:
+        name: reusable-resource-cache-redis
+        namespace: default
+  flows:
+  - name: ""
+    path-operator:
+      path: "/"
+      operator: "STARTS_WITH"
+    condition: ""
+    consumers: []
+    methods: []
+    pre:
+    - name: "Cache"
+      description: "Cache with Redis"
+      enabled: true
+      policy: "cache"
+      configuration:
+        timeToLiveSeconds: 600
+        cacheName: "redis-cache"
+        methods:
+        - "GET"
+        - "OPTIONS"
+        - "HEAD"
+        scope: "API"
+        key: "cache-key"
+    post: []
+    enabled: true
+----
+
+You can also define resources inline in your API definitions. The following API reuses the redis cache resource defined above, and defines inline an in-memory authentication provider:
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: reusable-resource-example
+  namespace: default
+spec:
+  name: "Reusable Resource Example"
+  version: "1.0"
+  description: "A simple API reusing a redis cache resource with an inlined authentication provider"
+  proxy:
+    virtual_hosts:
+      - path: "/cached-with-redis"
+    groups:
+      - endpoints:
+          - name: "Default"
+            target: "https://api.gravitee.io/echo"
+  resources:
+    - ref:
+        name: reusable-resource-cache-redis
+        namespace: default
+    - name: "inline-auth"
+      type: "auth-provider-inline-resource"
+      enabled: true
+      configuration:
+          users:
+            - username: "user"
+              password: "password"
+  # ...
+----
+
+NOTE: If a resource defined inline contains a reference to a reusable resource (using the `ref` property), the reusable resource will take precedence over the inline configuration.
