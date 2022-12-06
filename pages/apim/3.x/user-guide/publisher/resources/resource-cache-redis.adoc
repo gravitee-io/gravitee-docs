@@ -3,6 +3,6 @@
 :page-folder: apim/user-guide/publisher/resources
 :page-layout: apim3x
 
-WARNING: This plugin is not in distribution by default, but you can https://download.gravitee.io/#graviteeio-apim/plugins/resources/gravitee-resource-cache-redis/[download] plugin and follow link:{{ '/apim/3.x/apim_installation_guide_docker_customize.html#install_an_additional_plugin' | relative_url }}[instructions] to install it. For more information on configuring cache in APIM, see link:{{ '/apim/3.x/apim_installguide_cache.html' | relative_url }}[Configure cache]. For information on configuring the Rate Limit repository plugin for Redis, see link:{{ '/apim/3.x/apim_installguide_repositories_redis.html' | relative_url }}[Configure cache].
+WARNING: This plugin is not in distribution by default, but you can https://download.gravitee.io/#graviteeio-apim/plugins/resources/gravitee-resource-cache-redis/[download the plugin] and follow link:{{ '/apim/3.x/apim_installation_guide_docker_customize.html#install_an_additional_plugin' | relative_url }}[instructions] to install it. For more information on configuring cache in APIM, see link:{{ '/apim/3.x/apim_installguide_cache.html' | relative_url }}[Configure cache]. For information on configuring the Rate Limit repository plugin for Redis, see link:{{ '/apim/3.x/apim_installguide_repositories_redis.html' | relative_url }}[Configure cache].
 
 include::https://raw.githubusercontent.com/gravitee-io/gravitee-resource-cache-redis/master/README.adoc[]
