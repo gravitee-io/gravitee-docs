@@ -194,115 +194,115 @@ entries:
       - title: Configuration Guide
         output: web
         folderitems:
-         - title: Introduction
-           output: web
-           url: /apim/3.x/apim_configurationguide.html
-           subfolders:
-            - title: Configure APIM Gateway
-              output: web
-              subfolderitems:
-               - title: General Configuration
-                 output: web
-                 url: /apim/3.x/apim_installguide_gateway_configuration.html
-               - title: Internal API
-                 output: web
-                 url: /apim/3.x/apim_installguide_gateway_technical_api.html
-               - title: Metrics
-                 output: web
-                 url: /apim/3.x/apim_installguide_gateway_metrics.html
-               - title: Enable OpenTracing
-                 output: web
-                 url: /apim/3.x/apim_enable_opentracing_with_jaeger.html
-               - title: OpenTracing in Docker
-                 output: web
-                 url: /apim/3.x/apim_opentracing_in_docker.html
-            - title: Configure APIM API
-              output: web
-              subfolderitems:
-               - title: General Configuration
-                 output: web
-                 url: /apim/3.x/apim_installguide_rest_apis_configuration.html
-               - title: Internal API
-                 output: web
-                 url: /apim/3.x/apim_installguide_rest_apis_technical_api.html
-               - title: Metrics
-                 output: web
-                 url: /apim/3.x/apim_installguide_rest_apis_metrics.html
-               - title: Security
-                 output: web
-                 url: /apim/3.x/apim_installguide_rest_apis_security.html
-            - title: Configure APIM Console
-              output: web
-              subfolderitems:
-               - title: General Configuration
-                 output: web
-                 url: /apim/3.x/apim_installguide_management_ui_configuration.html
-               - title: Dashboards
-                 output: web
-                 url: /apim/3.x/apim_installguide_dashboard_configuration.html
-            - title: Configure APIM Portal
-              output: web
-              subfolderitems:
-               - title: General Configuration
-                 output: web
-                 url: /apim/3.x/apim_installguide_portal_ui_configuration.html
-            - title: Configure Repositories
-              output: web
-              subfolderitems:
-               - title: Introduction
-                 output: web
-                 url: /apim/3.x/apim_installguide_repositories.html
-               - title: Elasticsearch
-                 output: web
-                 url: /apim/3.x/apim_installguide_repositories_elasticsearch.html
-               - title: MongoDB
-                 output: web
-                 url: /apim/3.x/apim_installguide_repositories_mongodb.html
-               - title: JDBC
-                 output: web
-                 url: /apim/3.x/apim_installguide_repositories_jdbc.html
-               - title: Redis
-                 output: web
-                 url: /apim/3.x/apim_installguide_repositories_redis.html
-            - title: Configure Authentication
-              output: web
-              subfolderitems:
-               - title: Introduction
-                 output: web
-                 url: /apim/3.x/apim_installguide_authentication.html
-               - title: Connect with In-Memory Users
-                 output: web
-                 url: /apim/3.x/apim_installguide_authentication_inmemory.html
-               - title: Connect with LDAP/Active Directory
-                 output: web
-                 url: /apim/3.x/apim_installguide_authentication_ldap.html
-               - title: Connect with APIM Repository
-                 output: web
-                 url: /apim/3.x/apim_installguide_authentication_apim.html
-               - title: Connect with Gravitee.io Access Management
-                 output: web
-                 url: /apim/3.x/apim_installguide_authentication_graviteeam.html
-               - title: Connect with GitHub
-                 output: web
-                 url: /apim/3.x/apim_installguide_authentication_github.html
-               - title: Connect with Google
-                 output: web
-                 url: /apim/3.x/apim_installguide_authentication_google.html
-               - title: Connect with Keycloak
-                 output: web
-                 url: /apim/3.x/apim_installguide_authentication_keycloak.html
-         - title: Configure Reporters
-           output: web
-           url: /apim/3.x/apim_installguide_reporters.html
-         - title: Configure Cache
-           output: web
-           url: /apim/3.x/apim_installguide_cache.html
-         - title: Configure Notifications
-           output: web
-           url: /apim/3.x/apim_installguide_configuration_notifications.html
-         - title: Configure Dictionaries
-           output: web
-           url: /apim/3.x/apim_installguide_configuration_dictionaries.html
+          - title: Introduction
+            output: web
+            url: /apim/3.x/apim_configurationguide.html
+            subfolders:
+              - title: Configure APIM Gateway
+                output: web
+                subfolderitems:
+                  - title: General Configuration
+                    output: web
+                    url: /apim/3.x/apim_installguide_gateway_configuration.html
+                  - title: Internal API
+                    output: web
+                    url: /apim/3.x/apim_installguide_gateway_technical_api.html
+                  - title: Metrics
+                    output: web
+                    url: /apim/3.x/apim_installguide_gateway_metrics.html
+                  - title: Enable OpenTracing
+                    output: web
+                    url: /apim/3.x/apim_enable_opentracing_with_jaeger.html
+                  - title: OpenTracing in Docker
+                    output: web
+                    url: /apim/3.x/apim_opentracing_in_docker.html
+              - title: Configure APIM API
+                output: web
+                subfolderitems:
+                  - title: General Configuration
+                    output: web
+                    url: /apim/3.x/apim_installguide_rest_apis_configuration.html
+                  - title: Internal API
+                    output: web
+                    url: /apim/3.x/apim_installguide_rest_apis_technical_api.html
+                  - title: Metrics
+                    output: web
+                    url: /apim/3.x/apim_installguide_rest_apis_metrics.html
+                  - title: Security
+                    output: web
+                    url: /apim/3.x/apim_installguide_rest_apis_security.html
+              - title: Configure APIM Console
+                output: web
+                subfolderitems:
+                  - title: General Configuration
+                    output: web
+                    url: /apim/3.x/apim_installguide_management_ui_configuration.html
+                  - title: Dashboards
+                    output: web
+                    url: /apim/3.x/apim_installguide_dashboard_configuration.html
+              - title: Configure APIM Portal
+                output: web
+                subfolderitems:
+                  - title: General Configuration
+                    output: web
+                    url: /apim/3.x/apim_installguide_portal_ui_configuration.html
+              - title: Configure Repositories
+                output: web
+                subfolderitems:
+                  - title: Introduction
+                    output: web
+                    url: /apim/3.x/apim_installguide_repositories.html
+                  - title: Elasticsearch
+                    output: web
+                    url: /apim/3.x/apim_installguide_repositories_elasticsearch.html
+                  - title: MongoDB
+                    output: web
+                    url: /apim/3.x/apim_installguide_repositories_mongodb.html
+                  - title: JDBC
+                    output: web
+                    url: /apim/3.x/apim_installguide_repositories_jdbc.html
+                  - title: Redis
+                    output: web
+                    url: /apim/3.x/apim_installguide_repositories_redis.html
+              - title: Configure Authentication
+                output: web
+                subfolderitems:
+                  - title: Introduction
+                    output: web
+                    url: /apim/3.x/apim_installguide_authentication.html
+                  - title: Connect with In-Memory Users
+                    output: web
+                    url: /apim/3.x/apim_installguide_authentication_inmemory.html
+                  - title: Connect with LDAP/Active Directory
+                    output: web
+                    url: /apim/3.x/apim_installguide_authentication_ldap.html
+                  - title: Connect with APIM Repository
+                    output: web
+                    url: /apim/3.x/apim_installguide_authentication_apim.html
+                  - title: Connect with Gravitee.io Access Management
+                    output: web
+                    url: /apim/3.x/apim_installguide_authentication_graviteeam.html
+                  - title: Connect with GitHub
+                    output: web
+                    url: /apim/3.x/apim_installguide_authentication_github.html
+                  - title: Connect with Google
+                    output: web
+                    url: /apim/3.x/apim_installguide_authentication_google.html
+                  - title: Connect with Keycloak
+                    output: web
+                    url: /apim/3.x/apim_installguide_authentication_keycloak.html
+          - title: Configure Reporters
+            output: web
+            url: /apim/3.x/apim_installguide_reporters.html
+          - title: Configure Cache
+            output: web
+            url: /apim/3.x/apim_installguide_cache.html
+          - title: Configure Notifications
+            output: web
+            url: /apim/3.x/apim_installguide_configuration_notifications.html
+          - title: Configure Dictionaries
+            output: web
+            url: /apim/3.x/apim_installguide_configuration_dictionaries.html
       - title: API Publisher Guide
         output: web
         folderitems:
@@ -395,39 +395,39 @@ entries:
               - title: Resources
                 output: web
                 subfolderitems:
-                - title: Introduction
-                  output: web
-                  url: /apim/3.x/apim_resources_overview.html
-                - title: Cache
-                  output: web
-                  url: /apim/3.x/apim_resources_cache.html
-                - title: Cache Redis
-                  output: web
-                  url: /apim/3.x/apim_resources_cache_redis.html
-                - title: OAuth2 - Gravitee.io Access Management
-                  output: web
-                  url: /apim/3.x/apim_resources_oauth2_am.html
-                - title: OAuth2 - Generic Authorization Server
-                  output: web
-                  url: /apim/3.x/apim_resources_oauth2_generic.html
+                  - title: Introduction
+                    output: web
+                    url: /apim/3.x/apim_resources_overview.html
+                  - title: Cache
+                    output: web
+                    url: /apim/3.x/apim_resources_cache.html
+                  - title: Cache Redis
+                    output: web
+                    url: /apim/3.x/apim_resources_cache_redis.html
+                  - title: OAuth2 - Gravitee.io Access Management
+                    output: web
+                    url: /apim/3.x/apim_resources_oauth2_am.html
+                  - title: OAuth2 - Generic Authorization Server
+                    output: web
+                    url: /apim/3.x/apim_resources_oauth2_generic.html
               - title: Design Studio Guide
                 output: web
                 subfolderitems:
-                - title: Introduction
-                  output: web
-                  url: /apim/3.x/apim_publisherguide_design_studio_overview.html
-                - title: Migrate to Design Studio
-                  output: web
-                  url: /apim/3.x/apim_publisherguide_design_studio_migrate.html
-                - title: Design Your API Flows
-                  output: web
-                  url: /apim/3.x/apim_publisherguide_design_studio_create.html
-                - title: Try it! Mode
-                  output: web
-                  url: /apim/3.x/apim_publisherguide_design_studio_try_it.html
-                - title: Debug Mode
-                  output: web
-                  url: /apim/3.x/apim_publisherguide_design_studio_debug_mode.html
+                  - title: Introduction
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_design_studio_overview.html
+                  - title: Migrate to Design Studio
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_design_studio_migrate.html
+                  - title: Design Your API Flows
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_design_studio_create.html
+                  - title: Try it! Mode
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_design_studio_try_it.html
+                  - title: Debug Mode
+                    output: web
+                    url: /apim/3.x/apim_publisherguide_design_studio_debug_mode.html
               - title: Documentation
                 output: web
                 subfolderitems:
@@ -474,18 +474,18 @@ entries:
       - title: API Consumer Guide
         output: web
         folderitems:
-         - title: Introduction
-           output: web
-           url: /apim/3.x/apim_consumerguide_portal.html
-         - title: Create an Account
-           output: web
-           url: /apim/3.x/apim_consumerguide_create_account.html
-         - title: Manage Applications
-           output: web
-           url: /apim/3.x/apim_consumerguide_manage_applications.html
-         - title: Subscribe to APIs
-           output: web
-           url: /apim/3.x/apim_consumerguide_subscribe.html
+          - title: Introduction
+            output: web
+            url: /apim/3.x/apim_consumerguide_portal.html
+          - title: Create an Account
+            output: web
+            url: /apim/3.x/apim_consumerguide_create_account.html
+          - title: Manage Applications
+            output: web
+            url: /apim/3.x/apim_consumerguide_manage_applications.html
+          - title: Subscribe to APIs
+            output: web
+            url: /apim/3.x/apim_consumerguide_subscribe.html
 
       - title: Administration Guide
         output: web
@@ -677,7 +677,6 @@ entries:
             output: web
             url: /apim/3.x/apim_policies_xslt.html
 
-
       - title: Kubernetes Operator [BETA]
         output: web
         folderitems:
@@ -759,3 +758,6 @@ entries:
           - title: Changelog 3.19
             output: web
             url: /apim/3.x/changelog-3.19.html
+          - title: Changelog 3.20
+            output: web
+            url: /apim/3.x/changelog-3.20.html
