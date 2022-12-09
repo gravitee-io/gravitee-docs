@@ -14,7 +14,12 @@ You can plug in your own backends and benefit from all the same features.
 
 You can send a Triggers through websocket
 
-Make sure you `npm install ws` before trying.
+To test this script:
+
+* boostrap a javascript project with `npm init`
+* add `ws` dependency with `npm install --save ws`
+* create the `trigger.js` file with the content below.
+* run that script with `node trigger.js`
 
 [source,javascript]
 ----
@@ -132,6 +137,14 @@ if (wsEvent.readyState === WebSocket.OPEN) {
     // ws.send(JSON.stringify([...event]));
 }
 
+A new Alert Engine log line should appear to confirm a new websocket is opened.
+
+And on the `trigger.js` run you should see something like:
+
+----
+Received message: {"action":"CHANGE","member":"428998e2-fe84-4dfd-82a6-7966d6883073","endpoint":"http://172.20.0.2:8072","id":"8a4a158c-4f31-4a59-8a15-8c4f31aa5902","type":"NODE_DISCOVERY"}
+----
+
 ----
 
 == Http Endpoint
@@ -189,6 +202,7 @@ $ curl \
     }'
 ```
 
+== OpenAPI specification
 Similarly, you can send arrays of triggers and events like with Websockets.
 Checkout the OpenAPI specification here:
 
