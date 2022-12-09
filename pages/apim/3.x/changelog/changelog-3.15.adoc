@@ -15,21 +15,23 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
  
 == APIM - 3.15.19 (2022-12-09)
 
-=== Gateway
 
-// TODO: List all Bug fixes & Improvements
+== APIM - 3.15.19 (2022-12-09)
 
-=== API
+=== Bug fixes
 
-// TODO: List all Bug fixes & Improvements
 
-=== Console
+*_General_*
 
-// TODO: List all Bug fixes & Improvements
+- Handle auth methods in mail configuration https://github.com/gravitee-io/issues/issues/8655[#8655]
 
-=== Portal
+*_Portal_*
 
-// TODO: List all Bug fixes & Improvements
+- In the metadata tab the field for name is not in English https://github.com/gravitee-io/issues/issues/7235[#7235]
+
+*_Management_*
+
+- Duplicate users on login when special characters in username https://github.com/gravitee-io/issues/issues/8673[#8673]
 
 
 == https://github.com/gravitee-io/issues/milestone/614?closed=1[APIM - 3.15.18 (2022-11-18)]
