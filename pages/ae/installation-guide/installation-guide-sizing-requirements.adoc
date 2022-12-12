@@ -15,14 +15,24 @@ The following sections gives installation advice, particularly resource planning
 |Number of triggers  |Compute |Memory |Events/second
 
 |10
-|2 (v)CPU
+|1 (v)CPU
 |256m
-|10000
+|7000
+
+|100
+|1 (v)CPU
+|256m
+|4000
 
 |100
 |2 (v)CPU
 |256m
 |8000
+
+|500
+|1 (v)CPU
+|256m
+|2500
 
 |500
 |2 (v)CPU
