@@ -14,8 +14,8 @@ Moving from 1.6.x to 2.0.0 should run smoothly as only internals have changed.
 Major changes:
 
 - Rework of internals of Alert Engine for better performances
-- Hazelcast upgrade v5 (previously v4). Hazelcast ensures rolling upgrade between Hazelcast IMDG 4.2 and Hazelcast
-Platform 5.0. More info link:https://docs.hazelcast.com/hazelcast/5.2/maintain-cluster/rolling-upgrades#hazelcast-members-compatibility-guarantees[here]
+- *Rolling updates are not supported by this version* even if Hazelcast v5 (previously v4) ensures rolling upgrade
+of its cluster nodes. *Blue/Green deployment* is recommended.
 
 == Upgrade to 1.3.0
 
