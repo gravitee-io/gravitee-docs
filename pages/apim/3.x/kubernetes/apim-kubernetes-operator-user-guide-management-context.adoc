@@ -68,7 +68,7 @@ spec:
   environmentId: dev
   organizationId: acme
   auth:
-    auth:
+    credentials:
       username: admin
       password: admin
 ----

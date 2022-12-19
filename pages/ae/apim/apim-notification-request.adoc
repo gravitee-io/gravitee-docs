@@ -102,7 +102,7 @@ These are just the basic properties, you can't use them to retrieve more informa
 
 |`request.user_agent`
 |Request user agent
-|${notification.properties['request.user_agent.']}
+|${notification.properties['request.user_agent']}
 |-
 
 |`request.user_agent.device_class`
