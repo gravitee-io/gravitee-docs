@@ -10,25 +10,132 @@
 
 == Overview
 
-_This page is for the draft event-native APIM docmentation that Andrew is writing for 3.20. It is here only for initial draft and review purposes. It will be split into different pages and (probably) moved to a new location later._
 
 == Asynchronous APIs
 
-In this release, you can use the gateway to connect to asynchrous APIs. You can configure asynchronous API connections using the RESTful interface to the management API.
+In this release, you can use the gateway to connect to asynchronous APIs. You can configure asynchronous API connections using the RESTful interface to the management API.
 
-The OpenAPI speccification for the management API is available at link:/apim/3.x/management-api/3.19/swagger.json[`swagger.json`] (link:/apim/3.x/apim_installguide_rest_apis_documentation.html#apim_console_api_reference[reference documentation]). Examples of how to use the management API to configure asynchrous APIs can be found in the link:https://github.com/gravitee-io/postman-collections[Gravitee Postman Collections], which are described in link:event_native_apim_using.html[Using Event-native API Management].
+The OpenAPI specification for the management API is available at link:/apim/3.x/management-api/3.19/swagger.json[`swagger.json`] (link:/apim/3.x/apim_installguide_rest_apis_documentation.html#apim_console_api_reference[reference documentation]). Examples of how to use the management API to configure asynchronous APIs can be found in the link:https://github.com/gravitee-io/postman-collections[Gravitee Postman Collections], which are described in link:event_native_apim_using.html[Using Event-native API Management].
 
-The following entrypoints are available.
+[NOTE]
+====
+The management API is in beta and it may change.
+====
+
+== Entrypoints and endpoints
+
+An _entrypoint_ is how an end user connects to the Gravitee gateway. An _endpoint_ is how the Gravitee gateway connects to the upstream API.
+
+The following types of entrypoint are available.
 
 * SSE
+* SSE advanced
 * Websockets
 * HTTP GET
 * HTTP POST
+* Webhook
+* Webhook advanced (EE)
 
-The following endpoints are available
+The following types of endpoint are available
 
 * Kafka
-* MQQT
+* Kafka advanced (EE)
+* MQTT
+* MQTT advanced (EE)
+
+=== Compatability
+
+.Table Endpoint and entrypoint compatability matrix
+|===
+| Entrypoint| Request message (publish mode) | Response message (subscribe mode) | Endpoint
+
+.4+| HTTP POST
+| Yes
+| No
+| Mock
+
+| Yes
+| No
+| Kafka, MQTT5, Kinesis,...
+
+| No
+| No
+| SSE
+
+| Yes
+| No
+| Websocket
+
+.4+| HTTP GET
+| No
+| Yes
+| Mock
+
+| No
+| Yes
+| Kafka, MQTT5, Kinesis,...
+
+| No
+| Yes
+| SSE
+
+| No
+| Yes
+| Websocket
+
+.4+| SSE
+| No
+| Yes
+| Mock
+
+| No
+| Yes
+| Kafka, MQTT5, Kinesis,...
+
+| No
+| Yes
+| SSE
+
+| No
+| Yes
+| Websocket
+
+.4+| Websocket
+| Yes
+| Yes
+| Mock
+
+| Yes
+| Yes
+| Kafka, MQTT5, Kinesis,...
+
+| No
+| Yes
+| SSE
+
+| Yes
+| Yes
+| Websocket
+
+.4+| Webhook
+| No
+| Yes
+| Mock
+
+| No
+| Yes
+| Kafka, MQTT5, Kinesis,...
+
+| No
+| Yes
+| SSE
+
+| No
+| Yes
+| Websocket
+
+|===
+
 
 == Create a v4 async API 
 
@@ -102,7 +209,7 @@ For example, to create an HTTP POST entrypoint that connects to a Kafka endpoint
 
 == Quality of Service 
 
-You can set quality of service with the `qos` object in the `entrypoints` object, as shown in the following example. It can have a value of `none`, `auto`, `at-most-once`, or `at-least-once`.
+You can set quality of service with the `qos` object in the `entrypoints` object, as shown in the following example. See the link:/apim/3.x/management-api/3.19/swagger.json[`swagger.json`] definition of the Management API For values that `qos` can have.
 
 [source json]
 ----
@@ -119,9 +226,54 @@ You can set quality of service with the `qos` object in the `entrypoints` object
             ]
 ----
 
+=== Compatability
+
+Not all qualities of service work with every combination of entrypoint and endpoint. The following table shows how they can be combined.
+
+.Table Quality of service compatability matrix
+|===
+| Entrypoint| MQTT5 | MQTT5 advanced | Kafka | Kafka advanced
+
+| SSE
+| none, auto
+| none, auto
+| none, auto
+| none, auto
+
+| SSE advanced
+| none, auto
+| none, auto
+| none, auto
+| none, auto, at least once, at most once
+
+| HTTP POST
+| none, auto
+| none, auto
+| none, auto
+| none, auto
+
+| HTTP GET
+| auto
+| auto
+| auto
+| auto, at least once, at most once
+
+| Websocket
+| none, auto
+| none, auto
+| none, auto
+| none, auto
+
+| SSE advanced
+| none, auto
+| none, auto, at least once, at most once
+| none, auto
+| none, auto, at least once, at most once
+
+|===
 == Policies
 
-You can set a policy on a subscription by setting the `policy` object in the `subscribe` object, as shown in the following example.
+Policies can be set on requests, responses, subscriptions, and messages. The following example shows how to set a policy on a subsccription.
 
 [source json]
 ----

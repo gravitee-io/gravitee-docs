@@ -1,14 +1,14 @@
-[[event-native-apim-using]]
-= Using Event-native API Management
+[[event-native-apim-example-use-cases]]
+= Event-native API Management example use cases
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/event_native_apim_using.html
+:page-permalink: apim/3.x/event_native_apim_example_use_cases.html
 :page-folder: apim/event-native-apim
 :page-layout: apim3x
 
 [label label-version]#New in version 3.20.0#
 [label label-version]#BETA release#
 
-This page describes how to use event-native API management.
+This page describes some example use cases for event-native API management.
 
 == Prerequisites
 
@@ -111,27 +111,6 @@ To use this collection, go to https://webhook.site/ to get your unique callback 
         "type": "webhook",
         "callbackUrl": "https://webhook.site/891490b9-1e37-4b5e-8f91-4d40b9187710"
     }
-}
-----
-
-==== Webhooks with cloud-events message format
-
-Using webhooks with cloud-events message format is similar to using webhooks, but the message are formatted with the link:https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/formats/json-format.md[Cloud Events JSON format].
-
-Use the following policy configuration.
-
-[source json]
-----
-{
-  "name": "Cloud Events",
-  "description": "Transform to cloud-events message",
-  "enabled": true,
-  "policy": "cloud-events",
-  "configuration": {
-    "type": "demo-events",
-    "id": "{#message.metadata['key']}",
-    "source": "kafka://{#message.metadata['topic']}/{#message.metadata['partition']}/{#message.metadata['offset']}"
-  }
 }
 ----
 
