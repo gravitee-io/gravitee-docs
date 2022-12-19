@@ -17,8 +17,8 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 === General
 
-* Dynamic property schedule is now updateable 
-* Log details no longer fail with closed OAuth 2 or JWT plan
+* Dynamic property schedule is now updateable https://github.com/gravitee-io/issues/issues/8529[#8529]
+* Log details no longer fail with closed OAuth 2 or JWT plan https://github.com/gravitee-io/issues/issues/8685[#8685]
 * Optimized database access when searching APIs
 
 == https://github.com/gravitee-io/issues/milestone/615?closed=1[APIM - 3.18.13 (2022-11-25)]
