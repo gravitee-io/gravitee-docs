@@ -8,8 +8,10 @@
 [label label-version]#New in version 3.20.0#
 [label label-version]#BETA release#
 
-== Overview
-
+[NOTE]
+====
+This document assumes you are familiar with synchronous APIs, asynchronous APIs, and the OpenAPI specification.
+====
 
 == Asynchronous APIs
 
@@ -42,100 +44,6 @@ The following types of endpoint are available
 * Kafka advanced (EE)
 * MQTT
 * MQTT advanced (EE)
-
-=== Compatability
-
-.Table Endpoint and entrypoint compatability matrix
-|===
-| Entrypoint| Request message (publish mode) | Response message (subscribe mode) | Endpoint
-
-.4+| HTTP POST
-| Yes
-| No
-| Mock
-
-| Yes
-| No
-| Kafka, MQTT5, Kinesis,...
-
-| No
-| No
-| SSE
-
-| Yes
-| No
-| Websocket
-
-.4+| HTTP GET
-| No
-| Yes
-| Mock
-
-| No
-| Yes
-| Kafka, MQTT5, Kinesis,...
-
-| No
-| Yes
-| SSE
-
-| No
-| Yes
-| Websocket
-
-.4+| SSE
-| No
-| Yes
-| Mock
-
-| No
-| Yes
-| Kafka, MQTT5, Kinesis,...
-
-| No
-| Yes
-| SSE
-
-| No
-| Yes
-| Websocket
-
-.4+| Websocket
-| Yes
-| Yes
-| Mock
-
-| Yes
-| Yes
-| Kafka, MQTT5, Kinesis,...
-
-| No
-| Yes
-| SSE
-
-| Yes
-| Yes
-| Websocket
-
-.4+| Webhook
-| No
-| Yes
-| Mock
-
-| No
-| Yes
-| Kafka, MQTT5, Kinesis,...
-
-| No
-| Yes
-| SSE
-
-| No
-| Yes
-| Websocket
-
-|===
-
 
 == Create a v4 async API 
 
@@ -209,6 +117,34 @@ For example, to create an HTTP POST entrypoint that connects to a Kafka endpoint
 
 == Quality of Service 
 
+When working with asynchronous APIs, quality of service is important. Quality of service defines the guaranteed level of message delivery. For example, a quality of service of "none" means that a given message might be delivered zero, one, or several times. A quality of service of "at-most-once" means that a given message will be delivered zero or one times, with no duplication.
+
+A higher quality of service leads to lower system performance.
+
+The quality-of-service levels are described in the following table.
+
+.Table Quality of service levels
+[cols="1,4"]
+|===
+|Level | Description
+
+| None
+| A given message might be delivered zero, one, or many times. This level allows high throughput and good performance but without   guaranteed delivery. After failure or disconnection, the client will only receive messages sent after reconnection.
+
+| Auto (0 or N)
+| A given message might be delivered zero, one, or many times. This level allows a trade-off between performance and delivery guarantee. Delivery is highly dependant on the capabilities supported by the endpoint connector.  After failure or disconnection, after reconnection, the client will resume, if possible, from a previously saved state, although messages duplication could potentially exist.
+
+| At-Most-Once (0 or 1)
+| A given message might be delivered zero times or once without any duplication. Depending on the capabilities of the entrypoint connector, performance could be degraded.
+
+| At-Least-Once (1 or N)
+| A given message is delivered once or many times. This level gives a good balance between guaranteed delivery and performance when compared to At-Most-Once, especially when the entrypoint connector is not able to resume message streams after failure.
+
+
+|===
+
+=== Setting quality of service
+
 You can set quality of service with the `qos` object in the `entrypoints` object, as shown in the following example. See the link:/apim/3.x/management-api/3.19/swagger.json[`swagger.json`] definition of the Management API For values that `qos` can have.
 
 [source json]
@@ -226,11 +162,11 @@ You can set quality of service with the `qos` object in the `entrypoints` object
             ]
 ----
 
-=== Compatability
+=== Compatibility
 
 Not all qualities of service work with every combination of entrypoint and endpoint. The following table shows how they can be combined.
 
-.Table Quality of service compatability matrix
+.Table Quality of service compatibility matrix
 |===
 | Entrypoint| MQTT5 | MQTT5 advanced | Kafka | Kafka advanced
 
@@ -271,9 +207,12 @@ Not all qualities of service work with every combination of entrypoint and endpo
 | none, auto, at least once, at most once
 
 |===
+
 == Policies
 
-Policies can be set on requests, responses, subscriptions, and messages. The following example shows how to set a policy on a subsccription.
+Policies are steps in the gateway proxy chain. A policy guarantees that a given business rule with be fulfilled during processing.
+
+Policies can be set on requests, responses, subscriptions, and messages. The following example shows how to set a policy on a subscription.
 
 [source json]
 ----

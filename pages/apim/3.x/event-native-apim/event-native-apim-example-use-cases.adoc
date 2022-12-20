@@ -8,6 +8,12 @@
 [label label-version]#New in version 3.20.0#
 [label label-version]#BETA release#
 
+[NOTE]
+====
+This document assumes you are familiar with synchronous APIs, asynchronous APIs, and the OpenAPI specification.
+====
+
+
 This page describes some example use cases for event-native API management.
 
 == Prerequisites
@@ -30,7 +36,7 @@ You can now access the AKHQ UI at http://localhost:8080.
 
 ===  Enabling event-native API management
 
-To run these examples, you must set the `gravitee_api_jupiterMode_enabled` evnironment variable to `true` on the Management API and the API Gateway.
+To run these examples, you must set the `gravitee_api_jupiterMode_enabled` environment variable to `true` on the Management API and the API Gateway.
 
 === Postman Collections
 
