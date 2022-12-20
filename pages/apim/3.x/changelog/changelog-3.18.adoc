@@ -21,6 +21,23 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 * Log details no longer fail with closed OAuth 2 or JWT plan https://github.com/gravitee-io/issues/issues/8685[#8685]
 * Optimized database access when searching APIs
 
+=== Gateway
+* Manage multiple accept headers with quality factor
+* Handle SSL configuration in Debug mode https://github.com/gravitee-io/issues/issues/8711[#8711]
+
+=== Management
+* Add `authMethods` choices to be used by the Vert.x mail client of the Email Notifier to restrict the choices of authentication methods https://github.com/gravitee-io/issues/issues/8655[#8655]
+* Properly handle special characters in username https://github.com/gravitee-io/issues/issues/8673[#8673]
+
+=== Console
+* Automatically display api subscriptions when browsing the subscription screen https://github.com/gravitee-io/issues/issues/8739[#8739]
+* Include archived applications in the filters available in the log screen https://github.com/gravitee-io/issues/issues/8690[#8690]
+* Fix display of log details with closed oauth2 or jwt plan https://github.com/gravitee-io/issues/issues/8685[#8685]
+
+=== Portal
+* Remove untranslated metadata name placeholder https://github.com/gravitee-io/issues/issues/7235[#7235]
+
+
 == https://github.com/gravitee-io/issues/milestone/615?closed=1[APIM - 3.18.13 (2022-11-25)]
 
 === Bug fixes
