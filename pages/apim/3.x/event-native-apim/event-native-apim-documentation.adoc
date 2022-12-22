@@ -13,6 +13,11 @@
 This document assumes you are familiar with synchronous APIs, asynchronous APIs, and the OpenAPI specification.
 ====
 
+[TIP]
+====
+Before running any of the examples on this page, work through some of the  link:event_native_apim_example_use_cases/html[example use cases] so you know that the event-native engine is running.
+====
+
 == Asynchronous APIs
 
 In this release, you can use the gateway to connect to asynchronous APIs. You can configure asynchronous API connections using the RESTful interface to the management API.
