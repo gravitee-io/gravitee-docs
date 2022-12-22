@@ -103,7 +103,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case
 
 This feature enables you to potentially cover use cases in the fields of Event-Driven Architecture (EDA) and Internet of Things (IoT) without the Gateway and API Management components becoming a bottleneck.
 
-NOTE: In comparison to the link:{{ '#http_post_entrypoint' | relative_url }}[HTTP POST entrypoint use case] using Kafka (where the HTTP POST method is just about sending information from the client app to Kafka), with SSE and Websocket it is possible for the client app to receive information from Kafka as well.
+NOTE: In comparison to the link:#http_post_and_http_get_entrypoints[HTTP POST entrypoint use case] using Kafka (where the HTTP POST method is just about sending information from the client app to Kafka), with SSE and Websocket it is possible for the client app to receive information from Kafka as well.
 
 === Webhook entrypoint
 
