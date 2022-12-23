@@ -20,7 +20,7 @@ Before running any of the examples on this page, work through some of the  link:
 
 == Asynchronous APIs
 
-In this release, you can use the gateway to connect to asynchronous APIs. You can configure asynchronous API connections using the RESTful interface to the management API.
+In this release, you can create asynchronous APIs and connect to event brokers and asynchronous data sources. You can configure asynchronous API connections using the RESTful interface to the management API.
 
 The OpenAPI specification for the management API is available at link:/apim/3.x/management-api/3.19/swagger.json[`swagger.json`] (link:/apim/3.x/apim_installguide_rest_apis_documentation.html#apim_console_api_reference[reference documentation]). Examples of how to use the management API to configure asynchronous APIs can be found in the link:https://github.com/gravitee-io/postman-collections[Gravitee Postman Collections], which are described in link:event_native_apim_example_use_cases.html[example use cases].
 
@@ -31,7 +31,7 @@ The management API is in beta and it may change.
 
 == Entrypoints and endpoints
 
-An _entrypoint_ is how an end user connects to the Gravitee gateway. An _endpoint_ is how the Gravitee gateway connects to the upstream API.
+An _entrypoint_ is how an end user connects to the Gravitee gateway. An _endpoint_ is how the Gravitee gateway connects to the source of data.
 
 The following types of entrypoint are available.
 
@@ -42,6 +42,8 @@ The following types of entrypoint are available.
 * HTTP POST
 * Webhook
 * Webhook advanced (EE)
+
+For more information about these entrypoints, see link:{{'/apim/3.x/event_native_apim_introduction.html#http_post_and_http_get_entrypoints' | relative_url}}[HTTP POST and HTTP GET entrypoints] and link:{{'/apim/3.x/event_native_apim_introduction.html#support_for_websocket_and_sse_entrypoints' | relative_url}}[Support for Websocket and SSE entrypoints]
 
 The following types of endpoint are available
 
@@ -236,6 +238,6 @@ Policies can be set on request, response, subscribe, or publish phases. The foll
 
 For an example, see _04 - Event Consumption - Webhook_ > _Webhook Messaging Filtering_ > _Create API_ in The link:https://github.com/gravitee-io/postman-collections[Gravitee Postman Collections].
 
-== Consume a v4 API
+== Using an asynchronous API
 
-The link:https://github.com/gravitee-io/postman-collections[Gravitee Postman Collections] contain several examples of how to consume an API. Some examples are described on link:event_native_apim_example_use_cases.html#event_consumption[Event consumption].
+The link:https://github.com/gravitee-io/postman-collections[Gravitee Postman Collections] contain several examples of how end users can work with your asynchronous API. Some examples are described on link:event_native_apim_example_use_cases.html#event_consumption[Event consumption].
