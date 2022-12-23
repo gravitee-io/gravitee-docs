@@ -32,9 +32,9 @@ For example, Gravitee can subscribe to a Kafka topic and then allow filtered HTT
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-gateway.png %}[]
 
-== New policy execution mode (V4 BETA)
+== New execution engine (V4 BETA)
 
-Introduced in release 3.19.0 of the Gravitee API Management platform, there is a beta version of a new policy execution engine that enables an improved execution flow for synchronous APIs and supports event-driven policy execution for asynchronous APIs. It is based on a modern and fully reactive architecture designed to address a number of challenges Gravitee users have been facing with the existing policy execution engine, available with the Gravitee's V3 API definition specification used in versions prior to APIM 3.19.x.
+Introduced in release 3.19.0 of the Gravitee API Management platform, there is a beta version of a new policy execution engine that enables an improved execution flow for synchronous APIs and supports event-driven policy execution for asynchronous APIs. It is based on a modern and fully reactive architecture designed to address a number of challenges Gravitee users have been facing with the existing policy execution engine, available with the Gravitee's V2 API definition specification used in versions prior to APIM 3.19.x.
 
 The new policy execution engine builds on the new V4 BETA API definition foundation of Gravitee's event-native platform, which adds features such as native support for Pub/Sub (Publish-Subscribe) design and enabling policies at message level. The new V4 BETA event-native API definition makes it possible for the Gateway to “know” what is necessary in order for it to handle asynchronous API use cases.
 

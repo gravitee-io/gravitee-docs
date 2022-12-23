@@ -36,7 +36,7 @@ An _entrypoint_ is how an end user connects to the Gravitee gateway. An _endpoin
 The following types of entrypoint are available.
 
 * SSE
-* SSE advanced
+* SSE advanced (EE)
 * Websockets
 * HTTP GET
 * HTTP POST
@@ -124,7 +124,7 @@ For example, to create an HTTP POST entrypoint that connects to a Kafka endpoint
 
 When working with asynchronous APIs, quality of service is important. Quality of service defines the guaranteed level of message delivery. For example, a quality of service of "none" means that a given message might be delivered zero, one, or several times. A quality of service of "at-most-once" means that a given message will be delivered zero or one times, with no duplication.
 
-A higher quality of service leads to lower system performance.
+A higher quality of service could lead to lower system performance depending on the endpoint chosen.
 
 The quality-of-service levels are described in the following table.
 
@@ -215,9 +215,9 @@ Not all qualities of service work with every combination of entrypoint and endpo
 
 == Policies
 
-Policies are steps in the gateway proxy chain. A policy guarantees that a given business rule with be fulfilled during processing.
+Policies are steps in the gateway execution chain. A policy guarantees that a given business rule with be fulfilled during processing.
 
-Policies can be set on requests, responses, subscriptions, and messages. The following example shows how to set a policy on a subscription.
+Policies can be set on request, response, subscribe, or publish phases. The following example shows how to set a policy on a subscribe phase.
 
 [source json]
 ----
