@@ -14,8 +14,6 @@ Most developers are familiar with synchronous APIs, where the client sends a req
 
 In contrast, asynchronous APIs are event-driven and allow you to stream data. Asynchronous APIs can use callbacks, such as webhooks, if the requested data is not available at the time of the request. You can think of asynchronous APIs as a 'server push' model. AsyncAPIs are a type of asynchronous API.
 
-For more information about event-driven architectures and asynchronous APIs, see the link:https://www.asyncapi.com/[AsyncAPI website].
-
 == Event-native API management
 
 With the rise of cloud computing, many vendors started to build their solutions for the cloud. Rather than taking on-premises software and converting it to work as SaaS, it was built from the ground to to be cloud-based. These solutions are said to be cloud-native.
@@ -24,7 +22,7 @@ Event-native API management is similar. Rather than taking a synchronous API man
 
 == Gravitee's event-native API management
 
-Gravitee's API management solution can use an event-native policy execution mode, and can support all asynchronous, streaming, and event-driven API use cases. Of course, Gravitee's API management solution also supports synchronous use cases.
+Gravitee's API management solution can run in event-native mode, and it can support all asynchronous, streaming, and event-driven API use cases. Of course, Gravitee's API management solution also supports synchronous use cases.
 
 Gravitee can act as a bridge between synchronous and asynchronous environments.
 
@@ -47,7 +45,7 @@ The new engine provides the following capabilities:
 
 NOTE: This BETA release does not provide GUI support for these capabilities. You can check out the new engine behaviour with the  link:{{ 'apim/3.x/event_native_apim_example_use_cases.html' | relative_url }}[example use cases].
 
-WARNING: The new policy execution engine mode has been released as a BETA version: it should not be used in production. The GA release, which can be used in production, is scheduled for release at the end of March 2023. The GA release will come with additional features - link:https://www.gravitee.io/contact-us[contact us] if you want to know more about it and what new features we are bringing to event-native API Management regarding synchronous and asynchronous APIs.
+WARNING: The new policy execution engine mode has been released as a BETA version: it should not be used in production. The GA, due in 2023, release will come with additional features - link:https://www.gravitee.io/contact-us[contact us] if you want to know more about it and what new features we are bringing to event-native API Management regarding synchronous and asynchronous APIs.
 
 == BETA Features
 
@@ -63,32 +61,8 @@ The diagram below shows the workflow for this use case:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-http-post.png %}[]
 
-The HTTP POST entrypoint can be used in combination with specific Async API endpoints in different ways, depending on what publish and subscribe mode actions are possible between the two when using a connector. This is demonstrated in the compatibility matrix table below:
+The HTTP POST entrypoint can be used in combination with specific Async API endpoints in different ways, depending on what publish and subscribe mode actions are possible between the two when using a connector. 
 
-|===
-|Entrypoint|Request message (publish mode)|Response message (subscribe mode)|Endpoint
-
-|HTTP POST
-|Supported
-|Not supported
-|Mock
-
-|HTTP POST
-|Supported
-|Not supported
-|Kafka
-
-|HTTP POST
-|Not supported
-|Not supported
-|SSE
-
-|HTTP POST
-|Supported
-|Not supported
-|Websocket
-
-|===
 === Support for Websocket and SSE entrypoints
 
 Support for Server-Sent Events (Enterprise Edition only) and Websocket (Community Edition/OSS) entrypoints are provided as separate plugins, available from the link:https://download.gravitee.io/#graviteeio-apim/plugins/entrypoints/[entrypoints plugin download page]
@@ -103,11 +77,11 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case
 
 This feature enables you to potentially cover use cases in the fields of Event-Driven Architecture (EDA) and Internet of Things (IoT) without the Gateway and API Management components becoming a bottleneck.
 
-NOTE: In comparison to the link:#http_post_and_http_get_entrypoints[HTTP POST entrypoint use case] using Kafka (where the HTTP POST method is just about sending information from the client app to Kafka), with SSE and Websocket it is possible for the client app to receive information from Kafka as well.
+NOTE: In comparison to the link:#http_post_and_http_get_entrypoints[HTTP POST entrypoint use case] using Kafka (where the HTTP POST method is just about sending information from the client app to Kafka), with Websocket it is possible for the client app to send and receive information from Kafka as well. SSE can consume information from Kafka.
 
 === Webhook entrypoint
 
-This is an Enterprise Edition feature that enables you to front your backend with a link:https://en.wikipedia.org/wiki/Webhook[Webhook^].
+This is a feature that enables you to front your backend with a link:https://en.wikipedia.org/wiki/Webhook[Webhook^]. It has CE and EE versions.
 
 With Webhook support, an API consumer subscribes to the Webhook API, which basically indicates to the Gateway to listen for specific Kafka messages and then call the consumer to let them know that an expected event has occurred. This communication is performed via Webhook, however it is always up to the Gateway to push the events or messages to the consumer.
 
@@ -123,7 +97,3 @@ The following security policies have been implemented:
 * Keyless policy: does not block any requests as it considers them as valid by default.
 * JWT: generates a signed JWT with a configurable set of claims. This JWT can subsequently be forwarded to backend targets, or used in some other context.
 * OAuth: checks access token validity during request processing using token introspection (for security).
-
-=== Dual execution mode for the new execution engine
-
-A dual execution mode enables users to smoothly transition their APIs to the new execution engine, and to configure a default behavior at platform level and override it for each API level.
