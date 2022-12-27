@@ -10,6 +10,16 @@ WARNING: If you plan to skip versions when you upgrade, ensure that you read the
 
 WARNING: Be sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs;`
 
+== Upgrade to 3.20
+
+NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.20.html' | relative_url }}[Breaking changes in 3.20]
+
+=== Certificate Rotation
+
+Starting from AM 3.20, the certificate generated during the domain creation is marked as a "system" certificate. This is useful for the new "Certificate Rotation" feature that allow you to generate a new system certificate and assign this certificate to the applications that are using the previous system certicate.
+
+When the Management API of AM 3.20 will start for the first time, the upgrader process will try to mark existing certificates as "system" based on the certificate name that should be "Default" and the creation date that should be the same as the domain creation date. If no system certificate can be determined, the domain and application will continue to work without issues.
+
 == Upgrade to 3.19.3
 
 === User Registration and ResetPassword
@@ -55,6 +65,7 @@ This has been fixed in 3.17.5 and 3.18.4 versions of AM.
 We apologize for this inconvenience.
 
 GitHub issue: link:https://github.com/gravitee-io/issues/issues/8391[8391]
+
 
 == Upgrade to 3.18
 

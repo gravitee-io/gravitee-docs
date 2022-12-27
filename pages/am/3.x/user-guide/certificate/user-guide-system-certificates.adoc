@@ -1,0 +1,104 @@
+= System certificates
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_system_certificates.html
+:page-folder: am/user-guide
+:page-layout: am
+
+== Overview
+
+When a domain is created a certificate is generated in order to provide to the domain applications a certificate to sign the tokens. These  certificates are marked as a "system" to identify them in a simple way. 
+
+== How to define system certificates properties
+
+The system certificates are generated based on the Management API settings that allow the definition of:
+
+* the key size (default value: `2048`)
+* the certificate alias (default value: `default`)
+* the validity of the certificate (in days) (default value: `365`)
+* the algorithm used to sign (default value: `SHA256withRSA`)
+* the certificate X.500 name (default value: `cn=Gravitee.io`)
+
+To define your own values, please update the `domains.certificates` section into the `gravitee.yaml` file of the Management API service.
+
+[source, yaml]
+----
+domains:
+  certificates:
+    default:
+      keysize: 2048
+      alias: default
+      keypass: gravitee
+      storepass: gravitee
+      validity: 365             # Validity of the certificate
+      algorithm: SHA256withRSA  # Algorithm used to sign certificate
+      name: cn=Gravitee.io      # Certificate X.500 name
+----
+
+You can define these properties in the `values.yaml` file of the AM Helm Chart.
+
+[source, yaml]
+----
+api:
+  domains:
+    certificates:
+      default:
+        keysize: 2048
+        alias: default
+        keypass: gravitee
+        storepass: gravitee
+        validity: 365             # Validity of the certificate
+        algorithm: SHA256withRSA  # Algorithm used to sign certificate
+        name: cn=Gravitee.io      # Certificate X.500 name
+----
+
+== Certificate rotation
+
+[label label-version]#New in 3.20#
+
+Like all certificates, the system certificate has a given validity period after which tokens will not be valid anymore. When you want to generate a new system certificate, you simply have to click on the "Rotate system key" button. This action will create a new system certificate and assign it to the applications of your domain that are currently using the previous system certificate. The applications update is done asynchronously 10 minutes after the certificate generation in order to avoid JWKS caching issue on the client side.
+
+NOTE: To be notified about certificates expiry follow this documentation link:{{ 'am/current/am_installguide_management_api_configuration.html#configure_notifications_on_certificates_expiry' | relative_url }}[page^].
+
+image::{% link images/am/current/graviteeio-am-userguide-system-certificates.png %}[]
+
+=== Configure the applications update
+
+To adapt the duration of the applications update after a system certificate generation please update the `domains.certificates.default.refresh` section into the `gravitee.yaml` file of the Management API service.
+
+[source, yaml]
+----
+domains:
+  certificates:
+    default:
+      keysize: 2048
+      alias: default
+      keypass: gravitee
+      storepass: gravitee
+      validity: 365             # Validity of the certificate
+      algorithm: SHA256withRSA  # Algorithm used to sign certificate
+      name: cn=Gravitee.io      # Certificate X.500 name
+      # Refresh section is used to define the delay between a system certificate renewal and the applications update to use this new certificate
+      refresh:
+        delay: 10
+        timeUnit: MINUTES
+----
+
+You can define these properties in the `values.yaml` file of the AM Helm Chart.
+
+[source, yaml]
+----
+api:
+  domains:
+    certificates:
+      default:
+        keysize: 2048
+        alias: default
+        keypass: gravitee
+        storepass: gravitee
+        validity: 365             # Validity of the certificate
+        algorithm: SHA256withRSA  # Algorithm used to sign certificate
+        name: cn=Gravitee.io      # Certificate X.500 name
+        refresh:
+          delay: 10
+          timeUnit: MINUTES
+----
