@@ -1,0 +1,56 @@
+= MFA Security
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_mfa_security.html
+:page-folder: am/user-guide
+:page-layout: am
+
+== Overview
+
+[label label-version]#New in version 3.20#
+
+To enforce the security provided by the multi-factor authentication, it can be useful to:
+
+* specify the maximum the number of MFA code the application can send via SMS or Email 
+* enforce the maximum attempts of MFA code verification
+
+== Rate Limit
+
+Some factor have to send a code to the user through a specific channel (SMS, email) and end user may have issue to receive this code.
+In this circumstances, the application user will request a new code but it may be an issue to not limit the number of code requests.
+
+To define a rate limit for MFA code request, you have to enable the `mfa_rate` in the gravitee.yaml of the AccessMaagement gateway.
+
+[source, yaml]
+----
+mfa_rate:
+  enabled: true
+  limit: 5
+  timePeriod: 15
+  timeUnit: Minutes
+----
+
+You can define these properties in the `values.yaml` file of the AM Helm Chart.
+
+[source, yaml]
+----
+gateway:
+  mfa_rate:
+    enabled: true
+    limit: 5
+    timePeriod: 15
+    timeUnit: Minutes
+----
+
+== Brute Force detection
+
+To improve the multi-factor authentication mechanisms, it is useful to enforce the maximum attempts of MFA code verification. This "*brute force detection*" can be enable in the User Account settings.
+
+
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
+. Click *Settings > accounts*.
+. Enable the *Brute Force Detection* in the MFA section.
+. Define your *Brute Force Detection* preferences.
++
+image::{% link images/am/current/graviteeio-am-userguide-mfa-security.png %}[]
+
+NOTE: This settings can be overrided at the application level *App > Settings > accounts*.
