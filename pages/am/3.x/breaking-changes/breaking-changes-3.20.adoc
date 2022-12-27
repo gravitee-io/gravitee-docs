@@ -1,0 +1,50 @@
+= Breaking changes in 3.20
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_breaking_changes_3.20.html
+:page-folder: am/installation-guide
+:page-layout: am
+
+NOTE: To take advantage of these new features and incorporate these breaking changes, **use the migration guide available link:{{ '/am/current/am_installguide_migration.html' | relative_url }}[here]**.
+
+== Mitigate Cross Site Scripting (XSS) and Cross Site Framing
+
+WARNING: To improve security on default installations of AccessManagement, CSP directives, X-XSS-Protection header and X-Frame-Options headers are enabled by default. Please analyze your deployment needs to adapt the default values.
+
+.Gateway CSP:
+[source, yaml]
+----
+  csp:
+    script-inline-nonce: true
+    directives:
+      - default-src 'self';
+      - script-src 'self' https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro@3/dist/fp.min.js *.gstatic.com *.google.com;
+      - img-src 'self' data: ;
+      - style-src 'self' 'unsafe-inline';
+      - frame-ancestors 'none';
+      - frame-src 'self' https://www.google.com;
+----
+
+.Gateway XSS-Protection:
+[source, yaml]
+----
+  xss:
+    action: 1; mode=block
+----
+
+.Gateway X-Frame-Option:
+[source, yaml]
+----
+  xframe:
+    action: DENY
+----
+
+.Management API CSP:
+[source, yaml]
+----
+http:
+  csp:
+    enabled: true
+    directives:
+      - "default-src self;"
+      - "frame-ancestors 'none';"
+----
