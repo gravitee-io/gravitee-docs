@@ -1,0 +1,51 @@
+= APIM 3.20 changelog
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/changelog-3.20.html
+:page-folder: apim
+:page-toc: false
+:page-layout: apim3x
+
+For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim_installguide_migration.html[APIM Migration Guide]
+
+*Important:* If you plan to skip versions when you upgrade, ensure that you read the version-specific upgrade notes for each intermediate version. You may be required to perform manual actions as part of the upgrade.
+
+// NOTE: Global 3.20 release info here
+
+// <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
+
+== APIM - 3.20 (2022-12-30)
+
+=== APIM Console
+
+* [Management] API read-only if managed by CRD
+* New M-API endpoint to delete media
+* Improved API List page
+* Added message to let users know v1 APIs are reaching end of support
+* New Gravitee Navigation Menu 
+* BETA v4 - Consumer - Manage v4 APIs subscriptions
+* BETA v4 - API Publisher - Manage v4 APIs subscriptions
+
+=== Event-Native API Management (Beta)
+
+* Kafka endpoint EE 
+** Connect to a secure Kafka cluster
+** RESUME & LIMIT capabilities
+** Enhanced error handling
+* MQTT5 endpoint
+** Push messages to a MQTT broker
+** Consume messages from a MQTT broker
+** EE - Manage security
+** EE - Implement QoS
+* Message filtering policy
+* Webhook entrypoint
+** Create an API with a webhook entrypoint
+** Subscribe to an API with a webhook entrypoint
+* Basic httpproxy for v4 - Sync API
+* Support conditions on messages
+
+=== Gravitee Kubernetes Operator (Beta)
+
+* Re-apply API CRD on ManagementContext update
+* Store credentials in K8 secrets
+* Export a complex API and import it in a new environment with GKO
+* Export to CRD - different options
