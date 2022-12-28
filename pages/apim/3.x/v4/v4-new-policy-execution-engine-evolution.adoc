@@ -8,11 +8,11 @@
 [label label-version]#New in version 3.20.0#
 [label label-version]#BETA release#
 
-In this section you can learn about all the differences between the new (V4) execution engine mode and the existing V3 execution engine mode, as well as guidance on managing changes in system behavior and potential design and operational impact when switching to the new mode. The information is grouped by functional area.
+In this section you can learn about all the differences between the new V4 BETA policy execution engine and the existing V3 execution engine, as well as guidance on managing changes in system behavior and the potential design and operational impact when switching to the new policy execution engine mode. The information is grouped by functional area in the sub-sections below.
 
 == Policy execution phases/scopes and execution order
 
-=== V3 mode
+=== V3 policy execution engine mode
 
 In V3 mode, different execution scopes are required in order to indicate at which level a policy will work, as follows:
 
@@ -21,11 +21,11 @@ In V3 mode, different execution scopes are required in order to indicate at whic
 * `RESPONSE`: The policy only works on response headers. It never accesses the response body.
 * `RESPONSE_CONTENT`: The policy works at response content level and can access the response body.
 
-As a result, all policies working on the body content are postponed to be executed after the policies working on headers. This leads to a different execution order than the one originally designed. This is shown in the following diagram:
+As a result, all policies working on the body content are postponed to be executed after the policies working on headers. This leads to an execution order than is often different than the one originally designed, as shown in the following diagram:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-execution-scopes-1.png %}[]
 
-=== New (V4) execution mode
+=== New V4 BETA policy execution engine mode
 
 In the new (V4) execution mode, the `REQUEST_CONTENT` and `RESPONSE_CONTENT` scopes (which we now call 'phases') are no longer considered - all policies are executed in the exact order of design, regardless of whether they work on the content or not. This is shown in the following diagram:
 
@@ -41,7 +41,7 @@ In case of any issues or unexpected behavior, you can switch back to V3 executio
 
 == Logging
 
-=== V3 mode
+=== V3 policy execution engine mode
 
 In V3 mode, the following issues exist with logging:
 
@@ -52,7 +52,7 @@ For example:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-logging-1.png %}[]
 
-=== New (V4) execution mode
+=== New V4 BETA policy execution engine mode
 
 In the new (V4) execution mode:
 
@@ -65,7 +65,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-logging-
 
 == Condition evaluation
 
-=== V3 mode
+=== V3 policy execution engine mode
 
 In V3 mode, when the Gateway provides a valid EL expression that fails to be evaluated because it is trying to access missing data, the Gateway returns a 500 error with an obscure message.
 
@@ -73,7 +73,7 @@ For example:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-condition-evaluation-1.png %}[]
 
-=== New (V4) execution mode
+=== New V4 BETA policy execution engine mode
 
 In the new (V4) execution mode, when a valid EL expression is evaluated as `true`, the policy (or flow) is executed. Otherwise, it is skipped.
 
@@ -103,13 +103,13 @@ As a result, the number of 500 errors should decrease after link:{{ 'apim/3.x/ev
 
 == Connection: close
 
-=== V3 mode
+=== V3 policy execution engine mode
 
 In V3 mode, when a bad request is sent to the Gateway, the Gateway indicates a `Connection: close` response header and effectively closes the connection. The next same call from a client application will then end with the same 400 bad request code and that connection will be closed too. This could happen over again as long as the client application sends requests to the Gateway with the same invalid data. The same behavior is in place for 404 not found errors.
 
 Creating a connection is costly for the Gateway and such issues can dramatically impact performance - especially if the consumer intensively makes a lot of bad requests.
 
-=== New (V4) execution mode
+=== New V4 BETA policy execution engine mode
 
 The new execution engine considers that a bad request does not require to close the connection as it is a client-side error. The engine will only close the connection in case of a server-side error.
 
@@ -120,7 +120,7 @@ You can expect decreased CPU consumption in the new mode, especially when a lot 
 
 == Flow condition
 
-=== V3 mode
+=== V3 policy execution engine mode
 
 In V3 mode, a condition can be defined once for the whole flow but it is evaluated before executing each phase of the flow (`REQUEST` and `RESPONSE` phases). This could lead to a partial flow execution - for instance, when trying to define a condition based on a request header and this same header is removed during the `REQUEST` phase (for example, the user does not want it to be transmitted to the backend). In such cases, the condition is re-evaluated and the `RESPONSE` phase is skipped completely. The same scenario could happen with a platform flow for the same reasons.
 
@@ -128,7 +128,7 @@ The example below shows this behavior:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-condition-1.png %}[]
 
-=== New (V4) execution mode
+=== New V4 BETA policy execution engine mode
 
 In the new (V4) execution mode, the flow condition will be applied once for the whole flow - if the condition is evaluated as `true`, then both the `REQUEST` and the `RESPONSE` phases will be executed.
 
@@ -144,7 +144,7 @@ To mimic the V3 behavior while executing in the new (V4) execution mode, you can
 
 == Flow interruption
 
-=== V3 mode
+=== V3 policy execution engine mode
 
 In V3 mode, when a policy fails, the execution flow is interrupted and the response is returned to the client application. As a result, the platform flow response is also skipped. This leads to unexpected behavior, especially when POST actions are expected (for example, for a custom metrics reporter).
 
@@ -152,7 +152,7 @@ The example below shows this behavior:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-interruption-1.png %}[]
 
-=== New (V4) execution mode
+=== New V4 BETA policy execution engine mode
 
 The new (V4) execution mode ensures that platform flows are always executed (except in case of an unrecoverable error). This allows the API to fail without skipping important steps in the flow occurring at a higher level.
 
@@ -162,11 +162,11 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-int
 
 == Access-Control-Allowed-Origin
 
-=== V3 mode
+=== V3 policy execution engine mode
 
 In V3 mode, when configuring CORS to allow some origin, the Gateway properly validates the origin but returns `Access-Control-Allowed-Origin: *` in the response header.
 
-=== New (V4) execution mode
+=== New V4 BETA policy execution engine mode
 
 In the new (V4) execution mode, the allowed origin is returned instead of `*` - for example, `Access-Control-Allowed-Origin: https://test.gravitee.io`.
 
@@ -174,13 +174,13 @@ The example below shows the new behavior:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-cors.png %}[]
 
-== EL expression parsing
+== Expression Language (EL) expression parsing
 
-=== V3 mode
+=== V3 policy execution engine mode
 
 In V3 mode, the EL expression are parsed each time it is evaluated.
 
-=== New (V4) execution mode
+=== New V4 BETA policy execution engine mode
 
 In the new (V4) execution mode, a new caching mechanism allows to cache the parsed EL expression for later reuse and therefore to avoid useless parsing of the same expression multiple times.
 
@@ -190,13 +190,13 @@ The cache of parsed EL expressions provides for enhanced performance.
 
 == EL expression based on the body
 
-=== V3 mode
+=== V3 policy execution engine mode
 
 In V3 mode, using an EL expression such as `{#request.content == 'something'}` is limited to a few policies working at `REQUEST_CONTENT` or `RESPONSE_CONTENT` - for example, assign metrics, assign content, request validation.
 
 Defining a policy or a flow condition based on request or response body is not supported.
 
-=== New (V4) execution mode
+=== New V4 BETA policy execution engine mode
 
 When the new (V4) execution mode is enabled on an API, it is possible to define a condition based on the body.
 
@@ -227,13 +227,13 @@ Use with caution - using an EL body-based expression is resource-heavy and shoul
 
 == Policy support
 
-=== V3 mode
+=== V3 policy execution engine mode
 
 In V3 mode, all existing supported policies will continue to work as before without a change.
 
 Over time, all policies will be migrated to support the new (V4) execution engine mode. The migration will ensure that all policies are backward compatible with the V3 execution mode throughout the V3 mode's normal product support life cycle.
 
-=== New (V4) execution mode
+=== New V4 BETA policy execution engine mode
 
 The new (V4) execution mode comes with a new Policy interface, which allows you to execute all existing V3-mode policies without the need for any changes.
 
@@ -251,11 +251,11 @@ Custom policies developed by community users or customers should be perfectly co
 
 == Timeout Management
 
-=== V3 mode
+=== V3 policy execution engine mode
 
 In V3 mode, when a timeout is configured (`http.requestTimeout`) and triggered due to a request that is too slow (or a policy taking too much time to execute, such as an http callout policy), the API platform flows are skipped and a 504 status is sent as a response to the client.
 
-=== New (V4) execution mode
+=== New V4 BETA policy execution engine mode
 
 In the new (V4) execution mode, values of 0 and less are treated as meaning 'no timeout' (like in V3 mode). If you configure the timeout with a positive value, then it will act normally.
 
@@ -297,7 +297,7 @@ The parsed plan is selected for execution if all the following conditions are me
 * The plan condition rule is either not set or set but not truthy.
 * There is an active subscription matching the incoming request.
 
-=== V3 mode
+=== V3 policy execution engine mode
 
 In V3 mode, the Oauth2 plan *is selected* even if the incoming request does not match a subscription.
 
