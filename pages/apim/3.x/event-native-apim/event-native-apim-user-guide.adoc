@@ -22,7 +22,7 @@ Before running any of the examples on this page, work through some of the  link:
 
 In this release, you can create asynchronous APIs and connect to event brokers and asynchronous data sources. You can configure asynchronous API connections using the RESTful interface to the management API.
 
-The OpenAPI specification for the management API is available at link:/apim/3.x/management-api/3.19/swagger.json[`swagger.json`] (link:/apim/3.x/apim_installguide_rest_apis_documentation.html#apim_console_api_reference[reference documentation]). Examples of how to use the management API to configure asynchronous APIs can be found in the link:https://github.com/gravitee-io/postman-collections[Gravitee Postman Collections], which are described in link:event_native_apim_example_use_cases.html[example use cases].
+The OpenAPI specification for the management API is available at link:/apim/3.x/management-api/3.19/swagger.json[`swagger.json`] (link:/apim/3.x/apim_installguide_rest_apis_documentation.html#apim_console_api_reference[reference documentation]). Examples of how to use the management API to configure asynchronous APIs can be found in the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Postman Collections], which are described in link:event_native_apim_example_use_cases.html[example use cases].
 
 [NOTE]
 ====
@@ -52,9 +52,9 @@ The following types of endpoint are available
 * MQTT
 * MQTT advanced (EE)
 
-== Create a v4 async API 
+== Create a v4 asynchronous API 
 
-The link:https://github.com/gravitee-io/postman-collections[Gravitee Postman Collections] contain several examples of how to create an API.
+The link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Postman Collections] contain several examples of how to create an API.
 
 For example, to create an HTTP POST entrypoint that connects to a Kafka endpoint, send a POST request to `{\{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/`, where `{\{management_host}}` is the host for the management API, with the following message body:
 
@@ -236,8 +236,8 @@ Policies can be set on request, response, subscribe, or publish phases. The foll
             ]
 ----
 
-For an example, see _04 - Event Consumption - Webhook_ > _Webhook Messaging Filtering_ > _Create API_ in The link:https://github.com/gravitee-io/postman-collections[Gravitee Postman Collections].
+For an example, see _04 - Event Consumption - Webhook_ > _Webhook Messaging Filtering_ > _Create API_ in The link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Postman Collections].
 
 == Using an asynchronous API
 
-The link:https://github.com/gravitee-io/postman-collections[Gravitee Postman Collections] contain several examples of how end users can work with your asynchronous API. Some examples are described on link:event_native_apim_example_use_cases.html#event_consumption[Event consumption].
+The link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Postman Collections] contain several examples of how end users can work with your asynchronous API. Some examples are described on link:event_native_apim_example_use_cases.html#event_consumption[Event consumption].

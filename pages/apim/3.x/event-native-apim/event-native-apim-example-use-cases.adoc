@@ -40,7 +40,7 @@ To run these examples, you must set the `gravitee_api_jupiterMode_enabled` envir
 
 === Postman Collections
 
-These examples use the link:https://github.com/gravitee-io/postman-collections[Gravitee Postman Collections].
+These examples use the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Postman Collections].
 
 These collections use four variables.
 
@@ -128,13 +128,13 @@ Use the following policy configuration.
 
 [source json]
 ----
-{
+ {
   "name": "Message filtering",
   "description": "Apply filter to messages",
   "enabled": true,
   "policy": "message-filtering",
   "configuration": {
-    "filter": "{#subscription.filter}"
+    "filter": "{#jsonPath(#message.content, '$.feature') == #subscription.metadata.feature}"
   }
 }
 ----
