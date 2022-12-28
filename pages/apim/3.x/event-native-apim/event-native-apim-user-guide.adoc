@@ -217,7 +217,7 @@ Not all qualities of service work with every combination of entrypoint and endpo
 
 == Policies
 
-Policies are steps in the gateway execution chain. A policy guarantees that a given business rule with be fulfilled during processing.
+Policies are steps in the gateway execution chain. A policy guarantees that a given business rule will be fulfilled during processing.
 
 Policies can be set on request, response, subscribe, or publish phases. The following example shows how to set a policy on a subscribe phase.
 
