@@ -22,7 +22,7 @@ Before running any of the examples on this page, work through some of the  link:
 
 In this release, you can create asynchronous APIs and connect to event brokers and asynchronous data sources. You can configure asynchronous API connections using the RESTful interface to the management API.
 
-The OpenAPI specification for the management API is available at link:/apim/3.x/management-api/3.19/swagger.json[`swagger.json`] (link:/apim/3.x/apim_installguide_rest_apis_documentation.html#apim_console_api_reference[reference documentation]). Examples of how to use the management API to configure asynchronous APIs can be found in the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Postman Collections], which are described in link:event_native_apim_example_use_cases.html[example use cases].
+The OpenAPI specification for the management API is available at link:/apim/3.x/management-api/3.20/swagger.json[`swagger.json`] (link:/apim/3.x/apim_installguide_rest_apis_documentation.html#apim_console_api_reference[reference documentation]). Examples of how to use the management API to configure asynchronous APIs can be found in the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Postman Collections], which are described in link:event_native_apim_example_use_cases.html[example use cases].
 
 [NOTE]
 ====
@@ -152,7 +152,7 @@ The quality-of-service levels are described in the following table.
 
 === Setting quality of service
 
-You can set quality of service with the `qos` object in the `entrypoints` object, as shown in the following example. See the link:/apim/3.x/management-api/3.19/swagger.json[`swagger.json`] definition of the Management API For values that `qos` can have.
+You can set quality of service with the `qos` object in the `entrypoints` object, as shown in the following example. See the link:/apim/3.x/management-api/3.20/swagger.json[`swagger.json`] definition of the Management API For values that `qos` can have.
 
 [source json]
 ----
