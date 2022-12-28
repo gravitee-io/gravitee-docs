@@ -136,7 +136,7 @@ The quality-of-service levels are described in the following table.
 |Level | Description
 
 | None
-| A given message might be delivered zero, one, or many times. This level allows high throughput and good performance but without   guaranteed delivery. After failure or disconnection, the client will only receive messages sent after reconnection.
+| A given message might be delivered zero, one, or many times. This level allows high throughput and good performance but without guaranteed delivery. After failure or disconnection, the client will only receive messages sent after reconnection.
 
 | Auto (0 or N)
 | A given message might be delivered zero, one, or many times. This level allows a trade-off between performance and delivery guarantee. Delivery is highly dependant on the capabilities supported by the endpoint connector.  After failure or disconnection, after reconnection, the client will resume, if possible, from a previously saved state, although messages duplication could potentially exist.
