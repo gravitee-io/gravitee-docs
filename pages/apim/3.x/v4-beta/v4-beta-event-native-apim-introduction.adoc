@@ -14,13 +14,12 @@ Most developers are familiar with synchronous APIs, where the client sends a req
 
 In contrast, asynchronous APIs are event-driven - the initial request opens a connection and data (responses) is received back as and when it becomes available, where certain events would trigger the responses. Asynchronous APIs also allow you to stream data - a common use case in banking and finance systems and applications, as well as many other domains. Asynchronous APIs can use callbacks (such as synchronous API webhooks) if the requested data is not available at the time of the request. You can think of asynchronous APIs as a ‘server push’ model. AsyncAPIs are a type of asynchronous API.
 
-== Event-native API management
+== Gravitee's event-native API management
 
 With the rise of cloud computing, many vendors started to build their solutions for the cloud. Rather than taking on-premises software and converting it to work as SaaS, it was built from the ground to to be cloud-based. These solutions are said to be cloud-native.
 
 Event-native API management is similar. Rather than taking a synchronous API management solution and converting it to handle event-driven APIs, an event-native API management solution is built from the ground up to handle event-driven APIs.
 
-== Gravitee's event-native API management
 
 Gravitee's API management solution can run in event-native mode, and it can support all asynchronous, streaming, and event-driven API use cases. Of course, Gravitee's API management solution also supports synchronous use cases.
 
