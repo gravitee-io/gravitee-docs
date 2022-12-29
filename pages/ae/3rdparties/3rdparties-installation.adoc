@@ -14,24 +14,24 @@ You can plug in your own backends and benefit from all the same features.
 
 You must have an Alert Engine available:
 
-* already deployed on your infrastructure
+* Either already deployed on your infrastructure, or
 * by running it with docker:
 ** `docker run -t -v "${PWD}/licence.key:/opt/graviteeio-alert-engine/license/license.key:ro" -p 8072:8072 graviteeio/ae-engine:latest`
-** note that we use a licence.key file that you must have in the current directory (update the cli as you need)
+** Note that we use a `licence.key` file that you must have in the current directory (update the CLI as you need).
 
-For running the javascript scripts below, we use `node version v18.7.0`.
+For running the Javascript scripts below, we use `node version v18.7.0`.
 
 
-== Websocket connection
+== WebSocket connection
 
-You can send triggers through websocket.
+You can send triggers through WebSocket, as shown in the Javascript implementation example below.
 
 To test this script:
 
-* boostrap a javascript project with `npm init`
-* add `ws` dependency with `npm install --save ws`
-* create the `trigger.js` file with the content below.
-* run that script with `node trigger.js`
+. boostrap a javascript project with `npm init`
+. add `ws` dependency with `npm install --save ws`
+. create the `trigger.js` file with the content below.
+. run that script with `node trigger.js`
 
 [source,javascript]
 ----
@@ -55,7 +55,7 @@ wsTrigger.onerror = (error) => {
 };
 
 wsTrigger.onclose = (event) => {
-  console.log("Trigger websocket connection closed:", event.code, event.reason);
+  console.log("Trigger WebSocket connection closed:", event.code, event.reason);
 };
 
 //Later in code
@@ -119,7 +119,7 @@ wsEvent.onerror = (error) => {
 };
 
 wsEvent.onclose = (event) => {
-  console.log("Trigger websocket connection closed:", event.code, event.reason);
+  console.log("Trigger WebSocket connection closed:", event.code, event.reason);
 };
 
 // Later in code
@@ -146,7 +146,7 @@ if (wsEvent.readyState === WebSocket.OPEN) {
 }
 ----
 
-A new Alert Engine log line should appear to confirm a new websocket is opened.
+A new Alert Engine log line should appear to confirm a new WebSocket is opened.
 
 And on the `trigger.js` run you should see something like:
 
@@ -154,9 +154,9 @@ And on the `trigger.js` run you should see something like:
 Received message: {"action":"CHANGE","member":"428998e2-fe84-4dfd-82a6-7966d6883073","endpoint":"http://172.20.0.2:8072","id":"8a4a158c-4f31-4a59-8a15-8c4f31aa5902","type":"NODE_DISCOVERY"}
 ----
 
-== Http Endpoint
+== HTTP Endpoint
 
-You can also submit triggers via HTTP
+You can also submit triggers via HTTP:
 
 ```bash
 $ curl \

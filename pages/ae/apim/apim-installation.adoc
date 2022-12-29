@@ -85,7 +85,7 @@ alerts:
 
 [label label-version]#New in version 3.20.0#
 
-Events are sent over http as default behaviour. In order to switch back to websocket:
+Events are sent over HTTP as default behaviour. In order to switch back to WebSocket:
 
 ```yaml
 alerts:
