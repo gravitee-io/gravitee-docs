@@ -99,13 +99,13 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-conditio
 
 In V4 BETA mode, conditions evaluated as errors skip the policy or flow execution instead of returning a 500 error.
 
-As a result, the number of 500 errors should decrease after link:{{ 'apim/3.x/event_native_apim_new_policy_execution_engine_activation.html' | relative_url }}[activation] of the new (V4) execution mode.
+As a result, the number of `500` errors should decrease after link:{{ 'apim/3.x/event_native_apim_new_policy_execution_engine_activation.html' | relative_url }}[activating] the new V4 BETA policy execution engine mode.
 
 == Connection: close
 
 === V3 policy execution engine mode
 
-In V3 mode, when a bad request is sent to the Gateway, the Gateway indicates a `Connection: close` response header and effectively closes the connection. The next same call from a client application will then end with the same 400 bad request code and that connection will be closed too. This could happen over again as long as the client application sends requests to the Gateway with the same invalid data. The same behavior is in place for 404 not found errors.
+In V3 mode, when a bad request is sent to the Gateway, the Gateway indicates a `Connection: close` response header and effectively closes the connection. The next same call from a client application will then end with the same 400 bad request code and that connection will be closed too. This could happen over and over again as long as the client application sends requests to the Gateway with the same invalid data. The same behavior is in place for 404 "not found" errors.
 
 Creating a connection is costly for the Gateway and such issues can dramatically impact performance - especially if the consumer intensively makes a lot of bad requests.
 
@@ -130,7 +130,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-con
 
 === New V4 BETA policy execution engine mode
 
-In the new (V4) execution mode, the flow condition will be applied once for the whole flow - if the condition is evaluated as `true`, then both the `REQUEST` and the `RESPONSE` phases will be executed.
+In V4 mode, the flow condition will be applied once for the whole flow - if the condition is evaluated as `true`, then both the `REQUEST` and the `RESPONSE` phases will be executed.
 
 The example below shows the new behavior:
 
@@ -140,7 +140,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-con
 
 If you expect the `RESPONSE` phase to be skipped in the scenario described above, you must refactor your flows since both the `REQUEST` and `RESPONSE` phases will be executed as long as the condition is evaluated as `true`.
 
-To mimic the V3 behavior while executing in the new (V4) execution mode, you can create a new flow and add a condition directly on the policies.
+To mimic the V3 behavior while executing in the new V4 BETA policy execution engine mode, you can create a new flow and add a condition directly on the policies.
 
 == Flow interruption
 
@@ -154,7 +154,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-int
 
 === New V4 BETA policy execution engine mode
 
-The new (V4) execution mode ensures that platform flows are always executed (except in case of an unrecoverable error). This allows the API to fail without skipping important steps in the flow occurring at a higher level.
+The new V4 BETA policy execution engine ensures that platform flows are always executed (except in case of an irrecoverable error). This allows the API to fail without skipping important steps in the flow occurring at a higher level.
 
 The example below shows the new behavior:
 
@@ -164,11 +164,11 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-flow-int
 
 === V3 policy execution engine mode
 
-In V3 mode, when configuring CORS to allow some origin, the Gateway properly validates the origin but returns `Access-Control-Allowed-Origin: *` in the response header.
+In V3 mode, when configuring Cross-Origin Resource Sharing (CORS) to allow some origin, the Gateway properly validates the origin but returns `Access-Control-Allowed-Origin: *` in the response header.
 
 === New V4 BETA policy execution engine mode
 
-In the new (V4) execution mode, the allowed origin is returned instead of `*` - for example, `Access-Control-Allowed-Origin: https://test.gravitee.io`.
+In V4 mode, the allowed origin is returned instead of `*` - for example, `Access-Control-Allowed-Origin: https://test.gravitee.io`.
 
 The example below shows the new behavior:
 
@@ -178,11 +178,11 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-cors.png
 
 === V3 policy execution engine mode
 
-In V3 mode, the EL expression are parsed each time it is evaluated.
+In V3 mode, an EL expression is parsed each time it is evaluated.
 
 === New V4 BETA policy execution engine mode
 
-In the new (V4) execution mode, a new caching mechanism allows to cache the parsed EL expression for later reuse and therefore to avoid useless parsing of the same expression multiple times.
+In V4 mode, a new caching mechanism allows to cache the parsed EL expression for later reuse and therefore to avoid useless parsing of the same expression multiple times.
 
 === Potential impact
 
