@@ -79,6 +79,12 @@ services:
       enabled: true
 
 cluster:
+  # Frequency at which Alert Engine will register the latest state of dampenings and buckets
+  sync:
+    time:
+      value: 30
+      unit: SECONDS
+
   hazelcast:
     config:
       path: ${gravitee.home}/config/hazelcast.xml

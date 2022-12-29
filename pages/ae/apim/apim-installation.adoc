@@ -83,5 +83,45 @@ alerts:
       bulkEventsWait: 100    # Set the duration to wait for bulk events to be ready for sending. When set to 100ms with event size of 100, it means that we will wait for 100 events to be ready to be sent during 100ms. After this period of time, events will be sent event if there are less than 100 events to send.
 ```
 
-CAUTION: By default, to keep the same behavior of the previous version, events are sent over a websocket connection.
-The default behavior will switch to http in a next future version.
+[label label-version]#New in version 3.20.0#
+
+Events are sent over HTTP as default behaviour. In order to switch back to WebSocket:
+
+```yaml
+alerts:
+  alert-engine:
+    ws:
+      sendEventsOnHttp: false
+```
+
+=== Proxy
+[label label-version]#New in version 3.20.0#
+
+The alert engine connector can use the system proxy to send both triggers and events.
+In order to activate it
+
+```yaml
+alerts:
+  alert-engine:
+    ws:
+      useSystemProxy: false
+```
+
+This will use these proxy settings
+
+```yaml
+# global configuration of the http client
+httpClient:
+  proxy:
+    type: HTTP #HTTP, SOCK4, SOCK5
+    http:
+      host: localhost
+      port: 3128
+      username: user
+      password: secret
+    https:
+      host: localhost
+      port: 3128
+      username: user
+      password: secret
+```

@@ -1,0 +1,641 @@
+openapi: 3.0.3
+info:
+  title: Gravitee.io - Alert Engine
+  description: This is the official Gravitee.io - Alert Engine specification
+  contact:
+    email: contact@graviteesource.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.0.0
+servers:
+  - url: https://alerts.gravitee.io/
+paths:
+  /http/triggers:
+    post:
+      security:
+        - basicAuth: [ ]
+      tags:
+        - Triggers
+      summary: create, enable and disable triggers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/Trigger'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Trigger'
+          examples:
+            - $ref: '#/components/examples/trigger_string_condition_not_equals'
+            - $ref: '#/components/examples/trigger_compare_condition_lte'
+            - $ref: '#/components/examples/triggers'
+        required: true
+      responses:
+        '204':
+          description: Trigger accepted
+          content: {}
+        '400':
+          description: Invalid trigger
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+  /http/events:
+    post:
+      security:
+        - basicAuth: [ ]
+      tags:
+        - Events
+      summary: publishes event to the engine
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/Event'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Event'
+
+        required: true
+      responses:
+        '204':
+          description: Event accepted
+          content: { }
+        '400':
+          description: Invalid event
+          content: { }
+        '401':
+          description: Unauthorized
+          content: { }
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    Trigger:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Trigger technical id
+        name:
+          type: string
+          description: Name of the trigger
+        description:
+          type: string
+          description: Description of the trigger
+        source:
+          type: string
+          description: >-
+            The source of the events that will be processed by the trigger, this
+            allows to dedicate triggers to work on particular events (API, health check, etc ...)
+        severity:
+          type: string
+          description: Severity of the trigger
+          enum:
+            - INFO
+            - WARNING
+            - CRITICAL
+        enabled:
+          type: boolean
+          description: enables the trigger to process events
+        conditions:
+          type: array
+          description: the list of condition to evaluate events onto
+          items:
+            anyOf:
+              - $ref: '#/components/schemas/StringCondition'
+              - $ref: '#/components/schemas/StringCompareCondition'
+              - $ref: '#/components/schemas/ThresholdCondition'
+              - $ref: '#/components/schemas/ThresholdRangeCondition'
+              - $ref: '#/components/schemas/CompareCondition'
+              - $ref: '#/components/schemas/RateCondition'
+              - $ref: '#/components/schemas/AggregationCondition'
+              - $ref: '#/components/schemas/MissingDataCondition'
+        filters:
+          type: array
+          description: the list of condition to determine if the trigger can evaluate the event
+          items:
+            anyOf:
+              - $ref: '#/components/schemas/StringCondition'
+              - $ref: '#/components/schemas/StringCompareCondition'
+              - $ref: '#/components/schemas/ThresholdCondition'
+              - $ref: '#/components/schemas/ThresholdRangeCondition'
+              - $ref: '#/components/schemas/CompareCondition'
+        dampening:
+          allOf:
+            - $ref: '#/components/schemas/Dampening'
+            - type: object
+        notificationPeriods:
+          type: array
+          items:
+            allOf:
+              - $ref: '#/components/schemas/Period'
+
+    Condition:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - STRING
+            - COMPARE
+            - STRING_COMPARE
+            - THRESHOLD
+            - THRESHOLD_RANGE
+            - RATE
+            - AGGREGATION
+            - MISSING_DATA
+        projections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Projection'
+    Projection:
+      type: object
+      properties:
+        property:
+          type: string
+          description: the name of the property in the processed event
+        type:
+          type: string
+          description: >-
+            The type of information to extract for the projection in the event
+            (only property today)
+          enum:
+            - PROPERTY
+    StringCondition:
+      description: |-
+        compares a given property value with a pattern.
+        examples:
+          - event.properties['status.code'] EQUALS `200`
+          - event.properties['str_int'] MATCHES `^[0-9]+$`
+      allOf:
+        - $ref: '#/components/schemas/Condition'
+        - type: object
+          properties:
+            property:
+              type: string
+              description: the name of the property in the processed event
+            operator:
+              type: string
+              description: the operator used to evaluate the property
+              enum:
+                - EQUALS
+                - NOT_EQUALS
+                - STARTS_WITH
+                - ENDS_WITH
+                - CONTAINS
+                - MATCHES
+            pattern:
+              type: string
+              description: the pattern used to evaluate the condition
+    StringCompareCondition:
+      description: >-
+        compares a given property value with another
+        examples:
+          - event.properties['given.status.code'] EQUALS `event.properties['other.code']`
+          - event.properties['str_int'] MATCHES `event.properties['str_int_pattern']`
+      allOf:
+        - $ref: '#/components/schemas/Condition'
+        - type: object
+          properties:
+            property:
+              type: string
+              description: the name of the property in the processed event
+            operator:
+              type: string
+              description: the operator used to evaluate the property
+              enum:
+                - EQUALS
+                - NOT_EQUALS
+                - STARTS_WITH
+                - ENDS_WITH
+                - CONTAINS
+                - MATCHES
+            property2:
+              type: string
+              description: the name of the property used to evaluate the condition
+    CompareCondition:
+      description: >-
+        compares a given property value with another property value multiplied
+        by a factor examples:
+          - event.properties['my_value'] GTE `event.properties['my_other_value'] * multiplier`
+      allOf:
+        - $ref: '#/components/schemas/Condition'
+        - type: object
+          properties:
+            property:
+              type: string
+              description: the name of the property in the processed event
+            operator:
+              type: string
+              description: the operator used to evaluate the property
+              enum:
+                - LTE
+                - LT
+                - GTE
+                - GT
+            property2:
+              type: string
+              description: the name of the property used to evaluate the condition
+            multiplier:
+              type: number
+              description: the factor used to compare the event property
+    ThresholdCondition:
+      description: |-
+        compares a given property value with a given threshold examples:
+          - event.properties['my_value'] GTE `30`
+          - event.properties['my_value'] LT `20`
+      allOf:
+        - $ref: '#/components/schemas/Condition'
+        - type: object
+          properties:
+            property:
+              type: string
+              description: the name of the property in the processed event
+            operator:
+              type: string
+              description: the operator used to evaluate the property
+              enum:
+                - LTE
+                - LT
+                - GTE
+                - GT
+            threshold:
+              type: number
+              description: the threshold use to evaluate the event property
+    ThresholdRangeCondition:
+      description: >-
+        evaluates if a given property value is contained within a range
+        examples:
+          - event.properties['my_value'] BETWEEN `30 (INCLUDED) and 55 (EXCLUDED)`
+      allOf:
+        - $ref: '#/components/schemas/Condition'
+        - type: object
+          properties:
+            property:
+              type: string
+              description: the name of the property in the processed event
+            operatorLow:
+              type: string
+              description: the low operator used to evaluate the property
+              enum:
+                - INCLUDED
+                - EXCLUDED
+            thresholdLow:
+              type: number
+              description: the low threshold use to evaluate the event property
+            operatorHigh:
+              type: string
+              description: the high operator used to evaluate the property
+              enum:
+                - INCLUDED
+                - EXCLUDED
+            thresholdHigh:
+              type: number
+              description: the high threshold use to evaluate the event property
+    RateCondition:
+      description: >-
+        evaluates, within a time window and a given sample of events, the rate
+        of evaluation of a given property onto a percentage threshold
+
+        examples:
+          - On a Window of `10 minutes` and at least `1000 events`, the rate of `event.property['property'] EQUALS 'value'`GTE `50%`
+      allOf:
+        - $ref: '#/components/schemas/Condition'
+        - type: object
+          properties:
+            operator:
+              type: string
+              description: the operator used to evaluate the property
+              enum:
+                - GTE
+                - GT
+                - LTE
+                - LT
+            threshold:
+              type: number
+              description: the threshold use to evaluate the event property (% percentage)
+            comparison:
+              type: object
+              oneOf:
+                - $ref : '#/components/schemas/StringCondition'
+                - $ref : '#/components/schemas/StringCompareCondition'
+                - $ref : '#/components/schemas/ThresholdCondition'
+                - $ref : '#/components/schemas/ThresholdRangeCondition'
+                - $ref : '#/components/schemas/CompareCondition'
+            duration:
+              type: number
+              description: the duration time of the rate condition
+            timeUnit:
+              type: string
+              description: the unit of time of the duration
+              enum:
+                - MILLISECONDS
+                - SECONDS
+                - MINUTES
+                - HOURS
+                - DAYS
+            sampleSize:
+              type: number
+              description: the mimimum size of events required for the condition to be performed
+    AggregationCondition:
+      description: >-
+        evaluates, within a time window and a given sample of events, a function for given property onto a threshold
+
+        examples:
+          - On a Window of `10 minutes` and at least `1000 events`, the maximum value of `event.property['number']` GTE `1500`
+          - On a Window of `5 minutes` and at least `10 events`, the average value of `event.property['number']` LT `750`
+      allOf:
+        - $ref: '#/components/schemas/Condition'
+        - type: object
+          properties:
+            property:
+              type: string
+              description: the name of the property in the processed event
+            function:
+              type: string
+              description: Operation applied to evaluate the condition
+              enum:
+                - COUNT
+                - AVG
+                - MIN
+                - MAX
+                - P50
+                - P90
+                - P95
+                - P99
+            operator:
+              type: string
+              description: the operator used to evaluate the property
+              enum:
+                - GTE
+                - GT
+                - LTE
+                - LT
+            threshold:
+              type: number
+              description: the threshold use to evaluate the event property
+            duration:
+              type: number
+              description: the duration time of the rate condition
+            timeUnit:
+              type: string
+              description: the unit of time of the duration
+              enum:
+                - MILLISECONDS
+                - SECONDS
+                - MINUTES
+                - HOURS
+                - DAYS
+    MissingDataCondition:
+      description: |-
+        evaluates, within a time window, if there has not been any event sent
+      allOf:
+        - $ref: '#/components/schemas/Condition'
+        - type: object
+          properties:
+            duration:
+              type: number
+              description: the duration time of the rate condition
+            timeUnit:
+              type: string
+              description: the unit of time of the duration
+              enum:
+                - MILLISECONDS
+                - SECONDS
+                - MINUTES
+                - HOURS
+                - DAYS
+    Dampening:
+      type: object
+      description: defines the dampening to apply on the evaluated condition
+      required: [mode]
+      properties:
+        mode:
+          type: string
+          description: |-
+            defines the mode of the dampening:
+              - Strict count: N consecutive true evaluations
+              - Relaxed count: N true evaluations out of M total evaluations
+              - Relaxed time: N true evaluations in T time
+              - Strict time: Only true evaluations for at least T time
+          enum:
+            - STRICT_COUNT
+            - RELAXED_COUNT
+            - RELAXED_TIME
+            - STRICT_TIME
+        trueEvaluations:
+          type: number
+          description: Number of true evaluation required
+        totalEvaluations:
+          type: number
+          description: Number of total evaluation
+        duration:
+          type: number
+          description: Duration of the dampening
+        timeUnit:
+          type: string
+          description: the unit of time of the duration
+          enum:
+            - MILLISECONDS
+            - SECONDS
+            - MINUTES
+            - HOURS
+            - DAYS
+    Period:
+      type: object
+      properties:
+        days:
+          description: the days of the week
+          type: array
+          items:
+            type: integer
+        zoneId:
+          type: string
+          description: the zoneId of the period
+        beginHour:
+          type: integer
+          description: the hour when the period begins (in seconds)
+        endHour:
+          type: integer
+          description: the hour when the period ends (in seconds)
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          description: the id of the event
+        timestamp:
+          type: number
+          description: the timestamp of the event
+        type:
+          type: string
+          description: the type of the event
+        context:
+          type: object
+          description: the context of the event
+        properties:
+          type: object
+          description: the properties of the event
+    Notification:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The type of notification
+          enum:
+            - webhook-notifier
+            - email-notifier
+            - slack-notifier
+        configuration:
+          type: string
+          description: |-
+            The serialized notifier configuration.
+
+            To know more about this:
+              - Webhook: https://github.com/gravitee-io/gravitee-notifier-webhook/blob/master/src/main/java/io/gravitee/notifier/webhook/configuration/WebhookNotifierConfiguration.java
+              - Email: https://github.com/gravitee-io/gravitee-notifier-email/blob/master/src/main/java/io/gravitee/notifier/email/configuration/EmailNotifierConfiguration.java
+              - Slack: https://github.com/gravitee-io/gravitee-notifier-slack/blob/master/src/main/java/io/gravitee/notifier/slack/configuration/SlackNotifierConfiguration.java
+  examples:
+    trigger_string_condition_not_equals:
+      summary: string condition not equals
+      value:
+        id: 161989f6-5e42-469f-8c9f-33b3194fa1bb
+        severity: WARNING
+        source: all
+        name: Trigger STRING
+        description: A STRING trigger
+        conditions:
+          - property: string-condition-value
+            type: STRING
+            operator: NOT_EQUALS
+            pattern: string-value
+            ignoreCase: true
+        notifications: [ ]
+        dampening:
+          mode: STRICT_COUNT
+          trueEvaluations: 5
+        enabled: true
+        filters:
+          - property: filter-id
+            type: STRING
+            operator: EQUALS
+            pattern: "0"
+            ignoreCase: false
+    trigger_compare_condition_lte:
+      summary: compare condition lte
+      value:
+        id: fabe45ae-9be8-4834-a4ad-00b617d95731
+        severity: CRITICAL
+        source: all
+        name: Trigger COMPARE
+        description: A COMPARE trigger
+        conditions:
+          - property: compare-value1
+            type: COMPARE
+            operator: LTE
+            property2: compare-value2
+            multiplier: 2
+        notifications: [ ]
+        dampening:
+          mode: STRICT_COUNT
+          trueEvaluations: 5
+        enabled: true
+        filters:
+          - property: filter-id
+            type: STRING
+            operator: EQUALS
+            pattern: "0"
+            ignoreCase: false
+    triggers:
+      summary: triggers
+      value:
+        - id: c146b3fe-bace-4451-9755-7dc878a4fc42
+          severity: WARNING
+          source: all
+          name: Trigger STRING
+          description: A STRING trigger
+          conditions:
+            - property: string-condition-value
+              type: STRING
+              operator: ENDS_WITH
+              pattern: string-value
+              ignoreCase: true
+          notifications: [ ]
+          dampening:
+            mode: STRICT_COUNT
+            trueEvaluations: 5
+          enabled: true
+          filters:
+            - property: filter-id
+              type: STRING
+              operator: EQUALS
+              pattern: "0"
+              ignoreCase: false
+        - id: 2bece67f-bc04-48b4-8a6b-361e2202a787
+          severity: WARNING
+          source: all
+          name: Trigger RATE
+          description: A RATE trigger
+          conditions:
+            - type: RATE
+              operator: LT
+              threshold: 50
+              comparison:
+                property: threshold-range-value
+                type: THRESHOLD_RANGE
+                thresholdLow: 45
+                operatorLow: EXCLUSIVE
+                thresholdHigh: 55
+                operatorHigh: INCLUSIVE
+              duration: 10
+              timeUnit: SECONDS
+              sampleSize: 10
+              projections: [ ]
+          notifications: [ ]
+          dampening:
+            mode: STRICT_COUNT
+            trueEvaluations: 1
+          enabled: true
+          filters:
+            - property: filter-id
+              type: STRING
+              operator: EQUALS
+              pattern: "0"
+              ignoreCase: false
+        - id: edd1a377-0cd9-4397-9943-24bca46ba003
+          severity: INFO
+          source: all
+          name: Trigger RATE
+          description: A RATE trigger
+          conditions:
+            - type: RATE
+              operator: LTE
+              threshold: 50
+              comparison:
+                property: threshold-range-value
+                type: THRESHOLD_RANGE
+                thresholdLow: 45
+                operatorLow: INCLUSIVE
+                thresholdHigh: 55
+                operatorHigh: INCLUSIVE
+              duration: 10
+              timeUnit: SECONDS
+              sampleSize: 10
+              projections: [ ]
+          notifications: [ ]
+          dampening:
+            mode: STRICT_COUNT
+            trueEvaluations: 1
+          enabled: true
+          filters:
+            - property: filter-id
+              type: STRING
+              operator: EQUALS
+              pattern: "0"
+              ignoreCase: false
