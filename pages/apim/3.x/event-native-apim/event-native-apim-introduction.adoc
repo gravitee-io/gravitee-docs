@@ -50,7 +50,7 @@ The HTTP POST entrypoint can be used in combination with specific Async API endp
 
 Support for Server-Sent Events (Enterprise Edition only) and Websocket (Community Edition/OSS) entrypoints are provided as separate plugins, available from the link:https://download.gravitee.io/#graviteeio-apim/plugins/entrypoints/[entrypoints plugin download page]
 
-This feature enables you to front your event-driven backend - currently only using Kafka via the Gravitee Community Edition / OSS Kafka connector - with Websocket or Server-Sent Events (SSE) so that API consumers can access events from the Kafka backend via one of these more consumer-friendly protocols.
+This feature enables you to front your event-driven backend - currently only using Kafka or the MQTT5 connectors  - with Websocket or Server-Sent Events (SSE) so that API consumers can access events from the Kafka backend via one of these more consumer-friendly protocols.
 
 For example, if an API consumer cannot connect to a native Kafka instance due to technical limitations (for example, if they cannot implement a Kafka client themselves), Kafka topics can be made available to that consumer via a more consumer-friendly protocol such as SSE or Websocket.
 
@@ -74,7 +74,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case
 
 === Security policies
 
-The following security policies have been implemented:
+As with the previous version, the following security policies have been implemented:
 
 * API Key: enforces API key checks during request processing (for security).
 * Keyless policy: does not block any requests as it considers them as valid by default.
