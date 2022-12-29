@@ -178,40 +178,46 @@ Not all levels of quality of service work with every entrypoint / endpoint combi
 | Entrypoint| MQTT5 endpoint | MQTT5 advanced endpoint | Kafka endpoint | Kafka advanced endpoint
 
 | SSE
-| none, auto
-| none, auto
-| none, auto
-| none, auto
+| At-Least-Once, At-Most-Once
+| At-Least-Once, At-Most-Once
+| None, Auto
+| None, Auto, At-Least-Once, At-Most-Once
 
 | SSE advanced
-| none, auto
-| none, auto
-| none, auto
-| none, auto, at least once, at most once
+| At-Least-Once, At-Most-Once
+| At-Least-Once, At-Most-Once
+| None, Auto
+| None, Auto, At-Least-Once, At-Most-Once
 
 | HTTP POST
-| none, auto
-| none, auto
-| none, auto
-| none, auto
+| None, Auto
+| None, Auto
+| None, Auto
+| None, Auto
 
 | HTTP GET
-| auto
-| auto
-| auto
-| auto, at least once, at most once
+| Auto
+| Auto
+| Auto
+| Auto, At-Least-Once, At-Most-Once
 
 | Websocket
-| none, auto
-| none, auto
-| none, auto
-| none, auto
+| None, Auto
+| None, Auto
+| None, Auto
+| None, Auto
 
-| SSE advanced
-| none, auto
-| none, auto, at least once, at most once
-| none, auto
-| none, auto, at least once, at most once
+| Webhook
+| At-Least-Once, At-Most-Once
+| At-Least-Once, At-Most-Once
+| None, Auto
+| None, Auto, At-Least-Once, At-Most-Once
+
+| Webhook advanced
+| At-Least-Once, At-Most-Once
+| At-Least-Once, At-Most-Once
+| None, Auto
+| None, Auto, At-Least-Once, At-Most-Once
 
 |===
 
