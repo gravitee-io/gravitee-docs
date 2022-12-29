@@ -1,8 +1,8 @@
-[[event-native-apim-example-use-cases]]
+[[v4-beta-event-native-apim-example-use-cases]]
 = Event-native API Management example use cases
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/event_native_apim_example_use_cases.html
-:page-folder: apim/event-native-apim
+:page-folder: apim/v4-beta
 :page-layout: apim3x
 
 [label label-version]#New in version 3.20.0#
@@ -48,13 +48,13 @@ This collection uses the following four variables.
 
 [cols="1,1,1", options="header"]
 |===
-| Variable 
-| Description 
+| Variable
+| Description
 | Example
 
 | `management_host`
 | The host for the Management API
-| `http://localhost:8083` 
+| `http://localhost:8083`
 
 | `management_username`
 | The username for a management user
@@ -62,7 +62,7 @@ This collection uses the following four variables.
 
 | `management_password`
 | The password for `management_username`
-| 
+|
 
 | `gateway_host`
 | The gateway host

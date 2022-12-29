@@ -1,8 +1,8 @@
-[[event-native-apim-introduction]]
+[[v4-beta-event-native-apim-introduction]]
 = Introduction
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/event_native_apim_introduction.html
-:page-folder: apim/event-native-apim
+:page-folder: apim/v4-beta
 :page-layout: apim3x
 
 [label label-version]#New in version 3.20.0#
@@ -44,7 +44,7 @@ The diagram below shows the workflow for this use case:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-http-post.png %}[]
 
-The HTTP POST entrypoint enables you to push messages to any supported event broker via a "sync call" (post) - it can be used in combination with specific Asynchronous API endpoints in different ways, depending on what publish and subscribe mode actions are possible between the two when using a connector. 
+The HTTP POST entrypoint enables you to push messages to any supported event broker via a "sync call" (post) - it can be used in combination with specific Asynchronous API endpoints in different ways, depending on what publish and subscribe mode actions are possible between the two when using a connector.
 
 === Support for Websocket and SSE entrypoints
 

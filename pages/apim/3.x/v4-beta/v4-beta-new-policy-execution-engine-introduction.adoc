@@ -1,8 +1,8 @@
-[[v4-introduction]]
+[[v4-beta-new-policy-execution-engine-introduction]]
 = V4 policy execution engine (V4 BETA)
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: apim/3.x/v4_introduction.html
-:page-folder: apim/event-native-apim
+:page-permalink: apim/3.x/v4_new_policy_execution_engine_introduction.html
+:page-folder: apim/v4-beta
 :page-layout: apim3x
 
 [label label-version]#New in version 3.20.0#
@@ -22,3 +22,11 @@ The new engine provides the following capabilities:
 NOTE: This BETA release does not provide GUI support for these capabilities. You can check out the new engine behaviour with the  link:{{ 'apim/3.x/event_native_apim_example_use_cases.html' | relative_url }}[V4 BETA event-native API Management example use cases].
 
 WARNING: This new policy execution engine has been released as a BETA version: it should not be used in production. The production-ready GA release, due in 2023, will come with additional features - link:https://www.gravitee.io/contact-us[contact us] if you want to know more about it and what new capabilities and improvements we are bringing to event-native API Management regarding synchronous and asynchronous APIs.
+
+== How to enable and disable the new engine
+
+To enable the new V4 BETA policy execution engine, create a new environment variable called `gravitee_api_jupiterMode_enabled` and set it to `true` on the Management API and the API Gateway.
+
+To disable the new engine and revert to using the V3 engine mode, set this environment variable to `false`.
+
+See link:{{'/apim/3.x/apim_installguide_rest_apis_configuration.html#environment_variables' | relative_url }}[Environment variables] on the Management API and link:{{'/apim/3.x/apim_installguide_gateway_configuration.html#environment_variables' | relative_url }}[Environment variables] on the API Gateway for more detail about setting environment variables.

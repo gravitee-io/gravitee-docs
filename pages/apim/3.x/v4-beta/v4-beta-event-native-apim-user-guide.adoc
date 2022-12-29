@@ -1,8 +1,8 @@
-[[event-native-apim-user-guide]]
+[[v4-beta-event-native-apim-user-guide]]
 = User guide
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/event_native_apim_user_guide.html
-:page-folder: apim/event-native-apim
+:page-folder: apim/v4-beta
 :page-layout: apim3x
 
 [label label-version]#New in version 3.20.0#
@@ -52,7 +52,7 @@ The following types of endpoint are available
 * MQTT
 * MQTT advanced (EE)
 
-== Create a v4 asynchronous API 
+== Create a v4 asynchronous API
 
 The link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Postman Collections] contain several examples of how to create an API.
 
@@ -122,7 +122,7 @@ For example, to create an HTTP POST entrypoint that connects to a Kafka endpoint
 }
 ----
 
-== Quality of Service 
+== Quality of Service
 
 When working with asynchronous APIs, quality of service is important. Quality of service defines the guaranteed level of message delivery. For example, a quality of service of "none" means that a given message might be delivered zero, one, or several times. A quality of service of "at-most-once" means that a given message will be delivered zero or one times, with no duplication.
 
