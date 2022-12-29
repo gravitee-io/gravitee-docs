@@ -101,7 +101,7 @@ curl -N -H "Accept:text/event-stream" http://localhost:8082/demo/sse
 
 For streaming with WebSocket, run the _03 - Event Consumption - Websocket_ Postman Collection.
 
-You can test it with Postman's WebSocket support, or you can use the `websocat` command-line tool.
+You can test it through a WebSocket connection in Postman, or you can use the `websocat` command-line tool as shown in the example below.
 
 [source bash]
 ----

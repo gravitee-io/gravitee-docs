@@ -44,7 +44,7 @@ The diagram below shows the workflow for this use case:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-http-post.png %}[]
 
-The HTTP POST entrypoint can be used in combination with specific Async API endpoints in different ways, depending on what publish and subscribe mode actions are possible between the two when using a connector. 
+The HTTP POST entrypoint enables you to push messages to any supported event broker via a "sync call" (post) - it can be used in combination with specific Asynchronous API endpoints in different ways, depending on what publish and subscribe mode actions are possible between the two when using a connector. 
 
 === Support for Websocket and SSE entrypoints
 
