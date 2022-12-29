@@ -8,7 +8,7 @@
 [label label-version]#New in version 3.20.0#
 [label label-version]#BETA release#
 
-In this section you can learn about all the differences between the new V4 BETA policy execution engine and the existing V3 execution engine, as well as guidance on managing changes in system behavior and the potential design and operational impact when switching to the new policy execution engine mode. The information is grouped by functional area in the sub-sections below.
+In this section you can learn about all the differences between the new V4 BETA policy execution engine and the existing V3 execution engine, as well as get guidance on managing changes in system behavior and the potential design and operational impact when switching to the new policy execution engine mode. The information is grouped by functional area in the sub-sections below.
 
 == Policy execution phases/scopes and execution order
 
@@ -27,13 +27,13 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-executio
 
 === New V4 BETA policy execution engine mode
 
-In the new (V4) execution mode, the `REQUEST_CONTENT` and `RESPONSE_CONTENT` scopes (which we now call 'phases') are no longer considered - all policies are executed in the exact order of design, regardless of whether they work on the content or not. This is shown in the following diagram:
+In V4 BETA mode, the `REQUEST_CONTENT` and `RESPONSE_CONTENT` scopes (which we now call 'phases') are no longer considered - all policies are executed in the exact order of design, regardless of whether they work on the content or not. This is shown in the following diagram:
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-execution-scopes-2.png %}[]
 
 === Potential impact
 
-If you have designed your APIs with V3 execution engine mode ordering in mind but you use the new V4 execution engine mode, there may be execution behavior changes because the policy execution will be reordered to match the original design policy order.
+If you have designed your APIs with V3 policy execution engine mode ordering in mind, when you switch to using the new V4 BETA mode there may be policy execution behavior changes because the policy execution will be reordered to match the original design policy order.
 
 To smooth the transition process to the new mode, you can use the debug mode to test the new behavior and adapt your APIs, so they can be safely redeployed in the new mode. For example, you can extract some information from the payload to assign it to a header.
 
@@ -46,7 +46,7 @@ In case of any issues or unexpected behavior, you can switch back to V3 executio
 In V3 mode, the following issues exist with logging:
 
 * A 502 status code would normally indicate that the server has responded with a 502 status code, however this is not possible if the connection has failed.
-* Consumer response headers were not displayed clearly.
+* Consumer response headers are not displayed clearly.
 
 For example:
 
@@ -54,10 +54,10 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-logging-
 
 === New V4 BETA policy execution engine mode
 
-In the new (V4) execution mode:
+In V4 BETA mode:
 
 * When a connectivity error occurs during a connection attempt to the backend endpoint, the Gateway response displays an HTTP status code 0 and no headers. This makes it clear that no response has been received from the backend endpoint due to the connectivity error.
-* Consumer response headers are now displayed more clearly.
+* Consumer response headers are displayed more clearly.
 
 For example:
 
@@ -75,10 +75,10 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-conditio
 
 === New V4 BETA policy execution engine mode
 
-In the new (V4) execution mode, when a valid EL expression is evaluated as `true`, the policy (or flow) is executed. Otherwise, it is skipped.
+In V4 BETA mode, when a valid EL expression is evaluated as `true`, the policy (or flow) is executed. Otherwise, it is skipped.
 
-The policy is now skipped when:
-* The EL expression is evaluated as `false`.
+A policy is skipped when:
+* The Expression Language (EL) expression is evaluated as `false`.
 * The EL expression evaluation fails because the expected data tested is missing.
 
 This is shown in the example below:
@@ -97,7 +97,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-conditio
 
 === Potential impact
 
-Conditions evaluated as errors now skip the policy or flow execution instead of returning a 500 error.
+In V4 BETA mode, conditions evaluated as errors skip the policy or flow execution instead of returning a 500 error.
 
 As a result, the number of 500 errors should decrease after link:{{ 'apim/3.x/event_native_apim_new_policy_execution_engine_activation.html' | relative_url }}[activation] of the new (V4) execution mode.
 
