@@ -35,7 +35,9 @@ The following features are available in the BETA release.
 
 === HTTP POST and HTTP GET entrypoints
 
-The HTTP POST and HTTP GET entrypoints are Community Edition / OSS plugins that enable external clients to publish and receive data via standard HTTP POST / HTTP GET requests, and ease the ingestion of data into event-oriented backends like Kafka.
+The HTTP POST and HTTP GET entrypoints are Community Edition (OSS) plugins that enable external clients to publish and receive data via standard HTTP POST / HTTP GET requests, and ease the ingestion of data into event-oriented backends like Kafka.
+
+They are available as separate plugins you can download from the link:https://download.gravitee.io/#graviteeio-apim/plugins/entrypoints/[entrypoints plugin download page].
 
 With the HTTP POST workflow, a client application running on HTTP can post content to the Gravitee Gateway. The Gateway can then take that content and push it over to Kafka as a message that Kafka can ingest. The Gravitee Gateway acts as a protocol mediation layer in this context. This enables API owners to quickly set up a sync-to-async integration.
 
@@ -45,9 +47,9 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case
 
 The HTTP POST entrypoint enables you to push messages to any supported event broker via a "sync call" (post) - it can be used in combination with specific Asynchronous API endpoints in different ways, depending on what publish and subscribe mode actions are possible between the two when using a connector.
 
-=== Support for Websocket and SSE entrypoints
+=== WebSocket and SSE entrypoints
 
-Support for Server-Sent Events (Enterprise Edition only) and Websocket (Community Edition/OSS) entrypoints are provided as separate plugins, available from the link:https://download.gravitee.io/#graviteeio-apim/plugins/entrypoints/[entrypoints plugin download page]
+The Server-Sent Events (SSE) and WebSocket entrypoints are available as separate plugins you can download from the link:https://download.gravitee.io/#graviteeio-apim/plugins/entrypoints/[entrypoints plugin download page]. Please note that you need an Enterprise Edition (EE) license to use the SSE Advanced entrypoint capabilities. 
 
 This feature enables you to front your event-driven backend - currently only using Kafka or the MQTT5 connectors  - with Websocket or Server-Sent Events (SSE) so that API consumers can access events from the Kafka backend via one of these more consumer-friendly protocols.
 
@@ -63,7 +65,7 @@ NOTE: In comparison to the link:#http_post_and_http_get_entrypoints[HTTP POST en
 
 === Webhook entrypoint
 
-This is a feature that enables you to front your backend with a link:https://en.wikipedia.org/wiki/Webhook[Webhook^]. It has CE and EE versions.
+This is a feature that enables you to front your backend with a link:https://en.wikipedia.org/wiki/Webhook[Webhook^]. It has CE/OSS and EE versions - Webhook, and Webhook Advanced, respectively. Both variants are available as part of a separate plugin you can download from the link:https://download.gravitee.io/#graviteeio-apim/plugins/entrypoints/[entrypoints plugin download page]. Please note that you need an Enterprise Edition (EE) license to use the Webhook Advanced entrypoint capabilities. 
 
 With Webhook support, an API consumer subscribes to the Webhook API, which basically indicates to the Gateway to listen for specific Kafka messages and then call the consumer to let them know that an expected event has occurred. This communication is performed via Webhook, however it is always up to the Gateway to push the events or messages to the consumer.
 
