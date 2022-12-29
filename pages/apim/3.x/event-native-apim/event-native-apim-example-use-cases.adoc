@@ -38,6 +38,8 @@ You can now access the AKHQ UI at http://localhost:8080.
 
 To run these examples, you must set the `gravitee_api_jupiterMode_enabled` environment variable to `true` on the Management API and the API Gateway.
 
+See link:{{'/apim/3.x/apim_installguide_rest_apis_configuration.html#environment_variables' | relative_url }}[Environment variables] on the Management API and link:{{'/apim/3.x/apim_installguide_gateway_configuration.html#environment_variables' | relative_url }}[Environment variables] on the API Gateway for more detail about setting environment variables.
+
 === Postman Collections
 
 These examples use the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Postman Collections].
@@ -68,6 +70,10 @@ These collections use four variables.
 |===
 
 == Data ingestion
+
+Some data ingestion examples are illustrated in the following diagram.
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-data-ingestion.png %}[]
 
 For data ingestion, run the _01 - Data Ingestion_ Postman Collection.
 
