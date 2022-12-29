@@ -294,7 +294,7 @@ The plan selection workflow parses all the published plans in the following orde
 
 The parsed plan is selected for execution if all the following conditions are met:
 * The request contains a token corresponding to this plan type (api-key header, authorization header).
-* The plan condition rule is either not set or set but not truthy.
+* The plan condition rule is either not set or is set incorrectly.
 * There is an active subscription matching the incoming request.
 
 === V3 policy execution engine mode
@@ -305,14 +305,14 @@ No JWT token introspection is done during Oauth2 plan selection.
 
 If there are multiple Oauth2 plans, that would lead to the selection of an irrelevant one.
 
-=== New (V4) execution mode
+=== New V4 BETA policy execution engine mode
 
-In the new (V4) execution mode, the Oauth2 plan *is not selected* if the incoming request does not match a subscription.
+In V4 BETA mode, the Oauth2 plan *is not selected* if the incoming request does not match a subscription.
 
 During the Oauth2 plan selection, a token introspection is released in order to retrieve the `client_id`, which allows searching for a subscription.
 
 Due to concerns about performance, a cache system is available to avoid doing the same token introspection multiple times.
 
-If possible, we encourage using selection rules if there are multiple Oauth2 plans, in order to avoid any unnecessary token introspection.
+Where possible, it is recommended to use selection rules if there are multiple Oauth2 plans, in order to avoid any unnecessary token introspection.
 
 NOTE: The policy has been changed for the Keyless plan - its activation is now prevented in case a security token has been detected in the incoming request by one of the previous plans. Therefore, if an API has multiple plans (JWT, Oauth2, Apikey, Keyless) and the incoming request contains a token or an apikey that does not match any of the existing plans, then the Keyless plan will not be activated and the user will receive a generic 401 response without any details.
