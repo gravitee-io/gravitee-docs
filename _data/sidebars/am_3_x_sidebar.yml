@@ -426,7 +426,7 @@ entries:
                     url: /am/current/am_userguide_mfa_recovery_codes.html
                   - title: Reset MFA
                     output: web
-                    url: /am/current/am_userguide_mfa_user_factors.
+                    url: /am/current/am_userguide_mfa_user_factors.html
                   - title: MFA Security
                     output: web
                     url: /am/current/am_userguide_mfa_security.html
@@ -659,6 +659,9 @@ entries:
             output: web
             url: /am/current/am_breaking_changes.html
             type: homepage
+          - title: Breaking changes in 3.20
+            output: web
+            url: /am/current/am_breaking_changes_3.20.html
           - title: Breaking changes in 3.19
             output: web
             url: /am/current/am_breaking_changes_3.19.html
