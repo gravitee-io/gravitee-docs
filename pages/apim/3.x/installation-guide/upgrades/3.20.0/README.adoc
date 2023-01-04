@@ -15,3 +15,18 @@ alerts:
 ```
 
 Please see the link:/ae/apim_installation.html#event_sending_mode[AlertEngine documentation] for more information.
+
+=== Policy XSLT
+From this version, the embedded link:/apim/3.x/apim_policies_xslt.html[XSLT policy] has been updated to version 2.0.0.
+For security reasons, default behaviour has changed and some configuration options have been added.
+
+By default, a DOCTYPE declaration will cause an error. This is for security.
+If you want to allow it, you can set `policy.xslt.secure-processing` to `false` in the Gateway configuration file (`gravitee.yml`).
+
+[source, yaml]
+.Configuration
+----
+policy:
+  xslt:
+    secure-processing: false
+----
