@@ -23,7 +23,7 @@ Event-native API management is similar. Rather than taking a synchronous API man
 
 Gravitee's API management solution can run in event-native mode, and it can support all asynchronous, streaming, and event-driven API use cases. Of course, Gravitee's API management solution also supports synchronous use cases.
 
-Gravitee can act as a bridge between synchronous and asynchronous environments.
+Gravitee can act as a bridge between synchronous and asynchronous APIs.
 
 For example, Gravitee can subscribe to a Kafka topic and then allow filtered HTTP GET subscriptions from clients as shown in the following diagram.
 
