@@ -15,3 +15,7 @@ policy:
   xslt:
     secure-processing: false
 ----
+
+== Warning
+
+JDBC users might experience some startup issues due to the liquibase migration script. It is recommended to skip this version and upgrade to 3.18.17 instead.
