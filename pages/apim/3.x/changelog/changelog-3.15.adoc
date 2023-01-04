@@ -17,21 +17,13 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 === Gateway
 
-// TODO: List all Bug fixes & Improvements
-
-=== API
-
-// TODO: List all Bug fixes & Improvements
+- Json HTTP error message writing ignores multiple types in Accept header
 
 === Console
 
-// TODO: List all Bug fixes & Improvements
+- [Policy XSLT] Prevent usage of external XML DTD
+- Add a default value in the HTTP Methods field of Dynamic Dictionaries and Properties
 
-=== Portal
-
-// TODO: List all Bug fixes & Improvements
-
- 
 
 
 == APIM - 3.15.19 (2022-12-09)
