@@ -8,21 +8,20 @@
 
 [label label-version]#New in version 3.20#
 
-Gravitee access management introduces MFA rate limit  and brute force detection in `AM 3.20` release to enhance MFA security further.
-These security features are designed to make the multi-factor authentication process more resilient against a bad actor.
-These features allow:
+The 3.20 version of Gravitee Access Management enhances MFA security further by introducing two new security features - MFA Rate Limit and Brute Force Detection.
+This new functionality is designed to make the multi-factor authentication process more resilient to bad actor attacks.
+The new features enable you to:
 
-* specify the maximum number of MFA challenge the application can request to obtain SMS or Email verification code and
-* enforce the maximum attempts of MFA code verification
+* Specify the maximum number of MFA challenges the application can request to obtain SMS or Email verification code.
+* Enforce the maximum attempts of MFA code verification.
 
 == MFA Rate Limit
 
-Rate limit is a feature which helps to configure and limit the number of challenges a user is allowed to send in a specific time period.
-There are factors (such as SMS or email factor) which may incur cost due to the nature of the services or there could be a limited number of available requests in a certain amount of time.
-Now it is possible to address these circumstances by configuring and limiting the number of challenges a user can send to align with the underlying services.
+The MFA Rate Limit feature enables you to configure and limit the number of challenges a user is allowed to send within a specific time period.
+This could be useful when managing factors (such as SMS or email) that could incur unwanted costs due to the nature of the services involved, or factors that can only provide a limited number of available requests within a certain time period.
 
-The rate limit configuration is available in the `gravitee.yaml` of the AM gateway under `mfa_rate` section. The configuration is disabled by default.
-The code fragment below is an enabled sample configuration which is self-explanatory. The `timeUnit` value could be `Hours`, `Minutes` or `Seconds`.
+The rate limit configuration is available in the `gravitee.yaml` file of the AM Gateway under the `mfa_rate` section. The configuration is disabled by default.
+The code example below shows an enabled sample configuration, which is self-explanatory. The `timeUnit` value could be `Hours`, `Minutes`, or `Seconds`.
 
 [source, yaml]
 ----
@@ -45,33 +44,34 @@ gateway:
     timeUnit: Minutes
 ----
 
-Gravitee AM monitors the MFA challenge request based on the enabled rate limit configuration and shows the user rate limit exceeded message if the user exceeds the limit.
-Then the user has to wait a certain amount of time before making a successful request.
-For an example; if the limit is set to 2 for 1 minute time period and the user already has sent 2 requests, then the user must wait another 30 seconds before being able to send the 3rd request.
-Here is a screenshot of the challenge step with exhausted rate limit:
+Gravitee AM monitors the MFA challenge request based on the enabled rate limit configuration. 
+
+If a user exceeds the rate limit, a "user rate limit exceeded" message is shown and the user must wait for a certain amount of time before making a new successful request.
+For example, if the rate limit is set to 2 for a 1-minute time period and the user has already sent 2 requests, the user must wait for another 30 seconds before being able to send another request.
+The screenshot below shows the challenge step with an exhausted rate limit:
 
 image::{% link images/am/current/graviteeio-am-userguide-mfa-ratelimit-exceed.png %}[250, 500]
 
-NOTE: You can customise the error message by setting `mfa_challenge.rate.limit.error` property value in the *messages_en.properties* or *messages_fr.properties* file.
+NOTE: You can customize the error message by modifying the value of the `mfa_challenge.rate.limit.error` property in the *messages_en.properties* or *messages_fr.properties* file.
 
 
-== Brute Force detection
+== Brute Force Detection
 
-Brute force is a feature which helps to configure and limit the number of verification requests a user is allowed to send in a specific time period.
-This feature is configurable in domain or in application level. Follow the steps below to configure the *Brute Force* feature in domain level
+The Brute Force Detection feature enables you to configure and limit the number of verification requests a user is allowed to send within a specific time period.
+You can configure Brute Force Detection at domain level or at application level. Follow the steps below to configure the *Brute Force* feature at domain level.
 
-. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to the AM Console^].
 . Select *User Accounts* under *SECURITY*.
-. Enable the *Brute Force Detection* in the *MFA* section.
+. Enable *Brute Force Detection* in the *MFA* section.
 . Define your *Brute Force Detection* preferences.
 +
 image::{% link images/am/current/graviteeio-am-userguide-mfa-security.png %}[]
 
-The user will be notified with an error message once the maximum attempt is exhausted.
+Once the number of maximum attempts is reached, the user will be notified with an error message.
 
 image::{% link images/am/current/graviteeio-am-userguide-mfa-brute-max.png %}[250, 500]
 
-A new log event `MFA_VERIFY_LIMIT_EXCEED` is also introduced to log the brute force attempt.
+A new log event, `MFA_VERIFY_LIMIT_EXCEED`, is available to log brute force attempts.
 
-NOTE: The settings can be overridden at the application level *App > Settings > accounts*.
-You can customise the error message by setting `mfa_challenge.verify.limit.error` property value in the *messages_en.properties* or *messages_fr.properties* file.
+NOTE: You can override domain-level Brute Force Detection settings at the application level from *App > Settings > accounts*.
+To customize the error message, modify the value of the `mfa_challenge.verify.limit.error` property in the *messages_en.properties* or *messages_fr.properties* file.

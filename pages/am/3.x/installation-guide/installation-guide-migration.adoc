@@ -8,7 +8,7 @@ NOTE: Files specified in this guide can be found at https://github.com/gravitee-
 
 WARNING: If you plan to skip versions when you upgrade, ensure that you read the version-specific upgrade notes for each intermediate version. You may be required to perform manual actions as part of the upgrade.
 
-WARNING: Be sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs;`
+WARNING: Make sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs`.
 
 == Upgrade to 3.20
 
@@ -16,9 +16,9 @@ NOTE: For more information about the breaking changes of this version, see link:
 
 === Certificate Rotation
 
-Starting from AM 3.20, the certificate generated during the domain creation is marked as a "system" certificate. This is useful for the new "Certificate Rotation" feature that allow you to generate a new system certificate and assign this certificate to the applications that are using the previous system certicate.
+Starting from AM 3.20, the certificate generated during the domain creation is marked as a "system" certificate. This is useful for the new "Certificate Rotation" feature that enables you to generate a new system certificate and then assign this certificate to the applications that are using the previous system certificate.
 
-When the Management API of AM 3.20 will start for the first time, the upgrader process will try to mark existing certificates as "system" based on the certificate name that should be "Default" and the creation date that should be the same as the domain creation date. If no system certificate can be determined, the domain and application will continue to work without issues.
+When the Management API of AM 3.20 is about to start for the first time, the upgrader process will try to mark existing certificates as "system", based on the certificate name (which should be "Default") and the creation date (which should be the same as the domain creation date). If no "system" certificate can be determined, the domain and the application will continue to work without issues.
 
 == Upgrade to 3.19.3
 

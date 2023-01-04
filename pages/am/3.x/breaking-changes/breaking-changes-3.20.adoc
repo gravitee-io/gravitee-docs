@@ -6,9 +6,9 @@
 
 NOTE: To take advantage of these new features and incorporate these breaking changes, **use the migration guide available link:{{ '/am/current/am_installguide_migration.html' | relative_url }}[here]**.
 
-== Mitigate Cross Site Scripting (XSS) and Cross Site Framing
+== Mitigate Cross-Site Scripting (XSS) and Cross-Site Framing
 
-WARNING: To improve security on default installations of AccessManagement, CSP directives, X-XSS-Protection header and X-Frame-Options headers are enabled by default. Please analyze your deployment needs to adapt the default values.
+WARNING: CSP directives, the X-XSS-Protection header, and X-Frame-Options headers are enabled by default in order to enhance the security for default installations of Access Management. Please make sure to assess if your deployment requires modification of these default values.
 
 .Gateway CSP:
 [source, yaml]
