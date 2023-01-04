@@ -13,6 +13,15 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.18.16 (2023-01-04)
+
+=== API
+
+* Handle flow steps order in database https://github.com/gravitee-io/issues/issues/8805[#8805]
+* Handle query with page number higher than max page with data https://github.com/gravitee-io/issues/issues/8773[#8773]
+
+
+
 == APIM - 3.18.15 (2023-01-03)
 
 === Gateway
