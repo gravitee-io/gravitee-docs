@@ -17,20 +17,14 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 === Gateway
 
-// TODO: List all Bug fixes & Improvements
+* API key plan was not useable after migration to 3.18
+* Non-explicit "invalid version format: 0" log message fixed
 
-=== API
+=== Management
 
-// TODO: List all Bug fixes & Improvements
-
-=== Console
-
-// TODO: List all Bug fixes & Improvements
-
-=== Portal
-
-// TODO: List all Bug fixes & Improvements
-
+* PostgreSQL: management API failed to start after 3.18 migration
+* Import API erased plan general conditions
+* API key revocation raised an error in non-default environment
  
 == APIM - 3.18.14 (2022-12-16)
 
