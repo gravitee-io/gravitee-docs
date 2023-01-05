@@ -98,15 +98,16 @@ To override this property:
 
 [source,yaml]
 ----
-management:
-  mongodb:
-    dbname: myDatabase
+cluster:
+  sync:
+    time:
+      value: 30
 ----
 
 Add this property to the JVM:
 
 ----
--Dmanagement.mongodb.dbname=myDatabase
+-Dcluster.sync.time.value=50
 ----
 
 
@@ -118,18 +119,19 @@ To override this property:
 
 [source,yaml]
 ----
-management:
-  mongodb:
-    dbname: myDatabase
+cluster:
+  sync:
+    time:
+      value: 30
 ----
 
 Define one of the following variables:
 
 ----
-GRAVITEE_MANAGEMENT_MONGODB_DBNAME=myDatabase
-GRAVITEE.MANAGEMENT.MONGODB.DBNAME=myDatabase
-gravitee_management_mongodb_dbname=myDatabase
-gravitee.management.mongodb.dbname=myDatabase
+GRAVITEE_CLUSTER_SYNC_TIME_VALUE=30
+GRAVITEE.CLUSTER.SYNC.TIME.VALUE=30
+gravitee_cluster_sync_time_value=30
+gravitee.cluster.sync.time.value=30
 ----
 
 WARNING: Some properties are case sensitive and cannot be written in upper case (for example,
