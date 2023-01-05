@@ -38,7 +38,7 @@ automatically _injected_ into the expression language context to be used later.
 
 === Dictionaries
 
-link:{{ 'apim/3.x/apim_installguide_configuration_dictionaries.html' | relative_url }}[Dictionaries] work in a similar way to properties, but you need to specify the dictionary name as well as the property name.
+link:{{ 'apim/3.x/apim_installguide_configuration_dictionaries.html' | relative_url }}[Dictionaries] work in a similar way to properties, but you need to specify the dictionary id (visible in the url) as well as the property name.
 
 ==== Example
 
