@@ -734,6 +734,29 @@ entries:
             output: web
             url: apim/3.x/apim_kubernetes_operator_changelog.html
 
+      - title: V4 Policy Execution Engine [V4 BETA]
+        output: web
+        folderitems:
+          - title: Introduction
+            output: web
+            url: /apim/3.x/v4_new_policy_execution_engine_introduction.html
+          - title: Policy Execution Engines Compared
+            output: web
+            url: /apim/3.x/v4_new_policy_execution_engine_evolution.html
+
+      - title: Event-native API Management [V4 BETA]
+        output: web
+        folderitems:
+          - title: Introduction
+            output: web
+            url: /apim/3.x/event_native_apim_introduction.html
+          - title: User Guide
+            output: web
+            url: /apim/3.x/event_native_apim_user_guide.html
+          - title: Example Use Cases
+            output: web
+            url: /apim/3.x/event_native_apim_example_use_cases.html
+
       - title: API Reference
         output: web
         folderitems:

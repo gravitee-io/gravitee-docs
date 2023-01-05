@@ -1,0 +1,146 @@
+[[v4-beta-event-native-apim-example-use-cases]]
+= Event-native API Management example use cases
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/event_native_apim_example_use_cases.html
+:page-folder: apim/v4-beta
+:page-layout: apim3x
+
+[label label-version]#New in version 3.20.0#
+[label label-version]#BETA release#
+
+[NOTE]
+====
+This document assumes you are familiar with synchronous APIs, asynchronous APIs, and the OpenAPI specification.
+====
+
+
+This page describes some example use cases for event-native API management.
+
+== Prerequisites
+
+=== Kafka
+
+These examples all depend on Kafka. To set up a Kafka Docker container with the link:https://github.com/tchiotludo/akhq[AKHQ] UI, follow these steps.
+
+1. Download `link:https://raw.githubusercontent.com/tchiotludo/akhq/master/docker-compose.yml[docker-compose.yml]`.
+
+2. Run it locally.
++
+[source, bash]
+----
+docker-compose pull
+docker-compose up
+----
+
+You can now access the AKHQ UI at http://localhost:8080.
+
+===  Enabling event-native API management
+
+To run these examples, you must enable the link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html#how_to_enable_and_disable_the_new_engine' | relative_url }}[new V4 BETA policy execution engine] first by setting the `gravitee_api_jupiterMode_enabled` environment variable to `true` on the Management API and the API Gateway.
+
+NOTE: See link:{{'/apim/3.x/apim_installguide_rest_apis_configuration.html#environment_variables' | relative_url }}[Environment variables] on the Management API and link:{{'/apim/3.x/apim_installguide_gateway_configuration.html#environment_variables' | relative_url }}[Environment variables] on the API Gateway for more detail about setting environment variables.
+
+=== V4 BETA 3.20.x Postman Collection
+
+These examples use the Gravitee V4 BETA 3.20.x Postman Collection, available from the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Public Workspace] in Postman.
+
+This collection uses the following four variables.
+
+[cols="1,1,1", options="header"]
+|===
+| Variable
+| Description
+| Example
+
+| `management_host`
+| The host for the Management API
+| `http://localhost:8083`
+
+| `management_username`
+| The username for a management user
+| `admin`
+
+| `management_password`
+| The password for `management_username`
+|
+
+| `gateway_host`
+| The gateway host
+| `http://loalhost:8082`
+|===
+
+== Data ingestion
+
+Some data ingestion examples are illustrated in the following diagram.
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-data-ingestion.png %}[]
+
+For data ingestion, run the requests in the _01 - Data Ingestion_ folder of the Postman Collection.
+
+You can also use `curl` to `POST` data to the endpoint, as shown in the example below.
+
+[source bash]
+----
+curl -X POST -d "my_payload" http://localhost:8082/data/ingestion
+----
+
+== Event consumption
+
+=== Streaming: server-sent events (SSE)
+
+For streaming with server-sent events (SSE), run the requests in the _02 - Event Consumption - SSE_ folder of the Postman Collection.
+
+You can test it with `curl`.
+
+[source bash]
+----
+curl -N -H "Accept:text/event-stream" http://localhost:8082/demo/sse
+----
+
+=== Streaming: WebSocket
+
+For streaming with WebSocket, run the requests in the _03 - Event Consumption - Websocket_ folder of the Postman Collection.
+
+You can test it through a WebSocket connection in Postman, or you can use the `websocat` command-line tool as shown in the example below.
+
+[source bash]
+----
+websocat ws://localhost:8082/demo/ws
+----
+
+=== Webhooks
+
+For webhooks, run the requests in the _04 - Event Consumption - Webhook_ folder of the Postman Collection.
+
+This request group uses a webhook callback that is called by the API Gateway. The unique callback URL is generated via https://webhook.site/.
+
+To use these requests, go to https://webhook.site/ to get your unique callback URL, and update the Postman Collection to use it. For example:
+
+[source json]
+----
+{
+    "configuration": {
+        "type": "webhook",
+        "callbackUrl": "https://webhook.site/891490b9-1e37-4b5e-8f91-4d40b9187710"
+    }
+}
+----
+
+==== Webhooks with subscription filter
+
+For webhooks with subscription filters, run the requests in the _05 - Event Consumption - Webhook - Message Filtering_ folder of the Postman Collection.
+
+Use the following policy configuration.
+
+[source json]
+----
+ {
+  "name": "Message filtering",
+  "description": "Apply filter to messages",
+  "enabled": true,
+  "policy": "message-filtering",
+  "configuration": {
+    "filter": "{#jsonPath(#message.content, '$.feature') == #subscription.metadata.feature}"
+  }
+}
+----

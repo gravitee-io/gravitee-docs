@@ -1,0 +1,249 @@
+[[v4-beta-event-native-apim-user-guide]]
+= User guide
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/event_native_apim_user_guide.html
+:page-folder: apim/v4-beta
+:page-layout: apim3x
+
+[label label-version]#New in version 3.20.0#
+[label label-version]#BETA release#
+
+[NOTE]
+====
+This document assumes you are familiar with synchronous APIs, asynchronous APIs, and the OpenAPI specification.
+====
+
+[TIP]
+====
+Before running any of the examples on this page, work through some of the  link:event_native_apim_example_use_cases.html[example use cases] so you know that the event-native engine is running.
+====
+
+== Asynchronous APIs
+
+In this release, you can create asynchronous APIs and connect to event brokers and asynchronous data sources. You can configure asynchronous API connections using the RESTful interface to the management API.
+
+The OpenAPI specification for the management API is available at link:/apim/3.x/management-api/3.20/swagger.json[`swagger.json`] (link:/apim/3.x/apim_installguide_rest_apis_documentation.html#apim_console_api_reference[reference documentation]). Examples of how to use the management API to configure asynchronous APIs can be found in the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Postman Collections], which are described in link:event_native_apim_example_use_cases.html[example use cases].
+
+[NOTE]
+====
+The management API is in beta and it may change.
+====
+
+== Entrypoints and endpoints
+
+An _entrypoint_ is how an end user connects to the Gravitee Gateway. An _endpoint_ is how the Gravitee Gateway connects to the source of data.
+
+The following types of entrypoints are available:
+
+* SSE (Server-Sent Events)
+* SSE advanced (Enterprise Edition only)
+* WebSocket
+* HTTP GET
+* HTTP POST
+* Webhook
+* Webhook advanced (Enterprise Edition only)
+
+For more information about these entrypoints, see link:{{'/apim/3.x/event_native_apim_introduction.html#http_post_and_http_get_entrypoints' | relative_url}}[HTTP POST and HTTP GET entrypoints] and link:{{'/apim/3.x/event_native_apim_introduction.html#support_for_websocket_and_sse_entrypoints' | relative_url}}[Support for Websocket and SSE entrypoints].
+
+The following types of endpoints are available:
+
+* Kafka
+* Kafka advanced (Enterprise Edition only)
+* MQTT
+* MQTT advanced (Enterprise Edition only)
+
+== How to create a V4 BETA asynchronous API
+
+The link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee V4 BETA Postman Collection] contains several examples of how to create and test an asynchronous API using the event-native V4 BETA API definition and link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html' | relative_url}}[the new V4 BETA policy execution engine] .
+
+For example, to create an HTTP POST entrypoint that connects to a Kafka endpoint, send a POST request to `{\{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/`, where `{\{management_host}}` is the host for the management API, with the following message body:
+
+[source json]
+----
+{
+    "name": "Data Ingestion to Kafka",
+    "apiVersion": "1.0",
+    "definitionVersion": "4.0.0",
+    "type": "async",
+    "description": "Data Ingestion to Kafka",
+    "listeners": [
+        {
+            "type": "http",
+            "paths": [
+                {
+                    "path": "/data/ingestion/kafka"
+                }
+            ],
+            "entrypoints": [
+                {
+                    "type": "http-post",
+                    "configuration": {
+                        "requestHeadersToMessage": false
+                    }
+                }
+            ]
+        }
+    ],
+    "endpointGroups": [
+        {
+            "name": "default",
+            "type": "kafka",
+            "endpoints": [
+                {
+                    "name": "default",
+                    "type": "kafka",
+                    "weight": 1,
+                    "inheritConfiguration": false,
+                    "configuration": {
+                        "bootstrapServers": "kafka:9092",
+                        "topics" : ["demo"],
+                        "consumer" : {
+                            "enabled": false
+                        },
+                        "producer": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "flows": [
+        {
+            "name": "",
+            "selectors": [],
+            "request": [],
+            "response": [],
+            "subscribe": [],
+            "publish": [],
+            "enabled": true
+        }
+    ]
+}
+----
+
+== Quality of Service
+
+When working with asynchronous APIs, quality of service is important. Quality of service defines the guaranteed level of message delivery. For example, a quality of service of "none" means that a given message might be delivered zero, one, or several times. A quality of service of "at-most-once" means that a given message will be delivered zero or one times, with no duplication.
+
+A higher quality of service could lead to lower system performance depending on the endpoint chosen.
+
+The quality-of-service levels are described in the following table.
+
+.Table Quality of service levels
+[cols="1,4"]
+|===
+|Level | Description
+
+| None
+| A given message might be delivered zero, one, or many times. This level allows high throughput and good performance but without guaranteed delivery. After failure or disconnection, the client will only receive messages sent after reconnection.
+
+| Auto (0 or N)
+| A given message might be delivered zero, one, or many times. This level allows a trade-off between performance and delivery guarantee. Delivery is highly dependent on the capabilities supported by the endpoint connector.  In case of failure or disconnection, after reconnection the client will resume, if possible, from a previously saved state, although duplication of messages could potentially exist.
+
+| At-Most-Once (0 or 1)
+| A given message might be delivered zero times or once without any duplication. Depending on the capabilities of the entrypoint connector, performance could be degraded.
+
+| At-Least-Once (1 or N)
+| A given message is delivered once or many times. This level gives a good balance between guaranteed delivery and performance when compared to At-Most-Once, especially when the entrypoint connector is not able to resume message streams after failure.
+
+
+|===
+
+=== Setting quality of service
+
+You can set quality of service levels with the `qos` object in the `entrypoints` object, as shown in the following example. See the link:/apim/3.x/management-api/3.20/swagger.json[`swagger.json`] definition of the Management API for a list of possible `qos` values you can specify.
+
+[source json]
+----
+"entrypoints": [
+                {
+                    "type": "sse",
+                    "qos": "none",
+                    "configuration": {
+                        "heartbeatIntervalInMs": 5000,
+                        "metadataAsComment": false,
+                        "headersAsComment": false
+                    }
+                }
+            ]
+----
+
+=== Compatibility
+
+Not all levels of quality of service work with every entrypoint / endpoint combination. The following table shows how they can be used.
+
+.Table Quality of service compatibility matrix
+|===
+| Entrypoint| MQTT5 endpoint | MQTT5 advanced endpoint | Kafka endpoint | Kafka advanced endpoint
+
+| SSE
+| At-Least-Once, At-Most-Once
+| At-Least-Once, At-Most-Once
+| None, Auto
+| None, Auto, At-Least-Once, At-Most-Once
+
+| SSE advanced
+| At-Least-Once, At-Most-Once
+| At-Least-Once, At-Most-Once
+| None, Auto
+| None, Auto, At-Least-Once, At-Most-Once
+
+| HTTP POST
+| None, Auto
+| None, Auto
+| None, Auto
+| None, Auto
+
+| HTTP GET
+| Auto
+| Auto
+| Auto
+| Auto, At-Least-Once, At-Most-Once
+
+| Websocket
+| None, Auto
+| None, Auto
+| None, Auto
+| None, Auto
+
+| Webhook
+| At-Least-Once, At-Most-Once
+| At-Least-Once, At-Most-Once
+| None, Auto
+| None, Auto, At-Least-Once, At-Most-Once
+
+| Webhook advanced
+| At-Least-Once, At-Most-Once
+| At-Least-Once, At-Most-Once
+| None, Auto
+| None, Auto, At-Least-Once, At-Most-Once
+
+|===
+
+== Policies
+
+Policies are steps in the gateway execution chain. A policy guarantees that a given business rule will be fulfilled during processing.
+
+Policies can be set on request, response, subscribe, or publish phases. The following example shows how to set a policy on a subscribe phase.
+
+[source json]
+----
+"subscribe": [
+                {
+                    "name": "Message filtering",
+                    "description": "Apply filter to messages",
+                    "enabled": true,
+                    "policy": "message-filtering",
+                    "configuration": {
+                        "filter": "{#message.headers.foo == #subscription.metadata['bar']}"
+                    }
+                }
+            ]
+----
+
+For an example, see _04 - Event Consumption - Webhook_ > _Webhook Messaging Filtering_ > _Create API_ in the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee V4 BETA Postman Collection].
+
+== Use cases
+
+The link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee V4 BETA Postman Collection] contains several examples of how end users can work with your asynchronous APIs. Some examples are described on link:event_native_apim_example_use_cases.html#event_consumption[Event consumption].
