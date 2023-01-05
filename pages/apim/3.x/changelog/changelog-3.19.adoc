@@ -13,6 +13,14 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.19.6 (2023-01-05)
+
+=== API
+
+* Add a default value in liquibase script when adding a non-nullable constraint on `commands` table
+
+
+
 == APIM - 3.19.5 (2023-01-04)
 
 === Gateway
