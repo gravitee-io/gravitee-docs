@@ -25,20 +25,20 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 === Gateway
 
-* API key plan was not useable after migration to 3.18
-* Non-explicit "invalid version format: 0" log message fixed
+* API key plan was not useable after migration to 3.18 https://github.com/gravitee-io/issues/issues/8762[#8762]
+* Non-explicit "invalid version format: 0" log message fixed https://github.com/gravitee-io/issues/issues/8754[#8754]
 
 === API
 
 * Handle flow steps order in database https://github.com/gravitee-io/issues/issues/8805[#8805]
 * Handle query with page number higher than max page with data https://github.com/gravitee-io/issues/issues/8773[#8773]
-* PostgreSQL: management API failed to start after 3.18 migration
-* Import API erased plan general conditions
+* PostgreSQL: management API failed to start after 3.18 migration https://github.com/gravitee-io/issues/issues/8774[#8774]
+* Import API erased plan general conditions https://github.com/gravitee-io/issues/issues/8767[#8767]
 * API key revocation raised an error in non-default environment
 
 === Portal
 
-* Category name was not properly displayed on API page
+* Category name was not properly displayed on API page https://github.com/gravitee-io/issues/issues/8628[#8628]
 
 
 == https://github.com/gravitee-io/issues/milestone/620?closed=1[APIM - 3.19.4 (2022-12-02)]
