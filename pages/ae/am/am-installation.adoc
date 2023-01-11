@@ -50,6 +50,21 @@ alerts:
       security:
         username: admin
         password: adminadmin
+     # ssl:
+     #   keystore:
+     #     type: jks # Supports jks, pem, pkcs12
+     #     path: /path/to/keystore.jks
+     #     password: password
+     #     certs:
+     #       - /path/to/cert.pem
+     #       - /path/to/cert2.pem
+     #     keys:
+     #       - /path/to/key.pem
+     #       - /path/to/key2.pem
+     #   truststore:
+     #     type: jks # Supports jks, pem, pkcs12
+     #     path: /path/to/keystore.jks
+     #     password: password
 ```
 
 === Endpoints
