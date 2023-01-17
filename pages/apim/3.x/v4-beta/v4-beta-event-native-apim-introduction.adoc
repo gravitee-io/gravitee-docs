@@ -10,9 +10,9 @@
 
 == Event-driven asynchronous APIs
 
-Most developers are familiar with synchronous APIs, where the client sends a request to a server, and the server sends a response back. Every time the client needs new data, it has to send a request. You can think of synchronous APIs as a 'client pull' model. RESTful APIs are a type of synchronous API.
+Most developers are familiar with synchronous APIs, where the client sends a request to a server, and the server sends a response back. Every time the client needs new data, it has to send a request. You can think of synchronous APIs as a 'client pull' model.
 
-In contrast, asynchronous APIs are event-driven - the initial request opens a connection and data (responses) is received back as and when it becomes available, where certain events would trigger the responses. Asynchronous APIs also allow you to stream data - a common use case in banking and finance systems and applications, as well as many other domains. Asynchronous APIs can use callbacks (such as synchronous API webhooks) if the requested data is not available at the time of the request. You can think of asynchronous APIs as a ‘server push’ model. AsyncAPIs are a type of asynchronous API.
+In contrast, asynchronous APIs are event-driven - the initial request opens a connection and data (responses) is received back as and when it becomes available, where certain events would trigger the responses. Asynchronous APIs also allow you to stream data - a common use case in banking and finance systems and applications, as well as many other domains. Asynchronous APIs can use callbacks (such as synchronous API webhooks) if the requested data is not available at the time of the request. You can think of asynchronous APIs as a 'publish and subscribe' model.
 
 == Gravitee's event-native API management
 

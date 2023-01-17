@@ -19,7 +19,7 @@ The new engine provides the following capabilities:
 * Removal of the need to define a scope for policies (`onRequest`, `onRequestContent`, `onResponse`, `onResponseContent`).
 * The introduction of new API types to better differentiate REST APIs from Async APIs (Websocket, SSE, Webhook), as a foundation to fully support the execution of Async APIs.
 
-NOTE: This BETA release does not provide GUI support for these capabilities. You can check out the new engine behaviour with the  link:{{ 'apim/3.x/event_native_apim_example_use_cases.html' | relative_url }}[V4 BETA event-native API Management example use cases].
+NOTE: You can check out the new engine behaviour with the  link:{{ 'apim/3.x/event_native_apim_example_use_cases.html' | relative_url }}[V4 BETA event-native API Management example use cases], although there is no GUI support for these use cases in this version.
 
 WARNING: This new policy execution engine has been released as a BETA version: it should not be used in production. The production-ready GA release, due in 2023, will come with additional features - link:https://www.gravitee.io/contact-us[contact us] if you want to know more about it and what new capabilities and improvements we are bringing to event-native API Management regarding synchronous and asynchronous APIs.
 
