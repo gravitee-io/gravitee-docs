@@ -107,6 +107,21 @@ The MQTT connector is useful where, for example, only protocol mediation is need
 
 The MQTT Advanced connector is useful where messages must be delivered reliably (through quality of service) or securely (using advanced security), such as to customers who would pay for such information.
 
+== Additional types of endpoints and entrypoints
+
+You can add additional types of endpoints and entrypoints by adding a type of plugin called a connector.
+
+You can download additional entrypoint connectors from the link:https://download.gravitee.io/#graviteeio-apim/plugins/entrypoints/[Gravitee APIM entrypoint plugins download page]
+
+You can download additional endpoint connectors from the link:https://download.gravitee.io/#graviteeio-apim/plugins/endpoints/[Gravitee APIM endpoints plugins download page] and the link:https://download.gravitee.io/#graviteeio-ee/apim/plugins/entrypoints/[Gravitee APIM Enterprise Edition endpoints plugins download page]. 
+
+They are standard plugins and can be installed as described in link:{{'/apim/3.x/apim_installation_guide_plugins.html' | relative_url}}[Installing and updating Plugins].
+
+[NOTE]
+====
+Connectors with `advanced` in their filenames can only be used with the Enterprise Edition of the Gravitee Gateway.
+====
+
 == How to create a V4 BETA asynchronous API
 
 The link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee V4 BETA Postman Collection] contains several examples of how to create and test an asynchronous API using the event-native V4 BETA API definition and link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html' | relative_url}}[the new V4 BETA policy execution engine] .
