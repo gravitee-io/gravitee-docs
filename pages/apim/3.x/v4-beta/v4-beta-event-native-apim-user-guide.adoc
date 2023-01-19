@@ -29,28 +29,74 @@ The OpenAPI specification for the management API is available at link:/apim/3.x/
 The management API is in beta and it may change.
 ====
 
-== Entrypoints and endpoints
+== Entrypoints
 
-An _entrypoint_ is how an end user connects to the Gravitee Gateway. An _endpoint_ is how the Gravitee Gateway connects to the source of data.
+An _entrypoint_ is how an end user connects to the Gravitee Gateway. The following types of entrypoints are available.
 
-The following types of entrypoints are available:
+=== HTTP POST
 
-* SSE (Server-Sent Events)
-* SSE advanced (Enterprise Edition only)
-* WebSocket
-* HTTP GET
-* HTTP POST
-* Webhook
-* Webhook advanced (Enterprise Edition only)
+//see link:{{'/apim/3.x/event_native_apim_introduction.html#http_post_and_http_get_entrypoints' | relative_url}}[HTTP POST and HTTP GET entrypoints]
 
-For more information about these entrypoints, see link:{{'/apim/3.x/event_native_apim_introduction.html#http_post_and_http_get_entrypoints' | relative_url}}[HTTP POST and HTTP GET entrypoints] and link:{{'/apim/3.x/event_native_apim_introduction.html#support_for_websocket_and_sse_entrypoints' | relative_url}}[Support for Websocket and SSE entrypoints].
+=== HTTP GET
 
-The following types of endpoints are available:
+=== Server-sent events (SSE)
 
-* Kafka
-* Kafka advanced (Enterprise Edition only)
-* MQTT
-* MQTT advanced (Enterprise Edition only)
+(Normal and Advanced)
+
+=== Webhooks
+
+_Brief description of Webhooks, mentioning normal and advanced versions_
+
+_Table or list showing features_
+
+_Simple explanation of use_
+
+_Limitations, if any_
+
+
+=== Websockets
+
+// link:{{'/apim/3.x/event_native_apim_introduction.html#support_for_websocket_and_sse_entrypoints' | relative_url}}[Support for Websocket and SSE entrypoints]
+
+
+== Endpoints
+
+An _endpoint_ is how the Gravitee Gateway connects to the source of data. The following types of endpoints are available.
+
+=== Kafka
+
+Kafka is a distributed event-streaming platform used for high-performance data pipelines, streaming analytics, and data integration. There are two connectors, Kafka and Kafka Advanced. Kafka Advanced is only available for the Enterprise Edition of the Gravitee Gateway.
+
+.Kafka Connectors
+|===
+|Feature | Kafka | Kafka Advanced
+
+| Feature 1 | Yes | Yes
+| Feature 2 | No | Yes
+
+|===
+
+=== MQTT 5
+
+MQTT is a lightweight publishing/subscribe transport that is used in the Internet of Things. Gravitee's MQTT connectors currently only support MQTT 5. There are two connectors, MQTT and MQTT Advanced. MQTT Advanced is only available for the Enterprise Edition of the Gravitee Gateway.
+
+.MQTT Connectors
+|===
+| Feature | MQTT | MQTT Advanced 
+
+| Protocol mediation 
+| Yes | Yes 
+
+| link:#quality_of_service[Quality of Service]
+| No | Yes
+
+| Advanced security (username and password over TLS)
+| No | Yes
+|===
+
+The MQTT connector is useful where, for example, only protocol mediation is needed but guaranteed delivery or security.
+
+The MQTT Advanced connector is useful where messages must be delivered reliably (through quality of service) or securely (using advanced security), such as to customers who would pay for such information.
 
 == How to create a V4 BETA asynchronous API
 
