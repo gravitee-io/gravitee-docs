@@ -57,6 +57,9 @@ jobs:
       - keeper/env-export:
           secret-url: keeper://UryantA7MvZe8fkWwcUt8g/field/password
           var-name: AZURE_APPLICATION_SECRET
+      - keeper/env-export:
+          secret-url: keeper://5Q6zLSJgoPQEPhz6Uppwdw/field/password
+          var-name: AZURE_STORAGE_CONNECTION_STRING
       - attach_workspace:
           at: .
       - compute-sanitized-branch-name
@@ -123,6 +126,9 @@ jobs:
       - keeper/env-export:
           secret-url: keeper://UryantA7MvZe8fkWwcUt8g/field/password
           var-name: AZURE_APPLICATION_SECRET
+      - keeper/env-export:
+          secret-url: keeper://5Q6zLSJgoPQEPhz6Uppwdw/field/password
+          var-name: AZURE_STORAGE_CONNECTION_STRING
       - run:
           name: install coreutils to manipulate dates
           command: |
