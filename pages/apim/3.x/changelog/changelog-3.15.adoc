@@ -13,6 +13,13 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.15.22 (2023-01-20)
+
+=== API
+
+  - Duplicated platform flows when APIM is linked to Cockpit. https://github.com/gravitee-io/issues/issues/8832[#8832]
+  - Unable to start up with JDBC when platform flows have been defined with multiple steps on the same phase. https://github.com/gravitee-io/issues/issues/8816[#8816]
+ 
 == APIM - 3.15.21 (2023-01-04)
 
 === API
