@@ -40,31 +40,71 @@ Gravitee API Management is based mainly on the HTTP protocol, but data can also 
 
 An _entrypoint_ is how an end user connects to the Gravitee Gateway. The following types of entrypoints are available.
 
-=== HTTP POST
+=== HTTP POST and HTTP GET
 
-//see link:{{'/apim/3.x/event_native_apim_introduction.html#http_post_and_http_get_entrypoints' | relative_url}}[HTTP POST and HTTP GET entrypoints]
+HTTP POST and HTTP GET entrypoints allow external clients to publish and receive data via standard HTTP POST and HTTP GET requests, and ease the ingestion of data into event-oriented backends like Kafka.
 
-=== HTTP GET
+As shown in the following diagram, with the HTTP POST workflow, a client application running on HTTP can post content to the Gravitee Gateway. The Gateway can then take that content and push it over to Kafka as a message that Kafka can ingest. The Gravitee Gateway acts as a protocol mediation layer in this context. This enables API owners to quickly set up a sync-to-async integration.
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-http-post.png %}[]
 
 === Server-sent events (SSE)
 
-(Normal and Advanced)
+Server-sent events (SSE) is a server push technology that allows a client to receive automatic updates from a server using an HTTP connection. It is unidirectional: consumers can subscribe but not publish.
+
+Todo: difference between standard and advanced versions
+
+[NOTE]
+====
+If you need clients to publish events, use WebSockets.
+====
+
+=== WebSockets
+
+WebSocket entrypoints allow you to expose responses and messages using a WebSocket API to consumers: an event-driven backend (based on Kafka or MQTT) is be presented in a more consumer-friendly way.
+
+WebSocket is commonly used by web browsers for bi-directional communication in order to offer live, real-time experiences powering applications such as: 
+
+* Chat applications.
+* Location-dependent applications (i.e. push the new location when it changes).
+* Collaboration tools.
+
+Using WebSocket replaces the need to set up other alternatives such as Kafka or MQTT clients.
+
+WebSocket can be used to replace client-side REST APIs, reducing the cost associated with the frequent polling required by real-time applications. This load reduction also improves overall performance and reliability.
+
+==== Use case
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-websocket.png %}[]
+
+1. An API publisher creates an API with a WebSocket entrypoint and a MQTT endpoint. 
+2. The API publisher uses Gravitee to apply various policies to be executed at the message level (such as authentication or traffic shaping).
+3. The API publisher publishes the API to their Gravitee Developer Portal.
+4. Developers discover and subscribe their consumer applications to the API via the Developer Portal.
+5. An event occurs and the message is streamed from the MQTT broker to the Gravitee Gateway. The Gateway then executes policies and streams messages from MQTT to consumers via their WebSocket connection.
+
+[NOTE] 
+====
+Because WebSocket supports bi-directional messaging, you could also use Gravitee to mediate for event consumption use cases where messages are streamed from a WebSocket client to the MQTT backend.
+====
 
 === Webhooks
 
-_Brief description of Webhooks, mentioning normal and advanced versions_
+Webhook entrypoints allow you to expose responses and messages from your event-driven backend via webhooks.
 
-_Table or list showing features_
+This might include the ability to:
 
-_Simple explanation of use_
+* Manage the subscription.
+* Provide a history of the notifications attempts.
+* Replay an event.
 
-_Limitations, if any_
+With Webhook support, an API consumer subscribes to the Webhook API, which basically indicates to the Gateway to listen for specific Kafka messages and then call the consumer to let them know that an expected event has occurred. This communication is performed via Webhook, however it is always up to the Gateway to push the events or messages to the consumer.
 
+The diagram below shows the workflow for this use case:
 
-=== Websockets
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-event-consumption-webhook.png %}[]
 
-// link:{{'/apim/3.x/event_native_apim_introduction.html#support_for_websocket_and_sse_entrypoints' | relative_url}}[Support for Websocket and SSE entrypoints]
-
+Todo: difference between standard and advanced versions
 
 == Endpoints
 

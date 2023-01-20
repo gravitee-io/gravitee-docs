@@ -33,20 +33,14 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-gateway.
 
 The following features are available in the BETA release.
 
-=== HTTP POST and HTTP GET entrypoints
+* link:{{'/apim/3.x/event_native_apim_user_guide.html#http_post_and_http_get' | relative_url}}[HTTP POST and HTTP GET entrypoints]
+* link:{{'/apim/3.x/event_native_apim_user_guide.html#server_sent_events_sse' | relative_url}}[Server-sent events (SSE) entrypoints]
+* link:{{'/apim/3.x/event_native_apim_user_guide.html#websocket' | relative_url}}[WebSocket entrypoints]
+* link:{{'/apim/3.x/event_native_apim_user_guide.html#webhooks' | relative_url}}[Webhook entrypoints]
+* link:{{'/apim/3.x/event_native_apim_user_guide.html#kafka' | relative_url}}[Kafka endpoints]
+* link:{{'/apim/3.x/event_native_apim_user_guide.html#mqtt' | relative_url}}[MQTT endpoints]
 
-The HTTP POST and HTTP GET entrypoints are Community Edition (OSS) plugins that enable external clients to publish and receive data via standard HTTP POST / HTTP GET requests, and ease the ingestion of data into event-oriented backends like Kafka.
-
-They are available as separate plugins you can download from the link:https://download.gravitee.io/#graviteeio-apim/plugins/entrypoints/[entrypoints plugin download page].
-
-With the HTTP POST workflow, a client application running on HTTP can post content to the Gravitee Gateway. The Gateway can then take that content and push it over to Kafka as a message that Kafka can ingest. The Gravitee Gateway acts as a protocol mediation layer in this context. This enables API owners to quickly set up a sync-to-async integration.
-
-The diagram below shows the workflow for this use case:
-
-image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-http-post.png %}[]
-
-The HTTP POST entrypoint enables you to push messages to any supported event broker via a "sync call" (post) - it can be used in combination with specific Asynchronous API endpoints in different ways, depending on what publish and subscribe mode actions are possible between the two when using a connector.
-
+////
 === WebSocket and SSE entrypoints
 
 The Server-Sent Events (SSE) and WebSocket entrypoints are available as separate plugins you can download from the link:https://download.gravitee.io/#graviteeio-apim/plugins/entrypoints/[entrypoints plugin download page]. Please note that you need an Enterprise Edition (EE) license to use the SSE Advanced entrypoint capabilities. 
@@ -62,16 +56,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case
 This feature enables you to potentially cover use cases in the fields of Event-Driven Architecture (EDA) and Internet of Things (IoT) without the Gateway and API Management components becoming a bottleneck.
 
 NOTE: In comparison to the link:#http_post_and_http_get_entrypoints[HTTP POST entrypoint use case] using Kafka (where the HTTP POST method is just about sending information from the client app to Kafka), with Websocket it is possible for the client app to send and receive information from Kafka as well. SSE can consume information from Kafka.
-
-=== Webhook entrypoint
-
-This is a feature that enables you to front your backend with a link:https://en.wikipedia.org/wiki/Webhook[Webhook^]. It has CE/OSS and EE versions - Webhook, and Webhook Advanced, respectively. Both variants are available as part of a separate plugin you can download from the link:https://download.gravitee.io/#graviteeio-apim/plugins/entrypoints/[entrypoints plugin download page]. Please note that you need an Enterprise Edition (EE) license to use the Webhook Advanced entrypoint capabilities. 
-
-With Webhook support, an API consumer subscribes to the Webhook API, which basically indicates to the Gateway to listen for specific Kafka messages and then call the consumer to let them know that an expected event has occurred. This communication is performed via Webhook, however it is always up to the Gateway to push the events or messages to the consumer.
-
-The diagram below shows the workflow for this use case:
-
-image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-event-consumption-webhook.png %}[]
+////
 
 == Security
 
