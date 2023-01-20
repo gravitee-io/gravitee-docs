@@ -114,20 +114,50 @@ An _endpoint_ is how the Gravitee Gateway connects to the source of data. The fo
 
 Kafka is a distributed event-streaming platform used for high-performance data pipelines, streaming analytics, and data integration. There are two connectors, Kafka and Kafka Advanced. Kafka Advanced is only available for the Enterprise Edition of the Gravitee Gateway.
 
+The Gravitee Kafka connectors offer advanced protocol mediation capabilities that can be applied for use cases where teams have a Kafka backend and want that broker and backend to communicate with a non-Kafka client. In addition to protocol mediation the advanced connector also supports advanced security feature (user/password using TLS) and quality of service (QoS). 
+
 .Kafka Connectors
 |===
 |Feature | Kafka | Kafka Advanced
 
-| Feature 1 | Yes | Yes
-| Feature 2 | No | Yes
+| Protocol mediation 
+| Yes | Yes 
 
+| link:#quality_of_service[Quality of Service]
+| No | Yes
+
+| Advanced security (username and password over TLS)
+| No | Yes
 |===
 
-// Kafka use cases described on use cases page
+The Kafka connector is useful where, for example, only protocol mediation is needed but guaranteed delivery or security.
 
-=== MQTT 5
+The Kafka Advanced connector is useful where messages must be delivered reliably (through quality of service) or securely (using advanced security), such as to customers who would pay for such information.
+
+
+Using the Kafka connectors provides the following benefits:
+
+* *Reuse existing infrastructure*: for teams moving to Kafka you can use Gravitee to make it possible for Kafka to communicate with client side applications that talk via REST, Websocket, Webhook, and more.
+* *Harden exposed Kafka streams*: use Gravitee to secure Kafka streams via TLS and Gravitee security policies applied at the message level.
+* *Make Kafka topics more consumer-friendly*: instead of setting up Kafka clients, allow messages coming from Kafka to be consumed by APIs that your consumers are more comfortable with (i.e. Websocket, Webhook, SSE, REST, etc.)
+* *Monetize Kafka data streams*: Expose Kafka data streams via any consumer-facing API or protocol using the Gravitee Developer Portal and then use Gravitee's monetization capabilities to turn these data streams into revenue streams.
+
+==== Use case
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-kafka.png %}[]
+
+1. An API publisher creates an API with a SSE entrypoint and a Kafka endpoint.
+2. The API publisher implements the Gravitee Assign metrics policy (EE only) to enable API monetization.
+3. The API publisher publishers the API to their Gravitee Developer Portal. 
+4. Developers discover and subscribe their consumer applications to the API via the Developer Portal.
+5. An event occurs and the message is streamed from the Kafka topic to the Gravitee Gateway. The Gateway then streams them to the proper consumer applications via SSE connection.
+6. The Assign metrics policy is executed and this allows payment processing systems to invoice API consumers.
+
+=== MQTT
 
 MQTT is a lightweight publishing/subscribe transport that is used in the Internet of Things. Gravitee's MQTT connectors currently only support MQTT 5. There are two connectors, MQTT and MQTT Advanced. MQTT Advanced is only available for the Enterprise Edition of the Gravitee Gateway.
+
+The Gravitee MQTT connectors offer advanced protocol mediation capabilities that can be applied for use cases where teams have an MQTT backend and want that broker and backend to communicate with a non-MQTT client. In addition to protocol mediation the advanced connector also supports advanced security feature (user/password using TLS) and quality of service (QoS). 
 
 .MQTT Connectors
 |===
@@ -146,6 +176,23 @@ MQTT is a lightweight publishing/subscribe transport that is used in the Interne
 The MQTT connector is useful where, for example, only protocol mediation is needed but guaranteed delivery or security.
 
 The MQTT Advanced connector is useful where messages must be delivered reliably (through quality of service) or securely (using advanced security), such as to customers who would pay for such information.
+
+Using the MQTT connectors provides the following benefits:
+
+* *Reuse existing infrastructure*: for teams moving to MQTT and/or a new MQTT broker, you can now use Gravitee to make it possible for MQTT to communicate with client side applications that talk via REST, Websocket, Webhook, and more.
+* *Make IoT communications more consumer-friendly*: instead of setting up MQTT clients, allow messages coming from MQTT to be consumed by APIs that your consumers are more comfortable with (i.e. Websocket, Webhook, SSE, REST, etc.)
+* *Monetize IoT data streams*: Expose IoT data streams via any consumer-facing API or protocol using the Gravitee Developer Portal and then use Gravitee's monetization capabilities to turn these data streams into revenue streams.
+
+==== Use case
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-mqtt.png %}[]
+
+1. An API publisher creates an API with a Websocket entrypoint and a MQTT endpoint.
+2. The API publisher implements the Gravitee Assign metrics policy (EE only) to enable API monetization.
+3. The API publisher publishers the API to their Gravitee Developer Portal. 
+4. Developers discover and subscribe their consumer applications to the API via the Developer Portal.
+5. An event occurs and the message is streamed from the MQTT broker to the Gravitee Gateway. The Gateway then streams them to the proper consumer applications via Websocket connection.
+6. The Assign metrics policy is executed and this allows payment processing systems to invoice API consumers.
 
 == Additional types of endpoints and entrypoints
 
@@ -240,7 +287,7 @@ A higher quality of service could lead to lower system performance depending on 
 
 The quality of service is set on the entrypoints (see link:#setting_quality_of_service[Setting quality of service]). A given quality of service may or may not be supported by a given endpoint (see link:#compatibility[Compatibility]). Support also depends on the protocol used for the entrypoint.
 
-For example, when using an HTTP listener with a websocket entrypoint it is not possible to ensure data is received by the client, so no quality of service can be guaranteed.
+For example, when using an HTTP listener with a WebSocket entrypoint it is not possible to ensure data is received by the client, so no quality of service can be guaranteed.
 
 However, when using Subscription listener, it can be ensured that messages sent are received either by using the HTTP return code (for Webhook) or a transactional publisher (for Kafka). For these entrypoints, the quality of service can be increased.
 
@@ -316,7 +363,7 @@ Not all levels of quality of service work with every entrypoint / endpoint combi
 | Auto
 | Auto, At-Least-Once, At-Most-Once
 
-| Websocket
+| WebSocket
 | None, Auto
 | None, Auto
 | None, Auto
