@@ -756,10 +756,12 @@ entries:
           - title: User Guide
             output: web
             subfolders:
-              - title: Introduction
+              - title: Tutorials
                 output: web
-                url: /apim/3.x/event_native_tutorials.html
                 subfolderitems:
+                - title: Introduction
+                  output: web
+                  url: /apim/3.x/event_native_tutorials.html
                 - title: Installing APIM
                   output: web
                   url: /apim/3.x/event_native_tutorials-apim.html
