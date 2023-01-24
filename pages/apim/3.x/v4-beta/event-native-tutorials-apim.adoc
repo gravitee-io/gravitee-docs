@@ -1,8 +1,33 @@
 [[event-native-tutorials-apim]]
 = Installing APIM
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: /apim/3.x/event_native_tutorials-apim.html
+:page-permalink: /apim/3.x/event_native_tutorials_apim.html
 :page-folder: apim/v4-beta
 :page-layout: apim3x
 
+This page describes how to install and run HiveMQ in Docker containers on `localhost`.
 
+== Prerequisites
+
+Docker must be installed and running. For more information about installing Docker, see the link:{{'https://www.docker.com/' | relative_url }}[Docker website].
+
+== Installing APIM
+
+1. Download the `docker-compose.yml` file.
++
+[code,bash]
+----
+curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -O  
+----
+2. Open `docker-compose.yml` in a text editor and add the following line to `/services/gateway/environment` section.
++
+[code,yml]
+----
+- gravitee_api_jupiterMode_enabled=true
+----
+3. Run `docker-compose` to download and start all of the components.
++
+[code,bash]
+----
+docker-compose up
+----
