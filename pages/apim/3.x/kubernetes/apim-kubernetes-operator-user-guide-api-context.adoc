@@ -1,0 +1,202 @@
+[[apim-kubernetes-operator-user-guide-api-context]]
+= How to use the Api Context custom resource
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_kubernetes_operator_user_guide_api_context.html
+:page-folder: apim/kubernetes
+:page-layout: apim3x
+
+[label label-version]#New in version 3.19.0#
+[label label-version]#BETA release#
+
+== How to use the Api Context (`ApiContext`) custom resource
+
+To enable synchronization of CRDs with a remote link:/apim/3.x/apim_overview_architecture.html[management API^], you need to create an Api Context referring to an existing link:/am/current/am_adminguide_organizations_and_environments.html[organization and environment^].
+
+You can create multiple Api Contexts, each targeting a specific environment and defined in a specific organization of a management API instance.
+
+An Api Context is composed of two sub objects, the management and the values objects.
+
+=== The Management object
+The management object can authenticate to your management API instance by using either basic authentication or a bearer token. Authentication credentials may either be added inline in the Management Context definition or referenced from a Kubernetes secret.
+
+NOTE: If both credentials and a bearer token are defined in your custom resource, the bearer token will take precedence.
+
+=== The Values object
+The values object is used to define a key value map. Those values are used to make your Kubernetes manifest reusable and dynamic. You can use link:https://pkg.go.dev/text/template?utm_source=godoc[Go templating] to build your Api Definition manifests.
+
+== Examples
+
+The custom resource in the example below refers to a Management API instance exposed at `+https://gravitee-api.example.com+`, and targets the `dev` environment of the `DEFAULT` organization, with the `admin` account, using basic authentication credentials defined in a Kubernetes secret:
+
+Creating a secret to store the credentials:
+
+[source,yaml]
+----
+kubectl create secret generic management-context-credentials \
+  --from-literal=username=admin \
+  --from-literal=password=admin \
+  --namespace graviteeio
+----
+
+Defining an Api Context referencing the secret:
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ApiContext
+metadata:
+  name: apim-example-context
+  namespace: graviteeio
+spec:
+  management:
+    baseUrl: https://gravitee-api.example.com
+    environmentId: dev
+    organizationId: DEFAULT
+    auth:
+      secretRef:
+        name: management-context-credentials
+----
+
+NOTE: If no namespace has been specified for the secret reference, the api context resource namespace will be used to resolve the secret.
+
+NOTE: To target another environment on the same API instance, add another Api Context configured to do that.
+
+Although Kubernetes secrets should be the preferred way to store credentials, you can also add credentials inline in the Management Context definition:
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ApiContext
+metadata:
+  name: apim-example-context
+  namespace: graviteeio
+spec:
+  management:
+    baseUrl: https://gravitee-api.example.com
+    environmentId: dev
+    organizationId: DEFAULT
+    auth:
+      auth:
+        username: admin
+        password: admin
+----
+
+[,yaml]
+
+The example below uses a `bearerToken` to authenticate the requests. Note that the token must have been generated beforehand for the admin account:
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ApiContext
+metadata:
+  name: apim-example-context
+spec:
+  management:
+    baseUrl: https://gravitee-api.example.com
+    environmentId: staging
+    organizationId: DEFAULT
+    auth:
+      bearerToken: xxxx-yyyy-zzzz
+----
+
+Alternatively, here is how to use a Kubernetes secret to store the token:
+
+[source,yaml]
+----
+kubectl create secret generic management-context-credentials \
+  --from-literal=bearerToken=xxxx-yyyy-zzzz \
+  --namespace graviteeio
+----
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ApiContext
+metadata:
+  name: apim-example-context
+spec:
+  management:
+    baseUrl: https://gravitee-api.exmaple.com
+    environmentId: staging
+    organizationId: DEFAULT
+    auth:
+      secretRef:
+        name: management-context-credentials
+----
+
+The custom resources examples below use inline credentials in the Api Context definition and a key value map to make the Api Definition manifest reusable and dynamic. This can be useful when you want to deploy the same ApiDefinition in multiple environments and point them to different endpoints targets.
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ApiContext
+metadata:
+  name: context-dev
+  namespace: graviteeio
+spec:
+  management:
+    baseUrl: https://gravitee-api.example.com
+    environmentId: dev
+    organizationId: DEFAULT
+    auth:
+      credentials:
+        username: admin
+        password: admin
+  values:
+    env:        dev
+    namespace:  apis-dev
+----
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ApiContext
+metadata:
+  name: context-staging
+  namespace: graviteeio
+spec:
+  management:
+    baseUrl: https://gravitee-api.example.com
+    environmentId: staging
+    organizationId: DEFAULT
+    auth:
+      credentials:
+        username: admin
+        password: admin
+  values:
+    env:        staging
+    namespace:  apis-staging
+----
+
+{% raw %}
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: api-with-values
+spec:
+  name: "Context ( {{.Values.env}} )"
+  contexts:
+    - name: "context-dev"
+      namespace: "graviteeio"
+    - name: "context-staging"
+      namespace: "graviteeio"
+  version: "1.1"
+  description: "Environment: {{.Values.env}}"
+  plans:
+    - name: 'Apikey'
+      description: 'Api key plan'
+      security: API_KEY
+  proxy:
+    virtual_hosts:
+      - path: "/wiremock-{{.Values.env}}"
+    groups:
+      - name: default-group
+        endpoints:
+          - name: "Default"
+            target: "http://wiremock.{{ .Values.namespace }}.svc:8080/whoami"
+----
+{% endraw %}
+

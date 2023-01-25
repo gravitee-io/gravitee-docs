@@ -10,36 +10,37 @@
 
 == Overview
 
-The Gravitee Kubernetes Operator comes with three Custom Resource Definitions (CRDs) - `ManagementContext`, `ApiDefinition`, and `ApiResource`.
+The Gravitee Kubernetes Operator comes with three Custom Resource Definitions (CRDs) - `ApiContext`, `ApiDefinition`, and `ApiResource`.
 
 
-== `ManagementContext`
+== `ApiContext`
 
-The `ManagementContext` custom resource represents the configuration for a Management API.
+The `ApiContext` custom resource represents the configuration for a Management API.
 
 Resources:
 
-  * The `ManagementContext` CRD code is available on link:https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/api/v1alpha1/managementcontext_types.go[GitHub^].
-  * The `ManagementContext` CRD API reference is documented link:{{ '/apim/3.x/apim_kubernetes_operator_api_reference.html#managementcontext' | relative_url }}[here].
-  * You can learn how to use the `ManagementContext` resource in link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_management_context.html' | relative_url }}[this section].
+  * The `ApiContext` CRD code is available on link:https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/api/v1alpha1/apicontext_types.go[GitHub^].
+  * The `ApiContext` CRD API reference is documented link:{{ '/apim/3.x/apim_kubernetes_operator_api_reference.html#apicontext' | relative_url }}[here].
+  * You can learn how to use the `ApiContext` resource in link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_context.html' | relative_url }}[this section].
 
-The `ManagementContext` refers to a remote Management API. You can have as many `ManagementContext` resources as you want, however you need to reference the relevant `ManagementContext` from the API Definition in order to indicate to the GKO where the API should be published.
+The `ApiContext` refers to a remote Management API. You can have as many `ApiContext` resources as you want, however you need to reference the relevant `ApiContext` from the API Definition in order to indicate to the GKO where the API should be published.
 
 === Examples
 
-A basic example of an `ManagementContext` resource is shown below:
+A basic example of an `ApiContext` resource is shown below:
 
 ....
 apiVersion: gravitee.io/v1alpha1
-kind: ManagementContext
+kind: ApiContext
 metadata:
-  name: dev-mgmt-ctx
+  name: dev-ctx
 spec:
-  baseUrl: http://localhost:8083
-  auth:
-    credentials:
-      username: admin
-      password: admin
+  management:
+    baseUrl: http://localhost:8083
+    auth:
+      credentials:
+        username: admin
+        password: admin
 ....
 
 
@@ -47,16 +48,17 @@ The next example shows the same resource but with a Personal Token:
 
 ....
 apiVersion: gravitee.io/v1alpha1
-kind: ManagementContext
+kind: ApiContext
 metadata:
-  name: dev-mgmt-ctx
+  name: dev-ctx
 spec:
-  baseUrl: http://localhost:8083
-  auth:
-    bearerToken: xxxx-yyyy-zzzz
+  management:
+    baseUrl: http://localhost:8083
+    auth:
+      bearerToken: xxxx-yyyy-zzzz
 ....
 
-You can then refer to the `ManagementContext` from the API, as shown in the example below:
+You can then refer to the `ApiContext` from the API, as shown in the example below:
 
 ....
 apiVersion: gravitee.io/v1alpha1
@@ -65,8 +67,8 @@ metadata:
   name: basic-api-example
 spec:
   name: "K8s Basic Example"
-  contextRef:
-    name: "dev-mgmt-ctx"
+  contexts:
+  - name: "dev-ctx"
     namespace: "default"
   version: "1.1"
   description: "Basic api managed by Gravitee Kubernetes Operator"
@@ -79,7 +81,7 @@ spec:
             target: "https://api.gravitee.io/echo"
 ....
 
-NOTE: Read more about `ManagementContext` link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_management_context.html' | relative_url }}[here].
+NOTE: Read more about `ApiContext` link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_api_context.html' | relative_url }}[here].
 
 == `ApiDefinition`
 
@@ -98,7 +100,7 @@ The following workflow is applied when a new `ApiDefinition` resource is added t
   1. The GKO listens for `ApiDefinition` resources.
   2. The GKO performs some required changes, such as computing automatically IDs or CrossIDs (for API or Plan).
   3. The GKO converts the definition to JSON format.
-  4. The GKO compares the definition to the existing definition. If something has changed, the GKO pushes the definition to the Management API (if a `ManagementContext` is provided).
+  4. The GKO compares the definition to the existing definition. If something has changed, the GKO pushes the definition to the Management API (if an `ApiContext` is provided).
   5. The GKO deploys the API to the API Gateway.
 
 === Examples
@@ -217,7 +219,7 @@ spec:
 
 === Resource deletion
 
-Since an `ApiDefinition` can rely on a `ManagementContext`, resource deletion is restricted until a check is performed first whether there is an API associated with the respective `ManagementContext`. This is achieved through the use of link:https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/[Finalizers^].
+Since an `ApiDefinition` can rely on a `ApiContext`, resource deletion is restricted until a check is performed first whether there is an API associated with the respective `ApiContext`. This is achieved through the use of link:https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/[Finalizers^].
 
 == CRD samples
 

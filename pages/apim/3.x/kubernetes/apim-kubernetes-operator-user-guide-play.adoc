@@ -14,7 +14,7 @@ This section describes how to try out the GKO functionality after deployment by 
 
 The process involves the following stages:
 
-1. Create a Management Context custom resource.
+1. Create an Api Context custom resource.
 2. Create an API Definition custom resource - this creates a new API on the cluster.
 3. Test the new API by calling it through the APIM Gateway.
 
@@ -43,7 +43,7 @@ See the link:https://docs.gravitee.io/apim/3.x/apim_installguide_gateway_configu
 
 == Trying out the GKO functionality
 
-=== STEP 1: Create a Management Context custom resource
+=== STEP 1: Create an Api Context custom resource
 
 The first step is to create a Management Context custom resource for your APIM instance.
 
@@ -51,39 +51,25 @@ NOTE: Read more about the Management Context custom resource link:{{ '/apim/3.x/
 
 To do so, you need a YAML file with the correct Management Context configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:
 
-https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/config/samples/context/k3d/managementcontext_credentials.yaml
+https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/config/samples/context/dev/api-context-with-credentials.yml
 
 The content of this sample file is shown below:
 
 ....
-# Copyright (C) 2015 The Gravitee team (http://gravitee.io)
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#         http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# Use this context if you are running APIM and GKO in k3d
 apiVersion: gravitee.io/v1alpha1
-kind: ManagementContext
+kind: ApiContext
 metadata:
-  name: dev-mgmt-ctx
+  name: dev-ctx
   namespace: default
 spec:
-  baseUrl: http://apim-apim3-api.apim-dev.svc:83
-  environmentId: DEFAULT
-  organizationId: DEFAULT
-  auth:
-    credentials:
-      username: admin
-      password: admin
+  management:
+    baseUrl: http://apim-apim3-api.apim-dev.svc:83
+    environmentId: DEFAULT
+    organizationId: DEFAULT
+    auth:
+      credentials:
+        username: admin
+        password: admin
 ....
 
 In your copy, modify the `spec:` section by providing the actual URL of your APIM instance and the user credentials that match with the relevant user configuration.
@@ -91,10 +77,10 @@ In your copy, modify the `spec:` section by providing the actual URL of your API
 To create the Management Context resource using the Gravitee sample file directly, just run the following command:
 
 ....
-kubectl apply -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/config/samples/context/k3d/managementcontext_credentials.yaml
+kubectl apply -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/config/samples/context/dev/api-context-with-credentials.yml
 ....
 
-Alternatively, to create the Management Context resource using a modified configuration, run the following command (using the relevant filename):
+Alternatively, to create the Api Context resource using a modified configuration, run the following command (using the relevant filename):
 
 ....
 kubectl apply -f your_management_context_credentials_config.yaml
@@ -103,10 +89,10 @@ kubectl apply -f your_management_context_credentials_config.yaml
 If the operation is successful, you should see the following line in the command-line output:
 
 ....
-managementcontext.gravitee.io/dev-mgmt-ctx created
+managementcontext.gravitee.io/dev-ctx created
 ....
 
-The Management Context resource has now been created.
+The Api Context resource has now been created.
 
 === STEP 2: Create an API Definition custom resource
 
@@ -121,21 +107,6 @@ https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/config/s
 The content of this sample file is shown below:
 
 ....
-#
-# Copyright (C) 2015 The Gravitee team (http://gravitee.io)
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#         http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
 apiVersion: gravitee.io/v1alpha1
 kind: ApiDefinition
 metadata:
@@ -143,8 +114,8 @@ metadata:
   namespace: default
 spec:
   name: "K8s Basic Example With Management Context"
-  contextRef:
-    name: "dev-mgmt-ctx"
+  contexts:
+  - name: "dev-ctx"
     namespace: "default"
   version: "1.1"
   description: "Basic api managed by Gravitee Kubernetes Operator"

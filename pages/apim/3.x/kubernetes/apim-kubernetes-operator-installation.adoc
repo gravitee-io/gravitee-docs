@@ -18,7 +18,7 @@ The current GKO deployment process is mostly identical for both possible scenari
 Deploying the Gravitee Kubernetes Operator (GKO) on an existing remote / cloud-based APIM-ready Kubernetes cluster involves the following stages:
 
 1. Deploy the GKO on your cluster.
-2. Create a Management Context custom resource.
+2. Create an Api Context custom resource.
 3. Create an API Definition custom resource - this creates a new API on the cluster.
 4. Test the new API by calling it through the APIM Gateway.
 
