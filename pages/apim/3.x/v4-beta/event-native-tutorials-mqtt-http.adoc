@@ -7,17 +7,11 @@
 
 == Prerequisites 
 
-Before running this tutorial, you must have the Gravitee API Management Gateway and HiveMQ running in Docker, as specified in link:{{'/apim/3.x/event_native_tutorials_apim.html' | relative_url}}[Installing APIM] and link:{{'/apim/3.x/event_native_tutorials_hivemq.html'| relative_url}}[Installing HiveMQ]
+Before running this tutorial, you must have:
 
-To confirm they are running, go to `http://localhost:8084` and `http://localhost:8086`.
-
-== Setting up Postman
-
-1. Download link:{{'https://raw.githubusercontent.com/gravitee-io-labs/Gravitee.io-API-Management-Tutorials/main/apim-3.20/POST-to-MQTT/POST-to-MQTT.postman-collection.json'|relative_url}}[`postman-collection.json`] and import it into Postman.
-
-The collection `3.20 - POST to MQTT` should now appear in the right sidebar.
-
-_Note to Linus: I expect the URL and other details of the Postman collection will be different in the final version of this document. It may be that "Setting up Postman" is 'promoted' to being a page on its own and is referred to in the prerequisites section._
+* Set up Postman, as described in link:{{'/apim/3.x/event_native_tutorials_postman.html' | relative_url}}[Setting up Postman].
+* The Gravitee API Management Gateway running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_apim.html' | relative_url}}[Installing APIM]. To confirm it is running, go to `http://localhost:8084`.
+* HiveMQ running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_hivemq.html'| relative_url}}[Installing HiveMQ]. To confirm it is running, go to `http://localhost:8086`.
 
 == Creating the API
 

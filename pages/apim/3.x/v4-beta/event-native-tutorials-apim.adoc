@@ -5,7 +5,7 @@
 :page-folder: apim/v4-beta
 :page-layout: apim3x
 
-This page describes how to install and run HiveMQ in Docker containers on `localhost`.
+This page describes how to install and run APIM in Docker containers on `localhost`.
 
 == Prerequisites
 
@@ -19,15 +19,19 @@ Docker must be installed and running. For more information about installing Dock
 ----
 curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -O  
 ----
-2. Open `docker-compose.yml` in a text editor and add the following line to `/services/gateway/environment` section.
+2. Open `docker-compose.yml` in a text editor and add the following line to `/services/gateway/environment` section if it is not already there.
 +
 [code,yml]
 ----
 - gravitee_api_jupiterMode_enabled=true
 ----
++
+This ensures that the gateway runs with its event-native features enabled.
+3. In `docker-compose`, make sure that all the `APIM_VERSION` variables are set to `{APIM_VERSION:-3.20.0}`
++This ensures you are using the correct version of APIM.
 3. Run `docker-compose` to download and start all of the components.
 +
 [code,bash]
 ----
-docker-compose up
+docker-compose up -d
 ----

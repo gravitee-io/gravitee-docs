@@ -9,7 +9,7 @@ This page describes how to install and run HiveMQ in a Docker container on `loca
 
 == Prerequisites
 
-Docker must be installed and running. For more information about installing Docker, see the link:{{'https://www.docker.com/' | relative_url }}[Docker website].
+APIM must be running in Docker containers, as described in link:/apim/3.x/event_native_tutorials_apim.html[Installing APIM].
 
 == Installing HiveMQ
 
@@ -17,10 +17,12 @@ Docker must be installed and running. For more information about installing Dock
 +
 [code,bash]
 ----
-docker run -d --name hivemq -p 8086:8080 -p 1883:1883 hivemq/hivemq4
+docker run -d --name hivemq -p 8086:8080 -p 1883:1883 -p '8000:8000' --hostname hivemq --network storage hivemq/hivemq4
 ----
++
+This command adds `hivemq` to the `storage` Docker bridge network that was created when APIM was deployed.
 2. In your browser, go to `http://localhost:8086` to open the HiveMQ Control Center. You can log in with with User `admin` and password `hivemq`.
-
-Any MQTT client can connect can connect to HiveMQ on port `1883`.
++
+Any MQTT client can connect can connect to HiveMQ on port `1883`, and a websocket client can connect on port `8000`.
 
 For more information about installing and running HiveMQ, see link:{{'https://www.hivemq.com/downloads/docker/'| relative_url}}[HiveMQ Docker Image] on the link:{{'https://www.hivemq.com/' | relative_url}}[HiveMQ website].
