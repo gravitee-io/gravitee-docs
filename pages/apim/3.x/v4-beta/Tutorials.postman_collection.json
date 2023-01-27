@@ -1,0 +1,1047 @@
+{
+	"info": {
+		"_postman_id": "bdc26f05-11a9-4b2c-bc7d-765ad1fc9bd5",
+		"name": "Tutorials",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24480925"
+	},
+	"item": [
+		{
+			"name": "MQTT and HTTP",
+			"item": [
+				{
+					"name": "Delete API",
+					"item": [
+						{
+							"name": "Stop the API",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=stop",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}"
+									],
+									"query": [
+										{
+											"key": "action",
+											"value": "stop"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Close Plan",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans/{{plan}}/_close",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"plans",
+										"{{plan}}",
+										"_close"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete API",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create the API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Demo of HTTP Post + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP Post + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 1,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create the API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Demo of HTTP Post + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP Post + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 1,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzQ4MjAwNTEsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.Ygux2uav6aeiZT4LcdGA-a6eH0OgU48ksVhwPNTPCko; Path=/; Expires=Fri, 03-Feb-2023 11:47:31 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/4bfb005f-45ae-4358-bb00-5f45ae435855"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1702"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"4bfb005f-45ae-4358-bb00-5f45ae435855\",\n    \"name\": \"Demo of HTTP Post + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"createdAt\": 1674820051716,\n    \"updatedAt\": 1674820051716,\n    \"description\": \"Demo of HTTP Post + MQTT\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt/\"\n                }\n            ],\n            \"cors\": {\n                \"enabled\": true,\n                \"allowCredentials\": false,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"x-gravitee-api-key\"\n                ],\n                \"allowMethods\": [\n                    \"POST\",\n                    \"GET\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"x-rate-limit-limit\",\n                    \"x-rate-limit-remaining\",\n                    \"x-rate-limit-reset\"\n                ],\n                \"maxAge\": -1\n            },\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 1,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false,\n                        \"messagesLimitDurationMs\": 10000\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\": {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [],\n    \"groups\": [],\n    \"visibility\": \"PRIVATE\",\n    \"state\": \"STOPPED\",\n    \"primaryOwner\": {\n        \"id\": \"3f4431bb-e631-4214-8431-bbe631621444\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Create an Open (keyless) plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"plans"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create an Open (keyless) plan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"plans"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzQ4MjA0MzksInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.6ZUVHiGwBX1qIjVXwkoC8QZzwj8VILIwuNkcVXjt0Ko; Path=/; Expires=Fri, 03-Feb-2023 11:53:59 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/4bfb005f-45ae-4358-bb00-5f45ae435855/plans/04678d7c-4de3-44b0-a78d-7c4de324b068"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "558"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"04678d7c-4de3-44b0-a78d-7c4de324b068\",\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"createdAt\": 1674820439263,\n    \"updatedAt\": 1674820439263,\n    \"publishedAt\": 1674820439264,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [],\n    \"status\": \"published\",\n    \"apiId\": \"4bfb005f-45ae-4358-bb00-5f45ae435855\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Start the API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=start",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "start"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Topic",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{gateway_host}}/demo/mqtt",
+							"host": [
+								"{{gateway_host}}"
+							],
+							"path": [
+								"demo",
+								"mqtt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Push Data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tempF\": \"75\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_host}}/demo/mqtt",
+							"host": [
+								"{{gateway_host}}"
+							],
+							"path": [
+								"demo",
+								"mqtt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway_host}}/demo/mqtt",
+							"host": [
+								"{{gateway_host}}"
+							],
+							"path": [
+								"demo",
+								"mqtt"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_host}}/demo/mqtt",
+									"host": [
+										"{{gateway_host}}"
+									],
+									"path": [
+										"demo",
+										"mqtt"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Gravitee-Transaction-Id",
+									"value": "e18d7355-fb83-4f18-8d73-55fb830f1878"
+								},
+								{
+									"key": "X-Gravitee-Request-Id",
+									"value": "e18d7355-fb83-4f18-8d73-55fb830f1878"
+								},
+								{
+									"key": "X-Gravitee-Client-Identifier",
+									"value": "e18d7355-fb83-4f18-8d73-55fb830f1878"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": []\n}"
+						},
+						{
+							"name": "Get Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_host}}/demo/mqtt",
+									"host": [
+										"{{gateway_host}}"
+									],
+									"path": [
+										"demo",
+										"mqtt"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Gravitee-Transaction-Id",
+									"value": "856bb3a8-1793-4746-abb3-a81793e74609"
+								},
+								{
+									"key": "X-Gravitee-Request-Id",
+									"value": "856bb3a8-1793-4746-abb3-a81793e74609"
+								},
+								{
+									"key": "X-Gravitee-Client-Identifier",
+									"value": "856bb3a8-1793-4746-abb3-a81793e74609"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_host}}/demo/mqtt",
+									"host": [
+										"{{gateway_host}}"
+									],
+									"path": [
+										"demo",
+										"mqtt"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Gravitee-Transaction-Id",
+									"value": "615dd97e-6725-4fc7-9dd9-7e6725efc778"
+								},
+								{
+									"key": "X-Gravitee-Request-Id",
+									"value": "615dd97e-6725-4fc7-9dd9-7e6725efc778"
+								},
+								{
+									"key": "X-Gravitee-Client-Identifier",
+									"value": "615dd97e-6725-4fc7-9dd9-7e6725efc778"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Modify the API",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"id\": \"{{api}}\",\n    \"name\": \"Demo of HTTP GET + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP GET + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modify the API",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"id\": \"{{api}}\",\n    \"name\": \"Demo of HTTP GET + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP GET + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzQ4Mjc1MTIsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.MYcuvvRRwuPuPpitY7yeGWb1Q-a5CsyzCB2oZMp3u10; Path=/; Expires=Fri, 03-Feb-2023 13:51:52 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "\"1674827512133\""
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Fri, 27 Jan 2023 13:51:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2768"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"4bfb005f-45ae-4358-bb00-5f45ae435855\",\n    \"name\": \"Demo of HTTP GET + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1674820636935,\n    \"createdAt\": 1674820051716,\n    \"updatedAt\": 1674827512133,\n    \"description\": \"Demo of HTTP GET + MQTT\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt/\"\n                }\n            ],\n            \"cors\": {\n                \"enabled\": true,\n                \"allowCredentials\": false,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"x-gravitee-api-key\"\n                ],\n                \"allowMethods\": [\n                    \"POST\",\n                    \"GET\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"x-rate-limit-limit\",\n                    \"x-rate-limit-remaining\",\n                    \"x-rate-limit-reset\"\n                ],\n                \"maxAge\": -1\n            },\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false,\n                        \"messagesLimitDurationMs\": 10000\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\": {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [\n        {\n            \"id\": \"04678d7c-4de3-44b0-a78d-7c4de324b068\",\n            \"name\": \"Open\",\n            \"description\": \"Keyless\",\n            \"createdAt\": 1674820439263,\n            \"updatedAt\": 1674820439263,\n            \"publishedAt\": 1674820439264,\n            \"validation\": \"auto\",\n            \"type\": \"api\",\n            \"security\": {\n                \"type\": \"key-less\"\n            },\n            \"flows\": [],\n            \"status\": \"published\",\n            \"apiId\": \"4bfb005f-45ae-4358-bb00-5f45ae435855\",\n            \"order\": 0,\n            \"characteristics\": [],\n            \"commentRequired\": false,\n            \"planStatus\": \"published\",\n            \"planSecurity\": {\n                \"type\": \"key-less\"\n            },\n            \"planValidation\": \"auto\"\n        }\n    ],\n    \"flowMode\": \"default\",\n    \"flows\": [],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"3f4431bb-e631-4214-8431-bbe631621444\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"pictureUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/4bfb005f-45ae-4358-bb00-5f45ae435855/picture?hash=1674827512133\",\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false,\n    \"backgroundUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/4bfb005f-45ae-4358-bb00-5f45ae435855/background?hash=1674827512133\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Redeploy API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"deploy"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Redeploy API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"deploy"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzQ4Mjc3MzEsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.aARX-WrWTMl_o44NuhW0c2gN_dy0Hja1BeKGMu7elVM; Path=/; Expires=Fri, 03-Feb-2023 13:55:31 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "\"1674827731377\""
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Fri, 27 Jan 2023 13:55:31 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1804"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"4bfb005f-45ae-4358-bb00-5f45ae435855\",\n    \"name\": \"Demo of HTTP GET + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1674827731377,\n    \"createdAt\": 1674820051716,\n    \"updatedAt\": 1674827731377,\n    \"description\": \"Demo of HTTP GET + MQTT\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt/\"\n                }\n            ],\n            \"cors\": {\n                \"enabled\": true,\n                \"allowCredentials\": false,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"x-gravitee-api-key\"\n                ],\n                \"allowMethods\": [\n                    \"POST\",\n                    \"GET\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"x-rate-limit-limit\",\n                    \"x-rate-limit-remaining\",\n                    \"x-rate-limit-reset\"\n                ],\n                \"maxAge\": -1\n            },\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false,\n                        \"messagesLimitDurationMs\": 10000\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\": {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"3f4431bb-e631-4214-8431-bbe631621444\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Check environment",
+			"item": [
+				{
+					"name": "Check environment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://postman-echo.com/get?api={{api}}&paln={{plan}}",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							],
+							"query": [
+								{
+									"key": "api",
+									"value": "{{api}}"
+								},
+								{
+									"key": "paln",
+									"value": "{{plan}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create the API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Demo of HTTP Post + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP Post + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+					"host": [
+						"{{management_host}}"
+					],
+					"path": [
+						"management",
+						"organizations",
+						"DEFAULT",
+						"environments",
+						"DEFAULT",
+						"v4",
+						"apis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an Open (keyless) Plan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"entrypoints\": [\n                        \"http-post\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 2,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+					"host": [
+						"{{management_host}}"
+					],
+					"path": [
+						"management",
+						"organizations",
+						"DEFAULT",
+						"environments",
+						"DEFAULT",
+						"v4",
+						"apis",
+						"{{api}}",
+						"plans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start the API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=start",
+					"host": [
+						"{{management_host}}"
+					],
+					"path": [
+						"management",
+						"organizations",
+						"DEFAULT",
+						"environments",
+						"DEFAULT",
+						"v4",
+						"apis",
+						"{{api}}"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "start"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Push Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"deviceId\": \"12341234\",\n    \"sensorValue\": \"24\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{gateway_host}}/demo/mqtt",
+					"host": [
+						"{{gateway_host}}"
+					],
+					"path": [
+						"demo",
+						"mqtt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create the API Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Demo of HTTP Post + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP Post + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 1,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+					"host": [
+						"{{management_host}}"
+					],
+					"path": [
+						"management",
+						"organizations",
+						"DEFAULT",
+						"environments",
+						"DEFAULT",
+						"v4",
+						"apis"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{management_password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{management_username}}",
+				"type": "string"
+			},
+			{
+				"key": "undefined",
+				"type": "any"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
