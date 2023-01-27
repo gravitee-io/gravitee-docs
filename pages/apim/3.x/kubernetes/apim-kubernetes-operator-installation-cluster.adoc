@@ -12,15 +12,20 @@
 
 This section provides steps on how to deploy the Gravitee Kubernetes Operator (GKO) on an existing APIM-ready Kubernetes cluster.
 
-NOTE: If you do not have an existing cluster you can deploy to, you can set up a new local cluster - see the link:{{ '/apim/3.x/apim_kubernetes_operator_installation_local.html' | relative_url }}[local cluster installation section] for details. Once you have the local cluster set up and running, return to this section to deploy the GKO.
-
 NOTE: If your architecture requires the management of multiple Kubernetes clusters with a different set of APIs for each cluster, you should deploy the GKO separately on each cluster. Follow the deployment process described below for each cluster deployment.
 
 == Prerequisites
 
-Before you start the deployment process, ensure that you have access to an APIM-ready Kubernetes cluster.
+=== Prerequisites
 
-By default the Kubernetes synchronizer is configured to look for API definitions in the API Gateway namespace. To watch all namespaces you must set the property `services.sync.kubernetes.namespaces` to `all` in the Gateway configuration. You can also provide a specific list of namespaces to watch.
+Before you start, you need to have the following software set up and running on your machine:
+
+. https://kubernetes.io/docs/tasks/tools/#kubectl[Kubectl].
+. https://helm.sh/docs/intro/install/[Helm v3].
+
+You also need access to an APIM-ready Kubernetes cluster.
+
+By default, the Kubernetes synchronizer is configured to look for API definitions in the API Gateway namespace. To watch all namespaces you must set the property `services.sync.kubernetes.namespaces` to `all` in the Gateway configuration. You can also provide a specific list of namespaces to watch.
 
 It is also recommended to check the current Kubernetes context to ensure that it is set to the correct cluster. To do this, run the following command:
 
@@ -37,26 +42,31 @@ NOTE: See the link:https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kube
 Run the following command in your command-line tool (the working directory does not matter) to deploy the GKO on the cluster of your current Kubernetes context:
 
 ....
-kubectl apply -f https://github.com/gravitee-io/gravitee-kubernetes-operator/releases/latest/download/bundle.yml
+helm repo add graviteeio https://helm.gravitee.io
+
+# If you already have the repository, update it using the following command.
+#  helm repo update graviteeio
+
+helm upgrade --install --create-namespace gko graviteeio/gko -n gko-system
+
+# By default the operator is configured to manage all the custom resources in the cluster.
+# To manage only the custom resources in the namespace where the operator is deployed, set the following property to false using the following command.
+# helm upgrade --install --create-namespace gko graviteeio/gko -n gko-system --set manager.scope.cluster=false
 ....
 
 The operation is quick and the successful command-line output should be similar to one in the example below:
 
 ....
-namespace/gko-system created
-customresourcedefinition.apiextensions.k8s.io/apidefinitions.gravitee.io created
-customresourcedefinition.apiextensions.k8s.io/managementcontexts.gravitee.io created
-serviceaccount/gko-controller-manager created
-role.rbac.authorization.k8s.io/gko-leader-election-role created
-clusterrole.rbac.authorization.k8s.io/gko-manager-role created
-clusterrole.rbac.authorization.k8s.io/gko-metrics-reader created
-clusterrole.rbac.authorization.k8s.io/gko-proxy-role created
-rolebinding.rbac.authorization.k8s.io/gko-leader-election-rolebinding created
-clusterrolebinding.rbac.authorization.k8s.io/gko-manager-rolebinding created
-clusterrolebinding.rbac.authorization.k8s.io/gko-proxy-rolebinding created
-configmap/gko-manager-config created
-service/gko-controller-manager-metrics-service created
-deployment.apps/gko-controller-manager created
+Thank you for installing The Gravitee Kubernetes Operator Helm Chart!
+
+To learn more about your release, try:
+
+  $ helm status gko
+  $ helm get all gko
+
+Please visit our documentation to learn about custom resources managed by the operator:
+
+https://docs.gravitee.io/apim/3.x/apim_kubernetes_operator_overview.html
 ....
 
 The GKO has now been deployed on your cluster.
@@ -73,7 +83,6 @@ The command-line output should include `apidefinitions.gravitee.io` and `managem
 
 ....
 NAME                              CREATED AT
-addons.k3s.cattle.io              2022-09-28T10:25:02Z
 helmcharts.helm.cattle.io         2022-09-28T10:25:02Z
 helmchartconfigs.helm.cattle.io   2022-09-28T10:25:02Z
 apidefinitions.gravitee.io        2022-09-28T10:34:38Z

@@ -16,7 +16,6 @@ The following examples for creating an Api Context and creating an API referenci
 
 [,shell]
 ----
-cat <<EOF | kubectl apply -f -
 apiVersion: gravitee.io/v1alpha1
 kind: ApitContext
 metadata:
@@ -31,14 +30,12 @@ spec:
       credentials:
         username: admin
         password: admin
-EOF
 ----
 
 === Example - creating an API referencing an existing Management Context
 
 [,shell]
 ----
-cat <<EOF | kubectl apply -f -
 apiVersion: gravitee.io/v1alpha1
 kind: ApiDefinition
 metadata:
@@ -58,7 +55,6 @@ spec:
       - endpoints:
           - name: "Default"
             target: "https://api.gravitee.io/echo"
-EOF
 ----
 
 === Using an APIM export endpoint to create an API Definition from an existing API
@@ -78,7 +74,6 @@ By default the API will start automatically. If you want to stop it later (or ju
 
 [,shell]
 ----
-cat <<EOF | kubectl apply -f -
 apiVersion: gravitee.io/v1alpha1
 kind: ApiDefinition
 metadata:
@@ -99,7 +94,6 @@ spec:
       - endpoints:
           - name: "Default"
             target: "https://api.gravitee.io/echo"
-EOF
 ----
 
 To start the API again, change the `state` property value back to `STARTED`.
@@ -113,7 +107,6 @@ NOTE: Before you proceed, ensure that the steps above have been completed.
 
 [,shell]
 ----
-cat <<EOF | kubectl apply -f -
 apiVersion: gravitee.io/v1alpha1
 kind: ApiDefinition
 metadata:
@@ -133,7 +126,6 @@ spec:
       - endpoints:
           - name: "Default"
             target: "https://api.gravitee.io/whattimeisit"
-EOF
 ----
 
 === Deleting your API

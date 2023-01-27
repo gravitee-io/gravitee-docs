@@ -150,10 +150,6 @@ The API Definition resource has now been created and a new API has been added in
 
 http://<YOUR_CONSOLE_URL>/console/#!/environments/default/
 
-If you are using a local cluster created through the link:{{ '/apim/3.x/apim_kubernetes_operator_installation_local.html' | relative_url }}[local cluster installation] process, the Console URL would likely be as follows:
-
-http://localhost:9000/console/#!/environments/default/
-
 The new API will be listed in the "Number of APIs" section of the Console dashboard:
 
 image:{% link /images/apim/3.x/kubernetes/gko-deployment-cluster-console.png %}[]
@@ -165,10 +161,4 @@ To test the API, you can call it through the APIM Gateway by running the followi
 
 ....
 curl -i http://<YOUR_GATEWAY_URL>/gateway/k8s-basic-with-ctx
-....
-
-The entrypoint used in the Gateway URL may differ depending on your deployment. If you are using a local cluster created through the link:{{ '/apim/3.x/apim_kubernetes_operator_installation_local.html' | relative_url }}[local cluster installation] process, the Gateway URL would likely be as shown in the following command:
-
-....
-curl -i http://localhost:9000/gateway/k8s-basic-with-ctx
 ....
