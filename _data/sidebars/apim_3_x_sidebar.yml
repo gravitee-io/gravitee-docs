@@ -756,10 +756,31 @@ entries:
           - title: User Guide
             output: web
             url: /apim/3.x/event_native_apim_user_guide.html
+            subfolders:
+              - title: Tutorials
+                output: web
+                subfolderitems:
+                - title: Introduction
+                  output: web
+                  url: /apim/3.x/event_native_tutorials.html
+                - title: Setting up Postman
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_postman.html
+                - title: Installing APIM
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_apim.html
+                - title: Installing AKHQ
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_akhq.html
+                - title: Installing HiveMQ
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_hivemq.html
+                - title: MQTT and HTTP
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_mqtt_http.html
           - title: Example Use Cases
             output: web
             url: /apim/3.x/event_native_apim_example_use_cases.html
-
       - title: API Reference
         output: web
         folderitems:
