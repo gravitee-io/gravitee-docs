@@ -234,6 +234,7 @@ The `id` is the ID of the API we just created.
 6. Select "Redeploy API" and send the request. 
 
 7. Select "Push Data" and send the request four times in quick succession. Note that now only the first request is accepted. The others requests receive a response like this.
++
 [code,json]
 ----
 {
