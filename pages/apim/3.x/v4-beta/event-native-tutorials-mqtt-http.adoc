@@ -193,4 +193,55 @@ Note that the request body is very similar to the request body for "Create the A
 +
 You can see that the `items` array now contains four messages.
 
-== Further work: adding a rate-limiting plan
+== Changing to a rate-limiting plan
+
+we are now going to modify the API so that it uses a rate-limiting plan.
+
+1. In Postman, select "Close plan" and send the request. This closes the existing plan.
+
+2. In Postman, select "Create a rate-limiting plan" and look at the request body. This request body is much more complex than the request body for the plan we created earlier. For this example, the most important lines are the following.
++
+[code,json]
+----
+                       "rate": {
+                            "limit": 1,
+                            "periodTime": 20,
+                            "periodTimeUnit": "SECONDS"
+----
++
+These lines specify the rate limit of one request per 20 seconds.
++
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
+
+3. Send the request. You should receive a response that starts like this.
++
+[code,json]
+----
+{
+    "id": "ccf21839-1fc0-4bf3-b218-391fc01bf380",
+    "name": "Rate-limiting",
+    "description": "One request every 20 seconds",
+    "createdAt": 1675074425522,
+    "updatedAt": 1675074425522,
+    "publishedAt": 1675074425522,
+----
++
+The `id` is the ID of the API we just created.
+4. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
+5. Select "Push Data" and send the request four times in quick succession. Note that all the requests are accepted.
+
+6. Select "Redeploy API" and send the request. 
+
+7. Select "Push Data" and send the request four times in quick succession. Note that now only the first request is accepted. The others requests receive a response like this.
+[code,json]
+----
+{
+    "message": "Rate limit exceeded ! You reach the limit of 1 requests per 20 seconds",
+    "http_status_code": 429
+}
+----
+
+== Close the plan and delete the API
+
+After finishing this tutorial, run "Stop the API", "Close plan", and "Delete API" in the "Delete API" folder in Postman. This removes the plan and API.
