@@ -40,7 +40,92 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "Stop the API",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=stop",
+											"host": [
+												"{{management_host}}"
+											],
+											"path": [
+												"management",
+												"organizations",
+												"DEFAULT",
+												"environments",
+												"DEFAULT",
+												"v4",
+												"apis",
+												"{{api}}"
+											],
+											"query": [
+												{
+													"key": "action",
+													"value": "stop"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Method"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Headers"
+										},
+										{
+											"key": "X-Xsrf-Token",
+											"value": "99ce174f-1189-402e-87a0-0b1536800891"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwNzc2NzMsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.dOVyVZWzqtsg2K9xgGrKbKn-EYLLIrzYsyOwzzgzzcs; Path=/; Expires=Mon, 06-Feb-2023 11:21:13 GMT; Max-Age=604800; HttpOnly"
+										},
+										{
+											"key": "Expires",
+											"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+										},
+										{
+											"key": "ETag",
+											"value": "\"1675077673544\""
+										},
+										{
+											"key": "Last-Modified",
+											"value": "Mon, 30 Jan 2023 11:21:13 GMT"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
 						},
 						{
 							"name": "Close Plan",
@@ -67,7 +152,89 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "Close Plan",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans/{{plan}}/_close",
+											"host": [
+												"{{management_host}}"
+											],
+											"path": [
+												"management",
+												"organizations",
+												"DEFAULT",
+												"environments",
+												"DEFAULT",
+												"v4",
+												"apis",
+												"{{api}}",
+												"plans",
+												"{{plan}}",
+												"_close"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Method"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Headers"
+										},
+										{
+											"key": "X-Xsrf-Token",
+											"value": "99ce174f-1189-402e-87a0-0b1536800891"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwNzc3NDIsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.xDw0Ewsh8WdUl6u6SLZPpHDof_GwANJKnAmGeMLsIUI; Path=/; Expires=Mon, 06-Feb-2023 11:22:22 GMT; Max-Age=604800; HttpOnly"
+										},
+										{
+											"key": "Expires",
+											"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1181"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"ccf21839-1fc0-4bf3-b218-391fc01bf380\",\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"createdAt\": 1675074425522,\n    \"updatedAt\": 1675077742108,\n    \"publishedAt\": 1675074425522,\n    \"closedAt\": 1675077742108,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"enabled\": true,\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"channel\": \"/\",\n                    \"channelOperator\": \"STARTS_WITH\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"enabled\": true,\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"status\": \"closed\",\n    \"apiId\": \"4bfb005f-45ae-4358-bb00-5f45ae435855\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"closed\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
+								}
+							]
 						},
 						{
 							"name": "Delete API",
@@ -91,7 +258,78 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "Delete API",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+											"host": [
+												"{{management_host}}"
+											],
+											"path": [
+												"management",
+												"organizations",
+												"DEFAULT",
+												"environments",
+												"DEFAULT",
+												"v4",
+												"apis",
+												"{{api}}"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Method"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Headers"
+										},
+										{
+											"key": "X-Xsrf-Token",
+											"value": "99ce174f-1189-402e-87a0-0b1536800891"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwNzc3NTEsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.N1MEIFuNDH5AmKjsi1YMMsHMZ1L6mCG-2nOSjcUFxAI; Path=/; Expires=Mon, 06-Feb-2023 11:22:31 GMT; Max-Age=604800; HttpOnly"
+										},
+										{
+											"key": "Expires",
+											"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
 						}
 					]
 				},
@@ -418,7 +656,73 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Push Data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"tempF\": \"75\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway_host}}/demo/mqtt",
+									"host": [
+										"{{gateway_host}}"
+									],
+									"path": [
+										"demo",
+										"mqtt"
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Gravitee-Transaction-Id",
+									"value": "69557d9c-8390-417e-957d-9c8390b17efc"
+								},
+								{
+									"key": "X-Gravitee-Request-Id",
+									"value": "69557d9c-8390-417e-957d-9c8390b17efc"
+								},
+								{
+									"key": "X-Gravitee-Client-Identifier",
+									"value": "69557d9c-8390-417e-957d-9c8390b17efc"
+								},
+								{
+									"key": "X-Rate-Limit-Limit",
+									"value": "1"
+								},
+								{
+									"key": "X-Rate-Limit-Remaining",
+									"value": "0"
+								},
+								{
+									"key": "X-Rate-Limit-Reset",
+									"value": "1675073085024"
+								},
+								{
+									"key": "Content-Length",
+									"value": "107"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Rate limit exceeded ! You reach the limit of 1 requests per 20 seconds\",\n    \"http_status_code\": 429\n}"
+						}
+					]
 				},
 				{
 					"name": "Get Data",
@@ -812,197 +1116,162 @@
 							"body": "{\n    \"id\": \"4bfb005f-45ae-4358-bb00-5f45ae435855\",\n    \"name\": \"Demo of HTTP GET + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1674827731377,\n    \"createdAt\": 1674820051716,\n    \"updatedAt\": 1674827731377,\n    \"description\": \"Demo of HTTP GET + MQTT\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt/\"\n                }\n            ],\n            \"cors\": {\n                \"enabled\": true,\n                \"allowCredentials\": false,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"x-gravitee-api-key\"\n                ],\n                \"allowMethods\": [\n                    \"POST\",\n                    \"GET\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"x-rate-limit-limit\",\n                    \"x-rate-limit-remaining\",\n                    \"x-rate-limit-reset\"\n                ],\n                \"maxAge\": -1\n            },\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false,\n                        \"messagesLimitDurationMs\": 10000\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\": {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"3f4431bb-e631-4214-8431-bbe631621444\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
 						}
 					]
-				}
-			]
-		},
-		{
-			"name": "Check environment",
-			"item": [
+				},
 				{
-					"name": "Check environment",
+					"name": "Close plan",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "https://postman-echo.com/get?api={{api}}&paln={{plan}}",
-							"protocol": "https",
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans/{{plan}}/_close",
 							"host": [
-								"postman-echo",
-								"com"
+								"{{management_host}}"
 							],
 							"path": [
-								"get"
-							],
-							"query": [
-								{
-									"key": "api",
-									"value": "{{api}}"
-								},
-								{
-									"key": "paln",
-									"value": "{{plan}}"
-								}
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"plans",
+								"{{plan}}",
+								"_close"
 							]
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Create a rate-limiting plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"plans"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create a rate-limiting plan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"plans"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwNzQ0MjUsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0._sB0Tu8cZ-25QHylTbEZRcPgRcVL1tlLfka9y5m5_vk; Path=/; Expires=Mon, 06-Feb-2023 10:27:05 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/4bfb005f-45ae-4358-bb00-5f45ae435855/plans/ccf21839-1fc0-4bf3-b218-391fc01bf380"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1157"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"ccf21839-1fc0-4bf3-b218-391fc01bf380\",\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"createdAt\": 1675074425522,\n    \"updatedAt\": 1675074425522,\n    \"publishedAt\": 1675074425522,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"enabled\": true,\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"channel\": \"/\",\n                    \"channelOperator\": \"STARTS_WITH\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"enabled\": true,\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"status\": \"published\",\n    \"apiId\": \"4bfb005f-45ae-4358-bb00-5f45ae435855\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
+						}
+					]
 				}
 			]
-		},
-		{
-			"name": "Create the API",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Demo of HTTP Post + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP Post + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
-					"host": [
-						"{{management_host}}"
-					],
-					"path": [
-						"management",
-						"organizations",
-						"DEFAULT",
-						"environments",
-						"DEFAULT",
-						"v4",
-						"apis"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create an Open (keyless) Plan",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"entrypoints\": [\n                        \"http-post\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 2,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
-					"host": [
-						"{{management_host}}"
-					],
-					"path": [
-						"management",
-						"organizations",
-						"DEFAULT",
-						"environments",
-						"DEFAULT",
-						"v4",
-						"apis",
-						"{{api}}",
-						"plans"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Start the API",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=start",
-					"host": [
-						"{{management_host}}"
-					],
-					"path": [
-						"management",
-						"organizations",
-						"DEFAULT",
-						"environments",
-						"DEFAULT",
-						"v4",
-						"apis",
-						"{{api}}"
-					],
-					"query": [
-						{
-							"key": "action",
-							"value": "start"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Push Data",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"deviceId\": \"12341234\",\n    \"sensorValue\": \"24\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{gateway_host}}/demo/mqtt",
-					"host": [
-						"{{gateway_host}}"
-					],
-					"path": [
-						"demo",
-						"mqtt"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create the API Copy",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Demo of HTTP Post + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP Post + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 1,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
-					"host": [
-						"{{management_host}}"
-					],
-					"path": [
-						"management",
-						"organizations",
-						"DEFAULT",
-						"environments",
-						"DEFAULT",
-						"v4",
-						"apis"
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"auth": {
