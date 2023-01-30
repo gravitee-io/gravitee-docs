@@ -39,12 +39,11 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
     "updatedAt": 1674818407231,
 ----
 +
-The `id` is the ID of the API we just created.
-. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.20 Tutorials Environment. Click Save. 
 
 == Creating a keyless plan
 
-1. Select the "Create an Open (Keyless) Plan" and look at the request body. It looks like this.
+1. Select the "Create an Open (Keyless) Plan" request and look at the request body. It looks like this.
 +
 [code,json]
 ----
