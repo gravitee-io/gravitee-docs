@@ -16,7 +16,7 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 == APIM - 3.18.18 (2023-01-27)
 
 === API
-* Plan policy were lost when migrated an API to design studio https://github.com/gravitee-io/issues/issues/8632[#8632]
+* Plan policies were lost when migrated from an API to design studio https://github.com/gravitee-io/issues/issues/8632[#8632]
 * Notifier email bump to 1.5.0 https://github.com/gravitee-io/issues/issues/8830[#8830]
 * Update flows condition max size to 512 https://github.com/gravitee-io/issues/issues/8823[#8823] & https://github.com/gravitee-io/issues/issues/8671[#8671]
 * Duplicated platform flows when APIM is linked to Cockpit. https://github.com/gravitee-io/issues/issues/8832[#8832]
