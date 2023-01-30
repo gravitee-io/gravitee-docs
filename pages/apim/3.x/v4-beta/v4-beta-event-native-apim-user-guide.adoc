@@ -20,7 +20,7 @@ Before running any of the examples on this page, work through some of the  link:
 
 == Asynchronous APIs
 
-In this release, you can create asynchronous APIs and connect to event brokers and asynchronous data sources. You can configure asynchronous API connections using the RESTful interface to the management API.
+In this release of Gravitee API Management, you can create asynchronous APIs and connect to event brokers and asynchronous data sources. You can configure asynchronous API connections using the RESTful interface to the management API.
 
 The OpenAPI specification for the management API is available at link:/apim/3.x/management-api/3.20/swagger.json[`swagger.json`] (link:/apim/3.x/apim_installguide_rest_apis_documentation.html#apim_console_api_reference[reference documentation]). Examples of how to use the management API to configure asynchronous APIs can be found in the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Postman Collections], which are described in link:event_native_apim_example_use_cases.html[example use cases].
 
@@ -29,28 +29,258 @@ The OpenAPI specification for the management API is available at link:/apim/3.x/
 The management API is in beta and it may change.
 ====
 
-== Entrypoints and endpoints
+== Listeners
 
-An _entrypoint_ is how an end user connects to the Gravitee Gateway. An _endpoint_ is how the Gravitee Gateway connects to the source of data.
+Gravitee API Management is based mainly on the HTTP protocol, but data can also be consumed by subscription. It has two types of listener: `HTTP` and `SUBSCRIPTION`.
 
-The following types of entrypoints are available:
+* `HTTP`: this is the most common type of listener. Most synchronous and asynchronous APIs use this listener and consume data over HTTP.
+* `SUBSCRIPTION`:  this type of listener is used for specific APIs. It is particularly useful for Webhook which requires the gateway to accept a subscription to start consuming messages from an endpoint and send them to an external Webhook.
 
-* SSE (Server-Sent Events)
-* SSE advanced (Enterprise Edition only)
-* WebSocket
-* HTTP GET
-* HTTP POST
-* Webhook
-* Webhook advanced (Enterprise Edition only)
+== Entrypoints
 
-For more information about these entrypoints, see link:{{'/apim/3.x/event_native_apim_introduction.html#http_post_and_http_get_entrypoints' | relative_url}}[HTTP POST and HTTP GET entrypoints] and link:{{'/apim/3.x/event_native_apim_introduction.html#support_for_websocket_and_sse_entrypoints' | relative_url}}[Support for Websocket and SSE entrypoints].
+An _entrypoint_ is how an end user connects to the Gravitee Gateway. The following types of entrypoints are available.
 
-The following types of endpoints are available:
+=== HTTP POST and HTTP GET
 
-* Kafka
-* Kafka advanced (Enterprise Edition only)
-* MQTT
-* MQTT advanced (Enterprise Edition only)
+HTTP POST and HTTP GET entrypoints allow external clients to publish and receive data via standard HTTP POST and HTTP GET requests, and ease the ingestion of data into event-oriented backends like Kafka.
+
+As shown in the following diagram, with the HTTP POST workflow, a client application running on HTTP can post content to the Gravitee Gateway. The Gateway can then take that content and push it over to Kafka as a message that Kafka can ingest. The Gravitee Gateway acts as a protocol mediation layer in this context. This enables API owners to quickly set up a sync-to-async integration.
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-http-post.png %}[]
+
+=== Server-sent events (SSE)
+
+Server-sent events (SSE) is a server push technology that allows a client to receive automatic updates from a server using an HTTP connection. It is unidirectional: consumers can subscribe but not publish.
+
+The SSE Advanced connector supports a wider range of link:#quality_of_service[Quality of Service] options, as shown in link:#compatibility[the table below].
+
+[NOTE]
+====
+If you need clients to publish events, use WebSockets.
+====
+
+=== WebSockets
+
+WebSocket entrypoints allow you to expose responses and messages using a WebSocket API to consumers: an event-driven backend (based on Kafka or MQTT) is be presented in a more consumer-friendly way.
+
+WebSocket is commonly used by web browsers for bi-directional communication in order to offer live, real-time experiences powering applications such as: 
+
+* Chat applications.
+* Location-dependent applications (i.e. push the new location when it changes).
+* Collaboration tools.
+
+Using WebSocket replaces the need to set up other alternatives such as Kafka or MQTT clients.
+
+WebSocket can be used to replace client-side REST APIs, reducing the cost associated with the frequent polling required by real-time applications. This load reduction also improves overall performance and reliability.
+
+==== Use case
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-websocket.png %}[]
+
+1. An API publisher creates an API with a WebSocket entrypoint and a MQTT endpoint. 
+2. The API publisher uses Gravitee to apply various policies to be executed at the message level (such as authentication or traffic shaping).
+3. The API publisher publishes the API to their Gravitee Developer Portal.
+4. Developers discover and subscribe their consumer applications to the API via the Developer Portal.
+5. An event occurs and the message is streamed from the MQTT broker to the Gravitee Gateway. The Gateway then executes policies and streams messages from MQTT to consumers via their WebSocket connection.
+
+[NOTE] 
+====
+Because WebSocket supports bi-directional messaging, you could also use Gravitee to mediate for event consumption use cases where messages are streamed from a WebSocket client to the MQTT backend.
+====
+
+=== Webhooks
+
+Webhook entrypoints allow you to expose responses and messages from your event-driven backend via webhooks.
+
+This might include the ability to:
+
+* Manage the subscription.
+* Provide a history of the notifications attempts.
+* Replay an event.
+
+With Webhook support, an API consumer subscribes to the Webhook API, which basically indicates to the Gateway to listen for specific Kafka messages and then call the consumer to let them know that an expected event has occurred. This communication is performed via Webhook, however it is always up to the Gateway to push the events or messages to the consumer.
+
+The diagram below shows the workflow for this use case:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-event-consumption-webhook.png %}[]
+
+In addition to all the features of the standard Webhook connector, the Advanced connector supports a dead letter queue and secured callbacks.
+
+==== Dead letter queue (DLQ)
+
+The dead letter queue (DLQ) is the ability to push undelivered messages to  external storage. When configuring DLQ with webhook, you redirect all the messages that the webhook rejects to another location, such as a Kafka topic.
+
+By default, without DLQ, any error returned by the webhook will stop the consumption of the messages.
+
+To enable DLQ, declare another endpoint that will be used to configure the `dlq` section of the webhook entrypoint definition:
+
+[source, json]
+----
+{
+    "type": "webhook-advanced",
+    "dlq": {
+        "endpoint": "dlq-endpoint"
+    },
+    "configuration": {}
+}
+----
+
+The endpoint used for the dead letter queue:
+
+* Must support `PUBLISH` mode
+* Should be based on a broker that can persist messages, such as Kafka.
+
+Once configured and deployed, any message rejected with a 4xx error response by the webhook will be automatically sent to the `dlq` endpoint and the consumption of messages will continue.
+
+==== Secured callbacks
+
+Callbacks can be secured using basic authentication, JWT, and OAuth2.
+
+To secure a callback, add an `auth` section to the configuration. The following example shows how to use basic authentication.
+
+[source, json]
+----
+{
+    "configuration": {
+        "entrypointId": "webhook-advanced",
+        "callbackUrl": "https://example.com",
+        "auth": {
+            "type": "basic",
+            "basic": {
+                "username": "username",
+                "password": "a-very-secured-password"
+            }
+        }
+    }
+}
+----
+
+To use JWT, the `auth` section should look like this:
+
+[source,json]
+----
+        "auth": {
+            "type": "token",
+            "token": {
+                "value": "eyJraWQiOiJk..."
+            }
+        }
+----
+
+To use OAuth2, the `auth` section should look like this:
+
+[source,json]
+----
+        "auth": {
+            "type": "token",
+            "token": {
+                "value": "eyJraWQiOiJk..."
+            }
+        }
+----
+
+== Endpoints
+
+An _endpoint_ is how the Gravitee Gateway connects to the source of data. The following types of endpoints are available.
+
+=== MQTT
+
+MQTT is a lightweight publishing/subscribe transport that is used in the Internet of Things. Gravitee's MQTT connectors currently only support MQTT 5. There are two connectors, MQTT and MQTT Advanced. MQTT Advanced is only available for the Enterprise Edition of the Gravitee Gateway.
+
+The Gravitee MQTT connectors offer advanced protocol mediation capabilities that can be applied for use cases where teams have an MQTT backend and want that broker and backend to communicate with a non-MQTT client. In addition to protocol mediation the advanced connector also supports advanced security feature (user/password using TLS) and quality of service (QoS). 
+
+.MQTT Connectors
+|===
+| Feature | MQTT | MQTT Advanced 
+
+| Protocol mediation 
+| Yes | Yes 
+
+| link:#quality_of_service[Quality of Service]
+| No | Yes
+
+| Advanced security (username and password over TLS)
+| No | Yes
+|===
+
+The MQTT connector is useful where, for example, only protocol mediation is needed but guaranteed delivery or security.
+
+The MQTT Advanced connector is useful where messages must be delivered reliably (through quality of service) or securely (using advanced security), such as to customers who would pay for such information.
+
+Using the MQTT connectors provides the following benefits:
+
+* *Reuse existing infrastructure*: for teams moving to MQTT and/or a new MQTT broker, you can now use Gravitee to make it possible for MQTT to communicate with client side applications that talk via REST, Websocket, Webhook, and more.
+* *Make IoT communications more consumer-friendly*: instead of setting up MQTT clients, allow messages coming from MQTT to be consumed by APIs that your consumers are more comfortable with (i.e. Websocket, Webhook, SSE, REST, etc.)
+* *Monetize IoT data streams*: Expose IoT data streams via any consumer-facing API or protocol using the Gravitee Developer Portal and then use Gravitee's monetization capabilities to turn these data streams into revenue streams.
+
+==== Use case
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-mqtt.png %}[]
+
+1. An API publisher creates an API with a Websocket entrypoint and a MQTT endpoint.
+2. The API publisher implements the Gravitee Assign metrics policy (EE only) to enable API monetization.
+3. The API publisher publishers the API to their Gravitee Developer Portal. 
+4. Developers discover and subscribe their consumer applications to the API via the Developer Portal.
+5. An event occurs and the message is streamed from the MQTT broker to the Gravitee Gateway. The Gateway then streams them to the proper consumer applications via Websocket connection.
+6. The Assign metrics policy is executed and this allows payment processing systems to invoice API consumers.
+
+=== Kafka
+
+Kafka is a distributed event-streaming platform used for high-performance data pipelines, streaming analytics, and data integration. There are two connectors, Kafka and Kafka Advanced. Kafka Advanced is only available for the Enterprise Edition of the Gravitee Gateway.
+
+The Gravitee Kafka connectors offer advanced protocol mediation capabilities that can be applied for use cases where teams have a Kafka backend and want that broker and backend to communicate with a non-Kafka client. In addition to protocol mediation the advanced connector also supports advanced security feature (user/password using TLS) and quality of service (QoS). 
+
+.Kafka Connectors
+|===
+|Feature | Kafka | Kafka Advanced
+
+| Protocol mediation 
+| Yes | Yes 
+
+| link:#quality_of_service[Quality of Service]
+| No | Yes
+
+| Advanced security (username and password over TLS)
+| No | Yes
+|===
+
+The Kafka connector is useful where, for example, only protocol mediation is needed but guaranteed delivery or security.
+
+The Kafka Advanced connector is useful where messages must be delivered reliably (through quality of service) or securely (using advanced security), such as to customers who would pay for such information.
+
+
+Using the Kafka connectors provides the following benefits:
+
+* *Reuse existing infrastructure*: for teams moving to Kafka you can use Gravitee to make it possible for Kafka to communicate with client side applications that talk via REST, Websocket, Webhook, and more.
+* *Harden exposed Kafka streams*: use Gravitee to secure Kafka streams via TLS and Gravitee security policies applied at the message level.
+* *Make Kafka topics more consumer-friendly*: instead of setting up Kafka clients, allow messages coming from Kafka to be consumed by APIs that your consumers are more comfortable with (i.e. Websocket, Webhook, SSE, REST, etc.)
+* *Monetize Kafka data streams*: Expose Kafka data streams via any consumer-facing API or protocol using the Gravitee Developer Portal and then use Gravitee's monetization capabilities to turn these data streams into revenue streams.
+
+==== Use case
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-kafka.png %}[]
+
+1. An API publisher creates an API with a SSE entrypoint and a Kafka endpoint.
+2. The API publisher implements the Gravitee Assign metrics policy (EE only) to enable API monetization.
+3. The API publisher publishers the API to their Gravitee Developer Portal. 
+4. Developers discover and subscribe their consumer applications to the API via the Developer Portal.
+5. An event occurs and the message is streamed from the Kafka topic to the Gravitee Gateway. The Gateway then streams them to the proper consumer applications via SSE connection.
+6. The Assign metrics policy is executed and this allows payment processing systems to invoice API consumers.
+
+== Additional types of endpoints and entrypoints
+
+You can add additional types of endpoints and entrypoints by adding a type of plugin called a connector.
+
+You can download additional entrypoint connectors from the link:https://download.gravitee.io/#graviteeio-apim/plugins/entrypoints/[Gravitee APIM entrypoint plugins download page]
+
+You can download additional endpoint connectors from the link:https://download.gravitee.io/#graviteeio-apim/plugins/endpoints/[Gravitee APIM endpoints plugins download page] and the link:https://download.gravitee.io/#graviteeio-ee/apim/plugins/entrypoints/[Gravitee APIM Enterprise Edition endpoints plugins download page]. 
+
+They are standard plugins and can be installed as described in link:{{'/apim/3.x/apim_installation_guide_plugins.html' | relative_url}}[Installing and updating Plugins].
+
+[NOTE]
+====
+Connectors with `advanced` in their filenames can only be used with the Enterprise Edition of the Gravitee Gateway.
+====
 
 == How to create a V4 BETA asynchronous API
 
@@ -128,6 +358,12 @@ When working with asynchronous APIs, quality of service is important. Quality of
 
 A higher quality of service could lead to lower system performance depending on the endpoint chosen.
 
+The quality of service is set on the entrypoints (see link:#setting_quality_of_service[Setting quality of service]). A given quality of service may or may not be supported by a given endpoint (see link:#compatibility[Compatibility]). Support also depends on the protocol used for the entrypoint.
+
+For example, when using an HTTP listener with a WebSocket entrypoint it is not possible to ensure data is received by the client, so no quality of service can be guaranteed.
+
+However, when using Subscription listener, it can be ensured that messages sent are received either by using the HTTP return code (for Webhook) or a transactional publisher (for Kafka). For these entrypoints, the quality of service can be increased.
+
 The quality-of-service levels are described in the following table.
 
 .Table Quality of service levels
@@ -146,7 +382,6 @@ The quality-of-service levels are described in the following table.
 
 | At-Least-Once (1 or N)
 | A given message is delivered once or many times. This level gives a good balance between guaranteed delivery and performance when compared to At-Most-Once, especially when the entrypoint connector is not able to resume message streams after failure.
-
 
 |===
 
@@ -175,19 +410,7 @@ Not all levels of quality of service work with every entrypoint / endpoint combi
 
 .Table Quality of service compatibility matrix
 |===
-| Entrypoint| MQTT5 endpoint | MQTT5 advanced endpoint | Kafka endpoint | Kafka advanced endpoint
-
-| SSE
-| At-Least-Once, At-Most-Once
-| At-Least-Once, At-Most-Once
-| None, Auto
-| None, Auto, At-Least-Once, At-Most-Once
-
-| SSE advanced
-| At-Least-Once, At-Most-Once
-| At-Least-Once, At-Most-Once
-| None, Auto
-| None, Auto, At-Least-Once, At-Most-Once
+| Entrypoint| MQTT endpoint | MQTT Advanced endpoint | Kafka endpoint | Kafka Advanced endpoint
 
 | HTTP POST
 | None, Auto
@@ -201,7 +424,19 @@ Not all levels of quality of service work with every entrypoint / endpoint combi
 | Auto
 | Auto, At-Least-Once, At-Most-Once
 
-| Websocket
+| SSE
+| None, Auto
+| None, Auto
+| None, Auto
+| None, Auto
+
+| SSE Advanced
+| None, Auto
+| None, Auto
+| None, Auto
+| None, Auto, At-Least-Once, At-Most-Once
+
+| WebSocket
 | None, Auto
 | None, Auto
 | None, Auto
@@ -213,7 +448,7 @@ Not all levels of quality of service work with every entrypoint / endpoint combi
 | None, Auto
 | None, Auto, At-Least-Once, At-Most-Once
 
-| Webhook advanced
+| Webhook Advanced
 | At-Least-Once, At-Most-Once
 | At-Least-Once, At-Most-Once
 | None, Auto

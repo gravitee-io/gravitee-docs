@@ -78,6 +78,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-conditio
 In V4 BETA mode, when a valid EL expression is evaluated as `true`, the policy (or flow) is executed. Otherwise, it is skipped.
 
 A policy is skipped when:
+
 * The Expression Language (EL) expression is evaluated as `false`.
 * The EL expression evaluation fails because the expected data tested is missing.
 
@@ -244,7 +245,7 @@ All policies related to security have already been migrated to support both V3 a
 * JWT
 * OAuth2
 
-Custom policies developed by community users or customers using V3 mode should be perfectly compatible with the new V$ BETA mode, however we strongly recommend switching to the new V4 BETA mode for custom policy implementation (a developer guide will be published soon).
+Custom policies developed by community users or customers using V3 mode should be perfectly compatible with the new V4 BETA mode, however we strongly recommend switching to the new V4 BETA mode for custom policy implementation (a developer guide will be published soon).
 
 
 
@@ -290,7 +291,7 @@ image:{% link /images/apim/3.x/event-native/event-native-api-management-timeout.
 
 === Common behavior
 
-The plan selection workflow parses all the published plans in the following order: JWT, Oauth2, ApiKey, Keyless.
+The plan selection workflow parses all the published plans in the following order: JWT, OAuth2, ApiKey, Keyless.
 
 The parsed plan is selected for execution if all the following conditions are met:
 * The request contains a token corresponding to this plan type (api-key header, authorization header).
@@ -299,20 +300,20 @@ The parsed plan is selected for execution if all the following conditions are me
 
 === V3 policy execution engine mode
 
-In V3 mode, the Oauth2 plan *is selected* even if the incoming request does not match a subscription.
+In V3 mode, the OAuth2 plan *is selected* even if the incoming request does not match a subscription.
 
-No JWT token introspection is done during Oauth2 plan selection.
+No JWT token introspection is done during OAuth2 plan selection.
 
-If there are multiple Oauth2 plans, that would lead to the selection of an irrelevant one.
+If there are multiple OAuth2 plans, that would lead to the selection of an irrelevant one.
 
 === New V4 BETA policy execution engine mode
 
-In V4 BETA mode, the Oauth2 plan *is not selected* if the incoming request does not match a subscription.
+In V4 BETA mode, the OAuth2 plan *is not selected* if the incoming request does not match a subscription.
 
-During the Oauth2 plan selection, a token introspection is released in order to retrieve the `client_id`, which allows searching for a subscription.
+During the OAuth2 plan selection, a token introspection is released in order to retrieve the `client_id`, which allows searching for a subscription.
 
 Due to concerns about performance, a cache system is available to avoid doing the same token introspection multiple times.
 
-Where possible, it is recommended to use selection rules if there are multiple Oauth2 plans, in order to avoid any unnecessary token introspection.
+Where possible, it is recommended to use selection rules if there are multiple OAuth2 plans, in order to avoid any unnecessary token introspection.
 
-NOTE: The policy has been changed for the Keyless plan - its activation is now prevented in case a security token has been detected in the incoming request by one of the previous plans. Therefore, if an API has multiple plans (JWT, Oauth2, Apikey, Keyless) and the incoming request contains a token or an apikey that does not match any of the existing plans, then the Keyless plan will not be activated and the user will receive a generic 401 response without any details.
+NOTE: The policy has been changed for the Keyless plan - its activation is now prevented in case a security token has been detected in the incoming request by one of the previous plans. Therefore, if an API has multiple plans (JWT, OAuth2, Apikey, Keyless) and the incoming request contains a token or an apikey that does not match any of the existing plans, then the Keyless plan will not be activated and the user will receive a generic 401 response without any details.
