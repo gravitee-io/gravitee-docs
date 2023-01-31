@@ -112,7 +112,7 @@ The dead letter queue (DLQ) is the ability to push undelivered messages to  exte
 
 By default, without DLQ, any error returned by the webhook will stop the consumption of the messages.
 
-To enable DLQ, declare another endpoint that will be used to configure the `dlq` section of the webhook entrypoint definition:
+To enable DLQ, declare another endpoint that will be used to configure the `dlq` object in the webhook entrypoint definition:
 
 [source, json]
 ----
@@ -136,7 +136,7 @@ Once configured and deployed, any message rejected with a 4xx error response by 
 
 Callbacks can be secured using basic authentication, JWT, and OAuth2.
 
-To secure a callback, add an `auth` section to the configuration. The following example shows how to use basic authentication.
+To secure a callback, add an `auth` object to the configuration. The following example shows how to use basic authentication.
 
 [source, json]
 ----
@@ -155,7 +155,7 @@ To secure a callback, add an `auth` section to the configuration. The following 
 }
 ----
 
-To use JWT, the `auth` section should look like this:
+To use JWT, the `auth` object should look like this:
 
 [source,json]
 ----
@@ -167,7 +167,7 @@ To use JWT, the `auth` section should look like this:
         }
 ----
 
-To use OAuth2, the `auth` section should look like this:
+To use OAuth2, the `auth` object should look like this:
 
 [source,json]
 ----
