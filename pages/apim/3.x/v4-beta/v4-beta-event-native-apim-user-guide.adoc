@@ -172,9 +172,12 @@ To use OAuth2, the `auth` section should look like this:
 [source,json]
 ----
         "auth": {
-            "type": "token",
-            "token": {
-                "value": "eyJraWQiOiJk..."
+            "type": "oauth2",
+            "oauth2": {
+                "endpoint": "https://auth.gravitee.io/my-domain/oauth/token",
+                "clientId": "a-client-id",
+                "clientSecret": "a-client-secret",
+                "scopes": ["roles"]
             }
         }
 ----
