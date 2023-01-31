@@ -7,21 +7,49 @@
 	},
 	"item": [
 		{
-			"name": "MQTT and HTTP",
+			"name": "Delete API",
 			"item": [
 				{
-					"name": "Delete API",
-					"item": [
+					"name": "Stop the API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=stop",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "stop"
+								}
+							]
+						}
+					},
+					"response": [
 						{
 							"name": "Stop the API",
-							"request": {
+							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=stop",
+									"raw": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/?action=stop",
+									"protocol": "http",
 									"host": [
-										"{{management_host}}"
+										"localhost"
 									],
+									"port": "8083",
 									"path": [
 										"management",
 										"organizations",
@@ -30,7 +58,7 @@
 										"DEFAULT",
 										"v4",
 										"apis",
-										"{{api}}"
+										""
 									],
 									"query": [
 										{
@@ -40,96 +68,93 @@
 									]
 								}
 							},
-							"response": [
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
 								{
-									"name": "Stop the API",
-									"originalRequest": {
-										"method": "POST",
-										"header": [],
-										"url": {
-											"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=stop",
-											"host": [
-												"{{management_host}}"
-											],
-											"path": [
-												"management",
-												"organizations",
-												"DEFAULT",
-												"environments",
-												"DEFAULT",
-												"v4",
-												"apis",
-												"{{api}}"
-											],
-											"query": [
-												{
-													"key": "action",
-													"value": "stop"
-												}
-											]
-										}
-									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "plain",
-									"header": [
-										{
-											"key": "Vary",
-											"value": "Origin"
-										},
-										{
-											"key": "Vary",
-											"value": "Access-Control-Request-Method"
-										},
-										{
-											"key": "Vary",
-											"value": "Access-Control-Request-Headers"
-										},
-										{
-											"key": "X-Xsrf-Token",
-											"value": "99ce174f-1189-402e-87a0-0b1536800891"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwNzc2NzMsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.dOVyVZWzqtsg2K9xgGrKbKn-EYLLIrzYsyOwzzgzzcs; Path=/; Expires=Mon, 06-Feb-2023 11:21:13 GMT; Max-Age=604800; HttpOnly"
-										},
-										{
-											"key": "Expires",
-											"value": "Thu, 01 Jan 1970 00:00:00 GMT"
-										},
-										{
-											"key": "ETag",
-											"value": "\"1675077673544\""
-										},
-										{
-											"key": "Last-Modified",
-											"value": "Mon, 30 Jan 2023 11:21:13 GMT"
-										},
-										{
-											"key": "X-Content-Type-Options",
-											"value": "nosniff"
-										},
-										{
-											"key": "X-XSS-Protection",
-											"value": "1; mode=block"
-										},
-										{
-											"key": "X-Frame-Options",
-											"value": "DENY"
-										}
-									],
-									"cookie": [],
-									"body": null
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwNzc2NzMsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.dOVyVZWzqtsg2K9xgGrKbKn-EYLLIrzYsyOwzzgzzcs; Path=/; Expires=Mon, 06-Feb-2023 11:21:13 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "\"1675077673544\""
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Mon, 30 Jan 2023 11:21:13 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
 								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Close Plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans/{{plan}}/_close",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"plans",
+								"{{plan}}",
+								"_close"
 							]
-						},
+						}
+					},
+					"response": [
 						{
 							"name": "Close Plan",
-							"request": {
+							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
@@ -152,93 +177,90 @@
 									]
 								}
 							},
-							"response": [
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"name": "Close Plan",
-									"originalRequest": {
-										"method": "POST",
-										"header": [],
-										"url": {
-											"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans/{{plan}}/_close",
-											"host": [
-												"{{management_host}}"
-											],
-											"path": [
-												"management",
-												"organizations",
-												"DEFAULT",
-												"environments",
-												"DEFAULT",
-												"v4",
-												"apis",
-												"{{api}}",
-												"plans",
-												"{{plan}}",
-												"_close"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Vary",
-											"value": "Origin"
-										},
-										{
-											"key": "Vary",
-											"value": "Access-Control-Request-Method"
-										},
-										{
-											"key": "Vary",
-											"value": "Access-Control-Request-Headers"
-										},
-										{
-											"key": "X-Xsrf-Token",
-											"value": "99ce174f-1189-402e-87a0-0b1536800891"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwNzc3NDIsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.xDw0Ewsh8WdUl6u6SLZPpHDof_GwANJKnAmGeMLsIUI; Path=/; Expires=Mon, 06-Feb-2023 11:22:22 GMT; Max-Age=604800; HttpOnly"
-										},
-										{
-											"key": "Expires",
-											"value": "Thu, 01 Jan 1970 00:00:00 GMT"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										},
-										{
-											"key": "X-Content-Type-Options",
-											"value": "nosniff"
-										},
-										{
-											"key": "X-XSS-Protection",
-											"value": "1; mode=block"
-										},
-										{
-											"key": "X-Frame-Options",
-											"value": "DENY"
-										},
-										{
-											"key": "Content-Length",
-											"value": "1181"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"id\": \"ccf21839-1fc0-4bf3-b218-391fc01bf380\",\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"createdAt\": 1675074425522,\n    \"updatedAt\": 1675077742108,\n    \"publishedAt\": 1675074425522,\n    \"closedAt\": 1675077742108,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"enabled\": true,\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"channel\": \"/\",\n                    \"channelOperator\": \"STARTS_WITH\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"enabled\": true,\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"status\": \"closed\",\n    \"apiId\": \"4bfb005f-45ae-4358-bb00-5f45ae435855\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"closed\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwNzc3NDIsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.xDw0Ewsh8WdUl6u6SLZPpHDof_GwANJKnAmGeMLsIUI; Path=/; Expires=Mon, 06-Feb-2023 11:22:22 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1181"
 								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"ccf21839-1fc0-4bf3-b218-391fc01bf380\",\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"createdAt\": 1675074425522,\n    \"updatedAt\": 1675077742108,\n    \"publishedAt\": 1675074425522,\n    \"closedAt\": 1675077742108,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"enabled\": true,\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"channel\": \"/\",\n                    \"channelOperator\": \"STARTS_WITH\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"enabled\": true,\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"status\": \"closed\",\n    \"apiId\": \"4bfb005f-45ae-4358-bb00-5f45ae435855\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"closed\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete API",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
 							]
-						},
+						}
+					},
+					"response": [
 						{
 							"name": "Delete API",
-							"request": {
+							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
@@ -258,81 +280,61 @@
 									]
 								}
 							},
-							"response": [
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
 								{
-									"name": "Delete API",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
-											"host": [
-												"{{management_host}}"
-											],
-											"path": [
-												"management",
-												"organizations",
-												"DEFAULT",
-												"environments",
-												"DEFAULT",
-												"v4",
-												"apis",
-												"{{api}}"
-											]
-										}
-									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "plain",
-									"header": [
-										{
-											"key": "Vary",
-											"value": "Origin"
-										},
-										{
-											"key": "Vary",
-											"value": "Access-Control-Request-Method"
-										},
-										{
-											"key": "Vary",
-											"value": "Access-Control-Request-Headers"
-										},
-										{
-											"key": "X-Xsrf-Token",
-											"value": "99ce174f-1189-402e-87a0-0b1536800891"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwNzc3NTEsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.N1MEIFuNDH5AmKjsi1YMMsHMZ1L6mCG-2nOSjcUFxAI; Path=/; Expires=Mon, 06-Feb-2023 11:22:31 GMT; Max-Age=604800; HttpOnly"
-										},
-										{
-											"key": "Expires",
-											"value": "Thu, 01 Jan 1970 00:00:00 GMT"
-										},
-										{
-											"key": "X-Content-Type-Options",
-											"value": "nosniff"
-										},
-										{
-											"key": "X-XSS-Protection",
-											"value": "1; mode=block"
-										},
-										{
-											"key": "X-Frame-Options",
-											"value": "DENY"
-										}
-									],
-									"cookie": [],
-									"body": null
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwNzc3NTEsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.N1MEIFuNDH5AmKjsi1YMMsHMZ1L6mCG-2nOSjcUFxAI; Path=/; Expires=Mon, 06-Feb-2023 11:22:31 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
 								}
-							]
+							],
+							"cookie": [],
+							"body": null
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"name": "MQTT and HTTP",
+			"item": [
 				{
 					"name": "Create the API",
 					"request": {
@@ -747,10 +749,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{gateway_host}}/demo/mqtt",
+									"raw": "http://localhost:8082/demo/mqtt",
+									"protocol": "http",
 									"host": [
-										"{{gateway_host}}"
+										"localhost"
 									],
+									"port": "8082",
 									"path": [
 										"demo",
 										"mqtt"
@@ -914,7 +918,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{   \"id\": \"{{api}}\",\n    \"name\": \"Demo of HTTP GET + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP GET + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{   \"id\": \"\",\n    \"name\": \"Demo of HTTP GET + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP GET + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -922,10 +926,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+									"raw": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/",
+									"protocol": "http",
 									"host": [
-										"{{management_host}}"
+										"localhost"
 									],
+									"port": "8083",
 									"path": [
 										"management",
 										"organizations",
@@ -934,7 +940,7 @@
 										"DEFAULT",
 										"v4",
 										"apis",
-										"{{api}}"
+										""
 									]
 								}
 							},
@@ -1034,10 +1040,12 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
+									"raw": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis//deploy",
+									"protocol": "http",
 									"host": [
-										"{{management_host}}"
+										"localhost"
 									],
+									"port": "8083",
 									"path": [
 										"management",
 										"organizations",
@@ -1046,7 +1054,7 @@
 										"DEFAULT",
 										"v4",
 										"apis",
-										"{{api}}",
+										"",
 										"deploy"
 									]
 								}
@@ -1192,10 +1200,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+									"raw": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis//plans",
+									"protocol": "http",
 									"host": [
-										"{{management_host}}"
+										"localhost"
 									],
+									"port": "8083",
 									"path": [
 										"management",
 										"organizations",
@@ -1204,7 +1214,7 @@
 										"DEFAULT",
 										"v4",
 										"apis",
-										"{{api}}",
+										"",
 										"plans"
 									]
 								}
@@ -1268,6 +1278,1362 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"ccf21839-1fc0-4bf3-b218-391fc01bf380\",\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"createdAt\": 1675074425522,\n    \"updatedAt\": 1675074425522,\n    \"publishedAt\": 1675074425522,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"enabled\": true,\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"channel\": \"/\",\n                    \"channelOperator\": \"STARTS_WITH\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"enabled\": true,\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"status\": \"published\",\n    \"apiId\": \"4bfb005f-45ae-4358-bb00-5f45ae435855\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "MQTT and Webhooks",
+			"item": [
+				{
+					"name": "Create the API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n            {\n                \"type\": \"subscription\",\n                \"entrypoints\": [\n                    {\n                        \"type\": \"webhook\"\n                    }\n                ]\n            }\n        ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create the API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n            {\n                \"type\": \"subscription\",\n                \"entrypoints\": [\n                    {\n                        \"type\": \"webhook\"\n                    }\n                ]\n            }\n        ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwOTAyNTAsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.xxMX5T0aKeMjXuPzyHItgWnWTgprR6nsX2ithnmw0o0; Path=/; Expires=Mon, 06-Feb-2023 14:50:50 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/48923b1a-3df6-442f-923b-1a3df6d42fbb"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1177"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"48923b1a-3df6-442f-923b-1a3df6d42fbb\",\n    \"name\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"createdAt\": 1675090250286,\n    \"updatedAt\": 1675090250286,\n    \"description\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"listeners\": [\n        {\n            \"type\": \"subscription\",\n            \"entrypoints\": [\n                {\n                    \"type\": \"webhook\",\n                    \"qos\": \"auto\"\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\": {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [],\n    \"groups\": [],\n    \"visibility\": \"PRIVATE\",\n    \"state\": \"STOPPED\",\n    \"primaryOwner\": {\n        \"id\": \"57044f34-27da-4762-844f-3427da276275\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Create an Open (subscription) Plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"subscription\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"plans"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create an Open (subscription) Plan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"subscription\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis//plans",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"",
+										"plans"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwOTA0NjIsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.A5Kog-q_EVYez6cHh_BAu2fbYt_ptkrFqj1yhyKwzSc; Path=/; Expires=Mon, 06-Feb-2023 14:54:22 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/48923b1a-3df6-442f-923b-1a3df6d42fbb/plans/bc0fc731-0420-4413-8fc7-310420f41379"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "570"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"bc0fc731-0420-4413-8fc7-310420f41379\",\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"createdAt\": 1675090462705,\n    \"updatedAt\": 1675090462705,\n    \"publishedAt\": 1675090462705,\n    \"validation\": \"manual\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"subscription\"\n    },\n    \"flows\": [],\n    \"status\": \"published\",\n    \"apiId\": \"48923b1a-3df6-442f-923b-1a3df6d42fbb\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"subscription\"\n    },\n    \"planValidation\": \"manual\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Start the API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=start",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "start"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create an Application",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{management_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{management_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"application\",\n    \"description\":\"application\",\n    \"settings\":\n    {\n        \"app\":\n            {   \n                \"type\":\"demo\"}\n            }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/applications",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"applications"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create an Application",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"application\",\n    \"description\":\"application\",\n    \"settings\":\n    {\n        \"app\":\n            {   \n                \"type\":\"demo\"}\n            }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/applications",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"applications"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwOTM1OTIsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.gKMRLIAdv8a3fv7e2IadW99PrzdfcUmX0WSx_zCeswQ; Path=/; Expires=Mon, 06-Feb-2023 15:46:32 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/applications/7e15e1b6-80b5-43f3-95e1-b680b5e3f317"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "481"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"7e15e1b6-80b5-43f3-95e1-b680b5e3f317\",\n    \"name\": \"application\",\n    \"description\": \"application\",\n    \"status\": \"ACTIVE\",\n    \"type\": \"SIMPLE\",\n    \"created_at\": 1675093592934,\n    \"updated_at\": 1675093592934,\n    \"owner\": {\n        \"id\": \"57044f34-27da-4762-844f-3427da276275\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"settings\": {\n        \"app\": {\n            \"type\": \"demo\"\n        }\n    },\n    \"disable_membership_notifications\": false,\n    \"api_key_mode\": \"UNSPECIFIED\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Subscribe to API",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{management_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{management_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"configuration\": {\n        \"entrypointId\": \"webhook\",\n        \"callbackUrl\": \"{{callback-url}}\",\n        \"headers\": [\n            {\n                \"name\": \"demoHeader\",\n                \"value\": \"my-value\"\n            },\n            {\n                \"name\": \"anotherHeader\",\n                \"value\": \"my-value2\"\n            }\n        ]\n    },\n    \"metadata\": {\n        \"feature\": \"demo-filter\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/subscriptions?application={{application}}&plan={{plan}}",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"subscriptions"
+							],
+							"query": [
+								{
+									"key": "application",
+									"value": "{{application}}"
+								},
+								{
+									"key": "plan",
+									"value": "{{plan}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Subscribe to API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"configuration\": {\n        \"entrypointId\": \"webhook\",\n        \"callbackUrl\": \"{{callback-url}}\",\n        \"headers\": [\n            {\n                \"name\": \"demoHeader\",\n                \"value\": \"my-value\"\n            },\n            {\n                \"name\": \"anotherHeader\",\n                \"value\": \"my-value2\"\n            }\n        ]\n    },\n    \"metadata\": {\n        \"feature\": \"demo-filter\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/subscriptions?application={{application}}&plan={{plan}}",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"subscriptions"
+									],
+									"query": [
+										{
+											"key": "application",
+											"value": "{{application}}"
+										},
+										{
+											"key": "plan",
+											"value": "{{plan}}"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUwOTM5NzIsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.VC4_FJLEKpnb_DK03rp0bCQP2cfc0ifQajsUYk35sGo; Path=/; Expires=Mon, 06-Feb-2023 15:52:52 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/48923b1a-3df6-442f-923b-1a3df6d42fbb/subscriptions/7bbbe5d6-0745-4228-bbe5-d60745c2281c"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "814"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"7bbbe5d6-0745-4228-bbe5-d60745c2281c\",\n    \"plan\": {\n        \"id\": \"bc0fc731-0420-4413-8fc7-310420f41379\",\n        \"name\": \"Open\"\n    },\n    \"application\": {\n        \"id\": \"7e15e1b6-80b5-43f3-95e1-b680b5e3f317\",\n        \"name\": \"application\",\n        \"type\": \"SIMPLE\",\n        \"description\": \"application\",\n        \"owner\": {\n            \"id\": \"57044f34-27da-4762-844f-3427da276275\",\n            \"displayName\": \"admin\"\n        },\n        \"apiKeyMode\": \"UNSPECIFIED\"\n    },\n    \"status\": \"ACCEPTED\",\n    \"metadata\": {\n        \"feature\": \"demo-filter\"\n    },\n    \"processed_at\": 1675093972850,\n    \"processed_by\": \"57044f34-27da-4762-844f-3427da276275\",\n    \"subscribed_by\": {\n        \"id\": \"57044f34-27da-4762-844f-3427da276275\",\n        \"displayName\": \"admin\"\n    },\n    \"starting_at\": 1675093972848,\n    \"created_at\": 1675093972832,\n    \"updated_at\": 1675093972850\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Flow to API",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"validation\": \"AUTO\",\n    \"listeners\": [\n            {\n                \"type\": \"subscription\",\n                \"entrypoints\": [\n                    {\n                        \"type\": \"webhook\"\n                    }\n                ]\n            }\n        ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == #subscription.metadata.feature}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Flow to API",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"validation\": \"AUTO\",\n    \"listeners\": [\n            {\n                \"type\": \"subscription\",\n                \"entrypoints\": [\n                    {\n                        \"type\": \"webhook\"\n                    }\n                ]\n            }\n        ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == #subscription.metadata.feature}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUxNTcwMTIsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.EgSmBTsvI7g5-9R4HMz57jikpnWZLqjqN8mz3mrIa-c; Path=/; Expires=Tue, 07-Feb-2023 09:23:32 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "\"1675157012827\""
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Tue, 31 Jan 2023 09:23:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2697"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"48923b1a-3df6-442f-923b-1a3df6d42fbb\",\n    \"name\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1675090533628,\n    \"createdAt\": 1675090250286,\n    \"updatedAt\": 1675157012827,\n    \"description\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"subscription\",\n            \"entrypoints\": [\n                {\n                    \"type\": \"webhook\",\n                    \"qos\": \"auto\"\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\": {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [\n        {\n            \"id\": \"bc0fc731-0420-4413-8fc7-310420f41379\",\n            \"name\": \"Open\",\n            \"description\": \"Keyless\",\n            \"createdAt\": 1675090462705,\n            \"updatedAt\": 1675090462705,\n            \"publishedAt\": 1675090462705,\n            \"validation\": \"manual\",\n            \"type\": \"api\",\n            \"security\": {\n                \"type\": \"subscription\"\n            },\n            \"flows\": [],\n            \"status\": \"published\",\n            \"apiId\": \"48923b1a-3df6-442f-923b-1a3df6d42fbb\",\n            \"order\": 0,\n            \"characteristics\": [],\n            \"commentRequired\": false,\n            \"planStatus\": \"published\",\n            \"planSecurity\": {\n                \"type\": \"subscription\"\n            },\n            \"planValidation\": \"manual\"\n        }\n    ],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == #subscription.metadata.feature}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"57044f34-27da-4762-844f-3427da276275\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"pictureUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/48923b1a-3df6-442f-923b-1a3df6d42fbb/picture?hash=1675157012827\",\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false,\n    \"backgroundUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/48923b1a-3df6-442f-923b-1a3df6d42fbb/background?hash=1675157012827\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Redeploy API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"deploy"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Redeploy API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"deploy"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUxNTc1NDksInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.WAnQKecKJgPMkX7B1-2fHdRzY4IAHM962NqYxVrXI-Q; Path=/; Expires=Tue, 07-Feb-2023 09:32:29 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "\"1675157549486\""
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Tue, 31 Jan 2023 09:32:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1720"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"48923b1a-3df6-442f-923b-1a3df6d42fbb\",\n    \"name\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1675157549486,\n    \"createdAt\": 1675090250286,\n    \"updatedAt\": 1675157549486,\n    \"description\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"subscription\",\n            \"entrypoints\": [\n                {\n                    \"type\": \"webhook\",\n                    \"qos\": \"auto\"\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\": {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == #subscription.metadata.feature}\"\n                    }\n                }\n            ],\n            \"publish\": []\n        }\n    ],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"57044f34-27da-4762-844f-3427da276275\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "MQTT and Websocket",
+			"item": [
+				{
+					"name": "Create the API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Demo of Websocket + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Websocket + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"websocket\",\n                    \"configuration\": {\n                        \"publisher\": {\n                            \"enabled\": true\n                        },\n                        \"subscriber\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create the API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Demo of Websocket + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Websocket + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"websocket\",\n                    \"configuration\": {\n                        \"publisher\": {\n                            \"enabled\": true\n                        },\n                        \"subscriber\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUxNjQ0MzIsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.DzAiHH8o22wLHMt3sbgyVa9pw1qZvsjDt4tU-c_tNY4; Path=/; Expires=Tue, 07-Feb-2023 11:27:12 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/2bb38b7c-1818-4b63-b38b-7c18185b63fd"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1267"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"2bb38b7c-1818-4b63-b38b-7c18185b63fd\",\n    \"name\": \"Demo of Websocket + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"createdAt\": 1675164433265,\n    \"updatedAt\": 1675164433265,\n    \"description\": \"Demo of Websocket + MQTT\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"websocket\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"subscriber\": {\n                            \"enabled\": true\n                        },\n                        \"publisher\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\": {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [],\n    \"groups\": [],\n    \"visibility\": \"PRIVATE\",\n    \"state\": \"STOPPED\",\n    \"primaryOwner\": {\n        \"id\": \"d113a81c-2c63-4ae3-93a8-1c2c634ae3bf\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Create an Open (keyless) Plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"plans"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create an Open (keyless) Plan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"plans"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUxNjQ1MTUsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.NKuOqs-gSJAOKROgF2X29bEns1oTiqBVQMUP7TxOBCI; Path=/; Expires=Tue, 07-Feb-2023 11:28:35 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/2bb38b7c-1818-4b63-b38b-7c18185b63fd/plans/e9131ad7-2889-4481-931a-d72889148105"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "558"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"e9131ad7-2889-4481-931a-d72889148105\",\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"createdAt\": 1675164515978,\n    \"updatedAt\": 1675164515978,\n    \"publishedAt\": 1675164515981,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [],\n    \"status\": \"published\",\n    \"apiId\": \"2bb38b7c-1818-4b63-b38b-7c18185b63fd\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Start the API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=start",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "start"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Flow to API",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Demo of Websocket + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Websocket + MQTT - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"validation\": \"AUTO\",\n    \"listeners\":[\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"websocket\",\n                    \"configuration\": {\n                        \"publisher\": {\n                            \"enabled\": true\n                        },\n                        \"subscriber\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == 'demo-filter'}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Flow to API",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Demo of Websocket + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Websocket + MQTT - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"validation\": \"AUTO\",\n    \"listeners\":[\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"websocket\",\n                    \"configuration\": {\n                        \"publisher\": {\n                            \"enabled\": true\n                        },\n                        \"subscriber\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == 'demo-filter'}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUxNjU4NzYsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.X8IA27pEA_XiCEOZ0ZCssRFkSwDhC-Dv4RAa-1fE7VM; Path=/; Expires=Tue, 07-Feb-2023 11:51:16 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "\"1675165876693\""
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Tue, 31 Jan 2023 11:51:16 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2808"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"2bb38b7c-1818-4b63-b38b-7c18185b63fd\",\n    \"name\": \"Demo of Websocket + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1675164661401,\n    \"createdAt\": 1675164433265,\n    \"updatedAt\": 1675165876693,\n    \"description\": \"Demo of Websocket + MQTT - Subscription Filtering\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"websocket\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"subscriber\": {\n                            \"enabled\": true\n                        },\n                        \"publisher\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\": {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [\n        {\n            \"id\": \"e9131ad7-2889-4481-931a-d72889148105\",\n            \"name\": \"Open\",\n            \"description\": \"Keyless\",\n            \"createdAt\": 1675164515978,\n            \"updatedAt\": 1675164515978,\n            \"publishedAt\": 1675164515981,\n            \"validation\": \"auto\",\n            \"type\": \"api\",\n            \"security\": {\n                \"type\": \"key-less\"\n            },\n            \"flows\": [],\n            \"status\": \"published\",\n            \"apiId\": \"2bb38b7c-1818-4b63-b38b-7c18185b63fd\",\n            \"order\": 0,\n            \"characteristics\": [],\n            \"commentRequired\": false,\n            \"planStatus\": \"published\",\n            \"planSecurity\": {\n                \"type\": \"key-less\"\n            },\n            \"planValidation\": \"auto\"\n        }\n    ],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == 'demo-filter'}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"d113a81c-2c63-4ae3-93a8-1c2c634ae3bf\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"pictureUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/2bb38b7c-1818-4b63-b38b-7c18185b63fd/picture?hash=1675165876693\",\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false,\n    \"backgroundUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/2bb38b7c-1818-4b63-b38b-7c18185b63fd/background?hash=1675165876693\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Redeploy API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"deploy"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Redeploy API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"deploy"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUxNjU4ODUsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.5XgPVWOlzeiQF1aGLxBzgtI6kOhWW0Q6etSztz_n5SQ; Path=/; Expires=Tue, 07-Feb-2023 11:51:25 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "\"1675165885824\""
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Tue, 31 Jan 2023 11:51:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1843"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"2bb38b7c-1818-4b63-b38b-7c18185b63fd\",\n    \"name\": \"Demo of Websocket + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1675165885824,\n    \"createdAt\": 1675164433265,\n    \"updatedAt\": 1675165885824,\n    \"description\": \"Demo of Websocket + MQTT - Subscription Filtering\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"websocket\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"subscriber\": {\n                            \"enabled\": true\n                        },\n                        \"publisher\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\": {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == 'demo-filter'}\"\n                    }\n                }\n            ],\n            \"publish\": []\n        }\n    ],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"d113a81c-2c63-4ae3-93a8-1c2c634ae3bf\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
 						}
 					]
 				}
