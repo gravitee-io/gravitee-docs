@@ -73,7 +73,7 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
     "publishedAt": 1675090462705,
 ----
 +
-The `id` is the ID of the API we just created.
+The `id` is the ID of the plan we just created.
 3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
 
 == Starting the API
@@ -121,8 +121,17 @@ We are now going to create an application and use that application to subscribe 
 7.  Copy the top-level ID, and paste it into the `CURRENT VALUE` field for the `subscription` variable in the APIM 3.20 Tutorials Environment. Click Save.
 
 8. Go to HiveMQ's Websockets client for MQTT at http://www.hivemq.com/demos/websocket-client/. Enter 'localhost' in the Host field, and leave all other fields with their default values. Click "Connect."
++
+[NOTE]
+====
+Although this is a tutorial for webhooks, the HiveMQ client that we are using uses Websockets. This is only used so that we can interact with the MQTT broker.
+====
 
-9. Publish the following message to the `demo` topic.
+9. Click "Add New Topic Subscription" and enter `demo` in the dialog box. Click "Subscribe"
++ 
+You are now subscribed to the `demo` topic.
+
+10. Publish the following message to the `demo` topic.
 +
 [code,json]
 ----
@@ -131,12 +140,81 @@ We are now going to create an application and use that application to subscribe 
 }
 ----
 +
-You will see the message appear in the `webhook.site` window. Note that the custom headers defined when the subscription was created are sent as headers with the message.
+You will see the message appear in the `webhook.site` window. Note that the custom headers defined when the subscription was created are sent as headers with the message. You will also be able to see the message in the "Messages" pane of the Websockets client window.
 +
 You can publish as many messages as you want and observe them appearing in real time in the `webhook.site` window.
 
 == Adding a message filter
 
+We are now going to add message filtering.
+
+When we created the subscription to the API, the request body contained the following lines.
+
+[code,json]
+----
+    "metadata": {
+        "feature": "demo-filter"
+    }
+----
+
+Our filter is going to use this metadata to filter the messages.
+
+1. Select the "Add Flow to API request". If you look at the body of the request you will see the following line.
++
+[code,json]
+----
+                        "filter": "{#jsonPath(#message.content, '$.feature') == #subscription.metadata.feature}"
+----
++
+This filter, based on link:/apim/3.x/apim_publisherguide_expression_language.html[APIM Expression Language], blocks all messages, except when the `feature` property of the message matches the value of the subscription's `metadata.feature` property.
++
+[TIP]
+====
+Flows can be added at a number of different specificity levels, including the API, plan, or even organization level, but adding it to the API makes it easy for quick updates and redeployments.
+====
++
+Send the request. You should see a response that begins like this.
++
+[code,json]
+----
+{
+    "id": "48923b1a-3df6-442f-923b-1a3df6d42fbb",
+    "name": "Demo of Webhook + MQTT - Subscription Filtering",
+    "apiVersion": "1.0.0",
+    "definitionVersion": "4.0.0",
+    "type": "async",
+    "deployedAt": 1675090533628,
+    "createdAt": 1675090250286,
+    "updatedAt": 1675157012827,
+----
+
+2. Once you have modified the API, you have to redeploy it. Select "Redeploy API" and send the request. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
+
+3. Go back to HiveMQ's Websockets client for MQTT at http://www.hivemq.com/demos/websocket-client/ and publish the following message to the `demo` topic.
++
+[code,json]
+----
+{
+    "message":"hello again"
+}
+----
++
+You will see the message does not appear in the `webhook.site` window, because the filter prevented it from getting through. However, you will be able to see the message in the "Messages" pane of the Websockets client window, confirming that the message was published.
+
+4. Now publish the following message to the `demo` topic.
++
+[code,json]
+----
+{
+    "feature": "demo-filter",
+    "message-body": "I got through!"
+}
+----
++
+You will see the message does appear in the `webhook.site` window, because the filter allowed it to get through.
+
 == Close the plan and delete the API
 
 After finishing this tutorial, run "Stop the API", "Close plan", and "Delete API" in the "Delete API" folder in Postman. This removes the plan and API.
+
+Alternatively, you can delete all Docker containers and volumes.
