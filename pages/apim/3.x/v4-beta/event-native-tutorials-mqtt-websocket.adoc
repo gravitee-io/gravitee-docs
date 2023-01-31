@@ -182,7 +182,9 @@ You will see the message does not appear in the `websocat` terminal, because the
 }
 ----
 +
-You will see the message does appear in the `webhook.site` window, because the filter allowed it to get through.
+You will see the message does appear in the `websocat` terminal, because the filter allowed it to get through.
+
+5. In the `websocat` terminal, publish the following message: `new message`. You will see that it is not echoed back to the terminal, but it does appear on the "Messages" pane in the HiveMQ client.
 
 == Close the plan and delete the API
 
