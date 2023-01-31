@@ -73,7 +73,7 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
     "publishedAt": 1675090462705,
 ----
 +
-The `id` is the ID of the API we just created.
+The `id` is the ID of the plan we just created.
 3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
 
 == Starting the API
@@ -216,3 +216,5 @@ You will see the message does appear in the `webhook.site` window, because the f
 == Close the plan and delete the API
 
 After finishing this tutorial, run "Stop the API", "Close plan", and "Delete API" in the "Delete API" folder in Postman. This removes the plan and API.
+
+Alternatively, you can delete all Docker containers and volumes.
