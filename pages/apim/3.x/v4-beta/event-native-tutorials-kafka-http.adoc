@@ -1,7 +1,7 @@
-[[event-native-tutorials-mqtt-http]]
-= MQTT and HTTP
+[[event-native-tutorials-kafka-http]]
+= Kafka and HTTP
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: /apim/3.x/event_native_tutorials_mqtt_http.html
+:page-permalink: /apim/3.x/event_native_tutorials_kafka_http.html
 :page-folder: apim/v4-beta
 :page-layout: apim3x
 
@@ -11,13 +11,13 @@ Before running this tutorial, you must have:
 
 * Set up Postman, as described in link:{{'/apim/3.x/event_native_tutorials_postman.html' | relative_url}}[Setting up Postman].
 * The Gravitee API Management Gateway running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_apim.html' | relative_url}}[Installing APIM]. To confirm it is running, go to `http://localhost:8084`.
-* HiveMQ running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_hivemq.html'| relative_url}}[Installing HiveMQ]. To confirm it is running, go to `http://localhost:8086`.
+* AKHQ running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_akhq.html'| relative_url}}[Installing AKHQ]. To confirm it is running, go to `http://localhost:8080`.
 
 == Creating the API
 
-1. In the Tutorials Postman Collection, open the `MQTT and HTTP` folder.
+1. In the Tutorials Postman Collection, open the `Kafka and HTTP` folder.
 
-2. Open the `Create the API request` and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `entrypoints` you can see that we are creating two entrypoints, an `http-post` entrypoint and an `http-get` entrypoint. Under `endpointgroups` you can see that we are creating one `mqtt5` endpoint, which connects to the host `hivemq` on port `1883`.
+2. Open the `Create the API request` and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `listeners` you can see that we are creating two entrypoints, an `http-post` entrypoint and an `http-get` entrypoint. Under `endpointgroups` you can see that we are creating one `kafka` endpoint, which uses a bootstrap server called `kafka` on port `9092`. The `topics` array contains just one topic, `demo`.
 +
 If you look under `endpoints` you will see the following code.
 +
@@ -32,7 +32,7 @@ This is necessary to allow the API to consume data from Kafka.
 +
 [TIP]
 ====
-APIM and HiveMQ are both running on the Docker bridge network called `storage`. The host `hivemq` is a host on that network.
+APIM and AKHQ are both running on the Docker bridge network called `storage`. The host `kafka` is a host on that network.
 ====
 +
 For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
@@ -41,13 +41,13 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
 [code,json]
 ----
 {
-    "id": "4bfb005f-45ae-4358-bb00-5f45ae435855",
-    "name": "Demo of HTTP Post + MQTT",
-    "apiVersion": "1.0.0",
+    "id": "bdd16092-4d36-47d7-9160-924d3657d7f2",
+    "name": "Kafka and HTTP",
+    "apiVersion": "1.0",
     "definitionVersion": "4.0.0",
     "type": "async",
-    "createdAt": 1674818407231,
-    "updatedAt": 1674818407231,
+    "createdAt": 1675332450547,
+    "updatedAt": 1675332450547,
 ----
 +
 The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.20 Tutorials Environment. Click Save. 
@@ -76,12 +76,12 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
 [code,json]
 ----
 {
-    "id": "04678d7c-4de3-44b0-a78d-7c4de324b068",
-    "name": "Open",
+    "id": "21e75e0c-0515-43b8-a75e-0c051583b847",
+    "name": "Keyless",
     "description": "Keyless",
-    "createdAt": 1674820439263,
-    "updatedAt": 1674820439263,
-    "publishedAt": 1674820439264,
+    "createdAt": 1675332875430,
+    "updatedAt": 1675332875430,
+    "publishedAt": 1675332875430,
 ----
 +
 The `id` is the ID of the plan we just created.
@@ -96,24 +96,11 @@ The API has been created and is ready to be used.
 
 == Using the API
 
-We are now going to use the API to `POST` data to MQTT over HTTP, and `GET` data from MQTT over HTTP. So that we can see what is happening on the MQTT side, we are going to use HiveMQ's Websockets client.
-
-1. Go to http://www.hivemq.com/demos/websocket-client/. 
-2. In the `Host` field, enter `localhost`. Leave all other values as they are.
-+
-[TIP]
-====
-When setup HiveMQ in Docker, we mapped port 8000 on the container to port 8000 on `localhost`. This is why we are using `localhost` in the client.
-====
-3. Click "Connect".
-4. Click "Add New Topic Subscription" and enter `demo` in the dialog box. Click "Subscribe"
-+ 
-You are now subscribed to the `demo` topic.
+We are now going to use the API to `POST` data to Kafka over HTTP, and `GET` data from Kafka over HTTP. So that we can see what is happening on the MQTT side, we are going to use AKHQ.
 
 === Push data
 
-1. In Postman, select "Create Topic" and send it. You should receive a status response of `200 OK`.
-2. In Postman, select "Push Data" and look at the request body. It looks like this.
+1. In Postman, select "Push Data" and look at the request body. It looks like this.
 +
 [code,json]
 ----
@@ -121,8 +108,11 @@ You are now subscribed to the `demo` topic.
     "tempF": "75"
 }
 ----
-3. Send the request. You should receive a status response of `200 OK`.
-4. Go to the HiveMQ's Websockets client. You should see the data you just sent displayed in the "Messages" pane.
+2. Send the request. You should receive a status response of `200 OK`.
+
+3. Go to http://localhost:8080/ui/docker-kafka-server/tail and select `demo` from the topics drop-down menu. Click the search icon. This page will now display a live feed of all messages published on the `demo` topic.
+
+4. Send the request several more times, and observe it appear on http://localhost:8080/ui/docker-kafka-server/tail. 
 
 === Get data
 
@@ -150,7 +140,7 @@ The first line means a request to this entrypoint will receive _at most_ 1 messa
 The last line means that the connection will stay open for a maximum of ten seconds.
 +
 In this example, no messages were published to the `demo` topic, so the connection closed after ten seconds, and the empty `items` array was returned.
-2. 2. Send the "Get data" request again. _Immediately_ select "Push Data" and send the request four times. The response body for the "Get Data" request should look like this.
+2. Send the "Get data" request again. _Immediately_ select "Push Data" and send the request four times. The response body for the "Get Data" request should look like this.
 +
 [code,json]
 ----
@@ -163,7 +153,7 @@ In this example, no messages were published to the `demo` topic, so the connecti
 }
 ----
 +
-You can see that the first message published while the "Get Data" request was returned in the `items` array. If you look at HiveMQ's Websockets client, you will see that four messages were published.
+You can see that the first message published while the "Get Data" request was returned in the `items` array. If you look at http://localhost:8080/ui/docker-kafka-server/tail, you will see that four messages were published.
 
 === Modify and redeploy the API
 
