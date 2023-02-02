@@ -27,11 +27,17 @@ curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3
 ----
 +
 This ensures that the gateway runs with its event-native features enabled.
-3. In `docker-compose`, make sure that all the `APIM_VERSION` variables are set to `{APIM_VERSION:-3.20.0}`
+3. In `docker-compose.yml`, make sure that all the `APIM_VERSION` variables are set to `{APIM_VERSION:-3.20.0}`
 +This ensures you are using the correct version of APIM.
-4. Run `docker-compose` to download and start all of the components.
+4. Run `docker compose` to download and start all of the components.
 +
 [code,bash]
 ----
-docker-compose up -d
+docker compose up -d
 ----
+5. In your browser, go to `http://localhost:8084` to open the APIM UI. You can log in with the Username `admin` and Password `admin`.
++
+[TIP]
+====
+Sometimes it can take a few minutes for APIM to fully start. If you get an error when going to `http://localhost:8084`, wait a few minutes and try again.
+====
