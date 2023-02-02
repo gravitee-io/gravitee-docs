@@ -333,6 +333,2063 @@
 			]
 		},
 		{
+			"name": "Kafka and HTTP",
+			"item": [
+				{
+					"name": "Create API",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{management_password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{management_username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Kafka and HTTP\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Data Ingestion to Kafka\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 1,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Kafka and HTTP\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Data Ingestion to Kafka\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 1,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzMzI0NTAsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.J7Auu3-o_gTrqLOEj6BTkBUyMGYvop5EMGJAOsN4y6Y; Path=/; Expires=Thu, 09-Feb-2023 10:07:30 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/bdd16092-4d36-47d7-9160-924d3657d7f2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1748"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n    \"name\": \"Kafka and HTTP\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"createdAt\": 1675332450547,\n    \"updatedAt\": 1675332450547,\n    \"description\": \"Data Ingestion to Kafka\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 1,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false,\n                        \"messagesLimitDurationMs\": 10000\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\": [\n                            \"demo\"\n                        ],\n                        \"producer\": {\n                            \"enabled\": true\n                        },\n                        \"consumer\": {\n                            \"encodeMessageId\": true,\n                            \"enabled\": true,\n                            \"autoOffsetReset\": \"latest\"\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"groups\": [],\n    \"visibility\": \"PRIVATE\",\n    \"state\": \"STOPPED\",\n    \"primaryOwner\": {\n        \"id\": \"aebec2d0-0ee4-4bc5-bec2-d00ee4fbc527\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Create keyless plan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{management_password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{management_username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Keyless\",\n    \"description\":\"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\":[],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"plans"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create keyless plan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Keyless\",\n    \"description\":\"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\":[],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"plans"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzMzI4NzUsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.knk-uYUddamU3M-wzmBTg1x7ISsMHescizpir7GsSSQ; Path=/; Expires=Thu, 09-Feb-2023 10:14:35 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/bdd16092-4d36-47d7-9160-924d3657d7f2/plans/21e75e0c-0515-43b8-a75e-0c051583b847"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "561"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"21e75e0c-0515-43b8-a75e-0c051583b847\",\n    \"name\": \"Keyless\",\n    \"description\": \"Keyless\",\n    \"createdAt\": 1675332875430,\n    \"updatedAt\": 1675332875430,\n    \"publishedAt\": 1675332875430,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [],\n    \"status\": \"published\",\n    \"apiId\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Start API",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{management_password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{management_username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/?action=start",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "start"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Push Data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tempF\": \"75\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_host}}/data/ingestion/kafka",
+							"host": [
+								"{{gateway_host}}"
+							],
+							"path": [
+								"data",
+								"ingestion",
+								"kafka"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Push Data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"tempF\": \"75\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway_host}}/data/ingestion/kafka",
+									"host": [
+										"{{gateway_host}}"
+									],
+									"path": [
+										"data",
+										"ingestion",
+										"kafka"
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Gravitee-Transaction-Id",
+									"value": "130ed78e-2c0c-4320-8ed7-8e2c0c53202b"
+								},
+								{
+									"key": "X-Gravitee-Request-Id",
+									"value": "130ed78e-2c0c-4320-8ed7-8e2c0c53202b"
+								},
+								{
+									"key": "X-Gravitee-Client-Identifier",
+									"value": "130ed78e-2c0c-4320-8ed7-8e2c0c53202b"
+								},
+								{
+									"key": "X-Rate-Limit-Limit",
+									"value": "1"
+								},
+								{
+									"key": "X-Rate-Limit-Remaining",
+									"value": "0"
+								},
+								{
+									"key": "X-Rate-Limit-Reset",
+									"value": "1675334868263"
+								},
+								{
+									"key": "Content-Length",
+									"value": "107"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Rate limit exceeded ! You reach the limit of 1 requests per 20 seconds\",\n    \"http_status_code\": 429\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway_host}}/demo/http-get",
+							"host": [
+								"{{gateway_host}}"
+							],
+							"path": [
+								"demo",
+								"http-get"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_host}}/demo/http-get",
+									"host": [
+										"{{gateway_host}}"
+									],
+									"path": [
+										"demo",
+										"http-get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Gravitee-Transaction-Id",
+									"value": "24a04748-547b-444a-a047-48547ba44ad1"
+								},
+								{
+									"key": "X-Gravitee-Request-Id",
+									"value": "24a04748-547b-444a-a047-48547ba44ad1"
+								},
+								{
+									"key": "X-Gravitee-Client-Identifier",
+									"value": "24a04748-547b-444a-a047-48547ba44ad1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": []\n}"
+						},
+						{
+							"name": "Get Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_host}}/demo/http-get",
+									"host": [
+										"{{gateway_host}}"
+									],
+									"path": [
+										"demo",
+										"http-get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Gravitee-Transaction-Id",
+									"value": "fe3cb71b-c669-41ee-bcb7-1bc66941ee9c"
+								},
+								{
+									"key": "X-Gravitee-Request-Id",
+									"value": "fe3cb71b-c669-41ee-bcb7-1bc66941ee9c"
+								},
+								{
+									"key": "X-Gravitee-Client-Identifier",
+									"value": "fe3cb71b-c669-41ee-bcb7-1bc66941ee9c"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_host}}/demo/http-get",
+									"host": [
+										"{{gateway_host}}"
+									],
+									"path": [
+										"demo",
+										"http-get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Gravitee-Transaction-Id",
+									"value": "38a8ff6c-0cc9-4e8c-a8ff-6c0cc92e8c50"
+								},
+								{
+									"key": "X-Gravitee-Request-Id",
+									"value": "38a8ff6c-0cc9-4e8c-a8ff-6c0cc92e8c50"
+								},
+								{
+									"key": "X-Gravitee-Client-Identifier",
+									"value": "38a8ff6c-0cc9-4e8c-a8ff-6c0cc92e8c50"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Modify API",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{management_password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{management_username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Data Ingestion to Kafka\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Data Ingestion to Kafka\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modify API",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Data Ingestion to Kafka\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Data Ingestion to Kafka\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzMzQ2MTYsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.S9yXJsHEPM7u2DPwGvosxWVRJo9hy4UcJx_Abwp9aaE; Path=/; Expires=Thu, 09-Feb-2023 10:43:36 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "\"1675334616765\""
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Thu, 02 Feb 2023 10:43:36 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3463"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n    \"name\": \"Data Ingestion to Kafka\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1675332953828,\n    \"createdAt\": 1675332450547,\n    \"updatedAt\": 1675334616765,\n    \"description\": \"Data Ingestion to Kafka\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false,\n                        \"messagesLimitDurationMs\": 10000\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\": [\n                            \"demo\"\n                        ],\n                        \"producer\": {\n                            \"enabled\": true\n                        },\n                        \"consumer\": {\n                            \"encodeMessageId\": true,\n                            \"enabled\": true,\n                            \"autoOffsetReset\": \"latest\"\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [\n        {\n            \"id\": \"21e75e0c-0515-43b8-a75e-0c051583b847\",\n            \"name\": \"Keyless\",\n            \"description\": \"Keyless\",\n            \"createdAt\": 1675332875430,\n            \"updatedAt\": 1675332875430,\n            \"publishedAt\": 1675332875430,\n            \"validation\": \"auto\",\n            \"type\": \"api\",\n            \"security\": {\n                \"type\": \"key-less\"\n            },\n            \"flows\": [],\n            \"status\": \"published\",\n            \"apiId\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n            \"order\": 0,\n            \"characteristics\": [],\n            \"commentRequired\": false,\n            \"planStatus\": \"published\",\n            \"planSecurity\": {\n                \"type\": \"key-less\"\n            },\n            \"planValidation\": \"auto\"\n        },\n        {\n            \"id\": \"a3f26569-21b2-49e2-b265-6921b219e2c3\",\n            \"name\": \"Keyless\",\n            \"description\": \"Keyless\",\n            \"createdAt\": 1675332553644,\n            \"updatedAt\": 1675332813372,\n            \"publishedAt\": 1675332708766,\n            \"closedAt\": 1675332813372,\n            \"validation\": \"auto\",\n            \"type\": \"api\",\n            \"security\": {\n                \"type\": \"key-less\"\n            },\n            \"flows\": [],\n            \"status\": \"closed\",\n            \"apiId\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n            \"order\": 1,\n            \"characteristics\": [],\n            \"commentRequired\": false,\n            \"planStatus\": \"closed\",\n            \"planSecurity\": {\n                \"type\": \"key-less\"\n            },\n            \"planValidation\": \"auto\"\n        }\n    ],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"aebec2d0-0ee4-4bc5-bec2-d00ee4fbc527\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"pictureUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/bdd16092-4d36-47d7-9160-924d3657d7f2/picture?hash=1675334616765\",\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false,\n    \"backgroundUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/bdd16092-4d36-47d7-9160-924d3657d7f2/background?hash=1675334616765\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Redeploy API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"deploy"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Redeploy API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"deploy"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzMzQ2NTEsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.JZDW_V6NqFNQaki1ebf95-5TTPByGZIzekx8NyQtVUE; Path=/; Expires=Thu, 09-Feb-2023 10:44:11 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "\"1675334651129\""
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Thu, 02 Feb 2023 10:44:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1860"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n    \"name\": \"Data Ingestion to Kafka\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1675334651129,\n    \"createdAt\": 1675332450547,\n    \"updatedAt\": 1675334651129,\n    \"description\": \"Data Ingestion to Kafka\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false,\n                        \"messagesLimitDurationMs\": 10000\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\": [\n                            \"demo\"\n                        ],\n                        \"producer\": {\n                            \"enabled\": true\n                        },\n                        \"consumer\": {\n                            \"encodeMessageId\": true,\n                            \"enabled\": true,\n                            \"autoOffsetReset\": \"latest\"\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": []\n        }\n    ],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"aebec2d0-0ee4-4bc5-bec2-d00ee4fbc527\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Close plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans/{{plan}}/_close",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"plans",
+								"{{plan}}",
+								"_close"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a rate-limiting plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"plans"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create a rate-limiting plan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"plans"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzMzQ3NjksInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.GkMkquHmnoM0POm56hnw4jKQ43j-uNQQfzlFrLQ9xRo; Path=/; Expires=Thu, 09-Feb-2023 10:46:09 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/bdd16092-4d36-47d7-9160-924d3657d7f2/plans/b944c060-5d84-4bac-84c0-605d84abac32"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1157"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"b944c060-5d84-4bac-84c0-605d84abac32\",\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"createdAt\": 1675334769233,\n    \"updatedAt\": 1675334769233,\n    \"publishedAt\": 1675334769233,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"enabled\": true,\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"channel\": \"/\",\n                    \"channelOperator\": \"STARTS_WITH\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"enabled\": true,\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"status\": \"published\",\n    \"apiId\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Kafka and Webhooks",
+			"item": [
+				{
+					"name": "Create the API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Kafka and Webhooks\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Webhook + Kafka - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n            {\n                \"type\": \"subscription\",\n                \"entrypoints\": [\n                    {\n                        \"type\": \"webhook\"\n                    }\n                ]\n            },\n            {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n          }\n        ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create the API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Kafka and Webhooks\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Webhook + Kafka - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n            {\n                \"type\": \"subscription\",\n                \"entrypoints\": [\n                    {\n                        \"type\": \"webhook\"\n                    }\n                ]\n            },\n            {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n          }\n        ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzNDc2NzgsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.VfSDE9qn5B9aGUhf1BPyelagPBgEdTsHtXsJnf3GXIg; Path=/; Expires=Thu, 09-Feb-2023 14:21:18 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/9a56f324-edd7-4a88-96f3-24edd77a884e"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1421"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"9a56f324-edd7-4a88-96f3-24edd77a884e\",\n    \"name\": \"Kafka and Webhooks\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"createdAt\": 1675347679105,\n    \"updatedAt\": 1675347679105,\n    \"description\": \"Demo of Webhook + Kafka - Subscription Filtering\",\n    \"listeners\": [\n        {\n            \"type\": \"subscription\",\n            \"entrypoints\": [\n                {\n                    \"type\": \"webhook\",\n                    \"qos\": \"auto\"\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\": [\n                            \"demo\"\n                        ],\n                        \"producer\": {\n                            \"enabled\": true\n                        },\n                        \"consumer\": {\n                            \"encodeMessageId\": true,\n                            \"enabled\": true,\n                            \"autoOffsetReset\": \"latest\"\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [],\n    \"groups\": [],\n    \"visibility\": \"PRIVATE\",\n    \"state\": \"STOPPED\",\n    \"primaryOwner\": {\n        \"id\": \"6e816683-a50d-4cf0-8166-83a50d4cf03d\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Create keyless plan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{management_password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{management_username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Keyless\",\n    \"description\":\"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\":[],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"plans"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create keyless plan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Keyless\",\n    \"description\":\"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\":[],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"plans"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzNDc3MTIsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.1oaTWNTdZZQaf6WZuyGR8TMZr5kugsxd2waBYWm0ne4; Path=/; Expires=Thu, 09-Feb-2023 14:21:52 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/9a56f324-edd7-4a88-96f3-24edd77a884e/plans/00d71104-8973-46a8-9711-04897316a88c"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "561"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"00d71104-8973-46a8-9711-04897316a88c\",\n    \"name\": \"Keyless\",\n    \"description\": \"Keyless\",\n    \"createdAt\": 1675347712230,\n    \"updatedAt\": 1675347712230,\n    \"publishedAt\": 1675347712231,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [],\n    \"status\": \"published\",\n    \"apiId\": \"9a56f324-edd7-4a88-96f3-24edd77a884e\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create an Open (subscription) Plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"subscription\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"plans"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create an Open (subscription) Plan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"subscription\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"plans"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzNDc3NzksInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.2EauzIsFB-nNQn6rrWdLN63K2ALXBVyoEW5JHodCh-k; Path=/; Expires=Thu, 09-Feb-2023 14:22:59 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/9a56f324-edd7-4a88-96f3-24edd77a884e/plans/e9ec6ed8-df41-42eb-ac6e-d8df4182eb1e"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "570"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"e9ec6ed8-df41-42eb-ac6e-d8df4182eb1e\",\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"createdAt\": 1675347779695,\n    \"updatedAt\": 1675347779695,\n    \"publishedAt\": 1675347779695,\n    \"validation\": \"manual\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"subscription\"\n    },\n    \"flows\": [],\n    \"status\": \"published\",\n    \"apiId\": \"9a56f324-edd7-4a88-96f3-24edd77a884e\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"subscription\"\n    },\n    \"planValidation\": \"manual\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Start the API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=start",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "start"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create an Application",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{management_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{management_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"application\",\n    \"description\":\"application\",\n    \"settings\":\n    {\n        \"app\":\n            {   \n                \"type\":\"demo\"}\n            }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/applications",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"applications"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create an Application",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"application\",\n    \"description\":\"application\",\n    \"settings\":\n    {\n        \"app\":\n            {   \n                \"type\":\"demo\"}\n            }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/applications",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"applications"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzNDc4OTMsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.YicPAAiYSflS6wABNKUmuzppzuTZvZV8T92Ky9WDieE; Path=/; Expires=Thu, 09-Feb-2023 14:24:53 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/applications/886966ce-1dab-48b1-a966-ce1dab68b17d"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "481"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"886966ce-1dab-48b1-a966-ce1dab68b17d\",\n    \"name\": \"application\",\n    \"description\": \"application\",\n    \"status\": \"ACTIVE\",\n    \"type\": \"SIMPLE\",\n    \"created_at\": 1675347893455,\n    \"updated_at\": 1675347893455,\n    \"owner\": {\n        \"id\": \"6e816683-a50d-4cf0-8166-83a50d4cf03d\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"settings\": {\n        \"app\": {\n            \"type\": \"demo\"\n        }\n    },\n    \"disable_membership_notifications\": false,\n    \"api_key_mode\": \"UNSPECIFIED\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Subscribe to API",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{management_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{management_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"configuration\": {\n        \"entrypointId\": \"webhook\",\n        \"callbackUrl\": \"{{callback-url}}\",\n        \"headers\": [\n            {\n                \"name\": \"demoHeader\",\n                \"value\": \"my-value\"\n            },\n            {\n                \"name\": \"anotherHeader\",\n                \"value\": \"my-value2\"\n            }\n        ]\n    },\n    \"metadata\": {\n        \"feature\": \"demo-filter\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/subscriptions?application={{application}}&plan={{subplan}}",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"subscriptions"
+							],
+							"query": [
+								{
+									"key": "application",
+									"value": "{{application}}"
+								},
+								{
+									"key": "plan",
+									"value": "{{subplan}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Subscribe to API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"configuration\": {\n        \"entrypointId\": \"webhook\",\n        \"callbackUrl\": \"{{callback-url}}\",\n        \"headers\": [\n            {\n                \"name\": \"demoHeader\",\n                \"value\": \"my-value\"\n            },\n            {\n                \"name\": \"anotherHeader\",\n                \"value\": \"my-value2\"\n            }\n        ]\n    },\n    \"metadata\": {\n        \"feature\": \"demo-filter\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/subscriptions?application={{application}}&plan={{subplan}}",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"subscriptions"
+									],
+									"query": [
+										{
+											"key": "application",
+											"value": "{{application}}"
+										},
+										{
+											"key": "plan",
+											"value": "{{subplan}}"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzNDc5NzUsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.ANSYhT1V-Me6a0EsvBEDzoUs9oj-Uy-OtIC7RRkoCaY; Path=/; Expires=Thu, 09-Feb-2023 14:26:15 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/9a56f324-edd7-4a88-96f3-24edd77a884e/subscriptions/07125f0e-d4db-4efc-925f-0ed4dbcefc55"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "814"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"07125f0e-d4db-4efc-925f-0ed4dbcefc55\",\n    \"plan\": {\n        \"id\": \"e9ec6ed8-df41-42eb-ac6e-d8df4182eb1e\",\n        \"name\": \"Open\"\n    },\n    \"application\": {\n        \"id\": \"886966ce-1dab-48b1-a966-ce1dab68b17d\",\n        \"name\": \"application\",\n        \"type\": \"SIMPLE\",\n        \"description\": \"application\",\n        \"owner\": {\n            \"id\": \"6e816683-a50d-4cf0-8166-83a50d4cf03d\",\n            \"displayName\": \"admin\"\n        },\n        \"apiKeyMode\": \"UNSPECIFIED\"\n    },\n    \"status\": \"ACCEPTED\",\n    \"metadata\": {\n        \"feature\": \"demo-filter\"\n    },\n    \"processed_at\": 1675347975258,\n    \"processed_by\": \"6e816683-a50d-4cf0-8166-83a50d4cf03d\",\n    \"subscribed_by\": {\n        \"id\": \"6e816683-a50d-4cf0-8166-83a50d4cf03d\",\n        \"displayName\": \"admin\"\n    },\n    \"starting_at\": 1675347975250,\n    \"created_at\": 1675347975193,\n    \"updated_at\": 1675347975258\n}"
+						}
+					]
+				},
+				{
+					"name": "Push Data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tempF\": \"75\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_host}}/data/ingestion/kafka",
+							"host": [
+								"{{gateway_host}}"
+							],
+							"path": [
+								"data",
+								"ingestion",
+								"kafka"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Flow to API",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"validation\": \"AUTO\",\n    \"listeners\": [\n            {\n                \"type\": \"subscription\",\n                \"entrypoints\": [\n                    {\n                        \"type\": \"webhook\"\n                    }\n                ]\n            },\n            {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n          }\n        ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == #subscription.metadata.feature}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Flow to API",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"validation\": \"AUTO\",\n    \"listeners\": [\n            {\n                \"type\": \"subscription\",\n                \"entrypoints\": [\n                    {\n                        \"type\": \"webhook\"\n                    }\n                ]\n            },\n            {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n          }\n        ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == #subscription.metadata.feature}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzNDgxMDAsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.bML1LKXUndRz2GPRRCegIBGs1vBxlY8CMkulGUgGjRQ; Path=/; Expires=Thu, 09-Feb-2023 14:28:20 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "\"1675348100203\""
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Thu, 02 Feb 2023 14:28:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3578"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"9a56f324-edd7-4a88-96f3-24edd77a884e\",\n    \"name\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1675347885490,\n    \"createdAt\": 1675347679105,\n    \"updatedAt\": 1675348100203,\n    \"description\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"subscription\",\n            \"entrypoints\": [\n                {\n                    \"type\": \"webhook\",\n                    \"qos\": \"auto\"\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\": [\n                            \"demo\"\n                        ],\n                        \"producer\": {\n                            \"enabled\": true\n                        },\n                        \"consumer\": {\n                            \"encodeMessageId\": true,\n                            \"enabled\": true,\n                            \"autoOffsetReset\": \"latest\"\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [\n        {\n            \"id\": \"00d71104-8973-46a8-9711-04897316a88c\",\n            \"name\": \"Keyless\",\n            \"description\": \"Keyless\",\n            \"createdAt\": 1675347712230,\n            \"updatedAt\": 1675347712230,\n            \"publishedAt\": 1675347712231,\n            \"validation\": \"auto\",\n            \"type\": \"api\",\n            \"security\": {\n                \"type\": \"key-less\"\n            },\n            \"flows\": [],\n            \"status\": \"published\",\n            \"apiId\": \"9a56f324-edd7-4a88-96f3-24edd77a884e\",\n            \"order\": 0,\n            \"characteristics\": [],\n            \"commentRequired\": false,\n            \"planStatus\": \"published\",\n            \"planSecurity\": {\n                \"type\": \"key-less\"\n            },\n            \"planValidation\": \"auto\"\n        },\n        {\n            \"id\": \"e9ec6ed8-df41-42eb-ac6e-d8df4182eb1e\",\n            \"name\": \"Open\",\n            \"description\": \"Keyless\",\n            \"createdAt\": 1675347779695,\n            \"updatedAt\": 1675347779695,\n            \"publishedAt\": 1675347779695,\n            \"validation\": \"manual\",\n            \"type\": \"api\",\n            \"security\": {\n                \"type\": \"subscription\"\n            },\n            \"flows\": [],\n            \"status\": \"published\",\n            \"apiId\": \"9a56f324-edd7-4a88-96f3-24edd77a884e\",\n            \"order\": 0,\n            \"characteristics\": [],\n            \"commentRequired\": false,\n            \"planStatus\": \"published\",\n            \"planSecurity\": {\n                \"type\": \"subscription\"\n            },\n            \"planValidation\": \"manual\"\n        }\n    ],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == #subscription.metadata.feature}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"6e816683-a50d-4cf0-8166-83a50d4cf03d\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"pictureUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/9a56f324-edd7-4a88-96f3-24edd77a884e/picture?hash=1675348100203\",\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false,\n    \"backgroundUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/9a56f324-edd7-4a88-96f3-24edd77a884e/background?hash=1675348100203\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Redeploy API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"deploy"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Redeploy API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"deploy"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzNDgxMzIsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.TvHgU8B_wK7cKzPhPl5gyVRn5bf0I3w5ouDJ5pKIxLU; Path=/; Expires=Thu, 09-Feb-2023 14:28:52 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "\"1675348132446\""
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Thu, 02 Feb 2023 14:28:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1992"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"9a56f324-edd7-4a88-96f3-24edd77a884e\",\n    \"name\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1675348132446,\n    \"createdAt\": 1675347679105,\n    \"updatedAt\": 1675348132446,\n    \"description\": \"Demo of Webhook + MQTT - Subscription Filtering\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"subscription\",\n            \"entrypoints\": [\n                {\n                    \"type\": \"webhook\",\n                    \"qos\": \"auto\"\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\": [\n                            \"demo\"\n                        ],\n                        \"producer\": {\n                            \"enabled\": true\n                        },\n                        \"consumer\": {\n                            \"encodeMessageId\": true,\n                            \"enabled\": true,\n                            \"autoOffsetReset\": \"latest\"\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == #subscription.metadata.feature}\"\n                    }\n                }\n            ],\n            \"publish\": []\n        }\n    ],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"6e816683-a50d-4cf0-8166-83a50d4cf03d\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "MQTT and HTTP",
 			"item": [
 				{
@@ -2634,1057 +4691,6 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"2bb38b7c-1818-4b63-b38b-7c18185b63fd\",\n    \"name\": \"Demo of Websocket + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1675165885824,\n    \"createdAt\": 1675164433265,\n    \"updatedAt\": 1675165885824,\n    \"description\": \"Demo of Websocket + MQTT - Subscription Filtering\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"websocket\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"subscriber\": {\n                            \"enabled\": true\n                        },\n                        \"publisher\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\": {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == 'demo-filter'}\"\n                    }\n                }\n            ],\n            \"publish\": []\n        }\n    ],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"d113a81c-2c63-4ae3-93a8-1c2c634ae3bf\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Kafka and HTTP",
-			"item": [
-				{
-					"name": "Create API",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{management_password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{management_username}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "",
-								"value": "",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"Kafka and HTTP\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Data Ingestion to Kafka\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 1,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/",
-							"host": [
-								"{{management_host}}"
-							],
-							"path": [
-								"management",
-								"organizations",
-								"DEFAULT",
-								"environments",
-								"DEFAULT",
-								"v4",
-								"apis",
-								""
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Create API",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "",
-										"value": "",
-										"type": "text",
-										"disabled": true
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\": \"Kafka and HTTP\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Data Ingestion to Kafka\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 1,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/",
-									"host": [
-										"{{management_host}}"
-									],
-									"path": [
-										"management",
-										"organizations",
-										"DEFAULT",
-										"environments",
-										"DEFAULT",
-										"v4",
-										"apis",
-										""
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Vary",
-									"value": "Access-Control-Request-Method"
-								},
-								{
-									"key": "Vary",
-									"value": "Access-Control-Request-Headers"
-								},
-								{
-									"key": "X-Xsrf-Token",
-									"value": "99ce174f-1189-402e-87a0-0b1536800891"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzMzI0NTAsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.J7Auu3-o_gTrqLOEj6BTkBUyMGYvop5EMGJAOsN4y6Y; Path=/; Expires=Thu, 09-Feb-2023 10:07:30 GMT; Max-Age=604800; HttpOnly"
-								},
-								{
-									"key": "Expires",
-									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
-								},
-								{
-									"key": "Location",
-									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/bdd16092-4d36-47d7-9160-924d3657d7f2"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "1; mode=block"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Length",
-									"value": "1748"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n    \"name\": \"Kafka and HTTP\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"createdAt\": 1675332450547,\n    \"updatedAt\": 1675332450547,\n    \"description\": \"Data Ingestion to Kafka\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 1,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false,\n                        \"messagesLimitDurationMs\": 10000\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\": [\n                            \"demo\"\n                        ],\n                        \"producer\": {\n                            \"enabled\": true\n                        },\n                        \"consumer\": {\n                            \"encodeMessageId\": true,\n                            \"enabled\": true,\n                            \"autoOffsetReset\": \"latest\"\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"groups\": [],\n    \"visibility\": \"PRIVATE\",\n    \"state\": \"STOPPED\",\n    \"primaryOwner\": {\n        \"id\": \"aebec2d0-0ee4-4bc5-bec2-d00ee4fbc527\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
-						}
-					]
-				},
-				{
-					"name": "Create keyless plan",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{management_password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{management_username}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\":\"Keyless\",\n    \"description\":\"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\":[],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
-							"host": [
-								"{{management_host}}"
-							],
-							"path": [
-								"management",
-								"organizations",
-								"DEFAULT",
-								"environments",
-								"DEFAULT",
-								"v4",
-								"apis",
-								"{{api}}",
-								"plans"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Create keyless plan",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\":\"Keyless\",\n    \"description\":\"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\":[],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
-									"host": [
-										"{{management_host}}"
-									],
-									"path": [
-										"management",
-										"organizations",
-										"DEFAULT",
-										"environments",
-										"DEFAULT",
-										"v4",
-										"apis",
-										"{{api}}",
-										"plans"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Vary",
-									"value": "Access-Control-Request-Method"
-								},
-								{
-									"key": "Vary",
-									"value": "Access-Control-Request-Headers"
-								},
-								{
-									"key": "X-Xsrf-Token",
-									"value": "99ce174f-1189-402e-87a0-0b1536800891"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzMzI4NzUsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.knk-uYUddamU3M-wzmBTg1x7ISsMHescizpir7GsSSQ; Path=/; Expires=Thu, 09-Feb-2023 10:14:35 GMT; Max-Age=604800; HttpOnly"
-								},
-								{
-									"key": "Expires",
-									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
-								},
-								{
-									"key": "Location",
-									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/bdd16092-4d36-47d7-9160-924d3657d7f2/plans/21e75e0c-0515-43b8-a75e-0c051583b847"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "1; mode=block"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Length",
-									"value": "561"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"21e75e0c-0515-43b8-a75e-0c051583b847\",\n    \"name\": \"Keyless\",\n    \"description\": \"Keyless\",\n    \"createdAt\": 1675332875430,\n    \"updatedAt\": 1675332875430,\n    \"publishedAt\": 1675332875430,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [],\n    \"status\": \"published\",\n    \"apiId\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Start API",
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{management_password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{management_username}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/?action=start",
-							"host": [
-								"{{management_host}}"
-							],
-							"path": [
-								"management",
-								"organizations",
-								"DEFAULT",
-								"environments",
-								"DEFAULT",
-								"v4",
-								"apis",
-								"{{api}}",
-								""
-							],
-							"query": [
-								{
-									"key": "action",
-									"value": "start"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Push Data",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"tempF\": \"75\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{gateway_host}}/data/ingestion/kafka",
-							"host": [
-								"{{gateway_host}}"
-							],
-							"path": [
-								"data",
-								"ingestion",
-								"kafka"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Push Data",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"tempF\": \"75\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{gateway_host}}/data/ingestion/kafka",
-									"host": [
-										"{{gateway_host}}"
-									],
-									"path": [
-										"data",
-										"ingestion",
-										"kafka"
-									]
-								}
-							},
-							"status": "Too Many Requests",
-							"code": 429,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Gravitee-Transaction-Id",
-									"value": "130ed78e-2c0c-4320-8ed7-8e2c0c53202b"
-								},
-								{
-									"key": "X-Gravitee-Request-Id",
-									"value": "130ed78e-2c0c-4320-8ed7-8e2c0c53202b"
-								},
-								{
-									"key": "X-Gravitee-Client-Identifier",
-									"value": "130ed78e-2c0c-4320-8ed7-8e2c0c53202b"
-								},
-								{
-									"key": "X-Rate-Limit-Limit",
-									"value": "1"
-								},
-								{
-									"key": "X-Rate-Limit-Remaining",
-									"value": "0"
-								},
-								{
-									"key": "X-Rate-Limit-Reset",
-									"value": "1675334868263"
-								},
-								{
-									"key": "Content-Length",
-									"value": "107"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Rate limit exceeded ! You reach the limit of 1 requests per 20 seconds\",\n    \"http_status_code\": 429\n}"
-						}
-					]
-				},
-				{
-					"name": "Get Data",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{gateway_host}}/demo/http-get",
-							"host": [
-								"{{gateway_host}}"
-							],
-							"path": [
-								"demo",
-								"http-get"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get Data",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{gateway_host}}/demo/http-get",
-									"host": [
-										"{{gateway_host}}"
-									],
-									"path": [
-										"demo",
-										"http-get"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Gravitee-Transaction-Id",
-									"value": "24a04748-547b-444a-a047-48547ba44ad1"
-								},
-								{
-									"key": "X-Gravitee-Request-Id",
-									"value": "24a04748-547b-444a-a047-48547ba44ad1"
-								},
-								{
-									"key": "X-Gravitee-Client-Identifier",
-									"value": "24a04748-547b-444a-a047-48547ba44ad1"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "transfer-encoding",
-									"value": "chunked"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"items\": []\n}"
-						},
-						{
-							"name": "Get Data",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{gateway_host}}/demo/http-get",
-									"host": [
-										"{{gateway_host}}"
-									],
-									"path": [
-										"demo",
-										"http-get"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Gravitee-Transaction-Id",
-									"value": "fe3cb71b-c669-41ee-bcb7-1bc66941ee9c"
-								},
-								{
-									"key": "X-Gravitee-Request-Id",
-									"value": "fe3cb71b-c669-41ee-bcb7-1bc66941ee9c"
-								},
-								{
-									"key": "X-Gravitee-Client-Identifier",
-									"value": "fe3cb71b-c669-41ee-bcb7-1bc66941ee9c"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "transfer-encoding",
-									"value": "chunked"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"items\": [\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        }\n    ]\n}"
-						},
-						{
-							"name": "Get Data",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{gateway_host}}/demo/http-get",
-									"host": [
-										"{{gateway_host}}"
-									],
-									"path": [
-										"demo",
-										"http-get"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Gravitee-Transaction-Id",
-									"value": "38a8ff6c-0cc9-4e8c-a8ff-6c0cc92e8c50"
-								},
-								{
-									"key": "X-Gravitee-Request-Id",
-									"value": "38a8ff6c-0cc9-4e8c-a8ff-6c0cc92e8c50"
-								},
-								{
-									"key": "X-Gravitee-Client-Identifier",
-									"value": "38a8ff6c-0cc9-4e8c-a8ff-6c0cc92e8c50"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "transfer-encoding",
-									"value": "chunked"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"items\": [\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        },\n        {\n            \"content\": \"{\\n    \\\"tempF\\\": \\\"75\\\"\\n}\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Modify API",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{management_password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{management_username}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "",
-								"value": "",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Data Ingestion to Kafka\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Data Ingestion to Kafka\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
-							"host": [
-								"{{management_host}}"
-							],
-							"path": [
-								"management",
-								"organizations",
-								"DEFAULT",
-								"environments",
-								"DEFAULT",
-								"v4",
-								"apis",
-								"{{api}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Modify API",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "",
-										"value": "",
-										"type": "text",
-										"disabled": true
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Data Ingestion to Kafka\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Data Ingestion to Kafka\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
-									"host": [
-										"{{management_host}}"
-									],
-									"path": [
-										"management",
-										"organizations",
-										"DEFAULT",
-										"environments",
-										"DEFAULT",
-										"v4",
-										"apis",
-										"{{api}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Vary",
-									"value": "Access-Control-Request-Method"
-								},
-								{
-									"key": "Vary",
-									"value": "Access-Control-Request-Headers"
-								},
-								{
-									"key": "X-Xsrf-Token",
-									"value": "99ce174f-1189-402e-87a0-0b1536800891"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzMzQ2MTYsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.S9yXJsHEPM7u2DPwGvosxWVRJo9hy4UcJx_Abwp9aaE; Path=/; Expires=Thu, 09-Feb-2023 10:43:36 GMT; Max-Age=604800; HttpOnly"
-								},
-								{
-									"key": "Expires",
-									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
-								},
-								{
-									"key": "ETag",
-									"value": "\"1675334616765\""
-								},
-								{
-									"key": "Last-Modified",
-									"value": "Thu, 02 Feb 2023 10:43:36 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "1; mode=block"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Length",
-									"value": "3463"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n    \"name\": \"Data Ingestion to Kafka\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1675332953828,\n    \"createdAt\": 1675332450547,\n    \"updatedAt\": 1675334616765,\n    \"description\": \"Data Ingestion to Kafka\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false,\n                        \"messagesLimitDurationMs\": 10000\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\": [\n                            \"demo\"\n                        ],\n                        \"producer\": {\n                            \"enabled\": true\n                        },\n                        \"consumer\": {\n                            \"encodeMessageId\": true,\n                            \"enabled\": true,\n                            \"autoOffsetReset\": \"latest\"\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [\n        {\n            \"id\": \"21e75e0c-0515-43b8-a75e-0c051583b847\",\n            \"name\": \"Keyless\",\n            \"description\": \"Keyless\",\n            \"createdAt\": 1675332875430,\n            \"updatedAt\": 1675332875430,\n            \"publishedAt\": 1675332875430,\n            \"validation\": \"auto\",\n            \"type\": \"api\",\n            \"security\": {\n                \"type\": \"key-less\"\n            },\n            \"flows\": [],\n            \"status\": \"published\",\n            \"apiId\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n            \"order\": 0,\n            \"characteristics\": [],\n            \"commentRequired\": false,\n            \"planStatus\": \"published\",\n            \"planSecurity\": {\n                \"type\": \"key-less\"\n            },\n            \"planValidation\": \"auto\"\n        },\n        {\n            \"id\": \"a3f26569-21b2-49e2-b265-6921b219e2c3\",\n            \"name\": \"Keyless\",\n            \"description\": \"Keyless\",\n            \"createdAt\": 1675332553644,\n            \"updatedAt\": 1675332813372,\n            \"publishedAt\": 1675332708766,\n            \"closedAt\": 1675332813372,\n            \"validation\": \"auto\",\n            \"type\": \"api\",\n            \"security\": {\n                \"type\": \"key-less\"\n            },\n            \"flows\": [],\n            \"status\": \"closed\",\n            \"apiId\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n            \"order\": 1,\n            \"characteristics\": [],\n            \"commentRequired\": false,\n            \"planStatus\": \"closed\",\n            \"planSecurity\": {\n                \"type\": \"key-less\"\n            },\n            \"planValidation\": \"auto\"\n        }\n    ],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"aebec2d0-0ee4-4bc5-bec2-d00ee4fbc527\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"pictureUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/bdd16092-4d36-47d7-9160-924d3657d7f2/picture?hash=1675334616765\",\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false,\n    \"backgroundUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/bdd16092-4d36-47d7-9160-924d3657d7f2/background?hash=1675334616765\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Redeploy API",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
-							"host": [
-								"{{management_host}}"
-							],
-							"path": [
-								"management",
-								"organizations",
-								"DEFAULT",
-								"environments",
-								"DEFAULT",
-								"v4",
-								"apis",
-								"{{api}}",
-								"deploy"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Redeploy API",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
-									"host": [
-										"{{management_host}}"
-									],
-									"path": [
-										"management",
-										"organizations",
-										"DEFAULT",
-										"environments",
-										"DEFAULT",
-										"v4",
-										"apis",
-										"{{api}}",
-										"deploy"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Vary",
-									"value": "Access-Control-Request-Method"
-								},
-								{
-									"key": "Vary",
-									"value": "Access-Control-Request-Headers"
-								},
-								{
-									"key": "X-Xsrf-Token",
-									"value": "99ce174f-1189-402e-87a0-0b1536800891"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzMzQ2NTEsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.JZDW_V6NqFNQaki1ebf95-5TTPByGZIzekx8NyQtVUE; Path=/; Expires=Thu, 09-Feb-2023 10:44:11 GMT; Max-Age=604800; HttpOnly"
-								},
-								{
-									"key": "Expires",
-									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
-								},
-								{
-									"key": "ETag",
-									"value": "\"1675334651129\""
-								},
-								{
-									"key": "Last-Modified",
-									"value": "Thu, 02 Feb 2023 10:44:11 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "1; mode=block"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Length",
-									"value": "1860"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n    \"name\": \"Data Ingestion to Kafka\",\n    \"apiVersion\": \"1.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1675334651129,\n    \"createdAt\": 1675332450547,\n    \"updatedAt\": 1675334651129,\n    \"description\": \"Data Ingestion to Kafka\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/http-get/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-get\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false,\n                        \"messagesLimitDurationMs\": 10000\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\": [\n                            \"demo\"\n                        ],\n                        \"producer\": {\n                            \"enabled\": true\n                        },\n                        \"consumer\": {\n                            \"encodeMessageId\": true,\n                            \"enabled\": true,\n                            \"autoOffsetReset\": \"latest\"\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": []\n        }\n    ],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"aebec2d0-0ee4-4bc5-bec2-d00ee4fbc527\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
-						}
-					]
-				},
-				{
-					"name": "Close plan",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans/{{plan}}/_close",
-							"host": [
-								"{{management_host}}"
-							],
-							"path": [
-								"management",
-								"organizations",
-								"DEFAULT",
-								"environments",
-								"DEFAULT",
-								"v4",
-								"apis",
-								"{{api}}",
-								"plans",
-								"{{plan}}",
-								"_close"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create a rate-limiting plan",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
-							"host": [
-								"{{management_host}}"
-							],
-							"path": [
-								"management",
-								"organizations",
-								"DEFAULT",
-								"environments",
-								"DEFAULT",
-								"v4",
-								"apis",
-								"{{api}}",
-								"plans"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Create a rate-limiting plan",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
-									"host": [
-										"{{management_host}}"
-									],
-									"path": [
-										"management",
-										"organizations",
-										"DEFAULT",
-										"environments",
-										"DEFAULT",
-										"v4",
-										"apis",
-										"{{api}}",
-										"plans"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Vary",
-									"value": "Access-Control-Request-Method"
-								},
-								{
-									"key": "Vary",
-									"value": "Access-Control-Request-Headers"
-								},
-								{
-									"key": "X-Xsrf-Token",
-									"value": "99ce174f-1189-402e-87a0-0b1536800891"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzUzMzQ3NjksInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.GkMkquHmnoM0POm56hnw4jKQ43j-uNQQfzlFrLQ9xRo; Path=/; Expires=Thu, 09-Feb-2023 10:46:09 GMT; Max-Age=604800; HttpOnly"
-								},
-								{
-									"key": "Expires",
-									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
-								},
-								{
-									"key": "Location",
-									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/bdd16092-4d36-47d7-9160-924d3657d7f2/plans/b944c060-5d84-4bac-84c0-605d84abac32"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "1; mode=block"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Length",
-									"value": "1157"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"b944c060-5d84-4bac-84c0-605d84abac32\",\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"createdAt\": 1675334769233,\n    \"updatedAt\": 1675334769233,\n    \"publishedAt\": 1675334769233,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"enabled\": true,\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"channel\": \"/\",\n                    \"channelOperator\": \"STARTS_WITH\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"enabled\": true,\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"status\": \"published\",\n    \"apiId\": \"bdd16092-4d36-47d7-9160-924d3657d7f2\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
 						}
 					]
 				}
