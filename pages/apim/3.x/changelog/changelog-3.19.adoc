@@ -13,6 +13,31 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.19.7 (2023-02-03)
+
+=== API
+* Plan policies were lost when migrated from an API to design studio https://github.com/gravitee-io/issues/issues/8632[#8632]
+* Bump Email Notifier to `1.5.0` https://github.com/gravitee-io/issues/issues/8830[#8830]
+* Update flows condition max size to 512 https://github.com/gravitee-io/issues/issues/8823[#8823] & https://github.com/gravitee-io/issues/issues/8671[#8671]
+* Duplicated platform flows when APIM is linked to Cockpit https://github.com/gravitee-io/issues/issues/8832[#8832]
+* Unable to start up with JDBC when platform flows have been defined with multiple steps on the same phase https://github.com/gravitee-io/issues/issues/8816[#8816]
+* Handle YAML Anchors and Alias when importing OpenAPI file https://github.com/gravitee-io/issues/issues/8858[#8858]
+
+=== Gateway
+* API Subscription was not working after closing and re-creating https://github.com/gravitee-io/issues/issues/8600[#8600]
+* Add support from websocket frame compression https://github.com/gravitee-io/issues/issues/8689[#8689]
+* Exception "Error while determining deployed APIs store into events payload" fixed https://github.com/gravitee-io/issues/issues/8464[#8464]
+* Do not save clientId in API key subscription https://github.com/gravitee-io/issues/issues/8855[#8855]
+
+=== Console
+
+* Display icons of APIs in API list screen https://github.com/gravitee-io/issues/issues/8809[#8809]
+* Global improvement on log filters https://github.com/gravitee-io/issues/issues/8822[#8822] & https://github.com/gravitee-io/issues/issues/8839[#8839]
+
+=== Portal
+
+* Properly display buttons in application analytics filters https://github.com/gravitee-io/issues/issues/8677[#8677]
+ 
 == APIM - 3.19.6 (2023-01-05)
 
 === API
