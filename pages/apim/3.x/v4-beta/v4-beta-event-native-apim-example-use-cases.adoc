@@ -18,23 +18,86 @@ This page describes some example use cases for event-native API management.
 
 == Prerequisites
 
-=== Kafka
+You need to have a running instance of APIM and a running instance of AKHQ to run these examples.
 
-These examples all depend on Kafka. To set up a Kafka Docker container with the link:https://github.com/tchiotludo/akhq[AKHQ] UI, follow these steps.
+The examples on this page work best if you are using Docker.
 
-1. Download `link:https://raw.githubusercontent.com/tchiotludo/akhq/master/docker-compose.yml[docker-compose.yml]`.
+=== Using Docker
 
-2. Run it locally.
+==== Installing APIM
+
+1. Download the `docker-compose.yml` file.
 +
-[source, bash]
+[code,bash]
 ----
-docker-compose pull
-docker-compose up
+curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -O  
+----
+2. Open `docker-compose.yml` in a text editor and add the following line to `/services/gateway/environment` section if it is not already there.
++
+[code,yml]
+----
+- gravitee_api_jupiterMode_enabled=true
+----
++
+This ensures that the gateway runs with its event-native features enabled.
+3. In `docker-compose.yml`, make sure that all the `APIM_VERSION` variables are set to `{APIM_VERSION:-3.20.0}`
++This ensures you are using the correct version of APIM.
+4. Run `docker compose` to download and start all of the components.
++
+[code,bash]
+----
+docker compose up -d
+----
+5. In your browser, go to `http://localhost:8084` to open the APIM UI. You can log in with the Username `admin` and Password `admin`.
++
+[TIP]
+====
+Sometimes it can take a few minutes for APIM to fully start. If you get an error when going to `http://localhost:8084`, wait a few minutes and try again.
+====
+
+==== Installing AKHQ
+
+1. Download the `docker-compose.yml` file.
++
+[code,bash]
+----
+curl https://raw.githubusercontent.com/tchiotludo/akhq/master/docker-compose.yml -O
 ----
 
-You can now access the AKHQ UI at http://localhost:8080.
+2. Add the following lines to the end of `docker-compose.yml`.
++
+[code,json]
+----
+networks:
+  default:
+    name: storage
+----
++
+These lines make AKHQ run on the `storage` Docker bridge network that was created when APIM was deployed.
 
-===  Enabling event-native API management
+3. Run `docker compose` to download and start all of the components.
++
+[code,bash]
+----
+docker compose up -d
+----
+
+4. In your browser, go to `http://localhost:8080` to open the AKHQ UI.
+
+=== Without Docker
+
+==== Kafka
+
+These examples depend on having a Kafka bootstrap server on host `kafka` and port `9092`. If your Kafka bootstrap server is on another host or port, you must update the request bodies of all "Create API" requests in the Postman Collection.
+
+For example, in the "Kafka" > "Create API" you should change line 36 of the request body to use your values.
+
+[code,json]
+----
+                        "bootstrapServers": "kafka:9092",
+----
+
+====  Enabling event-native API management
 
 To run these examples, you must enable the link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html#how_to_enable_and_disable_the_new_engine' | relative_url }}[new V4 BETA policy execution engine] first by setting the `gravitee_api_jupiterMode_enabled` environment variable to `true` on the Management API and the API Gateway.
 
