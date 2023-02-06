@@ -36,6 +36,7 @@ APIM and AKHQ are both running on the Docker bridge network called `storage`. Th
 ====
 +
 For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
+
 3. Send the request. You should receive a response that starts like this.
 +
 [code,json]
@@ -85,11 +86,13 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
 ----
 +
 The `id` is the ID of the plan we just created.
+
 3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
 
 == Starting the API
 
 1. Select the "Start the API" request. You will see that it has no request body.
+
 2. Send the request. You should receive a `204` response with no response body.
 
 The API has been created and is ready to be used.
@@ -108,6 +111,7 @@ We are now going to use the API to `POST` data to Kafka over HTTP, and `GET` dat
     "tempF": "75"
 }
 ----
+
 2. Send the request. You should receive a status response of `200 OK`.
 
 3. Go to http://localhost:8080/ui/docker-kafka-server/tail and select `demo` from the topics drop-down menu. Click the search icon. This page will now display a live feed of all messages published on the `demo` topic.
@@ -140,6 +144,7 @@ The first line means a request to this entrypoint will receive _at most_ 1 messa
 The last line means that the connection will stay open for a maximum of ten seconds.
 +
 In this example, no messages were published to the `demo` topic, so the connection closed after ten seconds, and the empty `items` array was returned.
+
 2. Send the "Get data" request again. _Immediately_ select "Push Data" and send the request four times. The response body for the "Get Data" request should look like this.
 +
 [code,json]
@@ -167,7 +172,9 @@ Note that the request body is very similar to the request body for "Create the A
     * The `messagesLimitCount` value in the `http-get` entrypoint is `100`.
 
 2. Send the request. The message body in the response should be similar to the message body you received when creating the API, but the value of `messagesLimitCount` should have been updated.
+
 3. Once you have modified the API, you have to redeploy it. Select "Redeploy API" and send the request. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
+
 4. Select "Get Data" and send the request. _Immediately_ select "Push Data" and send the request four times. The response body for the "Get Data" request should look like this.
 +
 [code,json]
@@ -226,6 +233,7 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
 ----
 +
 The `id` is the ID of the API we just created.
+
 4. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
 
 5. Select "Push Data" and send the request four times in quick succession. Note that all the requests are accepted.

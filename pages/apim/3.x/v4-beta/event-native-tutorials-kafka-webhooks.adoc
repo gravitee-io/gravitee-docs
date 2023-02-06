@@ -17,9 +17,9 @@ Before running this tutorial, you must have:
 
 1. In the Tutorials Postman Collection, open the `Kafka and Webhooks` folder.
 
-2. Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `subscription`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create a subscription - that is the gateway accepts a subscription instead of providing a target HTTP path for the request or initial connection. If you look under `entrypoints` you can see that we are creating one entrypoint, a `webhook` entrypoint. Under `endpointgroups` you can see that we are creating one `kafka` endpoint, which uses a bootstrap server called `kafka` on port `9092`. The `topics` array contains just one topic, `demo`.
+2. Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `subscription`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create a subscription - that is the gateway accepts a subscription instead of providing a target HTTP path for the request or initial connection. If you look under `listeners` you can see that we are creating two entrypoints, a `webhook` entrypoint, and an `http-post` entrypoint. In this tutorial the `http-post` entrypoint is only used for publishing data to Kafka. For a full tutorial on Kafka and HTTP, see link:/apim/3.x/event_native_tutorials_kafka_websockets.html[Kafka and HTTP].
 +
-There is also an `http` listener that we will use for publishing data to Kafka.
+Under `endpointgroups` you can see that we are creating one `kafka` endpoint, which uses a bootstrap server called `kafka` on port `9092`. The `topics` array contains just one topic, `demo`.
 +
 [TIP]
 ====
@@ -27,6 +27,7 @@ APIM and AKHQ are both running on the Docker bridge network called `storage`. Th
 ====
 +
 For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
+
 3. Send the request. You should receive a response that starts like this.
 +
 [code,json]
@@ -78,6 +79,7 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
 ----
 +
 The `id` is the ID of the plan we just created.
+
 3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
 
 4. Select the "Create an Open (Subscription) Plan" request and look at the request body. It looks like this.
@@ -109,11 +111,13 @@ The `id` is the ID of the plan we just created.
 ----
 +
 The `id` is the ID of the plan we just created.
+
 6. Copy the ID, and paste it into the `CURRENT VALUE` field for the `subplan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
 
 == Starting the API
 
 1. Select the "Start the API" request. You will see that it has no request body.
+
 2. Send the request. You should receive a `204` response with no response body.
 
 The API has been created and is ready to be used.
@@ -137,9 +141,13 @@ We are now going to create an application and use that application to subscribe 
     "created_at": 1675347893455,
     "updated_at": 1675347893455,
 ----
+
 3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `application` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
 4. Go to https://webhook.site/ and follow the instructions there to create a callback URL. Do not close the browser window.
+
 5. Copy the callback URL, and paste it into the `CURRENT VALUE` field for the `callback-url` variable in the APIM 3.20 Tutorials.
+
 6. Select the "Subscribe to API" request. If you look at the body of the request, you will see name-value pairs for custom headers, and a `metadata` object. These will become useful later. Send the request. You should see a response that begins like this.
 +
 [code,json]
@@ -153,6 +161,7 @@ We are now going to create an application and use that application to subscribe 
     "application": {
         "id": "886966ce-1dab-48b1-a966-ce1dab68b17d",
 ----
+
 7.  Copy the top-level ID, and paste it into the `CURRENT VALUE` field for the `subscription` variable in the APIM 3.20 Tutorials Environment. Click Save.
 
 8. In Postman, select "Push Data" and look at the request body. It looks like this.
@@ -163,6 +172,7 @@ We are now going to create an application and use that application to subscribe 
     "tempF": "75"
 }
 ----
+
 9. Send the request. You should receive a status response of `200 OK`.
 
 10. Go to http://localhost:8080/ui/docker-kafka-server/tail and select `demo` from the topics drop-down menu. Click the search icon. This page will now display a live feed of all messages published on the `demo` topic.

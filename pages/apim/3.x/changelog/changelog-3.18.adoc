@@ -26,6 +26,7 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 * API Subscription was not working after closing and re-creating https://github.com/gravitee-io/issues/issues/8600[#8600]
 * Add support from websocket frame compression https://github.com/gravitee-io/issues/issues/8689[#8689]
 * Exception "Error while determining deployed APIs store into events payload" fixed https://github.com/gravitee-io/issues/issues/8464[#8464]
+* Properly set `response` attribute in the execution context for the `assign-attribute` policy https://github.com/gravitee-io/issues/issues/8810[#8810]
 
 
 == APIM - 3.18.17 (2023-01-04)
