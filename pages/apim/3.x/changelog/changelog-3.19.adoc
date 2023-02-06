@@ -28,6 +28,7 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 * Add support from websocket frame compression https://github.com/gravitee-io/issues/issues/8689[#8689]
 * Exception "Error while determining deployed APIs store into events payload" fixed https://github.com/gravitee-io/issues/issues/8464[#8464]
 * Do not save clientId in API key subscription https://github.com/gravitee-io/issues/issues/8855[#8855]
+* Properly set `response` attribute in the execution context for the `assign-attribute` policy https://github.com/gravitee-io/issues/issues/8810[#8810]
 
 === Console
 
