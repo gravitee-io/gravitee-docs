@@ -1,0 +1,184 @@
+[[event-native-tutorials-kafka-sse]]
+= Kafka and SSE
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: /apim/3.x/event_native_tutorials_kafka_sse.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+== Prerequisites 
+
+Before running this tutorial, you must have:
+
+* Set up Postman, as described in link:{{'/apim/3.x/event_native_tutorials_postman.html' | relative_url}}[Setting up Postman].
+* The Gravitee API Management Gateway running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_apim.html' | relative_url}}[Installing APIM]. To confirm it is running, go to `http://localhost:8084`.
+* AKHQ running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_akhq.html'| relative_url}}[Installing AKHQ]. To confirm it is running, go to `http://localhost:8080`.
+
+== Creating the API
+
+1. In the Tutorials Postman Collection, open the `Kafka and SSE` folder.
+
+2.  Open the `Create the API request` and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `listeners` you can see that we are creating two entrypoints, an `sse` entrypoint, and an `http-post` entrypoint. In this tutorial the `http-post` entrypoint is only used for publishing data to Kafka. For a full tutorial on Kafka and HTTP, see link:/apim/3.x/event_native_tutorials_kafka_websockets.html[Kafka and HTTP].
++
+Under `endpointgroups` you can see that we are creating one `kafka` endpoint, which uses a bootstrap server called `kafka` on port `9092`. The `topics` array contains just one topic, `demo`.
++
+[TIP]
+====
+APIM and AKHQ are both running on the Docker bridge network called `storage`. The host `kafka` is a host on that network.
+====
++
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
+
+3. Send the request. You should receive a response that starts like this.
++
+[code,json]
+----
+{
+    "id": "0ad085e6-01c7-4aa1-9085-e601c74aa1ff",
+    "name": "Kafka and SSE",
+    "apiVersion": "1.0.0",
+    "definitionVersion": "4.0.0",
+    "type": "async",
+    "createdAt": 1675699730275,
+    "updatedAt": 1675699730275,
+----
++
+The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
+== Creating a keyless plan
+
+1. Select the "Create an Open (keyless) Plan" request and look at the request body. It looks like this.
++
+[code,json]
+----
+{
+    "name": "Open",
+    "description": "Keyless",
+    "status": "PUBLISHED",
+    "characteristics": [],
+    "security": {
+        "type": "subscription"
+    }
+}
+----
++
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
+
+2. Send the request. You should receive a response that starts like this.
++
+[code,json]
+----
+{
+    "id": "57d94912-5f8e-4db4-9949-125f8e4db4b7",
+    "name": "Open",
+    "description": "Keyless",
+    "createdAt": 1675699775794,
+    "updatedAt": 1675699775794,
+    "publishedAt": 1675699775796,
+----
++
+The `id` is the ID of the plan we just created.
+
+3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
+== Starting the API
+
+1. Select the "Start the API" request. You will see that it has no request body.
+
+2. Send the request. You should receive a `204` response with no response body.
+
+The API has been created and is ready to be used.
+
+== Using the API
+
+1. In Postman, select "Push Data" and look at the request body. It looks like this.
++
+[code,json]
+----
+{
+    "tempF": "75"
+}
+----
+
+2. Send the request. You should receive a status response of `200 OK`.
+
+3. Go to http://localhost:8080/ui/docker-kafka-server/tail and select `demo` from the topics drop-down menu. Click the search icon. This page will now display a live feed of all messages published on the `demo` topic.
+
+4. Send the request several more times, and observe it appear on http://localhost:8080/ui/docker-kafka-server/tail. 
+
+5. Use `curl` to connect to the SSE stream using the following terminal command.
++
+[code,bash]
+----
+ curl -N -H "Accept:text/event-stream" http://localhost:8082/demo/sse/kafka
+----
+
+6. In Postman, send the "Push Data" request again. You should see a message appear in the terminal where `curl` is running. 
+
+== Adding a message filter
+
+We are now going to add message filtering.
+
+1. Select the "Add Flow to API request". If you look at the body of the request you will see the following line.
++
+[code,json]
+----
+                         "filter": "{#jsonPath(#message.content, '$.feature') == 'demo-filter'}"
+----
++
+This filter, based on link:/apim/3.x/apim_publisherguide_expression_language.html[APIM Expression Language], blocks all messages, except when the `feature` property of the message matches is `demo-filter`.
++
+[TIP]
+====
+Flows can be added at a number of different specificity levels, including the API, plan, or even organization level, but adding it to the API makes it easy for quick updates and redeployments.
+====
++
+Send the request. You should see a response that begins like this.
++
+[code,json]
+----
+{
+    "id": "0ad085e6-01c7-4aa1-9085-e601c74aa1ff",
+    "name": "Kafka and SSE - Subscription Filtering",
+    "apiVersion": "1.0.0",
+    "definitionVersion": "4.0.0",
+    "type": "async",
+    "deployedAt": 1675699816300,
+----
+
+2. Once you have modified the API, you have to redeploy it. Select "Redeploy API" and send the request. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
+
+3. Use `curl` to reconnect to the SSE stream using the following terminal command.
++
+[code,bash]
+----
+curl -N -H "Accept:text/event-stream" http://localhost:8082/demo/sse/kafka
+----
+
+4. Using the "Push Data" request, publish the following message. 
++
+[code,json]
+----
+{
+    "message":"hello again"
+}
+----
++
+You will see the message does not appear in the `curl` terminal, because the filter prevented it from getting through. However, you will be able to see the message in the live tail on AKHQ, confirming that the message was published.
+
+5. Now publish the following message.
++
+[code,json]
+----
+{
+    "feature": "demo-filter",
+    "message-body": "I got through!"
+}
+----
++
+You will see the message does appear in the `curl` terminal, because the filter allowed it to get through.
+
+== Close the plan and delete the API
+
+After finishing this tutorial, run "Stop the API", "Close plan", and "Delete API" in the "Delete API" folder in Postman. This removes the plan and API.
+
+Alternatively, you can delete all Docker containers and volumes.

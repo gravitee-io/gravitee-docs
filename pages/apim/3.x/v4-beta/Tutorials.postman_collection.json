@@ -1382,6 +1382,473 @@
 			]
 		},
 		{
+			"name": "Kafka and SSE",
+			"item": [
+				{
+					"name": "Create the API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Kafka and SSE\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Kafka and SSE\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/sse/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"sse\",\n                    \"configuration\": {\n                        \"heartbeatIntervalInMs\": 5000,\n                        \"metadataAsComment\": false,\n                        \"headersAsComment\": false\n                    }\n                }\n            ]\n        },\n        {\n        \"type\": \"http\",\n        \"paths\": [\n            {\n                \"path\": \"/data/ingestion/kafka\"\n            }\n        ],\n        \"entrypoints\": [\n            {\n                \"type\": \"http-post\",\n                \"configuration\": {\n                    \"requestHeadersToMessage\": false\n                }\n            }\n        ]\n      }\n    ],\n\"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create the API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Kafka and SSE\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Kafka and SSE\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/sse/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"sse\",\n                    \"configuration\": {\n                        \"heartbeatIntervalInMs\": 5000,\n                        \"metadataAsComment\": false,\n                        \"headersAsComment\": false\n                    }\n                }\n            ]\n        },\n        {\n        \"type\": \"http\",\n        \"paths\": [\n            {\n                \"path\": \"/data/ingestion/kafka\"\n            }\n        ],\n        \"entrypoints\": [\n            {\n                \"type\": \"http-post\",\n                \"configuration\": {\n                    \"requestHeadersToMessage\": false\n                }\n            }\n        ]\n      }\n    ],\n\"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzU2OTk3MjksInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.niCW_FJFSHt9qQ0hSngNB9A25H349PEZTF_YBdZMDR4; Path=/; Expires=Mon, 13-Feb-2023 16:08:49 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/0ad085e6-01c7-4aa1-9085-e601c74aa1ff"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1537"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"0ad085e6-01c7-4aa1-9085-e601c74aa1ff\",\n    \"name\": \"Kafka and SSE\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"createdAt\": 1675699730275,\n    \"updatedAt\": 1675699730275,\n    \"description\": \"Kafka and SSE\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/sse/kafka/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"sse\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"metadataAsComment\": false,\n                        \"heartbeatIntervalInMs\": 5000,\n                        \"headersAsComment\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\": [\n                            \"demo\"\n                        ],\n                        \"producer\": {\n                            \"enabled\": true\n                        },\n                        \"consumer\": {\n                            \"encodeMessageId\": true,\n                            \"enabled\": true,\n                            \"autoOffsetReset\": \"latest\"\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [],\n    \"groups\": [],\n    \"visibility\": \"PRIVATE\",\n    \"state\": \"STOPPED\",\n    \"primaryOwner\": {\n        \"id\": \"2175caaf-ded4-4216-b5ca-afded49216c8\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Create an Open (keyless) Plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"plans"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create an Open (keyless) Plan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"plans"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzU2OTk3NzUsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.gQXvTagMx5vAZ799FXEeZsSkv4nnXO_BGO0Oc7MJ-wU; Path=/; Expires=Mon, 13-Feb-2023 16:09:35 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/0ad085e6-01c7-4aa1-9085-e601c74aa1ff/plans/57d94912-5f8e-4db4-9949-125f8e4db4b7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "558"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"57d94912-5f8e-4db4-9949-125f8e4db4b7\",\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"createdAt\": 1675699775794,\n    \"updatedAt\": 1675699775794,\n    \"publishedAt\": 1675699775796,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [],\n    \"status\": \"published\",\n    \"apiId\": \"0ad085e6-01c7-4aa1-9085-e601c74aa1ff\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Start the API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=start",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "start"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Push Data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tempF\": \"75\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_host}}/data/ingestion/kafka",
+							"host": [
+								"{{gateway_host}}"
+							],
+							"path": [
+								"data",
+								"ingestion",
+								"kafka"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Flow to API",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Kafka and SSE - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Kafka and SSE - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"validation\": \"AUTO\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/sse/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"sse\",\n                    \"configuration\": {\n                        \"heartbeatIntervalInMs\": 5000,\n                        \"metadataAsComment\": false,\n                        \"headersAsComment\": false\n                    }\n                }\n            ]\n        },\n        {\n        \"type\": \"http\",\n        \"paths\": [\n            {\n                \"path\": \"/data/ingestion/kafka\"\n            }\n        ],\n        \"entrypoints\": [\n            {\n                \"type\": \"http-post\",\n                \"configuration\": {\n                    \"requestHeadersToMessage\": false\n                }\n            }\n        ]\n      }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == 'demo-filter'}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Flow to API",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Kafka and SSE - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Kafka and SSE - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"validation\": \"AUTO\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/sse/kafka\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"sse\",\n                    \"configuration\": {\n                        \"heartbeatIntervalInMs\": 5000,\n                        \"metadataAsComment\": false,\n                        \"headersAsComment\": false\n                    }\n                }\n            ]\n        },\n        {\n        \"type\": \"http\",\n        \"paths\": [\n            {\n                \"path\": \"/data/ingestion/kafka\"\n            }\n        ],\n        \"entrypoints\": [\n            {\n                \"type\": \"http-post\",\n                \"configuration\": {\n                    \"requestHeadersToMessage\": false\n                }\n            }\n        ]\n      }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == 'demo-filter'}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzU3MDAwMjAsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.gc5z1TP7HHR27W0-LAjPB1cln0x1EVXWgj-R7VeEVFY; Path=/; Expires=Mon, 13-Feb-2023 16:13:40 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "\"1675700020225\""
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Mon, 06 Feb 2023 16:13:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3078"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"0ad085e6-01c7-4aa1-9085-e601c74aa1ff\",\n    \"name\": \"Kafka and SSE - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1675699816300,\n    \"createdAt\": 1675699730275,\n    \"updatedAt\": 1675700020225,\n    \"description\": \"Kafka and SSE - Subscription Filtering\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/sse/kafka/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"sse\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"metadataAsComment\": false,\n                        \"heartbeatIntervalInMs\": 5000,\n                        \"headersAsComment\": false\n                    }\n                }\n            ]\n        },\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/data/ingestion/kafka/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"requestHeadersToMessage\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\": [\n                            \"demo\"\n                        ],\n                        \"producer\": {\n                            \"enabled\": true\n                        },\n                        \"consumer\": {\n                            \"encodeMessageId\": true,\n                            \"enabled\": true,\n                            \"autoOffsetReset\": \"latest\"\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [\n        {\n            \"id\": \"57d94912-5f8e-4db4-9949-125f8e4db4b7\",\n            \"name\": \"Open\",\n            \"description\": \"Keyless\",\n            \"createdAt\": 1675699775794,\n            \"updatedAt\": 1675699775794,\n            \"publishedAt\": 1675699775796,\n            \"validation\": \"auto\",\n            \"type\": \"api\",\n            \"security\": {\n                \"type\": \"key-less\"\n            },\n            \"flows\": [],\n            \"status\": \"published\",\n            \"apiId\": \"0ad085e6-01c7-4aa1-9085-e601c74aa1ff\",\n            \"order\": 0,\n            \"characteristics\": [],\n            \"commentRequired\": false,\n            \"planStatus\": \"published\",\n            \"planSecurity\": {\n                \"type\": \"key-less\"\n            },\n            \"planValidation\": \"auto\"\n        }\n    ],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == 'demo-filter'}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"2175caaf-ded4-4216-b5ca-afded49216c8\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"pictureUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/0ad085e6-01c7-4aa1-9085-e601c74aa1ff/picture?hash=1675700020225\",\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false,\n    \"backgroundUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/0ad085e6-01c7-4aa1-9085-e601c74aa1ff/background?hash=1675700020225\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Redeploy API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"deploy"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Kafka and Webhooks",
 			"item": [
 				{
@@ -2705,7 +3172,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Demo of Websocket + MQTT - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Websocket + MQTT - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"validation\": \"AUTO\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/ws\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"websocket\",\n                    \"configuration\": {\n                        \"publisher\": {\n                            \"enabled\": true\n                        },\n                        \"subscriber\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        },\n        {\n        \"type\": \"http\",\n        \"paths\": [\n            {\n                \"path\": \"/data/ingestion/kafka\"\n            }\n        ],\n        \"entrypoints\": [\n            {\n                \"type\": \"http-post\",\n                \"configuration\": {\n                    \"requestHeadersToMessage\": false\n                }\n            }\n        ]\n      }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == 'demo-filter'}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+							"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"Demo of Kafka and Websockets\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of Kafka and Websockets\",\n    \"visibility\": \"PUBLIC\",\n    \"validation\": \"AUTO\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/ws\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"websocket\",\n                    \"configuration\": {\n                        \"publisher\": {\n                            \"enabled\": true\n                        },\n                        \"subscriber\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        },\n        {\n        \"type\": \"http\",\n        \"paths\": [\n            {\n                \"path\": \"/data/ingestion/kafka\"\n            }\n        ],\n        \"entrypoints\": [\n            {\n                \"type\": \"http-post\",\n                \"configuration\": {\n                    \"requestHeadersToMessage\": false\n                }\n            }\n        ]\n      }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"kafka\",\n            \"endpoints\": [\n                {\n                    \"name\": \"default\",\n                    \"type\": \"kafka\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"bootstrapServers\": \"kafka:9092\",\n                        \"topics\" : [\"demo\"],\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == 'demo-filter'}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3882,6 +4349,445 @@
 							"body": "{\n    \"id\": \"ccf21839-1fc0-4bf3-b218-391fc01bf380\",\n    \"name\": \"Rate-limiting\",\n    \"description\": \"One request every 20 seconds\",\n    \"createdAt\": 1675074425522,\n    \"updatedAt\": 1675074425522,\n    \"publishedAt\": 1675074425522,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"enabled\": true,\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"channel\": \"/\",\n                    \"channelOperator\": \"STARTS_WITH\",\n                    \"entrypoints\": [\n                        \"http-post\",\n                        \"http-get\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"enabled\": true,\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 20,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ],\n            \"response\": [],\n            \"subscribe\": [],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"status\": \"published\",\n    \"apiId\": \"4bfb005f-45ae-4358-bb00-5f45ae435855\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "MQTT and SSE",
+			"item": [
+				{
+					"name": "Create the API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"MQTT and SSE\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"MQTT and SSE\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"sse\",\n                    \"configuration\": {\n                        \"heartbeatIntervalInMs\": 5000,\n                        \"metadataAsComment\": false,\n                        \"headersAsComment\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create the API",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"MQTT and SSE\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"MQTT and SSE\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"sse\",\n                    \"configuration\": {\n                        \"heartbeatIntervalInMs\": 5000,\n                        \"metadataAsComment\": false,\n                        \"headersAsComment\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzU2OTQ0NjYsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.UiWv5p8lzCfuvbRp_vAQf4jcW7_8M3dO8LQLmbqyH8c; Path=/; Expires=Mon, 13-Feb-2023 14:41:06 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/2f82242e-fc70-4918-8224-2efc70a9182c"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1258"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"2f82242e-fc70-4918-8224-2efc70a9182c\",\n    \"name\": \"MQTT and SSE\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"createdAt\": 1675694466958,\n    \"updatedAt\": 1675694466958,\n    \"description\": \"MQTT and SSE\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"sse\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"metadataAsComment\": false,\n                        \"heartbeatIntervalInMs\": 5000,\n                        \"headersAsComment\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\": {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"plans\": [],\n    \"flowMode\": \"default\",\n    \"flows\": [],\n    \"groups\": [],\n    \"visibility\": \"PRIVATE\",\n    \"state\": \"STOPPED\",\n    \"primaryOwner\": {\n        \"id\": \"232ef182-829a-49ae-aef1-82829a89aef8\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Create an Open (keyless) Plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"plans"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create an Open (keyless) Plan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}",
+										"plans"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzU2OTQ1MTcsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.rw1KQ00ku3aY3VTeezmOYUdZHmdTRytRbPOacHRkh3E; Path=/; Expires=Mon, 13-Feb-2023 14:41:57 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/2f82242e-fc70-4918-8224-2efc70a9182c/plans/3af3fc91-fa85-4de2-b3fc-91fa856de2c8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "558"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"3af3fc91-fa85-4de2-b3fc-91fa856de2c8\",\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"createdAt\": 1675694517762,\n    \"updatedAt\": 1675694517762,\n    \"publishedAt\": 1675694517766,\n    \"validation\": \"auto\",\n    \"type\": \"api\",\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [],\n    \"status\": \"published\",\n    \"apiId\": \"2f82242e-fc70-4918-8224-2efc70a9182c\",\n    \"order\": 0,\n    \"characteristics\": [],\n    \"commentRequired\": false,\n    \"planStatus\": \"published\",\n    \"planSecurity\": {\n        \"type\": \"key-less\"\n    },\n    \"planValidation\": \"auto\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Start the API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=start",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "start"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Flow to API",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"MQTT and SSE - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"MQTT and SSE - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"validation\": \"AUTO\",\n    \"listeners\":[\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"sse\",\n                    \"configuration\": {\n                        \"heartbeatIntervalInMs\": 5000,\n                        \"metadataAsComment\": false,\n                        \"headersAsComment\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == 'demo-filter'}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Flow to API",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"{{api}}\",\n    \"name\": \"MQTT and SSE - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"MQTT and SSE - Subscription Filtering\",\n    \"visibility\": \"PUBLIC\",\n    \"validation\": \"AUTO\",\n    \"listeners\":[\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"sse\",\n                    \"configuration\": {\n                        \"heartbeatIntervalInMs\": 5000,\n                        \"metadataAsComment\": false,\n                        \"headersAsComment\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == 'demo-filter'}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"enabled\": true\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+									"host": [
+										"{{management_host}}"
+									],
+									"path": [
+										"management",
+										"organizations",
+										"DEFAULT",
+										"environments",
+										"DEFAULT",
+										"v4",
+										"apis",
+										"{{api}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Xsrf-Token",
+									"value": "99ce174f-1189-402e-87a0-0b1536800891"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=; Path=/; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJncmF2aXRlZS1tYW5hZ2VtZW50LWF1dGgiLCJpYXQiOjE2NzU2OTQ4NDMsInRva2VuIjoiOTljZTE3NGYtMTE4OS00MDJlLTg3YTAtMGIxNTM2ODAwODkxIn0.OddaK0zFOCMMf-xuOSwRjnlFJjU7nuq7CzMwfzMG-Yo; Path=/; Expires=Mon, 13-Feb-2023 14:47:23 GMT; Max-Age=604800; HttpOnly"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "\"1675694843252\""
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Mon, 06 Feb 2023 14:47:23 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2799"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"2f82242e-fc70-4918-8224-2efc70a9182c\",\n    \"name\": \"MQTT and SSE - Subscription Filtering\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"deployedAt\": 1675694562971,\n    \"createdAt\": 1675694466958,\n    \"updatedAt\": 1675694843252,\n    \"description\": \"MQTT and SSE - Subscription Filtering\",\n    \"tags\": [],\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt/\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"sse\",\n                    \"qos\": \"auto\",\n                    \"configuration\": {\n                        \"metadataAsComment\": false,\n                        \"heartbeatIntervalInMs\": 5000,\n                        \"headersAsComment\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"secondary\": false,\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\": {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ],\n    \"properties\": [],\n    \"resources\": [],\n    \"plans\": [\n        {\n            \"id\": \"3af3fc91-fa85-4de2-b3fc-91fa856de2c8\",\n            \"name\": \"Open\",\n            \"description\": \"Keyless\",\n            \"createdAt\": 1675694517762,\n            \"updatedAt\": 1675694517762,\n            \"publishedAt\": 1675694517766,\n            \"validation\": \"auto\",\n            \"type\": \"api\",\n            \"security\": {\n                \"type\": \"key-less\"\n            },\n            \"flows\": [],\n            \"status\": \"published\",\n            \"apiId\": \"2f82242e-fc70-4918-8224-2efc70a9182c\",\n            \"order\": 0,\n            \"characteristics\": [],\n            \"commentRequired\": false,\n            \"planStatus\": \"published\",\n            \"planSecurity\": {\n                \"type\": \"key-less\"\n            },\n            \"planValidation\": \"auto\"\n        }\n    ],\n    \"flowMode\": \"default\",\n    \"flows\": [\n        {\n            \"name\": \"\",\n            \"enabled\": true,\n            \"selectors\": [],\n            \"request\": [],\n            \"response\": [],\n            \"subscribe\": [\n                {\n                    \"name\": \"Message filtering\",\n                    \"description\": \"Apply filter to messages\",\n                    \"enabled\": true,\n                    \"policy\": \"message-filtering\",\n                    \"configuration\": {\n                        \"filter\": \"{#jsonPath(#message.content, '$.feature') == 'demo-filter'}\"\n                    }\n                }\n            ],\n            \"publish\": [],\n            \"tags\": []\n        }\n    ],\n    \"responseTemplates\": {},\n    \"groups\": [],\n    \"visibility\": \"PUBLIC\",\n    \"state\": \"STARTED\",\n    \"primaryOwner\": {\n        \"id\": \"232ef182-829a-49ae-aef1-82829a89aef8\",\n        \"displayName\": \"admin\",\n        \"type\": \"USER\"\n    },\n    \"pictureUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/2f82242e-fc70-4918-8224-2efc70a9182c/picture?hash=1675694843252\",\n    \"lifecycleState\": \"CREATED\",\n    \"disableMembershipNotifications\": false,\n    \"backgroundUrl\": \"http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/2f82242e-fc70-4918-8224-2efc70a9182c/background?hash=1675694843252\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Redeploy API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/deploy",
+							"host": [
+								"{{management_host}}"
+							],
+							"path": [
+								"management",
+								"organizations",
+								"DEFAULT",
+								"environments",
+								"DEFAULT",
+								"v4",
+								"apis",
+								"{{api}}",
+								"deploy"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
