@@ -22,9 +22,9 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 * APIs list page navigation enhancements
 * APIs are read-only if managed by our GKO (Gravitee Kubernetes Operator)
 * Allow to delete a media using the Management API
-* [V4 BETA M-API] Manage v4 APIs subscriptions as an API Publisher & an API Consumer
+* [V4 M-API] Manage v4 APIs subscriptions as an API Publisher & an API Consumer
 
-=== link:{{'/apim/3.x/event_native_apim_introduction.html' | relative_url}}[Event-Native API Management (Beta)]
+=== link:{{'/apim/3.x/event_native_apim_introduction.html' | relative_url}}[Event-Native API Management]
 
 * Endpoint - Kafka Connector Advanced (EE)
 ** Ability to connect to a secured Kafka cluster
@@ -43,7 +43,7 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 * Message filtering policy
 * Support conditions on messages
 
-=== link:{{'/apim/3.x/apim_kubernetes_operator_overview.html'| relative_url}}[Gravitee Kubernetes Operator (Beta)]
+=== link:{{'/apim/3.x/apim_kubernetes_operator_overview.html'| relative_url}}[Gravitee Kubernetes Operator]
 
 * CRD Lifecycle - Apply changes related CRDs on update
 * Store credentials in K8 secrets
