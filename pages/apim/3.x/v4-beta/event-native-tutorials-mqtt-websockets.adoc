@@ -26,6 +26,7 @@ APIM and HiveMQ are both running on the Docker bridge network called `storage`. 
 ====
 +
 For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
+
 3. Send the request. You should receive a response that starts like this.
 +
 [code,json]
@@ -75,18 +76,20 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
 ----
 +
 The `id` is the ID of the plan we just created.
+
 3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
 
 == Starting the API
 
 1. Select the "Start the API" request. You will see that it has no request body.
+
 2. Send the request. You should receive a `204` response with no response body.
 
 The API has been created and is ready to be used.
 
 == Using the API
 
-1. Go to HiveMQ's Websockets client for MQTT at http://www.hivemq.com/demos/websocket-client/. Enter 'localhost' in the Host field, and leave all other fields with their default values. Click "Connect."
+1. Go to HiveMQ's client for MQTT at http://www.hivemq.com/demos/websocket-client/. Enter 'localhost' in the Host field, and leave all other fields with their default values. Click "Connect."
 
 2. Click "Add New Topic Subscription" and enter `demo` in the dialog box. Click "Subscribe"
 + 
@@ -99,7 +102,7 @@ You are now subscribed to the `demo` topic.
  websocat ws://localhost:8082/demo/mqtt
 ----
 
-4. In the HiveMQ Websockets client, publish a message to the `demo` topic. You should see it appear in the terminal where `websocat` is running. 
+4. In the HiveMQ client, publish a message to the `demo` topic. You should see it appear in the terminal where `websocat` is running. 
 +
 [code,bash]
 ----
@@ -161,7 +164,14 @@ Send the request. You should see a response that begins like this.
 
 2. Once you have modified the API, you have to redeploy it. Select "Redeploy API" and send the request. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
 
-3. Go back to HiveMQ's Websockets client for MQTT at http://www.hivemq.com/demos/websocket-client/ and publish the following message to the `demo` topic.
+3. Exit the existing `websocat` session using `CTRL C` and restart it.
++
+[code,bash]
+----
+websocat ws://localhost:8082/demo/mqtt
+----
+
+4. Go back to the HiveMQ client at http://www.hivemq.com/demos/websocket-client/ and publish the following message to the `demo` topic.
 +
 [code,json]
 ----
@@ -172,7 +182,7 @@ Send the request. You should see a response that begins like this.
 +
 You will see the message does not appear in the `websocat` terminal, because the filter prevented it from getting through. However, you will be able to see the message in the "Messages" pane of the Websockets client window, confirming that the message was published.
 
-4. Now publish the following message to the `demo` topic.
+5. Now publish the following message to the `demo` topic.
 +
 [code,json]
 ----
@@ -184,7 +194,7 @@ You will see the message does not appear in the `websocat` terminal, because the
 +
 You will see the message does appear in the `websocat` terminal, because the filter allowed it to get through.
 
-5. In the `websocat` terminal, publish the following message: `new message`. You will see that it is not echoed back to the terminal, but it does appear on the "Messages" pane in the HiveMQ client.
+6. In the `websocat` terminal, publish the following message: `new message`. You will see that it is not echoed back to the terminal, but it does appear on the "Messages" pane in the HiveMQ client.
 
 == Close the plan and delete the API
 

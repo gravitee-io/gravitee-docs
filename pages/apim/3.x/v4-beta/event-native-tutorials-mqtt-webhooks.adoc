@@ -25,6 +25,7 @@ APIM and HiveMQ are both running on the Docker bridge network called `storage`. 
 ====
 +
 For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
+
 3. Send the request. You should receive a response that starts like this.
 +
 [code,json]
@@ -74,11 +75,13 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
 ----
 +
 The `id` is the ID of the plan we just created.
+
 3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
 
 == Starting the API
 
 1. Select the "Start the API" request. You will see that it has no request body.
+
 2. Send the request. You should receive a `204` response with no response body.
 
 The API has been created and is ready to be used.
@@ -102,9 +105,13 @@ We are now going to create an application and use that application to subscribe 
     "created_at": 1675093592934,
     "updated_at": 1675093592934,
 ----
+
 3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `application` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
 4. Go to https://webhook.site/ and follow the instructions there to create a callback URL. Do not close the browser window.
+
 5. Copy the callback URL, and paste it into the `CURRENT VALUE` field for the `callback-url` variable in the APIM 3.20 Tutorials.
+
 6. Select the "Subscribe to API" request. If you look at the body of the request, you will see name-value pairs for custom headers, and a `metadata` object. These will become useful later. Send the request. You should see a response that begins like this.
 +
 [code,json]
@@ -118,9 +125,10 @@ We are now going to create an application and use that application to subscribe 
     "application": {
         "id": "7e15e1b6-80b5-43f3-95e1-b680b5e3f317",
 ----
+
 7.  Copy the top-level ID, and paste it into the `CURRENT VALUE` field for the `subscription` variable in the APIM 3.20 Tutorials Environment. Click Save.
 
-8. Go to HiveMQ's Websockets client for MQTT at http://www.hivemq.com/demos/websocket-client/. Enter 'localhost' in the Host field, and leave all other fields with their default values. Click "Connect."
+8. Go to HiveMQ's client for MQTT at http://www.hivemq.com/demos/websocket-client/. Enter 'localhost' in the Host field, and leave all other fields with their default values. Click "Connect."
 +
 [NOTE]
 ====
@@ -190,7 +198,7 @@ Send the request. You should see a response that begins like this.
 
 2. Once you have modified the API, you have to redeploy it. Select "Redeploy API" and send the request. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
 
-3. Go back to HiveMQ's Websockets client for MQTT at http://www.hivemq.com/demos/websocket-client/ and publish the following message to the `demo` topic.
+3. Go back to the HiveMQ client at http://www.hivemq.com/demos/websocket-client/ and publish the following message to the `demo` topic.
 +
 [code,json]
 ----

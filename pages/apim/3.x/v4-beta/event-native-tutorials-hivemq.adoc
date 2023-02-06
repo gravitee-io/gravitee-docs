@@ -21,6 +21,7 @@ docker run -d --name hivemq -p 8086:8080 -p 1883:1883 -p '8000:8000' --hostname 
 ----
 +
 This command adds `hivemq` to the `storage` Docker bridge network that was created when APIM was deployed.
+
 2. In your browser, go to `http://localhost:8086` to open the HiveMQ Control Center. You can log in with with User `admin` and password `hivemq`.
 +
 Any MQTT client can connect can connect to HiveMQ on port `1883`, and a websocket client can connect on port `8000`.
