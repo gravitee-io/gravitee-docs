@@ -1,7 +1,7 @@
-[[event-native-tutorials-mqtt-websocket]]
-= MQTT and Websocket
+[[event-native-tutorials-mqtt-websockets]]
+= MQTT and Websockets
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: /apim/3.x/event_native_tutorials_mqtt_websocket.html
+:page-permalink: /apim/3.x/event_native_tutorials_mqtt_websockets.html
 :page-folder: apim/v4-beta
 :page-layout: apim3x
 
@@ -16,9 +16,9 @@ Before running this tutorial, you must have:
 
 == Creating the API
 
-1. In the Tutorials Postman Collection, open the `MQTT and websocket` folder.
+1. In the Tutorials Postman Collection, open the `MQTT and Websockets` folder.
 
-2.  Open the `Create the API request` and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `entrypoints` you can see that we are creating one entrypoint, a `websocket` entrypoint. Under `endpointgroups` you can see that we are creating one `mqtt5` endpoint, which connects to the host `hivemq` on port `1883`
+2.  Open the `Create the API request` and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `entrypoints` you can see that we are creating one entrypoint, a `websocket` entrypoint. Under `endpointgroups` you can see that we are creating one `mqtt5` endpoint, which connects to the host `hivemq` on port `1883`.
 +
 [TIP]
 ====

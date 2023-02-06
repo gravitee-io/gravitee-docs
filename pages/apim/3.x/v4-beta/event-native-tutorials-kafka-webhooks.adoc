@@ -17,9 +17,9 @@ Before running this tutorial, you must have:
 
 1. In the Tutorials Postman Collection, open the `Kafka and Webhooks` folder.
 
-2. Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `subscription`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create a subscription - that is the gateway accepts a subscription instead of providing a target HTTP path for the request or initial connection. If you look under `entrypoints` you can see that we are creating one entrypoint, a `webhook` entrypoint. Under `endpointgroups` you can see that we are creating one `kafka` endpoint, which uses a bootstrap server called `kafka` on port `9092`. The `topics` array contains just one topic, `demo`.
+2. Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `subscription`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create a subscription - that is the gateway accepts a subscription instead of providing a target HTTP path for the request or initial connection. If you look under `listeners` you can see that we are creating two entrypoints, a `webhook` entrypoint, and an `http-post` entrypoint. In this tutorial the `http-post` entrypoint is only used for publishing data to Kafka. For a full tutorial on Kafka and HTTP, see link:/apim/3.x/event_native_tutorials_kafka_websockets.html[Kafka and HTTP].
 +
-There is also an `http` listener that we will use for publishing data to Kafka.
+Under `endpointgroups` you can see that we are creating one `kafka` endpoint, which uses a bootstrap server called `kafka` on port `9092`. The `topics` array contains just one topic, `demo`.
 +
 [TIP]
 ====
