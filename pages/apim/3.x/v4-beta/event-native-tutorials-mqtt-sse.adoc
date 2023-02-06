@@ -1,8 +1,8 @@
-[[event-native-tutorials-mqtt-websockets]]
-= MQTT and Websockets
+[[event-native-tutorials-mqtt-sse]]
+= MQTT and SSE
 :page-sidebar: apim_3_x_sidebar
-:page-permalink: /apim/3.x/event_native_tutorials_mqtt_websockets.html
-:page-folder: apim/v4-beta
+:page-permalink: /apim/3.x/event_native_tutorials_mqtt_sse.html
+:page-folder: apim/v4
 :page-layout: apim3x
 
 == Prerequisites 
@@ -12,13 +12,12 @@ Before running this tutorial, you must have:
 * Set up Postman, as described in link:{{'/apim/3.x/event_native_tutorials_postman.html' | relative_url}}[Setting up Postman].
 * The Gravitee API Management Gateway running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_apim.html' | relative_url}}[Installing APIM]. To confirm it is running, go to `http://localhost:8084`.
 * HiveMQ running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_hivemq.html'| relative_url}}[Installing HiveMQ]. To confirm it is running, go to `http://localhost:8086`.
-* Installed link:https://github.com/vi/websocat#websocat[websocat].
 
 == Creating the API
 
-1. In the Tutorials Postman Collection, open the `MQTT and Websockets` folder.
+1. In the Tutorials Postman Collection, open the `MQTT and SSE` folder.
 
-2.  Open the `Create the API request` and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `entrypoints` you can see that we are creating one entrypoint, a `websocket` entrypoint. Under `endpointgroups` you can see that we are creating one `mqtt5` endpoint, which connects to the host `hivemq` on port `1883`.
+2.  Open the `Create the API request` and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `entrypoints` you can see that we are creating one entrypoint, as `sse` entrypoint. Under `endpointgroups` you can see that we are creating one `mqtt5` endpoint, which connects to the host `hivemq` on port `1883`.
 +
 [TIP]
 ====
@@ -32,13 +31,13 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
 [code,json]
 ----
 {
-    "id": "2bb38b7c-1818-4b63-b38b-7c18185b63fd",
-    "name": "Demo of Websocket + MQTT",
+    "id": "2f82242e-fc70-4918-8224-2efc70a9182c",
+    "name": "MQTT and SSE",
     "apiVersion": "1.0.0",
     "definitionVersion": "4.0.0",
     "type": "async",
-    "createdAt": 1675164433265,
-    "updatedAt": 1675164433265,
+    "createdAt": 1675694466958,
+    "updatedAt": 1675694466958,
 ----
 +
 The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.20 Tutorials Environment. Click Save. 
@@ -67,12 +66,12 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
 [code,json]
 ----
 {
-    "id": "e9131ad7-2889-4481-931a-d72889148105",
+    "id": "3af3fc91-fa85-4de2-b3fc-91fa856de2c8",
     "name": "Open",
     "description": "Keyless",
-    "createdAt": 1675164515978,
-    "updatedAt": 1675164515978,
-    "publishedAt": 1675164515981,
+    "createdAt": 1675694517762,
+    "updatedAt": 1675694517762,
+    "publishedAt": 1675694517766,
 ----
 +
 The `id` is the ID of the plan we just created.
@@ -95,41 +94,16 @@ The API has been created and is ready to be used.
 + 
 You are now subscribed to the `demo` topic.
 
-3. Use `websocat` to connect to the API using the following terminal command.
+3. Use `curl` to connect to the SSE stream using the following terminal command.
 +
 [code,bash]
 ----
- websocat ws://localhost:8082/demo/mqtt
+ curl -N -H "Accept:text/event-stream" http://localhost:8082/demo/sse
 ----
 
-4. In the HiveMQ client, publish a message to the `demo` topic. You should see it appear in the terminal where `websocat` is running. 
-+
-[code,bash]
-----
-websocat ws://localhost:8082/demo/mqtt
-message from HiveMQ client
-----
+4. In the HiveMQ client, publish a message to the `demo` topic. You should see it appear in the terminal where `curl` is running. 
 +
 You should also see it in the "Messages" pane of the HiveMQ client window.
-
-5. publish a message on the `demo` topic using `websocat` by typing the message in the terminal window.
-+
-[code,bash]
-----
-websocat ws://localhost:8082/demo/mqtt
-message from HiveMQ client
-message from websocat
-----
-+
-The message will be echoed back to the terminal. This is because the API was created to publish and subscribe to all messages on the `demo` topic.
-+
-[code,bash]
-----
-websocat ws://localhost:8082/demo/mqtt
-message from HiveMQ client
-message from websocat
-message from websocat
-----
 
 == Adding a message filter
 
@@ -154,21 +128,21 @@ Send the request. You should see a response that begins like this.
 [code,json]
 ----
 {
-    "id": "2bb38b7c-1818-4b63-b38b-7c18185b63fd",
-    "name": "Demo of Websocket + MQTT - Subscription Filtering",
+    "id": "2f82242e-fc70-4918-8224-2efc70a9182c",
+    "name": "MQTT and SSE - Subscription Filtering",
     "apiVersion": "1.0.0",
     "definitionVersion": "4.0.0",
     "type": "async",
-    "deployedAt": 1675164661401,
+    "deployedAt": 1675694562971,
 ----
 
 2. Once you have modified the API, you have to redeploy it. Select "Redeploy API" and send the request. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
 
-3. Exit the existing `websocat` session using `CTRL C` and restart it.
+3. Use `curl` to reconnect to the SSE stream using the following terminal command.
 +
 [code,bash]
 ----
-websocat ws://localhost:8082/demo/mqtt
+curl -N -H "Accept:text/event-stream" http://localhost:8082/demo/sse
 ----
 
 4. Go back to the HiveMQ client at http://www.hivemq.com/demos/websocket-client/ and publish the following message to the `demo` topic.
@@ -180,7 +154,7 @@ websocat ws://localhost:8082/demo/mqtt
 }
 ----
 +
-You will see the message does not appear in the `websocat` terminal, because the filter prevented it from getting through. However, you will be able to see the message in the "Messages" pane of the HiveMQ client window, confirming that the message was published.
+You will see the message does not appear in the `curl` terminal, because the filter prevented it from getting through. However, you will be able to see the message in the "Messages" pane of the HiveMQ client window, confirming that the message was published.
 
 5. Now publish the following message to the `demo` topic.
 +
@@ -192,9 +166,7 @@ You will see the message does not appear in the `websocat` terminal, because the
 }
 ----
 +
-You will see the message does appear in the `websocat` terminal, because the filter allowed it to get through.
-
-6. In the `websocat` terminal, publish the following message: `new message`. You will see that it is not echoed back to the terminal, but it does appear on the "Messages" pane in the HiveMQ client.
+You will see the message does appear in the `curl` terminal, because the filter allowed it to get through.
 
 == Close the plan and delete the API
 
