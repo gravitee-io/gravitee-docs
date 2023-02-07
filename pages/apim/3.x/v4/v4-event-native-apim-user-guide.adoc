@@ -1,12 +1,11 @@
-[[v4-beta-event-native-apim-user-guide]]
+[[v4-event-native-apim-user-guide]]
 = User guide
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/event_native_apim_user_guide.html
-:page-folder: apim/v4-beta
+:page-folder: apim/v4
 :page-layout: apim3x
 
 [label label-version]#New in version 3.20.0#
-[label label-version]#BETA release#
 
 [NOTE]
 ====
@@ -26,7 +25,7 @@ The OpenAPI specification for the management API is available at link:/apim/3.x/
 
 [NOTE]
 ====
-The management API is in beta and it may change.
+The management API may change.
 ====
 
 == Listeners
@@ -285,9 +284,9 @@ They are standard plugins and can be installed as described in link:{{'/apim/3.x
 Connectors with `advanced` in their filenames can only be used with the Enterprise Edition of the Gravitee Gateway.
 ====
 
-== How to create a V4 BETA asynchronous API
+== How to create a V4 asynchronous API
 
-The link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee V4 BETA Postman Collection] contains several examples of how to create and test an asynchronous API using the event-native V4 BETA API definition and link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html' | relative_url}}[the new V4 BETA policy execution engine] .
+The link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee V4 Postman Collection] contains several examples of how to create and test an asynchronous API using the event-native V4 API definition and link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html' | relative_url}}[the new V4 policy execution engine] .
 
 For example, to create an HTTP POST entrypoint that connects to a Kafka endpoint, send a POST request to `{\{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/`, where `{\{management_host}}` is the host for the management API, with the following message body:
 
@@ -480,8 +479,8 @@ Policies can be set on request, response, subscribe, or publish phases. The foll
             ]
 ----
 
-For an example, see _04 - Event Consumption - Webhook_ > _Webhook Messaging Filtering_ > _Create API_ in the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee V4 BETA Postman Collection].
+For an example, see _04 - Event Consumption - Webhook_ > _Webhook Messaging Filtering_ > _Create API_ in the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee V4 Postman Collection].
 
 == Use cases
 
-The link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee V4 BETA Postman Collection] contains several examples of how end users can work with your asynchronous APIs. Some examples are described on link:event_native_apim_example_use_cases.html#event_consumption[Event consumption].
+The link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee V4 Postman Collection] contains several examples of how end users can work with your asynchronous APIs. Some examples are described on link:event_native_apim_example_use_cases.html#event_consumption[Event consumption].
