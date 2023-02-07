@@ -1,12 +1,11 @@
-[[v4-beta-event-native-apim-example-use-cases]]
+[[v4-event-native-apim-example-use-cases]]
 = Event-native API Management example use cases
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/event_native_apim_example_use_cases.html
-:page-folder: apim/v4-beta
+:page-folder: apim/v4
 :page-layout: apim3x
 
 [label label-version]#New in version 3.20.0#
-[label label-version]#BETA release#
 
 [NOTE]
 ====
@@ -106,13 +105,13 @@ For example, in the "Kafka" > "Create API" you should change line 36 of the requ
 
 ====  Enabling event-native API management
 
-To run these examples, you must enable the link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html#how_to_enable_and_disable_the_new_engine' | relative_url }}[new V4 BETA policy execution engine] first by setting the `gravitee_api_jupiterMode_enabled` environment variable to `true` on the Management API and the API Gateway.
+To run these examples, you must enable the link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html#how_to_enable_and_disable_the_new_engine' | relative_url }}[new V4 policy execution engine] first by setting the `gravitee_api_jupiterMode_enabled` environment variable to `true` on the Management API and the API Gateway.
 
 NOTE: See link:{{'/apim/3.x/apim_installguide_rest_apis_configuration.html#environment_variables' | relative_url }}[Environment variables] on the Management API and link:{{'/apim/3.x/apim_installguide_gateway_configuration.html#environment_variables' | relative_url }}[Environment variables] on the API Gateway for more detail about setting environment variables.
 
-=== V4 BETA 3.20.x Postman Collection
+=== V4 3.20.x Postman Collection
 
-These examples use the Gravitee V4 BETA 3.20.x Postman Collection, available from the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Public Workspace] in Postman.
+These examples use the Gravitee V4 3.20.x Postman Collection, available from the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee Public Workspace] in Postman.
 
 This collection uses the following four variables.
 
