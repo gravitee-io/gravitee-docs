@@ -1,16 +1,15 @@
-[[v4-beta-new-policy-execution-engine-introduction]]
-= V4 policy execution engine (V4 BETA)
+[[v4-new-policy-execution-engine-introduction]]
+= V4 policy execution engine
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/v4_new_policy_execution_engine_introduction.html
-:page-folder: apim/v4-beta
+:page-folder: apim/v4
 :page-layout: apim3x
 
 [label label-version]#New in version 3.20.0#
-[label label-version]#BETA release#
 
-Introduced in release 3.19.0 of the Gravitee API Management platform, there is a beta version of a new policy execution engine that enables an improved execution flow for synchronous APIs and supports event-driven policy execution for asynchronous APIs. It is based on a modern and fully reactive architecture designed to address a number of challenges Gravitee users have been facing with the existing policy execution engine, available with the Gravitee's V2 API definition specification used in versions prior to APIM 3.19.x.
+Introduced in release 3.19.0 of the Gravitee API Management platform, there is a new version of a new policy execution engine that enables an improved execution flow for synchronous APIs and supports event-driven policy execution for asynchronous APIs. It is based on a modern and fully reactive architecture designed to address a number of challenges Gravitee users have been facing with the existing policy execution engine, available with the Gravitee's V2 API definition specification used in versions prior to APIM 3.19.x.
 
-The new policy execution engine builds on the new V4 BETA API definition of Gravitee's event-native platform. This adds features such as native support for Pub/Sub (Publish-Subscribe) design and enabling policies at message level. The new V4 BETA event-native API definition makes it possible for the Gateway to handle asynchronous API use cases.
+The new policy execution engine builds on the new V4 API definition of Gravitee's event-native platform. This adds features such as native support for Pub/Sub (Publish-Subscribe) design and enabling policies at message level. The new V4  event-native API definition makes it possible for the Gateway to handle asynchronous API use cases.
 
 The new engine provides the following capabilities:
 
@@ -19,13 +18,11 @@ The new engine provides the following capabilities:
 * Removal of the need to define a scope for policies (`onRequest`, `onRequestContent`, `onResponse`, `onResponseContent`).
 * The introduction of new API types to better differentiate REST APIs from Async APIs (Websocket, SSE, Webhook), as a foundation to fully support the execution of Async APIs.
 
-NOTE: This BETA release does not provide GUI support for these capabilities. You can check out the new engine behaviour with the  link:{{ 'apim/3.x/event_native_apim_example_use_cases.html' | relative_url }}[V4 BETA event-native API Management example use cases].
-
-WARNING: This new policy execution engine has been released as a BETA version: it should not be used in production. The production-ready GA release, due in 2023, will come with additional features - link:https://www.gravitee.io/contact-us[contact us] if you want to know more about it and what new capabilities and improvements we are bringing to event-native API Management regarding synchronous and asynchronous APIs.
+NOTE: This release does not provide GUI support for these capabilities. You can check out the new engine behaviour with the  link:{{ 'apim/3.x/event_native_apim_example_use_cases.html' | relative_url }}[V4 event-native API Management example use cases].
 
 == How to enable and disable the new engine
 
-To enable the new V4 BETA policy execution engine, create a new environment variable called `gravitee_api_jupiterMode_enabled` and set it to `true` on the Management API and the API Gateway.
+To enable the new V4 policy execution engine, create a new environment variable called `gravitee_api_jupiterMode_enabled` and set it to `true` on the Management API and the API Gateway.
 
 To disable the new engine and revert to using the V3 engine mode, set this environment variable to `false`.
 

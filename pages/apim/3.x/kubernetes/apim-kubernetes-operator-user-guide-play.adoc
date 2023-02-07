@@ -6,7 +6,6 @@
 :page-layout: apim3x
 
 [label label-version]#New in version 3.19.0#
-[label label-version]#BETA release#
 
 == Overview
 
@@ -32,7 +31,7 @@ The `gravitee.yml` file value is listed below:
 https://github.com/gravitee-io/gravitee-api-management/blob/master/gravitee-apim-gateway/gravitee-apim-gateway-standalone/gravitee-apim-gateway-standalone-distribution/src/main/resources/config/gravitee.yml#L264
 +
 ----
-# [Alpha] Enable Kubernetes Synchronization
+# Enable Kubernetes Synchronization
 # This sync service requires to install Gravitee Kubernetes Operator
 #    kubernetes:
 #      enabled: false

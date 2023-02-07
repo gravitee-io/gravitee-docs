@@ -1,12 +1,11 @@
-[[v4-beta-event-native-apim-introduction]]
-= Event-native API Management (V4 BETA)
+[[v4-event-native-apim-introduction]]
+= Event-native API Management
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/event_native_apim_introduction.html
-:page-folder: apim/v4-beta
+:page-folder: apim/v4
 :page-layout: apim3x
 
 [label label-version]#New in version 3.20.0#
-[label label-version]#BETA release#
 
 == Event-driven asynchronous APIs
 
@@ -29,9 +28,9 @@ For example, Gravitee can subscribe to a Kafka topic and then allow filtered HTT
 
 image:{% link /images/apim/3.x/event-native/event-native-api-management-gateway.png %}[]
 
-== BETA Features
+== New Features
 
-The following features are available in the BETA release.
+The following features are available in this release.
 
 === HTTP POST and HTTP GET entrypoints
 
