@@ -246,7 +246,7 @@ The Gravitee Kafka connectors offer advanced protocol mediation capabilities tha
 | No | Yes
 |===
 
-The Kafka connector is useful where, for example, only protocol mediation is needed but guaranteed delivery or security.
+The Kafka connector is useful where, for example, only protocol mediation is needed but not guaranteed delivery or security.
 
 The Kafka Advanced connector is useful where messages must be delivered reliably (through quality of service) or securely (using advanced security), such as to customers who would pay for such information.
 
