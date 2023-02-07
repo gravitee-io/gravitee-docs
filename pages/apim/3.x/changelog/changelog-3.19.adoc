@@ -103,7 +103,7 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 === Features
 
 
-*_link:{{'/apim/3.x/apim_kubernetes_operator_overview.html' | relative_url }}[Beta - Gravitee Kubernetes Operator ]_*
+*_link:{{'/apim/3.x/apim_kubernetes_operator_overview.html' | relative_url }}[Gravitee Kubernetes Operator ]_*
 
 - Make the gateway listen to ConfigMap https://github.com/gravitee-io/issues/issues/8189[#8189]
 - Define ManagementContext to target specific environment https://github.com/gravitee-io/issues/issues/7982[#7982]
@@ -111,14 +111,14 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 - Start/stop an API on gateway using CRD https://github.com/gravitee-io/issues/issues/8136[#8136]
 - Update an API using CRD https://github.com/gravitee-io/issues/issues/7981[#7981]
 
-*_link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html' | relative_url }}[Beta - New gateway execution engine]_*
+*_link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html' | relative_url }}[New gateway execution engine]_*
 
 - Issue with response template and invoker timeout https://github.com/gravitee-io/issues/issues/8075[#8075]
 - Reactive Timeout https://github.com/gravitee-io/issues/issues/7988[#7988]
 - Security plan execution https://github.com/gravitee-io/issues/issues/7991[#7991]
 - Support Failover https://github.com/gravitee-io/issues/issues/8086[#8086]
 
-*_link:{{'/apim/3.x/event_native_apim_introduction.html' | relative_url }}[Alpha - Introducing Event-Native API Management]_*
+*_link:{{'/apim/3.x/event_native_apim_introduction.html' | relative_url }}[Introducing Event-Native API Management]_*
 
 - Introduce v4 api defitinion to support sync & async APIs https://github.com/gravitee-io/issues/issues/8068[#8068]
 - Deploy v4 api definition https://github.com/gravitee-io/issues/issues/8009[#8009]
