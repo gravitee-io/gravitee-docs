@@ -1,0 +1,8 @@
+= Upgrade to 3.21.0
+
+== Breaking changes
+
+=== Management API
+In previous versions, sending a POST request to /user/login without an Authorization returned HTTP Response 200.
+
+Starting with 3.21.0, if a POST request to /user/login does not have an Authorization header, it will receive a HTTP response 401 - Unauthorized.
