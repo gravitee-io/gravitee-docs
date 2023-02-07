@@ -11,6 +11,11 @@ This page describes how to install and run HiveMQ in a Docker container on `loca
 
 APIM must be running in Docker containers, as described in link:/apim/3.x/event_native_tutorials_apim.html[Installing APIM].
 
+[TIP]
+====
+When you set up APIM, two Docker bridge networks are created: `frontend` and `storage`. AKHQ must run on the `storage` network. The instructions below tell you how to do this.
+====
+
 == Installing HiveMQ
 
 1. To install and run HiveMQ, run the following command.

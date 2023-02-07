@@ -13,6 +13,11 @@ This page describes how to install and run a Kafka cluster and AKHQ in Docker co
 
 APIM must be running in Docker containers, as described in link:/apim/3.x/event_native_tutorials_apim.html[Installing APIM].
 
+[TIP]
+====
+When you set up APIM, two Docker bridge networks are created: `frontend` and `storage`. AKHQ must run on the `storage` network. The instructions below tell you how to do this.
+====
+
 == Installing AKHQ
 
 1. Download the `docker-compose.yml` file.
@@ -22,7 +27,7 @@ APIM must be running in Docker containers, as described in link:/apim/3.x/event_
 curl https://raw.githubusercontent.com/tchiotludo/akhq/master/docker-compose.yml -O
 ----
 
-2. Add the following lines to the end of `docker-compose.yml`.
+2. Add the following lines to the root level of `docker-compose.yml`.
 +
 [code,json]
 ----

@@ -20,7 +20,7 @@ Docker must be installed and running. For more information about installing Dock
 curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -O  
 ----
 
-2. Open `docker-compose.yml` in a text editor and add the following line to `/services/gateway/environment` section if it is not already there.
+2. Open `docker-compose.yml` in a text editor and add the following line to the `/services/gateway/environment` and `/services/management_api/environment` sections if it is not already there.
 +
 [code,yml]
 ----
@@ -44,4 +44,9 @@ docker compose up -d
 [TIP]
 ====
 Sometimes it can take a few minutes for APIM to fully start. If you get an error when going to `http://localhost:8084`, wait a few minutes and try again.
+====
+
+[NOTE]
+====
+When you use Docker as described above, two Docker bridge networks are created: `frontend` and `storage`. If you are running AKHQ (to use with Kafka tutorials) or HiveMQ (to use with MQTT tutorials), it must run on the `storage` network. The link:/apim/3.x/event_native_tutorials_akhq.html[Installing AKHQ] and link:/apim/3.x/event_native_tutorials_hivemq.html[Installing HiveMQ] pages describe how to do this. 
 ====
