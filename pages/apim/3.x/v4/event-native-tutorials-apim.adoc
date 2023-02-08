@@ -29,8 +29,14 @@ curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3
 +
 This ensures that the gateway runs with its event-native features enabled.
 
-3. In `docker-compose.yml`, make sure that all the `APIM_VERSION` variables are set to `{APIM_VERSION:-3.20.0}`
-+This ensures you are using the correct version of APIM.
+3. Create a file called `.env` and add the following line to it.
++
+[code]
+----
+APIM_VERSION=3.20.0
+----
++
+This ensures you are using the correct version of APIM.
 
 4. Run `docker compose` to download and start all of the components.
 +
