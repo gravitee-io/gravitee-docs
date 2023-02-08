@@ -13,6 +13,32 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.19.7 (2023-02-03)
+
+=== API
+* Plan policies were lost when migrated from an API to design studio https://github.com/gravitee-io/issues/issues/8632[#8632]
+* Bump Email Notifier to `1.5.0` https://github.com/gravitee-io/issues/issues/8830[#8830]
+* Update flows condition max size to 512 https://github.com/gravitee-io/issues/issues/8823[#8823] & https://github.com/gravitee-io/issues/issues/8671[#8671]
+* Duplicated platform flows when APIM is linked to Cockpit https://github.com/gravitee-io/issues/issues/8832[#8832]
+* Unable to start up with JDBC when platform flows have been defined with multiple steps on the same phase https://github.com/gravitee-io/issues/issues/8816[#8816]
+* Handle YAML Anchors and Alias when importing OpenAPI file https://github.com/gravitee-io/issues/issues/8858[#8858]
+
+=== Gateway
+* API Subscription was not working after closing and re-creating https://github.com/gravitee-io/issues/issues/8600[#8600]
+* Add support from websocket frame compression https://github.com/gravitee-io/issues/issues/8689[#8689]
+* Exception "Error while determining deployed APIs store into events payload" fixed https://github.com/gravitee-io/issues/issues/8464[#8464]
+* Do not save clientId in API key subscription https://github.com/gravitee-io/issues/issues/8855[#8855]
+* Properly set `response` attribute in the execution context for the `assign-attribute` policy https://github.com/gravitee-io/issues/issues/8810[#8810]
+
+=== Console
+
+* Display icons of APIs in API list screen https://github.com/gravitee-io/issues/issues/8809[#8809]
+* Global improvement on log filters https://github.com/gravitee-io/issues/issues/8822[#8822] & https://github.com/gravitee-io/issues/issues/8839[#8839]
+
+=== Portal
+
+* Properly display buttons in application analytics filters https://github.com/gravitee-io/issues/issues/8677[#8677]
+ 
 == APIM - 3.19.6 (2023-01-05)
 
 === API
@@ -77,7 +103,7 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 === Features
 
 
-*_link:{{'/apim/3.x/apim_kubernetes_operator_overview.html' | relative_url }}[Beta - Gravitee Kubernetes Operator ]_*
+*_link:{{'/apim/3.x/apim_kubernetes_operator_overview.html' | relative_url }}[Gravitee Kubernetes Operator ]_*
 
 - Make the gateway listen to ConfigMap https://github.com/gravitee-io/issues/issues/8189[#8189]
 - Define ManagementContext to target specific environment https://github.com/gravitee-io/issues/issues/7982[#7982]
@@ -85,14 +111,14 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 - Start/stop an API on gateway using CRD https://github.com/gravitee-io/issues/issues/8136[#8136]
 - Update an API using CRD https://github.com/gravitee-io/issues/issues/7981[#7981]
 
-*_link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html' | relative_url }}[Beta - New gateway execution engine]_*
+*_link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html' | relative_url }}[New gateway execution engine]_*
 
 - Issue with response template and invoker timeout https://github.com/gravitee-io/issues/issues/8075[#8075]
 - Reactive Timeout https://github.com/gravitee-io/issues/issues/7988[#7988]
 - Security plan execution https://github.com/gravitee-io/issues/issues/7991[#7991]
 - Support Failover https://github.com/gravitee-io/issues/issues/8086[#8086]
 
-*_link:{{'/apim/3.x/event_native_apim_introduction.html' | relative_url }}[Alpha - Introducing Event-Native API Management]_*
+*_link:{{'/apim/3.x/event_native_apim_introduction.html' | relative_url }}[Introducing Event-Native API Management]_*
 
 - Introduce v4 api defitinion to support sync & async APIs https://github.com/gravitee-io/issues/issues/8068[#8068]
 - Deploy v4 api definition https://github.com/gravitee-io/issues/issues/8009[#8009]
