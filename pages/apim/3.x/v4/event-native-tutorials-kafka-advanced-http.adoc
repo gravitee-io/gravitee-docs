@@ -1,0 +1,268 @@
+[[event-native-tutorials-kafka-advanced-http-confluentcloud]]
+= Kafka Advanced, HTTP, and Confluent Cloud
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: /apim/3.x/event_native_tutorials_kafka_advanced_http_confluentcloud.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+== Prerequisites 
+
+Before running this tutorial, you must have:
+
+* Set up Postman, as described in link:{{'/apim/3.x/event_native_tutorials_postman.html' | relative_url}}[Setting up Postman].
+* The Enterprise edition of Gravitee API Management Gateway running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_apim_ee.html' | relative_url}}[Installing APIM Enterprise Edition]. To confirm it is running, go to `http://localhost:8084`.
+* An instance of Kafka running on Confluent Cloud.
+
+== Configuring Confluent Cloud
+
+1. In Confluent Cloud, go to `Home` > `Environments` > Your Environment > Your Cluster.
+
+2. Under "Cluster Overview" in the left-hand menu, click "Cluster Settings".
+
+3. Copy the Bootstrap server host and port from the Endpoints pane and paste it into the `CURRENT VALUE` field for the `kafkabootstrap` variable in the APIM 3.20 Tutorials Environment in Postman. Click Save.
+
+4. In Confluent Cloud, under "Cluster Overview", click "API Keys" and then click "+ Add Key". Create a Global Access key
+
+5. Copy the key value into the into the `CURRENT VALUE` field for the `kafkakey` variable in the Postman environment, and copy the secret value into the `CURRENT VALUE` field for the `kafkasecret` variable. Click Save.
+
+== Creating the API
+
+1. In the Tutorials Postman Collection, open the `Kafka Advanced, HTTP, and Confluent Cloud` folder.
+
+2. Open the `Create the API request` and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `listeners` you can see that we are creating two entrypoints, an `http-post` entrypoint and an `http-get` entrypoint. 
++
+Under `endpointgroups` you can see that we are creating one `kafka-advanced` endpoint, which uses the bootstrap server specified by the `kafkabootstrap` variable. The `security` object contains the authentication information to allow the gateway to connect to Kafka. In this case we are using SASL.
++
+The `topics` array contains just one topic, `demo`.
++
+If you look under `endpoints` you will see the following code.
++
+[code,json]
+----
+                        "consumer" : {
+                            "enabled": true
+                        },
+----
++
+This is necessary to allow the API to consume data from Kafka.
++
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
+
+3. Send the request. You should receive a response that starts like this.
++
+[code,json]
+----
+{
+    "id": "bdd16092-4d36-47d7-9160-924d3657d7f2",
+    "name": "Kafka, HTTP, and Confluent Cloud",
+    "apiVersion": "1.0",
+    "definitionVersion": "4.0.0",
+    "type": "async",
+    "createdAt": 1675332450547,
+    "updatedAt": 1675332450547,
+----
++
+The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
+== Creating a keyless plan
+
+1. Select the "Create an Open (Keyless) Plan" request and look at the request body. It looks like this.
++
+[code,json]
+----
+{
+    "name": "Open",
+    "description": "Keyless",
+    "status": "PUBLISHED",
+    "characteristics": [],
+    "security": {
+        "type": "key-less"
+    }
+}
+----
++
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
+
+2. Send the request. You should receive a response that starts like this.
++
+[code,json]
+----
+{
+    "id": "21e75e0c-0515-43b8-a75e-0c051583b847",
+    "name": "Keyless",
+    "description": "Keyless",
+    "createdAt": 1675332875430,
+    "updatedAt": 1675332875430,
+    "publishedAt": 1675332875430,
+----
++
+The `id` is the ID of the plan we just created.
+
+3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
+== Starting the API
+
+1. Select the "Start the API" request. You will see that it has no request body.
+
+2. Send the request. You should receive a `204` response with no response body.
+
+The API has been created and is ready to be used.
+
+== Using the API
+
+We are now going to use the API to `POST` data to Kafka over HTTP, and `GET` data from Kafka over HTTP. 
+
+=== Push data
+
+1. In Postman, select "Push Data" and look at the request body. It looks like this.
++
+[code,json]
+----
+{
+    "tempF": "75"
+}
+----
+
+2. Send the request. You should receive a status response of `200 OK`.
+
+3. In Confluent Cloud, go to `Home` > `Environments` > Your Environment > Your Cluster. On the left hand side menu, Click "Topics", and then select the messages pane. This will display all the messages in the demo topic.
+
+4. Send the request several more times, and observe it appear on the messages pane.
+
+=== Get data
+
+1. In Postman, select "Get Data" and send the request. After about ten seconds, you should receive a response that looks like this.
++
+[code,json]
+----
+{
+    "items": []
+}
+----
++
+When we created the API, we created this entrypoint with the following configuration.
++
+[code,json]
+----
+                        "messagesLimitCount": 1,
+                        "headersInPayload": false,
+                        "metadataInPayload": false,
+                        "messagesLimitDurationMs": 10000
+----
++
+The first line means a request to this entrypoint will receive _at most_ 1 message. After receiving one message, the connection will be closed.
++ 
+The last line means that the connection will stay open for a maximum of ten seconds.
++
+In this example, no messages were published to the `demo` topic, so the connection closed after ten seconds, and the empty `items` array was returned.
+
+2. Send the "Get data" request again. _Immediately_ select "Push Data" and send the request four times. The response body for the "Get Data" request should look like this.
++
+[code,json]
+----
+{
+    "items": [
+        {
+            "content": "{\n    \"tempF\": \"75\"\n}"
+        }
+    ]
+}
+----
++
+You can see that the first message published while the "Get Data" request was returned in the `items` array. If you look at http://localhost:8080/ui/docker-kafka-server/tail, you will see that four messages were published.
+
+=== Modify and redeploy the API
+
+We are now going to modify the API so that the GET request can return up to 100 messages.
+
+1. In Postman, select "Modify the API" and look at the request body.
++
+Note that the request body is very similar to the request body for "Create the API". The key differences are:
++
+    * The request body contains an `id` field that specifies the ID of the API you are updating.
+    * The `messagesLimitCount` value in the `http-get` entrypoint is `100`.
+
+2. Send the request. The message body in the response should be similar to the message body you received when creating the API, but the value of `messagesLimitCount` should have been updated.
+
+3. Once you have modified the API, you have to redeploy it. Select "Redeploy API" and send the request. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
+
+4. Select "Get Data" and send the request. _Immediately_ select "Push Data" and send the request four times. The response body for the "Get Data" request should look like this.
++
+[code,json]
+----
+{
+    "items": [
+        {
+            "content": "{\n    \"tempF\": \"75\"\n}"
+        },
+        {
+            "content": "{\n    \"tempF\": \"75\"\n}"
+        },
+        {
+            "content": "{\n    \"tempF\": \"75\"\n}"
+        },
+        {
+            "content": "{\n    \"tempF\": \"75\"\n}"
+        }
+    ]
+}
+----
++
+You can see that the `items` array now contains four messages.
+
+== Changing to a rate-limiting plan
+
+we are now going to modify the API so that it uses a rate-limiting plan.
+
+1. In Postman, select "Close plan" and send the request. This closes the existing plan.
+
+2. In Postman, select "Create a rate-limiting plan" and look at the request body. This request body is much more complex than the request body for the plan we created earlier. For this example, the most important lines are the following.
++
+[code,json]
+----
+                       "rate": {
+                            "limit": 1,
+                            "periodTime": 20,
+                            "periodTimeUnit": "SECONDS"
+----
++
+These lines specify the rate limit of one request per 20 seconds.
++
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
+
+3. Send the request. You should receive a response that starts like this.
++
+[code,json]
+----
+{
+    "id": "ccf21839-1fc0-4bf3-b218-391fc01bf380",
+    "name": "Rate-limiting",
+    "description": "One request every 20 seconds",
+    "createdAt": 1675074425522,
+    "updatedAt": 1675074425522,
+    "publishedAt": 1675074425522,
+----
++
+The `id` is the ID of the API we just created.
+
+4. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
+5. Select "Push Data" and send the request four times in quick succession. Note that all the requests are accepted.
+
+6. Select "Redeploy API" and send the request. 
+
+7. Select "Push Data" and send the request four times in quick succession. Note that now only the first request is accepted. The others requests receive a response like this.
++
+[code,json]
+----
+{
+    "message": "Rate limit exceeded ! You reach the limit of 1 requests per 20 seconds",
+    "http_status_code": 429
+}
+----
+
+== Close the plan and delete the API
+
+After finishing this tutorial, run "Stop the API", "Close plan", and "Delete API" in the "Delete API" folder in Postman. This removes the plan and API.
+
+Alternatively, you can delete all Docker containers and volumes.

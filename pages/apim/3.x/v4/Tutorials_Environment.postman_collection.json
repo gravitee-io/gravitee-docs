@@ -54,9 +54,27 @@
 			"value": "",
 			"type": "default",
 			"enabled": true
+		},
+		{
+			"key": "kafkakey",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "kafkasecret",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "kafkabootstrap",
+			"value": "",
+			"type": "default",
+			"enabled": true
 		}
 	],
 	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2023-02-06T16:22:37.180Z",
+	"_postman_exported_at": "2023-02-09T08:59:07.106Z",
 	"_postman_exported_using": "Postman/10.9.3"
 }
