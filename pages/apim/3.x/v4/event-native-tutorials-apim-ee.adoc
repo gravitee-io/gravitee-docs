@@ -1,0 +1,78 @@
+[[event-native-tutorials-apim-ee]]
+= Installing APIM Enterprise Edition
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: /apim/3.x/event_native_tutorials_apim_ee.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+This page describes how to install and run APIM Enterprise Edition in Docker containers on `localhost`.
+
+== Prerequisites
+
+Docker must be installed and running. For more information about installing Docker, see the link:{{'https://www.docker.com/' | relative_url }}[Docker website].
+
+You must have a license key for the APIM Enterprise Edition. For more information about getting a license key, visit the link:https://www.gravitee.io/pricing[Gravitee pricing page].
+
+== Installing APIM
+
+1. Download the `docker-compose.yml` file.
++
+[code,bash]
+----
+curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -O  
+----
+
+2. Open `docker-compose.yml` in a text editor and add the following line to the `/services/gateway/environment` and `/services/management_api/environment` sections if it is not already there.
++
+[code,yml]
+----
+- gravitee_api_jupiterMode_enabled=true
+----
++
+This ensures that the gateway runs with its event-native features enabled.
+
+3. Under `/services/gateway/volumes` add the following line.
++
+[code,yml]
+----
+ - /gravitee/license.key:/opt/graviteeio-gateway/license/license.key
+----
++
+Where `/gravitee/license.key` is the full path to the license key. This ensures that the gateway can access the license key.
+
+4. Under `/services/management_api/volumes` add the following line.
++
+[code,yml]
+----
+ - /gravitee/license.key:/opt/graviteeio-gateway/license/license.key
+----
++
+Where `/gravitee/license.key` is the full path to the license key. This ensures that the management API can access the license key.
+
+5. Create a file called `.env` and add the following line to it.
++
+[code]
+----
+APIM_VERSION=3.20.0-ee
+----
++
+This ensures you are using the correct version of APIM.
+
+6. Run `docker compose` to download and start all of the components.
++
+[code,bash]
+----
+docker compose up -d
+----
+
+7. In your browser, go to `http://localhost:8084` to open the APIM UI. You can log in with the Username `admin` and Password `admin`.
++
+[TIP]
+====
+Sometimes it can take a few minutes for APIM to fully start. If you get an error when going to `http://localhost:8084`, wait a few minutes and try again.
+====
+
+[NOTE]
+====
+When you use Docker as described above, two Docker bridge networks are created: `frontend` and `storage`. If you are running AKHQ (to use with Kafka tutorials) or HiveMQ (to use with MQTT tutorials), it must run on the `storage` network. The link:/apim/3.x/event_native_tutorials_akhq.html[Installing AKHQ] and link:/apim/3.x/event_native_tutorials_hivemq.html[Installing HiveMQ] pages describe how to do this. 
+====
