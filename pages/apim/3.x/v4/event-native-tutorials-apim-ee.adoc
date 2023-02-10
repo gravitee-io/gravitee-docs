@@ -21,6 +21,13 @@ You must have a license key for the APIM Enterprise Edition. For more informatio
 ----
 curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -O  
 ----
++
+Windows users may have to use the following command.
++
+[code,bash]
+----
+curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -O docker-compose.yml  
+----
 
 2. Open `docker-compose.yml` in a text editor and add the following line to the `/services/gateway/environment` and `/services/management_api/environment` sections if it is not already there.
 +

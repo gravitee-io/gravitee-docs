@@ -8,10 +8,12 @@
 These tutorials use the desktop version of Postman.
 
 1. Download and import the following files into Postman.
-    * link:/pages/apim/3.x/v4/Tutorials_Environment.postman_collection.json[Gravitee Tutorials Postman Environment]
-    * link:/pages/apim/3.x/v4/Tutorials.postman_collection.json[Gravitee Tutorials Postman Collection]
+    * link:{{ '/pages/apim/3.x/v4/Tutorials_Environment.postman_collection.json' | relative_url}}[Gravitee Tutorials Postman Environment]
+    * link:{{ '/pages/apim/3.x/v4/Tutorials.postman_collection.json' | relative_url }}[Gravitee Tutorials Postman Collection]
 
-2. Make the Gravitee Tutorials Postman Environment active.
+2. Make the `APIM 3.20 Tutorials Environment` active by selecting it from the Environment dropdown menu at the top right of the Postman window.
++
+image::{% link /images/apim/3.x/tutorials/postman_environment_menu.png %}[ [alt="Postman environment menu",width=400]]
 
 [NOTE]
 ====
