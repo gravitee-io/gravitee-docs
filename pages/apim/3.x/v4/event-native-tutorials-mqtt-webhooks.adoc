@@ -174,7 +174,7 @@ Our filter is going to use this metadata to filter the messages.
                         "filter": "{#jsonPath(#message.content, '$.feature') == #subscription.metadata.feature}"
 ----
 +
-This filter, based on link:/apim/3.x/apim_publisherguide_expression_language.html[APIM Expression Language], blocks all messages, except when the `feature` property of the message matches the value of the subscription's `metadata.feature` property.
+This filter, based on link:{{ '/apim/3.x/apim_publisherguide_expression_language.html' | relative_url }}[APIM Expression Language], blocks all messages, except when the `feature` property of the message matches the value of the subscription's `metadata.feature` property.
 +
 [TIP]
 ====
