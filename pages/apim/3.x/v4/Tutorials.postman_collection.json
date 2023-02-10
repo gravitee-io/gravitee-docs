@@ -2306,7 +2306,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"application\",\n    \"description\":\"application\",\n    \"settings\":\n    {\n        \"app\":\n            {   \n                \"type\":\"demo\"}\n            }\n}",
+							"raw": "{\n    \"name\": \"application\",\n    \"description\": \"application\",\n    \"settings\": {\n        \"app\": {\n            \"type\": \"demo\"\n        }\n    }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5096,7 +5096,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"application\",\n    \"description\":\"application\",\n    \"settings\":\n    {\n        \"app\":\n            {   \n                \"type\":\"demo\"}\n            }\n}",
+							"raw": "{\n    \"name\": \"application\",\n    \"description\": \"application\",\n    \"settings\": {\n        \"app\": {\n            \"type\": \"demo\"\n        }\n    }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
