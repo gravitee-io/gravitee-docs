@@ -142,7 +142,7 @@ We are now going to add message filtering.
                          "filter": "{#jsonPath(#message.content, '$.feature') == 'demo-filter'}"
 ----
 +
-This filter, based on link:/apim/3.x/apim_publisherguide_expression_language.html[APIM Expression Language], blocks all messages, except when the `feature` property of the message matches is `demo-filter`.
+This filter, based on link:{{ '/apim/3.x/apim_publisherguide_expression_language.html' | relative_url }}[APIM Expression Language], blocks all messages, except when the `feature` property of the message matches is `demo-filter`.
 +
 [TIP]
 ====

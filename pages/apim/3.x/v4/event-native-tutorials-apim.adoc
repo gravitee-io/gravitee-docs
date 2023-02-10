@@ -61,5 +61,5 @@ Sometimes it can take a few minutes for APIM to fully start. If you get an error
 
 [NOTE]
 ====
-When you use Docker as described above, two Docker bridge networks are created: `frontend` and `storage`. If you are running AKHQ (to use with Kafka tutorials) or HiveMQ (to use with MQTT tutorials), it must run on the `storage` network. The link:/apim/3.x/event_native_tutorials_akhq.html[Installing AKHQ] and link:/apim/3.x/event_native_tutorials_hivemq.html[Installing HiveMQ] pages describe how to do this. 
+When you use Docker as described above, two Docker bridge networks are created: `frontend` and `storage`. If you are running AKHQ (to use with Kafka tutorials) or HiveMQ (to use with MQTT tutorials), it must run on the `storage` network. The link:{{ '/apim/3.x/event_native_tutorials_akhq.html' | relative_url }}[Installing AKHQ] and link:{{ '/apim/3.x/event_native_tutorials_hivemq.html'}}[Installing HiveMQ] pages describe how to do this. 
 ====
