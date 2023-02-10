@@ -29,9 +29,9 @@ Before running this tutorial, you must have:
 
 1. In the Tutorials Postman Collection, open the `Kafka Advanced, HTTP, and Confluent Cloud` folder.
 
-2. Open the `Create the API request` and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `listeners` you can see that we are creating two entrypoints, an `http-post` entrypoint and an `http-get` entrypoint. 
+2. Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `listeners` you can see that we are creating two entrypoints, an `http-post` entrypoint and an `http-get` entrypoint. 
 +
-Under `endpointgroups` you can see that we are creating one `kafka-advanced` endpoint, which uses the bootstrap server specified by the `kafkabootstrap` variable. The `security` object contains the authentication information to allow the gateway to connect to Kafka. In this case we are using SASL.
+Under `endpointGroups` you can see that we are creating one `kafka-advanced` endpoint, which uses the bootstrap server specified by the `kafkabootstrap` variable. The `security` object contains the authentication information to allow the gateway to connect to Kafka. In this case we are using SASL.
 +
 The `topics` array contains just one topic, `demo`.
 +
@@ -212,7 +212,7 @@ You can see that the `items` array now contains four messages.
 
 == Changing to a rate-limiting plan
 
-we are now going to modify the API so that it uses a rate-limiting plan.
+We are now going to modify the API so that it uses a rate-limiting plan.
 
 1. In Postman, select "Close plan" and send the request. This closes the existing plan.
 
