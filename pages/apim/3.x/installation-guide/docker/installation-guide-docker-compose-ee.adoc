@@ -1,4 +1,4 @@
-= Custom Installation with Docker Docker Compose (Enterprise Edition)
+= Custom Install with Docker Docker Compose (Enterprise Edition)
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installation_guide_docker_compose_ee.html
 :page-folder: apim/installation-guide/docker
@@ -8,7 +8,7 @@
 :page-liquid:
 :table-caption!:
 
-This page describes how to install and run APIM Enterprise Edition in Docker containers on `localhost` using a specified filesystem for persistence and plugins. 
+This page describes how to install and run APIM Enterprise Edition in Docker containers on `localhost` using the `docker compose` command and a specified filesystem for persistence and plugins. 
 
 == Prerequisites
 

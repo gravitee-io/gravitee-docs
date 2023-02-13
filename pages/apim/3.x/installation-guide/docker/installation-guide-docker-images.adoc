@@ -8,18 +8,17 @@
 :page-liquid:
 :table-caption!:
 
-== Setup
-Before you can get into the actual installation, a couple of things need to be set up
+This page describes how to install and run APIM in Docker containers on `localhost` using the `docker` command and a specified filesystem for persistence and plugins. 
 
-. *Docker*
-+
-Is assumed to be installed.
+== Prerequisites
 
-. *Persistence*
+Docker must be installed and running. For more information about installing Docker, see the link:{{'https://www.docker.com/' | relative_url }}[Docker website].
+
+== Installing APIM
+
+1. Create the following filesystem.
 +
-Containers are great, but you do want persistence in case they need to be restarted. You are going to persist the MongoDB data, the Elasticsearch data and provide locations for additional plugins (both for the Gateway and the REST API). It is assumed in this page that these will live under a filesystem mounted at `/gravitee` on the host system. 
-+
-[source,bash]
+[code,bash]
 ----
 mkdir /gravitee/mongodb
 mkdir /gravitee/mongodb/data
@@ -37,29 +36,18 @@ mkdir /gravitee/apim-portal-ui
 mkdir /gravitee/apim-portal-ui/logs
 ----
 
-. *Network*
-+
-To provide an easy way for the containers to *talk* in this setup, create two docker networks. One for *storage* communication, one for *frontend* communication. The combination of this network and giving names to the containers will allow you to specify connections easily.
+2. Create two Docker bridge networks, using the following commands.
 +
 [source,bash]
 ----
 docker network create graviteestorage
 docker network create graviteefrontend
 ----
++
+The `graviteestorage` network is for storage communication, and the `graviteefrontent` network is for frontend communication.
 
-NOTE: As was indicated before, your architecture may differ and thus require a different setup.
-
-
-== Install MongoDB
-
-.Assumptions
-|===
-|container|https://hub.docker.com/_/mongo[MongoDB^]
-|network|*graviteestorage*
-|persistence|*/gravitee/mongodb/data*
-|===
-
-.Instructions
+3. Install MongoDB using the following commands.
++
 [source,bash]
 ----
 docker pull mongo:3.6
@@ -68,17 +56,11 @@ docker run --name gravitee-mongo \
   --volume /gravitee/mongodb/data:/data/db \
   --detach mongo:3.6
 ----
++
+Note that MongoDB is on the `graviteestorage` network and uses `/gravitee/mongodb` for persistent storage.
 
-== Install Elasticsearch
-
-.Assumptions
-|===
-|container|https://hub.docker.com/_/elasticsearch[Elasticsearch^]
-|network|*graviteestorage*
-|persistence|*/gravitee/elasticsearch/data*
-|===
-
-.Instructions
+4. Install Elasticsearch using the following commands.
++
 [source,bash]
 ----
 docker pull docker.elastic.co/elasticsearch/elasticsearch:7.7.0
@@ -95,23 +77,14 @@ docker run --name gravitee-elasticsearch \
   --volume /gravitee/elasticsearch/data:/usr/share/elasticsearch/data \
   --detach docker.elastic.co/elasticsearch/elasticsearch:7.7.0
 ----
++
+Note that Elasticsearch is on the `graviteestorage` network and uses `/gravitee/elasticsearch` for persistent storage.
 
-== Install API Management Gateway
-
-.Assumptions
-|===
-|container|https://hub.docker.com/r/graviteeio/apim-gateway[Gateway^]
-|network|*graviteestorage*
-|network|*graviteefrontend*
-|persistence|*/gravitee/apim-gateway/plugins*
-|persistence|*/gravitee/apim-gateway/logs*
-|===
-
-.Instructions
+5. Install the API Management Gateway using the following commands.
++
 [source,bash]
 ----
 docker pull graviteeio/apim-gateway:latest
-
 docker run --publish 8082:8082 \
   --volume /gravitee/apim-gateway/plugins:/opt/graviteeio-gateway/plugins-ext \
   --volume /gravitee/apim-gateway/logs:/opt/graviteeio-gateway/logs \
@@ -123,26 +96,16 @@ docker run --publish 8082:8082 \
   --net graviteestorage \
   --name gravitee-apim-gateway \
   --detach graviteeio/apim-gateway:latest
-
 docker network connect graviteefrontend gravitee-apim-gateway
 ----
++
+Note that the API Management Gateway is on both the `graviteestorage` and `graviteefrontend` networks, and it uses `/gravitee/apim-gateway` for persistent storage. 
 
-== Install API Management REST API
-
-.Assumptions
-|===
-|container|https://hub.docker.com/r/graviteeio/apim-management-api[REST API^]
-|network|*graviteestorage*
-|network|*graviteefrontend*
-|persistence|*/gravitee/apim-management-api/plugins*
-|persistence|*/gravitee/apim-management-api/logs*
-|===
-
-.Instructions
+6. Install the API Management REST API using the following commands.
++
 [source,bash]
 ----
 docker pull graviteeio/apim-management-api:latest
-
 docker run --publish 8083:8083 \
   --volume /gravitee/apim-management-api/plugins:/opt/graviteeio-management-api/plugins-ext \
   --volume /gravitee/apim-management-api/logs:/opt/graviteeio-management-api/logs \
@@ -153,20 +116,13 @@ docker run --publish 8083:8083 \
   --net graviteestorage \
   --name gravitee-apim-management-api \
   --detach graviteeio/apim-management-api:latest
-
 docker network connect graviteefrontend gravitee-apim-management-api
 ----
++
+Note that the API Management REST API is on both the `graviteestorage` and `graviteefrontend` networks, and it uses `/gravitee/apim-api` for persistent storage. 
 
-== Install API Management Management UI
-
-.Assumptions
-|===
-|container|https://hub.docker.com/r/graviteeio/apim-management-ui[Management UI^]
-|network|*graviteefrontend*
-|persistence|*/gravitee/apim-management-ui/logs*
-|===
-
-.Instructions
+7. Install the API Management Management UI using the following commands.
++
 [source,bash]
 ----
 docker pull graviteeio/apim-management-ui:latest
@@ -177,17 +133,11 @@ docker run --publish 8084:8080 \
   --env MGMT_API_URL=http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT \
   --detach graviteeio/apim-management-ui:latest
 ----
++
+Note that the API Management UI is on the `graviteefrontend` network, and it uses `/gravitee/apim-management-ui` for persistent storage. 
 
-== Install API Management Portal UI
-
-.Assumptions
-|===
-|container|https://hub.docker.com/r/graviteeio/apim-portal-ui[Portal UI^]
-|network|*graviteefrontend*
-|persistence|*/gravitee/apim-portal-ui/logs*
-|===
-
-.Instructions
+8. Install the API Management Portal UI using the following commands.
++
 [source,bash]
 ----
 docker pull graviteeio/apim-portal-ui:latest
@@ -198,3 +148,6 @@ docker run --publish 8085:8080 \
   --env PORTAL_API_URL=http://localhost:8083/portal/environments/DEFAULT \
   --detach graviteeio/apim-portal-ui:latest
 ----
+Note that the API Management Portal UI is on the `graviteefrontend` network, and it uses `/gravitee/apim-portal-ui` for persistent storage.
+
+9. In your browser, go to `http://localhost:8084` to open the APIM UI. You can log in with the Username `admin` and Password `admin`.
