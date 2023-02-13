@@ -1,4 +1,4 @@
-= Docker Compose Installation
+= Custom Installation with Docker Compose
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installation_guide_docker_compose.html
 :page-folder: apim/installation-guide/docker
@@ -9,24 +9,19 @@
 :page-liquid:
 :table-caption!:
 
-// author: Tom Geudens
+This page describes how to install and run APIM in Docker containers on `localhost` using a specified filesystem for persistence and plugins. 
 
-== Setup
-Before you can get into the actual installation, a couple of things need to be set up
+== Prerequisites
 
-. *Docker*
-+
-Is assumed to be installed.
+Docker must be installed and running. For more information about installing Docker, see the link:{{'https://www.docker.com/' | relative_url }}[Docker website].
 
-. *Docker Compose*
-+
-Is assumed to be installed.
+== Installing APIM
 
-. *Persistence*
+=== Create the filesystem and download the Docker compose file
+
+1. Create the following filesystem.
 +
-Containers are great, but you do want persistence in case they need to be restarted. You are going to persist the MongoDB data, the Elasticsearch data and provide locations for additional plugins (both for the Gateway and the REST API). It is assumed in this page that these will live under a filesystem mounted at `/gravitee` on the host system. 
-+
-[source,bash]
+[code,bash]
 ----
 mkdir /gravitee/mongodb
 mkdir /gravitee/mongodb/data
@@ -42,300 +37,178 @@ mkdir /gravitee/apim-management-ui
 mkdir /gravitee/apim-management-ui/logs
 mkdir /gravitee/apim-portal-ui
 mkdir /gravitee/apim-portal-ui/logs
+mkdir /gravitee/installation
 ----
 
-NOTE: As was indicated before, your architecture may differ and thus require a different setup.
+2. Change to the `/gravitee/installation` directory/
 
-== Compose
-First you need to download the *docker-compose.yml* file.
-[source,bash]
+3. Download the `docker-compose.yml` file as `docker-compose-apim.yml`.
++
+[code,bash]
 ----
-curl -L https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -o "docker-compose.yml"
-----
-
-Next, you should *modify* this file to match your own architecture and preferences. You'll find a reference to each part of the compose file below and the changes necessary to match our basic architecture. 
-
-NOTE: You can perfectly use the file *as is* if you just want to get going. It will not use the filesystem setup mentioned above though.
-
-Once you are happy with things ... start the whole setup in one go
-[source,bash]
-----
-docker-compose up -d 
+curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -o docker-compose-apim.yml  
 ----
 
-== Reference - Volumes
-In the file you'll find this ...
+4. Create a file called `.env` and add the following line to it.
++
+[code]
+----
+APIM_VERSION=3.20.0
+----
++
+This ensures you are using the correct version of APIM.
+
+=== Edit `docker-compose-apim.yml`
+
+We are now going to edit `docker-compose-apim.yml` so the installation uses the `/gravitee` filesystem.
+
+1. Open `docker-compose-apim.yml` in a text editor.
+
+2. Remove the following lines.
++
 [source,yaml]
 ----
 volumes:
   data-elasticsearch:
   data-mongo:
 ----
++
 
-As we are using a plain filesystem at `/gravitee`, you can *remove* those lines.
-
-== Reference - MongoDB
-In the file you'll find this ...
+3. Change `/services/mongodb/volumes` from
++
 [source,yaml]
 ----
-  mongodb:
-    image: mongo:${MONGODB_VERSION:-3.6}
-    container_name: gio_apim_mongodb
-    restart: always
     volumes:
       - data-mongo:/data/db
       - ./logs/apim-mongodb:/var/log/mongodb
-    networks:
-      - storage
 ----
-
-And you turn it into this
++
+to
++
 [source,yaml]
 ----
-  mongodb:
-    image: mongo:${MONGODB_VERSION:-3.6}
-    container_name: gio_apim_mongodb
-    restart: always
     volumes:
       - /gravitee/mongodb/data:/data/db
-    networks:
-      - storage
 ----
++ 
+NOTE: The MongoDB container logs should be accessed using the `docker logs gio_apim_mongodb` command.
 
-NOTE: Accessing the logs of the MongoDB container should be done through `docker logs gio_apim_mongodb`.
-
-== Reference - Elasticsearch
-In the file you'll find this ...
+4. Change `/services/elasticsearch/volumes` from
++
 [source,yaml]
 ----
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION:-7.7.0}
-    container_name: gio_apim_elasticsearch
-    restart: always
     volumes:
       - data-elasticsearch:/usr/share/elasticsearch/data
-    environment:
-      - http.host=0.0.0.0
-      - transport.host=0.0.0.0
-      - xpack.security.enabled=false
-      - xpack.monitoring.enabled=false
-      - cluster.name=elasticsearch
-      - bootstrap.memory_lock=true
-      - discovery.type=single-node
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-      nofile: 65536
-    networks:
-      - storage
 ----
-
-And you turn it into this
++
+to
++
 [source,yaml]
 ----
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION:-7.7.0}
-    container_name: gio_apim_elasticsearch
-    restart: always
     volumes:
       - /gravitee/elasticsearch/data:/usr/share/elasticsearch/data
-    environment:
-      - http.host=0.0.0.0
-      - transport.host=0.0.0.0
-      - xpack.security.enabled=false
-      - xpack.monitoring.enabled=false
-      - cluster.name=elasticsearch
-      - bootstrap.memory_lock=true
-      - discovery.type=single-node
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-      nofile: 65536
-    networks:
-      - storage
 ----
++ 
+NOTE: The Elasticsearch container logs should be accessed using the `docker logs gio_apim_elasticsearch` command.
 
-NOTE: Accessing the logs of the Elasticsearch container should be done through `docker logs gio_apim_elasticsearch`
-
-== Reference - API Management Gateway
-In the file you'll find this ...
+5. Change `/services/gateway/volumes` from
++
 [source,yaml]
 ----
-  gateway:
-    image: graviteeio/apim-gateway:${APIM_VERSION:-3}
-    container_name: gio_apim_gateway
-    restart: always
-    ports:
-      - "8082:8082"
-    depends_on:
-      - mongodb
-      - elasticsearch
     volumes:
       - ./logs/apim-gateway:/opt/graviteeio-gateway/logs
-    environment:
-      - gravitee_management_mongodb_uri=mongodb://mongodb:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000
-      - gravitee_ratelimit_mongodb_uri=mongodb://mongodb:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000
-      - gravitee_reporters_elasticsearch_endpoints_0=http://elasticsearch:9200
-    networks:
-      - storage
-      - frontend
 ----
-
-And you turn it into this
++
+to
++
 [source,yaml]
 ----
-  gateway:
-    image: graviteeio/apim-gateway:${APIM_VERSION:-3}
-    container_name: gio_apim_gateway
-    restart: always
-    ports:
-      - "8082:8082"
-    depends_on:
-      - mongodb
-      - elasticsearch
     volumes:
       - /gravitee/apim-gateway/logs:/opt/graviteeio-gateway/logs
       - /gravitee/apim-gateway/plugins:/opt/graviteeio-gateway/plugins-ext
-    environment:
-      - gravitee_management_mongodb_uri=mongodb://mongodb:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000
-      - gravitee_ratelimit_mongodb_uri=mongodb://mongodb:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000
-      - gravitee_reporters_elasticsearch_endpoints_0=http://elasticsearch:9200
+----
+
+6. Add the following lines to `/services/gateway/environment`.
++
+[source,yaml]
+----
       - gravitee_plugins_path_0=/opt/graviteeio-gateway/plugins
       - gravitee_plugins_path_1=/opt/graviteeio-gateway/plugins-ext
-    networks:
-      - storage
-      - frontend
 ----
 
-== Reference - API Management REST API
-In the file you'll find this ...
+7. Remove `/services/management_api/links`.
+
+8. Change `/services/management_api/volumes` from
++
 [source,yaml]
 ----
-  management_api:
-    image: graviteeio/apim-management-api:${APIM_VERSION:-3}
-    container_name: gio_apim_management_api
-    restart: always
-    ports:
-      - "8083:8083"
-    links:
-      - mongodb
-      - elasticsearch
-    depends_on:
-      - mongodb
-      - elasticsearch
     volumes:
       - ./logs/apim-management-api:/opt/graviteeio-management-api/logs
-    environment:
-      - gravitee_management_mongodb_uri=mongodb://mongodb:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000
-      - gravitee_analytics_elasticsearch_endpoints_0=http://elasticsearch:9200
-    networks:
-      - storage
-      - frontend
 ----
-
-And you turn it into this
++
+to
++
 [source,yaml]
 ----
-  management-api:
-    image: graviteeio/apim-management-api:${APIM_VERSION:-3}
-    container_name: gio_apim_management_api
-    restart: always
-    ports:
-      - "8083:8083"
-    depends_on:
-      - mongodb
-      - elasticsearch
     volumes:
       - /gravitee/apim-management-api/logs:/opt/graviteeio-management-api/logs
       - /gravitee/apim-management-api/plugins:/opt/graviteeio-management-api/plugins-ext
-    environment:
-      - gravitee_management_mongodb_uri=mongodb://mongodb:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000
-      - gravitee_analytics_elasticsearch_endpoints_0=http://elasticsearch:9200
+----
+
+9. Add the following lines to `/services/management_api/environment`.
++
+[source,yaml]
+----
       - gravitee_plugins_path_0=/opt/graviteeio-management-api/plugins
       - gravitee_plugins_path_1=/opt/graviteeio-management-api/plugins-ext
-    networks:
-      - storage
-      - frontend
 ----
 
-== Reference - API Management Management UI
-In the file you'll find this ...
+10. Change `/services/management_ui/volumes` from
++
 [source,yaml]
 ----
-  management_ui:
-    image: graviteeio/apim-management-ui:${APIM_VERSION:-3}
-    container_name: gio_apim_management_ui
-    restart: always
-    ports:
-      - "8084:8080"
-    depends_on:
-      - management_api
-    environment:
-      - MGMT_API_URL=http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/
     volumes:
       - ./logs/apim-management-ui:/var/log/nginx
-    networks:
-      - frontend
 ----
-
-And you turn it into this
++
+to
++
 [source,yaml]
 ----
-  management-ui:
-    image: graviteeio/apim-management-ui:${APIM_VERSION:-3}
-    container_name: gio_apim_management_ui
-    restart: always
-    ports:
-      - "8084:8080"
-    depends_on:
-      - management-api
-    environment:
-      - MGMT_API_URL=http://localhost:8083/management/organizations/DEFAULT/environments/DEFAULT/
     volumes:
       - /gravitee/apim-management-ui/logs:/var/log/nginx
-    networks:
-      - frontend
 ----
 
-== Reference - API Management Portal UI
-In the file you'll find this ...
+11. Change `services/portal_ui/volumes` section from
++
 [source,yaml]
 ----
-  portal_ui:
-    image: graviteeio/apim-portal-ui:${APIM_VERSION:-3}
-    container_name: gio_apim_portal_ui
-    restart: always
-    ports:
-      - "8085:8080"
-    depends_on:
-      - management_api
-    environment:
-      - PORTAL_API_URL=http://localhost:8083/portal/environments/DEFAULT
     volumes:
       - ./logs/apim-portal-ui:/var/log/nginx
-    networks:
-      - frontend
 ----
-
-And you turn it into this
++
+to
++
 [source,yaml]
 ----
-  portal-ui:
-    image: graviteeio/apim-portal-ui:${APIM_VERSION:-3}
-    container_name: gio_apim_portal_ui
-    restart: always
-    ports:
-      - "8085:8080"
-    depends_on:
-      - management-api
-    environment:
-      - PORTAL_API_URL=http://localhost:8083/portal/environments/DEFAULT
     volumes:
       - /gravitee/apim-portal-ui/logs:/var/log/nginx
-    networks:
-      - frontend
 ----
+
+=== Run `docker compose`
+
+1. Run `docker compose` to download and start all of the components.
++
+[code,bash]
+----
+docker compose -f docker-compose-apim.yml up -d
+----
+
+2. In your browser, go to `http://localhost:8084` to open the APIM UI. You can log in with the Username `admin` and Password `admin`.
++
+[TIP]
+====
+Sometimes it can take a few minutes for APIM to fully start. If you get an error when going to `http://localhost:8084`, wait a few minutes and try again.
+====
+
+You can adapt the above instructions to suit your architecture if you need to.
