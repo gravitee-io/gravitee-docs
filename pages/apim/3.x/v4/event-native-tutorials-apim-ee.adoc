@@ -15,21 +15,14 @@ You must have a license key for the APIM Enterprise Edition. For more informatio
 
 == Installing APIM
 
-1. Download the `docker-compose.yml` file.
+1. Download the `docker-compose.yml` file as `docker-compose-apim-ee.yml`.
 +
 [code,bash]
 ----
-curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -O  
-----
-+
-Windows users may have to use the following command.
-+
-[code,bash]
-----
-curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -O docker-compose.yml  
+curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -o docker-compose-apim-ee.yml  
 ----
 
-2. Open `docker-compose.yml` in a text editor and add the following line to the `/services/gateway/environment` and `/services/management_api/environment` sections if it is not already there.
+2. Open `docker-compose-apim-ee.yml` in a text editor and add the following line to the `/services/gateway/environment` and `/services/management_api/environment` sections if it is not already there.
 +
 [code,yml]
 ----
@@ -69,7 +62,7 @@ This ensures you are using the correct version of APIM.
 +
 [code,bash]
 ----
-docker compose up -d
+docker compose -f docker-compose-apim-ee.yml up -d
 ----
 
 7. In your browser, go to `http://localhost:8084` to open the APIM UI. You can log in with the Username `admin` and Password `admin`.

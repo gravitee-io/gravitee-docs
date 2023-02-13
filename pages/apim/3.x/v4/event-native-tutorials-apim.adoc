@@ -13,21 +13,14 @@ Docker must be installed and running. For more information about installing Dock
 
 == Installing APIM
 
-1. Download the `docker-compose.yml` file.
+1. Download the `docker-compose.yml` file as `docker-compose-apim.yml`.
 +
 [code,bash]
 ----
-curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -O  
-----
-+
-Windows users may have to use the following command.
-+
-[code,bash]
-----
-curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -O docker-compose.yml  
+curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -o docker-compose-apim.yml  
 ----
 
-2. Open `docker-compose.yml` in a text editor and add the following line to the `/services/gateway/environment` and `/services/management_api/environment` sections if it is not already there.
+2. Open `docker-compose-apim.yml` in a text editor and add the following line to the `/services/gateway/environment` and `/services/management_api/environment` sections if it is not already there.
 +
 [code,yml]
 ----
@@ -49,7 +42,7 @@ This ensures you are using the correct version of APIM.
 +
 [code,bash]
 ----
-docker compose up -d
+docker compose -f docker-compose-apim.yml up -d
 ----
 
 5. In your browser, go to `http://localhost:8084` to open the APIM UI. You can log in with the Username `admin` and Password `admin`.
@@ -61,5 +54,5 @@ Sometimes it can take a few minutes for APIM to fully start. If you get an error
 
 [NOTE]
 ====
-When you use Docker as described above, two Docker bridge networks are created: `frontend` and `storage`. If you are running AKHQ (to use with Kafka tutorials) or HiveMQ (to use with MQTT tutorials), it must run on the `storage` network. The link:{{ '/apim/3.x/event_native_tutorials_akhq.html' | relative_url }}[Installing AKHQ] and link:{{ '/apim/3.x/event_native_tutorials_hivemq.html'}}[Installing HiveMQ] pages describe how to do this. 
+When you use Docker as described above, two Docker bridge networks are created: `frontend` and `storage`. If you are running AKHQ (to use with Kafka tutorials) or HiveMQ (to use with MQTT tutorials), it must run on the `storage` network. The link:{{ '/apim/3.x/event_native_tutorials_akhq.html' | relative_url }}[Installing AKHQ] and link:{{ '/apim/3.x/event_native_tutorials_hivemq.html' | relative_url}}[Installing HiveMQ] pages describe how to do this. 
 ====
