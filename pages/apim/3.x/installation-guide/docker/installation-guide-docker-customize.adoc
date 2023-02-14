@@ -7,26 +7,42 @@
 :page-keywords: Gravitee.io, API Management, apim, guide, manual, docker, customize, linux
 :page-liquid:
 
+This page explains how to further customize your Docker installation. 
 
-== Overview
+== Installing additional plugins
 
-This section explains how to customize your Docker installation. These procedures are intended for users who are already familiar with Docker.
+APIM Docker images contain the default plugins. To add an additional plugin, copy the plugin archive (a `.zip` file) into the `plugins-ext` folder. If you used the filestructure described in link:{{'apim/3.x/apim_installation_guide_docker_compose.html' | relative_url }}[Custom Install with Docker Compose], link:{{'apim/3.x/apim_installation_guide_docker_compose_ee.html' | relative_url }}[Custom Install with Docker Compose (EE)], link:{{'apim/3.x/apim_installation_guide_docker_images.html' | relative_url }}[Docker Images Install], or link:{{'apim/3.x/apim_installation_guide_docker_images_ee.html' | relative_url }}[Docker Images Install (EE)], the `plugin-ext` folder is `/gravitee/apim-gateway/plugins` for the gateway and `/gravitee/apim-management-api/plugins` for the management API.
 
-== Install an additional plugin
+You can download additional plugins from link:https://download.gravitee.io/#graviteeio-apim/plugins/[the plugins download page].
 
-APIM Docker images contain the default plugins. In order to add a custom plugin, it needs to be in the folder mapped to the `plugins-ext` folder of the image. In our architecture that is in:
-
-[source]
-----
-/gravitee/apim-gateway/plugins
-/gravitee/apim-management-api/plugins
-----
+For more information, about plugin deployment, see link:{{ '/apim/3.x/apim_devguide_plugins.html#deployment' | relative_url}}[Deployment].
 
 NOTE: Some plugins need to be installed on both the gateway and the management API. Please verify the specific plugin's documentation for the details.
 
-=== Use Redis as the datastore for rate-limit counters
+== Use Redis as the datastore for rate-limiting counters
 
-This requires a couple of additional environment parameters on starting the gateway container
+To use Redis as the datastore for rate-limiting counters, you have to have the Redis plugin installed on the gateway, and you have to start the container using some additional environment variables.
+
+If you do not have the Redis plugin, you can download it from the link:https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-apim-repository-redis/[Redis plugin download page].
+
+=== Using `docker compose`
+
+To use Redis with `docker compose`, edit the `/services/gateway/environment` section of the Docker compose file to include the following lines, and remove the line containing `gravitee_ratelimit_mongodb_uri`.
+[code,yml]
+----
+      - gravitee_ratelimit_type=redis
+      - gravitee_ratelimit_redis_host=gravitee-redis
+      - gravitee_ratelimit_redis_port=6379  
+----
+
+[NOTE]
+====
+Your Redis host and port may be different.
+====
+
+=== Using Docker images
+
+To use Redis with Docker images, add the following environment variables to the command used to start the gateway.
 
 [source]
 ----
@@ -35,18 +51,37 @@ This requires a couple of additional environment parameters on starting the gate
   --env gravitee_ratelimit_redis_port=6379 \  
 ----
 
-and you can then drop the equivalent parameter for mongodb
+You also need to remove the `gravitee_ratelimit_mongodb_uri` `env` from the command.
+
+[NOTE]
+====
+Your Redis host and port may be different.
+====
+
+== Use JDBC connection as the datastore for management
+
+To use JDBC as the datastore for management, you  have to have the JDBC plugin installed on the gateway and management API, and you have to start the containers using some additional environment variables.
+
+If you do not have the JDBC plugin, you can download it from the link:https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-apim-repository-jdbc//[JDBC plugin download page].
+
+=== Using `docker compose`
+
+To use JDBC with `docker compose`, edit the `/services/gateway/environment` section and the `/services/management_api/environment` section of the Docker compose file to include the following lines, and remove the lines containing `gravitee_management_mongodb_uri`.
 
 [source]
 ----
-  --env gravitee_ratelimit_mongodb_uri="mongodb://gravitee-mongo:27017/gravitee-apim?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000" \
+       - gravitee_management_type=jdbc
+       - gravitee_management_jdbc_url=jdbc:mysql://gravitee-mysql:3306/gravitee?useSSL=false&user=mysql_users&password=mysql_password
 ----
 
-NOTE: Your hostname and port may differ!
+[NOTE]
+====
+Your host, port, username, and password may be different.
+====
 
-=== Use JDBC connection as the datastore for management
+=== Using Docker images
 
-This requires a couple of additional environment parameters on starting the gateway container
+To use JDBC with Docker images, add the following environment variables to the commands used to start the gateway and the management API.
 
 [source]
 ----
@@ -54,11 +89,9 @@ This requires a couple of additional environment parameters on starting the gate
   --env gravitee_management_jdbc_url=jdbc:mysql://gravitee-mysql:3306/gravitee?useSSL=false&user=mysql_users&password=mysql_password \
 ----
 
-and you can then drop the equivalent parameter for mongodb
+You also need to remove the `gravitee_management_mongodb_uri` `env` from the command.
 
-[source]
-----
-  --env gravitee_management_mongodb_uri="mongodb://gravitee-mongo:27017/gravitee-apim?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000" \
-----
-
-NOTE: Your hostname and port may differ!
+[NOTE]
+====
+Your host, port, username, and password may be different.
+====
