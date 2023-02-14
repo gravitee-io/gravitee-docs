@@ -694,15 +694,9 @@ entries:
               - title: Installation and deployment
                 output: web
                 subfolderitems:
-                  - title: Introduction
-                    output: web
-                    url: /apim/3.x/apim_kubernetes_operator_installation.html
                   - title: Deploying GKO
                     output: web
-                    url: /apim/3.x/apim_kubernetes_operator_installation_cluster.html
-                  - title: Setting up a local cluster for deployment
-                    output: web
-                    url: /apim/3.x/apim_kubernetes_operator_installation_local.html
+                    url: /apim/3.x/apim_kubernetes_operator_installation.html
                   - title: Monitoring GKO
                     output: web
                     url: /apim/3.x/apim-kubernetes-operator-monitoring.html
