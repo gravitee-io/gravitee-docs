@@ -41,7 +41,7 @@ mkdir /gravitee/apim-portal-ui/logs
 mkdir /gravitee/installation
 ----
 
-2. Change to the `/gravitee/installation` directory/
+2. Change to the `/gravitee/installation` directory.
 
 3. Download the `docker-compose.yml` file as `docker-compose-apim-ee.yml`.
 +
@@ -223,7 +223,7 @@ to
 docker compose -f docker-compose-apim-ee.yml up -d
 ----
 
-2. In your browser, go to `http://localhost:8084` to open the APIM UI. You can log in with the Username `admin` and Password `admin`.
+2. In your browser, go to `http://localhost:8084` to open the Console. You can log in with the Username `admin` and Password `admin`.
 +
 [TIP]
 ====

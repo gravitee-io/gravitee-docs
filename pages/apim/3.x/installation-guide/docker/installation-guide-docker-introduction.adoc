@@ -6,20 +6,67 @@
 :page-description: Gravitee.io API Management - Installation Guide - Docker - Introduction
 :page-keywords: Gravitee.io, API Management, apim, guide, manual, docker, linux
 :page-liquid:
+:page-toc: false
 
 Our documentation describes six different ways you can install APIM using Docker.
 
 * link:{{ '/apim/3.x/apim_installation_guide_docker_compose_quickstart.html' | relative_url }}[Quick install with `docker compose`]
-* link:{{ '/apim/3.x/apim_installation_guide_docker_compose_quickstart_ee.html' | relative_url }}[Quick install with `docker compose`(Enterprise Edition)]
+* link:{{ '/apim/3.x/apim_installation_guide_docker_compose_quickstart_ee.html' | relative_url }}[Quick install with `docker compose` (Enterprise Edition)]
 * link:{{ '/apim/3.x/apim_installation_guide_docker_compose.html' | relative_url }}[Custom install with `docker compose`]
-* link:{{ '/apim/3.x/apim_installation_guide_docker_compose_ee.html' | relative_url }}[Custom install with docker compose (Enterprise Edition)]
+* link:{{ '/apim/3.x/apim_installation_guide_docker_compose_ee.html' | relative_url }}[Custom install with `docker compose` (Enterprise Edition)]
 * link:{{ '/apim/3.x/apim_installation_guide_docker_images.html' | relative_url }}[Docker images install]
 * link:{{ '/apim/3.x/apim_installation_guide_docker_images_ee.html' | relative_url }}[Docker images install (Enterprise Edition)]
+
+You should be familiar with Docker before installing with Docker.
+
+== Architecture
 
 The following diagram shows the architecture that all of these installation methods use.
 
 image::{% link images/apim/3.x/installation/docker/apim_simple_docker_architecture.png %}[APIM simple docker architecture]
 
-You should be familiar with Docker before installing with Docker.
+The components have the following configuration.
+
+[cols="2,3,2,2,4"]
+|===
+| Component | Docker container name | Networks | Published port | Storage (where used)
+
+| API Gateway
+| `gio_apim_gateway`
+| `frontend`, `storage`
+| `8082`
+| `/gravitee/apim-gateway`
+
+| Management API
+| `gio_apim_management_api`
+| `frontend`, `storage`
+| `8083`
+| `/gravitee/apim-management-api`
+
+| Console
+| `gio_apim_management_ui`
+| `frontend`
+| `8084`
+| `/gravitee/apim-management-ui`
+
+| Developer Portal
+| `gio_apim_portal_ui`
+| `frontend`
+| `8085`
+| `/gravitee/apim-portal-ui`
+
+| MongoDB
+| `gio_apim_mongodb`
+| `storage`
+| n/a
+| `/gravitee/mongodb`
+
+| Elasticsearch
+| `gio_apim_elasticsearch`
+| `storage`
+| n/a
+| `/gravitee/elasticsearch`
+
+|===
 
 If you need a different architecture, you can adapt these instructions to meet your needs.

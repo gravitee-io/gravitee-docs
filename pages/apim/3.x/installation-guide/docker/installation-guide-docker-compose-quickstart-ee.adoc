@@ -55,7 +55,7 @@ This ensures you are using the correct version of APIM.
 docker compose -f docker-compose-apim-ee.yml up -d
 ----
 
-6. In your browser, go to `http://localhost:8084` to open the APIM UI. You can log in with the Username `admin` and Password `admin`.
+6. In your browser, go to `http://localhost:8084` to open the Console. You can log in with the Username `admin` and Password `admin`.
 +
 [TIP]
 ====
