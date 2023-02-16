@@ -11,17 +11,17 @@ This page explains how to further customize your Docker installation.
 
 == Installing additional plugins
 
-APIM Docker images contain the default plugins. To add an additional plugin, copy the plugin archive (a `.zip` file) into the `plugins-ext` folder. If you used the filestructure described in link:{{'apim/3.x/apim_installation_guide_docker_compose.html#create_the_filesystem_and_download_the_docker_compose_file' | relative_url }}[the custom install section], the `plugin-ext` folder is `/gravitee/apim-gateway/plugins` for the gateway and `/gravitee/apim-management-api/plugins` for the management API.
+APIM Docker images contain the default plugins. To add an additional plugin, copy the plugin archive (a `.zip` file) into the `plugins-ext` folder. If you used the filestructure described in link:{{'apim/3.x/apim_installation_guide_docker_compose.html#create_the_filesystem_and_download_the_docker_compose_file' | relative_url }}[the custom install section], the `plugin-ext` folder is `/gravitee/apim-gateway/plugins` for the API Gateway and `/gravitee/apim-management-api/plugins` for the Management API.
 
 You can download additional plugins from link:https://download.gravitee.io/#graviteeio-apim/plugins/[the plugins download page].
 
 For more information, about plugin deployment, see link:{{ '/apim/3.x/apim_devguide_plugins.html#deployment' | relative_url}}[Deployment].
 
-NOTE: Some plugins need to be installed on both the gateway and the management API. Please verify the specific plugin's documentation for the details.
+NOTE: Some plugins need to be installed on both the API Gateway and the Management API. Please verify the specific plugin's documentation for the details.
 
 == Use Redis as the datastore for rate-limiting counters
 
-To use Redis as the datastore for rate-limiting counters, you have to have the Redis plugin installed on the gateway, and you have to start the container using some additional environment variables.
+To use Redis as the datastore for rate-limiting counters, you have to have the Redis plugin installed on the API Gateway, and you have to start the container using some additional environment variables.
 
 If you do not have the Redis plugin, you can download it from the link:https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-apim-repository-redis/[Redis plugin download page].
 
@@ -42,7 +42,7 @@ Your Redis host and port may be different.
 
 === Using Docker images
 
-To use Redis with Docker images, add the following environment variables to the command used to start the gateway.
+To use Redis with Docker images, add the following environment variables to the command used to start the API Gateway.
 
 [source]
 ----
@@ -60,9 +60,9 @@ Your Redis host and port may be different.
 
 == Use JDBC connection as the datastore for management
 
-To use JDBC as the datastore for management, you  have to have the JDBC plugin installed on the gateway and management API, and you have to start the containers using some additional environment variables.
+To use JDBC as the datastore for management, you  have to have the correct JDBC driver installed on the API Gateway and the Management API, and you have to start the containers using some additional environment variables.
 
-If you do not have the JDBC plugin, you can download it from the link:https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-apim-repository-jdbc//[JDBC plugin download page].
+For more information on the JDBC plugin and drivers, see link:{{ '/apim/3.x/apim_installguide_repositories_jdbc.html' | relative_url}}[JDBC].
 
 === Using `docker compose`
 
@@ -74,8 +74,10 @@ To use JDBC with `docker compose`, edit the `$services.gateway.environment` sect
        - gravitee_management_jdbc_url=jdbc:mysql://gravitee-mysql:3306/gravitee?useSSL=false&user=mysql_users&password=mysql_password
 ----
 
-[NOTE]
+[WARNING]
 ====
+Make sure your `gravitee_management_jdbc_url` is appropriate for your environment. In particular, be cautions about using `useSSL=false` in production. 
+
 Your host, port, username, and password may be different.
 ====
 
@@ -91,7 +93,9 @@ To use JDBC with Docker images, add the following environment variables to the c
 
 You also need to remove the `gravitee_management_mongodb_uri` `env` from the command.
 
-[NOTE]
+[WARNING]
 ====
+Make sure your `gravitee_management_jdbc_url` is appropriate for your environment. In particular, be cautions about using `useSSL=false` in production. 
+
 Your host, port, username, and password may be different.
 ====

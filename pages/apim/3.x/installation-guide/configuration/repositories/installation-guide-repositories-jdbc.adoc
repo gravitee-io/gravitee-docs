@@ -36,7 +36,7 @@ This repository plugin is for connecting to SQL databases.
 
 == Install the JDBC plugin
 
-NOTE: Because the plugin is part of the default distribution from APIM version 3.5, you only need to complete these steps for version 3.4 or earlier.
+NOTE: Because the plugin is part of the default distribution from APIM version 3.5, you only need to complete steps 1 and 2 steps for version 3.4 or earlier. The drivers (steps 3, 4, and5) may need to be installed for all versions.
 
 Repeat these steps on each component (APIM Gateway and APIM API) where the SQL database is used.
 
