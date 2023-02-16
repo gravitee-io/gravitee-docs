@@ -75,7 +75,7 @@ volumes:
 ----
 +
 
-3. Change `/services/mongodb/volumes` from
+3. Change `$services.mongodb.volumes` from
 +
 [source,yaml]
 ----
@@ -94,7 +94,7 @@ to
 + 
 NOTE: The MongoDB container logs should be accessed using the `docker logs gio_apim_mongodb` command.
 
-4. Change `/services/elasticsearch/volumes` from
+4. Change `$services.elasticsearch.volumes` from
 +
 [source,yaml]
 ----
@@ -112,7 +112,7 @@ to
 + 
 NOTE: The Elasticsearch container logs should be accessed using the `docker logs gio_apim_elasticsearch` command.
 
-5. Change `/services/gateway/volumes` from
+5. Change `$services.gateway.volumes` from
 +
 [source,yaml]
 ----
@@ -129,7 +129,7 @@ to
       - /gravitee/apim-gateway/plugins:/opt/graviteeio-gateway/plugins-ext
 ----
 
-6. Add the following lines to `/services/gateway/environment`.
+6. Add the following lines to `$services.gateway.environment`.
 +
 [source,yaml]
 ----
@@ -137,9 +137,9 @@ to
       - gravitee_plugins_path_1=/opt/graviteeio-gateway/plugins-ext
 ----
 
-7. Remove `/services/management_api/links`.
+7. Remove `$services.management_api.links`.
 
-8. Change `/services/management_api/volumes` from
+8. Change `$services.management_api.volumes` from
 +
 [source,yaml]
 ----
@@ -156,7 +156,7 @@ to
       - /gravitee/apim-management-api/plugins:/opt/graviteeio-management-api/plugins-ext
 ----
 
-9. Add the following lines to `/services/management_api/environment`.
+9. Add the following lines to `$services.management_api.environment`.
 +
 [source,yaml]
 ----
@@ -164,7 +164,7 @@ to
       - gravitee_plugins_path_1=/opt/graviteeio-management-api/plugins-ext
 ----
 
-10. Change `/services/management_ui/volumes` from
+10. Change `$services.management_ui.volumes` from
 +
 [source,yaml]
 ----
@@ -180,7 +180,7 @@ to
       - /gravitee/apim-management-ui/logs:/var/log/nginx
 ----
 
-11. Change `services/portal_ui/volumes` section from
+11. Change `$services.portal_ui.volumes` section from
 +
 [source,yaml]
 ----
@@ -200,14 +200,14 @@ to
 
 1. Copy your license key to `/gravitee/license.key`.
 
-2. Open `docker-compose-apim-ee.yml` in a text editor, and under `/services/gateway/volumes` add the following line.
+2. Open `docker-compose-apim-ee.yml` in a text editor, and under `$services.gateway.volumes` add the following line.
 +
 [code,yml]
 ----
  - /gravitee/license.key:/opt/graviteeio-gateway/license/license.key
 ----
 
-3. Under `/services/management_api/volumes` add the following line.
+3. Under `$services.management_api.volumes` add the following line.
 +
 [code,yml]
 ----

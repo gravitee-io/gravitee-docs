@@ -27,7 +27,7 @@ If you do not have the Redis plugin, you can download it from the link:https://d
 
 === Using `docker compose`
 
-To use Redis with `docker compose`, edit the `/services/gateway/environment` section of the Docker compose file to include the following lines, and remove the line containing `gravitee_ratelimit_mongodb_uri`.
+To use Redis with `docker compose`, edit the `$services.gateway.environment` section of the Docker compose file to include the following lines, and remove the line containing `gravitee_ratelimit_mongodb_uri`.
 [code,yml]
 ----
       - gravitee_ratelimit_type=redis
@@ -66,7 +66,7 @@ If you do not have the JDBC plugin, you can download it from the link:https://do
 
 === Using `docker compose`
 
-To use JDBC with `docker compose`, edit the `/services/gateway/environment` section and the `/services/management_api/environment` section of the Docker compose file to include the following lines, and remove the lines containing `gravitee_management_mongodb_uri`.
+To use JDBC with `docker compose`, edit the `$services.gateway.environment` section and the `$services.management_api.environment` section of the Docker compose file to include the following lines, and remove the lines containing `gravitee_management_mongodb_uri`.
 
 [source]
 ----

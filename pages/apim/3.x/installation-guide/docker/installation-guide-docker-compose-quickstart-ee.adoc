@@ -21,7 +21,7 @@ You must have a license key for the APIM Enterprise Edition. For more informatio
 curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -o docker-compose-apim-ee.yml  
 ----
 
-2. Open `docker-compose-apim-ee.yml` in a text editor, and under `/services/gateway/volumes` add the following line.
+2. Open `docker-compose-apim-ee.yml` in a text editor, and under `$services.gateway.volumes` add the following line.
 +
 [code,yml]
 ----
@@ -30,7 +30,7 @@ curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3
 +
 Where `/gravitee/license.key` is the full path to the license key. This ensures that the gateway can access the license key.
 
-3. Under `/services/management_api/volumes` add the following line.
+3. Under `$services.management_api.volumes` add the following line.
 +
 [code,yml]
 ----
