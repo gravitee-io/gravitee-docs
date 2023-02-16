@@ -16,24 +16,33 @@ Docker must be installed and running. For more information about installing Dock
 
 == Installing APIM
 
-1. Create the following filesystem.
+1. We need the following directory structure.
++
+[code]
+----
+/gravitee
+ ├── apim-gateway
+ │    ├── logs
+ │    └── plugins
+ ├── apim-management-api
+ │    ├── logs
+ │    └── plugins
+ ├── apim-management-ui
+ │    └── logs
+ ├── apim-portal-ui
+ │    └── logs
+ ├── elasticsearch
+ │    └── data
+ └── mongodb
+     └── data
+----
++
+Create it with the following command.
 +
 [code,bash]
 ----
-mkdir /gravitee/mongodb
-mkdir /gravitee/mongodb/data
-mkdir /gravitee/elasticsearch
-mkdir /gravitee/elasticsearch/data
-mkdir /gravitee/apim-gateway
-mkdir /gravitee/apim-gateway/plugins
-mkdir /gravitee/apim-gateway/logs
-mkdir /gravitee/apim-management-api
-mkdir /gravitee/apim-management-api/plugins
-mkdir /gravitee/apim-management-api/logs
-mkdir /gravitee/apim-management-ui
-mkdir /gravitee/apim-management-ui/logs
-mkdir /gravitee/apim-portal-ui
-mkdir /gravitee/apim-portal-ui/logs
+mkdir -p /gravitee/{mongodb/data,elasticsearch/data,apim-gateway/plugins,apim-gateway/logs,\
+apim-management-api/plugins,apim-management-api/logs,apim-management-ui/logs,apim-portal-ui/logs}
 ----
 
 2. Create two Docker bridge networks, using the following commands.
