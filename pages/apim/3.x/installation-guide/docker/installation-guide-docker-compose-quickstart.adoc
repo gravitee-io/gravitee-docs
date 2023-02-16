@@ -4,7 +4,7 @@
 :page-folder: apim/installation-guide/docker
 :page-layout: apim3x
 
-This page describes how to install and run APIM in Docker containers on `localhost` using the `docker compose` command.
+This page describes how to install and run APIM in Docker containers on `localhost` using the `docker compose` command. If you need granular control over where persistence data is stored, or if you need to add plugins, use the link:{{'apim/3.x/apim_installation_guide_docker_compose.html' | relative_url }}[Custom Install with Docker Docker Compose] or link:{{ 'apim/3.x/apim_installation_guide_docker_images.html' | relative_url}}[Docker Images Install].
 
 == Prerequisites
 

@@ -1,10 +1,10 @@
-= Quick Install with Docker Compose  (Enterprise Edition)
+= Quick Install with Docker Compose (Enterprise Edition)
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_installation_guide_docker_compose_quickstart_ee.html
 :page-folder: apim/installation-guide/docker
 :page-layout: apim3x
 
-This page describes how to install and run APIM Enterprise Edition in Docker containers on `localhost` using the `docker compose` command.
+This page describes how to install and run APIM Enterprise Edition in Docker containers on `localhost` using the `docker compose` command. If you need granular control over where persistence data is stored, or if you need to add plugins, use the link:{{'apim/3.x/apim_installation_guide_docker_compose_ee.html' | relative_url }}[Custom Install with Docker Docker Compose (Enterprise Edition)] or link:{{ 'apim/3.x/apim_installation_guide_docker_images_ee.html' | relative_url}}[Docker Images Install (Enterprise Edition)].
 
 == Prerequisites
 
