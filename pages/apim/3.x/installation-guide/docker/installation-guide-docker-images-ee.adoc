@@ -55,11 +55,13 @@ The `storage` network is for storage communication, and the `frontend` network i
 +
 [source,bash]
 ----
-docker pull mongo:3.6
+docker pull mongo:5
+
 docker run --name gio_apim_mongodb \
   --net storage \
   --volume /gravitee/mongodb/data:/data/db \
-  --detach mongo:3.6
+  --detach mongo:5
+
 ----
 +
 Note that MongoDB is on the `storage` network and uses `/gravitee/mongodb` for persistent storage.
