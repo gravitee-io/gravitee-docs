@@ -211,7 +211,8 @@ to
 +
 [code,yml]
 ----
- - /gravitee/license.key:/opt/graviteeio-gateway/license/license.key
+ - /gravitee/license.key:/opt/graviteeio-management-api/license/license.key
+
 ----
 
 === Run `docker compose`

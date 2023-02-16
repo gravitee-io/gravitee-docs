@@ -34,7 +34,7 @@ Where `/gravitee/license.key` is the full path to the license key. This ensures 
 +
 [code,yml]
 ----
- - /gravitee/license.key:/opt/graviteeio-gateway/license/license.key
+ - /gravitee/license.key:/opt/graviteeio-management-api/license/license.key
 ----
 +
 Where `/gravitee/license.key` is the full path to the license key. This ensures that the management API can access the license key.
