@@ -17,6 +17,8 @@ Our documentation describes six different ways you can install APIM using Docker
 * link:{{ '/apim/3.x/apim_installation_guide_docker_images.html' | relative_url }}[Docker images install]
 * link:{{ '/apim/3.x/apim_installation_guide_docker_images_ee.html' | relative_url }}[Docker images install (Enterprise Edition)]
 
+The quick install methods get APIM up and running quickly without any plugins. The custom install methods, and the image-based methods, give you more control over the location of persistence data and the ability to add plugins.
+
 You should be familiar with link:https://docs.docker.com/[Docker] before installing with Docker.
 
 
