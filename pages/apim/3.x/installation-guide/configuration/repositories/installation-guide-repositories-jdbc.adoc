@@ -9,16 +9,15 @@
 
 == Overview
 
-This repository plugin is for connecting to SQL databases.
+The JDBC plugin is part of the default distribution of APIM. However, you need to install the correct driver for the database you are using. 
 
 == Supported databases
 
 |===
-|Database | Version tested | APIM Plugin | JDBC Driver
+|Database | Version tested | JDBC Driver
 
 |PostgreSQL
 |9 / 10 / 11 / 12 / 13
-.4+|https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-apim-repository-jdbc/[Download the same version as your APIM platform]
 |https://jdbc.postgresql.org/download/[Download page]
 
 |MySQL
@@ -34,18 +33,18 @@ This repository plugin is for connecting to SQL databases.
 |https://docs.microsoft.com/en-us/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017[Download page]
 |===
 
-== Install the JDBC plugin
-
-NOTE: Because the plugin is part of the default distribution from APIM version 3.5, you only need to complete steps 1 and 2 steps for version 3.4 or earlier. The drivers (steps 3, 4, and 5) may need to be installed for all versions.
+== Install the JDBC driver
 
 Repeat these steps on each component (APIM Gateway and APIM API) where the SQL database is used.
 
- . Download the plugin corresponding to your APIM version (take the latest maintenance release).
- . Place the zip file in the plugin directory for each component (`$GRAVITEE_HOME/plugins`).
- . Download the JDBC driver corresponding to your database version.
- . Place the driver in `$GRAVITEE_HOME/plugins/ext/repository-jdbc`.
- . Configure your `gravitee.yml` files, as described in the next section.
+ 1. Download the JDBC driver corresponding to your database version.
+ 2. Place the driver in `$GRAVITEE_HOME/plugins/ext/repository-jdbc`.
+ 3. Configure your `gravitee.yml` files, as described in the next section.
 
+[TIP]
+====
+If you are using Docker to install and run APIM, you should place the driver in the `plugins-ext` folder and configure it by using the Docker compose file or command-line arguments. For more information, see link:{{'/apim/3.x/apim_installation_guide_docker_customize.html' | relative_url}}[Further Customization] of a Docker installation.
+====
 
 == Configuration
 

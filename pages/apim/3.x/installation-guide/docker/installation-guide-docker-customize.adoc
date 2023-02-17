@@ -25,7 +25,7 @@ To use Redis as the datastore for rate-limiting counters, you have to have the R
 
 If you do not have the Redis plugin, you can download it from the link:https://download.gravitee.io/#graviteeio-apim/plugins/repositories/gravitee-apim-repository-redis/[Redis plugin download page].
 
-=== Using `docker compose`
+=== Using with `docker compose`
 
 To use Redis with `docker compose`, edit the `$services.gateway.environment` section of the Docker compose file to include the following lines, and remove the line containing `gravitee_ratelimit_mongodb_uri`.
 [code,yml]
@@ -40,7 +40,7 @@ To use Redis with `docker compose`, edit the `$services.gateway.environment` sec
 Your Redis host and port may be different.
 ====
 
-=== Using Docker images
+=== Using with Docker images
 
 To use Redis with Docker images, add the following environment variables to the command used to start the API Gateway.
 
@@ -62,9 +62,15 @@ Your Redis host and port may be different.
 
 To use JDBC as the datastore for management, you  have to have the correct JDBC driver installed on the API Gateway and the Management API, and you have to start the containers using some additional environment variables.
 
+=== Download the driver 
+
+1. Download the correct driver for your database from link:{{'/apim/3.x/apim_installguide_repositories_jdbc.html#supported_databases' | relative_url}}[Supported databases].
+
+2. Place it in the `plugins-ext` folder. If you used the filestructure described in link:{{'apim/3.x/apim_installation_guide_docker_compose.html#create_the_filesystem_and_download_the_docker_compose_file' | relative_url }}[the custom install section], the `plugin-ext` folder is `/gravitee/apim-gateway/plugins` for the API Gateway and `/gravitee/apim-management-api/plugins` for the Management API.
+
 For more information on the JDBC plugin and drivers, see link:{{ '/apim/3.x/apim_installguide_repositories_jdbc.html' | relative_url}}[JDBC].
 
-=== Using `docker compose`
+=== Using with `docker compose`
 
 To use JDBC with `docker compose`, edit the `$services.gateway.environment` section and the `$services.management_api.environment` section of the Docker compose file to include the following lines, and remove the lines containing `gravitee_management_mongodb_uri`.
 
@@ -81,7 +87,7 @@ Make sure your `gravitee_management_jdbc_url` is appropriate for your environmen
 Your host, port, username, and password may be different.
 ====
 
-=== Using Docker images
+=== Using with Docker images
 
 To use JDBC with Docker images, add the following environment variables to the commands used to start the gateway and the management API.
 
