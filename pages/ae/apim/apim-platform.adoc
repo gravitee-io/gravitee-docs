@@ -34,3 +34,11 @@ The following configuration alerts when an APIM Gateway is stopped:
 
 .API Management - API Gateway stopped
 image::{% link images/ae/apim/api_gateway_alert_lifecycle_stopped.png %}[API Gateway stopped]
+
+=== API Gateway is unhealthy
+
+It is also possible to be alerted if the Gateway is unhealthy. For example, an API Gateway can be considered unhealthy when it loses its connection to the database, but is still running and capable of handling requests. Here is an example of a health check alert configuration:
+
+.API Management - API Gateway unhealthy
+image::{% link images/ae/apim/api_gateway_alert_unhealthy.png %}[API Gateway unhealthy]
+
