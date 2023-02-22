@@ -52,3 +52,5 @@ docker compose -f docker-compose-apim.yml up -d
 ====
 Sometimes it can take a few minutes for APIM to fully start. If you get an error when going to `http://localhost:8084` or `http://localhost:8085`, wait a few minutes and try again.
 ====
+
+Now APIM is up and running, read the link:{{'/apim/3.x/apim_quickstart_publish.html' | relative_url}}[Quick Start Guide] for your next steps.

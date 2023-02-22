@@ -4,7 +4,15 @@
 :page-folder: apim/quickstart
 :page-layout: apim3x
 
-Now that you've successfully installed Gravitee.io APIM, this quick start guide will get you up and running in no time. You can find more detailed information about how to publish and consume APIs in APIM in the following sections:
+Now that you've successfully installed Gravitee.io APIM, this quick start guide will get you up and running in no time. 
+
+Under "Getting Started", you can read about how to link:{{'/apim/3.x/apim_quickstart_console_login.html' | relative_url}}[log on to the Console] and link:{{'/apim/3.x/apim_quickstart_portal_login.html' | relative_url}}[log on to the Developer Portal].
+
+You can read about how to link:{{ '/apim/3.x/apim_quickstart_publish_ui.html' | relative_url}}[publish your first API with the Console] or link:{{'/apim/3.x/apim_quickstart_publish_api.html' | }}[publish your first API with the management API].
+
+You can also read about how to link:{{'/apim/3.x/apim_quickstart_consume_ui.html' | relative_url}}[consume an API using the Developer Portal] or link:{{'/apim/3.x/apim_quickstart_consume_api.html' | relative_url}}[consume an API using the management API]. There is also some information about link:{{'/apim/3.x/apim_quickstart_consume_test.html' | relative_url}}[testing your API].
+
+You can find more detailed information about how to publish and consume APIs in APIM in the following sections:
 
 * link:{{ '/apim/3.x/apim_publisherguide_manage_apis.html' | relative_url }}[API Publisher Guide]
 * link:{{ '/apim/3.x/apim_consumerguide_portal.html' | relative_url }}[API Consumer Guide]
