@@ -1,5 +1,5 @@
 [[apim-kubernetes-operator-installation]]
-= GKO installation and deployment
+= Deploying GKO on a Kubernetes cluster
 :page-sidebar: apim_3_x_sidebar
 :page-permalink: apim/3.x/apim_kubernetes_operator_installation.html
 :page-folder: apim/kubernetes
@@ -7,39 +7,61 @@
 
 [label label-version]#New in version 3.19.0#
 
-The current GKO deployment process is mostly identical for both possible scenarios, as follows:
+== Overview
 
-1. In a typical deployment scenario, you can deploy the GKO on an existing, APIM-ready remote / cloud-based cluster.
-2. For testing purposes, you can also set up a local cluster and deploy the GKO on it.
+This section provides steps on how to deploy the Gravitee Kubernetes Operator (GKO) on an existing Kubernetes cluster.
 
-== Deploying GKO on an existing cluster
+NOTE: If your architecture requires the management of multiple Kubernetes clusters with a different set of APIs for each cluster, you should deploy the GKO separately on each cluster. Follow the deployment process described below for each cluster deployment.
 
-Deploying the Gravitee Kubernetes Operator (GKO) on an existing remote / cloud-based APIM-ready Kubernetes cluster involves the following stages:
+=== Prerequisites
 
-1. Deploy the GKO on your cluster.
-2. Create a Management Context custom resource.
-3. Create an API Definition custom resource - this creates a new API on the cluster.
-4. Test the new API by calling it through the APIM Gateway.
+Before you start, you need to have the following software set up and running on your machine:
 
-Read all about it link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[here].
+. https://kubernetes.io/docs/tasks/tools/#kubectl[Kubectl].
+. https://helm.sh/docs/intro/install/[Helm v3].
 
+This guide also assumes that APIM is up and running on your cluster. If you have not installed APIM yet, follow our link:{{ '/apim/3.x/apim_installguide_kubernetes.html' | relative_url }}[installation guide^].
 
-== Setting up a new local cluster for GKO deployment
+NOTE: For the gateway to be able to synchronize with the operator resources, the value of the `gateway.services.sync.kubernetes.enabled` property must be set to `true` in APIM configuration.
 
-If you do not have an existing APIM-ready Kubernetes cluster you can deploy the GKO on, you can create and set up a local cluster on your machine.
+By default the Kubernetes synchronizer is configured to look for API definitions in the API Gateway namespace. To watch all namespaces you must set the property `gateway.services.sync.kubernetes.namespaces` to `all` in the Gateway configuration. You can also provide a specific list of namespaces to watch. This requires that the Gateway service account has the `list` permissions for configmaps at the cluster level or on the list of namespaces defined in the `gateway.services.sync.kubernetes.namespaces` property.
 
-This setup involves the following stages:
+== Deploying the GKO on the cluster
 
-1. Set up your environment (prerequisite step).
-2. Create a local APIM-ready Kubernetes cluster.
-3. Monitor the APIM pods startup until they are ready.
-4. Check if the console is up and running.
+=== Install using the bundled resources file
 
-After the local cluster setup, the next steps are to:
+NOTE: Starting with version 0.5.0 of the operator, the preferred way to deploy is using Helm. The steps described in this section are still available for backward compatibility.
 
-1. link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[Deploy the GKO on the cluster]
-2. link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html' | relative_url }}[Try out the GKO functionality]
+==== STEP 1: Create the operator namespace
 
-NOTE: It is strongly recommended to only use local GKO cluster deployments for testing purposes - never in production.
+If you are upgrading from a previous version of the operator, the namespace should already exist and you can skip this step.
 
-Learn all about local cluster installation and setup link:{{ '/apim/3.x/apim_kubernetes_operator_installation_local.html' | relative_url }}[here].
+....
+kubectl create namespace gko-system
+....
+
+==== STEP 2: Apply the bundle file
+
+....
+kubectl apply -f https://github.com/gravitee-io/gravitee-kubernetes-operator/releases/latest/download/bundle.yml
+....
+
+The GKO has now been deployed on your cluster.
+
+=== Install using Helm
+
+To install the chart with the release name `graviteeio-gko`:
+
+....
+$ helm repo add graviteeio https://helm.gravitee.io
+$ helm install graviteeio-gko graviteeio/gko
+....
+
+By default, the operator will listen to resources created in the whole cluster. If you want to restrict the operator to a specific namespace, you must set the `manager.scope.cluster` value to `false`. This way, the operator will be exclusively listening to resources created in the release namespace.
+
+....
+$ helm repo add graviteeio https://helm.gravitee.io
+$ helm install --set manager.scope.cluster=false -n ${RELEASE_NAMESPACE} graviteeio-gko graviteeio/gko
+....
+
+NOTE: If you are installing the operator with the cluster scope enabled (which is the default), it is recommended to install one instance of the operator per cluster. If you are installing the operator with the cluster scope disabled, you can install multiple instances of the operator in the same cluster, each one watching a different namespace.

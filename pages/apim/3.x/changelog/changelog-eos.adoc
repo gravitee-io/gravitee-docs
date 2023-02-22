@@ -187,7 +187,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 *_Console_*
 
 - Alert not correctly displayed/saved https://github.com/gravitee-io/issues/issues/6705[#6705]
-- An organization user (and environnement admin) can't delete a dictionary he has created https://github.com/gravitee-io/issues/issues/6556[#6556]
+- An organization user (and environment admin) can't delete a dictionary he has created https://github.com/gravitee-io/issues/issues/6556[#6556]
 - Count function, when saving alert, not saved properly https://github.com/gravitee-io/issues/issues/7279[#7279]
 - Error in console when opening APIM Console https://github.com/gravitee-io/issues/issues/7737[#7737]
 - Padding issue on content of some Console screen https://github.com/gravitee-io/issues/issues/7738[#7738]
@@ -273,7 +273,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 *_General_*
 
 - Backport of #7489 in 3.10.x https://github.com/gravitee-io/issues/issues/7490[#7490]
-- When filtering through the logs, showing results as the maximum alows, and no other pages even though there are more results https://github.com/gravitee-io/issues/issues/6913[#6913]
+- When filtering through the logs, showing results as the maximum allows, and no other pages even though there are more results https://github.com/gravitee-io/issues/issues/6913[#6913]
 
 *_Management_*
 
@@ -614,7 +614,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 
 *_Portal_*
 
-- Possibilty to disable promoted card on page list https://github.com/gravitee-io/issues/issues/6472[#6472]
+- Possibility to disable promoted card on page list https://github.com/gravitee-io/issues/issues/6472[#6472]
 
 === Improvements
 
@@ -1060,7 +1060,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 
 *_Policy_*
 
-- [data-logging-masking] datas are no longer masked https://github.com/gravitee-io/issues/issues/6122[#6122]
+- [data-logging-masking] data are no longer masked https://github.com/gravitee-io/issues/issues/6122[#6122]
 
 *_Portal_*
 
@@ -1220,7 +1220,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 
 *_Policy_*
 
-- [generate-http-signature] Genrate HTTP Signature policy https://github.com/gravitee-io/issues/issues/4899[#4899]
+- [generate-http-signature] Generate HTTP Signature policy https://github.com/gravitee-io/issues/issues/4899[#4899]
 
 *_Portal_*
 
@@ -1324,7 +1324,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 
 *_Gateway_*
 
-- Enhance certificate management in keystore to enable to differenciate certificates per domain https://github.com/gravitee-io/issues/issues/5894[#5894]
+- Enhance certificate management in keystore to enable to differentiate certificates per domain https://github.com/gravitee-io/issues/issues/5894[#5894]
 - Resource hogging when using many certificates in keystore https://github.com/gravitee-io/issues/issues/5895[#5895]
 
 *_Management_*
@@ -1374,7 +1374,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 
 *_Console_*
 
-- Probem on registration of the proxy conf https://github.com/gravitee-io/issues/issues/5896[#5896]
+- Problem on registration of the proxy conf https://github.com/gravitee-io/issues/issues/5896[#5896]
 
 *_General_*
 
@@ -1418,7 +1418,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 
 *_Management_*
 
-- "order" field of Plans get reseted when imported from 3.5.x to 3.8.x https://github.com/gravitee-io/issues/issues/5696[#5696]
+- "order" field of Plans get reset when imported from 3.5.x to 3.8.x https://github.com/gravitee-io/issues/issues/5696[#5696]
 - Allow to specify multiple roles to map with ldap idp https://github.com/gravitee-io/issues/issues/5619[#5619]
 - Check plan policy configuration https://github.com/gravitee-io/issues/issues/5952[#5952]
 - Flows property not accepted in request payload for Update Plan https://github.com/gravitee-io/issues/issues/5694[#5694]
@@ -1535,7 +1535,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 - Strange UI behaviour in the console https://github.com/gravitee-io/issues/issues/5807[#5807]
 - [alerting] When creating "Alert on the health status of the node", CREATE button is disabled https://github.com/gravitee-io/issues/issues/5808[#5808]
 
-*_Managment_*
+*_Management_*
 
 - API Analytics response payload not displayed, fails with javascript error e.getTextArea is not a function https://github.com/gravitee-io/issues/issues/5364[#5364]
 
@@ -1699,7 +1699,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 
 - Cannot ask for review anymore https://github.com/gravitee-io/issues/issues/5558[#5558]
 - Cannot publish / unpublish a page with a link https://github.com/gravitee-io/issues/issues/5559[#5559]
-- Check existance of confirmUrl https://github.com/gravitee-io/issues/issues/5567[#5567]
+- Check existence of confirmUrl https://github.com/gravitee-io/issues/issues/5567[#5567]
 - Error when updating user's avatar https://github.com/gravitee-io/issues/issues/5533[#5533]
 - [gateway] reintroduce serializers/deserializers on gravitee-definition https://github.com/gravitee-io/issues/issues/5642[#5642]
 
@@ -1731,7 +1731,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 *_General_*
 
 - Backport #5621 https://github.com/gravitee-io/issues/issues/5633[#5633]
-- Default_api_logo.png can not be overriden https://github.com/gravitee-io/issues/issues/5524[#5524]
+- Default_api_logo.png can not be overridden https://github.com/gravitee-io/issues/issues/5524[#5524]
 - Merge 3.0.17 https://github.com/gravitee-io/issues/issues/5647[#5647]
 
 *_Helm_*
@@ -1808,7 +1808,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 - Backport #5558 https://github.com/gravitee-io/issues/issues/5568[#5568]
 - Backport #5564 https://github.com/gravitee-io/issues/issues/5590[#5590]
 - Backport #5567 https://github.com/gravitee-io/issues/issues/5589[#5589]
-- Default_api_logo.png can not be overriden https://github.com/gravitee-io/issues/issues/5524[#5524]
+- Default_api_logo.png can not be overridden https://github.com/gravitee-io/issues/issues/5524[#5524]
 
 *_IdentityProvider_*
 
@@ -1951,7 +1951,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 - Search criteria and table offset get lost when clicking 'back to Health-check' https://github.com/gravitee-io/issues/issues/5302[#5302]
 - [portal] unable to logout with OIDC provider https://github.com/gravitee-io/issues/issues/5247[#5247]
 
-*_Managment_*
+*_Management_*
 
 - API Analytics response payload not displayed, fails with javascript error e.getTextArea is not a function https://github.com/gravitee-io/issues/issues/5364[#5364]
 
@@ -2081,7 +2081,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 *_General_*
 
 - Merge 3.0.16 https://github.com/gravitee-io/issues/issues/5299[#5299]
-- ResonseContainer Annotation does not work for `Page` and `PagedResult` https://github.com/gravitee-io/issues/issues/5289[#5289]
+- ResponseContainer Annotation does not work for `Page` and `PagedResult` https://github.com/gravitee-io/issues/issues/5289[#5289]
 
 *_Management_*
 
@@ -2465,7 +2465,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 - Manage rights on the plans displayed on the policy studio https://github.com/gravitee-io/issues/issues/4770[#4770]
 - OpenAPI with external $ref is not well parsed https://github.com/gravitee-io/issues/issues/4967[#4967]
 - Swagger type is not sync with API model https://github.com/gravitee-io/issues/issues/4788[#4788]
-- [studio] scope is not automaticaly selected https://github.com/gravitee-io/issues/issues/4801[#4801]
+- [studio] scope is not automatically selected https://github.com/gravitee-io/issues/issues/4801[#4801]
 
 *_Portal_*
 
@@ -2513,7 +2513,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 
 *_Management_*
 
-- Newsletter improvment https://github.com/gravitee-io/issues/issues/4692[#4692]
+- Newsletter improvement https://github.com/gravitee-io/issues/issues/4692[#4692]
 - Social idp are not enabled after creation https://github.com/gravitee-io/issues/issues/4956[#4956]
 
 *_Portal_*
@@ -2618,7 +2618,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 
 *_Gateway_*
 
-- Avoid usage of URI.create to handle properly path and query parameters with special caracters https://github.com/gravitee-io/issues/issues/4837[#4837]
+- Avoid usage of URI.create to handle properly path and query parameters with special characters https://github.com/gravitee-io/issues/issues/4837[#4837]
 
 *_General_*
 
@@ -3406,7 +3406,7 @@ The version 3.10.19 is the last version of the 3.10. We encourage everybody to m
 
 *_Portal_*
 
-- Adapt configuration to be more consistant with the mgmt config https://github.com/gravitee-io/issues/issues/3968[#3968]
+- Adapt configuration to be more consistent with the mgmt config https://github.com/gravitee-io/issues/issues/3968[#3968]
 
 == https://github.com/gravitee-io/issues/milestone/256?closed=1[APIM - 3.0.3 (2020-06-18)]
 
