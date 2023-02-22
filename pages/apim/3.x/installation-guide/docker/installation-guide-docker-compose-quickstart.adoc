@@ -4,11 +4,13 @@
 :page-folder: apim/installation-guide/docker
 :page-layout: apim3x
 
-This page describes how to install and run APIM in Docker containers on `localhost` using the `docker compose` command. If you need granular control over where persistence data is stored, or if you need to add plugins, use the link:{{'apim/3.x/apim_installation_guide_docker_compose.html' | relative_url }}[Custom Install with Docker Docker Compose] or link:{{ 'apim/3.x/apim_installation_guide_docker_images.html' | relative_url}}[Docker Images Install].
+This page describes how to install and run APIM Community Edition or APIM Enterprise Edition in Docker containers on `localhost` using the `docker compose` command. If you need granular control over where persistence data is stored, or if you need to add plugins, use the link:{{'apim/3.x/apim_installation_guide_docker_compose.html' | relative_url }}[Custom Install with Docker Docker Compose] or link:{{ 'apim/3.x/apim_installation_guide_docker_images.html' | relative_url}}[Docker Images Install].
 
 == Prerequisites
 
 Docker must be installed and running. For more information about installing Docker, see the link:{{'https://www.docker.com/' | relative_url }}[Docker website].
+
+If you want to install the Enterprise Edition, you must have a license key. For more information about getting a license key, visit the link:https://www.gravitee.io/pricing[Gravitee pricing page].
 
 == Installing APIM
 
@@ -19,25 +21,34 @@ Docker must be installed and running. For more information about installing Dock
 curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -o docker-compose-apim.yml  
 ----
 
-2. Create a file called `.env` and add the following line to it.
+2. If you are installing the Enterprise Edition, open `docker-compose-apim.yml` in a text editor, and under `$services.gateway.volumes` add the following line.
 +
-[code]
+[code,yml]
 ----
-APIM_VERSION=3.20.0
+ - /gravitee/license.key:/opt/graviteeio-gateway/license/license.key
 ----
 +
-This ensures you are using the correct version of APIM.
+Where `/gravitee/license.key` is the full path to the license key. This ensures that the gateway can access the license key.
 
-3. Run `docker compose` to download and start all of the components.
+3. If you are installing the Enterprise Edition, under `$services.management_api.volumes` add the following line.
++
+[code,yml]
+----
+ - /gravitee/license.key:/opt/graviteeio-management-api/license/license.key
+----
++
+Where `/gravitee/license.key` is the full path to the license key. This ensures that the management API can access the license key.
+
+4. Run `docker compose` to download and start all of the components.
 +
 [code,bash]
 ----
 docker compose -f docker-compose-apim.yml up -d
 ----
 
-4. In your browser, go to `http://localhost:8084` to open the Console. You can log in with the Username `admin` and Password `admin`.
+5. In your browser, go to `http://localhost:8084` to open the Console, and go to `http://localhost:8085` to open the Developer Portal. You can log in to both with the username `admin` and password `admin`.
 +
 [TIP]
 ====
-Sometimes it can take a few minutes for APIM to fully start. If you get an error when going to `http://localhost:8084`, wait a few minutes and try again.
+Sometimes it can take a few minutes for APIM to fully start. If you get an error when going to `http://localhost:8084` or `http://localhost:8085`, wait a few minutes and try again.
 ====
