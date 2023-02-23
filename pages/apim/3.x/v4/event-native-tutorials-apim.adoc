@@ -5,11 +5,13 @@
 :page-folder: apim/v4
 :page-layout: apim3x
 
-This page describes how to install and run APIM in Docker containers on `localhost`.
+This page describes how to install and run APIM Community Edition or APIM Enterprise Edition with event-native features enabled in Docker containers on `localhost` using the `docker compose` command. If you need granular control over where persistence data is stored, or if you need to add plugins, use the link:{{'/apim/3.x/event_native_tutorials_apim_custom.html' | relative_url }}[Custom APIM Install].
 
 == Prerequisites
 
 Docker must be installed and running. For more information about installing Docker, see the link:{{'https://www.docker.com/' | relative_url }}[Docker website].
+
+If you want to install the Enterprise Edition, you must have a license key. For more information about getting a license key, visit the link:https://www.gravitee.io/pricing[Gravitee pricing page].
 
 == Installing APIM
 
@@ -20,7 +22,7 @@ Docker must be installed and running. For more information about installing Dock
 curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -o docker-compose-apim.yml  
 ----
 
-2. Open `docker-compose-apim.yml` in a text editor and add the following line to the `/services/gateway/environment` and `/services/management_api/environment` sections if it is not already there.
+2. Open `docker-compose-apim.yml` in a text editor and add the following line to the `$services.gateway.environment` and `$services.management_api.environment` sections if it is not already there.
 +
 [code,yml]
 ----
@@ -29,30 +31,34 @@ curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3
 +
 This ensures that the gateway runs with its event-native features enabled.
 
-3. Create a file called `.env` and add the following line to it.
+3. If you are installing the Enterprise Edition, add the following line under `$services.gateway.volumes`.
 +
-[code]
+[code,yml]
 ----
-APIM_VERSION=3.20.0
+ - /gravitee/license.key:/opt/graviteeio-gateway/license/license.key
 ----
 +
-This ensures you are using the correct version of APIM.
+Where `/gravitee/license.key` is the full path to the license key. This ensures that the gateway can access the license key.
 
-4. Run `docker compose` to download and start all of the components.
+4. If you are installing the Enterprise Edition, add the following line under `$services.management_api.volumes`.
++
+[code,yml]
+----
+ - /gravitee/license.key:/opt/graviteeio-management-api/license/license.key
+----
++
+Where `/gravitee/license.key` is the full path to the license key. This ensures that the management API can access the license key.
+
+5. Run `docker compose` to download and start all of the components.
 +
 [code,bash]
 ----
 docker compose -f docker-compose-apim.yml up -d
 ----
 
-5. In your browser, go to `http://localhost:8084` to open the APIM UI. You can log in with the Username `admin` and Password `admin`.
+6. In your browser, go to `http://localhost:8084` to open the Console, and go to `http://localhost:8085` to open the Developer Portal. You can log in to both with the username `admin` and password `admin`.
 +
 [TIP]
 ====
-Sometimes it can take a few minutes for APIM to fully start. If you get an error when going to `http://localhost:8084`, wait a few minutes and try again.
-====
-
-[NOTE]
-====
-When you use Docker as described above, two Docker bridge networks are created: `frontend` and `storage`. If you are running AKHQ (to use with Kafka tutorials) or HiveMQ (to use with MQTT tutorials), it must run on the `storage` network. The link:{{ '/apim/3.x/event_native_tutorials_akhq.html' | relative_url }}[Installing AKHQ] and link:{{ '/apim/3.x/event_native_tutorials_hivemq.html' | relative_url}}[Installing HiveMQ] pages describe how to do this. 
+Sometimes it can take a few minutes for APIM to fully start. If you get an error when going to `http://localhost:8084` or `http://localhost:8085`, wait a few minutes and try again.
 ====

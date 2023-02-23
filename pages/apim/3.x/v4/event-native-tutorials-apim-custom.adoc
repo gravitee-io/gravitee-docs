@@ -1,0 +1,249 @@
+= Custom Install with Docker Compose
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/event_native_tutorials_apim_custom.html
+:page-folder: apim/installation-guide/docker
+:page-layout: apim3x
+:page-description: Gravitee.io API Management - Installation Guide - Docker - Compose - Enterprise Edition
+:page-keywords: Gravitee.io, API Management, apim, guide, manual, docker, compose, linux, enterprise edition, ee
+:page-liquid:
+:table-caption!:
+
+This page describes how to install and run APIM Community Edition or APIM Enterprise Edition with event-native features enabled in Docker containers on `localhost` using the `docker compose` command and a specified filesystem for persistence and plugins. Compared to the link:{{'/apim/3.x/event_native_tutorials_apim.html' | relative_url }}[Installing APIM] instructions, installing in this way gives more granular control of where persistence data is stored and the ability to add plugins.
+
+== Prerequisites
+
+Docker must be installed and running. For more information about installing Docker, see the link:{{'https://www.docker.com/' | relative_url }}[Docker website].
+
+If you want to install the Enterprise Edition, you must have a license key for the APIM Enterprise Edition. For more information about getting a license key, visit the link:https://www.gravitee.io/pricing[Gravitee pricing page].
+
+== Installing APIM
+
+=== Create the filesystem and download the Docker compose file
+
+1. We need the following directory structure.
++
+[code]
+----
+/gravitee
+ ├── apim-gateway
+ │    ├── logs
+ │    └── plugins
+ ├── apim-management-api
+ │    ├── logs
+ │    └── plugins
+ ├── apim-management-ui
+ │    └── logs
+ ├── apim-portal-ui
+ │    └── logs
+ ├── elasticsearch
+ │    └── data
+ ├── installation
+ └── mongodb
+     └── data
+----
++
+Create it with the following command.
++
+[code,bash]
+----
+mkdir -p /gravitee/{mongodb/data,elasticsearch/data,apim-gateway/plugins,apim-gateway/logs,\
+apim-management-api/plugins,apim-management-api/logs,apim-management-ui/logs,apim-portal-ui/logs,\
+installation}
+----
+
+2. Change to the `/gravitee/installation` directory.
+
+3. Download the `docker-compose.yml` file as `docker-compose-apim.yml`.
++
+[code,bash]
+----
+curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -o docker-compose-apim.yml  
+----
+
+=== Edit `docker-compose-apim.yml`
+
+We are now going to edit `docker-compose-apim.yml` so the installation uses the `/gravitee` filesystem and event-native features are enabled.
+
+1. Open `docker-compose-apim.yml` in a text editor.
+
+2. Remove the following lines.
++
+[source,yaml]
+----
+volumes:
+  data-elasticsearch:
+  data-mongo:
+----
++
+
+3. Change `$services.mongodb.volumes` from
++
+[source,yaml]
+----
+    volumes:
+      - data-mongo:/data/db
+      - ./logs/apim-mongodb:/var/log/mongodb
+----
++
+to
++
+[source,yaml]
+----
+    volumes:
+      - /gravitee/mongodb/data:/data/db
+----
++ 
+NOTE: The MongoDB container logs should be accessed using the `docker logs gio_apim_mongodb` command.
+
+4. Change `$services.elasticsearch.volumes` from
++
+[source,yaml]
+----
+    volumes:
+      - data-elasticsearch:/usr/share/elasticsearch/data
+----
++
+to
++
+[source,yaml]
+----
+    volumes:
+      - /gravitee/elasticsearch/data:/usr/share/elasticsearch/data
+----
++ 
+NOTE: The Elasticsearch container logs should be accessed using the `docker logs gio_apim_elasticsearch` command.
+
+5. Change `$services.gateway.volumes` from
++
+[source,yaml]
+----
+    volumes:
+      - ./logs/apim-gateway:/opt/graviteeio-gateway/logs
+----
++
+to
++
+[source,yaml]
+----
+    volumes:
+      - /gravitee/apim-gateway/logs:/opt/graviteeio-gateway/logs
+      - /gravitee/apim-gateway/plugins:/opt/graviteeio-gateway/plugins-ext
+----
+
+6. Add the following lines to `$services.gateway.environment`.
++
+[source,yaml]
+----
+      - gravitee_plugins_path_0=/opt/graviteeio-gateway/plugins
+      - gravitee_plugins_path_1=/opt/graviteeio-gateway/plugins-ext
+----
+
+7. Remove `$services.management_api.links`.
+
+8. Change `$services.management_api.volumes` from
++
+[source,yaml]
+----
+    volumes:
+      - ./logs/apim-management-api:/opt/graviteeio-management-api/logs
+----
++
+to
++
+[source,yaml]
+----
+    volumes:
+      - /gravitee/apim-management-api/logs:/opt/graviteeio-management-api/logs
+      - /gravitee/apim-management-api/plugins:/opt/graviteeio-management-api/plugins-ext
+----
+
+9. Add the following lines to `$services.management_api.environment`.
++
+[source,yaml]
+----
+      - gravitee_plugins_path_0=/opt/graviteeio-management-api/plugins
+      - gravitee_plugins_path_1=/opt/graviteeio-management-api/plugins-ext
+----
+
+10. Change `$services.management_ui.volumes` from
++
+[source,yaml]
+----
+    volumes:
+      - ./logs/apim-management-ui:/var/log/nginx
+----
++
+to
++
+[source,yaml]
+----
+    volumes:
+      - /gravitee/apim-management-ui/logs:/var/log/nginx
+----
+
+11. Change `$services.portal_ui.volumes` section from
++
+[source,yaml]
+----
+    volumes:
+      - ./logs/apim-portal-ui:/var/log/nginx
+----
++
+to
++
+[source,yaml]
+----
+    volumes:
+      - /gravitee/apim-portal-ui/logs:/var/log/nginx
+----
+
+12. Add the following line to the `$services.gateway.environment` and `$services.management_api.environment` sections if it is not already there.
++
+[code,yml]
+----
+- gravitee_api_jupiterMode_enabled=true
+----
++
+This ensures that the gateway runs with its event-native features enabled.
+
+
+=== Add the license key
+
+If you are installing the Enterprise Edition, you need to add the license key. If you are installing the Community Edition, skip these steps.
+
+1. Copy your license key to `/gravitee/license.key`.
+
+2. Open `docker-compose-apim.yml` in a text editor, and under `$services.gateway.volumes` add the following line.
++
+[code,yml]
+----
+ - /gravitee/license.key:/opt/graviteeio-gateway/license/license.key
+----
+
+3. Under `$services.management_api.volumes` add the following line.
++
+[code,yml]
+----
+ - /gravitee/license.key:/opt/graviteeio-management-api/license/license.key
+
+----
+
+=== Run `docker compose`
+
+1. Run `docker compose` to download and start all of the components.
++
+[code,bash]
+----
+docker compose -f docker-compose-apim.yml up -d
+----
+
+2. In your browser, go to `http://localhost:8084` to open the Console, and go to `http://localhost:8085` to open the Developer Portal. You can log in to both with the username `admin` and password `admin`.
++
+[TIP]
+====
+Sometimes it can take a few minutes for APIM to fully start. If you get an error when going to `http://localhost:8084` or `http://localhost:8085`, wait a few minutes and try again.
+====
+
+You can adapt the above instructions to suit your architecture if you need to.
+
+Now APIM is up and running, read the link:{{'/apim/3.x/apim_quickstart_publish.html' | relative_url}}[Quick Start Guide] for your next steps.
