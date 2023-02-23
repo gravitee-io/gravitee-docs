@@ -10,7 +10,7 @@
 Before running this tutorial, you must have:
 
 * Set up Postman, as described in link:{{'/apim/3.x/event_native_tutorials_postman.html' | relative_url}}[Setting up Postman].
-* The Enterprise edition of Gravitee API Management Gateway running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_apim_ee.html' | relative_url}}[Installing APIM Enterprise Edition]. To confirm it is running, go to `http://localhost:8084`.
+* The Enterprise edition of Gravitee API Management Gateway running in Docker, with the `kafka-advanced` plugin installed. To confirm it is running, go to `http://localhost:8084`.
 * An instance of Kafka running on Confluent Cloud.
 
 == Configuring Confluent Cloud
