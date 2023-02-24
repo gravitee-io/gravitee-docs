@@ -36,7 +36,7 @@ If you are not using Docker, you must make sure that the APIM components can con
 +
 [code,bash]
 ----
-curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -O  
+curl -L https://bit.ly/docker-apim-3x -o docker-compose.yml  
 ----
 2. Open `docker-compose.yml` in a text editor and add the following line to the `/services/gateway/environment` and `/services/management_api/environment` sections if it is not already there.
 +

@@ -19,7 +19,7 @@ If you want to install the Enterprise Edition, you must have a license key. For 
 +
 [code,bash]
 ----
-curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -o docker-compose-apim.yml  
+curl -L https://bit.ly/docker-apim-3x -o docker-compose-apim.yml  
 ----
 
 2. Open `docker-compose-apim.yml` in a text editor and add the following line to the `$services.gateway.environment` and `$services.management_api.environment` sections if it is not already there.
