@@ -91,7 +91,7 @@ docker run --name gio_apim_elasticsearch \
   --env bootstrap.memory_lock=true \
   --env discovery.type=single-node \
   --env "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
-  --volume /gravitee/elasticsearch/data:/usr/share/elasticsearch/data \
+  --volume /gravitee/elasticsearch/data:/var/lib/elasticsearch/data \
   --detach docker.elastic.co/elasticsearch/elasticsearch:7.7.0
 ----
 +

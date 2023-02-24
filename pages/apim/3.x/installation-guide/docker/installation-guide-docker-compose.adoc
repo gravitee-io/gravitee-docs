@@ -108,7 +108,7 @@ to
 [source,yaml]
 ----
     volumes:
-      - /gravitee/elasticsearch/data:/usr/share/elasticsearch/data
+      - /gravitee/elasticsearch/data:/var/lib/elasticsearch/data
 ----
 + 
 NOTE: The Elasticsearch container logs should be accessed using the `docker logs gio_apim_elasticsearch` command.
