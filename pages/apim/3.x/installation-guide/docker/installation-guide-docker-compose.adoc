@@ -57,7 +57,7 @@ installation}
 +
 [code,bash]
 ----
-curl https://bit.ly/docker-apim-3x -o docker-compose-apim.yml  
+curl -L https://bit.ly/docker-apim-3x -o docker-compose-apim.yml  
 ----
 
 === Edit `docker-compose-apim.yml`
