@@ -10,8 +10,18 @@
 Before running this tutorial, you must have:
 
 * Set up Postman, as described in link:{{'/apim/3.x/event_native_tutorials_postman.html' | relative_url}}[Setting up Postman].
-* The Enterprise edition of Gravitee API Management Gateway running in Docker, with the `kafka-advanced` plugin installed. To confirm it is running, go to `http://localhost:8084`.
+* The Enterprise Edition of the Gravitee API Management Gateway running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_apim_custom.html' | relative_url}}[Custom Install with Docker Compose]. To confirm it is running, go to `http://localhost:8084`.
 * An instance of Kafka running on Confluent Cloud.
+
+== Installing the `kafka-advanced` plugin
+
+1. Download the latest version of the `kafka-advanced` plugin from https://download.gravitee.io/#graviteeio-apim/plugins/endpoints/gravitee-endpoint-kafka-advanced/. The plugin is a `.zip` file.
+
+2. Copy the `.zip` file into the plugin directories for the Management API and the Gateway. If you used the file structure described in link:{{'/apim/3.x/event_native_tutorials_apim_custom.html' | relative_url}}[Custom Install with Docker Compose], these will be `/gravitee/apim-gateway/plugins` and `/gravitee/apim-management-api/plugins`.
+
+3. Restart the Docker containers for the Management API and the Gateway.
+
+For more information about installing plugins, see link:{{'/apim/3.x/apim_devguide_plugins.html#deployment' | relative_url}}[Deployment].
 
 == Configuring Confluent Cloud
 
