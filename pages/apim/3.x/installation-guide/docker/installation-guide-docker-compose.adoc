@@ -20,7 +20,7 @@ If you want to install the Enterprise Edition, you must have a license key for t
 
 === Create the filesystem and download the Docker compose file
 
-1. We need the following directory structure.
+1. We need the following directory structure for persisting data, storing plugins, and keeping a copy of the Docker Compose file.
 +
 [code]
 ----

@@ -11,7 +11,7 @@ This page explains how to further customize your Docker installation.
 
 == Installing additional plugins
 
-APIM Docker images contain the default plugins. To add an additional plugin, copy the plugin archive (a `.zip` file) into the `plugins-ext` folder. If you used the filestructure described in link:{{'apim/3.x/apim_installation_guide_docker_compose.html#create_the_filesystem_and_download_the_docker_compose_file' | relative_url }}[the custom install section], the `plugin-ext` folder is `/gravitee/apim-gateway/plugins` for the API Gateway and `/gravitee/apim-management-api/plugins` for the Management API.
+APIM Docker images contain the default plugins. To add an additional plugin, copy the plugin archive (a `.zip` file) into the `plugins-ext` folder. If you used the file structure described in link:{{'apim/3.x/apim_installation_guide_docker_compose.html#create_the_filesystem_and_download_the_docker_compose_file' | relative_url }}[the custom install section], the `plugin-ext` folder is `/gravitee/apim-gateway/plugins` for the API Gateway and `/gravitee/apim-management-api/plugins` for the Management API.
 
 You can download additional plugins from link:https://download.gravitee.io/#graviteeio-apim/plugins/[the plugins download page].
 
