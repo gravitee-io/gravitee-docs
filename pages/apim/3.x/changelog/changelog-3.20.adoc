@@ -13,6 +13,37 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.2 (2023-03-03)
+
+=== Gateway
+
+* Gateway exceeded memory limit for $group with mongodb https://github.com/gravitee-io/issues/issues/8914[#8914]
+* Null value during bestmatch flow selection. https://github.com/gravitee-io/issues/issues/8899[#8899]
+* Fix technical API endpoints: `/_node/monitor` and `/_node/configuration` https://github.com/gravitee-io/issues/issues/8838[#8838] & https://github.com/gravitee-io/issues/issues/8875[#8875]
+* Wait for caches to be populated before moving to ready when starting the gateway https://github.com/gravitee-io/issues/issues/8866[#8866]
+* Revoke subscriptions when Client ID is changed https://github.com/gravitee-io/issues/issues/8883[#8883]
+
+=== API
+
+* Do not duplicate flows when some dynamic properties are scheduled https://github.com/gravitee-io/issues/issues/8844[#8844]
+* Do not override `application_groups` data when upgrading from 3.15 to 3.19 with JDBC https://github.com/gravitee-io/issues/issues/8876[#8876]
+* Unable to access Gateway instances screen when DB contains a lot of events https://github.com/gravitee-io/issues/issues/8898[#8898]
+* Error when loading Identity Provider with id in uppercase https://github.com/gravitee-io/issues/issues/8900[#8900]
+* Update default password policy pattern https://github.com/gravitee-io/issues/issues/8905[#8905]
+
+=== Console
+
+* API version missing in UI https://github.com/gravitee-io/issues/issues/8904[#8904]
+* SPIKE_ARREST_TOO_MANY_REQUESTS missing in Response Template drop down. https://github.com/gravitee-io/issues/issues/7082[#7082]
+* Special characters are truncated inside a query param https://github.com/gravitee-io/issues/issues/8903[#8903]
+* Properly display multiple spaces in API name https://github.com/gravitee-io/issues/issues/8867[#8867]
+* Allow to save disabled proxy settings when system proxy is ON https://github.com/gravitee-io/issues/issues/8698[#8698]
+
+=== Portal
+
+* Fix Redoc documentation integration https://github.com/gravitee-io/issues/issues/8703[#8703]
+
+ 
 == APIM - 3.20.1 (2023-02-10)
 
 
@@ -43,7 +74,6 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 * "Show advanced filters" was missing on the analytics page https://github.com/gravitee-io/issues/issues/8677[#8677]
 * Version column renamed on API table. https://github.com/gravitee-io/issues/issues/8772[#8772]
-* Improved API names loading in the Platform Analytics Dashboard https://github.com/gravitee-io/issues/issues/8839[#8839] & https://github.com/gravitee-io/issues/issues/8822[#8822]
 
 * Display icons of APIs in API list screen https://github.com/gravitee-io/issues/issues/8809[#8809]
 * Global improvement on log filters https://github.com/gravitee-io/issues/issues/8822[#8822] & https://github.com/gravitee-io/issues/issues/8839[#8839]
