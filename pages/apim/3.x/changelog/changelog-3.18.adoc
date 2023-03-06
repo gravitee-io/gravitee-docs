@@ -17,7 +17,7 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 === Gateway
 
-* Fix technical API endpoints: `/_node/monitor` and `/_node/configuration` https://github.com/gravitee-io/issues/issues/8838[#8838] & https://github.com/gravitee-io/issues/issues/8865[#8865]
+* Fix technical API endpoints: `/_node/monitor` and `/_node/configuration` https://github.com/gravitee-io/issues/issues/8838[#8838] & https://github.com/gravitee-io/issues/issues/8875[#8875]
 * Wait for caches to be populated before moving to ready when starting the gateway https://github.com/gravitee-io/issues/issues/8866[#8866]
 
 === API

@@ -13,6 +13,31 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.19.8 (2023-02-24)
+
+=== Gateway
+
+* Fix technical API endpoints: `/_node/monitor` and `/_node/configuration` https://github.com/gravitee-io/issues/issues/8838[#8838] & https://github.com/gravitee-io/issues/issues/8875[#8875]
+* Wait for caches to be populated before moving to ready when starting the gateway https://github.com/gravitee-io/issues/issues/8866[#8866]
+* Revoke subscriptions when Client ID is changed https://github.com/gravitee-io/issues/issues/8883[#8883]
+
+=== API
+
+* Do not duplicate flows when some dynamic properties are scheduled https://github.com/gravitee-io/issues/issues/8844[#8844]
+* Properly manage user's firstname and lastname, API names and application names containing accents https://github.com/gravitee-io/issues/issues/8847[#8847]
+* Do not override `application_groups` data when upgrading from 3.15 to 3.19 with JDBC https://github.com/gravitee-io/issues/issues/8876[#8876]
+* Unable to access Gateway instances screen when DB contains a lot of events https://github.com/gravitee-io/issues/issues/8898[#8898]
+* Error when loading Identity Provider with id in uppercase https://github.com/gravitee-io/issues/issues/8900[#8900]
+* Update default password policy pattern https://github.com/gravitee-io/issues/issues/8905[#8905]
+
+=== Console
+
+* Special characters are truncated inside a query param https://github.com/gravitee-io/issues/issues/8903[#8903]
+
+=== Portal
+
+* Fix Redoc documentation integration https://github.com/gravitee-io/issues/issues/8703[#8703]
+ 
 == APIM - 3.19.7 (2023-02-03)
 
 === API
