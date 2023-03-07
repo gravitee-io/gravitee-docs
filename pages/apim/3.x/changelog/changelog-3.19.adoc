@@ -33,6 +33,8 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 === Console
 
 * Special characters are truncated inside a query param https://github.com/gravitee-io/issues/issues/8903[#8903]
+* Properly display multiple spaces in API name https://github.com/gravitee-io/issues/issues/8867[#8867]
+* Allow to save disabled proxy settings when system proxy is ON https://github.com/gravitee-io/issues/issues/8698[#8698]
 
 === Portal
 
