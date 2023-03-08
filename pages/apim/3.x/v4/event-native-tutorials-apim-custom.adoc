@@ -57,7 +57,7 @@ installation}
 +
 [code,bash]
 ----
-curl https://raw.githubusercontent.com/gravitee-io/gravitee-docker/master/apim/3.x/docker-compose.yml -o docker-compose-apim.yml  
+curl -L https://bit.ly/docker-apim-3x -o docker-compose-apim.yml  
 ----
 
 === Edit `docker-compose-apim.yml`
@@ -204,7 +204,7 @@ to
 - gravitee_api_jupiterMode_enabled=true
 ----
 +
-This ensures that the gateway runs with its event-native features enabled.
+This ensures that APIM runs with its event-native features enabled.
 
 
 === Add the license key
@@ -245,5 +245,3 @@ Sometimes it can take a few minutes for APIM to fully start. If you get an error
 ====
 
 You can adapt the above instructions to suit your architecture if you need to.
-
-Now APIM is up and running, read the link:{{'/apim/3.x/apim_quickstart_publish.html' | relative_url}}[Quick Start Guide] for your next steps.
