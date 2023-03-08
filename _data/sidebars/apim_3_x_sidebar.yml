@@ -747,10 +747,58 @@ entries:
           - title: User Guide
             output: web
             url: /apim/3.x/event_native_apim_user_guide.html
+            subfolders:
+              - title: Tutorials
+                output: web
+                subfolderitems:
+                - title: Introduction
+                  output: web
+                  url: /apim/3.x/event_native_tutorials.html
+                - title: Setting up Postman
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_postman.html
+                - title: Installing APIM
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_apim.html
+                - title: Custom Install
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_apim_custom.html
+                - title: Installing AKHQ
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_akhq.html
+                - title: Installing HiveMQ
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_hivemq.html
+                - title: Kafka and HTTP
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_kafka_http.html
+                - title: Kafka and SSE
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_kafka_sse.html
+                - title: Kafka and Webhooks
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_kafka_webhooks.html
+                - title: Kafka and Websockets
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_kafka_websockets.html
+                - title: MQTT and HTTP
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_mqtt_http.html
+                - title: MQTT and SSE
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_mqtt_sse.html
+                - title: MQTT and Webhooks
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_mqtt_webhooks.html
+                - title: MQTT and Websockets
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_mqtt_websockets.html
+                - title: Kafka Advanced, HTTP, and Confluent Cloud
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_kafka_advanced_http_confluentcloud.html
           - title: Example Use Cases
             output: web
             url: /apim/3.x/event_native_apim_example_use_cases.html
-
       - title: API Reference
         output: web
         folderitems:

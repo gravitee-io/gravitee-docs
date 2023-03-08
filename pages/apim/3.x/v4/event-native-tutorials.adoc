@@ -1,0 +1,26 @@
+[[event-native-tutorials]]
+= Event-native tutorials
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: /apim/3.x/event_native_tutorials.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+These tutorials show you some simple use cases for Gravitee's event-native API management (APIM).
+
+== Prerequisites
+
+These tutorials assume that you have installed Gravitee's APIM in Docker containers on `localhost`. For a simple guide to installing APIM, see link:{{'/apim/3.x/event_native_tutorials_apim.html' | relative_url}}[Installing APIM]. For a more detailed guide, see link:{{'/apim/3.x/apim_installation_guide_docker_introduction.html' | relative_url}}[Install on Docker].
+
+Tutorials that use Kafka endpoints assume you have installed AKQH in Docker containers on `localhost`. For a simple guide to installing AKHQ, see link:{{'/apim/3.x/event_native_tutorials_akhq.html' | relative_url}}[Installing AKHQ].
+
+Tutorials that use MQTT endpoints assume you have installed HiveMQ in Docker containers on `localhost`. For a simple guide to installing HiveMQ, see link:{{'/apim/3.x/event_native_tutorials_hivemq.html' | relative_url}}[Installing HiveMQ].
+
+== General structure of the tutorials
+
+These tutorials generally follow the same pattern.
+
+1. Create the API.
+2. Create a keyless plan.
+3. Start the API.
+
+They also show you how to modify and redeploy an API.

@@ -1,0 +1,34 @@
+[[event-native-tutorials-hivemq]]
+= Installing HiveMQ
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: /apim/3.x/event_native_tutorials_hivemq.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+This page describes how to install and run HiveMQ in a Docker container on `localhost`. HiveMQ is an MQTT broker.
+
+== Prerequisites
+
+APIM must be running in Docker containers, as described in link:{{ '/apim/3.x/event_native_tutorials_apim.html' | relative_url }}[Installing APIM].
+
+[TIP]
+====
+When you set up APIM, two Docker bridge networks are created: `frontend` and `storage`. AKHQ must run on the `storage` network. The instructions below tell you how to do this.
+====
+
+== Installing HiveMQ
+
+1. To install and run HiveMQ, run the following command.
++
+[code,bash]
+----
+docker run -d --name hivemq -p 8086:8080 -p 1883:1883 -p '8000:8000' --hostname hivemq --network storage hivemq/hivemq4
+----
++
+This command adds `hivemq` to the `storage` Docker bridge network that was created when APIM was deployed.
+
+2. In your browser, go to `http://localhost:8086` to open the HiveMQ Control Center. You can log in with with User `admin` and password `hivemq`.
++
+Any MQTT client can connect can connect to HiveMQ on port `1883`, and a websocket client can connect on port `8000`.
+
+For more information about installing and running HiveMQ, see link:{{'https://www.hivemq.com/downloads/docker/'| relative_url}}[HiveMQ Docker Image] on the link:{{'https://www.hivemq.com/' | relative_url}}[HiveMQ website].

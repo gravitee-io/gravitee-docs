@@ -1,0 +1,175 @@
+[[event-native-tutorials-mqtt-sse]]
+= MQTT and SSE
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: /apim/3.x/event_native_tutorials_mqtt_sse.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+== Prerequisites 
+
+Before running this tutorial, you must have:
+
+* Set up Postman, as described in link:{{'/apim/3.x/event_native_tutorials_postman.html' | relative_url}}[Setting up Postman].
+* The Gravitee API Management Gateway running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_apim.html' | relative_url}}[Installing APIM]. To confirm it is running, go to `http://localhost:8084`.
+* HiveMQ running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_hivemq.html'| relative_url}}[Installing HiveMQ]. To confirm it is running, go to `http://localhost:8086`.
+
+== Creating the API
+
+1. In the Tutorials Postman Collection, open the `MQTT and SSE` folder.
+
+2.  Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `entrypoints` you can see that we are creating one entrypoint, as `sse` entrypoint. Under `endpointGroups` you can see that we are creating one `mqtt5` endpoint, which connects to the host `hivemq` on port `1883`.
++
+[TIP]
+====
+APIM and HiveMQ are both running on the Docker bridge network called `storage`. The host `hivemq` is a host on that network.
+====
++
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
+
+3. Send the request. You should receive a response that starts like this.
++
+[code,json]
+----
+{
+    "id": "2f82242e-fc70-4918-8224-2efc70a9182c",
+    "name": "MQTT and SSE",
+    "apiVersion": "1.0.0",
+    "definitionVersion": "4.0.0",
+    "type": "async",
+    "createdAt": 1675694466958,
+    "updatedAt": 1675694466958,
+----
++
+The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
+== Creating a keyless plan
+
+1. Select the `Create an Open (keyless) Plan` request and look at the request body. It looks like this.
++
+[code,json]
+----
+{
+    "name": "Open",
+    "description": "Keyless",
+    "status": "PUBLISHED",
+    "characteristics": [],
+    "security": {
+        "type": "subscription"
+    }
+}
+----
++
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
+
+2. Send the request. You should receive a response that starts like this.
++
+[code,json]
+----
+{
+    "id": "3af3fc91-fa85-4de2-b3fc-91fa856de2c8",
+    "name": "Open",
+    "description": "Keyless",
+    "createdAt": 1675694517762,
+    "updatedAt": 1675694517762,
+    "publishedAt": 1675694517766,
+----
++
+The `id` is the ID of the plan we just created.
+
+3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
+== Starting the API
+
+1. Select the `Start the API` request. You will see that it has no request body.
+
+2. Send the request. You should receive a `204` response with no response body.
+
+The API has been created and is ready to be used.
+
+== Using the API
+
+1. Go to HiveMQ's client for MQTT at http://www.hivemq.com/demos/websocket-client/. Enter 'localhost' in the Host field, and leave all other fields with their default values. Click "Connect."
+
+2. Click "Add New Topic Subscription" and enter `demo` in the dialog box. Click "Subscribe"
++ 
+You are now subscribed to the `demo` topic.
+
+3. Use `curl` to connect to the SSE stream using the following terminal command.
++
+[code,bash]
+----
+ curl -N -H "Accept:text/event-stream" http://localhost:8082/demo/sse
+----
+
+4. In the HiveMQ client, publish a message to the `demo` topic. You should see it appear in the terminal where `curl` is running. 
++
+You should also see it in the "Messages" pane of the HiveMQ client window.
+
+== Adding a message filter
+
+We are now going to add message filtering.
+
+1. Select the `Add Flow to API` request. If you look at the body of the request you will see the following line.
++
+[code,json]
+----
+                         "filter": "{#jsonPath(#message.content, '$.feature') == 'demo-filter'}"
+----
++
+This filter, based on link:{{ '/apim/3.x/apim_publisherguide_expression_language.html' | relative_url }}[APIM Expression Language], blocks all messages, except when the `feature` property of the message matches is `demo-filter`.
++
+[TIP]
+====
+Flows can be added at a number of different specificity levels, including the API, plan, or even organization level, but adding it to the API makes it easy for quick updates and redeployments.
+====
++
+Send the request. You should see a response that begins like this.
++
+[code,json]
+----
+{
+    "id": "2f82242e-fc70-4918-8224-2efc70a9182c",
+    "name": "MQTT and SSE - Subscription Filtering",
+    "apiVersion": "1.0.0",
+    "definitionVersion": "4.0.0",
+    "type": "async",
+    "deployedAt": 1675694562971,
+----
+
+2. Once you have modified the API, you have to redeploy it. Select the `Redeploy API` request and send it. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
+
+3. Use `curl` to reconnect to the SSE stream using the following terminal command.
++
+[code,bash]
+----
+curl -N -H "Accept:text/event-stream" http://localhost:8082/demo/sse
+----
+
+4. Go back to the HiveMQ client at http://www.hivemq.com/demos/websocket-client/ and publish the following message to the `demo` topic.
++
+[code,json]
+----
+{
+    "message":"hello again"
+}
+----
++
+You will see the message does not appear in the `curl` terminal, because the filter prevented it from getting through. However, you will be able to see the message in the "Messages" pane of the HiveMQ client window, confirming that the message was published.
+
+5. Now publish the following message to the `demo` topic.
++
+[code,json]
+----
+{
+    "feature": "demo-filter",
+    "message-body": "I got through!"
+}
+----
++
+You will see the message does appear in the `curl` terminal, because the filter allowed it to get through.
+
+== Close the plan and delete the API
+
+After finishing this tutorial, run the `Stop the API`, `Close plan`, and `Delete API` requests in the `Delete API` folder in Postman. This removes the plan and API.
+
+Alternatively, you can delete all Docker containers and volumes.

@@ -1,0 +1,203 @@
+[[event-native-tutorials-mqtt-websockets]]
+= MQTT and Websockets
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: /apim/3.x/event_native_tutorials_mqtt_websockets.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+== Prerequisites 
+
+Before running this tutorial, you must have:
+
+* Set up Postman, as described in link:{{'/apim/3.x/event_native_tutorials_postman.html' | relative_url}}[Setting up Postman].
+* The Gravitee API Management Gateway running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_apim.html' | relative_url}}[Installing APIM]. To confirm it is running, go to `http://localhost:8084`.
+* HiveMQ running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_hivemq.html'| relative_url}}[Installing HiveMQ]. To confirm it is running, go to `http://localhost:8086`.
+* Installed link:https://github.com/vi/websocat#websocat[websocat].
+
+== Creating the API
+
+1. In the Tutorials Postman Collection, open the `MQTT and Websockets` folder.
+
+2.  Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `entrypoints` you can see that we are creating one entrypoint, a `websocket` entrypoint. Under `endpointGroups` you can see that we are creating one `mqtt5` endpoint, which connects to the host `hivemq` on port `1883`.
++
+[TIP]
+====
+APIM and HiveMQ are both running on the Docker bridge network called `storage`. The host `hivemq` is a host on that network.
+====
++
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
+
+3. Send the request. You should receive a response that starts like this.
++
+[code,json]
+----
+{
+    "id": "2bb38b7c-1818-4b63-b38b-7c18185b63fd",
+    "name": "Demo of Websocket + MQTT",
+    "apiVersion": "1.0.0",
+    "definitionVersion": "4.0.0",
+    "type": "async",
+    "createdAt": 1675164433265,
+    "updatedAt": 1675164433265,
+----
++
+The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
+== Creating a keyless plan
+
+1. Select the `Create an Open (keyless) Plan` request and look at the request body. It looks like this.
++
+[code,json]
+----
+{
+    "name": "Open",
+    "description": "Keyless",
+    "status": "PUBLISHED",
+    "characteristics": [],
+    "security": {
+        "type": "subscription"
+    }
+}
+----
++
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
+
+2. Send the request. You should receive a response that starts like this.
++
+[code,json]
+----
+{
+    "id": "e9131ad7-2889-4481-931a-d72889148105",
+    "name": "Open",
+    "description": "Keyless",
+    "createdAt": 1675164515978,
+    "updatedAt": 1675164515978,
+    "publishedAt": 1675164515981,
+----
++
+The `id` is the ID of the plan we just created.
+
+3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
+== Starting the API
+
+1. Select the `Start the API` request. You will see that it has no request body.
+
+2. Send the request. You should receive a `204` response with no response body.
+
+The API has been created and is ready to be used.
+
+== Using the API
+
+1. Go to HiveMQ's client for MQTT at http://www.hivemq.com/demos/websocket-client/. Enter 'localhost' in the Host field, and leave all other fields with their default values. Click "Connect."
+
+2. Click "Add New Topic Subscription" and enter `demo` in the dialog box. Click "Subscribe"
++ 
+You are now subscribed to the `demo` topic.
+
+3. Use `websocat` to connect to the API using the following terminal command.
++
+[code,bash]
+----
+ websocat ws://localhost:8082/demo/mqtt
+----
+
+4. In the HiveMQ client, publish a message to the `demo` topic. You should see it appear in the terminal where `websocat` is running. 
++
+[code,bash]
+----
+websocat ws://localhost:8082/demo/mqtt
+message from HiveMQ client
+----
++
+You should also see it in the "Messages" pane of the HiveMQ client window.
+
+5. publish a message on the `demo` topic using `websocat` by typing the message in the terminal window.
++
+[code,bash]
+----
+websocat ws://localhost:8082/demo/mqtt
+message from HiveMQ client
+message from websocat
+----
++
+The message will be echoed back to the terminal. This is because the API was created to publish and subscribe to all messages on the `demo` topic.
++
+[code,bash]
+----
+websocat ws://localhost:8082/demo/mqtt
+message from HiveMQ client
+message from websocat
+message from websocat
+----
+
+== Adding a message filter
+
+We are now going to add message filtering.
+
+1. Select the `Add Flow to API` request. If you look at the body of the request you will see the following line.
++
+[code,json]
+----
+                         "filter": "{#jsonPath(#message.content, '$.feature') == 'demo-filter'}"
+----
++
+This filter, based on link:{{ '/apim/3.x/apim_publisherguide_expression_language.html' | relative_url }}[APIM Expression Language], blocks all messages, except when the `feature` property of the message matches is `demo-filter`.
++
+[TIP]
+====
+Flows can be added at a number of different specificity levels, including the API, plan, or even organization level, but adding it to the API makes it easy for quick updates and redeployments.
+====
++
+Send the request. You should see a response that begins like this.
++
+[code,json]
+----
+{
+    "id": "2bb38b7c-1818-4b63-b38b-7c18185b63fd",
+    "name": "Demo of Websocket + MQTT - Subscription Filtering",
+    "apiVersion": "1.0.0",
+    "definitionVersion": "4.0.0",
+    "type": "async",
+    "deployedAt": 1675164661401,
+----
+
+2. Once you have modified the API, you have to redeploy it. Select `Redeploy API` and send it. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
+
+3. Exit the existing `websocat` session using `CTRL C` and restart it.
++
+[code,bash]
+----
+websocat ws://localhost:8082/demo/mqtt
+----
+
+4. Go back to the HiveMQ client at http://www.hivemq.com/demos/websocket-client/ and publish the following message to the `demo` topic.
++
+[code,json]
+----
+{
+    "message":"hello again"
+}
+----
++
+You will see the message does not appear in the `websocat` terminal, because the filter prevented it from getting through. However, you will be able to see the message in the "Messages" pane of the HiveMQ client window, confirming that the message was published.
+
+5. Now publish the following message to the `demo` topic.
++
+[code,json]
+----
+{
+    "feature": "demo-filter",
+    "message-body": "I got through!"
+}
+----
++
+You will see the message does appear in the `websocat` terminal, because the filter allowed it to get through.
+
+6. In the `websocat` terminal, publish the following message: `new message`. You will see that it is not echoed back to the terminal, but it does appear on the "Messages" pane in the HiveMQ client.
+
+== Close the plan and delete the API
+
+After finishing this tutorial, run the `Stop the API`, `Close plan`, and `Delete API` requests in the `Delete API` folder in Postman. This removes the plan and API.
+
+Alternatively, you can delete all Docker containers and volumes.

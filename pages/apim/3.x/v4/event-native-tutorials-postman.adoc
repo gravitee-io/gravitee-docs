@@ -1,0 +1,24 @@
+[[event-native-tutorials-postman]]
+= Setting up Postman
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: /apim/3.x/event_native_tutorials_postman.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+These tutorials use the desktop version of Postman.
+
+1. Download and import the following files into Postman.
+    * link:{{ '/pages/apim/3.x/v4/Gravitee%20APIM%203.20%20Tutorials%20Environment.postman_environment.json' | relative_url}}[Gravitee APIM 3.20 Tutorials Postman Environment]
+    * link:{{ '/pages/apim/3.x/v4/Gravitee%20APIM%203.20%20Tutorials.postman_collection.json' | relative_url }}[Gravitee APIM 3.20 Tutorials Postman Collection]
+
++
+You can also get these files from link:{{'https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace' | relative_url}}[the Gravitee Public Workspace].
+
+2. Make the `APIM 3.20 Tutorials Environment` active by selecting it from the Environment dropdown menu at the top right of the Postman window.
++
+image::{% link /images/apim/3.x/tutorials/postman_environment_menu.png %}[ [alt="Postman environment menu",width=400]]
+
+[NOTE]
+====
+You must use the desktop version of Postman. These files will not work with the web version of Postman.
+====

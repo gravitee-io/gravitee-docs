@@ -1,0 +1,55 @@
+[[event-native-tutorials-akhq]]
+= Installing AKHQ
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: /apim/3.x/event_native_tutorials_akhq.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+
+
+This page describes how to install and run a Kafka cluster and AKHQ in Docker containers on `localhost`. AKHQ allows you to manage and view data inside your Kafka cluster
+
+== Prerequisites
+
+APIM must be running in Docker containers, as described in link:{{'/apim/3.x/event_native_tutorials_apim.html' | relative_url }}[Installing APIM].
+
+[TIP]
+====
+When you set up APIM, two Docker bridge networks are created: `frontend` and `storage`. AKHQ must run on the `storage` network. The instructions below tell you how to do this.
+====
+
+== Installing AKHQ
+
+1. Download the `docker-compose.yml` file as `docker-compose-akhq.yml`.
++
+[code,bash]
+----
+curl https://raw.githubusercontent.com/tchiotludo/akhq/master/docker-compose.yml -o docker-compose-akhq.yml 
+----
+
+2. Add the following lines to the root level of `docker-compose-akhq.yml`.
++
+[code,yml]
+----
+networks:
+  default:
+    name: storage
+----
++
+These lines make AKHQ run on the `storage` Docker bridge network that was created when APIM was deployed.
+
+3. If you are running an ARM64 device, add the following line to the `/services/kafkacat` section of `docker-compose-akhq.yml`.
++
+[code.yml]
+----
+platform: linux/x86_64 
+----
+
+4. Run `docker compose` to download and start all of the components.
++
+[code,bash]
+----
+docker compose -f docker-compose-akhq.yml up -d
+----
+
+5. In your browser, go to `http://localhost:8080` to open the AKHQ UI.

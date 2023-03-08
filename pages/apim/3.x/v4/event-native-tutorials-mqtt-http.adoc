@@ -1,0 +1,271 @@
+[[event-native-tutorials-mqtt-http]]
+= MQTT and HTTP
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: /apim/3.x/event_native_tutorials_mqtt_http.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+== Prerequisites 
+
+Before running this tutorial, you must have:
+
+* Set up Postman, as described in link:{{'/apim/3.x/event_native_tutorials_postman.html' | relative_url}}[Setting up Postman].
+* The Gravitee API Management Gateway running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_apim.html' | relative_url}}[Installing APIM]. To confirm it is running, go to `http://localhost:8084`.
+* HiveMQ running in Docker, as described in link:{{'/apim/3.x/event_native_tutorials_hivemq.html'| relative_url}}[Installing HiveMQ]. To confirm it is running, go to `http://localhost:8086`.
+
+== Creating the API
+
+1. In the Tutorials Postman Collection, open the `MQTT and HTTP` folder.
+
+2. Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `entrypoints` you can see that we are creating two entrypoints, an `http-post` entrypoint and an `http-get` entrypoint. Under `endpointGroups` you can see that we are creating one `mqtt5` endpoint, which connects to the host `hivemq` on port `1883`.
++
+If you look under `endpoints` you will see the following code.
++
+[code,json]
+----
+                        "consumer" : {
+                            "enabled": true
+                        },
+----
++
+This is necessary to allow the API to consume data from MQTT.
++
+[TIP]
+====
+APIM and HiveMQ are both running on the Docker bridge network called `storage`. The host `hivemq` is a host on that network.
+====
++
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
+
+3. Send the request. You should receive a response that starts like this.
++
+[code,json]
+----
+{
+    "id": "4bfb005f-45ae-4358-bb00-5f45ae435855",
+    "name": "Demo of HTTP Post + MQTT",
+    "apiVersion": "1.0.0",
+    "definitionVersion": "4.0.0",
+    "type": "async",
+    "createdAt": 1674818407231,
+    "updatedAt": 1674818407231,
+----
++
+The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
+== Creating a keyless plan
+
+1. Select the `Create an Open (Keyless) Plan` request and look at the request body. It looks like this.
++
+[code,json]
+----
+{
+    "name": "Open",
+    "description": "Keyless",
+    "status": "PUBLISHED",
+    "characteristics": [],
+    "security": {
+        "type": "key-less"
+    }
+}
+----
++
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
+
+2. Send the request. You should receive a response that starts like this.
++
+[code,json]
+----
+{
+    "id": "04678d7c-4de3-44b0-a78d-7c4de324b068",
+    "name": "Open",
+    "description": "Keyless",
+    "createdAt": 1674820439263,
+    "updatedAt": 1674820439263,
+    "publishedAt": 1674820439264,
+----
++
+The `id` is the ID of the plan we just created.
+3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
+== Starting the API
+
+1. Select the `Start the API` request. You will see that it has no request body.
+
+2. Send the request. You should receive a `204` response with no response body.
+
+The API has been created and is ready to be used.
+
+== Using the API
+
+We are now going to use the API to `POST` data to MQTT over HTTP, and `GET` data from MQTT over HTTP. So that we can see what is happening on the MQTT side, we are going to use HiveMQ's web-based client.
+
+1. Go to http://www.hivemq.com/demos/websocket-client/. 
+
+2. In the `Host` field, enter `localhost`. Leave all other values as they are.
++
+[TIP]
+====
+When setup HiveMQ in Docker, we mapped port 8000 on the container to port 8000 on `localhost`. This is why we are using `localhost` in the client.
+====
+
+3. Click "Connect".
+
+4. Click "Add New Topic Subscription" and enter `demo` in the dialog box. Click "Subscribe"
++ 
+You are now subscribed to the `demo` topic.
+
+=== Push data
+
+1. In Postman, select the `Create Topic` request and send it. You should receive a status response of `200 OK`.
+
+2. In Postman, select the `Push Data` request and look at the request body. It looks like this.
++
+[code,json]
+----
+{
+    "tempF": "75"
+}
+----
+
+3. Send the request. You should receive a status response of `200 OK`.
+
+4. Go to the HiveMQ client. You should see the data you just sent displayed in the "Messages" pane.
+
+=== Get data
+
+1. In Postman, select the `Get Data` request and send it. After about ten seconds, you should receive a response that looks like this.
++
+[code,json]
+----
+{
+    "items": []
+}
+----
++
+When we created the API, we created this entrypoint with the following configuration.
++
+[code,json]
+----
+                        "messagesLimitCount": 1,
+                        "headersInPayload": false,
+                        "metadataInPayload": false,
+                        "messagesLimitDurationMs": 10000
+----
++
+The first line means a request to this entrypoint will receive _at most_ 1 message. After receiving one message, the connection will be closed.
++ 
+The last line means that the connection will stay open for a maximum of ten seconds.
++
+In this example, no messages were published to the `demo` topic, so the connection closed after ten seconds, and the empty `items` array was returned.
+
+2. Send the `Get data` request again. _Immediately_ select `Push Data` and send the request four times. The response body for the `Get Data` request should look like this.
++
+[code,json]
+----
+{
+    "items": [
+        {
+            "content": "{\n    \"tempF\": \"75\"\n}"
+        }
+    ]
+}
+----
++
+You can see that the first message published was returned in the `items` array. If you look at the HiveMQ client, you will see that four messages were published.
+
+=== Modify and redeploy the API
+
+We are now going to modify the API so that the GET request can return up to 100 messages.
+
+1. In Postman, select the `Modify the API` request and look at the request body.
++
+Note that the request body is very similar to the request body for the `Create the API` request. The key differences are:
++
+    * The request body contains an `id` field that specifies the ID of the API you are updating.
+    * The `messagesLimitCount` value in the `http-get` entrypoint is `100`.
+
+2. Send the request. The message body in the response should be similar to the message body you received when creating the API, but the value of `messagesLimitCount` should have been updated.
+
+3. Once you have modified the API, you have to redeploy it. Select the `Redeploy API` request and send it. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
+
+4. Select the `Get Data` request and send it. _Immediately_ select the `Push Data` request and send it four times. The response body for the `Get Data` request should look like this.
++
+[code,json]
+----
+{
+    "items": [
+        {
+            "content": "{\n    \"tempF\": \"75\"\n}"
+        },
+        {
+            "content": "{\n    \"tempF\": \"75\"\n}"
+        },
+        {
+            "content": "{\n    \"tempF\": \"75\"\n}"
+        },
+        {
+            "content": "{\n    \"tempF\": \"75\"\n}"
+        }
+    ]
+}
+----
++
+You can see that the `items` array now contains four messages.
+
+== Changing to a rate-limiting plan
+
+We are now going to modify the API so that it uses a rate-limiting plan.
+
+1. In Postman, select the `Close plan` request and send it. This closes the existing plan.
+
+2. In Postman, select the `Create a rate-limiting plan` request and look at the request body. This request body is much more complex than the request body for the plan we created earlier. For this example, the most important lines are the following.
++
+[code,json]
+----
+                       "rate": {
+                            "limit": 1,
+                            "periodTime": 20,
+                            "periodTimeUnit": "SECONDS"
+----
++
+These lines specify the rate limit of one request per 20 seconds.
++
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
+
+3. Send the request. You should receive a response that starts like this.
++
+[code,json]
+----
+{
+    "id": "ccf21839-1fc0-4bf3-b218-391fc01bf380",
+    "name": "Rate-limiting",
+    "description": "One request every 20 seconds",
+    "createdAt": 1675074425522,
+    "updatedAt": 1675074425522,
+    "publishedAt": 1675074425522,
+----
++
+The `id` is the ID of the API we just created.
+
+4. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+
+5. Select the `Push Data` request and send the request four times in quick succession. Note that all the requests are accepted.
+
+6. Select the `Redeploy API` request and send it. 
+
+7. Select  the `Push Data` request and send it four times in quick succession. Note that now only the first request is accepted. The others requests receive a response like this.
++
+[code,json]
+----
+{
+    "message": "Rate limit exceeded ! You reach the limit of 1 requests per 20 seconds",
+    "http_status_code": 429
+}
+----
+
+== Close the plan and delete the API
+
+After finishing this tutorial, run the `Stop the API`, `Close plan`, and `Delete API` requests in the `Delete API` folder in Postman. This removes the plan and API.
+
+Alternatively, you can delete all Docker containers and volumes.
