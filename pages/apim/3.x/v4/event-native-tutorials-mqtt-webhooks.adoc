@@ -44,7 +44,7 @@ The `id` is the ID of the API we just created. Copy the ID, and paste it into th
 
 == Creating a subscription plan
 
-1. Select the "Create an Open (Subscription) Plan" request and look at the request body. It looks like this.
+1. Select the `Create an Open (Subscription) Plan` request and look at the request body. It looks like this.
 +
 [code,json]
 ----
@@ -80,7 +80,7 @@ The `id` is the ID of the plan we just created.
 
 == Starting the API
 
-1. Select the "Start the API" request. You will see that it has no request body.
+1. Select the `Start the API` request. You will see that it has no request body.
 
 2. Send the request. You should receive a `204` response with no response body.
 
@@ -90,7 +90,7 @@ The API has been created and is ready to be used.
 
 We are now going to create an application and use that application to subscribe to the API.
 
-1. Select the "Create an Application" request. If you look at the body of this request you will see that it is a simple demo application.
+1. Select the `Create an Application` request. If you look at the body of this request you will see that it is a simple demo application.
 
 2. Send the request. You should receive a response that begins like this.
 +
@@ -112,7 +112,7 @@ We are now going to create an application and use that application to subscribe 
 
 5. Copy the callback URL, and paste it into the `CURRENT VALUE` field for the `callback-url` variable in the APIM 3.20 Tutorials.
 
-6. Select the "Subscribe to API" request. If you look at the body of the request, you will see name-value pairs for custom headers, and a `metadata` object. These will become useful later. Send the request. You should see a response that begins like this.
+6. Select the `Subscribe to API` request. If you look at the body of the request, you will see name-value pairs for custom headers, and a `metadata` object. These will become useful later. Send the request. You should see a response that begins like this.
 +
 [code,json]
 ----
@@ -167,7 +167,7 @@ When we created the subscription to the API, the request body contained the foll
 
 Our filter is going to use this metadata to filter the messages.
 
-1. Select the "Add Flow to API request". If you look at the body of the request you will see the following line.
+1. Select the `Add Flow to API` request. If you look at the body of the request you will see the following line.
 +
 [code,json]
 ----
@@ -196,7 +196,7 @@ Send the request. You should see a response that begins like this.
     "updatedAt": 1675157012827,
 ----
 
-2. Once you have modified the API, you have to redeploy it. Select "Redeploy API" and send the request. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
+2. Once you have modified the API, you have to redeploy it. Select the `Redeploy API` and send it. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
 
 3. Go back to the HiveMQ client at http://www.hivemq.com/demos/websocket-client/ and publish the following message to the `demo` topic.
 +
@@ -223,6 +223,6 @@ You will see the message does appear in the `webhook.site` window, because the f
 
 == Close the plan and delete the API
 
-After finishing this tutorial, run "Stop the API", "Close plan", and "Delete API" in the "Delete API" folder in Postman. This removes the plan and API.
+After finishing this tutorial, run the `Stop the API`, `Close plan`, and `Delete API` requests in the `Delete API` folder in Postman. This removes the plan and API.
 
 Alternatively, you can delete all Docker containers and volumes.

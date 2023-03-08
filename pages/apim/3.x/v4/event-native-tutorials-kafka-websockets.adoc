@@ -47,7 +47,7 @@ The `id` is the ID of the API we just created. Copy the ID, and paste it into th
 
 == Creating a keyless plan
 
-1. Select the "Create an Open (keyless) Plan" request and look at the request body. It looks like this.
+1. Select the `Create an Open (keyless) Plan` request and look at the request body. It looks like this.
 +
 [code,json]
 ----
@@ -83,7 +83,7 @@ The `id` is the ID of the plan we just created.
 
 == Starting the API
 
-1. Select the "Start the API" request. You will see that it has no request body.
+1. Select the `Start the API` request. You will see that it has no request body.
 
 2. Send the request. You should receive a `204` response with no response body.
 
@@ -91,7 +91,7 @@ The API has been created and is ready to be used.
 
 == Using the API
 
-1. In Postman, select "Push Data" and look at the request body. It looks like this.
+1. In Postman, select the `Push Data` request and look at the request body. It looks like this.
 +
 [code,json]
 ----
@@ -113,7 +113,7 @@ The API has been created and is ready to be used.
  websocat ws://localhost:8082/demo/ws
 ----
 
-6. In Postman, send the "Push Data" request again. You should see a message appear in the terminal where `websocat` is running. 
+6. In Postman, send the `Push Data` request again. You should see a message appear in the terminal where `websocat` is running. 
 +
 [code,bash]
 ----
@@ -146,7 +146,7 @@ The message will also appear on http://localhost:8080/ui/docker-kafka-server/tai
 
 We are now going to add message filtering.
 
-1. Select the "Add Flow to API request". If you look at the body of the request you will see the following line.
+1. Select the `Add Flow to API` request. If you look at the body of the request you will see the following line.
 +
 [code,json]
 ----
@@ -173,7 +173,7 @@ Send the request. You should see a response that begins like this.
     "deployedAt": 1675674539916,
 ----
 
-2. Once you have modified the API, you have to redeploy it. Select "Redeploy API" and send the request. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
+2. Once you have modified the API, you have to redeploy it. Select the `Redeploy API` request and send it. The message body in the response should be similar to the message body you received in the previous step, but the value of `deployedAt` should have been updated.
 
 3. Exit the existing `websocat` session using `CTRL C` and restart it.
 +
@@ -182,7 +182,7 @@ Send the request. You should see a response that begins like this.
 websocat ws://localhost:8082/demo/ws
 ----
 
-4. Using the "Push Data" request, publish the following message. 
+4. Using the `Push Data` request, publish the following message. 
 +
 [code,json]
 ----
@@ -209,6 +209,6 @@ You will see the message does appear in the `websocat` terminal, because the fil
 
 == Close the plan and delete the API
 
-After finishing this tutorial, run "Stop the API", "Close plan", and "Delete API" in the "Delete API" folder in Postman. This removes the plan and API.
+After finishing this tutorial, run the `Stop the API`, `Close plan`, and `Delete API` requests in the `Delete API` folder in Postman. This removes the plan and API.
 
 Alternatively, you can delete all Docker containers and volumes.
