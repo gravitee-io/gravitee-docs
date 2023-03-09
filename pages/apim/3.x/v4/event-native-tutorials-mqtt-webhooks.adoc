@@ -17,7 +17,7 @@ Before running this tutorial, you must have:
 
 1. In the Tutorials Postman Collection, open the `MQTT and Webhooks` folder.
 
-2. Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `subscription`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create a subscription - that is the gateway accepts a subscription instead of providing a target HTTP path for the request or initial connection. If you look under `entrypoints` you can see that we are creating one entrypoint, a `webhook` entrypoint. Under `endpointGroups` you can see that we are creating one `mqtt5` endpoint, which connects to the host `hivemq` on port `1883`.
+2. Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API.  If you look under `entrypoints` you can see that we are creating one entrypoint, a `webhook` entrypoint. Under `endpointGroups` you can see that we are creating one `mqtt5` endpoint, which connects to the host `hivemq` on port `1883`.
 +
 [TIP]
 ====
