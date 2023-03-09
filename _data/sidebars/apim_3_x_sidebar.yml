@@ -316,21 +316,6 @@ entries:
                   - title: Using our APIs
                     output: web
                     url: /apim/3.x/apim_publisherguide_manage_apis_using_our_apis.html
-              - title: Service Managment Ecosystem
-                output: web
-                subfolderitems:
-                  - title: Introducing SME
-                    output: web
-                    url: /apim/3.x/apim_publisherguide_introducing_sme.html
-                  - title: Introducing the Kafka connector
-                    output: web
-                    url: /apim/3.x/apim_publisherguide_introducing_kafka.html
-                  - title: Using the Kafka connector
-                    output: web
-                    url: /apim/3.x/apim_publisherguide_using_kafka.html
-                  - title: Configuring the Kafka connector
-                    output: web
-                    url: /apim/3.x/apim_publisherguide_configuring_kafka.html
               - title: Plans & Subscriptions
                 output: web
                 subfolderitems:
@@ -772,6 +757,9 @@ entries:
                 - title: Kafka and HTTP
                   output: web
                   url: /apim/3.x/event_native_tutorials_kafka_http.html
+                - title: Kafka Advanced, HTTP, and Confluent Cloud
+                  output: web
+                  url: /apim/3.x/event_native_tutorials_kafka_advanced_http_confluentcloud.html
                 - title: Kafka and SSE
                   output: web
                   url: /apim/3.x/event_native_tutorials_kafka_sse.html
@@ -793,9 +781,6 @@ entries:
                 - title: MQTT and Websockets
                   output: web
                   url: /apim/3.x/event_native_tutorials_mqtt_websockets.html
-                - title: Kafka Advanced, HTTP, and Confluent Cloud
-                  output: web
-                  url: /apim/3.x/event_native_tutorials_kafka_advanced_http_confluentcloud.html
           - title: Example Use Cases
             output: web
             url: /apim/3.x/event_native_apim_example_use_cases.html
