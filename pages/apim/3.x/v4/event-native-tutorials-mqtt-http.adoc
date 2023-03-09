@@ -35,7 +35,7 @@ This is necessary to allow the API to consume data from MQTT.
 APIM and HiveMQ are both running on the Docker bridge network called `storage`. The host `hivemq` is a host on that network.
 ====
 +
-For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.21/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
 
 3. Send the request. You should receive a response that starts like this.
 +
@@ -51,7 +51,7 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
     "updatedAt": 1674818407231,
 ----
 +
-The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.21 Tutorials Environment. Click Save. 
 
 == Creating a keyless plan
 
@@ -70,7 +70,7 @@ The `id` is the ID of the API we just created. Copy the ID, and paste it into th
 }
 ----
 +
-For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.21/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
 
 2. Send the request. You should receive a response that starts like this.
 +
@@ -86,7 +86,7 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
 ----
 +
 The `id` is the ID of the plan we just created.
-3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.21 Tutorials Environment. Click Save. 
 
 == Starting the API
 
@@ -231,7 +231,7 @@ We are now going to modify the API so that it uses a rate-limiting plan.
 +
 These lines specify the rate limit of one request per 20 seconds.
 +
-For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.21/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
 
 3. Send the request. You should receive a response that starts like this.
 +
@@ -248,7 +248,7 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
 +
 The `id` is the ID of the API we just created.
 
-4. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+4. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.21 Tutorials Environment. Click Save. 
 
 5. Select the `Push Data` request and send the request four times in quick succession. Note that all the requests are accepted.
 

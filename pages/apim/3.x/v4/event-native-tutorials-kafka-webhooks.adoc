@@ -26,7 +26,7 @@ Under `endpointGroups` you can see that we are creating one `kafka` endpoint, wh
 APIM and AKHQ are both running on the Docker bridge network called `storage`. The host `kafka` is a host on that network.
 ====
 +
-For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.21/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
 
 3. Send the request. You should receive a response that starts like this.
 +
@@ -42,7 +42,7 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
     "updatedAt": 1675347679105,
 ----
 +
-The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.21 Tutorials Environment. Click Save. 
 
 == Creating plans
 
@@ -63,7 +63,7 @@ We need to create two plans: a keyless plan to allow us to publish to Kafka over
 }
 ----
 +
-For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.21/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
 
 2. Send the request. You should receive a response that starts like this.
 +
@@ -80,7 +80,7 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
 +
 The `id` is the ID of the plan we just created.
 
-3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.21 Tutorials Environment. Click Save. 
 
 4. Select the `Create an Open (Subscription) Plan` request and look at the request body. It looks like this.
 +
@@ -112,7 +112,7 @@ The `id` is the ID of the plan we just created.
 +
 The `id` is the ID of the plan we just created.
 
-6. Copy the ID, and paste it into the `CURRENT VALUE` field for the `subplan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+6. Copy the ID, and paste it into the `CURRENT VALUE` field for the `subplan` variable in the APIM 3.21 Tutorials Environment. Click Save. 
 
 == Starting the API
 
@@ -142,11 +142,11 @@ We are now going to create an application and use that application to subscribe 
     "updated_at": 1675347893455,
 ----
 
-3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `application` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `application` variable in the APIM 3.21 Tutorials Environment. Click Save. 
 
 4. Go to https://webhook.site/ and follow the instructions there to create a callback URL. Do not close the browser window.
 
-5. Copy the callback URL, and paste it into the `CURRENT VALUE` field for the `callback-url` variable in the APIM 3.20 Tutorials.
+5. Copy the callback URL, and paste it into the `CURRENT VALUE` field for the `callback-url` variable in the APIM 3.21 Tutorials.
 
 6. Select the `Subscribe to API` request. If you look at the body of the request, you will see name-value pairs for custom headers, and a `metadata` object. These will become useful later. Send the request. You should see a response that begins like this.
 +
@@ -162,7 +162,7 @@ We are now going to create an application and use that application to subscribe 
         "id": "886966ce-1dab-48b1-a966-ce1dab68b17d",
 ----
 
-7.  Copy the top-level ID, and paste it into the `CURRENT VALUE` field for the `subscription` variable in the APIM 3.20 Tutorials Environment. Click Save.
+7.  Copy the top-level ID, and paste it into the `CURRENT VALUE` field for the `subscription` variable in the APIM 3.21 Tutorials Environment. Click Save.
 
 8. In Postman, select the `Push Data` request and look at the request body. It looks like this.
 +
@@ -256,6 +256,6 @@ You will see the message does appear in the `webhook.site` window, because the f
 
 == Close the plan and delete the API
 
-After finishing this tutorial, run the `Stop the API`, `Close plan`, and `Delete API` requests in the `Delete API` folder in Postman. This removes the plan and API. You will also have to copy the `CURRENT VALUE` of `subplan` into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment, click Save, and then re-run `Close plan` to remove the subscription plan.
+After finishing this tutorial, run the `Stop the API`, `Close plan`, and `Delete API` requests in the `Delete API` folder in Postman. This removes the plan and API. You will also have to copy the `CURRENT VALUE` of `subplan` into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.21 Tutorials Environment, click Save, and then re-run `Close plan` to remove the subscription plan.
 
 Alternatively, you can delete all Docker containers and volumes.
