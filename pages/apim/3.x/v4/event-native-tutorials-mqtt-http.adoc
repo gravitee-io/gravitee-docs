@@ -17,7 +17,7 @@ Before running this tutorial, you must have:
 
 1. In the Tutorials Postman Collection, open the `MQTT and HTTP` folder.
 
-2. Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `entrypoints` you can see that we are creating two entrypoints, an `http-post` entrypoint and an `http-get` entrypoint. Under `endpointGroups` you can see that we are creating one `mqtt5` endpoint, which connects to the host `hivemq` on port `1883`.
+2. Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `message`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `entrypoints` you can see that we are creating two entrypoints, an `http-post` entrypoint and an `http-get` entrypoint. Under `endpointGroups` you can see that we are creating one `mqtt5` endpoint, which connects to the host `hivemq` on port `1883`.
 +
 If you look under `endpoints` you will see the following code.
 +
@@ -46,7 +46,7 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
     "name": "Demo of HTTP Post + MQTT",
     "apiVersion": "1.0.0",
     "definitionVersion": "4.0.0",
-    "type": "async",
+    "type": "message",
     "createdAt": 1674818407231,
     "updatedAt": 1674818407231,
 ----

@@ -39,7 +39,7 @@ For more information about installing plugins, see link:{{'/apim/3.x/apim_devgui
 
 1. In the Tutorials Postman Collection, open the `Kafka Advanced, HTTP, and Confluent Cloud` folder.
 
-2. Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `listeners` you can see that we are creating two entrypoints, an `http-post` entrypoint and an `http-get` entrypoint. 
+2. Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `message`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `listeners` you can see that we are creating two entrypoints, an `http-post` entrypoint and an `http-get` entrypoint. 
 +
 Under `endpointGroups` you can see that we are creating one `kafka-advanced` endpoint, which uses the bootstrap server specified by the `kafkabootstrap` variable. The `security` object contains the authentication information to allow the gateway to connect to Kafka. In this case we are using SASL.
 +
@@ -67,7 +67,7 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
     "name": "Kafka, HTTP, and Confluent Cloud",
     "apiVersion": "1.0",
     "definitionVersion": "4.0.0",
-    "type": "async",
+    "type": "message",
     "createdAt": 1675332450547,
     "updatedAt": 1675332450547,
 ----

@@ -296,7 +296,7 @@ For example, to create an HTTP POST entrypoint that connects to a Kafka endpoint
     "name": "Data Ingestion to Kafka",
     "apiVersion": "1.0",
     "definitionVersion": "4.0.0",
-    "type": "async",
+    "type": "message",
     "description": "Data Ingestion to Kafka",
     "listeners": [
         {
