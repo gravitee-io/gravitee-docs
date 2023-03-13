@@ -2,6 +2,16 @@
 
 == Breaking changes
 
+=== Docker images
+From this version, to be complient with https://www.tenable.com/audits/items/CIS_Docker_v1.3.1_L1_Docker_Linux.audit:bdcea17ac365110218526796ae3095b1[CIS_Docker_v1.3.1_L1] the docker images are now using the user `graviteeio`
+This means that if you use the official images and deploy them to Kubernetes, nothing changes.
+If you build your own Dockerfile from Gravitee images, you must give the right rights to the modifications you add
+If you deploy in `openshift`, you have to add the following configure:
+```yaml
+securityContext:
+    runAsGroup: 1000
+```
+
 === Management API
 In previous versions, sending a POST request to /user/login without an Authorization returned HTTP Response 200.
 
