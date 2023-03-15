@@ -35,6 +35,8 @@ metadata:
   name: dev-mgmt-ctx
 spec:
   baseUrl: http://localhost:8083
+  environmentId: DEFAULT
+  organizationId: DEFAULT
   auth:
     credentials:
       username: admin
@@ -51,6 +53,8 @@ metadata:
   name: dev-mgmt-ctx
 spec:
   baseUrl: http://localhost:8083
+  environmentId: DEFAULT
+  organizationId: DEFAULT
   auth:
     bearerToken: xxxx-yyyy-zzzz
 ....
