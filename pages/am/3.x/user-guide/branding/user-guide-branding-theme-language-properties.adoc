@@ -157,6 +157,7 @@
 |mfa.http| HTTP
 |mfa.fido| FIDO2
 |mfa.recovery.code| Recover Code
+|mfa.call| Phone call
 |=========================================================
 
 == MFA enroll
@@ -182,6 +183,7 @@
 |mfa_enroll.http| Go to the next step and enter the code provided by HTTP
 |mfa_enroll.fido.description| Select 'Next' button to trigger the registration process
 |mfa_enroll.fido| Select 'Next' button to trigger registration process
+|mfa_enroll.call.description| We will call your number to provide the verification code
 |mfa_enroll.on.select.title| Multi-factor Authentication
 |mfa_enroll.on.select.description| Configure multi-factor authentication by choosing the method to validate your identity
 |=========================================================
@@ -217,6 +219,7 @@
 |mfa_alternative.email| Send an email to your email address
 |mfa_alternative.http| Enter the code provided by HTTP in next step
 |mfa_alternative.fido| Select the 'Next' button to trigger the registration process
+|mfa_alternative.call| We will call your number to provide the verification code
 |mfa_alternative.recovery.code| Use a recovery code previously generated
 |mfa_alternative.submit.button| Next
 |=========================================================
