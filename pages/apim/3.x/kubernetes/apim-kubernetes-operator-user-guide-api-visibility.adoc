@@ -1,0 +1,89 @@
+[[apim-kubernetes-operator-user-guide-api-visibility]]
+= The API visibility in a Kubernetes cluster
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_kubernetes_operator_user_guide_api_visibility.html
+:page-folder: apim/kubernetes
+:page-layout: apim3x
+
+[label label-version]#New in version 3.21.0#
+
+== Introduction
+
+This section will provide you with a guide for deploying an API on Gateway(s) in different Kubernetes clusters. The guide will cover both single and multiple Gateway deployment scenarios.
+
+== Overview
+The Gravitee Gateways will be deployed in different clusters and the Management API will be deployed in the same cluster as the Gravitee Kubernetes Operator.
+
+image:{% link /images/apim/3.x/kubernetes/gko-api-visibility.png %}[gko-api-visibility]
+
+== Deploy on a single Gateway
+
+In this scenario, we will deploy an API on a single Gateway. To do it, we will apply the following configuration, on the Gateway 1 cluster:
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: local-api-example
+spec:
+  name: "GKO Basic"
+  version: "1.1"
+  description: "Basic api managed by Gravitee Kubernetes Operator"
+  proxy:
+    virtual_hosts:
+      - path: "/k8s-basic"
+    groups:
+      - endpoints:
+          - name: "Default"
+            target: "https://api.gravitee.io/echo"
+  local: true
+----
+
+Here we notice that the `local` field is set to `true`. This field is used to indicate that the API will be deployed only in the cluster where the custom resource is applied. The `local` field is optional and is set to `true` by default. Running the following command we can check that the API ConfigMap has been created in the Gateway 1 cluster:
+
+[source,bash]
+----
+$ kubectl get cm -n gateway-1-cluster
+----
+
+----
+NAMESPACE            NAME                DATA    AGE
+gateway-1-namespace  local-api-example   1       1m
+----
+
+== Deploy on multiple Gateways
+
+In this scenario, we will deploy an API on multiple Gateways. To do it, we will use a custom resource that can be applied to any cluster, as long as the Management API is available, the ApiDefinition refers to a ManagementContext and the `local` field is set to `false`.
+
+[,yaml]
+----
+apiVersion: gravitee.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: global-api-example
+spec:
+  name: "GKO Basic"
+  version: "1.1"
+  description: "Basic api managed by Gravitee Kubernetes Operator"
+  contextRef:
+    name: apim-example-context
+    namespace: apim-example
+  proxy:
+    virtual_hosts:
+      - path: "/k8s-basic"
+    groups:
+      - endpoints:
+          - name: "Default"
+            target: "https://api.gravitee.io/echo"
+  local: false
+----
+
+Running the following command, you should not find any ConfigMap linked to our ApiDefinition in the cluster where the custom resource has been applied.
+
+[source,bash]
+----
+$ kubectl get cm --all-namespaces
+----
+
+Indeed, the ApiDefinition has been deployed using the Management API and the ApiDefinition is not local to the cluster.
