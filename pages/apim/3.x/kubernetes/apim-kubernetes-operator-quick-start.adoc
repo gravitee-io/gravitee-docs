@@ -69,7 +69,7 @@ NOTE: Read more about the Management Context custom resource link:{{ '/apim/3.x/
 
 To create a Management Context custom resource, you need a YAML file with the correct Management Context configuration. You can use the following sample YAML file from Gravitee directly, or as a template to base your configuration on:
 
-https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/config/samples/context/k3d/managementcontext_credentials.yaml
+https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/config/samples/context/k3d/management-context-with-credentials.yml
 
 To create the Management Context resource using the ready Gravitee sample file, run the following command:
 
