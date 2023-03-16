@@ -1,9 +1,10 @@
 = Upgrade to 3.19.9
+
 == Elasticsearch
 
-In previous version, the logging index template was using the standard text analyzer for request payloads. This analyzer does not allow to search for content with a special characters (e.g. an email address). The new template defines a custom analyzer to provide this feature.
+In previous version, the logging index template was using the standard text analyzer for request payloads. This analyzer does not allow to search for content with special characters (e.g. an email address). The new template defines a custom analyzer to provide this feature.
 
-User that extends the template settings using the `extendedSettingsTemplate` to define a custom `analysis` property **must** add this analyzer to their custom settings:
+Users that extend the template settings using the `extendedSettingsTemplate` to define a custom `analysis` property **must** add this analyzer to their custom settings:
 
 ....
 "analysis": {
@@ -19,4 +20,4 @@ User that extends the template settings using the `extendedSettingsTemplate` to 
 }
 ....
 
-If your extended settings does not include the `analysis` property, this change does not impact you.
+If your extended settings do not include the `analysis` property, this change does not impact you.
