@@ -8,10 +8,10 @@ NOTE: To take advantage of these new features and incorporate these breaking cha
 
 == Docker images
 
-From this version, to be complient with https://www.tenable.com/audits/items/CIS_Docker_v1.3.1_L1_Docker_Linux.audit:bdcea17ac365110218526796ae3095b1[CIS_Docker_v1.3.1_L1] the docker images are now using the user `graviteeio`
-This means that if you use the official images and deploy them to Kubernetes, nothing changes.
-If you build your own Dockerfile from Gravitee images, you must give the right rights to the modifications you add.
-If you deploy in `openshift`, you have to add the following configure:
+From this version, to be compliant with https://www.tenable.com/audits/items/CIS_Docker_v1.3.1_L1_Docker_Linux.audit:bdcea17ac365110218526796ae3095b1[CIS_Docker_v1.3.1_L1] the docker images are now use the `graviteeio` user
+This means that if you use the official images and deploy them on your k8s installation, nothing changes.
+If you build your own Dockerfile from Gravitee images, you must give the correct rights according to your modifications.
+If you deploy on `openshift`, you have to add the following configuration:
 
 ```yaml
 securityContext:
