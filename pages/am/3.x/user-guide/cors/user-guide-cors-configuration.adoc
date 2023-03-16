@@ -1,0 +1,88 @@
+= CORS Configuration
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_cors_configuration.html
+:page-folde![](../../../../../../../../../Desktop/graviteeio-am-userguide-cors-default.png)r: am/user-guide
+:page-layout: am
+
+== Overview
+
+The CORS (Cross-Origin Resource Sharing) is a mechanism that allows resources on a *web page* to be requested from another domain.
+
+To understand well how to deal with CORS, you should first take a look at the https://www.w3.org/TR/cors[specification].
+
+Gravitee Access Management (AM) has two separate CORS configurations in two different `gravitee.yml` files; one is for AM console and the other one is for AM gateway.
+This document specifically focuses on AM gateway side CORS configuration.
+From AM `v3.21.x` you can configure CORS in the domain level as well.
+The CORS configuration in the domain level does not affect AM console CORS configuration.
+
+== Configure CORS in Domain Level
+
+Follow the below steps to create or update domain level CORS configuration.
+
+. Select *Settings > Entrypoints*. You should see configuration like below:
++
+image::{% link images/am/current/graviteeio-am-userguide-cors-default.png %}[CORS domain settings,400,380]
++
+. Enable the configuration and provide appropriate value
+. Save the configuration.
+
+NOTE: The default value for the origin is `*` and max age is `86400 seconds (1 day)` if you do not provide any values.
+
+WARNING: Domain level CORS settings only affect the domain for which the settings are enabled.
+You should use the settings in `gravitee.yml` file if you wish to use a single CORS configuration for all the domains.
+
+== Disabling The Domain level CORS Configuration
+
+Disabling the domain level CORS configuration enables gateway level CORS configuration automatically.
+The gateway configuration uses values from the `gravitee.yml` file.
+The default values are used for both domain level and gateway level configurations if custom values are unspecified.
+
+
+== CORS Default Values
+
+[cols="2",options="header"]
+|=========================================================
+|Property | Default Value
+
+|allow-origin| *
+|allow-methods| OPTIONS, GET, POST, PUT, DELETE, PATCH
+|allow-headers| Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, If-Match, X-Xsrf-Token
+|max-age| 864000 seconds (1 day)
+|allow-credentials| false
+|=========================================================
+
+Here is the screenshot of these variables from the `gravitee.yml` file
+
+image::{% link images/am/current/graviteeio-am-userguide-cors-settings-yml.png %}[Gateway CORS defailt settings,500,400]
+
+
+== Brief Definition
+
+=== Access-Control-Allow-Origin
+
+Allow to specify one or multiples origin(s) that may access the resource.
+If you want to allow all origins, you can put `*` but it's not safe for production.
+
+=== Access-Control-Allow-Methods
+
+Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request.
+
+=== Access-Control-Allow-Headers
+
+Here you specify the headers allowed to be used by your requests.
+Typically, on your request headers you will have a header `Access-Control-Request-Headers` which request CORS to be configured to allow its values.
+
+Let's see a simple use case:
+
+A user make a call with a header `Access-Control-Request-Headers: my-header`.
+
+- if the CORS `Access-Control-Allow-Headers` is not configured with the header `my-header`, the request will get a 400 HTTP status.
+- if the CORS `Access-Control-Allow-Headers` is configured with the header `my-header` at least, the request will get a 200 HTTP status.
+
+=== Access-Control-Allow-Credentials
+
+Indicates whether or not the response to the request can be exposed when the credentials flag is true.
+
+=== Access-Control-Allow-Max-Age
+
+This header indicates how long the results of a preflight request can be cached.
