@@ -13,6 +13,43 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.19.9 (2023-03-17)
+
+=== Gateway
+
+* Server error on flow selection in best-match mode https://github.com/gravitee-io/issues/issues/8899[#8899]
+* No circuit breaker applied on an unhealthy API when dynamic routing is activated https://github.com/gravitee-io/issues/issues/8919[#8919]
+* Gateway exceeded memory limit for $group with mongodb atlas https://github.com/gravitee-io/issues/issues/8914[#8914]
+* Health-check fails if endpoint host contains an underscore https://github.com/gravitee-io/issues/issues/8946[#8946]
+* Gateway timeout is not logged when API is called by another API https://github.com/gravitee-io/issues/issues/8941[#8941]
+* Synchronization error on startup with multiple environments on SQL database https://github.com/gravitee-io/issues/issues/8929[#8929]
+* Error when starting the Gateway with Kubernetes values https://github.com/gravitee-io/issues/issues/8927[#8927]
+* Multiple values of Transaction header when `handlers` is set https://github.com/gravitee-io/issues/issues/7618[#7618]
+
+=== API
+
+* Can not export API after using "Import multiple files" feature https://github.com/gravitee-io/issues/issues/8828[#8828]
+* API can not be updated properly if a plan's name contains a `+` character https://github.com/gravitee-io/issues/issues/8909[#8909]
+* Pagination issue with APIs on different environments https://github.com/gravitee-io/issues/issues/8923[#8923]
+* Search by payload does not work properly with special characters https://github.com/gravitee-io/issues/issues/8470[#8470]
+* Some characters are not supported in a MongoDB URI https://github.com/gravitee-io/issues/issues/8643[#8643]
+
+=== Console
+
+* Transfer ownership of API does not automatically display current members https://github.com/gravitee-io/issues/issues/8516[#8516]
+* API version missing in API list screen https://github.com/gravitee-io/issues/issues/8904[#8904]
+* Cropped tooltip when charts contain a lot of series https://github.com/gravitee-io/issues/issues/5852[#5852]
+* Pagination of the API properties table is not working https://github.com/gravitee-io/issues/issues/7048[#7048]
+* Response Template for `SPIKE_ARREST_TOO_MANY_REQUESTS` missing https://github.com/gravitee-io/issues/issues/7082[#7082]
+
+=== Portal
+
+* Non-required fields displayed as required in OpenAPI documentation https://github.com/gravitee-io/issues/issues/7099[#7099]
+
+=== Policies
+
+* Traffic shadowing policy is not compatible with the latest versions of APIM https://github.com/gravitee-io/issues/issues/8385[#8385]
+
 == APIM - 3.19.8 (2023-02-24)
 
 === Gateway
