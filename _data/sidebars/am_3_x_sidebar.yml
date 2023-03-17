@@ -597,6 +597,24 @@ entries:
                     output: web
                     url: /am/current/am_devguide_protocols_oauth2_best_practices.html
                     subfolders:
+                      - title: Refresh Tokens
+                        output: web
+                        subfolderitems:
+                          - title: Overview
+                            output: web
+                            url: /am/current/am_userguide_oauth2_refresh_tokens.html
+                          - title: Get Refresh Tokens
+                            output: web
+                            url: /am/current/am_userguide_oauth2_refresh_tokens_get.html
+                          - title: Use Refresh Tokens
+                            output: web
+                            url: /am/current/am_userguide_oauth2_refresh_tokens_use.html
+                          - title: Revoke Refresh Tokens
+                            output: web
+                            url: /am/current/am_userguide_oauth2_refresh_tokens_revoke.html
+                          - title: Refresh Token Rotation
+                            output: web
+                            url: /am/current/am_userguide_oauth2_refresh_tokens_rotation.html
                       - title: Extension grants
                         output: web
                         subfolderitems:

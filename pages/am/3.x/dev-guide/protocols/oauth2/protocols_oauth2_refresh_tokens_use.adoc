@@ -1,0 +1,41 @@
+= Use Refresh Tokens
+:page-sidebar: am_3_x_sidebar
+:page-permalink: am/current/am_userguide_oauth2_refresh_tokens_use.html
+:page-folder: am/dev-guide/protocols/oauth2
+:page-layout: am
+
+A refresh token is used to get a new access token without user interaction (i.e sign-in process).
+
+To use a refresh token, the application must call the OAuth 2.0 Token Endpoint, the request would look like the following :
+
+----
+curl --request POST \
+  --url 'https://AM_GW/{domain}/oauth/token' \
+  --header 'content-type: application/x-www-form-urlencoded' \
+  --header 'authorization: Basic (clientId:clientSecret)'
+  --data 'grant_type=refresh_token' \
+  --data 'refresh_token={refreshToken}'
+----
+
+NOTE: By default the refresh token is single use only.
+See link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation^] for more information.
+
+The response will contain an access token and a **new** refresh token (+ id_token if you have specified the openid scope).
+
+----
+{
+  "access_token": "eyJraWQiOi...kZWZh",
+  "refresh_token": "eyJraWBHSHD...zessdOLS",
+  "token_type": "Bearer",
+  "scope": "...",
+  "expires_in": "..."
+}
+----
+
+See also:
+
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_get.html' | relative_url }}[How to get Refresh Tokens^]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_revoke.html' | relative_url }}[How to revoke Refresh Tokens^]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation^]
+
+
