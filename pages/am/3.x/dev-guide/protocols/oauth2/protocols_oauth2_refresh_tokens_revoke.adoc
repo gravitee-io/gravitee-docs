@@ -3,11 +3,12 @@
 :page-permalink: am/current/am_userguide_oauth2_refresh_tokens_revoke.html
 :page-folder: am/dev-guide/protocols/oauth2
 :page-layout: am
+:page-toc: false
 
 A refresh token can be revoked if it has been compromised or it has to be removed by the end of a user session.
 
 NOTE: By default the refresh token is single use only.
-See link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation^] for more information.
+See link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation] for more information.
 
 To revoke a refresh token, the application must call the OAuth 2.0 Revocation Endpoint, the request would look like the following :
 
@@ -21,9 +22,9 @@ curl --request POST \
 
 NOTE: The application should match the one for which the refresh token was issued.
 
-See also:
+== See also
 
-* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_get.html' | relative_url }}[How to get Refresh Tokens^]
-* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_use.html' | relative_url }}[How to use Refresh Tokens^]
-* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation^]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_get.html' | relative_url }}[How to get Refresh Tokens]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_use.html' | relative_url }}[How to use Refresh Tokens]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation]
 
