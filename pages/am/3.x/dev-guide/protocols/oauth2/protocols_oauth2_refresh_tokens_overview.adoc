@@ -3,22 +3,21 @@
 :page-permalink: am/current/am_userguide_oauth2_refresh_tokens.html
 :page-folder: am/dev-guide/protocols/oauth2
 :page-layout: am
-
-== Overview
+:page-toc: false
 
 A refresh token is used to get a new access token without user interaction (i.e sign-in process).
 
 This allows good practices such as shorten the access token lifetime for security purposes without involving the user when the access token expires.
 
 NOTE: By default the refresh token is single use only and must be use to request new access token until it expires.
-See link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation^] for more information.
+See link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation] for more information.
 
 NOTE: For security reasons a refresh token must be stored in a secure place (i.e server side) because they essentially allow a user to remain authenticated forever.
 
-See also:
+== See also
 
-* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_get.html' | relative_url }}[How to get Refresh Tokens^]
-* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_use.html' | relative_url }}[How to use Refresh Tokens^]
-* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_revoke.html' | relative_url }}[How to revoke Refresh Tokens^]
-* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation^]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_get.html' | relative_url }}[How to get Refresh Tokens]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_use.html' | relative_url }}[How to use Refresh Tokens]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_revoke.html' | relative_url }}[How to revoke Refresh Tokens]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation]
 

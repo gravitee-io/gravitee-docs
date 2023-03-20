@@ -3,6 +3,7 @@
 :page-permalink: am/current/am_userguide_oauth2_refresh_tokens_use.html
 :page-folder: am/dev-guide/protocols/oauth2
 :page-layout: am
+:page-toc: false
 
 A refresh token is used to get a new access token without user interaction (i.e sign-in process).
 
@@ -18,7 +19,7 @@ curl --request POST \
 ----
 
 NOTE: By default the refresh token is single use only.
-See link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation^] for more information.
+See link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation] for more information.
 
 The response will contain an access token and a **new** refresh token (+ id_token if you have specified the openid scope).
 
@@ -34,8 +35,8 @@ The response will contain an access token and a **new** refresh token (+ id_toke
 
 See also:
 
-* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_get.html' | relative_url }}[How to get Refresh Tokens^]
-* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_revoke.html' | relative_url }}[How to revoke Refresh Tokens^]
-* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation^]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_get.html' | relative_url }}[How to get Refresh Tokens]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_revoke.html' | relative_url }}[How to revoke Refresh Tokens]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_rotation.html' | relative_url }}[Refresh Token Rotation]
 
 

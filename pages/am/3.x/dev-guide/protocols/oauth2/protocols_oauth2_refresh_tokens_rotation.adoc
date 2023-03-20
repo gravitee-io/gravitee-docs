@@ -4,14 +4,14 @@
 :page-folder: am/dev-guide/protocols/oauth2
 :page-layout: am
 
-## Overview
+== Overview
 
 Refresh token rotation enabled applications to get a new access token and a new refresh token every time a refresh token is used.
 
 The way refresh token rotation works is conform with the link:https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-22#name-refresh-token-protection[OAuth 2.0 Best Security Practices]
 meaning that each refresh token can be used only once and a new refresh token is issued after every new token request.
 
-## Disable Refresh Token Rotation
+== Disable Refresh Token Rotation
 
 [label label-version]#New in version 3.19.4#
 
@@ -22,15 +22,15 @@ but you can be exposed to security risk if the refresh token has been compromise
 
 To disable the refresh token rotation :
 
-. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console].
 . Go to *Application -> Settings -> OAuth 2.0 / OIDC*.
 . Select *Disable Refresh Token Rotation*.
 . Press *SAVE*.
 
-See also:
+== See also
 
-* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_get.html' | relative_url }}[How to get Refresh Tokens^]
-* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_use.html' | relative_url }}[How to use Refresh Tokens^]
-* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_revoke.html' | relative_url }}[How to revoke Refresh Tokens^]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_get.html' | relative_url }}[How to get Refresh Tokens]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_use.html' | relative_url }}[How to use Refresh Tokens]
+* link:{{ '/am/current/am_userguide_oauth2_refresh_tokens_revoke.html' | relative_url }}[How to revoke Refresh Tokens]
 
 
