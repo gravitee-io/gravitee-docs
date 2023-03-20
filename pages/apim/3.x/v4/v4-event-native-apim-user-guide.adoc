@@ -232,6 +232,16 @@ Kafka is a distributed event-streaming platform used for high-performance data p
 
 The Gravitee Kafka connectors offer advanced protocol mediation capabilities that can be applied for use cases where teams have a Kafka backend and want that broker and backend to communicate with a non-Kafka client. In addition to protocol mediation the advanced connector also supports advanced security feature (user/password using TLS) and quality of service (QoS). 
 
+The Kafka connector scan be used in the following ways depending on your use case:
+
+* Ingest data by exposing an endpoint that transforms requests into messages that are published into an Apache Kafka topic.
++
+image:{% link /images/apim/3.x/event-native/kafka-controller.png %}[]
+
+* Stream your Kafka events to consumers thanks to web-friendly protocols such as HTTP or Websocket, and provide real-time integration capability to your ecosystem.
++
+image:{% link /images/apim/3.x/event-native/kafka-controller2.png %}[]
+
 .Kafka Connectors
 |===
 |Feature | Kafka | Kafka Advanced
@@ -285,6 +295,18 @@ Connectors with `advanced` in their filenames can only be used with the Enterpri
 ====
 
 == How to create a V4 asynchronous API
+
+We have link:{{ '/apim/3.x/event_native_tutorials.html' | relative_url }}[several tutorials that teach you how to create a V4 asynchronous API]. They include:
+
+* link:{{'/apim/3.x/event_native_tutorials_kafka_http.html' | relative_url }}[Using Kafka and HTTP]
+* link:{{'/apim/3.x/event_native_tutorials_kafka_advanced_http_confluentcloud.html' | relative_url }}[Using Kafka and HTTP with Confluent Cloud]
+* link:{{'/apim/3.x/event_native_tutorials_kafka_sse.html' | relative_url }}[Using Kakfa and SSE]
+* link:{{'/apim/3.x/event_native_tutorials_kafka_webhooks.html' | relative_url }}[Using Kafka and Webhooks]
+* link:{{'/apim/3.x/event_native_tutorials_kafka_websockets.html' | relative_url }}[Using Kafka and Websockets]
+* link:{{'/apim/3.x/event_native_tutorials_mqtt_http.html' | relative_url }}[Using MQTT and HTTP]
+* link:{{'/apim/3.x/event_native_tutorials_mqtt_sse.html' | relative_url }}[Using MQTT and SSE]
+* link:{{'/apim/3.x/event_native_tutorials_mqtt_webhooks.html' | relative_url }}[Using MQTT and Webhooks]
+* link:{{'/apim/3.x/event_native_tutorials_mqtt_websockets.html' | relative_url }}[Using MQTT and Websockets]
 
 The link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee V4 Postman Collection] contains several examples of how to create and test an asynchronous API using the event-native V4 API definition and link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html' | relative_url}}[the new V4 policy execution engine] .
 
