@@ -23,72 +23,15 @@ The examples on this page work best if you are using Docker.
 
 [TIP]
 ====
-When you use Docker as described below, two Docker bridge networks are created: `frontend` and `storage`. AKHQ must run on the `storage`network. 
+When you use Docker as described below, two Docker bridge networks are created: `frontend` and `storage`. AKHQ must run on the `storage` network. 
 
 If you are not using Docker, you must make sure that the APIM components can connect to the Kafka bootstrap server.
 ====
 
 === Using Docker
 
-==== Installing APIM
-
-1. Download the `docker-compose.yml` file.
-+
-[code,bash]
-----
-curl -L https://bit.ly/docker-apim-3x -o docker-compose.yml  
-----
-2. Open `docker-compose.yml` in a text editor and add the following line to the `/services/gateway/environment` and `/services/management_api/environment` sections if it is not already there.
-+
-[code,yml]
-----
-- gravitee_api_jupiterMode_enabled=true
-----
-+
-This ensures that the gateway runs with its event-native features enabled.
-3. In `docker-compose.yml`, make sure that all the `APIM_VERSION` variables are set to `{APIM_VERSION:-3.20.0}`
-+This ensures you are using the correct version of APIM.
-4. Run `docker compose` to download and start all of the components.
-+
-[code,bash]
-----
-docker compose up -d
-----
-5. In your browser, go to `http://localhost:8084` to open the APIM UI. You can log in with the Username `admin` and Password `admin`.
-+
-[TIP]
-====
-Sometimes it can take a few minutes for APIM to fully start. If you get an error when going to `http://localhost:8084`, wait a few minutes and try again.
-====
-
-==== Installing AKHQ
-
-1. Download the `docker-compose.yml` file.
-+
-[code,bash]
-----
-curl https://raw.githubusercontent.com/tchiotludo/akhq/master/docker-compose.yml -O
-----
-
-2. Add the following lines to the root level of `docker-compose.yml`.
-+
-[code,json]
-----
-networks:
-  default:
-    name: storage
-----
-+
-These lines make AKHQ run on the `storage` Docker bridge network that was created when APIM was deployed.
-
-3. Run `docker compose` to download and start all of the components.
-+
-[code,bash]
-----
-docker compose up -d
-----
-
-4. In your browser, go to `http://localhost:8080` to open the AKHQ UI.
+* link:{{'/apim/3.x/event_native_tutorials_apim.html' | relative_url}}[Installing APIM]
+* link:{{'/apim/3.x/event_native_tutorials_akhq.html' | relative_url}}[Installing AKHQ]
 
 === Without Docker
 

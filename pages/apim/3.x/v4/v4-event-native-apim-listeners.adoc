@@ -1,0 +1,11 @@
+[[v4-event-native-apim-listeners]]
+= Listeners
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/event_native_apim_listeners.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+Gravitee API Management is based mainly on the HTTP protocol, but data can also be consumed by subscription. It has two types of listener: `HTTP` and `SUBSCRIPTION`.
+
+* `HTTP`: this is the most common type of listener. Most synchronous and asynchronous APIs use this listener and consume data over HTTP.
+* `SUBSCRIPTION`:  this type of listener is used for specific APIs. It is particularly useful for Webhook which requires the gateway to accept a subscription to start consuming messages from an endpoint and send them to an external Webhook.

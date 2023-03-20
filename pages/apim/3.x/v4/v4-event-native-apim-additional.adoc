@@ -1,0 +1,19 @@
+[[v4-event-native-apim-user-additional]]
+= Additional types of Entrypoints and Endpoints
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/event_native_apim_additional.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+You can add additional types of endpoints and entrypoints by adding a type of plugin called a connector.
+
+You can download additional entrypoint connectors from the link:https://download.gravitee.io/#graviteeio-apim/plugins/entrypoints/[Gravitee APIM entrypoint plugins download page]
+
+You can download additional endpoint connectors from the link:https://download.gravitee.io/#graviteeio-apim/plugins/endpoints/[Gravitee APIM endpoints plugins download page] and the link:https://download.gravitee.io/#graviteeio-ee/apim/plugins/entrypoints/[Gravitee APIM Enterprise Edition endpoints plugins download page]. 
+
+They are standard plugins and can be installed as described in link:{{'/apim/3.x/apim_installation_guide_plugins.html' | relative_url}}[Installing and updating Plugins].
+
+[NOTE]
+====
+Connectors with `advanced` in their filenames can only be used with the Enterprise Edition of the Gravitee Gateway.
+====
