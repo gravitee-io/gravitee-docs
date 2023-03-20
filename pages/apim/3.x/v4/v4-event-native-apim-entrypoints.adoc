@@ -1,0 +1,150 @@
+[[v4-event-native-apim-entrypoints]]
+= Entrypoints
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/event_native_apim_entrypoints.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+An _entrypoint_ is how an end user connects to the Gravitee Gateway. The following types of entrypoints are available.
+
+== HTTP POST and HTTP GET
+
+HTTP POST and HTTP GET entrypoints allow external clients to publish and receive data via standard HTTP POST and HTTP GET requests, and ease the ingestion of data into event-oriented backends like Kafka.
+
+As shown in the following diagram, with the HTTP POST workflow, a client application running on HTTP can post content to the Gravitee Gateway. The Gateway can then take that content and push it over to Kafka as a message that Kafka can ingest. The Gravitee Gateway acts as a protocol mediation layer in this context. This enables API owners to quickly set up a sync-to-async integration.
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-http-post.png %}[]
+
+== Server-sent events (SSE)
+
+Server-sent events (SSE) is a server push technology that allows a client to receive automatic updates from a server using an HTTP connection. It is unidirectional: consumers can subscribe but not publish.
+
+The SSE Advanced connector supports a wider range of link:{{'/apim/3.x/event_native_apim_quality_of_service.html' | relative_url}}[Quality of Service] options, as shown in link:{{'/apim/3.x/event_native_apim_quality_of_service.html#compatibility' | relative_url}}[the compatibility table].
+
+[NOTE]
+====
+If you need clients to publish events, use WebSockets.
+====
+
+== WebSockets
+
+WebSocket entrypoints allow you to expose responses and messages using a WebSocket API to consumers: an event-driven backend (based on Kafka or MQTT) is be presented in a more consumer-friendly way.
+
+WebSocket is commonly used by web browsers for bi-directional communication in order to offer live, real-time experiences powering applications such as: 
+
+* Chat applications.
+* Location-dependent applications (i.e. push the new location when it changes).
+* Collaboration tools.
+
+Using WebSocket replaces the need to set up other alternatives such as Kafka or MQTT clients.
+
+WebSocket can be used to replace client-side REST APIs, reducing the cost associated with the frequent polling required by real-time applications. This load reduction also improves overall performance and reliability.
+
+=== Use case
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-websocket.png %}[]
+
+1. An API publisher creates an API with a WebSocket entrypoint and a MQTT endpoint. 
+2. The API publisher uses Gravitee to apply various policies to be executed at the message level (such as authentication or traffic shaping).
+3. The API publisher publishes the API to their Gravitee Developer Portal.
+4. Developers discover and subscribe their consumer applications to the API via the Developer Portal.
+5. An event occurs and the message is streamed from the MQTT broker to the Gravitee Gateway. The Gateway then executes policies and streams messages from MQTT to consumers via their WebSocket connection.
+
+[NOTE] 
+====
+Because WebSocket supports bi-directional messaging, you could also use Gravitee to mediate for event consumption use cases where messages are streamed from a WebSocket client to the MQTT backend.
+====
+
+== Webhooks
+
+Webhook entrypoints allow you to expose responses and messages from your event-driven backend via webhooks.
+
+This might include the ability to:
+
+* Manage the subscription.
+* Provide a history of the notifications attempts.
+* Replay an event.
+
+With Webhook support, an API consumer subscribes to the Webhook API, which basically indicates to the Gateway to listen for specific Kafka messages and then call the consumer to let them know that an expected event has occurred. This communication is performed via Webhook, however it is always up to the Gateway to push the events or messages to the consumer.
+
+The diagram below shows the workflow for this use case:
+
+image:{% link /images/apim/3.x/event-native/event-native-api-management-use-case-event-consumption-webhook.png %}[]
+
+In addition to all the features of the standard Webhook connector, the Advanced connector supports a dead letter queue and secured callbacks.
+
+=== Dead letter queue (DLQ)
+
+The dead letter queue (DLQ) is the ability to push undelivered messages to  external storage. When configuring DLQ with webhook, you redirect all the messages that the webhook rejects to another location, such as a Kafka topic.
+
+By default, without DLQ, any error returned by the webhook will stop the consumption of the messages.
+
+To enable DLQ, declare another endpoint that will be used to configure the `dlq` object in the webhook entrypoint definition:
+
+[source, json]
+----
+{
+    "type": "webhook-advanced",
+    "dlq": {
+        "endpoint": "dlq-endpoint"
+    },
+    "configuration": {}
+}
+----
+
+The endpoint used for the dead letter queue:
+
+* Must support `PUBLISH` mode
+* Should be based on a broker that can persist messages, such as Kafka.
+
+Once configured and deployed, any message rejected with a 4xx error response by the webhook will be automatically sent to the `dlq` endpoint and the consumption of messages will continue.
+
+=== Secured callbacks
+
+Callbacks can be secured using basic authentication, JWT, and OAuth2.
+
+To secure a callback, add an `auth` object to the configuration. The following example shows how to use basic authentication.
+
+[source, json]
+----
+{
+    "configuration": {
+        "entrypointId": "webhook-advanced",
+        "callbackUrl": "https://example.com",
+        "auth": {
+            "type": "basic",
+            "basic": {
+                "username": "username",
+                "password": "a-very-secured-password"
+            }
+        }
+    }
+}
+----
+
+To use JWT, the `auth` object should look like this:
+
+[source,json]
+----
+        "auth": {
+            "type": "token",
+            "token": {
+                "value": "eyJraWQiOiJk..."
+            }
+        }
+----
+
+To use OAuth2, the `auth` object should look like this:
+
+[source,json]
+----
+        "auth": {
+            "type": "oauth2",
+            "oauth2": {
+                "endpoint": "https://auth.gravitee.io/my-domain/oauth/token",
+                "clientId": "a-client-id",
+                "clientSecret": "a-client-secret",
+                "scopes": ["roles"]
+            }
+        }
+----
