@@ -80,13 +80,17 @@ NOTE: For Markdown pages, you can link:{{ '/apim/3.x/apim_publisherguide_publish
 
 == Import multiple pages
 
-If you have an existing documentation set for your API in a GitHub or GitLab repository, you can configure the GitHub or GitLab fetcher to import the complete documentation structure on a one-off or regular basis. You can import the documentation into APIM in a different structure from the source repository structure.
+If you have an existing documentation set for your API in a GitHub or GitLab repository, you can configure the GitHub or GitLab fetcher to import the complete documentation structure on a one-off or regular basis.
 
-In order for the fetcher to locate the documentation in your repository structure and create the documentation structure you need in APIM, you first create a JSON file in the repository describing both the source and destination structure. You can then configure a fetcher in APIM to read the JSON file and import the documentation according to the structure defined in the file.
+You can import the documentation into APIM in a different structure from the source repository structure. To do this, you need to create a Gravitee descriptor file (`.gravitee.json`), at the root of the repository, describing both the source and destination structure.
 
-=== Example JSON file
+You can then configure a fetcher in APIM to read the JSON file and import the documentation according to the structure defined in the file.
 
-The following example JSON file describes a documentation set which includes:
+WARNING: The Gravitee descriptor file must be named `.gravitee.json` and must be placed at the root of the repository.
+
+=== Example
+
+The following Gravitee descriptor describes a documentation set which includes:
 
 * a home page in Markdown format in a folder called `/newdoc`, to be placed at the root of the APIM documentation structure.
 * a JSON file containing a Swagger specification at the root of the repository, to be placed in a folder called `/technical` in the APIM documentation structure.
