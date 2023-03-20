@@ -22,6 +22,7 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 * Server error on flow selection in best-match mode https://github.com/gravitee-io/issues/issues/8899[#8899]
 * Traffic shadowing policy is not compatible with the latest versions of APIM https://github.com/gravitee-io/issues/issues/8385[#8385]
 * Synchronization error on startup with multiple environments on SQL database https://github.com/gravitee-io/issues/issues/8929[#8929]
+* Multiple values of Transaction header when `handlers` is set https://github.com/gravitee-io/issues/issues/7618[#7618]
 
 === API
 
@@ -31,7 +32,6 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 * Error when loading Identity Provider with id in uppercase https://github.com/gravitee-io/issues/issues/8900[#8900]
 * Can not export API after using "Import multiple files" feature https://github.com/gravitee-io/issues/issues/8828[#8828]
 * Some characters are not supported in a MongoDB URI https://github.com/gravitee-io/issues/issues/8643[#8643]
-* Multiple values of Transaction header when `handlers` is set https://github.com/gravitee-io/issues/issues/7618[#7618]
 
 === Console
 
