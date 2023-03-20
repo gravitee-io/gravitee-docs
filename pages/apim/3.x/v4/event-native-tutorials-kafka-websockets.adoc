@@ -18,7 +18,7 @@ Before running this tutorial, you must have:
 
 1. In the Tutorials Postman Collection, open the `Kafka and Websockets` folder.
 
-2.  Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `async`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `listeners` you can see that we are creating two entrypoints, a `websocket` entrypoint, and an `http-post` entrypoint. In this tutorial the `http-post` entrypoint is only used for publishing data to Kafka. For a full tutorial on Kafka and HTTP, see link:{{ '/apim/3.x/event_native_tutorials_kafka_websockets.html' | relative_url }}[Kafka and HTTP].
+2.  Open the `Create the API` request and look at the request body. Note that the `definitionVersion` is `4.0.0` and the `type` is `message`. This means we are using the Gravitee 4.0.0 OpenAPI specification to create an asynchronous API. If you look under `listeners` you can see that we are creating two entrypoints, a `websocket` entrypoint, and an `http-post` entrypoint. In this tutorial the `http-post` entrypoint is only used for publishing data to Kafka. For a full tutorial on Kafka and HTTP, see link:{{ '/apim/3.x/event_native_tutorials_kafka_websockets.html' | relative_url }}[Kafka and HTTP].
 +
 Under `endpointGroups` you can see that we are creating one `kafka` endpoint, which uses a bootstrap server called `kafka` on port `9092`. The `topics` array contains just one topic, `demo`.
 +
@@ -27,7 +27,7 @@ Under `endpointGroups` you can see that we are creating one `kafka` endpoint, wh
 APIM and AKHQ are both running on the Docker bridge network called `storage`. The host `kafka` is a host on that network.
 ====
 +
-For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.21/#tag/V4-APIs' | relative_url}}[V4 - APIs] reference documentation.
 
 3. Send the request. You should receive a response that starts like this.
 +
@@ -38,12 +38,12 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
     "name": "Demo of Kafka and Websockets",
     "apiVersion": "1.0.0",
     "definitionVersion": "4.0.0",
-    "type": "async",
+    "type": "message",
     "createdAt": 1675674428097,
     "updatedAt": 1675674428097,
 ----
 +
-The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+The `id` is the ID of the API we just created. Copy the ID, and paste it into the `CURRENT VALUE` field for the `api` variable in the APIM 3.21 Tutorials Environment. Click Save. 
 
 == Creating a keyless plan
 
@@ -62,7 +62,7 @@ The `id` is the ID of the API we just created. Copy the ID, and paste it into th
 }
 ----
 +
-For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.20/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
+For full details about the structure of the body, see link:{{'/apim/3.x/management-api/3.21/#tag/V4-API-Plans/operation/createApiPlan_1' | relative_url}}[Create a plan] reference documentation.
 
 2. Send the request. You should receive a response that starts like this.
 +
@@ -79,7 +79,7 @@ For full details about the structure of the body, see link:{{'/apim/3.x/manageme
 +
 The `id` is the ID of the plan we just created.
 
-3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.20 Tutorials Environment. Click Save. 
+3. Copy the ID, and paste it into the `CURRENT VALUE` field for the `plan` variable in the APIM 3.21 Tutorials Environment. Click Save. 
 
 == Starting the API
 
@@ -169,7 +169,7 @@ Send the request. You should see a response that begins like this.
     "name": "Demo of Kafka and Websockets",
     "apiVersion": "1.0.0",
     "definitionVersion": "4.0.0",
-    "type": "async",
+    "type": "message",
     "deployedAt": 1675674539916,
 ----
 
