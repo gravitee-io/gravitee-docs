@@ -31,3 +31,79 @@ policy:
   xslt:
     secure-processing: false
 ----
+
+=== Plan Selection Workflow
+
+For security reasons, the plan selection workflow has been updated.
+
+**TLDR;**
+
+    * The gateway will always select the most secure plan first
+    * When different plans are using the same security type (ex: JWT, Oauth2), a selection rule must be defined on each plan to avoid random plan selection
+    * The `API_KEY_INVALID` and `API_KEY_MISSING` response templates aren't used anymore. The gateway will return a 401 with a generic error message, the `GATEWAY_PLAN_UNRESOLVABLE` response template can be used to override it.
+
+==== Plan Selection
+
+===== Overview
+
+When a request is processed by the gateway, it follows a particular process we can summarize like this:
+
+ * Determine which plan can handle the security
+ * Execute the security phase: the policies associated with the selected plan are executed. Multiple security policies can be added (ex: oauth policy + check subscription policy)
+    - Everything is ok, execute the rest of the chain (run other policies, invoke backend, platform policies, …)
+    - One of the security policies returns a 401 (ex: expired token, invalid subscription…)
+
+===== Plan selection phase
+
+The plan selection phase consists of selecting the appropriate plan in order to add the corresponding policy to the execution chain, no policy is executed at this stage.
+
+Because multiple plans can be defined on an API, the plan selection phase needs to determine which plan to activate based on the incoming request.
+
+The gateway always prioritizes the plan by starting from the most secured to the less secured one and will select the one that matches the requirements:
+
+ * JWT: based on a JSON Web Token it requires to specify a standard `Authorization: bearer` header.
+ * OAuth2: it is a well-adopted industry standard in the API world. It relies on the same `Authorization: bearer` header as JWT.
+ * API Key: it is a basic one but still widely used. It basically requires specifying an `X-Gravitee-Api-Key` header in the request.
+ * Keyless: Gravitee does not allow calling an API without applying a security policy, even if that security policy does nothing ;-)
+
+===== Plan execution
+
+Technically speaking, the gateway does not really "execute a plan" but, instead, adds some policies to the execution chain.
+For example, when a JWT plan is selected, 2 policies are added to the execution chain, JWT, and CheckSubscription.
+Then, when the execution starts, multiple cases can occur:
+
+ * The token is invalid, the JWT policy returns a 401, and nothing more is executed.
+ * The token is valid but no valid subscription has been found, the check subscription policy returns a 401, and nothing more is executed.
+ * Everything is valid, the execution can continue.
+
+==== Subscription
+
+When using a JWT or an API Key plan, presenting a valid token is not enough, you have to subscribe to the plan first unless the call will end with a 401.
+
+Subscription validation is performed by a dedicated `CheckSubscriptionPolicy` that is added to the chain once the plan has been selected.
+
+The check subscription is performed just after the security policy has validated the token.
+
+==== Limitations
+
+The changes were made to mitigate the following limitations:
+
+ * **Security discovery**: the security applied on an API can be discovered by trying to deduce it from the response, ex: 401 with a specific error message.
+ * **Incorrect plan selection**: when using multiple plans based on the same security token type (ex: JWT, OAuth2) the plan selection can become hazardous and leads to unexpected and random 401 even when the specified token is valid and the associated subscription is also valid (ex: first oauth2 plan has been selected while the application subscribed to the next one).
+ * **Selection Rule limitation**: Sometimes, it is simply impossible to find a selection rule that allows differentiating 2 plans, ex:
+There is nothing in the JWT token or the access token that can be used to select a plan or another you. It can be the case when JWT tokens are all issued by the same authentication server and contain no useful information
+The access token is a simple string (not in JWT format). AM provides access tokens in JWT format but that's not the case for all authorization servers.
+At the same time, a selection rule could still match multiple plans.
+The fact is that specifying a selection rule, in that case, should be mandatory.
+ * **Plan selection process**: The subscription is not part of the plan selection process. Validation of the subscription occurs later and return a 401 if it's not found or expired.
+Some work has been made to optimize the case where JWT plan is used in conjunction with OAuth2 plan to try to identify the subscription and include it in the plan selection algorithm. When using multiple JWT plans, it allows targeting the right one directly and avoiding 401.
+Unfortunately, identifying the subscription before selecting the plan is not always possible and leads to incorrect plan selection. That's the case for OAuth2.
+
+=== New plan selection workflow
+
+Plan selection has been updated in order to include the subscription in the plan selection process. It means:
+
+ * a plan will not be selected if the application has not subscribed to it.
+ * in case an invalid token is presented, the plan will not be selected (as it cannot be linked to a
+subscription) and the next plan will be tried. If no plan remains, a generic 401 will be returned without any other
+information. And so the `API_KEY_INVALID` and `API_KEY_MISSING` response templates will not be triggered anymore as the API Key plan will not be selected.
