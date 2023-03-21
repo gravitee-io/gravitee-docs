@@ -7,12 +7,13 @@ Starting with 3.20.0, APIM is shipped with the new 2.0.0 version of the AlertEng
 
 Events are sent over http as default behaviour. In order to switch back to websocket:
 
-```yaml
+[source,yaml]
+----
 alerts:
   alert-engine:
     ws:
       sendEventsOnHttp: false
-```
+----
 
 Please see the link:/ae/apim_installation.html#event_sending_mode[AlertEngine documentation] for more information.
 
