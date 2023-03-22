@@ -1,0 +1,28 @@
+[[v4-event-native-apim-user-policies]]
+= Policies
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/event_native_apim_user_policies.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+
+Policies are steps in the gateway execution chain. A policy guarantees that a given business rule will be fulfilled during processing.
+
+Policies can be set on request, response, subscribe, or publish phases. The following example shows how to set a policy on a subscribe phase.
+
+[source json]
+----
+"subscribe": [
+                {
+                    "name": "Message filtering",
+                    "description": "Apply filter to messages",
+                    "enabled": true,
+                    "policy": "message-filtering",
+                    "configuration": {
+                        "filter": "{#message.headers.foo == #subscription.metadata['bar']}"
+                    }
+                }
+            ]
+----
+
+For an example, see _04 - Event Consumption - Webhook_ > _Webhook Messaging Filtering_ > _Create API_ in the link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee V4 Postman Collection].

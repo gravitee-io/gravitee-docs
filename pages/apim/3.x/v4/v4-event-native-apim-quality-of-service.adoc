@@ -1,0 +1,108 @@
+[[v4-event-native-apim-quality-of-service]]
+= Quality of Service
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/event_native_apim_quality_of_service.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+When working with asynchronous APIs, quality of service is important. Quality of service defines the guaranteed level of message delivery. For example, a quality of service of "none" means that a given message might be delivered zero, one, or several times. A quality of service of "at-most-once" means that a given message will be delivered zero or one times, with no duplication.
+
+A higher quality of service could lead to lower system performance depending on the endpoint chosen.
+
+The quality of service is set on the entrypoints (see link:#setting_quality_of_service[Setting quality of service]). A given quality of service may or may not be supported by a given endpoint (see link:#compatibility[Compatibility]). Support also depends on the protocol used for the entrypoint.
+
+For example, when using an HTTP listener with a WebSocket entrypoint it is not possible to ensure data is received by the client, so no quality of service can be guaranteed.
+
+However, when using Subscription listener, it can be ensured that messages sent are received either by using the HTTP return code (for Webhook) or a transactional publisher (for Kafka). For these entrypoints, the quality of service can be increased.
+
+The quality-of-service levels are described in the following table.
+
+.Table Quality of service levels
+[cols="1,4"]
+|===
+|Level | Description
+
+| None
+| A given message might be delivered zero, one, or many times. This level allows high throughput and good performance but without guaranteed delivery. After failure or disconnection, the client will only receive messages sent after reconnection.
+
+| Auto (0 or N)
+| A given message might be delivered zero, one, or many times. This level allows a trade-off between performance and delivery guarantee. Delivery is highly dependent on the capabilities supported by the endpoint connector.  In case of failure or disconnection, after reconnection the client will resume, if possible, from a previously saved state, although duplication of messages could potentially exist.
+
+| At-Most-Once (0 or 1)
+| A given message might be delivered zero times or once without any duplication. Depending on the capabilities of the entrypoint connector, performance could be degraded.
+
+| At-Least-Once (1 or N)
+| A given message is delivered once or many times. This level gives a good balance between guaranteed delivery and performance when compared to At-Most-Once, especially when the entrypoint connector is not able to resume message streams after failure.
+
+|===
+
+== Setting quality of service
+
+You can set quality of service levels with the `qos` object in the `entrypoints` object, as shown in the following example. See the link:{{ '/apim/3.x/management-api/3.20/swagger.json' | relative_url }}[`swagger.json`] definition of the Management API for a list of possible `qos` values you can specify.
+
+[source json]
+----
+"entrypoints": [
+                {
+                    "type": "sse",
+                    "qos": "none",
+                    "configuration": {
+                        "heartbeatIntervalInMs": 5000,
+                        "metadataAsComment": false,
+                        "headersAsComment": false
+                    }
+                }
+            ]
+----
+
+== Compatibility
+
+Not all levels of quality of service work with every entrypoint / endpoint combination. The following table shows how they can be used.
+
+.Table Quality of service compatibility matrix
+|===
+| Entrypoint| MQTT endpoint | MQTT Advanced endpoint | Kafka endpoint | Kafka Advanced endpoint
+
+| HTTP POST
+| None, Auto
+| None, Auto
+| None, Auto
+| None, Auto
+
+| HTTP GET
+| Auto
+| Auto
+| Auto
+| Auto, At-Least-Once, At-Most-Once
+
+| SSE
+| None, Auto
+| None, Auto
+| None, Auto
+| None, Auto
+
+| SSE Advanced
+| None, Auto
+| None, Auto
+| None, Auto
+| None, Auto, At-Least-Once, At-Most-Once
+
+| WebSocket
+| None, Auto
+| None, Auto
+| None, Auto
+| None, Auto
+
+| Webhook
+| At-Least-Once, At-Most-Once
+| At-Least-Once, At-Most-Once
+| None, Auto
+| None, Auto, At-Least-Once, At-Most-Once
+
+| Webhook Advanced
+| At-Least-Once, At-Most-Once
+| At-Least-Once, At-Most-Once
+| None, Auto
+| None, Auto, At-Least-Once, At-Most-Once
+
+|===

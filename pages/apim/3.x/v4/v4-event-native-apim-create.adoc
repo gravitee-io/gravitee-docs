@@ -1,0 +1,87 @@
+[[v4-event-native-apim-create]]
+= How to create a V4 asynchronous API
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/event_native_apim_create.html
+:page-folder: apim/v4
+:page-layout: apim3x
+
+
+We have link:{{ '/apim/3.x/event_native_tutorials.html' | relative_url }}[several tutorials that teach you how to create a V4 asynchronous API]. They include:
+
+* link:{{'/apim/3.x/event_native_tutorials_kafka_http.html' | relative_url }}[Using Kafka and HTTP]
+* link:{{'/apim/3.x/event_native_tutorials_kafka_advanced_http_confluentcloud.html' | relative_url }}[Using Kafka and HTTP with Confluent Cloud]
+* link:{{'/apim/3.x/event_native_tutorials_kafka_sse.html' | relative_url }}[Using Kakfa and SSE]
+* link:{{'/apim/3.x/event_native_tutorials_kafka_webhooks.html' | relative_url }}[Using Kafka and Webhooks]
+* link:{{'/apim/3.x/event_native_tutorials_kafka_websockets.html' | relative_url }}[Using Kafka and Websockets]
+* link:{{'/apim/3.x/event_native_tutorials_mqtt_http.html' | relative_url }}[Using MQTT and HTTP]
+* link:{{'/apim/3.x/event_native_tutorials_mqtt_sse.html' | relative_url }}[Using MQTT and SSE]
+* link:{{'/apim/3.x/event_native_tutorials_mqtt_webhooks.html' | relative_url }}[Using MQTT and Webhooks]
+* link:{{'/apim/3.x/event_native_tutorials_mqtt_websockets.html' | relative_url }}[Using MQTT and Websockets]
+
+The link:https://www.postman.com/gravitee-io/workspace/gravitee-public-workspace/overview[Gravitee V4 Postman Collection] contains several examples of how to create and test an asynchronous API using the event-native V4 API definition and link:{{'/apim/3.x/v4_new_policy_execution_engine_introduction.html' | relative_url}}[the new V4 policy execution engine] .
+
+For example, to create an HTTP POST entrypoint that connects to a Kafka endpoint, send a POST request to `{\{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/`, where `{\{management_host}}` is the host for the management API, with the following message body:
+
+[source json]
+----
+{
+    "name": "Data Ingestion to Kafka",
+    "apiVersion": "1.0",
+    "definitionVersion": "4.0.0",
+    "type": "async",
+    "description": "Data Ingestion to Kafka",
+    "listeners": [
+        {
+            "type": "http",
+            "paths": [
+                {
+                    "path": "/data/ingestion/kafka"
+                }
+            ],
+            "entrypoints": [
+                {
+                    "type": "http-post",
+                    "configuration": {
+                        "requestHeadersToMessage": false
+                    }
+                }
+            ]
+        }
+    ],
+    "endpointGroups": [
+        {
+            "name": "default",
+            "type": "kafka",
+            "endpoints": [
+                {
+                    "name": "default",
+                    "type": "kafka",
+                    "weight": 1,
+                    "inheritConfiguration": false,
+                    "configuration": {
+                        "bootstrapServers": "kafka:9092",
+                        "topics" : ["demo"],
+                        "consumer" : {
+                            "enabled": false
+                        },
+                        "producer": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "flows": [
+        {
+            "name": "",
+            "selectors": [],
+            "request": [],
+            "response": [],
+            "subscribe": [],
+            "publish": [],
+            "enabled": true
+        }
+    ]
+}
+----
