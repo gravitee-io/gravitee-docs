@@ -55,7 +55,7 @@ When a request is processed by the gateway, it follows a particular process we c
 
 ===== Plan selection phase
 
-The plan selection phase consists of selecting the appropriate plan in order to add the corresponding policy to the execution chain, no policy is executed at this stage.
+The plan selection phase consists of selecting the appropriate plan in order to add the corresponding policy to the execution chain. No policy is executed at this stage.
 
 Because multiple plans can be defined on an API, the plan selection phase needs to determine which plan to activate based on the incoming request.
 
