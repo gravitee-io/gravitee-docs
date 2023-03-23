@@ -13,6 +13,10 @@ This repository plugin is for connecting to Redis databases for Rate Limit featu
 
 == Install the Rate Limit repository plugin
 
+[WARNING]
+====
+From version 3.21.0, you do not need to download the plugin since it is embedded in the distribution. You only need to configure the repository as described in step 3.
+====
 Repeat these steps on each component (APIM Gateway and APIM API) where the SQL database is used.
 
 . Download the plugin corresponding to your APIM version (take the latest maintenance release).
@@ -35,6 +39,7 @@ ratelimit:
     port:                   # redis port (default 6379)
     password:               # redis password (default null)
     timeout:                # redis timeout (default -1)
+    ssl:                    # redis ssl mode (default false)
 
     # Following properties are REQUIRED ONLY when running Redis in sentinel mode
     sentinel:

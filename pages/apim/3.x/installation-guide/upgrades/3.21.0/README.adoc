@@ -16,3 +16,7 @@ securityContext:
 In previous versions, sending a POST request to /user/login without an Authorization returned HTTP Response 200.
 
 Starting with 3.21.0, if a POST request to /user/login does not have an Authorization header, it will receive a HTTP response 401 - Unauthorized.
+
+=== Redis repository plugin
+Starting with 3.21.0, the Redis repository plugin is embedded in the distribution meaning that you do not need to download and install it on your own.
+The helm chart has been updated to manage this change by checking the version and only allowing to download the plugin if needed for version prior to 3.21.0.
