@@ -6,7 +6,8 @@ In previous version, the logging index template was using the standard text anal
 
 Users that extend the template settings using the `extendedSettingsTemplate` to define a custom `analysis` property **must** add this analyzer to their custom settings:
 
-....
+[source, json]
+----
 "analysis": {
     "analyzer": {
         "gravitee_body_analyzer": {
@@ -18,6 +19,6 @@ Users that extend the template settings using the `extendedSettingsTemplate` to 
         }
     }
 }
-....
+----
 
 If your extended settings do not include the `analysis` property, this change does not impact you.
