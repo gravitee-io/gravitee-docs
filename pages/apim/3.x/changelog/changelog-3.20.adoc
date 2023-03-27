@@ -13,6 +13,52 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.3 (2023-03-27)
+
+=== Gateway
+
+* Multiple values of Transaction header when `handlers` is set https://github.com/gravitee-io/issues/issues/7618[#7618]
+* No circuit breaker applied on an unhealthy API when dynamic routing is activated https://github.com/gravitee-io/issues/issues/8919[#8919]
+* Error when starting the Gateway with Kubernetes values https://github.com/gravitee-io/issues/issues/8927[#8927]
+* Synchronization error on startup with multiple environments on SQL database https://github.com/gravitee-io/issues/issues/8929[#8929]
+* Gateway timeout is not logged when API is called by another API https://github.com/gravitee-io/issues/issues/8941[#8941]
+* Consumer response logs are missing when using the Jupiter engine https://github.com/gravitee-io/issues/issues/8942[#8942]
+* Health-check fails if endpoint host contains an underscore https://github.com/gravitee-io/issues/issues/8946[#8946]
+* Chunk corruption with TLS and HTTP 1.1  https://github.com/gravitee-io/issues/issues/8956[#8956]
+* Random 503 error when using {#properties['backend']} on endpoint target https://github.com/gravitee-io/issues/issues/8959[#8959]
+* Wrong value in `proxy-request.headers.host` with Jupiter execution mode https://github.com/gravitee-io/issues/issues/8961[#8961]
+
+=== API
+
+* Response from the request "Attach a media to a portal page" does not give all data like in the documentation https://github.com/gravitee-io/issues/issues/6787[#6787]
+* Search by payload does not work properly with special characters https://github.com/gravitee-io/issues/issues/8470[#8470]
+* Some characters are not supported in a MongoDB URI https://github.com/gravitee-io/issues/issues/8643[#8643]
+* Can not export API after using "Import multiple files" feature https://github.com/gravitee-io/issues/issues/8828[#8828]
+* Pagination issue with APIs on different environments https://github.com/gravitee-io/issues/issues/8923[#8923]
+* Sending notifications is not possible when there are two subscriptions to a single application https://github.com/gravitee-io/issues/issues/8939[#8939]
+
+=== Console
+
+* Cropped tooltip when charts contain a lot of series https://github.com/gravitee-io/issues/issues/5852[#5852]
+* Pagination of the API properties table is not working https://github.com/gravitee-io/issues/issues/7048[#7048]
+* Not possible to remove General conditions from a plan https://github.com/gravitee-io/issues/issues/8465[#8465]
+* Transfer ownership of API does not automatically display current members https://github.com/gravitee-io/issues/issues/8516[#8516]
+* Dashboard shows all APIs stopped when all APIs are started https://github.com/gravitee-io/issues/issues/8760[#8760]
+* API can not be updated properly if a plan's name contains a `+` character https://github.com/gravitee-io/issues/issues/8909[#8909]
+* API Endpoint configuration is lost when saving healthcheck configuration https://github.com/gravitee-io/issues/issues/8947[#8947]
+
+=== Portal
+
+* Non-required fields displayed as required in OpenAPI documentation https://github.com/gravitee-io/issues/issues/7099[#7099]
+
+=== Other
+
+* Policy SSL Enforcement can be configured with invalid DN https://github.com/gravitee-io/issues/issues/6457[#6457]
+* Traffic shadowing policy is not compatible with the latest versions of APIM https://github.com/gravitee-io/issues/issues/8385[#8385]
+* Email notifier not handling properly newline in alert body https://github.com/gravitee-io/issues/issues/8752[#8752]
+* XMLtoJSON policy does not execute based on Content-Type header value https://github.com/gravitee-io/issues/issues/8953[#8953]
+
+ 
 == APIM - 3.20.2 (2023-03-03)
 
 === Gateway
