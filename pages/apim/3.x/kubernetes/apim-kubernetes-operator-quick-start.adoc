@@ -29,8 +29,6 @@ NOTE: For full details, see the link:{{ '/apim/3.x/apim_kubernetes_operator_inst
 
 As a prerequisite, you should have an APIM-ready cluster up and running before you deploy the GKO. You should have user access to the cluster you want to deploy to, and it should be the one defined as your current/active Kubernetes context.
 
-NOTE: If you need to set up a local cluster first, follow the steps in the link:{{ '/apim/3.x/apim_kubernetes_operator_installation_local.html' | relative_url }}[local cluster installation] section, and then proceed to the link:{{ '/apim/3.x/apim_kubernetes_operator_installation_cluster.html' | relative_url }}[GKO deployment steps].
-
 === STEP 2: Deploy the GKO on your cluster
 
 The GKO deployment process is simple and is the same for both remote and local Kubernetes clusters.
