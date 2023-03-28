@@ -17,3 +17,23 @@ If you deploy on `openshift`, you have to add the following configuration:
 securityContext:
     runAsGroup: 1000
 ```
+
+== RxJava 3 and Plugins
+
+The introduction of RxJava3 lead to upgrades on plugins that were both dependant on this library
+directly or via Access Management libraries:
+
+- link:https://download.gravitee.io/#pre-releases/graviteeio-ee/am/plugins/factors/gravitee-am-factor-otp-sender/[gravitee-am-factor-otp-sender - 2.0.0]
+- link:https://download.gravitee.io/#pre-releases/graviteeio-ee/am/plugins/factors/gravitee-am-factor-fido2/[gravitee-am-factor-fido2 - 2.0.0]
+- link:https://download.gravitee.io/#pre-releases/graviteeio-ee/am/plugins/factors/gravitee-am-factor-http/[gravitee-am-factor-http - 2.0.0]
+
+- link:https://download.gravitee.io/#pre-releases/graviteeio-ee/am/plugins/idps/gravitee-am-identityprovider-kerberos/[gravitee-am-identityprovider-kerberos - 2.0.0]
+- link:https://download.gravitee.io/#pre-releases/graviteeio-ee/am/plugins/idps/gravitee-am-identityprovider-cas/[gravitee-am-identityprovider-cas - 2.0.0]
+- link:https://download.gravitee.io/#pre-releases/graviteeio-ee/am/plugins/idps/gravitee-am-identityprovider-http-flow/[gravitee-am-identityprovider-http-flow - 2.0.0]
+- link:https://download.gravitee.io/#pre-releases/graviteeio-ee/am/plugins/idps/gravitee-am-identityprovider-saml2-generic/[gravitee-am-identityprovider-saml - 2.0.0]
+
+- link:https://download.gravitee.io/#pre-releases/graviteeio-ee/am/plugins/gateway/handlers/gravitee-am-gateway-handler-saml2-idp/[gravitee-am-gateway-handler-saml2-idp - 2.0.0]
+- link:https://download.gravitee.io/#plugins/services/gravitee-service-geoip/[gravitee-service-geoip - 2.0.0]
+- link:https://download.gravitee.io/#graviteeio-ee/plugins/services/risk-assessment/gravitee-risk-assessment-core/[gravitee-risk-assessment - 2.0.0]
+
+Some of them are still in alpha but they will soon be released after Access Management 3.21.x is
