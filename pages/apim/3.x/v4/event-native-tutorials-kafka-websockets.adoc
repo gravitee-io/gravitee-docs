@@ -110,23 +110,20 @@ The API has been created and is ready to be used.
 +
 [code,bash]
 ----
- websocat ws://localhost:8082/demo/ws
+ websocat ws://localhost:8082/data/kafka
 ----
 
 6. In Postman, send the `Push Data` request again. You should see a message appear in the terminal where `websocat` is running. 
 +
 [code,bash]
 ----
-websocat ws://localhost:8082/demo/ws
 {     "tempF": "75" }
 ----
 
-7. publish a message on the `demo` topic using `websocat` by typing the message in the terminal window.
+7. Publish a message on the `demo` topic using `websocat` by typing the message in the terminal window.
 +
 [code,bash]
 ----
-websocat ws://localhost:8082/demo/ws
-{     "tempF": "75" }
 { "message": "from websocat"}
 ----
 +
@@ -134,7 +131,7 @@ The message will be echoed back to the terminal. This is because the API was cre
 +
 [code,bash]
 ----
-websocat ws://localhost:8082/demo/ws
+websocat ws://localhost:8082/data/kafka
 {     "tempF": "75" }
 { "message": "from websocat"}
 { "message": "from websocat"}
@@ -179,7 +176,7 @@ Send the request. You should see a response that begins like this.
 +
 [code,bash]
 ----
-websocat ws://localhost:8082/demo/ws
+websocat ws://localhost:8082/data/kafka
 ----
 
 4. Using the `Push Data` request, publish the following message. 
