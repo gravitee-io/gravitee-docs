@@ -13,6 +13,14 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.4 (2023-03-30)
+
+=== API
+
+* All API displayed as out of sync even if no change was done https://github.com/gravitee-io/issues/issues/8954[#8954]
+* Missing PK on `subscriptions_metadata` table https://github.com/gravitee-io/issues/issues/8967[#8967]
+* Data lost when upgrading to 3.18+ with JDBC database https://github.com/gravitee-io/issues/issues/8980[#8980]
+
 == APIM - 3.20.3 (2023-03-27)
 
 === Gateway
