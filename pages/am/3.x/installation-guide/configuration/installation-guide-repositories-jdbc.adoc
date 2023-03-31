@@ -20,11 +20,10 @@ You can deploy this repository plugin in AM to use the most common databases, in
 NOTE: AM uses the JDBC and R2DBC drivers together, since AM uses https://www.liquibase.org/[liquibase^] to manage the database schema. You need to deploy the correct JDBC and R2DBC drivers for your database in your AM instance's `plugins/ext/repository-am-jdbc` directory.
 
 |===
-|Database | Version tested | Gravitee.io Plugin | JDBC Driver | R2DBC Driver
+|Database | Version tested | JDBC Driver | R2DBC Driver
 
 |Postgresql
 |9.6
-.4+|https://download.gravitee.io/#graviteeio-am/plugins/repositories/gravitee-repository-jdbc/[Download the same version as your AM platform]
 |https://jdbc.postgresql.org/download.html[Download page]
 |https://repo1.maven.org/maven2/io/r2dbc/r2dbc-postgresql/0.8.5.RELEASE/r2dbc-postgresql-0.8.5.RELEASE.jar[Download page]
 
