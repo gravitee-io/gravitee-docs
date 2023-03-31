@@ -15,5 +15,5 @@ If you want to allow all existing groups by default, run the following scripts
 == Repository
 === Mongodb
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.23.0/1-set-groups-invitation-mode.js[/apim/1.x/mongodb/1.23.0/1-set-groups-invitation-mode.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.23.0/1-set-groups-invitation-mode.js[/apim/1.x/mongodb/1.23.0/1-set-groups-invitation-mode.js]::
 (optional) This script updates invitation setting on every groups to make them working like before.

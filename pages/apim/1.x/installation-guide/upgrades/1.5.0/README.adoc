@@ -5,9 +5,9 @@
 
 Before running any script, please create a dump of your existing database.
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.5.0/1-remove-event-picture.js[/apim/1.x/mongodb/1.5.0/1-remove-event-picture.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.5.0/1-remove-event-picture.js[/apim/1.x/mongodb/1.5.0/1-remove-event-picture.js]::
 This script delete the picture from all API relative events because picture is useless and is disk consuming.
 
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.5.0/2-update-pages.js[/apim/1.x/mongodb/1.5.0/2-update-pages.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.5.0/2-update-pages.js[/apim/1.x/mongodb/1.5.0/2-update-pages.js]::
 This script set the homepage flag of all existing pages to false.

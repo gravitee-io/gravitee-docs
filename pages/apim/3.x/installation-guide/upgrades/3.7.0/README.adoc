@@ -29,7 +29,7 @@ This script rename all the collections adding the `prefix` and `rateLimitPrefix`
 For the following steps, we admit you choose this prefix: prefix_
 
 1. Modify `gravitee.yml` to configure `management.mongodb.prefix` and `ratelimit.mongodb.prefix` if needed.
-2. Run the following script to rename your collections: link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/3.7.0/1-rename-collections-with-prefix.js[/apim/3.x/mongodb/3.7.0/1-rename-collections-with-prefix.js]
+2. Run the following script to rename your collections: link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/3.7.0/1-rename-collections-with-prefix.js[/apim/3.x/mongodb/3.7.0/1-rename-collections-with-prefix.js]
 3. Run your instances!
 
 === JDBC
