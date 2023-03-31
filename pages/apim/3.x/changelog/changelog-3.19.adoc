@@ -13,6 +13,36 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.19.10 (2023-03-31)
+
+=== Gateway
+
+* Consumer response logs are missing when using the Jupiter engine https://github.com/gravitee-io/issues/issues/8942[#8942]
+* Chunk corruption with TLS and HTTP 1.1  https://github.com/gravitee-io/issues/issues/8956[#8956]
+* Random 503 error when using {#properties['backend']} on endpoint target https://github.com/gravitee-io/issues/issues/8959[#8959]
+* Debug mode not working with ssl and haproxy https://github.com/gravitee-io/issues/issues/8984[#8984]
+
+=== API
+
+* Response from the request "Attach a media to a portal page" does not give all data like in the documentation https://github.com/gravitee-io/issues/issues/6787[#6787]
+* Sending notifications is not possible when there are two subscriptions to a single application https://github.com/gravitee-io/issues/issues/8939[#8939]
+* All API displayed as out of sync even if no change was done https://github.com/gravitee-io/issues/issues/8954[#8954]
+* Data lost when upgrading to 3.18+ with JDBC database https://github.com/gravitee-io/issues/issues/8980[#8980]
+* API documentation page import impossible using Bitbucket reference  https://github.com/gravitee-io/issues/issues/8985[#8985]
+
+=== Console
+
+* Options of `gv-select` not always visible or correctly placed https://github.com/gravitee-io/issues/issues/8348[#8348]
+* Not possible to remove General conditions from a plan https://github.com/gravitee-io/issues/issues/8465[#8465]
+* Proxy fields not disabled when System proxy activated in endpoint configuration https://github.com/gravitee-io/issues/issues/8590[#8590]
+* Dashboard shows all APIs stopped when all APIs are started https://github.com/gravitee-io/issues/issues/8760[#8760]
+
+=== Other
+
+* Policy SSL Enforcement can be configured with invalid DN https://github.com/gravitee-io/issues/issues/6457[#6457]
+* XMLtoJSON policy does not execute based on Content-Type header value https://github.com/gravitee-io/issues/issues/8953[#8953]
+
+ 
 == APIM - 3.19.9 (2023-03-17)
 
 === Gateway
