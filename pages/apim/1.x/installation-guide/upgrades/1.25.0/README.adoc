@@ -11,8 +11,8 @@ To follow that new feature, the Rest Management API has been updated to reflect 
 == Repository
 === Mongodb
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.25.0/1-applications-migration.js[/apim/1.x/mongodb/1.25.0/1-applications-migration.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.25.0/1-applications-migration.js[/apim/1.x/mongodb/1.25.0/1-applications-migration.js]::
 This script update applications according to the new way Gravitee.io is managing them.
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.25.0/2-users-archived-upgrade.js[/apim/1.x/mongodb/1.25.0/mongodb/2-users-archived-upgrade.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.25.0/2-users-archived-upgrade.js[/apim/1.x/mongodb/1.25.0/mongodb/2-users-archived-upgrade.js]::
 This script update the sourceId of all archived users.

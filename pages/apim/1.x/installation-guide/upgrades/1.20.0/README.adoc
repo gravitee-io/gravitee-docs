@@ -8,5 +8,5 @@ To avoid incompatibilities on this version, the `Trust All` server certificates 
 
 === Mongodb
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.20.0/Migration.120.SSL.js[/apim/1.x/mongodb/1.20.0/Migration.120.SSL.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.20.0/Migration.120.SSL.js[/apim/1.x/mongodb/1.20.0/Migration.120.SSL.js]::
 This script update ssl endpoints to store the default configuration if not present.

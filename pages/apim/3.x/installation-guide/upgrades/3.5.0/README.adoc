@@ -73,5 +73,5 @@ You no longer have to choose between the "full" or "full-jdbc" ZIP file.
 
 Before running any script, please create a dump of your existing database.
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/3.5.0/1-duplicate-some-parameters-for-console.js[/apim/3.x/mongodb/3.5.01-duplicate-some-parameters-for-console.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/3.5.0/1-duplicate-some-parameters-for-console.js[/apim/3.x/mongodb/3.5.01-duplicate-some-parameters-for-console.js]::
 This script duplicates some parameters for the console to have different behaviors between portal and console. It also modifies the _id of each mongo document to add referenceId and referenceType.
