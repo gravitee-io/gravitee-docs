@@ -8,6 +8,15 @@ WARNING: If you plan to skip versions when you upgrade, ensure that you read the
 
 WARNING: Make sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs`.
 
+== Upgrade to 4.0.0
+
+NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_4.0.html' | relative_url }}[Breaking changes in 4.0]
+
+=== MongoDB indexes
+
+Starting from AM 4.0, the MongoDB indexes are now named using the first letter of the fields that compose the index. This change will allow to manage automatically indexes creation on DocumentDB. Before starting the Management API service, please execute the following link:https://gh.gravitee.io/gravitee-io/gravitee-access-management/blob/master/gravitee-am-repository/gravitee-am-repository-mongodb/src/main/resources/scripts/create-index.js[script] to delete indexes and recreate them with the right convention.
+
+
 == Upgrade to 3.20
 
 NOTE: For more information about the breaking changes of this version, see link:{{ '/am/current/am_breaking_changes_3.20.html' | relative_url }}[Breaking changes in 3.20]
