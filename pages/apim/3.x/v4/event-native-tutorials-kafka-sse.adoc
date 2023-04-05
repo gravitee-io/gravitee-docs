@@ -109,7 +109,7 @@ The API has been created and is ready to be used.
 +
 [code,bash]
 ----
- curl -N -H "Accept:text/event-stream" http://localhost:8082/demo/sse/kafka
+ curl -N -H "Accept:text/event-stream" http://localhost:8082/data/kafka
 ----
 
 6. In Postman, send the `Push Data` request again. You should see a message appear in the terminal where `curl` is running. 
@@ -151,7 +151,7 @@ Flows can be added at a number of different specificity levels, including the AP
 +
 [code,bash]
 ----
-curl -N -H "Accept:text/event-stream" http://localhost:8082/demo/sse/kafka
+curl -N -H "Accept:text/event-stream" http://localhost:8082/data/kafka
 ----
 
 5. Using the `Push Data` request, publish the following message. 
