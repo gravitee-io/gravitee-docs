@@ -11,10 +11,10 @@ This new configuration has exactly the same content as the previous one, minus t
 
 Before running any script, please create a dump of your existing database.
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.4.0/1-update-application.js[/apim/1.x/mongodb/1-update-application.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.4.0/1-update-application.js[/apim/1.x/mongodb/1-update-application.js]::
 This script creates the new `status` attribute on all applications with the default value `ACTIVE`.
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.4.0/2-create-archived-app.js[/apim/1.x/mongodb/2-create-archived-app.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.4.0/2-create-archived-app.js[/apim/1.x/mongodb/2-create-archived-app.js]::
 This script creates deleted apps with `status=ARCHIVED` for each subscriptions where there is no application associated.
 
 WARNING: edit the script before running it. You have to choose the user owner of the ARCHIVED applications.

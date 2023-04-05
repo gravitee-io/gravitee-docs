@@ -42,9 +42,9 @@ is still valid and is equivalent to:
 
 Before running any script, please create a dump of your existing database.
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.9.0/1-convert-groups.js[/apim/1.x/mongodb/1.9.0/1-convert-groups.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.9.0/1-convert-groups.js[/apim/1.x/mongodb/1.9.0/1-convert-groups.js]::
 This script convert old group system to the new one.
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.9.0/2-remove-old-attributes.js[/apim/1.x/mongodb/1.9.0/2-remove-old-attributes.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.9.0/2-remove-old-attributes.js[/apim/1.x/mongodb/1.9.0/2-remove-old-attributes.js]::
 This script remove all non requisite attributes.
 

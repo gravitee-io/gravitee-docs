@@ -4,8 +4,6 @@
 :page-folder: am/installation-guide
 :page-layout: am
 
-NOTE: Files specified in this guide can be found at https://github.com/gravitee-io/graviteeio-access-management/tree/master/docs/upgrades
-
 WARNING: If you plan to skip versions when you upgrade, ensure that you read the version-specific upgrade notes for each intermediate version. You may be required to perform manual actions as part of the upgrade.
 
 WARNING: Make sure to run scripts on the correct database since `gravitee-am` is not always the default database! Check your db name by running `show dbs`.
@@ -117,11 +115,11 @@ NOTE: For more information about the breaking changes of this version, see link:
 
 Before you run any scripts, create a dump of your existing database.
 
-https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.17.0/mongodb/1-migrate-application-identities.js[upgrades/3.x/3.17.0/mongodb/1-migrate-application-identities.js]::
+https://gh.gravitee.io/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.17.0/mongodb/1-migrate-application-identities.js[upgrades/3.x/3.17.0/mongodb/1-migrate-application-identities.js]::
 
 This script will migrate data structure of the application settings to manage the selection rules and ordering of the identity providers.
 
-https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.17.0/mongodb/1-add-saml2-permissions.js[upgrades/3.x/3.17.0/mongodb/1-add-saml2-permissions.js]::
+https://gh.gravitee.io/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.17.0/mongodb/1-add-saml2-permissions.js[upgrades/3.x/3.17.0/mongodb/1-add-saml2-permissions.js]::
 
 This script will create the DOMAIN_SAML and APPLICATION_SAML permission.
 
@@ -139,7 +137,7 @@ NOTE: For more information about the breaking changes of this version, see link:
 
 Before you run any scripts, create a dump of your existing database.
 
-https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.15.0/mongodb/1-add-authdevice-notifier-permissions.js[upgrades/3.x/3.15.0/mongodb/1-add-authdevice-notifier-permissions.js]::
+https://gh.gravitee.io/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.15.0/mongodb/1-add-authdevice-notifier-permissions.js[upgrades/3.x/3.15.0/mongodb/1-add-authdevice-notifier-permissions.js]::
 
 This script will create the DOMAIN_AUTHDEVICE_NOTIFIER permission.
 
@@ -169,11 +167,11 @@ GitHub issue: link:https://github.com/gravitee-io/issues/issues/7080[7080]
 
 Before you run any scripts, create a dump of your existing database.
 
-https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.13.0/mongodb/1-add-device-identifier-permissions.js[upgrades/3.x/3.13.0/mongodb/1-add-device-identifier-permissions.js]::
+https://gh.gravitee.io/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.13.0/mongodb/1-add-device-identifier-permissions.js[upgrades/3.x/3.13.0/mongodb/1-add-device-identifier-permissions.js]::
 
 This script will create the DOMAIN_DEVICE_IDENTIFIER permission.
 
-https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.13.0/mongodb/1-add-device-permissions.js[upgrades/3.x/3.13.0/mongodb/1-add-device-permissions.js]::
+https://gh.gravitee.io/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.13.0/mongodb/1-add-device-permissions.js[upgrades/3.x/3.13.0/mongodb/1-add-device-permissions.js]::
 
 This script will create the DOMAIN_USER_DEVICE permission.
 
@@ -300,7 +298,7 @@ NOTE: For more information about the breaking changes of this version please vis
 
 Before you run any scripts, create a dump of your existing database.
 
-https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.8.0/mongodb/1-add-domain-hrid.js[upgrades/3.x/3.8.0/mongodb/1-add-domain-hrid.js]::
+https://gh.gravitee.io/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.8.0/mongodb/1-add-domain-hrid.js[upgrades/3.x/3.8.0/mongodb/1-add-domain-hrid.js]::
 This script updates the database to reflect the following changes :
 
 * Add hrid field to the security domains
@@ -313,7 +311,7 @@ This script updates the database to reflect the following changes :
 
 Before you run any scripts, create a dump of your existing database.
 
-https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.7.0/mongodb/1-add-alert-permissions.js[upgrades/3.x/3.7.0/mongodb/1-add-alert-permissions.js]::
+https://gh.gravitee.io/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.7.0/mongodb/1-add-alert-permissions.js[upgrades/3.x/3.7.0/mongodb/1-add-alert-permissions.js]::
 This script updates the database to reflect the following changes :
 
 * Enable alerting support
@@ -328,7 +326,7 @@ NOTE: For more information about the breaking changes of this version please vis
 
 Before you run any scripts, create a dump of your existing database.
 
-https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.6.0/mongodb/1-add-environment-permissions.js[upgrades/3.x/3.6.0/mongodb/1-add-environment-permissions.js]::
+https://gh.gravitee.io/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.6.0/mongodb/1-add-environment-permissions.js[upgrades/3.x/3.6.0/mongodb/1-add-environment-permissions.js]::
 This script updates the database to reflect the following changes :
 
 * Addition of new permissions related to the multi environments feature
@@ -354,7 +352,7 @@ NOTE: For more information about the breaking changes of this version please vis
 
 Before you run any scripts, create a dump of your existing database.
 
-https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.4.0/mongodb/1-form-templates-migration.js[upgrades/3.x/3.4.0/mongodb/1-form-templates-migration]::
+https://gh.gravitee.io/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.4.0/mongodb/1-form-templates-migration.js[upgrades/3.x/3.4.0/mongodb/1-form-templates-migration]::
 This script updates the database to reflect the following changes :
 
 * Update form actions and links to make it work with the new cookie session
@@ -386,7 +384,7 @@ WARNING: We highly recommend that you run the MongoDB database script before sta
 
 Before you run any scripts, create a dump of your existing database.
 
-https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.0.0/mongodb/1-migration-v3.js[upgrades/3.x/3.0.0/mongodb/1-migration-v3]::
+https://gh.gravitee.io/gravitee-io/gravitee-access-management/master/docs/upgrades/3.x/3.0.0/mongodb/1-migration-v3.js[upgrades/3.x/3.0.0/mongodb/1-migration-v3]::
 This script updates the database to reflect the following changes :
 
 * Adds new fields that refer the default environment and the default organization.

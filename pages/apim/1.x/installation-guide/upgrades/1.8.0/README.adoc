@@ -5,7 +5,7 @@
 
 Before running any script, please create a dump of your existing database.
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.8.0/1-convert-roles.js[/apim/1.x/mongodb/1.8.0/1-convert-roles.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.8.0/1-convert-roles.js[/apim/1.x/mongodb/1.8.0/1-convert-roles.js]::
 This script convert old permission system to the new customized roles system.
 
 === AWS DynamoDB

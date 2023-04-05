@@ -5,10 +5,10 @@
 
 Before running any script, please create a dump of your existing database.
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.14.0/1-users-migration.js[/apim/1.x/mongodb/1.14.0/1-users-migration.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.14.0/1-users-migration.js[/apim/1.x/mongodb/1.14.0/1-users-migration.js]::
 This script remove plain username reference and prefer UUID.
 
-link:https://raw.githubusercontent.com/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.14.0/mongodb/2-init-email-notifications.js[/apim/1.x/mongodb/1.14.0/2-init-email-notifications.js]::
+link:https://gh.gravitee.io/gravitee-io/gravitee-api-management/master/gravitee-apim-repository/gravitee-apim-repository-mongodb/src/main/resources/scripts/1.14.0/mongodb/2-init-email-notifications.js[/apim/1.x/mongodb/1.14.0/2-init-email-notifications.js]::
 This script create a default email notifier for each Application and API Primary Owner.
 
 *This script is not mandatory !*
