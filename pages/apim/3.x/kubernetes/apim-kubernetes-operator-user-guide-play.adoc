@@ -90,7 +90,7 @@ In your copy, modify the `spec:` section by providing the actual URL of your API
 To create the Management Context resource using the Gravitee sample file directly, just run the following command:
 
 ....
-kubectl apply -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/config/samples/context/k3d/managementcontext_credentials.yaml
+kubectl apply -f https://raw.githubusercontent.com/gravitee-io/gravitee-kubernetes-operator/master/config/samples/context/k3d/management-context-with-credentials.yml
 ....
 
 Alternatively, to create the Management Context resource using a modified configuration, run the following command (using the relevant filename):
