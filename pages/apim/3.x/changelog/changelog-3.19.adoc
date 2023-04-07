@@ -13,6 +13,29 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.19.11 (2023-04-07)
+
+=== API
+
+* Default API role defined at the organization level is overriding the default group member role https://github.com/gravitee-io/issues/issues/7362[#7362]
+
+=== Console
+
+* Non-admin user cannot transfer ownership of application https://github.com/gravitee-io/issues/issues/8455[#8455]
+* Not able to open Application and API in a new tab by right-clicking their names https://github.com/gravitee-io/issues/issues/8589[#8589]
+* ID_token_hint missing from console logout leading to errors https://github.com/gravitee-io/issues/issues/8998[#8998]
+
+=== Portal
+
+* Paging issues with members of an application https://github.com/gravitee-io/issues/issues/8582[#8582]
+* Cannot use PKCE authentication on Swagger doc page https://github.com/gravitee-io/issues/issues/9005[#9005]
+
+=== Other
+
+* Stats pie widget not matching the colors and labels defined in config https://github.com/gravitee-io/issues/issues/8989[#8989]
+* When migration is used on paths based API no redirection to designer studio is done https://github.com/gravitee-io/issues/issues/8994[#8994]
+
+ 
 == APIM - 3.19.10 (2023-03-31)
 
 === Gateway
