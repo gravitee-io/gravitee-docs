@@ -66,6 +66,7 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 * Error when loading Identity Provider with id in uppercase https://github.com/gravitee-io/issues/issues/8900[#8900]
 * Can not export API after using "Import multiple files" feature https://github.com/gravitee-io/issues/issues/8828[#8828]
 * Some characters are not supported in a MongoDB URI https://github.com/gravitee-io/issues/issues/8643[#8643]
+* Handle YAML Anchors and Alias when importing OpenAPI file https://github.com/gravitee-io/issues/issues/8858[#8858]
 
 === Console
 
