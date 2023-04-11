@@ -23,15 +23,15 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - rubygems-v1-{{ checksum "Gemfile.lock" }}
-            - rubygems-v1-fallback
+            - rubygems-v2-{{ checksum "Gemfile.lock" }}
+            - rubygems-v2-fallback
       - run:
           name: Bundle Install
           command: bundle check || bundle install
       - save_cache:
-          key: rubygems-v1-{{ checksum "Gemfile.lock" }}
+          key: rubygems-v2-{{ checksum "Gemfile.lock" }}
           paths:
-            - vendor/bundle
+            - ../repo/vendor/bundle
       - compute-sanitized-branch-name
       - run:
           name: Jekyll build
