@@ -61,7 +61,7 @@ EOF
 
 === Using an APIM export endpoint to create an API Definition from an existing API
 
-The Management API feature provides an link:https://docs.gravitee.io/apim/3.x/management-api/3.18/index.html#tag/APIs/operation/getEvent[export endpoint^] that enables you to export an API as an API Definition resource.
+The Management API feature provides an link:https://docs.gravitee.io/apim/3.x/management-api/3.20/index.html#tag/APIs/operation/exportApiCRD[export endpoint^] that enables you to export an API as an API Definition resource.
 
 This allows you to easily create an API Definition from a given environment by calling the endpoint and piping the result to a `kubectl` command. For example:
 
