@@ -30,3 +30,45 @@ image::{% link images/apim/3.x/api-publisher-guide/policies/graviteeio-policy-st
 You are redirected to Design Studio.
 +
 image::{% link images/apim/3.x/api-publisher-guide/policies/graviteeio-policy-studio-migrated.png %}[]
+
+=== Migration rules
+The migration rules are the following:
+
+* One flow is created per path.
+* If all the policies in a path have the same set of HTTP Methods, then the created flow is configured to accept only the same set of HTTP Method.
+* If the policies in a path have different sets of HTTP Methods
+** then the created flow is configured to accept only the union of these sets.
+Example:
+
+  "/path": [{
+    "policy1": {...},
+    "methods": ["GET", "POST"],
+    ...
+  },
+  {
+    "policy2": {...},
+    "methods": ["GET", "DELETE"],
+    ...
+  }]
++
+The created flow will accept the HTTP Methods GET, DELETE and POST.
+** A condition is added on each policy of the flow to check the HTTP Method, to match the configuration of each policy from v1 definition.
+Example:
+
+  {
+    "path-operator": {
+      "operator": "STARTS_WITH",
+      "path": "/path"
+    },
+    "methods": ["GET", "DELETE", "POST"],
+    "pre": [{
+      "name": "policy1",
+      "condition": "{#request.method == 'GET' || #request.method == 'POST'}",
+      ...
+    },{
+      "name": "policy2",
+      "condition": "{#request.method == 'GET' || #request.method == 'DELETE'}",
+      ...
+    }],
+    ...
+  }
