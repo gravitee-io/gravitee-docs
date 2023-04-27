@@ -199,7 +199,8 @@ and the `READ` permission to allow the user to request the policies list and res
 |Name |Description
 
 | DEFINITION
-| Manages the API definition.
+| Manages the API definition and gives access to sensitive data (`READ`) such as endpoints and
+paths.
 
 | PLAN
 | Manages API plans.
@@ -229,8 +230,7 @@ and the `READ` permission to allow the user to request the policies list and res
 | Manages API documentation.
 
 | GATEWAY_DEFINITION
-| A specific permission used to update the context-path (`UPDATE`) and to give access to sensitive data (`READ`) such as endpoints and
- paths.
+| A specific permission used to update the context-path (`UPDATE`).
 
 | RATING
 | Manages API rating.
