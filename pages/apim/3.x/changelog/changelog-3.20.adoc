@@ -13,6 +13,40 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.6 (2023-04-28)
+
+=== Gateway
+
+* OutOfMemory when calling the Prometheus endpoint https://github.com/gravitee-io/issues/issues/8976[#8976]
+* Gateway fail to connect to Jaeger secured with TLS https://github.com/gravitee-io/issues/issues/9021[#9021]
+
+=== API
+
+* API Search returns a lexical error when using `/` https://github.com/gravitee-io/issues/issues/8753[#8753]
+* No default role applied for users if a Condition for a Role Mapping is evaluated as false https://github.com/gravitee-io/issues/issues/8971[#8971]
+* Plan policies are lost during API migration to design studio https://github.com/gravitee-io/issues/issues/8981[#8981]
+* Dynamic properties are not working on APIs not in DEFAULT environment https://github.com/gravitee-io/issues/issues/9018[#9018]
+* User with "USER" role can access APIs subscription approval https://github.com/gravitee-io/issues/issues/9022[#9022]
+* Improve API v1 (Path based) to API v2 (Flow based) conversion https://github.com/gravitee-io/issues/issues/9036[#9036]
+* Markdown sanitization activated by default
+
+=== Console
+
+* "Export as CSV" on Subscriptions only export displayed values https://github.com/gravitee-io/issues/issues/8965[#8965]
+* Unable to filter API's logs by application name https://github.com/gravitee-io/issues/issues/8995[#8995]
+* Prevent defining API Primary owner members in group in User mode https://github.com/gravitee-io/issues/issues/9020[#9020]
+
+=== Portal
+
+* API Picture not displayed on Application page https://github.com/gravitee-io/issues/issues/8749[#8749]
+* Performance issue of the portal-api https://github.com/gravitee-io/issues/issues/9023[#9023]
+
+=== Other
+
+* Request Validation policy hangs in certain conditions https://github.com/gravitee-io/issues/issues/8347[#8347]
+* Policy SSL Enforcement too restrictive regex https://github.com/gravitee-io/issues/issues/9029[#9029]
+
+ 
 == APIM - 3.20.5 (2023-04-14)
 
 === Gateway
