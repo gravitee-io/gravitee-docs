@@ -50,6 +50,7 @@ The following example changes the Hazelcast configuration file:
 $ docker run  \
         --publish 72:8072  \
         --name alert-engine  \
+        --volume /host/path/to/hazelcast.xml:/container/path/to/hazelcast.xml:ro \
         --env GRAVITEE_CLUSTER_HAZELCAST_CONFIG_PATH=/path/to/hazelcast.xml
         --detach  \
         graviteeio/ae-engine:{{site.products.ae.version}}
