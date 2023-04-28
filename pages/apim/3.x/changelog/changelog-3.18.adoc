@@ -26,7 +26,6 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 * Plan policies are lost during API migration to design studio https://github.com/gravitee-io/issues/issues/8981[#8981]
 * Dynamic properties are not working on APIs not in DEFAULT environment https://github.com/gravitee-io/issues/issues/9018[#9018]
 * Improve API v1 (Path based) to API v2 (Flow based) conversion https://github.com/gravitee-io/issues/issues/9036[#9036]
-* Pentest - 2023 - Q1 - XSS via Markdown https://github.com/gravitee-io/issues/issues/undefined[#undefined]
 
 === Console
 
@@ -73,7 +72,7 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 * Cannot retrieve scheme (http/https) and port in Groovy policy, missing getters... https://github.com/gravitee-io/issues/issues/9007[#9007]
 * API properties can not be accessed in Javascript Policy https://github.com/gravitee-io/issues/issues/9010[#9010]
-* User wrongly see API task in tasks list https://github.com/gravitee-io/issues/issues/undefined[#undefined]
+* User wrongly see API task in tasks list
 
  
 == APIM - 3.18.21 (2023-03-31)
