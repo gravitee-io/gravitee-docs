@@ -13,6 +13,26 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.18.24 (2023-05-05)
+
+=== API
+
+* Open Source Edition license issue when deploying Gravitee on Kubernetes using helm charts https://github.com/gravitee-io/issues/issues/8659[#8659]
+* API picture is removed when a rollback is done https://github.com/gravitee-io/issues/issues/8801[#8801]
+* LDAP configuration with multi Orgs https://github.com/gravitee-io/issues/issues/8892[#8892]
+* API promotion not working with JDBC database https://github.com/gravitee-io/issues/issues/9033[#9033]
+* Dictionary Fields Not Visible to Users Without System Admin Organization Role https://github.com/gravitee-io/issues/issues/9038[#9038]
+* Login issues when role mapping is null https://github.com/gravitee-io/issues/issues/9040[#9040]
+
+=== Console
+
+* Focus lost after typing 1 character in fields of API's property https://github.com/gravitee-io/issues/issues/8802[#8802]
+* Unable to search application with its id https://github.com/gravitee-io/issues/issues/8996[#8996]
+
+=== Portal
+
+* When a page for API has a long name, it appears indented in the page selection https://github.com/gravitee-io/issues/issues/7575[#7575]
+
 == APIM - 3.18.23 (2023-04-28)
 
 === Gateway
