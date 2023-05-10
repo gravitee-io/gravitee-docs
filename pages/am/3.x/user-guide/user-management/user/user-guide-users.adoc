@@ -175,6 +175,24 @@ An email will be sent to the user with instructions.
 
 image::{% link images/am/current/graviteeio-am-userguide-um-pre-registration-mail.png %}[]
 
+=== Update the username
+[label label-version]#New in version 3.21#
+
+You can update the username of your user.
+
+image::{% link images/am/current/graviteeio-am-userguide-um-user-update-usename.png %}[]
+
+. link:{{ '/am/current/am_userguide_authentication.html' | relative_url }}[Log in to AM Console^].
+. Click *Settings > Users*
+. Select your user
+. Input the new username
+. Click on the *Update Username* button
+
+NOTE: Updating the username is only available via the console and the management-api.
+
+WARNING: Updating the username will automatically update it in the user's identity provider that support
+direct update of the user: HTTP Provider, JDBC, MongoDB and Inline. Other IDPs are not supported.
+
 === User roles
 
 You can assign roles directly from the user profile, or from the identity provider role mapping feature.
