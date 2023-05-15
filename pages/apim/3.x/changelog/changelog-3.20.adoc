@@ -13,6 +13,22 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.9 (2023-05-15)
+
+=== API
+
+* Error with the link for documentation, after api creation wizard https://github.com/gravitee-io/issues/issues/7242[#7242]
+* Method pathParameters() in groovy policy gives null value https://github.com/gravitee-io/issues/issues/8854[#8854]
+* PathParameter are not working https://github.com/gravitee-io/issues/issues/8921[#8921]
+* Improve performance of endpoint to list plans on the Portal API https://github.com/gravitee-io/issues/issues/9042[#9042]
+* Problem in Loading Plan for some APIs   https://github.com/gravitee-io/issues/issues/9044[#9044]
+
+=== Console
+
+* Cursor wrongly placed in markdown editor https://github.com/gravitee-io/issues/issues/7254[#7254]
+* China does not show correctly on default Geo dashboard https://github.com/gravitee-io/issues/issues/8230[#8230]
+* Changing the default logo in the Theme has no effect  https://github.com/gravitee-io/issues/issues/8882[#8882]
+
 == APIM - 3.20.8 (2023-05-05)
 
 === Other
