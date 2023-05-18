@@ -58,7 +58,7 @@ ____
 
 [,shell]
 ----
-k describe -n default apidefinitions.gravitee.io basic-api-example
+kubectl describe -n default apidefinitions.gravitee.io basic-api-example
 ----
 ____
 

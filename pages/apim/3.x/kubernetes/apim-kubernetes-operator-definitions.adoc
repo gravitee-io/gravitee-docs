@@ -9,7 +9,8 @@
 
 == Overview
 
-The Gravitee Kubernetes Operator comes with three Custom Resource Definitions (CRDs) - `ManagementContext`, `ApiDefinition`, and `ApiResource`.
+The Gravitee Kubernetes Operator comes with different Custom Resource Definitions (CRDs) - `ManagementContext`,
+`ApiDefinition`, `Application` and `ApiResource`.
 
 
 == `ManagementContext`
@@ -215,6 +216,73 @@ spec:
           - name: "Default"
             target: "https://api.gravitee.io/echo"
 ....
+
+== `Application`
+
+The `Application` custom resource represents the configuration for an Application. It is similar to a YAML representation of an Application in JSON format.
+
+Resources:
+
+* The `Appication` CRD code is available on link:https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/master/api/v1alpha1/application_types.go[GitHub^].
+* The `Application` CRD API reference is documented link:{{ '/apim/3.x/apim_kubernetes_operator_api_reference.html#application' | relative_url }}[here].
+* You can learn how to use the `Application` resource in link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_application.html' | relative_url }}[this section].
+
+=== Workflow
+
+The following workflow is applied when a new `Application` resource is added to the cluster:
+
+1. The GKO listens for `Application` resources.
+2. The GKO resolves any references to external sources such as configmaps or secretes.
+3. The GKO performs some required changes, such as adding default settings.
+4. The GKO converts the data to JSON format.
+5. If something has changed, the GKO pushes the definition to the Management API.
+
+=== Examples
+
+A basic example of an `Application` resource is shown below:
+
+....
+apiVersion: gravitee.io/v1alpha1
+kind: Application
+metadata:
+  name: basic-application
+  namespace: default
+spec:
+  contextRef:
+    name: "dev-ctx"
+    namespace: "default"
+  name: "K8S-Application"
+  type: "WEB"
+  domain: "https://example.com"
+  description: "K8s Application"
+....
+
+The same Application with support for application metadata is shown in the example below:
+
+....
+apiVersion: gravitee.io/v1alpha1
+kind: Application
+metadata:
+  name: basic-application
+  namespace: default
+spec:
+  contextRef:
+    name: "dev-ctx"
+    namespace: "default"
+  name: "K8S-Application"
+  type: "WEB"
+  domain: "https://example.com"
+  description: "K8s Application"
+  applicationMetaData:
+    - name: "test metadata"
+      format: "STRING"
+    - name: "test metadata 2"
+      format: "STRING"
+....
+
+
+NOTE: Read more about `Application` link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_application.html' | relative_url }}[here].
+
 
 == CRD dependencies
 
