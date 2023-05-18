@@ -113,3 +113,74 @@ curl -i http://localhost:9000/gateway/k8s-basic-with-ctx
 NOTE: The entrypoint used in the Gateway URL may differ depending on your deployment. The example above shows the typical Gateway URL generated when using a local cluster created through the link:{{ '/apim/3.x/apim_kubernetes_operator_installation_local.html' | relative_url }}[local cluster installation] process.
 
 For full details on trying out the GKO functionality after deployment, see link:{{ '/apim/3.x/apim_kubernetes_operator_user_guide_play.html#step_3_call_the_api_through_the_apim_gateway' | relative_url }}[STEP 3: Call the API through the APIM Gateway] in the User Guide section.
+
+=== Deploy CRDs using Helm
+Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
+
+It is easily possible to use Helm to deploy your CRDs into the cluster and leverage all the features that Helm provides such as templating.
+
+Here are the steps to follow using Helm
+
+1. Create an empty project using Helm
+2. Add required templates for the Gravitee CRDs
+3. Install/Upgrade your helm charts
+
+You can create an empty project using the following command
+....
+helm create sample-crds
+....
+
+And these should give us a project with the following structure
+....
+charts
+templates
+Chart.yaml
+values.yaml
+.helmignore
+....
+
+The next step is to get rid of exiting templates inside the templates folder and replace them with new templates for our CRDs.
+For Example this can be something that you can use for `ManagementContext` CRD
+
+....
+{{- range $context := .Values.contexts }}
+apiVersion: gravitee.io/v1alpha1
+kind: ManagementContext
+metadata:
+  name: {{ regexReplaceAll "\\W+" $context.name "-" | lower }}
+spec:
+  baseUrl: {{ $context.baseUrl }}
+  environmentId: {{ $context.environmentId }}
+  organizationId: {{ $context.organizationId }}
+  auth:
+    secretRef:
+      name: {{ regexReplaceAll "\\W+" $context.name "-" | lower }}
+      namespace: {{ $context.namespace }}
+{{- end }}
+....
+
+Which is based on the following values:
+....
+contexts:
+  - name: staging
+    baseUrl: http://localhost:9000
+    environmentId: DEFAULT
+    organizationId: DEFAULT
+    token: de6b0c76-abe1-440d-ab0c-76abe1740d99
+....
+
+if you want to reference an ConfigMap or a Secret inside your templates so that they will be resolved during the deployment by the GKO, you can use the following syntax for the value:
+
+....
+[[ secret `YOUR_SECRET_NAME/KEY_NAME` ]]
+[[ configmap `YOUR_CONFIGMAP_NAME/KEY_NAME` ]]
+....
+
+Once you finished all your templates, you can packages your templates and install/upgrade your helm charts into the cluster, you can use the following command
+
+....
+helm package .
+helm install sample-crds sample-crds-0.1.0.tgz
+....
+
+For more information how to use Helm, you can visit https://helm.sh[their website]
