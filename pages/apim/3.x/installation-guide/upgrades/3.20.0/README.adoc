@@ -40,7 +40,7 @@ For security reasons, the plan selection workflow has been updated.
 
     * The gateway will always select the most secure plan first
     * When different plans are using the same security type (ex: JWT, Oauth2), a selection rule must be defined on each plan to avoid random plan selection
-    * The `API_KEY_INVALID` and `API_KEY_MISSING` response templates aren't used anymore. The gateway will return a 401 with a generic error message, the `GATEWAY_PLAN_UNRESOLVABLE` response template can be used to override it.
+    * The `API_KEY_INVALID`, `API_KEY_MISSING` and `JWT_MISSING_TOKEN` response templates aren't used anymore. The gateway will return a 401 with a generic error message, the `GATEWAY_PLAN_UNRESOLVABLE` response template can be used to override it.
 
 ==== Plan Selection
 
@@ -106,4 +106,4 @@ Plan selection has been updated in order to include the subscription in the plan
  * a plan will not be selected if the application has not subscribed to it.
  * in case an invalid token is presented, the plan will not be selected (as it cannot be linked to a
 subscription) and the next plan will be tried. If no plan remains, a generic 401 will be returned without any other
-information. And so the `API_KEY_INVALID` and `API_KEY_MISSING` response templates will not be triggered anymore as the API Key plan will not be selected.
+information. And so the `API_KEY_INVALID`, `API_KEY_MISSING` and `JWT_MISSING_TOKEN` response templates will not be triggered anymore as the API Key plan will not be selected.
