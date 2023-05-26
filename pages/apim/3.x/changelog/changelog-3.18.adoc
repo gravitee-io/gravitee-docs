@@ -13,6 +13,28 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.18.26 (2023-05-26)
+
+=== API
+
+* Notification using email from metadata are not working  https://github.com/gravitee-io/issues/issues/9030[#9030]
+* Plan Selection Rules Not Migrating with API Version Upgrade https://github.com/gravitee-io/issues/issues/9032[#9032]
+* Application list is showing also archived applications even if we request not to https://github.com/gravitee-io/issues/issues/9050[#9050]
+* Pagination of Application endpoint is broken on last page https://github.com/gravitee-io/issues/issues/9052[#9052]
+
+=== Console
+
+* Drag & Drop is not working in policy studio with Firefox 111+ https://github.com/gravitee-io/issues/issues/8970[#8970]
+
+=== Portal
+
+* Impossible to contact the owner of API on developer portal when the owner is a group https://github.com/gravitee-io/issues/issues/6616[#6616]
+
+=== Other
+
+* Validate request policy does not work with APIM <3.20 https://github.com/gravitee-io/issues/issues/9045[#9045]
+
+ 
 == APIM - 3.18.25 (2023-05-15)
 
 === API
