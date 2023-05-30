@@ -17,8 +17,12 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 === API
 
+* Best match does not work with DEBUG mode https://github.com/gravitee-io/issues/issues/8993[#8993]
+* Keyless plan is still usable in DEBUG mode even after being closed https://github.com/gravitee-io/issues/issues/9006[#9006]
 * Notification using email from metadata are not working  https://github.com/gravitee-io/issues/issues/9030[#9030]
 * Plan Selection Rules Not Migrating with API Version Upgrade https://github.com/gravitee-io/issues/issues/9032[#9032]
+* `Cpu.getLoadAverage()` is throwing when running APIM on Windows https://github.com/gravitee-io/issues/issues/9039[#9039]
+* Add support for ElasticSearch 8 https://github.com/gravitee-io/issues/issues/9043[#9043]
 * Application list is showing also archived applications even if we request not to https://github.com/gravitee-io/issues/issues/9050[#9050]
 * Pagination of Application endpoint is broken on last page https://github.com/gravitee-io/issues/issues/9052[#9052]
 
