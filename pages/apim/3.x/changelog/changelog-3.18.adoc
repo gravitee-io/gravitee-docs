@@ -13,6 +13,29 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.18.27 (2023-06-08)
+
+=== Gateway
+
+* Invalid property in the config file example https://github.com/gravitee-io/issues/issues/9061[#9061]
+* APIs that have special characters in path parameter do not work https://github.com/gravitee-io/issues/issues/9081[#9081]
+
+=== API
+
+* Enhance dynamic dictionary logging https://github.com/gravitee-io/issues/issues/8973[#8973]
+* Keyless plan is still useable in DEBUG mode even after being closed https://github.com/gravitee-io/issues/issues/9006[#9006]
+* Improve performance of endpoint to list pages on the Portal API https://github.com/gravitee-io/issues/issues/9053[#9053]
+
+=== Console
+
+* Environment Settings Inaccessible to Local Users Without Admin Organization Role  https://github.com/gravitee-io/issues/issues/9070[#9070]
+* Application Log API Filter Displays Unsubscribed APIs https://github.com/gravitee-io/issues/issues/9080[#9080]
+
+=== Other
+
+* Duplicate `annotations` field in deployment in the Helm Chart https://github.com/gravitee-io/issues/issues/9082[#9082]
+
+ 
 == APIM - 3.18.26 (2023-05-26)
 
 === API
