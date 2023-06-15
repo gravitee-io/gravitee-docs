@@ -47,6 +47,10 @@ The following event types are supported.
 |TCP
 |✓
 |×
+
+|Datadog
+|×
+|×
 |===
 
 == Configuring Reporters
@@ -178,17 +182,17 @@ The following example uses the same configuration as the previous example above,
 ----
 reporters:
   tcp:
-    enabled: true 
+    enabled: true
     host: localhost
     port: 9001
-    output: json 
-    request: 
-      exclude: 
+    output: json
+    request:
+      exclude:
         - "*"
-      include: 
+      include:
         - api
         - application
-      rename: 
+      rename:
         application: app
     log:
       exclude: *
@@ -196,4 +200,75 @@ reporters:
       exclude: *
     healthcheck:
       exclude: *
+----
+
+=== Datadog Reporter
+Report GraviteeIO Gateway events to Datadog listening server.
+
+==== Datadog conversions
+In the following table you can see how different data from Gravitee has been transformed to Datadog
+
+
+[cols="1,1"]
+|===
+| Gravitee
+| Datadog
+
+| `Monitor`
+| Metrics
+
+| `EndpointStatus`
+| Events
+
+| `Metrics`
+| Metrics
+
+| `Log`
+| Log
+|===
+
+==== Configuration Parameters
+[cols="1,1,1"]
+|===
+| Parameter name
+| Description
+| Default value
+
+| `enabled`
+| This setting determines whether the Datadog reporter should be started or not. The default value is `false`.
+| false
+
+| `site`
+| If you don't use the default website of Datadog, for example if the data center is in the EU, then you need to set this variable.
+| *null*
+
+| `host`
+| The TCP host where the event should be published. This can be a valid host name or an IP address.
+| *localhost*
+
+| `authentication`
+| In order to send data to Datadog, you need to provide your Authentication details and all supported Datadog Authentication mechanisms can be used in here as well. You need to choose only one Authentication type and remove the rest.
+| *N/A*
+|===
+
+
+==== Example
+
+The configuration is loaded from the common GraviteeIO Gateway configuration file (gravitee.yml)
+This will send the data to your Datadog account.
+
+[source,yaml]
+----
+reporters:
+  datadog:
+    enabled: true
+    site: "datadoghq.eu"
+    authentication:
+      #apiKeyPrefix: ""
+      apiKey: "YOUR_API_KEY"
+      #appKey: "YOUR_APP_KEY"
+      #tokenScheme: ""
+      #token: "YOUR_TOKEN"
+      #username: "YOUR_USERNAME"
+      #password: "YOUR_PASSWORD"
 ----
