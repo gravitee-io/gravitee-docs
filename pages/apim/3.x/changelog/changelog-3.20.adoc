@@ -13,6 +13,22 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.12 (2023-06-23)
+
+=== Gateway
+
+* EL can't evaluate when it contains an array with more than 400 elements https://github.com/gravitee-io/issues/issues/9102[#9102]
+
+=== API
+
+* The `summary`/`details` HTML tags are considered unsafe in Markdown doc pages https://github.com/gravitee-io/issues/issues/9090[#9090]
+* Impossible to get APIs using /apis endpoint as API_PUBLISHER when v4 api exists https://github.com/gravitee-io/issues/issues/9091[#9091]
+
+=== Helm Chart
+
+* Helm Charts improvement multiple  managed SA accounts https://github.com/gravitee-io/issues/issues/8987[#8987]
+
+
 == APIM - 3.20.11 (2023-06-08)
 
 === Gateway
