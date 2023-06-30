@@ -1,28 +1,39 @@
-
 {% seo %}
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
-<meta name="keywords" content="{{page.tags}}{% if page.tags %}, {% endif %} {{page.keywords}}">
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta
+  name="description"
+  content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% endif %}"
+/>
+<meta
+  name="keywords"
+  content="{{page.tags}}{% if page.tags %}, {% endif %} {{page.keywords}}"
+/>
 <title>{{ page.title }} | {{ site.site_title }}</title>
-<link rel="stylesheet" href="{% link /css/syntax.css %}">
+<link rel="stylesheet" href="{% link /css/syntax.css %}" />
 
-
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+/>
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
-<link rel="stylesheet" href="{% link /css/modern-business.css %}">
-<link rel="stylesheet" href="{% link /css/lavish-bootstrap.css %}">
-<link rel="stylesheet" href="{% link /css/rouge_github.css %}">
-<link rel="stylesheet" href="{% link /css/customstyles.css %}">
-<link rel="stylesheet" href="{% link /css/theme-gravitee_new.css %}">
-<link rel="stylesheet" href="{% link /css/gravitee.css %}">
-<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Libre%20Franklin" />
+<link rel="stylesheet" href="{% link /css/modern-business.css %}" />
+<link rel="stylesheet" href="{% link /css/lavish-bootstrap.css %}" />
+<link rel="stylesheet" href="{% link /css/rouge_github.css %}" />
+<link rel="stylesheet" href="{% link /css/customstyles.css %}" />
+<link rel="stylesheet" href="{% link /css/theme-gravitee_new.css %}" />
+<link rel="stylesheet" href="{% link /css/gravitee.css %}" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="//fonts.googleapis.com/css?family=Libre%20Franklin"
+/>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="{% link /js/jquery.navgoco.min.js %}"></script>
-
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
@@ -35,10 +46,33 @@
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ 'feed.xml' | absolute_url }}">
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="{{ site.title }}"
+  href="{{ 'feed.xml' | absolute_url }}"
+/>
 <!-- Algolia search -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"
+/>
+
+<!-- Reo integration -->
+<script type="text/javascript">
+  !(function () {
+    var e, t, n;
+    (e = "https://static.reo.dev/reo.js"),
+      (t = function () {
+        Reo.init({ clientID: "5fa14d71c651860" });
+      }),
+      ((n = document.createElement("script")).src = e),
+      (n.async = !0),
+      (n.onload = t),
+      document.head.appendChild(n);
+  })();
+</script>
