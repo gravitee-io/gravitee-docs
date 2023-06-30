@@ -106,3 +106,20 @@ NOTE: Before running any scripts, you need to create a dump of your existing dat
 . Rename your tables using format `prefix_tablename`.
 . Rename your indexes using format `idx_prefix_indexname`.
 . Rename your primary keys using format `pk_prefix_pkname`.
+
+[[database-enforcing-use-of-primary-key-on-all-tables]]
+== Database enforcing use of primary key on all tables
+
+Some databases have an option to enforce the use of a primary key on all tables, for instance, this is the case for MySQL 8.0.13+ with `sql_require_primary_key`.
+
+If you are using a database with such option activated, during the *installation of APIM* or *for an upgrade* , you will need to:
+
+ - disable this option
+ - start APIM Management API, to allow the database migration tool, Liquibase, to create the APIM tables and add the primary keys
+ - re-enable this option
+
+*Why APIM isn't setting the primary keys when creating the tables?*
+
+Because, as of today, Liquibase is creating 2 tables
+for its own use and both don't have a primary key by default, more about it https://forum.liquibase.org/t/why-does-databasechangelog-not-have-a-primary-key/3270[here].
+To avoid any compatibility issue with Liquibase, we decided to not override the creation of these tables.
