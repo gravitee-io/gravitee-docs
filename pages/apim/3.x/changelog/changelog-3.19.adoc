@@ -13,6 +13,32 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.19.18 (2023-07-06)
+
+=== API
+
+* API level email notifications not being sent when owner is a group https://github.com/gravitee-io/issues/issues/9079[#9079]
+* Internal Server Exception 500: when trying to access api or app from url https://github.com/gravitee-io/issues/issues/9089[#9089]
+* API search is returning APIs with irrelevant sorting when searching with multiple terms https://github.com/gravitee-io/issues/issues/9095[#9095]
+* Deploy an API regardless of its origin https://github.com/gravitee-io/issues/issues/9103[#9103]
+* Promotion not working with API containing lots of documentation or images https://github.com/gravitee-io/issues/issues/9110[#9110]
+
+=== Portal
+
+* User Role Has Ability To Update Application Metadata in Portal UI https://github.com/gravitee-io/issues/issues/9031[#9031]
+
+=== Helm Chart
+    
+* Gateway ratelimit configuration missing mongo truststore https://github.com/gravitee-io/issues/issues/9067[#9067]
+* `api` section in config map not applied due to wrong indentation https://github.com/gravitee-io/issues/issues/9120[#9120]
+
+=== Other
+
+* Cannot change Content-Type from Groovy policy failure result https://github.com/gravitee-io/issues/issues/9066[#9066]
+* URL encoded path not usable in Dynamic Routing policy https://github.com/gravitee-io/issues/issues/9107[#9107]
+
+
+ 
 == APIM - 3.19.17 (2023-06-23)
 
 === Gateway
