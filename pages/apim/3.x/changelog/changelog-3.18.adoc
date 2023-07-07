@@ -12,7 +12,9 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 // NOTE: Global 3.18 release info here
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
- 
+
+*APIM 3.18 has now reached end of support. Please upgrade to a more recent version.*
+
 == APIM - 3.18.29 (2023-07-06)
 
 === API
@@ -35,7 +37,7 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 * Cannot change Content-Type from Groovy policy failure result https://github.com/gravitee-io/issues/issues/9066[#9066]
 * URL encoded path not usable in Dynamic Routing policy https://github.com/gravitee-io/issues/issues/9107[#9107]
-
+* URL Rewriting policy is removing multi value headers https://github.com/gravitee-io/issues/issues/9085[#9085]
 
  
 == APIM - 3.18.28 (2023-06-23)
