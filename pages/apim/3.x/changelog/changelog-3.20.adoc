@@ -13,6 +13,28 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.14 (2023-07-20)
+
+=== Gateway
+
+* Allow to increase websocket max frame size and max message size in `gravitee.yaml` https://github.com/gravitee-io/issues/issues/6751[#6751]
+* No plan selected when using JWT with selection rule and keyless plans https://github.com/gravitee-io/issues/issues/9127[#9127]
+
+=== API
+
+* APIM not allowing unused context path https://github.com/gravitee-io/issues/issues/9093[#9093]
+* Unable to validate a subscription if app name is longer than 64 characters https://github.com/gravitee-io/issues/issues/9115[#9115]
+
+=== Console
+
+* Markdown documentation disappears if the syntax is wrong https://github.com/gravitee-io/issues/issues/7230[#7230]
+
+=== Portal
+
+* Markdown Editor Page Link Syntax Shows as Plain Text in Portal https://github.com/gravitee-io/issues/issues/9129[#9129]
+
+
+ 
 == APIM - 3.20.13 (2023-07-06)
 
 === API
