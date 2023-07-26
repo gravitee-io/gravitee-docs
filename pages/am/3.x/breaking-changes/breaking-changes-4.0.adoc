@@ -9,3 +9,7 @@ NOTE: To take advantage of these new features and incorporate these breaking cha
 == MongoDB indexes name
 
 Starting from AM 4.0, the MongoDB indexes are now named using the first letter of the fields that compose the index. This change will allow to manage automatically indexes creation on DocumentDB. This change requires the execution of a MongoDB script to delete AM indexes and recreate them. Please see  **the migration guide available link:{{ '/am/current/am_installguide_migration.html' | relative_url }}[here]**.
+
+== Enterprise Edition Plugins
+
+As mention in the https://github.com/gravitee-io/gravitee-access-management/blob/master/CHANGELOG-v3.adoc[changelog], some plugins are now available for Enterprise Edition only. That mean that you need a licence to use it.
