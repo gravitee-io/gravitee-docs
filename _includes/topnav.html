@@ -30,8 +30,7 @@
             >{{ folder.title }}<b class="caret"></b
           ></a>
           <ul class="dropdown-menu">
-            {% for folderitem in folder.folderitems %} {% if
-            folderitem.external_url %}
+            {% for folderitem in folder.folderitems %} {% if folderitem.external_url %}
             <li>
               <a href="{{folderitem.external_url}}" target="_blank"
                 >{{folderitem.title}}</a
@@ -39,15 +38,11 @@
             </li>
             {% elsif page.url contains folderitem.url %}
             <li class="dropdownActive">
-              <a href="{{folderitem.url | relative_url}}"
-                >{{folderitem.title}}</a
-              >
+              <a href="{{folderitem.url | relative_url}}">{{folderitem.title}}</a>
             </li>
             {% else %}
             <li>
-              <a href="{{folderitem.url | relative_url}}"
-                >{{folderitem.title}}</a
-              >
+              <a href="{{folderitem.url | relative_url}}">{{folderitem.title}}</a>
             </li>
             {% endif %} {% endfor %}
           </ul>
@@ -55,8 +50,8 @@
         {% endfor %} {% endfor %}
 
         <!-- entries without drop-downs appear here -->
-        {% for entry in site.data.topnav.topnav %} {% for item in entry.items %}
-        {% if item.external_url %}
+        {% for entry in site.data.topnav.topnav %} {% for item in entry.items %} {% if
+        item.external_url %}
         <li>
           <a href="{{item.external_url}}" target="_blank">{{item.title}}</a>
         </li>
@@ -66,9 +61,8 @@
         </li>
         {% else %}
         <li><a href="{{item.url | relative_url}}">{{item.title}}</a></li>
-        {% endif %} {% endfor %} {% endfor %} {% if site.feedback_disable ==
-        null or site.feedback_disable == false %} {% include feedback.html %} {%
-        endif %}
+        {% endif %} {% endfor %} {% endfor %} {% if site.feedback_disable == null or
+        site.feedback_disable == false %} {% include feedback.html %} {% endif %}
         <!--comment out this block if you want to hide search-->
         <li>
           <!--start search-->
@@ -86,10 +80,9 @@
     </div>
   </div>
   <div class="navbar-sub-banner">
-      This documentation applies to Gravitee versions released prior to 4.0. For Gravitee 4.0 and later, head over to our
-    <a href="https://documentation.gravitee.io"
-      > new documentation website.</a
-    >
+    This documentation applies to Gravitee versions released prior to 4.0. For Gravitee
+    4.0 and later, head over to our&nbsp;
+    <a href="https://documentation.gravitee.io">new documentation website.</a>
   </div>
   <!-- /.container -->
 </nav>
