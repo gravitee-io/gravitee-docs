@@ -17,6 +17,15 @@ body {
     color: #111c4e;
 }
 
+.navbar-sub-banner {
+    /*TODO: UPDATE ME*/
+    background: #1ecad3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+
 .summary {
     text-align: right;
     padding-right: 10px;
