@@ -14,7 +14,7 @@ NOTE: For more information about the breaking changes of this version, see link:
 
 === MongoDB indexes
 
-Starting from AM 4.0, the MongoDB indexes are now named using the first letter of the fields that compose the index. This change will allow to manage automatically indexes creation on DocumentDB. Before starting the Management API service, please execute the following link:https://gh.gravitee.io/gravitee-io/gravitee-access-management/blob/master/gravitee-am-repository/gravitee-am-repository-mongodb/src/main/resources/scripts/create-index.js[script] to delete indexes and recreate them with the right convention.
+Starting from AM 4.0, the MongoDB indexes are now named using the first letter of the fields that compose the index. This change will allow to manage automatically indexes creation on DocumentDB. Before starting the Management API service, please execute the following link:https://raw.githubusercontent.com/gravitee-io/gravitee-access-management/master/gravitee-am-repository/gravitee-am-repository-mongodb/src/main/resources/scripts/create-index.js[script] to delete indexes and recreate them with the right convention.
 
 
 == Upgrade to 3.20
