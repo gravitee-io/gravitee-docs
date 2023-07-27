@@ -1,0 +1,29 @@
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/changelog-4.0.html
+:page-folder: apim
+:page-toc: false
+:page-layout: apim3x
+
+= APIM 4.0 changelog
+
+For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim_installguide_migration.html[APIM Migration Guide]
+
+*Important:* If you plan to skip versions when you upgrade, ensure that you read the version-specific upgrade notes for each intermediate version. You may be required to perform manual actions as part of the upgrade.
+
+// NOTE: Global 4.0 release info here
+
+// <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
+ 
+== APIM - 4.0.1 (2023-07-27)
+
+=== Gateway
+
+* Log exception parameter of execution failure https://github.com/gravitee-io/issues/issues/null[#null]
+
+=== API
+
+* Creating a plan on a v2 API leads to null values in the description https://github.com/gravitee-io/issues/issues/null[#null]
+* First API Export Causes API Desynchronization https://github.com/gravitee-io/issues/issues/null[#null]
+* Dashboard for analytics are shown from all environments https://github.com/gravitee-io/issues/issues/null[#null]
+
+
