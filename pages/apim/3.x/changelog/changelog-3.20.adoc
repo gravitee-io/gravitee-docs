@@ -13,6 +13,27 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.15 (2023-08-03)
+
+=== Gateway
+
+* Log exception parameter of execution failure https://github.com/gravitee-io/issues/issues/9148[#9148]
+
+=== API
+
+* Dashboard for analytics are shown from all environments https://github.com/gravitee-io/issues/issues/9058[#9058]
+* First API Export Causes API Desynchronization https://github.com/gravitee-io/issues/issues/9059[#9059]
+
+=== Portal
+
+* Logout issue on portal https://github.com/gravitee-io/issues/issues/9156[#9156]
+
+=== Other
+
+* API promotion fails if sharding tags applied on API https://github.com/gravitee-io/issues/issues/9121[#9121]
+
+
+ 
 == APIM - 3.20.14 (2023-07-20)
 
 === Gateway
