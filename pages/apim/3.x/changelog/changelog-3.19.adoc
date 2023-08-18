@@ -13,6 +13,19 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.19.21 (2023-08-18)
+
+=== API
+
+* "Export as CSV" on Subscriptions only export displayed values https://github.com/gravitee-io/issues/issues/8965[#8965]
+* Improve MongoDB indexes https://github.com/gravitee-io/issues/issues/9194[#9194]
+
+=== Other
+
+* JDBC Deadlock on Commands and Events when using multiple instance of APIM https://github.com/gravitee-io/issues/issues/9113[#9113]
+
+
+ 
 == APIM - 3.19.20 (2023-08-03)
 
 === API
