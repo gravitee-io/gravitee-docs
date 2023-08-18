@@ -13,6 +13,25 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.16 (2023-08-18)
+
+=== API
+
+* "Export as CSV" on Subscriptions only export displayed values https://github.com/gravitee-io/issues/issues/8965[#8965]
+* Improve MongoDB indexes https://github.com/gravitee-io/issues/issues/9194[#9194]
+
+=== Console
+
+* Health Check Active When Configured Globally but Not Enabled on the Endpoint https://github.com/gravitee-io/issues/issues/9149[#9149]
+* Console Analytics & Logs: 500 error is displayed when trying to view analytics and logs using a date range bigger than 90 days https://github.com/gravitee-io/issues/issues/6777[#6777]
+
+=== Other
+
+* Improve permission granulation on environment settings https://github.com/gravitee-io/issues/issues/9150[#9150]
+* JDBC Deadlock on Commands and Events when using multiple instance of APIM https://github.com/gravitee-io/issues/issues/9113[#9113]
+
+
+ 
 == APIM - 3.20.15 (2023-08-03)
 
 === Gateway
