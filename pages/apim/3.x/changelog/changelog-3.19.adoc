@@ -13,6 +13,17 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.19.22 (2023-08-31)
+
+=== API
+
+* Primary owner can remove himself from application with management api https://github.com/gravitee-io/issues/issues/9171[#9171]
+
+=== Helm Chart
+
+* Add `podSecurityContext` to define a SecurityContext at deployment level https://github.com/gravitee-io/issues/issues/9209[#9209]
+
+ 
 == APIM - 3.19.21 (2023-08-18)
 
 === API
