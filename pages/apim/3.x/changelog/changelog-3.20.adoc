@@ -12,7 +12,16 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 // NOTE: Global 3.20 release info here
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
- 
+
+
+== APIM - 3.20.19 (2023-09-14)
+
+=== API
+
+* Path with ":*" in path mappings is breaking down the environment https://github.com/gravitee-io/issues/issues/9214[#9214]
+* Upgrade Guava to `32.1.2-jre` https://github.com/gravitee-io/issues/issues/9223[#9223]
+
+
 == APIM - 3.20.18 (2023-09-11)
 
 === Gateway
@@ -23,8 +32,6 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 * Restart UI Container leads to HTTP 301 https://github.com/gravitee-io/issues/issues/9186[#9186]
 
-
- 
 == APIM - 3.20.17 (2023-08-31)
 
 === API
