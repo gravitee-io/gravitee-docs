@@ -12,6 +12,20 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 // NOTE: Global 3.19 release info here
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
+ 
+== APIM - 3.19.25 (2023-09-28)
+
+=== Helm Chart
+    
+* Remove smtp default example configuration in helm https://github.com/gravitee-io/issues/issues/9243[#9243]
+* Allow ingress wildcard in helm chart https://github.com/gravitee-io/issues/issues/9246[#9246]
+
+=== Other
+
+* Mock Policy - Example value is not correct when the GET method return an array https://github.com/gravitee-io/issues/issues/6289[#6289]
+* No flow in Design API https://github.com/gravitee-io/issues/issues/9242[#9242]
+
+
 
 == APIM - 3.19.24 (2023-09-14)
 
