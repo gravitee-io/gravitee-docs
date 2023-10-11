@@ -33,7 +33,7 @@ For safety, this script define at the beginning a boolean *dryRun* set to *true*
 We strongly recommend executing this script in a test environment first.
 Backup the database before executing in the production environment.
 
-NOTE: this script will generate a summary in JSON format about actions that has been applied
+NOTE: Whatever is the dryRun value, this script will generate a summary in JSON format about actions that has been applied. If there is some errors entries, you will have to check into the database and manage these cases by hands.
 
 [source,bash]
 ----
@@ -44,15 +44,38 @@ NOTE: this script will generate a summary in JSON format about actions that has 
 
 WARNING: These steps should be tested in a test environment first
 
-We strongly recommend executing the query in a test environment first.
+A liquibase script will be executed to help you. This script will identify duplicates and rename some of them according to the connection metadata for each profile (the mostly used profile will be considered as the reference and other will be renamed with a "_TO_RENAME_OR_DELETE" suffix). 
+
+We strongly recommend executing upgrade in a test environment first.
 Backup the database before executing in the production environment.
-Also you need to update the query with the appropriate identity provider name.
 
+If the Management API startup fails, please check the logs and see if some duplicates are on error. 
+If so, for these specific username, you will have to rename them by yourself.
 
-Run the following **select** statement to identify data with duplicate user name.
+If a username can't be deduplicate, there will be an error into the logs referencing the username and the identity provider.
+
+NOTE: In case of liquibase script error, the management API may fail to start and the *databasechangeloglock* will have the `locked` column set to true. Once the duplicate will be managed manually, the `locked` columns will have to be updated to false in order to make possible the liquibase execution. You can update the lock using this query : `UPDATE DATABASECHANGELOGLOCK SET LOCKED=0`
+
+NOTE: After the migration, make sure that the *idp_users_xxx* tables contains a unique index on the username column. If not, please create this index.
+
+User entry examples (two type of errors may happen):
+
+----
+Username 'duplicateuser' can't be processed due to unknown identity provider with id 'idpinternal'
+Duplicate user detected in IdentityProvider different from the default one for username 'duplicateuser' and idp 'idpinternal'
+----
+
+Organization User entry example:
+
+----
+Organization Username 'duplicateuser' migration only manages gravitee & cockpit identity providers
+----
+
+NOTE: Run the following **select** statement to identify all data with duplicate user name before the upgrade.
 
 [source,sql]
 ----
+-- on USERS table
 select id, u.username, u.source
 from users u,
 (select username, source
@@ -62,48 +85,59 @@ group by source, username) as multiEntries
 where multiEntries.count > 1) aa
 where u.username = aa.username
 and u.source = aa.source
-----
 
-Once confirmed, run the following query to delete entries from the IDP tables;
-
-NOTE: IDP collection name start with `idp_users_` followed by a sequence of characters
-
-
-=== Delete from Identity Provider Table(s)
-
-Replace the IDP table(s) name and run the following query:
-
-[source,sql]
-----
-delete
-from idp_users_YOUR_IDP
-where id in (select external_id
-from users u
+-- on ORGANIZATION_USERS table
+select id, u.username, u.source
+from organization_users u,
 (select username, source
 from (select username, source, count(username) as count
-from users
+from organization_users
 group by source, username) as multiEntries
 where multiEntries.count > 1) aa
 where u.username = aa.username
-and u.source = aa.source);
+and u.source = aa.source
 ----
 
+=== Manual actions in case of errors
 
-=== Delete from Users Table
+==== Rename duplicate for users table
 
-Now delete data from the **users** table
+* first select the username on error
 
 [source,sql]
 ----
-delete
-from users
-where id in (select id
-from users u, -- remove username and source
-(select username, source
-from (select username, source, count(username) as count
-from users
-group by source, username) as multiEntries
-where multiEntries.count > 1) aa
-where u.username = aa.username
-and u.source = aa.source);
+select id, external_id, username, source, logins_count, logget_at, created_at from users where username = 'duplicateuser' and source = 'idpinternal';
+"id"	"external_id"  "username"  "source"  "logins_count"  "logget_at"  "created_at"
+"xxxxxxxx-eeee-aaaa-bc0b-7bef9bec6af4" "xxxxxxxx-ef9b-4c6a-bc0b-7bef9bec6af4"	"duplicateuser"  "idpinternal" '1' '2023-10-11 13:18:21.555' '2023-10-11 13:18:20.555'
+"yyyyyyyy-bbbb-cccc-bc0b-7bef9bec6af4" "yyyyyyyy-ef9b-4c6a-bc0b-7bef9bec6af4"	"duplicateuser"  "idpinternal" '0' '2023-10-11 13:18:20.555' '2023-10-11 13:18:20.555'
 ----
+
+* second search for the identiy provider linked to the user
+
+[source,sql]
+----
+select id, type, name, configuration from identities where id = 'idpinternal';
+----
+
+* based on the identity provider type, the action maybe different. In this procedure, we are considereing an JDBC IDP. Check into the configuration field the connection settings to the IDP database, the table and the table column containing the entry id (external ID of the user table) and the table column containing the username.
+
+
+[source,sql]
+----
+select id, username from idp_table where username = 'duplicateuser';
+"id"	"username"
+"xxxxxxxx-ef9b-4c6a-bc0b-7bef9bec6af4"	"duplicateuser"
+"yyyyyyyy-ef9b-4c6a-bc0b-7bef9bec6af4"	"duplicateuser"
+----
+
+* finally, based on the users table query output, choose the one you want to preserv and rename to order into the the users table and into the idp table. Make sure that the user you are updating the exrernal_id in the users table matching the user id into the idp table.
+
+[source,sql]
+----
+update users set username="updateduser" where id="xxxxxxxx-eeee-aaaa-bc0b-7bef9bec6af4" and external_id = "xxxxxxxx-ef9b-4c6a-bc0b-7bef9bec6af4";
+update idp_table set username="updateduser" where id = "xxxxxxxx-ef9b-4c6a-bc0b-7bef9bec6af4";
+----
+
+=== Rename duplicate from Organization users Table
+
+The procedure is the same as the one for the *users* table but need to be applied on the *organization_users* table
