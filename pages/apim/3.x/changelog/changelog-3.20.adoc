@@ -13,6 +13,30 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.21 (2023-10-13)
+
+=== Gateway
+
+* Health Check doesn't support Endpoint with EL https://github.com/gravitee-io/issues/issues/8700[#8700]
+* Gateways take proxy configuration while it mustn't  https://github.com/gravitee-io/issues/issues/9278[#9278]
+
+=== API
+
+* Unable to Promote APIs https://github.com/gravitee-io/issues/issues/9277[#9277]
+
+=== Console
+
+* Add members button does not work for group admin https://github.com/gravitee-io/issues/issues/9241[#9241]
+* Unable to remove expiration date of an API Key https://github.com/gravitee-io/issues/issues/9248[#9248]
+
+=== Other
+
+* User claim in OAuth2 resource seems ignored https://github.com/gravitee-io/issues/issues/9168[#9168]
+* Typo in the documentation of  "cache policy" https://github.com/gravitee-io/issues/issues/9262[#9262]
+* OAuth2 plan with cache resource not working https://github.com/gravitee-io/issues/issues/9286[#9286]
+
+
+ 
 == APIM - 3.20.20 (2023-09-28)
 
 === Helm Chart
