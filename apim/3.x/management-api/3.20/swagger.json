@@ -9568,7 +9568,7 @@
           }
         ],
         "responses": {
-          "204": {
+          "200": {
             "description": "Plan successfully closed",
             "content": {
               "application/json": {
@@ -30636,7 +30636,7 @@
           }
         ],
         "responses": {
-          "204": {
+          "200": {
             "description": "Plan successfully closed",
             "content": {
               "application/json": {
