@@ -13,6 +13,38 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.22 (2023-10-27)
+
+=== API
+
+* Can't create Backend-to-Backend applications https://github.com/gravitee-io/issues/issues/9157[#9157]
+* Can't assign a group to a Backend-to-Backend application https://github.com/gravitee-io/issues/issues/9158[#9158]
+* Invalid CORS Allow Origin Can Be Imported To Create New API https://github.com/gravitee-io/issues/issues/9212[#9212]
+* User email address policy treats valid email address as invalid https://github.com/gravitee-io/issues/issues/9293[#9293]
+* The OpenAPI schema to close a plan has incorrect response code https://github.com/gravitee-io/issues/issues/9351[#9351]
+* Listening Hosts are mandatory in Virtual Hosts mode https://github.com/gravitee-io/issues/issues/9343[#9343]
+* User with quotes in lastname isn't properly sanitized https://github.com/gravitee-io/issues/issues/9336[#9336]
+* Unable to import OpenAPI spec with unused `variables` in `servers` definition https://github.com/gravitee-io/issues/issues/9329[#9329]
+* Alert template not automatically applied to new APIs https://github.com/gravitee-io/issues/issues/9323[#9323]
+* Attached Media is lost when the API Documentation is renamed https://github.com/gravitee-io/issues/issues/9285[#9285]
+* Unable to create custom email notification template  https://github.com/gravitee-io/issues/issues/9284[#9284]
+
+=== Portal
+
+* Custom wide logo is too small in the Portal header https://github.com/gravitee-io/issues/issues/9337[#9337]
+
+=== Helm Chart
+    
+* Quotify the namespace defined in ServiceAccount to avoid errors https://github.com/gravitee-io/issues/issues/9345[#9345]
+
+=== Other
+
+* IP filtering policy blacklist does not work if there is a space in the IP address https://github.com/gravitee-io/issues/issues/9083[#9083]
+* Domain name (host) in whitelist does not work in IP Filtering policy https://github.com/gravitee-io/issues/issues/9198[#9198]
+* JWS Policy doesn't work with Java 17 https://github.com/gravitee-io/issues/issues/9211[#9211]
+
+
+ 
 == APIM - 3.20.21 (2023-10-13)
 
 === Gateway
