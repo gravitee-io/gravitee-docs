@@ -13,6 +13,25 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.23 (2023-11-10)
+
+=== Gateway
+
+* Gateways not able to send bulk index data to ES8 https://github.com/gravitee-io/issues/issues/9361[#9361]
+
+=== API
+
+* JDBC deadlocks on Command table when running multiple Management API https://github.com/gravitee-io/issues/issues/9356[#9356]
+* Unable to access Alerts screen when there are millions of AlertEvents https://github.com/gravitee-io/issues/issues/9362[#9362]
+* Unable to deploy an API with huge API definition and already a lot of deployments https://github.com/gravitee-io/issues/issues/9364[#9364]
+* Security - Enforce password policy for users https://github.com/gravitee-io/issues/issues/9374[#9374]
+
+=== Other
+
+* GKO - API state does not get updated https://github.com/gravitee-io/issues/issues/9338[#9338]
+
+
+ 
 == APIM - 3.20.22 (2023-10-27)
 
 === API
