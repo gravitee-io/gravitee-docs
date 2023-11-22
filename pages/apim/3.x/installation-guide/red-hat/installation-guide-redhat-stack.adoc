@@ -53,16 +53,16 @@ Before you install the APIM package, you may need to add third-party repositorie
 
 ==== MongoDB
 
-NOTE: For guidance on installing and configuring MongoDB, see the link:https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-red-hat/[MongoDB Installation documentation, window=\"_blank\"].
+NOTE: For guidance on installing and configuring MongoDB, see the link:https://www.mongodb.com/docs/v7.0/tutorial/install-mongodb-on-red-hat/[MongoDB Installation documentation, window=\"_blank\"].
 
 [source,bash]
 ----
-echo "[mongodb-org-3.6]
+echo "[mongodb-org-7.0]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/3.6/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/7.0/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc" | sudo tee /etc/yum.repos.d/mongodb-org-3.6.repo > /dev/null
+gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc" | sudo tee /etc/yum.repos.d/mongodb-org-7.0.repo > /dev/null
 
 sudo yum install -y mongodb-org
 sudo systemctl start mongod
@@ -70,7 +70,7 @@ sudo systemctl start mongod
 
 ==== Elasticsearch 7.x
 
-NOTE: For guidance on installing and configuring Elasticsearch, see the link:https://www.elastic.co/guide/en/elasticsearch/reference/7.6/rpm.html#rpm-repo[Elasticsearch Installation documentation, window=\"_blank\"].
+NOTE: For guidance on installing and configuring Elasticsearch, see the link:https://www.elastic.co/guide/en/elasticsearch/reference/7.17/rpm.html#rpm-repo[Elasticsearch Installation documentation, window=\"_blank\"].
 
 [source,bash]
 ----
@@ -92,6 +92,19 @@ sudo systemctl start elasticsearch
 ----
 curl -L https://bit.ly/install-apim-3x | bash
 ----
+
+=== Upgrade APIM
+
+As of APIM 3.20.24, to upgrade an APIM component you can simply do a `yum upgrade` and restart APIM:
+
+WARNING: Always look at the changelog to follow potential breaking changes.
+
+[source,bash,subs="attributes"]
+----
+sudo yum upgrade -y {gravitee-package-name}
+sudo systemctl restart graviteeio-apim-gateway graviteeio-apim-rest-api nginx
+----
+
 
 == Run APIM with `systemd`
 
