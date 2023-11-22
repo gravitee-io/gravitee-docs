@@ -80,3 +80,13 @@ To list journal entries for the Nginx service starting from a given time, run th
 ----
 sudo journalctl --unit nginx --since  "2020-01-30 12:13:14"
 ----
+
+== Upgrade the {gravitee-component-name} package
+
+As of APIM 3.20.24, to upgrade an APIM component you can simply do a `yum upgrade` and restart APIM:
+
+[source,bash,subs="attributes"]
+----
+sudo yum upgrade -y {gravitee-package-name}
+sudo systemctl restart nginx
+----
