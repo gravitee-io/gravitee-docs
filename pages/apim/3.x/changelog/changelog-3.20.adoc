@@ -13,6 +13,40 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.24 (2023-11-24)
+=== BugFixes
+==== Management API
+
+* Application api_key_mode is automatically and incorrectly set to EXCLUSIVE mode without owner consent https://github.com/gravitee-io/issues/issues/9348[#9348]
+* Environment rights : API "update" right is not enough to edit the entrypoint https://github.com/gravitee-io/issues/issues/9372[#9372]
+* APIM - flows table / name column / extend column size https://github.com/gravitee-io/issues/issues/9377[#9377]
+
+==== Console
+
+* API subscription fails with insufficient rights error https://github.com/gravitee-io/issues/issues/9341[#9341]
+* History not available if too many deployments  https://github.com/gravitee-io/issues/issues/9359[#9359]
+
+==== Portal
+
+* API subscription fails with insufficient rights error https://github.com/gravitee-io/issues/issues/9341[#9341]
+* The "All rights reserved" mention on Portal is using an old date https://github.com/gravitee-io/issues/issues/9384[#9384]
+
+==== Other
+
+* Configuration files are beeing overwritten during yum update https://github.com/gravitee-io/issues/issues/9368[#9368]
+* Transform headers policy should be case insensitive https://github.com/gravitee-io/issues/issues/9378[#9378]
+* Generate JWT Policy Key Resolver wrong value https://github.com/gravitee-io/issues/issues/9389[#9389]
+* OAuth2 introspection and userinfo should send a 503 when technical exception instead of 401 https://github.com/gravitee-io/issues/issues/9390[#9390]
+
+
+=== Improvements
+==== Gateway
+
+* Health-Check: allow to use response time in assertion https://github.com/gravitee-io/issues/issues/9388[#9388]
+
+
+
+ 
 == APIM - 3.20.23 (2023-11-10)
 
 === Gateway
