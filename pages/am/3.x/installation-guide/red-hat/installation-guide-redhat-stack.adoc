@@ -53,20 +53,21 @@ Before you install the AM package, you may need to add third-party repositories.
 
 ==== MongoDB
 
-NOTE: For guidance on installing and configuring MongoDB, see the link:https://www.mongodb.com/docs/v4.4/tutorial/install-mongodb-on-red-hat/[MongoDB installation documentation^].
+NOTE: For guidance on installing and configuring MongoDB, see the link:https://www.mongodb.com/docs/v7.0/tutorial/install-mongodb-on-red-hat/[MongoDB Installation documentation, window=\"_blank\"].
 
 [source,bash]
 ----
-echo "[mongodb-org-4.4]
+echo "[mongodb-org-7.0]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.4/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/7.0/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-4.4.asc" | sudo tee /etc/yum.repos.d/mongodb-org-4.4.repo > /dev/null
+gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc" | sudo tee /etc/yum.repos.d/mongodb-org-7.0.repo > /dev/null
 
 sudo yum install -y mongodb-org
 sudo systemctl start mongod
 ----
+
 
 === Install AM
 
@@ -74,6 +75,20 @@ sudo systemctl start mongod
 ----
 curl -L https://bit.ly/install-am-3x | bash
 ----
+
+=== Upgrade AM
+
+As of AM 3.20.16 and 3.21.10, to upgrade an AM component you can simply do a `yum upgrade` and restart AM:
+
+WARNING: Always look at the changelog to follow potential breaking changes.
+
+[source,bash,subs="attributes"]
+----
+sudo yum upgrade -y {gravitee-package-name}
+sudo systemctl daemon-reload
+sudo systemctl restart {gravitee-package-name}-gateway {gravitee-package-name}-management-api nginx
+----
+
 
 == Run AM with `systemd`
 

@@ -89,5 +89,6 @@ As of APIM 3.20.24, to upgrade an APIM component you can simply do a `yum upgrad
 [source,bash,subs="attributes"]
 ----
 sudo yum upgrade -y {gravitee-package-name}
+sudo systemctl daemon-reload
 sudo systemctl restart nginx
 ----
