@@ -59,7 +59,7 @@ sudo systemctl stop nginx
 
 == View the logs
 
-When `systemd` logging is enabled, the logging information are available using the `journalctl` commands:
+When `systemd` logging is enabled, the logging information is available using the `journalctl` commands.
 
 To tail the journal, run the following command:
 
@@ -80,4 +80,15 @@ To list journal entries for the Nginx service starting from a given time:
 [source,shell]
 ----
 sudo journalctl --unit nginx --since  "2020-01-30 12:13:14"
+----
+
+== Upgrade the {gravitee-component-name} package
+
+As of AM 3.20.16 and 3.21.10, to upgrade an AM component you can simply do a `yum upgrade` and restart AM:
+
+[source,bash,subs="attributes"]
+----
+sudo yum upgrade -y {gravitee-package-name}
+sudo systemctl daemon-reload
+sudo systemctl restart nginx
 ----

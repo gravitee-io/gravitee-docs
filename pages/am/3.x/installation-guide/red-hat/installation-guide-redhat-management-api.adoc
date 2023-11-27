@@ -73,3 +73,13 @@ To list journal entries for the {gravitee-component-name} service starting from 
 ----
 sudo journalctl --unit {gravitee-service-name} --since  "2020-01-30 12:13:14"
 ----
+
+== Upgrade the {gravitee-component-name} package
+
+As of AM 3.20.16 and 3.21.10, to upgrade an AM component you can simply do a `yum upgrade` and restart AM:
+
+[source,bash,subs="attributes"]
+----
+sudo yum upgrade -y {gravitee-package-name}
+sudo systemctl restart {gravitee-service-name}
+----
