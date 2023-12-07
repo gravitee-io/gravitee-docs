@@ -13,6 +13,43 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.25 (2023-12-07)
+=== BugFixes
+==== Gateway
+
+* EL - request's local address is evaluated in place of remote address https://github.com/gravitee-io/issues/issues/9408[#9408]
+
+==== Console
+
+* Error in Swagger documentation both in Portal and Console https://github.com/gravitee-io/issues/issues/9391[#9391]
+* Bad management of required in open API File https://github.com/gravitee-io/issues/issues/9414[#9414]
+
+==== Portal
+
+* Error in Swagger documentation both in Portal and Console https://github.com/gravitee-io/issues/issues/9391[#9391]
+
+==== Helm Charts
+
+* Alert Engine - system mail notification https://github.com/gravitee-io/issues/issues/9402[#9402]
+* license deleted after helm upgrade https://github.com/gravitee-io/issues/issues/9411[#9411]
+
+==== Other
+
+* Transform Query Parameters policy https://github.com/gravitee-io/issues/issues/9383[#9383]
+
+
+=== Improvements
+==== Management API
+
+* Add a resource in management API V1 to fetch API subscribers with pagination info https://github.com/gravitee-io/issues/issues/9410[#9410]
+
+==== Portal
+
+* Update chore dependencies of Gravitee Portal https://github.com/gravitee-io/issues/issues/9418[#9418]
+
+
+
+ 
 == APIM - 3.20.24 (2023-11-24)
 === BugFixes
 ==== Management API
