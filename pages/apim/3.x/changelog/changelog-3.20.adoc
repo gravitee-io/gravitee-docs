@@ -13,6 +13,39 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.26 (2023-12-21)
+=== BugFixes
+==== Gateway
+
+* Health-check service never stopped when using Service Discovery https://github.com/gravitee-io/issues/issues/9437[#9437]
+
+==== Management API
+
+* API Does Not Deploy if a Common Flow Exists with Multiple Entrypoints Selected https://github.com/gravitee-io/issues/issues/9415[#9415]
+* Can not delete api with too many events https://github.com/gravitee-io/issues/issues/9439[#9439]
+
+==== Console
+
+* Inconsistency on "Inheritance" flag for endpoints/groups between frontend and backend https://github.com/gravitee-io/issues/issues/9407[#9407]
+* Flow Name Display Does Not Match Gateway Behavior https://github.com/gravitee-io/issues/issues/9416[#9416]
+* Log view too wide https://github.com/gravitee-io/issues/issues/9429[#9429]
+
+==== Portal
+
+* Tickets Inaccessible When an API with Open Tickets Is Deleted https://github.com/gravitee-io/issues/issues/9422[#9422]
+* Cannot Scroll in Markdown Documentation in Portal https://github.com/gravitee-io/issues/issues/9424[#9424]
+* Synchronization inconsistency on ALL APIs page on portal https://github.com/gravitee-io/issues/issues/9432[#9432]
+* Sign up doesn't work anymore https://github.com/gravitee-io/issues/issues/9440[#9440]
+
+
+=== Improvements
+==== Other
+
+* [JDBC] Improve Flows loading https://github.com/gravitee-io/issues/issues/9436[#9436]
+
+
+
+ 
 == APIM - 3.20.25 (2023-12-07)
 === BugFixes
 ==== Gateway
