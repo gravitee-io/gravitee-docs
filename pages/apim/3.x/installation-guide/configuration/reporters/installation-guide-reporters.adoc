@@ -242,10 +242,6 @@ In the following table you can see how different data from Gravitee has been tra
 | If you don't use the default website of Datadog, for example if the data center is in the EU, then you need to set this variable.
 | *null*
 
-| `host`
-| The TCP host where the event should be published. This can be a valid host name or an IP address.
-| *localhost*
-
 | `authentication`
 | In order to send data to Datadog, you need to provide your Authentication details and all supported Datadog Authentication mechanisms can be used in here as well. You need to choose only one Authentication type and remove the rest.
 | *N/A*
