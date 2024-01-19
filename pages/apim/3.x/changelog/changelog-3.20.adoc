@@ -13,6 +13,30 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.27 (2024-01-19)
+=== BugFixes
+==== Gateway
+
+* Sometime path-mapping is not working https://github.com/gravitee-io/issues/issues/9450[#9450]
+* Management API does not encode a value in the URL used in a pipe https://github.com/gravitee-io/issues/issues/9461[#9461]
+
+==== Portal
+
+* Docs not loaded instantly https://github.com/gravitee-io/issues/issues/9452[#9452]
+
+==== Helm Charts
+
+* Backward incompatibility during helm upgrade with old values.yml https://github.com/gravitee-io/issues/issues/9446[#9446]
+
+
+=== Improvements
+==== Gateway
+
+* Access request host property in Expression Language https://github.com/gravitee-io/issues/issues/9453[#9453]
+
+
+
+ 
 == APIM - 3.20.26 (2023-12-21)
 === BugFixes
 ==== Gateway
