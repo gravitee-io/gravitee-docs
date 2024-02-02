@@ -13,6 +13,21 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.28 (2024-02-02)
+=== BugFixes
+==== Gateway
+
+* Timeout when connecting to websocket api using header Connection:Upgrade,Keep-Alive https://github.com/gravitee-io/issues/issues/9487[#9487]
+
+
+=== Improvements
+==== Gateway
+
+* Add API id in health check logs https://github.com/gravitee-io/issues/issues/9493[#9493]
+
+
+
+ 
 == APIM - 3.20.27 (2024-01-19)
 === BugFixes
 ==== Gateway
