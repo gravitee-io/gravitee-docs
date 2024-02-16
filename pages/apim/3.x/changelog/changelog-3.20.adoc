@@ -13,6 +13,29 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.29 (2024-02-16)
+=== BugFixes
+==== Management API
+
+* Exclude groups on plan are not displayed after being imported or promoted to a new environment https://github.com/gravitee-io/issues/issues/9116[#9116]
+* Private API on the portal are wrongly displayed https://github.com/gravitee-io/issues/issues/9513[#9513]
+
+==== Console
+
+* When validating a JWT subscription, I'm asked to customize an APIkey https://github.com/gravitee-io/issues/issues/9489[#9489]
+
+==== Portal
+
+* Documentation gets encoded after deploy https://github.com/gravitee-io/issues/issues/9490[#9490]
+* Customization problems of the developers portal https://github.com/gravitee-io/issues/issues/9495[#9495]
+
+==== Other
+
+* [policy-request-validation] Un-required OpenAPI fields added as required in Validate Request policy https://github.com/gravitee-io/issues/issues/9509[#9509]
+
+
+
+ 
 == APIM - 3.20.28 (2024-02-02)
 === BugFixes
 ==== Gateway
