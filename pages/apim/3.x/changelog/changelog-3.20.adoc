@@ -13,6 +13,31 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.30 (2024-03-01)
+=== BugFixes
+==== Gateway
+
+* Re: Transfer subscription to another plan is not take into account properly in logs https://github.com/gravitee-io/issues/issues/9530[#9530]
+
+==== Management API
+
+* Shared API Key Does Not Always Bind to Subscriptions When Concurrent Requests Are Made https://github.com/gravitee-io/issues/issues/9502[#9502]
+* NullPointer Exception when importing an API with group as PO and members https://github.com/gravitee-io/issues/issues/9507[#9507]
+* APIM - creating application with "@" in name automatically converts it to "&#64;" https://github.com/gravitee-io/issues/issues/9514[#9514]
+* Importing an API with a group as PO but no PO user in this group should not be possible https://github.com/gravitee-io/issues/issues/9587[#9587]
+
+==== Console
+
+* No more possible to compare published and to deploy status  https://github.com/gravitee-io/issues/issues/9491[#9491]
+* Remove last user in group shows error https://github.com/gravitee-io/issues/issues/9517[#9517]
+
+==== Portal
+
+* Documentation menu hidden https://github.com/gravitee-io/issues/issues/9590[#9590]
+
+
+
+ 
 == APIM - 3.20.29 (2024-02-16)
 === BugFixes
 ==== Management API
