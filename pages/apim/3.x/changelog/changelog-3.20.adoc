@@ -13,6 +13,30 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.31 (2024-03-21)
+=== BugFixes
+==== Gateway
+
+* Improve HealthCheck service for V2 APIs https://github.com/gravitee-io/issues/issues/9543[#9543]
+* Escaping % in query parameter causes errors on logstash and skip log for that request https://github.com/gravitee-io/issues/issues/9598[#9598]
+
+==== Management API
+
+* Condition field in JDBC dbs is too short https://github.com/gravitee-io/issues/issues/9595[#9595]
+
+==== Console
+
+* [shared api key] api key mode not displayed on application screen https://github.com/gravitee-io/issues/issues/9612[#9612]
+
+
+=== Improvements
+==== Portal
+
+* Do not allow user to change his email though the portal https://github.com/gravitee-io/issues/issues/9617[#9617]
+
+
+
+ 
 == APIM - 3.20.30 (2024-03-01)
 === BugFixes
 ==== Gateway
