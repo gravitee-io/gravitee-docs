@@ -13,6 +13,26 @@ For upgrade instructions, please refer to https://docs.gravitee.io/apim/3.x/apim
 
 // <DO NOT REMOVE THIS COMMENT - ANCHOR FOR FUTURE RELEASES>
  
+== APIM - 3.20.32 (2024-03-29)
+=== BugFixes
+==== Management API
+
+* Update import remove all members when a group is defined as a PO https://github.com/gravitee-io/issues/issues/9596[#9596]
+
+==== Other
+
+* [gravitee-policy-ipfiltering] DNS Lookup fails with some DNS server https://github.com/gravitee-io/issues/issues/9592[#9592]
+* [gravitee-resource-auth-provider-http] Timeout when authentication condition is failing https://github.com/gravitee-io/issues/issues/9611[#9611]
+
+
+=== Improvements
+==== Management API
+
+* Allow to configure KeepAliveTimeout for HTTP Endpoint https://github.com/gravitee-io/issues/issues/9541[#9541]
+
+
+
+ 
 == APIM - 3.20.31 (2024-03-21)
 === BugFixes
 ==== Gateway
