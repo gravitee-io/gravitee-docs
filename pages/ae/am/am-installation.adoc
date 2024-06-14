@@ -101,3 +101,55 @@ alerts:
 
 CAUTION: By default, to keep the same behavior of the previous version, events are sent over a websocket connection.
 The default behavior will switch to http in a next future version.
+
+=== Connect to multiple engines
+
+Let's say you have to connect to multiple Alert Engines in order to propagate the triggers across multiple clusters.
+The connector lets you do this:
+
+```yaml
+alerts:
+  alert-engine:
+    enabled: true
+    engines:
+      cluster1:
+        endpoints:
+          - https://localhost:8072/
+        security:
+          username: admin
+          password: adminadmin
+        #ssl:
+        #  keystore:
+        #    type: jks # Supports jks, pem, pkcs12
+        #    path: /path/to/keystore.jks
+        #    password: changeit
+        #  truststore:
+        #    type: jks # Supports jks, pem, pkcs12
+        #    path: /path/to/truststore.jks
+        #    password: changeit
+      default:
+        endpoints:
+          - http://localhost:8073/
+        security:
+          username: admin
+          password: adminadmin
+        #ssl:
+        #  keystore:
+        #    type: pem # Supports jks, pem, pkcs12
+        #    certs:
+        #      - /path/to/cert.pem
+        #      - /path/to/cert2.pem
+        #    keys:
+        #      - /path/to/key.pem
+        #      - /path/to/key2.pem
+        #  truststore:
+        #    type: pem # Supports jks, pem, pkcs12
+        #    path: /path/to/truststore.pem
+```
+
+You can add as many `alerts.alert-engine.engines.<cluster-name>` as possible to connect to your Alert Engines.
+
+NOTE: You will only be able to connect to multiple clusters to send triggers but this not the case on the gateway to send
+events, the latter being handled by `alerts.alert-engine.engines.default`.
+
+WARNING: `alerts.alert-engine.engines.default` is a mandatory cluster to add in both management-api and gateway configuration.
