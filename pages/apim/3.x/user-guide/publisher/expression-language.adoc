@@ -34,7 +34,7 @@ automatically _injected_ into the expression language context to be used later.
 
 * Get the value of the property `my-property` defined in API properties:
 `{#properties['my-property']}`
-* Get the value of the property `my-secret` defined and encrypted link:{{ 'apim/3.x/apim_publisherguide_api_properties.html' | relative_url }}[encryption] in API Properties : `{#properties['my-secret'}` to pass a secured property to your backend
+* Get the value of the property `my-secret` defined and encrypted link:{{ 'apim/3.x/apim_publisherguide_api_properties.html' | relative_url }}[encryption] in API Properties : `{#properties['my-secret']}` to pass a secured property to your backend
 
 === Dictionaries
 
